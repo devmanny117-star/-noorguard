@@ -11,8 +11,6 @@ import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
 import '../widgets/home/feature_grid.dart';
 import '../widgets/home/quote_banner.dart';
-import '../widgets/streak_badge_widget.dart';
-import '../widgets/prayer_checkin_widget.dart';
 import 'prayers_screen.dart';
 import 'qibla_screen.dart';
 import 'quran_screen.dart';
@@ -138,26 +136,10 @@ class _HomeBodyState extends State<_HomeBody> {
         children: [
           const SizedBox(height: 4),
           HeaderSection(onOpenSettings: widget.onOpenSettings),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(18, 6, 18, 0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: StreakBadgeWidget(),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(18, 6, 18, 0),
-            padding: const EdgeInsets.fromLTRB(0, 18, 0, 12),
-            decoration: BoxDecoration(
-              color: const Color(0xFF0D1B2A),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const PrayerCheckinWidget(),
-          ),
           const SizedBox(height: 6),
+          PrayerTimesCard(prayers: _prayers),
           const HeroCard(),
           const RevertCornerCard(),
-          PrayerTimesCard(prayers: _prayers),
           const FeatureGrid(),
           const SizedBox(height: 4),
           const QuoteBanner(),

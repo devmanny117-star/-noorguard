@@ -1,9 +1,18 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/prayer_model.dart';
-import '../../theme/app_theme.dart';
+import '../../screens/streak_calendar_screen.dart';
+import '../../services/prayer_state.dart';
+import '../geometric_pattern_painter.dart';
+
+// Matches the Revert Corner card's navy/gold palette.
+const _navy = Color(0xFF0D1B2A);
+const _gold = Color(0xFFD4AF37);
+const _cardDark = Color(0xFF1A2A3A);
 
 String _localizedPrayerName(AppLocalizations l10n, Prayer prayer) {
   switch (prayer.iconPath) {
@@ -22,36 +31,76 @@ String _localizedPrayerName(AppLocalizations l10n, Prayer prayer) {
   }
 }
 
-class PrayerTimesCard extends StatelessWidget {
+String _arabicNameFor(Prayer prayer) {
+  switch (prayer.iconPath) {
+    case 'fajr':
+      return 'الفجر';
+    case 'dhuhr':
+      return 'الظهر';
+    case 'asr':
+      return 'العصر';
+    case 'maghrib':
+      return 'المغرب';
+    case 'isha':
+      return 'العشاء';
+    default:
+      return prayer.arabicName;
+  }
+}
+
+class PrayerTimesCard extends StatefulWidget {
   final List<Prayer>? prayers;
 
   const PrayerTimesCard({super.key, this.prayers});
 
   @override
+  State<PrayerTimesCard> createState() => _PrayerTimesCardState();
+}
+
+class _PrayerTimesCardState extends State<PrayerTimesCard> {
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Keeps the "Next: ... in Xh Ym" countdown live without a manual refresh.
+    _timer = Timer.periodic(const Duration(seconds: 30), (_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  static final _cardDecoration = BoxDecoration(
+    color: _navy,
+    borderRadius: BorderRadius.circular(20),
+    border: Border.all(color: _gold.withValues(alpha: 0.35)),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withValues(alpha: 0.22),
+        blurRadius: 16,
+        offset: const Offset(0, 6),
+      ),
+    ],
+  );
+
+  @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
+    final prayerState = context.watch<PrayerState>();
 
-    final cardDecoration = BoxDecoration(
-      color: colors.cardBg,
-      borderRadius: BorderRadius.circular(16),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.07),
-          blurRadius: 20,
-          offset: const Offset(0, 4),
-        ),
-      ],
-    );
-
-    if (prayers == null) {
+    if (widget.prayers == null) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
         child: Container(
-          height: 160,
-          decoration: cardDecoration,
+          height: 280,
+          decoration: _cardDecoration,
           child: const Center(
             child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(AppColors.gold),
+              valueColor: AlwaysStoppedAnimation<Color>(_gold),
               strokeWidth: 2.5,
             ),
           ),
@@ -59,23 +108,111 @@ class PrayerTimesCard extends StatelessWidget {
       );
     }
 
-    final nextPrayer = prayers!.firstWhere(
+    final prayers = widget.prayers!;
+    final nextPrayer = prayers.firstWhere(
       (p) => p.isNext,
-      orElse: () => prayers!.first,
+      orElse: () => prayers.first,
     );
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
       child: Container(
-        decoration: cardDecoration,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _NextPrayerHeader(prayer: nextPrayer),
-            Container(height: 1, color: colors.border),
-            _AllPrayersRow(prayers: prayers!),
-          ],
+        decoration: _cardDecoration,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            children: [
+              const Positioned.fill(
+                child: CustomPaint(painter: GeometricPatternPainter()),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _NextPrayerHeader(prayer: nextPrayer),
+                  _TopStatsRow(
+                    streak: prayerState.streakCount,
+                    completed: prayerState.completedCount,
+                  ),
+                  Container(
+                    height: 1,
+                    margin: const EdgeInsets.symmetric(horizontal: 18),
+                    color: _gold.withValues(alpha: 0.15),
+                  ),
+                  _AllPrayersRow(prayers: prayers, prayerState: prayerState),
+                ],
+              ),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class _TopStatsRow extends StatelessWidget {
+  final int streak;
+  final int completed;
+  const _TopStatsRow({required this.streak, required this.completed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 4, 18, 0),
+      child: Row(
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const StreakCalendarScreen()),
+            ),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: _cardDark,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: _gold.withValues(alpha: 0.35)),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text('🔥', style: TextStyle(fontSize: 14)),
+                  const SizedBox(width: 6),
+                  Text(
+                    '$streak',
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: _gold,
+                      height: 1.1,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const Spacer(),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: _cardDark,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: _gold.withValues(alpha: 0.35)),
+            ),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              child: Text(
+                '$completed / 5',
+                key: ValueKey(completed),
+                style: GoogleFonts.lato(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: _gold,
+                  letterSpacing: 0.3,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -87,11 +224,11 @@ class _NextPrayerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
+    final name = _localizedPrayerName(l10n, prayer);
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 22, 14, 18),
+      padding: const EdgeInsets.fromLTRB(20, 18, 14, 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -104,17 +241,17 @@ class _NextPrayerHeader extends StatelessWidget {
                   style: GoogleFonts.lato(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
-                    color: AppColors.gold,
+                    color: _gold,
                     letterSpacing: 2.2,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  _localizedPrayerName(l10n, prayer),
+                  name,
                   style: GoogleFonts.playfairDisplay(
-                    fontSize: 48,
+                    fontSize: 40,
                     fontWeight: FontWeight.w800,
-                    color: colors.primaryText,
+                    color: Colors.white,
                     height: 1.05,
                   ),
                 ),
@@ -123,7 +260,7 @@ class _NextPrayerHeader extends StatelessWidget {
                   prayer.arabicName,
                   style: GoogleFonts.scheherazadeNew(
                     fontSize: 19,
-                    color: AppColors.gold,
+                    color: _gold,
                     height: 1.3,
                   ),
                 ),
@@ -133,7 +270,7 @@ class _NextPrayerHeader extends StatelessWidget {
                     const Icon(
                       Icons.access_time_rounded,
                       size: 17,
-                      color: AppColors.gold,
+                      color: _gold,
                     ),
                     const SizedBox(width: 6),
                     Text(
@@ -141,7 +278,7 @@ class _NextPrayerHeader extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 21,
                         fontWeight: FontWeight.w800,
-                        color: AppColors.gold,
+                        color: _gold,
                         letterSpacing: 0.4,
                       ),
                     ),
@@ -149,11 +286,11 @@ class _NextPrayerHeader extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  _countdown(prayer.time),
+                  _nextPrayerLabel(l10n, name, prayer.time),
                   style: GoogleFonts.lato(
                     fontSize: 12.5,
                     fontWeight: FontWeight.w500,
-                    color: colors.secondaryText,
+                    color: Colors.white.withValues(alpha: 0.6),
                   ),
                 ),
               ],
@@ -172,15 +309,23 @@ class _NextPrayerHeader extends StatelessWidget {
 
 class _AllPrayersRow extends StatelessWidget {
   final List<Prayer> prayers;
-  const _AllPrayersRow({required this.prayers});
+  final PrayerState prayerState;
+  const _AllPrayersRow({required this.prayers, required this.prayerState});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 14, 10, 14),
+      padding: const EdgeInsets.fromLTRB(10, 14, 10, 16),
       child: Row(
         children: prayers.map((prayer) {
-          return Expanded(child: _PrayerPill(prayer: prayer));
+          final done = prayerState.prayers[prayer.name] ?? false;
+          return Expanded(
+            child: _PrayerPill(
+              prayer: prayer,
+              done: done,
+              onTap: () => prayerState.togglePrayer(prayer.name),
+            ),
+          );
         }).toList(),
       ),
     );
@@ -189,94 +334,111 @@ class _AllPrayersRow extends StatelessWidget {
 
 class _PrayerPill extends StatelessWidget {
   final Prayer prayer;
-  const _PrayerPill({required this.prayer});
+  final bool done;
+  final VoidCallback onTap;
+  const _PrayerPill({
+    required this.prayer,
+    required this.done,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
-    final isDark = context.isDark;
-    final isNext = prayer.isNext;
-    final isPassed = prayer.isPassed;
 
-    final passedBg = isDark ? const Color(0xFF222222) : const Color(0xFFF0F0F0);
-    final passedIcon = isDark ? const Color(0xFF444444) : const Color(0xFFBBBBBB);
-    final passedText = isDark ? const Color(0xFF555555) : const Color(0xFFAAAAAA);
-    final passedTime = isDark ? const Color(0xFF444444) : const Color(0xFFBBBBBB);
-
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      margin: const EdgeInsets.symmetric(horizontal: 2.5),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-      decoration: BoxDecoration(
-        color: isNext
-            ? AppColors.gold
-            : isPassed
-                ? passedBg
-                : colors.secondaryBg,
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            _iconForPrayer(prayer.iconPath),
-            size: 18,
-            color: isNext
-                ? Colors.white
-                : isPassed
-                    ? passedIcon
-                    : AppColors.gold,
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 220),
+        curve: Curves.easeInOut,
+        margin: const EdgeInsets.symmetric(horizontal: 3),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+        decoration: BoxDecoration(
+          color: done ? _gold : _cardDark,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: done ? _gold : _gold.withValues(alpha: 0.22),
+            width: 1.5,
           ),
-          const SizedBox(height: 5),
-          Text(
-            _localizedPrayerName(l10n, prayer),
-            style: GoogleFonts.lato(
-              fontSize: 10,
-              fontWeight: isNext ? FontWeight.w700 : FontWeight.w500,
-              color: isNext
-                  ? Colors.white
-                  : isPassed
-                      ? passedText
-                      : colors.primaryText,
+          boxShadow: done
+              ? [
+                  BoxShadow(
+                    color: _gold.withValues(alpha: 0.35),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
+              : null,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              switchInCurve: Curves.easeOut,
+              switchOutCurve: Curves.easeIn,
+              transitionBuilder: (child, anim) => FadeTransition(
+                opacity: anim,
+                child: ScaleTransition(scale: anim, child: child),
+              ),
+              child: done
+                  ? const Icon(
+                      Icons.check_rounded,
+                      key: ValueKey('check'),
+                      color: _navy,
+                      size: 20,
+                    )
+                  : Text(
+                      _arabicNameFor(prayer),
+                      key: const ValueKey('arabic'),
+                      textDirection: TextDirection.rtl,
+                      style: GoogleFonts.scheherazadeNew(
+                        fontSize: 17,
+                        color: _gold,
+                        height: 1.15,
+                      ),
+                    ),
             ),
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 2),
-          Text(
-            prayer.time.replaceAll(' AM', '').replaceAll(' PM', ''),
-            style: GoogleFonts.lato(
-              fontSize: 9.5,
-              fontWeight: FontWeight.w600,
-              color: isNext
-                  ? Colors.white.withOpacity(0.88)
-                  : isPassed
-                      ? passedTime
-                      : AppColors.gold,
+            const SizedBox(height: 5),
+            Text(
+              _localizedPrayerName(l10n, prayer),
+              style: GoogleFonts.lato(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                color: done ? _navy : Colors.white,
+              ),
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
             ),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            const SizedBox(height: 2),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 6,
+                  height: 6,
+                  margin: const EdgeInsets.only(right: 4),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFF4CAF50),
+                  ),
+                ),
+                Text(
+                  prayer.time.replaceAll(' AM', '').replaceAll(' PM', ''),
+                  style: GoogleFonts.lato(
+                    fontSize: 9.5,
+                    fontWeight: FontWeight.w600,
+                    color: done ? _navy.withValues(alpha: 0.75) : _gold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
-  }
-
-  IconData _iconForPrayer(String name) {
-    switch (name) {
-      case 'fajr':
-        return Icons.wb_twilight_rounded;
-      case 'dhuhr':
-        return Icons.wb_sunny_rounded;
-      case 'asr':
-        return Icons.light_mode_outlined;
-      case 'maghrib':
-        return Icons.wb_twilight_rounded;
-      case 'isha':
-        return Icons.nightlight_round;
-      default:
-        return Icons.access_time;
-    }
   }
 }
 
@@ -284,7 +446,7 @@ class _MosqueOutlinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final stroke = Paint()
-      ..color = AppColors.gold.withOpacity(0.75)
+      ..color = _gold.withValues(alpha: 0.75)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.6
       ..strokeJoin = StrokeJoin.round
@@ -345,7 +507,7 @@ class _MosqueOutlinePainter extends CustomPainter {
 
   void _drawCrescentOutline(Canvas canvas, Paint paint, Offset center, double radius) {
     final crescentPaint = Paint()
-      ..color = AppColors.gold.withOpacity(0.75)
+      ..color = _gold.withValues(alpha: 0.75)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.4;
 
@@ -370,6 +532,12 @@ class _MosqueOutlinePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_MosqueOutlinePainter old) => false;
+}
+
+String _nextPrayerLabel(AppLocalizations l10n, String name, String timeStr) {
+  final countdown = _countdown(timeStr);
+  if (countdown.isEmpty) return name;
+  return '${l10n.nextPrayer}: $name $countdown';
 }
 
 String _countdown(String timeStr) {
