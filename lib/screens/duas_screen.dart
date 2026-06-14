@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../data/duas_data.dart';
 import '../theme/app_theme.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/font_size_slider.dart';
 
 class DuasScreen extends StatefulWidget {
   const DuasScreen({super.key});
@@ -21,6 +22,8 @@ class _DuasScreenState extends State<DuasScreen>
   late final AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
 
+  int _fontScaleIndex = kDefaultFontScaleIndex;
+
   @override
   void initState() {
     super.initState();
@@ -36,6 +39,17 @@ class _DuasScreenState extends State<DuasScreen>
     _searchController.addListener(() {
       setState(() => _searchQuery = _searchController.text.trim().toLowerCase());
     });
+    _loadFontScale();
+  }
+
+  Future<void> _loadFontScale() async {
+    final index = await loadFontScaleIndex('duas');
+    if (mounted) setState(() => _fontScaleIndex = index);
+  }
+
+  void _onFontScaleChanged(int index) {
+    setState(() => _fontScaleIndex = index);
+    saveFontScaleIndex('duas', index);
   }
 
   @override
@@ -97,40 +111,51 @@ class _DuasScreenState extends State<DuasScreen>
             onCategorySelected: _selectCategory,
           ),
           SliverToBoxAdapter(
-            child: FadeTransition(
-              opacity: _fadeAnimation,
-              child: duas.isEmpty
-                  ? const _EmptyState()
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 4),
-                          child: Text(
-                            l10n.supplications(duas.length),
-                            style: GoogleFonts.lato(
-                              fontSize: 12,
-                              color: colors.secondaryText,
-                              fontWeight: FontWeight.w500,
+            child: FontSizeSlider(
+              index: _fontScaleIndex,
+              onChanged: _onFontScaleChanged,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+              ),
+              child: FadeTransition(
+                opacity: _fadeAnimation,
+                child: duas.isEmpty
+                    ? const _EmptyState()
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 20, 20, 4),
+                            child: Text(
+                              l10n.supplications(duas.length),
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                                color: colors.secondaryText,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
-                        ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(16, 6, 16, 24),
-                          itemCount: duas.length,
-                          itemBuilder: (context, i) {
-                            final globalIndex = allDuas.indexOf(duas[i]);
-                            return _DuaCard(
-                              dua: duas[i],
-                              isBookmarked: _bookmarked.contains(globalIndex),
-                              onBookmarkTap: () => _toggleBookmark(globalIndex),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            padding: const EdgeInsets.fromLTRB(16, 6, 16, 24),
+                            itemCount: duas.length,
+                            itemBuilder: (context, i) {
+                              final globalIndex = allDuas.indexOf(duas[i]);
+                              return _DuaCard(
+                                dua: duas[i],
+                                isBookmarked: _bookmarked.contains(globalIndex),
+                                onBookmarkTap: () => _toggleBookmark(globalIndex),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+              ),
             ),
           ),
         ],

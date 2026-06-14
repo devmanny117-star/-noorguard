@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
 import '../models/asma_ul_husna_model.dart';
+import '../widgets/font_size_slider.dart';
 
 class AsmaUlHusnaScreen extends StatefulWidget {
   const AsmaUlHusnaScreen({super.key});
@@ -17,6 +18,24 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
 
   final TextEditingController _searchController = TextEditingController();
   String _query = '';
+
+  int _fontScaleIndex = kDefaultFontScaleIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFontScale();
+  }
+
+  Future<void> _loadFontScale() async {
+    final index = await loadFontScaleIndex('asma');
+    if (mounted) setState(() => _fontScaleIndex = index);
+  }
+
+  void _onFontScaleChanged(int index) {
+    setState(() => _fontScaleIndex = index);
+    saveFontScaleIndex('asma', index);
+  }
 
   @override
   void dispose() {
@@ -88,33 +107,42 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
               ],
             ),
           ),
+          FontSizeSlider(
+            index: _fontScaleIndex,
+            onChanged: _onFontScaleChanged,
+          ),
           Expanded(
-            child: names.isEmpty
-                ? Center(
-                    child: Text(
-                      l10n.asmaNoResults,
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                        color: _mutedText,
-                      ),
-                    ),
-                  )
-                : ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
-                    itemCount: names.length,
-                    itemBuilder: (context, index) {
-                      final name = names[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: _AsmaCard(
-                          name: name,
-                          locale: locale,
-                          significanceLabel: l10n.asmaSignificance,
+            child: MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+              ),
+              child: names.isEmpty
+                  ? Center(
+                      child: Text(
+                        l10n.asmaNoResults,
+                        style: GoogleFonts.lato(
+                          fontSize: 14,
+                          color: _mutedText,
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    )
+                  : ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
+                      itemCount: names.length,
+                      itemBuilder: (context, index) {
+                        final name = names[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: _AsmaCard(
+                            name: name,
+                            locale: locale,
+                            significanceLabel: l10n.asmaSignificance,
+                          ),
+                        );
+                      },
+                    ),
+            ),
           ),
         ],
       ),

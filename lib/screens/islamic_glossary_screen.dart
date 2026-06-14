@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/font_size_slider.dart';
 
 const _navy = Color(0xFF0D1B2A);
 const _cardNavy = Color(0xFF152840);
@@ -541,12 +542,25 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
   String _query = '';
   _TermCategory? _activeFilter;
 
+  int _fontScaleIndex = kDefaultFontScaleIndex;
+
   @override
   void initState() {
     super.initState();
     _searchController.addListener(
       () => setState(() => _query = _searchController.text.trim().toLowerCase()),
     );
+    _loadFontScale();
+  }
+
+  Future<void> _loadFontScale() async {
+    final index = await loadFontScaleIndex('glossary');
+    if (mounted) setState(() => _fontScaleIndex = index);
+  }
+
+  void _onFontScaleChanged(int index) {
+    setState(() => _fontScaleIndex = index);
+    saveFontScaleIndex('glossary', index);
   }
 
   @override
@@ -589,16 +603,24 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
                 () => _activeFilter = _activeFilter == cat ? null : cat,
               ),
             ),
-            const SizedBox(height: 4),
+            FontSizeSlider(
+              index: _fontScaleIndex,
+              onChanged: _onFontScaleChanged,
+            ),
             Expanded(
-              child: results.isEmpty
-                  ? _EmptyState(l10n: l10n, query: _query)
-                  : ListView.builder(
-                      padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
-                      itemCount: results.length,
-                      itemBuilder: (context, i) =>
-                          _TermCard(term: results[i], lang: lang, l10n: l10n),
-                    ),
+              child: MediaQuery(
+                data: MediaQuery.of(context).copyWith(
+                  textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+                ),
+                child: results.isEmpty
+                    ? _EmptyState(l10n: l10n, query: _query)
+                    : ListView.builder(
+                        padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
+                        itemCount: results.length,
+                        itemBuilder: (context, i) =>
+                            _TermCard(term: results[i], lang: lang, l10n: l10n),
+                      ),
+              ),
             ),
           ],
         ),

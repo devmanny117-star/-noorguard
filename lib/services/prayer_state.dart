@@ -41,6 +41,8 @@ class PrayerState extends ChangeNotifier {
     'isha': true,
   };
 
+  String selectedAdhanId = 'makkah';
+
   Future<void> loadToday() async {
     final completed = await _streak.getTodayCompleted();
     final streak = await _streak.getStreak();
@@ -50,7 +52,21 @@ class PrayerState extends ChangeNotifier {
     streakCount = streak;
     await loadNotifications();
     await loadBeginnerMode();
+    await loadSelectedAdhan();
     notifyListeners();
+  }
+
+  Future<void> loadSelectedAdhan() async {
+    final prefs = await SharedPreferences.getInstance();
+    selectedAdhanId = prefs.getString('selected_adhan') ?? 'makkah';
+    notifyListeners();
+  }
+
+  Future<void> setSelectedAdhan(String id) async {
+    selectedAdhanId = id;
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selected_adhan', id);
   }
 
   Future<void> togglePrayer(String name) async {

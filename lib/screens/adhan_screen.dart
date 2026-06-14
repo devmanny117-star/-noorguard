@@ -1,8 +1,10 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../l10n/app_localizations.dart';
 import '../models/adhan_model.dart';
+import '../services/prayer_state.dart';
 
 class AdhanScreen extends StatefulWidget {
   const AdhanScreen({super.key});
@@ -61,6 +63,13 @@ class _AdhanScreenState extends State<AdhanScreen>
       }
       return;
     }
+    await _playPreview(style);
+  }
+
+  /// Plays a preview of [style] from the start, stopping whatever
+  /// adhan (if any) is currently playing.
+  Future<void> _playPreview(AdhanStyle style) async {
+    await _audioPlayer.stop();
     setState(() => _playingId = style.id);
     await _audioPlayer.play(UrlSource(style.audioUrl));
   }
@@ -75,55 +84,10 @@ class _AdhanScreenState extends State<AdhanScreen>
     }
   }
 
-  String _styleName(AppLocalizations l10n, String id) {
-    switch (id) {
-      case 'makkah':
-        return l10n.makkahStyle;
-      case 'madinah':
-        return l10n.madinahStyle;
-      case 'egyptian':
-        return l10n.egyptianStyle;
-      case 'alafasy':
-        return l10n.alafasyStyle;
-      case 'alaqsa':
-        return l10n.alaqsaStyle;
-      case 'turkish':
-        return l10n.turkishStyle;
-      case 'pakistani':
-        return l10n.pakistaniStyle;
-      case 'indonesian':
-        return l10n.indonesianStyle;
-      default:
-        return id;
-    }
-  }
-
-  String _styleDescription(AppLocalizations l10n, String id) {
-    switch (id) {
-      case 'makkah':
-        return l10n.makkahDescription;
-      case 'madinah':
-        return l10n.madinahDescription;
-      case 'egyptian':
-        return l10n.egyptianDescription;
-      case 'alafasy':
-        return l10n.alafasyDescription;
-      case 'alaqsa':
-        return l10n.alaqsaDescription;
-      case 'turkish':
-        return l10n.turkishDescription;
-      case 'pakistani':
-        return l10n.pakistaniDescription;
-      case 'indonesian':
-        return l10n.indonesianDescription;
-      default:
-        return '';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final selectedAdhanId = context.watch<PrayerState>().selectedAdhanId;
     final playing = _playingId == null
         ? null
         : adhanStyles.firstWhere((s) => s.id == _playingId);
@@ -168,12 +132,17 @@ class _AdhanScreenState extends State<AdhanScreen>
             if (i > 0) const SizedBox(height: 12),
             _AdhanCard(
               style: adhanStyles[i],
-              displayName: _styleName(l10n, adhanStyles[i].id),
-              description: _styleDescription(l10n, adhanStyles[i].id),
+              displayName: adhanStyleName(l10n, adhanStyles[i].id),
+              description: adhanStyleDescription(l10n, adhanStyles[i].id),
               isActive: _playingId == adhanStyles[i].id,
               isPlaying: _playingId == adhanStyles[i].id && _isPlaying,
+              isSelected: selectedAdhanId == adhanStyles[i].id,
               pulse: _pulse,
-              onTap: () => _togglePlay(adhanStyles[i]),
+              onCardTap: () {
+                _playPreview(adhanStyles[i]);
+                context.read<PrayerState>().setSelectedAdhan(adhanStyles[i].id);
+              },
+              onIconTap: () => _togglePlay(adhanStyles[i]),
             ),
           ],
         ],
@@ -181,7 +150,7 @@ class _AdhanScreenState extends State<AdhanScreen>
       bottomNavigationBar: playing == null
           ? null
           : _AdhanMiniPlayer(
-              displayName: _styleName(l10n, playing.id),
+              displayName: adhanStyleName(l10n, playing.id),
               nowPlayingLabel: l10n.adhanPlaying,
               isPlaying: _isPlaying,
               onPlayPause: () => _togglePlay(playing),
@@ -248,8 +217,10 @@ class _AdhanCard extends StatelessWidget {
   final String description;
   final bool isActive;
   final bool isPlaying;
+  final bool isSelected;
   final Animation<double> pulse;
-  final VoidCallback onTap;
+  final VoidCallback onCardTap;
+  final VoidCallback onIconTap;
 
   const _AdhanCard({
     required this.style,
@@ -257,8 +228,10 @@ class _AdhanCard extends StatelessWidget {
     required this.description,
     required this.isActive,
     required this.isPlaying,
+    required this.isSelected,
     required this.pulse,
-    required this.onTap,
+    required this.onCardTap,
+    required this.onIconTap,
   });
 
   static const _navy = Color(0xFF0D1B2A);
@@ -268,94 +241,116 @@ class _AdhanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: _cardColor,
+    return Material(
+      color: _cardColor,
+      borderRadius: BorderRadius.circular(16),
+      child: InkWell(
+        onTap: onCardTap,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: _gold.withValues(alpha: isActive ? 0.6 : 0.15),
-        ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  displayName,
-                  style: GoogleFonts.lato(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  style.arabicName,
-                  textDirection: TextDirection.rtl,
-                  style: GoogleFonts.scheherazadeNew(
-                    fontSize: 18,
-                    color: _gold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  description,
-                  style: GoogleFonts.lato(
-                    fontSize: 12,
-                    color: _mutedText,
-                    height: 1.5,
-                  ),
-                ),
-              ],
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: _gold.withValues(alpha: isActive ? 0.6 : 0.15),
             ),
           ),
-          const SizedBox(width: 12),
-          AnimatedBuilder(
-            animation: pulse,
-            builder: (_, __) {
-              final glowRadius = isPlaying ? 6 + pulse.value * 8 : 0.0;
-              return Container(
-                width: 54,
-                height: 54,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: isPlaying
-                      ? [
-                          BoxShadow(
-                            color: _gold.withValues(
-                              alpha: 0.25 + pulse.value * 0.25,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            displayName,
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
                             ),
-                            blurRadius: glowRadius,
-                            spreadRadius: 2,
                           ),
-                        ]
-                      : [],
-                ),
-                child: Material(
-                  color: _gold,
-                  shape: const CircleBorder(),
-                  child: InkWell(
-                    onTap: onTap,
-                    customBorder: const CircleBorder(),
-                    child: Center(
-                      child: Icon(
-                        isPlaying
-                            ? Icons.pause_rounded
-                            : Icons.play_arrow_rounded,
-                        color: _navy,
-                        size: 26,
+                        ),
+                        if (isSelected)
+                          const Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: Icon(
+                              Icons.check_circle_rounded,
+                              color: _gold,
+                              size: 18,
+                            ),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      style.arabicName,
+                      textDirection: TextDirection.rtl,
+                      style: GoogleFonts.scheherazadeNew(
+                        fontSize: 18,
+                        color: _gold,
                       ),
                     ),
-                  ),
+                    const SizedBox(height: 8),
+                    Text(
+                      description,
+                      style: GoogleFonts.lato(
+                        fontSize: 12,
+                        color: _mutedText,
+                        height: 1.5,
+                      ),
+                    ),
+                  ],
                 ),
-              );
-            },
+              ),
+              const SizedBox(width: 12),
+              AnimatedBuilder(
+                animation: pulse,
+                builder: (_, __) {
+                  final glowRadius = isPlaying ? 6 + pulse.value * 8 : 0.0;
+                  return Container(
+                    width: 54,
+                    height: 54,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: isPlaying
+                          ? [
+                              BoxShadow(
+                                color: _gold.withValues(
+                                  alpha: 0.25 + pulse.value * 0.25,
+                                ),
+                                blurRadius: glowRadius,
+                                spreadRadius: 2,
+                              ),
+                            ]
+                          : [],
+                    ),
+                    child: Material(
+                      color: _gold,
+                      shape: const CircleBorder(),
+                      child: InkWell(
+                        onTap: onIconTap,
+                        customBorder: const CircleBorder(),
+                        child: Center(
+                          child: Icon(
+                            isPlaying
+                                ? Icons.pause_rounded
+                                : Icons.play_arrow_rounded,
+                            color: _navy,
+                            size: 26,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -6,6 +6,7 @@ import '../models/surah_model.dart';
 import '../models/tafsir_model.dart';
 import '../services/quran_service.dart';
 import '../services/tafsir_api_service.dart';
+import '../widgets/font_size_slider.dart';
 
 const _gold = Color(0xFFD4AF37);
 
@@ -24,6 +25,24 @@ class _TafsirScreenState extends State<TafsirScreen> {
   Map<int, TafsirApiResult>? _apiTafsir;
   bool _loading = true;
   bool _requested = false;
+
+  int _fontScaleIndex = kDefaultFontScaleIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFontScale();
+  }
+
+  Future<void> _loadFontScale() async {
+    final index = await loadFontScaleIndex('tafsir');
+    if (mounted) setState(() => _fontScaleIndex = index);
+  }
+
+  void _onFontScaleChanged(int index) {
+    setState(() => _fontScaleIndex = index);
+    saveFontScaleIndex('tafsir', index);
+  }
 
   @override
   void didChangeDependencies() {
@@ -143,7 +162,22 @@ class _TafsirScreenState extends State<TafsirScreen> {
         ),
         centerTitle: true,
       ),
-      body: body,
+      body: Column(
+        children: [
+          FontSizeSlider(
+            index: _fontScaleIndex,
+            onChanged: _onFontScaleChanged,
+          ),
+          Expanded(
+            child: MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+              ),
+              child: body,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

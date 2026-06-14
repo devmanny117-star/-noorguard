@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_controller.dart';
+import '../models/adhan_model.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
@@ -20,7 +22,6 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   // Prayer Settings
   String _calculationMethod = 'Muslim World League';
-  String _adhanSound = 'Makkah';
 
   // App Blocking
   bool _blockDuringPrayer = false;
@@ -36,14 +37,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'Makkah',
     'Karachi',
     'Tehran',
-  ];
-
-  static const _adhanSounds = [
-    'Makkah',
-    'Madinah',
-    'Mishary Rashid Al-Afasy',
-    'Abdul Basit',
-    'Al-Minshawi',
   ];
 
   static const _durations = ['30 min', '1 hour', 'Prayer window only'];
@@ -133,6 +126,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  Future<void> _showAdhanPicker() async {
+    await showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) => const _AdhanPickerSheet(),
+    );
+  }
+
   void _snack(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -215,14 +217,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               _Divider(colors: colors),
               _SelectRow(
                 label: l10n.adhanSound,
-                value: _adhanSound,
+                value: adhanStyleName(l10n, prayerState.selectedAdhanId),
                 colors: colors,
-                onTap: () => _showPicker(
-                  title: l10n.adhanSound,
-                  options: _adhanSounds,
-                  current: _adhanSound,
-                  onSelect: (v) => setState(() => _adhanSound = v),
-                ),
+                onTap: _showAdhanPicker,
               ),
               _Divider(colors: colors),
               _ToggleRow(
@@ -1148,6 +1145,148 @@ class _PickerSheet extends StatelessWidget {
         ],
         ),
       ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ADHAN PICKER BOTTOM SHEET — shares adhanStyles + PrayerState with AdhanScreen
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _AdhanPickerSheet extends StatefulWidget {
+  const _AdhanPickerSheet();
+
+  @override
+  State<_AdhanPickerSheet> createState() => _AdhanPickerSheetState();
+}
+
+class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  String? _playingId;
+
+  @override
+  void initState() {
+    super.initState();
+    _audioPlayer.onPlayerComplete.listen((_) {
+      if (mounted) setState(() => _playingId = null);
+    });
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.stop();
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  Future<void> _selectAndPreview(AdhanStyle style) async {
+    context.read<PrayerState>().setSelectedAdhan(style.id);
+    await _audioPlayer.stop();
+    setState(() => _playingId = style.id);
+    await _audioPlayer.play(UrlSource(style.audioUrl));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.appColors;
+    final l10n = AppLocalizations.of(context)!;
+    final selectedId = context.watch<PrayerState>().selectedAdhanId;
+    final maxHeight = MediaQuery.of(context).size.height * 0.75;
+
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: maxHeight),
+      child: Container(
+        decoration: BoxDecoration(
+          color: colors.cardBg,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 12),
+              // Handle bar
+              Container(
+                width: 36,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: colors.border,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(height: 18),
+              Text(
+                l10n.adhanSound,
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: colors.primaryText,
+                ),
+              ),
+              const SizedBox(height: 8),
+              ...adhanStyles.map((style) {
+                final isSelected = style.id == selectedId;
+                final isPlaying = _playingId == style.id;
+                return InkWell(
+                  onTap: () => _selectAndPreview(style),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          isPlaying
+                              ? Icons.pause_circle_filled_rounded
+                              : Icons.play_circle_fill_rounded,
+                          size: 28,
+                          color: AppColors.gold,
+                        ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                adhanStyleName(l10n, style.id),
+                                style: GoogleFonts.lato(
+                                  fontSize: 15,
+                                  fontWeight: isSelected
+                                      ? FontWeight.w700
+                                      : FontWeight.w400,
+                                  color: isSelected
+                                      ? AppColors.gold
+                                      : colors.primaryText,
+                                ),
+                              ),
+                              Text(
+                                style.arabicName,
+                                textDirection: TextDirection.rtl,
+                                style: GoogleFonts.scheherazadeNew(
+                                  fontSize: 14,
+                                  color: colors.secondaryText,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (isSelected)
+                          const Icon(
+                            Icons.check_rounded,
+                            size: 18,
+                            color: AppColors.gold,
+                          ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+              SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
+            ],
+          ),
+        ),
       ),
     );
   }

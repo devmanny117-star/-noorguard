@@ -1,11 +1,17 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../models/reciter_model.dart';
 import '../models/surah_model.dart';
 import '../services/quran_service.dart';
+import '../widgets/font_size_slider.dart';
 import 'tafsir_screen.dart';
+
+const _arabicScaleKey = 'quran_arabic_scale';
+const double _minArabicScale = 0.8;
+const double _maxArabicScale = 2.5;
 
 class SurahScreen extends StatefulWidget {
   final Surah surah;
@@ -25,6 +31,14 @@ class _SurahScreenState extends State<SurahScreen> {
   int? _playingVerseNumber;
   bool _isPlaying = false;
 
+  int _fontScaleIndex = kDefaultFontScaleIndex;
+
+  // Pinch-to-zoom state for the Arabic verse text.
+  double _arabicScale = 1.0;
+  final Map<int, Offset> _pointerPositions = {};
+  double? _pinchStartDistance;
+  double _pinchStartArabicScale = 1.0;
+
   static const _navy = Color(0xFF0D1B2A);
   static const _gold = Color(0xFFD4AF37);
 
@@ -39,6 +53,63 @@ class _SurahScreenState extends State<SurahScreen> {
       if (!mounted) return;
       _playAdjacent(1);
     });
+    _loadFontScale();
+    _loadArabicScale();
+  }
+
+  Future<void> _loadFontScale() async {
+    final index = await loadFontScaleIndex('quran');
+    if (mounted) setState(() => _fontScaleIndex = index);
+  }
+
+  void _onFontScaleChanged(int index) {
+    setState(() => _fontScaleIndex = index);
+    saveFontScaleIndex('quran', index);
+  }
+
+  Future<void> _loadArabicScale() async {
+    final prefs = await SharedPreferences.getInstance();
+    final scale = prefs.getDouble(_arabicScaleKey) ?? 1.0;
+    if (mounted) setState(() => _arabicScale = scale);
+  }
+
+  Future<void> _saveArabicScale() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble(_arabicScaleKey, _arabicScale);
+  }
+
+  void _onPointerDown(PointerDownEvent event) {
+    _pointerPositions[event.pointer] = event.position;
+    if (_pointerPositions.length == 2) {
+      final points = _pointerPositions.values.toList();
+      _pinchStartDistance = (points[0] - points[1]).distance;
+      _pinchStartArabicScale = _arabicScale;
+    }
+  }
+
+  void _onPointerMove(PointerMoveEvent event) {
+    if (!_pointerPositions.containsKey(event.pointer)) return;
+    _pointerPositions[event.pointer] = event.position;
+    final startDistance = _pinchStartDistance;
+    if (_pointerPositions.length == 2 && startDistance != null && startDistance > 0) {
+      final points = _pointerPositions.values.toList();
+      final distance = (points[0] - points[1]).distance;
+      final newScale = (_pinchStartArabicScale * (distance / startDistance))
+          .clamp(_minArabicScale, _maxArabicScale);
+      if ((newScale - _arabicScale).abs() > 0.01) {
+        setState(() => _arabicScale = newScale);
+      }
+    }
+  }
+
+  void _onPointerUp(PointerEvent event) {
+    _pointerPositions.remove(event.pointer);
+    if (_pointerPositions.length < 2) {
+      _pinchStartDistance = null;
+    }
+    if (_pointerPositions.isEmpty) {
+      _saveArabicScale();
+    }
   }
 
   @override
@@ -159,30 +230,48 @@ class _SurahScreenState extends State<SurahScreen> {
           ? const Center(child: CircularProgressIndicator(color: _gold))
           : Column(
               children: [
+                FontSizeSlider(
+                  index: _fontScaleIndex,
+                  onChanged: _onFontScaleChanged,
+                ),
                 _ReciterSelector(
                   selected: _selectedReciter,
                   onSelect: _onSelectReciter,
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
-                    itemCount: _verses.length + (_showBismillah ? 1 : 0),
-                    itemBuilder: (context, index) {
-                      if (_showBismillah && index == 0) {
-                        return _BismillahHeader();
-                      }
-                      final verse = _verses[_showBismillah ? index - 1 : index];
-                      return _VerseTile(
-                        verse: verse,
-                        isLast: index ==
-                            _verses.length + (_showBismillah ? 0 : -1),
-                        isPlaying:
-                            _playingVerseNumber == verse.number && _isPlaying,
-                        playTooltip: l10n.playVerse,
-                        onPlayTap: () => _playVerseAudio(verse.number),
-                      );
-                    },
+                  child: Listener(
+                    onPointerDown: _onPointerDown,
+                    onPointerMove: _onPointerMove,
+                    onPointerUp: _onPointerUp,
+                    onPointerCancel: _onPointerUp,
+                    child: MediaQuery(
+                      data: MediaQuery.of(context).copyWith(
+                        textScaler:
+                            TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+                      ),
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
+                        itemCount: _verses.length + (_showBismillah ? 1 : 0),
+                        itemBuilder: (context, index) {
+                          if (_showBismillah && index == 0) {
+                            return _BismillahHeader(arabicScale: _arabicScale);
+                          }
+                          final verse =
+                              _verses[_showBismillah ? index - 1 : index];
+                          return _VerseTile(
+                            verse: verse,
+                            arabicScale: _arabicScale,
+                            isLast: index ==
+                                _verses.length + (_showBismillah ? 0 : -1),
+                            isPlaying: _playingVerseNumber == verse.number &&
+                                _isPlaying,
+                            playTooltip: l10n.playVerse,
+                            onPlayTap: () => _playVerseAudio(verse.number),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -374,6 +463,10 @@ class _BismillahHeader extends StatelessWidget {
   static const _gold = Color(0xFFD4AF37);
   static const _cardColor = Color(0xFF152030);
 
+  final double arabicScale;
+
+  const _BismillahHeader({this.arabicScale = 1.0});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -389,7 +482,7 @@ class _BismillahHeader extends StatelessWidget {
           'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
           textAlign: TextAlign.center,
           style: GoogleFonts.scheherazadeNew(
-            fontSize: 26,
+            fontSize: 26 * arabicScale,
             color: _gold,
             height: 1.8,
           ),
@@ -401,6 +494,7 @@ class _BismillahHeader extends StatelessWidget {
 
 class _VerseTile extends StatelessWidget {
   final Verse verse;
+  final double arabicScale;
   final bool isLast;
   final bool isPlaying;
   final String playTooltip;
@@ -408,6 +502,7 @@ class _VerseTile extends StatelessWidget {
 
   const _VerseTile({
     required this.verse,
+    this.arabicScale = 1.0,
     required this.isLast,
     required this.isPlaying,
     required this.playTooltip,
@@ -443,7 +538,7 @@ class _VerseTile extends StatelessWidget {
                         verse.arabic,
                         textAlign: TextAlign.right,
                         style: GoogleFonts.scheherazadeNew(
-                          fontSize: 24,
+                          fontSize: 24 * arabicScale,
                           color: Colors.white,
                           height: 1.9,
                         ),
