@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_controller.dart';
+import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
@@ -229,6 +230,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 value: prayerState.masterNotifications,
                 colors: colors,
                 onChanged: prayerState.toggleMasterNotifications,
+              ),
+              _Divider(colors: colors),
+              _ActionRow(
+                label: 'Send Test Notification (10s)',
+                icon: Icons.notifications_active_outlined,
+                colors: colors,
+                onTap: () {
+                  NotificationService().scheduleTestNotification();
+                  _snack('Test notification will arrive in 10 seconds');
+                },
               ),
             ],
           ),
