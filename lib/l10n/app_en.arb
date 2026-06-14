@@ -1,0 +1,1531 @@
+{
+  "@@locale": "en",
+  "appName": "Noor Guard",
+  "@appName": {
+    "description": "The application name"
+  },
+  "assalamualaikum": "As-Salāmu 'Alaikum",
+  "@assalamualaikum": {
+    "description": "Islamic greeting shown on the home screen header"
+  },
+  "mayAllahBlessYourDay": "May Allah bless your day",
+  "@mayAllahBlessYourDay": {
+    "description": "Subtitle beneath the greeting"
+  },
+  "nextPrayer": "Next Prayer",
+  "@nextPrayer": {
+    "description": "Label for the upcoming prayer section"
+  },
+  "todaysPrayers": "Today's Prayers",
+  "@todaysPrayers": {
+    "description": "Heading for the daily prayer check-in widget"
+  },
+  "qibla": "Qibla",
+  "@qibla": {
+    "description": "Label for the Qibla compass feature"
+  },
+  "focusMode": "Focus Mode",
+  "@focusMode": {
+    "description": "Label for the focus/distraction-blocking feature"
+  },
+  "appBlocking": "App Blocking",
+  "@appBlocking": {
+    "description": "Label for the prayer-time app blocking feature"
+  },
+  "islamicCalendar": "Islamic Calendar",
+  "@islamicCalendar": {
+    "description": "Label for the Hijri calendar feature"
+  },
+  "duas": "Duas",
+  "@duas": {
+    "description": "Label for the supplication library feature"
+  },
+  "quran": "Quran",
+  "@quran": {
+    "description": "Label for the Quran reader feature"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Label for the settings screen"
+  },
+  "complete": "Complete",
+  "@complete": {
+    "description": "Action label to mark a prayer as done"
+  },
+  "streak": "Streak",
+  "@streak": {
+    "description": "Label for the prayer-completion streak counter"
+  },
+  "dayStreak": "day streak",
+  "@dayStreak": {
+    "description": "Suffix shown after the streak number, e.g. '7 day streak'"
+  },
+  "compassRequiresDevice": "Compass requires a real device",
+  "@compassRequiresDevice": {
+    "description": "Message shown on web where the compass sensor is unavailable"
+  },
+  "streakDays": "{count, plural, one {{count} day} other {{count} days}}",
+  "@streakDays": {
+    "description": "Streak counter shown as '<n> day' or '<n> days'",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "allPrayersCompleted": "All prayers completed! 🎉",
+  "@allPrayersCompleted": {
+    "description": "Message shown when the user has completed all 5 prayers for the day"
+  },
+  "prayersCompleted": "{completed}/5 prayers completed",
+  "@prayersCompleted": {
+    "description": "Progress label showing how many of the 5 daily prayers are completed",
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      }
+    }
+  },
+  "fajr": "Fajr",
+  "@fajr": {
+    "description": "Name of the dawn prayer"
+  },
+  "dhuhr": "Dhuhr",
+  "@dhuhr": {
+    "description": "Name of the midday prayer"
+  },
+  "asr": "Asr",
+  "@asr": {
+    "description": "Name of the afternoon prayer"
+  },
+  "maghrib": "Maghrib",
+  "@maghrib": {
+    "description": "Name of the sunset prayer"
+  },
+  "isha": "Isha",
+  "@isha": {
+    "description": "Name of the night prayer"
+  },
+  "fardRakats": "{count} fard rakats",
+  "@fardRakats": {
+    "description": "Pill label showing the number of obligatory rakats for a prayer",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sunnahBefore": "{count} sunnah before",
+  "@sunnahBefore": {
+    "description": "Pill label showing the number of optional sunnah rakats prayed before the obligatory prayer",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sunnahAfter": "{count} sunnah after",
+  "@sunnahAfter": {
+    "description": "Pill label showing the number of optional sunnah rakats prayed after the obligatory prayer",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prayedAt": "Prayed at {time}",
+  "@prayedAt": {
+    "description": "Description of when a prayer is performed, e.g. 'Prayed at dawn before sunrise'",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timePeriodDawnBeforeSunrise": "dawn before sunrise",
+  "@timePeriodDawnBeforeSunrise": {
+    "description": "Time-of-day phrase describing when Fajr is prayed, used inside prayedAt"
+  },
+  "timePeriodAfterSunPassesHighestPoint": "after the sun passes its highest point",
+  "@timePeriodAfterSunPassesHighestPoint": {
+    "description": "Time-of-day phrase describing when Dhuhr is prayed, used inside prayedAt"
+  },
+  "timePeriodLateAfternoon": "in the late afternoon",
+  "@timePeriodLateAfternoon": {
+    "description": "Time-of-day phrase describing when Asr is prayed, used inside prayedAt"
+  },
+  "timePeriodJustAfterSunset": "just after sunset",
+  "@timePeriodJustAfterSunset": {
+    "description": "Time-of-day phrase describing when Maghrib is prayed, used inside prayedAt"
+  },
+  "timePeriodNightBeforeMidnight": "in the night before midnight",
+  "@timePeriodNightBeforeMidnight": {
+    "description": "Time-of-day phrase describing when Isha is prayed, used inside prayedAt"
+  },
+  "fajrHadith": "The two rakats of Fajr are better than the world and all it contains. — Prophet Muhammad ﷺ",
+  "@fajrHadith": {
+    "description": "Hadith quote shown in the expanded Fajr prayer card"
+  },
+  "fajrTip": "Fajr is the first prayer of the day. It reminds us to start our day remembering Allah.",
+  "@fajrTip": {
+    "description": "Beginner tip shown in the expanded Fajr prayer card"
+  },
+  "dhuhrHadith": "Whoever prays the twelve sunnah rakats, Allah will build a house for him in Paradise.",
+  "@dhuhrHadith": {
+    "description": "Hadith quote shown in the expanded Dhuhr prayer card"
+  },
+  "dhuhrTip": "Dhuhr is the midday prayer. A perfect moment to pause your day and reconnect.",
+  "@dhuhrTip": {
+    "description": "Beginner tip shown in the expanded Dhuhr prayer card"
+  },
+  "asrHadith": "Whoever misses Asr prayer, it is as if he lost his family and wealth. — Prophet Muhammad ﷺ",
+  "@asrHadith": {
+    "description": "Hadith quote shown in the expanded Asr prayer card"
+  },
+  "asrTip": "Asr is often called the middle prayer. Allah specifically mentions it in the Quran (2:238).",
+  "@asrTip": {
+    "description": "Beginner tip shown in the expanded Asr prayer card"
+  },
+  "maghribHadith": "The prayer of Maghrib is the Witr of the day.",
+  "@maghribHadith": {
+    "description": "Hadith quote shown in the expanded Maghrib prayer card"
+  },
+  "maghribTip": "Maghrib marks the end of the fasting day in Ramadan. It is prayed right as the sun sets.",
+  "@maghribTip": {
+    "description": "Beginner tip shown in the expanded Maghrib prayer card"
+  },
+  "ishaHadith": "Whoever prays Isha in congregation, it is as if he prayed half the night.",
+  "@ishaHadith": {
+    "description": "Hadith quote shown in the expanded Isha prayer card"
+  },
+  "ishaTip": "Isha is the final prayer of the day. Ending your day with prayer brings peace and closure.",
+  "@ishaTip": {
+    "description": "Beginner tip shown in the expanded Isha prayer card"
+  },
+  "newMuslimTip": "New Muslim Tip",
+  "@newMuslimTip": {
+    "description": "Heading for the beginner-friendly tip shown in an expanded prayer card"
+  },
+  "notificationsOn": "Notifications on",
+  "@notificationsOn": {
+    "description": "State label/tooltip for an enabled prayer notification bell"
+  },
+  "notificationsOff": "Notifications off",
+  "@notificationsOff": {
+    "description": "State label/tooltip for a disabled prayer notification bell"
+  },
+  "preview": "Preview",
+  "@preview": {
+    "description": "Back-button label on the lock screen preview, indicating this is a sample of the lock screen"
+  },
+  "lockPreviewCountdown": "In 1h 23m  ·  4:47 PM",
+  "@lockPreviewCountdown": {
+    "description": "Sample countdown-and-time text shown in the next-prayer pill on the lock screen preview (illustrative placeholder, not live data)"
+  },
+  "swipeUpToUnlock": "Swipe up to unlock",
+  "@swipeUpToUnlock": {
+    "description": "Hint text at the bottom of the lock screen preview"
+  },
+  "searchSurahs": "Search surahs…",
+  "@searchSurahs": {
+    "description": "Hint text for the Quran surah search field"
+  },
+  "noSurahsFound": "No surahs found",
+  "@noSurahsFound": {
+    "description": "Message shown when a surah search returns no results"
+  },
+  "tryAgain": "Try Again",
+  "@tryAgain": {
+    "description": "Button label to retry loading data after a failure"
+  },
+  "ayahs": "{count} ayahs",
+  "@ayahs": {
+    "description": "Number of verses in a surah",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDuas": "Search duas…",
+  "@searchDuas": {
+    "description": "Hint text for the Duas search field"
+  },
+  "supplications": "{count} supplications",
+  "@supplications": {
+    "description": "Count of duas shown in the Duas list",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prayerSettings": "Prayer Settings",
+  "@prayerSettings": {
+    "description": "Section header for prayer-related settings"
+  },
+  "calculationMethod": "Calculation Method",
+  "@calculationMethod": {
+    "description": "Settings row label for choosing the prayer time calculation method"
+  },
+  "adhanSound": "Adhan Sound",
+  "@adhanSound": {
+    "description": "Settings row label for choosing the call-to-prayer sound"
+  },
+  "prayerNotifications": "Prayer Notifications",
+  "@prayerNotifications": {
+    "description": "Settings toggle label for the master prayer notification switch"
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "Section header for appearance-related settings"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Settings toggle label for switching between light and dark themes"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Settings row label for choosing the app language"
+  },
+  "aboutNoorGuard": "About",
+  "@aboutNoorGuard": {
+    "description": "Section header for the About section in Settings"
+  },
+  "version": "App Version",
+  "@version": {
+    "description": "Settings row label showing the installed app version"
+  },
+  "rateApp": "Rate Noor Guard",
+  "@rateApp": {
+    "description": "Settings row action label to rate the app on the store"
+  },
+  "shareApp": "Share Noor Guard",
+  "@shareApp": {
+    "description": "Settings row action label to share the app with others"
+  },
+  "contactSupport": "Contact Support",
+  "@contactSupport": {
+    "description": "Settings row action label to contact app support"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Settings row action label to view the privacy policy"
+  },
+  "termsOfService": "Terms of Service",
+  "@termsOfService": {
+    "description": "Settings row action label to view the terms of service"
+  },
+  "helpUsImprove": "Help Us Improve",
+  "@helpUsImprove": {
+    "description": "Title of the translation feedback banner at the bottom of Settings"
+  },
+  "translationDisclaimer": "Our translations are AI-assisted. If you notice any errors in your language, we'd love your feedback!",
+  "@translationDisclaimer": {
+    "description": "Body text of the translation feedback banner explaining translations are AI-assisted and inviting feedback"
+  },
+  "privacyPromiseTitle": "The Noor Guard Privacy Promise",
+  "@privacyPromiseTitle": {
+    "description": "Title of the privacy promise card in Settings"
+  },
+  "privacyPromiseBody": "Your faith is personal. Your data stays that way. We never sell, share or monetize your data. Not your location. Not your prayer habits. Not your name.",
+  "@privacyPromiseBody": {
+    "description": "Body text of the privacy promise card in Settings"
+  },
+  "directionToSacredHouse": "Direction to the Sacred House",
+  "@directionToSacredHouse": {
+    "description": "Subtitle on the Qibla screen describing what the compass points to"
+  },
+  "towardMecca": "{degrees}° toward Mecca",
+  "@towardMecca": {
+    "description": "Readout showing the bearing in degrees toward the Kaaba in Mecca",
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "defaultLocation": "Sacramento, CA (default)",
+  "@defaultLocation": {
+    "description": "Fallback location label shown when the device location is unavailable"
+  },
+  "prayerHistory": "Prayer History",
+  "@prayerHistory": {
+    "description": "Title of the streak/prayer history calendar screen"
+  },
+  "currentStreak": "Current Streak",
+  "@currentStreak": {
+    "description": "Stat card label for the user's current consecutive-day streak"
+  },
+  "longestStreak": "Longest Streak",
+  "@longestStreak": {
+    "description": "Stat card label for the user's longest consecutive-day streak"
+  },
+  "legend": "Legend",
+  "@legend": {
+    "description": "Heading for the calendar color legend"
+  },
+  "allFivePrayers": "All 5 prayers",
+  "@allFivePrayers": {
+    "description": "Legend item describing a fully-completed prayer day"
+  },
+  "partialPrayers": "Partial (1–4)",
+  "@partialPrayers": {
+    "description": "Legend item describing a partially-completed prayer day"
+  },
+  "none": "None",
+  "@none": {
+    "description": "Legend item describing a day with no prayers completed"
+  },
+  "sun": "Sun",
+  "@sun": {
+    "description": "Abbreviated weekday label for Sunday"
+  },
+  "mon": "Mon",
+  "@mon": {
+    "description": "Abbreviated weekday label for Monday"
+  },
+  "tue": "Tue",
+  "@tue": {
+    "description": "Abbreviated weekday label for Tuesday"
+  },
+  "wed": "Wed",
+  "@wed": {
+    "description": "Abbreviated weekday label for Wednesday"
+  },
+  "thu": "Thu",
+  "@thu": {
+    "description": "Abbreviated weekday label for Thursday"
+  },
+  "fri": "Fri",
+  "@fri": {
+    "description": "Abbreviated weekday label for Friday"
+  },
+  "sat": "Sat",
+  "@sat": {
+    "description": "Abbreviated weekday label for Saturday"
+  },
+  "headingDegrees": "Heading {degrees}°",
+  "@headingDegrees": {
+    "description": "Compass heading readout in degrees",
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "couldNotLoadSurahs": "Could not load surahs",
+  "@couldNotLoadSurahs": {
+    "description": "Error heading shown when the Quran surah list fails to load"
+  },
+  "connectionError": "Please check your internet connection and try again",
+  "@connectionError": {
+    "description": "Error subtitle shown when the Quran surah list fails to load"
+  },
+  "alQuran": "Al-Quran",
+  "@alQuran": {
+    "description": "Title shown on the Quran screen header"
+  },
+  "dailySupplications": "Daily Supplications",
+  "@dailySupplications": {
+    "description": "Subtitle shown on the Duas screen header"
+  },
+  "all": "All",
+  "@all": {
+    "description": "Label for the 'all categories' filter chip on the Duas screen"
+  },
+  "noDuasFound": "No duas found",
+  "@noDuasFound": {
+    "description": "Message shown when no duas match the search or selected category"
+  },
+  "january": "January",
+  "@january": {
+    "description": "Full name of the month January"
+  },
+  "february": "February",
+  "@february": {
+    "description": "Full name of the month February"
+  },
+  "march": "March",
+  "@march": {
+    "description": "Full name of the month March"
+  },
+  "april": "April",
+  "@april": {
+    "description": "Full name of the month April"
+  },
+  "may": "May",
+  "@may": {
+    "description": "Full name of the month May"
+  },
+  "june": "June",
+  "@june": {
+    "description": "Full name of the month June"
+  },
+  "july": "July",
+  "@july": {
+    "description": "Full name of the month July"
+  },
+  "august": "August",
+  "@august": {
+    "description": "Full name of the month August"
+  },
+  "september": "September",
+  "@september": {
+    "description": "Full name of the month September"
+  },
+  "october": "October",
+  "@october": {
+    "description": "Full name of the month October"
+  },
+  "november": "November",
+  "@november": {
+    "description": "Full name of the month November"
+  },
+  "december": "December",
+  "@december": {
+    "description": "Full name of the month December"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Bottom navigation label for the home tab"
+  },
+  "prayers": "Prayers",
+  "@prayers": {
+    "description": "Bottom navigation label for the prayers tab"
+  },
+  "more": "More",
+  "@more": {
+    "description": "Bottom navigation label for the more/settings tab"
+  },
+  "tafsir": "Tafsir",
+  "@tafsir": {
+    "description": "Label for the Quran commentary feature"
+  },
+  "lockScreen": "Lock Screen",
+  "@lockScreen": {
+    "description": "Label for the Islamic lock screen feature"
+  },
+  "readAndListen": "Read & listen",
+  "@readAndListen": {
+    "description": "Subtitle for the Quran feature tile"
+  },
+  "commentary": "Commentary",
+  "@commentary": {
+    "description": "Subtitle for the Tafsir feature tile"
+  },
+  "findDirection": "Find direction",
+  "@findDirection": {
+    "description": "Subtitle for the Qibla feature tile"
+  },
+  "reminders": "Reminders",
+  "@reminders": {
+    "description": "Subtitle for the Lock Screen feature tile"
+  },
+  "blockDistractions": "Block distractions",
+  "@blockDistractions": {
+    "description": "Subtitle for the Focus Mode feature tile"
+  },
+  "prayerGuard": "Prayer guard",
+  "@prayerGuard": {
+    "description": "Subtitle for the App Blocking feature tile"
+  },
+  "importantDates": "Important dates",
+  "@importantDates": {
+    "description": "Subtitle for the Islamic Calendar feature tile"
+  },
+  "comingSoon": "Coming soon",
+  "@comingSoon": {
+    "description": "Placeholder text shown for features that are not yet built"
+  },
+  "morningAndEvening": "Morning & Evening",
+  "@morningAndEvening": {
+    "description": "Dua category label for morning and evening supplications"
+  },
+  "prayer": "Prayer",
+  "@prayer": {
+    "description": "Dua category label for prayer-related supplications"
+  },
+  "foodAndDrink": "Food & Drink",
+  "@foodAndDrink": {
+    "description": "Dua category label for food and drink supplications"
+  },
+  "verityWithHardship": "Verily, with hardship comes ease.",
+  "@verityWithHardship": {
+    "description": "Quran quote shown in the home screen quote banner"
+  },
+  "ashSharh946": "Ash-Sharh 94:6",
+  "@ashSharh946": {
+    "description": "Quran reference (surah and ayah) for the home screen quote banner"
+  },
+  "guardStrictlyYourPrayers": "Guard strictly your prayers, especially the middle prayer.",
+  "@guardStrictlyYourPrayers": {
+    "description": "Quran verse shown as an overlay on the home screen hero card"
+  },
+  "alBaqarah2238": "Al-Baqarah 2:238",
+  "@alBaqarah2238": {
+    "description": "Quran reference (surah and ayah) for the home screen hero card verse"
+  },
+  "pastEvents": "Past Events",
+  "@pastEvents": {
+    "description": "Section heading for past Islamic calendar events"
+  },
+  "upcomingEvents": "Upcoming Events",
+  "@upcomingEvents": {
+    "description": "Section heading for upcoming Islamic calendar events"
+  },
+  "today": "Today",
+  "@today": {
+    "description": "Label on the Islamic calendar's current-date card; displayed in uppercase via the UI"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Badge label marking the soonest upcoming Islamic calendar event"
+  },
+  "hijriYearLabel": "{year} AH",
+  "@hijriYearLabel": {
+    "description": "Hijri year with its era abbreviation (Anno Hegirae), e.g. '1447 AH'",
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "islamicMonthMuharram": "Muharram",
+  "@islamicMonthMuharram": {
+    "description": "Name of the 1st month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRabiAlAwwal": "Rabī' Al-Awwal",
+  "@islamicMonthRabiAlAwwal": {
+    "description": "Name of the 3rd month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRamadan": "Ramadān",
+  "@islamicMonthRamadan": {
+    "description": "Name of the 9th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthShawwal": "Shawwāl",
+  "@islamicMonthShawwal": {
+    "description": "Name of the 10th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthDhulHijjah": "Dhul Hijjah",
+  "@islamicMonthDhulHijjah": {
+    "description": "Name of the 12th month of the Islamic (Hijri) calendar"
+  },
+  "islamicNewYear": "Islamic New Year",
+  "@islamicNewYear": {
+    "description": "Name of the Islamic New Year holiday (1 Muharram), shown in the calendar event list"
+  },
+  "ashura": "Ashura",
+  "@ashura": {
+    "description": "Name of the Day of Ashura (10 Muharram), shown in the calendar event list"
+  },
+  "mawlidAlNabi": "Mawlid Al-Nabi",
+  "@mawlidAlNabi": {
+    "description": "Name of the Prophet's birthday observance, shown in the calendar event list"
+  },
+  "ramadanBegins": "Ramadan Begins",
+  "@ramadanBegins": {
+    "description": "Label marking the start of the month of Ramadan, shown in the calendar event list"
+  },
+  "laylatAlQadr": "Laylat Al-Qadr",
+  "@laylatAlQadr": {
+    "description": "Name of the Night of Decree (27 Ramadan), shown in the calendar event list"
+  },
+  "eidAlFitr": "Eid Al-Fitr",
+  "@eidAlFitr": {
+    "description": "Name of the holiday marking the end of Ramadan, shown in the calendar event list"
+  },
+  "dayOfArafah": "Day of Arafah",
+  "@dayOfArafah": {
+    "description": "Name of the Day of Arafah (9 Dhul Hijjah), shown in the calendar event list"
+  },
+  "eidAlAdha": "Eid Al-Adha",
+  "@eidAlAdha": {
+    "description": "Name of the Festival of Sacrifice, shown in the calendar event list"
+  },
+  "active": "Active",
+  "@active": {
+    "description": "Badge label shown in the Focus Mode header while a session is running"
+  },
+  "focusModeSubtitle": "Protect your focus. Your apps are blocked until you stop.",
+  "@focusModeSubtitle": {
+    "description": "Explanatory subtitle card shown on the Focus Mode screen"
+  },
+  "remaining": "remaining",
+  "@remaining": {
+    "description": "Label under the countdown timer while a focus session is running"
+  },
+  "ready": "ready",
+  "@ready": {
+    "description": "Label under the countdown timer when no focus session is running yet"
+  },
+  "duration": "Duration",
+  "@duration": {
+    "description": "Heading for the focus session duration preset selector; displayed in uppercase via the UI"
+  },
+  "minutesAbbreviation": "min",
+  "@minutesAbbreviation": {
+    "description": "Abbreviated unit label shown under each duration preset number, e.g. '25 min'"
+  },
+  "blockedDuringFocus": "Blocked During Focus",
+  "@blockedDuringFocus": {
+    "description": "Heading for the card listing apps blocked during a focus session"
+  },
+  "appsBlockedCount": "{count, plural, one {{count} app} other {{count} apps}}",
+  "@appsBlockedCount": {
+    "description": "Count badge showing how many apps are blocked during focus mode",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "startFocus": "Start Focus",
+  "@startFocus": {
+    "description": "Button label to begin a focus session"
+  },
+  "stopFocus": "Stop Focus",
+  "@stopFocus": {
+    "description": "Button label to end an active focus session"
+  },
+  "alhamdulillah": "Alhamdulillah!",
+  "@alhamdulillah": {
+    "description": "Exclamation of gratitude to Allah, shown as the heading of the focus session completion dialog"
+  },
+  "sessionComplete": "Session Complete",
+  "@sessionComplete": {
+    "description": "Subheading in the focus session completion dialog"
+  },
+  "stayedFocusedFor": "You stayed focused for {duration}.",
+  "@stayedFocusedFor": {
+    "description": "Message in the completion dialog reporting how long the user focused, e.g. 'You stayed focused for 25 minutes.'",
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "focusSessionMinutes": "{count, plural, one {{count} minute} other {{count} minutes}}",
+  "@focusSessionMinutes": {
+    "description": "Duration phrase used inside stayedFocusedFor, e.g. '25 minutes' or '1 minute'",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "focusCompletionQuote": "\"And seek help through patience and prayer.\"\n— Al-Baqarah 2:45",
+  "@focusCompletionQuote": {
+    "description": "Quran verse and reference shown in the focus session completion dialog"
+  },
+  "done": "Done",
+  "@done": {
+    "description": "Button label to dismiss the focus session completion dialog"
+  },
+  "socialMedia": "Social Media",
+  "@socialMedia": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "entertainment": "Entertainment",
+  "@entertainment": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "games": "Games",
+  "@games": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "messaging": "Messaging",
+  "@messaging": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "blockDuringPrayerTimes": "Block during prayer times",
+  "@blockDuringPrayerTimes": {
+    "description": "Heading on the App Blocking screen's stats card"
+  },
+  "blockDuringPrayerTimesSubtitle": "Selected apps will be blocked automatically\nduring all 5 daily prayers.",
+  "@blockDuringPrayerTimesSubtitle": {
+    "description": "Explanatory subtitle on the App Blocking screen's stats card"
+  },
+  "blockedLabel": "blocked",
+  "@blockedLabel": {
+    "description": "Label under the count of currently blocked apps on the App Blocking screen"
+  },
+  "blockAllApps": "Block all apps",
+  "@blockAllApps": {
+    "description": "Label for the master toggle that blocks every app on the App Blocking screen"
+  },
+  "blockingTimingInfo": "Blocking activates 5 minutes before each prayer and lifts 15 minutes after.",
+  "@blockingTimingInfo": {
+    "description": "Info banner on the App Blocking screen explaining when blocking turns on and off"
+  },
+  "blockedDuringPrayers": "Blocked during prayers",
+  "@blockedDuringPrayers": {
+    "description": "Status text shown under an app's name when it is set to be blocked"
+  },
+  "notBlocked": "Not blocked",
+  "@notBlocked": {
+    "description": "Status text shown under an app's name when it is not set to be blocked"
+  },
+  "wuduStep1": "Intention",
+  "@wuduStep1": {
+    "description": "Name of wudu step 1"
+  },
+  "wuduStep2": "Bismillah",
+  "@wuduStep2": {
+    "description": "Name of wudu step 2"
+  },
+  "wuduStep3": "Wash Hands",
+  "@wuduStep3": {
+    "description": "Name of wudu step 3"
+  },
+  "wuduStep4": "Rinse Mouth",
+  "@wuduStep4": {
+    "description": "Name of wudu step 4"
+  },
+  "wuduStep5": "Clean Nose",
+  "@wuduStep5": {
+    "description": "Name of wudu step 5"
+  },
+  "wuduStep6": "Wash Face",
+  "@wuduStep6": {
+    "description": "Name of wudu step 6"
+  },
+  "wuduStep7": "Wash Arms",
+  "@wuduStep7": {
+    "description": "Name of wudu step 7"
+  },
+  "wuduStep8": "Wipe Head",
+  "@wuduStep8": {
+    "description": "Name of wudu step 8"
+  },
+  "wuduStep9": "Wash Feet",
+  "@wuduStep9": {
+    "description": "Name of wudu step 9"
+  },
+  "revertCorner": "Revert Corner",
+  "@revertCorner": {
+    "description": "Title for the new Muslim hub screen / home tile"
+  },
+  "revertCornerSubtitle": "Guides and support for new Muslims",
+  "@revertCornerSubtitle": {
+    "description": "Subtitle for the Revert Corner card"
+  },
+  "wuduGuide": "Wudu Guide",
+  "@wuduGuide": {
+    "description": "Title for the Wudu Guide screen and hub card"
+  },
+  "howToPray": "How to Pray",
+  "@howToPray": {
+    "description": "Title for the How to Pray screen and hub card"
+  },
+  "newMuslimChecklist": "New Muslim Checklist",
+  "@newMuslimChecklist": {
+    "description": "Title for the New Muslim Checklist screen and hub card"
+  },
+  "islamicGlossary": "Islamic Glossary",
+  "@islamicGlossary": {
+    "description": "Title for the Islamic Glossary hub card"
+  },
+  "whyDoWe": "Why Do We...",
+  "@whyDoWe": {
+    "description": "Title for the Why Do We hub card"
+  },
+  "communityStories": "Community Stories",
+  "@communityStories": {
+    "description": "Title for the Community Stories hub card"
+  },
+  "wuduGuideSubtitle": "Purification before prayer",
+  "@wuduGuideSubtitle": {
+    "description": "Subtitle for the Wudu Guide hub card"
+  },
+  "howToPraySubtitle": "Step by step salah guide",
+  "@howToPraySubtitle": {
+    "description": "Subtitle for the How to Pray hub card"
+  },
+  "newMuslimChecklistSubtitle": "Your 30-day journey",
+  "@newMuslimChecklistSubtitle": {
+    "description": "Subtitle for the New Muslim Checklist hub card"
+  },
+  "howToPrayStep1Name": "Wudu First",
+  "@howToPrayStep1Name": {
+    "description": "Name of how-to-pray step 1"
+  },
+  "howToPrayStep1Instruction": "Perform wudu (ablution) so that you are in a state of purity before you begin to pray.",
+  "@howToPrayStep1Instruction": {
+    "description": "Instruction text for how-to-pray step 1"
+  },
+  "howToPrayStep1Tip": "If you're unsure how, open the Wudu Guide from the New Muslim Hub first.",
+  "@howToPrayStep1Tip": {
+    "description": "Beginner tip for how-to-pray step 1"
+  },
+  "howToPrayStep2Name": "Stand Facing the Qibla",
+  "@howToPrayStep2Name": {
+    "description": "Name of how-to-pray step 2"
+  },
+  "howToPrayStep2Instruction": "Stand on your prayer mat facing the Qibla — the direction of the Kaaba in Mecca. Use the Qibla compass in the app to find the exact direction.",
+  "@howToPrayStep2Instruction": {
+    "description": "Instruction text for how-to-pray step 2"
+  },
+  "howToPrayStep2Tip": "It's okay if you're slightly off — Allah knows your intention. Try your best.",
+  "@howToPrayStep2Tip": {
+    "description": "Beginner tip for how-to-pray step 2"
+  },
+  "howToPrayStep3Name": "Niyyah (Intention)",
+  "@howToPrayStep3Name": {
+    "description": "Name of how-to-pray step 3"
+  },
+  "howToPrayStep3Instruction": "Make the intention in your heart for the prayer you are about to perform. You do not need to say it out loud.",
+  "@howToPrayStep3Instruction": {
+    "description": "Instruction text for how-to-pray step 3"
+  },
+  "howToPrayStep3Tip": "Your intention is between you and Allah. A simple thought like 'I am praying Fajr for Allah' is enough.",
+  "@howToPrayStep3Tip": {
+    "description": "Beginner tip for how-to-pray step 3"
+  },
+  "howToPrayStep4Name": "Takbir (Opening)",
+  "@howToPrayStep4Name": {
+    "description": "Name of how-to-pray step 4"
+  },
+  "howToPrayStep4Instruction": "Raise both hands to your earlobes and say 'Allahu Akbar' (Allah is the Greatest). This officially begins your prayer.",
+  "@howToPrayStep4Instruction": {
+    "description": "Instruction text for how-to-pray step 4"
+  },
+  "howToPrayStep4Tip": "Keep your eyes focused downward toward your place of prostration throughout the prayer.",
+  "@howToPrayStep4Tip": {
+    "description": "Beginner tip for how-to-pray step 4"
+  },
+  "howToPrayStep5Name": "Qiyam (Standing)",
+  "@howToPrayStep5Name": {
+    "description": "Name of how-to-pray step 5"
+  },
+  "howToPrayStep5Instruction": "Place your right hand over your left hand on your chest. Recite Surah Al-Faatiha followed by any other short surah or verses you know.",
+  "@howToPrayStep5Instruction": {
+    "description": "Instruction text for how-to-pray step 5"
+  },
+  "howToPrayStep5Tip": "If you don't know any other surah yet, reciting Al-Faatiha alone is acceptable while you are learning.",
+  "@howToPrayStep5Tip": {
+    "description": "Beginner tip for how-to-pray step 5"
+  },
+  "howToPrayStep6Name": "Ruku (Bowing)",
+  "@howToPrayStep6Name": {
+    "description": "Name of how-to-pray step 6"
+  },
+  "howToPrayStep6Instruction": "Bow down by bending at the waist with your back parallel to the ground. Place your hands on your knees and say 'Subhana Rabbiyal Adheem' three times.",
+  "@howToPrayStep6Instruction": {
+    "description": "Instruction text for how-to-pray step 6"
+  },
+  "howToPrayStep6Tip": "Keep your back straight and horizontal — not arched or rounded.",
+  "@howToPrayStep6Tip": {
+    "description": "Beginner tip for how-to-pray step 6"
+  },
+  "howToPrayStep7Name": "Itidal (Rising from Bowing)",
+  "@howToPrayStep7Name": {
+    "description": "Name of how-to-pray step 7"
+  },
+  "howToPrayStep7Instruction": "Rise from bowing and stand upright. Say 'Sami Allahu liman hamidah' (Allah hears those who praise Him) as you rise, then say 'Rabbana lakal hamd'.",
+  "@howToPrayStep7Instruction": {
+    "description": "Instruction text for how-to-pray step 7"
+  },
+  "howToPrayStep7Tip": "Stand fully upright and be still for a moment before moving to the next position.",
+  "@howToPrayStep7Tip": {
+    "description": "Beginner tip for how-to-pray step 7"
+  },
+  "howToPrayStep8Name": "Sujood (Prostration)",
+  "@howToPrayStep8Name": {
+    "description": "Name of how-to-pray step 8"
+  },
+  "howToPrayStep8Instruction": "Go down to the ground, placing your forehead, nose, both palms, knees, and toes on the floor. Say 'Subhana Rabbiyal A'la' three times.",
+  "@howToPrayStep8Instruction": {
+    "description": "Instruction text for how-to-pray step 8"
+  },
+  "howToPrayStep8Tip": "Seven body parts must touch the ground: forehead (with nose), two hands, two knees, and two feet.",
+  "@howToPrayStep8Tip": {
+    "description": "Beginner tip for how-to-pray step 8"
+  },
+  "howToPrayStep9Name": "Jalsa (Sitting Between Prostrations)",
+  "@howToPrayStep9Name": {
+    "description": "Name of how-to-pray step 9"
+  },
+  "howToPrayStep9Instruction": "Sit up from prostration with your left foot flat and your right foot upright. Say 'Allahu Akbar' as you sit. Pause briefly, then go back down for the second prostration.",
+  "@howToPrayStep9Instruction": {
+    "description": "Instruction text for how-to-pray step 9"
+  },
+  "howToPrayStep9Tip": "This brief sitting between the two prostrations is called Jalsa. It is a required part of the prayer.",
+  "@howToPrayStep9Tip": {
+    "description": "Beginner tip for how-to-pray step 9"
+  },
+  "howToPrayStep10Name": "Complete the Rakats",
+  "@howToPrayStep10Name": {
+    "description": "Name of how-to-pray step 10"
+  },
+  "howToPrayStep10Instruction": "After completing the first rakat, stand up and repeat the same steps for the second rakat. The number of rakats depends on which prayer you are performing.",
+  "@howToPrayStep10Instruction": {
+    "description": "Instruction text for how-to-pray step 10"
+  },
+  "howToPrayStep10Tip": "Fajr has 2 rakats, Dhuhr 4, Asr 4, Maghrib 3, and Isha 4. Take it one rakat at a time.",
+  "@howToPrayStep10Tip": {
+    "description": "Beginner tip for how-to-pray step 10"
+  },
+  "howToPrayStep11Name": "Tashahhud (Final Sitting)",
+  "@howToPrayStep11Name": {
+    "description": "Name of how-to-pray step 11"
+  },
+  "howToPrayStep11Instruction": "In the final sitting position, recite the Tashahhud. This is a declaration of faith that you recite while seated after your last rakat.",
+  "@howToPrayStep11Instruction": {
+    "description": "Instruction text for how-to-pray step 11"
+  },
+  "howToPrayStep11Tip": "During Tashahhud, raise your right index finger when you say 'Ash-hadu alla ilaha illallah' as a sign of the oneness of Allah.",
+  "@howToPrayStep11Tip": {
+    "description": "Beginner tip for how-to-pray step 11"
+  },
+  "howToPrayStep12Name": "Tasleem (Closing)",
+  "@howToPrayStep12Name": {
+    "description": "Name of how-to-pray step 12"
+  },
+  "howToPrayStep12Instruction": "Turn your head to the right and say 'Assalamu Alaikum wa Rahmatullah', then turn to the left and repeat. This ends your prayer.",
+  "@howToPrayStep12Instruction": {
+    "description": "Instruction text for how-to-pray step 12"
+  },
+  "howToPrayStep12Tip": "After the prayer, take a moment to make dua (supplication) and ask Allah for what you need. This is a beautiful time to connect with Allah.",
+  "@howToPrayStep12Tip": {
+    "description": "Beginner tip for how-to-pray step 12"
+  },
+  "checklistWeek1Title": "Week 1",
+  "@checklistWeek1Title": {
+    "description": "Heading for checklist week 1"
+  },
+  "checklistWeek2Title": "Week 2",
+  "@checklistWeek2Title": {
+    "description": "Heading for checklist week 2"
+  },
+  "checklistWeek3Title": "Week 3",
+  "@checklistWeek3Title": {
+    "description": "Heading for checklist week 3"
+  },
+  "checklistWeek4Title": "Week 4",
+  "@checklistWeek4Title": {
+    "description": "Heading for checklist week 4"
+  },
+  "checklistWeek1Item1": "Take Shahada",
+  "@checklistWeek1Item1": {
+    "description": "Checklist item 1 for week 1"
+  },
+  "checklistWeek1Item2": "Learn Wudu",
+  "@checklistWeek1Item2": {
+    "description": "Checklist item 2 for week 1"
+  },
+  "checklistWeek1Item3": "Learn Al-Faatiha",
+  "@checklistWeek1Item3": {
+    "description": "Checklist item 3 for week 1"
+  },
+  "checklistWeek1Item4": "Pray first Fajr",
+  "@checklistWeek1Item4": {
+    "description": "Checklist item 4 for week 1"
+  },
+  "checklistWeek1Item5": "Get a prayer mat",
+  "@checklistWeek1Item5": {
+    "description": "Checklist item 5 for week 1"
+  },
+  "checklistWeek1Item6": "Find local mosque",
+  "@checklistWeek1Item6": {
+    "description": "Checklist item 6 for week 1"
+  },
+  "checklistWeek2Item1": "Learn all 5 prayer times",
+  "@checklistWeek2Item1": {
+    "description": "Checklist item 1 for week 2"
+  },
+  "checklistWeek2Item2": "Learn basic duas",
+  "@checklistWeek2Item2": {
+    "description": "Checklist item 2 for week 2"
+  },
+  "checklistWeek2Item3": "Read about Prophet Muhammad",
+  "@checklistWeek2Item3": {
+    "description": "Checklist item 3 for week 2"
+  },
+  "checklistWeek2Item4": "Connect with Muslim community",
+  "@checklistWeek2Item4": {
+    "description": "Checklist item 4 for week 2"
+  },
+  "checklistWeek3Item1": "Learn about halal food",
+  "@checklistWeek3Item1": {
+    "description": "Checklist item 1 for week 3"
+  },
+  "checklistWeek3Item2": "Read Surah Al-Ikhlas",
+  "@checklistWeek3Item2": {
+    "description": "Checklist item 2 for week 3"
+  },
+  "checklistWeek3Item3": "Learn about Ramadan",
+  "@checklistWeek3Item3": {
+    "description": "Checklist item 3 for week 3"
+  },
+  "checklistWeek3Item4": "Start daily dhikr",
+  "@checklistWeek3Item4": {
+    "description": "Checklist item 4 for week 3"
+  },
+  "checklistWeek4Item1": "Learn about Zakat",
+  "@checklistWeek4Item1": {
+    "description": "Checklist item 1 for week 4"
+  },
+  "checklistWeek4Item2": "Read about the 5 pillars",
+  "@checklistWeek4Item2": {
+    "description": "Checklist item 2 for week 4"
+  },
+  "checklistWeek4Item3": "Set up prayer notifications",
+  "@checklistWeek4Item3": {
+    "description": "Checklist item 3 for week 4"
+  },
+  "checklistWeek4Item4": "Reflect on your journey",
+  "@checklistWeek4Item4": {
+    "description": "Checklist item 4 for week 4"
+  },
+  "wuduStep1Instruction": "Make the intention in your heart to perform wudu for the sake of Allah.",
+  "@wuduStep1Instruction": {
+    "description": "Wudu step 1 instruction"
+  },
+  "wuduStep1Tip": "You don't need to say it out loud — a sincere intention in the heart is enough.",
+  "@wuduStep1Tip": {
+    "description": "Wudu step 1 tip"
+  },
+  "wuduStep2Instruction": "Say Bismillah (In the name of Allah) before you begin.",
+  "@wuduStep2Instruction": {
+    "description": "Wudu step 2 instruction"
+  },
+  "wuduStep2Tip": "Saying Bismillah is sunnah and begins your wudu with the remembrance of Allah.",
+  "@wuduStep2Tip": {
+    "description": "Wudu step 2 tip"
+  },
+  "wuduStep3Instruction": "Wash both hands up to the wrists three times, making sure water reaches between the fingers.",
+  "@wuduStep3Instruction": {
+    "description": "Wudu step 3 instruction"
+  },
+  "wuduStep3Tip": "Start with the right hand, then the left. This order is recommended in Islam.",
+  "@wuduStep3Tip": {
+    "description": "Wudu step 3 tip"
+  },
+  "wuduStep4Instruction": "Take water in your mouth, swirl it around, and spit it out. Do this three times.",
+  "@wuduStep4Instruction": {
+    "description": "Wudu step 4 instruction"
+  },
+  "wuduStep4Tip": "This cleanses the mouth and is part of the purification process.",
+  "@wuduStep4Tip": {
+    "description": "Wudu step 4 tip"
+  },
+  "wuduStep5Instruction": "Sniff water into your nostrils and blow it out gently. Do this three times.",
+  "@wuduStep5Instruction": {
+    "description": "Wudu step 5 instruction"
+  },
+  "wuduStep5Tip": "Use your right hand to sniff water and your left hand to blow it out.",
+  "@wuduStep5Tip": {
+    "description": "Wudu step 5 tip"
+  },
+  "wuduStep6Instruction": "Wash your entire face three times, from the hairline to the chin and from ear to ear.",
+  "@wuduStep6Instruction": {
+    "description": "Wudu step 6 instruction"
+  },
+  "wuduStep6Tip": "Make sure no part of your face is left dry.",
+  "@wuduStep6Tip": {
+    "description": "Wudu step 6 tip"
+  },
+  "wuduStep7Instruction": "Wash your right arm from fingertips to elbow three times, then do the same with the left arm.",
+  "@wuduStep7Instruction": {
+    "description": "Wudu step 7 instruction"
+  },
+  "wuduStep7Tip": "Always start with the right side before the left in wudu.",
+  "@wuduStep7Tip": {
+    "description": "Wudu step 7 tip"
+  },
+  "wuduStep8Instruction": "Wet your hands and wipe over your entire head once, from front to back and back to front.",
+  "@wuduStep8Instruction": {
+    "description": "Wudu step 8 instruction"
+  },
+  "wuduStep8Tip": "Unlike washing, wiping the head is done only once.",
+  "@wuduStep8Tip": {
+    "description": "Wudu step 8 tip"
+  },
+  "wuduStep9Instruction": "Wash your right foot up to and including the ankle three times, then do the same with the left foot.",
+  "@wuduStep9Instruction": {
+    "description": "Wudu step 9 instruction"
+  },
+  "wuduStep9Tip": "Make sure water reaches between the toes. Use your finger to clean between them.",
+  "@wuduStep9Tip": {
+    "description": "Wudu step 9 tip"
+  },
+  "islamicGlossaryTitle": "Islamic Glossary",
+  "@islamicGlossaryTitle": {
+    "description": "Title for Islamic Glossary screen"
+  },
+  "islamicGlossarySubtitle": "51 terms from Quran, Sunnah, and classical scholarship",
+  "@islamicGlossarySubtitle": {
+    "description": "Subtitle for Islamic Glossary screen"
+  },
+  "searchTermsHint": "Search terms, Arabic, definitions...",
+  "@searchTermsHint": {
+    "description": "Hint text in glossary search bar"
+  },
+  "categoryAll": "All",
+  "@categoryAll": {
+    "description": "Filter chip label for all categories"
+  },
+  "categoryPillar": "Pillar",
+  "@categoryPillar": {
+    "description": "Filter chip label for pillar category"
+  },
+  "categoryAqeedah": "Aqeedah",
+  "@categoryAqeedah": {
+    "description": "Filter chip label for aqeedah category"
+  },
+  "categoryPractice": "Practice",
+  "@categoryPractice": {
+    "description": "Filter chip label for practice category"
+  },
+  "categoryDhikr": "Dhikr",
+  "@categoryDhikr": {
+    "description": "Filter chip label for dhikr category"
+  },
+  "categoryQuran": "Quran",
+  "@categoryQuran": {
+    "description": "Filter chip label for quran category"
+  },
+  "categoryHadith": "Hadith",
+  "@categoryHadith": {
+    "description": "Filter chip label for hadith category"
+  },
+  "categoryFiqh": "Fiqh",
+  "@categoryFiqh": {
+    "description": "Filter chip label for fiqh category"
+  },
+  "noTermsFound": "No terms found",
+  "@noTermsFound": {
+    "description": "Empty state message when no glossary terms match"
+  },
+  "sourceLabel": "Source",
+  "@sourceLabel": {
+    "description": "Label for source citations in glossary"
+  },
+  "revertCornerHubSubtitle": "A gentle hub to guide your first steps as a new Muslim",
+  "@revertCornerHubSubtitle": { "description": "Subtitle for Revert Corner hub screen" },
+  "islamicGlossaryHubSubtitle": "Common terms explained simply",
+  "@islamicGlossaryHubSubtitle": { "description": "Hub card subtitle for Islamic Glossary" },
+  "whyDoWeHubSubtitle": "The wisdom behind everyday practices",
+  "@whyDoWeHubSubtitle": { "description": "Hub card subtitle for Why Do We screen" },
+  "communityStoriesHubSubtitle": "Reverts share their journeys to Islam",
+  "@communityStoriesHubSubtitle": { "description": "Hub card subtitle for Community Stories" },
+  "whyDoWeScreenSubtitle": "Wisdom behind 12 everyday Islamic practices",
+  "@whyDoWeScreenSubtitle": { "description": "Subtitle for Why Do We screen" },
+  "whyDoWeSourceBadge": "Sunni Source",
+  "@whyDoWeSourceBadge": { "description": "Badge label for Quran/hadith source citations on Why Do We cards" },
+  "whyDoWeQ1": "Why do we pray 5 times a day?",
+  "@whyDoWeQ1": { "description": "Why Do We question 1" },
+  "whyDoWeA1": "Allah commanded the five daily prayers in the Quran (2:238) and they were established during the Night Journey (Isra wal Miraj). The Prophet said: The first matter that the slave will be brought to account for on the Day of Judgment is the prayer. (Ibn Majah). Prayer keeps us connected to Allah throughout the day.",
+  "@whyDoWeA1": { "description": "Why Do We answer 1" },
+  "whyDoWeQ2": "Why do we face Mecca when we pray?",
+  "@whyDoWeQ2": { "description": "Why Do We question 2" },
+  "whyDoWeA2": "Allah commanded in the Quran (2:144): \"Turn your face toward the Sacred Mosque.\" The Kaaba in Mecca is the first house built for the worship of Allah (3:96). Facing the same direction unites all Muslims in prayer worldwide.",
+  "@whyDoWeA2": { "description": "Why Do We answer 2" },
+  "whyDoWeQ3": "Why do we fast in Ramadan?",
+  "@whyDoWeQ3": { "description": "Why Do We question 3" },
+  "whyDoWeA3": "Allah commanded fasting in the Quran (2:183): \"O you who believe, fasting has been prescribed for you as it was prescribed for those before you, so that you may achieve taqwa.\" Ramadan is the month the Quran was revealed (2:185).",
+  "@whyDoWeA3": { "description": "Why Do We answer 3" },
+  "whyDoWeQ4": "Why do we say Bismillah before eating?",
+  "@whyDoWeQ4": { "description": "Why Do We question 4" },
+  "whyDoWeA4": "The Prophet said: \"When one of you eats, he should mention Allah's name. If he forgets at the beginning, he should say Bismillah awwalahu wa akhirahu.\" (Abu Dawud). It reminds us that all blessings come from Allah.",
+  "@whyDoWeA4": { "description": "Why Do We answer 4" },
+  "whyDoWeQ5": "Why do we remove shoes before entering a mosque?",
+  "@whyDoWeQ5": { "description": "Why Do We question 5" },
+  "whyDoWeA5": "When Moses was commanded by Allah: \"Remove your sandals, for you are in the sacred valley of Tuwa.\" (Quran 20:12). Removing shoes shows respect for the house of Allah and keeps the place of prayer clean.",
+  "@whyDoWeA5": { "description": "Why Do We answer 5" },
+  "whyDoWeQ6": "Why do we say Assalamu Alaikum as a greeting?",
+  "@whyDoWeQ6": { "description": "Why Do We question 6" },
+  "whyDoWeA6": "The Prophet said: \"You will not enter paradise until you believe, and you will not believe until you love one another. Shall I tell you of something that will make you love one another? Spread peace (salam) among yourselves.\" (Muslim). It is also a dua — you are praying for peace upon that person.",
+  "@whyDoWeA6": { "description": "Why Do We answer 6" },
+  "whyDoWeQ7": "Why do we perform Hajj?",
+  "@whyDoWeQ7": { "description": "Why Do We question 7" },
+  "whyDoWeA7": "Hajj was commanded by Allah (3:97): \"Pilgrimage to this House is an obligation by Allah upon whoever is able.\" It commemorates the trials of Prophet Ibrahim and his family, and unites Muslims from every nation in worship.",
+  "@whyDoWeA7": { "description": "Why Do We answer 7" },
+  "whyDoWeQ8": "Why do we give Zakat?",
+  "@whyDoWeQ8": { "description": "Why Do We question 8" },
+  "whyDoWeA8": "Zakat is the third pillar of Islam, commanded in the Quran over 30 times alongside prayer. The Prophet said it purifies wealth. It reduces inequality and reminds believers that wealth belongs to Allah.",
+  "@whyDoWeA8": { "description": "Why Do We answer 8" },
+  "whyDoWeQ9": "Why do we say Alhamdulillah after sneezing?",
+  "@whyDoWeQ9": { "description": "Why Do We question 9" },
+  "whyDoWeA9": "The Prophet said: \"When one of you sneezes, let him say Alhamdulillah, and let his brother or companion say Yarhamukallah.\" (Bukhari). It is a moment of gratitude to Allah for the blessing of health.",
+  "@whyDoWeA9": { "description": "Why Do We answer 9" },
+  "whyDoWeQ10": "Why do Muslim women wear hijab?",
+  "@whyDoWeQ10": { "description": "Why Do We question 10" },
+  "whyDoWeA10": "Allah commanded in the Quran (24:31) that believing women should guard their modesty. The hijab is an act of worship and obedience to Allah. Many Muslim women wear it as a source of identity, dignity, and spiritual connection.",
+  "@whyDoWeA10": { "description": "Why Do We answer 10" },
+  "whyDoWeQ11": "Why do we avoid pork and alcohol?",
+  "@whyDoWeQ11": { "description": "Why Do We question 11" },
+  "whyDoWeA11": "Allah prohibited pork in the Quran (2:173) and alcohol in (5:90), calling it \"an abomination from the work of Satan.\" These prohibitions protect health, the mind, and the family. Halal guidelines help believers maintain physical and spiritual purity.",
+  "@whyDoWeA11": { "description": "Why Do We answer 11" },
+  "whyDoWeQ12": "Why do we say Inshallah?",
+  "@whyDoWeQ12": { "description": "Why Do We question 12" },
+  "whyDoWeA12": "Allah commands in the Quran (18:23-24): \"Never say about anything: I will do that tomorrow, without adding: If Allah wills.\" Saying Inshallah acknowledges that only Allah controls the future and keeps us humble.",
+  "@whyDoWeA12": { "description": "Why Do We answer 12" },
+  "communityStoriesScreenSubtitle": "Real journeys to Islam from around the world",
+  "@communityStoriesScreenSubtitle": { "description": "Subtitle for Community Stories screen" },
+  "communityStoriesTimeLabel": "Time as Muslim",
+  "@communityStoriesTimeLabel": { "description": "Label for time-as-Muslim badge on story cards" },
+  "communityStoriesShareBtn": "Share Your Story",
+  "@communityStoriesShareBtn": { "description": "Button label to share a revert story" },
+  "communityStoriesShareSoon": "Coming soon — this feature is on the way!",
+  "@communityStoriesShareSoon": { "description": "Snackbar message when share button is tapped" },
+  "communityStory1Name": "Aisha (formerly Sarah)",
+  "@communityStory1Name": { "description": "Name for community story 1" },
+  "communityStory1Location": "Texas, USA",
+  "@communityStory1Location": { "description": "Location for community story 1" },
+  "communityStory1Time": "2 years",
+  "@communityStory1Time": { "description": "Time as Muslim for community story 1" },
+  "communityStory1Text": "I came across Islam while doing research for a college paper. I expected to find what the media told me. Instead I found peace, logic, and a God who actually made sense. I took my shahada 6 months later. The hardest part wasn't learning to pray — it was telling my family. But Alhamdulillah, two years later, my mother is asking me questions about Islam herself.",
+  "@communityStory1Text": { "description": "Story text for community story 1" },
+  "communityStory2Name": "Yusuf (formerly James)",
+  "@communityStory2Name": { "description": "Name for community story 2" },
+  "communityStory2Location": "London, UK",
+  "@communityStory2Location": { "description": "Location for community story 2" },
+  "communityStory2Time": "4 years",
+  "@communityStory2Time": { "description": "Time as Muslim for community story 2" },
+  "communityStory2Text": "I reverted after years of searching. Christianity, Buddhism, atheism — nothing filled the void. A Muslim coworker invited me to Friday prayer. I sat in the back and cried the entire time. I didn't even know why. I took my shahada the following week. The community wrapped around me like a family I never knew I needed.",
+  "@communityStory2Text": { "description": "Story text for community story 2" },
+  "communityStory3Name": "Maryam (formerly Maria)",
+  "@communityStory3Name": { "description": "Name for community story 3" },
+  "communityStory3Location": "Mexico City, Mexico",
+  "@communityStory3Location": { "description": "Location for community story 3" },
+  "communityStory3Time": "1 year",
+  "@communityStory3Time": { "description": "Time as Muslim for community story 3" },
+  "communityStory3Text": "Being Latina and Muslim feels like a superpower. I found Islam through a YouTube video at 2am. I watched for hours. The concept of tawheed — that God is one, has no partners, no images — it resonated so deeply. My Spanish-speaking sisters at the mosque made me feel at home immediately.",
+  "@communityStory3Text": { "description": "Story text for community story 3" },
+  "communityStory4Name": "Ibrahim (formerly David)",
+  "@communityStory4Name": { "description": "Name for community story 4" },
+  "communityStory4Location": "Toronto, Canada",
+  "@communityStory4Location": { "description": "Location for community story 4" },
+  "communityStory4Time": "6 years",
+  "@communityStory4Time": { "description": "Time as Muslim for community story 4" },
+  "communityStory4Text": "I was a pastor's son. I had questions about the Trinity that no one could answer. When I read the Quran for the first time, I felt like I was reading something I already believed. I said my shahada quietly, alone, and then again at the mosque. Best decision of my life.",
+  "@communityStory4Text": { "description": "Story text for community story 4" },
+  "communityStory5Name": "Fatima (formerly Jennifer)",
+  "@communityStory5Name": { "description": "Name for community story 5" },
+  "communityStory5Location": "Sydney, Australia",
+  "@communityStory5Location": { "description": "Location for community story 5" },
+  "communityStory5Time": "3 years",
+  "@communityStory5Time": { "description": "Time as Muslim for community story 5" },
+  "communityStory5Text": "My journey started with a hijab. I put one on as a dare and felt... protected. I started reading about Islam and couldn't stop. Within three months I had taken my shahada. People ask me what I gave up. I tell them I gave up emptiness.",
+  "@communityStory5Text": { "description": "Story text for community story 5" },
+  "communityStory6Name": "Omar (formerly Kevin)",
+  "@communityStory6Name": { "description": "Name for community story 6" },
+  "communityStory6Location": "Johannesburg, South Africa",
+  "@communityStory6Location": { "description": "Location for community story 6" },
+  "communityStory6Time": "5 years",
+  "@communityStory6Time": { "description": "Time as Muslim for community story 6" },
+  "communityStory6Text": "I grew up in a rough neighborhood. Islam gave me discipline, purpose, and brotherhood. The first time I made sujood, something in me broke open — in the best way. I wept and couldn't explain why. Now I mentor other young men finding their way to the deen.",
+  "@communityStory6Text": { "description": "Story text for community story 6" },
+  "inspiredByRealStories": "Inspired by real revert journeys",
+  "@inspiredByRealStories": { "description": "Secondary tagline on Community Stories screen header" },
+  "storyFormTitle": "Share Your Story",
+  "@storyFormTitle": { "description": "Title of the story submission bottom sheet" },
+  "storyFormNameLabel": "Your Name",
+  "@storyFormNameLabel": { "description": "Label for the name field in the story submission form" },
+  "storyFormNameHint": "Name, or write 'Anonymous'",
+  "@storyFormNameHint": { "description": "Hint text for the name field in the story submission form" },
+  "storyFormCountryLabel": "Country",
+  "@storyFormCountryLabel": { "description": "Label for the country field in the story submission form" },
+  "storyFormCountryHint": "Where are you from?",
+  "@storyFormCountryHint": { "description": "Hint text for the country field in the story submission form" },
+  "storyFormTimeLabel": "Time as Muslim",
+  "@storyFormTimeLabel": { "description": "Label for the time-as-Muslim field in the story submission form" },
+  "storyFormTimeHint": "e.g. 2 years, 6 months",
+  "@storyFormTimeHint": { "description": "Hint text for the time-as-Muslim field in the story submission form" },
+  "storyFormStoryLabel": "Your Story",
+  "@storyFormStoryLabel": { "description": "Label for the story text field in the story submission form" },
+  "storyFormStoryHint": "Share your journey to Islam...",
+  "@storyFormStoryHint": { "description": "Hint text for the story text field in the story submission form" },
+  "storyFormSubmitBtn": "Submit Story",
+  "@storyFormSubmitBtn": { "description": "Button label to submit the story form" },
+  "storyFormThankYouTitle": "JazakAllah Khair!",
+  "@storyFormThankYouTitle": { "description": "Thank you heading shown after successful story submission" },
+  "storyFormThankYouBody": "Your story has been received. We review all submissions before publishing.",
+  "@storyFormThankYouBody": { "description": "Thank you body text shown after successful story submission" },
+  "storyFormRequiredError": "Please fill in all fields",
+  "@storyFormRequiredError": { "description": "Validation error snackbar when story form fields are empty" },
+  "subtitleYourGuideToIslam": "Your guide to Islam",
+  "@subtitleYourGuideToIslam": { "description": "Subtitle tagline on the Revert Corner premium banner card" },
+  "beginnerMode": "Beginner Mode",
+  "@beginnerMode": { "description": "Toggle label for Beginner Mode in Settings" },
+  "beginnerModeSubtitle": "Extra tips and guidance for new Muslims",
+  "@beginnerModeSubtitle": { "description": "Subtitle for the Beginner Mode toggle in Settings" },
+  "beginnerModeOn": "Beginner Mode is on — extra tips are shown throughout the app",
+  "@beginnerModeOn": { "description": "SnackBar message shown when Beginner Mode is turned on" },
+  "beginnerModePrayersTip": "Tip: Tap each prayer to learn more about it and see sunnah prayers",
+  "@beginnerModePrayersTip": { "description": "Beginner tip banner shown at the top of the Prayers screen when Beginner Mode is on" },
+  "tafsirSubtitle": "Quranic Commentary",
+  "@tafsirSubtitle": { "description": "Subtitle on the Tafsir screen header" },
+  "tafsirComingSoon": "Tafsir for this surah coming soon",
+  "@tafsirComingSoon": { "description": "Message shown when no tafsir content is available for a surah" },
+  "tafsirNotAvailable": "Tafsir not available",
+  "@tafsirNotAvailable": { "description": "Message shown when neither hardcoded nor online tafsir content is available for a surah" },
+  "scholarSource": "Source",
+  "@scholarSource": { "description": "Label for the scholar source badge on a tafsir verse card" },
+  "asbabAlNuzul": "Reason for Revelation",
+  "@asbabAlNuzul": { "description": "Heading for the Asbab al-Nuzul (reason for revelation) section on a tafsir verse card" },
+  "transliteration": "Transliteration",
+  "@transliteration": { "description": "Label for the Latin-script transliteration of an Arabic verse" },
+  "selectReciter": "Select Reciter",
+  "@selectReciter": { "description": "Heading for the reciter selector on the Quran surah screen" },
+  "playVerse": "Play verse",
+  "@playVerse": { "description": "Tooltip/label for the button that plays audio recitation of a verse" },
+  "asmaUlHusna": "Asma ul Husna",
+  "@asmaUlHusna": { "description": "Title of the 99 Names of Allah screen" },
+  "asmaUlHusnaSubtitle": "The 99 Beautiful Names of Allah",
+  "@asmaUlHusnaSubtitle": { "description": "Subtitle on the Asma ul Husna screen" },
+  "asmaHadith": "Allah has 99 names. Whoever memorizes them will enter Paradise.",
+  "@asmaHadith": { "description": "Hadith quoted on the Asma ul Husna screen" },
+  "asmaHadithSource": "Sahih al-Bukhari, 2736",
+  "@asmaHadithSource": { "description": "Citation source for the Asma ul Husna hadith" },
+  "asmaSearchHint": "Search names...",
+  "@asmaSearchHint": { "description": "Placeholder text for the search field on the Asma ul Husna screen" },
+  "asmaNoResults": "No names found",
+  "@asmaNoResults": { "description": "Message shown when a search on the Asma ul Husna screen returns no results" },
+  "asmaSignificance": "Significance",
+  "@asmaSignificance": { "description": "Heading for the expanded explanation of a name on the Asma ul Husna screen" },
+  "asmaUlHusnaTile": "99 Names",
+  "@asmaUlHusnaTile": { "description": "Label for the 99 Names feature tile on the home screen" },
+  "asmaUlHusnaTileSubtitle": "Names of Allah",
+  "@asmaUlHusnaTileSubtitle": { "description": "Subtitle for the 99 Names feature tile on the home screen" },
+  "onboardingTagline": "Guard your time. Honor your prayers.",
+  "@onboardingTagline": { "description": "App tagline shown on the onboarding welcome page" },
+  "onboardingChooseLanguage": "Choose your language",
+  "@onboardingChooseLanguage": { "description": "Divider label above the language picker on the onboarding welcome page" },
+  "onboardingGetStarted": "Get Started",
+  "@onboardingGetStarted": { "description": "Button label to continue from the onboarding welcome page" },
+  "onboardingLocationTitle": "Accurate Prayer Times",
+  "@onboardingLocationTitle": { "description": "Title on the onboarding location-permission page" },
+  "onboardingLocationDesc": "Noor Guard needs your location to calculate accurate prayer times for your city. Your location is never stored or shared.",
+  "@onboardingLocationDesc": { "description": "Description on the onboarding location-permission page" },
+  "onboardingPrivacyBanner": "Your faith is personal. Your data stays that way.",
+  "@onboardingPrivacyBanner": { "description": "Privacy reassurance banner on the onboarding location-permission page" },
+  "onboardingAllowLocation": "Allow Location",
+  "@onboardingAllowLocation": { "description": "Button label to grant location permission during onboarding" },
+  "onboardingSkipForNow": "Skip for now",
+  "@onboardingSkipForNow": { "description": "Link to skip the location-permission step during onboarding" },
+  "onboardingNotificationTitle": "Never Miss a Prayer",
+  "@onboardingNotificationTitle": { "description": "Title on the onboarding notification-permission page" },
+  "onboardingNotificationDesc": "Get notified at every prayer time with a beautiful adhan. Customise sounds and timing in settings.",
+  "@onboardingNotificationDesc": { "description": "Description on the onboarding notification-permission page" },
+  "onboardingAdhanAlerts": "Adhan alerts",
+  "@onboardingAdhanAlerts": { "description": "Feature chip label on the onboarding notification-permission page" },
+  "onboardingCustomTiming": "Custom timing",
+  "@onboardingCustomTiming": { "description": "Feature chip label on the onboarding notification-permission page" },
+  "onboardingAdjustable": "Adjustable",
+  "@onboardingAdjustable": { "description": "Feature chip label on the onboarding notification-permission page" },
+  "onboardingEnableNotifications": "Enable Notifications",
+  "@onboardingEnableNotifications": { "description": "Button label to grant notification permission during onboarding" },
+  "onboardingMaybeLater": "Maybe later",
+  "@onboardingMaybeLater": { "description": "Link to skip the notification-permission step during onboarding" },
+  "onboardingAllSetTitle": "You're All Set!",
+  "@onboardingAllSetTitle": { "description": "Title on the final onboarding completion page" },
+  "onboardingAllSetDesc": "Noor Guard is ready to protect your time\nand guide your day with intention.",
+  "@onboardingAllSetDesc": { "description": "Description on the final onboarding completion page" },
+  "onboardingPrayerTimesLabel": "Prayer Times",
+  "@onboardingPrayerTimesLabel": { "description": "Feature summary label on the final onboarding completion page" },
+  "onboardingPrayerTimesDesc": "Accurate times for your city",
+  "@onboardingPrayerTimesDesc": { "description": "Feature summary description on the final onboarding completion page" },
+  "onboardingLockScreenLabel": "Islamic Lock Screen",
+  "@onboardingLockScreenLabel": { "description": "Feature summary label on the final onboarding completion page" },
+  "onboardingLockScreenDesc": "Quran and duas on every unlock",
+  "@onboardingLockScreenDesc": { "description": "Feature summary description on the final onboarding completion page" },
+  "onboardingPrayerGuardLabel": "Prayer Guard",
+  "@onboardingPrayerGuardLabel": { "description": "Feature summary label on the final onboarding completion page" },
+  "onboardingPrayerGuardDesc": "Apps blocked automatically during salah",
+  "@onboardingPrayerGuardDesc": { "description": "Feature summary description on the final onboarding completion page" },
+  "onboardingEnterApp": "Enter Noor Guard",
+  "@onboardingEnterApp": { "description": "Button label to finish onboarding and enter the app" },
+  "adhan": "Adhan",
+  "@adhan": { "description": "Title of the Adhan (call to prayer) audio player screen, and label for its feature tile on the home screen" },
+  "adhanSubtitle": "The Call to Prayer",
+  "@adhanSubtitle": { "description": "Subtitle for the Adhan screen and its feature tile on the home screen" },
+  "adhanDescription": "The Adhan is the Islamic call to prayer, announced 5 times daily to invite believers to worship.",
+  "@adhanDescription": { "description": "Brief description of what the Adhan is, shown at the top of the Adhan screen" },
+  "makkahStyle": "Makkah",
+  "@makkahStyle": { "description": "Name of the Makkah adhan style" },
+  "madinahStyle": "Madinah",
+  "@madinahStyle": { "description": "Name of the Madinah adhan style" },
+  "egyptianStyle": "Egyptian",
+  "@egyptianStyle": { "description": "Name of the Egyptian adhan style" },
+  "adhanPlaying": "Now Playing",
+  "@adhanPlaying": { "description": "Label shown in the mini player when an adhan is playing" },
+  "makkahDescription": "The traditional call to prayer from the Grand Mosque in Makkah.",
+  "@makkahDescription": { "description": "Description of the Makkah adhan style" },
+  "madinahDescription": "A serene rendition in the style of the Prophet's Mosque in Madinah.",
+  "@madinahDescription": { "description": "Description of the Madinah adhan style" },
+  "egyptianDescription": "A melodic Egyptian-style adhan, known for its rich recitation.",
+  "@egyptianDescription": { "description": "Description of the Egyptian adhan style" },
+  "adhanCallToWorship": "The Call to Prayer",
+  "@adhanCallToWorship": { "description": "Subtitle shown above the Adhan description on the Adhan screen" },
+  "adhanDescriptionFull": "The Adhan is the Islamic call to prayer, announced 5 times daily to invite believers to worship.",
+  "@adhanDescriptionFull": { "description": "Full description of what the Adhan is, shown at the top of the Adhan screen" },
+  "alafasyStyle": "Mishary Alafasy",
+  "@alafasyStyle": { "description": "Name of the Mishary Alafasy adhan style" },
+  "alaqsaStyle": "Al-Aqsa",
+  "@alaqsaStyle": { "description": "Name of the Al-Aqsa adhan style" },
+  "turkishStyle": "Turkish",
+  "@turkishStyle": { "description": "Name of the Turkish adhan style" },
+  "pakistaniStyle": "Pakistani",
+  "@pakistaniStyle": { "description": "Name of the Pakistani adhan style" },
+  "indonesianStyle": "Indonesian",
+  "@indonesianStyle": { "description": "Name of the Indonesian adhan style" },
+  "alafasyDescription": "A heartfelt rendition by the renowned reciter Mishary Rashid Alafasy.",
+  "@alafasyDescription": { "description": "Description of the Mishary Alafasy adhan style" },
+  "alaqsaDescription": "The call to prayer echoing from Al-Aqsa Mosque in Jerusalem, Islam's third holiest site.",
+  "@alaqsaDescription": { "description": "Description of the Al-Aqsa adhan style" },
+  "turkishDescription": "A traditional Turkish-style ezan with its distinctive melodic maqam.",
+  "@turkishDescription": { "description": "Description of the Turkish adhan style" },
+  "pakistaniDescription": "A heartfelt adhan in the South Asian tradition, recited across Pakistan.",
+  "@pakistaniDescription": { "description": "Description of the Pakistani adhan style" },
+  "indonesianDescription": "A melodious Indonesian-style adhan, beloved across the archipelago.",
+  "@indonesianDescription": { "description": "Description of the Indonesian adhan style" },
+  "thisWeek": "This Week",
+  "@thisWeek": { "description": "Header for the weekly prayer summary card" },
+  "weeklyProgress": "{count} of 35 prayers this week",
+  "@weeklyProgress": {
+    "description": "Shows how many of the 35 weekly prayers (7 days x 5 prayers) have been completed",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "bestDay": "Best day",
+  "@bestDay": { "description": "Label preceding the best day of the week for prayer completion" },
+  "prayerStats": "Prayer Statistics",
+  "@prayerStats": { "description": "Title of the Prayer Statistics screen and tooltip for its app bar button" },
+  "completionRate": "Completion Rate",
+  "@completionRate": { "description": "Label for the overall prayer completion percentage" },
+  "bestPrayer": "Most Consistent Prayer",
+  "@bestPrayer": { "description": "Label for the prayer the user completes most often" },
+  "hardestPrayer": "Most Missed Prayer",
+  "@hardestPrayer": { "description": "Label for the prayer the user misses most often" },
+  "totalPrayersCompleted": "{count} prayers completed",
+  "@totalPrayersCompleted": {
+    "description": "Total number of prayers completed since the user started using the app",
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "last7Days": "Last 7 Days",
+  "@last7Days": { "description": "Header for the weekly bar chart on the Prayer Statistics screen" },
+  "thisMonth": "This Month",
+  "@thisMonth": { "description": "Header for the monthly breakdown on the Prayer Statistics screen" },
+  "fullDays": "Full days",
+  "@fullDays": { "description": "Label for days this month where all 5 prayers were completed" },
+  "partialDays": "Partial days",
+  "@partialDays": { "description": "Label for days this month where some but not all prayers were completed" },
+  "missedDays": "Missed days",
+  "@missedDays": { "description": "Label for days this month where no prayers were completed" },
+  "missedPrayerBadge": "Missed",
+  "@missedPrayerBadge": { "description": "Small badge shown on a prayer card when its prayer time has passed without being marked complete" },
+  "makeItUp": "Make it up",
+  "@makeItUp": { "description": "Button label to mark a missed prayer as completed as a Qada (makeup) prayer" },
+  "qadaExplanation": "If you missed a prayer, you can still pray it as a Qada (makeup) prayer.",
+  "@qadaExplanation": { "description": "Brief explanation for new Muslims about making up a missed prayer" },
+  "noStatsYet": "Keep marking your prayers to see your stats here.",
+  "@noStatsYet": { "description": "Message shown on the Prayer Statistics screen when there is no prayer history yet" },
+  "notEnoughData": "Not enough data yet",
+  "@notEnoughData": { "description": "Placeholder shown for best/hardest prayer when there isn't enough history to determine them" }
+}

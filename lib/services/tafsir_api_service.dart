@@ -1,0 +1,127 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+/// A single ayah's tafsir fetched from quranenc.com.
+class TafsirApiResult {
+  final String text;
+  final String source;
+
+  const TafsirApiResult({required this.text, required this.source});
+}
+
+class _TafsirSource {
+  final String key;
+  final String label;
+  const _TafsirSource(this.key, this.label);
+}
+
+/// Fetches Quranic tafsir (commentary) from the quranenc.com API for surahs
+/// that have no hardcoded tafsir in [tafsirData].
+///
+/// quranenc.com does not publish a translation_key literally named
+/// "ibn_katheer" for every language. Where it doesn't exist we fall back to
+/// the closest available scholarly tafsir (Al-Mukhtasar / At-Tafsir
+/// Al-Muyassar, both of which draw heavily on Ibn Kathir).
+class TafsirApiService {
+  TafsirApiService._();
+  static final TafsirApiService instance = TafsirApiService._();
+
+  static const _baseUrl = 'https://quranenc.com/api/v1/translation/sura';
+
+  static const Map<String, List<_TafsirSource>> _sources = {
+    'en': [
+      _TafsirSource('english_ibn_katheer', 'Tafsir Ibn Kathir'),
+      _TafsirSource('english_mokhtasar', 'Al-Mukhtasar Tafsir'),
+    ],
+    'ar': [
+      _TafsirSource('arabic_ibn_katheer', 'تفسير ابن كثير'),
+      _TafsirSource('arabic_mokhtasar', 'التفسير الميسر (المختصر)'),
+      _TafsirSource('arabic_moyassar', 'التفسير الميسر'),
+    ],
+    'ur': [
+      _TafsirSource('urdu_ibn_katheer', 'تفسیر ابن کثیر'),
+    ],
+    'es': [
+      _TafsirSource('spanish_montada', 'Tafsir Al-Muntada'),
+      _TafsirSource('spanish_mokhtasar', 'Al-Mukhtasar Tafsir'),
+      _TafsirSource('spanish_montada_eu', 'Tafsir Al-Muntada'),
+    ],
+  };
+
+  /// Per-surah cache, keyed as "languageCode-surahNumber".
+  /// A `null` value means "fetched, but no tafsir is available".
+  final Map<String, Map<int, TafsirApiResult>?> _surahCache = {};
+  final Map<String, Future<Map<int, TafsirApiResult>?>> _inFlight = {};
+
+  /// Returns the tafsir for [surahNumber]/[verseNumber] in [language], or
+  /// `null` if no online tafsir is available for that language/surah.
+  Future<TafsirApiResult?> fetchTafsirVerse(
+    int surahNumber,
+    int verseNumber,
+    String language,
+  ) async {
+    final surah = await _fetchSurah(surahNumber, language);
+    return surah?[verseNumber];
+  }
+
+  Future<Map<int, TafsirApiResult>?> _fetchSurah(
+    int surahNumber,
+    String language,
+  ) {
+    final cacheKey = '$language-$surahNumber';
+    if (_surahCache.containsKey(cacheKey)) {
+      return Future.value(_surahCache[cacheKey]);
+    }
+    return _inFlight.putIfAbsent(cacheKey, () async {
+      final result = await _loadSurah(surahNumber, language);
+      _surahCache[cacheKey] = result;
+      _inFlight.remove(cacheKey);
+      return result;
+    });
+  }
+
+  Future<Map<int, TafsirApiResult>?> _loadSurah(
+    int surahNumber,
+    String language,
+  ) async {
+    final candidates = _sources[language] ?? _sources['en']!;
+    for (final source in candidates) {
+      final result = await _fetchFromKey(source, surahNumber);
+      if (result != null && result.isNotEmpty) return result;
+    }
+    return null;
+  }
+
+  Future<Map<int, TafsirApiResult>?> _fetchFromKey(
+    _TafsirSource source,
+    int surahNumber,
+  ) async {
+    final uri = Uri.parse('$_baseUrl/${source.key}/$surahNumber');
+    try {
+      final response = await http.get(uri).timeout(const Duration(seconds: 15));
+      if (response.statusCode != 200) return null;
+
+      final body = response.body.trim();
+      if (body.isEmpty || body == '""') return null;
+
+      final decoded = jsonDecode(body);
+      if (decoded is! Map<String, dynamic>) return null;
+      final result = decoded['result'];
+      if (result is! List || result.isEmpty) return null;
+
+      final verses = <int, TafsirApiResult>{};
+      for (final item in result) {
+        if (item is! Map<String, dynamic>) continue;
+        final verseNumber = int.tryParse('${item['aya']}');
+        final translation = (item['translation'] as String?)?.trim();
+        if (verseNumber == null || translation == null || translation.isEmpty) {
+          continue;
+        }
+        verses[verseNumber] = TafsirApiResult(text: translation, source: source.label);
+      }
+      return verses.isEmpty ? null : verses;
+    } catch (_) {
+      return null;
+    }
+  }
+}
