@@ -215,8 +215,9 @@ class _SplashScreenState extends State<SplashScreen>
                 Text(
                   'Guard your time. Honor your prayers.',
                   style: GoogleFonts.lato(
-                    fontSize: 13.5,
-                    color: Colors.white.withOpacity(0.65),
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white.withOpacity(0.85),
                     letterSpacing: 0.3,
                   ),
                 ),
