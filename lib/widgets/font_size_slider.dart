@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Text scale multipliers for the five steps: XS, S, M, L, XL.
-const List<double> kFontScaleSteps = [0.85, 0.92, 1.0, 1.12, 1.25];
+/// L and XL go up to 4x normal size for low-vision accessibility.
+const List<double> kFontScaleSteps = [0.85, 0.92, 1.0, 2.0, 4.0];
 
 /// "M" (Medium / 1.0x) is the default step.
 const int kDefaultFontScaleIndex = 2;

@@ -30,10 +30,14 @@ class _Term {
 
   String definition(String lang) {
     switch (lang) {
-      case 'ar': return ar;
-      case 'ur': return ur;
-      case 'es': return es;
-      default:   return en;
+      case 'ar':
+        return ar;
+      case 'ur':
+        return ur;
+      case 'es':
+        return es;
+      default:
+        return en;
     }
   }
 }
@@ -43,25 +47,39 @@ enum _TermCategory { pillar, quran, hadith, aqeedah, fiqh, practice, dhikr }
 extension _TermCategoryExt on _TermCategory {
   String label(AppLocalizations l10n) {
     switch (this) {
-      case _TermCategory.pillar:   return l10n.categoryPillar;
-      case _TermCategory.quran:    return l10n.categoryQuran;
-      case _TermCategory.hadith:   return l10n.categoryHadith;
-      case _TermCategory.aqeedah:  return l10n.categoryAqeedah;
-      case _TermCategory.fiqh:     return l10n.categoryFiqh;
-      case _TermCategory.practice: return l10n.categoryPractice;
-      case _TermCategory.dhikr:    return l10n.categoryDhikr;
+      case _TermCategory.pillar:
+        return l10n.categoryPillar;
+      case _TermCategory.quran:
+        return l10n.categoryQuran;
+      case _TermCategory.hadith:
+        return l10n.categoryHadith;
+      case _TermCategory.aqeedah:
+        return l10n.categoryAqeedah;
+      case _TermCategory.fiqh:
+        return l10n.categoryFiqh;
+      case _TermCategory.practice:
+        return l10n.categoryPractice;
+      case _TermCategory.dhikr:
+        return l10n.categoryDhikr;
     }
   }
 
   Color get color {
     switch (this) {
-      case _TermCategory.pillar:   return const Color(0xFF2E7D32);
-      case _TermCategory.quran:    return const Color(0xFF1565C0);
-      case _TermCategory.hadith:   return const Color(0xFF4A148C);
-      case _TermCategory.aqeedah:  return const Color(0xFF880E4F);
-      case _TermCategory.fiqh:     return const Color(0xFFBF360C);
-      case _TermCategory.practice: return const Color(0xFF00695C);
-      case _TermCategory.dhikr:    return const Color(0xFF4E342E);
+      case _TermCategory.pillar:
+        return const Color(0xFF2E7D32);
+      case _TermCategory.quran:
+        return const Color(0xFF1565C0);
+      case _TermCategory.hadith:
+        return const Color(0xFF4A148C);
+      case _TermCategory.aqeedah:
+        return const Color(0xFF880E4F);
+      case _TermCategory.fiqh:
+        return const Color(0xFFBF360C);
+      case _TermCategory.practice:
+        return const Color(0xFF00695C);
+      case _TermCategory.dhikr:
+        return const Color(0xFF4E342E);
     }
   }
 }
@@ -548,7 +566,8 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
   void initState() {
     super.initState();
     _searchController.addListener(
-      () => setState(() => _query = _searchController.text.trim().toLowerCase()),
+      () =>
+          setState(() => _query = _searchController.text.trim().toLowerCase()),
     );
     _loadFontScale();
   }
@@ -595,7 +614,8 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _Header(l10n: l10n, onBack: () => Navigator.pop(context)),
-            _SearchBar(controller: _searchController, hint: l10n.searchTermsHint),
+            _SearchBar(
+                controller: _searchController, hint: l10n.searchTermsHint),
             _FilterChips(
               l10n: l10n,
               active: _activeFilter,
@@ -610,7 +630,8 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
             Expanded(
               child: MediaQuery(
                 data: MediaQuery.of(context).copyWith(
-                  textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+                  textScaler:
+                      TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
                 ),
                 child: results.isEmpty
                     ? _EmptyState(l10n: l10n, query: _query)
@@ -761,12 +782,10 @@ class _FilterChips extends StatelessWidget {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 180),
               margin: const EdgeInsets.only(right: 8),
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
               decoration: BoxDecoration(
-                color: selected
-                    ? cat.color
-                    : Colors.white.withValues(alpha: 0.07),
+                color:
+                    selected ? cat.color : Colors.white.withValues(alpha: 0.07),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                   color: selected
@@ -827,7 +846,10 @@ class _TermCardState extends State<_TermCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 10,
+                      runSpacing: 4,
                       children: [
                         Text(
                           widget.term.transliteration,
@@ -837,7 +859,6 @@ class _TermCardState extends State<_TermCard> {
                             color: Colors.white,
                           ),
                         ),
-                        const SizedBox(width: 10),
                         Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 2),
@@ -847,6 +868,7 @@ class _TermCardState extends State<_TermCard> {
                           ),
                           child: Text(
                             cat.label(widget.l10n),
+                            textScaler: TextScaler.noScaling,
                             style: GoogleFonts.lato(
                               fontSize: 10,
                               fontWeight: FontWeight.w700,
@@ -885,30 +907,33 @@ class _TermCardState extends State<_TermCard> {
                 ),
               ),
               const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    widget.term.arabic,
-                    style: GoogleFonts.scheherazadeNew(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w600,
-                      color: _gold,
-                      height: 1.2,
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      widget.term.arabic,
+                      textAlign: TextAlign.right,
+                      style: GoogleFonts.scheherazadeNew(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w600,
+                        color: _gold,
+                        height: 1.2,
+                      ),
+                      textDirection: TextDirection.rtl,
                     ),
-                    textDirection: TextDirection.rtl,
-                  ),
-                  const SizedBox(height: 8),
-                  AnimatedRotation(
-                    turns: _expanded ? 0.5 : 0,
-                    duration: const Duration(milliseconds: 200),
-                    child: Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      size: 18,
-                      color: Colors.white.withValues(alpha: 0.35),
+                    const SizedBox(height: 8),
+                    AnimatedRotation(
+                      turns: _expanded ? 0.5 : 0,
+                      duration: const Duration(milliseconds: 200),
+                      child: Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        size: 18,
+                        color: Colors.white.withValues(alpha: 0.35),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

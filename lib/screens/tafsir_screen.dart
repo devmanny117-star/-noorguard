@@ -296,6 +296,7 @@ class _TafsirCardShellState extends State<_TafsirCardShell> {
                 alignment: Alignment.center,
                 child: Text(
                   widget.verseLabel,
+                  textScaler: TextScaler.noScaling,
                   style: GoogleFonts.lato(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,

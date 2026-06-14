@@ -11,7 +11,7 @@ import 'tafsir_screen.dart';
 
 const _arabicScaleKey = 'quran_arabic_scale';
 const double _minArabicScale = 0.8;
-const double _maxArabicScale = 2.5;
+const double _maxArabicScale = 4.0;
 
 class SurahScreen extends StatefulWidget {
   final Surah surah;
@@ -558,6 +558,7 @@ class _VerseTile extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       '${verse.number}',
+                      textScaler: TextScaler.noScaling,
                       style: GoogleFonts.lato(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,

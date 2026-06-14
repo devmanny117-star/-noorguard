@@ -302,6 +302,7 @@ class _AsmaCardState extends State<_AsmaCard> {
                   alignment: Alignment.center,
                   child: Text(
                     '${name.number}',
+                    textScaler: TextScaler.noScaling,
                     style: GoogleFonts.lato(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
