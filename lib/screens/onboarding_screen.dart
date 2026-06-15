@@ -175,8 +175,8 @@ class _WelcomePage extends StatelessWidget {
         children: [
           const SizedBox(height: 28),
 
-          // Logo — crescent + star in layered gold rings
-          const _CrescentLogo(size: 148),
+          // Logo — crescent + star in layered gold rings (matches "All Set" screen)
+          const _CrescentLogo(),
 
           const SizedBox(height: 28),
 
@@ -223,7 +223,8 @@ class _WelcomePage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Container(height: 0.6, color: _gold.withValues(alpha: 0.25)),
+                child: Container(
+                    height: 0.6, color: _gold.withValues(alpha: 0.25)),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -238,7 +239,8 @@ class _WelcomePage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Container(height: 0.6, color: _gold.withValues(alpha: 0.25)),
+                child: Container(
+                    height: 0.6, color: _gold.withValues(alpha: 0.25)),
               ),
             ],
           ),
@@ -620,8 +622,7 @@ class _PulsingBellState extends State<_PulsingBell>
               height: 130 + _pulse.value * 16,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _gold.withValues(
-                    alpha: 0.03 + _pulse.value * 0.025),
+                color: _gold.withValues(alpha: 0.03 + _pulse.value * 0.025),
               ),
             ),
             Container(
@@ -995,9 +996,7 @@ class _PageDots extends StatelessWidget {
           width: isActive ? 26.0 : 8.0,
           height: 8,
           decoration: BoxDecoration(
-            color: isActive
-                ? _gold
-                : _gold.withValues(alpha: 0.28),
+            color: isActive ? _gold : _gold.withValues(alpha: 0.28),
             borderRadius: BorderRadius.circular(4),
           ),
         );
@@ -1011,50 +1010,37 @@ class _PageDots extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _CrescentLogo extends StatelessWidget {
-  final double size;
-  const _CrescentLogo({required this.size});
+  const _CrescentLogo();
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Outer soft glow ring
         Container(
-          width: size,
-          height: size,
+          width: 140,
+          height: 140,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: _gold.withValues(alpha: 0.05),
+            color: _gold.withValues(alpha: 0.07),
           ),
         ),
-        // Mid ring
         Container(
-          width: size * 0.82,
-          height: size * 0.82,
+          width: 112,
+          height: 112,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: _gold.withValues(alpha: 0.09),
-          ),
-        ),
-        // Inner bordered ring
-        Container(
-          width: size * 0.65,
-          height: size * 0.65,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: _gold.withValues(alpha: 0.13),
+            color: _gold.withValues(alpha: 0.11),
             border: Border.all(
               color: _gold.withValues(alpha: 0.30),
-              width: 1.2,
+              width: 1.5,
             ),
           ),
         ),
-        // The painted crescent + star
-        SizedBox(
-          width: size * 0.48,
-          height: size * 0.48,
-          child: const CustomPaint(painter: _CrescentPainter()),
+        const SizedBox(
+          width: 74,
+          height: 74,
+          child: CustomPaint(painter: _CrescentPainter()),
         ),
       ],
     );
@@ -1141,7 +1127,8 @@ class _GeometricPatternPainter extends CustomPainter {
 
         // Connecting squares at midpoints
         if (row.isEven) {
-          _drawSquare(canvas, paint, Offset(dx + tileW / 2, dy + tileH / 2), tileW * 0.14);
+          _drawSquare(canvas, paint, Offset(dx + tileW / 2, dy + tileH / 2),
+              tileW * 0.14);
         }
       }
     }
