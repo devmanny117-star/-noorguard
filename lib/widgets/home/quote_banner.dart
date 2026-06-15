@@ -17,13 +17,13 @@ class QuoteBanner extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          height: 112,
+          height: 124,
           color: colors.warmBg,
           child: Row(
             children: [
               SizedBox(
                 width: 100,
-                height: 112,
+                height: 124,
                 child: CustomPaint(painter: _IslamicStarPainter()),
               ),
               Expanded(
@@ -36,7 +36,7 @@ class QuoteBanner extends StatelessWidget {
                       Text(
                         '"${l10n.verityWithHardship}"',
                         style: GoogleFonts.playfairDisplay(
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: colors.primaryText,
                           fontStyle: FontStyle.italic,
@@ -47,7 +47,7 @@ class QuoteBanner extends StatelessWidget {
                       Text(
                         l10n.ashSharh946,
                         style: GoogleFonts.lato(
-                          fontSize: 11,
+                          fontSize: 12.5,
                           fontWeight: FontWeight.w700,
                           color: AppColors.gold,
                           letterSpacing: 0.8,

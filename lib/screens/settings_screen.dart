@@ -12,6 +12,22 @@ import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
 
+// Navy/gold palette matching the prayer card and dark-mode aesthetic.
+// Settings cards use this even in light mode for a premium, consistent feel.
+const _cardNavy = Color(0xFF0D1B2A);
+const _cardNavySecondary = Color(0xFF1A2A3A);
+const _cardNavyBorder = Color(0x26D4AF37);
+
+const _navyCardColors = AppColorScheme(
+  background: _cardNavy,
+  warmBg: _cardNavy,
+  cardBg: _cardNavy,
+  secondaryBg: _cardNavySecondary,
+  primaryText: Color(0xFFF5F5F0),
+  secondaryText: Color(0xFF8A9BB0),
+  border: _cardNavyBorder,
+);
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
@@ -60,11 +76,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   ];
 
   static const _localeCodeMap = {
-    'English':  'en',
+    'English': 'en',
     'العربية': 'ar',
-    'اردو':    'ur',
-    'Español':  'es',
-    'Deutsch':  'de',
+    'اردو': 'ur',
+    'Español': 'es',
+    'Deutsch': 'de',
     'Nederlands': 'nl',
     'Português': 'pt',
     'Italiano': 'it',
@@ -149,7 +165,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _openPrivacyPolicy() async {
-    final uri = Uri.parse('https://devmanny117-star.github.io/-noorguard/privacy-policy');
+    final uri = Uri.parse(
+        'https://devmanny117-star.github.io/-noorguard/privacy-policy');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else if (mounted) {
@@ -170,6 +187,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final colors = context.appColors;
     final isDark = context.isDark;
+    final cardColors = isDark ? colors : _navyCardColors;
     final themeController = ThemeScope.of(context);
     final prayerState = context.watch<PrayerState>();
     final l10n = AppLocalizations.of(context)!;
@@ -201,12 +219,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
         SliverToBoxAdapter(
           child: _Card(
-            colors: colors,
+            colors: cardColors,
             children: [
               _SelectRow(
                 label: l10n.calculationMethod,
                 value: _calculationMethod,
-                colors: colors,
+                colors: cardColors,
                 onTap: () => _showPicker(
                   title: l10n.calculationMethod,
                   options: _calcMethods,
@@ -214,25 +232,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onSelect: (v) => setState(() => _calculationMethod = v),
                 ),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _SelectRow(
                 label: l10n.adhanSound,
                 value: adhanStyleName(l10n, prayerState.selectedAdhanId),
-                colors: colors,
+                colors: cardColors,
                 onTap: _showAdhanPicker,
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ToggleRow(
                 label: l10n.prayerNotifications,
                 value: prayerState.masterNotifications,
-                colors: colors,
+                colors: cardColors,
                 onChanged: prayerState.toggleMasterNotifications,
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ActionRow(
                 label: 'Send Test Notification (10s)',
                 icon: Icons.notifications_active_outlined,
-                colors: colors,
+                colors: cardColors,
                 onTap: () {
                   NotificationService().scheduleTestNotification();
                   _snack('Test notification will arrive in 10 seconds');
@@ -247,51 +265,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // Individual prayer toggles
         SliverToBoxAdapter(
           child: _Card(
-            colors: colors,
+            colors: cardColors,
             children: [
               _PrayerRow(
                 name: l10n.fajr,
                 icon: Icons.wb_twilight_rounded,
                 value: prayerState.notifications['fajr'] ?? true,
                 enabled: prayerState.masterNotifications,
-                colors: colors,
-                onChanged: (v) => prayerState.togglePrayerNotification('fajr', v),
+                colors: cardColors,
+                onChanged: (v) =>
+                    prayerState.togglePrayerNotification('fajr', v),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.dhuhr,
                 icon: Icons.wb_sunny_rounded,
                 value: prayerState.notifications['dhuhr'] ?? true,
                 enabled: prayerState.masterNotifications,
-                colors: colors,
-                onChanged: (v) => prayerState.togglePrayerNotification('dhuhr', v),
+                colors: cardColors,
+                onChanged: (v) =>
+                    prayerState.togglePrayerNotification('dhuhr', v),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.asr,
                 icon: Icons.light_mode_outlined,
                 value: prayerState.notifications['asr'] ?? true,
                 enabled: prayerState.masterNotifications,
-                colors: colors,
-                onChanged: (v) => prayerState.togglePrayerNotification('asr', v),
+                colors: cardColors,
+                onChanged: (v) =>
+                    prayerState.togglePrayerNotification('asr', v),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.maghrib,
                 icon: Icons.nights_stay_rounded,
                 value: prayerState.notifications['maghrib'] ?? true,
                 enabled: prayerState.masterNotifications,
-                colors: colors,
-                onChanged: (v) => prayerState.togglePrayerNotification('maghrib', v),
+                colors: cardColors,
+                onChanged: (v) =>
+                    prayerState.togglePrayerNotification('maghrib', v),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.isha,
                 icon: Icons.nightlight_rounded,
                 value: prayerState.notifications['isha'] ?? true,
                 enabled: prayerState.masterNotifications,
-                colors: colors,
-                onChanged: (v) => prayerState.togglePrayerNotification('isha', v),
+                colors: cardColors,
+                onChanged: (v) =>
+                    prayerState.togglePrayerNotification('isha', v),
               ),
             ],
           ),
@@ -306,22 +329,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
         SliverToBoxAdapter(
           child: _Card(
-            colors: colors,
+            colors: cardColors,
             children: [
               _ToggleRow(
                 label: l10n.darkMode,
-                leadingIcon: isDark
-                    ? Icons.dark_mode_rounded
-                    : Icons.light_mode_rounded,
+                leadingIcon:
+                    isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
                 value: isDark,
-                colors: colors,
+                colors: cardColors,
                 onChanged: (_) => themeController.toggle(isDark),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _SelectRow(
                 label: l10n.language,
                 value: _language,
-                colors: colors,
+                colors: cardColors,
                 onTap: () => _showPicker(
                   title: l10n.language,
                   options: _languages,
@@ -337,13 +359,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ToggleRow(
                 label: l10n.beginnerMode,
                 subtitle: l10n.beginnerModeSubtitle,
                 leadingIcon: Icons.eco_outlined,
                 value: prayerState.beginnerMode,
-                colors: colors,
+                colors: cardColors,
                 onChanged: (v) {
                   context.read<PrayerState>().toggleBeginnerMode(v);
                   if (v) _snack(l10n.beginnerModeOn);
@@ -362,13 +384,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
         SliverToBoxAdapter(
           child: _Card(
-            colors: colors,
+            colors: cardColors,
             children: [
               _ToggleRow(
                 label: 'Block during prayer times',
                 leadingIcon: Icons.security_rounded,
                 value: _blockDuringPrayer,
-                colors: colors,
+                colors: cardColors,
                 onChanged: (v) => setState(() => _blockDuringPrayer = v),
               ),
             ],
@@ -389,7 +411,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   style: GoogleFonts.lato(
                     fontSize: 11.5,
                     fontWeight: FontWeight.w600,
-                    color: colors.secondaryText,
+                    color: cardColors.secondaryText,
                     letterSpacing: 0.4,
                   ),
                 ),
@@ -412,12 +434,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             decoration: BoxDecoration(
                               color: selected
                                   ? AppColors.gold.withOpacity(0.12)
-                                  : colors.cardBg,
+                                  : cardColors.cardBg,
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
                                 color: selected
                                     ? AppColors.gold
-                                    : colors.border,
+                                    : cardColors.border,
                                 width: selected ? 1.5 : 1.0,
                               ),
                             ),
@@ -429,7 +451,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   fontWeight: FontWeight.w600,
                                   color: selected
                                       ? AppColors.gold
-                                      : colors.secondaryText,
+                                      : cardColors.secondaryText,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -458,7 +480,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: colors.cardBg,
+                color: cardColors.cardBg,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: AppColors.gold.withOpacity(0.5),
@@ -493,7 +515,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     l10n.privacyPromiseBody,
                     style: GoogleFonts.lato(
                       fontSize: 14,
-                      color: colors.primaryText,
+                      color: cardColors.primaryText,
                       height: 1.65,
                     ),
                   ),
@@ -527,46 +549,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
         SliverToBoxAdapter(
           child: _Card(
-            colors: colors,
+            colors: cardColors,
             children: [
               _InfoRow(
                 label: l10n.version,
                 value: '1.0.0',
-                colors: colors,
+                colors: cardColors,
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.rateApp,
                 icon: Icons.star_outline_rounded,
-                colors: colors,
+                colors: cardColors,
                 onTap: () => _snack('Opening App Store…'),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.shareApp,
                 icon: Icons.share_outlined,
-                colors: colors,
+                colors: cardColors,
                 onTap: () => _snack('Opening share sheet…'),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.contactSupport,
                 icon: Icons.mail_outline_rounded,
-                colors: colors,
+                colors: cardColors,
                 onTap: () => _snack('Opening support email…'),
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.privacyPolicy,
                 icon: Icons.shield_outlined,
-                colors: colors,
+                colors: cardColors,
                 onTap: _openPrivacyPolicy,
               ),
-              _Divider(colors: colors),
+              _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.termsOfService,
                 icon: Icons.description_outlined,
-                colors: colors,
+                colors: cardColors,
                 onTap: () => _snack('Opening Terms of Service…'),
               ),
             ],
@@ -1074,77 +1096,77 @@ class _PickerSheet extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: Container(
-      decoration: BoxDecoration(
-        color: colors.cardBg,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 12),
-          // Handle bar
-          Container(
-            width: 36,
-            height: 4,
-            decoration: BoxDecoration(
-              color: colors.border,
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: 18),
-          Text(
-            title,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: colors.primaryText,
-            ),
-          ),
-          const SizedBox(height: 8),
-          ...options.map((opt) {
-            final isSelected = opt == current;
-            return InkWell(
-              onTap: () {
-                onSelect(opt);
-                Navigator.of(context).pop();
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 15,
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        opt,
-                        style: GoogleFonts.lato(
-                          fontSize: 15,
-                          fontWeight: isSelected
-                              ? FontWeight.w700
-                              : FontWeight.w400,
-                          color: isSelected
-                              ? AppColors.gold
-                              : colors.primaryText,
-                        ),
-                      ),
-                    ),
-                    if (isSelected)
-                      const Icon(
-                        Icons.check_rounded,
-                        size: 18,
-                        color: AppColors.gold,
-                      ),
-                  ],
+        decoration: BoxDecoration(
+          color: colors.cardBg,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 12),
+              // Handle bar
+              Container(
+                width: 36,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: colors.border,
+                  borderRadius: BorderRadius.circular(2),
                 ),
               ),
-            );
-          }),
-          SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
-        ],
+              const SizedBox(height: 18),
+              Text(
+                title,
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: colors.primaryText,
+                ),
+              ),
+              const SizedBox(height: 8),
+              ...options.map((opt) {
+                final isSelected = opt == current;
+                return InkWell(
+                  onTap: () {
+                    onSelect(opt);
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 15,
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            opt,
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                              fontWeight: isSelected
+                                  ? FontWeight.w700
+                                  : FontWeight.w400,
+                              color: isSelected
+                                  ? AppColors.gold
+                                  : colors.primaryText,
+                            ),
+                          ),
+                        ),
+                        if (isSelected)
+                          const Icon(
+                            Icons.check_rounded,
+                            size: 18,
+                            color: AppColors.gold,
+                          ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+              SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
