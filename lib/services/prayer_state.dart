@@ -67,6 +67,31 @@ class PrayerState extends ChangeNotifier {
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('selected_adhan', id);
+    // Re-schedule so already-queued reminders adopt the newly selected adhan
+    // sound (a notification's sound is fixed once it's scheduled).
+    await _rescheduleEnabledNotifications();
+  }
+
+  /// Re-schedules every currently-enabled prayer reminder using the current
+  /// [selectedAdhanId]. No-op when notifications are turned off.
+  Future<void> _rescheduleEnabledNotifications() async {
+    if (!masterNotifications) return;
+    try {
+      final prayerTimes = await fetchPrayerTimes();
+      for (final entry in _notifIds.entries) {
+        final key = entry.key;
+        final notifId = entry.value;
+        final name = _displayNames[key]!;
+        if (notifications[key] != true) {
+          await NotificationService().cancelPrayerNotification(notifId);
+          continue;
+        }
+        final p = prayerTimes.firstWhere((pr) => pr.name == name);
+        await NotificationService().scheduleSinglePrayerNotification(
+            notifId, name, _parseTime(p.time),
+            adhanId: selectedAdhanId);
+      }
+    } catch (_) {}
   }
 
   Future<void> togglePrayer(String name) async {
@@ -127,7 +152,8 @@ class PrayerState extends ChangeNotifier {
         final data = prayerTimes
             .map((p) => {'name': p.name, 'time': _parseTime(p.time)})
             .toList();
-        await NotificationService().schedulePrayerNotifications(data);
+        await NotificationService()
+            .schedulePrayerNotifications(data, adhanId: selectedAdhanId);
       } catch (_) {}
     }
   }
@@ -149,7 +175,8 @@ class PrayerState extends ChangeNotifier {
         final prayerTimes = await fetchPrayerTimes();
         final p = prayerTimes.firstWhere((pr) => pr.name == name);
         await NotificationService().scheduleSinglePrayerNotification(
-            notifId, name, _parseTime(p.time));
+            notifId, name, _parseTime(p.time),
+            adhanId: selectedAdhanId);
       } catch (_) {}
     }
   }

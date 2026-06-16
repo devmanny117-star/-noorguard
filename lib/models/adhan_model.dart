@@ -66,6 +66,26 @@ const List<AdhanStyle> adhanStyles = [
   ),
 ];
 
+/// Resource base name of the bundled ~25s adhan clip used as the
+/// notification sound for a given [AdhanStyle.id].
+///
+/// The same base name is used on both platforms:
+///   • Android: `android/app/src/main/res/raw/adhan_<id>.mp3`
+///     referenced by name (no extension) via [RawResourceAndroidNotificationSound].
+///   • iOS: `ios/Runner/Sounds/adhan_<id>.caf`, bundled into the app and
+///     referenced by file name (with `.caf`) in `DarwinNotificationDetails`.
+///
+/// Falls back to the default Makkah clip for any unknown id so a notification
+/// always has a valid, bundled sound.
+String adhanSoundResource(String id) {
+  const known = {
+    'makkah', 'madinah', 'egyptian', 'alafasy',
+    'alaqsa', 'turkish', 'pakistani', 'indonesian',
+  };
+  final safe = known.contains(id) ? id : 'makkah';
+  return 'adhan_$safe';
+}
+
 /// Localized display name for an [AdhanStyle.id], shared by every screen
 /// that lists adhan styles (Adhan screen, Settings adhan picker).
 String adhanStyleName(AppLocalizations l10n, String id) {

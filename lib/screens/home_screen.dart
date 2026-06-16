@@ -7,6 +7,7 @@ import '../theme/app_theme.dart';
 import '../models/prayer_model.dart';
 import '../data/prayer_times_data.dart';
 import '../services/notification_service.dart';
+import '../services/prayer_state.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
@@ -122,7 +123,10 @@ class _HomeBodyState extends State<_HomeBody> {
     final data = prayers.map((p) {
       return {'name': p.name, 'time': _parseTimeString(p.time, today)};
     }).toList();
-    NotificationService().schedulePrayerNotifications(data);
+    NotificationService().schedulePrayerNotifications(
+      data,
+      adhanId: PrayerState().selectedAdhanId,
+    );
   }
 
   DateTime _parseTimeString(String timeStr, DateTime date) {

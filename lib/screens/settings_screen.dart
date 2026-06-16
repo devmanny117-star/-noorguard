@@ -252,7 +252,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 icon: Icons.notifications_active_outlined,
                 colors: cardColors,
                 onTap: () {
-                  NotificationService().scheduleTestNotification();
+                  NotificationService().scheduleTestNotification(
+                    adhanId: prayerState.selectedAdhanId,
+                  );
                   _snack('Test notification will arrive in 10 seconds');
                 },
               ),

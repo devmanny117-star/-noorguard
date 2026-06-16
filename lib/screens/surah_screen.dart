@@ -9,9 +9,9 @@ import '../services/quran_service.dart';
 import '../widgets/font_size_slider.dart';
 import 'tafsir_screen.dart';
 
-const _arabicScaleKey = 'quran_arabic_scale';
-const double _minArabicScale = 0.8;
-const double _maxArabicScale = 4.0;
+const _textScaleKey = 'quran_text_scale';
+const double _minTextScale = 0.8;
+const double _maxTextScale = 4.0;
 
 class SurahScreen extends StatefulWidget {
   final Surah surah;
@@ -33,11 +33,11 @@ class _SurahScreenState extends State<SurahScreen> {
 
   int _fontScaleIndex = kDefaultFontScaleIndex;
 
-  // Pinch-to-zoom state for the Arabic verse text.
-  double _arabicScale = 1.0;
+  // Pinch-to-zoom scale applied to all verse text (Arabic, transliteration, translation).
+  double _textScale = 1.0;
   final Map<int, Offset> _pointerPositions = {};
   double? _pinchStartDistance;
-  double _pinchStartArabicScale = 1.0;
+  double _pinchStartScale = 1.0;
 
   static const _navy = Color(0xFF0D1B2A);
   static const _gold = Color(0xFFD4AF37);
@@ -54,7 +54,7 @@ class _SurahScreenState extends State<SurahScreen> {
       _playAdjacent(1);
     });
     _loadFontScale();
-    _loadArabicScale();
+    _loadTextScale();
   }
 
   Future<void> _loadFontScale() async {
@@ -67,15 +67,15 @@ class _SurahScreenState extends State<SurahScreen> {
     saveFontScaleIndex('quran', index);
   }
 
-  Future<void> _loadArabicScale() async {
+  Future<void> _loadTextScale() async {
     final prefs = await SharedPreferences.getInstance();
-    final scale = prefs.getDouble(_arabicScaleKey) ?? 1.0;
-    if (mounted) setState(() => _arabicScale = scale);
+    final scale = prefs.getDouble(_textScaleKey) ?? 1.0;
+    if (mounted) setState(() => _textScale = scale);
   }
 
-  Future<void> _saveArabicScale() async {
+  Future<void> _saveTextScale() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble(_arabicScaleKey, _arabicScale);
+    await prefs.setDouble(_textScaleKey, _textScale);
   }
 
   void _onPointerDown(PointerDownEvent event) {
@@ -83,7 +83,7 @@ class _SurahScreenState extends State<SurahScreen> {
     if (_pointerPositions.length == 2) {
       final points = _pointerPositions.values.toList();
       _pinchStartDistance = (points[0] - points[1]).distance;
-      _pinchStartArabicScale = _arabicScale;
+      _pinchStartScale = _textScale;
     }
   }
 
@@ -94,10 +94,10 @@ class _SurahScreenState extends State<SurahScreen> {
     if (_pointerPositions.length == 2 && startDistance != null && startDistance > 0) {
       final points = _pointerPositions.values.toList();
       final distance = (points[0] - points[1]).distance;
-      final newScale = (_pinchStartArabicScale * (distance / startDistance))
-          .clamp(_minArabicScale, _maxArabicScale);
-      if ((newScale - _arabicScale).abs() > 0.01) {
-        setState(() => _arabicScale = newScale);
+      final newScale = (_pinchStartScale * (distance / startDistance))
+          .clamp(_minTextScale, _maxTextScale);
+      if ((newScale - _textScale).abs() > 0.01) {
+        setState(() => _textScale = newScale);
       }
     }
   }
@@ -108,7 +108,7 @@ class _SurahScreenState extends State<SurahScreen> {
       _pinchStartDistance = null;
     }
     if (_pointerPositions.isEmpty) {
-      _saveArabicScale();
+      _saveTextScale();
     }
   }
 
@@ -255,13 +255,13 @@ class _SurahScreenState extends State<SurahScreen> {
                         itemCount: _verses.length + (_showBismillah ? 1 : 0),
                         itemBuilder: (context, index) {
                           if (_showBismillah && index == 0) {
-                            return _BismillahHeader(arabicScale: _arabicScale);
+                            return _BismillahHeader(textScale: _textScale);
                           }
                           final verse =
                               _verses[_showBismillah ? index - 1 : index];
                           return _VerseTile(
                             verse: verse,
-                            arabicScale: _arabicScale,
+                            textScale: _textScale,
                             isLast: index ==
                                 _verses.length + (_showBismillah ? 0 : -1),
                             isPlaying: _playingVerseNumber == verse.number &&
@@ -463,9 +463,9 @@ class _BismillahHeader extends StatelessWidget {
   static const _gold = Color(0xFFD4AF37);
   static const _cardColor = Color(0xFF152030);
 
-  final double arabicScale;
+  final double textScale;
 
-  const _BismillahHeader({this.arabicScale = 1.0});
+  const _BismillahHeader({this.textScale = 1.0});
 
   @override
   Widget build(BuildContext context) {
@@ -482,7 +482,7 @@ class _BismillahHeader extends StatelessWidget {
           'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
           textAlign: TextAlign.center,
           style: GoogleFonts.scheherazadeNew(
-            fontSize: 26 * arabicScale,
+            fontSize: 26 * textScale,
             color: _gold,
             height: 1.8,
           ),
@@ -494,7 +494,7 @@ class _BismillahHeader extends StatelessWidget {
 
 class _VerseTile extends StatelessWidget {
   final Verse verse;
-  final double arabicScale;
+  final double textScale;
   final bool isLast;
   final bool isPlaying;
   final String playTooltip;
@@ -502,7 +502,7 @@ class _VerseTile extends StatelessWidget {
 
   const _VerseTile({
     required this.verse,
-    this.arabicScale = 1.0,
+    this.textScale = 1.0,
     required this.isLast,
     required this.isPlaying,
     required this.playTooltip,
@@ -538,7 +538,7 @@ class _VerseTile extends StatelessWidget {
                         verse.arabic,
                         textAlign: TextAlign.right,
                         style: GoogleFonts.scheherazadeNew(
-                          fontSize: 24 * arabicScale,
+                          fontSize: 24 * textScale,
                           color: Colors.white,
                           height: 1.9,
                         ),
@@ -574,7 +574,7 @@ class _VerseTile extends StatelessWidget {
                   verse.transliteration,
                   textAlign: TextAlign.left,
                   style: GoogleFonts.lato(
-                    fontSize: 12.5,
+                    fontSize: 12.5 * textScale,
                     fontStyle: FontStyle.italic,
                     color: _gold,
                     height: 1.5,
@@ -594,7 +594,7 @@ class _VerseTile extends StatelessWidget {
                   verse.translation,
                   textAlign: TextAlign.left,
                   style: GoogleFonts.lato(
-                    fontSize: 13,
+                    fontSize: 13 * textScale,
                     fontStyle: FontStyle.italic,
                     color: _mutedText,
                     height: 1.6,

@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
+import '../models/adhan_model.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -12,10 +13,18 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
-  static const _channelId = 'prayer_reminders';
+  // An Android notification channel's sound is locked in when the channel is
+  // created and can never be changed afterwards. To let each adhan style have
+  // its own sound we therefore give every style its own channel
+  // (`prayer_reminders_adhan_<id>`) and create it lazily before scheduling.
   static const _channelName = 'Prayer Reminders';
   static const _channelDescription =
       'Notifications 15 minutes before each prayer';
+
+  // Legacy single-sound channel from before per-adhan channels existed.
+  static const _legacyChannelId = 'prayer_reminders';
+
+  String _channelIdFor(String soundResource) => 'prayer_reminders_$soundResource';
 
   static const Map<String, _PrayerMessage> _prayerMessages = {
     'Fajr': _PrayerMessage(
@@ -86,16 +95,9 @@ class NotificationService {
     final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
 
-    // Create the channel up front so it shows up with the right importance
-    // in system settings even before the first notification fires.
-    await androidPlugin?.createNotificationChannel(
-      const AndroidNotificationChannel(
-        _channelId,
-        _channelName,
-        description: _channelDescription,
-        importance: Importance.high,
-      ),
-    );
+    // Drop the old single-sound channel so users don't see a stale, silent
+    // "Prayer Reminders" entry alongside the new per-adhan channels.
+    await androidPlugin?.deleteNotificationChannel(channelId: _legacyChannelId);
 
     await androidPlugin?.requestNotificationsPermission();
     // Android 12+ requires this special-access permission for exact alarms;
@@ -103,22 +105,51 @@ class NotificationService {
     await androidPlugin?.requestExactAlarmsPermission();
   }
 
-  NotificationDetails get _notificationDetails => const NotificationDetails(
-        android: AndroidNotificationDetails(
-          _channelId,
-          _channelName,
-          channelDescription: _channelDescription,
-          importance: Importance.high,
-          priority: Priority.high,
-        ),
-        iOS: DarwinNotificationDetails(
-          presentAlert: true,
-          presentBadge: true,
-          presentSound: true,
-          presentBanner: true,
-          presentList: true,
-        ),
-      );
+  /// Creates (idempotently) the Android channel whose sound is the bundled
+  /// adhan clip for [soundResource] (e.g. `adhan_makkah`). Safe to call every
+  /// time we schedule; re-creating an existing channel is a no-op.
+  Future<void> _ensureAndroidChannel(String soundResource) async {
+    final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    await androidPlugin?.createNotificationChannel(
+      AndroidNotificationChannel(
+        _channelIdFor(soundResource),
+        _channelName,
+        description: _channelDescription,
+        importance: Importance.high,
+        playSound: true,
+        sound: RawResourceAndroidNotificationSound(soundResource),
+        audioAttributesUsage: AudioAttributesUsage.notificationEvent,
+      ),
+    );
+  }
+
+  /// Notification details that play the bundled adhan clip for [adhanId] on
+  /// both platforms. Android uses a per-adhan channel + raw resource; iOS uses
+  /// the bundled `.caf` of the same base name.
+  NotificationDetails _detailsFor(String adhanId) {
+    final soundResource = adhanSoundResource(adhanId);
+    return NotificationDetails(
+      android: AndroidNotificationDetails(
+        _channelIdFor(soundResource),
+        _channelName,
+        channelDescription: _channelDescription,
+        importance: Importance.high,
+        priority: Priority.high,
+        playSound: true,
+        sound: RawResourceAndroidNotificationSound(soundResource),
+        audioAttributesUsage: AudioAttributesUsage.notificationEvent,
+      ),
+      iOS: DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+        presentBanner: true,
+        presentList: true,
+        sound: '$soundResource.caf',
+      ),
+    );
+  }
 
   /// Falls back to inexact scheduling if exact-alarm permission isn't
   /// granted, so reminders still fire (within a short OS-controlled window)
@@ -134,9 +165,12 @@ class NotificationService {
   }
 
   Future<void> schedulePrayerNotifications(
-      List<Map<String, dynamic>> prayers) async {
+      List<Map<String, dynamic>> prayers,
+      {required String adhanId}) async {
     if (kIsWeb) return;
 
+    await _ensureAndroidChannel(adhanSoundResource(adhanId));
+    final details = _detailsFor(adhanId);
     final scheduleMode = await _scheduleMode();
 
     for (int i = 0; i < prayers.length; i++) {
@@ -154,7 +188,7 @@ class NotificationService {
           title: message.title,
           body: message.body,
           scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
-          notificationDetails: _notificationDetails,
+          notificationDetails: details,
           androidScheduleMode: scheduleMode,
         );
       } catch (e) {
@@ -169,11 +203,13 @@ class NotificationService {
   }
 
   Future<void> scheduleSinglePrayerNotification(
-      int id, String name, DateTime time) async {
+      int id, String name, DateTime time,
+      {required String adhanId}) async {
     if (kIsWeb) return;
     final notifyAt = time.subtract(const Duration(minutes: 15));
     if (notifyAt.isBefore(DateTime.now())) return;
 
+    await _ensureAndroidChannel(adhanSoundResource(adhanId));
     final message = _messageFor(name);
 
     try {
@@ -182,7 +218,7 @@ class NotificationService {
         title: message.title,
         body: message.body,
         scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
-        notificationDetails: _notificationDetails,
+        notificationDetails: _detailsFor(adhanId),
         androidScheduleMode: await _scheduleMode(),
       );
     } catch (e) {
@@ -201,10 +237,12 @@ class NotificationService {
   }
 
   /// Schedules a one-off test notification 10 seconds from now, for
-  /// verifying that notifications fire correctly on a real device.
-  Future<void> scheduleTestNotification() async {
+  /// verifying that notifications (and the selected adhan sound) fire
+  /// correctly on a real device.
+  Future<void> scheduleTestNotification({required String adhanId}) async {
     if (kIsWeb) return;
 
+    await _ensureAndroidChannel(adhanSoundResource(adhanId));
     final notifyAt = DateTime.now().add(const Duration(seconds: 10));
 
     try {
@@ -213,7 +251,7 @@ class NotificationService {
         title: '🔔 Test Notification',
         body: 'Notifications are working correctly!',
         scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
-        notificationDetails: _notificationDetails,
+        notificationDetails: _detailsFor(adhanId),
         androidScheduleMode: await _scheduleMode(),
       );
     } catch (e) {

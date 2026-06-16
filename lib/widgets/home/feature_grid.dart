@@ -268,8 +268,10 @@ class RevertCornerCard extends StatelessWidget {
                         children: [
                           Text(
                             l10n.revertCorner,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.playfairDisplay(
-                              fontSize: 22,
+                              fontSize: 18,
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
                             ),
@@ -277,6 +279,8 @@ class RevertCornerCard extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             '${l10n.subtitleYourGuideToIslam} 🌙',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.lato(
                               fontSize: 13,
                               color: const Color(0xFFD4AF37),
