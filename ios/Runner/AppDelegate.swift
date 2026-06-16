@@ -8,11 +8,20 @@ import UserNotifications
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    let result = super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    // Own the notification delegate directly. Under FlutterImplicitEngineDelegate
+    // the plugin's delegate-forwarding chain is broken, so unless we claim it
+    // here our willPresent override below never fires and iOS suppresses the
+    // foreground prayer banner entirely.
+    UNUserNotificationCenter.current().delegate = self
+    return result
   }
 
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
     GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
+    // Re-assert ownership after plugin registration, which may otherwise reset
+    // the delegate to the plugin instance.
+    UNUserNotificationCenter.current().delegate = self
   }
 
   // Prayer reminder notification identifiers (match the Dart-side ids 0–4).

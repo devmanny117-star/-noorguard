@@ -2,11 +2,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/surah_model.dart';
 
+/// Aborts a request that stalls (e.g. on a flaky mobile connection) so the UI
+/// can fall back to its retry state instead of spinning on the loader forever.
+const _requestTimeout = Duration(seconds: 15);
+
 Future<List<Surah>> fetchSurahs() async {
   try {
     final response = await http.get(
       Uri.parse('https://api.alquran.cloud/v1/surah'),
-    );
+    ).timeout(_requestTimeout);
     if (response.statusCode != 200) return [];
     final data = jsonDecode(response.body)['data'] as List<dynamic>;
     return data
@@ -39,7 +43,7 @@ Future<List<Verse>> fetchVerses(int surahNumber, {String locale = 'en'}) async {
       Uri.parse(
         'https://api.alquran.cloud/v1/surah/$surahNumber/editions/$editions',
       ),
-    );
+    ).timeout(_requestTimeout);
     if (response.statusCode != 200) return [];
 
     final data = jsonDecode(response.body)['data'] as List<dynamic>;

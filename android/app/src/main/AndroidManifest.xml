@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required so the foreground adhan controller can stream the full adhan
+         audio from its remote URL while the app is open. Without this the
+         in-app playback fails silently and only the banner shows. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <!-- Notification permissions for prayer reminders -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
