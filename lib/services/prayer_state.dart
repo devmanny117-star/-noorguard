@@ -43,6 +43,16 @@ class PrayerState extends ChangeNotifier {
 
   String selectedAdhanId = 'makkah';
 
+  /// The prayer times most recently scheduled for notifications, as
+  /// `{'name': String, 'time': DateTime}` entries. Set by the home screen
+  /// (which resolves them from the device location) so the foreground adhan
+  /// controller fires in sync with the actual notifications.
+  List<Map<String, dynamic>>? scheduledPrayerTimes;
+
+  void setScheduledPrayerTimes(List<Map<String, dynamic>> data) {
+    scheduledPrayerTimes = data;
+  }
+
   Future<void> loadToday() async {
     final completed = await _streak.getTodayCompleted();
     final streak = await _streak.getStreak();

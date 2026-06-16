@@ -24,6 +24,11 @@ class NotificationService {
   // Legacy single-sound channel from before per-adhan channels existed.
   static const _legacyChannelId = 'prayer_reminders';
 
+  // Soundless channel for the foreground banner. When the app is open the
+  // full adhan is played by the in-app audio player, so the accompanying
+  // banner must stay silent to avoid two adhans overlapping.
+  static const _silentChannelId = 'prayer_reminders_silent';
+
   String _channelIdFor(String soundResource) => 'prayer_reminders_$soundResource';
 
   static const Map<String, _PrayerMessage> _prayerMessages = {
@@ -98,6 +103,17 @@ class NotificationService {
     // Drop the old single-sound channel so users don't see a stale, silent
     // "Prayer Reminders" entry alongside the new per-adhan channels.
     await androidPlugin?.deleteNotificationChannel(channelId: _legacyChannelId);
+
+    // Soundless channel used for the foreground banner.
+    await androidPlugin?.createNotificationChannel(
+      const AndroidNotificationChannel(
+        _silentChannelId,
+        _channelName,
+        description: _channelDescription,
+        importance: Importance.high,
+        playSound: false,
+      ),
+    );
 
     await androidPlugin?.requestNotificationsPermission();
     // Android 12+ requires this special-access permission for exact alarms;
@@ -223,6 +239,43 @@ class NotificationService {
       );
     } catch (e) {
       debugPrint('NotificationService: failed to schedule $name reminder: $e');
+    }
+  }
+
+  /// Shows an immediate, **soundless** prayer banner. Used in the foreground
+  /// when the in-app audio player is handling the adhan, so the user sees the
+  /// reminder without a second adhan playing from the notification.
+  ///
+  /// Re-uses the prayer's notification [id] (0–4); the iOS AppDelegate presents
+  /// these identifiers without sound when the app is in the foreground.
+  Future<void> showSilentPrayerBanner(int id, String name) async {
+    if (kIsWeb) return;
+    final message = _messageFor(name);
+    try {
+      await _plugin.show(
+        id: id,
+        title: message.title,
+        body: message.body,
+        notificationDetails: const NotificationDetails(
+          android: AndroidNotificationDetails(
+            _silentChannelId,
+            _channelName,
+            channelDescription: _channelDescription,
+            importance: Importance.high,
+            priority: Priority.high,
+            playSound: false,
+          ),
+          iOS: DarwinNotificationDetails(
+            presentAlert: true,
+            presentBadge: true,
+            presentSound: false,
+            presentBanner: true,
+            presentList: true,
+          ),
+        ),
+      );
+    } catch (e) {
+      debugPrint('NotificationService: failed to show $name banner: $e');
     }
   }
 

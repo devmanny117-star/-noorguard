@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_controller.dart';
 import '../models/adhan_model.dart';
+import '../services/adhan_foreground_controller.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
@@ -256,6 +257,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     adhanId: prayerState.selectedAdhanId,
                   );
                   _snack('Test notification will arrive in 10 seconds');
+                },
+              ),
+              _Divider(colors: cardColors),
+              _ActionRow(
+                label: 'Test Adhan In-App (foreground)',
+                icon: Icons.volume_up_outlined,
+                colors: cardColors,
+                onTap: () {
+                  AdhanForegroundController().simulateForegroundPrayer();
+                  _snack('Playing the full adhan with a silent banner');
                 },
               ),
             ],

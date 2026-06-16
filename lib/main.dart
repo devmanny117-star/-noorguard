@@ -15,6 +15,7 @@ import 'theme/theme_controller.dart';
 import 'package:provider/provider.dart';
 import 'services/notification_service.dart';
 import 'services/prayer_state.dart';
+import 'services/adhan_foreground_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +44,9 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
   void initState() {
     super.initState();
     _loadLocale();
+    // Plays the full adhan in-app when a prayer reminder fires while the app
+    // is open (the closed-app case is handled by scheduled notifications).
+    AdhanForegroundController().start();
   }
 
   Future<void> _loadLocale() async {

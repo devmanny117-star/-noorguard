@@ -123,6 +123,9 @@ class _HomeBodyState extends State<_HomeBody> {
     final data = prayers.map((p) {
       return {'name': p.name, 'time': _parseTimeString(p.time, today)};
     }).toList();
+    // Share the exact times we scheduled so the foreground adhan controller
+    // fires in sync with these notifications (these use the device location).
+    PrayerState().setScheduledPrayerTimes(data);
     NotificationService().schedulePrayerNotifications(
       data,
       adhanId: PrayerState().selectedAdhanId,
