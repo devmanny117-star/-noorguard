@@ -219,7 +219,7 @@ class _StreakCalendarScreenState extends State<StreakCalendarScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(Icons.chevron_right_rounded,
-                color: _canGoForward ? _gold : _mutedText.withOpacity(0.4),
+                color: _canGoForward ? _gold : _mutedText.withValues(alpha: 0.4),
                 size: 22),
           ),
         ),
@@ -356,19 +356,19 @@ class _DayCell extends StatelessWidget {
     if (isFuture) {
       bg = const Color(0xFF111923);
       border = Colors.transparent;
-      textColor = Colors.white.withOpacity(0.18);
+      textColor = Colors.white.withValues(alpha: 0.18);
     } else if (count >= 5) {
       bg = _gold;
       border = _gold;
       textColor = _navy;
     } else if (count > 0) {
-      bg = _gold.withOpacity(0.1);
-      border = _gold.withOpacity(0.6);
+      bg = _gold.withValues(alpha: 0.1);
+      border = _gold.withValues(alpha: 0.6);
       textColor = _gold;
     } else {
       bg = const Color(0xFF152030);
       border = Colors.transparent;
-      textColor = Colors.white.withOpacity(0.5);
+      textColor = Colors.white.withValues(alpha: 0.5);
     }
 
     return Container(
@@ -407,7 +407,7 @@ class _DayCell extends StatelessWidget {
               '$count/5',
               style: GoogleFonts.lato(
                 fontSize: 8,
-                color: _gold.withOpacity(0.8),
+                color: _gold.withValues(alpha: 0.8),
               ),
             ),
           ],
@@ -441,7 +441,7 @@ class _StatCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: _cardColor,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: _gold.withOpacity(0.2)),
+        border: Border.all(color: _gold.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -499,7 +499,7 @@ class _LegendItem extends StatelessWidget {
           label,
           style: GoogleFonts.lato(
             fontSize: 11,
-            color: Colors.white.withOpacity(0.6),
+            color: Colors.white.withValues(alpha: 0.6),
           ),
         ),
       ],

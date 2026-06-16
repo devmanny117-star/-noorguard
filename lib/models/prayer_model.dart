@@ -17,34 +17,34 @@ class Prayer {
 }
 
 final List<Prayer> todaysPrayers = [
-  Prayer(
+  const Prayer(
     name: 'Fajr',
     arabicName: 'الفجر',
     time: '5:23 AM',
     iconPath: 'fajr',
     isPassed: true,
   ),
-  Prayer(
+  const Prayer(
     name: 'Dhuhr',
     arabicName: 'الظهر',
     time: '1:15 PM',
     iconPath: 'dhuhr',
     isPassed: true,
   ),
-  Prayer(
+  const Prayer(
     name: 'Asr',
     arabicName: 'العصر',
     time: '4:47 PM',
     iconPath: 'asr',
     isNext: true,
   ),
-  Prayer(
+  const Prayer(
     name: 'Maghrib',
     arabicName: 'المغرب',
     time: '7:52 PM',
     iconPath: 'maghrib',
   ),
-  Prayer(
+  const Prayer(
     name: 'Isha',
     arabicName: 'العشاء',
     time: '9:15 PM',

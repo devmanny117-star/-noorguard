@@ -164,7 +164,7 @@ class _SliverHeader extends StatelessWidget {
       backgroundColor: colors.background,
       elevation: 0,
       scrolledUnderElevation: 0.8,
-      shadowColor: Colors.black.withOpacity(0.08),
+      shadowColor: Colors.black.withValues(alpha: 0.08),
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios_rounded,
             size: 20, color: colors.primaryText),
@@ -234,7 +234,7 @@ class _HijriDateCard extends StatelessWidget {
                     style: GoogleFonts.playfairDisplay(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.gold.withOpacity(0.70),
+                      color: AppColors.gold.withValues(alpha: 0.70),
                       height: 1.3,
                     ),
                   ),
@@ -265,7 +265,7 @@ class _HijriDateCard extends StatelessWidget {
                   '١٧',
                   style: GoogleFonts.scheherazadeNew(
                     fontSize: 56,
-                    color: AppColors.gold.withOpacity(0.18),
+                    color: AppColors.gold.withValues(alpha: 0.18),
                     height: 1.0,
                   ),
                 ),
@@ -273,7 +273,7 @@ class _HijriDateCard extends StatelessWidget {
                   'ذو الحجة',
                   style: GoogleFonts.scheherazadeNew(
                     fontSize: 20,
-                    color: AppColors.gold.withOpacity(0.22),
+                    color: AppColors.gold.withValues(alpha: 0.22),
                     height: 1.2,
                   ),
                 ),
@@ -342,7 +342,7 @@ class _EventTile extends StatelessWidget {
         ? AppColors.gold
         : (isDark ? const Color(0xFF444444) : const Color(0xFFCCCCCC));
     final lineColor = isUpcoming
-        ? AppColors.gold.withOpacity(0.20)
+        ? AppColors.gold.withValues(alpha: 0.20)
         : colors.border;
 
     return Padding(
@@ -395,7 +395,7 @@ class _EventTile extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
-                            color: AppColors.gold.withOpacity(0.12),
+                            color: AppColors.gold.withValues(alpha: 0.12),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
@@ -417,7 +417,7 @@ class _EventTile extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: isUpcoming
                           ? AppColors.gold
-                          : AppColors.gold.withOpacity(0.45),
+                          : AppColors.gold.withValues(alpha: 0.45),
                     ),
                   ),
                   const SizedBox(height: 1),
@@ -427,7 +427,7 @@ class _EventTile extends StatelessWidget {
                       fontSize: 11.5,
                       color: isUpcoming
                           ? colors.secondaryText
-                          : colors.secondaryText.withOpacity(0.6),
+                          : colors.secondaryText.withValues(alpha: 0.6),
                     ),
                   ),
                   const SizedBox(height: 16),

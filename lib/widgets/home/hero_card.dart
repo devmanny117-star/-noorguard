@@ -79,9 +79,9 @@ class _HeroCardState extends State<HeroCard> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black.withOpacity(0.32),
-                      Colors.black.withOpacity(0.10),
-                      Colors.black.withOpacity(0.58),
+                      Colors.black.withValues(alpha: 0.32),
+                      Colors.black.withValues(alpha: 0.10),
+                      Colors.black.withValues(alpha: 0.58),
                     ],
                     stops: const [0.0, 0.42, 1.0],
                   ),
@@ -100,7 +100,7 @@ class _HeroCardState extends State<HeroCard> {
                       begin: Alignment.bottomCenter,
                       end: Alignment.topCenter,
                       colors: [
-                        Colors.black.withOpacity(0.68),
+                        Colors.black.withValues(alpha: 0.68),
                         Colors.transparent,
                       ],
                     ),
@@ -132,7 +132,7 @@ class _HeroCardState extends State<HeroCard> {
                       style: GoogleFonts.lato(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white.withOpacity(0.85),
+                        color: Colors.white.withValues(alpha: 0.85),
                         letterSpacing: 0.6,
                       ),
                     ),

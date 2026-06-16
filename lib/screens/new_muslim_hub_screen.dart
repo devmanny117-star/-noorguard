@@ -108,9 +108,9 @@ class NewMuslimHubScreen extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.06),
+                        color: Colors.white.withValues(alpha: 0.06),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: _gold.withOpacity(0.25)),
+                        border: Border.all(color: _gold.withValues(alpha: 0.25)),
                       ),
                       child: const Icon(Icons.arrow_back_ios_new_rounded,
                           size: 16, color: _gold),
@@ -137,7 +137,7 @@ class NewMuslimHubScreen extends StatelessWidget {
                     l10n.revertCornerHubSubtitle,
                     style: GoogleFonts.lato(
                       fontSize: 14,
-                      color: Colors.white.withOpacity(0.6),
+                      color: Colors.white.withValues(alpha: 0.6),
                       height: 1.4,
                     ),
                   ),
@@ -178,10 +178,10 @@ class _HubCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: _cardNavy,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: _gold.withOpacity(0.16)),
+          border: Border.all(color: _gold.withValues(alpha: 0.16)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha: 0.25),
               blurRadius: 14,
               offset: const Offset(0, 6),
             ),
@@ -193,9 +193,9 @@ class _HubCard extends StatelessWidget {
               width: 52,
               height: 52,
               decoration: BoxDecoration(
-                color: _gold.withOpacity(0.12),
+                color: _gold.withValues(alpha: 0.12),
                 shape: BoxShape.circle,
-                border: Border.all(color: _gold.withOpacity(0.35)),
+                border: Border.all(color: _gold.withValues(alpha: 0.35)),
               ),
               child: Icon(item.icon, color: _gold, size: 26),
             ),
@@ -217,7 +217,7 @@ class _HubCard extends StatelessWidget {
                     item.subtitle,
                     style: GoogleFonts.lato(
                       fontSize: 12.5,
-                      color: Colors.white.withOpacity(0.55),
+                      color: Colors.white.withValues(alpha: 0.55),
                       height: 1.3,
                     ),
                   ),
@@ -226,7 +226,7 @@ class _HubCard extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Icon(Icons.arrow_forward_ios_rounded,
-                size: 14, color: _gold.withOpacity(0.6)),
+                size: 14, color: _gold.withValues(alpha: 0.6)),
           ],
         ),
       ),

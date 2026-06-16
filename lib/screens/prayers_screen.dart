@@ -342,9 +342,9 @@ class _PrayersScreenState extends State<PrayersScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: _gold.withOpacity(0.12),
+                  color: _gold.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: _gold.withOpacity(0.4)),
+                  border: Border.all(color: _gold.withValues(alpha: 0.4)),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -369,7 +369,7 @@ class _PrayersScreenState extends State<PrayersScreen> {
             l10n.prayersCompleted(completed),
             style: GoogleFonts.lato(
               fontSize: 13,
-              color: Colors.white.withOpacity(0.7),
+              color: Colors.white.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(height: 8),
@@ -378,7 +378,7 @@ class _PrayersScreenState extends State<PrayersScreen> {
             child: LinearProgressIndicator(
               value: completed / 5,
               minHeight: 7,
-              backgroundColor: Colors.white.withOpacity(0.1),
+              backgroundColor: Colors.white.withValues(alpha: 0.1),
               valueColor: const AlwaysStoppedAnimation<Color>(_gold),
             ),
           ),
@@ -432,14 +432,14 @@ class _PrayerCardState extends State<_PrayerCard> {
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: widget.isCompleted
-                ? _gold.withOpacity(0.6)
+                ? _gold.withValues(alpha: 0.6)
                 : Colors.transparent,
             width: 1.5,
           ),
           boxShadow: widget.isCompleted
               ? [
                   BoxShadow(
-                    color: _gold.withOpacity(0.18),
+                    color: _gold.withValues(alpha: 0.18),
                     blurRadius: 16,
                     spreadRadius: 1,
                   ),
@@ -471,8 +471,8 @@ class _PrayerCardState extends State<_PrayerCard> {
                           widget.prayer.arabicName,
                           style: GoogleFonts.scheherazadeNew(
                             fontSize: 17,
-                            color: _gold.withOpacity(
-                                widget.isCompleted ? 1.0 : 0.7),
+                            color: _gold.withValues(
+                                alpha: widget.isCompleted ? 1.0 : 0.7),
                           ),
                         ),
                         if (isMissed) ...[
@@ -507,7 +507,7 @@ class _PrayerCardState extends State<_PrayerCard> {
                         key: ValueKey(widget.notifEnabled),
                         color: widget.notifEnabled
                             ? _gold
-                            : Colors.white.withOpacity(0.25),
+                            : Colors.white.withValues(alpha: 0.25),
                         size: 22,
                       ),
                     ),
@@ -527,7 +527,7 @@ class _PrayerCardState extends State<_PrayerCard> {
                         border: Border.all(
                           color: widget.isCompleted
                               ? _gold
-                              : Colors.white.withOpacity(0.3),
+                              : Colors.white.withValues(alpha: 0.3),
                           width: 2,
                         ),
                       ),
@@ -558,7 +558,7 @@ class _PrayerCardState extends State<_PrayerCard> {
                   duration: const Duration(milliseconds: 280),
                   child: Icon(
                     Icons.keyboard_arrow_down_rounded,
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.white.withValues(alpha: 0.3),
                     size: 20,
                   ),
                 ),
@@ -584,7 +584,7 @@ class _PrayerCardState extends State<_PrayerCard> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 12),
-        Container(height: 1, color: _gold.withOpacity(0.2)),
+        Container(height: 1, color: _gold.withValues(alpha: 0.2)),
         const SizedBox(height: 14),
 
         // ── Rakat pills ──
@@ -617,9 +617,9 @@ class _PrayerCardState extends State<_PrayerCard> {
         Container(
           padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
           decoration: BoxDecoration(
-            color: _gold.withOpacity(0.06),
+            color: _gold.withValues(alpha: 0.06),
             borderRadius: BorderRadius.circular(10),
-            border: Border(
+            border: const Border(
               left: BorderSide(color: _gold, width: 3),
             ),
           ),
@@ -628,7 +628,7 @@ class _PrayerCardState extends State<_PrayerCard> {
             style: GoogleFonts.playfairDisplay(
               fontSize: 13,
               fontStyle: FontStyle.italic,
-              color: Colors.white.withOpacity(0.85),
+              color: Colors.white.withValues(alpha: 0.85),
               height: 1.6,
             ),
           ),
@@ -689,10 +689,10 @@ class _RakatPill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: filled ? _gold.withOpacity(0.15) : Colors.transparent,
+        color: filled ? _gold.withValues(alpha: 0.15) : Colors.transparent,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: filled ? _gold : _gold.withOpacity(0.4),
+          color: filled ? _gold : _gold.withValues(alpha: 0.4),
           width: 1,
         ),
       ),

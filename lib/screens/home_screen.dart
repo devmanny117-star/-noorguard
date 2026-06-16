@@ -158,51 +158,6 @@ class _HomeBodyState extends State<_HomeBody> {
   }
 }
 
-class _PlaceholderTab extends StatelessWidget {
-  final IconData icon;
-  final String label;
-
-  const _PlaceholderTab({required this.icon, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.appColors;
-
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 68,
-            height: 68,
-            decoration: BoxDecoration(
-              color: AppColors.gold.withOpacity(0.08),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(icon, size: 30, color: AppColors.gold),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            label,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-              color: colors.primaryText,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            AppLocalizations.of(context)!.comingSoon,
-            style: GoogleFonts.lato(
-              fontSize: 14,
-              color: colors.secondaryText,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class _BottomNav extends StatelessWidget {
   final int selectedIndex;
@@ -220,7 +175,7 @@ class _BottomNav extends StatelessWidget {
         color: colors.cardBg,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.07),
+            color: Colors.black.withValues(alpha: 0.07),
             blurRadius: 16,
             offset: const Offset(0, -3),
           ),

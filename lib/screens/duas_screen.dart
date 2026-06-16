@@ -187,7 +187,7 @@ class _DuasSliverAppBar extends StatelessWidget {
       backgroundColor: colors.background,
       elevation: 0,
       scrolledUnderElevation: 0.6,
-      shadowColor: Colors.black.withOpacity(0.08),
+      shadowColor: Colors.black.withValues(alpha: 0.08),
       leading: IconButton(
         icon: Icon(Icons.arrow_back_ios_rounded,
             size: 20, color: colors.primaryText),
@@ -265,7 +265,7 @@ class _Header extends StatelessWidget {
                 'دُعَاء',
                 style: GoogleFonts.scheherazadeNew(
                   fontSize: 38,
-                  color: AppColors.gold.withOpacity(0.15),
+                  color: AppColors.gold.withValues(alpha: 0.15),
                   height: 1.0,
                 ),
               ),
@@ -455,7 +455,7 @@ class _DuaCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.055),
+            color: Colors.black.withValues(alpha: 0.055),
             blurRadius: 14,
             offset: const Offset(0, 4),
           ),

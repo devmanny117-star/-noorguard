@@ -234,7 +234,7 @@ class _SplashScreenState extends State<SplashScreen>
                         style: GoogleFonts.lato(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white.withOpacity(0.85),
+                          color: Colors.white.withValues(alpha: 0.85),
                           letterSpacing: 0.3,
                         ),
                       ),
@@ -251,7 +251,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: AppColors.gold.withOpacity(0.35),
+                      color: AppColors.gold.withValues(alpha: 0.35),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(18),

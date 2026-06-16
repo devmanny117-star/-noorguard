@@ -102,9 +102,9 @@ class _WuduGuideScreenState extends State<WuduGuideScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.06),
+                        color: Colors.white.withValues(alpha: 0.06),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: _gold.withOpacity(0.25)),
+                        border: Border.all(color: _gold.withValues(alpha: 0.25)),
                       ),
                       child: const Icon(Icons.arrow_back_ios_new_rounded,
                           size: 16, color: _gold),
@@ -130,7 +130,7 @@ class _WuduGuideScreenState extends State<WuduGuideScreen> {
                   l10n.wuduGuideSubtitle,
                   style: GoogleFonts.lato(
                     fontSize: 13.5,
-                    color: Colors.white.withOpacity(0.55),
+                    color: Colors.white.withValues(alpha: 0.55),
                     height: 1.4,
                   ),
                 ),
@@ -186,11 +186,11 @@ class _StepCard extends StatelessWidget {
           color: _cardNavy,
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
-            color: expanded ? _gold.withOpacity(0.45) : _gold.withOpacity(0.14),
+            color: expanded ? _gold.withValues(alpha: 0.45) : _gold.withValues(alpha: 0.14),
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha: 0.25),
               blurRadius: 14,
               offset: const Offset(0, 6),
             ),
@@ -205,9 +205,9 @@ class _StepCard extends StatelessWidget {
                   width: 38,
                   height: 38,
                   decoration: BoxDecoration(
-                    color: _gold.withOpacity(0.14),
+                    color: _gold.withValues(alpha: 0.14),
                     shape: BoxShape.circle,
-                    border: Border.all(color: _gold.withOpacity(0.4)),
+                    border: Border.all(color: _gold.withValues(alpha: 0.4)),
                   ),
                   alignment: Alignment.center,
                   child: Text(
@@ -238,7 +238,7 @@ class _StepCard extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         style: GoogleFonts.scheherazadeNew(
                           fontSize: 14,
-                          color: _gold.withOpacity(0.75),
+                          color: _gold.withValues(alpha: 0.75),
                         ),
                       ),
                     ],
@@ -248,7 +248,7 @@ class _StepCard extends StatelessWidget {
                   duration: const Duration(milliseconds: 220),
                   turns: expanded ? 0.5 : 0,
                   child: Icon(Icons.keyboard_arrow_down_rounded,
-                      color: _gold.withOpacity(0.7), size: 24),
+                      color: _gold.withValues(alpha: 0.7), size: 24),
                 ),
               ],
             ),
@@ -265,7 +265,7 @@ class _StepCard extends StatelessWidget {
                       step.instruction(l10n),
                       style: GoogleFonts.lato(
                         fontSize: 13.5,
-                        color: Colors.white.withOpacity(0.8),
+                        color: Colors.white.withValues(alpha: 0.8),
                         height: 1.5,
                       ),
                     ),
@@ -273,15 +273,15 @@ class _StepCard extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: _gold.withOpacity(0.08),
+                        color: _gold.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: _gold.withOpacity(0.2)),
+                        border: Border.all(color: _gold.withValues(alpha: 0.2)),
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(Icons.lightbulb_outline_rounded,
-                              size: 16, color: _gold.withOpacity(0.85)),
+                              size: 16, color: _gold.withValues(alpha: 0.85)),
                           const SizedBox(width: 8),
                           Expanded(
                             child: Text(
@@ -289,7 +289,7 @@ class _StepCard extends StatelessWidget {
                               style: GoogleFonts.lato(
                                 fontSize: 12.5,
                                 fontStyle: FontStyle.italic,
-                                color: Colors.white.withOpacity(0.6),
+                                color: Colors.white.withValues(alpha: 0.6),
                                 height: 1.4,
                               ),
                             ),

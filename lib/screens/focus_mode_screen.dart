@@ -147,7 +147,7 @@ class _FocusModeScreenState extends State<FocusModeScreen>
     showDialog<void>(
       context: context,
       barrierDismissible: false,
-      barrierColor: Colors.black.withOpacity(0.65),
+      barrierColor: Colors.black.withValues(alpha: 0.65),
       builder: (_) => _CompletionDialog(
         completedSeconds: completed,
         onDone: () {
@@ -281,7 +281,7 @@ class _Header extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: AppColors.deepGreen.withOpacity(0.1),
+                color: AppColors.deepGreen.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
@@ -327,9 +327,9 @@ class _SubtitleCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
       decoration: BoxDecoration(
-        color: AppColors.deepGreen.withOpacity(0.07),
+        color: AppColors.deepGreen.withValues(alpha: 0.07),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.deepGreen.withOpacity(0.12)),
+        border: Border.all(color: AppColors.deepGreen.withValues(alpha: 0.12)),
       ),
       child: Row(
         children: [
@@ -395,7 +395,7 @@ class _TimerCircle extends StatelessWidget {
                 ? [
                     BoxShadow(
                       color: AppColors.gold
-                          .withOpacity(0.18 + pulse.value * 0.10),
+                          .withValues(alpha: 0.18 + pulse.value * 0.10),
                       blurRadius: glowRadius,
                       spreadRadius: 2,
                     ),
@@ -414,7 +414,7 @@ class _TimerCircle extends StatelessWidget {
                 color: colors.cardBg,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.gold.withOpacity(0.06),
+                    color: AppColors.gold.withValues(alpha: 0.06),
                     blurRadius: 20,
                     offset: const Offset(0, 4),
                   ),
@@ -447,7 +447,7 @@ class _TimerCircle extends StatelessWidget {
                   Container(
                     width: 36,
                     height: 1.5,
-                    color: AppColors.gold.withOpacity(0.35),
+                    color: AppColors.gold.withValues(alpha: 0.35),
                   ),
                   const SizedBox(height: 14),
                   FadeTransition(
@@ -617,7 +617,7 @@ class _PresetRow extends StatelessWidget {
                       boxShadow: isSelected
                           ? [
                               BoxShadow(
-                                color: AppColors.gold.withOpacity(0.28),
+                                color: AppColors.gold.withValues(alpha: 0.28),
                                 blurRadius: 8,
                                 offset: const Offset(0, 3),
                               ),
@@ -642,7 +642,7 @@ class _PresetRow extends StatelessWidget {
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
                             color: isSelected
-                                ? Colors.white.withOpacity(0.8)
+                                ? Colors.white.withValues(alpha: 0.8)
                                 : colors.secondaryText,
                           ),
                         ),
@@ -685,7 +685,7 @@ class _BlockedAppsPreview extends StatelessWidget {
         border: Border.all(color: colors.border),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: 0.04),
             blurRadius: 12,
             offset: const Offset(0, 3),
           ),
@@ -849,7 +849,7 @@ class _StartStopButton extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color: (isRunning ? const Color(0xFFB71C1C) : AppColors.gold)
-                  .withOpacity(0.35),
+                  .withValues(alpha: 0.35),
               blurRadius: 16,
               offset: const Offset(0, 5),
             ),
@@ -912,12 +912,12 @@ class _CompletionDialog extends StatelessWidget {
           color: colors.cardBg,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: AppColors.gold.withOpacity(0.45),
+            color: AppColors.gold.withValues(alpha: 0.45),
             width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
-              color: AppColors.gold.withOpacity(0.12),
+              color: AppColors.gold.withValues(alpha: 0.12),
               blurRadius: 32,
               offset: const Offset(0, 8),
             ),
@@ -932,9 +932,9 @@ class _CompletionDialog extends StatelessWidget {
               height: 76,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.gold.withOpacity(0.1),
+                color: AppColors.gold.withValues(alpha: 0.1),
                 border: Border.all(
-                  color: AppColors.gold.withOpacity(0.3),
+                  color: AppColors.gold.withValues(alpha: 0.3),
                   width: 1.5,
                 ),
               ),
@@ -988,10 +988,10 @@ class _CompletionDialog extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: AppColors.gold.withOpacity(0.08),
+                color: AppColors.gold.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColors.gold.withOpacity(0.2),
+                  color: AppColors.gold.withValues(alpha: 0.2),
                 ),
               ),
               child: Text(
@@ -1023,7 +1023,7 @@ class _CompletionDialog extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.gold.withOpacity(0.32),
+                      color: AppColors.gold.withValues(alpha: 0.32),
                       blurRadius: 14,
                       offset: const Offset(0, 5),
                     ),

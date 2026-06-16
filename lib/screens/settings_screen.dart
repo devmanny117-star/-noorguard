@@ -351,10 +351,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onSelect: (v) async {
                     setState(() => _language = v);
                     final code = _localeCodeMap[v] ?? 'en';
+                    final localeScope = LocaleScope.of(context);
                     final prefs = await SharedPreferences.getInstance();
                     await prefs.setString('app_locale', code);
                     if (mounted) {
-                      LocaleScope.of(context).onLocaleChange(Locale(code));
+                      localeScope.onLocaleChange(Locale(code));
                     }
                   },
                 ),
@@ -433,7 +434,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             height: 44,
                             decoration: BoxDecoration(
                               color: selected
-                                  ? AppColors.gold.withOpacity(0.12)
+                                  ? AppColors.gold.withValues(alpha: 0.12)
                                   : cardColors.cardBg,
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
@@ -472,7 +473,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // ══════════════════════════════════════════════════════════════
         // SECTION 4 — PRIVACY & TRUST
         // ══════════════════════════════════════════════════════════════
-        _SectionHeader(title: 'Privacy & Trust'),
+        const _SectionHeader(title: 'Privacy & Trust'),
 
         SliverToBoxAdapter(
           child: Padding(
@@ -483,7 +484,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: cardColors.cardBg,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: AppColors.gold.withOpacity(0.5),
+                  color: AppColors.gold.withValues(alpha: 0.5),
                   width: 1.5,
                 ),
               ),
@@ -522,7 +523,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   const SizedBox(height: 14),
                   Container(
                     height: 0.8,
-                    color: AppColors.gold.withOpacity(0.25),
+                    color: AppColors.gold.withValues(alpha: 0.25),
                   ),
                   const SizedBox(height: 14),
                   Text(
@@ -635,7 +636,7 @@ class _TranslationDisclaimerCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFF0D1B2A),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.gold.withOpacity(0.35)),
+          border: Border.all(color: AppColors.gold.withValues(alpha: 0.35)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -644,7 +645,7 @@ class _TranslationDisclaimerCard extends StatelessWidget {
               width: 34,
               height: 34,
               decoration: BoxDecoration(
-                color: AppColors.gold.withOpacity(0.15),
+                color: AppColors.gold.withValues(alpha: 0.15),
                 shape: BoxShape.circle,
               ),
               child: const Icon(
@@ -672,7 +673,7 @@ class _TranslationDisclaimerCard extends StatelessWidget {
                     style: GoogleFonts.lato(
                       fontSize: 12.5,
                       height: 1.4,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withValues(alpha: 0.7),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -948,7 +949,7 @@ class _PrayerRow extends StatelessWidget {
             height: 34,
             decoration: BoxDecoration(
               color: active
-                  ? AppColors.gold.withOpacity(0.12)
+                  ? AppColors.gold.withValues(alpha: 0.12)
                   : colors.secondaryBg,
               borderRadius: BorderRadius.circular(10),
             ),

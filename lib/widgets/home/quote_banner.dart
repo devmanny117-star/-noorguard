@@ -72,31 +72,31 @@ class _IslamicStarPainter extends CustomPainter {
     final cy = size.height / 2;
 
     final fillPaint = Paint()
-      ..color = AppColors.gold.withOpacity(0.10)
+      ..color = AppColors.gold.withValues(alpha: 0.10)
       ..style = PaintingStyle.fill;
     _drawStar(canvas, fillPaint, Offset(cx, cy), 44.0);
 
     final strokeOuter = Paint()
-      ..color = AppColors.gold.withOpacity(0.60)
+      ..color = AppColors.gold.withValues(alpha: 0.60)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.8
       ..strokeJoin = StrokeJoin.round;
     _drawStar(canvas, strokeOuter, Offset(cx, cy), 44.0);
 
     final strokeInner = Paint()
-      ..color = AppColors.gold.withOpacity(0.28)
+      ..color = AppColors.gold.withValues(alpha: 0.28)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
     _drawStar(canvas, strokeInner, Offset(cx, cy), 26.0);
 
     final strokeCenter = Paint()
-      ..color = AppColors.gold.withOpacity(0.18)
+      ..color = AppColors.gold.withValues(alpha: 0.18)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.8;
     _drawStar(canvas, strokeCenter, Offset(cx, cy), 13.0);
 
     final dotPaint = Paint()
-      ..color = AppColors.gold.withOpacity(0.40)
+      ..color = AppColors.gold.withValues(alpha: 0.40)
       ..style = PaintingStyle.fill;
     canvas.drawCircle(Offset(cx, cy - 50), 2.0, dotPaint);
     canvas.drawCircle(Offset(cx, cy + 50), 2.0, dotPaint);

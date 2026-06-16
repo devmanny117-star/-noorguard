@@ -208,7 +208,7 @@ class _ComingSoon extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.menu_book_outlined, color: _gold.withOpacity(0.6), size: 48),
+            Icon(Icons.menu_book_outlined, color: _gold.withValues(alpha: 0.6), size: 48),
             const SizedBox(height: 16),
             Text(
               message,
@@ -261,7 +261,7 @@ class _TafsirCardShellState extends State<_TafsirCardShell> {
       decoration: BoxDecoration(
         color: _cardColor,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: _gold.withOpacity(0.15)),
+        border: Border.all(color: _gold.withValues(alpha: 0.15)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -291,7 +291,7 @@ class _TafsirCardShellState extends State<_TafsirCardShell> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: _gold, width: 1.5),
-                  color: _gold.withOpacity(0.1),
+                  color: _gold.withValues(alpha: 0.1),
                 ),
                 alignment: Alignment.center,
                 child: Text(
@@ -308,7 +308,7 @@ class _TafsirCardShellState extends State<_TafsirCardShell> {
           ),
           if (widget.translation.isNotEmpty) ...[
             const SizedBox(height: 12),
-            Container(height: 1, color: _gold.withOpacity(0.2)),
+            Container(height: 1, color: _gold.withValues(alpha: 0.2)),
             const SizedBox(height: 12),
             Text(
               widget.translation,
@@ -345,7 +345,7 @@ class _TafsirCardShellState extends State<_TafsirCardShell> {
                   duration: const Duration(milliseconds: 200),
                   child: Icon(
                     Icons.keyboard_arrow_down_rounded,
-                    color: _gold.withOpacity(0.7),
+                    color: _gold.withValues(alpha: 0.7),
                     size: 22,
                   ),
                 ),
@@ -396,7 +396,7 @@ class _TafsirCard extends StatelessWidget {
             entry.tafsirText(locale),
             style: GoogleFonts.lato(
               fontSize: 13.5,
-              color: Colors.white.withOpacity(0.85),
+              color: Colors.white.withValues(alpha: 0.85),
               height: 1.7,
             ),
           ),
@@ -454,7 +454,7 @@ class _ApiTafsirCard extends StatelessWidget {
             tafsirText,
             style: GoogleFonts.lato(
               fontSize: 13.5,
-              color: Colors.white.withOpacity(0.85),
+              color: Colors.white.withValues(alpha: 0.85),
               height: 1.7,
             ),
           ),
@@ -475,9 +475,9 @@ class _ScholarBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
-        color: _gold.withOpacity(0.12),
+        color: _gold.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _gold.withOpacity(0.4)),
+        border: Border.all(color: _gold.withValues(alpha: 0.4)),
       ),
       child: Text(
         label,
@@ -502,9 +502,9 @@ class _AsbabBox extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: _gold.withOpacity(0.06),
+        color: _gold.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(10),
-        border: BorderDirectional(start: BorderSide(color: _gold.withOpacity(0.5), width: 3)),
+        border: BorderDirectional(start: BorderSide(color: _gold.withValues(alpha: 0.5), width: 3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -522,7 +522,7 @@ class _AsbabBox extends StatelessWidget {
             text,
             style: GoogleFonts.lato(
               fontSize: 12.5,
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withValues(alpha: 0.8),
               height: 1.6,
             ),
           ),

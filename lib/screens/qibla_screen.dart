@@ -147,7 +147,7 @@ class _QiblaScreenState extends State<QiblaScreen> {
             preferredSize: const Size.fromHeight(1),
             child: Container(
               height: 1,
-              color: _kGold.withOpacity(0.15),
+              color: _kGold.withValues(alpha: 0.15),
             ),
           ),
         ),
@@ -178,7 +178,7 @@ class _QiblaScreenState extends State<QiblaScreen> {
               l10n.directionToSacredHouse,
               style: GoogleFonts.lato(
                 fontSize: 13,
-                color: Colors.white.withOpacity(0.4),
+                color: Colors.white.withValues(alpha: 0.4),
                 letterSpacing: 0.4,
               ),
             ),
@@ -229,7 +229,7 @@ class _QiblaScreenState extends State<QiblaScreen> {
                       // Needle body
                       CustomPaint(
                         size: Size(_kCompassSize, _kCompassSize),
-                        painter: const _NeedlePainter(),
+                        painter: _NeedlePainter(),
                       ),
                       // Kaaba emoji at tip
                       Positioned(
@@ -255,7 +255,7 @@ class _QiblaScreenState extends State<QiblaScreen> {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: _kGold.withOpacity(0.55),
+                  color: _kGold.withValues(alpha: 0.55),
                   blurRadius: 10,
                   spreadRadius: 1,
                 ),
@@ -287,13 +287,13 @@ class _QiblaScreenState extends State<QiblaScreen> {
             decoration: BoxDecoration(
               color: _kCard,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: _kGold.withOpacity(0.15), width: 1),
+              border: Border.all(color: _kGold.withValues(alpha: 0.15), width: 1),
             ),
             child: Text(
               l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
               style: GoogleFonts.lato(
                 fontSize: 13,
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.white.withValues(alpha: 0.5),
                 letterSpacing: 1.0,
               ),
             ),
@@ -319,7 +319,7 @@ class _LocationChip extends StatelessWidget {
         color: _kCard,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: _kGold.withOpacity(isDefault ? 0.18 : 0.40),
+          color: _kGold.withValues(alpha: isDefault ? 0.18 : 0.40),
           width: 1,
         ),
       ),
@@ -337,8 +337,8 @@ class _LocationChip extends StatelessWidget {
             style: GoogleFonts.lato(
               fontSize: 12,
               color: isDefault
-                  ? Colors.white.withOpacity(0.35)
-                  : Colors.white.withOpacity(0.70),
+                  ? Colors.white.withValues(alpha: 0.35)
+                  : Colors.white.withValues(alpha: 0.70),
               letterSpacing: 0.3,
             ),
           ),
@@ -359,7 +359,7 @@ class _WebNote extends StatelessWidget {
       decoration: BoxDecoration(
         color: _kCard,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: _kGold.withOpacity(0.20), width: 1),
+        border: Border.all(color: _kGold.withValues(alpha: 0.20), width: 1),
       ),
       child: Row(
         children: [
@@ -398,7 +398,7 @@ class _CompassDialPainter extends CustomPainter {
       Offset(cx, cy),
       r * 0.68,
       Paint()
-        ..color = _kGold.withOpacity(0.04)
+        ..color = _kGold.withValues(alpha: 0.04)
         ..style = PaintingStyle.fill,
     );
 
@@ -407,7 +407,7 @@ class _CompassDialPainter extends CustomPainter {
       Offset(cx, cy),
       r - 1.5,
       Paint()
-        ..color = _kGold.withOpacity(0.88)
+        ..color = _kGold.withValues(alpha: 0.88)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1.5,
     );
@@ -417,7 +417,7 @@ class _CompassDialPainter extends CustomPainter {
       Offset(cx, cy),
       r * 0.78,
       Paint()
-        ..color = _kGold.withOpacity(0.10)
+        ..color = _kGold.withValues(alpha: 0.10)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1.0,
     );
@@ -461,7 +461,7 @@ class _CompassDialPainter extends CustomPainter {
         Offset(cx + outerR * sin, cy - outerR * cos),
         Offset(cx + innerR * sin, cy - innerR * cos),
         Paint()
-          ..color      = _kGold.withOpacity(opacity)
+          ..color      = _kGold.withValues(alpha: opacity)
           ..strokeWidth = width
           ..strokeCap  = StrokeCap.round,
       );
@@ -494,7 +494,7 @@ class _CompassDialPainter extends CustomPainter {
         style: TextStyle(
           fontSize:   large ? 17 : 13,
           fontWeight: FontWeight.w800,
-          color:      _kGold.withOpacity(large ? 1.0 : 0.60),
+          color:      _kGold.withValues(alpha: large ? 1.0 : 0.60),
         ),
       ),
       textDirection: TextDirection.ltr,
@@ -520,7 +520,7 @@ class _NeedlePainter extends CustomPainter {
 
     // Tip and base geometry
     final tipY      = cy - r * _kNeedleFrac;
-    final baseWidth = 8.0;
+    const baseWidth = 8.0;
     final indentY   = cy + r * 0.06; // slight concave at base
 
     // Gold needle (points UP = toward Mecca in local coords)
@@ -535,7 +535,7 @@ class _NeedlePainter extends CustomPainter {
     canvas.drawPath(
       goldPath,
       Paint()
-        ..color      = _kGold.withOpacity(0.28)
+        ..color      = _kGold.withValues(alpha: 0.28)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 7)
         ..style      = PaintingStyle.fill,
     );
@@ -552,7 +552,7 @@ class _NeedlePainter extends CustomPainter {
     canvas.drawPath(
       goldPath,
       Paint()
-        ..color      = _kGold.withOpacity(0.6)
+        ..color      = _kGold.withValues(alpha: 0.6)
         ..style      = PaintingStyle.stroke
         ..strokeWidth = 0.8,
     );
@@ -567,7 +567,7 @@ class _NeedlePainter extends CustomPainter {
     canvas.drawPath(
       tailPath,
       Paint()
-        ..color = Colors.white.withOpacity(0.16)
+        ..color = Colors.white.withValues(alpha: 0.16)
         ..style = PaintingStyle.fill,
     );
   }

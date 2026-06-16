@@ -348,7 +348,7 @@ class _ReciterChip extends StatelessWidget {
         decoration: BoxDecoration(
           color: selected ? _gold : _cardColor,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: _gold.withOpacity(selected ? 1 : 0.3)),
+          border: Border.all(color: _gold.withValues(alpha: selected ? 1 : 0.3)),
         ),
         alignment: Alignment.center,
         child: Text(
@@ -391,7 +391,7 @@ class _MiniPlayerBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: _cardColor,
-        border: Border(top: BorderSide(color: _gold.withOpacity(0.2))),
+        border: Border(top: BorderSide(color: _gold.withValues(alpha: 0.2))),
       ),
       child: SafeArea(
         top: false,
@@ -416,7 +416,7 @@ class _MiniPlayerBar extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 13,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -475,7 +475,7 @@ class _BismillahHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: _cardColor,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: _gold.withOpacity(0.3), width: 1),
+        border: Border.all(color: _gold.withValues(alpha: 0.3), width: 1),
       ),
       child: Center(
         child: Text(
@@ -553,7 +553,7 @@ class _VerseTile extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: _gold, width: 1.5),
-                      color: _gold.withOpacity(0.1),
+                      color: _gold.withValues(alpha: 0.1),
                     ),
                     alignment: Alignment.center,
                     child: Text(
@@ -586,7 +586,7 @@ class _VerseTile extends StatelessWidget {
                 // Gold divider
                 Container(
                   height: 1,
-                  color: _gold.withOpacity(0.2),
+                  color: _gold.withValues(alpha: 0.2),
                 ),
                 const SizedBox(height: 12),
                 // Translation (hidden for Arabic — the Arabic text is the original)
@@ -644,8 +644,8 @@ class _PlayButton extends StatelessWidget {
           height: 32,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: _gold.withOpacity(0.12),
-            border: Border.all(color: _gold.withOpacity(0.5)),
+            color: _gold.withValues(alpha: 0.12),
+            border: Border.all(color: _gold.withValues(alpha: 0.5)),
           ),
           alignment: Alignment.center,
           child: Icon(

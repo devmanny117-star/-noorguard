@@ -11,7 +11,7 @@ class QiblaService {
   /// using the great-circle initial bearing formula.
   static double calculateQiblaDirection(double userLat, double userLng) {
     final lat1 = userLat * math.pi / 180;
-    final lat2 = _meccaLat * math.pi / 180;
+    const lat2 = _meccaLat * math.pi / 180;
     final deltaLng = (_meccaLng - userLng) * math.pi / 180;
 
     final y = math.sin(deltaLng) * math.cos(lat2);

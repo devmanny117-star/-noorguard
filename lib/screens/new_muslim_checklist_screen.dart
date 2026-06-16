@@ -119,9 +119,9 @@ class _NewMuslimChecklistScreenState extends State<NewMuslimChecklistScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.06),
+                        color: Colors.white.withValues(alpha: 0.06),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: _gold.withOpacity(0.25)),
+                        border: Border.all(color: _gold.withValues(alpha: 0.25)),
                       ),
                       child: const Icon(Icons.arrow_back_ios_new_rounded,
                           size: 16, color: _gold),
@@ -152,7 +152,7 @@ class _NewMuslimChecklistScreenState extends State<NewMuslimChecklistScreen> {
                         style: GoogleFonts.lato(
                           fontSize: 13.5,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white.withOpacity(0.65),
+                          color: Colors.white.withValues(alpha: 0.65),
                         ),
                       ),
                       Text(
@@ -171,7 +171,7 @@ class _NewMuslimChecklistScreenState extends State<NewMuslimChecklistScreen> {
                     child: LinearProgressIndicator(
                       value: progress,
                       minHeight: 10,
-                      backgroundColor: Colors.white.withOpacity(0.08),
+                      backgroundColor: Colors.white.withValues(alpha: 0.08),
                       valueColor: const AlwaysStoppedAnimation<Color>(_gold),
                     ),
                   ),
@@ -203,10 +203,10 @@ class _NewMuslimChecklistScreenState extends State<NewMuslimChecklistScreen> {
                             decoration: BoxDecoration(
                               color: _cardNavy,
                               borderRadius: BorderRadius.circular(18),
-                              border: Border.all(color: _gold.withOpacity(0.14)),
+                              border: Border.all(color: _gold.withValues(alpha: 0.14)),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
+                                  color: Colors.black.withValues(alpha: 0.25),
                                   blurRadius: 14,
                                   offset: const Offset(0, 6),
                                 ),
@@ -218,7 +218,7 @@ class _NewMuslimChecklistScreenState extends State<NewMuslimChecklistScreen> {
                                   if (i != 0)
                                     Divider(
                                       height: 1,
-                                      color: _gold.withOpacity(0.1),
+                                      color: _gold.withValues(alpha: 0.1),
                                       indent: 16,
                                       endIndent: 16,
                                     ),
@@ -269,7 +269,7 @@ class _ChecklistRow extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: checked ? _gold : Colors.transparent,
                 border: Border.all(
-                  color: checked ? _gold : _gold.withOpacity(0.4),
+                  color: checked ? _gold : _gold.withValues(alpha: 0.4),
                   width: 1.5,
                 ),
               ),
@@ -284,10 +284,10 @@ class _ChecklistRow extends StatelessWidget {
                 style: GoogleFonts.lato(
                   fontSize: 14,
                   color: checked
-                      ? Colors.white.withOpacity(0.4)
-                      : Colors.white.withOpacity(0.85),
+                      ? Colors.white.withValues(alpha: 0.4)
+                      : Colors.white.withValues(alpha: 0.85),
                   decoration: checked ? TextDecoration.lineThrough : null,
-                  decorationColor: Colors.white.withOpacity(0.4),
+                  decorationColor: Colors.white.withValues(alpha: 0.4),
                 ),
               ),
             ),

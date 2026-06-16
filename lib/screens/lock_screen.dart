@@ -21,7 +21,6 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
   late Timer _duaTimer;
   DateTime _now = DateTime.now();
   int _duaIndex = 0;
-  bool _duaVisible = true;
 
   late AnimationController _duaFadeCtrl;
   late Animation<double> _duaFade;
@@ -115,7 +114,7 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                   center: const Alignment(0, -0.3),
                   radius: 0.85,
                   colors: [
-                    AppColors.gold.withOpacity(0.07),
+                    AppColors.gold.withValues(alpha: 0.07),
                     Colors.transparent,
                   ],
                 ),
@@ -139,10 +138,10 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                           padding: const EdgeInsets.symmetric(
                               horizontal: 14, vertical: 8),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.08),
+                            color: Colors.white.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: Colors.white.withOpacity(0.12),
+                              color: Colors.white.withValues(alpha: 0.12),
                             ),
                           ),
                           child: Row(
@@ -200,7 +199,7 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                         style: GoogleFonts.lato(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.gold.withOpacity(0.65),
+                          color: AppColors.gold.withValues(alpha: 0.65),
                           letterSpacing: 1,
                         ),
                       ),
@@ -214,7 +213,7 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                   style: GoogleFonts.lato(
                     fontSize: 14.5,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white.withOpacity(0.55),
+                    color: Colors.white.withValues(alpha: 0.55),
                     letterSpacing: 0.4,
                   ),
                 ),
@@ -226,10 +225,10 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.07),
+                    color: Colors.white.withValues(alpha: 0.07),
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
-                      color: AppColors.gold.withOpacity(0.30),
+                      color: AppColors.gold.withValues(alpha: 0.30),
                       width: 1,
                     ),
                   ),
@@ -240,7 +239,7 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                         width: 28,
                         height: 28,
                         decoration: BoxDecoration(
-                          color: AppColors.deepGreen.withOpacity(0.6),
+                          color: AppColors.deepGreen.withValues(alpha: 0.6),
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(Icons.access_time_rounded,
@@ -260,7 +259,7 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                         height: 4,
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
-                          color: AppColors.gold.withOpacity(0.6),
+                          color: AppColors.gold.withValues(alpha: 0.6),
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -268,7 +267,7 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                         l10n.lockPreviewCountdown,
                         style: GoogleFonts.lato(
                           fontSize: 13,
-                          color: Colors.white.withOpacity(0.72),
+                          color: Colors.white.withValues(alpha: 0.72),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -289,8 +288,8 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                           gradient: LinearGradient(
                             colors: [
                               Colors.transparent,
-                              AppColors.gold.withOpacity(0.35),
-                              AppColors.gold.withOpacity(0.35),
+                              AppColors.gold.withValues(alpha: 0.35),
+                              AppColors.gold.withValues(alpha: 0.35),
                               Colors.transparent,
                             ],
                           ),
@@ -324,7 +323,7 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                       decoration: BoxDecoration(
                         color: i == _duaIndex
                             ? AppColors.gold
-                            : Colors.white.withOpacity(0.25),
+                            : Colors.white.withValues(alpha: 0.25),
                         borderRadius: BorderRadius.circular(3),
                       ),
                     ),
@@ -338,14 +337,14 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                   children: [
                     Icon(
                       Icons.keyboard_arrow_up_rounded,
-                      color: Colors.white.withOpacity(0.35),
+                      color: Colors.white.withValues(alpha: 0.35),
                       size: 22,
                     ),
                     Text(
                       l10n.swipeUpToUnlock,
                       style: GoogleFonts.lato(
                         fontSize: 12,
-                        color: Colors.white.withOpacity(0.35),
+                        color: Colors.white.withValues(alpha: 0.35),
                         letterSpacing: 0.5,
                       ),
                     ),
@@ -394,7 +393,7 @@ class _DuaDisplay extends StatelessWidget {
           Container(
             width: 40,
             height: 1.5,
-            color: AppColors.gold.withOpacity(0.5),
+            color: AppColors.gold.withValues(alpha: 0.5),
           ),
           const SizedBox(height: 18),
           // English translation
@@ -404,7 +403,7 @@ class _DuaDisplay extends StatelessWidget {
             style: GoogleFonts.playfairDisplay(
               fontSize: 14,
               fontStyle: FontStyle.italic,
-              color: Colors.white.withOpacity(0.60),
+              color: Colors.white.withValues(alpha: 0.60),
               height: 1.65,
               letterSpacing: 0.2,
             ),
@@ -414,7 +413,7 @@ class _DuaDisplay extends StatelessWidget {
             '— ${dua.source}',
             style: GoogleFonts.lato(
               fontSize: 11,
-              color: AppColors.gold.withOpacity(0.55),
+              color: AppColors.gold.withValues(alpha: 0.55),
               letterSpacing: 0.8,
               fontWeight: FontWeight.w600,
             ),
@@ -460,7 +459,7 @@ class _CrescentPainter extends CustomPainter {
         BlurStyle.normal,
         6 + glowIntensity * 6,
       )
-      ..color = AppColors.gold.withOpacity(0.18 + glowIntensity * 0.12);
+      ..color = AppColors.gold.withValues(alpha: 0.18 + glowIntensity * 0.12);
     canvas.drawCircle(Offset(cx, cy), r + 4, glowPaint);
 
     // Crescent body
@@ -480,7 +479,7 @@ class _CrescentPainter extends CustomPainter {
     canvas.translate(-cx, -cy);
 
     final fillPaint = Paint()
-      ..color = AppColors.gold.withOpacity(0.88 + glowIntensity * 0.12)
+      ..color = AppColors.gold.withValues(alpha: 0.88 + glowIntensity * 0.12)
       ..style = PaintingStyle.fill;
     canvas.drawPath(crescent, fillPaint);
     canvas.restore();
@@ -491,7 +490,7 @@ class _CrescentPainter extends CustomPainter {
 
   void _drawStar(Canvas canvas, Offset center, double r) {
     final paint = Paint()
-      ..color = AppColors.gold.withOpacity(0.8)
+      ..color = AppColors.gold.withValues(alpha: 0.8)
       ..style = PaintingStyle.fill;
     final path = Path();
     for (int i = 0; i < 5; i++) {
@@ -499,8 +498,11 @@ class _CrescentPainter extends CustomPainter {
       final inner = outer + math.pi / 5;
       final op = Offset(center.dx + r * math.cos(outer), center.dy + r * math.sin(outer));
       final ip = Offset(center.dx + r * 0.45 * math.cos(inner), center.dy + r * 0.45 * math.sin(inner));
-      if (i == 0) path.moveTo(op.dx, op.dy);
-      else path.lineTo(op.dx, op.dy);
+      if (i == 0) {
+        path.moveTo(op.dx, op.dy);
+      } else {
+        path.lineTo(op.dx, op.dy);
+      }
       path.lineTo(ip.dx, ip.dy);
     }
     path.close();
@@ -518,12 +520,12 @@ class _LockPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final linePaint = Paint()
-      ..color = AppColors.gold.withOpacity(0.07)
+      ..color = AppColors.gold.withValues(alpha: 0.07)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.55;
 
     final dotPaint = Paint()
-      ..color = AppColors.gold.withOpacity(0.10)
+      ..color = AppColors.gold.withValues(alpha: 0.10)
       ..style = PaintingStyle.fill;
 
     const spacing = 48.0;
@@ -542,7 +544,7 @@ class _LockPatternPainter extends CustomPainter {
 
     // Faint horizontal lattice lines across full width
     final latticePaint = Paint()
-      ..color = AppColors.gold.withOpacity(0.04)
+      ..color = AppColors.gold.withValues(alpha: 0.04)
       ..strokeWidth = 0.4;
     for (double y = 0; y < size.height; y += spacing * 0.88) {
       canvas.drawLine(Offset(0, y), Offset(size.width, y), latticePaint);
@@ -557,8 +559,11 @@ class _LockPatternPainter extends CustomPainter {
       final inn = outer + math.pi / 8;
       final op = Offset(c.dx + r * math.cos(outer), c.dy + r * math.sin(outer));
       final ip = Offset(c.dx + inner * math.cos(inn), c.dy + inner * math.sin(inn));
-      if (i == 0) path.moveTo(op.dx, op.dy);
-      else path.lineTo(op.dx, op.dy);
+      if (i == 0) {
+        path.moveTo(op.dx, op.dy);
+      } else {
+        path.lineTo(op.dx, op.dy);
+      }
       path.lineTo(ip.dx, ip.dy);
     }
     path.close();

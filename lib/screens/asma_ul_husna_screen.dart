@@ -167,7 +167,7 @@ class _HadithBanner extends StatelessWidget {
       decoration: BoxDecoration(
         color: _cardColor,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: _gold.withOpacity(0.25)),
+        border: Border.all(color: _gold.withValues(alpha: 0.25)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +183,7 @@ class _HadithBanner extends StatelessWidget {
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 14,
                     fontStyle: FontStyle.italic,
-                    color: Colors.white.withOpacity(0.92),
+                    color: Colors.white.withValues(alpha: 0.92),
                     height: 1.5,
                   ),
                 ),
@@ -228,7 +228,7 @@ class _SearchField extends StatelessWidget {
       decoration: BoxDecoration(
         color: _cardColor,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: _gold.withOpacity(0.25)),
+        border: Border.all(color: _gold.withValues(alpha: 0.25)),
       ),
       child: TextField(
         controller: controller,
@@ -283,7 +283,7 @@ class _AsmaCardState extends State<_AsmaCard> {
         decoration: BoxDecoration(
           color: _cardColor,
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: _gold.withOpacity(0.15)),
+          border: Border.all(color: _gold.withValues(alpha: 0.15)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -297,7 +297,7 @@ class _AsmaCardState extends State<_AsmaCard> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(color: _gold, width: 1.5),
-                    color: _gold.withOpacity(0.1),
+                    color: _gold.withValues(alpha: 0.1),
                   ),
                   alignment: Alignment.center,
                   child: Text(
@@ -333,7 +333,7 @@ class _AsmaCardState extends State<_AsmaCard> {
                           fontSize: 14,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.w600,
-                          color: _gold.withOpacity(0.85),
+                          color: _gold.withValues(alpha: 0.85),
                         ),
                       ),
                       const SizedBox(height: 2),
@@ -341,7 +341,7 @@ class _AsmaCardState extends State<_AsmaCard> {
                         name.meaningText(widget.locale),
                         style: GoogleFonts.lato(
                           fontSize: 13.5,
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                         ),
                       ),
                     ],
@@ -352,7 +352,7 @@ class _AsmaCardState extends State<_AsmaCard> {
                   duration: const Duration(milliseconds: 200),
                   child: Icon(
                     Icons.keyboard_arrow_down_rounded,
-                    color: _gold.withOpacity(0.7),
+                    color: _gold.withValues(alpha: 0.7),
                     size: 22,
                   ),
                 ),
@@ -367,7 +367,7 @@ class _AsmaCardState extends State<_AsmaCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Container(height: 1, color: _gold.withOpacity(0.15)),
+                    Container(height: 1, color: _gold.withValues(alpha: 0.15)),
                     const SizedBox(height: 12),
                     Text(
                       widget.significanceLabel,

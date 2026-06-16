@@ -197,7 +197,7 @@ class _AppBlockingSliverHeader extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.deepGreen.withOpacity(0.25),
+                    color: AppColors.deepGreen.withValues(alpha: 0.25),
                     blurRadius: 16,
                     offset: const Offset(0, 5),
                   ),
@@ -226,7 +226,7 @@ class _AppBlockingSliverHeader extends StatelessWidget {
                               l10n.blockDuringPrayerTimesSubtitle,
                               style: GoogleFonts.lato(
                                 fontSize: 12.5,
-                                color: Colors.white.withOpacity(0.72),
+                                color: Colors.white.withValues(alpha: 0.72),
                                 height: 1.5,
                               ),
                             ),
@@ -238,7 +238,7 @@ class _AppBlockingSliverHeader extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 14, vertical: 10),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.15),
+                          color: Colors.white.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(14),
                         ),
                         child: Column(
@@ -256,7 +256,7 @@ class _AppBlockingSliverHeader extends StatelessWidget {
                               l10n.blockedLabel,
                               style: GoogleFonts.lato(
                                 fontSize: 11,
-                                color: Colors.white.withOpacity(0.7),
+                                color: Colors.white.withValues(alpha: 0.7),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -270,7 +270,7 @@ class _AppBlockingSliverHeader extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                     child: LinearProgressIndicator(
                       value: totalCount > 0 ? blockedCount / totalCount : 0,
-                      backgroundColor: Colors.white.withOpacity(0.2),
+                      backgroundColor: Colors.white.withValues(alpha: 0.2),
                       valueColor:
                           const AlwaysStoppedAnimation<Color>(AppColors.gold),
                       minHeight: 6,
@@ -308,9 +308,9 @@ class _AppBlockingSliverHeader extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
               decoration: BoxDecoration(
-                color: AppColors.gold.withOpacity(0.10),
+                color: AppColors.gold.withValues(alpha: 0.10),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.gold.withOpacity(0.22)),
+                border: Border.all(color: AppColors.gold.withValues(alpha: 0.22)),
               ),
               child: Row(
                 children: [
@@ -447,8 +447,8 @@ class _AppRow extends StatelessWidget {
                           style: GoogleFonts.lato(
                             fontSize: 12,
                             color: app.isBlocked
-                                ? const Color(0xFFB71C1C).withOpacity(0.7)
-                                : colors.secondaryText.withOpacity(0.65),
+                                ? const Color(0xFFB71C1C).withValues(alpha: 0.7)
+                                : colors.secondaryText.withValues(alpha: 0.65),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -504,13 +504,13 @@ class _GreenSwitch extends StatelessWidget {
           color: value
               ? AppColors.deepGreen
               : onDark
-                  ? Colors.white.withOpacity(0.2)
+                  ? Colors.white.withValues(alpha: 0.2)
                   : colors.border,
           borderRadius: BorderRadius.circular(14),
           boxShadow: value
               ? [
                   BoxShadow(
-                    color: AppColors.deepGreen.withOpacity(0.35),
+                    color: AppColors.deepGreen.withValues(alpha: 0.35),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   )
@@ -530,7 +530,7 @@ class _GreenSwitch extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.12),
+                  color: Colors.black.withValues(alpha: 0.12),
                   blurRadius: 4,
                   offset: const Offset(0, 1),
                 ),

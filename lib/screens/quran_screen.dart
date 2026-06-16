@@ -22,7 +22,6 @@ class _QuranScreenState extends State<QuranScreen> {
 
   static const _navy = Color(0xFF0D1B2A);
   static const _gold = Color(0xFFD4AF37);
-  static const _cardColor = Color(0xFF152030);
   static const _mutedText = Color(0xFF8A9BB0);
 
   @override
@@ -89,9 +88,9 @@ class _QuranScreenState extends State<QuranScreen> {
                                 height: 72,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: _gold.withOpacity(0.08),
+                                  color: _gold.withValues(alpha: 0.08),
                                   border: Border.all(
-                                      color: _gold.withOpacity(0.3), width: 1.5),
+                                      color: _gold.withValues(alpha: 0.3), width: 1.5),
                                 ),
                                 child: const Icon(Icons.menu_book_rounded,
                                     color: _gold, size: 32),
@@ -258,7 +257,7 @@ class _SurahTile extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: _gold, width: 1.5),
-                color: _gold.withOpacity(0.1),
+                color: _gold.withValues(alpha: 0.1),
               ),
               alignment: Alignment.center,
               child: Text(
