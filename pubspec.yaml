@@ -28,6 +28,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.4
   audioplayers: ^6.7.1
   flutter_timezone: ^5.1.0
+  sensors_plus: ^4.0.0
 
 dev_dependencies:
   flutter_test:
