@@ -66,6 +66,11 @@ class NotificationService {
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
+      defaultPresentAlert: true,
+      defaultPresentBadge: true,
+      defaultPresentSound: true,
+      defaultPresentBanner: true,
+      defaultPresentList: true,
     );
 
     const initSettings = InitializationSettings(
@@ -73,7 +78,10 @@ class NotificationService {
       iOS: iosSettings,
     );
 
-    await _plugin.initialize(settings: initSettings);
+    await _plugin.initialize(
+      settings: initSettings,
+      onDidReceiveNotificationResponse: _onNotificationResponse,
+    );
 
     final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
@@ -107,6 +115,8 @@ class NotificationService {
           presentAlert: true,
           presentBadge: true,
           presentSound: true,
+          presentBanner: true,
+          presentList: true,
         ),
       );
 
@@ -178,6 +188,11 @@ class NotificationService {
     } catch (e) {
       debugPrint('NotificationService: failed to schedule $name reminder: $e');
     }
+  }
+
+  static void _onNotificationResponse(NotificationResponse response) {
+    debugPrint(
+        'NotificationService: tapped notification ${response.id} payload=${response.payload}');
   }
 
   Future<void> cancelAll() async {
