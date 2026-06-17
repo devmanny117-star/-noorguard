@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:label="noor_guard"
@@ -49,12 +52,38 @@
         <receiver android:exported="false"
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
 
+        <!-- Full-screen prayer alarm Activity shown over the lock screen. -->
+        <activity
+            android:name=".PrayerAlarmActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:launchMode="singleTask"
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:theme="@style/PrayerAlarmTheme" />
+
         <!-- Stops the foreground adhan when the user taps or swipes away the
              silent prayer banner. Both contentIntent and deleteIntent point here. -->
         <receiver android:name=".AdhanStopReceiver"
                   android:exported="false">
             <intent-filter>
                 <action android:name="com.example.noor_guard.STOP_ADHAN"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Receives AlarmManager broadcasts at exact prayer times to post
+             the full-screen lock screen notification. -->
+        <receiver android:name=".PrayerAlarmReceiver"
+                  android:exported="false" />
+
+        <!-- Handles "I Prayed" and "Dismiss" notification action buttons. -->
+        <receiver android:name=".PrayerActionReceiver"
+                  android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.noor_guard.ACTION_PRAYED"/>
+                <action android:name="com.example.noor_guard.ACTION_DISMISS"/>
             </intent-filter>
         </receiver>
 

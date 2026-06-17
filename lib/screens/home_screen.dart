@@ -49,12 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
             index: _selectedIndex,
             children: [
               _HomeBody(
-                onOpenSettings: () => setState(() => _selectedIndex = 4),
-                onOpenPrayers: () => setState(() => _selectedIndex = 3),
+                onOpenSettings: () => setState(() => _selectedIndex = 3),
+                onOpenPrayers: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const PrayersScreen()),
+                ),
               ),
               const QuranScreen(),
               const QiblaScreen(),
-              const PrayersScreen(),
               const SettingsScreen(),
             ],
           ),
@@ -85,6 +87,18 @@ class _HomeBodyState extends State<_HomeBody> {
   void initState() {
     super.initState();
     _loadPrayerTimes();
+    _applyPendingPrayerMarks();
+  }
+
+  Future<void> _applyPendingPrayerMarks() async {
+    final marked = await NotificationService().getPendingPrayerMarks();
+    if (marked.isEmpty) return;
+    final state = PrayerState();
+    for (final name in marked) {
+      if (state.prayers.containsKey(name) && state.prayers[name] != true) {
+        await state.togglePrayer(name);
+      }
+    }
   }
 
   Future<void> _loadPrayerTimes() async {
@@ -127,9 +141,14 @@ class _HomeBodyState extends State<_HomeBody> {
     // Share the exact times we scheduled so the foreground adhan controller
     // fires in sync with these notifications (these use the device location).
     PrayerState().setScheduledPrayerTimes(data);
+    final adhanId = PrayerState().selectedAdhanId;
     NotificationService().schedulePrayerNotifications(
       data,
-      adhanId: PrayerState().selectedAdhanId,
+      adhanId: adhanId,
+    );
+    NotificationService().scheduleFullScreenPrayerAlarms(
+      data,
+      adhanId: adhanId,
     );
   }
 
@@ -215,18 +234,11 @@ class _BottomNav extends StatelessWidget {
                 onTap: () => onTap(2),
               ),
               _NavItem(
-                icon: Icons.access_time_outlined,
-                selectedIcon: Icons.access_time_filled_rounded,
-                label: l10n.prayers,
-                isSelected: selectedIndex == 3,
-                onTap: () => onTap(3),
-              ),
-              _NavItem(
                 icon: Icons.grid_view_outlined,
                 selectedIcon: Icons.grid_view_rounded,
                 label: l10n.more,
-                isSelected: selectedIndex == 4,
-                onTap: () => onTap(4),
+                isSelected: selectedIndex == 3,
+                onTap: () => onTap(3),
               ),
             ],
           ),

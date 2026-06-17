@@ -823,7 +823,7 @@ class _ToggleRow extends StatelessWidget {
       child: Row(
         children: [
           if (leadingIcon != null) ...[
-            Icon(leadingIcon, size: 19, color: colors.secondaryText),
+            Icon(leadingIcon, size: 19, color: AppColors.gold),
             const SizedBox(width: 12),
           ],
           Expanded(
@@ -922,7 +922,7 @@ class _SelectRow extends StatelessWidget {
             Icon(
               Icons.chevron_right_rounded,
               size: 18,
-              color: colors.secondaryText,
+              color: AppColors.gold.withValues(alpha: 0.5),
             ),
           ],
         ),
@@ -1061,7 +1061,7 @@ class _ActionRow extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         child: Row(
           children: [
-            Icon(icon, size: 19, color: colors.secondaryText),
+            Icon(icon, size: 19, color: AppColors.gold),
             const SizedBox(width: 12),
             Expanded(
               child: Text(
@@ -1076,7 +1076,7 @@ class _ActionRow extends StatelessWidget {
             Icon(
               Icons.chevron_right_rounded,
               size: 18,
-              color: colors.secondaryText,
+              color: AppColors.gold.withValues(alpha: 0.5),
             ),
           ],
         ),

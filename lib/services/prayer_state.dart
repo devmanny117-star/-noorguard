@@ -88,6 +88,7 @@ class PrayerState extends ChangeNotifier {
     if (!masterNotifications) return;
     try {
       final prayerTimes = await fetchPrayerTimes();
+      final alarmData = <Map<String, dynamic>>[];
       for (final entry in _notifIds.entries) {
         final key = entry.key;
         final notifId = entry.value;
@@ -97,10 +98,15 @@ class PrayerState extends ChangeNotifier {
           continue;
         }
         final p = prayerTimes.firstWhere((pr) => pr.name == name);
+        final time = _parseTime(p.time);
         await NotificationService().scheduleSinglePrayerNotification(
-            notifId, name, _parseTime(p.time),
+            notifId, name, time,
             adhanId: selectedAdhanId);
+        alarmData.add({'name': name, 'time': time});
       }
+      await NotificationService().scheduleFullScreenPrayerAlarms(
+          alarmData,
+          adhanId: selectedAdhanId);
     } catch (_) {}
   }
 

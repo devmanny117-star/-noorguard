@@ -63,6 +63,8 @@ class NotificationService {
         body: 'Time to prepare for $name prayer',
       );
 
+  static const _alarmChannel = MethodChannel('adhan_control');
+
   Future<void> init() async {
     if (kIsWeb) return;
 
@@ -121,6 +123,31 @@ class NotificationService {
     // Android 12+ requires this special-access permission for exact alarms;
     // prompts the system "Alarms & reminders" settings screen if not granted.
     await androidPlugin?.requestExactAlarmsPermission();
+
+    if (!kIsWeb && Platform.isAndroid) {
+      await _checkFullScreenIntentPermission();
+    }
+  }
+
+  Future<void> _checkFullScreenIntentPermission() async {
+    try {
+      final canUse = await _alarmChannel.invokeMethod<bool>(
+          'canUseFullScreenIntent');
+      if (canUse == false) {
+        await _alarmChannel.invokeMethod('openFullScreenIntentSettings');
+      }
+    } catch (e) {
+      debugPrint('NotificationService: full-screen intent check failed: $e');
+    }
+    try {
+      final canOverlay = await _alarmChannel.invokeMethod<bool>(
+          'canDrawOverlays');
+      if (canOverlay == false) {
+        await _alarmChannel.invokeMethod('openOverlaySettings');
+      }
+    } catch (e) {
+      debugPrint('NotificationService: overlay permission check failed: $e');
+    }
   }
 
   /// Creates (idempotently) the Android channel whose sound is the bundled
@@ -293,6 +320,84 @@ class NotificationService {
       );
     } catch (e) {
       debugPrint('NotificationService: failed to show $name banner: $e');
+    }
+  }
+
+  static const Map<String, String> _arabicPrayerNames = {
+    'Fajr': 'الفجر',
+    'Dhuhr': 'الظهر',
+    'Asr': 'العصر',
+    'Maghrib': 'المغرب',
+    'Isha': 'العشاء',
+  };
+
+  static const Map<String, String> _prayerAlarmMessages = {
+    'Fajr': 'Rise and pray. Allah rewards those who wake for Him.',
+    'Dhuhr': 'Take a moment for Allah. Your Dhuhr prayer awaits.',
+    'Asr': 'Guard the middle prayer closely. — Al-Baqarah 2:238',
+    'Maghrib': 'The sun has set. Answer the call of Allah.',
+    'Isha': 'End your day with Allah. Your night prayer awaits.',
+  };
+
+  static const Map<String, int> _alarmNotifIds = {
+    'Fajr': 100,
+    'Dhuhr': 101,
+    'Asr': 102,
+    'Maghrib': 103,
+    'Isha': 104,
+  };
+
+  Future<void> scheduleFullScreenPrayerAlarms(
+      List<Map<String, dynamic>> prayers,
+      {required String adhanId}) async {
+    if (kIsWeb || !Platform.isAndroid) return;
+
+    try {
+      await _alarmChannel.invokeMethod('cancelPrayerAlarms');
+    } catch (_) {}
+
+    for (final entry in prayers) {
+      final name = entry['name'] as String;
+      final time = entry['time'] as DateTime;
+      if (time.isBefore(DateTime.now())) continue;
+
+      final notifId = _alarmNotifIds[name];
+      if (notifId == null) continue;
+
+      final hour = time.hour > 12
+          ? time.hour - 12
+          : (time.hour == 0 ? 12 : time.hour);
+      final amPm = time.hour >= 12 ? 'PM' : 'AM';
+      final timeStr =
+          '$hour:${time.minute.toString().padLeft(2, '0')} $amPm';
+
+      try {
+        await _alarmChannel.invokeMethod('schedulePrayerAlarm', {
+          'prayerName': name,
+          'arabicName': _arabicPrayerNames[name] ?? '',
+          'prayerTime': timeStr,
+          'message':
+              _prayerAlarmMessages[name] ?? 'Time for $name prayer',
+          'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
+          'triggerAtMillis': time.millisecondsSinceEpoch,
+          'notificationId': notifId,
+        });
+      } catch (e) {
+        debugPrint(
+            'NotificationService: failed to schedule alarm for $name: $e');
+      }
+    }
+  }
+
+  Future<List<String>> getPendingPrayerMarks() async {
+    if (kIsWeb || !Platform.isAndroid) return [];
+    try {
+      final result =
+          await _alarmChannel.invokeMethod<List<dynamic>>('getPendingPrayerMarks');
+      return result?.cast<String>() ?? [];
+    } catch (e) {
+      debugPrint('NotificationService: failed to get pending marks: $e');
+      return [];
     }
   }
 

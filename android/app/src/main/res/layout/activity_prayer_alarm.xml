@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navy"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="32dp"
+        android:paddingTop="80dp"
+        android:paddingBottom="48dp">
+
+        <!-- Crescent icon -->
+        <TextView
+            android:id="@+id/iconCrescent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☪"
+            android:textColor="@color/gold"
+            android:textSize="56sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.15"
+            android:text="IT'S TIME FOR PRAYER"
+            android:textAllCaps="true"
+            android:textColor="@color/gold_light"
+            android:textSize="13sp" />
+
+        <!-- Gold divider -->
+        <View
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/gold_20" />
+
+        <!-- Arabic prayer name -->
+        <TextView
+            android:id="@+id/textArabicName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:textColor="@color/gold"
+            android:textSize="40sp" />
+
+        <!-- English prayer name -->
+        <TextView
+            android:id="@+id/textPrayerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.08"
+            android:textColor="@android:color/white"
+            android:textSize="32sp" />
+
+        <!-- Prayer time -->
+        <TextView
+            android:id="@+id/textPrayerTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/gold_light"
+            android:textSize="20sp" />
+
+        <!-- Islamic message -->
+        <TextView
+            android:id="@+id/textMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/white_70"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <!-- Gold divider -->
+        <View
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/gold_20" />
+
+        <!-- I Prayed button -->
+        <TextView
+            android:id="@+id/btnIPrayed"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/bg_button_gold"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:letterSpacing="0.05"
+            android:text="I PRAYED  ✓"
+            android:textColor="@color/navy"
+            android:textSize="16sp" />
+
+        <!-- Dismiss button -->
+        <TextView
+            android:id="@+id/btnDismiss"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_button_outline"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:letterSpacing="0.05"
+            android:text="DISMISS"
+            android:textColor="@color/gold"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</ScrollView>

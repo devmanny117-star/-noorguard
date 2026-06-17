@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navy">#FF0D1B2A</color>
+    <color name="navy_light">#FF152030</color>
+    <color name="gold">#FFD4AF37</color>
+    <color name="gold_light">#FFE8D5A3</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="gold_20">#33D4AF37</color>
+</resources>

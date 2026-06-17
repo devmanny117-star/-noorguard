@@ -57,6 +57,10 @@ class _SurahScreenState extends State<SurahScreen> {
   @override
   void initState() {
     super.initState();
+    // ReleaseMode.stop keeps the native player alive after completion so that
+    // onPlayerComplete fires reliably on iOS (the default .release mode
+    // deallocates the AVAudioPlayer before the event can propagate).
+    _audioPlayer.setReleaseMode(ReleaseMode.stop);
     _audioPlayer.onPlayerStateChanged.listen((state) {
       if (!mounted) return;
       setState(() => _isPlaying = state == PlayerState.playing);
@@ -66,7 +70,10 @@ class _SurahScreenState extends State<SurahScreen> {
       if (_continuousPlay) {
         _playAdjacent(1);
       } else {
-        setState(() => _isPlaying = false);
+        setState(() {
+          _isPlaying = false;
+          _playingVerseNumber = null;
+        });
       }
     });
     _loadFontScale();
@@ -212,6 +219,7 @@ class _SurahScreenState extends State<SurahScreen> {
       return;
     }
     final url = _selectedReciter.audioUrl(widget.surah.number, verseNumber);
+    await _audioPlayer.stop();
     setState(() => _playingVerseNumber = verseNumber);
     await _audioPlayer.play(UrlSource(url));
   }
