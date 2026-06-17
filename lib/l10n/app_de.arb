@@ -440,5 +440,16 @@
   "makeItUp": "Nachholen",
   "qadaExplanation": "Wenn du ein Gebet verpasst hast, kannst du es als Qada (Nachholgebet) verrichten.",
   "noStatsYet": "Markiere weiterhin deine Gebete, um deine Statistiken hier zu sehen.",
-  "notEnoughData": "Noch nicht genug Daten"
+  "notEnoughData": "Noch nicht genug Daten",
+  "continuousPlay": "Fortlaufend",
+  "sleepTimer": "Schlaftimer",
+  "verseCount": "Vers {verse} von {total}",
+  "verseTafsir": "Vers-Tafsir",
+  "tafsirOfTheDay": "Tafsir des Tages",
+  "dailyInsight": "Tägliche Einsicht",
+  "keyThemes": "Wichtige Themen & Lektionen",
+  "readFullSurah": "Ganze Sure lesen",
+  "surahIntroduction": "Einführung der Sure",
+  "verses": "Verse",
+  "loadingTafsir": "Tafsir wird geladen..."
 }

@@ -2769,6 +2769,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Not enough data yet'**
   String get notEnoughData;
+
+  /// No description provided for @continuousPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Continuous'**
+  String get continuousPlay;
+
+  /// No description provided for @sleepTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleep Timer'**
+  String get sleepTimer;
+
+  /// No description provided for @verseCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Verse {verse} of {total}'**
+  String verseCount(Object total, Object verse);
+
+  /// No description provided for @verseTafsir.
+  ///
+  /// In en, this message translates to:
+  /// **'Verse Tafsir'**
+  String get verseTafsir;
+
+  /// No description provided for @tafsirOfTheDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Tafsir of the Day'**
+  String get tafsirOfTheDay;
+
+  /// No description provided for @dailyInsight.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Insight'**
+  String get dailyInsight;
+
+  /// No description provided for @keyThemes.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Themes & Lessons'**
+  String get keyThemes;
+
+  /// No description provided for @readFullSurah.
+  ///
+  /// In en, this message translates to:
+  /// **'Read Full Surah'**
+  String get readFullSurah;
+
+  /// No description provided for @surahIntroduction.
+  ///
+  /// In en, this message translates to:
+  /// **'Surah Introduction'**
+  String get surahIntroduction;
+
+  /// No description provided for @verses.
+  ///
+  /// In en, this message translates to:
+  /// **'verses'**
+  String get verses;
+
+  /// No description provided for @loadingTafsir.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading tafsir...'**
+  String get loadingTafsir;
 }
 
 class _AppLocalizationsDelegate

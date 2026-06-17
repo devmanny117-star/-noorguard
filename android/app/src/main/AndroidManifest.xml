@@ -49,6 +49,15 @@
         <receiver android:exported="false"
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
 
+        <!-- Stops the foreground adhan when the user taps or swipes away the
+             silent prayer banner. Both contentIntent and deleteIntent point here. -->
+        <receiver android:name=".AdhanStopReceiver"
+                  android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.noor_guard.STOP_ADHAN"/>
+            </intent-filter>
+        </receiver>
+
         <!-- Reschedules pending notifications after the device reboots. -->
         <receiver android:exported="false"
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">

@@ -1493,4 +1493,39 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get notEnoughData => 'Ainda não há dados suficientes';
+
+  @override
+  String get continuousPlay => 'Contínuo';
+
+  @override
+  String get sleepTimer => 'Temporizador';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'Vers. $verse de $total';
+  }
+
+  @override
+  String get verseTafsir => 'Tafsir do versículo';
+
+  @override
+  String get tafsirOfTheDay => 'Tafsir do dia';
+
+  @override
+  String get dailyInsight => 'Reflexão diária';
+
+  @override
+  String get keyThemes => 'Temas e lições principais';
+
+  @override
+  String get readFullSurah => 'Ler sura completa';
+
+  @override
+  String get surahIntroduction => 'Introdução da sura';
+
+  @override
+  String get verses => 'versículos';
+
+  @override
+  String get loadingTafsir => 'Carregando tafsir...';
 }

@@ -9,21 +9,9 @@ import '../../screens/focus_mode_screen.dart';
 import '../../screens/islamic_calendar_screen.dart';
 import '../../screens/lock_screen.dart';
 import '../../screens/new_muslim_hub_screen.dart';
-import '../../screens/tafsir_screen.dart';
-import '../../models/surah_model.dart';
+import '../../screens/tafsir_of_the_day_screen.dart';
 import '../../theme/app_theme.dart';
 import '../../l10n/app_localizations.dart';
-
-// Default surah opened by the "Tafsir" tile — Al-Faatiha, which has full
-// Ibn Kathir commentary in tafsirData.
-const _alFatiha = Surah(
-  number: 1,
-  name: 'سُورَةُ الْفَاتِحَة',
-  englishName: 'Al-Faatiha',
-  englishNameTranslation: 'The Opening',
-  numberOfAyahs: 7,
-  revelationType: 'Meccan',
-);
 
 class _TileData {
   final String id;
@@ -40,7 +28,7 @@ class _TileData {
 }
 
 List<_TileData> _row1(AppLocalizations l10n) => [
-  _TileData(id: 'Tafsir', label: l10n.tafsir, icon: Icons.import_contacts_rounded, subtitle: l10n.commentary),
+  _TileData(id: 'Tafsir', label: l10n.tafsirOfTheDay, icon: Icons.auto_stories_rounded, subtitle: l10n.dailyInsight),
   _TileData(id: 'Duas', label: l10n.duas, icon: Icons.auto_stories_rounded, subtitle: l10n.dailySupplications),
   _TileData(id: 'Lock Screen', label: l10n.lockScreen, icon: Icons.lock_outline_rounded, subtitle: l10n.reminders),
   _TileData(id: 'Focus Mode', label: l10n.focusMode, icon: Icons.hourglass_empty_rounded, subtitle: l10n.blockDistractions),
@@ -99,7 +87,7 @@ class _FeatureTile extends StatelessWidget {
 
   void _navigate(BuildContext context) {
     Widget? screen;
-    if (data.id == 'Tafsir') screen = const TafsirScreen(surah: _alFatiha);
+    if (data.id == 'Tafsir') screen = const TafsirOfTheDayScreen();
     if (data.id == 'Lock Screen') screen = const LockScreenPreview();
     if (data.id == 'Focus Mode') screen = const FocusModeScreen();
     if (data.id == 'App Blocking') screen = const AppBlockingScreen();

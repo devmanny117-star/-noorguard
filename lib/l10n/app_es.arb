@@ -440,5 +440,16 @@
   "makeItUp": "Recuperarla",
   "qadaExplanation": "Si te perdiste una oración, todavía puedes rezarla como una oración Qada (de recuperación).",
   "noStatsYet": "Sigue marcando tus oraciones para ver tus estadísticas aquí.",
-  "notEnoughData": "Aún no hay suficientes datos"
+  "notEnoughData": "Aún no hay suficientes datos",
+  "continuousPlay": "Continuo",
+  "sleepTimer": "Temporizador",
+  "verseCount": "Vers. {verse} de {total}",
+  "verseTafsir": "Tafsir del verso",
+  "tafsirOfTheDay": "Tafsir del día",
+  "dailyInsight": "Reflexión diaria",
+  "keyThemes": "Temas y lecciones clave",
+  "readFullSurah": "Leer sura completa",
+  "surahIntroduction": "Introducción de la sura",
+  "verses": "versos",
+  "loadingTafsir": "Cargando tafsir..."
 }

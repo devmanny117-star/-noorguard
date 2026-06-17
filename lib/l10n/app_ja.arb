@@ -440,5 +440,16 @@
   "makeItUp": "後で行う",
   "qadaExplanation": "礼拝を逃した場合でも、補完礼拝（カダー）として行うことができます。",
   "noStatsYet": "礼拝を記録し続けると、ここに統計が表示されます。",
-  "notEnoughData": "データがまだ十分ではありません"
+  "notEnoughData": "データがまだ十分ではありません",
+  "continuousPlay": "連続再生",
+  "sleepTimer": "スリープタイマー",
+  "verseCount": "{total}節中第{verse}節",
+  "verseTafsir": "節のタフスィール",
+  "tafsirOfTheDay": "今日のタフスィール",
+  "dailyInsight": "毎日の洞察",
+  "keyThemes": "主なテーマと教訓",
+  "readFullSurah": "スーラ全文を読む",
+  "surahIntroduction": "スーラの紹介",
+  "verses": "節",
+  "loadingTafsir": "タフスィールを読み込み中..."
 }

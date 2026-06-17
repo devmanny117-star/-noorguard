@@ -440,5 +440,16 @@
   "makeItUp": "قضا ادا کریں",
   "qadaExplanation": "اگر آپ سے کوئی نماز چھوٹ جائے تو آپ اسے قضا کے طور پر ادا کر سکتے ہیں۔",
   "noStatsYet": "اپنے اعداد و شمار دیکھنے کے لیے اپنی نمازیں نشان زد کرتے رہیں۔",
-  "notEnoughData": "ابھی کافی ڈیٹا موجود نہیں ہے"
+  "notEnoughData": "ابھی کافی ڈیٹا موجود نہیں ہے",
+  "continuousPlay": "مسلسل",
+  "sleepTimer": "نیند ٹائمر",
+  "verseCount": "آیت {verse} از {total}",
+  "verseTafsir": "آیت کی تفسیر",
+  "tafsirOfTheDay": "آج کی تفسیر",
+  "dailyInsight": "روزانہ بصیرت",
+  "keyThemes": "اہم موضوعات اور اسباق",
+  "readFullSurah": "پوری سورت پڑھیں",
+  "surahIntroduction": "سورت کا تعارف",
+  "verses": "آیات",
+  "loadingTafsir": "تفسیر لوڈ ہو رہی ہے..."
 }

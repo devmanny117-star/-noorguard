@@ -1492,4 +1492,39 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get notEnoughData => 'Nog niet genoeg gegevens';
+
+  @override
+  String get continuousPlay => 'Doorlopend';
+
+  @override
+  String get sleepTimer => 'Slaaptimer';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'Vers $verse van $total';
+  }
+
+  @override
+  String get verseTafsir => 'Vers Tafsir';
+
+  @override
+  String get tafsirOfTheDay => 'Tafsir van de dag';
+
+  @override
+  String get dailyInsight => 'Dagelijks inzicht';
+
+  @override
+  String get keyThemes => 'Belangrijke thema\'s & lessen';
+
+  @override
+  String get readFullSurah => 'Lees volledige soera';
+
+  @override
+  String get surahIntroduction => 'Introductie van de soera';
+
+  @override
+  String get verses => 'verzen';
+
+  @override
+  String get loadingTafsir => 'Tafsir laden...';
 }

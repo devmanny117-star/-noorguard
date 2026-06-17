@@ -1470,4 +1470,39 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notEnoughData => 'لا توجد بيانات كافية بعد';
+
+  @override
+  String get continuousPlay => 'تشغيل متواصل';
+
+  @override
+  String get sleepTimer => 'مؤقت النوم';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'الآية $verse من $total';
+  }
+
+  @override
+  String get verseTafsir => 'تفسير الآية';
+
+  @override
+  String get tafsirOfTheDay => 'تفسير اليوم';
+
+  @override
+  String get dailyInsight => 'فكرة يومية';
+
+  @override
+  String get keyThemes => 'المواضيع والدروس الرئيسية';
+
+  @override
+  String get readFullSurah => 'اقرأ السورة كاملة';
+
+  @override
+  String get surahIntroduction => 'مقدمة السورة';
+
+  @override
+  String get verses => 'آيات';
+
+  @override
+  String get loadingTafsir => 'جاري تحميل التفسير...';
 }

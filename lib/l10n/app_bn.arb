@@ -440,5 +440,16 @@
   "makeItUp": "কাযা আদায় করুন",
   "qadaExplanation": "যদি আপনি কোনো নামাজ মিস করেন, তবে আপনি তা কাযা (পূরণ) নামাজ হিসেবে আদায় করতে পারেন।",
   "noStatsYet": "আপনার পরিসংখ্যান দেখতে আপনার নামাজ চিহ্নিত করতে থাকুন।",
-  "notEnoughData": "এখনও যথেষ্ট তথ্য নেই"
+  "notEnoughData": "এখনও যথেষ্ট তথ্য নেই",
+  "continuousPlay": "ক্রমাগত",
+  "sleepTimer": "ঘুমের টাইমার",
+  "verseCount": "আয়াত {verse} / {total}",
+  "verseTafsir": "Verse Tafsir",
+  "tafsirOfTheDay": "Tafsir of the Day",
+  "dailyInsight": "Daily Insight",
+  "keyThemes": "Key Themes & Lessons",
+  "readFullSurah": "Read Full Surah",
+  "surahIntroduction": "Surah Introduction",
+  "verses": "verses",
+  "loadingTafsir": "Loading tafsir..."
 }

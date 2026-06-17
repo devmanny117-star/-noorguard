@@ -440,5 +440,16 @@
   "makeItUp": "Qada",
   "qadaExplanation": "Jika Anda melewatkan sholat, Anda masih bisa mengerjakannya sebagai sholat Qada (pengganti).",
   "noStatsYet": "Terus tandai sholat Anda untuk melihat statistik Anda di sini.",
-  "notEnoughData": "Belum cukup data"
+  "notEnoughData": "Belum cukup data",
+  "continuousPlay": "Putar Terus",
+  "sleepTimer": "Timer Tidur",
+  "verseCount": "Ayat {verse} dari {total}",
+  "verseTafsir": "Tafsir Ayat",
+  "tafsirOfTheDay": "Tafsir Hari Ini",
+  "dailyInsight": "Wawasan Harian",
+  "keyThemes": "Tema & Pelajaran Utama",
+  "readFullSurah": "Baca Surah Lengkap",
+  "surahIntroduction": "Pengantar Surah",
+  "verses": "ayat",
+  "loadingTafsir": "Memuat tafsir..."
 }

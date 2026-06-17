@@ -440,5 +440,16 @@
   "makeItUp": "Kaza Et",
   "qadaExplanation": "Bir namazı kaçırdıysanız, onu kaza namazı olarak hâlâ kılabilirsiniz.",
   "noStatsYet": "İstatistiklerinizi burada görmek için namazlarınızı işaretlemeye devam edin.",
-  "notEnoughData": "Henüz yeterli veri yok"
+  "notEnoughData": "Henüz yeterli veri yok",
+  "continuousPlay": "Sürekli",
+  "sleepTimer": "Uyku Sayacı",
+  "verseCount": "Ayet {verse} / {total}",
+  "verseTafsir": "Ayet Tefsiri",
+  "tafsirOfTheDay": "Günün Tefsiri",
+  "dailyInsight": "Günlük Bilgi",
+  "keyThemes": "Ana Temalar ve Dersler",
+  "readFullSurah": "Surenin Tamamını Oku",
+  "surahIntroduction": "Sure Tanıtımı",
+  "verses": "ayet",
+  "loadingTafsir": "Tefsir yükleniyor..."
 }

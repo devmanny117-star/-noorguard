@@ -12,7 +12,6 @@ import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
 import '../widgets/home/feature_grid.dart';
-import '../widgets/home/quote_banner.dart';
 import 'prayers_screen.dart';
 import 'qibla_screen.dart';
 import 'quran_screen.dart';
@@ -51,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               _HomeBody(
                 onOpenSettings: () => setState(() => _selectedIndex = 4),
+                onOpenPrayers: () => setState(() => _selectedIndex = 3),
               ),
               const QuranScreen(),
               const QiblaScreen(),
@@ -70,8 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class _HomeBody extends StatefulWidget {
   final VoidCallback onOpenSettings;
+  final VoidCallback onOpenPrayers;
 
-  const _HomeBody({required this.onOpenSettings});
+  const _HomeBody({required this.onOpenSettings, required this.onOpenPrayers});
 
   @override
   State<_HomeBody> createState() => _HomeBodyState();
@@ -153,12 +154,10 @@ class _HomeBodyState extends State<_HomeBody> {
           const SizedBox(height: 4),
           HeaderSection(onOpenSettings: widget.onOpenSettings),
           const SizedBox(height: 6),
-          PrayerTimesCard(prayers: _prayers),
+          PrayerTimesCard(prayers: _prayers, onNextPrayerTap: widget.onOpenPrayers),
           const HeroCard(),
           const RevertCornerCard(),
           const FeatureGrid(),
-          const SizedBox(height: 4),
-          const QuoteBanner(),
         ],
       ),
     );

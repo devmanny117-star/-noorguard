@@ -440,5 +440,16 @@
   "makeItUp": "Inhalen",
   "qadaExplanation": "Als je een gebed hebt gemist, kun je het nog steeds verrichten als een Qada (inhaal)gebed.",
   "noStatsYet": "Blijf je gebeden markeren om hier je statistieken te zien.",
-  "notEnoughData": "Nog niet genoeg gegevens"
+  "notEnoughData": "Nog niet genoeg gegevens",
+  "continuousPlay": "Doorlopend",
+  "sleepTimer": "Slaaptimer",
+  "verseCount": "Vers {verse} van {total}",
+  "verseTafsir": "Vers Tafsir",
+  "tafsirOfTheDay": "Tafsir van de dag",
+  "dailyInsight": "Dagelijks inzicht",
+  "keyThemes": "Belangrijke thema's & lessen",
+  "readFullSurah": "Lees volledige soera",
+  "surahIntroduction": "Introductie van de soera",
+  "verses": "verzen",
+  "loadingTafsir": "Tafsir laden..."
 }

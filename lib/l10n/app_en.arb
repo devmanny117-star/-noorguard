@@ -1527,5 +1527,16 @@
   "noStatsYet": "Keep marking your prayers to see your stats here.",
   "@noStatsYet": { "description": "Message shown on the Prayer Statistics screen when there is no prayer history yet" },
   "notEnoughData": "Not enough data yet",
-  "@notEnoughData": { "description": "Placeholder shown for best/hardest prayer when there isn't enough history to determine them" }
+  "@notEnoughData": { "description": "Placeholder shown for best/hardest prayer when there isn't enough history to determine them" },
+  "continuousPlay": "Continuous",
+  "sleepTimer": "Sleep Timer",
+  "verseCount": "Verse {verse} of {total}",
+  "verseTafsir": "Verse Tafsir",
+  "tafsirOfTheDay": "Tafsir of the Day",
+  "dailyInsight": "Daily Insight",
+  "keyThemes": "Key Themes & Lessons",
+  "readFullSurah": "Read Full Surah",
+  "surahIntroduction": "Surah Introduction",
+  "verses": "verses",
+  "loadingTafsir": "Loading tafsir..."
 }

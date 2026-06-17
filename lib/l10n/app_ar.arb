@@ -440,5 +440,16 @@
   "makeItUp": "أدِّها قضاءً",
   "qadaExplanation": "إذا فاتتك صلاة، يمكنك أداؤها كصلاة قضاء.",
   "noStatsYet": "استمر في تسجيل صلواتك لرؤية إحصائياتك هنا.",
-  "notEnoughData": "لا توجد بيانات كافية بعد"
+  "notEnoughData": "لا توجد بيانات كافية بعد",
+  "continuousPlay": "تشغيل متواصل",
+  "sleepTimer": "مؤقت النوم",
+  "verseCount": "الآية {verse} من {total}",
+  "verseTafsir": "تفسير الآية",
+  "tafsirOfTheDay": "تفسير اليوم",
+  "dailyInsight": "فكرة يومية",
+  "keyThemes": "المواضيع والدروس الرئيسية",
+  "readFullSurah": "اقرأ السورة كاملة",
+  "surahIntroduction": "مقدمة السورة",
+  "verses": "آيات",
+  "loadingTafsir": "جاري تحميل التفسير..."
 }

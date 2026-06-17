@@ -440,5 +440,16 @@
   "makeItUp": "Recupera",
   "qadaExplanation": "Se hai saltato una preghiera, puoi ancora recitarla come preghiera Qada (di recupero).",
   "noStatsYet": "Continua a segnare le tue preghiere per vedere qui le tue statistiche.",
-  "notEnoughData": "Non ci sono ancora dati sufficienti"
+  "notEnoughData": "Non ci sono ancora dati sufficienti",
+  "continuousPlay": "Continuo",
+  "sleepTimer": "Timer sonno",
+  "verseCount": "Vers. {verse} di {total}",
+  "verseTafsir": "Tafsir del versetto",
+  "tafsirOfTheDay": "Tafsir del giorno",
+  "dailyInsight": "Riflessione quotidiana",
+  "keyThemes": "Temi e lezioni chiave",
+  "readFullSurah": "Leggi sura completa",
+  "surahIntroduction": "Introduzione della sura",
+  "verses": "versetti",
+  "loadingTafsir": "Caricamento tafsir..."
 }

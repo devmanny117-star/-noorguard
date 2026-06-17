@@ -1415,4 +1415,39 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notEnoughData => '暂无足够数据';
+
+  @override
+  String get continuousPlay => '连续播放';
+
+  @override
+  String get sleepTimer => '睡眠定时';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return '第$verse节 共$total节';
+  }
+
+  @override
+  String get verseTafsir => '经文注释';
+
+  @override
+  String get tafsirOfTheDay => '每日注释';
+
+  @override
+  String get dailyInsight => '每日启示';
+
+  @override
+  String get keyThemes => '主要主题与教训';
+
+  @override
+  String get readFullSurah => '阅读完整章节';
+
+  @override
+  String get surahIntroduction => '章节介绍';
+
+  @override
+  String get verses => '节';
+
+  @override
+  String get loadingTafsir => '正在加载注释...';
 }

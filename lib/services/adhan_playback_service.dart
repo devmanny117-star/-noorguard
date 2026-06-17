@@ -12,9 +12,20 @@ class AdhanPlaybackService {
   static final AdhanPlaybackService _instance =
       AdhanPlaybackService._internal();
   factory AdhanPlaybackService() => _instance;
-  AdhanPlaybackService._internal();
 
   final AudioPlayer _player = AudioPlayer();
+
+  /// Called with `true` when playback starts, `false` when it stops (either
+  /// manually or at track end). Set by [AdhanForegroundController] to keep
+  /// native code in sync so volume-key and dismiss handlers know when to act.
+  void Function(bool isPlaying)? onPlayStateChanged;
+
+  AdhanPlaybackService._internal() {
+    // Notify when the track finishes naturally so native stops listening.
+    _player.onPlayerComplete.listen((_) {
+      onPlayStateChanged?.call(false);
+    });
+  }
 
   /// Plays the full adhan for [adhanId] from the start, replacing anything
   /// already playing. Streams from the style's remote URL; failures (e.g. no
@@ -28,6 +39,7 @@ class AdhanPlaybackService {
     try {
       await _player.stop();
       await _player.play(UrlSource(style.audioUrl));
+      onPlayStateChanged?.call(true);
     } catch (e) {
       debugPrint('AdhanPlaybackService: failed to play $adhanId: $e');
     }
@@ -37,6 +49,7 @@ class AdhanPlaybackService {
     if (kIsWeb) return;
     try {
       await _player.stop();
+      onPlayStateChanged?.call(false);
     } catch (_) {}
   }
 }

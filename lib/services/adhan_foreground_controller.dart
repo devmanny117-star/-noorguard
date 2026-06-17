@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import '../data/prayer_times_data.dart';
 import '../models/prayer_model.dart';
@@ -22,6 +23,11 @@ import 'prayer_state.dart';
 ///
 /// It never bulk-cancels scheduled notifications, so the closed-app reminders
 /// (and the in-app test notification) keep working exactly as before.
+///
+/// Stop triggers while the adhan is playing:
+///   • Volume up/down key press (both platforms — native signals `stopAdhan`)
+///   • Tapping the prayer notification banner (native signals `stopAdhan`)
+///   • Swiping away the prayer notification banner (native signals `stopAdhan`)
 class AdhanForegroundController with WidgetsBindingObserver {
   static final AdhanForegroundController _instance =
       AdhanForegroundController._internal();
@@ -40,8 +46,21 @@ class AdhanForegroundController with WidgetsBindingObserver {
   /// margin to cancel it before it can play its own sound.
   static const _leadSeconds = 3;
 
+  /// MethodChannel shared with native Android/iOS for volume-key interception
+  /// (Android), notification dismiss/tap callbacks, and play-state sync.
+  static const _channel = MethodChannel('adhan_control');
+
+  /// `true` while the foreground adhan is streaming. The UI observes this to
+  /// show/hide the floating Stop Adhan button.
+  final ValueNotifier<bool> isAdhanPlaying = ValueNotifier(false);
+
   final List<Timer> _timers = [];
   bool _started = false;
+
+  /// ID of the prayer notification currently showing (0–4), or null when no
+  /// foreground adhan session is active. Used to cancel the banner when the
+  /// adhan is stopped programmatically (e.g. volume key / stop button).
+  int? _currentPrayerId;
 
   List<Prayer>? _cachedPrayers;
   DateTime? _cachedDay;
@@ -52,7 +71,32 @@ class AdhanForegroundController with WidgetsBindingObserver {
     if (_started) return;
     _started = true;
     WidgetsBinding.instance.addObserver(this);
+
+    // Handle stop requests coming from native (Android volume key, notification tap/dismiss).
+    _channel.setMethodCallHandler(_handleNativeCall);
+
+    // Keep native in sync with play state (Android uses this for volume-key interception).
+    AdhanPlaybackService().onPlayStateChanged = _onPlayStateChanged;
+
+    // Dart-side callback: fires when the user taps the prayer notification banner.
+    // This is the primary iOS tap handler since the native MethodChannel path
+    // depends on timing of channel initialisation.
+    NotificationService.onPrayerBannerTapped = stopAdhan;
+
     _armTimers();
+  }
+
+  /// Dispatches native method calls received on [_channel].
+  Future<dynamic> _handleNativeCall(MethodCall call) async {
+    if (call.method == 'stopAdhan') {
+      await stopAdhan();
+    }
+  }
+
+  /// Notifies the UI and native code whenever playback starts or stops.
+  void _onPlayStateChanged(bool isPlaying) {
+    isAdhanPlaying.value = isPlaying;
+    _channel.invokeMethod('setPlaying', isPlaying);
   }
 
   @override
@@ -94,6 +138,7 @@ class AdhanForegroundController with WidgetsBindingObserver {
   }
 
   Future<void> _onPrayerFire(int id, String name) async {
+    _currentPrayerId = id;
     // Stop the OS notification's own adhan clip, show a silent banner in its
     // place, then play the full adhan through the audio player.
     await NotificationService().cancelPrayerNotification(id);
@@ -106,12 +151,24 @@ class AdhanForegroundController with WidgetsBindingObserver {
   /// plus the full selected adhan — without touching any real scheduled
   /// reminder.
   Future<void> simulateForegroundPrayer() async {
+    _currentPrayerId = 0;
+    isAdhanPlaying.value = true;
     await NotificationService().showSilentPrayerBanner(0, 'Fajr');
     await AdhanPlaybackService().playForAdhan(PrayerState().selectedAdhanId);
   }
 
-  /// Stops the in-app adhan if it's currently playing.
-  Future<void> stopAdhan() => AdhanPlaybackService().stop();
+  /// Stops the in-app adhan if it's currently playing, dismisses the
+  /// accompanying silent prayer banner from the notification tray, and hides
+  /// the floating Stop Adhan button.
+  Future<void> stopAdhan() async {
+    isAdhanPlaying.value = false;
+    await AdhanPlaybackService().stop();
+    if (_currentPrayerId != null) {
+      final id = _currentPrayerId!;
+      _currentPrayerId = null;
+      await NotificationService().cancelPrayerNotification(id);
+    }
+  }
 
   void _cancelTimers() {
     for (final t in _timers) {

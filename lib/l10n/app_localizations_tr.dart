@@ -1488,4 +1488,39 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notEnoughData => 'Henüz yeterli veri yok';
+
+  @override
+  String get continuousPlay => 'Sürekli';
+
+  @override
+  String get sleepTimer => 'Uyku Sayacı';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'Ayet $verse / $total';
+  }
+
+  @override
+  String get verseTafsir => 'Ayet Tefsiri';
+
+  @override
+  String get tafsirOfTheDay => 'Günün Tefsiri';
+
+  @override
+  String get dailyInsight => 'Günlük Bilgi';
+
+  @override
+  String get keyThemes => 'Ana Temalar ve Dersler';
+
+  @override
+  String get readFullSurah => 'Surenin Tamamını Oku';
+
+  @override
+  String get surahIntroduction => 'Sure Tanıtımı';
+
+  @override
+  String get verses => 'ayet';
+
+  @override
+  String get loadingTafsir => 'Tefsir yükleniyor...';
 }

@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
@@ -248,29 +250,44 @@ class NotificationService {
   ///
   /// Re-uses the prayer's notification [id] (0–4); the iOS AppDelegate presents
   /// these identifiers without sound when the app is in the foreground.
+  ///
+  /// On Android the banner is posted natively so we can attach a deleteIntent
+  /// (swipe-dismiss → stop adhan) and contentIntent (tap → stop adhan).
+  /// On iOS the PRAYER_ADHAN category is attached so that a swipe-dismiss
+  /// fires the AppDelegate's didReceive handler (→ stop adhan).
   Future<void> showSilentPrayerBanner(int id, String name) async {
     if (kIsWeb) return;
     final message = _messageFor(name);
+
+    if (!kIsWeb && Platform.isAndroid) {
+      // Native Android notification: both contentIntent and deleteIntent point
+      // to AdhanStopReceiver so tap and swipe-dismiss both stop the adhan.
+      try {
+        await const MethodChannel('adhan_control').invokeMethod(
+          'showSilentBanner',
+          {'id': id, 'title': message.title, 'body': message.body},
+        );
+      } catch (e) {
+        debugPrint('NotificationService: failed to show $name native banner: $e');
+      }
+      return;
+    }
+
+    // iOS: flutter_local_notifications with the PRAYER_ADHAN category so that
+    // the AppDelegate's didReceive fires for both tap and swipe-dismiss.
     try {
       await _plugin.show(
         id: id,
         title: message.title,
         body: message.body,
         notificationDetails: const NotificationDetails(
-          android: AndroidNotificationDetails(
-            _silentChannelId,
-            _channelName,
-            channelDescription: _channelDescription,
-            importance: Importance.high,
-            priority: Priority.high,
-            playSound: false,
-          ),
           iOS: DarwinNotificationDetails(
             presentAlert: true,
             presentBadge: true,
             presentSound: false,
             presentBanner: true,
             presentList: true,
+            categoryIdentifier: 'PRAYER_ADHAN',
           ),
         ),
       );
@@ -279,9 +296,18 @@ class NotificationService {
     }
   }
 
+  /// Set by [AdhanForegroundController] to stop playback when the user taps a
+  /// prayer notification banner. Avoids a circular import while keeping the
+  /// tap path entirely in Dart (no MethodChannel timing dependency).
+  static void Function()? onPrayerBannerTapped;
+
   static void _onNotificationResponse(NotificationResponse response) {
-    debugPrint(
-        'NotificationService: tapped notification ${response.id} payload=${response.payload}');
+    // Prayer notification IDs are 0–4 (Fajr → Isha). Tapping any of them
+    // while the adhan is playing should stop it.
+    final id = response.id;
+    if (id != null && id >= 0 && id <= 4) {
+      onPrayerBannerTapped?.call();
+    }
   }
 
   Future<void> cancelAll() async {

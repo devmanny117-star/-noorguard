@@ -1489,4 +1489,39 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get notEnoughData => 'এখনও যথেষ্ট তথ্য নেই';
+
+  @override
+  String get continuousPlay => 'ক্রমাগত';
+
+  @override
+  String get sleepTimer => 'ঘুমের টাইমার';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'আয়াত $verse / $total';
+  }
+
+  @override
+  String get verseTafsir => 'Verse Tafsir';
+
+  @override
+  String get tafsirOfTheDay => 'Tafsir of the Day';
+
+  @override
+  String get dailyInsight => 'Daily Insight';
+
+  @override
+  String get keyThemes => 'Key Themes & Lessons';
+
+  @override
+  String get readFullSurah => 'Read Full Surah';
+
+  @override
+  String get surahIntroduction => 'Surah Introduction';
+
+  @override
+  String get verses => 'verses';
+
+  @override
+  String get loadingTafsir => 'Loading tafsir...';
 }

@@ -440,5 +440,16 @@
   "makeItUp": "Rattraper",
   "qadaExplanation": "Si vous avez manqué une prière, vous pouvez encore l'accomplir comme prière Qada (de rattrapage).",
   "noStatsYet": "Continuez à marquer vos prières pour voir vos statistiques ici.",
-  "notEnoughData": "Pas encore assez de données"
+  "notEnoughData": "Pas encore assez de données",
+  "continuousPlay": "Continu",
+  "sleepTimer": "Minuterie",
+  "verseCount": "Verset {verse} sur {total}",
+  "verseTafsir": "Tafsir du verset",
+  "tafsirOfTheDay": "Tafsir du jour",
+  "dailyInsight": "Réflexion quotidienne",
+  "keyThemes": "Thèmes et leçons clés",
+  "readFullSurah": "Lire la sourate complète",
+  "surahIntroduction": "Introduction de la sourate",
+  "verses": "versets",
+  "loadingTafsir": "Chargement du tafsir..."
 }

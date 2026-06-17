@@ -1492,4 +1492,39 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get notEnoughData => 'Belum cukup data';
+
+  @override
+  String get continuousPlay => 'Putar Terus';
+
+  @override
+  String get sleepTimer => 'Timer Tidur';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'Ayat $verse dari $total';
+  }
+
+  @override
+  String get verseTafsir => 'Tafsir Ayat';
+
+  @override
+  String get tafsirOfTheDay => 'Tafsir Hari Ini';
+
+  @override
+  String get dailyInsight => 'Wawasan Harian';
+
+  @override
+  String get keyThemes => 'Tema & Pelajaran Utama';
+
+  @override
+  String get readFullSurah => 'Baca Surah Lengkap';
+
+  @override
+  String get surahIntroduction => 'Pengantar Surah';
+
+  @override
+  String get verses => 'ayat';
+
+  @override
+  String get loadingTafsir => 'Memuat tafsir...';
 }

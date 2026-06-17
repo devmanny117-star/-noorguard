@@ -440,5 +440,16 @@
   "makeItUp": "Lipa Qada",
   "qadaExplanation": "Ikiwa umekosa swala, bado unaweza kuiswali kama swala ya Qada (ya kufidia).",
   "noStatsYet": "Endelea kuweka alama za swala zako ili kuona takwimu zako hapa.",
-  "notEnoughData": "Hakuna data ya kutosha bado"
+  "notEnoughData": "Hakuna data ya kutosha bado",
+  "continuousPlay": "Endelea",
+  "sleepTimer": "Kichwa cha kulala",
+  "verseCount": "Aya {verse} kati ya {total}",
+  "verseTafsir": "Tafsiri ya Aya",
+  "tafsirOfTheDay": "Tafsiri ya Leo",
+  "dailyInsight": "Maarifa ya Kila Siku",
+  "keyThemes": "Mada na Masomo Muhimu",
+  "readFullSurah": "Soma Sura Kamili",
+  "surahIntroduction": "Utangulizi wa Sura",
+  "verses": "aya",
+  "loadingTafsir": "Inapakia tafsiri..."
 }

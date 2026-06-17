@@ -1428,4 +1428,39 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notEnoughData => 'データがまだ十分ではありません';
+
+  @override
+  String get continuousPlay => '連続再生';
+
+  @override
+  String get sleepTimer => 'スリープタイマー';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return '$total節中第$verse節';
+  }
+
+  @override
+  String get verseTafsir => '節のタフスィール';
+
+  @override
+  String get tafsirOfTheDay => '今日のタフスィール';
+
+  @override
+  String get dailyInsight => '毎日の洞察';
+
+  @override
+  String get keyThemes => '主なテーマと教訓';
+
+  @override
+  String get readFullSurah => 'スーラ全文を読む';
+
+  @override
+  String get surahIntroduction => 'スーラの紹介';
+
+  @override
+  String get verses => '節';
+
+  @override
+  String get loadingTafsir => 'タフスィールを読み込み中...';
 }

@@ -440,5 +440,16 @@
   "makeItUp": "补拜",
   "qadaExplanation": "如果你错过了一次礼拜，仍然可以将其作为补拜（Qada）来完成。",
   "noStatsYet": "继续标记你的礼拜，即可在此查看统计数据。",
-  "notEnoughData": "暂无足够数据"
+  "notEnoughData": "暂无足够数据",
+  "continuousPlay": "连续播放",
+  "sleepTimer": "睡眠定时",
+  "verseCount": "第{verse}节 共{total}节",
+  "verseTafsir": "经文注释",
+  "tafsirOfTheDay": "每日注释",
+  "dailyInsight": "每日启示",
+  "keyThemes": "主要主题与教训",
+  "readFullSurah": "阅读完整章节",
+  "surahIntroduction": "章节介绍",
+  "verses": "节",
+  "loadingTafsir": "正在加载注释..."
 }

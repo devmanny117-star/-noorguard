@@ -1491,4 +1491,39 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get notEnoughData => 'Hakuna data ya kutosha bado';
+
+  @override
+  String get continuousPlay => 'Endelea';
+
+  @override
+  String get sleepTimer => 'Kichwa cha kulala';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'Aya $verse kati ya $total';
+  }
+
+  @override
+  String get verseTafsir => 'Tafsiri ya Aya';
+
+  @override
+  String get tafsirOfTheDay => 'Tafsiri ya Leo';
+
+  @override
+  String get dailyInsight => 'Maarifa ya Kila Siku';
+
+  @override
+  String get keyThemes => 'Mada na Masomo Muhimu';
+
+  @override
+  String get readFullSurah => 'Soma Sura Kamili';
+
+  @override
+  String get surahIntroduction => 'Utangulizi wa Sura';
+
+  @override
+  String get verses => 'aya';
+
+  @override
+  String get loadingTafsir => 'Inapakia tafsiri...';
 }

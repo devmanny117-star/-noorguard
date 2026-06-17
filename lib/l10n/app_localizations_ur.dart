@@ -1483,4 +1483,39 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get notEnoughData => 'ابھی کافی ڈیٹا موجود نہیں ہے';
+
+  @override
+  String get continuousPlay => 'مسلسل';
+
+  @override
+  String get sleepTimer => 'نیند ٹائمر';
+
+  @override
+  String verseCount(Object total, Object verse) {
+    return 'آیت $verse از $total';
+  }
+
+  @override
+  String get verseTafsir => 'آیت کی تفسیر';
+
+  @override
+  String get tafsirOfTheDay => 'آج کی تفسیر';
+
+  @override
+  String get dailyInsight => 'روزانہ بصیرت';
+
+  @override
+  String get keyThemes => 'اہم موضوعات اور اسباق';
+
+  @override
+  String get readFullSurah => 'پوری سورت پڑھیں';
+
+  @override
+  String get surahIntroduction => 'سورت کا تعارف';
+
+  @override
+  String get verses => 'آیات';
+
+  @override
+  String get loadingTafsir => 'تفسیر لوڈ ہو رہی ہے...';
 }

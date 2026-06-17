@@ -50,8 +50,9 @@ String _arabicNameFor(Prayer prayer) {
 
 class PrayerTimesCard extends StatefulWidget {
   final List<Prayer>? prayers;
+  final VoidCallback? onNextPrayerTap;
 
-  const PrayerTimesCard({super.key, this.prayers});
+  const PrayerTimesCard({super.key, this.prayers, this.onNextPrayerTap});
 
   @override
   State<PrayerTimesCard> createState() => _PrayerTimesCardState();
@@ -128,7 +129,7 @@ class _PrayerTimesCardState extends State<PrayerTimesCard> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _NextPrayerHeader(prayer: nextPrayer),
+                  _NextPrayerHeader(prayer: nextPrayer, onTap: widget.onNextPrayerTap),
                   _TopStatsRow(
                     streak: prayerState.streakCount,
                     completed: prayerState.completedCount,
@@ -220,14 +221,18 @@ class _TopStatsRow extends StatelessWidget {
 
 class _NextPrayerHeader extends StatelessWidget {
   final Prayer prayer;
-  const _NextPrayerHeader({required this.prayer});
+  final VoidCallback? onTap;
+  const _NextPrayerHeader({required this.prayer, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final name = _localizedPrayerName(l10n, prayer);
 
-    return Padding(
+    return GestureDetector(
+      onTap: onTap,
+      behavior: HitTestBehavior.opaque,
+      child: Padding(
       padding: const EdgeInsets.fromLTRB(20, 18, 14, 4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -303,6 +308,7 @@ class _NextPrayerHeader extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }

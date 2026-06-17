@@ -100,7 +100,8 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
             theme: AppTheme.light,
             darkTheme: AppTheme.dark,
             themeMode: _themeController.mode,
-            // Keeps status bar icons correct in both modes
+            // Keeps status bar icons correct in both modes and hosts the
+            // global floating Stop Adhan button shown while adhan is playing.
             builder: (context, child) {
               final isDark = Theme.of(context).brightness == Brightness.dark;
               return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -111,7 +112,38 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
                   statusBarBrightness:
                       isDark ? Brightness.dark : Brightness.light,
                 ),
-                child: child!,
+                child: Stack(
+                  children: [
+                    Positioned.fill(child: child!),
+                    ValueListenableBuilder<bool>(
+                      valueListenable:
+                          AdhanForegroundController().isAdhanPlaying,
+                      builder: (ctx, playing, _) {
+                        // Position above the bottom nav bar + safe area.
+                        final bottomInset =
+                            MediaQuery.of(ctx).padding.bottom + 72;
+                        return Positioned(
+                          left: 0,
+                          right: 0,
+                          bottom: bottomInset,
+                          child: AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 280),
+                            switchInCurve: Curves.easeOutCubic,
+                            switchOutCurve: Curves.easeInCubic,
+                            transitionBuilder: (child, anim) => ScaleTransition(
+                              scale: anim,
+                              child: FadeTransition(
+                                  opacity: anim, child: child),
+                            ),
+                            child: playing
+                                ? const _StopAdhanButton()
+                                : const SizedBox.shrink(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               );
             },
             home: const SplashScreen(),
@@ -265,6 +297,52 @@ class _SplashScreenState extends State<SplashScreen>
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Floating pill button shown while the foreground adhan is playing.
+/// Tapping it stops the adhan immediately and hides the button.
+class _StopAdhanButton extends StatelessWidget {
+  const _StopAdhanButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.gold.withValues(alpha: 0.45),
+              blurRadius: 18,
+              spreadRadius: 2,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: ElevatedButton.icon(
+          key: const ValueKey('stop_adhan_btn'),
+          onPressed: AdhanForegroundController().stopAdhan,
+          icon: const Icon(Icons.stop_rounded, size: 22),
+          label: Text(
+            'Stop Adhan',
+            style: GoogleFonts.lato(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.5,
+            ),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.gold,
+            foregroundColor: const Color(0xFF1B5E20),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+            shape: const StadiumBorder(),
+            elevation: 0,
+          ),
+        ),
       ),
     );
   }
