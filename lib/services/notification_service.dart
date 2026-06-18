@@ -415,6 +415,14 @@ class NotificationService {
     'Isha': 104,
   };
 
+  static String _formatPrayerTime(DateTime time) {
+    final hour = time.hour > 12
+        ? time.hour - 12
+        : (time.hour == 0 ? 12 : time.hour);
+    final amPm = time.hour >= 12 ? 'PM' : 'AM';
+    return '$hour:${time.minute.toString().padLeft(2, '0')} $amPm';
+  }
+
   Future<void> scheduleFullScreenPrayerAlarms(
       List<Map<String, dynamic>> prayers,
       {required String adhanId}) async {
@@ -424,6 +432,17 @@ class NotificationService {
       await _alarmChannel.invokeMethod('cancelPrayerAlarms');
     } catch (_) {}
 
+    // Sent with every alarm so the lock screen Activity can show all 5
+    // prayers and compute "next prayer" itself, regardless of which one fired.
+    final allPrayers = prayers.map((entry) {
+      final time = entry['time'] as DateTime;
+      return {
+        'name': entry['name'] as String,
+        'time': _formatPrayerTime(time),
+        'epochMillis': time.millisecondsSinceEpoch,
+      };
+    }).toList();
+
     for (final entry in prayers) {
       final name = entry['name'] as String;
       final time = entry['time'] as DateTime;
@@ -432,23 +451,17 @@ class NotificationService {
       final notifId = _alarmNotifIds[name];
       if (notifId == null) continue;
 
-      final hour = time.hour > 12
-          ? time.hour - 12
-          : (time.hour == 0 ? 12 : time.hour);
-      final amPm = time.hour >= 12 ? 'PM' : 'AM';
-      final timeStr =
-          '$hour:${time.minute.toString().padLeft(2, '0')} $amPm';
-
       try {
         await _alarmChannel.invokeMethod('schedulePrayerAlarm', {
           'prayerName': name,
           'arabicName': _arabicPrayerNames[name] ?? '',
-          'prayerTime': timeStr,
+          'prayerTime': _formatPrayerTime(time),
           'message':
               _prayerAlarmMessages[name] ?? 'Time for $name prayer',
           'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
           'triggerAtMillis': time.millisecondsSinceEpoch,
           'notificationId': notifId,
+          'allPrayers': allPrayers,
         });
       } catch (e) {
         debugPrint(

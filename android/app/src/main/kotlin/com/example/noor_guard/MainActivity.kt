@@ -170,6 +170,15 @@ class MainActivity : FlutterActivity() {
         val triggerAtMillis = (args["triggerAtMillis"] as Number).toLong()
         val notifId = (args["notificationId"] as Number).toInt()
 
+        @Suppress("UNCHECKED_CAST")
+        val allPrayersRaw = args["allPrayers"] as? List<Map<String, Any>>
+        val allPrayersSerialized = allPrayersRaw?.joinToString(";") { entry ->
+            val name = entry["name"] as String
+            val time = entry["time"] as String
+            val millis = (entry["epochMillis"] as Number).toLong()
+            "$name,$time,$millis"
+        } ?: ""
+
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, PrayerAlarmReceiver::class.java).apply {
             putExtra(PrayerAlarmReceiver.EXTRA_PRAYER_NAME, prayerName)
@@ -178,6 +187,7 @@ class MainActivity : FlutterActivity() {
             putExtra(PrayerAlarmReceiver.EXTRA_PRAYER_MESSAGE, message)
             putExtra(PrayerAlarmReceiver.EXTRA_ADHAN_ID, adhanId)
             putExtra(PrayerAlarmReceiver.EXTRA_NOTIFICATION_ID, notifId)
+            putExtra(PrayerAlarmReceiver.EXTRA_ALL_PRAYERS, allPrayersSerialized)
         }
         val pi = PendingIntent.getBroadcast(
             this, notifId, intent,

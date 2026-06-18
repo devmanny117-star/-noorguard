@@ -21,6 +21,10 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
         const val EXTRA_PRAYER_MESSAGE = "prayer_message"
         const val EXTRA_ADHAN_ID = "adhan_id"
         const val EXTRA_NOTIFICATION_ID = "notification_id"
+        // Serialized as "name,timeStr,epochMillis;name,timeStr,epochMillis;..." for
+        // all 5 of today's prayers, so the lock screen Activity can show the full
+        // pills row and compute "next prayer" regardless of which alarm fired.
+        const val EXTRA_ALL_PRAYERS = "all_prayers"
 
         fun channelIdFor(adhanId: String) = "prayer_alarm_$adhanId"
 
@@ -74,6 +78,7 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
         val message = intent.getStringExtra(EXTRA_PRAYER_MESSAGE) ?: ""
         val adhanId = intent.getStringExtra(EXTRA_ADHAN_ID) ?: "makkah"
         val notifId = intent.getIntExtra(EXTRA_NOTIFICATION_ID, 100)
+        val allPrayers = intent.getStringExtra(EXTRA_ALL_PRAYERS) ?: ""
 
         // Acquire a partial wake lock so the device stays awake long enough
         // to post the notification and launch the full-screen Activity.
@@ -85,7 +90,9 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
         wakeLock.acquire(10_000L)
 
         try {
-            showAlarmNotification(context, prayerName, arabicName, prayerTime, message, adhanId, notifId)
+            showAlarmNotification(
+                context, prayerName, arabicName, prayerTime, message, adhanId, notifId, allPrayers
+            )
         } finally {
             wakeLock.release()
         }
@@ -99,6 +106,7 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
         message: String,
         adhanId: String,
         notifId: Int,
+        allPrayers: String,
     ) {
         val notifManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -119,6 +127,7 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
             putExtra(EXTRA_PRAYER_MESSAGE, message)
             putExtra(EXTRA_ADHAN_ID, adhanId)
             putExtra(EXTRA_NOTIFICATION_ID, notifId)
+            putExtra(EXTRA_ALL_PRAYERS, allPrayers)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or
                     Intent.FLAG_ACTIVITY_CLEAR_TOP or
                     Intent.FLAG_ACTIVITY_NO_USER_ACTION
