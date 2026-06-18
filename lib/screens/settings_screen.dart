@@ -17,20 +17,19 @@ import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
 import 'notification_setup_screen.dart';
 
-// Navy/gold palette matching the prayer card and dark-mode aesthetic.
-// Settings cards use this even in light mode for a premium, consistent feel.
-const _cardNavy = Color(0xFF0D1B2A);
-const _cardNavySecondary = Color(0xFF1A2A3A);
-const _cardNavyBorder = Color(0x26D4AF37);
+const _settingsBg = Color(0xFF0D1B2A);
+const _cardNavy = Color(0xFF1B2E45);
+const _cardNavySecondary = Color(0xFF132338);
+const _cream = Color(0xFFF5EFE6);
 
 const _navyCardColors = AppColorScheme(
-  background: _cardNavy,
-  warmBg: _cardNavy,
+  background: _settingsBg,
+  warmBg: _settingsBg,
   cardBg: _cardNavy,
   secondaryBg: _cardNavySecondary,
-  primaryText: Color(0xFFF5F5F0),
-  secondaryText: Color(0xFF8A9BB0),
-  border: _cardNavyBorder,
+  primaryText: _cream,
+  secondaryText: Color(0xB3F5EFE6),
+  border: Color(0x33C9A84C),
 );
 
 class SettingsScreen extends StatefulWidget {
@@ -192,12 +191,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final colors = context.appColors;
     final isDark = context.isDark;
-    final cardColors = isDark ? colors : _navyCardColors;
+    const cardColors = _navyCardColors;
     final themeController = ThemeScope.of(context);
     final prayerState = context.watch<PrayerState>();
     final l10n = AppLocalizations.of(context)!;
 
-    return CustomScrollView(
+    return ColoredBox(
+      color: colors.background,
+      child: CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
         // ── Page title ─────────────────────────────────────────────────
@@ -209,7 +210,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: GoogleFonts.playfairDisplay(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
-                color: colors.primaryText,
+                color: _cream,
               ),
             ),
           ),
@@ -237,21 +238,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onSelect: (v) => setState(() => _calculationMethod = v),
                 ),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _SelectRow(
                 label: l10n.adhanSound,
                 value: adhanStyleName(l10n, prayerState.selectedAdhanId),
                 colors: cardColors,
                 onTap: _showAdhanPicker,
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ToggleRow(
                 label: l10n.prayerNotifications,
                 value: prayerState.masterNotifications,
                 colors: cardColors,
                 onChanged: prayerState.toggleMasterNotifications,
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ActionRow(
                 label: 'Send Test Notification (10s)',
                 icon: Icons.notifications_active_outlined,
@@ -264,7 +265,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               ),
               if (!kIsWeb && Platform.isAndroid) ...[
-                _Divider(colors: cardColors),
+                const _Divider(colors: cardColors),
                 _ActionRow(
                   label: 'Test Full-Screen Lock Alarm (10s)',
                   icon: Icons.fullscreen_rounded,
@@ -279,7 +280,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
               ],
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ActionRow(
                 label: 'Test Adhan In-App (foreground)',
                 icon: Icons.volume_up_outlined,
@@ -290,7 +291,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               ),
               if (!kIsWeb && Platform.isAndroid) ...[
-                _Divider(colors: cardColors),
+                const _Divider(colors: cardColors),
                 _ActionRow(
                   label: 'Lock Screen Alert Setup Guide',
                   icon: Icons.lock_clock_outlined,
@@ -322,7 +323,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onChanged: (v) =>
                     prayerState.togglePrayerNotification('fajr', v),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.dhuhr,
                 icon: Icons.wb_sunny_rounded,
@@ -332,7 +333,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onChanged: (v) =>
                     prayerState.togglePrayerNotification('dhuhr', v),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.asr,
                 icon: Icons.light_mode_outlined,
@@ -342,7 +343,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onChanged: (v) =>
                     prayerState.togglePrayerNotification('asr', v),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.maghrib,
                 icon: Icons.nights_stay_rounded,
@@ -352,7 +353,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onChanged: (v) =>
                     prayerState.togglePrayerNotification('maghrib', v),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _PrayerRow(
                 name: l10n.isha,
                 icon: Icons.nightlight_rounded,
@@ -385,7 +386,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 colors: cardColors,
                 onChanged: (_) => themeController.toggle(isDark),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _SelectRow(
                 label: l10n.language,
                 value: _language,
@@ -406,7 +407,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ToggleRow(
                 label: l10n.beginnerMode,
                 subtitle: l10n.beginnerModeSubtitle,
@@ -603,35 +604,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 value: '1.0.0',
                 colors: cardColors,
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.rateApp,
                 icon: Icons.star_outline_rounded,
                 colors: cardColors,
                 onTap: () => _snack('Opening App Store…'),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.shareApp,
                 icon: Icons.share_outlined,
                 colors: cardColors,
                 onTap: () => _snack('Opening share sheet…'),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.contactSupport,
                 icon: Icons.mail_outline_rounded,
                 colors: cardColors,
                 onTap: () => _snack('Opening support email…'),
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.privacyPolicy,
                 icon: Icons.shield_outlined,
                 colors: cardColors,
                 onTap: _openPrivacyPolicy,
               ),
-              _Divider(colors: cardColors),
+              const _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.termsOfService,
                 icon: Icons.description_outlined,
@@ -656,6 +657,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
         const SliverToBoxAdapter(child: SizedBox(height: 52)),
       ],
+    ),
     );
   }
 }
@@ -771,15 +773,32 @@ class _SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(22, 0, 22, 8),
-        child: Text(
-          title.toUpperCase(),
-          style: GoogleFonts.lato(
-            fontSize: 11,
-            fontWeight: FontWeight.w700,
-            color: AppColors.gold,
-            letterSpacing: 1.3,
-          ),
+        padding: const EdgeInsets.fromLTRB(22, 0, 22, 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title.toUpperCase(),
+              style: GoogleFonts.lato(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                color: AppColors.gold,
+                letterSpacing: 1.3,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Container(
+              height: 1,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    AppColors.gold.withValues(alpha: 0.6),
+                    AppColors.gold.withValues(alpha: 0.0),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -1137,27 +1156,25 @@ class _PickerSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final maxHeight = MediaQuery.of(context).size.height * 0.7;
 
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: Container(
-        decoration: BoxDecoration(
-          color: colors.cardBg,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        decoration: const BoxDecoration(
+          color: _settingsBg,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 12),
-              // Handle bar
               Container(
                 width: 36,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: colors.border,
+                  color: AppColors.gold.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -1167,7 +1184,7 @@ class _PickerSheet extends StatelessWidget {
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
-                  color: colors.primaryText,
+                  color: _cream,
                 ),
               ),
               const SizedBox(height: 8),
@@ -1195,7 +1212,7 @@ class _PickerSheet extends StatelessWidget {
                                   : FontWeight.w400,
                               color: isSelected
                                   ? AppColors.gold
-                                  : colors.primaryText,
+                                  : _cream,
                             ),
                           ),
                         ),
@@ -1258,7 +1275,6 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
     final selectedId = context.watch<PrayerState>().selectedAdhanId;
     final maxHeight = MediaQuery.of(context).size.height * 0.75;
@@ -1266,21 +1282,20 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: Container(
-        decoration: BoxDecoration(
-          color: colors.cardBg,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        decoration: const BoxDecoration(
+          color: _settingsBg,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 12),
-              // Handle bar
               Container(
                 width: 36,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: colors.border,
+                  color: AppColors.gold.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -1290,7 +1305,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
-                  color: colors.primaryText,
+                  color: _cream,
                 ),
               ),
               const SizedBox(height: 8),
@@ -1327,7 +1342,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                                       : FontWeight.w400,
                                   color: isSelected
                                       ? AppColors.gold
-                                      : colors.primaryText,
+                                      : _cream,
                                 ),
                               ),
                               Text(
@@ -1335,7 +1350,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                                 textDirection: TextDirection.rtl,
                                 style: GoogleFonts.scheherazadeNew(
                                   fontSize: 14,
-                                  color: colors.secondaryText,
+                                  color: _cream.withValues(alpha: 0.5),
                                 ),
                               ),
                             ],
