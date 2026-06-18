@@ -22,7 +22,49 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
         const val EXTRA_ADHAN_ID = "adhan_id"
         const val EXTRA_NOTIFICATION_ID = "notification_id"
 
-        private fun channelIdFor(adhanId: String) = "prayer_alarm_$adhanId"
+        fun channelIdFor(adhanId: String) = "prayer_alarm_$adhanId"
+
+        /**
+         * Creates the alarm channel for [adhanId] if it doesn't already exist.
+         *
+         * IMPORTANT: never delete-then-recreate an existing channel here. Once a
+         * user opens Settings and grants the OEM-specific "pop-up"/"full screen"
+         * toggle for this channel (Samsung One UI exposes this per-channel),
+         * deleting the channel resets it to defaults and silently revokes that
+         * choice. Since each adhan style already has its own channel id, the
+         * sound is fixed for the lifetime of that id and there's never a reason
+         * to delete it — createNotificationChannel() is a safe no-op if the
+         * channel already exists.
+         */
+        fun ensureChannel(context: Context, adhanId: String) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+            val notifManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val channelId = channelIdFor(adhanId)
+            val soundResource = "adhan_$adhanId"
+            val soundUri = Uri.parse(
+                "android.resource://${context.packageName}/raw/$soundResource"
+            )
+            val channel = NotificationChannel(
+                channelId,
+                "Prayer Time Alarm",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Full-screen prayer time alarm with adhan"
+                setSound(
+                    soundUri,
+                    AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_ALARM)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .build()
+                )
+                enableVibration(true)
+                vibrationPattern = longArrayOf(0, 500, 200, 500)
+                setBypassDnd(true)
+                lockscreenVisibility = android.app.Notification.VISIBILITY_PUBLIC
+            }
+            notifManager.createNotificationChannel(channel)
+        }
     }
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -67,30 +109,7 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
             "android.resource://${context.packageName}/raw/$soundResource"
         )
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // Delete stale channel so importance/sound changes take effect.
-            notifManager.deleteNotificationChannel(channelId)
-
-            val channel = NotificationChannel(
-                channelId,
-                "Prayer Time Alarm",
-                NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                description = "Full-screen prayer time alarm with adhan"
-                setSound(
-                    soundUri,
-                    AudioAttributes.Builder()
-                        .setUsage(AudioAttributes.USAGE_ALARM)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                        .build()
-                )
-                enableVibration(true)
-                vibrationPattern = longArrayOf(0, 500, 200, 500)
-                setBypassDnd(true)
-                lockscreenVisibility = android.app.Notification.VISIBILITY_PUBLIC
-            }
-            notifManager.createNotificationChannel(channel)
-        }
+        ensureChannel(context, adhanId)
 
         // Full-screen intent — launches PrayerAlarmActivity over the lock screen.
         val fullScreenIntent = Intent(context, PrayerAlarmActivity::class.java).apply {

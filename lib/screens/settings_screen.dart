@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +15,7 @@ import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
+import 'notification_setup_screen.dart';
 
 // Navy/gold palette matching the prayer card and dark-mode aesthetic.
 // Settings cards use this even in light mode for a premium, consistent feel.
@@ -259,6 +263,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   _snack('Test notification will arrive in 10 seconds');
                 },
               ),
+              if (!kIsWeb && Platform.isAndroid) ...[
+                _Divider(colors: cardColors),
+                _ActionRow(
+                  label: 'Test Full-Screen Lock Alarm (10s)',
+                  icon: Icons.fullscreen_rounded,
+                  colors: cardColors,
+                  onTap: () {
+                    NotificationService().scheduleTestFullScreenAlarm(
+                      adhanId: prayerState.selectedAdhanId,
+                    );
+                    _snack(
+                      'Lock alarm fires in 10 seconds — lock your phone now',
+                    );
+                  },
+                ),
+              ],
               _Divider(colors: cardColors),
               _ActionRow(
                 label: 'Test Adhan In-App (foreground)',
@@ -269,6 +289,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   _snack('Playing the full adhan with a silent banner');
                 },
               ),
+              if (!kIsWeb && Platform.isAndroid) ...[
+                _Divider(colors: cardColors),
+                _ActionRow(
+                  label: 'Lock Screen Alert Setup Guide',
+                  icon: Icons.lock_clock_outlined,
+                  colors: cardColors,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const NotificationSetupScreen(),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

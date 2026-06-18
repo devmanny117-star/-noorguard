@@ -1,10 +1,13 @@
+import 'dart:io';
 import 'dart:math' as math;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_controller.dart';
 import 'home_screen.dart';
+import 'notification_setup_screen.dart';
 
 // Fixed onboarding palette — always dark regardless of system theme
 const _bg = Color(0xFF0D1B2A);
@@ -76,9 +79,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('onboarding_complete', true);
     if (!mounted) return;
+    final needsNotificationSetup = !kIsWeb &&
+        Platform.isAndroid &&
+        !(prefs.getBool('notification_setup_complete') ?? false);
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => const HomeScreen(),
+        pageBuilder: (_, __, ___) => needsNotificationSetup
+            ? const NotificationSetupScreen(isFirstLaunch: true)
+            : const HomeScreen(),
         transitionsBuilder: (_, animation, __, child) =>
             FadeTransition(opacity: animation, child: child),
         transitionDuration: const Duration(milliseconds: 700),

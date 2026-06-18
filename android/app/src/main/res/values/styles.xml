@@ -21,7 +21,5 @@
         <item name="android:statusBarColor">@color/navy</item>
         <item name="android:navigationBarColor">@color/navy</item>
         <item name="android:windowFullscreen">false</item>
-        <item name="android:windowShowWhenLocked">true</item>
-        <item name="android:windowTurnScreenOn">true</item>
     </style>
 </resources>

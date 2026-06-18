@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:timezone/data/latest.dart' as tz_data;
 import 'locale_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/home_screen.dart';
+import 'screens/notification_setup_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'theme/app_theme.dart';
 import 'theme/theme_controller.dart';
@@ -184,12 +186,23 @@ class _SplashScreenState extends State<SplashScreen>
       if (!mounted) return;
       final prefs = await SharedPreferences.getInstance();
       final onboardingComplete = prefs.getBool('onboarding_complete') ?? false;
+      final notificationSetupComplete =
+          prefs.getBool('notification_setup_complete') ?? false;
       if (!mounted) return;
+      // Existing installs that already finished onboarding before this guide
+      // existed still get routed through it once, since they're the ones
+      // most likely to be missing the Samsung-specific lock screen toggle.
+      Widget next;
+      if (!onboardingComplete) {
+        next = const OnboardingScreen();
+      } else if (!kIsWeb && Platform.isAndroid && !notificationSetupComplete) {
+        next = const NotificationSetupScreen(isFirstLaunch: true);
+      } else {
+        next = const HomeScreen();
+      }
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
-          pageBuilder: (_, __, ___) => onboardingComplete
-              ? const HomeScreen()
-              : const OnboardingScreen(),
+          pageBuilder: (_, __, ___) => next,
           transitionsBuilder: (_, animation, __, child) =>
               FadeTransition(opacity: animation, child: child),
           transitionDuration: const Duration(milliseconds: 600),

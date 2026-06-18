@@ -7,6 +7,8 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import android.widget.TextView
 
 class PrayerAlarmActivity : Activity() {
@@ -35,6 +37,19 @@ class PrayerAlarmActivity : Activity() {
         findViewById<TextView>(R.id.btnDismiss).setOnClickListener {
             dismissAlarm(notifId)
         }
+
+        pulseAdhanBadge()
+    }
+
+    /** Slow opacity pulse on the "Adhan Playing" badge so it reads as a live indicator. */
+    private fun pulseAdhanBadge() {
+        val badge = findViewById<android.widget.LinearLayout>(R.id.badgeAdhanPlaying)
+        val pulse = AlphaAnimation(1f, 0.45f).apply {
+            duration = 900
+            repeatMode = Animation.REVERSE
+            repeatCount = Animation.INFINITE
+        }
+        badge.startAnimation(pulse)
     }
 
     private fun showOverLockScreen() {

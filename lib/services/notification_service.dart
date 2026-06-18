@@ -120,34 +120,102 @@ class NotificationService {
     );
 
     await androidPlugin?.requestNotificationsPermission();
-    // Android 12+ requires this special-access permission for exact alarms;
-    // prompts the system "Alarms & reminders" settings screen if not granted.
     await androidPlugin?.requestExactAlarmsPermission();
+  }
 
-    if (!kIsWeb && Platform.isAndroid) {
-      await _checkFullScreenIntentPermission();
+  Future<bool> get canUseFullScreenIntent async {
+    if (kIsWeb || !Platform.isAndroid) return true;
+    try {
+      return await _alarmChannel.invokeMethod<bool>(
+              'canUseFullScreenIntent') ??
+          true;
+    } catch (_) {
+      return true;
     }
   }
 
-  Future<void> _checkFullScreenIntentPermission() async {
+  Future<bool> get canDrawOverlays async {
+    if (kIsWeb || !Platform.isAndroid) return true;
     try {
-      final canUse = await _alarmChannel.invokeMethod<bool>(
-          'canUseFullScreenIntent');
-      if (canUse == false) {
-        await _alarmChannel.invokeMethod('openFullScreenIntentSettings');
-      }
-    } catch (e) {
-      debugPrint('NotificationService: full-screen intent check failed: $e');
+      return await _alarmChannel.invokeMethod<bool>('canDrawOverlays') ??
+          true;
+    } catch (_) {
+      return true;
     }
+  }
+
+  Future<void> openFullScreenIntentSettings() async {
+    if (kIsWeb || !Platform.isAndroid) return;
     try {
-      final canOverlay = await _alarmChannel.invokeMethod<bool>(
-          'canDrawOverlays');
-      if (canOverlay == false) {
-        await _alarmChannel.invokeMethod('openOverlaySettings');
-      }
-    } catch (e) {
-      debugPrint('NotificationService: overlay permission check failed: $e');
+      await _alarmChannel.invokeMethod('openFullScreenIntentSettings');
+    } catch (_) {}
+  }
+
+  Future<void> openOverlaySettings() async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('openOverlaySettings');
+    } catch (_) {}
+  }
+
+  Future<bool> get areNotificationsEnabled async {
+    if (kIsWeb || !Platform.isAndroid) return true;
+    final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    return await androidPlugin?.areNotificationsEnabled() ?? true;
+  }
+
+  Future<bool> get canScheduleExactAlarms async {
+    if (kIsWeb || !Platform.isAndroid) return true;
+    try {
+      return await _alarmChannel.invokeMethod<bool>('canScheduleExactAlarms') ??
+          true;
+    } catch (_) {
+      return true;
     }
+  }
+
+  Future<void> requestNotificationsPermission() async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    await androidPlugin?.requestNotificationsPermission();
+  }
+
+  Future<void> openExactAlarmSettings() async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('openExactAlarmSettings');
+    } catch (_) {}
+  }
+
+  /// Creates (idempotently) the full-screen alarm channel for [adhanId] so a
+  /// Settings deep link can land on a channel that already exists, even
+  /// before the user's first prayer alarm has ever fired.
+  Future<void> ensureAlarmChannel(String adhanId) async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('ensureAlarmChannel', {
+        'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
+      });
+    } catch (_) {}
+  }
+
+  /// Opens this app's notification settings page. On Samsung One UI this is
+  /// where the "Pop-up notification" toggle lives (per channel). Pass
+  /// [adhanId] to jump straight to the currently selected adhan's alarm
+  /// channel instead of the app's general notification settings list.
+  Future<void> openAppNotificationSettings({String? adhanId}) async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    if (adhanId != null) await ensureAlarmChannel(adhanId);
+    final channelId = adhanId != null
+        ? 'prayer_alarm_${adhanSoundResource(adhanId).replaceFirst('adhan_', '')}'
+        : null;
+    try {
+      await _alarmChannel.invokeMethod('openAppNotificationSettings', {
+        'channelId': channelId,
+      });
+    } catch (_) {}
   }
 
   /// Creates (idempotently) the Android channel whose sound is the bundled
@@ -440,6 +508,21 @@ class NotificationService {
       );
     } catch (e) {
       debugPrint('NotificationService: failed to schedule test notification: $e');
+    }
+  }
+
+  /// Schedules a one-off **full-screen lock alarm** 10 seconds from now,
+  /// through the same native AlarmManager -> PrayerAlarmReceiver path real
+  /// prayer alarms use, so the lock screen activity can be verified on a
+  /// real device without waiting for an actual prayer time.
+  Future<void> scheduleTestFullScreenAlarm({required String adhanId}) async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('scheduleTestAlarm', {
+        'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
+      });
+    } catch (e) {
+      debugPrint('NotificationService: failed to schedule test alarm: $e');
     }
   }
 }

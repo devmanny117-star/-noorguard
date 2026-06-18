@@ -2,8 +2,13 @@
 <resources>
     <color name="navy">#FF0D1B2A</color>
     <color name="navy_light">#FF152030</color>
-    <color name="gold">#FFD4AF37</color>
+    <!-- Matches AppColors.gold / lightGold / mutedGold in lib/theme/app_theme.dart -->
+    <color name="gold">#FFC9A84C</color>
     <color name="gold_light">#FFE8D5A3</color>
+    <color name="gold_muted">#FFA08532</color>
+    <color name="cream">#FFF5F5F0</color>
+    <color name="cream_muted">#D9F5F5F0</color>
     <color name="white_70">#B3FFFFFF</color>
-    <color name="gold_20">#33D4AF37</color>
+    <color name="gold_20">#33C9A84C</color>
+    <color name="overlay_navy">#A60D1B2A</color>
 </resources>

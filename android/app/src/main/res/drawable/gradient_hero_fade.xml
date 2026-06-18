@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Top-to-bottom fade: transparent where it meets the photo, solid navy
+         where it meets the page background, so the hero image blends in and
+         the crescent/text sitting over it stay readable. -->
+    <gradient
+        android:angle="270"
+        android:startColor="#000D1B2A"
+        android:centerColor="#A60D1B2A"
+        android:endColor="#FF0D1B2A" />
+</shape>

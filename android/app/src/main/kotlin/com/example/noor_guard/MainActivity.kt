@@ -19,6 +19,12 @@ class MainActivity : FlutterActivity() {
     companion object {
         var adhanChannel: MethodChannel? = null
         var isAdhanPlaying = false
+
+        // Distinct from the real prayer alarm ids (100-104) and the basic
+        // test notification id (999) used by flutter_local_notifications, so
+        // testing never collides with a scheduled prayer or its actions
+        // (which use notifId+200/+300 as PendingIntent request codes).
+        private const val TEST_ALARM_NOTIFICATION_ID = 199
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
@@ -69,6 +75,31 @@ class MainActivity : FlutterActivity() {
                 }
                 "openOverlaySettings" -> {
                     openOverlaySettings()
+                    result.success(null)
+                }
+                "canScheduleExactAlarms" -> {
+                    result.success(canScheduleExactAlarms())
+                }
+                "openExactAlarmSettings" -> {
+                    openExactAlarmSettings()
+                    result.success(null)
+                }
+                "ensureAlarmChannel" -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val args = call.arguments as Map<String, Any>
+                    PrayerAlarmReceiver.ensureChannel(this, args["adhanId"] as String)
+                    result.success(null)
+                }
+                "openAppNotificationSettings" -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val args = call.arguments as? Map<String, Any?>
+                    openAppNotificationSettings(args?.get("channelId") as? String)
+                    result.success(null)
+                }
+                "scheduleTestAlarm" -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val args = call.arguments as Map<String, Any>
+                    scheduleTestAlarm(args["adhanId"] as String)
                     result.success(null)
                 }
                 else -> result.notImplemented()
@@ -170,6 +201,26 @@ class MainActivity : FlutterActivity() {
         }
     }
 
+    /**
+     * Schedules a one-off alarm 10 seconds from now through the exact same
+     * AlarmManager -> PrayerAlarmReceiver -> full-screen-intent path real
+     * prayer alarms use, so the lock screen activity can be verified without
+     * waiting for an actual prayer time.
+     */
+    private fun scheduleTestAlarm(adhanId: String) {
+        schedulePrayerAlarm(
+            mapOf(
+                "prayerName" to "Test Alarm",
+                "arabicName" to "تجربة",
+                "prayerTime" to "Now",
+                "message" to "This is a test of the full-screen lock alarm.",
+                "adhanId" to adhanId,
+                "triggerAtMillis" to (System.currentTimeMillis() + 10_000L),
+                "notificationId" to TEST_ALARM_NOTIFICATION_ID,
+            )
+        )
+    }
+
     private fun cancelPrayerAlarms() {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         for (id in 100..104) {
@@ -222,6 +273,47 @@ class MainActivity : FlutterActivity() {
                 Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                 android.net.Uri.parse("package:$packageName")
             )
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        } catch (_: Exception) {}
+    }
+
+    private fun canScheduleExactAlarms(): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            return alarmManager.canScheduleExactAlarms()
+        }
+        return true
+    }
+
+    private fun openExactAlarmSettings() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            try {
+                val intent = Intent(
+                    Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM,
+                    android.net.Uri.parse("package:$packageName")
+                )
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+            } catch (_: Exception) {}
+        }
+    }
+
+    /**
+     * Opens this app's notification settings page. On Samsung One UI this is
+     * where the "Pop-up notification" (sometimes "Cover screen pop-up" on
+     * Fold/Flip) toggle lives per-channel — there's no dedicated public Intent
+     * action for it, so this is the closest reliable deep link. Passing
+     * [channelId] jumps straight to that channel's settings instead of the
+     * app's general notification settings list.
+     */
+    private fun openAppNotificationSettings(channelId: String?) {
+        try {
+            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+            intent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+            if (channelId != null) {
+                intent.putExtra(Settings.EXTRA_CHANNEL_ID, channelId)
+            }
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         } catch (_: Exception) {}
