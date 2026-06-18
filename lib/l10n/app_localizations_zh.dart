@@ -913,6 +913,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get categoryFiqh => '教法（菲格亥）';
 
   @override
+  String get categoryHistory => '历史';
+
+  @override
   String get noTermsFound => '未找到相关术语';
 
   @override

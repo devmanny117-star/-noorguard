@@ -956,6 +956,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get categoryFiqh => 'فقہ';
 
   @override
+  String get categoryHistory => 'تاریخ';
+
+  @override
   String get noTermsFound => 'کوئی اصطلاح نہیں ملی';
 
   @override

@@ -1810,6 +1810,12 @@ abstract class AppLocalizations {
   /// **'Fiqh'**
   String get categoryFiqh;
 
+  /// Filter chip label for Islamic history category
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get categoryHistory;
+
   /// Empty state message when no glossary terms match
   ///
   /// In en, this message translates to:

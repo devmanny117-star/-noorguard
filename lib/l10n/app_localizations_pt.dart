@@ -961,6 +961,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get categoryFiqh => 'Fiqh';
 
   @override
+  String get categoryHistory => 'História';
+
+  @override
   String get noTermsFound => 'Nenhum termo encontrado';
 
   @override

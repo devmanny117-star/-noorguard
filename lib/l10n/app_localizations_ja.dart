@@ -921,6 +921,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get categoryFiqh => 'フィクフ(法学)';
 
   @override
+  String get categoryHistory => '歴史';
+
+  @override
   String get noTermsFound => '用語が見つかりません';
 
   @override

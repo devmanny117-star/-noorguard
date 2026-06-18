@@ -959,6 +959,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get categoryFiqh => 'Fiqh';
 
   @override
+  String get categoryHistory => 'Historia';
+
+  @override
   String get noTermsFound => 'Hakuna maneno yaliyopatikana';
 
   @override

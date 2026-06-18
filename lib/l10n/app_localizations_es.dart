@@ -962,6 +962,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get categoryFiqh => 'Fiqh';
 
   @override
+  String get categoryHistory => 'Historia';
+
+  @override
   String get noTermsFound => 'No se encontraron términos';
 
   @override

@@ -964,6 +964,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get categoryFiqh => 'Fiqh';
 
   @override
+  String get categoryHistory => 'Geschichte';
+
+  @override
   String get noTermsFound => 'Keine Begriffe gefunden';
 
   @override

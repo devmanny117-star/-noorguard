@@ -960,6 +960,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get categoryFiqh => 'Fıkıh';
 
   @override
+  String get categoryHistory => 'Tarih';
+
+  @override
   String get noTermsFound => 'Terim bulunamadı';
 
   @override

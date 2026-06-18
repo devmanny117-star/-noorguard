@@ -958,6 +958,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categoryFiqh => 'Fiqh';
 
   @override
+  String get categoryHistory => 'History';
+
+  @override
   String get noTermsFound => 'No terms found';
 
   @override

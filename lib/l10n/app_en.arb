@@ -1194,6 +1194,10 @@
   "@categoryFiqh": {
     "description": "Filter chip label for fiqh category"
   },
+  "categoryHistory": "History",
+  "@categoryHistory": {
+    "description": "Filter chip label for Islamic history category"
+  },
   "noTermsFound": "No terms found",
   "@noTermsFound": {
     "description": "Empty state message when no glossary terms match"

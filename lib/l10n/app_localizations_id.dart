@@ -960,6 +960,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get categoryFiqh => 'Fikih';
 
   @override
+  String get categoryHistory => 'Sejarah';
+
+  @override
   String get noTermsFound => 'Istilah tidak ditemukan';
 
   @override

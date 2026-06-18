@@ -949,6 +949,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get categoryFiqh => 'الفقه';
 
   @override
+  String get categoryHistory => 'التاريخ';
+
+  @override
   String get noTermsFound => 'لا توجد مصطلحات';
 
   @override

@@ -958,6 +958,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get categoryFiqh => 'ফিকহ';
 
   @override
+  String get categoryHistory => 'ইতিহাস';
+
+  @override
   String get noTermsFound => 'কোনো পরিভাষা পাওয়া যায়নি';
 
   @override

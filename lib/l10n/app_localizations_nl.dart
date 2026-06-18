@@ -960,6 +960,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get categoryFiqh => 'Fiqh';
 
   @override
+  String get categoryHistory => 'Geschiedenis';
+
+  @override
   String get noTermsFound => 'Geen termen gevonden';
 
   @override
