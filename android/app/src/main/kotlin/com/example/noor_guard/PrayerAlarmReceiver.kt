@@ -163,6 +163,7 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
             .setContentTitle("$prayerName  $arabicName")
             .setContentText(message)
             .setSubText(prayerTime)
+            .setShowWhen(false)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
