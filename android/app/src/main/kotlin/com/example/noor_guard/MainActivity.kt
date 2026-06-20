@@ -116,6 +116,7 @@ class MainActivity : FlutterActivity() {
                         args["channelName"] as String,
                         args["channelDescription"] as String,
                     )
+                    maybeRequestSamsungBatteryExemption()
                     result.success(null)
                 }
                 "stopKeepAliveService" -> {
@@ -214,21 +215,21 @@ class MainActivity : FlutterActivity() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (alarmManager.canScheduleExactAlarms()) {
-                alarmManager.setExactAndAllowWhileIdle(
-                    AlarmManager.RTC_WAKEUP, triggerAtMillis, pi
-                )
-            } else {
-                alarmManager.setAndAllowWhileIdle(
-                    AlarmManager.RTC_WAKEUP, triggerAtMillis, pi
-                )
-            }
-        } else {
-            alarmManager.setExactAndAllowWhileIdle(
-                AlarmManager.RTC_WAKEUP, triggerAtMillis, pi
-            )
-        }
+        // setAlarmClock() — not setExactAndAllowWhileIdle() — is what keeps this
+        // firing on time under Doze AND under Battery Saver, without asking the
+        // user to turn Battery Saver off or grant anything: Android exempts
+        // "alarm clock" alarms from both unconditionally (the same mechanism
+        // alarm-clock apps rely on), and unlike setExact/setExactAndAllowWhileIdle
+        // it needs no SCHEDULE_EXACT_ALARM permission at all — the status bar's
+        // alarm icon is considered sufficient transparency to the user. Tapping
+        // that icon opens the app via showIntent.
+        val showIntent = PendingIntent.getActivity(
+            this, notifId, Intent(this, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        alarmManager.setAlarmClock(
+            AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent), pi
+        )
     }
 
     private fun cancelPrayerAlarms() {
@@ -332,6 +333,26 @@ class MainActivity : FlutterActivity() {
     private fun isIgnoringBatteryOptimizations(): Boolean {
         val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
         return powerManager.isIgnoringBatteryOptimizations(packageName)
+    }
+
+    /**
+     * Samsung's own battery management is more aggressive than stock Android's,
+     * so the keep-alive foreground service alone isn't always enough there —
+     * the user still has to grant the per-app "ignore battery optimizations"
+     * exemption for the service to be reliably left alone. Asked for once,
+     * automatically, the first time the service starts on a Samsung device;
+     * never asked again after that (whether granted or denied), so the user
+     * isn't nagged — they can still grant it anytime via the Lock Screen Alert
+     * Setup Guide. This never touches the system-wide Battery Saver toggle
+     * itself, only this app's exemption from it.
+     */
+    private fun maybeRequestSamsungBatteryExemption() {
+        if (!Build.MANUFACTURER.equals("samsung", ignoreCase = true)) return
+        if (isIgnoringBatteryOptimizations()) return
+        val prefs = getSharedPreferences("battery_optimization_prefs", Context.MODE_PRIVATE)
+        if (prefs.getBoolean("samsung_auto_prompt_shown", false)) return
+        prefs.edit().putBoolean("samsung_auto_prompt_shown", true).apply()
+        openBatteryOptimizationSettings()
     }
 
     /**

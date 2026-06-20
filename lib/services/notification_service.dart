@@ -361,16 +361,20 @@ class NotificationService {
     );
   }
 
-  /// Falls back to inexact scheduling if exact-alarm permission isn't
-  /// granted, so reminders still fire (within a short OS-controlled window)
-  /// instead of throwing and silently dropping the schedule.
+  /// Uses alarmClock when exact-alarm permission is granted: like
+  /// setAlarmClock() on the native full-screen alarm, this is exempt from
+  /// Doze AND Battery Saver, so the 15-minutes-early reminder still fires on
+  /// time without the user needing to turn Battery Saver off. Falls back to
+  /// inexact scheduling if exact-alarm permission isn't granted, so reminders
+  /// still fire (within a short OS-controlled window) instead of throwing and
+  /// silently dropping the schedule.
   Future<AndroidScheduleMode> _scheduleMode() async {
     final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     final canScheduleExact =
         await androidPlugin?.canScheduleExactNotifications() ?? false;
     return canScheduleExact
-        ? AndroidScheduleMode.exactAllowWhileIdle
+        ? AndroidScheduleMode.alarmClock
         : AndroidScheduleMode.inexactAllowWhileIdle;
   }
 
