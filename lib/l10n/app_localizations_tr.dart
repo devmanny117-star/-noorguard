@@ -1526,4 +1526,115 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Tefsir yükleniyor...';
+
+  @override
+  String get keepAliveNotificationText => 'Namaz bildirimleri etkin';
+
+  @override
+  String get keepAliveChannelName => 'Namaz Bildirimleri';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Namaz alarmlarının asla kaçırılmaması için Noor Guard\'ı arka planda etkin tutar.';
+
+  @override
+  String get notifSetupTitle => 'Kilit Ekranı Uyarılarını Etkinleştir';
+
+  @override
+  String get notifSetupSubtitle =>
+      'Telefonunuz kilitliyken bile ezanı asla kaçırmamanız için. Yaklaşık bir dakika sürer.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Samsung Galaxy (Fold/Flip dahil) kullanıyor musunuz? Samsung, standart Android\'in dışında ek anahtarlar ekler — aşağıdaki 4. ve 6. adımlar bunları tam olarak nerede bulacağınızı gösterir.';
+
+  @override
+  String get notifSetupStep1Title => 'Bildirimlere İzin Ver';
+
+  @override
+  String get notifSetupStep1Description =>
+      'Noor Guard\'ın sizi herhangi bir şekilde uyarabilmesi için gereken temel izin.';
+
+  @override
+  String get notifSetupStep1Action => 'Bildirimlere İzin Ver';
+
+  @override
+  String get notifSetupStep2Title => 'Alarmlar ve Hatırlatıcılar';
+
+  @override
+  String get notifSetupStep2Description =>
+      'Telefonunuz boştayken veya pil tasarrufu modundayken bile namaz alarmlarının tam namaz vaktinde çalmasını sağlar.';
+
+  @override
+  String get notifSetupStep2Action => 'Alarm Ayarlarını Aç';
+
+  @override
+  String get notifSetupStep3Title => 'Diğer Uygulamaların Üzerinde Göster';
+
+  @override
+  String get notifSetupStep3Description =>
+      'Tam namaz ekranının kilit ekranının ve açık olan her şeyin üzerinde görünmesini sağlar.';
+
+  @override
+  String get notifSetupStep3Action => 'Ayarları Aç';
+
+  @override
+  String get notifSetupStep4Title =>
+      'Açılır Pencere / Tam Ekran Uyarı Olarak Göster';
+
+  @override
+  String get notifSetupStep4Description =>
+      'Ezan ekranının sessiz bir banner olarak kalmak yerine kilit ekranını delip geçmesini sağlar.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Samsung Galaxy telefonlarda (Fold/Flip dahil): Ayarlar\'ı açın → \"Prayer Time Alarm\"e dokunun, sonra \"Pop-up notification\"ı açın (Fold/Flip\'te \"Cover screen pop-up\" olarak adlandırılır). Bu yalnızca Samsung\'a özel bir anahtardır — bunu açmak, ezan ekranını gerçekten kilit ekranınızın üzerine getiren şeydir.';
+
+  @override
+  String get notifSetupStep4Action => 'Bildirim Ayarlarını Aç';
+
+  @override
+  String get notifSetupStep5Title => 'Bildirimleri Güvenilir Tutun';
+
+  @override
+  String get notifSetupStep5Description =>
+      'Android\'in Noor Guard\'ı arka planda yavaşlatmasını veya geciktirmesini önler, böylece namaz alarmları ve hatırlatıcılar her zaman zamanında ulaşır.';
+
+  @override
+  String get notifSetupStep5Action => 'Pil Optimizasyonunu Kapat';
+
+  @override
+  String get notifSetupStep6Title => 'Asla Uyumayan Uygulamalar';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Samsung\'un pil yöneticisi Noor Guard\'ı uyutabilir ve namaz alarmlarını sessizce engelleyebilir. Onu \"Never sleeping apps\" listesine eklemek bunu önler.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'Ayarlar → Pil ve cihaz bakımı → Arka plan kullanım sınırları → Never sleeping apps → \"+\" işaretine dokunun → Noor Guard\'ı seçin.';
+
+  @override
+  String get notifSetupStep6Action => 'Pil Ayarlarını Aç';
+
+  @override
+  String get notifSetupStatusChecking => 'Kontrol ediliyor…';
+
+  @override
+  String get notifSetupStatusEnabled => 'Etkin';
+
+  @override
+  String get notifSetupStatusNeeded => 'Gerekli';
+
+  @override
+  String get notifSetupStatusManual => 'Manuel Adım';
+
+  @override
+  String get notifSetupContinueButton => 'Noor Guard\'a Geç';
+
+  @override
+  String get notifSetupLaterButton => 'Bunu daha sonra tamamlayacağım';
+
+  @override
+  String get notifSetupDoneButton => 'Tamamlandı';
 }

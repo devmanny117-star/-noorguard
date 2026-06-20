@@ -1530,4 +1530,115 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Memuat tafsir...';
+
+  @override
+  String get keepAliveNotificationText => 'Notifikasi sholat aktif';
+
+  @override
+  String get keepAliveChannelName => 'Notifikasi Sholat';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Membuat Noor Guard tetap aktif di latar belakang agar alarm sholat tidak pernah terlewat.';
+
+  @override
+  String get notifSetupTitle => 'Aktifkan Peringatan Layar Kunci';
+
+  @override
+  String get notifSetupSubtitle =>
+      'Agar Anda tidak pernah melewatkan adzan — bahkan saat ponsel Anda terkunci. Hanya membutuhkan waktu sekitar satu menit.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Menggunakan Samsung Galaxy (termasuk Fold/Flip)? Samsung menambahkan sakelar tambahan di luar Android standar — Langkah 4 dan 6 di bawah ini menunjukkan persis di mana menemukannya.';
+
+  @override
+  String get notifSetupStep1Title => 'Izinkan Notifikasi';
+
+  @override
+  String get notifSetupStep1Description =>
+      'Izin dasar yang dibutuhkan Noor Guard agar dapat memberi tahu Anda sama sekali.';
+
+  @override
+  String get notifSetupStep1Action => 'Izinkan Notifikasi';
+
+  @override
+  String get notifSetupStep2Title => 'Alarm & Pengingat';
+
+  @override
+  String get notifSetupStep2Description =>
+      'Memungkinkan alarm sholat berbunyi tepat pada waktu sholat, bahkan saat ponsel Anda diam atau dalam mode hemat daya.';
+
+  @override
+  String get notifSetupStep2Action => 'Buka Pengaturan Alarm';
+
+  @override
+  String get notifSetupStep3Title => 'Tampilkan di Atas Aplikasi Lain';
+
+  @override
+  String get notifSetupStep3Description =>
+      'Memungkinkan layar sholat penuh muncul di atas layar kunci dan apa pun yang sedang terbuka.';
+
+  @override
+  String get notifSetupStep3Action => 'Buka Pengaturan';
+
+  @override
+  String get notifSetupStep4Title =>
+      'Tampilkan sebagai Pop-up / Peringatan Layar Penuh';
+
+  @override
+  String get notifSetupStep4Description =>
+      'Memungkinkan layar adzan menembus layar kunci, bukan tetap menjadi banner senyap.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Di ponsel Samsung Galaxy (termasuk Fold/Flip): buka Pengaturan → ketuk \"Prayer Time Alarm\", lalu aktifkan \"Pop-up notification\" (disebut \"Cover screen pop-up\" di Fold/Flip). Ini sakelar khusus Samsung — mengaktifkannya yang sebenarnya membuat layar adzan muncul di atas layar kunci Anda.';
+
+  @override
+  String get notifSetupStep4Action => 'Buka Pengaturan Notifikasi';
+
+  @override
+  String get notifSetupStep5Title => 'Jaga Notifikasi Tetap Andal';
+
+  @override
+  String get notifSetupStep5Description =>
+      'Mencegah Android memperlambat atau menunda Noor Guard di latar belakang, sehingga alarm dan pengingat sholat selalu tiba tepat waktu.';
+
+  @override
+  String get notifSetupStep5Action => 'Nonaktifkan Pengoptimalan Baterai';
+
+  @override
+  String get notifSetupStep6Title => 'Aplikasi yang Tidak Pernah Tidur';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Pengelola baterai Samsung dapat membuat Noor Guard tertidur dan diam-diam memblokir alarm sholat. Menambahkannya ke \"Never sleeping apps\" mencegah hal ini.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'Pengaturan → Baterai dan perawatan perangkat → Batas penggunaan latar belakang → Never sleeping apps → ketuk \"+\" → pilih Noor Guard.';
+
+  @override
+  String get notifSetupStep6Action => 'Buka Pengaturan Baterai';
+
+  @override
+  String get notifSetupStatusChecking => 'Memeriksa…';
+
+  @override
+  String get notifSetupStatusEnabled => 'Aktif';
+
+  @override
+  String get notifSetupStatusNeeded => 'Diperlukan';
+
+  @override
+  String get notifSetupStatusManual => 'Langkah Manual';
+
+  @override
+  String get notifSetupContinueButton => 'Lanjutkan ke Noor Guard';
+
+  @override
+  String get notifSetupLaterButton => 'Saya akan menyelesaikannya nanti';
+
+  @override
+  String get notifSetupDoneButton => 'Selesai';
 }

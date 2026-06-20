@@ -1508,4 +1508,115 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'جاري تحميل التفسير...';
+
+  @override
+  String get keepAliveNotificationText => 'إشعارات الصلاة نشطة';
+
+  @override
+  String get keepAliveChannelName => 'إشعارات الصلاة';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'يحافظ على تفعيل نور غارد في الخلفية لضمان عدم تفويت تنبيهات الصلاة.';
+
+  @override
+  String get notifSetupTitle => 'تفعيل تنبيهات شاشة القفل';
+
+  @override
+  String get notifSetupSubtitle =>
+      'لكي لا تفوّت الأذان أبدًا — حتى عندما يكون هاتفك مقفلاً. يستغرق ذلك حوالي دقيقة.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'هل تستخدم هاتف Samsung Galaxy (بما في ذلك Fold/Flip)؟ تضيف Samsung مفاتيح إضافية إلى جانب نظام أندرويد الأساسي — توضح لك الخطوتان 4 و6 أدناه مكانها بالضبط.';
+
+  @override
+  String get notifSetupStep1Title => 'السماح بالإشعارات';
+
+  @override
+  String get notifSetupStep1Description =>
+      'الإذن الأساسي الذي يحتاجه نور غارد لتنبيهك من الأساس.';
+
+  @override
+  String get notifSetupStep1Action => 'السماح بالإشعارات';
+
+  @override
+  String get notifSetupStep2Title => 'التنبيهات والتذكيرات';
+
+  @override
+  String get notifSetupStep2Description =>
+      'يتيح لتنبيهات الصلاة العمل في وقت الصلاة بالضبط، حتى عندما يكون هاتفك في وضع الخمول أو توفير البطارية.';
+
+  @override
+  String get notifSetupStep2Action => 'فتح إعدادات التنبيهات';
+
+  @override
+  String get notifSetupStep3Title => 'العرض فوق التطبيقات الأخرى';
+
+  @override
+  String get notifSetupStep3Description =>
+      'يتيح لشاشة الصلاة الكاملة الظهور فوق شاشة القفل وأي شيء آخر مفتوح.';
+
+  @override
+  String get notifSetupStep3Action => 'فتح الإعدادات';
+
+  @override
+  String get notifSetupStep4Title =>
+      'الإظهار كنافذة منبثقة / تنبيه على ملء الشاشة';
+
+  @override
+  String get notifSetupStep4Description =>
+      'يتيح لشاشة الأذان أن تظهر فوق شاشة القفل بدلاً من أن تبقى إشعارًا صامتًا.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'على هواتف Samsung Galaxy (بما في ذلك Fold/Flip): افتح الإعدادات ← اضغط على \"Prayer Time Alarm\"، ثم فعّل \"Pop-up notification\" (يسمى \"Cover screen pop-up\" في Fold/Flip). هذا مفتاح خاص بـ Samsung فقط — تفعيله هو ما يجعل شاشة الأذان تظهر فعليًا فوق شاشة القفل.';
+
+  @override
+  String get notifSetupStep4Action => 'فتح إعدادات الإشعارات';
+
+  @override
+  String get notifSetupStep5Title => 'الحفاظ على موثوقية الإشعارات';
+
+  @override
+  String get notifSetupStep5Description =>
+      'يمنع أندرويد من إبطاء أو تأخير نور غارد في الخلفية، حتى تصل تنبيهات الصلاة والتذكيرات دائمًا في وقتها.';
+
+  @override
+  String get notifSetupStep5Action => 'إيقاف تحسين البطارية';
+
+  @override
+  String get notifSetupStep6Title => 'التطبيقات غير الخاضعة للسكون';
+
+  @override
+  String get notifSetupStep6Description =>
+      'يمكن لمدير البطارية في Samsung أن يجعل نور غارد في وضع السكون ويمنع تنبيهات الصلاة بصمت. إضافته إلى \"Never sleeping apps\" يمنع ذلك.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'الإعدادات ← البطارية والعناية بالجهاز ← حدود استخدام الخلفية ← Never sleeping apps ← اضغط على \"+\" ← اختر نور غارد.';
+
+  @override
+  String get notifSetupStep6Action => 'فتح إعدادات البطارية';
+
+  @override
+  String get notifSetupStatusChecking => 'جارٍ التحقق…';
+
+  @override
+  String get notifSetupStatusEnabled => 'مفعّل';
+
+  @override
+  String get notifSetupStatusNeeded => 'مطلوب';
+
+  @override
+  String get notifSetupStatusManual => 'خطوة يدوية';
+
+  @override
+  String get notifSetupContinueButton => 'الاستمرار إلى نور غارد';
+
+  @override
+  String get notifSetupLaterButton => 'سأكمل هذا لاحقًا';
+
+  @override
+  String get notifSetupDoneButton => 'تم';
 }

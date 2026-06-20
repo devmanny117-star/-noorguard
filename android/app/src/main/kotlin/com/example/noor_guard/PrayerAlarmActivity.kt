@@ -6,30 +6,17 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.concurrent.TimeUnit
 
 class PrayerAlarmActivity : Activity() {
 
     private data class ScheduleEntry(val name: String, val timeStr: String, val epochMillis: Long)
-
-    private enum class PillState { CURRENT, PASSED, UPCOMING }
-
-    private val handler = Handler(Looper.getMainLooper())
-    private var tickRunnable: Runnable? = null
-    private var nextPrayerEpoch: Long = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         showOverLockScreen()
@@ -37,13 +24,19 @@ class PrayerAlarmActivity : Activity() {
         setContentView(R.layout.activity_prayer_alarm)
 
         val prayerName = intent.getStringExtra(PrayerAlarmReceiver.EXTRA_PRAYER_NAME) ?: "Prayer"
+        val arabicName = intent.getStringExtra(PrayerAlarmReceiver.EXTRA_PRAYER_ARABIC) ?: ""
         val prayerTime = intent.getStringExtra(PrayerAlarmReceiver.EXTRA_PRAYER_TIME) ?: ""
+        val message = intent.getStringExtra(PrayerAlarmReceiver.EXTRA_PRAYER_MESSAGE) ?: ""
         val notifId = intent.getIntExtra(PrayerAlarmReceiver.EXTRA_NOTIFICATION_ID, 100)
         val schedule = parseSchedule(intent.getStringExtra(PrayerAlarmReceiver.EXTRA_ALL_PRAYERS))
 
-        bindNextPrayer(schedule, firingName = prayerName, firingTime = prayerTime)
+        findViewById<ImageView>(R.id.imageHero).setImageResource(heroImageFor(prayerName))
+        findViewById<TextView>(R.id.textPrayerName).text = prayerName
+        findViewById<TextView>(R.id.textPrayerArabic).text = arabicName
+        findViewById<TextView>(R.id.textPrayerTime).text = prayerTime
+        findViewById<TextView>(R.id.textMessage).text = message
+
         bindPrayerPills(schedule, currentName = prayerName)
-        startClockTicker()
 
         findViewById<TextView>(R.id.btnIPrayed).setOnClickListener {
             markPrayer(prayerName)
@@ -53,8 +46,16 @@ class PrayerAlarmActivity : Activity() {
         findViewById<TextView>(R.id.btnDismiss).setOnClickListener {
             dismissAlarm(notifId)
         }
+    }
 
-        pulseAdhanBadge()
+    /** Maps a prayer name to its time-of-day-appropriate hero photo, falling back for unknown names (e.g. the test alarm). */
+    private fun heroImageFor(prayerName: String): Int = when (prayerName) {
+        "Fajr" -> R.drawable.img_hero_fajr
+        "Dhuhr" -> R.drawable.img_hero_dhuhr
+        "Asr" -> R.drawable.img_hero_asr
+        "Maghrib" -> R.drawable.img_hero_maghrib
+        "Isha" -> R.drawable.img_hero_isha
+        else -> R.drawable.img_hero_asr
     }
 
     private fun parseSchedule(raw: String?): List<ScheduleEntry> {
@@ -67,84 +68,85 @@ class PrayerAlarmActivity : Activity() {
         }
     }
 
-    /** Finds the next upcoming prayer after now; wraps to the first prayer +24h if all 5 have passed. */
-    private fun bindNextPrayer(schedule: List<ScheduleEntry>, firingName: String, firingTime: String) {
-        val now = System.currentTimeMillis()
-        val upcoming = schedule.filter { it.epochMillis > now }.minByOrNull { it.epochMillis }
-        val next = upcoming ?: schedule.minByOrNull { it.epochMillis }?.let {
-            it.copy(epochMillis = it.epochMillis + TimeUnit.DAYS.toMillis(1))
-        }
-
-        findViewById<TextView>(R.id.textNextPrayerName).text = next?.name ?: firingName
-        findViewById<TextView>(R.id.textNextPrayerTime).text = next?.timeStr ?: firingTime
-        nextPrayerEpoch = next?.epochMillis ?: 0L
-        findViewById<TextView>(R.id.textCountdown).visibility =
-            if (nextPrayerEpoch > 0) View.VISIBLE else View.GONE
-    }
-
     private fun bindPrayerPills(schedule: List<ScheduleEntry>, currentName: String) {
         val row = findViewById<LinearLayout>(R.id.prayerPillsRow)
         if (schedule.isEmpty()) {
             row.visibility = View.GONE
             return
         }
-        val now = System.currentTimeMillis()
         for (entry in schedule) {
-            val state = when {
-                entry.name == currentName -> PillState.CURRENT
-                entry.epochMillis <= now -> PillState.PASSED
-                else -> PillState.UPCOMING
-            }
-            row.addView(buildPillView(entry, state))
+            row.addView(buildPillView(entry, isCurrent = entry.name == currentName))
         }
     }
 
-    private fun buildPillView(entry: ScheduleEntry, state: PillState): LinearLayout {
+    /**
+     * Builds one prayer pill plus its own current-prayer dot indicator
+     * underneath, wrapped together so the pair distributes evenly across
+     * the row. The dot is reserved (INVISIBLE, not GONE) on every other
+     * pill so all 5 line up at the same height regardless of which fired.
+     */
+    private fun buildPillView(entry: ScheduleEntry, isCurrent: Boolean): LinearLayout {
         val density = resources.displayMetrics.density
         fun dp(value: Int) = (value * density).toInt()
 
-        val container = LinearLayout(this).apply {
+        val wrapper = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             gravity = Gravity.CENTER
-            alpha = if (state == PillState.PASSED) 0.55f else 1f
             layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).also {
                 it.marginStart = dp(3)
                 it.marginEnd = dp(3)
             }
+        }
+
+        val pill = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            gravity = Gravity.CENTER
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+            )
             setPadding(dp(2), dp(10), dp(2), dp(10))
             background = ContextCompat.getDrawable(
                 this@PrayerAlarmActivity,
-                if (state == PillState.CURRENT) R.drawable.bg_pill_current else R.drawable.bg_pill_outline
+                if (isCurrent) R.drawable.bg_pill_current else R.drawable.bg_pill_outline
             )
         }
 
+        // Gold is reserved for the current prayer; every other pill stays a
+        // dimmed cream so the highlight reads clearly at a glance.
         val textColor = ContextCompat.getColor(
-            this, if (state == PillState.CURRENT) R.color.navy else R.color.cream
-        )
-        val timeColor = ContextCompat.getColor(
-            this, if (state == PillState.CURRENT) R.color.navy else R.color.gold
+            this, if (isCurrent) R.color.navy else R.color.cream
         )
 
-        container.addView(TextView(this).apply {
+        pill.addView(TextView(this).apply {
             text = prayerEmoji(entry.name)
             textSize = 15f
             gravity = Gravity.CENTER
         })
-        container.addView(TextView(this).apply {
+        pill.addView(TextView(this).apply {
             text = entry.name
             setTextColor(textColor)
             textSize = 11f
             gravity = Gravity.CENTER
             setPadding(0, dp(4), 0, 0)
         })
-        container.addView(TextView(this).apply {
+        pill.addView(TextView(this).apply {
             text = entry.timeStr.replace(" AM", "").replace(" PM", "")
-            setTextColor(timeColor)
+            setTextColor(textColor)
             textSize = 10f
             gravity = Gravity.CENTER
+            alpha = if (isCurrent) 1f else 0.75f
         })
 
-        return container
+        wrapper.addView(pill)
+        wrapper.addView(View(this).apply {
+            layoutParams = LinearLayout.LayoutParams(dp(6), dp(6)).also {
+                it.topMargin = dp(6)
+            }
+            background = ContextCompat.getDrawable(this@PrayerAlarmActivity, R.drawable.bg_dot_gold)
+            visibility = if (isCurrent) View.VISIBLE else View.INVISIBLE
+        })
+
+        return wrapper
     }
 
     private fun prayerEmoji(name: String) = when (name) {
@@ -154,54 +156,6 @@ class PrayerAlarmActivity : Activity() {
         "Maghrib" -> "🌇"
         "Isha" -> "🌙"
         else -> "🕓"
-    }
-
-    private fun startClockTicker() {
-        val dateFormat = SimpleDateFormat("EEEE, MMMM d", Locale.getDefault())
-        val timeFormat = SimpleDateFormat("h:mm a", Locale.getDefault())
-        val dateView = findViewById<TextView>(R.id.textCurrentDate)
-        val timeView = findViewById<TextView>(R.id.textCurrentTime)
-        val countdownView = findViewById<TextView>(R.id.textCountdown)
-
-        val runnable = object : Runnable {
-            override fun run() {
-                val now = Date()
-                dateView.text = dateFormat.format(now).uppercase(Locale.getDefault())
-                timeView.text = timeFormat.format(now)
-
-                if (nextPrayerEpoch > 0) {
-                    val remaining = nextPrayerEpoch - System.currentTimeMillis()
-                    countdownView.text = "in ${formatCountdown(remaining)}"
-                }
-                handler.postDelayed(this, 1000L)
-            }
-        }
-        tickRunnable = runnable
-        handler.post(runnable)
-    }
-
-    private fun formatCountdown(millis: Long): String {
-        val totalSeconds = (millis / 1000).coerceAtLeast(0)
-        val hours = totalSeconds / 3600
-        val minutes = (totalSeconds % 3600) / 60
-        val seconds = totalSeconds % 60
-        return String.format(Locale.US, "%02d:%02d:%02d", hours, minutes, seconds)
-    }
-
-    override fun onDestroy() {
-        tickRunnable?.let { handler.removeCallbacks(it) }
-        super.onDestroy()
-    }
-
-    /** Slow opacity pulse on the "Adhan Playing" badge so it reads as a live indicator. */
-    private fun pulseAdhanBadge() {
-        val badge = findViewById<LinearLayout>(R.id.badgeAdhanPlaying)
-        val pulse = AlphaAnimation(1f, 0.45f).apply {
-            duration = 900
-            repeatMode = Animation.REVERSE
-            repeatCount = Animation.INFINITE
-        }
-        badge.startAnimation(pulse)
     }
 
     private fun showOverLockScreen() {

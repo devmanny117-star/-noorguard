@@ -1521,4 +1521,114 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Loading tafsir...';
+
+  @override
+  String get keepAliveNotificationText => 'Prayer notifications active';
+
+  @override
+  String get keepAliveChannelName => 'Prayer Notifications';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Keeps Noor Guard active in the background so prayer alarms are never missed.';
+
+  @override
+  String get notifSetupTitle => 'Enable Lock Screen Alerts';
+
+  @override
+  String get notifSetupSubtitle =>
+      'So you never miss the adhan — even when your phone is locked. Takes about a minute.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Using a Samsung Galaxy (including Fold/Flip)? Samsung adds extra switches beyond stock Android — Steps 4 and 6 below show you exactly where to find them.';
+
+  @override
+  String get notifSetupStep1Title => 'Allow Notifications';
+
+  @override
+  String get notifSetupStep1Description =>
+      'The basic permission Noor Guard needs to alert you at all.';
+
+  @override
+  String get notifSetupStep1Action => 'Allow Notifications';
+
+  @override
+  String get notifSetupStep2Title => 'Alarms & Reminders';
+
+  @override
+  String get notifSetupStep2Description =>
+      'Lets prayer alarms fire at the exact prayer time, even while your phone is idle or in battery saver.';
+
+  @override
+  String get notifSetupStep2Action => 'Open Alarm Settings';
+
+  @override
+  String get notifSetupStep3Title => 'Display Over Other Apps';
+
+  @override
+  String get notifSetupStep3Description =>
+      'Lets the full prayer screen draw on top of the lock screen and whatever else is open.';
+
+  @override
+  String get notifSetupStep3Action => 'Open Settings';
+
+  @override
+  String get notifSetupStep4Title => 'Show As Pop-up / Full-Screen Alerts';
+
+  @override
+  String get notifSetupStep4Description =>
+      'Lets the adhan screen break through the lock screen instead of staying a silent banner.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'On Samsung Galaxy phones (including Fold/Flip): open Settings → tap \"Prayer Time Alarm\", then turn on \"Pop-up notification\" (called \"Cover screen pop-up\" on Fold/Flip). This is a Samsung-only switch — turning it on is what actually puts the adhan screen over your lock screen.';
+
+  @override
+  String get notifSetupStep4Action => 'Open Notification Settings';
+
+  @override
+  String get notifSetupStep5Title => 'Keep Notifications Reliable';
+
+  @override
+  String get notifSetupStep5Description =>
+      'Stops Android from slowing or delaying Noor Guard in the background, so prayer alarms and reminders always arrive on time.';
+
+  @override
+  String get notifSetupStep5Action => 'Disable Battery Optimization';
+
+  @override
+  String get notifSetupStep6Title => 'Never Sleeping Apps';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Samsung\'s battery manager can put Noor Guard to sleep and silently block prayer alarms. Adding it to \"Never sleeping apps\" stops that.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'Settings → Battery and device care → Background usage limits → Never sleeping apps → tap \"+\" → select Noor Guard.';
+
+  @override
+  String get notifSetupStep6Action => 'Open Battery Settings';
+
+  @override
+  String get notifSetupStatusChecking => 'Checking…';
+
+  @override
+  String get notifSetupStatusEnabled => 'Enabled';
+
+  @override
+  String get notifSetupStatusNeeded => 'Needed';
+
+  @override
+  String get notifSetupStatusManual => 'Manual Step';
+
+  @override
+  String get notifSetupContinueButton => 'Continue to Noor Guard';
+
+  @override
+  String get notifSetupLaterButton => 'I\'ll finish this later';
+
+  @override
+  String get notifSetupDoneButton => 'Done';
 }

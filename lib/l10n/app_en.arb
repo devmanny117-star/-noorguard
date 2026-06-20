@@ -1542,5 +1542,137 @@
   "readFullSurah": "Read Full Surah",
   "surahIntroduction": "Surah Introduction",
   "verses": "verses",
-  "loadingTafsir": "Loading tafsir..."
+  "loadingTafsir": "Loading tafsir...",
+  "keepAliveNotificationText": "Prayer notifications active",
+  "@keepAliveNotificationText": {
+    "description": "Body text of the persistent foreground-service notification that keeps prayer alarms reliable"
+  },
+  "keepAliveChannelName": "Prayer Notifications",
+  "@keepAliveChannelName": {
+    "description": "Android notification channel name for the persistent keep-alive notification"
+  },
+  "keepAliveChannelDescription": "Keeps Noor Guard active in the background so prayer alarms are never missed.",
+  "@keepAliveChannelDescription": {
+    "description": "Android notification channel description for the persistent keep-alive notification"
+  },
+  "notifSetupTitle": "Enable Lock Screen Alerts",
+  "@notifSetupTitle": {
+    "description": "Title of the notification/permission setup guide screen"
+  },
+  "notifSetupSubtitle": "So you never miss the adhan — even when your phone is locked. Takes about a minute.",
+  "@notifSetupSubtitle": {
+    "description": "Subtitle of the notification/permission setup guide screen"
+  },
+  "notifSetupSamsungBanner": "Using a Samsung Galaxy (including Fold/Flip)? Samsung adds extra switches beyond stock Android — Steps 4 and 6 below show you exactly where to find them.",
+  "@notifSetupSamsungBanner": {
+    "description": "Banner inviting Samsung users to pay attention to the Samsung-specific steps"
+  },
+  "notifSetupStep1Title": "Allow Notifications",
+  "@notifSetupStep1Title": {
+    "description": "Title of setup guide step 1"
+  },
+  "notifSetupStep1Description": "The basic permission Noor Guard needs to alert you at all.",
+  "@notifSetupStep1Description": {
+    "description": "Description of setup guide step 1"
+  },
+  "notifSetupStep1Action": "Allow Notifications",
+  "@notifSetupStep1Action": {
+    "description": "Action button label for setup guide step 1"
+  },
+  "notifSetupStep2Title": "Alarms & Reminders",
+  "@notifSetupStep2Title": {
+    "description": "Title of setup guide step 2"
+  },
+  "notifSetupStep2Description": "Lets prayer alarms fire at the exact prayer time, even while your phone is idle or in battery saver.",
+  "@notifSetupStep2Description": {
+    "description": "Description of setup guide step 2"
+  },
+  "notifSetupStep2Action": "Open Alarm Settings",
+  "@notifSetupStep2Action": {
+    "description": "Action button label for setup guide step 2"
+  },
+  "notifSetupStep3Title": "Display Over Other Apps",
+  "@notifSetupStep3Title": {
+    "description": "Title of setup guide step 3"
+  },
+  "notifSetupStep3Description": "Lets the full prayer screen draw on top of the lock screen and whatever else is open.",
+  "@notifSetupStep3Description": {
+    "description": "Description of setup guide step 3"
+  },
+  "notifSetupStep3Action": "Open Settings",
+  "@notifSetupStep3Action": {
+    "description": "Action button label for setup guide step 3"
+  },
+  "notifSetupStep4Title": "Show As Pop-up / Full-Screen Alerts",
+  "@notifSetupStep4Title": {
+    "description": "Title of setup guide step 4"
+  },
+  "notifSetupStep4Description": "Lets the adhan screen break through the lock screen instead of staying a silent banner.",
+  "@notifSetupStep4Description": {
+    "description": "Description of setup guide step 4"
+  },
+  "notifSetupStep4SamsungNote": "On Samsung Galaxy phones (including Fold/Flip): open Settings → tap \"Prayer Time Alarm\", then turn on \"Pop-up notification\" (called \"Cover screen pop-up\" on Fold/Flip). This is a Samsung-only switch — turning it on is what actually puts the adhan screen over your lock screen.",
+  "@notifSetupStep4SamsungNote": {
+    "description": "Samsung-specific instructions shown under setup guide step 4"
+  },
+  "notifSetupStep4Action": "Open Notification Settings",
+  "@notifSetupStep4Action": {
+    "description": "Action button label for setup guide step 4"
+  },
+  "notifSetupStep5Title": "Keep Notifications Reliable",
+  "@notifSetupStep5Title": {
+    "description": "Title of setup guide step 5 (battery optimization)"
+  },
+  "notifSetupStep5Description": "Stops Android from slowing or delaying Noor Guard in the background, so prayer alarms and reminders always arrive on time.",
+  "@notifSetupStep5Description": {
+    "description": "Description of setup guide step 5 (battery optimization)"
+  },
+  "notifSetupStep5Action": "Disable Battery Optimization",
+  "@notifSetupStep5Action": {
+    "description": "Action button label for setup guide step 5 (battery optimization)"
+  },
+  "notifSetupStep6Title": "Never Sleeping Apps",
+  "@notifSetupStep6Title": {
+    "description": "Title of setup guide step 6 (Samsung-only background usage limits)"
+  },
+  "notifSetupStep6Description": "Samsung's battery manager can put Noor Guard to sleep and silently block prayer alarms. Adding it to \"Never sleeping apps\" stops that.",
+  "@notifSetupStep6Description": {
+    "description": "Description of setup guide step 6 (Samsung-only background usage limits)"
+  },
+  "notifSetupStep6SamsungNote": "Settings → Battery and device care → Background usage limits → Never sleeping apps → tap \"+\" → select Noor Guard.",
+  "@notifSetupStep6SamsungNote": {
+    "description": "Manual navigation instructions shown under setup guide step 6"
+  },
+  "notifSetupStep6Action": "Open Battery Settings",
+  "@notifSetupStep6Action": {
+    "description": "Action button label for setup guide step 6"
+  },
+  "notifSetupStatusChecking": "Checking…",
+  "@notifSetupStatusChecking": {
+    "description": "Status chip label while a setup guide step's status is being checked"
+  },
+  "notifSetupStatusEnabled": "Enabled",
+  "@notifSetupStatusEnabled": {
+    "description": "Status chip label when a setup guide step is already satisfied"
+  },
+  "notifSetupStatusNeeded": "Needed",
+  "@notifSetupStatusNeeded": {
+    "description": "Status chip label when a setup guide step still needs action"
+  },
+  "notifSetupStatusManual": "Manual Step",
+  "@notifSetupStatusManual": {
+    "description": "Status chip label for a setup guide step whose completion can't be checked automatically"
+  },
+  "notifSetupContinueButton": "Continue to Noor Guard",
+  "@notifSetupContinueButton": {
+    "description": "Footer button label once every setup guide step is satisfied"
+  },
+  "notifSetupLaterButton": "I'll finish this later",
+  "@notifSetupLaterButton": {
+    "description": "Footer button label on first launch before every step is satisfied"
+  },
+  "notifSetupDoneButton": "Done",
+  "@notifSetupDoneButton": {
+    "description": "Footer button label on a re-visit of the setup guide before every step is satisfied"
+  }
 }

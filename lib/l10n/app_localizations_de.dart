@@ -1531,4 +1531,115 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Tafsir wird geladen...';
+
+  @override
+  String get keepAliveNotificationText => 'Gebetsbenachrichtigungen aktiv';
+
+  @override
+  String get keepAliveChannelName => 'Gebetsbenachrichtigungen';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Hält Noor Guard im Hintergrund aktiv, damit Gebetsalarme nie verpasst werden.';
+
+  @override
+  String get notifSetupTitle => 'Sperrbildschirm-Benachrichtigungen aktivieren';
+
+  @override
+  String get notifSetupSubtitle =>
+      'Damit du den Adhan nie verpasst — selbst wenn dein Telefon gesperrt ist. Dauert etwa eine Minute.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Nutzt du ein Samsung Galaxy (auch Fold/Flip)? Samsung fügt zusätzliche Schalter über das normale Android hinaus hinzu — Schritt 4 und 6 unten zeigen dir genau, wo du sie findest.';
+
+  @override
+  String get notifSetupStep1Title => 'Benachrichtigungen erlauben';
+
+  @override
+  String get notifSetupStep1Description =>
+      'Die grundlegende Berechtigung, die Noor Guard braucht, um dich überhaupt zu benachrichtigen.';
+
+  @override
+  String get notifSetupStep1Action => 'Benachrichtigungen erlauben';
+
+  @override
+  String get notifSetupStep2Title => 'Wecker & Erinnerungen';
+
+  @override
+  String get notifSetupStep2Description =>
+      'Lässt Gebetsalarme genau zur Gebetszeit auslösen, selbst wenn dein Telefon im Ruhezustand oder Energiesparmodus ist.';
+
+  @override
+  String get notifSetupStep2Action => 'Alarmeinstellungen öffnen';
+
+  @override
+  String get notifSetupStep3Title => 'Über anderen Apps anzeigen';
+
+  @override
+  String get notifSetupStep3Description =>
+      'Lässt den vollen Gebetsbildschirm über dem Sperrbildschirm und allem anderen Geöffneten erscheinen.';
+
+  @override
+  String get notifSetupStep3Action => 'Einstellungen öffnen';
+
+  @override
+  String get notifSetupStep4Title =>
+      'Als Pop-up / Vollbild-Benachrichtigung anzeigen';
+
+  @override
+  String get notifSetupStep4Description =>
+      'Lässt den Adhan-Bildschirm den Sperrbildschirm durchbrechen, statt ein stiller Banner zu bleiben.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Auf Samsung Galaxy-Geräten (auch Fold/Flip): Öffne Einstellungen → tippe auf „Prayer Time Alarm“, aktiviere dann „Pop-up notification“ (auf Fold/Flip „Cover screen pop-up“ genannt). Das ist ein reiner Samsung-Schalter — erst seine Aktivierung legt den Adhan-Bildschirm wirklich über den Sperrbildschirm.';
+
+  @override
+  String get notifSetupStep4Action => 'Benachrichtigungseinstellungen öffnen';
+
+  @override
+  String get notifSetupStep5Title => 'Benachrichtigungen zuverlässig halten';
+
+  @override
+  String get notifSetupStep5Description =>
+      'Verhindert, dass Android Noor Guard im Hintergrund verlangsamt oder verzögert, damit Gebetsalarme und Erinnerungen immer pünktlich ankommen.';
+
+  @override
+  String get notifSetupStep5Action => 'Akku-Optimierung deaktivieren';
+
+  @override
+  String get notifSetupStep6Title => 'Nie schlafende Apps';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Samsungs Akku-Manager kann Noor Guard schlafen legen und Gebetsalarme stillschweigend blockieren. Die Aufnahme in „Never sleeping apps“ verhindert das.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'Einstellungen → Akku und Gerätewartung → Hintergrundnutzungslimits → Never sleeping apps → „+“ tippen → Noor Guard auswählen.';
+
+  @override
+  String get notifSetupStep6Action => 'Akkueinstellungen öffnen';
+
+  @override
+  String get notifSetupStatusChecking => 'Wird geprüft…';
+
+  @override
+  String get notifSetupStatusEnabled => 'Aktiviert';
+
+  @override
+  String get notifSetupStatusNeeded => 'Erforderlich';
+
+  @override
+  String get notifSetupStatusManual => 'Manueller Schritt';
+
+  @override
+  String get notifSetupContinueButton => 'Weiter zu Noor Guard';
+
+  @override
+  String get notifSetupLaterButton => 'Das mache ich später';
+
+  @override
+  String get notifSetupDoneButton => 'Fertig';
 }

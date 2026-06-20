@@ -1527,4 +1527,115 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Loading tafsir...';
+
+  @override
+  String get keepAliveNotificationText => 'নামাজের নোটিফিকেশন সক্রিয়';
+
+  @override
+  String get keepAliveChannelName => 'নামাজের নোটিফিকেশন';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'নূর গার্ডকে ব্যাকগ্রাউন্ডে সক্রিয় রাখে যাতে নামাজের অ্যালার্ম কখনো বাদ না যায়।';
+
+  @override
+  String get notifSetupTitle => 'লক স্ক্রিন অ্যালার্ট সক্রিয় করুন';
+
+  @override
+  String get notifSetupSubtitle =>
+      'যাতে আপনি আজান কখনো বাদ না দেন — আপনার ফোন লক থাকলেও। এতে প্রায় এক মিনিট সময় লাগে।';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Samsung Galaxy (Fold/Flip সহ) ব্যবহার করছেন? Samsung স্টক অ্যান্ড্রয়েডের বাইরে অতিরিক্ত সুইচ যুক্ত করে — নিচের ধাপ ৪ এবং ৬ আপনাকে ঠিক দেখিয়ে দেবে সেগুলো কোথায়।';
+
+  @override
+  String get notifSetupStep1Title => 'নোটিফিকেশনের অনুমতি দিন';
+
+  @override
+  String get notifSetupStep1Description =>
+      'নূর গার্ডের আপনাকে মোটেও সতর্ক করার জন্য প্রয়োজনীয় মৌলিক অনুমতি।';
+
+  @override
+  String get notifSetupStep1Action => 'নোটিফিকেশনের অনুমতি দিন';
+
+  @override
+  String get notifSetupStep2Title => 'অ্যালার্ম ও রিমাইন্ডার';
+
+  @override
+  String get notifSetupStep2Description =>
+      'আপনার ফোন নিষ্ক্রিয় বা ব্যাটারি সেভারে থাকলেও নামাজের অ্যালার্মকে ঠিক সময়ে বাজতে দেয়।';
+
+  @override
+  String get notifSetupStep2Action => 'অ্যালার্ম সেটিংস খুলুন';
+
+  @override
+  String get notifSetupStep3Title => 'অন্য অ্যাপের উপরে দেখান';
+
+  @override
+  String get notifSetupStep3Description =>
+      'সম্পূর্ণ নামাজ স্ক্রিনকে লক স্ক্রিন এবং যা কিছু খোলা থাকুক তার উপরে আঁকতে দেয়।';
+
+  @override
+  String get notifSetupStep3Action => 'সেটিংস খুলুন';
+
+  @override
+  String get notifSetupStep4Title =>
+      'পপ-আপ / ফুল-স্ক্রিন অ্যালার্ট হিসেবে দেখান';
+
+  @override
+  String get notifSetupStep4Description =>
+      'নীরব ব্যানার না থেকে আজান স্ক্রিনকে লক স্ক্রিনের উপর দিয়ে দেখাতে দেয়।';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Samsung Galaxy ফোনে (Fold/Flip সহ): সেটিংস খুলুন ← \"Prayer Time Alarm\"-এ ট্যাপ করুন, তারপর \"Pop-up notification\" চালু করুন (Fold/Flip-এ \"Cover screen pop-up\" নামে পরিচিত)। এটি কেবল Samsung-এর সুইচ — এটি চালু করাই আজান স্ক্রিনকে লক স্ক্রিনের উপর দেখায়।';
+
+  @override
+  String get notifSetupStep4Action => 'নোটিফিকেশন সেটিংস খুলুন';
+
+  @override
+  String get notifSetupStep5Title => 'নোটিফিকেশন নির্ভরযোগ্য রাখুন';
+
+  @override
+  String get notifSetupStep5Description =>
+      'অ্যান্ড্রয়েডকে ব্যাকগ্রাউন্ডে নূর গার্ডকে ধীর বা বিলম্বিত করা থেকে বিরত রাখে, যাতে নামাজের অ্যালার্ম ও রিমাইন্ডার সবসময় সময়মতো পৌঁছায়।';
+
+  @override
+  String get notifSetupStep5Action => 'ব্যাটারি অপ্টিমাইজেশন বন্ধ করুন';
+
+  @override
+  String get notifSetupStep6Title => 'কখনো না ঘুমানো অ্যাপ';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Samsung-এর ব্যাটারি ম্যানেজার নূর গার্ডকে ঘুম পাড়িয়ে দিতে পারে এবং নিঃশব্দে নামাজের অ্যালার্ম ব্লক করতে পারে। এটিকে \"Never sleeping apps\"-এ যুক্ত করলে তা বন্ধ হয়।';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'সেটিংস ← ব্যাটারি ও ডিভাইস কেয়ার ← ব্যাকগ্রাউন্ড ব্যবহারের সীমা ← Never sleeping apps ← \"+\" ট্যাপ করুন ← নূর গার্ড নির্বাচন করুন।';
+
+  @override
+  String get notifSetupStep6Action => 'ব্যাটারি সেটিংস খুলুন';
+
+  @override
+  String get notifSetupStatusChecking => 'যাচাই করা হচ্ছে…';
+
+  @override
+  String get notifSetupStatusEnabled => 'সক্রিয়';
+
+  @override
+  String get notifSetupStatusNeeded => 'প্রয়োজন';
+
+  @override
+  String get notifSetupStatusManual => 'ম্যানুয়াল পদক্ষেপ';
+
+  @override
+  String get notifSetupContinueButton => 'নূর গার্ডে যান';
+
+  @override
+  String get notifSetupLaterButton => 'আমি এটি পরে শেষ করব';
+
+  @override
+  String get notifSetupDoneButton => 'সম্পন্ন';
 }

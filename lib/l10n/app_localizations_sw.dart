@@ -1529,4 +1529,115 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Inapakia tafsiri...';
+
+  @override
+  String get keepAliveNotificationText => 'Arifa za sala zinatumika';
+
+  @override
+  String get keepAliveChannelName => 'Arifa za Sala';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Inamfanya Noor Guard kuendelea kufanya kazi nyuma ili kengele za sala zisikose kamwe.';
+
+  @override
+  String get notifSetupTitle => 'Wezesha Arifa za Skrini Iliyofungwa';
+
+  @override
+  String get notifSetupSubtitle =>
+      'Ili usikose adhana kamwe — hata simu yako ikiwa imefungwa. Inachukua dakika moja tu.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Unatumia Samsung Galaxy (ikiwemo Fold/Flip)? Samsung huongeza vibadilishi vya ziada zaidi ya Android ya kawaida — Hatua ya 4 na 6 chini zinakuonyesha hasa pa kuvipata.';
+
+  @override
+  String get notifSetupStep1Title => 'Ruhusu Arifa';
+
+  @override
+  String get notifSetupStep1Description =>
+      'Idhini ya msingi ambayo Noor Guard inahitaji ili kukuarifu kabisa.';
+
+  @override
+  String get notifSetupStep1Action => 'Ruhusu Arifa';
+
+  @override
+  String get notifSetupStep2Title => 'Kengele na Vikumbusho';
+
+  @override
+  String get notifSetupStep2Description =>
+      'Huruhusu kengele za sala kulia wakati halisi wa sala, hata simu yako ikiwa tulivu au katika hali ya kuokoa betri.';
+
+  @override
+  String get notifSetupStep2Action => 'Fungua Mipangilio ya Kengele';
+
+  @override
+  String get notifSetupStep3Title => 'Onyesha Juu ya Programu Nyingine';
+
+  @override
+  String get notifSetupStep3Description =>
+      'Huruhusu skrini kamili ya sala kuonekana juu ya skrini iliyofungwa na chochote kingine kilichofunguliwa.';
+
+  @override
+  String get notifSetupStep3Action => 'Fungua Mipangilio';
+
+  @override
+  String get notifSetupStep4Title =>
+      'Onyesha kama Arifa Inayoduka / Skrini Kamili';
+
+  @override
+  String get notifSetupStep4Description =>
+      'Huruhusu skrini ya adhana kupasua skrini iliyofungwa badala ya kubaki bango la kimya.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Kwenye simu za Samsung Galaxy (ikiwemo Fold/Flip): fungua Mipangilio → bonyeza \"Prayer Time Alarm\", kisha wezesha \"Pop-up notification\" (inayoitwa \"Cover screen pop-up\" kwenye Fold/Flip). Hii ni kibadilishi cha Samsung pekee — kukiwezesha ndiko hasa kunakofanya skrini ya adhana ionekane juu ya skrini yako iliyofungwa.';
+
+  @override
+  String get notifSetupStep4Action => 'Fungua Mipangilio ya Arifa';
+
+  @override
+  String get notifSetupStep5Title => 'Hifadhi Arifa za Kutegemewa';
+
+  @override
+  String get notifSetupStep5Description =>
+      'Huzuia Android kupunguza kasi au kuchelewesha Noor Guard nyuma, ili kengele na vikumbusho vya sala vifike kwa wakati kila mara.';
+
+  @override
+  String get notifSetupStep5Action => 'Zima Uboreshaji wa Betri';
+
+  @override
+  String get notifSetupStep6Title => 'Programu Zisizolala Kamwe';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Kidhibiti betri cha Samsung kinaweza kuilaza Noor Guard na kuzuia kimya kengele za sala. Kuiweka kwenye \"Never sleeping apps\" huzuia hili.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'Mipangilio → Betri na Utunzaji wa Kifaa → Mipaka ya Matumizi ya Nyuma → Never sleeping apps → bonyeza \"+\" → chagua Noor Guard.';
+
+  @override
+  String get notifSetupStep6Action => 'Fungua Mipangilio ya Betri';
+
+  @override
+  String get notifSetupStatusChecking => 'Inakagua…';
+
+  @override
+  String get notifSetupStatusEnabled => 'Imewezeshwa';
+
+  @override
+  String get notifSetupStatusNeeded => 'Inahitajika';
+
+  @override
+  String get notifSetupStatusManual => 'Hatua ya Mkono';
+
+  @override
+  String get notifSetupContinueButton => 'Endelea kwenda Noor Guard';
+
+  @override
+  String get notifSetupLaterButton => 'Nitaikamilisha baadaye';
+
+  @override
+  String get notifSetupDoneButton => 'Imekamilika';
 }

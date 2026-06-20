@@ -1521,4 +1521,115 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'تفسیر لوڈ ہو رہی ہے...';
+
+  @override
+  String get keepAliveNotificationText => 'نماز کی اطلاعات فعال ہیں';
+
+  @override
+  String get keepAliveChannelName => 'نماز کی اطلاعات';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'نور گارڈ کو پس منظر میں فعال رکھتا ہے تاکہ نماز کے الارم کبھی نہ چھوٹیں۔';
+
+  @override
+  String get notifSetupTitle => 'لاک سکرین الرٹس فعال کریں';
+
+  @override
+  String get notifSetupSubtitle =>
+      'تاکہ آپ اذان کبھی نہ چھوڑیں — چاہے آپ کا فون لاک ہی کیوں نہ ہو۔ اس میں تقریباً ایک منٹ لگتا ہے۔';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Samsung Galaxy استعمال کر رہے ہیں (Fold/Flip سمیت)؟ Samsung اسٹاک اینڈرائیڈ سے زیادہ اضافی سوئچز شامل کرتا ہے — نیچے مرحلہ 4 اور 6 آپ کو بالکل بتاتے ہیں کہ وہ کہاں ہیں۔';
+
+  @override
+  String get notifSetupStep1Title => 'اطلاعات کی اجازت دیں';
+
+  @override
+  String get notifSetupStep1Description =>
+      'بنیادی اجازت جو نور گارڈ کو آپ کو مطلع کرنے کے لیے درکار ہے۔';
+
+  @override
+  String get notifSetupStep1Action => 'اطلاعات کی اجازت دیں';
+
+  @override
+  String get notifSetupStep2Title => 'الارمز اور یاد دہانیاں';
+
+  @override
+  String get notifSetupStep2Description =>
+      'نماز کے الارم کو بالکل وقت پر بجنے دیتا ہے، چاہے آپ کا فون غیر فعال ہو یا بیٹری سیور میں ہو۔';
+
+  @override
+  String get notifSetupStep2Action => 'الارم کی ترتیبات کھولیں';
+
+  @override
+  String get notifSetupStep3Title => 'دوسری ایپس کے اوپر دکھائیں';
+
+  @override
+  String get notifSetupStep3Description =>
+      'مکمل نماز اسکرین کو لاک سکرین اور جو کچھ بھی کھلا ہو اس کے اوپر دکھنے دیتا ہے۔';
+
+  @override
+  String get notifSetupStep3Action => 'ترتیبات کھولیں';
+
+  @override
+  String get notifSetupStep4Title =>
+      'پاپ اپ / فل اسکرین الرٹ کے طور پر دکھائیں';
+
+  @override
+  String get notifSetupStep4Description =>
+      'اذان اسکرین کو خاموش بینر کے بجائے لاک سکرین کے اوپر نمودار ہونے دیتا ہے۔';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Samsung Galaxy فونز پر (Fold/Flip سمیت): ترتیبات کھولیں ← \"Prayer Time Alarm\" پر ٹیپ کریں، پھر \"Pop-up notification\" آن کریں (Fold/Flip پر \"Cover screen pop-up\" کہلاتا ہے)۔ یہ صرف Samsung کا سوئچ ہے — اسے آن کرنا ہی اذان اسکرین کو لاک سکرین کے اوپر لاتا ہے۔';
+
+  @override
+  String get notifSetupStep4Action => 'اطلاعاتی ترتیبات کھولیں';
+
+  @override
+  String get notifSetupStep5Title => 'اطلاعات کو قابل اعتماد رکھیں';
+
+  @override
+  String get notifSetupStep5Description =>
+      'اینڈرائیڈ کو نور گارڈ کو پس منظر میں سست یا تاخیر کا شکار کرنے سے روکتا ہے، تاکہ نماز کے الارم اور یاد دہانیاں ہمیشہ وقت پر پہنچیں۔';
+
+  @override
+  String get notifSetupStep5Action => 'بیٹری آپٹیمائزیشن بند کریں';
+
+  @override
+  String get notifSetupStep6Title => 'کبھی نہ سونے والی ایپس';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Samsung کا بیٹری مینیجر نور گارڈ کو سو سکتا ہے اور خاموشی سے نماز کے الارم بلاک کر سکتا ہے۔ اسے \"Never sleeping apps\" میں شامل کرنا اسے روکتا ہے۔';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'ترتیبات ← بیٹری اور ڈیوائس کیئر ← بیک گراؤنڈ استعمال کی حدیں ← Never sleeping apps ← \"+\" پر ٹیپ کریں ← نور گارڈ منتخب کریں۔';
+
+  @override
+  String get notifSetupStep6Action => 'بیٹری کی ترتیبات کھولیں';
+
+  @override
+  String get notifSetupStatusChecking => 'جانچا جا رہا ہے…';
+
+  @override
+  String get notifSetupStatusEnabled => 'فعال';
+
+  @override
+  String get notifSetupStatusNeeded => 'درکار';
+
+  @override
+  String get notifSetupStatusManual => 'دستی مرحلہ';
+
+  @override
+  String get notifSetupContinueButton => 'نور گارڈ کی طرف جائیں';
+
+  @override
+  String get notifSetupLaterButton => 'میں یہ بعد میں مکمل کروں گا';
+
+  @override
+  String get notifSetupDoneButton => 'ہو گیا';
 }

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/navy">
 
-    <!-- Full-bleed hero background -->
+    <!-- Full-bleed hero photo, swapped per prayer in code -->
     <ImageView
+        android:id="@+id/imageHero"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@null"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_hero_masjid" />
+        android:scaleType="centerCrop" />
 
-    <!-- 70% navy scrim so text stays readable over the photo -->
+    <!-- Dark gradient overlay so text stays readable over the photo -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/overlay_navy" />
+        android:background="@drawable/bg_hero_gradient" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,219 +34,106 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="24dp"
-                android:paddingTop="36dp"
+                android:paddingHorizontal="28dp"
+                android:paddingTop="48dp"
                 android:paddingBottom="16dp">
 
-                <!-- Adhan playing indicator -->
-                <LinearLayout
-                    android:id="@+id/badgeAdhanPlaying"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:background="@drawable/bg_badge_navy"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="6dp">
-
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_speaker_gold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:letterSpacing="0.04"
-                        android:text="Adhan Playing"
-                        android:textColor="@color/gold"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <!-- Current date / time, matching the phone's actual clock -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textCurrentDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:letterSpacing="0.16"
-                        android:textColor="@color/gold_light"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/textCurrentTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="sans-serif-light"
-                        android:textColor="@color/gold"
-                        android:textSize="22sp" />
-                </LinearLayout>
-
-                <!-- Mihrab arch framing the next-prayer info -->
+                <!-- Gold crescent moon with a soft glow, centered -->
                 <FrameLayout
-                    android:layout_width="248dp"
-                    android:layout_height="288dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="24dp">
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center_horizontal">
+
+                    <View
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/glow_gold_radial" />
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
                         android:contentDescription="@null"
-                        android:src="@drawable/ic_arch_outline" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal|bottom"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="20dp"
-                        android:paddingBottom="34dp">
-
-                        <FrameLayout
-                            android:layout_width="56dp"
-                            android:layout_height="56dp">
-
-                            <View
-                                android:layout_width="56dp"
-                                android:layout_height="56dp"
-                                android:layout_gravity="center"
-                                android:background="@drawable/glow_gold_radial" />
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_crescent_gold" />
-                        </FrameLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:letterSpacing="0.18"
-                            android:text="NEXT PRAYER"
-                            android:textColor="@color/gold"
-                            android:textSize="11sp" />
-
-                        <TextView
-                            android:id="@+id/textNextPrayerName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="serif"
-                            android:textColor="@color/cream"
-                            android:textSize="34sp"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="14dp"
-                                android:layout_height="14dp"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_clock_gold" />
-
-                            <TextView
-                                android:id="@+id/textNextPrayerTime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="6dp"
-                                android:fontFamily="sans-serif-medium"
-                                android:textColor="@color/gold"
-                                android:textSize="17sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/textCountdown"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:fontFamily="sans-serif"
-                            android:textColor="@color/cream_muted"
-                            android:textSize="13sp" />
-                    </LinearLayout>
+                        android:src="@drawable/ic_crescent_gold" />
                 </FrameLayout>
 
-                <!-- All 5 prayers — populated programmatically, current one highlighted -->
-                <LinearLayout
-                    android:id="@+id/prayerPillsRow"
+                <TextView
+                    android:id="@+id/textPrayerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
-                    android:orientation="horizontal" />
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:textColor="@color/gold"
+                    android:textSize="42sp"
+                    android:textStyle="bold" />
 
-                <!-- Quran verse -->
+                <TextView
+                    android:id="@+id/textPrayerArabic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:textColor="@color/cream"
+                    android:textSize="22sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_clock_gold" />
+
+                    <TextView
+                        android:id="@+id/textPrayerTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/gold"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
                 <View
                     android:layout_width="64dp"
                     android:layout_height="1dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="28dp"
-                    android:background="@color/gold_20" />
+                    android:background="@drawable/bg_divider_gold" />
 
                 <TextView
+                    android:id="@+id/textMessage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:lineSpacingExtra="6dp"
-                    android:text="وَأَقِمِ الصَّلَاةَ ۚ إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ"
-                    android:textColor="@color/cream"
-                    android:textDirection="rtl"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
-                    android:lineSpacingExtra="3dp"
-                    android:text="&#8220;And establish prayer. Indeed, prayer prohibits immorality and wrongdoing.&#8221;"
-                    android:textColor="@color/cream_muted"
-                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@color/cream"
+                    android:textSize="15sp"
                     android:textStyle="italic" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:letterSpacing="0.06"
-                    android:text="— AL-ANKABUT 29:45"
-                    android:textColor="@color/gold"
-                    android:textSize="11sp" />
-
-                <View
-                    android:layout_width="64dp"
-                    android:layout_height="1dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="18dp"
-                    android:background="@color/gold_20" />
 
             </LinearLayout>
         </ScrollView>
+
+        <!-- All 5 prayers, pinned above the buttons — populated programmatically,
+             current one highlighted gold with a dot indicator underneath. -->
+        <LinearLayout
+            android:id="@+id/prayerPillsRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal" />
 
         <!-- Buttons — always pinned at the bottom, never need scrolling -->
         <LinearLayout
@@ -254,7 +142,7 @@
             android:orientation="vertical"
             android:paddingHorizontal="28dp"
             android:paddingTop="14dp"
-            android:paddingBottom="22dp">
+            android:paddingBottom="28dp">
 
             <TextView
                 android:id="@+id/btnIPrayed"
@@ -280,18 +168,6 @@
                 android:text="DISMISS"
                 android:textColor="@color/gold"
                 android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:alpha="0.55"
-                android:gravity="center"
-                android:letterSpacing="0.12"
-                android:text="⌃  SWIPE UP TO UNLOCK"
-                android:textColor="@color/gold_light"
-                android:textSize="10sp" />
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -135,7 +135,7 @@ class _HomeBodyState extends State<_HomeBody> {
 
   void _scheduleNotifications(List<Prayer> prayers) {
     final today = DateTime.now();
-    final data = prayers.map((p) {
+    final data = prayers.map<Map<String, dynamic>>((p) {
       return {'name': p.name, 'time': _parseTimeString(p.time, today)};
     }).toList();
     // Share the exact times we scheduled so the foreground adhan controller
@@ -149,6 +149,22 @@ class _HomeBodyState extends State<_HomeBody> {
     NotificationService().scheduleFullScreenPrayerAlarms(
       data,
       adhanId: adhanId,
+    );
+    _startKeepAliveServiceIfNeeded();
+  }
+
+  /// Keeps the app classified as foreground so prayer alarms and
+  /// notifications keep being delivered reliably in the background — only
+  /// while the user has prayer notifications turned on at all.
+  Future<void> _startKeepAliveServiceIfNeeded() async {
+    if (!PrayerState().masterNotifications) return;
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context)!;
+    await NotificationService().startKeepAliveService(
+      title: l10n.appName,
+      text: l10n.keepAliveNotificationText,
+      channelName: l10n.keepAliveChannelName,
+      channelDescription: l10n.keepAliveChannelDescription,
     );
   }
 

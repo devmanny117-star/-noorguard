@@ -1453,4 +1453,108 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get loadingTafsir => '正在加载注释...';
+
+  @override
+  String get keepAliveNotificationText => '礼拜通知已启用';
+
+  @override
+  String get keepAliveChannelName => '礼拜通知';
+
+  @override
+  String get keepAliveChannelDescription => '让 Noor Guard 在后台保持活动，确保礼拜提醒永不错过。';
+
+  @override
+  String get notifSetupTitle => '启用锁屏提醒';
+
+  @override
+  String get notifSetupSubtitle => '这样即使手机锁屏，你也绝不会错过宣礼。只需大约一分钟。';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      '正在使用三星 Galaxy（包括 Fold/Flip）吗？三星在标准 Android 之外增加了额外的开关——下面的步骤 4 和步骤 6 会准确告诉你在哪里找到它们。';
+
+  @override
+  String get notifSetupStep1Title => '允许通知';
+
+  @override
+  String get notifSetupStep1Description => 'Noor Guard 提醒你所需的基本权限。';
+
+  @override
+  String get notifSetupStep1Action => '允许通知';
+
+  @override
+  String get notifSetupStep2Title => '闹钟与提醒';
+
+  @override
+  String get notifSetupStep2Description => '即使手机处于空闲或省电模式，也能让礼拜提醒在准确的礼拜时间响起。';
+
+  @override
+  String get notifSetupStep2Action => '打开闹钟设置';
+
+  @override
+  String get notifSetupStep3Title => '在其他应用上层显示';
+
+  @override
+  String get notifSetupStep3Description => '让完整的礼拜画面显示在锁屏和任何其他打开的内容之上。';
+
+  @override
+  String get notifSetupStep3Action => '打开设置';
+
+  @override
+  String get notifSetupStep4Title => '以弹窗/全屏提醒方式显示';
+
+  @override
+  String get notifSetupStep4Description => '让宣礼画面突破锁屏显示出来，而不是仅保持为无声横幅通知。';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      '在三星 Galaxy 手机上（包括 Fold/Flip）：打开设置 → 点击\"Prayer Time Alarm\" → 然后开启\"Pop-up notification\"（在 Fold/Flip 上称为\"Cover screen pop-up\"）。这是三星专属开关——开启它才能真正让宣礼画面显示在锁屏之上。';
+
+  @override
+  String get notifSetupStep4Action => '打开通知设置';
+
+  @override
+  String get notifSetupStep5Title => '保持通知可靠送达';
+
+  @override
+  String get notifSetupStep5Description =>
+      '防止 Android 在后台拖慢或延迟 Noor Guard，确保礼拜提醒和闹钟始终准时送达。';
+
+  @override
+  String get notifSetupStep5Action => '关闭电池优化';
+
+  @override
+  String get notifSetupStep6Title => '永不休眠的应用';
+
+  @override
+  String get notifSetupStep6Description =>
+      '三星的电池管理器可能会让 Noor Guard 进入休眠并悄悄屏蔽礼拜提醒。将其加入\"Never sleeping apps\"可以防止这种情况。';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      '设置 → 电池和设备维护 → 后台使用限制 → Never sleeping apps → 点击\"+\" → 选择 Noor Guard。';
+
+  @override
+  String get notifSetupStep6Action => '打开电池设置';
+
+  @override
+  String get notifSetupStatusChecking => '检查中…';
+
+  @override
+  String get notifSetupStatusEnabled => '已启用';
+
+  @override
+  String get notifSetupStatusNeeded => '需要设置';
+
+  @override
+  String get notifSetupStatusManual => '手动步骤';
+
+  @override
+  String get notifSetupContinueButton => '继续进入 Noor Guard';
+
+  @override
+  String get notifSetupLaterButton => '我稍后再完成';
+
+  @override
+  String get notifSetupDoneButton => '完成';
 }

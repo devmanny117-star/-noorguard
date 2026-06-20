@@ -12,6 +12,7 @@ import android.os.Build
 import android.os.PowerManager
 import androidx.core.app.NotificationCompat
 
+/** Fires at the exact prayer time and posts the full-screen alarm notification. */
 class PrayerAlarmReceiver : BroadcastReceiver() {
 
     companion object {
@@ -23,7 +24,7 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
         const val EXTRA_NOTIFICATION_ID = "notification_id"
         // Serialized as "name,timeStr,epochMillis;name,timeStr,epochMillis;..." for
         // all 5 of today's prayers, so the lock screen Activity can show the full
-        // pills row and compute "next prayer" regardless of which alarm fired.
+        // pills row regardless of which alarm fired.
         const val EXTRA_ALL_PRAYERS = "all_prayers"
 
         fun channelIdFor(adhanId: String) = "prayer_alarm_$adhanId"

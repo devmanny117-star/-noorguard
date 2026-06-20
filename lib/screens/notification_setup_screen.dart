@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../l10n/app_localizations.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
@@ -15,10 +16,10 @@ const _grey = Color(0xFF8A9BB0);
 const _green = Color(0xFF2E7D32);
 
 /// One-time (re-visitable) guide that walks the user through every Android
-/// permission/toggle the full-screen prayer alarm depends on. Samsung's One
-/// UI hides "Pop-up notification" behind its own per-channel setting that
-/// stock Android's full-screen-intent permission check can't see, so Step 4
-/// always shows manual instructions rather than trusting the OS check alone.
+/// permission/toggle/setting the full-screen prayer alarm and its background
+/// reliability depend on. Samsung's One UI hides two of these behind its own
+/// switches that stock Android's checks can't see, so Steps 4 and 6 always
+/// show manual instructions rather than trusting an OS check alone.
 class NotificationSetupScreen extends StatefulWidget {
   final bool isFirstLaunch;
   const NotificationSetupScreen({super.key, this.isFirstLaunch = false});
@@ -34,6 +35,8 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
   bool? _exactAlarmsEnabled;
   bool? _overlayEnabled;
   bool? _fullScreenEnabled;
+  bool? _batteryOptimizationDisabled;
+  bool? _isSamsung;
 
   @override
   void initState() {
@@ -62,6 +65,8 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
       svc.canScheduleExactAlarms,
       svc.canDrawOverlays,
       svc.canUseFullScreenIntent,
+      svc.isIgnoringBatteryOptimizations,
+      svc.isSamsungDevice,
     ]);
     if (!mounted) return;
     setState(() {
@@ -69,6 +74,8 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
       _exactAlarmsEnabled = results[1];
       _overlayEnabled = results[2];
       _fullScreenEnabled = results[3];
+      _batteryOptimizationDisabled = results[4];
+      _isSamsung = results[5];
     });
   }
 
@@ -92,11 +99,13 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final adhanId = PrayerState().selectedAdhanId;
     final allDone = _notificationsEnabled == true &&
         _exactAlarmsEnabled == true &&
         _overlayEnabled == true &&
-        _fullScreenEnabled == true;
+        _fullScreenEnabled == true &&
+        _batteryOptimizationDisabled == true;
 
     return Scaffold(
       backgroundColor: _bg,
@@ -132,7 +141,7 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
                       const SizedBox(width: 14),
                       Expanded(
                         child: Text(
-                          'Enable Lock Screen Alerts',
+                          l10n.notifSetupTitle,
                           style: GoogleFonts.playfairDisplay(
                             fontSize: 22,
                             fontWeight: FontWeight.w700,
@@ -145,8 +154,7 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'So you never miss the adhan — even when your phone is '
-                    'locked. Takes about a minute.',
+                    l10n.notifSetupSubtitle,
                     style: GoogleFonts.lato(
                       fontSize: 14,
                       color: _grey,
@@ -159,11 +167,10 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
                   _StepCard(
                     number: 1,
                     icon: Icons.notifications_rounded,
-                    title: 'Allow Notifications',
-                    description:
-                        'The basic permission Noor Guard needs to alert you at all.',
+                    title: l10n.notifSetupStep1Title,
+                    description: l10n.notifSetupStep1Description,
                     status: _notificationsEnabled,
-                    actionLabel: 'Allow Notifications',
+                    actionLabel: l10n.notifSetupStep1Action,
                     onAction: () async {
                       await NotificationService().requestNotificationsPermission();
                       await _refreshStatuses();
@@ -173,12 +180,10 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
                   _StepCard(
                     number: 2,
                     icon: Icons.alarm_rounded,
-                    title: 'Alarms & Reminders',
-                    description:
-                        'Lets prayer alarms fire at the exact prayer time, even '
-                        'while your phone is idle or in battery saver.',
+                    title: l10n.notifSetupStep2Title,
+                    description: l10n.notifSetupStep2Description,
                     status: _exactAlarmsEnabled,
-                    actionLabel: 'Open Alarm Settings',
+                    actionLabel: l10n.notifSetupStep2Action,
                     onAction: () async {
                       await NotificationService().openExactAlarmSettings();
                     },
@@ -187,12 +192,10 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
                   _StepCard(
                     number: 3,
                     icon: Icons.layers_rounded,
-                    title: 'Display Over Other Apps',
-                    description:
-                        'Lets the full prayer screen draw on top of the lock '
-                        'screen and whatever else is open.',
+                    title: l10n.notifSetupStep3Title,
+                    description: l10n.notifSetupStep3Description,
                     status: _overlayEnabled,
-                    actionLabel: 'Open Settings',
+                    actionLabel: l10n.notifSetupStep3Action,
                     onAction: () async {
                       await NotificationService().openOverlaySettings();
                     },
@@ -201,24 +204,45 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
                   _StepCard(
                     number: 4,
                     icon: Icons.fullscreen_rounded,
-                    title: 'Show As Pop-up / Full-Screen Alerts',
-                    description:
-                        'Lets the adhan screen break through the lock screen '
-                        'instead of staying a silent banner.',
-                    samsungNote:
-                        'On Samsung Galaxy phones (including Fold/Flip): open '
-                        'Settings → tap "Prayer Time Alarm", then turn on '
-                        '"Pop-up notification" (called "Cover screen pop-up" '
-                        'on Fold/Flip). This is a Samsung-only switch — '
-                        'turning it on is what actually puts the adhan screen '
-                        'over your lock screen.',
+                    title: l10n.notifSetupStep4Title,
+                    description: l10n.notifSetupStep4Description,
+                    samsungNote: l10n.notifSetupStep4SamsungNote,
                     status: _fullScreenEnabled,
-                    actionLabel: 'Open Notification Settings',
+                    actionLabel: l10n.notifSetupStep4Action,
                     onAction: () async {
                       await NotificationService()
                           .openAppNotificationSettings(adhanId: adhanId);
                     },
                   ),
+                  const SizedBox(height: 12),
+                  _StepCard(
+                    number: 5,
+                    icon: Icons.battery_saver_rounded,
+                    title: l10n.notifSetupStep5Title,
+                    description: l10n.notifSetupStep5Description,
+                    status: _batteryOptimizationDisabled,
+                    actionLabel: l10n.notifSetupStep5Action,
+                    onAction: () async {
+                      await NotificationService().openBatteryOptimizationSettings();
+                    },
+                  ),
+                  if (_isSamsung == true) ...[
+                    const SizedBox(height: 12),
+                    _StepCard(
+                      number: 6,
+                      icon: Icons.bedtime_off_rounded,
+                      title: l10n.notifSetupStep6Title,
+                      description: l10n.notifSetupStep6Description,
+                      samsungNote: l10n.notifSetupStep6SamsungNote,
+                      status: null,
+                      isManual: true,
+                      actionLabel: l10n.notifSetupStep6Action,
+                      onAction: () async {
+                        await NotificationService()
+                            .openSamsungBackgroundUsageSettings();
+                      },
+                    ),
+                  ],
                   const SizedBox(height: 8),
                 ],
               ),
@@ -248,8 +272,10 @@ class _NotificationSetupScreenState extends State<NotificationSetupScreen>
                   child: Center(
                     child: Text(
                       allDone
-                          ? 'Continue to Noor Guard'
-                          : (widget.isFirstLaunch ? "I'll finish this later" : 'Done'),
+                          ? l10n.notifSetupContinueButton
+                          : (widget.isFirstLaunch
+                              ? l10n.notifSetupLaterButton
+                              : l10n.notifSetupDoneButton),
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -273,6 +299,7 @@ class _SamsungBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
       decoration: BoxDecoration(
@@ -287,9 +314,7 @@ class _SamsungBanner extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              'Using a Samsung Galaxy (including Fold/Flip)? Samsung adds an '
-              'extra switch beyond stock Android — Step 4 below shows you '
-              'exactly where to find it.',
+              l10n.notifSetupSamsungBanner,
               style: GoogleFonts.lato(
                 fontSize: 12.5,
                 color: AppColors.gold,
@@ -311,6 +336,7 @@ class _StepCard extends StatelessWidget {
   final String description;
   final String? samsungNote;
   final bool? status;
+  final bool isManual;
   final String actionLabel;
   final VoidCallback onAction;
 
@@ -321,6 +347,7 @@ class _StepCard extends StatelessWidget {
     required this.description,
     this.samsungNote,
     required this.status,
+    this.isManual = false,
     required this.actionLabel,
     required this.onAction,
   });
@@ -374,7 +401,7 @@ class _StepCard extends StatelessWidget {
                   ),
                 ),
               ),
-              _StatusChip(status: status),
+              _StatusChip(status: status, isManual: isManual),
             ],
           ),
           const SizedBox(height: 10),
@@ -454,21 +481,26 @@ class _StepCard extends StatelessWidget {
 
 class _StatusChip extends StatelessWidget {
   final bool? status;
-  const _StatusChip({required this.status});
+  final bool isManual;
+  const _StatusChip({required this.status, this.isManual = false});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     late final Color color;
     late final String label;
-    if (status == null) {
+    if (isManual) {
+      color = AppColors.gold;
+      label = l10n.notifSetupStatusManual;
+    } else if (status == null) {
       color = _grey;
-      label = 'Checking…';
+      label = l10n.notifSetupStatusChecking;
     } else if (status == true) {
       color = _green;
-      label = 'Enabled';
+      label = l10n.notifSetupStatusEnabled;
     } else {
       color = AppColors.gold;
-      label = 'Needed';
+      label = l10n.notifSetupStatusNeeded;
     }
 
     return Container(

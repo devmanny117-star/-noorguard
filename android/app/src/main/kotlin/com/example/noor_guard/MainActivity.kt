@@ -4,9 +4,11 @@ import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.PowerManager
 import android.provider.Settings
 import android.view.KeyEvent
 import androidx.core.app.NotificationCompat
@@ -19,12 +21,6 @@ class MainActivity : FlutterActivity() {
     companion object {
         var adhanChannel: MethodChannel? = null
         var isAdhanPlaying = false
-
-        // Distinct from the real prayer alarm ids (100-104) and the basic
-        // test notification id (999) used by flutter_local_notifications, so
-        // testing never collides with a scheduled prayer or its actions
-        // (which use notifId+200/+300 as PendingIntent request codes).
-        private const val TEST_ALARM_NOTIFICATION_ID = 199
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
@@ -96,10 +92,34 @@ class MainActivity : FlutterActivity() {
                     openAppNotificationSettings(args?.get("channelId") as? String)
                     result.success(null)
                 }
-                "scheduleTestAlarm" -> {
+                "isSamsungDevice" -> {
+                    result.success(Build.MANUFACTURER.equals("samsung", ignoreCase = true))
+                }
+                "isIgnoringBatteryOptimizations" -> {
+                    result.success(isIgnoringBatteryOptimizations())
+                }
+                "openBatteryOptimizationSettings" -> {
+                    openBatteryOptimizationSettings()
+                    result.success(null)
+                }
+                "openSamsungBackgroundUsageSettings" -> {
+                    openSamsungBackgroundUsageSettings()
+                    result.success(null)
+                }
+                "startKeepAliveService" -> {
                     @Suppress("UNCHECKED_CAST")
                     val args = call.arguments as Map<String, Any>
-                    scheduleTestAlarm(args["adhanId"] as String)
+                    PrayerForegroundService.start(
+                        this,
+                        args["title"] as String,
+                        args["text"] as String,
+                        args["channelName"] as String,
+                        args["channelDescription"] as String,
+                    )
+                    result.success(null)
+                }
+                "stopKeepAliveService" -> {
+                    PrayerForegroundService.stop(this)
                     result.success(null)
                 }
                 else -> result.notImplemented()
@@ -211,26 +231,6 @@ class MainActivity : FlutterActivity() {
         }
     }
 
-    /**
-     * Schedules a one-off alarm 10 seconds from now through the exact same
-     * AlarmManager -> PrayerAlarmReceiver -> full-screen-intent path real
-     * prayer alarms use, so the lock screen activity can be verified without
-     * waiting for an actual prayer time.
-     */
-    private fun scheduleTestAlarm(adhanId: String) {
-        schedulePrayerAlarm(
-            mapOf(
-                "prayerName" to "Test Alarm",
-                "arabicName" to "تجربة",
-                "prayerTime" to "Now",
-                "message" to "This is a test of the full-screen lock alarm.",
-                "adhanId" to adhanId,
-                "triggerAtMillis" to (System.currentTimeMillis() + 10_000L),
-                "notificationId" to TEST_ALARM_NOTIFICATION_ID,
-            )
-        )
-    }
-
     private fun cancelPrayerAlarms() {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         for (id in 100..104) {
@@ -327,5 +327,78 @@ class MainActivity : FlutterActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         } catch (_: Exception) {}
+    }
+
+    private fun isIgnoringBatteryOptimizations(): Boolean {
+        val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+        return powerManager.isIgnoringBatteryOptimizations(packageName)
+    }
+
+    /**
+     * Tries the direct system "ignore battery optimizations" dialog first,
+     * since granting it is the one-tap equivalent of the per-app
+     * Settings -> Apps -> Noor Guard -> Battery -> Unrestricted switch. Falls
+     * back to that app-info page directly if the dialog's Intent isn't
+     * handled (some heavily modified ROMs strip it).
+     */
+    private fun openBatteryOptimizationSettings() {
+        try {
+            val intent = Intent(
+                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                android.net.Uri.parse("package:$packageName")
+            )
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        } catch (_: Exception) {
+            openAppDetailsSettings()
+        }
+    }
+
+    private fun openAppDetailsSettings() {
+        try {
+            val intent = Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                android.net.Uri.parse("package:$packageName")
+            )
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        } catch (_: Exception) {}
+    }
+
+    /**
+     * Opens the Battery screen of Samsung's Device Care app, where
+     * "Background usage limits -> Never sleeping apps" lives (Samsung's own
+     * battery manager, separate from stock Android's battery optimization).
+     * There's no public Intent action for this Samsung-only screen, so this
+     * targets the known activity directly and falls back to this app's
+     * details page if the device doesn't have it (non-Samsung, or a One UI
+     * version that renamed it).
+     */
+    private fun openSamsungBackgroundUsageSettings() {
+        val componentsToTry = listOf(
+            // Confirmed working on One UI / Android 16 (API 36).
+            ComponentName(
+                "com.samsung.android.lool",
+                "com.samsung.android.sm.battery.ui.BatteryActivity"
+            ),
+            // Older One UI versions used this package order instead.
+            ComponentName(
+                "com.samsung.android.lool",
+                "com.samsung.android.sm.ui.battery.BatteryActivity"
+            ),
+        )
+        for (component in componentsToTry) {
+            try {
+                val intent = Intent().apply {
+                    this.component = component
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
+                startActivity(intent)
+                return
+            } catch (_: Exception) {
+                // Try the next known component name.
+            }
+        }
+        openAppDetailsSettings()
     }
 }

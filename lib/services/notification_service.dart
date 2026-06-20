@@ -6,6 +6,7 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
 import '../models/adhan_model.dart';
+import '../models/prayer_model.dart' show todaysPrayers;
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -108,6 +109,23 @@ class NotificationService {
     // "Prayer Reminders" entry alongside the new per-adhan channels.
     await androidPlugin?.deleteNotificationChannel(channelId: _legacyChannelId);
 
+    // Delete every per-adhan "Prayer Reminders" channel so it gets recreated
+    // at defaultImportance (see _ensureAndroidChannel). These channels were
+    // previously created at Importance.high, which on Samsung One UI makes
+    // them eligible for the "Pop-up notification" toggle — if a user enabled
+    // that for this channel (easy to do by mistake alongside the real
+    // full-screen alarm channel), the 15-minutes-early reminder would ALSO
+    // take over the lock screen, looking like a second, plainer full-screen
+    // alarm before the premium one at the actual prayer time. Importance and
+    // sound can't be changed on an existing channel, so it must be deleted
+    // and recreated; unlike the alarm channel, this one has no OEM toggle
+    // worth preserving, so deleting it here is intentional and safe.
+    for (final style in adhanStyles) {
+      await androidPlugin?.deleteNotificationChannel(
+        channelId: _channelIdFor(adhanSoundResource(style.id)),
+      );
+    }
+
     // Soundless channel used for the foreground banner.
     await androidPlugin?.createNotificationChannel(
       const AndroidNotificationChannel(
@@ -189,6 +207,77 @@ class NotificationService {
     } catch (_) {}
   }
 
+  Future<bool> get isSamsungDevice async {
+    if (kIsWeb || !Platform.isAndroid) return false;
+    try {
+      return await _alarmChannel.invokeMethod<bool>('isSamsungDevice') ??
+          false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<bool> get isIgnoringBatteryOptimizations async {
+    if (kIsWeb || !Platform.isAndroid) return true;
+    try {
+      return await _alarmChannel.invokeMethod<bool>(
+              'isIgnoringBatteryOptimizations') ??
+          true;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  /// Opens the system "ignore battery optimizations" dialog (falls back to
+  /// this app's details page natively if that Intent isn't handled), so
+  /// Noor Guard isn't slowed or delayed in the background.
+  Future<void> openBatteryOptimizationSettings() async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('openBatteryOptimizationSettings');
+    } catch (_) {}
+  }
+
+  /// Opens Samsung's Device Care battery screen, where "Background usage
+  /// limits -> Never sleeping apps" lives. No-op (well, a harmless fallback
+  /// natively) on non-Samsung devices.
+  Future<void> openSamsungBackgroundUsageSettings() async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('openSamsungBackgroundUsageSettings');
+    } catch (_) {}
+  }
+
+  /// Starts the persistent foreground service that keeps the app process
+  /// classified as "foreground" so prayer alarms and notifications keep
+  /// being delivered reliably in the background. Shows a minimal, silent,
+  /// ongoing notification while active — required by Android for any
+  /// foreground service. No-op on iOS, which has no equivalent background
+  /// keep-alive concept.
+  Future<void> startKeepAliveService({
+    required String title,
+    required String text,
+    required String channelName,
+    required String channelDescription,
+  }) async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('startKeepAliveService', {
+        'title': title,
+        'text': text,
+        'channelName': channelName,
+        'channelDescription': channelDescription,
+      });
+    } catch (_) {}
+  }
+
+  Future<void> stopKeepAliveService() async {
+    if (kIsWeb || !Platform.isAndroid) return;
+    try {
+      await _alarmChannel.invokeMethod('stopKeepAliveService');
+    } catch (_) {}
+  }
+
   /// Creates (idempotently) the full-screen alarm channel for [adhanId] so a
   /// Settings deep link can land on a channel that already exists, even
   /// before the user's first prayer alarm has ever fired.
@@ -221,6 +310,14 @@ class NotificationService {
   /// Creates (idempotently) the Android channel whose sound is the bundled
   /// adhan clip for [soundResource] (e.g. `adhan_makkah`). Safe to call every
   /// time we schedule; re-creating an existing channel is a no-op.
+  ///
+  /// Deliberately defaultImportance, not high: this is the 15-minutes-early
+  /// reminder, not the at-time full-screen alarm (that's the separate native
+  /// `prayer_alarm_<id>` channel). High importance made this channel eligible
+  /// for Samsung's "Pop-up notification" toggle, which — if a user enabled it
+  /// here too — full-screen-took-over the lock screen 15 minutes before the
+  /// real premium alarm screen, looking like a duplicate. defaultImportance
+  /// still plays the bundled adhan sound, just without a heads-up peek/pop-up.
   Future<void> _ensureAndroidChannel(String soundResource) async {
     final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
@@ -229,7 +326,7 @@ class NotificationService {
         _channelIdFor(soundResource),
         _channelName,
         description: _channelDescription,
-        importance: Importance.high,
+        importance: Importance.defaultImportance,
         playSound: true,
         sound: RawResourceAndroidNotificationSound(soundResource),
         audioAttributesUsage: AudioAttributesUsage.notificationEvent,
@@ -247,8 +344,8 @@ class NotificationService {
         _channelIdFor(soundResource),
         _channelName,
         channelDescription: _channelDescription,
-        importance: Importance.high,
-        priority: Priority.high,
+        importance: Importance.defaultImportance,
+        priority: Priority.defaultPriority,
         playSound: true,
         sound: RawResourceAndroidNotificationSound(soundResource),
         audioAttributesUsage: AudioAttributesUsage.notificationEvent,
@@ -423,6 +520,20 @@ class NotificationService {
     return '$hour:${time.minute.toString().padLeft(2, '0')} $amPm';
   }
 
+  /// Parses a "h:mm AM/PM" time string (the [todaysPrayers] fallback format)
+  /// into today's DateTime, for when there's no real scheduled-time data yet.
+  static DateTime _parsePrayerTime(String timeStr) {
+    final parts = timeStr.split(' ');
+    final timeParts = parts[0].split(':');
+    var hour = int.parse(timeParts[0]);
+    final minute = int.parse(timeParts[1]);
+    final isPm = parts.length > 1 && parts[1].toUpperCase() == 'PM';
+    if (isPm && hour != 12) hour += 12;
+    if (!isPm && hour == 12) hour = 0;
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day, hour, minute);
+  }
+
   Future<void> scheduleFullScreenPrayerAlarms(
       List<Map<String, dynamic>> prayers,
       {required String adhanId}) async {
@@ -526,13 +637,60 @@ class NotificationService {
 
   /// Schedules a one-off **full-screen lock alarm** 10 seconds from now,
   /// through the same native AlarmManager -> PrayerAlarmReceiver path real
-  /// prayer alarms use, so the lock screen activity can be verified on a
-  /// real device without waiting for an actual prayer time.
-  Future<void> scheduleTestFullScreenAlarm({required String adhanId}) async {
+  /// prayer alarms use, so the lock screen Activity can be verified on a
+  /// real device without waiting for an actual prayer time. Uses [prayers]
+  /// (today's real schedule) for the firing prayer's name/time/message and
+  /// the pills row — whichever prayer is next, or today's last prayer if all
+  /// 5 have already passed — so the test alarm looks exactly like a real one,
+  /// with no placeholder "test" text anywhere on screen.
+  ///
+  /// Falls back to [todaysPrayers]'s sample schedule when [prayers] is empty
+  /// (e.g. the home screen's location/network fetch hasn't finished yet) so
+  /// this button always fires immediately instead of silently doing nothing.
+  Future<void> scheduleTestFullScreenAlarm({
+    required String adhanId,
+    required List<Map<String, dynamic>> prayers,
+  }) async {
     if (kIsWeb || !Platform.isAndroid) return;
+
+    final List<Map<String, dynamic>> schedule = prayers.isNotEmpty
+        ? prayers
+        : todaysPrayers
+            .map<Map<String, dynamic>>(
+                (p) => {'name': p.name, 'time': _parsePrayerTime(p.time)})
+            .toList();
+
+    final now = DateTime.now();
+    final entry = schedule.firstWhere(
+      (p) => (p['time'] as DateTime).isAfter(now),
+      orElse: () => schedule.last,
+    );
+    final name = entry['name'] as String;
+    final time = entry['time'] as DateTime;
+
+    final allPrayers = schedule.map((p) {
+      final t = p['time'] as DateTime;
+      return {
+        'name': p['name'] as String,
+        'time': _formatPrayerTime(t),
+        'epochMillis': t.millisecondsSinceEpoch,
+      };
+    }).toList();
+
     try {
-      await _alarmChannel.invokeMethod('scheduleTestAlarm', {
+      await _alarmChannel.invokeMethod('schedulePrayerAlarm', {
+        'prayerName': name,
+        'arabicName': _arabicPrayerNames[name] ?? '',
+        'prayerTime': _formatPrayerTime(time),
+        'message': _prayerAlarmMessages[name] ?? 'Time for $name prayer',
         'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
+        'triggerAtMillis':
+            now.add(const Duration(seconds: 10)).millisecondsSinceEpoch,
+        // Distinct from the real prayer alarm ids (100-104) so testing never
+        // collides with a scheduled prayer or its actions (which use
+        // notifId+200/+300 as PendingIntent request codes).
+        'notificationId': 199,
+        'allPrayers': allPrayers,
       });
     } catch (e) {
       debugPrint('NotificationService: failed to schedule test alarm: $e');

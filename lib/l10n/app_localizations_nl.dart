@@ -1530,4 +1530,114 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Tafsir laden...';
+
+  @override
+  String get keepAliveNotificationText => 'Gebedsmeldingen actief';
+
+  @override
+  String get keepAliveChannelName => 'Gebedsmeldingen';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Houdt Noor Guard actief op de achtergrond, zodat gebedsalarmen nooit worden gemist.';
+
+  @override
+  String get notifSetupTitle => 'Vergrendelscherm-meldingen inschakelen';
+
+  @override
+  String get notifSetupSubtitle =>
+      'Zodat je de adhan nooit mist — ook niet als je telefoon vergrendeld is. Duurt ongeveer een minuut.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Gebruik je een Samsung Galaxy (inclusief Fold/Flip)? Samsung voegt extra schakelaars toe naast standaard Android — stap 4 en 6 hieronder laten precies zien waar je ze vindt.';
+
+  @override
+  String get notifSetupStep1Title => 'Meldingen toestaan';
+
+  @override
+  String get notifSetupStep1Description =>
+      'De basismachtiging die Noor Guard nodig heeft om je überhaupt te waarschuwen.';
+
+  @override
+  String get notifSetupStep1Action => 'Meldingen toestaan';
+
+  @override
+  String get notifSetupStep2Title => 'Alarmen & herinneringen';
+
+  @override
+  String get notifSetupStep2Description =>
+      'Laat gebedsalarmen precies op tijd afgaan, ook als je telefoon inactief is of in de batterijbesparingsmodus staat.';
+
+  @override
+  String get notifSetupStep2Action => 'Alarminstellingen openen';
+
+  @override
+  String get notifSetupStep3Title => 'Weergeven boven andere apps';
+
+  @override
+  String get notifSetupStep3Description =>
+      'Laat het volledige gebedsscherm boven het vergrendelscherm en alles wat verder open staat verschijnen.';
+
+  @override
+  String get notifSetupStep3Action => 'Instellingen openen';
+
+  @override
+  String get notifSetupStep4Title => 'Weergeven als pop-up / volledig scherm';
+
+  @override
+  String get notifSetupStep4Description =>
+      'Laat het adhan-scherm door het vergrendelscherm heen breken in plaats van een stille banner te blijven.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Op Samsung Galaxy-telefoons (inclusief Fold/Flip): open Instellingen → tik op \"Prayer Time Alarm\", schakel dan \"Pop-up notification\" in (heet \"Cover screen pop-up\" op Fold/Flip). Dit is een exclusieve Samsung-schakelaar — door deze in te schakelen verschijnt het adhan-scherm pas echt boven je vergrendelscherm.';
+
+  @override
+  String get notifSetupStep4Action => 'Meldingsinstellingen openen';
+
+  @override
+  String get notifSetupStep5Title => 'Meldingen betrouwbaar houden';
+
+  @override
+  String get notifSetupStep5Description =>
+      'Voorkomt dat Android Noor Guard op de achtergrond vertraagt of uitstelt, zodat gebedsalarmen en herinneringen altijd op tijd aankomen.';
+
+  @override
+  String get notifSetupStep5Action => 'Batterijoptimalisatie uitschakelen';
+
+  @override
+  String get notifSetupStep6Title => 'Nooit-slapende apps';
+
+  @override
+  String get notifSetupStep6Description =>
+      'Samsungs batterijbeheer kan Noor Guard laten slapen en gebedsalarmen stilletjes blokkeren. Door het toe te voegen aan \"Never sleeping apps\" wordt dit voorkomen.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'Instellingen → Batterij en apparaatonderhoud → Achtergrondgebruikslimieten → Never sleeping apps → tik op \"+\" → selecteer Noor Guard.';
+
+  @override
+  String get notifSetupStep6Action => 'Batterij-instellingen openen';
+
+  @override
+  String get notifSetupStatusChecking => 'Controleren…';
+
+  @override
+  String get notifSetupStatusEnabled => 'Ingeschakeld';
+
+  @override
+  String get notifSetupStatusNeeded => 'Vereist';
+
+  @override
+  String get notifSetupStatusManual => 'Handmatige stap';
+
+  @override
+  String get notifSetupContinueButton => 'Verder naar Noor Guard';
+
+  @override
+  String get notifSetupLaterButton => 'Dat doe ik later';
+
+  @override
+  String get notifSetupDoneButton => 'Klaar';
 }

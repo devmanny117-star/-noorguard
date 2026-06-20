@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 
+/** Handles the "I Prayed" and "Dismiss" action buttons on the alarm notification. */
 class PrayerActionReceiver : BroadcastReceiver() {
 
     companion object {

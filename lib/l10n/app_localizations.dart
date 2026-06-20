@@ -2841,6 +2841,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Loading tafsir...'**
   String get loadingTafsir;
+
+  /// Body text of the persistent foreground-service notification that keeps prayer alarms reliable
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer notifications active'**
+  String get keepAliveNotificationText;
+
+  /// Android notification channel name for the persistent keep-alive notification
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Notifications'**
+  String get keepAliveChannelName;
+
+  /// Android notification channel description for the persistent keep-alive notification
+  ///
+  /// In en, this message translates to:
+  /// **'Keeps Noor Guard active in the background so prayer alarms are never missed.'**
+  String get keepAliveChannelDescription;
+
+  /// Title of the notification/permission setup guide screen
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Lock Screen Alerts'**
+  String get notifSetupTitle;
+
+  /// Subtitle of the notification/permission setup guide screen
+  ///
+  /// In en, this message translates to:
+  /// **'So you never miss the adhan — even when your phone is locked. Takes about a minute.'**
+  String get notifSetupSubtitle;
+
+  /// Banner inviting Samsung users to pay attention to the Samsung-specific steps
+  ///
+  /// In en, this message translates to:
+  /// **'Using a Samsung Galaxy (including Fold/Flip)? Samsung adds extra switches beyond stock Android — Steps 4 and 6 below show you exactly where to find them.'**
+  String get notifSetupSamsungBanner;
+
+  /// Title of setup guide step 1
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Notifications'**
+  String get notifSetupStep1Title;
+
+  /// Description of setup guide step 1
+  ///
+  /// In en, this message translates to:
+  /// **'The basic permission Noor Guard needs to alert you at all.'**
+  String get notifSetupStep1Description;
+
+  /// Action button label for setup guide step 1
+  ///
+  /// In en, this message translates to:
+  /// **'Allow Notifications'**
+  String get notifSetupStep1Action;
+
+  /// Title of setup guide step 2
+  ///
+  /// In en, this message translates to:
+  /// **'Alarms & Reminders'**
+  String get notifSetupStep2Title;
+
+  /// Description of setup guide step 2
+  ///
+  /// In en, this message translates to:
+  /// **'Lets prayer alarms fire at the exact prayer time, even while your phone is idle or in battery saver.'**
+  String get notifSetupStep2Description;
+
+  /// Action button label for setup guide step 2
+  ///
+  /// In en, this message translates to:
+  /// **'Open Alarm Settings'**
+  String get notifSetupStep2Action;
+
+  /// Title of setup guide step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Display Over Other Apps'**
+  String get notifSetupStep3Title;
+
+  /// Description of setup guide step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Lets the full prayer screen draw on top of the lock screen and whatever else is open.'**
+  String get notifSetupStep3Description;
+
+  /// Action button label for setup guide step 3
+  ///
+  /// In en, this message translates to:
+  /// **'Open Settings'**
+  String get notifSetupStep3Action;
+
+  /// Title of setup guide step 4
+  ///
+  /// In en, this message translates to:
+  /// **'Show As Pop-up / Full-Screen Alerts'**
+  String get notifSetupStep4Title;
+
+  /// Description of setup guide step 4
+  ///
+  /// In en, this message translates to:
+  /// **'Lets the adhan screen break through the lock screen instead of staying a silent banner.'**
+  String get notifSetupStep4Description;
+
+  /// Samsung-specific instructions shown under setup guide step 4
+  ///
+  /// In en, this message translates to:
+  /// **'On Samsung Galaxy phones (including Fold/Flip): open Settings → tap \"Prayer Time Alarm\", then turn on \"Pop-up notification\" (called \"Cover screen pop-up\" on Fold/Flip). This is a Samsung-only switch — turning it on is what actually puts the adhan screen over your lock screen.'**
+  String get notifSetupStep4SamsungNote;
+
+  /// Action button label for setup guide step 4
+  ///
+  /// In en, this message translates to:
+  /// **'Open Notification Settings'**
+  String get notifSetupStep4Action;
+
+  /// Title of setup guide step 5 (battery optimization)
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Notifications Reliable'**
+  String get notifSetupStep5Title;
+
+  /// Description of setup guide step 5 (battery optimization)
+  ///
+  /// In en, this message translates to:
+  /// **'Stops Android from slowing or delaying Noor Guard in the background, so prayer alarms and reminders always arrive on time.'**
+  String get notifSetupStep5Description;
+
+  /// Action button label for setup guide step 5 (battery optimization)
+  ///
+  /// In en, this message translates to:
+  /// **'Disable Battery Optimization'**
+  String get notifSetupStep5Action;
+
+  /// Title of setup guide step 6 (Samsung-only background usage limits)
+  ///
+  /// In en, this message translates to:
+  /// **'Never Sleeping Apps'**
+  String get notifSetupStep6Title;
+
+  /// Description of setup guide step 6 (Samsung-only background usage limits)
+  ///
+  /// In en, this message translates to:
+  /// **'Samsung\'s battery manager can put Noor Guard to sleep and silently block prayer alarms. Adding it to \"Never sleeping apps\" stops that.'**
+  String get notifSetupStep6Description;
+
+  /// Manual navigation instructions shown under setup guide step 6
+  ///
+  /// In en, this message translates to:
+  /// **'Settings → Battery and device care → Background usage limits → Never sleeping apps → tap \"+\" → select Noor Guard.'**
+  String get notifSetupStep6SamsungNote;
+
+  /// Action button label for setup guide step 6
+  ///
+  /// In en, this message translates to:
+  /// **'Open Battery Settings'**
+  String get notifSetupStep6Action;
+
+  /// Status chip label while a setup guide step's status is being checked
+  ///
+  /// In en, this message translates to:
+  /// **'Checking…'**
+  String get notifSetupStatusChecking;
+
+  /// Status chip label when a setup guide step is already satisfied
+  ///
+  /// In en, this message translates to:
+  /// **'Enabled'**
+  String get notifSetupStatusEnabled;
+
+  /// Status chip label when a setup guide step still needs action
+  ///
+  /// In en, this message translates to:
+  /// **'Needed'**
+  String get notifSetupStatusNeeded;
+
+  /// Status chip label for a setup guide step whose completion can't be checked automatically
+  ///
+  /// In en, this message translates to:
+  /// **'Manual Step'**
+  String get notifSetupStatusManual;
+
+  /// Footer button label once every setup guide step is satisfied
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Noor Guard'**
+  String get notifSetupContinueButton;
+
+  /// Footer button label on first launch before every step is satisfied
+  ///
+  /// In en, this message translates to:
+  /// **'I\'ll finish this later'**
+  String get notifSetupLaterButton;
+
+  /// Footer button label on a re-visit of the setup guide before every step is satisfied
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get notifSetupDoneButton;
 }
 
 class _AppLocalizationsDelegate

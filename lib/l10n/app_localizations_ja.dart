@@ -1466,4 +1466,113 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'タフスィールを読み込み中...';
+
+  @override
+  String get keepAliveNotificationText => '礼拝通知が有効です';
+
+  @override
+  String get keepAliveChannelName => '礼拝通知';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Noor Guardをバックグラウンドで有効にし、礼拝アラームを見逃さないようにします。';
+
+  @override
+  String get notifSetupTitle => 'ロック画面の通知を有効にする';
+
+  @override
+  String get notifSetupSubtitle => 'スマホがロックされていてもアザーンを見逃さないようにします。約1分で完了します。';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Samsung Galaxy（Fold/Flipを含む）をお使いですか？Samsungは標準のAndroidに加えて追加のスイッチを用意しています — 下のステップ4と6で、その場所を正確にご案内します。';
+
+  @override
+  String get notifSetupStep1Title => '通知を許可';
+
+  @override
+  String get notifSetupStep1Description =>
+      'Noor Guardが何らかの通知を行うために必要な基本的な権限です。';
+
+  @override
+  String get notifSetupStep1Action => '通知を許可';
+
+  @override
+  String get notifSetupStep2Title => 'アラームとリマインダー';
+
+  @override
+  String get notifSetupStep2Description =>
+      'スマホがアイドル状態や省電力モードでも、礼拝の正確な時間にアラームが鳴るようにします。';
+
+  @override
+  String get notifSetupStep2Action => 'アラーム設定を開く';
+
+  @override
+  String get notifSetupStep3Title => '他のアプリの上に表示';
+
+  @override
+  String get notifSetupStep3Description =>
+      '礼拝のフル画面がロック画面や他に開いているものの上に表示されるようにします。';
+
+  @override
+  String get notifSetupStep3Action => '設定を開く';
+
+  @override
+  String get notifSetupStep4Title => 'ポップアップ／フルスクリーン通知として表示';
+
+  @override
+  String get notifSetupStep4Description =>
+      'アザーン画面が無音バナーのままにならず、ロック画面を突き破って表示されるようにします。';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Samsung Galaxy端末（Fold/Flipを含む）の場合：設定を開く → 「Prayer Time Alarm」をタップ → 「Pop-up notification」をオンにします（Fold/Flipでは「Cover screen pop-up」と表示されます）。これはSamsung独自のスイッチで、これをオンにすることで初めてアザーン画面がロック画面の上に実際に表示されます。';
+
+  @override
+  String get notifSetupStep4Action => '通知設定を開く';
+
+  @override
+  String get notifSetupStep5Title => '通知を確実に届ける';
+
+  @override
+  String get notifSetupStep5Description =>
+      'AndroidがバックグラウンドでNoor Guardの動作を遅らせたり止めたりしないようにし、礼拝アラームとリマインダーが常に時間通りに届くようにします。';
+
+  @override
+  String get notifSetupStep5Action => 'バッテリー最適化を無効にする';
+
+  @override
+  String get notifSetupStep6Title => 'スリープしないアプリ';
+
+  @override
+  String get notifSetupStep6Description =>
+      'SamsungのバッテリーマネージャーはNoor Guardをスリープ状態にし、礼拝アラームを静かにブロックすることがあります。「Never sleeping apps」に追加することでこれを防ぎます。';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      '設定 → バッテリーとデバイスケア → バックグラウンド使用の制限 → Never sleeping apps → 「+」をタップ → Noor Guardを選択。';
+
+  @override
+  String get notifSetupStep6Action => 'バッテリー設定を開く';
+
+  @override
+  String get notifSetupStatusChecking => '確認中…';
+
+  @override
+  String get notifSetupStatusEnabled => '有効';
+
+  @override
+  String get notifSetupStatusNeeded => '必要';
+
+  @override
+  String get notifSetupStatusManual => '手動の手順';
+
+  @override
+  String get notifSetupContinueButton => 'Noor Guardへ進む';
+
+  @override
+  String get notifSetupLaterButton => '後で完了する';
+
+  @override
+  String get notifSetupDoneButton => '完了';
 }

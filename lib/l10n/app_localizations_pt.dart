@@ -1531,4 +1531,115 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get loadingTafsir => 'Carregando tafsir...';
+
+  @override
+  String get keepAliveNotificationText => 'Notificações de oração ativas';
+
+  @override
+  String get keepAliveChannelName => 'Notificações de oração';
+
+  @override
+  String get keepAliveChannelDescription =>
+      'Mantém o Noor Guard ativo em segundo plano para que os alarmes de oração nunca sejam perdidos.';
+
+  @override
+  String get notifSetupTitle => 'Ativar alertas na tela de bloqueio';
+
+  @override
+  String get notifSetupSubtitle =>
+      'Para que você nunca perca o adhan — mesmo com o telefone bloqueado. Leva cerca de um minuto.';
+
+  @override
+  String get notifSetupSamsungBanner =>
+      'Usa um Samsung Galaxy (incluindo Fold/Flip)? A Samsung adiciona interruptores extras além do Android padrão — os passos 4 e 6 abaixo mostram exatamente onde encontrá-los.';
+
+  @override
+  String get notifSetupStep1Title => 'Permitir notificações';
+
+  @override
+  String get notifSetupStep1Description =>
+      'A permissão básica de que o Noor Guard precisa para te avisar de qualquer coisa.';
+
+  @override
+  String get notifSetupStep1Action => 'Permitir notificações';
+
+  @override
+  String get notifSetupStep2Title => 'Alarmes e lembretes';
+
+  @override
+  String get notifSetupStep2Description =>
+      'Permite que os alarmes de oração disparem exatamente no horário da oração, mesmo com o telefone ocioso ou em economia de bateria.';
+
+  @override
+  String get notifSetupStep2Action => 'Abrir configurações de alarme';
+
+  @override
+  String get notifSetupStep3Title => 'Exibir sobre outros apps';
+
+  @override
+  String get notifSetupStep3Description =>
+      'Permite que a tela completa de oração apareça sobre a tela de bloqueio e qualquer outra coisa aberta.';
+
+  @override
+  String get notifSetupStep3Action => 'Abrir configurações';
+
+  @override
+  String get notifSetupStep4Title =>
+      'Exibir como pop-up / alerta em tela cheia';
+
+  @override
+  String get notifSetupStep4Description =>
+      'Permite que a tela do adhan apareça sobre a tela de bloqueio em vez de permanecer como um banner silencioso.';
+
+  @override
+  String get notifSetupStep4SamsungNote =>
+      'Em telefones Samsung Galaxy (incluindo Fold/Flip): abra Configurações → toque em \"Prayer Time Alarm\", depois ative \"Pop-up notification\" (chamada \"Cover screen pop-up\" no Fold/Flip). Esse é um interruptor exclusivo da Samsung — ativá-lo é o que realmente coloca a tela do adhan sobre sua tela de bloqueio.';
+
+  @override
+  String get notifSetupStep4Action => 'Abrir configurações de notificações';
+
+  @override
+  String get notifSetupStep5Title => 'Manter as notificações confiáveis';
+
+  @override
+  String get notifSetupStep5Description =>
+      'Impede que o Android deixe o Noor Guard mais lento ou atrasado em segundo plano, para que os alarmes e lembretes de oração sempre cheguem no horário.';
+
+  @override
+  String get notifSetupStep5Action => 'Desativar otimização de bateria';
+
+  @override
+  String get notifSetupStep6Title => 'Apps que nunca dormem';
+
+  @override
+  String get notifSetupStep6Description =>
+      'O gerenciador de bateria da Samsung pode colocar o Noor Guard para dormir e bloquear silenciosamente os alarmes de oração. Adicioná-lo aos \"Never sleeping apps\" evita isso.';
+
+  @override
+  String get notifSetupStep6SamsungNote =>
+      'Configurações → Bateria e cuidados do dispositivo → Limites de uso em segundo plano → Never sleeping apps → toque em \"+\" → selecione Noor Guard.';
+
+  @override
+  String get notifSetupStep6Action => 'Abrir configurações de bateria';
+
+  @override
+  String get notifSetupStatusChecking => 'Verificando…';
+
+  @override
+  String get notifSetupStatusEnabled => 'Ativado';
+
+  @override
+  String get notifSetupStatusNeeded => 'Necessário';
+
+  @override
+  String get notifSetupStatusManual => 'Passo manual';
+
+  @override
+  String get notifSetupContinueButton => 'Continuar para o Noor Guard';
+
+  @override
+  String get notifSetupLaterButton => 'Vou terminar isso depois';
+
+  @override
+  String get notifSetupDoneButton => 'Concluído';
 }

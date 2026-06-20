@@ -155,6 +155,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  /// Starts/stops the persistent foreground service alongside the master
+  /// notifications toggle — no point keeping the app alive in the background
+  /// for prayer alarms the user has turned off entirely.
+  Future<void> _onMasterNotificationsChanged(
+      PrayerState prayerState, bool value) async {
+    await prayerState.toggleMasterNotifications(value);
+    if (!mounted) return;
+    if (value) {
+      final l10n = AppLocalizations.of(context)!;
+      await NotificationService().startKeepAliveService(
+        title: l10n.appName,
+        text: l10n.keepAliveNotificationText,
+        channelName: l10n.keepAliveChannelName,
+        channelDescription: l10n.keepAliveChannelDescription,
+      );
+    } else {
+      await NotificationService().stopKeepAliveService();
+    }
+  }
+
   void _snack(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -250,7 +270,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 label: l10n.prayerNotifications,
                 value: prayerState.masterNotifications,
                 colors: cardColors,
-                onChanged: prayerState.toggleMasterNotifications,
+                onChanged: (value) =>
+                    _onMasterNotificationsChanged(prayerState, value),
               ),
               const _Divider(colors: cardColors),
               _ActionRow(
@@ -273,6 +294,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onTap: () {
                     NotificationService().scheduleTestFullScreenAlarm(
                       adhanId: prayerState.selectedAdhanId,
+                      prayers: prayerState.scheduledPrayerTimes ?? [],
                     );
                     _snack(
                       'Lock alarm fires in 10 seconds — lock your phone now',
