@@ -21,6 +21,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get nextPrayer => 'Sıradaki Namaz';
 
   @override
+  String get iPrayedButton => 'Namaz Kıldım';
+
+  @override
   String get todaysPrayers => 'Bugünkü Namazlar';
 
   @override
@@ -457,13 +460,34 @@ class AppLocalizationsTr extends AppLocalizations {
   String get islamicMonthMuharram => 'Muharrem';
 
   @override
+  String get islamicMonthSafar => 'Safer';
+
+  @override
   String get islamicMonthRabiAlAwwal => 'Rebîülevvel';
+
+  @override
+  String get islamicMonthRabiAlThani => 'Rebîülâhir';
+
+  @override
+  String get islamicMonthJumadaAlAwwal => 'Cemâziyelevvel';
+
+  @override
+  String get islamicMonthJumadaAlThani => 'Cemâziyelâhir';
+
+  @override
+  String get islamicMonthRajab => 'Recep';
+
+  @override
+  String get islamicMonthShaban => 'Şaban';
 
   @override
   String get islamicMonthRamadan => 'Ramazan';
 
   @override
   String get islamicMonthShawwal => 'Şevval';
+
+  @override
+  String get islamicMonthDhulQadah => 'Zilkade';
 
   @override
   String get islamicMonthDhulHijjah => 'Zilhicce';

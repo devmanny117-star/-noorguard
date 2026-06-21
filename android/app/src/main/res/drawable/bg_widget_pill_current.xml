@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Highlighted pill background for the current/next prayer in the compact
+     small widget: gold-tinted fill + solid gold border. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#33C9A84C" />
+    <stroke
+        android:width="1dp"
+        android:color="#C9A84C" />
+    <corners android:radius="10dp" />
+</shape>

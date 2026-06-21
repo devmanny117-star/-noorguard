@@ -2,9 +2,15 @@ import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart' hide TextDirection;
+import 'package:provider/provider.dart';
+import '../data/prayer_times_data.dart';
 import '../models/dua_model.dart';
+import '../models/prayer_model.dart';
+import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../l10n/app_localizations.dart';
 
@@ -27,6 +33,8 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
   late AnimationController _crescentCtrl;
   late Animation<double> _crescentGlow;
 
+  List<Prayer>? _prayers;
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +43,8 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
     ));
+
+    _loadPrayerTimes();
 
     _duaFadeCtrl = AnimationController(
       vsync: this,
@@ -86,6 +96,74 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
 
   String _formatDate(String localeCode) {
     return DateFormat('EEEE, MMMM d', localeCode).format(_now);
+  }
+
+  Future<void> _loadPrayerTimes() async {
+    try {
+      await Geolocator.requestPermission();
+      final position = await Geolocator.getCurrentPosition();
+      final placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+      final placemark = placemarks.first;
+      final prayers = await fetchPrayerTimes(
+        city: placemark.locality ?? 'Sacramento',
+        country: placemark.isoCountryCode ?? 'US',
+      );
+      if (mounted) setState(() => _prayers = prayers);
+    } catch (_) {
+      try {
+        final prayers = await fetchPrayerTimes();
+        if (mounted) setState(() => _prayers = prayers);
+      } catch (_) {
+        // Leave _prayers null — the prayer section just stays hidden.
+      }
+    }
+  }
+
+  DateTime? _parseTimeToday(String timeStr) {
+    try {
+      final parts = timeStr.split(' ');
+      final timeParts = parts[0].split(':');
+      var hour = int.parse(timeParts[0]);
+      final minute = int.parse(timeParts[1]);
+      final isPm = parts[1].toUpperCase() == 'PM';
+      if (isPm && hour != 12) hour += 12;
+      if (!isPm && hour == 12) hour = 0;
+      return DateTime(_now.year, _now.month, _now.day, hour, minute);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  String _countdownTo(DateTime target) {
+    final diff = target.difference(_now);
+    if (diff.isNegative) return '';
+    final h = diff.inHours;
+    final m = diff.inMinutes.remainder(60);
+    return h > 0 ? '${h}h ${m}m' : '${m}m';
+  }
+
+  /// The most recently-due prayer that hasn't been marked yet — what "I
+  /// Prayed" should mark (mirrors the same rule used by the home-screen
+  /// widgets' I Prayed button).
+  Prayer? _currentDuePrayer(PrayerState state) {
+    final prayers = _prayers;
+    if (prayers == null || prayers.isEmpty) return null;
+    final nextIndex = prayers.indexWhere((p) => p.isNext);
+    if (nextIndex == -1) return null;
+    final currentIndex = (nextIndex - 1 + prayers.length) % prayers.length;
+    return prayers[currentIndex];
+  }
+
+  static String _localizedPrayerName(AppLocalizations l10n, String englishName) {
+    return switch (englishName) {
+      'Fajr' => l10n.fajr,
+      'Dhuhr' => l10n.dhuhr,
+      'Asr' => l10n.asr,
+      'Maghrib' => l10n.maghrib,
+      'Isha' => l10n.isha,
+      _ => englishName,
+    };
   }
 
   @override
@@ -221,61 +299,123 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
                 const SizedBox(height: 22),
 
                 // ── NEXT PRAYER PILL ──
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.07),
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(
-                      color: AppColors.gold.withValues(alpha: 0.30),
-                      width: 1,
+                Builder(builder: (context) {
+                  final prayers = _prayers;
+                  final nextIndex = prayers?.indexWhere((p) => p.isNext) ?? -1;
+                  final next = nextIndex == -1 ? null : prayers![nextIndex];
+                  final nextTime = next == null ? null : _parseTimeToday(next.time);
+                  final countdown = nextTime == null ? '' : _countdownTo(nextTime);
+                  return Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.07),
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        color: AppColors.gold.withValues(alpha: 0.30),
+                        width: 1,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        width: 28,
-                        height: 28,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          width: 28,
+                          height: 28,
+                          decoration: BoxDecoration(
+                            color: AppColors.deepGreen.withValues(alpha: 0.6),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(Icons.access_time_rounded,
+                              size: 15, color: AppColors.gold),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          next == null ? l10n.asr : _localizedPrayerName(l10n, next.name),
+                          style: GoogleFonts.playfairDisplay(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Container(
+                          width: 4,
+                          height: 4,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: AppColors.gold.withValues(alpha: 0.6),
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        Text(
+                          next == null ? l10n.lockPreviewCountdown : countdown,
+                          style: GoogleFonts.lato(
+                            fontSize: 13,
+                            color: Colors.white.withValues(alpha: 0.72),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+
+                const SizedBox(height: 16),
+
+                // ── 5 PRAYER TIMES + I PRAYED ──
+                if (_prayers != null) _LockPrayerRow(prayers: _prayers!),
+
+                const SizedBox(height: 12),
+
+                Consumer<PrayerState>(
+                  builder: (context, state, _) {
+                    final current = _currentDuePrayer(state);
+                    if (current == null) return const SizedBox.shrink();
+                    final alreadyDone = state.prayers[current.name] ?? false;
+                    return GestureDetector(
+                      onTap: alreadyDone
+                          ? null
+                          : () => state.togglePrayer(current.name, context),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 22, vertical: 9),
                         decoration: BoxDecoration(
-                          color: AppColors.deepGreen.withValues(alpha: 0.6),
-                          shape: BoxShape.circle,
+                          color: alreadyDone
+                              ? AppColors.gold.withValues(alpha: 0.18)
+                              : AppColors.gold,
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        child: const Icon(Icons.access_time_rounded,
-                            size: 15, color: AppColors.gold),
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        l10n.asr,
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              alreadyDone
+                                  ? Icons.check_circle_rounded
+                                  : Icons.check_circle_outline_rounded,
+                              size: 16,
+                              color: alreadyDone
+                                  ? AppColors.gold
+                                  : const Color(0xFF1B5E20),
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              l10n.iPrayedButton,
+                              style: GoogleFonts.lato(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: alreadyDone
+                                    ? AppColors.gold
+                                    : const Color(0xFF1B5E20),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Container(
-                        width: 4,
-                        height: 4,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                          color: AppColors.gold.withValues(alpha: 0.6),
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      Text(
-                        l10n.lockPreviewCountdown,
-                        style: GoogleFonts.lato(
-                          fontSize: 13,
-                          color: Colors.white.withValues(alpha: 0.72),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
 
-                const SizedBox(height: 32),
+                const SizedBox(height: 24),
 
                 // ── GOLD DIVIDER ──
                 Row(
@@ -355,6 +495,54 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────
+// 5 PRAYER TIMES ROW
+// ─────────────────────────────────────────────
+class _LockPrayerRow extends StatelessWidget {
+  final List<Prayer> prayers;
+  const _LockPrayerRow({required this.prayers});
+
+  @override
+  Widget build(BuildContext context) {
+    final state = context.watch<PrayerState>();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 28),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: prayers.map((p) {
+          final done = state.prayers[p.name] ?? false;
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                _LockScreenPreviewState._localizedPrayerName(
+                  AppLocalizations.of(context)!,
+                  p.name,
+                ),
+                style: GoogleFonts.lato(
+                  fontSize: 11,
+                  fontWeight: p.isNext ? FontWeight.w700 : FontWeight.w500,
+                  color: p.isNext
+                      ? AppColors.gold
+                      : Colors.white.withValues(alpha: 0.55),
+                ),
+              ),
+              const SizedBox(height: 4),
+              Icon(
+                done ? Icons.circle : Icons.circle_outlined,
+                size: 8,
+                color: done
+                    ? const Color(0xFF4CAF50)
+                    : Colors.white.withValues(alpha: 0.25),
+              ),
+            ],
+          );
+        }).toList(),
       ),
     );
   }

@@ -1,8 +1,10 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/prayer_times_data.dart';
+import '../models/prayer_model.dart';
 import 'notification_service.dart';
 import 'streak_service.dart';
+import 'widget_data_service.dart';
 
 class PrayerState extends ChangeNotifier {
   static final PrayerState _instance = PrayerState._internal();
@@ -18,6 +20,11 @@ class PrayerState extends ChangeNotifier {
     'Maghrib': false,
     'Isha': false,
   };
+
+  /// The full prayer list (with display times) most recently resolved by the
+  /// home screen — kept here so togglePrayer can refresh the home-screen
+  /// widgets without every caller having to thread the list through itself.
+  List<Prayer>? lastKnownPrayers;
 
   int streakCount = 0;
   bool beginnerMode = false;
@@ -110,7 +117,7 @@ class PrayerState extends ChangeNotifier {
     } catch (_) {}
   }
 
-  Future<void> togglePrayer(String name) async {
+  Future<void> togglePrayer(String name, [BuildContext? context]) async {
     final isDone = prayers[name] ?? false;
     prayers[name] = !isDone;
     notifyListeners(); // optimistic update
@@ -121,6 +128,11 @@ class PrayerState extends ChangeNotifier {
     }
     streakCount = await _streak.getStreak();
     notifyListeners(); // update streak after persist
+
+    final known = lastKnownPrayers;
+    if (context != null && context.mounted && known != null) {
+      await WidgetDataService.pushCompletionSnapshot(context: context, prayers: known);
+    }
   }
 
   Future<void> loadBeginnerMode() async {
@@ -146,31 +158,35 @@ class PrayerState extends ChangeNotifier {
   }
 
   Future<void> toggleMasterNotifications(bool value) async {
+    // Flip and broadcast immediately — optimistic, so the bell icon always
+    // reflects the tap even if a downstream step below throws (e.g. on a
+    // device/permission state where cancelAll or rescheduling fails).
     masterNotifications = value;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('notif_master', value);
+    for (final key in notifications.keys) {
+      notifications[key] = value;
+    }
+    notifyListeners();
 
-    if (!value) {
-      await NotificationService().cancelAll();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('notif_master', value);
       for (final key in notifications.keys) {
-        notifications[key] = false;
-        await prefs.setBool('notif_$key', false);
+        await prefs.setBool('notif_$key', value);
       }
-      notifyListeners();
-    } else {
-      for (final key in notifications.keys) {
-        notifications[key] = true;
-        await prefs.setBool('notif_$key', true);
-      }
-      notifyListeners();
-      try {
+
+      if (!value) {
+        await NotificationService().cancelAll();
+      } else {
         final prayerTimes = await fetchPrayerTimes();
         final data = prayerTimes
             .map((p) => {'name': p.name, 'time': _parseTime(p.time)})
             .toList();
         await NotificationService()
             .schedulePrayerNotifications(data, adhanId: selectedAdhanId);
-      } catch (_) {}
+      }
+    } catch (_) {
+      // The toggle itself already took effect (masterNotifications + UI);
+      // a failure here only means scheduling/cancellation didn't fully sync.
     }
   }
 

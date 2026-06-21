@@ -329,7 +329,7 @@ class _AllPrayersRow extends StatelessWidget {
             child: _PrayerPill(
               prayer: prayer,
               done: done,
-              onTap: () => prayerState.togglePrayer(prayer.name),
+              onTap: () => prayerState.togglePrayer(prayer.name, context),
             ),
           );
         }).toList(),

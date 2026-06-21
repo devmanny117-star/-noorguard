@@ -21,6 +21,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get nextPrayer => '下一次礼拜';
 
   @override
+  String get iPrayedButton => '我已礼拜';
+
+  @override
   String get todaysPrayers => '今日礼拜';
 
   @override
@@ -444,13 +447,34 @@ class AppLocalizationsZh extends AppLocalizations {
   String get islamicMonthMuharram => '穆哈兰姆月';
 
   @override
+  String get islamicMonthSafar => '色法尔月';
+
+  @override
   String get islamicMonthRabiAlAwwal => '赖比尔·敖外鲁月';
+
+  @override
+  String get islamicMonthRabiAlThani => '赖比尔·阿色尼月';
+
+  @override
+  String get islamicMonthJumadaAlAwwal => '主马达·乌拉月';
+
+  @override
+  String get islamicMonthJumadaAlThani => '主马达·阿色尼月';
+
+  @override
+  String get islamicMonthRajab => '拉吉布月';
+
+  @override
+  String get islamicMonthShaban => '舍尔邦月';
 
   @override
   String get islamicMonthRamadan => '莱麦丹月（斋月）';
 
   @override
   String get islamicMonthShawwal => '闪瓦鲁月';
+
+  @override
+  String get islamicMonthDhulQadah => '都尔喊达月';
 
   @override
   String get islamicMonthDhulHijjah => '都尔黑哲月（朝觐月）';

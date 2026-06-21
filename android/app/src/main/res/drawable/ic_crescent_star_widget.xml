@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Exact crescent + star design provided by the user: crescent opens to the
+     right, star sits top-right, both gold (#C9A84C) outline-only, with two
+     subtle gold rings around the pair. Path data below is copied verbatim
+     from the supplied SVG (Android vector pathData uses the same syntax). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Outer glow ring -->
+    <path
+        android:pathData="M81,33 A32,32 0 1,1 17,33 A32,32 0 1,1 81,33 Z"
+        android:strokeColor="#C9A84C"
+        android:strokeAlpha="0.18"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000" />
+
+    <!-- Inner ring -->
+    <path
+        android:pathData="M74,33 A25,25 0 1,1 24,33 A25,25 0 1,1 74,33 Z"
+        android:strokeColor="#C9A84C"
+        android:strokeAlpha="0.30"
+        android:strokeWidth="1.2"
+        android:fillColor="#00000000" />
+
+    <!-- Crescent (opens right) -->
+    <path
+        android:pathData="M42,28 A14,14 0 1,0 55.5,47 A11,11 0 1,1 42,28 Z"
+        android:strokeColor="#C9A84C"
+        android:strokeWidth="2.5"
+        android:fillColor="#00000000" />
+
+    <!-- Star (top-right) -->
+    <path
+        android:pathData="M58,18 L59.5,23 L64.5,23 L60.5,26 L62,31 L58,28 L54,31 L55.5,26 L51.5,23 L56.5,23 Z"
+        android:strokeColor="#C9A84C"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000" />
+</vector>

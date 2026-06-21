@@ -148,6 +148,12 @@ abstract class AppLocalizations {
   /// **'Next Prayer'**
   String get nextPrayer;
 
+  /// Button text on the home/lock screen widget to mark the current prayer as completed
+  ///
+  /// In en, this message translates to:
+  /// **'I Prayed'**
+  String get iPrayedButton;
+
   /// Heading for the daily prayer check-in widget
   ///
   /// In en, this message translates to:
@@ -934,11 +940,47 @@ abstract class AppLocalizations {
   /// **'Muharram'**
   String get islamicMonthMuharram;
 
+  /// Name of the 2nd month of the Islamic (Hijri) calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Safar'**
+  String get islamicMonthSafar;
+
   /// Name of the 3rd month of the Islamic (Hijri) calendar
   ///
   /// In en, this message translates to:
   /// **'Rabī\' Al-Awwal'**
   String get islamicMonthRabiAlAwwal;
+
+  /// Name of the 4th month of the Islamic (Hijri) calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Rabī\' Al-Thānī'**
+  String get islamicMonthRabiAlThani;
+
+  /// Name of the 5th month of the Islamic (Hijri) calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Jumada Al-Awwal'**
+  String get islamicMonthJumadaAlAwwal;
+
+  /// Name of the 6th month of the Islamic (Hijri) calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Jumada Al-Thani'**
+  String get islamicMonthJumadaAlThani;
+
+  /// Name of the 7th month of the Islamic (Hijri) calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Rajab'**
+  String get islamicMonthRajab;
+
+  /// Name of the 8th month of the Islamic (Hijri) calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Sha\'bān'**
+  String get islamicMonthShaban;
 
   /// Name of the 9th month of the Islamic (Hijri) calendar
   ///
@@ -951,6 +993,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shawwāl'**
   String get islamicMonthShawwal;
+
+  /// Name of the 11th month of the Islamic (Hijri) calendar
+  ///
+  /// In en, this message translates to:
+  /// **'Dhul Qa\'dah'**
+  String get islamicMonthDhulQadah;
 
   /// Name of the 12th month of the Islamic (Hijri) calendar
   ///

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_small_label">Noor Guard – Prayer Pills</string>
+    <string name="widget_small_description">A compact row of all 5 prayer times.</string>
+
+    <string name="widget_medium_label">Noor Guard – Prayer Times</string>
+    <string name="widget_medium_description">Next prayer, all 5 prayer times, streak, and I Prayed button.</string>
+
+    <string name="widget_large_label">Noor Guard – Full Prayer Card</string>
+    <string name="widget_large_description">Prayer times, streak, daily verse, and Qibla direction.</string>
+</resources>

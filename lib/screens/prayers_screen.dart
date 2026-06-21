@@ -167,7 +167,7 @@ class _PrayersScreenState extends State<PrayersScreen> {
                             onToggle: () async {
                               await context
                                   .read<PrayerState>()
-                                  .togglePrayer(name);
+                                  .togglePrayer(name, context);
                               _loadWeekSummary();
                             },
                             onToggleNotif: () => context

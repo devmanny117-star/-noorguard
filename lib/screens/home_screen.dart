@@ -8,6 +8,7 @@ import '../models/prayer_model.dart';
 import '../data/prayer_times_data.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
+import '../services/widget_data_service.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
@@ -96,7 +97,7 @@ class _HomeBodyState extends State<_HomeBody> {
     final state = PrayerState();
     for (final name in marked) {
       if (state.prayers.containsKey(name) && state.prayers[name] != true) {
-        await state.togglePrayer(name);
+        await state.togglePrayer(name, mounted ? context : null);
       }
     }
   }
@@ -116,6 +117,12 @@ class _HomeBodyState extends State<_HomeBody> {
       if (mounted) {
         setState(() => _prayers = prayers);
         _scheduleNotifications(prayers);
+        _pushWidgetSnapshot(
+          prayers,
+          locationLabel: '$city, $country',
+          lat: position.latitude,
+          lng: position.longitude,
+        );
       }
     } catch (_) {
       try {
@@ -123,14 +130,32 @@ class _HomeBodyState extends State<_HomeBody> {
         if (mounted) {
           setState(() => _prayers = prayers);
           _scheduleNotifications(prayers);
+          _pushWidgetSnapshot(prayers, locationLabel: 'Sacramento, US');
         }
       } catch (_) {
         if (mounted) {
           setState(() => _prayers = todaysPrayers);
           _scheduleNotifications(todaysPrayers);
+          _pushWidgetSnapshot(todaysPrayers, locationLabel: 'Sacramento, US');
         }
       }
     }
+  }
+
+  void _pushWidgetSnapshot(
+    List<Prayer> prayers, {
+    required String locationLabel,
+    double? lat,
+    double? lng,
+  }) {
+    PrayerState().lastKnownPrayers = prayers;
+    WidgetDataService.pushPrayerTimesSnapshot(
+      context: context,
+      prayers: prayers,
+      locationLabel: locationLabel,
+      lat: lat,
+      lng: lng,
+    );
   }
 
   void _scheduleNotifications(List<Prayer> prayers) {

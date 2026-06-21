@@ -21,6 +21,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get nextPrayer => 'Nächstes Gebet';
 
   @override
+  String get iPrayedButton => 'Ich habe gebetet';
+
+  @override
   String get todaysPrayers => 'Heutige Gebete';
 
   @override
@@ -458,13 +461,34 @@ class AppLocalizationsDe extends AppLocalizations {
   String get islamicMonthMuharram => 'Muharram';
 
   @override
+  String get islamicMonthSafar => 'Safar';
+
+  @override
   String get islamicMonthRabiAlAwwal => 'Rabī\' Al-Awwal';
+
+  @override
+  String get islamicMonthRabiAlThani => 'Rabī\' Al-Thānī';
+
+  @override
+  String get islamicMonthJumadaAlAwwal => 'Jumada Al-Awwal';
+
+  @override
+  String get islamicMonthJumadaAlThani => 'Jumada Al-Thani';
+
+  @override
+  String get islamicMonthRajab => 'Radschab';
+
+  @override
+  String get islamicMonthShaban => 'Schaaban';
 
   @override
   String get islamicMonthRamadan => 'Ramadan';
 
   @override
   String get islamicMonthShawwal => 'Shawwāl';
+
+  @override
+  String get islamicMonthDhulQadah => 'Dhul Qaada';
 
   @override
   String get islamicMonthDhulHijjah => 'Dhul Hijjah';

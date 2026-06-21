@@ -16,6 +16,10 @@
   "@nextPrayer": {
     "description": "Label for the upcoming prayer section"
   },
+  "iPrayedButton": "I Prayed",
+  "@iPrayedButton": {
+    "description": "Button text on the home/lock screen widget to mark the current prayer as completed"
+  },
   "todaysPrayers": "Today's Prayers",
   "@todaysPrayers": {
     "description": "Heading for the daily prayer check-in widget"
@@ -595,9 +599,33 @@
   "@islamicMonthMuharram": {
     "description": "Name of the 1st month of the Islamic (Hijri) calendar"
   },
+  "islamicMonthSafar": "Safar",
+  "@islamicMonthSafar": {
+    "description": "Name of the 2nd month of the Islamic (Hijri) calendar"
+  },
   "islamicMonthRabiAlAwwal": "Rabī' Al-Awwal",
   "@islamicMonthRabiAlAwwal": {
     "description": "Name of the 3rd month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRabiAlThani": "Rabī' Al-Thānī",
+  "@islamicMonthRabiAlThani": {
+    "description": "Name of the 4th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthJumadaAlAwwal": "Jumada Al-Awwal",
+  "@islamicMonthJumadaAlAwwal": {
+    "description": "Name of the 5th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthJumadaAlThani": "Jumada Al-Thani",
+  "@islamicMonthJumadaAlThani": {
+    "description": "Name of the 6th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRajab": "Rajab",
+  "@islamicMonthRajab": {
+    "description": "Name of the 7th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthShaban": "Sha'bān",
+  "@islamicMonthShaban": {
+    "description": "Name of the 8th month of the Islamic (Hijri) calendar"
   },
   "islamicMonthRamadan": "Ramadān",
   "@islamicMonthRamadan": {
@@ -606,6 +634,10 @@
   "islamicMonthShawwal": "Shawwāl",
   "@islamicMonthShawwal": {
     "description": "Name of the 10th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthDhulQadah": "Dhul Qa'dah",
+  "@islamicMonthDhulQadah": {
+    "description": "Name of the 11th month of the Islamic (Hijri) calendar"
   },
   "islamicMonthDhulHijjah": "Dhul Hijjah",
   "@islamicMonthDhulHijjah": {
