@@ -632,7 +632,13 @@ class _SurahScreenState extends State<SurahScreen> {
                           onNotification: (notification) {
                             // Scrolling while paused hides the bar to give the
                             // reader more room; while playing it stays put.
+                            // dragDetails is only non-null for an actual user
+                            // drag, never for the app's own programmatic
+                            // scroll-to-verse — so that auto-scroll (e.g. a
+                            // verse that auto-pauses right after
+                            // auto-advancing) never counts as a manual scroll.
                             if (notification is ScrollUpdateNotification &&
+                                notification.dragDetails != null &&
                                 !_isPlaying &&
                                 !_hiddenByScroll) {
                               setState(() => _hiddenByScroll = true);
