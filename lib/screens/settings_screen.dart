@@ -45,7 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // App Blocking
   bool _blockDuringPrayer = false;
-  String _blockDuration = 'Prayer window only';
+  String _blockDuration = 'prayerWindow';
 
   // Appearance
   String _language = 'English';
@@ -59,7 +59,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'Tehran',
   ];
 
-  static const _durations = ['30 min', '1 hour', 'Prayer window only'];
+  /// (stable key, localized label) pairs — the key is what `_blockDuration`
+  /// tracks so the selected pill survives a language switch.
+  static List<(String, String)> _durations(AppLocalizations l10n) => [
+        ('30min', l10n.duration30Min),
+        ('1hour', l10n.duration1Hour),
+        ('prayerWindow', l10n.durationPrayerWindowOnly),
+      ];
 
   static const _languages = [
     'English',
@@ -194,7 +200,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else if (mounted) {
-      _snack('Could not open Privacy Policy');
+      _snack(AppLocalizations.of(context)!.couldNotOpenPrivacyPolicy);
     }
   }
 
@@ -203,7 +209,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     } else if (mounted) {
-      _snack('Could not open email app');
+      _snack(AppLocalizations.of(context)!.couldNotOpenEmailApp);
     }
   }
 
@@ -275,20 +281,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               const _Divider(colors: cardColors),
               _ActionRow(
-                label: 'Send Test Notification (10s)',
+                label: l10n.testNotificationButton,
                 icon: Icons.notifications_active_outlined,
                 colors: cardColors,
                 onTap: () {
                   NotificationService().scheduleTestNotification(
                     adhanId: prayerState.selectedAdhanId,
                   );
-                  _snack('Test notification will arrive in 10 seconds');
+                  _snack(l10n.testNotificationSnack);
                 },
               ),
               if (!kIsWeb && Platform.isAndroid) ...[
                 const _Divider(colors: cardColors),
                 _ActionRow(
-                  label: 'Test Full-Screen Lock Alarm (10s)',
+                  label: l10n.testLockAlarmButton,
                   icon: Icons.fullscreen_rounded,
                   colors: cardColors,
                   onTap: () {
@@ -296,26 +302,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       adhanId: prayerState.selectedAdhanId,
                       prayers: prayerState.scheduledPrayerTimes ?? [],
                     );
-                    _snack(
-                      'Lock alarm fires in 10 seconds — lock your phone now',
-                    );
+                    _snack(l10n.testLockAlarmSnack);
                   },
                 ),
               ],
               const _Divider(colors: cardColors),
               _ActionRow(
-                label: 'Test Adhan In-App (foreground)',
+                label: l10n.testAdhanForegroundButton,
                 icon: Icons.volume_up_outlined,
                 colors: cardColors,
                 onTap: () {
                   AdhanForegroundController().simulateForegroundPrayer();
-                  _snack('Playing the full adhan with a silent banner');
+                  _snack(l10n.testAdhanForegroundSnack);
                 },
               ),
               if (!kIsWeb && Platform.isAndroid) ...[
                 const _Divider(colors: cardColors),
                 _ActionRow(
-                  label: 'Lock Screen Alert Setup Guide',
+                  label: l10n.lockScreenSetupGuideButton,
                   icon: Icons.lock_clock_outlined,
                   colors: cardColors,
                   onTap: () => Navigator.of(context).push(
@@ -457,7 +461,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             colors: cardColors,
             children: [
               _ToggleRow(
-                label: 'Block during prayer times',
+                label: l10n.blockDuringPrayerTimes,
                 leadingIcon: Icons.security_rounded,
                 value: _blockDuringPrayer,
                 colors: cardColors,
@@ -477,7 +481,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Block duration',
+                  l10n.blockDurationLabel,
                   style: GoogleFonts.lato(
                     fontSize: 11.5,
                     fontWeight: FontWeight.w600,
@@ -487,16 +491,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 const SizedBox(height: 10),
                 Row(
-                  children: List.generate(_durations.length, (i) {
-                    final d = _durations[i];
-                    final selected = _blockDuration == d;
+                  children: List.generate(_durations(l10n).length, (i) {
+                    final (key, label) = _durations(l10n)[i];
+                    final selected = _blockDuration == key;
                     return Expanded(
                       child: Padding(
                         padding: EdgeInsets.only(
-                          right: i < _durations.length - 1 ? 8 : 0,
+                          right: i < _durations(l10n).length - 1 ? 8 : 0,
                         ),
                         child: GestureDetector(
-                          onTap: () => setState(() => _blockDuration = d),
+                          onTap: () => setState(() => _blockDuration = key),
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeOut,
@@ -515,7 +519,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                             child: Center(
                               child: Text(
-                                d,
+                                label,
                                 style: GoogleFonts.lato(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -542,7 +546,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // ══════════════════════════════════════════════════════════════
         // SECTION 4 — PRIVACY & TRUST
         // ══════════════════════════════════════════════════════════════
-        const _SectionHeader(title: 'Privacy & Trust'),
+        _SectionHeader(title: l10n.privacyAndTrust),
 
         SliverToBoxAdapter(
           child: Padding(
@@ -596,7 +600,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   const SizedBox(height: 14),
                   Text(
-                    '"If it doesn\'t belong in a masjid,\nit doesn\'t belong in Noor Guard."',
+                    l10n.noorGuardMotto,
                     style: GoogleFonts.playfairDisplay(
                       fontSize: 13.5,
                       fontStyle: FontStyle.italic,
@@ -631,21 +635,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 label: l10n.rateApp,
                 icon: Icons.star_outline_rounded,
                 colors: cardColors,
-                onTap: () => _snack('Opening App Store…'),
+                onTap: () => _snack(l10n.openingAppStore),
               ),
               const _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.shareApp,
                 icon: Icons.share_outlined,
                 colors: cardColors,
-                onTap: () => _snack('Opening share sheet…'),
+                onTap: () => _snack(l10n.openingShareSheet),
               ),
               const _Divider(colors: cardColors),
               _ActionRow(
                 label: l10n.contactSupport,
                 icon: Icons.mail_outline_rounded,
                 colors: cardColors,
-                onTap: () => _snack('Opening support email…'),
+                onTap: () => _snack(l10n.openingSupportEmail),
               ),
               const _Divider(colors: cardColors),
               _ActionRow(
@@ -659,7 +663,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 label: l10n.termsOfService,
                 icon: Icons.description_outlined,
                 colors: cardColors,
-                onTap: () => _snack('Opening Terms of Service…'),
+                onTap: () => _snack(l10n.openingTermsOfService),
               ),
             ],
           ),

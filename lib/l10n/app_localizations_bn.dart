@@ -1638,4 +1638,106 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'সম্পন্ন';
+
+  @override
+  String get testNotificationButton =>
+      'পরীক্ষামূলক নোটিফিকেশন পাঠান (১০ সেকেন্ড)';
+
+  @override
+  String get testNotificationSnack => 'পরীক্ষামূলক নোটিফিকেশন ১০ সেকেন্ডে আসবে';
+
+  @override
+  String get testLockAlarmButton =>
+      'ফুল-স্ক্রিন লক অ্যালার্ম পরীক্ষা করুন (১০ সেকেন্ড)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'লক অ্যালার্ম ১০ সেকেন্ডে বাজবে — এখনই আপনার ফোন লক করুন';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'অ্যাপের ভেতরে আজান পরীক্ষা করুন (ফোরগ্রাউন্ড)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'নিঃশব্দ ব্যানারের সাথে সম্পূর্ণ আজান বাজানো হচ্ছে';
+
+  @override
+  String get lockScreenSetupGuideButton => 'লক স্ক্রিন অ্যালার্ট সেটআপ গাইড';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'গোপনীয়তা নীতি খোলা যায়নি';
+
+  @override
+  String get couldNotOpenEmailApp => 'ইমেইল অ্যাপ খোলা যায়নি';
+
+  @override
+  String get blockDurationLabel => 'ব্লকের সময়কাল';
+
+  @override
+  String get privacyAndTrust => 'গোপনীয়তা ও বিশ্বাস';
+
+  @override
+  String get noorGuardMotto =>
+      '\"যা মসজিদে থাকার যোগ্য নয়,\nতা Noor Guard-এও থাকার যোগ্য নয়।\"';
+
+  @override
+  String get openingAppStore => 'অ্যাপ স্টোর খোলা হচ্ছে…';
+
+  @override
+  String get openingShareSheet => 'শেয়ার শিট খোলা হচ্ছে…';
+
+  @override
+  String get openingSupportEmail => 'সাপোর্ট ইমেইল খোলা হচ্ছে…';
+
+  @override
+  String get openingTermsOfService => 'ব্যবহারের শর্তাবলী খোলা হচ্ছে…';
+
+  @override
+  String get duration30Min => '৩০ মিনিট';
+
+  @override
+  String get duration1Hour => '১ ঘণ্টা';
+
+  @override
+  String get durationPrayerWindowOnly => 'শুধুমাত্র নামাজের সময়';
+
+  @override
+  String get hoursAbbreviation => 'ঘণ্টা';
+
+  @override
+  String get cancelTimerButton => 'টাইমার বাতিল করুন';
+
+  @override
+  String get custom => 'কাস্টম';
+
+  @override
+  String get customTimerMinutesTitle => 'কাস্টম টাইমার (মিনিট)';
+
+  @override
+  String get customTimerHint => 'যেমন ২০';
+
+  @override
+  String get cancel => 'বাতিল করুন';
+
+  @override
+  String get start => 'শুরু করুন';
+
+  @override
+  String get travel => 'ভ্রমণ';
+
+  @override
+  String get anxietyAndStress => 'উদ্বেগ ও মানসিক চাপ';
+
+  @override
+  String get gratitude => 'কৃতজ্ঞতা';
+
+  @override
+  String get protection => 'সুরক্ষা';
+
+  @override
+  String get family => 'পরিবার';
+
+  @override
+  String get forgiveness => 'ক্ষমা';
 }

@@ -1645,4 +1645,107 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Fatto';
+
+  @override
+  String get testNotificationButton => 'Invia notifica di prova (10 s)';
+
+  @override
+  String get testNotificationSnack =>
+      'La notifica di prova arriverà in 10 secondi';
+
+  @override
+  String get testLockAlarmButton => 'Prova allarme a schermo intero (10 s)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'La sveglia di blocco scatta in 10 secondi: blocca subito il telefono';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'Prova l\'adhan nell\'app (in primo piano)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'Riproduzione dell\'adhan completo con un banner silenzioso';
+
+  @override
+  String get lockScreenSetupGuideButton =>
+      'Guida alla configurazione degli avvisi sulla schermata di blocco';
+
+  @override
+  String get couldNotOpenPrivacyPolicy =>
+      'Impossibile aprire l\'Informativa sulla Privacy';
+
+  @override
+  String get couldNotOpenEmailApp => 'Impossibile aprire l\'app di posta';
+
+  @override
+  String get blockDurationLabel => 'Durata del blocco';
+
+  @override
+  String get privacyAndTrust => 'Privacy e Fiducia';
+
+  @override
+  String get noorGuardMotto =>
+      '\"Se non appartiene a una moschea,\nnon appartiene a Noor Guard.\"';
+
+  @override
+  String get openingAppStore => 'Apertura dell\'App Store…';
+
+  @override
+  String get openingShareSheet => 'Apertura del foglio di condivisione…';
+
+  @override
+  String get openingSupportEmail => 'Apertura dell\'email di assistenza…';
+
+  @override
+  String get openingTermsOfService => 'Apertura dei Termini di Servizio…';
+
+  @override
+  String get duration30Min => '30 min';
+
+  @override
+  String get duration1Hour => '1 ora';
+
+  @override
+  String get durationPrayerWindowOnly => 'Solo finestra di preghiera';
+
+  @override
+  String get hoursAbbreviation => 'h';
+
+  @override
+  String get cancelTimerButton => 'Annulla il timer';
+
+  @override
+  String get custom => 'Personalizzato';
+
+  @override
+  String get customTimerMinutesTitle => 'Timer personalizzato (minuti)';
+
+  @override
+  String get customTimerHint => 'es. 20';
+
+  @override
+  String get cancel => 'Annulla';
+
+  @override
+  String get start => 'Avvia';
+
+  @override
+  String get travel => 'Viaggio';
+
+  @override
+  String get anxietyAndStress => 'Ansia e Stress';
+
+  @override
+  String get gratitude => 'Gratitudine';
+
+  @override
+  String get protection => 'Protezione';
+
+  @override
+  String get family => 'Famiglia';
+
+  @override
+  String get forgiveness => 'Perdono';
 }

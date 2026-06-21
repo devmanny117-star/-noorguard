@@ -1637,4 +1637,105 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Tamamlandı';
+
+  @override
+  String get testNotificationButton => 'Test Bildirimi Gönder (10sn)';
+
+  @override
+  String get testNotificationSnack => 'Test bildirimi 10 saniye içinde gelecek';
+
+  @override
+  String get testLockAlarmButton => 'Tam Ekran Kilit Alarmını Test Et (10sn)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'Kilit alarmı 10 saniye içinde çalacak — telefonunuzu şimdi kilitleyin';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'Uygulama İçi Ezanı Test Et (ön planda)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'Tam ezan sessiz bir banner ile çalınıyor';
+
+  @override
+  String get lockScreenSetupGuideButton =>
+      'Kilit Ekranı Uyarısı Kurulum Kılavuzu';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'Gizlilik Politikası açılamadı';
+
+  @override
+  String get couldNotOpenEmailApp => 'E-posta uygulaması açılamadı';
+
+  @override
+  String get blockDurationLabel => 'Engelleme süresi';
+
+  @override
+  String get privacyAndTrust => 'Gizlilik ve Güven';
+
+  @override
+  String get noorGuardMotto =>
+      '\"Bir camiye uygun değilse,\nNoor Guard\'a da uygun değildir.\"';
+
+  @override
+  String get openingAppStore => 'App Store açılıyor…';
+
+  @override
+  String get openingShareSheet => 'Paylaşım menüsü açılıyor…';
+
+  @override
+  String get openingSupportEmail => 'Destek e-postası açılıyor…';
+
+  @override
+  String get openingTermsOfService => 'Kullanım Koşulları açılıyor…';
+
+  @override
+  String get duration30Min => '30 dk';
+
+  @override
+  String get duration1Hour => '1 saat';
+
+  @override
+  String get durationPrayerWindowOnly => 'Yalnızca namaz aralığı';
+
+  @override
+  String get hoursAbbreviation => 'sa';
+
+  @override
+  String get cancelTimerButton => 'Sayacı iptal et';
+
+  @override
+  String get custom => 'Özel';
+
+  @override
+  String get customTimerMinutesTitle => 'Özel sayaç (dakika)';
+
+  @override
+  String get customTimerHint => 'örn. 20';
+
+  @override
+  String get cancel => 'İptal';
+
+  @override
+  String get start => 'Başlat';
+
+  @override
+  String get travel => 'Yolculuk';
+
+  @override
+  String get anxietyAndStress => 'Kaygı ve Stres';
+
+  @override
+  String get gratitude => 'Şükür';
+
+  @override
+  String get protection => 'Koruma';
+
+  @override
+  String get family => 'Aile';
+
+  @override
+  String get forgiveness => 'Bağışlanma';
 }

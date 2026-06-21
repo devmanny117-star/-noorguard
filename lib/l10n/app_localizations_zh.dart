@@ -1557,4 +1557,100 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => '完成';
+
+  @override
+  String get testNotificationButton => '发送测试通知（10秒）';
+
+  @override
+  String get testNotificationSnack => '测试通知将在10秒后送达';
+
+  @override
+  String get testLockAlarmButton => '测试全屏锁屏提醒（10秒）';
+
+  @override
+  String get testLockAlarmSnack => '锁屏提醒将在10秒后触发——请立即锁定手机';
+
+  @override
+  String get testAdhanForegroundButton => '测试应用内宣礼（前台播放）';
+
+  @override
+  String get testAdhanForegroundSnack => '正在播放完整宣礼，并显示静音横幅';
+
+  @override
+  String get lockScreenSetupGuideButton => '锁屏提醒设置指南';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => '无法打开隐私政策';
+
+  @override
+  String get couldNotOpenEmailApp => '无法打开邮件应用';
+
+  @override
+  String get blockDurationLabel => '屏蔽时长';
+
+  @override
+  String get privacyAndTrust => '隐私与信任';
+
+  @override
+  String get noorGuardMotto => '\"如果它不属于清真寺，\n它就不属于Noor Guard。\"';
+
+  @override
+  String get openingAppStore => '正在打开应用商店…';
+
+  @override
+  String get openingShareSheet => '正在打开分享菜单…';
+
+  @override
+  String get openingSupportEmail => '正在打开支持邮箱…';
+
+  @override
+  String get openingTermsOfService => '正在打开服务条款…';
+
+  @override
+  String get duration30Min => '30分钟';
+
+  @override
+  String get duration1Hour => '1小时';
+
+  @override
+  String get durationPrayerWindowOnly => '仅礼拜时段';
+
+  @override
+  String get hoursAbbreviation => '小时';
+
+  @override
+  String get cancelTimerButton => '取消定时器';
+
+  @override
+  String get custom => '自定义';
+
+  @override
+  String get customTimerMinutesTitle => '自定义定时器（分钟）';
+
+  @override
+  String get customTimerHint => '例如20';
+
+  @override
+  String get cancel => '取消';
+
+  @override
+  String get start => '开始';
+
+  @override
+  String get travel => '旅行';
+
+  @override
+  String get anxietyAndStress => '焦虑与压力';
+
+  @override
+  String get gratitude => '感恩';
+
+  @override
+  String get protection => '护佑';
+
+  @override
+  String get family => '家庭';
+
+  @override
+  String get forgiveness => '宽恕';
 }

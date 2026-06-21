@@ -297,14 +297,14 @@ class _SurahScreenState extends State<SurahScreen> {
   void _showSleepTimerSheet() {
     final l10n = AppLocalizations.of(context)!;
     final presets = [
-      (const Duration(minutes: 15), '15 min'),
-      (const Duration(minutes: 30), '30 min'),
-      (const Duration(minutes: 45), '45 min'),
-      (const Duration(hours: 1), '1 hr'),
-      (const Duration(minutes: 90), '1.5 hr'),
-      (const Duration(hours: 2), '2 hr'),
-      (const Duration(minutes: 150), '2.5 hr'),
-      (const Duration(hours: 3), '3 hr'),
+      (const Duration(minutes: 15), '15 ${l10n.minutesAbbreviation}'),
+      (const Duration(minutes: 30), '30 ${l10n.minutesAbbreviation}'),
+      (const Duration(minutes: 45), '45 ${l10n.minutesAbbreviation}'),
+      (const Duration(hours: 1), '1 ${l10n.hoursAbbreviation}'),
+      (const Duration(minutes: 90), '1.5 ${l10n.hoursAbbreviation}'),
+      (const Duration(hours: 2), '2 ${l10n.hoursAbbreviation}'),
+      (const Duration(minutes: 150), '2.5 ${l10n.hoursAbbreviation}'),
+      (const Duration(hours: 3), '3 ${l10n.hoursAbbreviation}'),
     ];
 
     showModalBottomSheet(
@@ -350,7 +350,7 @@ class _SurahScreenState extends State<SurahScreen> {
                       TextButton(
                         onPressed: () { _cancelSleepTimer(); Navigator.pop(ctx); },
                         child: Text(
-                          'Cancel timer',
+                          l10n.cancelTimerButton,
                           style: GoogleFonts.lato(
                             color: Colors.redAccent,
                             fontWeight: FontWeight.w600,
@@ -370,7 +370,7 @@ class _SurahScreenState extends State<SurahScreen> {
                         onTap: () { _startSleepTimer(duration); Navigator.pop(ctx); },
                       ),
                     _SleepChip(
-                      label: 'Custom',
+                      label: l10n.custom,
                       icon: Icons.edit_rounded,
                       onTap: () { Navigator.pop(ctx); _showCustomSleepDialog(); },
                     ),
@@ -385,13 +385,14 @@ class _SurahScreenState extends State<SurahScreen> {
   }
 
   void _showCustomSleepDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController();
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: _cardColor,
         title: Text(
-          'Custom timer (minutes)',
+          l10n.customTimerMinutesTitle,
           style: GoogleFonts.lato(color: Colors.white, fontWeight: FontWeight.w700),
         ),
         content: TextField(
@@ -400,7 +401,7 @@ class _SurahScreenState extends State<SurahScreen> {
           autofocus: true,
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
-            hintText: 'e.g. 20',
+            hintText: l10n.customTimerHint,
             hintStyle: const TextStyle(color: Colors.white38),
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: _gold.withValues(alpha: 0.5)),
@@ -413,7 +414,7 @@ class _SurahScreenState extends State<SurahScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Cancel', style: GoogleFonts.lato(color: Colors.white54)),
+            child: Text(l10n.cancel, style: GoogleFonts.lato(color: Colors.white54)),
           ),
           TextButton(
             onPressed: () {
@@ -424,7 +425,7 @@ class _SurahScreenState extends State<SurahScreen> {
               }
             },
             child: Text(
-              'Start',
+              l10n.start,
               style: GoogleFonts.lato(color: _gold, fontWeight: FontWeight.w700),
             ),
           ),

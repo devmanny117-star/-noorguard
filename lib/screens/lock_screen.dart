@@ -369,6 +369,10 @@ class _DuaDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Arabic-locale readers are served by the Arabic original above; showing
+    // a redundant translation line underneath would be out of place.
+    final isArabicLocale = Localizations.localeOf(context).languageCode == 'ar';
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Column(
@@ -396,18 +400,19 @@ class _DuaDisplay extends StatelessWidget {
             color: AppColors.gold.withValues(alpha: 0.5),
           ),
           const SizedBox(height: 18),
-          // English translation
-          Text(
-            dua.translation,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 14,
-              fontStyle: FontStyle.italic,
-              color: Colors.white.withValues(alpha: 0.60),
-              height: 1.65,
-              letterSpacing: 0.2,
+          if (!isArabicLocale) ...[
+            Text(
+              dua.translationFor(Localizations.localeOf(context).languageCode),
+              textAlign: TextAlign.center,
+              style: GoogleFonts.playfairDisplay(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.white.withValues(alpha: 0.60),
+                height: 1.65,
+                letterSpacing: 0.2,
+              ),
             ),
-          ),
+          ],
           const SizedBox(height: 10),
           Text(
             '— ${dua.source}',

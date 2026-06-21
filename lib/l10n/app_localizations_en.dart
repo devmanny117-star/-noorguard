@@ -1631,4 +1631,104 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Done';
+
+  @override
+  String get testNotificationButton => 'Send Test Notification (10s)';
+
+  @override
+  String get testNotificationSnack =>
+      'Test notification will arrive in 10 seconds';
+
+  @override
+  String get testLockAlarmButton => 'Test Full-Screen Lock Alarm (10s)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'Lock alarm fires in 10 seconds — lock your phone now';
+
+  @override
+  String get testAdhanForegroundButton => 'Test Adhan In-App (foreground)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'Playing the full adhan with a silent banner';
+
+  @override
+  String get lockScreenSetupGuideButton => 'Lock Screen Alert Setup Guide';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'Could not open Privacy Policy';
+
+  @override
+  String get couldNotOpenEmailApp => 'Could not open email app';
+
+  @override
+  String get blockDurationLabel => 'Block duration';
+
+  @override
+  String get privacyAndTrust => 'Privacy & Trust';
+
+  @override
+  String get noorGuardMotto =>
+      '\"If it doesn\'t belong in a masjid,\nit doesn\'t belong in Noor Guard.\"';
+
+  @override
+  String get openingAppStore => 'Opening App Store…';
+
+  @override
+  String get openingShareSheet => 'Opening share sheet…';
+
+  @override
+  String get openingSupportEmail => 'Opening support email…';
+
+  @override
+  String get openingTermsOfService => 'Opening Terms of Service…';
+
+  @override
+  String get duration30Min => '30 min';
+
+  @override
+  String get duration1Hour => '1 hour';
+
+  @override
+  String get durationPrayerWindowOnly => 'Prayer window only';
+
+  @override
+  String get hoursAbbreviation => 'hr';
+
+  @override
+  String get cancelTimerButton => 'Cancel timer';
+
+  @override
+  String get custom => 'Custom';
+
+  @override
+  String get customTimerMinutesTitle => 'Custom timer (minutes)';
+
+  @override
+  String get customTimerHint => 'e.g. 20';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get start => 'Start';
+
+  @override
+  String get travel => 'Travel';
+
+  @override
+  String get anxietyAndStress => 'Anxiety & Stress';
+
+  @override
+  String get gratitude => 'Gratitude';
+
+  @override
+  String get protection => 'Protection';
+
+  @override
+  String get family => 'Family';
+
+  @override
+  String get forgiveness => 'Forgiveness';
 }

@@ -470,18 +470,25 @@ class _TimerCircle extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 6),
-                          Text(
-                            dua.translation.replaceAll('\n', ' '),
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lato(
-                              fontSize: 10.5,
-                              color: colors.secondaryText,
-                              height: 1.45,
-                              fontStyle: FontStyle.italic,
+                          if (Localizations.localeOf(context).languageCode !=
+                              'ar')
+                            Text(
+                              dua
+                                  .translationFor(
+                                    Localizations.localeOf(context)
+                                        .languageCode,
+                                  )
+                                  .replaceAll('\n', ' '),
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.lato(
+                                fontSize: 10.5,
+                                color: colors.secondaryText,
+                                height: 1.45,
+                                fontStyle: FontStyle.italic,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
                         ],
                       ),
                     ),

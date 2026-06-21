@@ -3039,6 +3039,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Done'**
   String get notifSetupDoneButton;
+
+  /// Settings row: sends a 10-second test notification
+  ///
+  /// In en, this message translates to:
+  /// **'Send Test Notification (10s)'**
+  String get testNotificationButton;
+
+  /// Snackbar shown after tapping the test notification button
+  ///
+  /// In en, this message translates to:
+  /// **'Test notification will arrive in 10 seconds'**
+  String get testNotificationSnack;
+
+  /// Settings row: triggers a 10-second test of the Android full-screen lock alarm
+  ///
+  /// In en, this message translates to:
+  /// **'Test Full-Screen Lock Alarm (10s)'**
+  String get testLockAlarmButton;
+
+  /// Snackbar shown after tapping the test lock alarm button
+  ///
+  /// In en, this message translates to:
+  /// **'Lock alarm fires in 10 seconds — lock your phone now'**
+  String get testLockAlarmSnack;
+
+  /// Settings row: plays the full adhan in-app while the app is open
+  ///
+  /// In en, this message translates to:
+  /// **'Test Adhan In-App (foreground)'**
+  String get testAdhanForegroundButton;
+
+  /// Snackbar shown after tapping the in-app adhan test button
+  ///
+  /// In en, this message translates to:
+  /// **'Playing the full adhan with a silent banner'**
+  String get testAdhanForegroundSnack;
+
+  /// Settings row: opens the Android lock screen alert setup guide
+  ///
+  /// In en, this message translates to:
+  /// **'Lock Screen Alert Setup Guide'**
+  String get lockScreenSetupGuideButton;
+
+  /// Snackbar shown when the privacy policy link fails to open
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open Privacy Policy'**
+  String get couldNotOpenPrivacyPolicy;
+
+  /// Snackbar shown when no email app is available to send feedback
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open email app'**
+  String get couldNotOpenEmailApp;
+
+  /// Label above the block-duration preset pills
+  ///
+  /// In en, this message translates to:
+  /// **'Block duration'**
+  String get blockDurationLabel;
+
+  /// Settings section header
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy & Trust'**
+  String get privacyAndTrust;
+
+  /// Italic motto quote in the Privacy & Trust card
+  ///
+  /// In en, this message translates to:
+  /// **'\"If it doesn\'t belong in a masjid,\nit doesn\'t belong in Noor Guard.\"'**
+  String get noorGuardMotto;
+
+  /// Snackbar shown when the rate-app row is tapped (placeholder action)
+  ///
+  /// In en, this message translates to:
+  /// **'Opening App Store…'**
+  String get openingAppStore;
+
+  /// Snackbar shown when the share-app row is tapped (placeholder action)
+  ///
+  /// In en, this message translates to:
+  /// **'Opening share sheet…'**
+  String get openingShareSheet;
+
+  /// Snackbar shown when the contact-support row is tapped (placeholder action)
+  ///
+  /// In en, this message translates to:
+  /// **'Opening support email…'**
+  String get openingSupportEmail;
+
+  /// Snackbar shown when the terms-of-service row is tapped (placeholder action)
+  ///
+  /// In en, this message translates to:
+  /// **'Opening Terms of Service…'**
+  String get openingTermsOfService;
+
+  /// App blocking duration preset pill
+  ///
+  /// In en, this message translates to:
+  /// **'30 min'**
+  String get duration30Min;
+
+  /// App blocking duration preset pill
+  ///
+  /// In en, this message translates to:
+  /// **'1 hour'**
+  String get duration1Hour;
+
+  /// App blocking duration preset pill — blocks only for the prayer window
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer window only'**
+  String get durationPrayerWindowOnly;
+
+  /// Abbreviation for 'hours', used after a number (e.g. '1.5 hr')
+  ///
+  /// In en, this message translates to:
+  /// **'hr'**
+  String get hoursAbbreviation;
+
+  /// Button to cancel an active sleep timer
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel timer'**
+  String get cancelTimerButton;
+
+  /// Generic 'Custom' option label (e.g. custom sleep timer duration)
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get custom;
+
+  /// Dialog title for entering a custom sleep timer duration in minutes
+  ///
+  /// In en, this message translates to:
+  /// **'Custom timer (minutes)'**
+  String get customTimerMinutesTitle;
+
+  /// Text field hint for the custom sleep timer minutes input
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 20'**
+  String get customTimerHint;
+
+  /// Generic Cancel button label
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// Generic Start button label (e.g. starting a custom sleep timer)
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get start;
+
+  /// Dua category label
+  ///
+  /// In en, this message translates to:
+  /// **'Travel'**
+  String get travel;
+
+  /// Dua category label
+  ///
+  /// In en, this message translates to:
+  /// **'Anxiety & Stress'**
+  String get anxietyAndStress;
+
+  /// Dua category label
+  ///
+  /// In en, this message translates to:
+  /// **'Gratitude'**
+  String get gratitude;
+
+  /// Dua category label
+  ///
+  /// In en, this message translates to:
+  /// **'Protection'**
+  String get protection;
+
+  /// Dua category label
+  ///
+  /// In en, this message translates to:
+  /// **'Family'**
+  String get family;
+
+  /// Dua category label
+  ///
+  /// In en, this message translates to:
+  /// **'Forgiveness'**
+  String get forgiveness;
 }
 
 class _AppLocalizationsDelegate

@@ -69,8 +69,9 @@ class _DuasScreenState extends State<DuasScreen>
           .duas;
     }
     if (_searchQuery.isEmpty) return base;
+    final locale = Localizations.localeOf(context).languageCode;
     return base.where((d) {
-      return d.translation.toLowerCase().contains(_searchQuery) ||
+      return d.translationFor(locale).toLowerCase().contains(_searchQuery) ||
           d.transliteration.toLowerCase().contains(_searchQuery) ||
           d.arabic.contains(_searchQuery) ||
           d.source.toLowerCase().contains(_searchQuery);
@@ -352,6 +353,20 @@ String _localizedCategoryLabel(AppLocalizations l10n, DuaCategory category) {
       return l10n.prayer;
     case 'food':
       return l10n.foodAndDrink;
+    case 'travel':
+      return l10n.travel;
+    case 'home':
+      return l10n.home;
+    case 'anxiety':
+      return l10n.anxietyAndStress;
+    case 'gratitude':
+      return l10n.gratitude;
+    case 'protection':
+      return l10n.protection;
+    case 'family':
+      return l10n.family;
+    case 'forgiveness':
+      return l10n.forgiveness;
     default:
       return category.label;
   }
@@ -431,16 +446,9 @@ class _DuaCard extends StatelessWidget {
   });
 
   String? _localizedTranslation(BuildContext context) {
-    switch (Localizations.localeOf(context).languageCode) {
-      case 'ar':
-        return null;
-      case 'es':
-        return dua.translationEs ?? dua.translation;
-      case 'ur':
-        return dua.translationUr ?? dua.translation;
-      default:
-        return dua.translation;
-    }
+    final locale = Localizations.localeOf(context).languageCode;
+    if (locale == 'ar') return null;
+    return dua.translationFor(locale);
   }
 
   @override

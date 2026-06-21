@@ -1207,331 +1207,647 @@
     "description": "Label for source citations in glossary"
   },
   "revertCornerHubSubtitle": "A gentle hub to guide your first steps as a new Muslim",
-  "@revertCornerHubSubtitle": { "description": "Subtitle for Revert Corner hub screen" },
+  "@revertCornerHubSubtitle": {
+    "description": "Subtitle for Revert Corner hub screen"
+  },
   "islamicGlossaryHubSubtitle": "Common terms explained simply",
-  "@islamicGlossaryHubSubtitle": { "description": "Hub card subtitle for Islamic Glossary" },
+  "@islamicGlossaryHubSubtitle": {
+    "description": "Hub card subtitle for Islamic Glossary"
+  },
   "whyDoWeHubSubtitle": "The wisdom behind everyday practices",
-  "@whyDoWeHubSubtitle": { "description": "Hub card subtitle for Why Do We screen" },
+  "@whyDoWeHubSubtitle": {
+    "description": "Hub card subtitle for Why Do We screen"
+  },
   "communityStoriesHubSubtitle": "Reverts share their journeys to Islam",
-  "@communityStoriesHubSubtitle": { "description": "Hub card subtitle for Community Stories" },
+  "@communityStoriesHubSubtitle": {
+    "description": "Hub card subtitle for Community Stories"
+  },
   "whyDoWeScreenSubtitle": "Wisdom behind 12 everyday Islamic practices",
-  "@whyDoWeScreenSubtitle": { "description": "Subtitle for Why Do We screen" },
+  "@whyDoWeScreenSubtitle": {
+    "description": "Subtitle for Why Do We screen"
+  },
   "whyDoWeSourceBadge": "Sunni Source",
-  "@whyDoWeSourceBadge": { "description": "Badge label for Quran/hadith source citations on Why Do We cards" },
+  "@whyDoWeSourceBadge": {
+    "description": "Badge label for Quran/hadith source citations on Why Do We cards"
+  },
   "whyDoWeQ1": "Why do we pray 5 times a day?",
-  "@whyDoWeQ1": { "description": "Why Do We question 1" },
+  "@whyDoWeQ1": {
+    "description": "Why Do We question 1"
+  },
   "whyDoWeA1": "Allah commanded the five daily prayers in the Quran (2:238) and they were established during the Night Journey (Isra wal Miraj). The Prophet said: The first matter that the slave will be brought to account for on the Day of Judgment is the prayer. (Ibn Majah). Prayer keeps us connected to Allah throughout the day.",
-  "@whyDoWeA1": { "description": "Why Do We answer 1" },
+  "@whyDoWeA1": {
+    "description": "Why Do We answer 1"
+  },
   "whyDoWeQ2": "Why do we face Mecca when we pray?",
-  "@whyDoWeQ2": { "description": "Why Do We question 2" },
+  "@whyDoWeQ2": {
+    "description": "Why Do We question 2"
+  },
   "whyDoWeA2": "Allah commanded in the Quran (2:144): \"Turn your face toward the Sacred Mosque.\" The Kaaba in Mecca is the first house built for the worship of Allah (3:96). Facing the same direction unites all Muslims in prayer worldwide.",
-  "@whyDoWeA2": { "description": "Why Do We answer 2" },
+  "@whyDoWeA2": {
+    "description": "Why Do We answer 2"
+  },
   "whyDoWeQ3": "Why do we fast in Ramadan?",
-  "@whyDoWeQ3": { "description": "Why Do We question 3" },
+  "@whyDoWeQ3": {
+    "description": "Why Do We question 3"
+  },
   "whyDoWeA3": "Allah commanded fasting in the Quran (2:183): \"O you who believe, fasting has been prescribed for you as it was prescribed for those before you, so that you may achieve taqwa.\" Ramadan is the month the Quran was revealed (2:185).",
-  "@whyDoWeA3": { "description": "Why Do We answer 3" },
+  "@whyDoWeA3": {
+    "description": "Why Do We answer 3"
+  },
   "whyDoWeQ4": "Why do we say Bismillah before eating?",
-  "@whyDoWeQ4": { "description": "Why Do We question 4" },
+  "@whyDoWeQ4": {
+    "description": "Why Do We question 4"
+  },
   "whyDoWeA4": "The Prophet said: \"When one of you eats, he should mention Allah's name. If he forgets at the beginning, he should say Bismillah awwalahu wa akhirahu.\" (Abu Dawud). It reminds us that all blessings come from Allah.",
-  "@whyDoWeA4": { "description": "Why Do We answer 4" },
+  "@whyDoWeA4": {
+    "description": "Why Do We answer 4"
+  },
   "whyDoWeQ5": "Why do we remove shoes before entering a mosque?",
-  "@whyDoWeQ5": { "description": "Why Do We question 5" },
+  "@whyDoWeQ5": {
+    "description": "Why Do We question 5"
+  },
   "whyDoWeA5": "When Moses was commanded by Allah: \"Remove your sandals, for you are in the sacred valley of Tuwa.\" (Quran 20:12). Removing shoes shows respect for the house of Allah and keeps the place of prayer clean.",
-  "@whyDoWeA5": { "description": "Why Do We answer 5" },
+  "@whyDoWeA5": {
+    "description": "Why Do We answer 5"
+  },
   "whyDoWeQ6": "Why do we say Assalamu Alaikum as a greeting?",
-  "@whyDoWeQ6": { "description": "Why Do We question 6" },
+  "@whyDoWeQ6": {
+    "description": "Why Do We question 6"
+  },
   "whyDoWeA6": "The Prophet said: \"You will not enter paradise until you believe, and you will not believe until you love one another. Shall I tell you of something that will make you love one another? Spread peace (salam) among yourselves.\" (Muslim). It is also a dua — you are praying for peace upon that person.",
-  "@whyDoWeA6": { "description": "Why Do We answer 6" },
+  "@whyDoWeA6": {
+    "description": "Why Do We answer 6"
+  },
   "whyDoWeQ7": "Why do we perform Hajj?",
-  "@whyDoWeQ7": { "description": "Why Do We question 7" },
+  "@whyDoWeQ7": {
+    "description": "Why Do We question 7"
+  },
   "whyDoWeA7": "Hajj was commanded by Allah (3:97): \"Pilgrimage to this House is an obligation by Allah upon whoever is able.\" It commemorates the trials of Prophet Ibrahim and his family, and unites Muslims from every nation in worship.",
-  "@whyDoWeA7": { "description": "Why Do We answer 7" },
+  "@whyDoWeA7": {
+    "description": "Why Do We answer 7"
+  },
   "whyDoWeQ8": "Why do we give Zakat?",
-  "@whyDoWeQ8": { "description": "Why Do We question 8" },
+  "@whyDoWeQ8": {
+    "description": "Why Do We question 8"
+  },
   "whyDoWeA8": "Zakat is the third pillar of Islam, commanded in the Quran over 30 times alongside prayer. The Prophet said it purifies wealth. It reduces inequality and reminds believers that wealth belongs to Allah.",
-  "@whyDoWeA8": { "description": "Why Do We answer 8" },
+  "@whyDoWeA8": {
+    "description": "Why Do We answer 8"
+  },
   "whyDoWeQ9": "Why do we say Alhamdulillah after sneezing?",
-  "@whyDoWeQ9": { "description": "Why Do We question 9" },
+  "@whyDoWeQ9": {
+    "description": "Why Do We question 9"
+  },
   "whyDoWeA9": "The Prophet said: \"When one of you sneezes, let him say Alhamdulillah, and let his brother or companion say Yarhamukallah.\" (Bukhari). It is a moment of gratitude to Allah for the blessing of health.",
-  "@whyDoWeA9": { "description": "Why Do We answer 9" },
+  "@whyDoWeA9": {
+    "description": "Why Do We answer 9"
+  },
   "whyDoWeQ10": "Why do Muslim women wear hijab?",
-  "@whyDoWeQ10": { "description": "Why Do We question 10" },
+  "@whyDoWeQ10": {
+    "description": "Why Do We question 10"
+  },
   "whyDoWeA10": "Allah commanded in the Quran (24:31) that believing women should guard their modesty. The hijab is an act of worship and obedience to Allah. Many Muslim women wear it as a source of identity, dignity, and spiritual connection.",
-  "@whyDoWeA10": { "description": "Why Do We answer 10" },
+  "@whyDoWeA10": {
+    "description": "Why Do We answer 10"
+  },
   "whyDoWeQ11": "Why do we avoid pork and alcohol?",
-  "@whyDoWeQ11": { "description": "Why Do We question 11" },
+  "@whyDoWeQ11": {
+    "description": "Why Do We question 11"
+  },
   "whyDoWeA11": "Allah prohibited pork in the Quran (2:173) and alcohol in (5:90), calling it \"an abomination from the work of Satan.\" These prohibitions protect health, the mind, and the family. Halal guidelines help believers maintain physical and spiritual purity.",
-  "@whyDoWeA11": { "description": "Why Do We answer 11" },
+  "@whyDoWeA11": {
+    "description": "Why Do We answer 11"
+  },
   "whyDoWeQ12": "Why do we say Inshallah?",
-  "@whyDoWeQ12": { "description": "Why Do We question 12" },
+  "@whyDoWeQ12": {
+    "description": "Why Do We question 12"
+  },
   "whyDoWeA12": "Allah commands in the Quran (18:23-24): \"Never say about anything: I will do that tomorrow, without adding: If Allah wills.\" Saying Inshallah acknowledges that only Allah controls the future and keeps us humble.",
-  "@whyDoWeA12": { "description": "Why Do We answer 12" },
+  "@whyDoWeA12": {
+    "description": "Why Do We answer 12"
+  },
   "communityStoriesScreenSubtitle": "Real journeys to Islam from around the world",
-  "@communityStoriesScreenSubtitle": { "description": "Subtitle for Community Stories screen" },
+  "@communityStoriesScreenSubtitle": {
+    "description": "Subtitle for Community Stories screen"
+  },
   "communityStoriesTimeLabel": "Time as Muslim",
-  "@communityStoriesTimeLabel": { "description": "Label for time-as-Muslim badge on story cards" },
+  "@communityStoriesTimeLabel": {
+    "description": "Label for time-as-Muslim badge on story cards"
+  },
   "communityStoriesShareBtn": "Share Your Story",
-  "@communityStoriesShareBtn": { "description": "Button label to share a revert story" },
+  "@communityStoriesShareBtn": {
+    "description": "Button label to share a revert story"
+  },
   "communityStoriesShareSoon": "Coming soon — this feature is on the way!",
-  "@communityStoriesShareSoon": { "description": "Snackbar message when share button is tapped" },
+  "@communityStoriesShareSoon": {
+    "description": "Snackbar message when share button is tapped"
+  },
   "communityStory1Name": "Aisha (formerly Sarah)",
-  "@communityStory1Name": { "description": "Name for community story 1" },
+  "@communityStory1Name": {
+    "description": "Name for community story 1"
+  },
   "communityStory1Location": "Texas, USA",
-  "@communityStory1Location": { "description": "Location for community story 1" },
+  "@communityStory1Location": {
+    "description": "Location for community story 1"
+  },
   "communityStory1Time": "2 years",
-  "@communityStory1Time": { "description": "Time as Muslim for community story 1" },
+  "@communityStory1Time": {
+    "description": "Time as Muslim for community story 1"
+  },
   "communityStory1Text": "I came across Islam while doing research for a college paper. I expected to find what the media told me. Instead I found peace, logic, and a God who actually made sense. I took my shahada 6 months later. The hardest part wasn't learning to pray — it was telling my family. But Alhamdulillah, two years later, my mother is asking me questions about Islam herself.",
-  "@communityStory1Text": { "description": "Story text for community story 1" },
+  "@communityStory1Text": {
+    "description": "Story text for community story 1"
+  },
   "communityStory2Name": "Yusuf (formerly James)",
-  "@communityStory2Name": { "description": "Name for community story 2" },
+  "@communityStory2Name": {
+    "description": "Name for community story 2"
+  },
   "communityStory2Location": "London, UK",
-  "@communityStory2Location": { "description": "Location for community story 2" },
+  "@communityStory2Location": {
+    "description": "Location for community story 2"
+  },
   "communityStory2Time": "4 years",
-  "@communityStory2Time": { "description": "Time as Muslim for community story 2" },
+  "@communityStory2Time": {
+    "description": "Time as Muslim for community story 2"
+  },
   "communityStory2Text": "I reverted after years of searching. Christianity, Buddhism, atheism — nothing filled the void. A Muslim coworker invited me to Friday prayer. I sat in the back and cried the entire time. I didn't even know why. I took my shahada the following week. The community wrapped around me like a family I never knew I needed.",
-  "@communityStory2Text": { "description": "Story text for community story 2" },
+  "@communityStory2Text": {
+    "description": "Story text for community story 2"
+  },
   "communityStory3Name": "Maryam (formerly Maria)",
-  "@communityStory3Name": { "description": "Name for community story 3" },
+  "@communityStory3Name": {
+    "description": "Name for community story 3"
+  },
   "communityStory3Location": "Mexico City, Mexico",
-  "@communityStory3Location": { "description": "Location for community story 3" },
+  "@communityStory3Location": {
+    "description": "Location for community story 3"
+  },
   "communityStory3Time": "1 year",
-  "@communityStory3Time": { "description": "Time as Muslim for community story 3" },
+  "@communityStory3Time": {
+    "description": "Time as Muslim for community story 3"
+  },
   "communityStory3Text": "Being Latina and Muslim feels like a superpower. I found Islam through a YouTube video at 2am. I watched for hours. The concept of tawheed — that God is one, has no partners, no images — it resonated so deeply. My Spanish-speaking sisters at the mosque made me feel at home immediately.",
-  "@communityStory3Text": { "description": "Story text for community story 3" },
+  "@communityStory3Text": {
+    "description": "Story text for community story 3"
+  },
   "communityStory4Name": "Ibrahim (formerly David)",
-  "@communityStory4Name": { "description": "Name for community story 4" },
+  "@communityStory4Name": {
+    "description": "Name for community story 4"
+  },
   "communityStory4Location": "Toronto, Canada",
-  "@communityStory4Location": { "description": "Location for community story 4" },
+  "@communityStory4Location": {
+    "description": "Location for community story 4"
+  },
   "communityStory4Time": "6 years",
-  "@communityStory4Time": { "description": "Time as Muslim for community story 4" },
+  "@communityStory4Time": {
+    "description": "Time as Muslim for community story 4"
+  },
   "communityStory4Text": "I was a pastor's son. I had questions about the Trinity that no one could answer. When I read the Quran for the first time, I felt like I was reading something I already believed. I said my shahada quietly, alone, and then again at the mosque. Best decision of my life.",
-  "@communityStory4Text": { "description": "Story text for community story 4" },
+  "@communityStory4Text": {
+    "description": "Story text for community story 4"
+  },
   "communityStory5Name": "Fatima (formerly Jennifer)",
-  "@communityStory5Name": { "description": "Name for community story 5" },
+  "@communityStory5Name": {
+    "description": "Name for community story 5"
+  },
   "communityStory5Location": "Sydney, Australia",
-  "@communityStory5Location": { "description": "Location for community story 5" },
+  "@communityStory5Location": {
+    "description": "Location for community story 5"
+  },
   "communityStory5Time": "3 years",
-  "@communityStory5Time": { "description": "Time as Muslim for community story 5" },
+  "@communityStory5Time": {
+    "description": "Time as Muslim for community story 5"
+  },
   "communityStory5Text": "My journey started with a hijab. I put one on as a dare and felt... protected. I started reading about Islam and couldn't stop. Within three months I had taken my shahada. People ask me what I gave up. I tell them I gave up emptiness.",
-  "@communityStory5Text": { "description": "Story text for community story 5" },
+  "@communityStory5Text": {
+    "description": "Story text for community story 5"
+  },
   "communityStory6Name": "Omar (formerly Kevin)",
-  "@communityStory6Name": { "description": "Name for community story 6" },
+  "@communityStory6Name": {
+    "description": "Name for community story 6"
+  },
   "communityStory6Location": "Johannesburg, South Africa",
-  "@communityStory6Location": { "description": "Location for community story 6" },
+  "@communityStory6Location": {
+    "description": "Location for community story 6"
+  },
   "communityStory6Time": "5 years",
-  "@communityStory6Time": { "description": "Time as Muslim for community story 6" },
+  "@communityStory6Time": {
+    "description": "Time as Muslim for community story 6"
+  },
   "communityStory6Text": "I grew up in a rough neighborhood. Islam gave me discipline, purpose, and brotherhood. The first time I made sujood, something in me broke open — in the best way. I wept and couldn't explain why. Now I mentor other young men finding their way to the deen.",
-  "@communityStory6Text": { "description": "Story text for community story 6" },
+  "@communityStory6Text": {
+    "description": "Story text for community story 6"
+  },
   "inspiredByRealStories": "Inspired by real revert journeys",
-  "@inspiredByRealStories": { "description": "Secondary tagline on Community Stories screen header" },
+  "@inspiredByRealStories": {
+    "description": "Secondary tagline on Community Stories screen header"
+  },
   "storyFormTitle": "Share Your Story",
-  "@storyFormTitle": { "description": "Title of the story submission bottom sheet" },
+  "@storyFormTitle": {
+    "description": "Title of the story submission bottom sheet"
+  },
   "storyFormNameLabel": "Your Name",
-  "@storyFormNameLabel": { "description": "Label for the name field in the story submission form" },
+  "@storyFormNameLabel": {
+    "description": "Label for the name field in the story submission form"
+  },
   "storyFormNameHint": "Name, or write 'Anonymous'",
-  "@storyFormNameHint": { "description": "Hint text for the name field in the story submission form" },
+  "@storyFormNameHint": {
+    "description": "Hint text for the name field in the story submission form"
+  },
   "storyFormCountryLabel": "Country",
-  "@storyFormCountryLabel": { "description": "Label for the country field in the story submission form" },
+  "@storyFormCountryLabel": {
+    "description": "Label for the country field in the story submission form"
+  },
   "storyFormCountryHint": "Where are you from?",
-  "@storyFormCountryHint": { "description": "Hint text for the country field in the story submission form" },
+  "@storyFormCountryHint": {
+    "description": "Hint text for the country field in the story submission form"
+  },
   "storyFormTimeLabel": "Time as Muslim",
-  "@storyFormTimeLabel": { "description": "Label for the time-as-Muslim field in the story submission form" },
+  "@storyFormTimeLabel": {
+    "description": "Label for the time-as-Muslim field in the story submission form"
+  },
   "storyFormTimeHint": "e.g. 2 years, 6 months",
-  "@storyFormTimeHint": { "description": "Hint text for the time-as-Muslim field in the story submission form" },
+  "@storyFormTimeHint": {
+    "description": "Hint text for the time-as-Muslim field in the story submission form"
+  },
   "storyFormStoryLabel": "Your Story",
-  "@storyFormStoryLabel": { "description": "Label for the story text field in the story submission form" },
+  "@storyFormStoryLabel": {
+    "description": "Label for the story text field in the story submission form"
+  },
   "storyFormStoryHint": "Share your journey to Islam...",
-  "@storyFormStoryHint": { "description": "Hint text for the story text field in the story submission form" },
+  "@storyFormStoryHint": {
+    "description": "Hint text for the story text field in the story submission form"
+  },
   "storyFormSubmitBtn": "Submit Story",
-  "@storyFormSubmitBtn": { "description": "Button label to submit the story form" },
+  "@storyFormSubmitBtn": {
+    "description": "Button label to submit the story form"
+  },
   "storyFormThankYouTitle": "JazakAllah Khair!",
-  "@storyFormThankYouTitle": { "description": "Thank you heading shown after successful story submission" },
+  "@storyFormThankYouTitle": {
+    "description": "Thank you heading shown after successful story submission"
+  },
   "storyFormThankYouBody": "Your story has been received. We review all submissions before publishing.",
-  "@storyFormThankYouBody": { "description": "Thank you body text shown after successful story submission" },
+  "@storyFormThankYouBody": {
+    "description": "Thank you body text shown after successful story submission"
+  },
   "storyFormRequiredError": "Please fill in all fields",
-  "@storyFormRequiredError": { "description": "Validation error snackbar when story form fields are empty" },
+  "@storyFormRequiredError": {
+    "description": "Validation error snackbar when story form fields are empty"
+  },
   "subtitleYourGuideToIslam": "Your guide to Islam",
-  "@subtitleYourGuideToIslam": { "description": "Subtitle tagline on the Revert Corner premium banner card" },
+  "@subtitleYourGuideToIslam": {
+    "description": "Subtitle tagline on the Revert Corner premium banner card"
+  },
   "beginnerMode": "Beginner Mode",
-  "@beginnerMode": { "description": "Toggle label for Beginner Mode in Settings" },
+  "@beginnerMode": {
+    "description": "Toggle label for Beginner Mode in Settings"
+  },
   "beginnerModeSubtitle": "Extra tips and guidance for new Muslims",
-  "@beginnerModeSubtitle": { "description": "Subtitle for the Beginner Mode toggle in Settings" },
+  "@beginnerModeSubtitle": {
+    "description": "Subtitle for the Beginner Mode toggle in Settings"
+  },
   "beginnerModeOn": "Beginner Mode is on — extra tips are shown throughout the app",
-  "@beginnerModeOn": { "description": "SnackBar message shown when Beginner Mode is turned on" },
+  "@beginnerModeOn": {
+    "description": "SnackBar message shown when Beginner Mode is turned on"
+  },
   "beginnerModePrayersTip": "Tip: Tap each prayer to learn more about it and see sunnah prayers",
-  "@beginnerModePrayersTip": { "description": "Beginner tip banner shown at the top of the Prayers screen when Beginner Mode is on" },
+  "@beginnerModePrayersTip": {
+    "description": "Beginner tip banner shown at the top of the Prayers screen when Beginner Mode is on"
+  },
   "tafsirSubtitle": "Quranic Commentary",
-  "@tafsirSubtitle": { "description": "Subtitle on the Tafsir screen header" },
+  "@tafsirSubtitle": {
+    "description": "Subtitle on the Tafsir screen header"
+  },
   "tafsirComingSoon": "Tafsir for this surah coming soon",
-  "@tafsirComingSoon": { "description": "Message shown when no tafsir content is available for a surah" },
+  "@tafsirComingSoon": {
+    "description": "Message shown when no tafsir content is available for a surah"
+  },
   "tafsirNotAvailable": "Tafsir not available",
-  "@tafsirNotAvailable": { "description": "Message shown when neither hardcoded nor online tafsir content is available for a surah" },
+  "@tafsirNotAvailable": {
+    "description": "Message shown when neither hardcoded nor online tafsir content is available for a surah"
+  },
   "scholarSource": "Source",
-  "@scholarSource": { "description": "Label for the scholar source badge on a tafsir verse card" },
+  "@scholarSource": {
+    "description": "Label for the scholar source badge on a tafsir verse card"
+  },
   "asbabAlNuzul": "Reason for Revelation",
-  "@asbabAlNuzul": { "description": "Heading for the Asbab al-Nuzul (reason for revelation) section on a tafsir verse card" },
+  "@asbabAlNuzul": {
+    "description": "Heading for the Asbab al-Nuzul (reason for revelation) section on a tafsir verse card"
+  },
   "transliteration": "Transliteration",
-  "@transliteration": { "description": "Label for the Latin-script transliteration of an Arabic verse" },
+  "@transliteration": {
+    "description": "Label for the Latin-script transliteration of an Arabic verse"
+  },
   "selectReciter": "Select Reciter",
-  "@selectReciter": { "description": "Heading for the reciter selector on the Quran surah screen" },
+  "@selectReciter": {
+    "description": "Heading for the reciter selector on the Quran surah screen"
+  },
   "playVerse": "Play verse",
-  "@playVerse": { "description": "Tooltip/label for the button that plays audio recitation of a verse" },
+  "@playVerse": {
+    "description": "Tooltip/label for the button that plays audio recitation of a verse"
+  },
   "asmaUlHusna": "Asma ul Husna",
-  "@asmaUlHusna": { "description": "Title of the 99 Names of Allah screen" },
+  "@asmaUlHusna": {
+    "description": "Title of the 99 Names of Allah screen"
+  },
   "asmaUlHusnaSubtitle": "The 99 Beautiful Names of Allah",
-  "@asmaUlHusnaSubtitle": { "description": "Subtitle on the Asma ul Husna screen" },
+  "@asmaUlHusnaSubtitle": {
+    "description": "Subtitle on the Asma ul Husna screen"
+  },
   "asmaHadith": "Allah has 99 names. Whoever memorizes them will enter Paradise.",
-  "@asmaHadith": { "description": "Hadith quoted on the Asma ul Husna screen" },
+  "@asmaHadith": {
+    "description": "Hadith quoted on the Asma ul Husna screen"
+  },
   "asmaHadithSource": "Sahih al-Bukhari, 2736",
-  "@asmaHadithSource": { "description": "Citation source for the Asma ul Husna hadith" },
+  "@asmaHadithSource": {
+    "description": "Citation source for the Asma ul Husna hadith"
+  },
   "asmaSearchHint": "Search names...",
-  "@asmaSearchHint": { "description": "Placeholder text for the search field on the Asma ul Husna screen" },
+  "@asmaSearchHint": {
+    "description": "Placeholder text for the search field on the Asma ul Husna screen"
+  },
   "asmaNoResults": "No names found",
-  "@asmaNoResults": { "description": "Message shown when a search on the Asma ul Husna screen returns no results" },
+  "@asmaNoResults": {
+    "description": "Message shown when a search on the Asma ul Husna screen returns no results"
+  },
   "asmaSignificance": "Significance",
-  "@asmaSignificance": { "description": "Heading for the expanded explanation of a name on the Asma ul Husna screen" },
+  "@asmaSignificance": {
+    "description": "Heading for the expanded explanation of a name on the Asma ul Husna screen"
+  },
   "asmaUlHusnaTile": "99 Names",
-  "@asmaUlHusnaTile": { "description": "Label for the 99 Names feature tile on the home screen" },
+  "@asmaUlHusnaTile": {
+    "description": "Label for the 99 Names feature tile on the home screen"
+  },
   "asmaUlHusnaTileSubtitle": "Names of Allah",
-  "@asmaUlHusnaTileSubtitle": { "description": "Subtitle for the 99 Names feature tile on the home screen" },
+  "@asmaUlHusnaTileSubtitle": {
+    "description": "Subtitle for the 99 Names feature tile on the home screen"
+  },
   "onboardingTagline": "Guard your time. Honor your prayers.",
-  "@onboardingTagline": { "description": "App tagline shown on the onboarding welcome page" },
+  "@onboardingTagline": {
+    "description": "App tagline shown on the onboarding welcome page"
+  },
   "onboardingChooseLanguage": "Choose your language",
-  "@onboardingChooseLanguage": { "description": "Divider label above the language picker on the onboarding welcome page" },
+  "@onboardingChooseLanguage": {
+    "description": "Divider label above the language picker on the onboarding welcome page"
+  },
   "onboardingGetStarted": "Get Started",
-  "@onboardingGetStarted": { "description": "Button label to continue from the onboarding welcome page" },
+  "@onboardingGetStarted": {
+    "description": "Button label to continue from the onboarding welcome page"
+  },
   "onboardingLocationTitle": "Accurate Prayer Times",
-  "@onboardingLocationTitle": { "description": "Title on the onboarding location-permission page" },
+  "@onboardingLocationTitle": {
+    "description": "Title on the onboarding location-permission page"
+  },
   "onboardingLocationDesc": "Noor Guard needs your location to calculate accurate prayer times for your city. Your location is never stored or shared.",
-  "@onboardingLocationDesc": { "description": "Description on the onboarding location-permission page" },
+  "@onboardingLocationDesc": {
+    "description": "Description on the onboarding location-permission page"
+  },
   "onboardingPrivacyBanner": "Your faith is personal. Your data stays that way.",
-  "@onboardingPrivacyBanner": { "description": "Privacy reassurance banner on the onboarding location-permission page" },
+  "@onboardingPrivacyBanner": {
+    "description": "Privacy reassurance banner on the onboarding location-permission page"
+  },
   "onboardingAllowLocation": "Allow Location",
-  "@onboardingAllowLocation": { "description": "Button label to grant location permission during onboarding" },
+  "@onboardingAllowLocation": {
+    "description": "Button label to grant location permission during onboarding"
+  },
   "onboardingSkipForNow": "Skip for now",
-  "@onboardingSkipForNow": { "description": "Link to skip the location-permission step during onboarding" },
+  "@onboardingSkipForNow": {
+    "description": "Link to skip the location-permission step during onboarding"
+  },
   "onboardingNotificationTitle": "Never Miss a Prayer",
-  "@onboardingNotificationTitle": { "description": "Title on the onboarding notification-permission page" },
+  "@onboardingNotificationTitle": {
+    "description": "Title on the onboarding notification-permission page"
+  },
   "onboardingNotificationDesc": "Get notified at every prayer time with a beautiful adhan. Customise sounds and timing in settings.",
-  "@onboardingNotificationDesc": { "description": "Description on the onboarding notification-permission page" },
+  "@onboardingNotificationDesc": {
+    "description": "Description on the onboarding notification-permission page"
+  },
   "onboardingAdhanAlerts": "Adhan alerts",
-  "@onboardingAdhanAlerts": { "description": "Feature chip label on the onboarding notification-permission page" },
+  "@onboardingAdhanAlerts": {
+    "description": "Feature chip label on the onboarding notification-permission page"
+  },
   "onboardingCustomTiming": "Custom timing",
-  "@onboardingCustomTiming": { "description": "Feature chip label on the onboarding notification-permission page" },
+  "@onboardingCustomTiming": {
+    "description": "Feature chip label on the onboarding notification-permission page"
+  },
   "onboardingAdjustable": "Adjustable",
-  "@onboardingAdjustable": { "description": "Feature chip label on the onboarding notification-permission page" },
+  "@onboardingAdjustable": {
+    "description": "Feature chip label on the onboarding notification-permission page"
+  },
   "onboardingEnableNotifications": "Enable Notifications",
-  "@onboardingEnableNotifications": { "description": "Button label to grant notification permission during onboarding" },
+  "@onboardingEnableNotifications": {
+    "description": "Button label to grant notification permission during onboarding"
+  },
   "onboardingMaybeLater": "Maybe later",
-  "@onboardingMaybeLater": { "description": "Link to skip the notification-permission step during onboarding" },
+  "@onboardingMaybeLater": {
+    "description": "Link to skip the notification-permission step during onboarding"
+  },
   "onboardingAllSetTitle": "You're All Set!",
-  "@onboardingAllSetTitle": { "description": "Title on the final onboarding completion page" },
+  "@onboardingAllSetTitle": {
+    "description": "Title on the final onboarding completion page"
+  },
   "onboardingAllSetDesc": "Noor Guard is ready to protect your time\nand guide your day with intention.",
-  "@onboardingAllSetDesc": { "description": "Description on the final onboarding completion page" },
+  "@onboardingAllSetDesc": {
+    "description": "Description on the final onboarding completion page"
+  },
   "onboardingPrayerTimesLabel": "Prayer Times",
-  "@onboardingPrayerTimesLabel": { "description": "Feature summary label on the final onboarding completion page" },
+  "@onboardingPrayerTimesLabel": {
+    "description": "Feature summary label on the final onboarding completion page"
+  },
   "onboardingPrayerTimesDesc": "Accurate times for your city",
-  "@onboardingPrayerTimesDesc": { "description": "Feature summary description on the final onboarding completion page" },
+  "@onboardingPrayerTimesDesc": {
+    "description": "Feature summary description on the final onboarding completion page"
+  },
   "onboardingLockScreenLabel": "Islamic Lock Screen",
-  "@onboardingLockScreenLabel": { "description": "Feature summary label on the final onboarding completion page" },
+  "@onboardingLockScreenLabel": {
+    "description": "Feature summary label on the final onboarding completion page"
+  },
   "onboardingLockScreenDesc": "Quran and duas on every unlock",
-  "@onboardingLockScreenDesc": { "description": "Feature summary description on the final onboarding completion page" },
+  "@onboardingLockScreenDesc": {
+    "description": "Feature summary description on the final onboarding completion page"
+  },
   "onboardingPrayerGuardLabel": "Prayer Guard",
-  "@onboardingPrayerGuardLabel": { "description": "Feature summary label on the final onboarding completion page" },
+  "@onboardingPrayerGuardLabel": {
+    "description": "Feature summary label on the final onboarding completion page"
+  },
   "onboardingPrayerGuardDesc": "Apps blocked automatically during salah",
-  "@onboardingPrayerGuardDesc": { "description": "Feature summary description on the final onboarding completion page" },
+  "@onboardingPrayerGuardDesc": {
+    "description": "Feature summary description on the final onboarding completion page"
+  },
   "onboardingEnterApp": "Enter Noor Guard",
-  "@onboardingEnterApp": { "description": "Button label to finish onboarding and enter the app" },
+  "@onboardingEnterApp": {
+    "description": "Button label to finish onboarding and enter the app"
+  },
   "adhan": "Adhan",
-  "@adhan": { "description": "Title of the Adhan (call to prayer) audio player screen, and label for its feature tile on the home screen" },
+  "@adhan": {
+    "description": "Title of the Adhan (call to prayer) audio player screen, and label for its feature tile on the home screen"
+  },
   "adhanSubtitle": "The Call to Prayer",
-  "@adhanSubtitle": { "description": "Subtitle for the Adhan screen and its feature tile on the home screen" },
+  "@adhanSubtitle": {
+    "description": "Subtitle for the Adhan screen and its feature tile on the home screen"
+  },
   "adhanDescription": "The Adhan is the Islamic call to prayer, announced 5 times daily to invite believers to worship.",
-  "@adhanDescription": { "description": "Brief description of what the Adhan is, shown at the top of the Adhan screen" },
+  "@adhanDescription": {
+    "description": "Brief description of what the Adhan is, shown at the top of the Adhan screen"
+  },
   "makkahStyle": "Makkah",
-  "@makkahStyle": { "description": "Name of the Makkah adhan style" },
+  "@makkahStyle": {
+    "description": "Name of the Makkah adhan style"
+  },
   "madinahStyle": "Madinah",
-  "@madinahStyle": { "description": "Name of the Madinah adhan style" },
+  "@madinahStyle": {
+    "description": "Name of the Madinah adhan style"
+  },
   "egyptianStyle": "Egyptian",
-  "@egyptianStyle": { "description": "Name of the Egyptian adhan style" },
+  "@egyptianStyle": {
+    "description": "Name of the Egyptian adhan style"
+  },
   "adhanPlaying": "Now Playing",
-  "@adhanPlaying": { "description": "Label shown in the mini player when an adhan is playing" },
+  "@adhanPlaying": {
+    "description": "Label shown in the mini player when an adhan is playing"
+  },
   "makkahDescription": "The traditional call to prayer from the Grand Mosque in Makkah.",
-  "@makkahDescription": { "description": "Description of the Makkah adhan style" },
+  "@makkahDescription": {
+    "description": "Description of the Makkah adhan style"
+  },
   "madinahDescription": "A serene rendition in the style of the Prophet's Mosque in Madinah.",
-  "@madinahDescription": { "description": "Description of the Madinah adhan style" },
+  "@madinahDescription": {
+    "description": "Description of the Madinah adhan style"
+  },
   "egyptianDescription": "A melodic Egyptian-style adhan, known for its rich recitation.",
-  "@egyptianDescription": { "description": "Description of the Egyptian adhan style" },
+  "@egyptianDescription": {
+    "description": "Description of the Egyptian adhan style"
+  },
   "adhanCallToWorship": "The Call to Prayer",
-  "@adhanCallToWorship": { "description": "Subtitle shown above the Adhan description on the Adhan screen" },
+  "@adhanCallToWorship": {
+    "description": "Subtitle shown above the Adhan description on the Adhan screen"
+  },
   "adhanDescriptionFull": "The Adhan is the Islamic call to prayer, announced 5 times daily to invite believers to worship.",
-  "@adhanDescriptionFull": { "description": "Full description of what the Adhan is, shown at the top of the Adhan screen" },
+  "@adhanDescriptionFull": {
+    "description": "Full description of what the Adhan is, shown at the top of the Adhan screen"
+  },
   "alafasyStyle": "Mishary Alafasy",
-  "@alafasyStyle": { "description": "Name of the Mishary Alafasy adhan style" },
+  "@alafasyStyle": {
+    "description": "Name of the Mishary Alafasy adhan style"
+  },
   "alaqsaStyle": "Al-Aqsa",
-  "@alaqsaStyle": { "description": "Name of the Al-Aqsa adhan style" },
+  "@alaqsaStyle": {
+    "description": "Name of the Al-Aqsa adhan style"
+  },
   "turkishStyle": "Turkish",
-  "@turkishStyle": { "description": "Name of the Turkish adhan style" },
+  "@turkishStyle": {
+    "description": "Name of the Turkish adhan style"
+  },
   "pakistaniStyle": "Pakistani",
-  "@pakistaniStyle": { "description": "Name of the Pakistani adhan style" },
+  "@pakistaniStyle": {
+    "description": "Name of the Pakistani adhan style"
+  },
   "indonesianStyle": "Indonesian",
-  "@indonesianStyle": { "description": "Name of the Indonesian adhan style" },
+  "@indonesianStyle": {
+    "description": "Name of the Indonesian adhan style"
+  },
   "alafasyDescription": "A heartfelt rendition by the renowned reciter Mishary Rashid Alafasy.",
-  "@alafasyDescription": { "description": "Description of the Mishary Alafasy adhan style" },
+  "@alafasyDescription": {
+    "description": "Description of the Mishary Alafasy adhan style"
+  },
   "alaqsaDescription": "The call to prayer echoing from Al-Aqsa Mosque in Jerusalem, Islam's third holiest site.",
-  "@alaqsaDescription": { "description": "Description of the Al-Aqsa adhan style" },
+  "@alaqsaDescription": {
+    "description": "Description of the Al-Aqsa adhan style"
+  },
   "turkishDescription": "A traditional Turkish-style ezan with its distinctive melodic maqam.",
-  "@turkishDescription": { "description": "Description of the Turkish adhan style" },
+  "@turkishDescription": {
+    "description": "Description of the Turkish adhan style"
+  },
   "pakistaniDescription": "A heartfelt adhan in the South Asian tradition, recited across Pakistan.",
-  "@pakistaniDescription": { "description": "Description of the Pakistani adhan style" },
+  "@pakistaniDescription": {
+    "description": "Description of the Pakistani adhan style"
+  },
   "indonesianDescription": "A melodious Indonesian-style adhan, beloved across the archipelago.",
-  "@indonesianDescription": { "description": "Description of the Indonesian adhan style" },
+  "@indonesianDescription": {
+    "description": "Description of the Indonesian adhan style"
+  },
   "thisWeek": "This Week",
-  "@thisWeek": { "description": "Header for the weekly prayer summary card" },
+  "@thisWeek": {
+    "description": "Header for the weekly prayer summary card"
+  },
   "weeklyProgress": "{count} of 35 prayers this week",
   "@weeklyProgress": {
     "description": "Shows how many of the 35 weekly prayers (7 days x 5 prayers) have been completed",
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "bestDay": "Best day",
-  "@bestDay": { "description": "Label preceding the best day of the week for prayer completion" },
+  "@bestDay": {
+    "description": "Label preceding the best day of the week for prayer completion"
+  },
   "prayerStats": "Prayer Statistics",
-  "@prayerStats": { "description": "Title of the Prayer Statistics screen and tooltip for its app bar button" },
+  "@prayerStats": {
+    "description": "Title of the Prayer Statistics screen and tooltip for its app bar button"
+  },
   "completionRate": "Completion Rate",
-  "@completionRate": { "description": "Label for the overall prayer completion percentage" },
+  "@completionRate": {
+    "description": "Label for the overall prayer completion percentage"
+  },
   "bestPrayer": "Most Consistent Prayer",
-  "@bestPrayer": { "description": "Label for the prayer the user completes most often" },
+  "@bestPrayer": {
+    "description": "Label for the prayer the user completes most often"
+  },
   "hardestPrayer": "Most Missed Prayer",
-  "@hardestPrayer": { "description": "Label for the prayer the user misses most often" },
+  "@hardestPrayer": {
+    "description": "Label for the prayer the user misses most often"
+  },
   "totalPrayersCompleted": "{count} prayers completed",
   "@totalPrayersCompleted": {
     "description": "Total number of prayers completed since the user started using the app",
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "last7Days": "Last 7 Days",
-  "@last7Days": { "description": "Header for the weekly bar chart on the Prayer Statistics screen" },
+  "@last7Days": {
+    "description": "Header for the weekly bar chart on the Prayer Statistics screen"
+  },
   "thisMonth": "This Month",
-  "@thisMonth": { "description": "Header for the monthly breakdown on the Prayer Statistics screen" },
+  "@thisMonth": {
+    "description": "Header for the monthly breakdown on the Prayer Statistics screen"
+  },
   "fullDays": "Full days",
-  "@fullDays": { "description": "Label for days this month where all 5 prayers were completed" },
+  "@fullDays": {
+    "description": "Label for days this month where all 5 prayers were completed"
+  },
   "partialDays": "Partial days",
-  "@partialDays": { "description": "Label for days this month where some but not all prayers were completed" },
+  "@partialDays": {
+    "description": "Label for days this month where some but not all prayers were completed"
+  },
   "missedDays": "Missed days",
-  "@missedDays": { "description": "Label for days this month where no prayers were completed" },
+  "@missedDays": {
+    "description": "Label for days this month where no prayers were completed"
+  },
   "missedPrayerBadge": "Missed",
-  "@missedPrayerBadge": { "description": "Small badge shown on a prayer card when its prayer time has passed without being marked complete" },
+  "@missedPrayerBadge": {
+    "description": "Small badge shown on a prayer card when its prayer time has passed without being marked complete"
+  },
   "makeItUp": "Make it up",
-  "@makeItUp": { "description": "Button label to mark a missed prayer as completed as a Qada (makeup) prayer" },
+  "@makeItUp": {
+    "description": "Button label to mark a missed prayer as completed as a Qada (makeup) prayer"
+  },
   "qadaExplanation": "If you missed a prayer, you can still pray it as a Qada (makeup) prayer.",
-  "@qadaExplanation": { "description": "Brief explanation for new Muslims about making up a missed prayer" },
+  "@qadaExplanation": {
+    "description": "Brief explanation for new Muslims about making up a missed prayer"
+  },
   "noStatsYet": "Keep marking your prayers to see your stats here.",
-  "@noStatsYet": { "description": "Message shown on the Prayer Statistics screen when there is no prayer history yet" },
+  "@noStatsYet": {
+    "description": "Message shown on the Prayer Statistics screen when there is no prayer history yet"
+  },
   "notEnoughData": "Not enough data yet",
-  "@notEnoughData": { "description": "Placeholder shown for best/hardest prayer when there isn't enough history to determine them" },
+  "@notEnoughData": {
+    "description": "Placeholder shown for best/hardest prayer when there isn't enough history to determine them"
+  },
   "continuousPlay": "Continuous",
   "sleepTimer": "Sleep Timer",
   "verseCount": "Verse {verse} of {total}",
@@ -1674,5 +1990,133 @@
   "notifSetupDoneButton": "Done",
   "@notifSetupDoneButton": {
     "description": "Footer button label on a re-visit of the setup guide before every step is satisfied"
+  },
+  "testNotificationButton": "Send Test Notification (10s)",
+  "@testNotificationButton": {
+    "description": "Settings row: sends a 10-second test notification"
+  },
+  "testNotificationSnack": "Test notification will arrive in 10 seconds",
+  "@testNotificationSnack": {
+    "description": "Snackbar shown after tapping the test notification button"
+  },
+  "testLockAlarmButton": "Test Full-Screen Lock Alarm (10s)",
+  "@testLockAlarmButton": {
+    "description": "Settings row: triggers a 10-second test of the Android full-screen lock alarm"
+  },
+  "testLockAlarmSnack": "Lock alarm fires in 10 seconds — lock your phone now",
+  "@testLockAlarmSnack": {
+    "description": "Snackbar shown after tapping the test lock alarm button"
+  },
+  "testAdhanForegroundButton": "Test Adhan In-App (foreground)",
+  "@testAdhanForegroundButton": {
+    "description": "Settings row: plays the full adhan in-app while the app is open"
+  },
+  "testAdhanForegroundSnack": "Playing the full adhan with a silent banner",
+  "@testAdhanForegroundSnack": {
+    "description": "Snackbar shown after tapping the in-app adhan test button"
+  },
+  "lockScreenSetupGuideButton": "Lock Screen Alert Setup Guide",
+  "@lockScreenSetupGuideButton": {
+    "description": "Settings row: opens the Android lock screen alert setup guide"
+  },
+  "couldNotOpenPrivacyPolicy": "Could not open Privacy Policy",
+  "@couldNotOpenPrivacyPolicy": {
+    "description": "Snackbar shown when the privacy policy link fails to open"
+  },
+  "couldNotOpenEmailApp": "Could not open email app",
+  "@couldNotOpenEmailApp": {
+    "description": "Snackbar shown when no email app is available to send feedback"
+  },
+  "blockDurationLabel": "Block duration",
+  "@blockDurationLabel": {
+    "description": "Label above the block-duration preset pills"
+  },
+  "privacyAndTrust": "Privacy & Trust",
+  "@privacyAndTrust": {
+    "description": "Settings section header"
+  },
+  "noorGuardMotto": "\"If it doesn't belong in a masjid,\nit doesn't belong in Noor Guard.\"",
+  "@noorGuardMotto": {
+    "description": "Italic motto quote in the Privacy & Trust card"
+  },
+  "openingAppStore": "Opening App Store…",
+  "@openingAppStore": {
+    "description": "Snackbar shown when the rate-app row is tapped (placeholder action)"
+  },
+  "openingShareSheet": "Opening share sheet…",
+  "@openingShareSheet": {
+    "description": "Snackbar shown when the share-app row is tapped (placeholder action)"
+  },
+  "openingSupportEmail": "Opening support email…",
+  "@openingSupportEmail": {
+    "description": "Snackbar shown when the contact-support row is tapped (placeholder action)"
+  },
+  "openingTermsOfService": "Opening Terms of Service…",
+  "@openingTermsOfService": {
+    "description": "Snackbar shown when the terms-of-service row is tapped (placeholder action)"
+  },
+  "duration30Min": "30 min",
+  "@duration30Min": {
+    "description": "App blocking duration preset pill"
+  },
+  "duration1Hour": "1 hour",
+  "@duration1Hour": {
+    "description": "App blocking duration preset pill"
+  },
+  "durationPrayerWindowOnly": "Prayer window only",
+  "@durationPrayerWindowOnly": {
+    "description": "App blocking duration preset pill — blocks only for the prayer window"
+  },
+  "hoursAbbreviation": "hr",
+  "@hoursAbbreviation": {
+    "description": "Abbreviation for 'hours', used after a number (e.g. '1.5 hr')"
+  },
+  "cancelTimerButton": "Cancel timer",
+  "@cancelTimerButton": {
+    "description": "Button to cancel an active sleep timer"
+  },
+  "custom": "Custom",
+  "@custom": {
+    "description": "Generic 'Custom' option label (e.g. custom sleep timer duration)"
+  },
+  "customTimerMinutesTitle": "Custom timer (minutes)",
+  "@customTimerMinutesTitle": {
+    "description": "Dialog title for entering a custom sleep timer duration in minutes"
+  },
+  "customTimerHint": "e.g. 20",
+  "@customTimerHint": {
+    "description": "Text field hint for the custom sleep timer minutes input"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Generic Cancel button label"
+  },
+  "start": "Start",
+  "@start": {
+    "description": "Generic Start button label (e.g. starting a custom sleep timer)"
+  },
+  "travel": "Travel",
+  "@travel": {
+    "description": "Dua category label"
+  },
+  "anxietyAndStress": "Anxiety & Stress",
+  "@anxietyAndStress": {
+    "description": "Dua category label"
+  },
+  "gratitude": "Gratitude",
+  "@gratitude": {
+    "description": "Dua category label"
+  },
+  "protection": "Protection",
+  "@protection": {
+    "description": "Dua category label"
+  },
+  "family": "Family",
+  "@family": {
+    "description": "Dua category label"
+  },
+  "forgiveness": "Forgiveness",
+  "@forgiveness": {
+    "description": "Dua category label"
   }
 }

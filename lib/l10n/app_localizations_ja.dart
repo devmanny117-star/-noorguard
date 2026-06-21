@@ -1575,4 +1575,100 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => '完了';
+
+  @override
+  String get testNotificationButton => 'テスト通知を送信（10秒）';
+
+  @override
+  String get testNotificationSnack => 'テスト通知は10秒後に届きます';
+
+  @override
+  String get testLockAlarmButton => 'フルスクリーンロックアラームをテスト（10秒）';
+
+  @override
+  String get testLockAlarmSnack => 'ロックアラームは10秒後に作動します。今すぐ画面をロックしてください';
+
+  @override
+  String get testAdhanForegroundButton => 'アプリ内でアザーンをテスト（フォアグラウンド）';
+
+  @override
+  String get testAdhanForegroundSnack => 'サイレントバナー付きで完全なアザーンを再生中';
+
+  @override
+  String get lockScreenSetupGuideButton => 'ロック画面アラート設定ガイド';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'プライバシーポリシーを開けませんでした';
+
+  @override
+  String get couldNotOpenEmailApp => 'メールアプリを開けませんでした';
+
+  @override
+  String get blockDurationLabel => 'ブロックの長さ';
+
+  @override
+  String get privacyAndTrust => 'プライバシーと信頼';
+
+  @override
+  String get noorGuardMotto => '「モスクにふさわしくないものは、\nNoor Guardにもふさわしくない。」';
+
+  @override
+  String get openingAppStore => 'App Storeを開いています…';
+
+  @override
+  String get openingShareSheet => '共有シートを開いています…';
+
+  @override
+  String get openingSupportEmail => 'サポートメールを開いています…';
+
+  @override
+  String get openingTermsOfService => '利用規約を開いています…';
+
+  @override
+  String get duration30Min => '30分';
+
+  @override
+  String get duration1Hour => '1時間';
+
+  @override
+  String get durationPrayerWindowOnly => '礼拝時間帯のみ';
+
+  @override
+  String get hoursAbbreviation => '時間';
+
+  @override
+  String get cancelTimerButton => 'タイマーを取り消す';
+
+  @override
+  String get custom => 'カスタム';
+
+  @override
+  String get customTimerMinutesTitle => 'カスタムタイマー（分）';
+
+  @override
+  String get customTimerHint => '例：20';
+
+  @override
+  String get cancel => 'キャンセル';
+
+  @override
+  String get start => '開始';
+
+  @override
+  String get travel => '旅行';
+
+  @override
+  String get anxietyAndStress => '不安とストレス';
+
+  @override
+  String get gratitude => '感謝';
+
+  @override
+  String get protection => '守護';
+
+  @override
+  String get family => '家族';
+
+  @override
+  String get forgiveness => '赦し';
 }

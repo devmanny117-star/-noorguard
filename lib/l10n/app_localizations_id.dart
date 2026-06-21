@@ -1641,4 +1641,107 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Selesai';
+
+  @override
+  String get testNotificationButton => 'Kirim Notifikasi Uji Coba (10 dtk)';
+
+  @override
+  String get testNotificationSnack =>
+      'Notifikasi uji coba akan tiba dalam 10 detik';
+
+  @override
+  String get testLockAlarmButton => 'Uji Alarm Kunci Layar Penuh (10 dtk)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'Alarm kunci akan berbunyi dalam 10 detik — kunci ponsel Anda sekarang';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'Uji Adzan Dalam Aplikasi (latar depan)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'Memutar adzan lengkap dengan spanduk senyap';
+
+  @override
+  String get lockScreenSetupGuideButton =>
+      'Panduan Penyiapan Peringatan Layar Kunci';
+
+  @override
+  String get couldNotOpenPrivacyPolicy =>
+      'Tidak dapat membuka Kebijakan Privasi';
+
+  @override
+  String get couldNotOpenEmailApp => 'Tidak dapat membuka aplikasi email';
+
+  @override
+  String get blockDurationLabel => 'Durasi blokir';
+
+  @override
+  String get privacyAndTrust => 'Privasi & Kepercayaan';
+
+  @override
+  String get noorGuardMotto =>
+      '\"Jika tidak layak ada di masjid,\nmaka tidak layak ada di Noor Guard.\"';
+
+  @override
+  String get openingAppStore => 'Membuka App Store…';
+
+  @override
+  String get openingShareSheet => 'Membuka menu bagikan…';
+
+  @override
+  String get openingSupportEmail => 'Membuka email dukungan…';
+
+  @override
+  String get openingTermsOfService => 'Membuka Ketentuan Layanan…';
+
+  @override
+  String get duration30Min => '30 mnt';
+
+  @override
+  String get duration1Hour => '1 jam';
+
+  @override
+  String get durationPrayerWindowOnly => 'Hanya jendela waktu shalat';
+
+  @override
+  String get hoursAbbreviation => 'jam';
+
+  @override
+  String get cancelTimerButton => 'Batalkan timer';
+
+  @override
+  String get custom => 'Khusus';
+
+  @override
+  String get customTimerMinutesTitle => 'Timer khusus (menit)';
+
+  @override
+  String get customTimerHint => 'misalnya 20';
+
+  @override
+  String get cancel => 'Batal';
+
+  @override
+  String get start => 'Mulai';
+
+  @override
+  String get travel => 'Perjalanan';
+
+  @override
+  String get anxietyAndStress => 'Kecemasan & Stres';
+
+  @override
+  String get gratitude => 'Rasa Syukur';
+
+  @override
+  String get protection => 'Perlindungan';
+
+  @override
+  String get family => 'Keluarga';
+
+  @override
+  String get forgiveness => 'Ampunan';
 }

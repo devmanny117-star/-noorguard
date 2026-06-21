@@ -22,11 +22,9 @@ class CategorizedDua extends Dua {
   const CategorizedDua({
     required super.arabic,
     required super.transliteration,
-    required super.translation,
     required super.source,
+    required super.translations,
     required this.category,
-    super.translationEs,
-    super.translationUr,
   });
 }
 
@@ -38,104 +36,184 @@ const _morningEvening = [
     arabic: 'اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا\nوَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ',
     transliteration:
         'Allahumma bika asbahna wa bika amsayna,\nwa bika nahya wa bika namutu wa ilayka an-nushur',
-    translation:
-        'O Allah, by You we enter the morning and by You we enter the evening, by You we live and by You we die, and to You is the resurrection.',
-    translationEs:
-        'Oh Allah, por Ti entramos en la mañana y por Ti entramos en la noche; por Ti vivimos y por Ti morimos, y hacia Ti es la resurrección.',
-    translationUr:
-        'اے اللہ! تیرے ہی سبب ہم نے صبح کی اور تیرے ہی سبب شام کی، تیرے ہی سبب ہم زندہ ہیں اور تیرے ہی سبب مریں گے، اور تیری ہی طرف اٹھنا ہے۔',
     source: 'Abu Dawud 5068 / Tirmidhi 3391',
+    translations: {
+      'en': 'O Allah, by You we enter the morning and by You we enter the evening, by You we live and by You we die, and to You is the resurrection.',
+      'es': 'Oh Allah, por Ti entramos en la mañana y por Ti entramos en la noche; por Ti vivimos y por Ti morimos, y hacia Ti es la resurrección.',
+      'ur': 'اے اللہ! تیرے ہی سبب ہم نے صبح کی اور تیرے ہی سبب شام کی، تیرے ہی سبب ہم زندہ ہیں اور تیرے ہی سبب مریں گے، اور تیری ہی طرف اٹھنا ہے۔',
+          'fr': 'Ô Allah, c\'est par Toi que nous entrons dans le matin et par Toi que nous entrons dans le soir, par Toi nous vivons et par Toi nous mourons, et vers Toi est la résurrection.',
+      'id': 'Ya Allah, dengan-Mu kami memasuki waktu pagi dan dengan-Mu kami memasuki waktu petang, dengan-Mu kami hidup dan dengan-Mu kami mati, dan kepada-Mu kami kembali.',
+      'zh': '主啊，我们因你而进入早晨，因你而进入夜晚，因你而生，因你而死，复活也归于你。',
+      'ja': 'アッラーよ、あなたによって私たちは朝を迎え、あなたによって夜を迎えます。あなたによって生き、あなたによって死に、復活もあなたへと帰します。',
+      'bn': 'হে আল্লাহ! তোমার মাধ্যমে আমরা সকালে পৌঁছেছি এবং তোমার মাধ্যমে সন্ধ্যায় পৌঁছেছি, তোমার মাধ্যমে আমরা জীবিত আছি এবং তোমার মাধ্যমে আমরা মৃত্যুবরণ করব, এবং তোমারই দিকে প্রত্যাবর্তন।',
+      'tr': 'Allah\'ım! Senin sayende sabaha kavuştuk, senin sayende akşama kavuştuk, senin sayende yaşıyoruz, senin sayende ölüyoruz ve dönüş sanadır.',
+      'sw': 'Ee Mwenyezi Mungu, kwa ajili Yako tumeingia asubuhi na kwa ajili Yako tumeingia jioni, kwa ajili Yako tunaishi na kwa ajili Yako tunafa, na kwako ndiko marejeo.',
+      'de': 'O Allah, durch Dich erreichen wir den Morgen und durch Dich erreichen wir den Abend, durch Dich leben wir und durch Dich sterben wir, und zu Dir ist die Auferstehung.',
+      'nl': 'O Allah, door U bereiken wij de ochtend en door U bereiken wij de avond, door U leven wij en door U sterven wij, en tot U is de opstanding.',
+      'pt': 'Ó Allah, por Ti entramos na manhã e por Ti entramos na noite; por Ti vivemos e por Ti morremos, e a Ti é o retorno.',
+      'it': 'O Allah, per Te entriamo nel mattino e per Te entriamo nella sera, per Te viviamo e per Te moriamo, e a Te è la resurrezione.',
+},
   ),
   CategorizedDua(
     category: 'morning_evening',
     arabic: 'أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ\nوَالْحَمْدُ لِلَّهِ لَا شَرِيكَ لَهُ',
     transliteration:
         'Asbahna wa asbahal-mulku lillah,\nwal-hamdu lillahi la sharika lah',
-    translation:
-        'We have entered the morning and the whole kingdom of Allah has entered the morning; praise be to Allah, He has no partner.',
-    translationEs:
-        'Hemos entrado en la mañana y todo el reino pertenece a Allah; alabado sea Allah, Él no tiene socio.',
-    translationUr:
-        'ہم نے صبح کی اور بادشاہی اللہ ہی کی صبح ہوئی، اور تمام تعریفیں اللہ کے لیے ہیں، اس کا کوئی شریک نہیں۔',
     source: 'Muslim 2723',
+    translations: {
+      'en': 'We have entered the morning and the whole kingdom of Allah has entered the morning; praise be to Allah, He has no partner.',
+      'es': 'Hemos entrado en la mañana y todo el reino pertenece a Allah; alabado sea Allah, Él no tiene socio.',
+      'ur': 'ہم نے صبح کی اور بادشاہی اللہ ہی کی صبح ہوئی، اور تمام تعریفیں اللہ کے لیے ہیں، اس کا کوئی شریک نہیں۔',
+          'fr': 'Nous voici au matin, et le royaume entier appartient à Allah ; louange à Allah, Il n\'a aucun associé.',
+      'id': 'Kami telah memasuki waktu pagi dan kerajaan sepenuhnya milik Allah; segala puji bagi Allah, tidak ada sekutu bagi-Nya.',
+      'zh': '我们已进入早晨，整个王国都属于真主；一切赞美归于真主，他没有任何伙伴。',
+      'ja': '私たちは朝を迎え、王国はすべてアッラーのものです。アッラーに讃美あれ、彼に仲間はいません。',
+      'bn': 'আমরা সকালে পৌঁছেছি এবং সমস্ত রাজ্য আল্লাহরই; সমস্ত প্রশংসা আল্লাহর জন্য, তাঁর কোনো শরিক নেই।',
+      'tr': 'Sabaha kavuştuk ve mülkün tamamı Allah\'ındır; hamd Allah\'a mahsustur, O\'nun ortağı yoktur.',
+      'sw': 'Tumeingia asubuhi na ufalme wote ni wa Mwenyezi Mungu; sifa zote ni za Mwenyezi Mungu, hana mshirika.',
+      'de': 'Wir haben den Morgen erreicht, und das ganze Königreich gehört Allah; alles Lob gebührt Allah, Er hat keinen Partner.',
+      'nl': 'Wij hebben de ochtend bereikt en het hele koninkrijk behoort aan Allah; alle lof aan Allah, Hij heeft geen partner.',
+      'pt': 'Entramos na manhã e todo o reino pertence a Allah; todo o louvor é para Allah, Ele não tem parceiro.',
+      'it': 'Siamo entrati nel mattino e tutto il regno appartiene ad Allah; ogni lode appartiene ad Allah, Egli non ha alcun socio.',
+},
   ),
   CategorizedDua(
     category: 'morning_evening',
     arabic: 'اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ\nخَلَقْتَنِي وَأَنَا عَبْدُكَ',
     transliteration:
         'Allahumma anta rabbi la ilaha illa ant,\nkhalaqtani wa ana abduk',
-    translation:
-        'O Allah, You are my Lord, none has the right to be worshipped except You. You created me and I am Your servant.',
-    translationEs:
-        'Oh Allah, Tú eres mi Señor, no hay nadie que merezca ser adorado salvo Tú. Tú me creaste y yo soy Tu siervo.',
-    translationUr:
-        'اے اللہ! تو میرا رب ہے، تیرے سوا کوئی معبودِ برحق نہیں، تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں۔',
     source: 'Bukhari 6306',
+    translations: {
+      'en': 'O Allah, You are my Lord, none has the right to be worshipped except You. You created me and I am Your servant.',
+      'es': 'Oh Allah, Tú eres mi Señor, no hay nadie que merezca ser adorado salvo Tú. Tú me creaste y yo soy Tu siervo.',
+      'ur': 'اے اللہ! تو میرا رب ہے، تیرے سوا کوئی معبودِ برحق نہیں، تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں۔',
+          'fr': 'Ô Allah, Tu es mon Seigneur, nul n\'a le droit d\'être adoré sauf Toi. Tu m\'as créé et je suis Ton serviteur.',
+      'id': 'Ya Allah, Engkau adalah Tuhanku, tidak ada yang berhak disembah selain Engkau. Engkau menciptakanku dan aku adalah hamba-Mu.',
+      'zh': '主啊，你是我的主，除你之外绝无应受崇拜者。你创造了我，我是你的仆人。',
+      'ja': 'アッラーよ、あなたは私の主であり、あなたの他に崇拝される権利を持つ者はいません。あなたは私を創造し、私はあなたのしもべです。',
+      'bn': 'হে আল্লাহ! তুমি আমার প্রতিপালক, তুমি ব্যতীত কেউ ইবাদত পাওয়ার অধিকারী নয়। তুমি আমাকে সৃষ্টি করেছ এবং আমি তোমার বান্দা।',
+      'tr': 'Allah\'ım! Sen benim Rabbimsin, senden başka ibadete layık ilah yoktur. Beni sen yarattın, ben senin kulunum.',
+      'sw': 'Ee Mwenyezi Mungu, Wewe ndiwe Mola wangu Mlezi, hapana anayestahili kuabudiwa ila Wewe. Uliniumba na mimi ni mtumwa wako.',
+      'de': 'O Allah, Du bist mein Herr, niemand hat das Recht, angebetet zu werden außer Dir. Du hast mich erschaffen, und ich bin Dein Diener.',
+      'nl': 'O Allah, U bent mijn Heer, niemand heeft het recht aanbeden te worden behalve U. U hebt mij geschapen en ik ben Uw dienaar.',
+      'pt': 'Ó Allah, Tu és meu Senhor, ninguém tem o direito de ser adorado senão Tu. Tu me criaste e eu sou Teu servo.',
+      'it': 'O Allah, Tu sei il mio Signore, nessuno ha il diritto di essere adorato se non Te. Tu mi hai creato e io sono Tuo servo.',
+},
   ),
   CategorizedDua(
     category: 'morning_evening',
     arabic: 'بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ\nفِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ',
     transliteration:
         'Bismillahil-ladhi la yadurru ma\'a ismihi shay\'un\nfil-ardi wa la fis-sama\'i wa Huwas-Sami\'ul-\'Alim',
-    translation:
-        'In the name of Allah with Whose name nothing can harm in the earth or in the heavens, and He is the All-Hearing, All-Knowing.',
-    translationEs:
-        'En el nombre de Allah, con cuyo nombre nada puede causar daño ni en la tierra ni en el cielo, y Él es el Oyente, el Conocedor.',
-    translationUr:
-        'اللہ کے نام سے جس کے نام کے ساتھ زمین و آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی، اور وہ سننے والا، جاننے والا ہے۔',
     source: 'Abu Dawud 5088 / Tirmidhi 3388',
+    translations: {
+      'en': 'In the name of Allah with Whose name nothing can harm in the earth or in the heavens, and He is the All-Hearing, All-Knowing.',
+      'es': 'En el nombre de Allah, con cuyo nombre nada puede causar daño ni en la tierra ni en el cielo, y Él es el Oyente, el Conocedor.',
+      'ur': 'اللہ کے نام سے جس کے نام کے ساتھ زمین و آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی، اور وہ سننے والا، جاننے والا ہے۔',
+          'fr': 'Au nom d\'Allah, par le nom de qui rien ne peut nuire sur terre ni dans le ciel, et Il est Celui qui entend tout, qui sait tout.',
+      'id': 'Dengan nama Allah, yang dengan nama-Nya tidak ada sesuatu pun yang dapat membahayakan di bumi maupun di langit, dan Dialah Yang Maha Mendengar, Maha Mengetahui.',
+      'zh': '以真主之名，凭借他的名，地上和天上的任何东西都不能造成伤害，他是全闻全知的。',
+      'ja': 'アッラーの御名において。その御名があれば地にも天にも害を及ぼすものはなく、彼こそ全聴whileにして全知なる方です。',
+      'bn': 'আল্লাহর নামে, যাঁর নামের সাথে পৃথিবী বা আকাশে কোনো কিছুই ক্ষতি করতে পারে না, এবং তিনি সর্বশ্রোতা, সর্বজ্ঞ।',
+      'tr': 'İsmiyle yerde ve gökte hiçbir şeyin zarar veremeyeceği Allah\'ın adıyla; O işitendir, bilendir.',
+      'sw': 'Kwa jina la Mwenyezi Mungu ambaye kwa jina lake hapana kitu chenye kudhuru katika ardhi wala mbinguni, naye ni Msikizi, Mjuzi.',
+      'de': 'Im Namen Allahs, durch dessen Namen nichts auf Erden oder im Himmel Schaden anrichten kann, und Er ist der Allhörende, der Allwissende.',
+      'nl': 'In de naam van Allah, door wiens naam niets op aarde of in de hemel kan schaden, en Hij is de Alhorende, de Alwetende.',
+      'pt': 'Em nome de Allah, com cujo nome nada pode causar dano na terra nem no céu, e Ele é o Oniouvinte, o Onisciente.',
+      'it': 'Nel nome di Allah, con il cui nome nulla può nuocere sulla terra o nel cielo, ed Egli è l\'Audiente, il Sapiente.',
+},
   ),
   CategorizedDua(
     category: 'morning_evening',
     arabic: 'أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ\nمِنْ شَرِّ مَا خَلَقَ',
     transliteration:
         'A\'udhu bi kalimatillahit-tammati\nmin sharri ma khalaq',
-    translation:
-        'I seek refuge in the perfect words of Allah from the evil of what He has created.',
-    translationEs:
-        'Me refugio en las palabras perfectas de Allah del mal de lo que Él ha creado.',
-    translationUr:
-        'میں اللہ کے کامل کلمات کے ذریعے اس چیز کے شر سے پناہ مانگتا ہوں جو اس نے پیدا کی۔',
     source: 'Muslim 2708',
+    translations: {
+      'en': 'I seek refuge in the perfect words of Allah from the evil of what He has created.',
+      'es': 'Me refugio en las palabras perfectas de Allah del mal de lo que Él ha creado.',
+      'ur': 'میں اللہ کے کامل کلمات کے ذریعے اس چیز کے شر سے پناہ مانگتا ہوں جو اس نے پیدا کی۔',
+          'fr': 'Je cherche refuge dans les paroles parfaites d\'Allah contre le mal de ce qu\'Il a créé.',
+      'id': 'Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan apa yang Dia ciptakan.',
+      'zh': '我以真主完美的言辞求庇护，免遭他所创造的一切邪恶。',
+      'ja': 'アッラーの完全な御言葉により、彼が創造したものの悪から避難を求めます。',
+      'bn': 'আমি আল্লাহর পরিপূর্ণ বাণীর মাধ্যমে তাঁর সৃষ্টির অনিষ্ট থেকে আশ্রয় প্রার্থনা করি।',
+      'tr': 'Allah\'ın yarattığı şeylerin kötülüğünden, O\'nun tam ve kusursuz kelimelerine sığınırım.',
+      'sw': 'Najikinga kwa maneno kamili ya Mwenyezi Mungu kutokana na uovu wa kile alichokiumba.',
+      'de': 'Ich suche Schutz in den vollkommenen Worten Allahs vor dem Übel dessen, was Er erschaffen hat.',
+      'nl': 'Ik zoek bescherming in de volmaakte woorden van Allah tegen het kwaad van wat Hij heeft geschapen.',
+      'pt': 'Busco refúgio nas palavras perfeitas de Allah do mal daquilo que Ele criou.',
+      'it': 'Cerco rifugio nelle parole perfette di Allah dal male di ciò che Egli ha creato.',
+},
   ),
   CategorizedDua(
     category: 'morning_evening',
     arabic: 'اللَّهُمَّ عَافِنِي فِي بَدَنِي\nاللَّهُمَّ عَافِنِي فِي سَمْعِي\nاللَّهُمَّ عَافِنِي فِي بَصَرِي',
     transliteration:
         'Allahumma \'afini fi badani,\nAllahumma \'afini fi sam\'i,\nAllahumma \'afini fi basari',
-    translation:
-        'O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight.',
-    translationEs:
-        'Oh Allah, concédeme salud en mi cuerpo. Oh Allah, concédeme salud en mi oído. Oh Allah, concédeme salud en mi vista.',
-    translationUr:
-        'اے اللہ! مجھے میرے بدن میں عافیت عطا فرما۔ اے اللہ! مجھے میرے کان میں عافیت عطا فرما۔ اے اللہ! مجھے میری آنکھ میں عافیت عطا فرما۔',
     source: 'Abu Dawud 5090',
+    translations: {
+      'en': 'O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight.',
+      'es': 'Oh Allah, concédeme salud en mi cuerpo. Oh Allah, concédeme salud en mi oído. Oh Allah, concédeme salud en mi vista.',
+      'ur': 'اے اللہ! مجھے میرے بدن میں عافیت عطا فرما۔ اے اللہ! مجھے میرے کان میں عافیت عطا فرما۔ اے اللہ! مجھے میری آنکھ میں عافیت عطا فرما۔',
+          'fr': 'Ô Allah, accorde-moi la santé dans mon corps. Ô Allah, accorde-moi la santé dans mon ouïe. Ô Allah, accorde-moi la santé dans ma vue.',
+      'id': 'Ya Allah, berikanlah kesehatan pada tubuhku. Ya Allah, berikanlah kesehatan pada pendengaranku. Ya Allah, berikanlah kesehatan pada penglihatanku.',
+      'zh': '主啊，求你赐我身体健康。主啊，求你赐我听觉健康。主啊，求你赐我视觉健康。',
+      'ja': 'アッラーよ、わが身体に健康をお与えください。アッラーよ、わが聴覚に健康をお与えください。アッラーよ、わが視覚に健康をお与えください。',
+      'bn': 'হে আল্লাহ! আমাকে আমার শরীরে সুস্থতা দান করো। হে আল্লাহ! আমাকে আমার শ্রবণে সুস্থতা দান করো। হে আল্লাহ! আমাকে আমার দৃষ্টিতে সুস্থতা দান করো।',
+      'tr': 'Allah\'ım! Bedenimde bana afiyet ver. Allah\'ım! İşitmemde bana afiyet ver. Allah\'ım! Görmemde bana afiyet ver.',
+      'sw': 'Ee Mwenyezi Mungu, nipe afya mwilini mwangu. Ee Mwenyezi Mungu, nipe afya kusikia kwangu. Ee Mwenyezi Mungu, nipe afya kuona kwangu.',
+      'de': 'O Allah, schenke mir Gesundheit in meinem Körper. O Allah, schenke mir Gesundheit in meinem Gehör. O Allah, schenke mir Gesundheit in meinem Sehvermögen.',
+      'nl': 'O Allah, schenk mij gezondheid in mijn lichaam. O Allah, schenk mij gezondheid in mijn gehoor. O Allah, schenk mij gezondheid in mijn gezichtsvermogen.',
+      'pt': 'Ó Allah, concede-me saúde no meu corpo. Ó Allah, concede-me saúde na minha audição. Ó Allah, concede-me saúde na minha visão.',
+      'it': 'O Allah, concedimi salute nel mio corpo. O Allah, concedimi salute nel mio udito. O Allah, concedimi salute nella mia vista.',
+},
   ),
   CategorizedDua(
     category: 'morning_evening',
     arabic: 'حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ\nعَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ',
     transliteration:
         'Hasbiyallahu la ilaha illa Huwa,\n\'alayhi tawakkaltu wa Huwa Rabbul-\'Arshil-\'Azim',
-    translation:
-        'Allah is sufficient for me; none has the right to be worshipped except Him. In Him I put my trust, and He is the Lord of the Mighty Throne.',
-    translationEs:
-        'Allah me basta; no hay nadie que merezca ser adorado salvo Él. En Él deposito mi confianza, y Él es el Señor del Trono Inmenso.',
-    translationUr:
-        'اللہ مجھے کافی ہے، اس کے سوا کوئی معبود نہیں، میں نے اسی پر بھروسہ کیا اور وہ عرشِ عظیم کا رب ہے۔',
     source: 'Abu Dawud 5081 (7 times morning & evening)',
+    translations: {
+      'en': 'Allah is sufficient for me; none has the right to be worshipped except Him. In Him I put my trust, and He is the Lord of the Mighty Throne.',
+      'es': 'Allah me basta; no hay nadie que merezca ser adorado salvo Él. En Él deposito mi confianza, y Él es el Señor del Trono Inmenso.',
+      'ur': 'اللہ مجھے کافی ہے، اس کے سوا کوئی معبود نہیں، میں نے اسی پر بھروسہ کیا اور وہ عرشِ عظیم کا رب ہے۔',
+          'fr': 'Allah me suffit ; nul n\'a le droit d\'être adoré sauf Lui. En Lui je place ma confiance, et Il est le Seigneur du Trône immense.',
+      'id': 'Allah cukup bagiku; tidak ada yang berhak disembah selain Dia. Kepada-Nya aku bertawakal, dan Dialah Tuhan pemilik \'Arsy yang agung.',
+      'zh': '真主对我已足够；除他外绝无应受崇拜者。我只信托他，他是宏伟宝座的主。',
+      'ja': 'アッラーは私に十分な方であり、彼の他に崇拝される権利を持つ者はいません。私は彼に信頼を置き、彼こそ偉大な王座の主です。',
+      'bn': 'আল্লাহ আমার জন্য পর্যাপ্ত; তিনি ব্যতীত কেউ ইবাদত পাওয়ার অধিকারী নয়। আমি তাঁরই উপর ভরসা করি, এবং তিনিই মহান আরশের প্রতিপালক।',
+      'tr': 'Allah bana yeter; O\'ndan başka ibadete layık ilah yoktur. O\'na güvendim, O büyük tahtın sahibidir.',
+      'sw': 'Mwenyezi Mungu ananitosha; hapana anayestahili kuabudiwa ila Yeye. Namtegemea Yeye, naye ni Mola wa Kiti cha Enzi kikubwa.',
+      'de': 'Allah genügt mir; niemand hat das Recht, angebetet zu werden außer Ihm. Auf Ihn vertraue ich, und Er ist der Herr des mächtigen Throns.',
+      'nl': 'Allah is mij genoeg; niemand heeft het recht aanbeden te worden behalve Hem. Op Hem stel ik mijn vertrouwen, en Hij is de Heer van de Geweldige Troon.',
+      'pt': 'Allah me basta; ninguém tem o direito de ser adorado senão Ele. Em Ele confio, e Ele é o Senhor do Trono Imenso.',
+      'it': 'Allah mi basta; nessuno ha il diritto di essere adorato se non Lui. In Lui pongo la mia fiducia, ed Egli è il Signore del Trono Immenso.',
+},
   ),
   CategorizedDua(
     category: 'morning_evening',
     arabic: 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ\nعَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ\nوَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ',
     transliteration:
         'Subhanallahi wa bihamdih,\n\'adada khalqihi wa rida nafsihi,\nwa zinata \'arshihi wa midade kalimatihi',
-    translation:
-        'Glory and praise be to Allah, as many times as the number of His creatures, in accordance with His good pleasure, equal to the weight of His Throne and equal to the ink that may be used in recording the words.',
-    translationEs:
-        'Gloria y alabanza a Allah, tantas veces como el número de Sus criaturas, conforme a Su complacencia, equivalente al peso de Su Trono e igual a la tinta usada para registrar Sus palabras.',
-    translationUr:
-        'اللہ پاک ہے اور اسی کی حمد ہے، اس کی مخلوق کی تعداد کے برابر، اس کی رضا کے برابر، اس کے عرش کے وزن کے برابر اور اس کے کلمات کی روشنائی کے برابر۔',
     source: 'Muslim 2726',
+    translations: {
+      'en': 'Glory and praise be to Allah, as many times as the number of His creatures, in accordance with His good pleasure, equal to the weight of His Throne and equal to the ink that may be used in recording the words.',
+      'es': 'Gloria y alabanza a Allah, tantas veces como el número de Sus criaturas, conforme a Su complacencia, equivalente al peso de Su Trono e igual a la tinta usada para registrar Sus palabras.',
+      'ur': 'اللہ پاک ہے اور اسی کی حمد ہے، اس کی مخلوق کی تعداد کے برابر، اس کی رضا کے برابر، اس کے عرش کے وزن کے برابر اور اس کے کلمات کی روشنائی کے برابر۔',
+          'fr': 'Gloire et louange à Allah, autant de fois que le nombre de Ses créatures, selon Son bon plaisir, équivalent au poids de Son Trône et à l\'encre de Ses paroles.',
+      'id': 'Maha Suci Allah dan segala puji bagi-Nya, sebanyak bilangan makhluk-Nya, sesuai keridhaan-Nya, seberat \'Arsy-Nya, dan sebanyak tinta kalimat-Nya.',
+      'zh': '真主清净，赞美归于他，与他的创造物数量相等，符合他的喜悦，等同于他宝座的重量，等同于记录其言辞所用的墨水。',
+      'ja': 'アッラーに称え、讃美あれ。彼の創造物の数だけ、彼のお喜びに応じて、彼の王座の重さに等しく、その御言葉を記すのに使われるインクに等しく。',
+      'bn': 'আল্লাহ পবিত্র এবং প্রশংসা, তাঁর সৃষ্টির সংখ্যার সমান, তাঁর সন্তুষ্টি অনুযায়ী, তাঁর আরশের ওজনের সমান এবং তাঁর বাণী লিপিবদ্ধ করার কালির সমান।',
+      'tr': 'Allah\'ı yarattıklarının sayısınca, kendi hoşnutluğunca, tahtının ağırlığınca ve kelimelerinin mürekkebince tenzih eder, O\'na hamd ederim.',
+      'sw': 'Utukufu na sifa ni za Mwenyezi Mungu, kwa idadi ya viumbe vyake, kwa kadiri ya radhi yake, sawa na uzito wa Kiti chake cha Enzi na wino wa maneno yake.',
+      'de': 'Lob und Preis seien Allah, so oft wie die Zahl Seiner Geschöpfe, gemäß Seinem Wohlgefallen, dem Gewicht Seines Throns entsprechend und der Tinte Seiner Worte entsprechend.',
+      'nl': 'Glorie en lof aan Allah, zo vaak als het aantal van Zijn schepselen, naar Zijn welbehagen, gelijk aan het gewicht van Zijn Troon en gelijk aan de inkt van Zijn woorden.',
+      'pt': 'Glória e louvor a Allah, tantas vezes quanto o número de Suas criaturas, conforme Seu agrado, igual ao peso de Seu Trono e igual à tinta usada para registrar Suas palavras.',
+      'it': 'Gloria e lode ad Allah, tante volte quante sono le Sue creature, secondo il Suo compiacimento, pari al peso del Suo Trono e pari all\'inchiostro delle Sue parole.',
+},
   ),
 ];
 
@@ -145,78 +223,138 @@ const _prayerRelated = [
     arabic: 'اللَّهُمَّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي\nرَبَّنَا وَتَقَبَّلْ دُعَاءِ',
     transliteration:
         'Allahumma-j\'alni muqimas-salati wa min dhurriyyati,\nRabbana wa taqabbal du\'a\'',
-    translation:
-        'O Allah, make me one who establishes prayer and also from my offspring. Our Lord, accept my supplication.',
-    translationEs:
-        'Oh Allah, hazme de los que cumplen la oración, y también a mi descendencia. Señor nuestro, acepta mi súplica.',
-    translationUr:
-        'اے اللہ! مجھے نماز قائم کرنے والا بنا اور میری اولاد میں سے بھی۔ اے ہمارے رب! میری دعا قبول فرما۔',
     source: 'Ibrahim 14:40',
+    translations: {
+      'en': 'O Allah, make me one who establishes prayer and also from my offspring. Our Lord, accept my supplication.',
+      'es': 'Oh Allah, hazme de los que cumplen la oración, y también a mi descendencia. Señor nuestro, acepta mi súplica.',
+      'ur': 'اے اللہ! مجھے نماز قائم کرنے والا بنا اور میری اولاد میں سے بھی۔ اے ہمارے رب! میری دعا قبول فرما۔',
+          'fr': 'Ô Allah, fais de moi celui qui accomplit la prière, ainsi que de ma descendance. Notre Seigneur, accepte ma supplication.',
+      'id': 'Ya Allah, jadikanlah aku orang yang menegakkan shalat, demikian pula keturunanku. Ya Tuhan kami, terimalah doaku.',
+      'zh': '主啊，求你使我成为坚持礼拜的人，也使我的后代如此。我们的主啊，求你接受我的祈祷。',
+      'ja': 'アッラーよ、私を礼拝を確立する者とし、私の子孫もそうしてください。我らの主よ、わが祈願を受け入れてください。',
+      'bn': 'হে আল্লাহ! আমাকে নামাজ কায়েমকারী বানাও এবং আমার সন্তানদের মধ্য থেকেও। হে আমাদের প্রতিপালক! আমার দোয়া কবুল করো।',
+      'tr': 'Allah\'ım! Beni namazı dosdoğru kılan biri yap, neslimden de öyle olsun. Rabbimiz! Duamı kabul et.',
+      'sw': 'Ee Mwenyezi Mungu, nifanye miongoni mwa wanaosimamisha sala, na katika kizazi changu pia. Mola wetu Mlezi, ukubali dua yangu.',
+      'de': 'O Allah, mache mich zu einem, der das Gebet verrichtet, und auch aus meiner Nachkommenschaft. Unser Herr, nimm mein Gebet an.',
+      'nl': 'O Allah, maak mij tot iemand die het gebed onderhoudt, en ook uit mijn nageslacht. Onze Heer, aanvaard mijn smeekbede.',
+      'pt': 'Ó Allah, faze de mim alguém que estabelece a oração, e também da minha descendência. Senhor nosso, aceita minha súplica.',
+      'it': 'O Allah, fammi essere uno che osserva la preghiera, e anche dalla mia progenie. Signore nostro, accetta la mia supplica.',
+},
   ),
   CategorizedDua(
     category: 'prayer',
     arabic: 'رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ\nوَلَا تَجْعَلْنِي مِنَ الْغَافِلِينَ',
     transliteration:
         'Rabbi-j\'alni muqimas-salati\nwa la taj\'alni minal-ghafilin',
-    translation:
-        'My Lord, make me one who establishes prayer, and do not place me among the heedless.',
-    translationEs:
-        'Señor mío, hazme de los que cumplen la oración, y no me pongas entre los descuidados.',
-    translationUr:
-        'اے میرے رب! مجھے نماز قائم کرنے والا بنا اور مجھے غافلوں میں شامل نہ کر۔',
     source: 'Ibrahim 14:40 (variant)',
+    translations: {
+      'en': 'My Lord, make me one who establishes prayer, and do not place me among the heedless.',
+      'es': 'Señor mío, hazme de los que cumplen la oración, y no me pongas entre los descuidados.',
+      'ur': 'اے میرے رب! مجھے نماز قائم کرنے والا بنا اور مجھے غافلوں میں شامل نہ کر۔',
+          'fr': 'Mon Seigneur, fais de moi celui qui accomplit la prière, et ne me place pas parmi les insouciants.',
+      'id': 'Ya Tuhanku, jadikanlah aku orang yang menegakkan shalat, dan janganlah Engkau jadikan aku termasuk orang-orang yang lalai.',
+      'zh': '我的主啊，求你使我成为坚持礼拜的人，求你不要使我成为疏忽者之一。',
+      'ja': '我が主よ、私を礼拝を確立する者としてください。そして私を不注意な者たちの中に入れないでください。',
+      'bn': 'হে আমার প্রতিপালক! আমাকে নামাজ কায়েমকারী বানাও এবং আমাকে অমনোযোগীদের মধ্যে শামিল করো না।',
+      'tr': 'Rabbim! Beni namazı dosdoğru kılan biri yap, beni gafillerden eyleme.',
+      'sw': 'Mola wangu Mlezi, nifanye miongoni mwa wanaosimamisha sala, wala usinifanye miongoni mwa walioghafilika.',
+      'de': 'Mein Herr, mache mich zu einem, der das Gebet verrichtet, und stelle mich nicht unter die Achtlosen.',
+      'nl': 'Mijn Heer, maak mij tot iemand die het gebed onderhoudt, en plaats mij niet onder de onachtzamen.',
+      'pt': 'Senhor meu, faze de mim alguém que estabelece a oração, e não me ponhas entre os negligentes.',
+      'it': 'Signore mio, fammi essere uno che osserva la preghiera, e non mettermi tra gli incuranti.',
+},
   ),
   CategorizedDua(
     category: 'prayer',
     arabic: 'اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ\nوَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ',
     transliteration:
         'Allahumma a\'inni \'ala dhikrika\nwa shukrika wa husni \'ibadatik',
-    translation:
-        'O Allah, help me to remember You, to give thanks to You, and to worship You in the best manner.',
-    translationEs:
-        'Oh Allah, ayúdame a recordarte, a agradecerte y a adorarte de la mejor manera.',
-    translationUr:
-        'اے اللہ! میری مدد فرما کہ میں تجھے یاد رکھوں، تیرا شکر ادا کروں اور بہترین انداز میں تیری عبادت کروں۔',
     source: 'Abu Dawud 1522',
+    translations: {
+      'en': 'O Allah, help me to remember You, to give thanks to You, and to worship You in the best manner.',
+      'es': 'Oh Allah, ayúdame a recordarte, a agradecerte y a adorarte de la mejor manera.',
+      'ur': 'اے اللہ! میری مدد فرما کہ میں تجھے یاد رکھوں، تیرا شکر ادا کروں اور بہترین انداز میں تیری عبادت کروں۔',
+          'fr': 'Ô Allah, aide-moi à me souvenir de Toi, à Te remercier et à T\'adorer de la meilleure manière.',
+      'id': 'Ya Allah, tolonglah aku untuk berdzikir kepada-Mu, bersyukur kepada-Mu, dan beribadah kepada-Mu dengan sebaik-baiknya.',
+      'zh': '主啊，求你帮助我记念你、感谢你，并以最好的方式敬拜你。',
+      'ja': 'アッラーよ、私があなたを唱念し、あなたに感謝し、最善の形であなたを崇拝できるよう助けてください。',
+      'bn': 'হে আল্লাহ! আমাকে তোমার স্মরণ, তোমার শুকরিয়া এবং তোমার উত্তম ইবাদতে সাহায্য করো।',
+      'tr': 'Allah\'ım! Seni zikretmem, sana şükretmem ve sana en güzel şekilde ibadet etmem için bana yardım et.',
+      'sw': 'Ee Mwenyezi Mungu, nisaidie kukukumbuka, kukushukuru na kukuabudu kwa namna nzuri.',
+      'de': 'O Allah, hilf mir, Dich zu gedenken, Dir zu danken und Dich in bester Weise anzubeten.',
+      'nl': 'O Allah, help mij U te gedenken, U te bedanken en U op de beste manier te aanbidden.',
+      'pt': 'Ó Allah, ajuda-me a Te recordar, a Te agradecer e a Te adorar da melhor maneira.',
+      'it': 'O Allah, aiutami a ricordarTi, a ringraziarTi e ad adorarTi nel modo migliore.',
+},
   ),
   CategorizedDua(
     category: 'prayer',
     arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكَسَلِ\nوَالْهَرَمِ وَالْمَغْرَمِ وَالْمَأْثَمِ',
     transliteration:
         'Allahumma inni a\'udhu bika minal-kasali\nwal-harami wal-maghrami wal-ma\'thami',
-    translation:
-        'O Allah, I seek Your refuge from laziness, old age, debt, and sin.',
-    translationEs:
-        'Oh Allah, busco refugio en Ti de la pereza, la vejez, las deudas y el pecado.',
-    translationUr:
-        'اے اللہ! میں سستی، بڑھاپے، قرض اور گناہ سے تیری پناہ مانگتا ہوں۔',
     source: 'Bukhari 6367',
+    translations: {
+      'en': 'O Allah, I seek Your refuge from laziness, old age, debt, and sin.',
+      'es': 'Oh Allah, busco refugio en Ti de la pereza, la vejez, las deudas y el pecado.',
+      'ur': 'اے اللہ! میں سستی، بڑھاپے، قرض اور گناہ سے تیری پناہ مانگتا ہوں۔',
+          'fr': 'Ô Allah, je cherche refuge auprès de Toi contre la paresse, la vieillesse, la dette et le péché.',
+      'id': 'Ya Allah, aku berlindung kepada-Mu dari kemalasan, usia tua, hutang, dan dosa.',
+      'zh': '主啊，我向你求庇护，免遭懒惰、衰老、债务和罪恶。',
+      'ja': 'アッラーよ、私はあなたに、怠惰、老衰、借金、罪からの避難を求めます。',
+      'bn': 'হে আল্লাহ! আমি তোমার কাছে অলসতা, বার্ধক্য, ঋণ এবং পাপ থেকে আশ্রয় চাই।',
+      'tr': 'Allah\'ım! Tembellikten, ihtiyarlıktan, borçtan ve günahtan sana sığınırım.',
+      'sw': 'Ee Mwenyezi Mungu, najikinga kwako kutokana na uvivu, uzee, deni na dhambi.',
+      'de': 'O Allah, ich suche Schutz bei Dir vor Faulheit, Alter, Schulden und Sünde.',
+      'nl': 'O Allah, ik zoek bescherming bij U tegen luiheid, ouderdom, schulden en zonde.',
+      'pt': 'Ó Allah, busco refúgio em Ti da preguiça, da velhice, da dívida e do pecado.',
+      'it': 'O Allah, cerco rifugio in Te dalla pigrizia, dalla vecchiaia, dal debito e dal peccato.',
+},
   ),
   CategorizedDua(
     category: 'prayer',
     arabic: 'رَبَّنَا تَقَبَّلْ مِنَّا\nإِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ',
     transliteration:
         'Rabbana taqabbal minna,\ninnaka Antas-Sami\'ul-\'Alim',
-    translation:
-        'Our Lord, accept from us. Indeed, You are the Hearing, the Knowing.',
-    translationEs:
-        'Señor nuestro, acepta de nosotros. En verdad, Tú eres el Oyente, el Conocedor.',
-    translationUr:
-        'اے ہمارے رب! ہم سے قبول فرما، بے شک تو سننے والا، جاننے والا ہے۔',
     source: 'Al-Baqarah 2:127',
+    translations: {
+      'en': 'Our Lord, accept from us. Indeed, You are the Hearing, the Knowing.',
+      'es': 'Señor nuestro, acepta de nosotros. En verdad, Tú eres el Oyente, el Conocedor.',
+      'ur': 'اے ہمارے رب! ہم سے قبول فرما، بے شک تو سننے والا، جاننے والا ہے۔',
+          'fr': 'Notre Seigneur, accepte de nous. Tu es certes Celui qui entend tout, qui sait tout.',
+      'id': 'Ya Tuhan kami, terimalah dari kami. Sungguh, Engkaulah Yang Maha Mendengar, Maha Mengetahui.',
+      'zh': '我们的主啊，求你接受我们的。你确是全闻全知的。',
+      'ja': '我らの主よ、われらから受け入れてください。あなたこそ全聴にして全知なる方です。',
+      'bn': 'হে আমাদের প্রতিপালক! আমাদের থেকে কবুল করো। নিশ্চয় তুমি সর্বশ্রোতা, সর্বজ্ঞ।',
+      'tr': 'Rabbimiz! Bizden kabul buyur. Şüphesiz sen işitensin, bilensin.',
+      'sw': 'Mola wetu Mlezi, tukubalie. Hakika Wewe ndiwe Msikizi, Mjuzi.',
+      'de': 'Unser Herr, nimm von uns an. Wahrlich, Du bist der Allhörende, der Allwissende.',
+      'nl': 'Onze Heer, aanvaard van ons. Voorwaar, U bent de Alhorende, de Alwetende.',
+      'pt': 'Senhor nosso, aceita de nós. Em verdade, Tu és o Oniouvinte, o Onisciente.',
+      'it': 'Signore nostro, accetta da noi. In verità, Tu sei l\'Audiente, il Sapiente.',
+},
   ),
   CategorizedDua(
     category: 'prayer',
     arabic: 'اللَّهُمَّ لَا تَجْعَلْ قَبْرِي وَثَناً\nلَعَنَ اللَّهُ قَوْمًا اتَّخَذُوا قُبُورَ أَنْبِيَائِهِمْ مَسَاجِدَ',
     transliteration:
         'Allahumma la taj\'al qabri wathan,\nla\'anallahu qawman ittakhadhu qubura anbiya\'ihim masajid',
-    translation:
-        'O Allah, do not make my grave an idol to be worshipped. Allah cursed the people who took the graves of their prophets as places of worship.',
-    translationEs:
-        'Oh Allah, no hagas de mi tumba un ídolo que sea adorado. Allah maldijo a la gente que tomó las tumbas de sus profetas como lugares de adoración.',
-    translationUr:
-        'اے اللہ! میری قبر کو بت نہ بنانا جس کی پوجا کی جائے۔ اللہ نے ان لوگوں پر لعنت کی جنہوں نے اپنے انبیاء کی قبروں کو سجدہ گاہ بنا لیا۔',
     source: 'Muwatta of Malik 1:223',
+    translations: {
+      'en': 'O Allah, do not make my grave an idol to be worshipped. Allah cursed the people who took the graves of their prophets as places of worship.',
+      'es': 'Oh Allah, no hagas de mi tumba un ídolo que sea adorado. Allah maldijo a la gente que tomó las tumbas de sus profetas como lugares de adoración.',
+      'ur': 'اے اللہ! میری قبر کو بت نہ بنانا جس کی پوجا کی جائے۔ اللہ نے ان لوگوں پر لعنت کی جنہوں نے اپنے انبیاء کی قبروں کو سجدہ گاہ بنا لیا۔',
+          'fr': 'Ô Allah, ne fais pas de ma tombe une idole que l\'on adore. Allah a maudit les gens qui ont fait des tombes de leurs prophètes des lieux de culte.',
+      'id': 'Ya Allah, janganlah Engkau jadikan kuburanku sebagai berhala yang disembah. Allah melaknat orang-orang yang menjadikan kuburan para nabi mereka sebagai tempat ibadah.',
+      'zh': '主啊，求你不要使我的坟墓成为被崇拜的偶像。真主诅咒那些把先知们的坟墓当作礼拜场所的人。',
+      'ja': 'アッラーよ、わが墓を崇拝される偶像にしないでください。アッラーは預言者たちの墓を礼拝の場とした民を呪われました。',
+      'bn': 'হে আল্লাহ! আমার কবরকে এমন প্রতিমা বানিয়ো না যার পূজা করা হয়। আল্লাহ তাদের উপর অভিসম্পাত করেছেন যারা তাদের নবীদের কবরকে উপাসনালয় বানিয়েছে।',
+      'tr': 'Allah\'ım! Kabrimi tapılan bir put yapma. Allah, peygamberlerinin kabirlerini mescit edinen kavme lanet etmiştir.',
+      'sw': 'Ee Mwenyezi Mungu, usifanye kaburi langu kuwa sanamu linaloabudiwa. Mwenyezi Mungu amewalaani watu waliofanya makaburi ya manabii wao kuwa misikiti.',
+      'de': 'O Allah, mache mein Grab nicht zu einem Idol, das angebetet wird. Allah hat die Menschen verflucht, die die Gräber ihrer Propheten zu Gebetsstätten machten.',
+      'nl': 'O Allah, maak mijn graf niet tot een afgod die aanbeden wordt. Allah heeft de mensen vervloekt die de graven van hun profeten tot gebedsplaatsen maakten.',
+      'pt': 'Ó Allah, não faças do meu túmulo um ídolo a ser adorado. Allah maldisse aqueles que fizeram dos túmulos de seus profetas locais de adoração.',
+      'it': 'O Allah, non fare della mia tomba un idolo da adorare. Allah ha maledetto coloro che hanno preso le tombe dei loro profeti come luoghi di culto.',
+},
   ),
 ];
 
@@ -224,63 +362,117 @@ const _foodDrink = [
   CategorizedDua(
     category: 'food',
     arabic: 'بِسْمِ اللَّهِ',
-    transliteration: 'Bismillah',
-    translation: 'In the name of Allah.',
-    translationEs: 'En el nombre de Allah.',
-    translationUr: 'اللہ کے نام سے۔',
+    transliteration:
+        'Bismillah',
     source: 'Abu Dawud 3767',
+    translations: {
+      'en': 'In the name of Allah.',
+      'es': 'En el nombre de Allah.',
+      'ur': 'اللہ کے نام سے۔',
+          'fr': 'Au nom d\'Allah.',
+      'id': 'Dengan nama Allah.',
+      'zh': '以真主之名。',
+      'ja': 'アッラーの御名において。',
+      'bn': 'আল্লাহর নামে।',
+      'tr': 'Allah\'ın adıyla.',
+      'sw': 'Kwa jina la Mwenyezi Mungu.',
+      'de': 'Im Namen Allahs.',
+      'nl': 'In de naam van Allah.',
+      'pt': 'Em nome de Allah.',
+      'it': 'Nel nome di Allah.',
+},
   ),
   CategorizedDua(
     category: 'food',
     arabic: 'اللَّهُمَّ بَارِكْ لَنَا فِيهِ\nوَأَطْعِمْنَا خَيْرًا مِنْهُ',
     transliteration:
         'Allahumma barik lana fihi\nwa at\'imna khayran minh',
-    translation:
-        'O Allah, bless us in it and feed us with better than it.',
-    translationEs:
-        'Oh Allah, bendícenos en ello y aliméntanos con algo mejor que ello.',
-    translationUr:
-        'اے اللہ! اس میں ہمارے لیے برکت عطا فرما اور ہمیں اس سے بہتر کھلا۔',
     source: 'Tirmidhi 3455',
+    translations: {
+      'en': 'O Allah, bless us in it and feed us with better than it.',
+      'es': 'Oh Allah, bendícenos en ello y aliméntanos con algo mejor que ello.',
+      'ur': 'اے اللہ! اس میں ہمارے لیے برکت عطا فرما اور ہمیں اس سے بہتر کھلا۔',
+          'fr': 'Ô Allah, bénis-le pour nous et nourris-nous de quelque chose de meilleur.',
+      'id': 'Ya Allah, berkahilah kami padanya dan berilah kami makanan yang lebih baik darinya.',
+      'zh': '主啊，求你在其中赐福给我们，并赐我们比这更好的食物。',
+      'ja': 'アッラーよ、これにおいて私たちを祝福し、これよりも良いものを私たちに食べさせてください。',
+      'bn': 'হে আল্লাহ! এতে আমাদের বরকত দাও এবং আমাদের এর চেয়ে উত্তম খাবার দাও।',
+      'tr': 'Allah\'ım! Bunu bize bereketli kıl ve bize bundan daha hayırlısını nasip et.',
+      'sw': 'Ee Mwenyezi Mungu, tubarikie katika hicho na utulishe kilicho bora zaidi.',
+      'de': 'O Allah, segne uns darin und speise uns mit etwas Besserem.',
+      'nl': 'O Allah, zegen ons hierin en voed ons met iets beters.',
+      'pt': 'Ó Allah, bendiz-nos nisto e alimenta-nos com algo melhor.',
+      'it': 'O Allah, benedicilo per noi e nutrici con qualcosa di meglio.',
+},
   ),
   CategorizedDua(
     category: 'food',
     arabic: 'الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا\nوَجَعَلَنَا مُسْلِمِينَ',
     transliteration:
         'Alhamdu lillahil-ladhi at\'amana wa saqana\nwa ja\'alana muslimin',
-    translation:
-        'All praise is for Allah Who fed us and gave us drink and made us Muslims.',
-    translationEs:
-        'Toda alabanza es para Allah, Quien nos alimentó, nos dio de beber y nos hizo musulmanes.',
-    translationUr:
-        'تمام تعریفیں اللہ کے لیے ہیں جس نے ہمیں کھلایا، پلایا اور ہمیں مسلمان بنایا۔',
     source: 'Abu Dawud 3850',
+    translations: {
+      'en': 'All praise is for Allah Who fed us and gave us drink and made us Muslims.',
+      'es': 'Toda alabanza es para Allah, Quien nos alimentó, nos dio de beber y nos hizo musulmanes.',
+      'ur': 'تمام تعریفیں اللہ کے لیے ہیں جس نے ہمیں کھلایا، پلایا اور ہمیں مسلمان بنایا۔',
+          'fr': 'Louange à Allah qui nous a nourris, nous a donné à boire et a fait de nous des musulmans.',
+      'id': 'Segala puji bagi Allah yang telah memberi kami makan dan minum, dan menjadikan kami orang-orang Muslim.',
+      'zh': '一切赞美归于真主，他给我们食物和饮料，使我们成为穆斯林。',
+      'ja': '私たちに食べさせ、飲ませ、ムスリムとしてくださったアッラーにすべての讃美あれ。',
+      'bn': 'সমস্ত প্রশংসা আল্লাহর জন্য যিনি আমাদের খাওয়ালেন, পান করালেন এবং আমাদের মুসলিম বানালেন।',
+      'tr': 'Bizi yedirip içiren ve bizi Müslüman kılan Allah\'a hamd olsun.',
+      'sw': 'Sifa zote ni za Mwenyezi Mungu aliyetulisha, akatunywesha, na akatufanya Waislamu.',
+      'de': 'Alles Lob gebührt Allah, der uns gespeist und getränkt und uns zu Muslimen gemacht hat.',
+      'nl': 'Alle lof aan Allah die ons voedde en ons drinken gaf en ons moslims maakte.',
+      'pt': 'Todo louvor é para Allah, que nos alimentou, nos deu de beber e nos fez muçulmanos.',
+      'it': 'Ogni lode appartiene ad Allah che ci ha nutrito, ci ha dato da bere e ci ha fatto musulmani.',
+},
   ),
   CategorizedDua(
     category: 'food',
     arabic: 'الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَ هَذَا الطَّعَامَ\nوَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ',
     transliteration:
         'Alhamdu lillahil-ladhi at\'ama hadha at-ta\'am\nwa razaqanihi min ghayri hawlin minni wa la quwwah',
-    translation:
-        'All praise is for Allah Who provided this food and sustained me with it without any power or strength on my part.',
-    translationEs:
-        'Toda alabanza es para Allah, Quien proveyó este alimento y me sustentó con él sin ningún poder ni fuerza de mi parte.',
-    translationUr:
-        'تمام تعریفیں اللہ کے لیے ہیں جس نے یہ کھانا عطا کیا اور میری کسی طاقت اور قوت کے بغیر مجھے یہ رزق دیا۔',
     source: 'Abu Dawud 4023, Tirmidhi 3458',
+    translations: {
+      'en': 'All praise is for Allah Who provided this food and sustained me with it without any power or strength on my part.',
+      'es': 'Toda alabanza es para Allah, Quien proveyó este alimento y me sustentó con él sin ningún poder ni fuerza de mi parte.',
+      'ur': 'تمام تعریفیں اللہ کے لیے ہیں جس نے یہ کھانا عطا کیا اور میری کسی طاقت اور قوت کے بغیر مجھے یہ رزق دیا۔',
+          'fr': 'Louange à Allah qui a fourni cette nourriture et m\'a sustenté sans aucun pouvoir ni force de ma part.',
+      'id': 'Segala puji bagi Allah yang telah memberikan makanan ini dan memberiku rezeki tanpa daya dan kekuatan dariku.',
+      'zh': '一切赞美归于真主，他赐予了这食物，并在我毫无能力和力量的情况下供养了我。',
+      'ja': 'この食物を備え、私自身の力も能力もないままに私を養ってくださったアッラーにすべての讃美あれ。',
+      'bn': 'সমস্ত প্রশংসা আল্লাহর জন্য যিনি এই খাবার দিয়েছেন এবং আমার কোনো শক্তি ও সামর্থ্য ছাড়াই আমাকে রিযিক দিয়েছেন।',
+      'tr': 'Bu yemeği veren ve bana hiçbir güç ve kuvvetim olmadan rızık veren Allah\'a hamd olsun.',
+      'sw': 'Sifa zote ni za Mwenyezi Mungu aliyenipa chakula hiki na akaniruzuku bila ya uwezo wala nguvu kutoka kwangu.',
+      'de': 'Alles Lob gebührt Allah, der diese Speise gegeben und mich versorgt hat, ohne dass ich dazu Macht oder Kraft hatte.',
+      'nl': 'Alle lof aan Allah die dit voedsel heeft gegeven en mij heeft voorzien zonder enige macht of kracht van mijzelf.',
+      'pt': 'Todo louvor é para Allah, que proveu este alimento e me sustentou sem qualquer poder ou força de minha parte.',
+      'it': 'Ogni lode appartiene ad Allah che ha fornito questo cibo e mi ha sostenuto senza alcun potere né forza da parte mia.',
+},
   ),
   CategorizedDua(
     category: 'food',
     arabic: 'اللَّهُمَّ أَطْعِمْ مَنْ أَطْعَمَنِي\nوَاسْقِ مَنْ سَقَانِي',
     transliteration:
         'Allahumma at\'im man at\'amani\nwasqi man saqani',
-    translation:
-        'O Allah, feed the one who fed me, and give drink to the one who gave me drink.',
-    translationEs:
-        'Oh Allah, alimenta a quien me alimentó, y da de beber a quien me dio de beber.',
-    translationUr:
-        'اے اللہ! جس نے مجھے کھلایا اسے کھلا اور جس نے مجھے پلایا اسے پلا۔',
     source: 'Muslim 2055',
+    translations: {
+      'en': 'O Allah, feed the one who fed me, and give drink to the one who gave me drink.',
+      'es': 'Oh Allah, alimenta a quien me alimentó, y da de beber a quien me dio de beber.',
+      'ur': 'اے اللہ! جس نے مجھے کھلایا اسے کھلا اور جس نے مجھے پلایا اسے پلا۔',
+          'fr': 'Ô Allah, nourris celui qui m\'a nourri, et donne à boire à celui qui m\'a donné à boire.',
+      'id': 'Ya Allah, berilah makan kepada orang yang telah memberiku makan, dan berilah minum kepada orang yang telah memberiku minum.',
+      'zh': '主啊，求你供养那供养我的人，求你给那给我饮水的人饮水。',
+      'ja': 'アッラーよ、私に食べさせてくれた者に食べさせ、私に飲ませてくれた者に飲ませてください。',
+      'bn': 'হে আল্লাহ! যিনি আমাকে খাইয়েছেন তাকে খাওয়াও, এবং যিনি আমাকে পান করিয়েছেন তাকে পান করাও।',
+      'tr': 'Allah\'ım! Beni yediren kimseyi sen de yedir, beni içiren kimseyi sen de içir.',
+      'sw': 'Ee Mwenyezi Mungu, mlishe aliyenilisha, na umnyweshe aliyenisha.',
+      'de': 'O Allah, speise denjenigen, der mich gespeist hat, und tränke denjenigen, der mich getränkt hat.',
+      'nl': 'O Allah, voed degene die mij voedde, en geef te drinken aan degene die mij te drinken gaf.',
+      'pt': 'Ó Allah, alimenta quem me alimentou, e dá de beber a quem me deu de beber.',
+      'it': 'O Allah, nutri chi mi ha nutrito, e da\' da bere a chi mi ha dato da bere.',
+},
   ),
 ];
 
@@ -290,65 +482,115 @@ const _travel = [
     arabic: 'سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا\nوَمَا كُنَّا لَهُ مُقْرِنِينَ\nوَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ',
     transliteration:
         'Subhana-l-ladhi sakhkhara lana hadha\nwa ma kunna lahu muqrinin,\nwa inna ila Rabbina la munqalibun',
-    translation:
-        'Glory be to Him who has subjected this to us, and we were not capable of doing it ourselves. And indeed, to our Lord we are returning.',
-    translationEs:
-        'Gloria a Aquel que ha sometido esto a nosotros, pues nosotros no podíamos hacerlo por nosotros mismos. Y en verdad, a nuestro Señor hemos de retornar.',
-    translationUr:
-        'پاک ہے وہ ذات جس نے اس سواری کو ہمارے بس میں کر دیا اور ہم اسے قابو میں لانے والے نہ تھے، اور بے شک ہم اپنے رب کی طرف لوٹنے والے ہیں۔',
     source: 'Az-Zukhruf 43:13–14 / Abu Dawud 2602',
+    translations: {
+      'en': 'Glory be to Him who has subjected this to us, and we were not capable of doing it ourselves. And indeed, to our Lord we are returning.',
+      'es': 'Gloria a Aquel que ha sometido esto a nosotros, pues nosotros no podíamos hacerlo por nosotros mismos. Y en verdad, a nuestro Señor hemos de retornar.',
+      'ur': 'پاک ہے وہ ذات جس نے اس سواری کو ہمارے بس میں کر دیا اور ہم اسے قابو میں لانے والے نہ تھے، اور بے شک ہم اپنے رب کی طرف لوٹنے والے ہیں۔',
+          'fr': 'Gloire à Celui qui nous a soumis ceci, alors que nous n\'aurions pu le faire nous-mêmes. Et c\'est vers notre Seigneur que nous retournerons.',
+      'id': 'Maha Suci Allah yang telah menundukkan ini untuk kami, padahal kami sebelumnya tidak mampu menguasainya, dan sesungguhnya kepada Tuhan kami, kami akan kembali.',
+      'zh': '赞美那使这服从于我们的主，我们本无力做到，我们终将归于我们的主。',
+      'ja': 'これを私たちに従わせてくださった方に栄光あれ。私たちには到底できなかったことです。そして、私たちは主のもとへと帰るのです。',
+      'bn': 'পবিত্র তিনি যিনি এটিকে আমাদের অধীন করে দিয়েছেন, যা আমরা নিজেরা করতে সক্ষম ছিলাম না, এবং নিশ্চয় আমরা আমাদের প্রতিপালকের দিকেই প্রত্যাবর্তনকারী।',
+      'tr': 'Bunu bizim hizmetimize veren Allah\'ı tenzih ederiz, biz bunu kendi başımıza yapamazdık. Şüphesiz biz Rabbimize döneceğiz.',
+      'sw': 'Ametakasika yule aliyetudhalilishia hii, nasi hatukuwa na uwezo wa kuifanya. Na hakika sisi ni wenye kurejea kwa Mola wetu Mlezi.',
+      'de': 'Erhaben ist Der, der uns dies dienstbar gemacht hat, denn wir selbst hätten es nicht vermocht. Und wahrlich, zu unserem Herrn werden wir zurückkehren.',
+      'nl': 'Geprezen zij Degene die dit aan ons dienstbaar heeft gemaakt, want wij waren daar zelf niet toe in staat. En voorwaar, tot onze Heer zullen wij terugkeren.',
+      'pt': 'Glorificado seja Aquele que nos sujeitou isto, e nós não éramos capazes de fazê-lo por nós mesmos. E, em verdade, ao nosso Senhor haveremos de retornar.',
+      'it': 'Gloria a Colui che ci ha messo questo a disposizione, mentre noi non ne eravamo capaci da soli. E in verità, al nostro Signore ritorneremo.',
+},
   ),
   CategorizedDua(
     category: 'travel',
     arabic: 'اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا\nالْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى',
     transliteration:
         'Allahumma inna nas\'aluka fi safarina hadha\nal-birra wat-taqwa, wa minal-\'amali ma tarda',
-    translation:
-        'O Allah, we ask You on this journey for righteousness and piety, and deeds that are pleasing to You.',
-    translationEs:
-        'Oh Allah, te pedimos en este viaje rectitud y piedad, y obras que sean de Tu agrado.',
-    translationUr:
-        'اے اللہ! ہم اپنے اس سفر میں تجھ سے نیکی، تقویٰ اور ایسے عمل کا سوال کرتے ہیں جس سے تو راضی ہو۔',
     source: 'Muslim 1342',
+    translations: {
+      'en': 'O Allah, we ask You on this journey for righteousness and piety, and deeds that are pleasing to You.',
+      'es': 'Oh Allah, te pedimos en este viaje rectitud y piedad, y obras que sean de Tu agrado.',
+      'ur': 'اے اللہ! ہم اپنے اس سفر میں تجھ سے نیکی، تقویٰ اور ایسے عمل کا سوال کرتے ہیں جس سے تو راضی ہو۔',
+          'fr': 'Ô Allah, nous Te demandons pour ce voyage la droiture et la piété, ainsi que les actions qui Te plaisent.',
+      'id': 'Ya Allah, kami memohon kepada-Mu dalam perjalanan ini kebaikan dan ketakwaan, dan amal yang Engkau ridhai.',
+      'zh': '主啊，我们在这次旅程中向你祈求正义、敬畏，以及你所喜悦的行为。',
+      'ja': 'アッラーよ、私たちはこの旅において、正しさと敬虔さ、そしてあなたがお喜びになる行いを願います。',
+      'bn': 'হে আল্লাহ! আমরা আমাদের এই সফরে তোমার কাছে কল্যাণ ও তাকওয়া এবং তোমার সন্তুষ্টির কাজ চাই।',
+      'tr': 'Allah\'ım! Bu yolculuğumuzda senden iyilik ve takva, ve razı olacağın ameller dileriz.',
+      'sw': 'Ee Mwenyezi Mungu, tunakuomba katika safari hii wema na uchamungu, na matendo unayoyaridhia.',
+      'de': 'O Allah, wir bitten Dich auf dieser Reise um Rechtschaffenheit und Frömmigkeit, und um Taten, die Dir gefallen.',
+      'nl': 'O Allah, wij vragen U op deze reis om rechtschapenheid en vroomheid, en daden die U behagen.',
+      'pt': 'Ó Allah, pedimos-Te nesta viagem rectidão e piedade, e obras que Te agradem.',
+      'it': 'O Allah, Ti chiediamo in questo viaggio rettitudine e devozione, e opere che Ti compiacciano.',
+},
   ),
   CategorizedDua(
     category: 'travel',
     arabic: 'اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ\nوَالْخَلِيفَةُ فِي الْأَهْلِ',
     transliteration:
         'Allahumma Antas-Sahibu fis-safari\nwal-Khalifatu fil-ahl',
-    translation:
-        'O Allah, You are the Companion in travel and the Guardian of the family.',
-    translationEs:
-        'Oh Allah, Tú eres el Compañero en el viaje y el Guardián de la familia.',
-    translationUr:
-        'اے اللہ! تو سفر میں ساتھی ہے اور گھر والوں میں میرا جانشین ہے۔',
     source: 'Muslim 1342',
+    translations: {
+      'en': 'O Allah, You are the Companion in travel and the Guardian of the family.',
+      'es': 'Oh Allah, Tú eres el Compañero en el viaje y el Guardián de la familia.',
+      'ur': 'اے اللہ! تو سفر میں ساتھی ہے اور گھر والوں میں میرا جانشین ہے۔',
+          'fr': 'Ô Allah, Tu es le Compagnon du voyage et le Gardien de la famille.',
+      'id': 'Ya Allah, Engkaulah Pendamping dalam perjalanan dan Penjaga keluarga.',
+      'zh': '主啊，你是旅途中的伴侣，是家庭的守护者。',
+      'ja': 'アッラーよ、あなたは旅における同伴者であり、家族の守護者です。',
+      'bn': 'হে আল্লাহ! তুমি সফরের সঙ্গী এবং পরিবারের রক্ষক।',
+      'tr': 'Allah\'ım! Sen yolculukta arkadaşımsın, ailemde de vekilimsin.',
+      'sw': 'Ee Mwenyezi Mungu, Wewe ndiwe Mwenzangu safarini na Mlinzi wa familia.',
+      'de': 'O Allah, Du bist der Begleiter auf der Reise und der Hüter der Familie.',
+      'nl': 'O Allah, U bent de Begeleider op reis en de Bewaker van het gezin.',
+      'pt': 'Ó Allah, Tu és o Companheiro na viagem e o Guardião da família.',
+      'it': 'O Allah, Tu sei il Compagno nel viaggio e il Custode della famiglia.',
+},
   ),
   CategorizedDua(
     category: 'travel',
     arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ\nوَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ',
     transliteration:
         'Allahumma inni a\'udhu bika min wa\'tha\'is-safari\nwa ka\'abatil-manzari wa su\'il-munqalab',
-    translation:
-        'O Allah, I seek refuge with You from the hardships of travel, from distress upon returning, and from finding loved ones in bad condition.',
-    translationEs:
-        'Oh Allah, busco refugio en Ti de las dificultades del viaje, de la angustia al regresar, y de encontrar a mis seres queridos en mal estado.',
-    translationUr:
-        'اے اللہ! میں سفر کی مشقت، واپسی کے غم اور اہلِ خانہ کی بری حالت دیکھنے سے تیری پناہ مانگتا ہوں۔',
     source: 'Bukhari 1804',
+    translations: {
+      'en': 'O Allah, I seek refuge with You from the hardships of travel, from distress upon returning, and from finding loved ones in bad condition.',
+      'es': 'Oh Allah, busco refugio en Ti de las dificultades del viaje, de la angustia al regresar, y de encontrar a mis seres queridos en mal estado.',
+      'ur': 'اے اللہ! میں سفر کی مشقت، واپسی کے غم اور اہلِ خانہ کی بری حالت دیکھنے سے تیری پناہ مانگتا ہوں۔',
+          'fr': 'Ô Allah, je cherche refuge auprès de Toi contre les difficultés du voyage, la détresse du retour, et le malheur de trouver mes proches en mauvais état.',
+      'id': 'Ya Allah, aku berlindung kepada-Mu dari kesulitan perjalanan, kesedihan saat kembali, dan keadaan buruk pada keluarga dan harta.',
+      'zh': '主啊，我向你求庇护，免遭旅途的艰辛、归途的忧愁，以及发现亲人处境不佳。',
+      'ja': 'アッラーよ、私はあなたに、旅の苦難、帰路の悲嘆、そして大切な人々の不幸な状態を見出すことからの避難を求めます。',
+      'bn': 'হে আল্লাহ! আমি তোমার কাছে সফরের কষ্ট, প্রত্যাবর্তনের দুঃখ এবং প্রিয়জনদের মন্দ অবস্থা দেখা থেকে আশ্রয় চাই।',
+      'tr': 'Allah\'ım! Yolculuğun zorluğundan, dönüşteki kederden ve sevdiklerimi kötü bir halde bulmaktan sana sığınırım.',
+      'sw': 'Ee Mwenyezi Mungu, najikinga kwako kutokana na taabu za safari, huzuni ya kurejea, na kupata hali mbaya kwa wapendwa.',
+      'de': 'O Allah, ich suche Schutz bei Dir vor den Mühen der Reise, dem Kummer der Rückkehr und dem Anblick meiner Lieben in schlechtem Zustand.',
+      'nl': 'O Allah, ik zoek bescherming bij U tegen de ontberingen van het reizen, het verdriet bij terugkomst, en het aantreffen van geliefden in slechte toestand.',
+      'pt': 'Ó Allah, busco refúgio em Ti das dificuldades da viagem, da angústia do retorno, e de encontrar os entes queridos em má condição.',
+      'it': 'O Allah, cerco rifugio in Te dalle difficoltà del viaggio, dall\'angoscia del ritorno, e dal trovare i propri cari in cattive condizioni.',
+},
   ),
   CategorizedDua(
     category: 'travel',
     arabic: 'آيَبُونَ تَائِبُونَ عَابِدُونَ\nلِرَبِّنَا حَامِدُونَ',
     transliteration:
         'Ayibuna ta\'ibuna \'abidun\nli-Rabbina hamidun',
-    translation:
-        'We return repentant, worshipping and praising our Lord.',
-    translationEs:
-        'Regresamos arrepentidos, adorando y alabando a nuestro Señor.',
-    translationUr:
-        'ہم لوٹنے والے، توبہ کرنے والے، عبادت کرنے والے اور اپنے رب کی حمد کرنے والے ہیں۔',
     source: 'Muslim 1345',
+    translations: {
+      'en': 'We return repentant, worshipping and praising our Lord.',
+      'es': 'Regresamos arrepentidos, adorando y alabando a nuestro Señor.',
+      'ur': 'ہم لوٹنے والے، توبہ کرنے والے، عبادت کرنے والے اور اپنے رب کی حمد کرنے والے ہیں۔',
+          'fr': 'Nous revenons repentants, adorant et louant notre Seigneur.',
+      'id': 'Kami kembali dengan bertaubat, beribadah, dan memuji Tuhan kami.',
+      'zh': '我们悔过而归，敬拜并赞美我们的主。',
+      'ja': '私たちは悔悟しつつ、礎拝し、われらの主を讃美しながら帰ります。',
+      'bn': 'আমরা তওবাকারী, ইবাদতকারী ও আমাদের প্রতিপালকের প্রশংসাকারী হয়ে ফিরছি।',
+      'tr': 'Tövbe ederek, ibadet ederek ve Rabbimize hamd ederek dönüyoruz.',
+      'sw': 'Tunarejea tukitubia, tukiabudu na kumsifu Mola wetu Mlezi.',
+      'de': 'Wir kehren reumütig zurück, anbetend und unseren Herrn lobend.',
+      'nl': 'Wij keren berouwvol terug, aanbiddend en onze Heer lovend.',
+      'pt': 'Retornamos arrependidos, adorando e louvando nosso Senhor.',
+      'it': 'Ritorniamo pentiti, adorando e lodando il nostro Signore.',
+},
   ),
 ];
 
@@ -358,52 +600,92 @@ const _home = [
     arabic: 'اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلِجِ\nوَخَيْرَ الْمَخْرَجِ',
     transliteration:
         'Allahumma inni as\'aluka khayral-mawliji\nwa khayral-makhraj',
-    translation:
-        'O Allah, I ask You for a good entry and a good exit.',
-    translationEs:
-        'Oh Allah, te pido una buena entrada y una buena salida.',
-    translationUr:
-        'اے اللہ! میں تجھ سے اچھے داخلے اور اچھے خروج کا سوال کرتا ہوں۔',
     source: 'Abu Dawud 5096',
+    translations: {
+      'en': 'O Allah, I ask You for a good entry and a good exit.',
+      'es': 'Oh Allah, te pido una buena entrada y una buena salida.',
+      'ur': 'اے اللہ! میں تجھ سے اچھے داخلے اور اچھے خروج کا سوال کرتا ہوں۔',
+          'fr': 'Ô Allah, je Te demande une bonne entrée et une bonne sortie.',
+      'id': 'Ya Allah, aku memohon kepada-Mu pintu masuk yang baik dan pintu keluar yang baik.',
+      'zh': '主啊，我求你赐予美好的进入和美好的离去。',
+      'ja': 'アッラーよ、私は良き入りと良き出をあなたに願います。',
+      'bn': 'হে আল্লাহ! আমি তোমার কাছে উত্তম প্রবেশ এবং উত্তম প্রস্থান চাই।',
+      'tr': 'Allah\'ım! Senden hayırlı bir giriş ve hayırlı bir çıkış dilerim.',
+      'sw': 'Ee Mwenyezi Mungu, nakuomba mwingilio mwema na mtoko mwema.',
+      'de': 'O Allah, ich bitte Dich um einen guten Eingang und einen guten Ausgang.',
+      'nl': 'O Allah, ik vraag U om een goede ingang en een goede uitgang.',
+      'pt': 'Ó Allah, peço-Te uma boa entrada e uma boa saída.',
+      'it': 'O Allah, Ti chiedo un buon ingresso e una buona uscita.',
+},
   ),
   CategorizedDua(
     category: 'home',
     arabic: 'بِسْمِ اللَّهِ وَلَجْنَا\nوَبِسْمِ اللَّهِ خَرَجْنَا\nوَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا',
     transliteration:
         'Bismillahi walajna,\nwa bismillahi kharajna,\nwa \'alallahi Rabbina tawakkalna',
-    translation:
-        'In the name of Allah we enter, in the name of Allah we leave, and upon Allah our Lord we put our trust.',
-    translationEs:
-        'En el nombre de Allah entramos, en el nombre de Allah salimos, y en Allah, nuestro Señor, depositamos nuestra confianza.',
-    translationUr:
-        'ہم اللہ کے نام سے داخل ہوئے اور اللہ کے نام سے نکلے اور اللہ ہی پر، جو ہمارا رب ہے، بھروسہ کیا۔',
     source: 'Abu Dawud 5096',
+    translations: {
+      'en': 'In the name of Allah we enter, in the name of Allah we leave, and upon Allah our Lord we put our trust.',
+      'es': 'En el nombre de Allah entramos, en el nombre de Allah salimos, y en Allah, nuestro Señor, depositamos nuestra confianza.',
+      'ur': 'ہم اللہ کے نام سے داخل ہوئے اور اللہ کے نام سے نکلے اور اللہ ہی پر، جو ہمارا رب ہے، بھروسہ کیا۔',
+          'fr': 'Au nom d\'Allah nous entrons, au nom d\'Allah nous sortons, et c\'est en Allah, notre Seigneur, que nous plaçons notre confiance.',
+      'id': 'Dengan nama Allah kami masuk, dengan nama Allah kami keluar, dan kepada Allah Tuhan kami, kami bertawakal.',
+      'zh': '我们以真主之名进入，以真主之名离开，我们信托我们的主真主。',
+      'ja': 'アッラーの御名において私たちは入り、アッラーの御名において私たちは出ます。そして私たちの主アッラーに信頼を置きます。',
+      'bn': 'আল্লাহর নামে আমরা প্রবেশ করলাম এবং আল্লাহর নামে আমরা বের হলাম, এবং আমাদের প্রতিপালক আল্লাহর উপরই আমরা ভরসা করলাম।',
+      'tr': 'Allah\'ın adıyla girdik, Allah\'ın adıyla çıktık ve Rabbimiz Allah\'a güvendik.',
+      'sw': 'Kwa jina la Mwenyezi Mungu tumeingia, na kwa jina la Mwenyezi Mungu tumetoka, na kwa Mwenyezi Mungu Mola wetu Mlezi tumetegemea.',
+      'de': 'Im Namen Allahs treten wir ein, im Namen Allahs gehen wir hinaus, und auf Allah, unseren Herrn, vertrauen wir.',
+      'nl': 'In de naam van Allah gaan wij naar binnen, in de naam van Allah gaan wij naar buiten, en op Allah, onze Heer, stellen wij ons vertrouwen.',
+      'pt': 'Em nome de Allah entramos, em nome de Allah saímos, e em Allah, nosso Senhor, confiamos.',
+      'it': 'Nel nome di Allah entriamo, nel nome di Allah usciamo, e in Allah, nostro Signore, confidiamo.',
+},
   ),
   CategorizedDua(
     category: 'home',
     arabic: 'رَبِّ أَدْخِلْنِي مُدْخَلَ صِدْقٍ\nوَأَخْرِجْنِي مُخْرَجَ صِدْقٍ\nوَاجْعَلْ لِي مِنْ لَدُنْكَ سُلْطَانًا نَصِيرًا',
     transliteration:
         'Rabbi adkhilni mudkhala sidqin\nwa akhrijni mukhraja sidqin\nwaj\'al li min ladunka sultanan nasira',
-    translation:
-        'My Lord, cause me to enter a sound entrance and to exit a sound exit, and grant me from Yourself a supporting authority.',
-    translationEs:
-        'Señor mío, haz que entre con una entrada sincera y que salga con una salida sincera, y concédeme de Tu parte una autoridad que me auxilie.',
-    translationUr:
-        'اے میرے رب! مجھے سچائی کے ساتھ داخل کر اور سچائی کے ساتھ نکال اور اپنی طرف سے میرے لیے مددگار قوت عطا فرما۔',
     source: 'Al-Isra 17:80',
+    translations: {
+      'en': 'My Lord, cause me to enter a sound entrance and to exit a sound exit, and grant me from Yourself a supporting authority.',
+      'es': 'Señor mío, haz que entre con una entrada sincera y que salga con una salida sincera, y concédeme de Tu parte una autoridad que me auxilie.',
+      'ur': 'اے میرے رب! مجھے سچائی کے ساتھ داخل کر اور سچائی کے ساتھ نکال اور اپنی طرف سے میرے لیے مددگار قوت عطا فرما۔',
+          'fr': 'Mon Seigneur, fais-moi entrer par une entrée sincère et sortir par une sortie sincère, et accorde-moi de Ta part une autorité qui me secoure.',
+      'id': 'Ya Tuhanku, masukkanlah aku dengan cara yang baik dan keluarkanlah aku dengan cara yang baik, dan berikanlah kepadaku dari sisi-Mu kekuatan yang menolong.',
+      'zh': '我的主啊，求你让我以诚实的方式进入，以诚实的方式离开，并从你那里赐我以助力的权能。',
+      'ja': '我が主よ、私を誠実な入り方で入らせ、誠実な出方で出させ、あなたのもとから私を助ける権威を与えてください。',
+      'bn': 'হে আমার প্রতিপালক! আমাকে সততার সাথে প্রবেশ করাও এবং সততার সাথে বের করো, এবং তোমার পক্ষ থেকে আমাকে সাহায্যকারী শক্তি দান করো।',
+      'tr': 'Rabbim! Beni doğruluk üzere girdir ve doğruluk üzere çıkar, katından bana yardımcı bir kuvvet ver.',
+      'sw': 'Mola wangu Mlezi, niingize kwa kuingia kwema na unitoe kwa kutoka kwema, na unipe kutoka kwako nguvu ya kunisaidia.',
+      'de': 'Mein Herr, lass mich auf aufrichtige Weise eintreten und auf aufrichtige Weise austreten, und gewähre mir von Dir aus eine unterstützende Macht.',
+      'nl': 'Mijn Heer, laat mij op een oprechte manier binnengaan en op een oprechte manier naar buiten gaan, en schenk mij van Uzelf een ondersteunende kracht.',
+      'pt': 'Senhor meu, faze-me entrar com uma entrada sincera e saia com uma saída sincera, e concede-me de Ti uma autoridade que me auxilie.',
+      'it': 'Signore mio, fammi entrare con un ingresso sincero e uscire con un\'uscita sincera, e concedimi da parte Tua un\'autorità che mi soccorra.',
+},
   ),
   CategorizedDua(
     category: 'home',
     arabic: 'اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا\nوَفِي لِسَانِي نُورًا\nوَاجْعَلْ فِي نَفْسِي نُورًا',
     transliteration:
         'Allahumma-j\'al fi qalbi nuran\nwa fi lisani nuran\nwaj\'al fi nafsi nuran',
-    translation:
-        'O Allah, place light in my heart, and on my tongue light, and within myself light.',
-    translationEs:
-        'Oh Allah, pon luz en mi corazón, luz en mi lengua y luz dentro de mí mismo.',
-    translationUr:
-        'اے اللہ! میرے دل میں نور پیدا کر، میری زبان میں نور رکھ اور میری ذات میں نور رکھ۔',
     source: 'Muslim 763',
+    translations: {
+      'en': 'O Allah, place light in my heart, and on my tongue light, and within myself light.',
+      'es': 'Oh Allah, pon luz en mi corazón, luz en mi lengua y luz dentro de mí mismo.',
+      'ur': 'اے اللہ! میرے دل میں نور پیدا کر، میری زبان میں نور رکھ اور میری ذات میں نور رکھ۔',
+          'fr': 'Ô Allah, place de la lumière dans mon cœur, sur ma langue de la lumière, et en moi-même de la lumière.',
+      'id': 'Ya Allah, jadikanlah cahaya di hatiku, cahaya di lidahku, dan jadikanlah cahaya dalam diriku.',
+      'zh': '主啊，求你在我心中放置光明，在我舌头上放置光明，并在我自身中放置光明。',
+      'ja': 'アッラーよ、わが心に光を、わが舌に光を置き、わが内に光を置いてください。',
+      'bn': 'হে আল্লাহ! আমার হৃদয়ে নূর দাও, আমার জিভে নূর দাও এবং আমার সত্তায় নূর দাও।',
+      'tr': 'Allah\'ım! Kalbime nur ver, dilime nur ver ve nefsime nur ver.',
+      'sw': 'Ee Mwenyezi Mungu, weka nuru katika moyo wangu, na nuru katika ulimi wangu, na uweke nuru katika nafsi yangu.',
+      'de': 'O Allah, lege Licht in mein Herz, Licht auf meine Zunge und Licht in mein Inneres.',
+      'nl': 'O Allah, plaats licht in mijn hart, licht op mijn tong, en plaats licht in mijzelf.',
+      'pt': 'Ó Allah, coloca luz no meu coração, luz na minha língua, e coloca luz dentro de mim.',
+      'it': 'O Allah, metti luce nel mio cuore, luce sulla mia lingua, e metti luce dentro di me.',
+},
   ),
 ];
 
@@ -413,77 +695,138 @@ const _anxietyStress = [
     arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ\nوَالْعَجْزِ وَالْكَسَلِ',
     transliteration:
         'Allahumma inni a\'udhu bika minal-hammi wal-hazan,\nwal-\'ajzi wal-kasal',
-    translation:
-        'O Allah, I seek refuge in You from grief and anxiety, from incapacity and laziness.',
-    translationEs:
-        'Oh Allah, busco refugio en Ti de la angustia y la tristeza, de la incapacidad y la pereza.',
-    translationUr:
-        'اے اللہ! میں غم اور پریشانی سے، اور بے بسی اور سستی سے تیری پناہ مانگتا ہوں۔',
     source: 'Bukhari 6369',
+    translations: {
+      'en': 'O Allah, I seek refuge in You from grief and anxiety, from incapacity and laziness.',
+      'es': 'Oh Allah, busco refugio en Ti de la angustia y la tristeza, de la incapacidad y la pereza.',
+      'ur': 'اے اللہ! میں غم اور پریشانی سے، اور بے بسی اور سستی سے تیری پناہ مانگتا ہوں۔',
+          'fr': 'Ô Allah, je cherche refuge auprès de Toi contre le chagrin et l\'anxiété, l\'incapacité et la paresse.',
+      'id': 'Ya Allah, aku berlindung kepada-Mu dari kesedihan dan kecemasan, dari ketidakberdayaan dan kemalasan.',
+      'zh': '主啊，我向你求庇护，免遭忧愁和焦虑、无能和懒惰。',
+      'ja': 'アッラーよ、私はあなたに、悲しみと不安、無力と怠惰からの避難を求めます。',
+      'bn': 'হে আল্লাহ! আমি তোমার কাছে দুঃখ ও দুশ্চিন্তা, অক্ষমতা ও অলসতা থেকে আশ্রয় চাই।',
+      'tr': 'Allah\'ım! Üzüntüden ve kaygıdan, güçsüzlükten ve tembellikten sana sığınırım.',
+      'sw': 'Ee Mwenyezi Mungu, najikinga kwako kutokana na huzuni na wasiwasi, kutokana na kutokuwa na uwezo na uvivu.',
+      'de': 'O Allah, ich suche Schutz bei Dir vor Kummer und Angst, vor Unfähigkeit und Faulheit.',
+      'nl': 'O Allah, ik zoek bescherming bij U tegen verdriet en angst, tegen onmacht en luiheid.',
+      'pt': 'Ó Allah, busco refúgio em Ti da tristeza e da ansiedade, da incapacidade e da preguiça.',
+      'it': 'O Allah, cerco rifugio in Te dal dolore e dall\'ansia, dall\'incapacità e dalla pigrizia.',
+},
   ),
   CategorizedDua(
     category: 'anxiety',
     arabic: 'لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ\nلَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ',
     transliteration:
         'La ilaha illallahul-\'Azimul-Halim,\nla ilaha illallahu Rabbul-\'Arshil-\'Azim',
-    translation:
-        'None has the right to be worshipped except Allah, the Magnificent, the Forbearing. None has the right to be worshipped except Allah, Lord of the Mighty Throne.',
-    translationEs:
-        'No hay nadie que merezca ser adorado salvo Allah, el Magnífico, el Indulgente. No hay nadie que merezca ser adorado salvo Allah, Señor del Trono Inmenso.',
-    translationUr:
-        'اللہ کے سوا کوئی معبود نہیں، وہ بڑا بردبار اور حلیم ہے۔ اللہ کے سوا کوئی معبود نہیں، وہ عرشِ عظیم کا رب ہے۔',
     source: 'Bukhari 6346',
+    translations: {
+      'en': 'None has the right to be worshipped except Allah, the Magnificent, the Forbearing. None has the right to be worshipped except Allah, Lord of the Mighty Throne.',
+      'es': 'No hay nadie que merezca ser adorado salvo Allah, el Magnífico, el Indulgente. No hay nadie que merezca ser adorado salvo Allah, Señor del Trono Inmenso.',
+      'ur': 'اللہ کے سوا کوئی معبود نہیں، وہ بڑا بردبار اور حلیم ہے۔ اللہ کے سوا کوئی معبود نہیں، وہ عرشِ عظیم کا رب ہے۔',
+          'fr': 'Nul n\'a le droit d\'être adoré sauf Allah, le Magnifique, l\'Indulgent. Nul n\'a le droit d\'être adoré sauf Allah, Seigneur du Trône immense.',
+      'id': 'Tidak ada yang berhak disembah selain Allah Yang Maha Agung, Maha Penyantun. Tidak ada yang berhak disembah selain Allah, Tuhan pemilik \'Arsy yang agung.',
+      'zh': '除真主外绝无应受崇拜者，他是至大的，宽容的。除真主外绝无应受崇拜者，他是宏伟宝座的主。',
+      'ja': 'アッラーの他に崇拝される権利を持つ者はいません、至大なる方、寛容なる方。アッラーの他に崇拝される権利を持つ者はいません、偉大な王座の主。',
+      'bn': 'আল্লাহ ব্যতীত কেউ ইবাদত পাওয়ার অধিকারী নয়, তিনি মহিমান্বিত, সহনশীল। আল্লাহ ব্যতীত কেউ ইবাদত পাওয়ার অধিকারী নয়, তিনি মহান আরশের প্রতিপালক।',
+      'tr': 'Allah\'tan başka ibadete layık ilah yoktur, O büyüktür, halimdir. Allah\'tan başka ibadete layık ilah yoktur, O büyük tahtın sahibidir.',
+      'sw': 'Hapana anayestahili kuabudiwa ila Mwenyezi Mungu, Mtukufu, Mpole. Hapana anayestahili kuabudiwa ila Mwenyezi Mungu, Mola wa Kiti cha Enzi kikubwa.',
+      'de': 'Niemand hat das Recht, angebetet zu werden außer Allah, dem Erhabenen, dem Nachsichtigen. Niemand hat das Recht, angebetet zu werden außer Allah, dem Herrn des mächtigen Throns.',
+      'nl': 'Niemand heeft het recht aanbeden te worden behalve Allah, de Verhevene, de Zachtmoedige. Niemand heeft het recht aanbeden te worden behalve Allah, de Heer van de Geweldige Troon.',
+      'pt': 'Ninguém tem o direito de ser adorado senão Allah, o Magnífico, o Tolerante. Ninguém tem o direito de ser adorado senão Allah, Senhor do Trono Imenso.',
+      'it': 'Nessuno ha il diritto di essere adorato se non Allah, il Magnifico, l\'Indulgente. Nessuno ha il diritto di essere adorato se non Allah, Signore del Trono Immenso.',
+},
   ),
   CategorizedDua(
     category: 'anxiety',
     arabic: 'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ',
-    transliteration: 'Hasbunallahu wa ni\'mal-Wakil',
-    translation:
-        'Allah is sufficient for us, and He is the best disposer of affairs.',
-    translationEs:
-        'Allah nos basta, y Él es el mejor protector.',
-    translationUr:
-        'ہمیں اللہ کافی ہے اور وہ بہترین کارساز ہے۔',
+    transliteration:
+        'Hasbunallahu wa ni\'mal-Wakil',
     source: 'Al-Imran 3:173 / Bukhari 4563',
+    translations: {
+      'en': 'Allah is sufficient for us, and He is the best disposer of affairs.',
+      'es': 'Allah nos basta, y Él es el mejor protector.',
+      'ur': 'ہمیں اللہ کافی ہے اور وہ بہترین کارساز ہے۔',
+          'fr': 'Allah nous suffit, et Il est le meilleur garant.',
+      'id': 'Allah cukup bagi kami, dan Dialah sebaik-baik Pelindung.',
+      'zh': '真主对我们已足够，他是最好的监护者。',
+      'ja': 'アッラーはわれらに十分な方であり、彼こそ最善の管理者です。',
+      'bn': 'আল্লাহ আমাদের জন্য পর্যাপ্ত এবং তিনিই উত্তম কর্মবিধায়ক।',
+      'tr': 'Allah bize yeter, O ne güzel vekildir.',
+      'sw': 'Mwenyezi Mungu anatutosha, naye ni Mlinzi bora.',
+      'de': 'Allah genügt uns, und Er ist der beste Sachwalter.',
+      'nl': 'Allah is ons genoeg, en Hij is de beste Beheerder.',
+      'pt': 'Allah nos basta, e Ele é o melhor administrador.',
+      'it': 'Allah ci basta, ed Egli è il miglior amministratore.',
+},
   ),
   CategorizedDua(
     category: 'anxiety',
     arabic: 'رَبِّ إِنِّي مَسَّنِيَ الضُّرُّ\nوَأَنْتَ أَرْحَمُ الرَّاحِمِينَ',
     transliteration:
         'Rabbi inni massaniyad-durru\nwa Anta arhamur-rahimin',
-    translation:
-        'My Lord, adversity has touched me, and you are the Most Merciful of the merciful.',
-    translationEs:
-        'Señor mío, la adversidad me ha afligido, y Tú eres el más Misericordioso de los misericordiosos.',
-    translationUr:
-        'اے میرے رب! مجھے تکلیف پہنچی ہے اور تو سب رحم کرنے والوں سے زیادہ رحم کرنے والا ہے۔',
     source: 'Al-Anbiya 21:83',
+    translations: {
+      'en': 'My Lord, adversity has touched me, and you are the Most Merciful of the merciful.',
+      'es': 'Señor mío, la adversidad me ha afligido, y Tú eres el más Misericordioso de los misericordiosos.',
+      'ur': 'اے میرے رب! مجھے تکلیف پہنچی ہے اور تو سب رحم کرنے والوں سے زیادہ رحم کرنے والا ہے۔',
+          'fr': 'Mon Seigneur, l\'adversité m\'a touché, et Tu es le plus Miséricordieux des miséricordieux.',
+      'id': 'Ya Tuhanku, sesungguhnya aku telah ditimpa kesusahan, dan Engkaulah yang paling penyayang di antara para penyayang.',
+      'zh': '我的主啊，磨难已触及我，你是至仁慈者中最仁慈的。',
+      'ja': '我が主よ、困難が私に触れました。あなたは慈悲深い者の中で最も慈悲深い方です。',
+      'bn': 'হে আমার প্রতিপালক! আমাকে দুঃখ স্পর্শ করেছে, এবং তুমি দয়ালুদের মধ্যে শ্রেষ্ঠ দয়ালু।',
+      'tr': 'Rabbim! Bana zarar dokundu, sen merhametlilerin en merhametlisisin.',
+      'sw': 'Mola wangu Mlezi, dhiki imenipata, na Wewe ndiwe Mwenye huruma zaidi kuliko wenye huruma wote.',
+      'de': 'Mein Herr, mich hat Leid getroffen, und Du bist der Barmherzigste der Barmherzigen.',
+      'nl': 'Mijn Heer, tegenspoed heeft mij getroffen, en U bent de Meest Genadevolle der genadigen.',
+      'pt': 'Senhor meu, a adversidade me tocou, e Tu és o mais Misericordioso dos misericordiosos.',
+      'it': 'Signore mio, l\'avversità mi ha toccato, e Tu sei il più Misericordioso dei misericordiosi.',
+},
   ),
   CategorizedDua(
     category: 'anxiety',
     arabic: 'اللَّهُمَّ رَحْمَتَكَ أَرْجُو\nفَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ',
     transliteration:
         'Allahumma rahmataka arju\nfala takilni ila nafsi tarfata \'ayn',
-    translation:
-        'O Allah, it is Your mercy that I hope for, so do not leave me in charge of my affairs even for the blink of an eye.',
-    translationEs:
-        'Oh Allah, es Tu misericordia lo que espero, así que no me dejes a cargo de mis propios asuntos ni siquiera por un abrir y cerrar de ojos.',
-    translationUr:
-        'اے اللہ! میں تیری ہی رحمت کا امیدوار ہوں، پس مجھے ایک پلک جھپکنے کے برابر بھی میرے نفس کے سپرد نہ کر۔',
     source: 'Abu Dawud 5090',
+    translations: {
+      'en': 'O Allah, it is Your mercy that I hope for, so do not leave me in charge of my affairs even for the blink of an eye.',
+      'es': 'Oh Allah, es Tu misericordia lo que espero, así que no me dejes a cargo de mis propios asuntos ni siquiera por un abrir y cerrar de ojos.',
+      'ur': 'اے اللہ! میں تیری ہی رحمت کا امیدوار ہوں، پس مجھے ایک پلک جھپکنے کے برابر بھی میرے نفس کے سپرد نہ کر۔',
+          'fr': 'Ô Allah, c\'est Ta miséricorde que j\'espère, alors ne me laisse pas livré à moi-même, même un clin d\'œil.',
+      'id': 'Ya Allah, rahmat-Mu yang aku harapkan, maka janganlah Engkau biarkan aku mengurus diriku sendiri sekejap mata pun.',
+      'zh': '主啊，我所盼望的是你的慈悯，求你不要将我交托给自己，即使一眨眼的时间。',
+      'ja': 'アッラーよ、私が望むのはあなたの慈悲です。どうか瞬きの間でも私を自分自身に委ねないでください。',
+      'bn': 'হে আল্লাহ! আমি তোমার রহমতের আশা করি, তাই আমাকে এক পলকের জন্যও আমার নিজের উপর ছেড়ে দিয়ো না।',
+      'tr': 'Allah\'ım! Senin rahmetini umarım, beni bir göz açıp kapayıncaya kadar bile kendi halime bırakma.',
+      'sw': 'Ee Mwenyezi Mungu, rehema yako ndiyo ninayoitarajia, basi usiniache nikiwa najitegemea mwenyewe kwa kupepesa jicho.',
+      'de': 'O Allah, ich hoffe auf Deine Gnade, also überlasse mich nicht mir selbst, auch nicht für einen Augenblick.',
+      'nl': 'O Allah, het is Uw genade waarop ik hoop, laat mij dus niet aan mijzelf over, ook niet voor een ogenblik.',
+      'pt': 'Ó Allah, é a Tua misericórdia que espero, então não me deixes entregue a mim mesmo nem por um piscar de olhos.',
+      'it': 'O Allah, è la Tua misericordia che spero, quindi non lasciarmi affidato a me stesso nemmeno per un batter d\'occhio.',
+},
   ),
   CategorizedDua(
     category: 'anxiety',
     arabic: 'يَا حَيُّ يَا قَيُّومُ\nبِرَحْمَتِكَ أَسْتَغِيثُ',
     transliteration:
         'Ya Hayyu ya Qayyum\nbiraHmatika astagith',
-    translation:
-        'O Ever Living, O Self-Subsisting, by Your mercy I seek help.',
-    translationEs:
-        'Oh Viviente, oh Sustentador, por Tu misericordia imploro ayuda.',
-    translationUr:
-        'اے ہمیشہ زندہ رہنے والے، اے سب کو قائم رکھنے والے! میں تیری رحمت کے ذریعے مدد مانگتا ہوں۔',
     source: 'Tirmidhi 3524',
+    translations: {
+      'en': 'O Ever Living, O Self-Subsisting, by Your mercy I seek help.',
+      'es': 'Oh Viviente, oh Sustentador, por Tu misericordia imploro ayuda.',
+      'ur': 'اے ہمیشہ زندہ رہنے والے، اے سب کو قائم رکھنے والے! میں تیری رحمت کے ذریعے مدد مانگتا ہوں۔',
+          'fr': 'Ô Vivant, ô Subsistant par Toi-même, par Ta miséricorde je sollicite le secours.',
+      'id': 'Wahai Yang Maha Hidup, wahai Yang Maha Berdiri Sendiri, dengan rahmat-Mu aku memohon pertolongan.',
+      'zh': '永生者啊，自立者啊，我凭你的慈悯求助。',
+      'ja': '永生者よ、自存者よ、あなたの慈悲によって私は助けを求めます。',
+      'bn': 'হে চিরঞ্জীব, হে চিরস্থায়ী! তোমার রহমতের মাধ্যমে আমি সাহায্য প্রার্থনা করি।',
+      'tr': 'Ey diri olan, ey her şeyi ayakta tutan! Senin rahmetinle yardım dilerim.',
+      'sw': 'Ewe Aliye Hai, Ewe Ajitegemeaye! Kwa rehema yako naomba msaada.',
+      'de': 'O Ewig-Lebender, o Beständiger, durch Deine Gnade erbitte ich Hilfe.',
+      'nl': 'O Levende, o Onderhoudende, door Uw genade zoek ik hulp.',
+      'pt': 'Ó Vivente, ó Subsistente, pela Tua misericórdia busco ajuda.',
+      'it': 'O Vivente, o Sussistente, per la Tua misericordia chiedo aiuto.',
+},
   ),
 ];
 
@@ -493,48 +836,92 @@ const _gratitude = [
     arabic: 'الْحَمْدُ لِلَّهِ الَّذِي بِنِعْمَتِهِ تَتِمُّ الصَّالِحَاتُ',
     transliteration:
         'Alhamdu lillahil-ladhi bi ni\'matihi tatimmus-salihat',
-    translation:
-        'Praise be to Allah by Whose grace and bounty good works are accomplished.',
-    translationEs:
-        'Alabado sea Allah, por cuya gracia y favor se llevan a cabo las buenas obras.',
-    translationUr:
-        'تمام تعریفیں اللہ کے لیے ہیں جس کی نعمت سے نیک اعمال مکمل ہوتے ہیں۔',
     source: 'Ibn Majah 3803',
+    translations: {
+      'en': 'Praise be to Allah by Whose grace and bounty good works are accomplished.',
+      'es': 'Alabado sea Allah, por cuya gracia y favor se llevan a cabo las buenas obras.',
+      'ur': 'تمام تعریفیں اللہ کے لیے ہیں جس کی نعمت سے نیک اعمال مکمل ہوتے ہیں۔',
+          'fr': 'Louange à Allah par la grâce et la bonté de qui les bonnes œuvres s\'accomplissent.',
+      'id': 'Segala puji bagi Allah yang dengan nikmat dan karunia-Nya, amal-amal kebaikan dapat terwujud.',
+      'zh': '赞美真主，凭借他的恩典与慷慨，善行得以完成。',
+      'ja': 'その恵みと恩寵によって善行が成し遂げられるアッラーに讃美あれ。',
+      'bn': 'প্রশংসা আল্লাহর জন্য যাঁর অনুগ্রহ ও দানে সৎকাজ সম্পন্ন হয়।',
+      'tr': 'Nimeti ve lütfuyla iyi işlerin tamamlandığı Allah\'a hamd olsun.',
+      'sw': 'Sifa ni za Mwenyezi Mungu ambaye kwa neema yake na ukarimu wake matendo mema yanatimia.',
+      'de': 'Lob sei Allah, durch dessen Gnade und Großzügigkeit gute Werke vollbracht werden.',
+      'nl': 'Lof aan Allah door wiens genade en gunst goede daden worden volbracht.',
+      'pt': 'Louvado seja Allah, por cuja graça e generosidade as boas obras se realizam.',
+      'it': 'Lode ad Allah, per la cui grazia e generosità le buone opere si compiono.',
+},
   ),
   CategorizedDua(
     category: 'gratitude',
     arabic: 'رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ\nوَعَلَى وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ',
     transliteration:
         'Rabbi awzi\'ni an ashkura ni\'matakal-lati an\'amta \'alayya\nwa \'ala walidayya wa an a\'mala salihan tardah',
-    translation:
-        'My Lord, enable me to be grateful for Your favour which You have bestowed upon me and upon my parents, and to do righteousness of which You approve.',
-    translationEs:
-        'Señor mío, permíteme ser agradecido por Tu favor que me has concedido a mí y a mis padres, y que obre con rectitud de la que Tú estés complacido.',
-    translationUr:
-        'اے میرے رب! مجھے توفیق دے کہ میں تیری اس نعمت کا شکر ادا کروں جو تو نے مجھ پر اور میرے والدین پر کی ہے، اور یہ کہ میں ایسے نیک عمل کروں جس سے تو راضی ہو۔',
     source: 'An-Naml 27:19',
+    translations: {
+      'en': 'My Lord, enable me to be grateful for Your favour which You have bestowed upon me and upon my parents, and to do righteousness of which You approve.',
+      'es': 'Señor mío, permíteme ser agradecido por Tu favor que me has concedido a mí y a mis padres, y que obre con rectitud de la que Tú estés complacido.',
+      'ur': 'اے میرے رب! مجھے توفیق دے کہ میں تیری اس نعمت کا شکر ادا کروں جو تو نے مجھ پر اور میرے والدین پر کی ہے، اور یہ کہ میں ایسے نیک عمل کروں جس سے تو راضی ہو۔',
+          'fr': 'Mon Seigneur, permets-moi d\'être reconnaissant pour Ta faveur que Tu m\'as accordée, ainsi qu\'à mes parents, et d\'accomplir de bonnes œuvres qui Te satisfont.',
+      'id': 'Ya Tuhanku, berilah aku ilham untuk tetap mensyukuri nikmat-Mu yang telah Engkau anugerahkan kepadaku dan kepada kedua orang tuaku, dan agar aku dapat beramal saleh yang Engkau ridhai.',
+      'zh': '我的主啊，求你启示我感谢你赐予我和我父母的恩典，并使我做你所喜悦的善事。',
+      'ja': '我が主よ、私と私の両親にお与えくださった御恵みに感謝できるよう、そしてあなたがお喜びになる正しい行いができるよう、私を導いてください。',
+      'bn': 'হে আমার প্রতিপালক! আমাকে অনুপ্রাণিত করো যেন আমি তোমার সেই অনুগ্রহের শোকর করি যা তুমি আমাকে ও আমার পিতামাতাকে দান করেছ, এবং যেন আমি এমন সৎকাজ করি যাতে তুমি সন্তুষ্ট হও।',
+      'tr': 'Rabbim! Bana ve ana-babama verdiğin nimete şükretmemi ve senin razı olacağın salih amel işlememi nasip et.',
+      'sw': 'Mola wangu Mlezi, niwezeshe nishukuru neema yako uliyonineemesha mimi na wazazi wangu, na nifanye matendo mema unayoyaridhia.',
+      'de': 'Mein Herr, befähige mich, dankbar zu sein für Deine Gunst, die Du mir und meinen Eltern erwiesen hast, und Rechtes zu tun, das Dir gefällt.',
+      'nl': 'Mijn Heer, stel mij in staat dankbaar te zijn voor Uw gunst die U mij en mijn ouders hebt geschonken, en goed te doen dat U behaagt.',
+      'pt': 'Senhor meu, capacita-me a ser grato pelo Teu favor que concedeste a mim e aos meus pais, e a fazer o bem que Te agrade.',
+      'it': 'Signore mio, permettimi di essere grato per il Tuo favore che hai concesso a me e ai miei genitori, e di compiere il bene di cui Ti compiaci.',
+},
   ),
   CategorizedDua(
     category: 'gratitude',
     arabic: 'اللَّهُمَّ لَكَ الْحَمْدُ كُلُّهُ\nوَلَكَ الشُّكْرُ كُلُّهُ',
     transliteration:
         'Allahumma lakal-hamdu kulluhu\nwa lakashshukru kulluhu',
-    translation:
-        'O Allah, all praise belongs to You, and all thanks belong to You.',
-    translationEs:
-        'Oh Allah, Tuya es toda la alabanza y Tuyo es todo el agradecimiento.',
-    translationUr:
-        'اے اللہ! ساری تعریف تیرے ہی لیے ہے اور سارا شکر تیرے ہی لیے ہے۔',
     source: 'Ahmad 17311',
+    translations: {
+      'en': 'O Allah, all praise belongs to You, and all thanks belong to You.',
+      'es': 'Oh Allah, Tuya es toda la alabanza y Tuyo es todo el agradecimiento.',
+      'ur': 'اے اللہ! ساری تعریف تیرے ہی لیے ہے اور سارا شکر تیرے ہی لیے ہے۔',
+          'fr': 'Ô Allah, à Toi toute la louange, et à Toi tout le remerciement.',
+      'id': 'Ya Allah, bagi-Mu segala puji, dan bagi-Mu segala syukur.',
+      'zh': '主啊，一切赞美都归于你，一切感谢都归于你。',
+      'ja': 'アッラーよ、すべての讃美はあなたのもの、すべての感謝はあなたのものです。',
+      'bn': 'হে আল্লাহ! সমস্ত প্রশংসা তোমারই এবং সমস্ত কৃতজ্ঞতা তোমারই।',
+      'tr': 'Allah\'ım! Hamdin tamamı sanadır, şükrün tamamı sanadır.',
+      'sw': 'Ee Mwenyezi Mungu, sifa zote ni zako, na shukrani zote ni zako.',
+      'de': 'O Allah, Dir gebührt alles Lob, und Dir gebührt aller Dank.',
+      'nl': 'O Allah, alle lof behoort aan U, en alle dank behoort aan U.',
+      'pt': 'Ó Allah, todo o louvor é Teu, e todo o agradecimento é Teu.',
+      'it': 'O Allah, a Te appartiene ogni lode, e a Te appartiene ogni ringraziamento.',
+},
   ),
   CategorizedDua(
     category: 'gratitude',
     arabic: 'الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ',
-    transliteration: 'Alhamdu lillahi \'ala kulli hal',
-    translation: 'Praise be to Allah in all circumstances.',
-    translationEs: 'Alabado sea Allah en toda circunstancia.',
-    translationUr: 'ہر حال میں اللہ کی تعریف ہے۔',
+    transliteration:
+        'Alhamdu lillahi \'ala kulli hal',
     source: 'Ibn Majah 3800',
+    translations: {
+      'en': 'Praise be to Allah in all circumstances.',
+      'es': 'Alabado sea Allah en toda circunstancia.',
+      'ur': 'ہر حال میں اللہ کی تعریف ہے۔',
+          'fr': 'Louange à Allah en toutes circonstances.',
+      'id': 'Segala puji bagi Allah dalam segala keadaan.',
+      'zh': '无论何种境遇，都赞美真主。',
+      'ja': 'いかなる状況においてもアッラーに讃美あれ。',
+      'bn': 'সকল অবস্থায় আল্লাহর প্রশংসা।',
+      'tr': 'Her halükârda Allah\'a hamd olsun.',
+      'sw': 'Sifa ni za Mwenyezi Mungu katika hali zote.',
+      'de': 'Lob sei Allah unter allen Umständen.',
+      'nl': 'Lof aan Allah onder alle omstandigheden.',
+      'pt': 'Louvado seja Allah em todas as circunstâncias.',
+      'it': 'Lode ad Allah in ogni circostanza.',
+},
   ),
 ];
 
@@ -544,65 +931,115 @@ const _protection = [
     arabic: 'أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ\nمِنَ الشَّيْطَانِ الرَّجِيمِ',
     transliteration:
         'A\'udhu billahis-Sami\'il-\'Alim\nminas-shayтanir-rajim',
-    translation:
-        'I seek refuge with Allah, the All-Hearing, All-Knowing, from the accursed Shaitan.',
-    translationEs:
-        'Busco refugio en Allah, el Oyente, el Conocedor, del maldito Shaitán.',
-    translationUr:
-        'میں اللہ سننے والے، جاننے والے کی پناہ میں آتا ہوں شیطان مردود سے۔',
     source: 'Abu Dawud 775',
+    translations: {
+      'en': 'I seek refuge with Allah, the All-Hearing, All-Knowing, from the accursed Shaitan.',
+      'es': 'Busco refugio en Allah, el Oyente, el Conocedor, del maldito Shaitán.',
+      'ur': 'میں اللہ سننے والے، جاننے والے کی پناہ میں آتا ہوں شیطان مردود سے۔',
+          'fr': 'Je cherche refuge auprès d\'Allah, l\'Audient, l\'Omniscient, contre le maudit Satan.',
+      'id': 'Aku berlindung kepada Allah Yang Maha Mendengar, Maha Mengetahui, dari setan yang terkutuk.',
+      'zh': '我向全闻全知的真主求庇护，免遭被诅咒的撒旦。',
+      'ja': '全聴にして全知なるアッラーに、呪われたシャイターンから避難を求めます。',
+      'bn': 'আমি সর্বশ্রোতা, সর্বজ্ঞ আল্লাহর কাছে অভিশপ্ত শয়তান থেকে আশ্রয় প্রার্থনা করি।',
+      'tr': 'İşiten, bilen Allah\'a, kovulmuş şeytandan sığınırım.',
+      'sw': 'Najikinga kwa Mwenyezi Mungu, Msikizi, Mjuzi, kutokana na Shetani aliyelaaniwa.',
+      'de': 'Ich suche Schutz bei Allah, dem Allhörenden, Allwissenden, vor dem verfluchten Satan.',
+      'nl': 'Ik zoek bescherming bij Allah, de Alhorende, de Alwetende, tegen de vervloekte Satan.',
+      'pt': 'Busco refúgio em Allah, o Oniouvinte, o Onisciente, do maldito Satanás.',
+      'it': 'Cerco rifugio in Allah, l\'Audiente, il Sapiente, dal maledetto Satana.',
+},
   ),
   CategorizedDua(
     category: 'protection',
     arabic: 'اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ\nوَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي\nوَمِنْ فَوْقِي',
     transliteration:
         'Allahumma-hfazni min bayni yadayya\nwa min khalfi wa \'an yamini wa \'an shimali\nwa min fawqi',
-    translation:
-        'O Allah, guard me from my front and from behind me, from my right and from my left, and from above me.',
-    translationEs:
-        'Oh Allah, protégeme de mi frente y de mi espalda, de mi derecha y de mi izquierda, y de encima de mí.',
-    translationUr:
-        'اے اللہ! میری حفاظت فرما میرے آگے سے اور میرے پیچھے سے، میرے دائیں اور میرے بائیں سے اور میرے اوپر سے۔',
     source: 'Abu Dawud 5074',
+    translations: {
+      'en': 'O Allah, guard me from my front and from behind me, from my right and from my left, and from above me.',
+      'es': 'Oh Allah, protégeme de mi frente y de mi espalda, de mi derecha y de mi izquierda, y de encima de mí.',
+      'ur': 'اے اللہ! میری حفاظت فرما میرے آگے سے اور میرے پیچھے سے، میرے دائیں اور میرے بائیں سے اور میرے اوپر سے۔',
+          'fr': 'Ô Allah, protège-moi de devant moi et de derrière moi, de ma droite et de ma gauche, et d\'au-dessus de moi.',
+      'id': 'Ya Allah, jagalah aku dari arah depanku, dari belakangku, dari kananku, dari kiriku, dan dari atasku.',
+      'zh': '主啊，求你保护我，从我的前方、后方、右方、左方，以及我的上方。',
+      'ja': 'アッラーよ、私の前から、後ろから、右から、左から、そして上から私を守ってください。',
+      'bn': 'হে আল্লাহ! আমাকে আমার সামনে থেকে, পেছন থেকে, ডান থেকে, বাম থেকে এবং উপর থেকে হেফাজত করো।',
+      'tr': 'Allah\'ım! Beni önümden, arkamdan, sağımdan, solumdan ve üstümden koru.',
+      'sw': 'Ee Mwenyezi Mungu, nilinde mbele yangu, nyuma yangu, kuliani kwangu, kushotoni kwangu, na juu yangu.',
+      'de': 'O Allah, bewahre mich von vorne und von hinten, von meiner Rechten und meiner Linken, und von oben.',
+      'nl': 'O Allah, behoed mij van voren en van achteren, van mijn rechterkant en mijn linkerkant, en van boven mij.',
+      'pt': 'Ó Allah, guarda-me da minha frente e de detrás de mim, da minha direita e da minha esquerda, e de cima de mim.',
+      'it': 'O Allah, proteggimi davanti a me e dietro di me, dalla mia destra e dalla mia sinistra, e dall\'alto su di me.',
+},
   ),
   CategorizedDua(
     category: 'protection',
     arabic: 'بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ\nفِي الْأَرْضِ وَلَا فِي السَّمَاءِ',
     transliteration:
         'Bismillahil-ladhi la yadurru ma\'a ismihi shay\'un\nfil-ardi wa la fis-sama\'',
-    translation:
-        'In the name of Allah, with Whose name nothing on earth or in heaven can cause harm.',
-    translationEs:
-        'En el nombre de Allah, con cuyo nombre nada en la tierra ni en el cielo puede causar daño.',
-    translationUr:
-        'اللہ کے نام سے، جس کے نام کے ساتھ زمین و آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی۔',
     source: 'Tirmidhi 3388',
+    translations: {
+      'en': 'In the name of Allah, with Whose name nothing on earth or in heaven can cause harm.',
+      'es': 'En el nombre de Allah, con cuyo nombre nada en la tierra ni en el cielo puede causar daño.',
+      'ur': 'اللہ کے نام سے، جس کے نام کے ساتھ زمین و آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی۔',
+          'fr': 'Au nom d\'Allah, par le nom de qui rien sur terre ni dans le ciel ne peut causer de mal.',
+      'id': 'Dengan nama Allah, yang dengan nama-Nya tidak ada sesuatu pun di bumi atau di langit yang dapat menyebabkan kerugian.',
+      'zh': '以真主之名，凭借他的名，地上和天上的任何东西都不能造成伤害。',
+      'ja': 'アッラーの御名において。その御名があれば地にも天にも害を及ぼすものはありません。',
+      'bn': 'আল্লাহর নামে, যাঁর নামের সাথে পৃথিবীতে বা আকাশে কোনো কিছুই ক্ষতি করতে পারে না।',
+      'tr': 'İsmiyle yerde ve gökte hiçbir şeyin zarar veremeyeceği Allah\'ın adıyla.',
+      'sw': 'Kwa jina la Mwenyezi Mungu ambaye kwa jina lake hapana kitu katika ardhi wala mbinguni chenye kudhuru.',
+      'de': 'Im Namen Allahs, durch dessen Namen nichts auf Erden oder im Himmel Schaden anrichten kann.',
+      'nl': 'In de naam van Allah, door wiens naam niets op aarde of in de hemel kan schaden.',
+      'pt': 'Em nome de Allah, com cujo nome nada na terra ou no céu pode causar dano.',
+      'it': 'Nel nome di Allah, con il cui nome nulla sulla terra o nel cielo può nuocere.',
+},
   ),
   CategorizedDua(
     category: 'protection',
     arabic: 'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ\nمِنْ شَرِّ مَا عَمِلْتُ\nوَمِنْ شَرِّ مَا لَمْ أَعْمَلْ',
     transliteration:
         'Allahumma inni a\'udhu bika\nmin sharri ma \'amiltu\nwa min sharri ma lam a\'mal',
-    translation:
-        'O Allah, I seek refuge in You from the evil of what I have done and the evil of what I have not done.',
-    translationEs:
-        'Oh Allah, busco refugio en Ti del mal de lo que he hecho y del mal de lo que no he hecho.',
-    translationUr:
-        'اے اللہ! میں اس کے شر سے تیری پناہ مانگتا ہوں جو میں نے کیا اور اس کے شر سے بھی جو میں نے نہیں کیا۔',
     source: 'Muslim 2716',
+    translations: {
+      'en': 'O Allah, I seek refuge in You from the evil of what I have done and the evil of what I have not done.',
+      'es': 'Oh Allah, busco refugio en Ti del mal de lo que he hecho y del mal de lo que no he hecho.',
+      'ur': 'اے اللہ! میں اس کے شر سے تیری پناہ مانگتا ہوں جو میں نے کیا اور اس کے شر سے بھی جو میں نے نہیں کیا۔',
+          'fr': 'Ô Allah, je cherche refuge auprès de Toi contre le mal de ce que j\'ai fait et le mal de ce que je n\'ai pas fait.',
+      'id': 'Ya Allah, aku berlindung kepada-Mu dari kejahatan apa yang telah aku perbuat dan kejahatan apa yang belum aku perbuat.',
+      'zh': '主啊，我向你求庇护，免遭我所做的邪恶和我未做的邪恶。',
+      'ja': 'アッラーよ、私はあなたに、私が行ったことの悪と、私が行わなかったことの悪からの避難を求めます。',
+      'bn': 'হে আল্লাহ! আমি তোমার কাছে আমার কৃত কাজের অনিষ্ট থেকে এবং আমার অকৃত কাজের অনিষ্ট থেকে আশ্রয় চাই।',
+      'tr': 'Allah\'ım! Yaptığım işin kötülüğünden ve yapmadığım işin kötülüğünden sana sığınırım.',
+      'sw': 'Ee Mwenyezi Mungu, najikinga kwako kutokana na uovu wa nilichokitenda na uovu wa nisichokitenda.',
+      'de': 'O Allah, ich suche Schutz bei Dir vor dem Übel dessen, was ich getan habe, und dem Übel dessen, was ich nicht getan habe.',
+      'nl': 'O Allah, ik zoek bescherming bij U tegen het kwaad van wat ik heb gedaan en het kwaad van wat ik niet heb gedaan.',
+      'pt': 'Ó Allah, busco refúgio em Ti do mal que fiz e do mal que não fiz.',
+      'it': 'O Allah, cerco rifugio in Te dal male di ciò che ho fatto e dal male di ciò che non ho fatto.',
+},
   ),
   CategorizedDua(
     category: 'protection',
     arabic: 'اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ\nفِي الدُّنْيَا وَالآخِرَةِ',
     transliteration:
         'Allahumma inni as\'aluka al-\'afwa wal-\'afiyah\nfid-dunya wal-akhirah',
-    translation:
-        'O Allah, I ask You for pardon and well-being in this world and the next.',
-    translationEs:
-        'Oh Allah, te pido perdón y bienestar en esta vida y en la otra.',
-    translationUr:
-        'اے اللہ! میں تجھ سے دنیا اور آخرت میں عفو اور عافیت کا سوال کرتا ہوں۔',
     source: 'Ibn Majah 3871',
+    translations: {
+      'en': 'O Allah, I ask You for pardon and well-being in this world and the next.',
+      'es': 'Oh Allah, te pido perdón y bienestar en esta vida y en la otra.',
+      'ur': 'اے اللہ! میں تجھ سے دنیا اور آخرت میں عفو اور عافیت کا سوال کرتا ہوں۔',
+          'fr': 'Ô Allah, je Te demande le pardon et le bien-être dans cette vie et dans l\'autre.',
+      'id': 'Ya Allah, aku memohon kepada-Mu ampunan dan keselamatan di dunia dan akhirat.',
+      'zh': '主啊，我求你在今世和后世赐予我饶恕与平安。',
+      'ja': 'アッラーよ、この世とあの世における寛恕と健康をあなたに願います。',
+      'bn': 'হে আল্লাহ! আমি তোমার কাছে দুনিয়া ও আখিরাতে ক্ষমা ও নিরাপত্তা চাই।',
+      'tr': 'Allah\'ım! Senden dünyada ve ahirette bağışlanma ve afiyet dilerim.',
+      'sw': 'Ee Mwenyezi Mungu, nakuomba msamaha na uzima katika dunia hii na ya akhera.',
+      'de': 'O Allah, ich bitte Dich um Verzeihung und Wohlergehen in dieser Welt und im Jenseits.',
+      'nl': 'O Allah, ik vraag U om vergeving en welzijn in dit leven en het volgende.',
+      'pt': 'Ó Allah, peço-Te perdão e bem-estar nesta vida e na próxima.',
+      'it': 'O Allah, Ti chiedo perdono e benessere in questa vita e nell\'altra.',
+},
   ),
 ];
 
@@ -612,51 +1049,92 @@ const _family = [
     arabic: 'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ\nوَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
     transliteration:
         'Rabbana hab lana min azwajina wa dhurriyyatina qurrata a\'yun\nwaj\'alna lil-muttaqina imama',
-    translation:
-        'Our Lord, grant us from among our wives and offspring comfort to our eyes, and make us a leader for the righteous.',
-    translationEs:
-        'Señor nuestro, concédenos de nuestras esposas y descendencia consuelo para nuestros ojos, y haznos guía para los piadosos.',
-    translationUr:
-        'اے ہمارے رب! ہمیں ہماری بیویوں اور اولاد کی طرف سے آنکھوں کی ٹھنڈک عطا فرما اور ہمیں پرہیزگاروں کا امام بنا۔',
     source: 'Al-Furqan 25:74',
+    translations: {
+      'en': 'Our Lord, grant us from among our wives and offspring comfort to our eyes, and make us a leader for the righteous.',
+      'es': 'Señor nuestro, concédenos de nuestras esposas y descendencia consuelo para nuestros ojos, y haznos guía para los piadosos.',
+      'ur': 'اے ہمارے رب! ہمیں ہماری بیویوں اور اولاد کی طرف سے آنکھوں کی ٹھنڈک عطا فرما اور ہمیں پرہیزگاروں کا امام بنا۔',
+          'fr': 'Notre Seigneur, accorde-nous, en nos épouses et nos descendants, une source de joie pour nos yeux, et fais de nous un modèle pour les pieux.',
+      'id': 'Wahai Tuhan kami, anugerahkanlah kepada kami pasangan dan keturunan kami sebagai penyenang hati, dan jadikanlah kami pemimpin bagi orang-orang yang bertakwa.',
+      'zh': '我们的主啊，求你以我们的妻子和后代使我们眼目愉悦，求你使我们成为敬畏者的领袖。',
+      'ja': '我らの主よ、わが配偶者と子孫を、わが目の慰めとし、われらを敬虔な者たちの導き手としてください。',
+      'bn': 'হে আমাদের প্রতিপালক! আমাদের স্ত্রী ও সন্তানদের থেকে আমাদের চক্ষু শীতলকারী উপহার দাও এবং আমাদেরকে মুত্তাকীদের জন্য আদর্শ বানাও।',
+      'tr': 'Rabbimiz! Eşlerimizden ve neslimizden gözümüze sevinç olacak kimseler ver ve bizi takva sahiplerine önder yap.',
+      'sw': 'Mola wetu Mlezi, tupe katika wake zetu na vizazi vyetu yenye kutuliza macho, na utufanye kuwa waongozi wa wachamungu.',
+      'de': 'Unser Herr, schenke uns von unseren Frauen und Nachkommen Trost für die Augen, und mache uns zu einem Vorbild für die Gottesfürchtigen.',
+      'nl': 'Onze Heer, schenk ons uit onze echtgenotes en kinderen een verkoeling voor de ogen, en maak ons tot een voorbeeld voor de godvrezenden.',
+      'pt': 'Senhor nosso, concede-nos de nossas esposas e descendência um conforto para os olhos, e faze de nós um líder para os piedosos.',
+      'it': 'Signore nostro, concedici dalle nostre spose e dalla nostra progenie una gioia per gli occhi, e facci essere una guida per i timorati.',
+},
   ),
   CategorizedDua(
     category: 'family',
     arabic: 'رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ\nوَمِنْ ذُرِّيَّتِي رَبَّنَا وَتَقَبَّلْ دُعَاءِ',
     transliteration:
         'Rabbi-j\'alni muqimas-salati wa min dhurriyyati\nRabbana wa taqabbal du\'a\'',
-    translation:
-        'My Lord, make me an establisher of prayer, and my descendants. Our Lord, accept my supplication.',
-    translationEs:
-        'Señor mío, hazme de los que cumplen la oración, y también a mi descendencia. Señor nuestro, acepta mi súplica.',
-    translationUr:
-        'اے میرے رب! مجھے نماز قائم کرنے والا بنا اور میری اولاد کو بھی۔ اے ہمارے رب! میری دعا قبول فرما۔',
     source: 'Ibrahim 14:40',
+    translations: {
+      'en': 'My Lord, make me an establisher of prayer, and my descendants. Our Lord, accept my supplication.',
+      'es': 'Señor mío, hazme de los que cumplen la oración, y también a mi descendencia. Señor nuestro, acepta mi súplica.',
+      'ur': 'اے میرے رب! مجھے نماز قائم کرنے والا بنا اور میری اولاد کو بھی۔ اے ہمارے رب! میری دعا قبول فرما۔',
+          'fr': 'Mon Seigneur, fais de moi celui qui accomplit la prière, ainsi que ma descendance. Notre Seigneur, accepte ma supplication.',
+      'id': 'Ya Tuhanku, jadikanlah aku orang yang menegakkan shalat, demikian pula keturunanku. Ya Tuhan kami, terimalah doaku.',
+      'zh': '我的主啊，求你使我成为坚持礼拜的人，也使我的后代如此。我们的主啊，求你接受我的祈祷。',
+      'ja': '我が主よ、私を礼拝を確立する者とし、私の子孫もそうしてください。我らの主よ、わが祈願を受け入れてください。',
+      'bn': 'হে আমার প্রতিপালক! আমাকে নামাজ কায়েমকারী বানাও এবং আমার সন্তানদেরও। হে আমাদের প্রতিপালক! আমার দোয়া কবুল করো।',
+      'tr': 'Rabbim! Beni namazı dosdoğru kılan biri yap, neslimi de. Rabbimiz! Duamı kabul et.',
+      'sw': 'Mola wangu Mlezi, nifanye miongoni mwa wanaosimamisha sala, na katika kizazi changu. Mola wetu Mlezi, ukubali dua yangu.',
+      'de': 'Mein Herr, mache mich zu einem, der das Gebet verrichtet, und auch meine Nachkommen. Unser Herr, nimm mein Gebet an.',
+      'nl': 'Mijn Heer, maak mij tot iemand die het gebed onderhoudt, en ook mijn nageslacht. Onze Heer, aanvaard mijn smeekbede.',
+      'pt': 'Senhor meu, faze de mim alguém que estabelece a oração, e também a minha descendência. Senhor nosso, aceita minha súplica.',
+      'it': 'Signore mio, fammi essere uno che osserva la preghiera, e anche la mia progenie. Signore nostro, accetta la mia supplica.',
+},
   ),
   CategorizedDua(
     category: 'family',
     arabic: 'رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا',
-    transliteration: 'Rabbi-rhamhuma kama rabbayani saghira',
-    translation:
-        'My Lord, have mercy upon them as they brought me up when I was small.',
-    translationEs:
-        'Señor mío, ten misericordia de ellos como ellos me criaron cuando era pequeño.',
-    translationUr:
-        'اے میرے رب! ان دونوں پر رحم فرما جیسا کہ انہوں نے بچپن میں میری پرورش کی۔',
+    transliteration:
+        'Rabbi-rhamhuma kama rabbayani saghira',
     source: 'Al-Isra 17:24',
+    translations: {
+      'en': 'My Lord, have mercy upon them as they brought me up when I was small.',
+      'es': 'Señor mío, ten misericordia de ellos como ellos me criaron cuando era pequeño.',
+      'ur': 'اے میرے رب! ان دونوں پر رحم فرما جیسا کہ انہوں نے بچپن میں میری پرورش کی۔',
+          'fr': 'Mon Seigneur, fais-leur miséricorde comme ils m\'ont élevé quand j\'étais petit.',
+      'id': 'Ya Tuhanku, kasihilah mereka berdua sebagaimana mereka berdua telah mendidikku sewaktu kecil.',
+      'zh': '我的主啊，求你怜悯他们俩，就像他们俩在我幼小时养育我那样。',
+      'ja': '我が主よ、私が幼かった頃に私を育ててくれたように、彼ら二人に慈悲をお与えください。',
+      'bn': 'হে আমার প্রতিপালক! তাদের প্রতি দয়া করো যেমন তারা আমাকে শৈশবে প্রতিপালন করেছেন।',
+      'tr': 'Rabbim! Onlar beni küçükken yetiştirdikleri gibi sen de onlara merhamet et.',
+      'sw': 'Mola wangu Mlezi, niwarehemu kama walivyonilea utotoni mwangu.',
+      'de': 'Mein Herr, erbarme Dich ihrer, wie sie mich aufgezogen haben, als ich klein war.',
+      'nl': 'Mijn Heer, ontferm U over hen zoals zij mij hebben opgevoed toen ik klein was.',
+      'pt': 'Senhor meu, tem misericórdia deles como eles me criaram quando eu era pequeno.',
+      'it': 'Signore mio, abbi misericordia di loro come essi mi hanno cresciuto quando ero piccolo.',
+},
   ),
   CategorizedDua(
     category: 'family',
     arabic: 'رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ\nوَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ',
     transliteration:
         'Rabbana-ghfir li wa liwalidayya\nwa lil-mu\'minina yawma yaqumul-hisab',
-    translation:
-        'Our Lord, forgive me and my parents and the believers the Day the account is established.',
-    translationEs:
-        'Señor nuestro, perdóname a mí, a mis padres y a los creyentes el Día en que se establezca la cuenta.',
-    translationUr:
-        'اے ہمارے رب! مجھے اور میرے والدین کو اور تمام مومنوں کو اس دن بخش دے جس دن حساب قائم ہوگا۔',
     source: 'Ibrahim 14:41',
+    translations: {
+      'en': 'Our Lord, forgive me and my parents and the believers the Day the account is established.',
+      'es': 'Señor nuestro, perdóname a mí, a mis padres y a los creyentes el Día en que se establezca la cuenta.',
+      'ur': 'اے ہمارے رب! مجھے اور میرے والدین کو اور تمام مومنوں کو اس دن بخش دے جس دن حساب قائم ہوگا۔',
+          'fr': 'Notre Seigneur, pardonne-moi, à mes parents et aux croyants, le Jour où sera établi le compte.',
+      'id': 'Ya Tuhan kami, ampunilah aku dan kedua orang tuaku serta orang-orang yang beriman pada hari diadakannya hisab.',
+      'zh': '我们的主啊，求你在清算之日饶恕我和我的父母以及信士们。',
+      'ja': '我らの主よ、清算の日に、私と私の両親と信者たちをお赦しください。',
+      'bn': 'হে আমাদের প্রতিপালক! যেদিন হিসাব প্রতিষ্ঠিত হবে, সেদিন আমাকে, আমার পিতামাতাকে এবং মুমিনদের ক্ষমা করো।',
+      'tr': 'Rabbimiz! Hesabın görüleceği gün beni, ana-babamı ve müminleri bağışla.',
+      'sw': 'Mola wetu Mlezi, unisamehe mimi na wazazi wangu na waumini siku hesabu itakaposimamishwa.',
+      'de': 'Unser Herr, vergib mir und meinen Eltern und den Gläubigen an dem Tag, an dem die Abrechnung stattfindet.',
+      'nl': 'Onze Heer, vergeef mij en mijn ouders en de gelovigen op de Dag waarop de afrekening plaatsvindt.',
+      'pt': 'Senhor nosso, perdoa-me a mim, aos meus pais e aos crentes no Dia em que se estabelecer a prestação de contas.',
+      'it': 'Signore nostro, perdona me, i miei genitori e i credenti nel Giorno in cui si terrà il rendiconto.',
+},
   ),
 ];
 
@@ -666,63 +1144,115 @@ const _forgiveness = [
     arabic: 'اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ\nدِقَّهُ وَجِلَّهُ وَأَوَّلَهُ وَآخِرَهُ',
     transliteration:
         'Allahumma-ghfir li dhanbi kullahu,\ndaqqahu wa jallahu wa awwalahu wa akhirah',
-    translation:
-        'O Allah, forgive me all my sins, the small and the great, the first and the last.',
-    translationEs:
-        'Oh Allah, perdona todos mis pecados, los pequeños y los grandes, los primeros y los últimos.',
-    translationUr:
-        'اے اللہ! میرے تمام گناہ معاف فرما، چھوٹے اور بڑے، پہلے اور آخری۔',
     source: 'Muslim 483',
+    translations: {
+      'en': 'O Allah, forgive me all my sins, the small and the great, the first and the last.',
+      'es': 'Oh Allah, perdona todos mis pecados, los pequeños y los grandes, los primeros y los últimos.',
+      'ur': 'اے اللہ! میرے تمام گناہ معاف فرما، چھوٹے اور بڑے، پہلے اور آخری۔',
+          'fr': 'Ô Allah, pardonne-moi tous mes péchés, les petits et les grands, les premiers et les derniers.',
+      'id': 'Ya Allah, ampunilah seluruh dosaku, yang kecil dan yang besar, yang pertama dan yang terakhir.',
+      'zh': '主啊，求你饶恕我所有的罪过，无论大小，无论先后。',
+      'ja': 'アッラーよ、私のすべての罪を、小さきものも大きなものも、最初のものも最後のものも、お赦しください。',
+      'bn': 'হে আল্লাহ! আমার সমস্ত গুনাহ ক্ষমা করো, ছোট ও বড়, প্রথম ও শেষ।',
+      'tr': 'Allah\'ım! Küçük ve büyük, ilk ve son bütün günahlarımı bağışla.',
+      'sw': 'Ee Mwenyezi Mungu, nisamehe dhambi zangu zote, ndogo na kubwa, za mwanzo na za mwisho.',
+      'de': 'O Allah, vergib mir all meine Sünden, die kleinen und die großen, die ersten und die letzten.',
+      'nl': 'O Allah, vergeef mij al mijn zonden, de kleine en de grote, de eerste en de laatste.',
+      'pt': 'Ó Allah, perdoa todos os meus pecados, os pequenos e os grandes, os primeiros e os últimos.',
+      'it': 'O Allah, perdona tutti i miei peccati, i piccoli e i grandi, i primi e gli ultimi.',
+},
   ),
   CategorizedDua(
     category: 'forgiveness',
     arabic: 'أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ\nالَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ',
     transliteration:
         'Astaghfirullaha al-\'Azima\nalladhi la ilaha illa Huwal-Hayyul-Qayyumu wa atubu ilaYH',
-    translation:
-        'I seek forgiveness of Allah, the Magnificent, besides Whom none has the right to be worshipped, the Ever-Living, the Self-Sustaining, and I repent to Him.',
-    translationEs:
-        'Pido perdón a Allah, el Magnífico, fuera de Quien nadie merece ser adorado, el Viviente, el Sustentador, y a Él me arrepiento.',
-    translationUr:
-        'میں اللہ عظیم سے بخشش مانگتا ہوں جس کے سوا کوئی معبود نہیں، وہ ہمیشہ زندہ رہنے والا اور سب کو قائم رکھنے والا ہے، اور میں اسی کی طرف توبہ کرتا ہوں۔',
     source: 'Abu Dawud 1517 / Tirmidhi 3577',
+    translations: {
+      'en': 'I seek forgiveness of Allah, the Magnificent, besides Whom none has the right to be worshipped, the Ever-Living, the Self-Sustaining, and I repent to Him.',
+      'es': 'Pido perdón a Allah, el Magnífico, fuera de Quien nadie merece ser adorado, el Viviente, el Sustentador, y a Él me arrepiento.',
+      'ur': 'میں اللہ عظیم سے بخشش مانگتا ہوں جس کے سوا کوئی معبود نہیں، وہ ہمیشہ زندہ رہنے والا اور سب کو قائم رکھنے والا ہے، اور میں اسی کی طرف توبہ کرتا ہوں۔',
+          'fr': 'Je demande pardon à Allah, le Magnifique, en dehors de qui nul n\'a le droit d\'être adoré, le Vivant, le Subsistant par Lui-même, et je me repens à Lui.',
+      'id': 'Aku memohon ampun kepada Allah Yang Maha Agung, yang tidak ada sesembahan yang berhak disembah selain Dia, Yang Maha Hidup, Yang Maha Berdiri Sendiri, dan aku bertaubat kepada-Nya.',
+      'zh': '我向至大的真主求恕，除他外绝无应受崇拜者，永生者，自立者，我向他悔过。',
+      'ja': '至高なるアッラーに赦しを求めます。彼の他に崇拝される権利を持つ者はおらず、永生者、自存者であられます。私は彼に悔悟いたします。',
+      'bn': 'আমি মহান আল্লাহর কাছে ক্ষমা প্রার্থনা করি, যিনি ব্যতীত কারো ইবাদত পাওয়ার অধিকার নেই, যিনি চিরঞ্জীব, চিরস্থায়ী, এবং আমি তাঁরই কাছে তওবা করি।',
+      'tr': 'Kendisinden başka ibadete layık ilah olmayan, diri ve her şeyi ayakta tutan büyük Allah\'tan bağışlanma dilerim ve O\'na tövbe ederim.',
+      'sw': 'Namwomba msamaha Mwenyezi Mungu Mtukufu, ambaye pasipo Yeye hapana yeyote anayestahili kuabudiwa, Aliye Hai, Ajitegemeaye, na ninatubu kwake.',
+      'de': 'Ich bitte Allah, den Erhabenen, um Verzeihung, außer Dem niemand das Recht hat, angebetet zu werden, den Ewig-Lebenden, den Beständigen, und ich kehre reumütig zu Ihm zurück.',
+      'nl': 'Ik vraag Allah, de Verhevene, om vergeving, naast Wie niemand het recht heeft aanbeden te worden, de Levende, de Onderhoudende, en ik keer berouwvol tot Hem terug.',
+      'pt': 'Peço perdão a Allah, o Magnífico, além de Quem ninguém tem o direito de ser adorado, o Vivente, o Subsistente, e a Ele me arrependo.',
+      'it': 'Chiedo perdono ad Allah, il Magnifico, oltre il Quale nessuno ha il diritto di essere adorato, il Vivente, il Sussistente, e a Lui mi pento.',
+},
   ),
   CategorizedDua(
     category: 'forgiveness',
     arabic: 'رَبَّنَا ظَلَمْنَا أَنْفُسَنَا\nوَإِنْ لَمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا\nلَنَكُونَنَّ مِنَ الْخَاسِرِينَ',
     transliteration:
         'Rabbana zalamna anfusana\nwa in lam taghfir lana wa tarhamna\nlanakununna minal-khassirin',
-    translation:
-        'Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers.',
-    translationEs:
-        'Señor nuestro, nos hemos perjudicado a nosotros mismos, y si no nos perdonas y tienes misericordia de nosotros, ciertamente seremos de los perdedores.',
-    translationUr:
-        'اے ہمارے رب! ہم نے اپنی جانوں پر ظلم کیا، اور اگر تو نے ہمیں نہ بخشا اور ہم پر رحم نہ کیا تو ہم یقیناً نقصان اٹھانے والوں میں سے ہو جائیں گے۔',
     source: 'Al-A\'raf 7:23',
+    translations: {
+      'en': 'Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers.',
+      'es': 'Señor nuestro, nos hemos perjudicado a nosotros mismos, y si no nos perdonas y tienes misericordia de nosotros, ciertamente seremos de los perdedores.',
+      'ur': 'اے ہمارے رب! ہم نے اپنی جانوں پر ظلم کیا، اور اگر تو نے ہمیں نہ بخشا اور ہم پر رحم نہ کیا تو ہم یقیناً نقصان اٹھانے والوں میں سے ہو جائیں گے۔',
+          'fr': 'Notre Seigneur, nous nous sommes fait du tort à nous-mêmes, et si Tu ne nous pardonnes pas et ne nous fais pas miséricorde, nous serons certainement parmi les perdants.',
+      'id': 'Ya Tuhan kami, kami telah menganiaya diri kami sendiri, dan jika Engkau tidak mengampuni kami dan memberi rahmat kepada kami, niscaya kami termasuk orang-orang yang merugi.',
+      'zh': '我们的主啊，我们亏待了自己，如果你不饶恕我们、不怜悯我们，我们必将沦为亏损者。',
+      'ja': '我らの主よ、私たちは自分自身に不義をなしました。もしあなたが私たちを赦さず、慈悲をお与えにならないなら、私たちは必ず失敗者の一人となるでしょう。',
+      'bn': 'হে আমাদের প্রতিপালক! আমরা নিজেদের প্রতি অন্যায় করেছি, এবং যদি তুমি আমাদের ক্ষমা না করো এবং আমাদের প্রতি দয়া না করো, তবে আমরা নিশ্চয় ক্ষতিগ্রস্তদের মধ্যে গণ্য হব।',
+      'tr': 'Rabbimiz! Kendimize zulmettik, eğer bizi bağışlamaz ve bize merhamet etmezsen mutlaka kaybedenlerden oluruz.',
+      'sw': 'Mola wetu Mlezi, tumezidhulumu nafsi zetu, na ikiwa hutusamehe na hutuhurumia, hapana shaka tutakuwa miongoni mwa wenye kuhasirika.',
+      'de': 'Unser Herr, wir haben uns selbst Unrecht zugefügt, und wenn Du uns nicht vergibst und Dich unser erbarmst, werden wir sicherlich zu den Verlierern gehören.',
+      'nl': 'Onze Heer, wij hebben onszelf onrecht aangedaan, en als U ons niet vergeeft en Zich niet over ons ontfermt, zullen wij zeker tot de verliezers behoren.',
+      'pt': 'Senhor nosso, nós nos prejudicamos a nós mesmos, e se Tu não nos perdoares e tiveres misericórdia de nós, certamente seremos dos perdedores.',
+      'it': 'Signore nostro, abbiamo fatto torto a noi stessi, e se non ci perdoni e non hai misericordia di noi, saremo certamente tra i perdenti.',
+},
   ),
   CategorizedDua(
     category: 'forgiveness',
     arabic: 'رَبِّ إِنِّي ظَلَمْتُ نَفْسِي\nفَاغْفِرْ لِي',
     transliteration:
         'Rabbi inni zalamtu nafsi\nfaghfir li',
-    translation: 'My Lord, I have indeed wronged myself, so forgive me.',
-    translationEs:
-        'Señor mío, ciertamente me he perjudicado a mí mismo, así que perdóname.',
-    translationUr: 'اے میرے رب! میں نے اپنی جان پر ظلم کیا، پس مجھے بخش دے۔',
     source: 'Al-Qasas 28:16',
+    translations: {
+      'en': 'My Lord, I have indeed wronged myself, so forgive me.',
+      'es': 'Señor mío, ciertamente me he perjudicado a mí mismo, así que perdóname.',
+      'ur': 'اے میرے رب! میں نے اپنی جان پر ظلم کیا، پس مجھے بخش دے۔',
+          'fr': 'Mon Seigneur, je me suis fait du tort à moi-même, alors pardonne-moi.',
+      'id': 'Ya Tuhanku, sesungguhnya aku telah menganiaya diriku sendiri, maka ampunilah aku.',
+      'zh': '我的主啊，我确已亏待了自己，求你饶恕我。',
+      'ja': '我が主よ、私は確かに自分自身に不義をなしました。どうか私をお赦しください。',
+      'bn': 'হে আমার প্রতিপালক! আমি নিশ্চয় নিজের প্রতি অন্যায় করেছি, তাই আমাকে ক্ষমা করো।',
+      'tr': 'Rabbim! Ben gerçekten kendime zulmettim, beni bağışla.',
+      'sw': 'Mola wangu Mlezi, hakika nimejidhulumu nafsi yangu, basi nisamehe.',
+      'de': 'Mein Herr, ich habe mir selbst Unrecht zugefügt, so vergib mir.',
+      'nl': 'Mijn Heer, ik heb mijzelf inderdaad onrecht aangedaan, vergeef mij dus.',
+      'pt': 'Senhor meu, eu de fato me prejudiquei, então perdoa-me.',
+      'it': 'Signore mio, ho davvero fatto torto a me stesso, perciò perdonami.',
+},
   ),
   CategorizedDua(
     category: 'forgiveness',
     arabic: 'اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ\nفَاعْفُ عَنِّي',
     transliteration:
         'Allahumma innaka \'Afuwwun tuhibbul-\'afwa\nfa\'fu \'anni',
-    translation:
-        'O Allah, You are the Pardoner and You love pardon, so pardon me.',
-    translationEs:
-        'Oh Allah, Tú eres el Perdonador y amas el perdón, así que perdóname.',
-    translationUr:
-        'اے اللہ! بے شک تو معاف کرنے والا ہے اور معافی کو پسند کرتا ہے، پس مجھے معاف فرما۔',
     source: 'Tirmidhi 3513 / Ibn Majah 3850 (Laylatul Qadr dua)',
+    translations: {
+      'en': 'O Allah, You are the Pardoner and You love pardon, so pardon me.',
+      'es': 'Oh Allah, Tú eres el Perdonador y amas el perdón, así que perdóname.',
+      'ur': 'اے اللہ! بے شک تو معاف کرنے والا ہے اور معافی کو پسند کرتا ہے، پس مجھے معاف فرما۔',
+          'fr': 'Ô Allah, Tu es Celui qui pardonne et Tu aimes le pardon, alors pardonne-moi.',
+      'id': 'Ya Allah, Engkau Maha Pengampun dan menyukai ampunan, maka ampunilah aku.',
+      'zh': '主啊，你是宽恕者，你喜爱宽恕，求你宽恕我。',
+      'ja': 'アッラーよ、あなたは寛容なる方であり、寛容を愛されます。どうか私を寛容にしてください。',
+      'bn': 'হে আল্লাহ! তুমি ক্ষমাশীল এবং ক্ষমা পছন্দ করো, তাই আমাকে ক্ষমা করো।',
+      'tr': 'Allah\'ım! Sen çok bağışlayıcısın, bağışlamayı seversin, beni bağışla.',
+      'sw': 'Ee Mwenyezi Mungu, Wewe ni Mwingi wa kusamehe na unapenda kusamehe, basi nisamehe.',
+      'de': 'O Allah, Du bist der Verzeihende und liebst das Verzeihen, so verzeih mir.',
+      'nl': 'O Allah, U bent de Vergevende en U houdt van vergeving, vergeef mij dus.',
+      'pt': 'Ó Allah, Tu és o Perdoador e amas o perdão, então perdoa-me.',
+      'it': 'O Allah, Tu sei il Perdonatore e ami il perdono, perciò perdonami.',
+},
   ),
 ];
 

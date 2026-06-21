@@ -1652,4 +1652,109 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Terminé';
+
+  @override
+  String get testNotificationButton => 'Envoyer une notification test (10 s)';
+
+  @override
+  String get testNotificationSnack =>
+      'La notification test arrivera dans 10 secondes';
+
+  @override
+  String get testLockAlarmButton => 'Tester l\'alarme plein écran (10 s)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'L\'alarme de verrouillage se déclenche dans 10 secondes — verrouillez votre téléphone maintenant';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'Tester l\'adhan dans l\'appli (premier plan)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'Lecture de l\'adhan complet avec une bannière silencieuse';
+
+  @override
+  String get lockScreenSetupGuideButton =>
+      'Guide de configuration des alertes sur écran verrouillé';
+
+  @override
+  String get couldNotOpenPrivacyPolicy =>
+      'Impossible d\'ouvrir la politique de confidentialité';
+
+  @override
+  String get couldNotOpenEmailApp =>
+      'Impossible d\'ouvrir l\'application de messagerie';
+
+  @override
+  String get blockDurationLabel => 'Durée du blocage';
+
+  @override
+  String get privacyAndTrust => 'Confidentialité et confiance';
+
+  @override
+  String get noorGuardMotto =>
+      '\"Si cela n\'a pas sa place dans une mosquée,\ncela n\'a pas sa place dans Noor Guard.\"';
+
+  @override
+  String get openingAppStore => 'Ouverture de l\'App Store…';
+
+  @override
+  String get openingShareSheet => 'Ouverture du menu de partage…';
+
+  @override
+  String get openingSupportEmail => 'Ouverture de l\'e-mail d\'assistance…';
+
+  @override
+  String get openingTermsOfService =>
+      'Ouverture des conditions d\'utilisation…';
+
+  @override
+  String get duration30Min => '30 min';
+
+  @override
+  String get duration1Hour => '1 heure';
+
+  @override
+  String get durationPrayerWindowOnly => 'Fenêtre de prière uniquement';
+
+  @override
+  String get hoursAbbreviation => 'h';
+
+  @override
+  String get cancelTimerButton => 'Annuler la minuterie';
+
+  @override
+  String get custom => 'Personnalisé';
+
+  @override
+  String get customTimerMinutesTitle => 'Minuterie personnalisée (minutes)';
+
+  @override
+  String get customTimerHint => 'ex. 20';
+
+  @override
+  String get cancel => 'Annuler';
+
+  @override
+  String get start => 'Démarrer';
+
+  @override
+  String get travel => 'Voyage';
+
+  @override
+  String get anxietyAndStress => 'Anxiété et stress';
+
+  @override
+  String get gratitude => 'Gratitude';
+
+  @override
+  String get protection => 'Protection';
+
+  @override
+  String get family => 'Famille';
+
+  @override
+  String get forgiveness => 'Pardon';
 }

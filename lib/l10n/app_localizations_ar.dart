@@ -1619,4 +1619,104 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'تم';
+
+  @override
+  String get testNotificationButton => 'إرسال إشعار تجريبي (١٠ ثوانٍ)';
+
+  @override
+  String get testNotificationSnack => 'سيصل الإشعار التجريبي خلال ١٠ ثوانٍ';
+
+  @override
+  String get testLockAlarmButton =>
+      'اختبار تنبيه القفل بكامل الشاشة (١٠ ثوانٍ)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'سينطلق تنبيه القفل خلال ١٠ ثوانٍ — اقفل هاتفك الآن';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'اختبار الأذان داخل التطبيق (أثناء الاستخدام)';
+
+  @override
+  String get testAdhanForegroundSnack => 'تشغيل الأذان كاملاً مع شعار صامت';
+
+  @override
+  String get lockScreenSetupGuideButton => 'دليل إعداد تنبيهات شاشة القفل';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'تعذّر فتح سياسة الخصوصية';
+
+  @override
+  String get couldNotOpenEmailApp => 'تعذّر فتح تطبيق البريد الإلكتروني';
+
+  @override
+  String get blockDurationLabel => 'مدة الحظر';
+
+  @override
+  String get privacyAndTrust => 'الخصوصية والثقة';
+
+  @override
+  String get noorGuardMotto =>
+      '\"إن كان لا مكان له في المسجد،\nفلا مكان له في نور غارد.\"';
+
+  @override
+  String get openingAppStore => 'فتح متجر التطبيقات…';
+
+  @override
+  String get openingShareSheet => 'فتح قائمة المشاركة…';
+
+  @override
+  String get openingSupportEmail => 'فتح البريد الإلكتروني للدعم…';
+
+  @override
+  String get openingTermsOfService => 'فتح شروط الخدمة…';
+
+  @override
+  String get duration30Min => '٣٠ دقيقة';
+
+  @override
+  String get duration1Hour => 'ساعة واحدة';
+
+  @override
+  String get durationPrayerWindowOnly => 'نافذة الصلاة فقط';
+
+  @override
+  String get hoursAbbreviation => 'س';
+
+  @override
+  String get cancelTimerButton => 'إلغاء المؤقت';
+
+  @override
+  String get custom => 'مخصص';
+
+  @override
+  String get customTimerMinutesTitle => 'مؤقت مخصص (بالدقائق)';
+
+  @override
+  String get customTimerHint => 'مثال: ٢٠';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get start => 'بدء';
+
+  @override
+  String get travel => 'السفر';
+
+  @override
+  String get anxietyAndStress => 'القلق والتوتر';
+
+  @override
+  String get gratitude => 'الشكر';
+
+  @override
+  String get protection => 'الحماية';
+
+  @override
+  String get family => 'الأسرة';
+
+  @override
+  String get forgiveness => 'المغفرة';
 }

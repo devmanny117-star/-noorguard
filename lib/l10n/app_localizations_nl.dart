@@ -1640,4 +1640,106 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Klaar';
+
+  @override
+  String get testNotificationButton => 'Testmelding versturen (10 sec)';
+
+  @override
+  String get testNotificationSnack =>
+      'Testmelding komt over 10 seconden binnen';
+
+  @override
+  String get testLockAlarmButton =>
+      'Volledig scherm-vergrendelingsalarm testen (10 sec)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'Het vergrendelingsalarm gaat over 10 seconden af — vergrendel je telefoon nu';
+
+  @override
+  String get testAdhanForegroundButton => 'Adhan in de app testen (voorgrond)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'De volledige adhan wordt afgespeeld met een geluidloze banner';
+
+  @override
+  String get lockScreenSetupGuideButton =>
+      'Installatiehandleiding voor vergrendelscherm-meldingen';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'Kan privacybeleid niet openen';
+
+  @override
+  String get couldNotOpenEmailApp => 'Kan e-mailapp niet openen';
+
+  @override
+  String get blockDurationLabel => 'Blokkeerduur';
+
+  @override
+  String get privacyAndTrust => 'Privacy & Vertrouwen';
+
+  @override
+  String get noorGuardMotto =>
+      '\"Als het niet in een moskee thuishoort,\nhoort het niet in Noor Guard.\"';
+
+  @override
+  String get openingAppStore => 'App Store wordt geopend…';
+
+  @override
+  String get openingShareSheet => 'Deelvenster wordt geopend…';
+
+  @override
+  String get openingSupportEmail => 'Support-e-mail wordt geopend…';
+
+  @override
+  String get openingTermsOfService => 'Gebruiksvoorwaarden worden geopend…';
+
+  @override
+  String get duration30Min => '30 min';
+
+  @override
+  String get duration1Hour => '1 uur';
+
+  @override
+  String get durationPrayerWindowOnly => 'Alleen gebedsvenster';
+
+  @override
+  String get hoursAbbreviation => 'uur';
+
+  @override
+  String get cancelTimerButton => 'Timer annuleren';
+
+  @override
+  String get custom => 'Aangepast';
+
+  @override
+  String get customTimerMinutesTitle => 'Aangepaste timer (minuten)';
+
+  @override
+  String get customTimerHint => 'bijv. 20';
+
+  @override
+  String get cancel => 'Annuleren';
+
+  @override
+  String get start => 'Starten';
+
+  @override
+  String get travel => 'Reizen';
+
+  @override
+  String get anxietyAndStress => 'Angst & Stress';
+
+  @override
+  String get gratitude => 'Dankbaarheid';
+
+  @override
+  String get protection => 'Bescherming';
+
+  @override
+  String get family => 'Familie';
+
+  @override
+  String get forgiveness => 'Vergeving';
 }

@@ -1632,4 +1632,103 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'ہو گیا';
+
+  @override
+  String get testNotificationButton => 'ٹیسٹ نوٹیفیکیشن بھیجیں (10 سیکنڈ)';
+
+  @override
+  String get testNotificationSnack => 'ٹیسٹ نوٹیفیکیشن 10 سیکنڈ میں آئے گا';
+
+  @override
+  String get testLockAlarmButton => 'فل اسکرین لاک الارم ٹیسٹ کریں (10 سیکنڈ)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'لاک الارم 10 سیکنڈ میں بجے گا — ابھی اپنا فون لاک کریں';
+
+  @override
+  String get testAdhanForegroundButton => 'ان ایپ اذان ٹیسٹ کریں (فورگراؤنڈ)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'خاموش بینر کے ساتھ مکمل اذان چلائی جا رہی ہے';
+
+  @override
+  String get lockScreenSetupGuideButton => 'لاک اسکرین الرٹ سیٹ اپ گائیڈ';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'رازداری کی پالیسی نہیں کھل سکی';
+
+  @override
+  String get couldNotOpenEmailApp => 'ای میل ایپ نہیں کھل سکی';
+
+  @override
+  String get blockDurationLabel => 'بلاک کا دورانیہ';
+
+  @override
+  String get privacyAndTrust => 'رازداری اور اعتماد';
+
+  @override
+  String get noorGuardMotto =>
+      '\"اگر یہ مسجد میں جائز نہیں،\nتو یہ نور گارڈ میں بھی جائز نہیں۔\"';
+
+  @override
+  String get openingAppStore => 'ایپ سٹور کھولا جا رہا ہے…';
+
+  @override
+  String get openingShareSheet => 'شیئر شیٹ کھولی جا رہی ہے…';
+
+  @override
+  String get openingSupportEmail => 'سپورٹ ای میل کھولا جا رہا ہے…';
+
+  @override
+  String get openingTermsOfService => 'شرائط خدمت کھولی جا رہی ہیں…';
+
+  @override
+  String get duration30Min => '30 منٹ';
+
+  @override
+  String get duration1Hour => '1 گھنٹہ';
+
+  @override
+  String get durationPrayerWindowOnly => 'صرف نماز کا وقفہ';
+
+  @override
+  String get hoursAbbreviation => 'گھنٹہ';
+
+  @override
+  String get cancelTimerButton => 'ٹائمر منسوخ کریں';
+
+  @override
+  String get custom => 'حسب ضرورت';
+
+  @override
+  String get customTimerMinutesTitle => 'حسب ضرورت ٹائمر (منٹ)';
+
+  @override
+  String get customTimerHint => 'مثلاً 20';
+
+  @override
+  String get cancel => 'منسوخ کریں';
+
+  @override
+  String get start => 'شروع کریں';
+
+  @override
+  String get travel => 'سفر';
+
+  @override
+  String get anxietyAndStress => 'بے چینی اور تناؤ';
+
+  @override
+  String get gratitude => 'شکر';
+
+  @override
+  String get protection => 'حفاظت';
+
+  @override
+  String get family => 'خاندان';
+
+  @override
+  String get forgiveness => 'بخشش';
 }

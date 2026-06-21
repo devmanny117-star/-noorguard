@@ -1642,4 +1642,107 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Fertig';
+
+  @override
+  String get testNotificationButton => 'Testbenachrichtigung senden (10 Sek.)';
+
+  @override
+  String get testNotificationSnack =>
+      'Die Testbenachrichtigung trifft in 10 Sekunden ein';
+
+  @override
+  String get testLockAlarmButton => 'Vollbild-Sperralarm testen (10 Sek.)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'Der Sperralarm löst in 10 Sekunden aus — sperren Sie jetzt Ihr Telefon';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'Adhan in der App testen (Vordergrund)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'Der vollständige Adhan wird mit einem stillen Banner abgespielt';
+
+  @override
+  String get lockScreenSetupGuideButton =>
+      'Einrichtungsanleitung für Sperrbildschirm-Benachrichtigungen';
+
+  @override
+  String get couldNotOpenPrivacyPolicy =>
+      'Datenschutzerklärung konnte nicht geöffnet werden';
+
+  @override
+  String get couldNotOpenEmailApp => 'E-Mail-App konnte nicht geöffnet werden';
+
+  @override
+  String get blockDurationLabel => 'Blockierdauer';
+
+  @override
+  String get privacyAndTrust => 'Datenschutz & Vertrauen';
+
+  @override
+  String get noorGuardMotto =>
+      '„Was nicht in eine Moschee gehört,\ngehört nicht in Noor Guard.“';
+
+  @override
+  String get openingAppStore => 'App Store wird geöffnet…';
+
+  @override
+  String get openingShareSheet => 'Freigabemenü wird geöffnet…';
+
+  @override
+  String get openingSupportEmail => 'Support-E-Mail wird geöffnet…';
+
+  @override
+  String get openingTermsOfService => 'Nutzungsbedingungen werden geöffnet…';
+
+  @override
+  String get duration30Min => '30 Min.';
+
+  @override
+  String get duration1Hour => '1 Stunde';
+
+  @override
+  String get durationPrayerWindowOnly => 'Nur Gebetszeitfenster';
+
+  @override
+  String get hoursAbbreviation => 'Std.';
+
+  @override
+  String get cancelTimerButton => 'Timer abbrechen';
+
+  @override
+  String get custom => 'Benutzerdefiniert';
+
+  @override
+  String get customTimerMinutesTitle => 'Benutzerdefinierter Timer (Minuten)';
+
+  @override
+  String get customTimerHint => 'z. B. 20';
+
+  @override
+  String get cancel => 'Abbrechen';
+
+  @override
+  String get start => 'Starten';
+
+  @override
+  String get travel => 'Reisen';
+
+  @override
+  String get anxietyAndStress => 'Angst & Stress';
+
+  @override
+  String get gratitude => 'Dankbarkeit';
+
+  @override
+  String get protection => 'Schutz';
+
+  @override
+  String get family => 'Familie';
+
+  @override
+  String get forgiveness => 'Vergebung';
 }

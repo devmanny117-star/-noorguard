@@ -1640,4 +1640,108 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get notifSetupDoneButton => 'Imekamilika';
+
+  @override
+  String get testNotificationButton => 'Tuma Arifa ya Jaribio (sekunde 10)';
+
+  @override
+  String get testNotificationSnack =>
+      'Arifa ya jaribio itafika baada ya sekunde 10';
+
+  @override
+  String get testLockAlarmButton =>
+      'Jaribu Kengele ya Skrini Kamili (sekunde 10)';
+
+  @override
+  String get testLockAlarmSnack =>
+      'Kengele ya kufunga italia baada ya sekunde 10 — funga simu yako sasa';
+
+  @override
+  String get testAdhanForegroundButton =>
+      'Jaribu Adhana Ndani ya Programu (mbele)';
+
+  @override
+  String get testAdhanForegroundSnack =>
+      'Inacheza adhana kamili na bango lisilo na sauti';
+
+  @override
+  String get lockScreenSetupGuideButton =>
+      'Mwongozo wa Kuweka Tahadhari za Skrini Iliyofungwa';
+
+  @override
+  String get couldNotOpenPrivacyPolicy => 'Imeshindwa kufungua Sera ya Faragha';
+
+  @override
+  String get couldNotOpenEmailApp =>
+      'Imeshindwa kufungua programu ya barua pepe';
+
+  @override
+  String get blockDurationLabel => 'Muda wa kuzuia';
+
+  @override
+  String get privacyAndTrust => 'Faragha na Uaminifu';
+
+  @override
+  String get noorGuardMotto =>
+      '\"Kisichofaa msikitini,\nhakifai katika Noor Guard.\"';
+
+  @override
+  String get openingAppStore => 'Inafungua App Store…';
+
+  @override
+  String get openingShareSheet => 'Inafungua kipepeo cha kushiriki…';
+
+  @override
+  String get openingSupportEmail => 'Inafungua barua pepe ya msaada…';
+
+  @override
+  String get openingTermsOfService => 'Inafungua Masharti ya Huduma…';
+
+  @override
+  String get duration30Min => 'Dak 30';
+
+  @override
+  String get duration1Hour => 'Saa 1';
+
+  @override
+  String get durationPrayerWindowOnly => 'Wakati wa sala pekee';
+
+  @override
+  String get hoursAbbreviation => 'saa';
+
+  @override
+  String get cancelTimerButton => 'Ghairi kipima muda';
+
+  @override
+  String get custom => 'Maalum';
+
+  @override
+  String get customTimerMinutesTitle => 'Kipima muda maalum (dakika)';
+
+  @override
+  String get customTimerHint => 'mfano 20';
+
+  @override
+  String get cancel => 'Ghairi';
+
+  @override
+  String get start => 'Anza';
+
+  @override
+  String get travel => 'Usafiri';
+
+  @override
+  String get anxietyAndStress => 'Wasiwasi na Msongo';
+
+  @override
+  String get gratitude => 'Shukrani';
+
+  @override
+  String get protection => 'Ulinzi';
+
+  @override
+  String get family => 'Familia';
+
+  @override
+  String get forgiveness => 'Msamaha';
 }
