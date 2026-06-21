@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/surah_translations.dart';
 import '../l10n/app_localizations.dart';
@@ -23,6 +25,30 @@ const _navy = Color(0xFF0D1B2A);
 const _gold = Color(0xFFD4AF37);
 const _cardColor = Color(0xFF152030);
 
+// Cached across the whole app session so the mosque image used as lock
+// screen / notification artwork is only copied out of the asset bundle once.
+Uri? _quranArtworkUri;
+
+/// MediaItem.artUri needs a real file:// (or http(s):///content://) URI —
+/// Flutter asset paths aren't directly usable — so this copies the bundled
+/// mosque hero image to a real file on first use and reuses it after that.
+Future<Uri> _getQuranArtworkUri() async {
+  final cached = _quranArtworkUri;
+  if (cached != null) return cached;
+  final dir = await getApplicationDocumentsDirectory();
+  final file = File('${dir.path}/quran_audio_artwork.jpg');
+  if (!await file.exists()) {
+    final data = await rootBundle.load('assets/images/mosques/mosque_1.jpg');
+    await file.writeAsBytes(
+      data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+      flush: true,
+    );
+  }
+  final uri = Uri.file(file.path);
+  _quranArtworkUri = uri;
+  return uri;
+}
+
 class SurahScreen extends StatefulWidget {
   final Surah surah;
   const SurahScreen({super.key, required this.surah});
@@ -40,6 +66,7 @@ class _SurahScreenState extends State<SurahScreen> {
   String? _favoriteReciterId;
   final AudioPlayer _audioPlayer = AudioPlayer();
   List<AudioSource>? _playlist;
+  Uri? _artworkUri;
   int? _playingVerseNumber;
   bool _isPlaying = false;
 
@@ -219,6 +246,7 @@ class _SurahScreenState extends State<SurahScreen> {
 
   Future<void> _load(String locale) async {
     final verses = await fetchVerses(widget.surah.number, locale: locale);
+    _artworkUri = await _getQuranArtworkUri();
     if (!mounted) return;
     setState(() { _verses = verses; _loading = false; });
     if (verses.isNotEmpty) {
@@ -247,6 +275,7 @@ class _SurahScreenState extends State<SurahScreen> {
             title: '${widget.surah.englishName} • Ayah ${verse.number}',
             artist: _selectedReciter.name,
             album: widget.surah.englishName,
+            artUri: _artworkUri,
           ),
         ),
     ];

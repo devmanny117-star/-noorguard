@@ -32,6 +32,8 @@ Future<void> main() async {
       androidNotificationChannelName: 'Quran Recitation',
       androidNotificationOngoing: true,
       androidStopForegroundOnPause: true,
+      // Matches the gold accent used on the Quran reader's player bar.
+      notificationColor: const Color(0xFFD4AF37),
     );
   }
   runApp(
