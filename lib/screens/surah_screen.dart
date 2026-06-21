@@ -82,7 +82,11 @@ class _SurahScreenState extends State<SurahScreen> {
     _discontinuitySub = _audioPlayer.positionDiscontinuityStream.listen((event) {
       if (event.reason == PositionDiscontinuityReason.autoAdvance &&
           !_continuousPlay) {
-        _audioPlayer.pause();
+        // just_audio is still mid-dispatch of this very event; calling
+        // pause() synchronously here throws "Cannot fire new event.
+        // Controller is already firing an event". Deferring to a microtask
+        // lets this event finish dispatching first.
+        Future.microtask(() => _audioPlayer.pause());
       }
     });
     _loadFontScale();
