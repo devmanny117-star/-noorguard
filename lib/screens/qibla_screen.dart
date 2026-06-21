@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:sensors_plus/sensors_plus.dart';
+import 'package:vibration/vibration.dart';
 import '../services/qibla_service.dart';
 import '../l10n/app_localizations.dart';
 
@@ -31,6 +33,21 @@ const _kLpfAlpha = 0.12;
 
 // Needle must be within this many degrees of Mecca to trigger the gold glow.
 const _kAlignThresholdDeg = 5.0;
+
+// ── Haptic feedback zones ─────────────────────────────────────────────────────
+
+// Degrees-off-Qibla thresholds for each haptic zone.
+const _kCloseThresholdDeg      = 15.0;
+const _kApproachingThresholdDeg = 45.0;
+
+enum _HapticZone { none, approaching, close, aligned }
+
+_HapticZone _hapticZoneFor(double degreesOff) {
+  if (degreesOff <= _kAlignThresholdDeg)   return _HapticZone.aligned;
+  if (degreesOff <= _kCloseThresholdDeg)   return _HapticZone.close;
+  if (degreesOff <= _kApproachingThresholdDeg) return _HapticZone.approaching;
+  return _HapticZone.none;
+}
 
 // ── Accuracy helpers ───────────────────────────────────────────────────────────
 
@@ -73,7 +90,7 @@ class QiblaScreen extends StatefulWidget {
   State<QiblaScreen> createState() => _QiblaScreenState();
 }
 
-class _QiblaScreenState extends State<QiblaScreen> {
+class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   // Location & qibla
   double _qiblaBearing  = 0;
   bool   _isLoading     = true;
@@ -110,11 +127,18 @@ class _QiblaScreenState extends State<QiblaScreen> {
   StreamSubscription<CompassEvent>?       _compassSub;
   StreamSubscription<AccelerometerEvent>? _accelSub;
 
+  // Haptic feedback as the needle approaches Qibla
+  _HapticZone _hapticZone = _HapticZone.none;
+  Timer? _hapticPulseTimer;
+  Timer? _alignedStopTimer;
+  bool _vibratorAvailable = false;
+
   // ── Lifecycle ────────────────────────────────────────────────────────────────
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _init();
   }
 
@@ -123,11 +147,26 @@ class _QiblaScreenState extends State<QiblaScreen> {
     if (!kIsWeb) {
       _subscribeCompass();
       _subscribeAccelerometer();
+      if (Platform.isAndroid) {
+        _vibratorAvailable = await Vibration.hasVibrator();
+      }
+    }
+  }
+
+  // Stops any in-progress/scheduled vibration the moment the app leaves the
+  // foreground (backgrounded, locked, call interruption, etc.) so the phone
+  // never keeps buzzing while the user isn't looking at the screen.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state != AppLifecycleState.resumed) {
+      _stopHaptics();
     }
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _stopHaptics();
     _compassSub?.cancel();
     _accelSub?.cancel();
     super.dispose();
@@ -205,7 +244,93 @@ class _QiblaScreenState extends State<QiblaScreen> {
         // accuracy later drops again the calibration prompt can reappear.
         if (newLevel == _Accuracy.high) _calibrationDismissed = false;
       });
+
+      final degreesOff = ((_needleAngle % 360 + 180) % 360 - 180).abs();
+      _updateHaptics(degreesOff);
     });
+  }
+
+  // ── Haptic feedback ───────────────────────────────────────────────────────────
+
+  void _updateHaptics(double degreesOff) {
+    if (kIsWeb) return;
+    final zone = _hapticZoneFor(degreesOff);
+    if (zone == _hapticZone) return; // already in this zone — let it run
+    _hapticZone = zone;
+    _hapticPulseTimer?.cancel();
+    _alignedStopTimer?.cancel();
+
+    switch (zone) {
+      case _HapticZone.none:
+        break;
+      case _HapticZone.approaching:
+        _firePulse(_HapticZone.approaching);
+        _hapticPulseTimer = Timer.periodic(
+          const Duration(seconds: 2),
+          (_) => _firePulse(_HapticZone.approaching),
+        );
+      case _HapticZone.close:
+        _firePulse(_HapticZone.close);
+        _hapticPulseTimer = Timer.periodic(
+          const Duration(seconds: 1),
+          (_) => _firePulse(_HapticZone.close),
+        );
+      case _HapticZone.aligned:
+        // Rapid strong pulses to signal perfect alignment, then stop on their
+        // own after 3 seconds so the phone doesn't keep buzzing if the user
+        // holds it steady on Qibla.
+        _firePulse(_HapticZone.aligned);
+        _hapticPulseTimer = Timer.periodic(
+          const Duration(milliseconds: 150),
+          (_) => _firePulse(_HapticZone.aligned),
+        );
+        _alignedStopTimer = Timer(const Duration(seconds: 3), () {
+          _hapticPulseTimer?.cancel();
+          _hapticPulseTimer = null;
+        });
+    }
+  }
+
+  void _firePulse(_HapticZone zone) {
+    if (!kIsWeb && Platform.isIOS) {
+      switch (zone) {
+        case _HapticZone.approaching:
+          HapticFeedback.lightImpact();
+        case _HapticZone.close:
+          HapticFeedback.mediumImpact();
+        case _HapticZone.aligned:
+          HapticFeedback.heavyImpact();
+        case _HapticZone.none:
+          break;
+      }
+      return;
+    }
+    if (!kIsWeb && Platform.isAndroid && _vibratorAvailable) {
+      final amplitude = switch (zone) {
+        _HapticZone.approaching => 70,
+        _HapticZone.close       => 150,
+        _HapticZone.aligned     => 255,
+        _HapticZone.none        => -1,
+      };
+      final duration = switch (zone) {
+        _HapticZone.approaching => 60,
+        _HapticZone.close       => 90,
+        _HapticZone.aligned     => 110,
+        _HapticZone.none        => 0,
+      };
+      if (duration > 0) Vibration.vibrate(duration: duration, amplitude: amplitude);
+    }
+  }
+
+  void _stopHaptics() {
+    _hapticPulseTimer?.cancel();
+    _hapticPulseTimer = null;
+    _alignedStopTimer?.cancel();
+    _alignedStopTimer = null;
+    _hapticZone = _HapticZone.none;
+    if (!kIsWeb && Platform.isAndroid && _vibratorAvailable) {
+      Vibration.cancel();
+    }
   }
 
   // ── Accelerometer stream ──────────────────────────────────────────────────────
