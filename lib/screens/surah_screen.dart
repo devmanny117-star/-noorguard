@@ -87,6 +87,27 @@ class _SurahScreenState extends State<SurahScreen> {
   double? _pinchStartDistance;
   double _pinchStartScale = 1.0;
 
+  // One GlobalKey per verse tile so the currently playing verse can be
+  // scrolled into view with Scrollable.ensureVisible regardless of its
+  // (variable) rendered height.
+  final Map<int, GlobalKey> _verseKeys = {};
+
+  GlobalKey _verseKey(int verseNumber) =>
+      _verseKeys.putIfAbsent(verseNumber, () => GlobalKey());
+
+  void _scrollToVerse(int verseNumber) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final ctx = _verseKeys[verseNumber]?.currentContext;
+      if (ctx == null || !mounted) return;
+      Scrollable.ensureVisible(
+        ctx,
+        duration: const Duration(milliseconds: 450),
+        curve: Curves.easeInOutCubic,
+        alignment: 0.3,
+      );
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -100,7 +121,9 @@ class _SurahScreenState extends State<SurahScreen> {
     _currentIndexSub = _audioPlayer.currentIndexStream.listen((index) {
       if (!mounted || index == null) return;
       if (index < 0 || index >= _verses.length) return;
-      setState(() => _playingVerseNumber = _verses[index].number);
+      final verseNumber = _verses[index].number;
+      setState(() => _playingVerseNumber = verseNumber);
+      _scrollToVerse(verseNumber);
     });
     // The playlist auto-advances to the next verse by default; when
     // continuous play is off, immediately pause so playback stops after the
@@ -249,12 +272,10 @@ class _SurahScreenState extends State<SurahScreen> {
     _artworkUri = await _getQuranArtworkUri();
     if (!mounted) return;
     setState(() { _verses = verses; _loading = false; });
-    if (verses.isNotEmpty) {
-      _playlist = _buildPlaylist();
-      // preload: false — children load lazily as the player reaches them,
-      // so building the full-surah playlist up front costs nothing extra.
-      await _audioPlayer.setAudioSources(_playlist!, preload: false);
-    }
+    // The playlist is built lazily on first play (see _playVerseAudio), not
+    // here — setAudioSources() resets the player's current index to 0 as
+    // soon as it's called, which would mark verse 1 "active" (showing the
+    // player bar and its highlight) before the user has tapped play at all.
   }
 
   // ── Audio playback ───────────────────────────────────────────────────────
@@ -292,7 +313,12 @@ class _SurahScreenState extends State<SurahScreen> {
     }
     final index = _verses.indexWhere((v) => v.number == verseNumber);
     if (index == -1) return;
-    await _audioPlayer.seek(Duration.zero, index: index);
+    if (_playlist == null) {
+      _playlist = _buildPlaylist();
+      await _audioPlayer.setAudioSources(_playlist!, initialIndex: index, preload: false);
+    } else {
+      await _audioPlayer.seek(Duration.zero, index: index);
+    }
     await _audioPlayer.play();
   }
 
@@ -309,10 +335,10 @@ class _SurahScreenState extends State<SurahScreen> {
     final verseNumber = _playingVerseNumber;
     final wasPlaying = _isPlaying;
     setState(() => _selectedReciter = reciter);
-    if (_verses.isEmpty) return;
-    final index = verseNumber != null
-        ? _verses.indexWhere((v) => v.number == verseNumber)
-        : 0;
+    // Nothing has played yet — just remember the preference for next time,
+    // without touching the player (that would prematurely activate verse 1).
+    if (verseNumber == null || _verses.isEmpty) return;
+    final index = _verses.indexWhere((v) => v.number == verseNumber);
     _playlist = _buildPlaylist();
     await _audioPlayer.setAudioSources(
       _playlist!,
@@ -563,61 +589,85 @@ class _SurahScreenState extends State<SurahScreen> {
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator(color: _gold))
-          : Column(
+          : Stack(
               children: [
-                FontSizeSlider(index: _fontScaleIndex, onChanged: _onFontScaleChanged),
-                Expanded(
-                  child: Listener(
-                    onPointerDown: _onPointerDown,
-                    onPointerMove: _onPointerMove,
-                    onPointerUp: _onPointerUp,
-                    onPointerCancel: _onPointerUp,
-                    child: MediaQuery(
-                      data: MediaQuery.of(context).copyWith(
-                        textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+                Column(
+                  children: [
+                    FontSizeSlider(index: _fontScaleIndex, onChanged: _onFontScaleChanged),
+                    Expanded(
+                      child: Listener(
+                        onPointerDown: _onPointerDown,
+                        onPointerMove: _onPointerMove,
+                        onPointerUp: _onPointerUp,
+                        onPointerCancel: _onPointerUp,
+                        child: MediaQuery(
+                          data: MediaQuery.of(context).copyWith(
+                            textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+                          ),
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            padding: EdgeInsets.fromLTRB(
+                              16, 8, 16, _playingVerseNumber == null ? 16 : 110,
+                            ),
+                            itemCount: _verses.length + (_showBismillah ? 1 : 0),
+                            itemBuilder: (context, index) {
+                              if (_showBismillah && index == 0) {
+                                return _BismillahHeader(textScale: _textScale);
+                              }
+                              final verse = _verses[_showBismillah ? index - 1 : index];
+                              return KeyedSubtree(
+                                key: _verseKey(verse.number),
+                                child: _VerseTile(
+                                  verse: verse,
+                                  textScale: _textScale,
+                                  isLast: index == _verses.length + (_showBismillah ? 0 : -1),
+                                  isActive: _playingVerseNumber == verse.number,
+                                  isPlaying: _playingVerseNumber == verse.number && _isPlaying,
+                                  playTooltip: l10n.playVerse,
+                                  onPlayTap: () => _playVerseAudio(verse.number),
+                                  onTafsirTap: () => _showVerseTafsir(verse),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                       ),
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-                        itemCount: _verses.length + (_showBismillah ? 1 : 0),
-                        itemBuilder: (context, index) {
-                          if (_showBismillah && index == 0) {
-                            return _BismillahHeader(textScale: _textScale);
-                          }
-                          final verse = _verses[_showBismillah ? index - 1 : index];
-                          return _VerseTile(
-                            verse: verse,
-                            textScale: _textScale,
-                            isLast: index == _verses.length + (_showBismillah ? 0 : -1),
-                            isPlaying: _playingVerseNumber == verse.number && _isPlaying,
-                            playTooltip: l10n.playVerse,
-                            onPlayTap: () => _playVerseAudio(verse.number),
-                            onTafsirTap: () => _showVerseTafsir(verse),
-                          );
-                        },
+                    ),
+                  ],
+                ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: IgnorePointer(
+                    ignoring: _playingVerseNumber == null,
+                    child: AnimatedSlide(
+                      duration: const Duration(milliseconds: 320),
+                      curve: Curves.easeOutCubic,
+                      offset: _playingVerseNumber == null ? const Offset(0, 1.2) : Offset.zero,
+                      child: _PlayerBar(
+                        surahEnglishName: widget.surah.englishName,
+                        verseNumber: _playingVerseNumber ??
+                            (_verses.isNotEmpty ? _verses.first.number : 1),
+                        totalVerses: widget.surah.numberOfAyahs,
+                        reciterShortName: _selectedReciter.shortName,
+                        audioPlayer: _audioPlayer,
+                        isPlaying: _isPlaying,
+                        continuousPlay: _continuousPlay,
+                        sleepRemaining: _sleepRemaining,
+                        onPlayPause: () => _playVerseAudio(
+                          _playingVerseNumber ?? (_verses.isNotEmpty ? _verses.first.number : 1),
+                        ),
+                        onPrevious: () => _playAdjacent(-1),
+                        onNext: () => _playAdjacent(1),
+                        onToggleContinuous: _toggleContinuousPlay,
+                        onSleepTimer: _showSleepTimerSheet,
+                        onReciterTap: _showReciterSheet,
                       ),
                     ),
                   ),
                 ),
               ],
-            ),
-      bottomNavigationBar: _playingVerseNumber == null
-          ? null
-          : _PlayerBar(
-              surahEnglishName: widget.surah.englishName,
-              verseNumber: _playingVerseNumber!,
-              totalVerses: widget.surah.numberOfAyahs,
-              reciterShortName: _selectedReciter.shortName,
-              audioPlayer: _audioPlayer,
-              isPlaying: _isPlaying,
-              continuousPlay: _continuousPlay,
-              sleepRemaining: _sleepRemaining,
-              onPlayPause: () => _playVerseAudio(_playingVerseNumber!),
-              onPrevious: () => _playAdjacent(-1),
-              onNext: () => _playAdjacent(1),
-              onToggleContinuous: _toggleContinuousPlay,
-              onSleepTimer: _showSleepTimerSheet,
-              onReciterTap: _showReciterSheet,
             ),
     );
   }
@@ -1257,6 +1307,7 @@ class _VerseTile extends StatelessWidget {
   final Verse verse;
   final double textScale;
   final bool isLast;
+  final bool isActive;
   final bool isPlaying;
   final String playTooltip;
   final VoidCallback onPlayTap;
@@ -1266,6 +1317,7 @@ class _VerseTile extends StatelessWidget {
     required this.verse,
     this.textScale = 1.0,
     required this.isLast,
+    this.isActive = false,
     required this.isPlaying,
     required this.playTooltip,
     required this.onPlayTap,
@@ -1278,12 +1330,26 @@ class _VerseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeOut,
           padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
           decoration: BoxDecoration(
-            color: _cardColor,
+            color: isActive ? Color.lerp(_cardColor, _gold, 0.07) : _cardColor,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: _gold.withValues(alpha: 0.12)),
+            border: Border.all(
+              color: isActive ? _gold : _gold.withValues(alpha: 0.12),
+              width: isActive ? 1.6 : 1,
+            ),
+            boxShadow: isActive
+                ? [
+                    BoxShadow(
+                      color: _gold.withValues(alpha: 0.25),
+                      blurRadius: 18,
+                      spreadRadius: 0,
+                    ),
+                  ]
+                : null,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
