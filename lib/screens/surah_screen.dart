@@ -87,6 +87,13 @@ class _SurahScreenState extends State<SurahScreen> {
   double? _pinchStartDistance;
   double _pinchStartScale = 1.0;
 
+  // True once the user scrolls the verse list while playback is paused —
+  // hides the player bar to give the reader more room. Cleared as soon as
+  // playback resumes from any source (tap, notification, lock screen).
+  bool _hiddenByScroll = false;
+
+  bool get _showPlayerBar => _playingVerseNumber != null && !_hiddenByScroll;
+
   // One GlobalKey per verse tile so the currently playing verse can be
   // scrolled into view with Scrollable.ensureVisible regardless of its
   // (variable) rendered height.
@@ -113,7 +120,12 @@ class _SurahScreenState extends State<SurahScreen> {
     super.initState();
     _playerStateSub = _audioPlayer.playerStateStream.listen((state) {
       if (!mounted) return;
-      setState(() => _isPlaying = state.playing);
+      setState(() {
+        _isPlaying = state.playing;
+        // Bring the bar back the moment playback resumes, regardless of
+        // what triggered it (in-app tap, notification, lock screen).
+        if (state.playing) _hiddenByScroll = false;
+      });
     });
     // Keeps _playingVerseNumber (and the highlighted verse / player bar) in
     // sync with whichever item the playlist is currently on, whether that
@@ -319,6 +331,11 @@ class _SurahScreenState extends State<SurahScreen> {
     } else {
       await _audioPlayer.seek(Duration.zero, index: index);
     }
+    // Set directly rather than relying solely on currentIndexStream: after
+    // the close button resets the index-tracking state, re-tapping the same
+    // verse seeks to an index that hasn't changed, so the stream wouldn't
+    // fire again.
+    if (mounted) setState(() => _playingVerseNumber = verseNumber);
     await _audioPlayer.play();
   }
 
@@ -329,6 +346,17 @@ class _SurahScreenState extends State<SurahScreen> {
       await _audioPlayer.seekToPrevious();
     }
     await _audioPlayer.play();
+  }
+
+  /// Stops playback completely, hides the player bar, and clears the
+  /// highlighted verse — triggered by the player bar's close (X) button.
+  Future<void> _closePlayer() async {
+    await _audioPlayer.stop();
+    if (!mounted) return;
+    setState(() {
+      _playingVerseNumber = null;
+      _hiddenByScroll = false;
+    });
   }
 
   Future<void> _onSelectReciter(Reciter reciter) async {
@@ -600,35 +628,47 @@ class _SurahScreenState extends State<SurahScreen> {
                         onPointerMove: _onPointerMove,
                         onPointerUp: _onPointerUp,
                         onPointerCancel: _onPointerUp,
-                        child: MediaQuery(
-                          data: MediaQuery.of(context).copyWith(
-                            textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
-                          ),
-                          child: ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            padding: EdgeInsets.fromLTRB(
-                              16, 8, 16, _playingVerseNumber == null ? 16 : 110,
+                        child: NotificationListener<ScrollNotification>(
+                          onNotification: (notification) {
+                            // Scrolling while paused hides the bar to give the
+                            // reader more room; while playing it stays put.
+                            if (notification is ScrollUpdateNotification &&
+                                !_isPlaying &&
+                                !_hiddenByScroll) {
+                              setState(() => _hiddenByScroll = true);
+                            }
+                            return false;
+                          },
+                          child: MediaQuery(
+                            data: MediaQuery.of(context).copyWith(
+                              textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
                             ),
-                            itemCount: _verses.length + (_showBismillah ? 1 : 0),
-                            itemBuilder: (context, index) {
-                              if (_showBismillah && index == 0) {
-                                return _BismillahHeader(textScale: _textScale);
-                              }
-                              final verse = _verses[_showBismillah ? index - 1 : index];
-                              return KeyedSubtree(
-                                key: _verseKey(verse.number),
-                                child: _VerseTile(
-                                  verse: verse,
-                                  textScale: _textScale,
-                                  isLast: index == _verses.length + (_showBismillah ? 0 : -1),
-                                  isActive: _playingVerseNumber == verse.number,
-                                  isPlaying: _playingVerseNumber == verse.number && _isPlaying,
-                                  playTooltip: l10n.playVerse,
-                                  onPlayTap: () => _playVerseAudio(verse.number),
-                                  onTafsirTap: () => _showVerseTafsir(verse),
-                                ),
-                              );
-                            },
+                            child: ListView.builder(
+                              physics: const BouncingScrollPhysics(),
+                              padding: EdgeInsets.fromLTRB(
+                                16, 8, 16, _showPlayerBar ? 110 : 16,
+                              ),
+                              itemCount: _verses.length + (_showBismillah ? 1 : 0),
+                              itemBuilder: (context, index) {
+                                if (_showBismillah && index == 0) {
+                                  return _BismillahHeader(textScale: _textScale);
+                                }
+                                final verse = _verses[_showBismillah ? index - 1 : index];
+                                return KeyedSubtree(
+                                  key: _verseKey(verse.number),
+                                  child: _VerseTile(
+                                    verse: verse,
+                                    textScale: _textScale,
+                                    isLast: index == _verses.length + (_showBismillah ? 0 : -1),
+                                    isActive: _playingVerseNumber == verse.number,
+                                    isPlaying: _playingVerseNumber == verse.number && _isPlaying,
+                                    playTooltip: l10n.playVerse,
+                                    onPlayTap: () => _playVerseAudio(verse.number),
+                                    onTafsirTap: () => _showVerseTafsir(verse),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),
@@ -640,11 +680,11 @@ class _SurahScreenState extends State<SurahScreen> {
                   right: 0,
                   bottom: 0,
                   child: IgnorePointer(
-                    ignoring: _playingVerseNumber == null,
+                    ignoring: !_showPlayerBar,
                     child: AnimatedSlide(
                       duration: const Duration(milliseconds: 320),
                       curve: Curves.easeOutCubic,
-                      offset: _playingVerseNumber == null ? const Offset(0, 1.2) : Offset.zero,
+                      offset: _showPlayerBar ? Offset.zero : const Offset(0, 1.2),
                       child: _PlayerBar(
                         surahEnglishName: widget.surah.englishName,
                         verseNumber: _playingVerseNumber ??
@@ -663,6 +703,7 @@ class _SurahScreenState extends State<SurahScreen> {
                         onToggleContinuous: _toggleContinuousPlay,
                         onSleepTimer: _showSleepTimerSheet,
                         onReciterTap: _showReciterSheet,
+                        onClose: _closePlayer,
                       ),
                     ),
                   ),
@@ -868,6 +909,7 @@ class _PlayerBar extends StatefulWidget {
   final VoidCallback onToggleContinuous;
   final VoidCallback onSleepTimer;
   final VoidCallback onReciterTap;
+  final VoidCallback onClose;
 
   const _PlayerBar({
     required this.surahEnglishName,
@@ -884,6 +926,7 @@ class _PlayerBar extends StatefulWidget {
     required this.onToggleContinuous,
     required this.onSleepTimer,
     required this.onReciterTap,
+    required this.onClose,
   });
 
   @override
@@ -1007,7 +1050,22 @@ class _PlayerBarState extends State<_PlayerBar> {
                         color: _gold,
                       ),
                     ),
+                    const SizedBox(width: 12),
                   ],
+                  GestureDetector(
+                    onTap: widget.onClose,
+                    behavior: HitTestBehavior.opaque,
+                    child: Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: _gold.withValues(alpha: 0.5)),
+                      ),
+                      alignment: Alignment.center,
+                      child: const Icon(Icons.close_rounded, size: 14, color: _gold),
+                    ),
+                  ),
                 ],
               ),
             ),
