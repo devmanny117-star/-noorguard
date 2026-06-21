@@ -103,4 +103,11 @@ class ConfettiView(context: Context, attrs: AttributeSet? = null) : View(context
             canvas.restore()
         }
     }
+
+    /** Stops any in-flight burst — call when the host screen is going away. */
+    fun cancel() {
+        animator?.cancel()
+        animator = null
+        particles = emptyList()
+    }
 }

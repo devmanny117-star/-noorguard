@@ -1,6 +1,8 @@
 package com.example.noor_guard
 
+import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.app.Activity
 import android.app.KeyguardManager
 import android.app.NotificationManager
@@ -12,6 +14,7 @@ import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -24,6 +27,9 @@ import java.util.Locale
 class PrayerAlarmActivity : Activity() {
 
     private data class ScheduleEntry(val name: String, val timeStr: String, val epochMillis: Long)
+
+    /** Every looping animator started in onCreate, so onDestroy can cancel them all cleanly. */
+    private val runningAnimators = mutableListOf<Animator>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         showOverLockScreen()
@@ -67,9 +73,39 @@ class PrayerAlarmActivity : Activity() {
             dismissAlarm(notifId)
         }
 
+        startKenBurnsEffect()
         startCrescentPulse()
         startSoundWaveAnimation()
         findViewById<View>(R.id.rootContent).animate().alpha(1f).setDuration(450).start()
+    }
+
+    override fun onDestroy() {
+        for (animator in runningAnimators) animator.cancel()
+        runningAnimators.clear()
+        findViewById<ParticleView>(R.id.particleView).stop()
+        findViewById<ConfettiView>(R.id.confettiView).cancel()
+        super.onDestroy()
+    }
+
+    /**
+     * Subtle cinematic zoom on the hero photo — scale 1.0 to 1.15 over 12
+     * seconds, then back out, forever. Centered pivot (the View default), so
+     * it reads as a slow zoom rather than a pan.
+     */
+    private fun startKenBurnsEffect() {
+        val hero = findViewById<ImageView>(R.id.imageHero)
+        val animator = ObjectAnimator.ofPropertyValuesHolder(
+            hero,
+            PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.15f),
+            PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.15f),
+        ).apply {
+            duration = 12_000L
+            interpolator = AccelerateDecelerateInterpolator()
+            repeatMode = ObjectAnimator.REVERSE
+            repeatCount = ObjectAnimator.INFINITE
+        }
+        animator.start()
+        runningAnimators.add(animator)
     }
 
     /** Maps a prayer name to its time-of-day-appropriate hero photo, falling back for unknown names (e.g. the test alarm). */
@@ -210,6 +246,7 @@ class PrayerAlarmActivity : Activity() {
             animator.repeatMode = ObjectAnimator.REVERSE
             animator.repeatCount = ObjectAnimator.INFINITE
             animator.start()
+            runningAnimators.add(animator)
         }
     }
 
@@ -226,13 +263,14 @@ class PrayerAlarmActivity : Activity() {
             val (delay, durationMs) = timing
             val bar = findViewById<View>(id)
             bar.pivotY = barHeightPx
-            ObjectAnimator.ofFloat(bar, View.SCALE_Y, 0.3f, 1f).apply {
+            val animator = ObjectAnimator.ofFloat(bar, View.SCALE_Y, 0.3f, 1f).apply {
                 duration = durationMs
                 startDelay = delay
                 repeatMode = ObjectAnimator.REVERSE
                 repeatCount = ObjectAnimator.INFINITE
-                start()
             }
+            animator.start()
+            runningAnimators.add(animator)
         }
     }
 

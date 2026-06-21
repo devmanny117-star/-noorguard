@@ -26,6 +26,12 @@
         android:layout_margin="8dp"
         android:background="@drawable/bg_border_gold" />
 
+    <!-- Ambient drifting gold particles, behind the text/buttons so they never interfere with reading or taps -->
+    <com.example.noor_guard.ParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
