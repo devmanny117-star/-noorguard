@@ -12,4 +12,8 @@
     <color name="gold_20">#33C9A84C</color>
     <!-- 70% navy scrim over the full-bleed hero background -->
     <color name="overlay_navy">#B30D1B2A</color>
+    <!-- Matches the home screen prayer pills' dark card background (_cardDark) -->
+    <color name="card_dark">#FF1A2A3A</color>
+    <!-- Matches the home screen prayer pills' decorative time dot -->
+    <color name="green_dot">#FF4CAF50</color>
 </resources>

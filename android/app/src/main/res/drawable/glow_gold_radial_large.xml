@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Wider, softer version of glow_gold_radial for behind the large prayer
+     name text, so it reads as a gentle gold shimmer rather than a hard disc. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="160dp"
+        android:startColor="#40C9A84C"
+        android:centerColor="#26C9A84C"
+        android:endColor="#00C9A84C" />
+</shape>

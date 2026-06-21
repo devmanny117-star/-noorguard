@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Vertical gradient over the per-prayer hero photo: lighter through the
-     middle so the photo reads through, darker at the top (behind the
-     crescent/prayer name) and darkest at the bottom (behind the prayer
-     list/message/buttons) so all text stays legible. -->
+     middle so the photo reads through clearly, very dark at both the top
+     (behind the date/crescent/prayer name) and the bottom (behind the
+     prayer list/message/buttons) so all text stays legible. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <gradient
         android:angle="90"
-        android:startColor="#E60D1B2A"
-        android:centerColor="#4D0D1B2A"
-        android:endColor="#990D1B2A" />
+        android:startColor="#F70D1B2A"
+        android:centerColor="#3D0D1B2A"
+        android:endColor="#E60D1B2A" />
 </shape>

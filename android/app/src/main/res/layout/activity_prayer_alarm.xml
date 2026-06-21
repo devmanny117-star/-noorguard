@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/navy">
@@ -18,10 +19,32 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_hero_gradient" />
 
+    <!-- Subtle gold frame around the whole screen, matching the app's card style -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_border_gold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:paddingTop="10dp">
+
+        <!-- Current date — always visible, never scrolls away -->
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:letterSpacing="0.12"
+            android:paddingStart="28dp"
+            android:paddingEnd="160dp"
+            android:textColor="@color/gold"
+            android:textSize="12sp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -35,16 +58,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="28dp"
-                android:paddingTop="48dp"
+                android:paddingTop="20dp"
                 android:paddingBottom="16dp">
 
-                <!-- Gold crescent moon with a soft glow, centered -->
+                <!-- Gold crescent moon with a soft pulsing glow, centered -->
                 <FrameLayout
+                    android:id="@+id/crescentWrapper"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center_horizontal">
 
                     <View
+                        android:id="@+id/crescentGlow"
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_gravity="center"
@@ -58,26 +83,41 @@
                         android:src="@drawable/ic_crescent_gold" />
                 </FrameLayout>
 
-                <TextView
-                    android:id="@+id/textPrayerName"
-                    android:layout_width="match_parent"
+                <!-- Prayer name with a soft gold shimmer behind it -->
+                <FrameLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="serif"
-                    android:gravity="center"
-                    android:textColor="@color/gold"
-                    android:textSize="42sp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="18dp">
+
+                    <View
+                        android:id="@+id/nameGlow"
+                        android:layout_width="280dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/glow_gold_radial_large" />
+
+                    <TextView
+                        android:id="@+id/textPrayerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/playfair_display"
+                        android:gravity="center"
+                        android:textColor="@color/gold"
+                        android:textSize="46sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/textPrayerArabic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="serif"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/scheherazade_new"
                     android:gravity="center"
                     android:textColor="@color/cream"
-                    android:textSize="22sp" />
+                    android:textSize="24sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -100,7 +140,7 @@
                         android:layout_marginStart="8dp"
                         android:fontFamily="sans-serif-medium"
                         android:textColor="@color/gold"
-                        android:textSize="17sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <View
@@ -119,7 +159,7 @@
                     android:gravity="center"
                     android:lineSpacingExtra="4dp"
                     android:textColor="@color/cream"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textStyle="italic" />
 
             </LinearLayout>
@@ -170,4 +210,69 @@
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <!-- Small "Adhan Playing" indicator with an animated sound-wave equalizer -->
+    <LinearLayout
+        android:id="@+id/adhanBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_badge_navy"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="14dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/soundBar1"
+                android:layout_width="3dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/bg_sound_bar" />
+
+            <View
+                android:id="@+id/soundBar2"
+                android:layout_width="3dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/bg_sound_bar" />
+
+            <View
+                android:id="@+id/soundBar3"
+                android:layout_width="3dp"
+                android:layout_height="14dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/bg_sound_bar" />
+
+            <View
+                android:id="@+id/soundBar4"
+                android:layout_width="3dp"
+                android:layout_height="14dp"
+                android:background="@drawable/bg_sound_bar" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.04"
+            android:text="ADHAN PLAYING"
+            android:textColor="@color/gold"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- "I Prayed" celebration burst, drawn above everything else -->
+    <com.example.noor_guard.ConfettiView
+        android:id="@+id/confettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>

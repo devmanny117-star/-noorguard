@@ -1,11 +1,14 @@
 package com.example.noor_guard
 
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.app.KeyguardManager
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
@@ -13,6 +16,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class PrayerAlarmActivity : Activity() {
 
@@ -22,6 +29,7 @@ class PrayerAlarmActivity : Activity() {
         showOverLockScreen()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prayer_alarm)
+        findViewById<View>(R.id.rootContent).alpha = 0f
 
         val prayerName = intent.getStringExtra(PrayerAlarmReceiver.EXTRA_PRAYER_NAME) ?: "Prayer"
         val arabicName = intent.getStringExtra(PrayerAlarmReceiver.EXTRA_PRAYER_ARABIC) ?: ""
@@ -30,22 +38,38 @@ class PrayerAlarmActivity : Activity() {
         val notifId = intent.getIntExtra(PrayerAlarmReceiver.EXTRA_NOTIFICATION_ID, 100)
         val schedule = parseSchedule(intent.getStringExtra(PrayerAlarmReceiver.EXTRA_ALL_PRAYERS))
 
+        findViewById<TextView>(R.id.textDate).text =
+            SimpleDateFormat("EEEE, MMMM d", Locale.getDefault()).format(Date()).uppercase(Locale.getDefault())
+
         findViewById<ImageView>(R.id.imageHero).setImageResource(heroImageFor(prayerName))
-        findViewById<TextView>(R.id.textPrayerName).text = prayerName
-        findViewById<TextView>(R.id.textPrayerArabic).text = arabicName
+        findViewById<TextView>(R.id.textPrayerName).apply {
+            text = prayerName
+            // Soft outer glow behind the name — a shadow with no offset spreads
+            // symmetrically outward from the glyphs, reading as a shimmer.
+            setShadowLayer(28f, 0f, 0f, ContextCompat.getColor(this@PrayerAlarmActivity, R.color.gold))
+        }
+        findViewById<TextView>(R.id.textPrayerArabic).apply {
+            text = arabicName
+            typeface = ResourcesCompat.getFont(this@PrayerAlarmActivity, R.font.scheherazade_new)
+        }
         findViewById<TextView>(R.id.textPrayerTime).text = prayerTime
         findViewById<TextView>(R.id.textMessage).text = message
 
         bindPrayerPills(schedule, currentName = prayerName)
 
-        findViewById<TextView>(R.id.btnIPrayed).setOnClickListener {
+        findViewById<TextView>(R.id.btnIPrayed).setOnClickListener { view ->
             markPrayer(prayerName)
-            dismissAlarm(notifId)
+            burstConfetti(view)
+            Handler(Looper.getMainLooper()).postDelayed({ dismissAlarm(notifId) }, 700L)
         }
 
         findViewById<TextView>(R.id.btnDismiss).setOnClickListener {
             dismissAlarm(notifId)
         }
+
+        startCrescentPulse()
+        startSoundWaveAnimation()
+        findViewById<View>(R.id.rootContent).animate().alpha(1f).setDuration(450).start()
     }
 
     /** Maps a prayer name to its time-of-day-appropriate hero photo, falling back for unknown names (e.g. the test alarm). */
@@ -84,6 +108,10 @@ class PrayerAlarmActivity : Activity() {
      * underneath, wrapped together so the pair distributes evenly across
      * the row. The dot is reserved (INVISIBLE, not GONE) on every other
      * pill so all 5 line up at the same height regardless of which fired.
+     *
+     * Styled to match the home screen's prayer pills exactly: dark card
+     * background, gold fill on the highlighted pill, and a small green dot
+     * before the time.
      */
     private fun buildPillView(entry: ScheduleEntry, isCurrent: Boolean): LinearLayout {
         val density = resources.displayMetrics.density
@@ -111,30 +139,41 @@ class PrayerAlarmActivity : Activity() {
             )
         }
 
-        // Gold is reserved for the current prayer; every other pill stays a
-        // dimmed cream so the highlight reads clearly at a glance.
-        val textColor = ContextCompat.getColor(
-            this, if (isCurrent) R.color.navy else R.color.cream
+        val nameColor = ContextCompat.getColor(
+            this, if (isCurrent) R.color.navy else android.R.color.white
         )
+        val timeColor = ContextCompat.getColor(
+            this, if (isCurrent) R.color.navy else R.color.gold
+        )
+        val scheherazade = ResourcesCompat.getFont(this, R.font.scheherazade_new)
 
         pill.addView(TextView(this).apply {
-            text = prayerEmoji(entry.name)
+            text = prayerArabicName(entry.name)
+            typeface = scheherazade
+            setTextColor(ContextCompat.getColor(this@PrayerAlarmActivity, R.color.gold))
             textSize = 15f
             gravity = Gravity.CENTER
         })
         pill.addView(TextView(this).apply {
             text = entry.name
-            setTextColor(textColor)
+            setTextColor(nameColor)
             textSize = 11f
             gravity = Gravity.CENTER
             setPadding(0, dp(4), 0, 0)
         })
-        pill.addView(TextView(this).apply {
-            text = entry.timeStr.replace(" AM", "").replace(" PM", "")
-            setTextColor(textColor)
-            textSize = 10f
+        pill.addView(LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER
-            alpha = if (isCurrent) 1f else 0.75f
+            setPadding(0, dp(3), 0, 0)
+            addView(View(this@PrayerAlarmActivity).apply {
+                layoutParams = LinearLayout.LayoutParams(dp(5), dp(5)).also { it.marginEnd = dp(4) }
+                background = ContextCompat.getDrawable(this@PrayerAlarmActivity, R.drawable.bg_dot_green)
+            })
+            addView(TextView(this@PrayerAlarmActivity).apply {
+                text = entry.timeStr.replace(" AM", "").replace(" PM", "")
+                setTextColor(timeColor)
+                textSize = 10f
+            })
         })
 
         wrapper.addView(pill)
@@ -149,13 +188,64 @@ class PrayerAlarmActivity : Activity() {
         return wrapper
     }
 
-    private fun prayerEmoji(name: String) = when (name) {
-        "Fajr" -> "🌅"
-        "Dhuhr" -> "☀️"
-        "Asr" -> "🌤️"
-        "Maghrib" -> "🌇"
-        "Isha" -> "🌙"
-        else -> "🕓"
+    private fun prayerArabicName(name: String) = when (name) {
+        "Fajr" -> "الفجر"
+        "Dhuhr" -> "الظهر"
+        "Asr" -> "العصر"
+        "Maghrib" -> "المغرب"
+        "Isha" -> "العشاء"
+        else -> ""
+    }
+
+    /** Gentle breathing pulse on the crescent's glow — scale and alpha, reversing forever. */
+    private fun startCrescentPulse() {
+        val glow = findViewById<View>(R.id.crescentGlow)
+        val animators = listOf(
+            ObjectAnimator.ofFloat(glow, View.SCALE_X, 1f, 1.25f),
+            ObjectAnimator.ofFloat(glow, View.SCALE_Y, 1f, 1.25f),
+            ObjectAnimator.ofFloat(glow, View.ALPHA, 0.6f, 1f),
+        )
+        for (animator in animators) {
+            animator.duration = 1400
+            animator.repeatMode = ObjectAnimator.REVERSE
+            animator.repeatCount = ObjectAnimator.INFINITE
+            animator.start()
+        }
+    }
+
+    /** Staggered equalizer-style bars for the "Adhan Playing" badge, each growing from its bottom edge. */
+    private fun startSoundWaveAnimation() {
+        val barHeightPx = 14 * resources.displayMetrics.density
+        val bars = listOf(
+            R.id.soundBar1 to Pair(0L, 420L),
+            R.id.soundBar2 to Pair(140L, 520L),
+            R.id.soundBar3 to Pair(260L, 360L),
+            R.id.soundBar4 to Pair(90L, 480L),
+        )
+        for ((id, timing) in bars) {
+            val (delay, durationMs) = timing
+            val bar = findViewById<View>(id)
+            bar.pivotY = barHeightPx
+            ObjectAnimator.ofFloat(bar, View.SCALE_Y, 0.3f, 1f).apply {
+                duration = durationMs
+                startDelay = delay
+                repeatMode = ObjectAnimator.REVERSE
+                repeatCount = ObjectAnimator.INFINITE
+                start()
+            }
+        }
+    }
+
+    /** Bursts confetti from [anchor]'s center, in the shared ConfettiView's own coordinate space. */
+    private fun burstConfetti(anchor: View) {
+        val confetti = findViewById<ConfettiView>(R.id.confettiView)
+        val anchorLocation = IntArray(2)
+        anchor.getLocationOnScreen(anchorLocation)
+        val confettiLocation = IntArray(2)
+        confetti.getLocationOnScreen(confettiLocation)
+        val originX = (anchorLocation[0] - confettiLocation[0] + anchor.width / 2).toFloat()
+        val originY = (anchorLocation[1] - confettiLocation[1]).toFloat()
+        confetti.burst(originX, originY)
     }
 
     private fun showOverLockScreen() {
