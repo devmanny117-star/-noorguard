@@ -12,11 +12,14 @@ import android.os.PowerManager
 import android.provider.Settings
 import android.view.KeyEvent
 import androidx.core.app.NotificationCompat
-import io.flutter.embedding.android.FlutterActivity
+import com.ryanheise.audioservice.AudioServiceActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
-class MainActivity : FlutterActivity() {
+// Extends AudioServiceActivity (not plain FlutterActivity) so this activity
+// shares its Flutter engine with the just_audio_background foreground
+// service powering the Quran reader's lock screen media controls.
+class MainActivity : AudioServiceActivity() {
 
     companion object {
         var adhanChannel: MethodChannel? = null

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'locale_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,6 +24,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) tz_data.initializeTimeZones();
   await NotificationService().init();
+  if (!kIsWeb) {
+    // Powers the lock screen / status bar media controls for the Quran
+    // reader's background playback (see SurahScreen).
+    await JustAudioBackground.init(
+      androidNotificationChannelId: 'com.example.noor_guard.channel.audio',
+      androidNotificationChannelName: 'Quran Recitation',
+      androidNotificationOngoing: true,
+      androidStopForegroundOnPause: true,
+    );
+  }
   runApp(
     ChangeNotifierProvider(
       create: (_) => PrayerState()..loadToday(),

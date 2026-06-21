@@ -1,5 +1,6 @@
 import 'dart:async';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,8 +39,13 @@ class _SurahScreenState extends State<SurahScreen> {
   Reciter _selectedReciter = reciters.first;
   String? _favoriteReciterId;
   final AudioPlayer _audioPlayer = AudioPlayer();
+  List<AudioSource>? _playlist;
   int? _playingVerseNumber;
   bool _isPlaying = false;
+
+  StreamSubscription<PlayerState>? _playerStateSub;
+  StreamSubscription<int?>? _currentIndexSub;
+  StreamSubscription<PositionDiscontinuity>? _discontinuitySub;
 
   /// When true, the player automatically advances to the next verse on completion.
   bool _continuousPlay = false;
@@ -57,23 +63,26 @@ class _SurahScreenState extends State<SurahScreen> {
   @override
   void initState() {
     super.initState();
-    // ReleaseMode.stop keeps the native player alive after completion so that
-    // onPlayerComplete fires reliably on iOS (the default .release mode
-    // deallocates the AVAudioPlayer before the event can propagate).
-    _audioPlayer.setReleaseMode(ReleaseMode.stop);
-    _audioPlayer.onPlayerStateChanged.listen((state) {
+    _playerStateSub = _audioPlayer.playerStateStream.listen((state) {
       if (!mounted) return;
-      setState(() => _isPlaying = state == PlayerState.playing);
+      setState(() => _isPlaying = state.playing);
     });
-    _audioPlayer.onPlayerComplete.listen((_) {
-      if (!mounted) return;
-      if (_continuousPlay) {
-        _playAdjacent(1);
-      } else {
-        setState(() {
-          _isPlaying = false;
-          _playingVerseNumber = null;
-        });
+    // Keeps _playingVerseNumber (and the highlighted verse / player bar) in
+    // sync with whichever item the playlist is currently on, whether that
+    // came from a tap, the prev/next buttons, or the lock screen controls.
+    _currentIndexSub = _audioPlayer.currentIndexStream.listen((index) {
+      if (!mounted || index == null) return;
+      if (index < 0 || index >= _verses.length) return;
+      setState(() => _playingVerseNumber = _verses[index].number);
+    });
+    // The playlist auto-advances to the next verse by default; when
+    // continuous play is off, immediately pause so playback stops after the
+    // current verse instead of rolling into the next one. Explicit
+    // prev/next taps (reason: seek) are left alone.
+    _discontinuitySub = _audioPlayer.positionDiscontinuityStream.listen((event) {
+      if (event.reason == PositionDiscontinuityReason.autoAdvance &&
+          !_continuousPlay) {
+        _audioPlayer.pause();
       }
     });
     _loadFontScale();
@@ -194,6 +203,11 @@ class _SurahScreenState extends State<SurahScreen> {
 
   @override
   void dispose() {
+    _playerStateSub?.cancel();
+    _currentIndexSub?.cancel();
+    _discontinuitySub?.cancel();
+    // dispose() stops playback internally first, which also tears down the
+    // lock screen / notification media session for this player.
     _audioPlayer.dispose();
     _sleepCountdownTimer?.cancel();
     super.dispose();
@@ -201,7 +215,14 @@ class _SurahScreenState extends State<SurahScreen> {
 
   Future<void> _load(String locale) async {
     final verses = await fetchVerses(widget.surah.number, locale: locale);
-    if (mounted) setState(() { _verses = verses; _loading = false; });
+    if (!mounted) return;
+    setState(() { _verses = verses; _loading = false; });
+    if (verses.isNotEmpty) {
+      _playlist = _buildPlaylist();
+      // preload: false — children load lazily as the player reaches them,
+      // so building the full-surah playlist up front costs nothing extra.
+      await _audioPlayer.setAudioSources(_playlist!, preload: false);
+    }
   }
 
   // ── Audio playback ───────────────────────────────────────────────────────
@@ -209,43 +230,63 @@ class _SurahScreenState extends State<SurahScreen> {
   // Surah 9 (At-Tawbah) is the only surah without Bismillah.
   bool get _showBismillah => widget.surah.number != 9;
 
+  /// One playable item per verse, in surah order, each tagged with the
+  /// metadata (surah, verse, reciter) shown in the lock screen / status bar
+  /// media notification.
+  List<AudioSource> _buildPlaylist() {
+    return [
+      for (final verse in _verses)
+        AudioSource.uri(
+          Uri.parse(_selectedReciter.audioUrl(widget.surah.number, verse.number)),
+          tag: MediaItem(
+            id: _selectedReciter.audioUrl(widget.surah.number, verse.number),
+            title: '${widget.surah.englishName} • Ayah ${verse.number}',
+            artist: _selectedReciter.name,
+            album: widget.surah.englishName,
+          ),
+        ),
+    ];
+  }
+
   Future<void> _playVerseAudio(int verseNumber) async {
     if (_playingVerseNumber == verseNumber) {
       if (_isPlaying) {
         await _audioPlayer.pause();
       } else {
-        await _audioPlayer.resume();
+        await _audioPlayer.play();
       }
       return;
     }
-    final url = _selectedReciter.audioUrl(widget.surah.number, verseNumber);
-    await _audioPlayer.stop();
-    setState(() => _playingVerseNumber = verseNumber);
-    await _audioPlayer.play(UrlSource(url));
+    final index = _verses.indexWhere((v) => v.number == verseNumber);
+    if (index == -1) return;
+    await _audioPlayer.seek(Duration.zero, index: index);
+    await _audioPlayer.play();
   }
 
   Future<void> _playAdjacent(int delta) async {
-    final current = _playingVerseNumber;
-    if (current == null) return;
-    final index = _verses.indexWhere((v) => v.number == current);
-    if (index == -1) return;
-    final newIndex = index + delta;
-    if (newIndex < 0) return;
-    if (newIndex >= _verses.length) {
-      await _audioPlayer.stop();
-      if (mounted) setState(() { _playingVerseNumber = null; _isPlaying = false; });
-      return;
+    if (delta >= 0) {
+      await _audioPlayer.seekToNext();
+    } else {
+      await _audioPlayer.seekToPrevious();
     }
-    await _playVerseAudio(_verses[newIndex].number);
+    await _audioPlayer.play();
   }
 
   Future<void> _onSelectReciter(Reciter reciter) async {
     final verseNumber = _playingVerseNumber;
-    if (_isPlaying) await _audioPlayer.stop();
-    setState(() { _selectedReciter = reciter; _isPlaying = false; });
-    if (verseNumber != null) {
-      await _audioPlayer.play(UrlSource(reciter.audioUrl(widget.surah.number, verseNumber)));
-    }
+    final wasPlaying = _isPlaying;
+    setState(() => _selectedReciter = reciter);
+    if (_verses.isEmpty) return;
+    final index = verseNumber != null
+        ? _verses.indexWhere((v) => v.number == verseNumber)
+        : 0;
+    _playlist = _buildPlaylist();
+    await _audioPlayer.setAudioSources(
+      _playlist!,
+      initialIndex: index < 0 ? 0 : index,
+      preload: false,
+    );
+    if (wasPlaying) await _audioPlayer.play();
   }
 
   // ── Verse tafsir bottom sheet ────────────────────────────────────────────
@@ -773,16 +814,22 @@ class _PlayerBarState extends State<_PlayerBar> {
   double _seekValue = 0.0;
 
   late final StreamSubscription<Duration> _positionSub;
-  late final StreamSubscription<Duration> _durationSub;
+  late final StreamSubscription<Duration?> _durationSub;
+  late final StreamSubscription<int?> _indexSub;
 
   @override
   void initState() {
     super.initState();
-    _positionSub = widget.audioPlayer.onPositionChanged.listen((pos) {
+    _positionSub = widget.audioPlayer.positionStream.listen((pos) {
       if (!_seeking && mounted) setState(() => _position = pos);
     });
-    _durationSub = widget.audioPlayer.onDurationChanged.listen((dur) {
-      if (mounted) setState(() => _duration = dur);
+    _durationSub = widget.audioPlayer.durationStream.listen((dur) {
+      if (mounted) setState(() => _duration = dur ?? Duration.zero);
+    });
+    // Avoids briefly showing the previous verse's position/duration while
+    // the newly selected one is still loading.
+    _indexSub = widget.audioPlayer.currentIndexStream.listen((_) {
+      if (mounted) setState(() => _position = Duration.zero);
     });
   }
 
@@ -790,6 +837,7 @@ class _PlayerBarState extends State<_PlayerBar> {
   void dispose() {
     _positionSub.cancel();
     _durationSub.cancel();
+    _indexSub.cancel();
     super.dispose();
   }
 
