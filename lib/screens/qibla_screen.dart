@@ -84,7 +84,12 @@ String _accuracyLabel(_Accuracy a) => switch (a) {
 // ── Screen ────────────────────────────────────────────────────────────────────
 
 class QiblaScreen extends StatefulWidget {
-  const QiblaScreen({super.key});
+  // Whether this tab is the one currently shown by the bottom-nav
+  // IndexedStack. IndexedStack keeps every tab mounted even when hidden, so
+  // without this flag the compass/haptics keep running on every other tab.
+  final bool isActive;
+
+  const QiblaScreen({super.key, required this.isActive});
 
   @override
   State<QiblaScreen> createState() => _QiblaScreenState();
@@ -133,6 +138,13 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   Timer? _alignedStopTimer;
   bool _vibratorAvailable = false;
 
+  // Tracks the app's foreground/background state (set by
+  // didChangeAppLifecycleState below). Combined with widget.isActive, this is
+  // the single source of truth for whether haptics are allowed to run at all —
+  // both must hold, or any in-flight vibration is stopped immediately.
+  bool _lifecycleResumed = true;
+  bool get _isScreenVisible => widget.isActive && _lifecycleResumed;
+
   // ── Lifecycle ────────────────────────────────────────────────────────────────
 
   @override
@@ -154,11 +166,21 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   }
 
   // Stops any in-progress/scheduled vibration the moment the app leaves the
-  // foreground (backgrounded, locked, call interruption, etc.) so the phone
-  // never keeps buzzing while the user isn't looking at the screen.
+  // foreground (backgrounded, locked, screen turned off, call interruption,
+  // etc.) so the phone never keeps buzzing while the user isn't looking.
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state != AppLifecycleState.resumed) {
+    _lifecycleResumed = state == AppLifecycleState.resumed;
+    if (!_isScreenVisible) _stopHaptics();
+  }
+
+  // Stops haptics the moment the user switches away from the Qibla tab.
+  // IndexedStack never disposes hidden tabs, so this is the only signal for
+  // "the user navigated away" while the app itself stays in the foreground.
+  @override
+  void didUpdateWidget(QiblaScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isActive != widget.isActive && !_isScreenVisible) {
       _stopHaptics();
     }
   }
@@ -253,7 +275,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   // ── Haptic feedback ───────────────────────────────────────────────────────────
 
   void _updateHaptics(double degreesOff) {
-    if (kIsWeb) return;
+    if (kIsWeb || !_isScreenVisible) return;
     final zone = _hapticZoneFor(degreesOff);
     if (zone == _hapticZone) return; // already in this zone — let it run
     _hapticZone = zone;

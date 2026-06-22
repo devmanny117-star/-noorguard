@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const QuranScreen(),
-              const QiblaScreen(),
+              QiblaScreen(isActive: _selectedIndex == 2),
               const SettingsScreen(),
             ],
           ),
