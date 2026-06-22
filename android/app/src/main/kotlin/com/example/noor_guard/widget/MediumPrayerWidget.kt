@@ -85,7 +85,7 @@ class MediumPrayerWidget : GlanceAppWidget() {
                     Image(
                         provider = ImageProvider(R.drawable.ic_crescent_star_widget),
                         contentDescription = null,
-                        modifier = GlanceModifier.size(26.dp),
+                        modifier = GlanceModifier.size(48.dp),
                     )
                 }
 
@@ -109,16 +109,10 @@ class MediumPrayerWidget : GlanceAppWidget() {
 
                 Box(modifier = GlanceModifier.defaultWeight()) {}
 
-                // 5 prayer pills.
-                Row(modifier = GlanceModifier.fillMaxWidth()) {
-                    for (prayer in data.prayers) {
-                        Box(modifier = GlanceModifier.defaultWeight()) {
-                            PrayerPill(prayer)
-                        }
-                    }
-                }
+                // 5 prayer pills, pinned directly above the I Prayed button.
+                PrayerPillsRow(data.prayers)
 
-                Box(modifier = GlanceModifier.defaultWeight()) {}
+                Spacer(modifier = GlanceModifier.height(8.dp))
 
                 // Bottom row: streak (left) + I Prayed button (right, prominent).
                 Row(
@@ -153,45 +147,6 @@ class MediumPrayerWidget : GlanceAppWidget() {
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun PrayerPill(prayer: WidgetPrayer) {
-    Column(horizontalAlignment = Alignment.Horizontal.CenterHorizontally) {
-        if (prayer.isNext) {
-            Box(
-                modifier = GlanceModifier
-                    .background(WidgetTheme.gold)
-                    .cornerRadius(10.dp)
-                    .padding(horizontal = 8.dp, vertical = 3.dp),
-            ) {
-                Text(
-                    prayer.displayName,
-                    style = TextStyle(
-                        color = ColorProvider(WidgetTheme.navy),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                    ),
-                )
-            }
-        } else {
-            Text(
-                prayer.displayName,
-                style = TextStyle(
-                    color = ColorProvider(WidgetTheme.mutedCream),
-                    fontSize = 11.sp,
-                ),
-            )
-        }
-        Spacer(modifier = GlanceModifier.height(4.dp))
-        Text(
-            if (prayer.done) "●" else "○",
-            style = TextStyle(
-                color = ColorProvider(if (prayer.done) WidgetTheme.green else WidgetTheme.mutedCream),
-                fontSize = 9.sp,
-            ),
-        )
     }
 }
 

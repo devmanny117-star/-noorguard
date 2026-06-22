@@ -21,6 +21,7 @@ import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.fillMaxWidth
+import androidx.glance.layout.height
 import androidx.glance.layout.padding
 import androidx.glance.layout.size
 import androidx.glance.text.FontStyle
@@ -80,7 +81,7 @@ class LargePrayerWidget : GlanceAppWidget() {
                     Image(
                         provider = ImageProvider(R.drawable.ic_crescent_star_widget),
                         contentDescription = null,
-                        modifier = GlanceModifier.size(24.dp),
+                        modifier = GlanceModifier.size(52.dp),
                     )
                 }
 
@@ -91,16 +92,6 @@ class LargePrayerWidget : GlanceAppWidget() {
                         fontSize = 12.sp,
                     ),
                 )
-
-                Box(modifier = GlanceModifier.defaultWeight()) {}
-
-                Row(modifier = GlanceModifier.fillMaxWidth()) {
-                    for (prayer in data.prayers) {
-                        Box(modifier = GlanceModifier.defaultWeight()) {
-                            PrayerCompletionDot(prayer)
-                        }
-                    }
-                }
 
                 Box(modifier = GlanceModifier.defaultWeight()) {}
 
@@ -130,6 +121,11 @@ class LargePrayerWidget : GlanceAppWidget() {
                 }
 
                 Box(modifier = GlanceModifier.defaultWeight()) {}
+
+                // 5 prayer pills, pinned directly above the I Prayed button.
+                PrayerPillsRow(data.prayers)
+
+                Box(modifier = GlanceModifier.height(8.dp)) {}
 
                 Row(
                     modifier = GlanceModifier.fillMaxWidth(),
@@ -169,28 +165,6 @@ class LargePrayerWidget : GlanceAppWidget() {
 @Composable
 private fun Spacer(width: androidx.compose.ui.unit.Dp) {
     Box(modifier = GlanceModifier.size(width = width, height = 1.dp)) {}
-}
-
-@Composable
-private fun PrayerCompletionDot(prayer: WidgetPrayer) {
-    val highlight = prayer.isNext
-    Column(horizontalAlignment = Alignment.Horizontal.CenterHorizontally) {
-        Text(
-            prayer.displayName,
-            style = TextStyle(
-                color = ColorProvider(if (highlight) WidgetTheme.gold else WidgetTheme.mutedCream),
-                fontSize = 12.sp,
-                fontWeight = if (highlight) FontWeight.Bold else FontWeight.Normal,
-            ),
-        )
-        Text(
-            if (prayer.done) "●" else "○",
-            style = TextStyle(
-                color = ColorProvider(if (prayer.done) WidgetTheme.green else WidgetTheme.mutedCream),
-                fontSize = 11.sp,
-            ),
-        )
-    }
 }
 
 @Composable
