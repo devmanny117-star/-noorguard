@@ -27,7 +27,7 @@
         android:background="@drawable/bg_border_gold" />
 
     <!-- Ambient drifting gold particles, behind the text/buttons so they never interfere with reading or taps -->
-    <com.noorguard.noor_guard.ParticleView
+    <com.noorguard.app.ParticleView
         android:id="@+id/particleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -277,7 +277,7 @@
     </LinearLayout>
 
     <!-- "I Prayed" celebration burst, drawn above everything else -->
-    <com.noorguard.noor_guard.ConfettiView
+    <com.noorguard.app.ConfettiView
         android:id="@+id/confettiView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -1,4 +1,4 @@
-package com.noorguard.noor_guard.widget
+package com.noorguard.app.widget
 
 import android.content.SharedPreferences
 import org.json.JSONArray

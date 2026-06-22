@@ -1,4 +1,4 @@
-package com.noorguard.noor_guard.widget
+package com.noorguard.app.widget
 
 import android.content.Context
 import androidx.compose.runtime.Composable
@@ -29,8 +29,8 @@ import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
-import com.noorguard.noor_guard.MainActivity
-import com.noorguard.noor_guard.R
+import com.noorguard.app.MainActivity
+import com.noorguard.app.R
 import es.antonborri.home_widget.HomeWidgetGlanceState
 import es.antonborri.home_widget.HomeWidgetGlanceStateDefinition
 import es.antonborri.home_widget.HomeWidgetGlanceWidgetReceiver

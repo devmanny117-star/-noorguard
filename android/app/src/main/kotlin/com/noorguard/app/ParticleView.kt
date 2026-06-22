@@ -1,4 +1,4 @@
-package com.noorguard.noor_guard
+package com.noorguard.app
 
 import android.animation.ValueAnimator
 import android.content.Context

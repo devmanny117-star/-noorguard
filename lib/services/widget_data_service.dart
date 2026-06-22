@@ -17,9 +17,9 @@ class WidgetDataService {
   // Fully qualified since the widget classes live in the .widget sub-package,
   // not the root package androidName alone would assume.
   static const _androidWidgetNames = [
-    'com.noorguard.noor_guard.widget.SmallPrayerWidgetReceiver',
-    'com.noorguard.noor_guard.widget.MediumPrayerWidgetReceiver',
-    'com.noorguard.noor_guard.widget.LargePrayerWidgetReceiver',
+    'com.noorguard.app.widget.SmallPrayerWidgetReceiver',
+    'com.noorguard.app.widget.MediumPrayerWidgetReceiver',
+    'com.noorguard.app.widget.LargePrayerWidgetReceiver',
   ];
 
   static const _englishToLocalizedKey = {

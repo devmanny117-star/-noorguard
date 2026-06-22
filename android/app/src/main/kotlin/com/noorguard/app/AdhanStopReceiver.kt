@@ -1,4 +1,4 @@
-package com.noorguard.noor_guard
+package com.noorguard.app
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -10,7 +10,7 @@ import android.content.Intent
 class AdhanStopReceiver : BroadcastReceiver() {
 
     companion object {
-        const val ACTION_STOP_ADHAN = "com.noorguard.noor_guard.STOP_ADHAN"
+        const val ACTION_STOP_ADHAN = "com.noorguard.app.STOP_ADHAN"
     }
 
     override fun onReceive(context: Context, intent: Intent) {

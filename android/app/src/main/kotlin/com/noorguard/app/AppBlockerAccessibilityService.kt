@@ -1,4 +1,4 @@
-package com.noorguard.noor_guard
+package com.noorguard.app
 
 import android.accessibilityservice.AccessibilityService
 import android.app.NotificationChannel

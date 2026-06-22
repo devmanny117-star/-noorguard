@@ -99,7 +99,7 @@
         <receiver android:name=".AdhanStopReceiver"
                   android:exported="false">
             <intent-filter>
-                <action android:name="com.noorguard.noor_guard.STOP_ADHAN"/>
+                <action android:name="com.noorguard.app.STOP_ADHAN"/>
             </intent-filter>
         </receiver>
 
@@ -112,8 +112,8 @@
         <receiver android:name=".PrayerActionReceiver"
                   android:exported="false">
             <intent-filter>
-                <action android:name="com.noorguard.noor_guard.ACTION_PRAYED"/>
-                <action android:name="com.noorguard.noor_guard.ACTION_DISMISS"/>
+                <action android:name="com.noorguard.app.ACTION_PRAYED"/>
+                <action android:name="com.noorguard.app.ACTION_DISMISS"/>
             </intent-filter>
         </receiver>
 

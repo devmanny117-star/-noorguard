@@ -1,4 +1,4 @@
-package com.noorguard.noor_guard
+package com.noorguard.app
 
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
@@ -9,8 +9,8 @@ import android.content.Intent
 class PrayerActionReceiver : BroadcastReceiver() {
 
     companion object {
-        const val ACTION_PRAYED = "com.noorguard.noor_guard.ACTION_PRAYED"
-        const val ACTION_DISMISS = "com.noorguard.noor_guard.ACTION_DISMISS"
+        const val ACTION_PRAYED = "com.noorguard.app.ACTION_PRAYED"
+        const val ACTION_DISMISS = "com.noorguard.app.ACTION_DISMISS"
     }
 
     override fun onReceive(context: Context, intent: Intent) {
