@@ -1781,4 +1781,151 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get forgiveness => 'Pardon';
+
+  @override
+  String get appBlockingSetupHeadline =>
+      'Préserve ton temps, préserve ta prière';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard utilise le service d\'accessibilité d\'Android uniquement pour détecter quand une appli bloquée est ouverte pendant la prière. Il ne lit jamais tes messages, photos ou données personnelles.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn =>
+      'Accès à l\'accessibilité accordé';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Accès à l\'accessibilité non accordé';
+
+  @override
+  String get appBlockingOpenSettings =>
+      'Ouvrir les paramètres d\'accessibilité';
+
+  @override
+  String get appBlockingSetupNotNow => 'Pas maintenant';
+
+  @override
+  String get appBlockingEnableToggle => 'Activer le blocage d\'applis';
+
+  @override
+  String get appBlockingModeLabel => 'Mode de blocage';
+
+  @override
+  String get appBlockingModeSoft => 'Doux';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'Juste un rappel — les applis restent ouvertes';
+
+  @override
+  String get appBlockingModeFirm => 'Ferme';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'Bloque l\'appli, avec une sortie rapide';
+
+  @override
+  String get appBlockingModeHard => 'Strict';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Blocage total — seul \"J\'ai prié\" le débloque';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'Bloquer pendant ces prières';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Commencer avant la prière';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Lever après la prière';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count min';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Applis bloquées';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Choisir les applis à bloquer';
+
+  @override
+  String get appBlockingSearchHint => 'Rechercher des applis installées';
+
+  @override
+  String get appBlockingNoAppsSelected =>
+      'Aucune appli sélectionnée pour l\'instant';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count applis bloquées',
+      one: '1 appli bloquée',
+      zero: 'Aucune appli bloquée',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Active l\'accès à l\'accessibilité pour commencer à bloquer';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'Accès Temps d\'écran — bientôt disponible';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'Le blocage d\'applis sur iOS nécessite la permission Temps d\'écran d\'Apple, que nous mettons encore en place. Nous te préviendrons dès qu\'elle sera prête.';
+
+  @override
+  String get appBlockingHeadline1 => 'C\'est l\'heure de la prière';
+
+  @override
+  String get appBlockingHeadline2 => 'Préserve ton temps';
+
+  @override
+  String get appBlockingIPrayedButton => 'J\'ai prié';
+
+  @override
+  String get appBlockingReadAyahsButton => 'Lire 3 versets';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Sortie d\'urgence';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'Terminer ta série ?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Sortir maintenant réinitialisera ta série de prières. S\'il s\'agit d\'une vraie urgence, tu peux continuer.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Sortir malgré tout';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Retour';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'Un rappel tout en douceur';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'C\'est l\'heure de la prière — pense à t\'éloigner un instant.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Lis 3 versets pour débloquer';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$count sur $total versets lus';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Bien joué — applis débloquées';
 }

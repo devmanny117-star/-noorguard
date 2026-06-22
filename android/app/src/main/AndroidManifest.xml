@@ -70,12 +70,36 @@
             android:turnScreenOn="true"
             android:theme="@style/PrayerAlarmTheme" />
 
+        <!-- Full-screen Islamic block screen shown over a blocked app during
+             an active prayer block window (Firm/Hard modes). -->
+        <activity
+            android:name=".BlockActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:launchMode="singleTask"
+            android:theme="@style/PrayerAlarmTheme" />
+
+        <!-- Detects when a blocked app opens during prayer time. Config and
+             copy come entirely from AppBlockingStore, pushed by Dart. -->
+        <service
+            android:name=".AppBlockerAccessibilityService"
+            android:exported="false"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config"/>
+        </service>
+
         <!-- Stops the foreground adhan when the user taps or swipes away the
              silent prayer banner. Both contentIntent and deleteIntent point here. -->
         <receiver android:name=".AdhanStopReceiver"
                   android:exported="false">
             <intent-filter>
-                <action android:name="com.example.noor_guard.STOP_ADHAN"/>
+                <action android:name="com.noorguard.noor_guard.STOP_ADHAN"/>
             </intent-filter>
         </receiver>
 
@@ -88,8 +112,8 @@
         <receiver android:name=".PrayerActionReceiver"
                   android:exported="false">
             <intent-filter>
-                <action android:name="com.example.noor_guard.ACTION_PRAYED"/>
-                <action android:name="com.example.noor_guard.ACTION_DISMISS"/>
+                <action android:name="com.noorguard.noor_guard.ACTION_PRAYED"/>
+                <action android:name="com.noorguard.noor_guard.ACTION_DISMISS"/>
             </intent-filter>
         </receiver>
 
@@ -191,6 +215,12 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Lets getInstalledApps() enumerate launchable apps for the App
+             Blocking picker without the broader QUERY_ALL_PACKAGES permission. -->
+        <intent>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
         </intent>
     </queries>
 </manifest>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guard nutzt diesen Bedienungshilfen-Dienst nur, um zu erkennen, wann eine blockierte App während der Gebetszeit geöffnet wird. Es liest niemals deine Nachrichten, Fotos oder persönlichen Daten.</string>
+</resources>

@@ -1755,4 +1755,145 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get forgiveness => 'Forgiveness';
+
+  @override
+  String get appBlockingSetupHeadline => 'Guard Your Time, Guard Your Prayer';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard uses Android\'s Accessibility service only to notice when a blocked app opens during prayer time. It never reads your messages, photos, or any personal data.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn => 'Accessibility access granted';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Accessibility access not granted';
+
+  @override
+  String get appBlockingOpenSettings => 'Open Accessibility Settings';
+
+  @override
+  String get appBlockingSetupNotNow => 'Not now';
+
+  @override
+  String get appBlockingEnableToggle => 'Enable App Blocking';
+
+  @override
+  String get appBlockingModeLabel => 'Blocking Mode';
+
+  @override
+  String get appBlockingModeSoft => 'Soft';
+
+  @override
+  String get appBlockingModeSoftDesc => 'Gentle reminder only — apps stay open';
+
+  @override
+  String get appBlockingModeFirm => 'Firm';
+
+  @override
+  String get appBlockingModeFirmDesc => 'Blocks the app, with a quick bypass';
+
+  @override
+  String get appBlockingModeHard => 'Hard';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Full block — only \"I Prayed\" unlocks it';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'Block during these prayers';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Start before prayer';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Lift after prayer';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count min';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Blocked Apps';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Select Apps to Block';
+
+  @override
+  String get appBlockingSearchHint => 'Search installed apps';
+
+  @override
+  String get appBlockingNoAppsSelected => 'No apps selected yet';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count apps blocked',
+      one: '1 app blocked',
+      zero: 'No apps blocked',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Turn on Accessibility access to start blocking';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'Screen Time Access — Coming Soon';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'iOS app blocking needs Apple\'s Screen Time permission, which we\'re still setting up. We\'ll let you know the moment it\'s ready.';
+
+  @override
+  String get appBlockingHeadline1 => 'Time for Prayer';
+
+  @override
+  String get appBlockingHeadline2 => 'Guard Your Time';
+
+  @override
+  String get appBlockingIPrayedButton => 'I Prayed';
+
+  @override
+  String get appBlockingReadAyahsButton => 'Read 3 Ayahs';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Emergency bypass';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'End your streak?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Bypassing now will reset your prayer streak. If this is a real emergency, you can continue.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Bypass anyway';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Go back';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'A gentle reminder';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'It\'s prayer time — consider stepping away for a moment.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Read 3 Ayahs to Unlock';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$count of $total ayahs read';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Well done — apps unlocked';
 }

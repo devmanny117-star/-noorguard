@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guard usa este servicio de Accesibilidad solo para detectar cuándo se abre una app bloqueada durante la oración. Nunca lee tus mensajes, fotos ni datos personales.</string>
+</resources>

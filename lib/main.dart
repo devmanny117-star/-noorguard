@@ -28,7 +28,7 @@ Future<void> main() async {
     // Powers the lock screen / status bar media controls for the Quran
     // reader's background playback (see SurahScreen).
     await JustAudioBackground.init(
-      androidNotificationChannelId: 'com.example.noor_guard.channel.audio',
+      androidNotificationChannelId: 'com.noorguard.noor_guard.channel.audio',
       androidNotificationChannelName: 'Quran Recitation',
       androidNotificationOngoing: true,
       androidStopForegroundOnPause: true,

@@ -1677,4 +1677,139 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get forgiveness => '宽恕';
+
+  @override
+  String get appBlockingSetupHeadline => '守护你的时间，守护你的礼拜';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard 仅使用 Android 的无障碍服务来检测在礼拜时间打开了被屏蔽的应用。它绝不会读取你的消息、照片或任何个人数据。';
+
+  @override
+  String get appBlockingAccessibilityStatusOn => '无障碍权限已授予';
+
+  @override
+  String get appBlockingAccessibilityStatusOff => '无障碍权限尚未授予';
+
+  @override
+  String get appBlockingOpenSettings => '打开无障碍设置';
+
+  @override
+  String get appBlockingSetupNotNow => '现在不要';
+
+  @override
+  String get appBlockingEnableToggle => '启用应用屏蔽';
+
+  @override
+  String get appBlockingModeLabel => '屏蔽模式';
+
+  @override
+  String get appBlockingModeSoft => '温和';
+
+  @override
+  String get appBlockingModeSoftDesc => '仅温和提醒——应用仍可打开';
+
+  @override
+  String get appBlockingModeFirm => '适中';
+
+  @override
+  String get appBlockingModeFirmDesc => '屏蔽应用，可快速绕过';
+
+  @override
+  String get appBlockingModeHard => '严格';
+
+  @override
+  String get appBlockingModeHardDesc => '完全屏蔽——只有\"我已礼拜\"才能解锁';
+
+  @override
+  String get appBlockingSelectPrayersLabel => '在以下礼拜时间屏蔽';
+
+  @override
+  String get appBlockingBufferBeforeLabel => '礼拜前开始';
+
+  @override
+  String get appBlockingBufferAfterLabel => '礼拜后解除';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count 分钟';
+  }
+
+  @override
+  String get appBlockingAppsTitle => '已屏蔽的应用';
+
+  @override
+  String get appBlockingSelectAppsButton => '选择要屏蔽的应用';
+
+  @override
+  String get appBlockingSearchHint => '搜索已安装的应用';
+
+  @override
+  String get appBlockingNoAppsSelected => '尚未选择任何应用';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '已屏蔽 $count 个应用',
+      zero: '未屏蔽任何应用',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded => '开启无障碍权限以开始屏蔽';
+
+  @override
+  String get appBlockingIosComingSoonTitle => '屏幕使用时间权限——即将推出';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'iOS 上的应用屏蔽需要 Apple 的屏幕使用时间权限，我们仍在设置中，准备好后会立即通知你。';
+
+  @override
+  String get appBlockingHeadline1 => '礼拜时间到了';
+
+  @override
+  String get appBlockingHeadline2 => '守护你的时间';
+
+  @override
+  String get appBlockingIPrayedButton => '我已礼拜';
+
+  @override
+  String get appBlockingReadAyahsButton => '阅读 3 节经文';
+
+  @override
+  String get appBlockingEmergencyBypass => '紧急绕过';
+
+  @override
+  String get appBlockingBypassConfirmTitle => '结束你的连续记录？';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      '现在绕过将重置你的礼拜连续记录。如果是真正的紧急情况，你可以继续。';
+
+  @override
+  String get appBlockingBypassConfirmContinue => '仍要绕过';
+
+  @override
+  String get appBlockingBypassConfirmCancel => '返回';
+
+  @override
+  String get appBlockingSoftReminderTitle => '温和的提醒';
+
+  @override
+  String get appBlockingSoftReminderBody => '礼拜时间到了——考虑暂时离开一下。';
+
+  @override
+  String get quranChallengeBannerTitle => '阅读 3 节经文以解锁';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '已读 $count/$total 节经文';
+  }
+
+  @override
+  String get quranChallengeComplete => '做得好——应用已解锁';
 }

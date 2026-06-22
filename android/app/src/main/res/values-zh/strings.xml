@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guard 仅使用此无障碍服务来检测在礼拜时间打开了被屏蔽的应用。它绝不会读取你的消息、照片或任何个人数据。</string>
+</resources>

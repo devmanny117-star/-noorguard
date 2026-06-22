@@ -1695,4 +1695,139 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get forgiveness => '赦し';
+
+  @override
+  String get appBlockingSetupHeadline => 'あなたの時間を守り、礼拝を守る';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guardは、Androidのユーザー補助サービスを礼拝の時間にブロックしたアプリが開かれたことを検知するためだけに使用します。メッセージや写真、個人データを読み取ることは一切ありません。';
+
+  @override
+  String get appBlockingAccessibilityStatusOn => 'ユーザー補助のアクセスが許可されています';
+
+  @override
+  String get appBlockingAccessibilityStatusOff => 'ユーザー補助のアクセスが許可されていません';
+
+  @override
+  String get appBlockingOpenSettings => 'ユーザー補助の設定を開く';
+
+  @override
+  String get appBlockingSetupNotNow => '今はしない';
+
+  @override
+  String get appBlockingEnableToggle => 'アプリブロックを有効にする';
+
+  @override
+  String get appBlockingModeLabel => 'ブロックモード';
+
+  @override
+  String get appBlockingModeSoft => 'ソフト';
+
+  @override
+  String get appBlockingModeSoftDesc => '穏やかなリマインダーのみ — アプリは開けます';
+
+  @override
+  String get appBlockingModeFirm => 'ファーム';
+
+  @override
+  String get appBlockingModeFirmDesc => 'アプリをブロックし、簡単に回避できます';
+
+  @override
+  String get appBlockingModeHard => 'ハード';
+
+  @override
+  String get appBlockingModeHardDesc => '完全ブロック — 「礼拝しました」のみ解除可能';
+
+  @override
+  String get appBlockingSelectPrayersLabel => '次の礼拝の間ブロックする';
+
+  @override
+  String get appBlockingBufferBeforeLabel => '礼拝前に開始';
+
+  @override
+  String get appBlockingBufferAfterLabel => '礼拝後に解除';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count分';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'ブロック中のアプリ';
+
+  @override
+  String get appBlockingSelectAppsButton => 'ブロックするアプリを選択';
+
+  @override
+  String get appBlockingSearchHint => 'インストール済みアプリを検索';
+
+  @override
+  String get appBlockingNoAppsSelected => 'まだアプリが選択されていません';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count個のアプリをブロック中',
+      zero: 'ブロック中のアプリはありません',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded => 'ブロックを始めるにはユーザー補助のアクセスを有効にしてください';
+
+  @override
+  String get appBlockingIosComingSoonTitle => 'スクリーンタイムへのアクセス — 近日公開';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'iOSでのアプリブロックにはAppleのスクリーンタイム許可が必要で、現在準備中です。準備が整ったらお知らせします。';
+
+  @override
+  String get appBlockingHeadline1 => '礼拝の時間です';
+
+  @override
+  String get appBlockingHeadline2 => 'あなたの時間を守る';
+
+  @override
+  String get appBlockingIPrayedButton => '礼拝しました';
+
+  @override
+  String get appBlockingReadAyahsButton => 'アーヤを3つ読む';
+
+  @override
+  String get appBlockingEmergencyBypass => '緊急回避';
+
+  @override
+  String get appBlockingBypassConfirmTitle => '連続記録を終了しますか？';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      '今回避すると礼拝の連続記録がリセットされます。本当の緊急事態であれば、続行できます。';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'それでも回避する';
+
+  @override
+  String get appBlockingBypassConfirmCancel => '戻る';
+
+  @override
+  String get appBlockingSoftReminderTitle => '穏やかなリマインダー';
+
+  @override
+  String get appBlockingSoftReminderBody => '礼拝の時間です — 少し離れることを考えてみましょう。';
+
+  @override
+  String get quranChallengeBannerTitle => '解除するにはアーヤを3つ読んでください';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$total節中$count節を読みました';
+  }
+
+  @override
+  String get quranChallengeComplete => 'よくできました — アプリがロック解除されました';
 }

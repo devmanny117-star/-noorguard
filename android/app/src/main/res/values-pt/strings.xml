@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">O Noor Guard usa este serviço de Acessibilidade apenas para perceber quando um app bloqueado é aberto durante a oração. Ele nunca lê suas mensagens, fotos ou dados pessoais.</string>
+</resources>

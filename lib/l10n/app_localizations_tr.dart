@@ -1762,4 +1762,146 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get forgiveness => 'Bağışlanma';
+
+  @override
+  String get appBlockingSetupHeadline => 'Zamanını koru, namazını koru';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard, Android\'in Erişilebilirlik hizmetini yalnızca namaz vakti engellenen bir uygulamanın açıldığını fark etmek için kullanır. Mesajlarını, fotoğraflarını veya herhangi bir kişisel verini asla okumaz.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn => 'Erişilebilirlik izni verildi';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Erişilebilirlik izni verilmedi';
+
+  @override
+  String get appBlockingOpenSettings => 'Erişilebilirlik Ayarlarını Aç';
+
+  @override
+  String get appBlockingSetupNotNow => 'Şimdi değil';
+
+  @override
+  String get appBlockingEnableToggle => 'Uygulama Engellemeyi Etkinleştir';
+
+  @override
+  String get appBlockingModeLabel => 'Engelleme Modu';
+
+  @override
+  String get appBlockingModeSoft => 'Hafif';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'Sadece nazik bir hatırlatma — uygulamalar açık kalır';
+
+  @override
+  String get appBlockingModeFirm => 'Orta';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'Uygulamayı engeller, hızlı bir atlatma seçeneğiyle';
+
+  @override
+  String get appBlockingModeHard => 'Sıkı';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Tam engelleme — yalnızca \"Namaz Kıldım\" açar';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'Şu namaz vakitlerinde engelle';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Namazdan önce başla';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Namazdan sonra kaldır';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count dk';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Engellenen Uygulamalar';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Engellenecek Uygulamaları Seç';
+
+  @override
+  String get appBlockingSearchHint => 'Yüklü uygulamalarda ara';
+
+  @override
+  String get appBlockingNoAppsSelected => 'Henüz uygulama seçilmedi';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count uygulama engellendi',
+      one: '1 uygulama engellendi',
+      zero: 'Engellenen uygulama yok',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Engellemeye başlamak için Erişilebilirlik iznini açın';
+
+  @override
+  String get appBlockingIosComingSoonTitle => 'Ekran Süresi Erişimi — yakında';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'iOS\'ta uygulama engelleme, Apple\'ın hâlâ ayarladığımız Ekran Süresi iznini gerektirir. Hazır olduğunda sana haber vereceğiz.';
+
+  @override
+  String get appBlockingHeadline1 => 'Namaz Vakti';
+
+  @override
+  String get appBlockingHeadline2 => 'Zamanını Koru';
+
+  @override
+  String get appBlockingIPrayedButton => 'Namaz Kıldım';
+
+  @override
+  String get appBlockingReadAyahsButton => '3 Ayet Oku';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Acil Durum Atlatması';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'Serini sonlandırılsın mı?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Şimdi atlatmak namaz serini sıfırlar. Bu gerçek bir acil durumsa devam edebilirsin.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Yine de Atlat';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Geri Dön';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'Nazik bir hatırlatma';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'Namaz vakti geldi — biraz ara vermeyi düşün.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Kilidi açmak için 3 Ayet Oku';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$total ayetten $count tanesi okundu';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Aferin — uygulamaların kilidi açıldı';
 }

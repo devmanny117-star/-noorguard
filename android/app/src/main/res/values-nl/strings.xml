@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guard gebruikt deze toegankelijkheidsservice alleen om te merken wanneer een geblokkeerde app wordt geopend tijdens het gebed. Het leest nooit je berichten, foto\'s of persoonlijke gegevens.</string>
+</resources>

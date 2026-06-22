@@ -1768,4 +1768,147 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get forgiveness => 'Msamaha';
+
+  @override
+  String get appBlockingSetupHeadline => 'Linda wakati wako, linda swala lako';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard hutumia huduma ya Ufikiaji (Accessibility) ya Android tu ili kutambua wakati programu iliyozuiwa inafunguliwa wakati wa swala. Haisomi kamwe ujumbe wako, picha, au taarifa zako za kibinafsi.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn => 'Ruhusa ya Ufikiaji imetolewa';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Ruhusa ya Ufikiaji haijatolewa';
+
+  @override
+  String get appBlockingOpenSettings => 'Fungua Mipangilio ya Ufikiaji';
+
+  @override
+  String get appBlockingSetupNotNow => 'Si sasa';
+
+  @override
+  String get appBlockingEnableToggle => 'Wezesha Kuzuia Programu';
+
+  @override
+  String get appBlockingModeLabel => 'Hali ya Kuzuia';
+
+  @override
+  String get appBlockingModeSoft => 'Laini';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'Ukumbusho mpole tu — programu zinabaki wazi';
+
+  @override
+  String get appBlockingModeFirm => 'Thabiti';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'Inazuia programu, na njia ya haraka ya kupita';
+
+  @override
+  String get appBlockingModeHard => 'Kali';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Kuzuia kamili — \"Nimeswali\" peke yake huifungua';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'Zuia wakati wa swala hizi';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Anza kabla ya swala';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Ondoa baada ya swala';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return 'Dakika $count';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Programu Zilizozuiwa';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Chagua Programu za Kuzuia';
+
+  @override
+  String get appBlockingSearchHint => 'Tafuta programu zilizosakinishwa';
+
+  @override
+  String get appBlockingNoAppsSelected => 'Hakuna programu iliyochaguliwa bado';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Programu $count zimezuiwa',
+      one: 'Programu 1 imezuiwa',
+      zero: 'Hakuna programu iliyozuiwa',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Wezesha ruhusa ya Ufikiaji ili kuanza kuzuia';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'Ufikiaji wa Muda wa Skrini — Unakuja Hivi Karibuni';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'Kuzuia programu kwenye iOS kunahitaji ruhusa ya Muda wa Skrini ya Apple, ambayo bado tunaiweka tayari. Tutakujulisha mara itakapokuwa tayari.';
+
+  @override
+  String get appBlockingHeadline1 => 'Wakati wa Swala';
+
+  @override
+  String get appBlockingHeadline2 => 'Linda Wakati Wako';
+
+  @override
+  String get appBlockingIPrayedButton => 'Nimeswali';
+
+  @override
+  String get appBlockingReadAyahsButton => 'Soma Aya 3';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Kupita kwa Dharura';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'Komesha mfululizo wako?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Kupita sasa kutaweka upya mfululizo wako wa swala. Ikiwa hii ni dharura ya kweli, unaweza kuendelea.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Pita Hata Hivyo';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Rudi Nyuma';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'Ukumbusho mpole';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'Ni wakati wa swala — fikiria kuondoka kwa muda mfupi.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Soma Aya 3 Kufungua';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return 'Aya $count kati ya $total zimesomwa';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Vizuri sana — programu zimefunguliwa';
 }

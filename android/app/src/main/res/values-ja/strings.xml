@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guardは、このユーザー補助サービスを礼拝の時間にブロックしたアプリが開かれたことを検知するためだけに使用します。メッセージや写真、個人データを読み取ることは一切ありません。</string>
+</resources>

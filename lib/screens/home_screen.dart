@@ -5,7 +5,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import '../theme/app_theme.dart';
 import '../models/prayer_model.dart';
+import '../models/surah_model.dart';
 import '../data/prayer_times_data.dart';
+import '../services/app_blocking_service.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
@@ -17,7 +19,20 @@ import 'prayers_screen.dart';
 import 'qibla_screen.dart';
 import 'quran_screen.dart';
 import 'settings_screen.dart';
+import 'surah_screen.dart';
 import '../l10n/app_localizations.dart';
+
+// Always available offline as the ayah-challenge's reading target — avoids
+// waiting on fetchSurahs() just to resolve this one well-known surah's
+// display metadata (SurahScreen still fetches the actual ayah text itself).
+const _alFatiha = Surah(
+  number: 1,
+  name: 'الفاتحة',
+  englishName: 'Al-Fatiha',
+  englishNameTranslation: 'The Opening',
+  numberOfAyahs: 7,
+  revelationType: 'Meccan',
+);
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -87,8 +102,21 @@ class _HomeBodyState extends State<_HomeBody> {
   @override
   void initState() {
     super.initState();
+    AppBlockingService().loadSettings();
     _loadPrayerTimes();
     _applyPendingPrayerMarks();
+    _checkAyahChallenge();
+  }
+
+  Future<void> _checkAyahChallenge() async {
+    final challenge = await AppBlockingService().consumePendingAyahChallenge();
+    if (challenge == null || !mounted) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => SurahScreen(surah: _alFatiha, ayahChallenge: challenge),
+      ),
+    );
   }
 
   Future<void> _applyPendingPrayerMarks() async {
@@ -149,6 +177,7 @@ class _HomeBodyState extends State<_HomeBody> {
     double? lng,
   }) {
     PrayerState().lastKnownPrayers = prayers;
+    AppBlockingService().syncToNative(context, prayers);
     WidgetDataService.pushPrayerTimesSnapshot(
       context: context,
       prayers: prayers,

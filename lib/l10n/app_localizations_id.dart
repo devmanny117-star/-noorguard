@@ -1768,4 +1768,147 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get forgiveness => 'Ampunan';
+
+  @override
+  String get appBlockingSetupHeadline => 'Jaga waktumu, jaga shalatmu';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard menggunakan layanan Aksesibilitas Android hanya untuk mengetahui kapan aplikasi yang diblokir dibuka saat waktu shalat. Aplikasi ini tidak pernah membaca pesan, foto, atau data pribadi Anda.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn =>
+      'Akses Aksesibilitas diberikan';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Akses Aksesibilitas belum diberikan';
+
+  @override
+  String get appBlockingOpenSettings => 'Buka Pengaturan Aksesibilitas';
+
+  @override
+  String get appBlockingSetupNotNow => 'Nanti saja';
+
+  @override
+  String get appBlockingEnableToggle => 'Aktifkan Pemblokiran Aplikasi';
+
+  @override
+  String get appBlockingModeLabel => 'Mode Pemblokiran';
+
+  @override
+  String get appBlockingModeSoft => 'Ringan';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'Hanya pengingat lembut — aplikasi tetap bisa dibuka';
+
+  @override
+  String get appBlockingModeFirm => 'Tegas';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'Memblokir aplikasi, dengan jalan pintas cepat';
+
+  @override
+  String get appBlockingModeHard => 'Ketat';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Blokir penuh — hanya \"Saya Sudah Shalat\" yang membukanya';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'Blokir selama shalat berikut';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Mulai sebelum waktu shalat';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Buka setelah waktu shalat';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count mnt';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Aplikasi Diblokir';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Pilih Aplikasi untuk Diblokir';
+
+  @override
+  String get appBlockingSearchHint => 'Cari aplikasi terpasang';
+
+  @override
+  String get appBlockingNoAppsSelected => 'Belum ada aplikasi yang dipilih';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count aplikasi diblokir',
+      zero: 'Tidak ada aplikasi yang diblokir',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Aktifkan akses Aksesibilitas untuk mulai memblokir';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'Akses Screen Time — segera hadir';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'Pemblokiran aplikasi di iOS membutuhkan izin Screen Time dari Apple, yang masih kami siapkan. Kami akan memberi tahu Anda begitu siap.';
+
+  @override
+  String get appBlockingHeadline1 => 'Waktunya Shalat';
+
+  @override
+  String get appBlockingHeadline2 => 'Jaga Waktumu';
+
+  @override
+  String get appBlockingIPrayedButton => 'Saya Sudah Shalat';
+
+  @override
+  String get appBlockingReadAyahsButton => 'Baca 3 Ayat';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Lewati untuk Darurat';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'Akhiri rangkaian Anda?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Melewati sekarang akan mengatur ulang rangkaian shalat Anda. Jika ini darurat sungguhan, Anda bisa melanjutkan.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Tetap Lewati';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Kembali';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'Pengingat lembut';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'Sudah waktunya shalat — pertimbangkan untuk berhenti sejenak.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Baca 3 Ayat untuk Membuka';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$count dari $total ayat terbaca';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Bagus — aplikasi terbuka kembali';
 }

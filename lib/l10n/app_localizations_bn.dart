@@ -1764,4 +1764,150 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get forgiveness => 'ক্ষমা';
+
+  @override
+  String get appBlockingSetupHeadline =>
+      'আপনার সময় রক্ষা করুন, আপনার নামাজ রক্ষা করুন';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard শুধুমাত্র এটি বোঝার জন্য অ্যান্ড্রয়েডের অ্যাক্সেসিবিলিটি সার্ভিস ব্যবহার করে যে নামাজের সময় কোনো ব্লক করা অ্যাপ খোলা হয়েছে কিনা। এটি কখনোই আপনার বার্তা, ছবি বা ব্যক্তিগত তথ্য পড়ে না।';
+
+  @override
+  String get appBlockingAccessibilityStatusOn =>
+      'অ্যাক্সেসিবিলিটি অনুমতি দেওয়া হয়েছে';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'অ্যাক্সেসিবিলিটি অনুমতি দেওয়া হয়নি';
+
+  @override
+  String get appBlockingOpenSettings => 'অ্যাক্সেসিবিলিটি সেটিংস খুলুন';
+
+  @override
+  String get appBlockingSetupNotNow => 'এখন না';
+
+  @override
+  String get appBlockingEnableToggle => 'অ্যাপ ব্লকিং চালু করুন';
+
+  @override
+  String get appBlockingModeLabel => 'ব্লকিং মোড';
+
+  @override
+  String get appBlockingModeSoft => 'নরম';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'শুধু একটি কোমল অনুস্মারক — অ্যাপগুলো খোলা থাকবে';
+
+  @override
+  String get appBlockingModeFirm => 'দৃঢ়';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'অ্যাপটি ব্লক করে, দ্রুত পাশ কাটানোর সুযোগ সহ';
+
+  @override
+  String get appBlockingModeHard => 'কঠোর';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'সম্পূর্ণ ব্লক — শুধু \"আমি নামাজ পড়েছি\" এটি খোলে';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'এই নামাজগুলোর সময় ব্লক করুন';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'নামাজের আগে শুরু করুন';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'নামাজের পরে তুলে নিন';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count মিনিট';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'ব্লক করা অ্যাপস';
+
+  @override
+  String get appBlockingSelectAppsButton =>
+      'ব্লক করার জন্য অ্যাপ নির্বাচন করুন';
+
+  @override
+  String get appBlockingSearchHint => 'ইনস্টল করা অ্যাপ খুঁজুন';
+
+  @override
+  String get appBlockingNoAppsSelected => 'এখনও কোনো অ্যাপ নির্বাচন করা হয়নি';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$countটি অ্যাপ ব্লক করা',
+      one: '১টি অ্যাপ ব্লক করা',
+      zero: 'কোনো অ্যাপ ব্লক করা নেই',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'ব্লকিং শুরু করতে অ্যাক্সেসিবিলিটি অনুমতি চালু করুন';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'স্ক্রিন টাইম অ্যাক্সেস — শীঘ্রই আসছে';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'iOS-এ অ্যাপ ব্লকিংয়ের জন্য অ্যাপলের স্ক্রিন টাইম অনুমতি প্রয়োজন, যা আমরা এখনও প্রস্তুত করছি। প্রস্তুত হওয়ার সাথে সাথেই আপনাকে জানানো হবে।';
+
+  @override
+  String get appBlockingHeadline1 => 'নামাজের সময়';
+
+  @override
+  String get appBlockingHeadline2 => 'আপনার সময় রক্ষা করুন';
+
+  @override
+  String get appBlockingIPrayedButton => 'আমি নামাজ পড়েছি';
+
+  @override
+  String get appBlockingReadAyahsButton => '৩টি আয়াত পড়ুন';
+
+  @override
+  String get appBlockingEmergencyBypass => 'জরুরি পাশ কাটানো';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'আপনার ধারা শেষ করবেন?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'এখন পাশ কাটালে আপনার নামাজের ধারা রিসেট হয়ে যাবে। যদি এটি সত্যিই জরুরি হয়, আপনি চালিয়ে যেতে পারেন।';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'তবুও পাশ কাটান';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'ফিরে যান';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'একটি কোমল অনুস্মারক';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'নামাজের সময় হয়েছে — একটু সময়ের জন্য দূরে থাকার কথা বিবেচনা করুন।';
+
+  @override
+  String get quranChallengeBannerTitle => 'আনলক করতে ৩টি আয়াত পড়ুন';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$totalটির মধ্যে $countটি আয়াত পড়া হয়েছে';
+  }
+
+  @override
+  String get quranChallengeComplete => 'সাবাশ — অ্যাপগুলো আনলক হয়েছে';
 }

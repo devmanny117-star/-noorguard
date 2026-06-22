@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guard menggunakan layanan Aksesibilitas ini hanya untuk mengetahui kapan aplikasi yang diblokir dibuka saat waktu shalat. Aplikasi ini tidak pernah membaca pesan, foto, atau data pribadi Anda.</string>
+</resources>

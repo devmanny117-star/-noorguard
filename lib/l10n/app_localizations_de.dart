@@ -1769,4 +1769,150 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get forgiveness => 'Vergebung';
+
+  @override
+  String get appBlockingSetupHeadline =>
+      'Schütze deine Zeit, schütze dein Gebet';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard nutzt den Bedienungshilfen-Dienst von Android nur, um zu erkennen, wann eine blockierte App während der Gebetszeit geöffnet wird. Es liest niemals deine Nachrichten, Fotos oder persönlichen Daten.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn =>
+      'Bedienungshilfen-Zugriff erteilt';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Bedienungshilfen-Zugriff nicht erteilt';
+
+  @override
+  String get appBlockingOpenSettings => 'Bedienungshilfen-Einstellungen öffnen';
+
+  @override
+  String get appBlockingSetupNotNow => 'Jetzt nicht';
+
+  @override
+  String get appBlockingEnableToggle => 'App-Blockierung aktivieren';
+
+  @override
+  String get appBlockingModeLabel => 'Blockiermodus';
+
+  @override
+  String get appBlockingModeSoft => 'Sanft';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'Nur eine sanfte Erinnerung — Apps bleiben offen';
+
+  @override
+  String get appBlockingModeFirm => 'Fest';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'Blockiert die App, mit einer schnellen Umgehung';
+
+  @override
+  String get appBlockingModeHard => 'Streng';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Vollständige Blockierung — nur \"Ich habe gebetet\" hebt sie auf';
+
+  @override
+  String get appBlockingSelectPrayersLabel =>
+      'Während dieser Gebete blockieren';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Vor dem Gebet beginnen';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Nach dem Gebet aufheben';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count Min.';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Blockierte Apps';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Apps zum Blockieren auswählen';
+
+  @override
+  String get appBlockingSearchHint => 'Installierte Apps suchen';
+
+  @override
+  String get appBlockingNoAppsSelected => 'Noch keine Apps ausgewählt';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Apps blockiert',
+      one: '1 App blockiert',
+      zero: 'Keine Apps blockiert',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Aktiviere den Bedienungshilfen-Zugriff, um mit dem Blockieren zu beginnen';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'Bildschirmzeit-Zugriff — demnächst verfügbar';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'App-Blockierung unter iOS benötigt Apples Bildschirmzeit-Berechtigung, die wir noch einrichten. Wir informieren dich, sobald sie bereit ist.';
+
+  @override
+  String get appBlockingHeadline1 => 'Zeit zu beten';
+
+  @override
+  String get appBlockingHeadline2 => 'Schütze deine Zeit';
+
+  @override
+  String get appBlockingIPrayedButton => 'Ich habe gebetet';
+
+  @override
+  String get appBlockingReadAyahsButton => '3 Ayat lesen';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Notfall-Umgehung';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'Deine Serie beenden?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Eine Umgehung setzt jetzt deine Gebetsserie zurück. Bei einem echten Notfall kannst du fortfahren.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Trotzdem umgehen';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Zurück';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'Eine sanfte Erinnerung';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'Es ist Gebetszeit — überlege, dich kurz zurückzuziehen.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Lies 3 Ayat zum Entsperren';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$count von $total Ayat gelesen';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Gut gemacht — Apps entsperrt';
 }

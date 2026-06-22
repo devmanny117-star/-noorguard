@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guard utilise ce service d\'accessibilité uniquement pour détecter quand une appli bloquée est ouverte pendant la prière. Il ne lit jamais tes messages, photos ou données personnelles.</string>
+</resources>

@@ -11,6 +11,7 @@ import '../data/surah_translations.dart';
 import '../l10n/app_localizations.dart';
 import '../models/reciter_model.dart';
 import '../models/surah_model.dart';
+import '../services/app_blocking_service.dart';
 import '../services/quran_service.dart';
 import '../services/tafsir_api_service.dart';
 import '../widgets/font_size_slider.dart';
@@ -51,7 +52,11 @@ Future<Uri> _getQuranArtworkUri() async {
 
 class SurahScreen extends StatefulWidget {
   final Surah surah;
-  const SurahScreen({super.key, required this.surah});
+  /// Non-null when opened from the App Blocking block screen's "Read 3
+  /// Ayahs" button — shows a progress banner and grants the bypass once
+  /// [AyahChallenge.targetCount] distinct ayahs have been viewed.
+  final AyahChallenge? ayahChallenge;
+  const SurahScreen({super.key, required this.surah, this.ayahChallenge});
 
   @override
   State<SurahScreen> createState() => _SurahScreenState();
@@ -61,6 +66,26 @@ class _SurahScreenState extends State<SurahScreen> {
   List<Verse> _verses = [];
   bool _loading = true;
   bool _requested = false;
+
+  final Set<int> _seenVerses = {};
+  bool _challengeComplete = false;
+
+  void _onVerseSeen(int verseNumber) {
+    final challenge = widget.ayahChallenge;
+    if (challenge == null || _challengeComplete) return;
+    if (!_seenVerses.add(verseNumber)) return;
+    if (_seenVerses.length >= AyahChallenge.targetCount) {
+      _completeChallenge(challenge);
+    } else {
+      setState(() {});
+    }
+  }
+
+  Future<void> _completeChallenge(AyahChallenge challenge) async {
+    setState(() => _challengeComplete = true);
+    await AppBlockingService()
+        .grantAyahChallengeBypass(challenge.blockedPackage, challenge.windowEndMillis);
+  }
 
   Reciter _selectedReciter = reciters.first;
   String? _favoriteReciterId;
@@ -621,6 +646,11 @@ class _SurahScreenState extends State<SurahScreen> {
               children: [
                 Column(
                   children: [
+                    if (widget.ayahChallenge != null)
+                      _AyahChallengeBanner(
+                        seenCount: _seenVerses.length,
+                        complete: _challengeComplete,
+                      ),
                     FontSizeSlider(index: _fontScaleIndex, onChanged: _onFontScaleChanged),
                     Expanded(
                       child: Listener(
@@ -660,6 +690,11 @@ class _SurahScreenState extends State<SurahScreen> {
                                   return _BismillahHeader(textScale: _textScale);
                                 }
                                 final verse = _verses[_showBismillah ? index - 1 : index];
+                                if (widget.ayahChallenge != null) {
+                                  WidgetsBinding.instance.addPostFrameCallback(
+                                    (_) => _onVerseSeen(verse.number),
+                                  );
+                                }
                                 return KeyedSubtree(
                                   key: _verseKey(verse.number),
                                   child: _VerseTile(
@@ -716,6 +751,66 @@ class _SurahScreenState extends State<SurahScreen> {
                 ),
               ],
             ),
+    );
+  }
+}
+
+// ── Ayah-challenge progress banner ────────────────────────────────────────────
+
+class _AyahChallengeBanner extends StatelessWidget {
+  final int seenCount;
+  final bool complete;
+  const _AyahChallengeBanner({required this.seenCount, required this.complete});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 10, 16, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      decoration: BoxDecoration(
+        color: _gold.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: _gold.withValues(alpha: 0.35)),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            complete ? Icons.check_circle_rounded : Icons.menu_book_rounded,
+            size: 18,
+            color: _gold,
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  complete ? l10n.quranChallengeComplete : l10n.quranChallengeBannerTitle,
+                  style: GoogleFonts.lato(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: _gold,
+                  ),
+                ),
+                if (!complete) ...[
+                  const SizedBox(height: 2),
+                  Text(
+                    l10n.quranChallengeBannerProgress(
+                      seenCount.clamp(0, AyahChallenge.targetCount),
+                      AyahChallenge.targetCount,
+                    ),
+                    style: GoogleFonts.lato(
+                      fontSize: 11.5,
+                      color: _gold.withValues(alpha: 0.8),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

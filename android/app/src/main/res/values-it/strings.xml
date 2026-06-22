@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Noor Guard usa questo servizio di Accessibilità solo per accorgersi quando un\'app bloccata viene aperta durante la preghiera. Non legge mai i tuoi messaggi, foto o dati personali.</string>
+</resources>

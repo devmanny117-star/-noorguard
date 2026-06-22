@@ -2150,5 +2150,183 @@
   "forgiveness": "Forgiveness",
   "@forgiveness": {
     "description": "Dua category label"
+  },
+  "appBlockingSetupHeadline": "Guard Your Time, Guard Your Prayer",
+  "@appBlockingSetupHeadline": {
+    "description": "Headline on the App Blocking accessibility permission setup screen"
+  },
+  "appBlockingSetupBody": "Noor Guard uses Android's Accessibility service only to notice when a blocked app opens during prayer time. It never reads your messages, photos, or any personal data.",
+  "@appBlockingSetupBody": {
+    "description": "Explanation of why Accessibility permission is needed, shown on the setup screen"
+  },
+  "appBlockingAccessibilityStatusOn": "Accessibility access granted",
+  "@appBlockingAccessibilityStatusOn": {
+    "description": "Status line shown when the Accessibility permission has been granted"
+  },
+  "appBlockingAccessibilityStatusOff": "Accessibility access not granted",
+  "@appBlockingAccessibilityStatusOff": {
+    "description": "Status line shown when the Accessibility permission has not been granted"
+  },
+  "appBlockingOpenSettings": "Open Accessibility Settings",
+  "@appBlockingOpenSettings": {
+    "description": "Button that opens the system Accessibility settings page"
+  },
+  "appBlockingSetupNotNow": "Not now",
+  "@appBlockingSetupNotNow": {
+    "description": "Button to dismiss the App Blocking setup screen without granting permission"
+  },
+  "appBlockingEnableToggle": "Enable App Blocking",
+  "@appBlockingEnableToggle": {
+    "description": "Master on/off toggle label on the App Blocking settings screen"
+  },
+  "appBlockingModeLabel": "Blocking Mode",
+  "@appBlockingModeLabel": {
+    "description": "Section label for the Soft/Firm/Hard blocking mode picker"
+  },
+  "appBlockingModeSoft": "Soft",
+  "@appBlockingModeSoft": {
+    "description": "Name of the gentle blocking mode (reminder notification only)"
+  },
+  "appBlockingModeSoftDesc": "Gentle reminder only — apps stay open",
+  "@appBlockingModeSoftDesc": {
+    "description": "Description of Soft blocking mode"
+  },
+  "appBlockingModeFirm": "Firm",
+  "@appBlockingModeFirm": {
+    "description": "Name of the Firm blocking mode (blocks with an easy bypass)"
+  },
+  "appBlockingModeFirmDesc": "Blocks the app, with a quick bypass",
+  "@appBlockingModeFirmDesc": {
+    "description": "Description of Firm blocking mode"
+  },
+  "appBlockingModeHard": "Hard",
+  "@appBlockingModeHard": {
+    "description": "Name of the Hard blocking mode (full block)"
+  },
+  "appBlockingModeHardDesc": "Full block — only \"I Prayed\" unlocks it",
+  "@appBlockingModeHardDesc": {
+    "description": "Description of Hard blocking mode"
+  },
+  "appBlockingSelectPrayersLabel": "Block during these prayers",
+  "@appBlockingSelectPrayersLabel": {
+    "description": "Section label for the per-prayer toggle list"
+  },
+  "appBlockingBufferBeforeLabel": "Start before prayer",
+  "@appBlockingBufferBeforeLabel": {
+    "description": "Label for the pre-prayer buffer-minutes picker"
+  },
+  "appBlockingBufferAfterLabel": "Lift after prayer",
+  "@appBlockingBufferAfterLabel": {
+    "description": "Label for the post-prayer buffer-minutes picker"
+  },
+  "appBlockingMinutesShort": "{count} min",
+  "@appBlockingMinutesShort": {
+    "description": "Short minute duration label shown on the buffer pickers, e.g. '5 min'",
+    "placeholders": {
+      "count": {
+        "type": "int"
+}
+    }
+  },
+  "appBlockingAppsTitle": "Blocked Apps",
+  "@appBlockingAppsTitle": {
+    "description": "Section title for the list of apps the user has chosen to block"
+  },
+  "appBlockingSelectAppsButton": "Select Apps to Block",
+  "@appBlockingSelectAppsButton": {
+    "description": "Button that opens the installed-apps picker"
+  },
+  "appBlockingSearchHint": "Search installed apps",
+  "@appBlockingSearchHint": {
+    "description": "Search field placeholder in the installed-apps picker"
+  },
+  "appBlockingNoAppsSelected": "No apps selected yet",
+  "@appBlockingNoAppsSelected": {
+    "description": "Empty state shown when no apps have been chosen to block"
+  },
+  "appBlockingAppsSelectedCount": "{count, plural, =0{No apps blocked} one{1 app blocked} other{{count} apps blocked}}",
+  "@appBlockingAppsSelectedCount": {
+    "description": "Summary count of how many apps are currently blocked",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appBlockingPermissionNeeded": "Turn on Accessibility access to start blocking",
+  "@appBlockingPermissionNeeded": {
+    "description": "Prompt shown when blocking is enabled but Accessibility permission is missing"
+  },
+  "appBlockingIosComingSoonTitle": "Screen Time Access — Coming Soon",
+  "@appBlockingIosComingSoonTitle": {
+    "description": "Title of the iOS placeholder card shown instead of the live app picker"
+  },
+  "appBlockingIosComingSoonBody": "iOS app blocking needs Apple's Screen Time permission, which we're still setting up. We'll let you know the moment it's ready.",
+  "@appBlockingIosComingSoonBody": {
+    "description": "Body text of the iOS placeholder card"
+  },
+  "appBlockingHeadline1": "Time for Prayer",
+  "@appBlockingHeadline1": {
+    "description": "First of two alternating headlines shown on the full-screen block screen"
+  },
+  "appBlockingHeadline2": "Guard Your Time",
+  "@appBlockingHeadline2": {
+    "description": "Second of two alternating headlines shown on the full-screen block screen"
+  },
+  "appBlockingIPrayedButton": "I Prayed",
+  "@appBlockingIPrayedButton": {
+    "description": "Primary button on the block screen that immediately dismisses the block"
+  },
+  "appBlockingReadAyahsButton": "Read 3 Ayahs",
+  "@appBlockingReadAyahsButton": {
+    "description": "Secondary button on the block screen that opens the Quran reader as an alternative way to dismiss the block"
+  },
+  "appBlockingEmergencyBypass": "Emergency bypass",
+  "@appBlockingEmergencyBypass": {
+    "description": "Small dimmed button at the bottom of the block screen for emergencies"
+  },
+  "appBlockingBypassConfirmTitle": "End your streak?",
+  "@appBlockingBypassConfirmTitle": {
+    "description": "Title of the confirmation dialog shown before an emergency bypass in Hard mode"
+  },
+  "appBlockingBypassConfirmBody": "Bypassing now will reset your prayer streak. If this is a real emergency, you can continue.",
+  "@appBlockingBypassConfirmBody": {
+    "description": "Body text of the emergency bypass confirmation dialog"
+  },
+  "appBlockingBypassConfirmContinue": "Bypass anyway",
+  "@appBlockingBypassConfirmContinue": {
+    "description": "Confirm button on the emergency bypass dialog"
+  },
+  "appBlockingBypassConfirmCancel": "Go back",
+  "@appBlockingBypassConfirmCancel": {
+    "description": "Cancel button on the emergency bypass dialog"
+  },
+  "appBlockingSoftReminderTitle": "A gentle reminder",
+  "@appBlockingSoftReminderTitle": {
+    "description": "Notification title used in Soft blocking mode"
+  },
+  "appBlockingSoftReminderBody": "It's prayer time — consider stepping away for a moment.",
+  "@appBlockingSoftReminderBody": {
+    "description": "Notification body used in Soft blocking mode"
+  },
+  "quranChallengeBannerTitle": "Read 3 Ayahs to Unlock",
+  "@quranChallengeBannerTitle": {
+    "description": "Banner title shown in the Quran reader when opened from the block screen's ayah challenge"
+  },
+  "quranChallengeBannerProgress": "{count} of {total} ayahs read",
+  "@quranChallengeBannerProgress": {
+    "description": "Progress text in the ayah-challenge banner",
+    "placeholders": {
+      "count": {
+        "type": "int"
+},
+      "total": {
+        "type": "int"
+}
+    }
+  },
+  "quranChallengeComplete": "Well done — apps unlocked",
+  "@quranChallengeComplete": {
+    "description": "Message shown when the ayah-challenge is completed and the block is lifted"
   }
 }

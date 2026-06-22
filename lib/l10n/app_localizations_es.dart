@@ -1772,4 +1772,148 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get forgiveness => 'Perdón';
+
+  @override
+  String get appBlockingSetupHeadline => 'Guarda tu tiempo, guarda tu oración';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard usa el servicio de Accesibilidad de Android solo para detectar cuándo se abre una app bloqueada durante la oración. Nunca lee tus mensajes, fotos ni datos personales.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn =>
+      'Acceso de accesibilidad concedido';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Acceso de accesibilidad no concedido';
+
+  @override
+  String get appBlockingOpenSettings => 'Abrir ajustes de accesibilidad';
+
+  @override
+  String get appBlockingSetupNotNow => 'Ahora no';
+
+  @override
+  String get appBlockingEnableToggle => 'Activar bloqueo de apps';
+
+  @override
+  String get appBlockingModeLabel => 'Modo de bloqueo';
+
+  @override
+  String get appBlockingModeSoft => 'Suave';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'Solo un recordatorio amable — las apps siguen abiertas';
+
+  @override
+  String get appBlockingModeFirm => 'Firme';
+
+  @override
+  String get appBlockingModeFirmDesc => 'Bloquea la app, con una salida rápida';
+
+  @override
+  String get appBlockingModeHard => 'Estricto';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Bloqueo total — solo \"Ya oré\" lo desbloquea';
+
+  @override
+  String get appBlockingSelectPrayersLabel =>
+      'Bloquear durante estas oraciones';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Empezar antes de la oración';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Levantar después de la oración';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count min';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Apps bloqueadas';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Elegir apps para bloquear';
+
+  @override
+  String get appBlockingSearchHint => 'Buscar apps instaladas';
+
+  @override
+  String get appBlockingNoAppsSelected => 'Aún no se ha elegido ninguna app';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count apps bloqueadas',
+      one: '1 app bloqueada',
+      zero: 'Ninguna app bloqueada',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Activa el acceso de accesibilidad para empezar a bloquear';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'Acceso a Tiempo de Uso — próximamente';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'El bloqueo de apps en iOS necesita el permiso de Tiempo de Uso de Apple, que aún estamos configurando. Te avisaremos en cuanto esté listo.';
+
+  @override
+  String get appBlockingHeadline1 => 'Hora de orar';
+
+  @override
+  String get appBlockingHeadline2 => 'Guarda tu tiempo';
+
+  @override
+  String get appBlockingIPrayedButton => 'Ya oré';
+
+  @override
+  String get appBlockingReadAyahsButton => 'Leer 3 versículos';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Salida de emergencia';
+
+  @override
+  String get appBlockingBypassConfirmTitle => '¿Terminar tu racha?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Salir ahora reiniciará tu racha de oración. Si es una emergencia real, puedes continuar.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Salir de todos modos';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Volver';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'Un recordatorio amable';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'Es hora de orar — considera apartarte un momento.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Lee 3 versículos para desbloquear';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$count de $total versículos leídos';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Bien hecho — apps desbloqueadas';
 }

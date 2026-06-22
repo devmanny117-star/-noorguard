@@ -1743,4 +1743,144 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get forgiveness => 'المغفرة';
+
+  @override
+  String get appBlockingSetupHeadline => 'احفظ وقتك، احفظ صلاتك';
+
+  @override
+  String get appBlockingSetupBody =>
+      'يستخدم نور جارد خدمة إمكانية الوصول في أندرويد فقط لملاحظة فتح أحد التطبيقات المحظورة وقت الصلاة. لا يقرأ رسائلك أو صورك أو أي بيانات شخصية أبدًا.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn => 'تم منح إذن إمكانية الوصول';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'لم يُمنح إذن إمكانية الوصول بعد';
+
+  @override
+  String get appBlockingOpenSettings => 'فتح إعدادات إمكانية الوصول';
+
+  @override
+  String get appBlockingSetupNotNow => 'ليس الآن';
+
+  @override
+  String get appBlockingEnableToggle => 'تفعيل حجب التطبيقات';
+
+  @override
+  String get appBlockingModeLabel => 'وضع الحجب';
+
+  @override
+  String get appBlockingModeSoft => 'خفيف';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'تذكير لطيف فقط — تبقى التطبيقات مفتوحة';
+
+  @override
+  String get appBlockingModeFirm => 'متوسط';
+
+  @override
+  String get appBlockingModeFirmDesc => 'يحجب التطبيق، مع إمكانية تجاوز سريعة';
+
+  @override
+  String get appBlockingModeHard => 'صارم';
+
+  @override
+  String get appBlockingModeHardDesc => 'حجب كامل — لا يفتحه إلا \"صلّيت\"';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'الحجب خلال هذه الصلوات';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'البدء قبل الصلاة';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'الرفع بعد الصلاة';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count د';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'التطبيقات المحظورة';
+
+  @override
+  String get appBlockingSelectAppsButton => 'اختيار التطبيقات للحظر';
+
+  @override
+  String get appBlockingSearchHint => 'البحث في التطبيقات المثبتة';
+
+  @override
+  String get appBlockingNoAppsSelected => 'لم تُحدَّد تطبيقات بعد';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count تطبيقات محظورة',
+      one: 'تطبيق واحد محظور',
+      zero: 'لا توجد تطبيقات محظورة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'فعّل إذن إمكانية الوصول لبدء الحجب';
+
+  @override
+  String get appBlockingIosComingSoonTitle => 'إذن وقت الشاشة — قريبًا';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'يحتاج حجب التطبيقات على iOS إلى إذن وقت الشاشة من Apple، ولا زلنا نعمل على تفعيله. سنخبرك فور أن يصبح جاهزًا.';
+
+  @override
+  String get appBlockingHeadline1 => 'حان وقت الصلاة';
+
+  @override
+  String get appBlockingHeadline2 => 'احفظ وقتك';
+
+  @override
+  String get appBlockingIPrayedButton => 'صلّيت';
+
+  @override
+  String get appBlockingReadAyahsButton => 'قراءة 3 آيات';
+
+  @override
+  String get appBlockingEmergencyBypass => 'تجاوز للطوارئ';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'إنهاء سلسلتك؟';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'التجاوز الآن سيُعيد ضبط سلسلة صلواتك. إذا كانت هذه حالة طوارئ حقيقية، يمكنك الاستمرار.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'تجاوز مع ذلك';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'رجوع';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'تذكير لطيف';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'حان وقت الصلاة — فكّر في الانصراف لبرهة.';
+
+  @override
+  String get quranChallengeBannerTitle => 'اقرأ 3 آيات لفتح الحظر';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return 'تمت قراءة $count من $total آيات';
+  }
+
+  @override
+  String get quranChallengeComplete => 'أحسنت — تم فتح التطبيقات';
 }

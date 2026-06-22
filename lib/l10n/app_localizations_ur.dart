@@ -1755,4 +1755,148 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get forgiveness => 'بخشش';
+
+  @override
+  String get appBlockingSetupHeadline =>
+      'اپنا وقت محفوظ رکھیں، اپنی نماز محفوظ رکھیں';
+
+  @override
+  String get appBlockingSetupBody =>
+      'نور گارڈ اینڈرائیڈ کی ایکسیسبیلٹی سروس صرف یہ جاننے کے لیے استعمال کرتا ہے کہ نماز کے وقت کوئی مسدود ایپ کھولی گئی ہے۔ یہ آپ کے پیغامات، تصاویر یا کوئی ذاتی معلومات کبھی نہیں پڑھتا۔';
+
+  @override
+  String get appBlockingAccessibilityStatusOn =>
+      'ایکسیسبیلٹی رسائی دی جا چکی ہے';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'ایکسیسبیلٹی رسائی ابھی نہیں دی گئی';
+
+  @override
+  String get appBlockingOpenSettings => 'ایکسیسبیلٹی سیٹنگز کھولیں';
+
+  @override
+  String get appBlockingSetupNotNow => 'ابھی نہیں';
+
+  @override
+  String get appBlockingEnableToggle => 'ایپ بلاکنگ فعال کریں';
+
+  @override
+  String get appBlockingModeLabel => 'بلاکنگ موڈ';
+
+  @override
+  String get appBlockingModeSoft => 'نرم';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'صرف ہلکی یاددہانی — ایپس کھلی رہتی ہیں';
+
+  @override
+  String get appBlockingModeFirm => 'درمیانہ';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'ایپ کو مسدود کرتا ہے، فوری نظرانداز کے ساتھ';
+
+  @override
+  String get appBlockingModeHard => 'سخت';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'مکمل بندش — صرف \"میں نے نماز پڑھی\" اسے کھولتا ہے';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'ان نمازوں کے دوران مسدود کریں';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'نماز سے پہلے شروع کریں';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'نماز کے بعد ہٹائیں';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count منٹ';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'مسدود ایپس';
+
+  @override
+  String get appBlockingSelectAppsButton => 'مسدود کرنے کے لیے ایپس منتخب کریں';
+
+  @override
+  String get appBlockingSearchHint => 'انسٹال شدہ ایپس تلاش کریں';
+
+  @override
+  String get appBlockingNoAppsSelected => 'ابھی تک کوئی ایپ منتخب نہیں کی گئی';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ایپس مسدود',
+      one: '1 ایپ مسدود',
+      zero: 'کوئی ایپ مسدود نہیں',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'بلاکنگ شروع کرنے کے لیے ایکسیسبیلٹی رسائی آن کریں';
+
+  @override
+  String get appBlockingIosComingSoonTitle => 'اسکرین ٹائم رسائی — جلد آرہی ہے';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'iOS پر ایپ بلاکنگ کے لیے ایپل کی اسکرین ٹائم اجازت درکار ہے، جس پر ہم کام کر رہے ہیں۔ تیار ہوتے ہی آپ کو بتا دیں گے۔';
+
+  @override
+  String get appBlockingHeadline1 => 'نماز کا وقت ہے';
+
+  @override
+  String get appBlockingHeadline2 => 'اپنا وقت محفوظ رکھیں';
+
+  @override
+  String get appBlockingIPrayedButton => 'میں نے نماز پڑھی';
+
+  @override
+  String get appBlockingReadAyahsButton => '3 آیات پڑھیں';
+
+  @override
+  String get appBlockingEmergencyBypass => 'ہنگامی نظرانداز';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'اپنا سلسلہ ختم کریں؟';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'ابھی نظرانداز کرنے سے آپ کی نماز کا سلسلہ ری سیٹ ہو جائے گا۔ اگر یہ حقیقی ہنگامی صورتحال ہے تو آپ جاری رکھ سکتے ہیں۔';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'پھر بھی نظرانداز کریں';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'واپس جائیں';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'ایک نرم یاددہانی';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'نماز کا وقت ہے — ایک لمحے کے لیے دور ہونے پر غور کریں۔';
+
+  @override
+  String get quranChallengeBannerTitle => 'کھولنے کے لیے 3 آیات پڑھیں';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$total میں سے $count آیات پڑھی گئیں';
+  }
+
+  @override
+  String get quranChallengeComplete => 'بہت خوب — ایپس کھل گئیں';
 }

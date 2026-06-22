@@ -8,4 +8,6 @@
 
     <string name="widget_large_label">Noor Guard – Full Prayer Card</string>
     <string name="widget_large_description">Prayer times, streak, daily verse, and Qibla direction.</string>
+
+    <string name="accessibility_service_description">Noor Guard uses this Accessibility service only to notice when a blocked app opens during prayer time. It never reads your messages, photos, or any personal data.</string>
 </resources>

@@ -1766,4 +1766,148 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get forgiveness => 'Vergeving';
+
+  @override
+  String get appBlockingSetupHeadline => 'Bewaak je tijd, bewaak je gebed';
+
+  @override
+  String get appBlockingSetupBody =>
+      'Noor Guard gebruikt de toegankelijkheidsservice van Android alleen om te merken wanneer een geblokkeerde app wordt geopend tijdens het gebed. Het leest nooit je berichten, foto\'s of persoonlijke gegevens.';
+
+  @override
+  String get appBlockingAccessibilityStatusOn =>
+      'Toegankelijkheidstoegang verleend';
+
+  @override
+  String get appBlockingAccessibilityStatusOff =>
+      'Toegankelijkheidstoegang niet verleend';
+
+  @override
+  String get appBlockingOpenSettings => 'Toegankelijkheidsinstellingen openen';
+
+  @override
+  String get appBlockingSetupNotNow => 'Niet nu';
+
+  @override
+  String get appBlockingEnableToggle => 'App-blokkering inschakelen';
+
+  @override
+  String get appBlockingModeLabel => 'Blokkeermodus';
+
+  @override
+  String get appBlockingModeSoft => 'Zacht';
+
+  @override
+  String get appBlockingModeSoftDesc =>
+      'Alleen een vriendelijke herinnering — apps blijven open';
+
+  @override
+  String get appBlockingModeFirm => 'Stevig';
+
+  @override
+  String get appBlockingModeFirmDesc =>
+      'Blokkeert de app, met een snelle omleiding';
+
+  @override
+  String get appBlockingModeHard => 'Streng';
+
+  @override
+  String get appBlockingModeHardDesc =>
+      'Volledige blokkering — alleen \"Ik heb gebeden\" heft het op';
+
+  @override
+  String get appBlockingSelectPrayersLabel => 'Blokkeren tijdens deze gebeden';
+
+  @override
+  String get appBlockingBufferBeforeLabel => 'Beginnen vóór het gebed';
+
+  @override
+  String get appBlockingBufferAfterLabel => 'Opheffen na het gebed';
+
+  @override
+  String appBlockingMinutesShort(int count) {
+    return '$count min';
+  }
+
+  @override
+  String get appBlockingAppsTitle => 'Geblokkeerde apps';
+
+  @override
+  String get appBlockingSelectAppsButton => 'Apps kiezen om te blokkeren';
+
+  @override
+  String get appBlockingSearchHint => 'Geïnstalleerde apps zoeken';
+
+  @override
+  String get appBlockingNoAppsSelected => 'Nog geen apps geselecteerd';
+
+  @override
+  String appBlockingAppsSelectedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count apps geblokkeerd',
+      one: '1 app geblokkeerd',
+      zero: 'Geen apps geblokkeerd',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get appBlockingPermissionNeeded =>
+      'Schakel toegankelijkheidstoegang in om te beginnen met blokkeren';
+
+  @override
+  String get appBlockingIosComingSoonTitle =>
+      'Schermtijd-toegang — binnenkort beschikbaar';
+
+  @override
+  String get appBlockingIosComingSoonBody =>
+      'App-blokkering op iOS heeft Apple\'s Schermtijd-toestemming nodig, die we nog instellen. We laten het je weten zodra het klaar is.';
+
+  @override
+  String get appBlockingHeadline1 => 'Tijd om te bidden';
+
+  @override
+  String get appBlockingHeadline2 => 'Bewaak je tijd';
+
+  @override
+  String get appBlockingIPrayedButton => 'Ik heb gebeden';
+
+  @override
+  String get appBlockingReadAyahsButton => 'Lees 3 ayaat';
+
+  @override
+  String get appBlockingEmergencyBypass => 'Noodomleiding';
+
+  @override
+  String get appBlockingBypassConfirmTitle => 'Je reeks beëindigen?';
+
+  @override
+  String get appBlockingBypassConfirmBody =>
+      'Nu omleiden zet je gebedsreeks terug naar nul. Bij een echte noodsituatie kun je doorgaan.';
+
+  @override
+  String get appBlockingBypassConfirmContinue => 'Toch omleiden';
+
+  @override
+  String get appBlockingBypassConfirmCancel => 'Terug';
+
+  @override
+  String get appBlockingSoftReminderTitle => 'Een vriendelijke herinnering';
+
+  @override
+  String get appBlockingSoftReminderBody =>
+      'Het is tijd om te bidden — overweeg even afstand te nemen.';
+
+  @override
+  String get quranChallengeBannerTitle => 'Lees 3 ayaat om te ontgrendelen';
+
+  @override
+  String quranChallengeBannerProgress(int count, int total) {
+    return '$count van $total ayaat gelezen';
+  }
+
+  @override
+  String get quranChallengeComplete => 'Goed gedaan — apps ontgrendeld';
 }

@@ -46,6 +46,7 @@ flutter:
 
   assets:
     - assets/images/mosques/
+    - assets/data/block_screen_verses.json
 
 flutter_launcher_icons:
   android: true

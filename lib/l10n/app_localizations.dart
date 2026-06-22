@@ -3279,6 +3279,246 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Forgiveness'**
   String get forgiveness;
+
+  /// Headline on the App Blocking accessibility permission setup screen
+  ///
+  /// In en, this message translates to:
+  /// **'Guard Your Time, Guard Your Prayer'**
+  String get appBlockingSetupHeadline;
+
+  /// Explanation of why Accessibility permission is needed, shown on the setup screen
+  ///
+  /// In en, this message translates to:
+  /// **'Noor Guard uses Android\'s Accessibility service only to notice when a blocked app opens during prayer time. It never reads your messages, photos, or any personal data.'**
+  String get appBlockingSetupBody;
+
+  /// Status line shown when the Accessibility permission has been granted
+  ///
+  /// In en, this message translates to:
+  /// **'Accessibility access granted'**
+  String get appBlockingAccessibilityStatusOn;
+
+  /// Status line shown when the Accessibility permission has not been granted
+  ///
+  /// In en, this message translates to:
+  /// **'Accessibility access not granted'**
+  String get appBlockingAccessibilityStatusOff;
+
+  /// Button that opens the system Accessibility settings page
+  ///
+  /// In en, this message translates to:
+  /// **'Open Accessibility Settings'**
+  String get appBlockingOpenSettings;
+
+  /// Button to dismiss the App Blocking setup screen without granting permission
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get appBlockingSetupNotNow;
+
+  /// Master on/off toggle label on the App Blocking settings screen
+  ///
+  /// In en, this message translates to:
+  /// **'Enable App Blocking'**
+  String get appBlockingEnableToggle;
+
+  /// Section label for the Soft/Firm/Hard blocking mode picker
+  ///
+  /// In en, this message translates to:
+  /// **'Blocking Mode'**
+  String get appBlockingModeLabel;
+
+  /// Name of the gentle blocking mode (reminder notification only)
+  ///
+  /// In en, this message translates to:
+  /// **'Soft'**
+  String get appBlockingModeSoft;
+
+  /// Description of Soft blocking mode
+  ///
+  /// In en, this message translates to:
+  /// **'Gentle reminder only — apps stay open'**
+  String get appBlockingModeSoftDesc;
+
+  /// Name of the Firm blocking mode (blocks with an easy bypass)
+  ///
+  /// In en, this message translates to:
+  /// **'Firm'**
+  String get appBlockingModeFirm;
+
+  /// Description of Firm blocking mode
+  ///
+  /// In en, this message translates to:
+  /// **'Blocks the app, with a quick bypass'**
+  String get appBlockingModeFirmDesc;
+
+  /// Name of the Hard blocking mode (full block)
+  ///
+  /// In en, this message translates to:
+  /// **'Hard'**
+  String get appBlockingModeHard;
+
+  /// Description of Hard blocking mode
+  ///
+  /// In en, this message translates to:
+  /// **'Full block — only \"I Prayed\" unlocks it'**
+  String get appBlockingModeHardDesc;
+
+  /// Section label for the per-prayer toggle list
+  ///
+  /// In en, this message translates to:
+  /// **'Block during these prayers'**
+  String get appBlockingSelectPrayersLabel;
+
+  /// Label for the pre-prayer buffer-minutes picker
+  ///
+  /// In en, this message translates to:
+  /// **'Start before prayer'**
+  String get appBlockingBufferBeforeLabel;
+
+  /// Label for the post-prayer buffer-minutes picker
+  ///
+  /// In en, this message translates to:
+  /// **'Lift after prayer'**
+  String get appBlockingBufferAfterLabel;
+
+  /// Short minute duration label shown on the buffer pickers, e.g. '5 min'
+  ///
+  /// In en, this message translates to:
+  /// **'{count} min'**
+  String appBlockingMinutesShort(int count);
+
+  /// Section title for the list of apps the user has chosen to block
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked Apps'**
+  String get appBlockingAppsTitle;
+
+  /// Button that opens the installed-apps picker
+  ///
+  /// In en, this message translates to:
+  /// **'Select Apps to Block'**
+  String get appBlockingSelectAppsButton;
+
+  /// Search field placeholder in the installed-apps picker
+  ///
+  /// In en, this message translates to:
+  /// **'Search installed apps'**
+  String get appBlockingSearchHint;
+
+  /// Empty state shown when no apps have been chosen to block
+  ///
+  /// In en, this message translates to:
+  /// **'No apps selected yet'**
+  String get appBlockingNoAppsSelected;
+
+  /// Summary count of how many apps are currently blocked
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No apps blocked} one{1 app blocked} other{{count} apps blocked}}'**
+  String appBlockingAppsSelectedCount(int count);
+
+  /// Prompt shown when blocking is enabled but Accessibility permission is missing
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on Accessibility access to start blocking'**
+  String get appBlockingPermissionNeeded;
+
+  /// Title of the iOS placeholder card shown instead of the live app picker
+  ///
+  /// In en, this message translates to:
+  /// **'Screen Time Access — Coming Soon'**
+  String get appBlockingIosComingSoonTitle;
+
+  /// Body text of the iOS placeholder card
+  ///
+  /// In en, this message translates to:
+  /// **'iOS app blocking needs Apple\'s Screen Time permission, which we\'re still setting up. We\'ll let you know the moment it\'s ready.'**
+  String get appBlockingIosComingSoonBody;
+
+  /// First of two alternating headlines shown on the full-screen block screen
+  ///
+  /// In en, this message translates to:
+  /// **'Time for Prayer'**
+  String get appBlockingHeadline1;
+
+  /// Second of two alternating headlines shown on the full-screen block screen
+  ///
+  /// In en, this message translates to:
+  /// **'Guard Your Time'**
+  String get appBlockingHeadline2;
+
+  /// Primary button on the block screen that immediately dismisses the block
+  ///
+  /// In en, this message translates to:
+  /// **'I Prayed'**
+  String get appBlockingIPrayedButton;
+
+  /// Secondary button on the block screen that opens the Quran reader as an alternative way to dismiss the block
+  ///
+  /// In en, this message translates to:
+  /// **'Read 3 Ayahs'**
+  String get appBlockingReadAyahsButton;
+
+  /// Small dimmed button at the bottom of the block screen for emergencies
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency bypass'**
+  String get appBlockingEmergencyBypass;
+
+  /// Title of the confirmation dialog shown before an emergency bypass in Hard mode
+  ///
+  /// In en, this message translates to:
+  /// **'End your streak?'**
+  String get appBlockingBypassConfirmTitle;
+
+  /// Body text of the emergency bypass confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Bypassing now will reset your prayer streak. If this is a real emergency, you can continue.'**
+  String get appBlockingBypassConfirmBody;
+
+  /// Confirm button on the emergency bypass dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Bypass anyway'**
+  String get appBlockingBypassConfirmContinue;
+
+  /// Cancel button on the emergency bypass dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Go back'**
+  String get appBlockingBypassConfirmCancel;
+
+  /// Notification title used in Soft blocking mode
+  ///
+  /// In en, this message translates to:
+  /// **'A gentle reminder'**
+  String get appBlockingSoftReminderTitle;
+
+  /// Notification body used in Soft blocking mode
+  ///
+  /// In en, this message translates to:
+  /// **'It\'s prayer time — consider stepping away for a moment.'**
+  String get appBlockingSoftReminderBody;
+
+  /// Banner title shown in the Quran reader when opened from the block screen's ayah challenge
+  ///
+  /// In en, this message translates to:
+  /// **'Read 3 Ayahs to Unlock'**
+  String get quranChallengeBannerTitle;
+
+  /// Progress text in the ayah-challenge banner
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of {total} ayahs read'**
+  String quranChallengeBannerProgress(int count, int total);
+
+  /// Message shown when the ayah-challenge is completed and the block is lifted
+  ///
+  /// In en, this message translates to:
+  /// **'Well done — apps unlocked'**
+  String get quranChallengeComplete;
 }
 
 class _AppLocalizationsDelegate
