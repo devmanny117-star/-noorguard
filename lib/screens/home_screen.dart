@@ -224,6 +224,13 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     // Share the exact times we scheduled so the foreground adhan controller
     // fires in sync with these notifications (these use the device location).
     PrayerState().setScheduledPrayerTimes(data);
+
+    // Respect the user's notification preference on every load — without
+    // this check, simply reopening the app (which re-runs this on every
+    // cold start of the Home screen) would silently re-schedule every
+    // prayer notification and full-screen alarm even with the bell off.
+    if (!PrayerState().masterNotifications) return;
+
     final adhanId = PrayerState().selectedAdhanId;
     NotificationService().schedulePrayerNotifications(
       data,

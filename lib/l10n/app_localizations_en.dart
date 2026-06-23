@@ -1952,4 +1952,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'You can save up to $max locations';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'Couldn\'t confirm the change — please try again';
 }

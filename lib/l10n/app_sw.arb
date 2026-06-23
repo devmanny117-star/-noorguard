@@ -582,5 +582,6 @@
   "addLocationTooltip": "Ongeza mahali",
   "deleteLocationTooltip": "Futa mahali",
   "locationNotFound": "Mahali hapakupatikana. Jaribu utafutaji mwingine.",
-  "maxLocationsReachedMessage": "Unaweza kuhifadhi hadi maeneo {max}"
+  "maxLocationsReachedMessage": "Unaweza kuhifadhi hadi maeneo {max}",
+  "notificationsToggleUnconfirmed": "Imeshindwa kuthibitisha mabadiliko — tafadhali jaribu tena"
 }

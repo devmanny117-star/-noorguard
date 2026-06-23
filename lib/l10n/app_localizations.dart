@@ -3621,6 +3621,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can save up to {max} locations'**
   String maxLocationsReachedMessage(int max);
+
+  /// Snackbar shown when toggling the notification bell couldn't be verified against the system alarm scheduler
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t confirm the change — please try again'**
+  String get notificationsToggleUnconfirmed;
 }
 
 class _AppLocalizationsDelegate

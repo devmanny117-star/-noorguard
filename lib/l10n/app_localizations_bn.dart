@@ -1967,4 +1967,8 @@ class AppLocalizationsBn extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'আপনি সর্বোচ্চ $maxটি অবস্থান সংরক্ষণ করতে পারেন';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'পরিবর্তনটি নিশ্চিত করা যায়নি — আবার চেষ্টা করুন';
 }

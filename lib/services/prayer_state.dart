@@ -40,6 +40,13 @@ class PrayerState extends ChangeNotifier {
   };
 
   bool masterNotifications = true;
+
+  // Guards toggleMasterNotifications against re-entrancy — e.g. a rapid
+  // double-tap of the bell, or the header bell and the Settings switch
+  // both firing near-simultaneously — so two overlapping cancel/reschedule
+  // sequences can never interleave and leave AlarmManager in a mixed state.
+  bool _isTogglingNotifications = false;
+
   final Map<String, bool> notifications = {
     'fajr': true,
     'dhuhr': true,
@@ -157,38 +164,94 @@ class PrayerState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> toggleMasterNotifications(bool value) async {
-    // Flip and broadcast immediately — optimistic, so the bell icon always
-    // reflects the tap even if a downstream step below throws (e.g. on a
-    // device/permission state where cancelAll or rescheduling fails).
-    masterNotifications = value;
-    for (final key in notifications.keys) {
-      notifications[key] = value;
+  /// Returns true once the cancel (value=false) or reschedule (value=true)
+  /// was verified against AlarmManager — i.e. the OFF state is confirmed to
+  /// leave nothing pending, or the ON state is confirmed to have every
+  /// prayer's full-screen alarm actually scheduled. Callers should only
+  /// surface a "Notifications disabled/enabled" success message when this
+  /// returns true.
+  Future<bool> toggleMasterNotifications(bool value) async {
+    if (_isTogglingNotifications) {
+      debugPrint('PrayerState: toggleMasterNotifications ignored — already in progress');
+      return false;
     }
-    notifyListeners();
-
+    _isTogglingNotifications = true;
     try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('notif_master', value);
+      // Flip and broadcast immediately — optimistic, so the bell icon always
+      // reflects the tap even if a downstream step below throws (e.g. on a
+      // device/permission state where cancelAll or rescheduling fails).
+      masterNotifications = value;
       for (final key in notifications.keys) {
-        await prefs.setBool('notif_$key', value);
+        notifications[key] = value;
       }
+      notifyListeners();
 
-      if (!value) {
-        await NotificationService().cancelAll();
-      } else {
-        final prayerTimes = await fetchPrayerTimes();
-        final data = prayerTimes
-            .map((p) => {'name': p.name, 'time': _parseTime(p.time)})
-            .toList();
-        await NotificationService()
-            .schedulePrayerNotifications(data, adhanId: selectedAdhanId);
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('notif_master', value);
+        for (final key in notifications.keys) {
+          await prefs.setBool('notif_$key', value);
+        }
+
+        if (!value) {
+          // Cancel both the 15-minutes-early reminders (flutter_local_notifications)
+          // AND the native full-screen at-time alarms — they're scheduled through
+          // entirely separate systems, so both must be cancelled for "off" to
+          // actually mean no prayer notification fires at all. The native side
+          // already retries+verifies each id; this is the final confirmation.
+          await NotificationService().cancelAll();
+          final cleared = await NotificationService().cancelFullScreenPrayerAlarms();
+          if (!cleared) {
+            debugPrint('PrayerState: some prayer alarms could not be confirmed cancelled');
+          }
+          return cleared;
+        } else {
+          final prayerTimes = await fetchPrayerTimes();
+          final data = prayerTimes
+              .map((p) => {'name': p.name, 'time': _parseTime(p.time)})
+              .toList();
+          await NotificationService()
+              .schedulePrayerNotifications(data, adhanId: selectedAdhanId);
+          await NotificationService()
+              .scheduleFullScreenPrayerAlarms(data, adhanId: selectedAdhanId);
+
+          // Only the ids whose time hadn't already passed get scheduled
+          // natively, so only verify those — a passed prayer is correctly
+          // absent from AlarmManager, not a verification failure.
+          final expectedIds = <int>[];
+          for (final entry in data) {
+            final id = _alarmIdFor(entry['name'] as String);
+            final time = entry['time'] as DateTime;
+            if (id != null && time.isAfter(DateTime.now())) expectedIds.add(id);
+          }
+          final pending = await NotificationService().queryPendingPrayerAlarms(
+            expectedIds.isEmpty ? const [100, 101, 102, 103, 104] : expectedIds,
+          );
+          final allScheduled = expectedIds.every((id) => pending[id] == true);
+          if (!allScheduled) {
+            debugPrint('PrayerState: some prayer alarms could not be confirmed scheduled');
+          }
+          return allScheduled;
+        }
+      } catch (_) {
+        // The toggle itself already took effect (masterNotifications + UI);
+        // a failure here only means scheduling/cancellation didn't fully sync.
+        return false;
       }
-    } catch (_) {
-      // The toggle itself already took effect (masterNotifications + UI);
-      // a failure here only means scheduling/cancellation didn't fully sync.
+    } finally {
+      _isTogglingNotifications = false;
     }
   }
+
+  static const Map<String, int> _alarmIds = {
+    'Fajr': 100,
+    'Dhuhr': 101,
+    'Asr': 102,
+    'Maghrib': 103,
+    'Isha': 104,
+  };
+
+  int? _alarmIdFor(String prayerName) => _alarmIds[prayerName];
 
   Future<void> togglePrayerNotification(String prayer, bool value) async {
     notifications[prayer] = value;

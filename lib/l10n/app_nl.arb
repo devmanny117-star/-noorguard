@@ -582,5 +582,6 @@
   "addLocationTooltip": "Locatie toevoegen",
   "deleteLocationTooltip": "Locatie verwijderen",
   "locationNotFound": "Locatie niet gevonden. Probeer een andere zoekopdracht.",
-  "maxLocationsReachedMessage": "Je kunt tot {max} locaties opslaan"
+  "maxLocationsReachedMessage": "Je kunt tot {max} locaties opslaan",
+  "notificationsToggleUnconfirmed": "Wijziging kon niet worden bevestigd — probeer het opnieuw"
 }

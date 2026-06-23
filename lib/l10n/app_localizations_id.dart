@@ -1967,4 +1967,8 @@ class AppLocalizationsId extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'Anda dapat menyimpan hingga $max lokasi';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'Perubahan tidak dapat dikonfirmasi — coba lagi';
 }

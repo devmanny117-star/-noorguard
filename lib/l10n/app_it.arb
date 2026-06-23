@@ -582,5 +582,6 @@
   "addLocationTooltip": "Aggiungi posizione",
   "deleteLocationTooltip": "Elimina posizione",
   "locationNotFound": "Posizione non trovata. Prova una ricerca diversa.",
-  "maxLocationsReachedMessage": "Puoi salvare fino a {max} posizioni"
+  "maxLocationsReachedMessage": "Puoi salvare fino a {max} posizioni",
+  "notificationsToggleUnconfirmed": "Non è stato possibile confermare la modifica — riprova"
 }

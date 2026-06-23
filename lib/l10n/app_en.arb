@@ -2401,5 +2401,9 @@
         "type": "int"
       }
     }
+  },
+  "notificationsToggleUnconfirmed": "Couldn't confirm the change — please try again",
+  "@notificationsToggleUnconfirmed": {
+    "description": "Snackbar shown when toggling the notification bell couldn't be verified against the system alarm scheduler"
   }
 }

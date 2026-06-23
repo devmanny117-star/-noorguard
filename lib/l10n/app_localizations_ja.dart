@@ -1885,4 +1885,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return '最大$max件の場所を保存できます';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed => '変更を確認できませんでした — もう一度お試しください';
 }

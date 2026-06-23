@@ -1967,4 +1967,8 @@ class AppLocalizationsNl extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'Je kunt tot $max locaties opslaan';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'Wijziging kon niet worden bevestigd — probeer het opnieuw';
 }

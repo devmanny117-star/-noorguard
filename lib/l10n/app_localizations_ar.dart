@@ -1940,4 +1940,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'يمكنك حفظ ما يصل إلى $max مواقع';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'لم يتم تأكيد التغيير — حاول مرة أخرى';
 }

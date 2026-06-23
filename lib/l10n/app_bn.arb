@@ -582,5 +582,6 @@
   "addLocationTooltip": "অবস্থান যুক্ত করুন",
   "deleteLocationTooltip": "অবস্থান মুছুন",
   "locationNotFound": "অবস্থান পাওয়া যায়নি। অন্য অনুসন্ধান চেষ্টা করুন।",
-  "maxLocationsReachedMessage": "আপনি সর্বোচ্চ {max}টি অবস্থান সংরক্ষণ করতে পারেন"
+  "maxLocationsReachedMessage": "আপনি সর্বোচ্চ {max}টি অবস্থান সংরক্ষণ করতে পারেন",
+  "notificationsToggleUnconfirmed": "পরিবর্তনটি নিশ্চিত করা যায়নি — আবার চেষ্টা করুন"
 }

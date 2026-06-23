@@ -582,5 +582,6 @@
   "addLocationTooltip": "添加位置",
   "deleteLocationTooltip": "删除位置",
   "locationNotFound": "未找到该位置。请尝试其他搜索。",
-  "maxLocationsReachedMessage": "您最多可以保存 {max} 个位置"
+  "maxLocationsReachedMessage": "您最多可以保存 {max} 个位置",
+  "notificationsToggleUnconfirmed": "无法确认更改——请重试"
 }

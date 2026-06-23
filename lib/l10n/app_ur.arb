@@ -582,5 +582,6 @@
   "addLocationTooltip": "مقام شامل کریں",
   "deleteLocationTooltip": "مقام حذف کریں",
   "locationNotFound": "مقام نہیں ملا۔ مختلف تلاش آزمائیں۔",
-  "maxLocationsReachedMessage": "آپ زیادہ سے زیادہ {max} مقامات محفوظ کر سکتے ہیں"
+  "maxLocationsReachedMessage": "آپ زیادہ سے زیادہ {max} مقامات محفوظ کر سکتے ہیں",
+  "notificationsToggleUnconfirmed": "تبدیلی کی تصدیق نہیں ہو سکی — دوبارہ کوشش کریں"
 }

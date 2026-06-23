@@ -616,6 +616,50 @@ class NotificationService {
     await _plugin.cancelAll();
   }
 
+  /// Cancels every scheduled full-screen prayer alarm (ids 100–104) — the
+  /// native AlarmManager alarms that fire at the exact prayer time. These
+  /// live entirely outside flutter_local_notifications, so [cancelAll] alone
+  /// (which only clears the 15-minutes-early reminders) never touches them.
+  ///
+  /// The native side retries each id once and re-verifies removal via
+  /// PendingIntent lookup (AlarmManager.cancel() has no success return value).
+  /// Returns true only if every id was confirmed clear; false on iOS/web is
+  /// not meaningful since there's nothing to cancel there, so this returns
+  /// true in that case (vacuously "clear").
+  Future<bool> cancelFullScreenPrayerAlarms() async {
+    if (kIsWeb || !Platform.isAndroid) return true;
+    try {
+      return await _alarmChannel.invokeMethod<bool>('cancelPrayerAlarms') ?? false;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Reports, for each of [ids] (default 100–104), whether a full-screen
+  /// prayer alarm is currently pending in AlarmManager. Used to verify a
+  /// schedule/cancel actually took effect, since apps can't run `dumpsys
+  /// alarm` on themselves. Returns every id mapped to false on iOS/web.
+  Future<Map<int, bool>> queryPendingPrayerAlarms([
+    List<int> ids = const [100, 101, 102, 103, 104],
+  ]) async {
+    if (kIsWeb || !Platform.isAndroid) {
+      return {for (final id in ids) id: false};
+    }
+    try {
+      final result =
+          await _alarmChannel.invokeMethod<Map<Object?, Object?>>(
+        'queryPendingPrayerAlarms',
+        ids,
+      );
+      if (result == null) return {for (final id in ids) id: false};
+      return result.map(
+        (key, value) => MapEntry(key as int, value as bool),
+      );
+    } catch (_) {
+      return {for (final id in ids) id: false};
+    }
+  }
+
   /// Schedules a one-off test notification 10 seconds from now, for
   /// verifying that notifications (and the selected adhan sound) fire
   /// correctly on a real device.

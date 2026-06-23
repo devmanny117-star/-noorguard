@@ -1865,4 +1865,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return '您最多可以保存 $max 个位置';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed => '无法确认更改——请重试';
 }

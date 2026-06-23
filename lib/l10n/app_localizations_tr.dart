@@ -1960,4 +1960,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'En fazla $max konum kaydedebilirsiniz';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'Değişiklik onaylanamadı — lütfen tekrar deneyin';
 }

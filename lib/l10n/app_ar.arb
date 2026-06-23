@@ -582,5 +582,6 @@
   "addLocationTooltip": "إضافة موقع",
   "deleteLocationTooltip": "حذف الموقع",
   "locationNotFound": "لم يتم العثور على الموقع. حاول بحثًا مختلفًا.",
-  "maxLocationsReachedMessage": "يمكنك حفظ ما يصل إلى {max} مواقع"
+  "maxLocationsReachedMessage": "يمكنك حفظ ما يصل إلى {max} مواقع",
+  "notificationsToggleUnconfirmed": "لم يتم تأكيد التغيير — حاول مرة أخرى"
 }

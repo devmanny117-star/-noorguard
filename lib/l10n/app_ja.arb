@@ -582,5 +582,6 @@
   "addLocationTooltip": "場所を追加",
   "deleteLocationTooltip": "場所を削除",
   "locationNotFound": "場所が見つかりません。別の検索を試してください。",
-  "maxLocationsReachedMessage": "最大{max}件の場所を保存できます"
+  "maxLocationsReachedMessage": "最大{max}件の場所を保存できます",
+  "notificationsToggleUnconfirmed": "変更を確認できませんでした — もう一度お試しください"
 }

@@ -1955,4 +1955,8 @@ class AppLocalizationsUr extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'آپ زیادہ سے زیادہ $max مقامات محفوظ کر سکتے ہیں';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'تبدیلی کی تصدیق نہیں ہو سکی — دوبارہ کوشش کریں';
 }

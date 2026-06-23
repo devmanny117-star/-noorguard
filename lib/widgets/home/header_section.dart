@@ -6,6 +6,11 @@ import '../../theme/app_theme.dart';
 import '../../theme/theme_controller.dart';
 import '../../l10n/app_localizations.dart';
 
+// Matches the "low accuracy / alert" red used elsewhere in the app (e.g. the
+// Qibla screen's accuracy badge) so the disabled-bell state reads as a clear
+// warning rather than introducing a new one-off red.
+const _kNotificationsOffRed = Color(0xFFEF5350);
+
 class HeaderSection extends StatelessWidget {
   final VoidCallback onOpenSettings;
 
@@ -76,7 +81,9 @@ class HeaderSection extends StatelessWidget {
                   prayerState.masterNotifications
                       ? Icons.notifications
                       : Icons.notifications_off,
-                  color: colors.primaryText,
+                  color: prayerState.masterNotifications
+                      ? AppColors.gold
+                      : _kNotificationsOffRed,
                   size: 21,
                 ),
               ),
@@ -96,25 +103,34 @@ class HeaderSection extends StatelessWidget {
     );
   }
 
-  void _toggleNotifications(
+  Future<void> _toggleNotifications(
     BuildContext context,
     AppLocalizations l10n,
     PrayerState prayerState,
-  ) {
+  ) async {
     final enabled = !prayerState.masterNotifications;
-    prayerState.toggleMasterNotifications(enabled);
+    // The icon/color flip instantly — toggleMasterNotifications calls
+    // notifyListeners() synchronously before doing any async cancel/schedule
+    // work, so context.watch<PrayerState>() in build() already rebuilt by
+    // the time this await resolves. Only the snackbar waits on verification.
+    final verified = await prayerState.toggleMasterNotifications(enabled);
+    if (!context.mounted) return;
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Row(
         children: [
           Icon(
-            enabled ? Icons.notifications : Icons.notifications_off,
+            verified
+                ? (enabled ? Icons.notifications : Icons.notifications_off)
+                : Icons.error_outline_rounded,
             color: Colors.white,
             size: 18,
           ),
           const SizedBox(width: 10),
           Text(
-            enabled ? l10n.notificationsOn : l10n.notificationsOff,
+            verified
+                ? (enabled ? l10n.notificationsOn : l10n.notificationsOff)
+                : l10n.notificationsToggleUnconfirmed,
             style: GoogleFonts.lato(color: Colors.white),
           ),
         ],

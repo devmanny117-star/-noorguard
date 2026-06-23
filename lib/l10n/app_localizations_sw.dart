@@ -1968,4 +1968,8 @@ class AppLocalizationsSw extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'Unaweza kuhifadhi hadi maeneo $max';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'Imeshindwa kuthibitisha mabadiliko — tafadhali jaribu tena';
 }

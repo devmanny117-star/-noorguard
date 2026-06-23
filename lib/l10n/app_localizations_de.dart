@@ -1972,4 +1972,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String maxLocationsReachedMessage(int max) {
     return 'Du kannst bis zu $max Standorte speichern';
   }
+
+  @override
+  String get notificationsToggleUnconfirmed =>
+      'Änderung konnte nicht bestätigt werden — bitte erneut versuchen';
 }

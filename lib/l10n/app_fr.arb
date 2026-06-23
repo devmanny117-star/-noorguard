@@ -582,5 +582,6 @@
   "addLocationTooltip": "Ajouter un lieu",
   "deleteLocationTooltip": "Supprimer le lieu",
   "locationNotFound": "Lieu introuvable. Essayez une autre recherche.",
-  "maxLocationsReachedMessage": "Vous pouvez enregistrer jusqu'à {max} lieux"
+  "maxLocationsReachedMessage": "Vous pouvez enregistrer jusqu'à {max} lieux",
+  "notificationsToggleUnconfirmed": "Impossible de confirmer la modification — veuillez réessayer"
 }

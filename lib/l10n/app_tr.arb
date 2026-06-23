@@ -582,5 +582,6 @@
   "addLocationTooltip": "Konum ekle",
   "deleteLocationTooltip": "Konumu sil",
   "locationNotFound": "Konum bulunamadı. Farklı bir arama deneyin.",
-  "maxLocationsReachedMessage": "En fazla {max} konum kaydedebilirsiniz"
+  "maxLocationsReachedMessage": "En fazla {max} konum kaydedebilirsiniz",
+  "notificationsToggleUnconfirmed": "Değişiklik onaylanamadı — lütfen tekrar deneyin"
 }

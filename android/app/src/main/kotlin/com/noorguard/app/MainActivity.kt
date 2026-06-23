@@ -10,6 +10,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.PowerManager
 import android.provider.Settings
+import android.util.Log
 import android.view.KeyEvent
 import androidx.core.app.NotificationCompat
 import com.ryanheise.audioservice.AudioServiceActivity
@@ -24,6 +25,7 @@ class MainActivity : AudioServiceActivity() {
     companion object {
         var adhanChannel: MethodChannel? = null
         var isAdhanPlaying = false
+        private const val TAG = "PrayerAlarms"
     }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
@@ -56,8 +58,13 @@ class MainActivity : AudioServiceActivity() {
                     result.success(null)
                 }
                 "cancelPrayerAlarms" -> {
-                    cancelPrayerAlarms()
-                    result.success(null)
+                    result.success(cancelPrayerAlarms())
+                }
+                "queryPendingPrayerAlarms" -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val ids = (call.arguments as? List<Any>)?.map { (it as Number).toInt() }
+                        ?: (100..104).toList()
+                    result.success(arePrayerAlarmsPending(ids))
                 }
                 "getPendingPrayerMarks" -> {
                     result.success(getPendingPrayerMarks())
@@ -314,21 +321,58 @@ class MainActivity : AudioServiceActivity() {
         alarmManager.setAlarmClock(
             AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent), pi
         )
+        Log.d(TAG, "Scheduled alarm id=$notifId ($prayerName) triggerAtMillis=$triggerAtMillis")
     }
 
-    private fun cancelPrayerAlarms() {
+    private fun isAlarmPending(id: Int): Boolean {
+        return PendingIntent.getBroadcast(
+            this, id, Intent(this, PrayerAlarmReceiver::class.java),
+            PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
+        ) != null
+    }
+
+    // Cancels every full-screen prayer alarm (ids 100-104), verifying removal
+    // by re-querying with FLAG_NO_CREATE — AlarmManager.cancel() returns Unit,
+    // not a success flag, so this re-query is the only reliable confirmation.
+    // Retries once per id if the first cancel didn't stick. Returns true only
+    // if every id is confirmed clear afterward.
+    private fun cancelPrayerAlarms(): Boolean {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        var allClear = true
         for (id in 100..104) {
-            val intent = Intent(this, PrayerAlarmReceiver::class.java)
-            val pi = PendingIntent.getBroadcast(
-                this, id, intent,
-                PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
-            )
-            if (pi != null) {
+            if (!isAlarmPending(id)) {
+                Log.d(TAG, "No pending alarm found for id=$id, nothing to cancel")
+                continue
+            }
+            var cleared = false
+            for (attempt in 1..2) {
+                val pi = PendingIntent.getBroadcast(
+                    this, id, Intent(this, PrayerAlarmReceiver::class.java),
+                    PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE
+                )
+                if (pi == null) {
+                    cleared = true
+                    break
+                }
                 alarmManager.cancel(pi)
                 pi.cancel()
+                cleared = !isAlarmPending(id)
+                Log.d(TAG, "Cancel attempt $attempt for alarm id=$id (confirmed removed=$cleared)")
+                if (cleared) break
+            }
+            if (!cleared) {
+                Log.w(TAG, "Alarm id=$id still pending after retry — cancellation failed")
+                allClear = false
             }
         }
+        return allClear
+    }
+
+    // Reports, for each requested id, whether a full-screen prayer alarm is
+    // currently pending in AlarmManager. Used to verify scheduling/cancellation
+    // actually took effect, since apps can't call `dumpsys alarm` on themselves.
+    private fun arePrayerAlarmsPending(ids: List<Int>): Map<Int, Boolean> {
+        return ids.associateWith { id -> isAlarmPending(id) }
     }
 
     private fun getPendingPrayerMarks(): List<String> {
