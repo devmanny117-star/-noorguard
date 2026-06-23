@@ -700,6 +700,12 @@ class NotificationService {
     required List<Map<String, dynamic>> prayers,
   }) async {
     if (kIsWeb || !Platform.isAndroid) return;
+    // Deliberately does NOT check masterNotifications: this is a manual,
+    // on-demand debug trigger (Settings > Test Lock Alarm, debug builds
+    // only) whose entire purpose is to schedule alarm id=101 on demand so
+    // the bell's cancellation can be verified independent of the bell's
+    // current state — gating it would make it useless for that test.
+    debugPrint('NotificationService.scheduleTestFullScreenAlarm: manual test trigger, bypasses masterNotifications by design');
 
     final List<Map<String, dynamic>> schedule = prayers.isNotEmpty
         ? prayers
@@ -734,10 +740,13 @@ class NotificationService {
         'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
         'triggerAtMillis':
             now.add(const Duration(seconds: 10)).millisecondsSinceEpoch,
-        // Distinct from the real prayer alarm ids (100-104) so testing never
-        // collides with a scheduled prayer or its actions (which use
-        // notifId+200/+300 as PendingIntent request codes).
-        'notificationId': 199,
+        // Deliberately Dhuhr's real id (101), not a dedicated test-only id —
+        // this puts the test alarm inside cancelPrayerAlarms()'s 100-104
+        // range so it can be used to verify the bell OFF toggle actually
+        // cancels a pending alarm. Trade-off: if a real Dhuhr alarm is
+        // already scheduled today, tapping this button overwrites it with
+        // the test's near-term trigger until the next natural reschedule.
+        'notificationId': 101,
         'allPrayers': allPrayers,
       });
     } catch (e) {

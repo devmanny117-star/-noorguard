@@ -229,7 +229,11 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     // this check, simply reopening the app (which re-runs this on every
     // cold start of the Home screen) would silently re-schedule every
     // prayer notification and full-screen alarm even with the bell off.
-    if (!PrayerState().masterNotifications) return;
+    if (!PrayerState().masterNotifications) {
+      debugPrint('HomeScreen._scheduleNotifications: masterNotifications is OFF, skipping schedule');
+      return;
+    }
+    debugPrint('HomeScreen._scheduleNotifications: masterNotifications is ON, scheduling ${data.length} prayer alarms');
 
     final adhanId = PrayerState().selectedAdhanId;
     NotificationService().schedulePrayerNotifications(

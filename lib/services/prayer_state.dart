@@ -194,6 +194,7 @@ class PrayerState extends ChangeNotifier {
         }
 
         if (!value) {
+          debugPrint('PrayerState.toggleMasterNotifications(false): cancelling all prayer alarms');
           // Cancel both the 15-minutes-early reminders (flutter_local_notifications)
           // AND the native full-screen at-time alarms — they're scheduled through
           // entirely separate systems, so both must be cancelled for "off" to
@@ -206,6 +207,7 @@ class PrayerState extends ChangeNotifier {
           }
           return cleared;
         } else {
+          debugPrint('PrayerState.toggleMasterNotifications(true): rescheduling all prayer alarms');
           final prayerTimes = await fetchPrayerTimes();
           final data = prayerTimes
               .map((p) => {'name': p.name, 'time': _parseTime(p.time)})

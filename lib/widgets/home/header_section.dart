@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '../../services/notification_service.dart';
 import '../../services/prayer_state.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/theme_controller.dart';
@@ -114,6 +115,22 @@ class HeaderSection extends StatelessWidget {
     // work, so context.watch<PrayerState>() in build() already rebuilt by
     // the time this await resolves. Only the snackbar waits on verification.
     final verified = await prayerState.toggleMasterNotifications(enabled);
+    if (!context.mounted) return;
+
+    // Mirrors settings_screen.dart's _onMasterNotificationsChanged — without
+    // this, toggling the bell here left the "Prayer notifications active"
+    // foreground service running (or stopped) regardless of the new state,
+    // since only the Settings screen's switch used to do this.
+    if (enabled) {
+      await NotificationService().startKeepAliveService(
+        title: l10n.appName,
+        text: l10n.keepAliveNotificationText,
+        channelName: l10n.keepAliveChannelName,
+        channelDescription: l10n.keepAliveChannelDescription,
+      );
+    } else {
+      await NotificationService().stopKeepAliveService();
+    }
     if (!context.mounted) return;
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(

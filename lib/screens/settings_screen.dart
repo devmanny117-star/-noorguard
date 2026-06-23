@@ -291,7 +291,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   _snack(l10n.testNotificationSnack);
                 },
               ),
-              if (!kIsWeb && Platform.isAndroid) ...[
+              if (kDebugMode && !kIsWeb && Platform.isAndroid) ...[
                 const _Divider(colors: cardColors),
                 _ActionRow(
                   label: l10n.testLockAlarmButton,

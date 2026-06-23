@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 
@@ -76,7 +77,27 @@ class PrayerForegroundService : Service() {
          */
         fun restartIfEnabled(context: Context) {
             val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            if (!prefs.getBoolean(KEY_ENABLED, false)) return
+            if (!prefs.getBoolean(KEY_ENABLED, false)) {
+                Log.d("PrayerAlarms", "restartIfEnabled: keep-alive service was not running, skipping")
+                return
+            }
+
+            // Cross-check the Dart-side master toggle too. This service's own
+            // KEY_ENABLED flag is only updated by start()/stop(), so it can
+            // only drift from the user's actual notif_master preference if
+            // those calls are ever skipped — but a reboot is exactly the kind
+            // of edge case worth defending regardless: never resurrect this
+            // foreground notification for a user who has prayer notifications
+            // off. The shared_preferences plugin stores Dart's prefs in a
+            // separate "FlutterSharedPreferences" file with a "flutter." key
+            // prefix.
+            val dartPrefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+            if (!dartPrefs.getBoolean("flutter.notif_master", true)) {
+                Log.d("PrayerAlarms", "restartIfEnabled: notif_master is false, not restarting keep-alive service")
+                return
+            }
+
+            Log.d("PrayerAlarms", "restartIfEnabled: restarting keep-alive service after reboot")
             val title = prefs.getString(KEY_TITLE, "Noor Guard") ?: "Noor Guard"
             val text = prefs.getString(KEY_TEXT, "Prayer notifications active")
                 ?: "Prayer notifications active"
