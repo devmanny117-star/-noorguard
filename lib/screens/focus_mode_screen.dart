@@ -41,7 +41,11 @@ class _FocusModeScreenState extends State<FocusModeScreen>
   late Animation<double> _duaFade;
 
   List<InstalledApp> _blockedApps = [];
-  bool _loadingBlockedApps = true;
+  // True once _blockedApps reflects real icons/names — false (not "loading")
+  // when the installed-apps cache simply hasn't been warmed yet this
+  // session, so the preview shows just the count badge instead of a spinner.
+  bool _blockedAppsIconsReady = false;
+  int _blockedAppsCount = 0;
 
   @override
   void initState() {
@@ -66,15 +70,20 @@ class _FocusModeScreenState extends State<FocusModeScreen>
   }
 
   /// Focus Mode's own blocked-apps list — independent of App Blocking's
-  /// prayer-time list, set up via [_openAppsPicker].
+  /// prayer-time list, set up via [_openAppsPicker]. Deliberately cheap:
+  /// loadSettings() is just SharedPreferences reads (no native call), and
+  /// resolving real icons only happens if the installed-apps cache is
+  /// already warm — never triggers a fresh fetch itself, so opening this
+  /// screen never pays for a cold icon-decode of every installed app.
   Future<void> _loadBlockedApps() async {
     final service = AppBlockingService();
     await service.loadSettings();
-    final apps = await service.getFocusBlockedAppsWithIcons();
     if (!mounted) return;
+    final cached = service.getFocusBlockedAppsWithIconsIfCached();
     setState(() {
-      _blockedApps = apps;
-      _loadingBlockedApps = false;
+      _blockedAppsCount = service.focusBlockedPackages.length;
+      _blockedApps = cached ?? [];
+      _blockedAppsIconsReady = cached != null;
     });
   }
 
@@ -93,7 +102,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
       ),
     );
     if (!mounted) return;
-    setState(() => _loadingBlockedApps = true);
+    // The picker always force-refreshes the installed-apps cache, so this
+    // now resolves real icons instantly instead of needing its own fetch.
     await _loadBlockedApps();
   }
 
@@ -284,7 +294,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
             hintText: l10n.customTimerHint,
             hintStyle: TextStyle(color: colors.secondaryText),
             enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
+              borderSide:
+                  BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
             ),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: AppColors.gold),
@@ -330,8 +341,7 @@ class _FocusModeScreenState extends State<FocusModeScreen>
   }
 
   // progress = 1.0 (full ring) at start → 0.0 (empty ring) at end
-  double get _progress =>
-      _totalSeconds > 0 ? _remaining / _totalSeconds : 0.0;
+  double get _progress => _totalSeconds > 0 ? _remaining / _totalSeconds : 0.0;
 
   // ── Build ─────────────────────────────────────────────────────────────────
 
@@ -375,7 +385,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
                     const SizedBox(height: 28),
                     _BlockedAppsPreview(
                       apps: _blockedApps,
-                      loading: _loadingBlockedApps,
+                      selectedCount: _blockedAppsCount,
+                      iconsReady: _blockedAppsIconsReady,
                       isRunning: _isRunning,
                       onSelectApps: _isRunning ? null : _openAppsPicker,
                     ),
@@ -771,7 +782,8 @@ class _DurationRow extends StatelessWidget {
                 Expanded(
                   child: _DurationTile(
                     margin: const EdgeInsets.only(right: 10),
-                    isSelected: !isCustomSelected && selectedMinutes == fixedMinutes[i],
+                    isSelected:
+                        !isCustomSelected && selectedMinutes == fixedMinutes[i],
                     onTap: () => onSelectFixed(fixedMinutes[i]),
                     primaryText: '${fixedMinutes[i]}',
                     secondaryText: l10n.minutesAbbreviation,
@@ -888,13 +900,15 @@ class _DurationTile extends StatelessWidget {
 
 class _BlockedAppsPreview extends StatelessWidget {
   final List<InstalledApp> apps;
-  final bool loading;
+  final int selectedCount;
+  final bool iconsReady;
   final bool isRunning;
   final VoidCallback? onSelectApps;
 
   const _BlockedAppsPreview({
     required this.apps,
-    required this.loading,
+    required this.selectedCount,
+    required this.iconsReady,
     required this.isRunning,
     this.onSelectApps,
   });
@@ -934,16 +948,14 @@ class _BlockedAppsPreview extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: isRunning
-                      ? const Color(0xFFFFEBEE)
-                      : colors.secondaryBg,
+                  color:
+                      isRunning ? const Color(0xFFFFEBEE) : colors.secondaryBg,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  l10n.appsBlockedCount(apps.length),
+                  l10n.appsBlockedCount(selectedCount),
                   style: GoogleFonts.lato(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
@@ -955,30 +967,28 @@ class _BlockedAppsPreview extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 16),
-          if (loading)
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: Center(
-                child: SizedBox(
-                  width: 22,
-                  height: 22,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                ),
-              ),
-            )
-          else if (preview.isEmpty)
+          // Real icons only render once the installed-apps cache is warm
+          // (e.g. the picker below has been opened this session) — selecting
+          // 0 apps still shows the empty-state text either way, but a
+          // non-zero count with cold icons shows neither, rather than a
+          // spinner, so opening this screen never feels like it's waiting
+          // on anything.
+          if (selectedCount == 0) ...[
+            const SizedBox(height: 16),
             Text(
               l10n.appBlockingNoAppsSelected,
-              style: GoogleFonts.lato(fontSize: 12.5, color: colors.secondaryText),
-            )
-          else
+              style:
+                  GoogleFonts.lato(fontSize: 12.5, color: colors.secondaryText),
+            ),
+          ] else if (iconsReady) ...[
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: preview
                   .map((a) => _BlockedAppIcon(app: a, isRunning: isRunning))
                   .toList(),
             ),
+          ],
           if (onSelectApps != null) ...[
             const SizedBox(height: 14),
             SizedBox(
@@ -987,7 +997,8 @@ class _BlockedAppsPreview extends StatelessWidget {
                 onPressed: onSelectApps,
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppColors.gold,
-                  side: BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
+                  side:
+                      BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
                   padding: const EdgeInsets.symmetric(vertical: 11),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -995,7 +1006,8 @@ class _BlockedAppsPreview extends StatelessWidget {
                 ),
                 child: Text(
                   l10n.appBlockingSelectAppsButton,
-                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w700),
+                  style: GoogleFonts.lato(
+                      fontSize: 13, fontWeight: FontWeight.w700),
                 ),
               ),
             ),
@@ -1033,10 +1045,26 @@ class _BlockedAppIcon extends StatelessWidget {
     if (isRunning) {
       icon = ColorFiltered(
         colorFilter: const ColorFilter.matrix([
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0.2126, 0.7152, 0.0722, 0, 0,
-          0,      0,      0,      0.55, 0,
+          0.2126,
+          0.7152,
+          0.0722,
+          0,
+          0,
+          0.2126,
+          0.7152,
+          0.0722,
+          0,
+          0,
+          0.2126,
+          0.7152,
+          0.0722,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.55,
+          0,
         ]),
         child: icon,
       );
@@ -1061,8 +1089,7 @@ class _BlockedAppIcon extends StatelessWidget {
                       ? const Color(0xFFB71C1C)
                       : colors.secondaryText,
                   shape: BoxShape.circle,
-                  border:
-                      Border.all(color: colors.cardBg, width: 1.5),
+                  border: Border.all(color: colors.cardBg, width: 1.5),
                 ),
                 child: const Icon(
                   Icons.block_rounded,
@@ -1260,8 +1287,7 @@ class _CompletionDialog extends StatelessWidget {
 
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 16, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
                 color: AppColors.gold.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(12),

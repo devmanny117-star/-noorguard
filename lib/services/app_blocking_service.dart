@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,7 +28,8 @@ class PrayerWindow {
   final DateTime start;
   final DateTime end;
 
-  const PrayerWindow({required this.prayerName, required this.start, required this.end});
+  const PrayerWindow(
+      {required this.prayerName, required this.start, required this.end});
 
   bool contains(DateTime time) => !time.isBefore(start) && !time.isAfter(end);
 }
@@ -62,7 +64,8 @@ class AppBlockingService extends ChangeNotifier {
   Future<void> loadSettings() async {
     final prefs = await SharedPreferences.getInstance();
     enabled = prefs.getBool('app_blocking_enabled') ?? false;
-    final modeName = prefs.getString('app_blocking_mode') ?? BlockingMode.firm.name;
+    final modeName =
+        prefs.getString('app_blocking_mode') ?? BlockingMode.firm.name;
     mode = BlockingMode.values.firstWhere(
       (m) => m.name == modeName,
       orElse: () => BlockingMode.firm,
@@ -85,6 +88,14 @@ class AppBlockingService extends ChangeNotifier {
       await prefs.setStringList(
           'focus_blocked_packages', focusBlockedPackages.toList());
     }
+
+    // _cachedApps is in-memory only and starts empty every fresh launch —
+    // warm it from the small persisted icon/name snapshot (just the
+    // currently-selected packages, not all installed apps) so previews can
+    // show real icons immediately, before either apps picker has ever been
+    // opened this session. A real fetch (always forceRefresh: true from the
+    // picker) replaces this with the full list as soon as one happens.
+    _cachedApps ??= _decodeAppsSnapshot(prefs.getString(_appsSnapshotKey));
     notifyListeners();
   }
 
@@ -95,7 +106,8 @@ class AppBlockingService extends ChangeNotifier {
     await prefs.setStringList('app_blocking_prayers', selectedPrayers.toList());
     await prefs.setInt('app_blocking_pre_minutes', preMinutes);
     await prefs.setInt('app_blocking_post_minutes', postMinutes);
-    await prefs.setStringList('app_blocking_packages', blockedPackages.toList());
+    await prefs.setStringList(
+        'app_blocking_packages', blockedPackages.toList());
   }
 
   Future<void> setEnabled(bool value) async {
@@ -140,6 +152,7 @@ class AppBlockingService extends ChangeNotifier {
     }
     notifyListeners();
     await _persist();
+    await _persistAppsSnapshot();
   }
 
   Future<void> toggleFocusBlockedPackage(String packageName, bool value) async {
@@ -155,6 +168,7 @@ class AppBlockingService extends ChangeNotifier {
     // No separate native push here — startFocusSession() always sends the
     // current list fresh the moment a session actually starts, which is the
     // only time this list matters to the AccessibilityService.
+    await _persistAppsSnapshot();
   }
 
   /// Cached so screens that just need a few icons (Focus Mode) don't pay for
@@ -164,7 +178,53 @@ class AppBlockingService extends ChangeNotifier {
   /// list).
   List<InstalledApp>? _cachedApps;
 
-  Future<List<InstalledApp>> getInstalledApps({bool forceRefresh = false}) async {
+  static const _appsSnapshotKey = 'cached_selected_apps_snapshot';
+
+  /// Persists just the icon/name data for currently-selected packages (not
+  /// the full installed-apps list) to disk, so it survives app restarts —
+  /// unlike [_cachedApps] itself, which is in-memory only and empty again on
+  /// every fresh launch. Called after every toggle and every real fetch, so
+  /// it's never more than one change behind.
+  Future<void> _persistAppsSnapshot() async {
+    final source = _cachedApps;
+    if (source == null) return;
+    final relevant = {...blockedPackages, ...focusBlockedPackages};
+    final byPackage = {for (final a in source) a.packageName: a};
+    final apps = relevant.map((pkg) => byPackage[pkg]).whereType<InstalledApp>();
+    final json = jsonEncode(apps
+        .map((a) => {
+              'packageName': a.packageName,
+              'appName': a.appName,
+              'icon': a.iconBytes != null ? base64Encode(a.iconBytes!) : null,
+            })
+        .toList());
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_appsSnapshotKey, json);
+  }
+
+  List<InstalledApp>? _decodeAppsSnapshot(String? json) {
+    if (json == null) return null;
+    try {
+      final list = jsonDecode(json) as List<dynamic>;
+      return list
+          .map((e) => InstalledApp(
+                packageName: e['packageName'] as String,
+                appName: e['appName'] as String,
+                iconBytes: e['icon'] != null
+                    ? base64Decode(e['icon'] as String)
+                    : null,
+              ))
+          .toList();
+    } catch (_) {
+      // A corrupted/incompatible snapshot just means no warm cache this
+      // launch — the next real fetch (always forceRefresh from either apps
+      // picker) repopulates everything normally.
+      return null;
+    }
+  }
+
+  Future<List<InstalledApp>> getInstalledApps(
+      {bool forceRefresh = false}) async {
     if (!Platform.isAndroid) return [];
     if (!forceRefresh && _cachedApps != null) return _cachedApps!;
     try {
@@ -177,6 +237,7 @@ class AppBlockingService extends ChangeNotifier {
         ..sort((a, b) =>
             a.appName.toLowerCase().compareTo(b.appName.toLowerCase()));
       _cachedApps = apps;
+      await _persistAppsSnapshot();
       return apps;
     } catch (_) {
       return _cachedApps ?? [];
@@ -197,6 +258,22 @@ class AppBlockingService extends ChangeNotifier {
   /// Same as [getBlockedAppsWithIcons] but for Focus Mode's own list.
   Future<List<InstalledApp>> getFocusBlockedAppsWithIcons() async {
     final apps = await getInstalledApps();
+    final byPackage = {for (final a in apps) a.packageName: a};
+    return focusBlockedPackages
+        .map((pkg) => byPackage[pkg])
+        .whereType<InstalledApp>()
+        .toList();
+  }
+
+  /// Same as [getFocusBlockedAppsWithIcons] but never triggers a native
+  /// fetch — returns null if the installed-apps cache hasn't been warmed
+  /// yet this session (e.g. neither App Blocking's nor Focus Mode's apps
+  /// picker has been opened). Lets Focus Mode render its preview instantly
+  /// on open instead of paying for a cold fetch+icon-decode of every
+  /// installed app just to show a handful of icons.
+  List<InstalledApp>? getFocusBlockedAppsWithIconsIfCached() {
+    final apps = _cachedApps;
+    if (apps == null) return null;
     final byPackage = {for (final a in apps) a.packageName: a};
     return focusBlockedPackages
         .map((pkg) => byPackage[pkg])
@@ -227,8 +304,8 @@ class AppBlockingService extends ChangeNotifier {
   Future<AyahChallenge?> consumePendingAyahChallenge() async {
     if (!Platform.isAndroid) return null;
     try {
-      final result =
-          await _channel.invokeMethod<Map<dynamic, dynamic>>('getPendingAyahChallenge');
+      final result = await _channel
+          .invokeMethod<Map<dynamic, dynamic>>('getPendingAyahChallenge');
       if (result == null) return null;
       final pkg = result['blockedPackage'] as String?;
       if (pkg == null) return null;
@@ -368,7 +445,8 @@ class AppBlockingService extends ChangeNotifier {
   Future<DateTime?> reconcileFocusSession() async {
     if (!Platform.isAndroid) return null;
     try {
-      final endMillis = await _channel.invokeMethod<int>('getFocusSessionStatus');
+      final endMillis =
+          await _channel.invokeMethod<int>('getFocusSessionStatus');
       if (endMillis == null) return null;
       return DateTime.fromMillisecondsSinceEpoch(endMillis);
     } catch (_) {
