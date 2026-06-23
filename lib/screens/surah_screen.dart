@@ -52,6 +52,7 @@ Future<Uri> _getQuranArtworkUri() async {
 
 class SurahScreen extends StatefulWidget {
   final Surah surah;
+
   /// Non-null when opened from the App Blocking block screen's "Read 3
   /// Ayahs" button — shows a progress banner and grants the bypass once
   /// [AyahChallenge.targetCount] distinct ayahs have been viewed.
@@ -69,22 +70,73 @@ class _SurahScreenState extends State<SurahScreen> {
 
   final Set<int> _seenVerses = {};
   bool _challengeComplete = false;
+  int? _justConfirmedVerse;
 
-  void _onVerseSeen(int verseNumber) {
+  /// True once the challenge's completion sequence starts fading the whole
+  /// screen out, just before it dismisses.
+  bool _dismissing = false;
+
+  /// Counts a verse as read — either the user tapped it directly, or its
+  /// audio played through to completion (see _playerStateSub /
+  /// _discontinuitySub). Never just from scrolling it into view, which used
+  /// to let the challenge complete before the user had read anything.
+  void _onAyahRead(int verseNumber) {
     final challenge = widget.ayahChallenge;
     if (challenge == null || _challengeComplete) return;
     if (!_seenVerses.add(verseNumber)) return;
+    setState(() => _justConfirmedVerse = verseNumber);
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (mounted && _justConfirmedVerse == verseNumber) {
+        setState(() => _justConfirmedVerse = null);
+      }
+    });
     if (_seenVerses.length >= AyahChallenge.targetCount) {
       _completeChallenge(challenge);
-    } else {
-      setState(() {});
     }
   }
 
   Future<void> _completeChallenge(AyahChallenge challenge) async {
+    // Escapes the audio player's event-dispatch call stack first (relevant
+    // when the 3rd ayah was counted via auto-advance) — touching the player
+    // synchronously while it's still mid-dispatch throws "Cannot fire new
+    // event. Controller is already firing an event."
+    await Future.microtask(() {});
+
+    // 1. Fade the audio out over 500ms instead of an abrupt stop — also
+    // prevents a 4th ayah from getting an audible head start, since
+    // just_audio may have already gapless-transitioned into it by now.
+    await _fadeOutAudio();
+
+    // 2. Gold celebration overlay (see _ChallengeCompleteOverlay) — let it
+    // breathe for a beat before moving on.
     setState(() => _challengeComplete = true);
-    await AppBlockingService()
-        .grantAyahChallengeBypass(challenge.blockedPackage, challenge.windowEndMillis);
+    final service = AppBlockingService();
+    await service.grantAyahChallengeBypass(challenge.blockedPackage);
+    await Future.delayed(const Duration(seconds: 1));
+    if (!mounted) return;
+
+    // 3. Fade the whole screen out, then dismiss — no abrupt cut.
+    setState(() => _dismissing = true);
+    await Future.delayed(const Duration(milliseconds: 400));
+    if (!mounted) return;
+    Navigator.of(context).pop();
+
+    // 4. Return the user to the app they were trying to open.
+    await service.launchApp(challenge.blockedPackage);
+  }
+
+  Future<void> _fadeOutAudio() async {
+    const steps = 10;
+    const stepDuration = Duration(milliseconds: 50);
+    final startVolume = _audioPlayer.volume;
+    if (startVolume > 0) {
+      for (var i = 1; i <= steps; i++) {
+        await _audioPlayer
+            .setVolume((startVolume * (1 - i / steps)).clamp(0.0, 1.0));
+        await Future.delayed(stepDuration);
+      }
+    }
+    await _audioPlayer.pause();
   }
 
   Reciter _selectedReciter = reciters.first;
@@ -145,6 +197,13 @@ class _SurahScreenState extends State<SurahScreen> {
     super.initState();
     _playerStateSub = _audioPlayer.playerStateStream.listen((state) {
       if (!mounted) return;
+      // The last verse in the playlist has no next item to auto-advance to
+      // — it only ever signals completion via processingState, not a
+      // position discontinuity, so it needs its own ayah-challenge check.
+      if (state.processingState == ProcessingState.completed &&
+          _playingVerseNumber != null) {
+        _onAyahRead(_playingVerseNumber!);
+      }
       setState(() {
         _isPlaying = state.playing;
         // Bring the bar back the moment playback resumes, regardless of
@@ -165,15 +224,25 @@ class _SurahScreenState extends State<SurahScreen> {
     // The playlist auto-advances to the next verse by default; when
     // continuous play is off, immediately pause so playback stops after the
     // current verse instead of rolling into the next one. Explicit
-    // prev/next taps (reason: seek) are left alone.
-    _discontinuitySub = _audioPlayer.positionDiscontinuityStream.listen((event) {
-      if (event.reason == PositionDiscontinuityReason.autoAdvance &&
-          !_continuousPlay) {
-        // just_audio is still mid-dispatch of this very event; calling
-        // pause() synchronously here throws "Cannot fire new event.
-        // Controller is already firing an event". Deferring to a microtask
-        // lets this event finish dispatching first.
-        Future.microtask(() => _audioPlayer.pause());
+    // prev/next taps (reason: seek) are left alone — only a verse whose
+    // audio actually played through to its own end counts toward the
+    // ayah challenge.
+    _discontinuitySub =
+        _audioPlayer.positionDiscontinuityStream.listen((event) {
+      if (event.reason == PositionDiscontinuityReason.autoAdvance) {
+        final completedIndex = event.previousEvent.currentIndex;
+        if (completedIndex != null &&
+            completedIndex >= 0 &&
+            completedIndex < _verses.length) {
+          _onAyahRead(_verses[completedIndex].number);
+        }
+        if (!_continuousPlay) {
+          // just_audio is still mid-dispatch of this very event; calling
+          // pause() synchronously here throws "Cannot fire new event.
+          // Controller is already firing an event". Deferring to a
+          // microtask lets this event finish dispatching first.
+          Future.microtask(() => _audioPlayer.pause());
+        }
       }
     });
     _loadFontScale();
@@ -267,8 +336,8 @@ class _SurahScreenState extends State<SurahScreen> {
         startDistance > 0) {
       final points = _pointerPositions.values.toList();
       final distance = (points[0] - points[1]).distance;
-      final newScale =
-          (_pinchStartScale * (distance / startDistance)).clamp(_minTextScale, _maxTextScale);
+      final newScale = (_pinchStartScale * (distance / startDistance))
+          .clamp(_minTextScale, _maxTextScale);
       if ((newScale - _textScale).abs() > 0.01) {
         setState(() => _textScale = newScale);
       }
@@ -308,7 +377,10 @@ class _SurahScreenState extends State<SurahScreen> {
     final verses = await fetchVerses(widget.surah.number, locale: locale);
     _artworkUri = await _getQuranArtworkUri();
     if (!mounted) return;
-    setState(() { _verses = verses; _loading = false; });
+    setState(() {
+      _verses = verses;
+      _loading = false;
+    });
     // The playlist is built lazily on first play (see _playVerseAudio), not
     // here — setAudioSources() resets the player's current index to 0 as
     // soon as it's called, which would mark verse 1 "active" (showing the
@@ -327,7 +399,8 @@ class _SurahScreenState extends State<SurahScreen> {
     return [
       for (final verse in _verses)
         AudioSource.uri(
-          Uri.parse(_selectedReciter.audioUrl(widget.surah.number, verse.number)),
+          Uri.parse(
+              _selectedReciter.audioUrl(widget.surah.number, verse.number)),
           tag: MediaItem(
             id: _selectedReciter.audioUrl(widget.surah.number, verse.number),
             title: '${widget.surah.englishName} • Ayah ${verse.number}',
@@ -352,7 +425,8 @@ class _SurahScreenState extends State<SurahScreen> {
     if (index == -1) return;
     if (_playlist == null) {
       _playlist = _buildPlaylist();
-      await _audioPlayer.setAudioSources(_playlist!, initialIndex: index, preload: false);
+      await _audioPlayer.setAudioSources(_playlist!,
+          initialIndex: index, preload: false);
     } else {
       await _audioPlayer.seek(Duration.zero, index: index);
     }
@@ -422,7 +496,8 @@ class _SurahScreenState extends State<SurahScreen> {
 
   // ── Continuous play ──────────────────────────────────────────────────────
 
-  void _toggleContinuousPlay() => setState(() => _continuousPlay = !_continuousPlay);
+  void _toggleContinuousPlay() =>
+      setState(() => _continuousPlay = !_continuousPlay);
 
   // ── Sleep timer ──────────────────────────────────────────────────────────
 
@@ -501,7 +576,10 @@ class _SurahScreenState extends State<SurahScreen> {
                     const Spacer(),
                     if (_sleepRemaining != null)
                       TextButton(
-                        onPressed: () { _cancelSleepTimer(); Navigator.pop(ctx); },
+                        onPressed: () {
+                          _cancelSleepTimer();
+                          Navigator.pop(ctx);
+                        },
                         child: Text(
                           l10n.cancelTimerButton,
                           style: GoogleFonts.lato(
@@ -520,12 +598,18 @@ class _SurahScreenState extends State<SurahScreen> {
                     for (final (duration, label) in presets)
                       _SleepChip(
                         label: label,
-                        onTap: () { _startSleepTimer(duration); Navigator.pop(ctx); },
+                        onTap: () {
+                          _startSleepTimer(duration);
+                          Navigator.pop(ctx);
+                        },
                       ),
                     _SleepChip(
                       label: l10n.custom,
                       icon: Icons.edit_rounded,
-                      onTap: () { Navigator.pop(ctx); _showCustomSleepDialog(); },
+                      onTap: () {
+                        Navigator.pop(ctx);
+                        _showCustomSleepDialog();
+                      },
                     ),
                   ],
                 ),
@@ -546,7 +630,8 @@ class _SurahScreenState extends State<SurahScreen> {
         backgroundColor: _cardColor,
         title: Text(
           l10n.customTimerMinutesTitle,
-          style: GoogleFonts.lato(color: Colors.white, fontWeight: FontWeight.w700),
+          style: GoogleFonts.lato(
+              color: Colors.white, fontWeight: FontWeight.w700),
         ),
         content: TextField(
           controller: controller,
@@ -567,7 +652,8 @@ class _SurahScreenState extends State<SurahScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text(l10n.cancel, style: GoogleFonts.lato(color: Colors.white54)),
+            child: Text(l10n.cancel,
+                style: GoogleFonts.lato(color: Colors.white54)),
           ),
           TextButton(
             onPressed: () {
@@ -579,7 +665,8 @@ class _SurahScreenState extends State<SurahScreen> {
             },
             child: Text(
               l10n.start,
-              style: GoogleFonts.lato(color: _gold, fontWeight: FontWeight.w700),
+              style:
+                  GoogleFonts.lato(color: _gold, fontWeight: FontWeight.w700),
             ),
           ),
         ],
@@ -635,121 +722,155 @@ class _SurahScreenState extends State<SurahScreen> {
             tooltip: l10n.tafsir,
             onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => TafsirScreen(surah: widget.surah)),
+              MaterialPageRoute(
+                  builder: (_) => TafsirScreen(surah: widget.surah)),
             ),
           ),
         ],
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator(color: _gold))
-          : Stack(
-              children: [
-                Column(
-                  children: [
-                    if (widget.ayahChallenge != null)
-                      _AyahChallengeBanner(
-                        seenCount: _seenVerses.length,
-                        complete: _challengeComplete,
-                      ),
-                    FontSizeSlider(index: _fontScaleIndex, onChanged: _onFontScaleChanged),
-                    Expanded(
-                      child: Listener(
-                        onPointerDown: _onPointerDown,
-                        onPointerMove: _onPointerMove,
-                        onPointerUp: _onPointerUp,
-                        onPointerCancel: _onPointerUp,
-                        child: NotificationListener<ScrollNotification>(
-                          onNotification: (notification) {
-                            // Scrolling while paused hides the bar to give the
-                            // reader more room; while playing it stays put.
-                            // dragDetails is only non-null for an actual user
-                            // drag, never for the app's own programmatic
-                            // scroll-to-verse — so that auto-scroll (e.g. a
-                            // verse that auto-pauses right after
-                            // auto-advancing) never counts as a manual scroll.
-                            if (notification is ScrollUpdateNotification &&
-                                notification.dragDetails != null &&
-                                !_isPlaying &&
-                                !_hiddenByScroll) {
-                              setState(() => _hiddenByScroll = true);
-                            }
-                            return false;
-                          },
-                          child: MediaQuery(
-                            data: MediaQuery.of(context).copyWith(
-                              textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
-                            ),
-                            child: ListView.builder(
-                              physics: const BouncingScrollPhysics(),
-                              padding: EdgeInsets.fromLTRB(
-                                16, 8, 16, _showPlayerBar ? 110 : 16,
+          : AnimatedOpacity(
+              opacity: _dismissing ? 0.0 : 1.0,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeOut,
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      if (widget.ayahChallenge != null)
+                        _AyahChallengeBanner(
+                          seenCount: _seenVerses.length,
+                          complete: _challengeComplete,
+                        ),
+                      FontSizeSlider(
+                          index: _fontScaleIndex,
+                          onChanged: _onFontScaleChanged),
+                      Expanded(
+                        child: Listener(
+                          onPointerDown: _onPointerDown,
+                          onPointerMove: _onPointerMove,
+                          onPointerUp: _onPointerUp,
+                          onPointerCancel: _onPointerUp,
+                          child: NotificationListener<ScrollNotification>(
+                            onNotification: (notification) {
+                              // Scrolling while paused hides the bar to give the
+                              // reader more room; while playing it stays put.
+                              // dragDetails is only non-null for an actual user
+                              // drag, never for the app's own programmatic
+                              // scroll-to-verse — so that auto-scroll (e.g. a
+                              // verse that auto-pauses right after
+                              // auto-advancing) never counts as a manual scroll.
+                              if (notification is ScrollUpdateNotification &&
+                                  notification.dragDetails != null &&
+                                  !_isPlaying &&
+                                  !_hiddenByScroll) {
+                                setState(() => _hiddenByScroll = true);
+                              }
+                              return false;
+                            },
+                            child: MediaQuery(
+                              data: MediaQuery.of(context).copyWith(
+                                textScaler: TextScaler.linear(
+                                    kFontScaleSteps[_fontScaleIndex]),
                               ),
-                              itemCount: _verses.length + (_showBismillah ? 1 : 0),
-                              itemBuilder: (context, index) {
-                                if (_showBismillah && index == 0) {
-                                  return _BismillahHeader(textScale: _textScale);
-                                }
-                                final verse = _verses[_showBismillah ? index - 1 : index];
-                                if (widget.ayahChallenge != null) {
-                                  WidgetsBinding.instance.addPostFrameCallback(
-                                    (_) => _onVerseSeen(verse.number),
+                              child: ListView.builder(
+                                physics: const BouncingScrollPhysics(),
+                                padding: EdgeInsets.fromLTRB(
+                                  16,
+                                  8,
+                                  16,
+                                  _showPlayerBar ? 110 : 16,
+                                ),
+                                itemCount:
+                                    _verses.length + (_showBismillah ? 1 : 0),
+                                itemBuilder: (context, index) {
+                                  if (_showBismillah && index == 0) {
+                                    return _BismillahHeader(
+                                        textScale: _textScale);
+                                  }
+                                  final verse = _verses[
+                                      _showBismillah ? index - 1 : index];
+                                  final challengeActive =
+                                      widget.ayahChallenge != null &&
+                                          !_challengeComplete;
+                                  return KeyedSubtree(
+                                    key: _verseKey(verse.number),
+                                    child: _VerseTile(
+                                      verse: verse,
+                                      textScale: _textScale,
+                                      isLast: index ==
+                                          _verses.length +
+                                              (_showBismillah ? 0 : -1),
+                                      isActive:
+                                          _playingVerseNumber == verse.number,
+                                      isPlaying:
+                                          _playingVerseNumber == verse.number &&
+                                              _isPlaying,
+                                      playTooltip: l10n.playVerse,
+                                      onPlayTap: () =>
+                                          _playVerseAudio(verse.number),
+                                      onTafsirTap: () =>
+                                          _showVerseTafsir(verse),
+                                      challengeActive: challengeActive,
+                                      challengeSeen:
+                                          _seenVerses.contains(verse.number),
+                                      justConfirmed:
+                                          _justConfirmedVerse == verse.number,
+                                      onAyahTap: challengeActive
+                                          ? () => _onAyahRead(verse.number)
+                                          : null,
+                                    ),
                                   );
-                                }
-                                return KeyedSubtree(
-                                  key: _verseKey(verse.number),
-                                  child: _VerseTile(
-                                    verse: verse,
-                                    textScale: _textScale,
-                                    isLast: index == _verses.length + (_showBismillah ? 0 : -1),
-                                    isActive: _playingVerseNumber == verse.number,
-                                    isPlaying: _playingVerseNumber == verse.number && _isPlaying,
-                                    playTooltip: l10n.playVerse,
-                                    onPlayTap: () => _playVerseAudio(verse.number),
-                                    onTafsirTap: () => _showVerseTafsir(verse),
-                                  ),
-                                );
-                              },
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: IgnorePointer(
-                    ignoring: !_showPlayerBar,
-                    child: AnimatedSlide(
-                      duration: const Duration(milliseconds: 320),
-                      curve: Curves.easeOutCubic,
-                      offset: _showPlayerBar ? Offset.zero : const Offset(0, 1.2),
-                      child: _PlayerBar(
-                        surahEnglishName: widget.surah.englishName,
-                        verseNumber: _playingVerseNumber ??
-                            (_verses.isNotEmpty ? _verses.first.number : 1),
-                        totalVerses: widget.surah.numberOfAyahs,
-                        reciterShortName: _selectedReciter.shortName,
-                        audioPlayer: _audioPlayer,
-                        isPlaying: _isPlaying,
-                        continuousPlay: _continuousPlay,
-                        sleepRemaining: _sleepRemaining,
-                        onPlayPause: () => _playVerseAudio(
-                          _playingVerseNumber ?? (_verses.isNotEmpty ? _verses.first.number : 1),
+                    ],
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: IgnorePointer(
+                      ignoring: !_showPlayerBar,
+                      child: AnimatedSlide(
+                        duration: const Duration(milliseconds: 320),
+                        curve: Curves.easeOutCubic,
+                        offset:
+                            _showPlayerBar ? Offset.zero : const Offset(0, 1.2),
+                        child: _PlayerBar(
+                          surahEnglishName: widget.surah.englishName,
+                          verseNumber: _playingVerseNumber ??
+                              (_verses.isNotEmpty ? _verses.first.number : 1),
+                          totalVerses: widget.surah.numberOfAyahs,
+                          reciterShortName: _selectedReciter.shortName,
+                          audioPlayer: _audioPlayer,
+                          isPlaying: _isPlaying,
+                          continuousPlay: _continuousPlay,
+                          sleepRemaining: _sleepRemaining,
+                          onPlayPause: () => _playVerseAudio(
+                            _playingVerseNumber ??
+                                (_verses.isNotEmpty ? _verses.first.number : 1),
+                          ),
+                          onPrevious: () => _playAdjacent(-1),
+                          onNext: () => _playAdjacent(1),
+                          onToggleContinuous: _toggleContinuousPlay,
+                          onSleepTimer: _showSleepTimerSheet,
+                          onReciterTap: _showReciterSheet,
+                          onClose: _closePlayer,
                         ),
-                        onPrevious: () => _playAdjacent(-1),
-                        onNext: () => _playAdjacent(1),
-                        onToggleContinuous: _toggleContinuousPlay,
-                        onSleepTimer: _showSleepTimerSheet,
-                        onReciterTap: _showReciterSheet,
-                        onClose: _closePlayer,
                       ),
                     ),
                   ),
-                ),
-              ],
+                  if (_challengeComplete)
+                    const Positioned.fill(
+                      child: _ChallengeCompleteOverlay(),
+                    ),
+                ],
+              ),
             ),
     );
   }
@@ -786,7 +907,9 @@ class _AyahChallengeBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  complete ? l10n.quranChallengeComplete : l10n.quranChallengeBannerTitle,
+                  complete
+                      ? l10n.quranChallengeComplete
+                      : l10n.quranChallengeBannerTitle,
                   style: GoogleFonts.lato(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -810,6 +933,69 @@ class _AyahChallengeBanner extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ── Ayah-challenge completion celebration ───────────────────────────────────
+
+/// Full-screen gold celebration shown for ~1s once the 3rd ayah is counted,
+/// before the screen fades out and returns the user to their app — the
+/// "premium, intentional" beat between finishing the challenge and leaving.
+class _ChallengeCompleteOverlay extends StatelessWidget {
+  const _ChallengeCompleteOverlay();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return IgnorePointer(
+      child: Container(
+        color: _navy.withValues(alpha: 0.82),
+        child: Center(
+          child: TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0.6, end: 1.0),
+            duration: const Duration(milliseconds: 450),
+            curve: Curves.elasticOut,
+            builder: (context, scale, child) =>
+                Transform.scale(scale: scale, child: child),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 92,
+                  height: 92,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _gold.withValues(alpha: 0.15),
+                    border: Border.all(color: _gold, width: 2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: _gold.withValues(alpha: 0.55),
+                        blurRadius: 44,
+                        spreadRadius: 6,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.check_rounded,
+                    color: _gold,
+                    size: 50,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  l10n.quranChallengeComplete,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 21,
+                    fontWeight: FontWeight.w700,
+                    color: _gold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -910,8 +1096,11 @@ class _ReciterSheetState extends State<_ReciterSheet> {
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 itemCount: sorted.length,
-                separatorBuilder: (_, __) =>
-                    const Divider(color: Colors.white12, height: 1, indent: 20, endIndent: 20),
+                separatorBuilder: (_, __) => const Divider(
+                    color: Colors.white12,
+                    height: 1,
+                    indent: 20,
+                    endIndent: 20),
                 itemBuilder: (ctx, i) {
                   final r = sorted[i];
                   final isSelected = r.id == widget.selected.id;
@@ -1077,7 +1266,8 @@ class _PlayerBarState extends State<_PlayerBar> {
   double get _sliderValue {
     if (_seeking) return _seekValue;
     if (_duration.inMilliseconds == 0) return 0.0;
-    return (_position.inMilliseconds / _duration.inMilliseconds).clamp(0.0, 1.0);
+    return (_position.inMilliseconds / _duration.inMilliseconds)
+        .clamp(0.0, 1.0);
   }
 
   @override
@@ -1086,7 +1276,8 @@ class _PlayerBarState extends State<_PlayerBar> {
     return Container(
       decoration: BoxDecoration(
         color: _cardColor,
-        border: Border(top: BorderSide(color: _gold.withValues(alpha: 0.3), width: 1.2)),
+        border: Border(
+            top: BorderSide(color: _gold.withValues(alpha: 0.3), width: 1.2)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.5),
@@ -1109,7 +1300,8 @@ class _PlayerBarState extends State<_PlayerBar> {
                     onTap: widget.onReciterTap,
                     behavior: HitTestBehavior.opaque,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 11, vertical: 6),
                       decoration: BoxDecoration(
                         color: _gold.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(20),
@@ -1164,7 +1356,8 @@ class _PlayerBarState extends State<_PlayerBar> {
                         border: Border.all(color: _gold.withValues(alpha: 0.5)),
                       ),
                       alignment: Alignment.center,
-                      child: const Icon(Icons.close_rounded, size: 14, color: _gold),
+                      child: const Icon(Icons.close_rounded,
+                          size: 14, color: _gold),
                     ),
                   ),
                 ],
@@ -1208,14 +1401,17 @@ class _PlayerBarState extends State<_PlayerBar> {
                 children: [
                   Text(
                     _fmt(_position),
-                    style: GoogleFonts.lato(fontSize: 10, color: Colors.white38),
+                    style:
+                        GoogleFonts.lato(fontSize: 10, color: Colors.white38),
                   ),
                   Expanded(
                     child: SliderTheme(
                       data: SliderThemeData(
                         trackHeight: 3,
-                        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5.5),
-                        overlayShape: const RoundSliderOverlayShape(overlayRadius: 14),
+                        thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 5.5),
+                        overlayShape:
+                            const RoundSliderOverlayShape(overlayRadius: 14),
                         activeTrackColor: _gold,
                         inactiveTrackColor: _gold.withValues(alpha: 0.18),
                         thumbColor: _gold,
@@ -1223,8 +1419,10 @@ class _PlayerBarState extends State<_PlayerBar> {
                       ),
                       child: Slider(
                         value: _sliderValue,
-                        onChangeStart: (v) =>
-                            setState(() { _seeking = true; _seekValue = v; }),
+                        onChangeStart: (v) => setState(() {
+                          _seeking = true;
+                          _seekValue = v;
+                        }),
                         onChanged: (v) => setState(() => _seekValue = v),
                         onChangeEnd: (v) {
                           final ms = (_duration.inMilliseconds * v).round();
@@ -1236,7 +1434,8 @@ class _PlayerBarState extends State<_PlayerBar> {
                   ),
                   Text(
                     _fmt(_duration),
-                    style: GoogleFonts.lato(fontSize: 10, color: Colors.white38),
+                    style:
+                        GoogleFonts.lato(fontSize: 10, color: Colors.white38),
                   ),
                 ],
               ),
@@ -1272,7 +1471,9 @@ class _PlayerBarState extends State<_PlayerBar> {
                         ],
                       ),
                       child: Icon(
-                        widget.isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                        widget.isPlaying
+                            ? Icons.pause_rounded
+                            : Icons.play_arrow_rounded,
                         size: 32,
                         color: _navy,
                       ),
@@ -1472,6 +1673,15 @@ class _VerseTile extends StatelessWidget {
   final VoidCallback onPlayTap;
   final VoidCallback onTafsirTap;
 
+  /// True while an ayah-reading challenge is in progress — shows the
+  /// read/unread indicator dot next to the verse number.
+  final bool challengeActive;
+  final bool challengeSeen;
+
+  /// Briefly true right after this verse is counted, for the gold flash.
+  final bool justConfirmed;
+  final VoidCallback? onAyahTap;
+
   const _VerseTile({
     required this.verse,
     this.textScale = 1.0,
@@ -1481,119 +1691,143 @@ class _VerseTile extends StatelessWidget {
     required this.playTooltip,
     required this.onPlayTap,
     required this.onTafsirTap,
+    this.challengeActive = false,
+    this.challengeSeen = false,
+    this.justConfirmed = false,
+    this.onAyahTap,
   });
 
   static const _mutedText = Color(0xFF8A9BB0);
 
   @override
   Widget build(BuildContext context) {
+    final highlighted = isActive || justConfirmed;
     return Column(
       children: [
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOut,
-          padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
-          decoration: BoxDecoration(
-            color: isActive ? Color.lerp(_cardColor, _gold, 0.07) : _cardColor,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: isActive ? _gold : _gold.withValues(alpha: 0.12),
-              width: isActive ? 1.6 : 1,
-            ),
-            boxShadow: isActive
-                ? [
-                    BoxShadow(
-                      color: _gold.withValues(alpha: 0.25),
-                      blurRadius: 18,
-                      spreadRadius: 0,
-                    ),
-                  ]
-                : null,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 34,
-                    height: 34,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: _gold.withValues(alpha: 0.7), width: 1.2),
-                      color: _gold.withValues(alpha: 0.08),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      '${verse.number}',
-                      textScaler: TextScaler.noScaling,
-                      style: GoogleFonts.lato(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                        color: _gold,
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: onAyahTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+            padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
+            decoration: BoxDecoration(
+              color: highlighted
+                  ? Color.lerp(_cardColor, _gold, 0.07)
+                  : _cardColor,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: highlighted ? _gold : _gold.withValues(alpha: 0.12),
+                width: highlighted ? 1.6 : 1,
+              ),
+              boxShadow: highlighted
+                  ? [
+                      BoxShadow(
+                        color: _gold.withValues(alpha: 0.25),
+                        blurRadius: 18,
+                        spreadRadius: 0,
                       ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Directionality(
-                      textDirection: TextDirection.rtl,
+                    ]
+                  : null,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: _gold.withValues(alpha: 0.7), width: 1.2),
+                        color: _gold.withValues(alpha: 0.08),
+                      ),
+                      alignment: Alignment.center,
                       child: Text(
-                        verse.arabic,
-                        textAlign: TextAlign.right,
-                        style: GoogleFonts.scheherazadeNew(
-                          fontSize: 24 * textScale,
-                          color: Colors.white,
-                          height: 2.0,
+                        '${verse.number}',
+                        textScaler: TextScaler.noScaling,
+                        style: GoogleFonts.lato(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          color: _gold,
                         ),
                       ),
                     ),
+                    if (challengeActive) ...[
+                      const SizedBox(width: 6),
+                      Icon(
+                        challengeSeen
+                            ? Icons.check_circle_rounded
+                            : Icons.radio_button_unchecked_rounded,
+                        size: 16,
+                        color: challengeSeen
+                            ? _gold
+                            : _gold.withValues(alpha: 0.3),
+                      ),
+                    ],
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: Text(
+                          verse.arabic,
+                          textAlign: TextAlign.right,
+                          style: GoogleFonts.scheherazadeNew(
+                            fontSize: 24 * textScale,
+                            color: Colors.white,
+                            height: 2.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                if (verse.transliteration.isNotEmpty) ...[
+                  const SizedBox(height: 14),
+                  Container(height: 1, color: _gold.withValues(alpha: 0.15)),
+                  const SizedBox(height: 10),
+                  Text(
+                    verse.transliteration,
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.lato(
+                      fontSize: 12.5 * textScale,
+                      fontStyle: FontStyle.italic,
+                      color: _gold.withValues(alpha: 0.85),
+                      height: 1.6,
+                    ),
                   ),
                 ],
-              ),
-              if (verse.transliteration.isNotEmpty) ...[
+                if (verse.translation.isNotEmpty) ...[
+                  const SizedBox(height: 10),
+                  Container(height: 1, color: _gold.withValues(alpha: 0.15)),
+                  const SizedBox(height: 10),
+                  Text(
+                    verse.translation,
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.lato(
+                      fontSize: 13 * textScale,
+                      color: _mutedText,
+                      height: 1.65,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 14),
-                Container(height: 1, color: _gold.withValues(alpha: 0.15)),
-                const SizedBox(height: 10),
-                Text(
-                  verse.transliteration,
-                  textAlign: TextAlign.left,
-                  style: GoogleFonts.lato(
-                    fontSize: 12.5 * textScale,
-                    fontStyle: FontStyle.italic,
-                    color: _gold.withValues(alpha: 0.85),
-                    height: 1.6,
-                  ),
+                Row(
+                  children: [
+                    _TafsirButton(onTap: onTafsirTap),
+                    const Spacer(),
+                    _PlayButton(
+                      isPlaying: isPlaying,
+                      tooltip: playTooltip,
+                      onTap: onPlayTap,
+                    ),
+                  ],
                 ),
               ],
-              if (verse.translation.isNotEmpty) ...[
-                const SizedBox(height: 10),
-                Container(height: 1, color: _gold.withValues(alpha: 0.15)),
-                const SizedBox(height: 10),
-                Text(
-                  verse.translation,
-                  textAlign: TextAlign.left,
-                  style: GoogleFonts.lato(
-                    fontSize: 13 * textScale,
-                    color: _mutedText,
-                    height: 1.65,
-                  ),
-                ),
-              ],
-              const SizedBox(height: 14),
-              Row(
-                children: [
-                  _TafsirButton(onTap: onTafsirTap),
-                  const Spacer(),
-                  _PlayButton(
-                    isPlaying: isPlaying,
-                    tooltip: playTooltip,
-                    onTap: onPlayTap,
-                  ),
-                ],
-              ),
-            ],
+            ),
           ),
         ),
         if (!isLast) const SizedBox(height: 10),
@@ -1793,7 +2027,8 @@ class _VerseTafsirSheetState extends State<_VerseTafsirSheet> {
                 ),
                 if (_tafsir != null)
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
                       color: _gold.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(10),
@@ -1881,7 +2116,9 @@ class _VerseTafsirSheetState extends State<_VerseTafsirSheet> {
                               ),
                             ],
                             const SizedBox(height: 16),
-                            Container(height: 1, color: _gold.withValues(alpha: 0.15)),
+                            Container(
+                                height: 1,
+                                color: _gold.withValues(alpha: 0.15)),
                             const SizedBox(height: 16),
                             Row(
                               children: [

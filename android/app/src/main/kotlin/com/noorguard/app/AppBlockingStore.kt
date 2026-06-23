@@ -36,6 +36,13 @@ class AppBlockingStore(context: Context) {
             editor.apply()
         }
 
+    /** Focus Mode's own blocked-apps list — independent of [blockedPackages]
+     * (the prayer-time list). Always re-pushed fresh whenever a session
+     * starts, so this never needs syncing outside of that. */
+    var focusBlockedPackages: Set<String>
+        get() = prefs.getStringSet("focus_blocked_packages", emptySet()) ?: emptySet()
+        set(value) = prefs.edit().putStringSet("focus_blocked_packages", value).apply()
+
     fun clearFocusSession() {
         focusSessionEndMillis = null
     }
@@ -73,6 +80,9 @@ class AppBlockingStore(context: Context) {
     fun activeWindow(nowMillis: Long = System.currentTimeMillis()): Window? =
         windows().firstOrNull { nowMillis in it.startEpochMillis..it.endEpochMillis }
 
+    /** Time-based — stays bypassed until [untilMillis] (the rest of the
+     *  current window/session). Reserved for Emergency Bypass, where the
+     *  user may genuinely need more than one re-entry. */
     fun isBypassed(pkg: String): Boolean =
         prefs.getLong("bypass_until_$pkg", 0L) > System.currentTimeMillis()
 
@@ -80,6 +90,21 @@ class AppBlockingStore(context: Context) {
         prefs.edit()
             .putLong("bypass_until_$pkg", untilMillis)
             .apply()
+    }
+
+    /** Single-use — lets exactly one re-entry into [pkg] through, then
+     *  clears itself. Used by "I Prayed" / "Read 3 Ayahs": the user gets
+     *  back to the one app they were already in, but leaving and reopening
+     *  it blocks again — unlike [grantBypassUntil]'s window/session-long
+     *  pass. */
+    fun grantSingleUseBypass(pkg: String) {
+        prefs.edit().putBoolean("bypass_once_$pkg", true).apply()
+    }
+
+    fun consumeSingleUseBypass(pkg: String): Boolean {
+        if (!prefs.getBoolean("bypass_once_$pkg", false)) return false
+        prefs.edit().remove("bypass_once_$pkg").apply()
+        return true
     }
 
     /** Once per active window per package, so Soft mode nags only once, not on every glance. */

@@ -10,6 +10,7 @@ import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
 import '../theme/app_theme.dart';
 import '../l10n/app_localizations.dart';
+import 'installed_apps_picker_screen.dart';
 
 // Shown as blocked in Focus Mode's preview row, capped for the row's layout
 // — the count badge still reflects the full blocked-apps total.
@@ -64,17 +65,36 @@ class _FocusModeScreenState extends State<FocusModeScreen>
     _loadBlockedApps();
   }
 
-  /// Pulls the same apps selected in App Blocking, with their real launcher
-  /// icons — Focus Mode has no separate app-selection list of its own.
+  /// Focus Mode's own blocked-apps list — independent of App Blocking's
+  /// prayer-time list, set up via [_openAppsPicker].
   Future<void> _loadBlockedApps() async {
     final service = AppBlockingService();
     await service.loadSettings();
-    final apps = await service.getBlockedAppsWithIcons();
+    final apps = await service.getFocusBlockedAppsWithIcons();
     if (!mounted) return;
     setState(() {
       _blockedApps = apps;
       _loadingBlockedApps = false;
     });
+  }
+
+  Future<void> _openAppsPicker() async {
+    final l10n = AppLocalizations.of(context)!;
+    final service = AppBlockingService();
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => InstalledAppsPickerScreen(
+          title: l10n.appBlockingAppsTitle,
+          initiallySelected: service.focusBlockedPackages,
+          onToggle: service.toggleFocusBlockedPackage,
+          pinSelectedToTop: true,
+        ),
+      ),
+    );
+    if (!mounted) return;
+    setState(() => _loadingBlockedApps = true);
+    await _loadBlockedApps();
   }
 
   @override
@@ -357,6 +377,7 @@ class _FocusModeScreenState extends State<FocusModeScreen>
                       apps: _blockedApps,
                       loading: _loadingBlockedApps,
                       isRunning: _isRunning,
+                      onSelectApps: _isRunning ? null : _openAppsPicker,
                     ),
                     const SizedBox(height: 28),
                     _StartStopButton(
@@ -869,11 +890,13 @@ class _BlockedAppsPreview extends StatelessWidget {
   final List<InstalledApp> apps;
   final bool loading;
   final bool isRunning;
+  final VoidCallback? onSelectApps;
 
   const _BlockedAppsPreview({
     required this.apps,
     required this.loading,
     required this.isRunning,
+    this.onSelectApps,
   });
 
   @override
@@ -956,6 +979,27 @@ class _BlockedAppsPreview extends StatelessWidget {
                   .map((a) => _BlockedAppIcon(app: a, isRunning: isRunning))
                   .toList(),
             ),
+          if (onSelectApps != null) ...[
+            const SizedBox(height: 14),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: onSelectApps,
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: AppColors.gold,
+                  side: BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
+                  padding: const EdgeInsets.symmetric(vertical: 11),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  l10n.appBlockingSelectAppsButton,
+                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

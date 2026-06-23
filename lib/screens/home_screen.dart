@@ -96,16 +96,32 @@ class _HomeBody extends StatefulWidget {
   State<_HomeBody> createState() => _HomeBodyState();
 }
 
-class _HomeBodyState extends State<_HomeBody> {
+class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   List<Prayer>? _prayers;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     AppBlockingService().loadSettings();
     _loadPrayerTimes();
     _applyPendingPrayerMarks();
     _checkAyahChallenge();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // _HomeBody is usually still alive in the background, so the ayah
+    // challenge from BlockActivity's "Read 3 Ayahs" — which relaunches
+    // MainActivity rather than creating a fresh one — needs a re-check on
+    // resume; initState() alone only ever sees it on a true cold start.
+    if (state == AppLifecycleState.resumed) _checkAyahChallenge();
   }
 
   Future<void> _checkAyahChallenge() async {

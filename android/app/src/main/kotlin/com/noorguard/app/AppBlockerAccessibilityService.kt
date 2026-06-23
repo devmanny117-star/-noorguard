@@ -9,10 +9,13 @@ import android.view.accessibility.AccessibilityEvent
 import androidx.core.app.NotificationCompat
 
 /**
- * Watches for foreground app changes. When a blocked app opens, decides what
- * (if anything) should block it via [AppBlockingStore.activeBlockSource] —
- * a prayer block window outranks a running Focus Mode session, which is why
- * prayer and focus can never both show a block screen at once. Soft mode
+ * Watches for foreground app changes. When a package opens, decides what (if
+ * anything) should block it via [AppBlockingStore.activeBlockSource] — a
+ * prayer block window outranks a running Focus Mode session, which is why
+ * prayer and focus can never both show a block screen at once. Each source
+ * has its *own* blocked-apps list (App Blocking's prayer-time list vs. Focus
+ * Mode's own list), so package membership is only checked once the source is
+ * known, against that source's list — not a single shared list. Soft mode
  * only applies to the prayer path; a focus session always shows the full
  * block screen. All config and copy come from [AppBlockingStore] — this
  * service never talks to Dart directly.
@@ -25,11 +28,12 @@ class AppBlockerAccessibilityService : AccessibilityService() {
         if (pkg == packageName) return
 
         val store = AppBlockingStore(this)
-        if (!store.blockedPackages.contains(pkg)) return
+        if (store.consumeSingleUseBypass(pkg)) return
         if (store.isBypassed(pkg)) return
 
         when (val source = store.activeBlockSource(prayerBlockingEnabled = store.enabled)) {
             is AppBlockingStore.BlockSource.Prayer -> {
+                if (!store.blockedPackages.contains(pkg)) return
                 if (store.mode == "soft") {
                     showSoftReminder(store, pkg, source.window.startEpochMillis)
                 } else {
@@ -37,6 +41,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
                 }
             }
             is AppBlockingStore.BlockSource.Focus -> {
+                if (!store.focusBlockedPackages.contains(pkg)) return
                 launchBlockActivity(pkg, "focus", "", source.endMillis)
             }
             null -> return

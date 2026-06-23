@@ -161,23 +161,48 @@ class MainActivity : AudioServiceActivity() {
                     @Suppress("UNCHECKED_CAST")
                     val args = call.arguments as Map<String, Any>
                     val pkg = args["packageName"] as String
-                    val until = (args["untilMillis"] as Number).toLong()
-                    AppBlockingStore(this).grantBypassUntil(pkg, until)
+                    AppBlockingStore(this).grantSingleUseBypass(pkg)
                     result.success(null)
                 }
                 "updateFocusSession" -> {
                     @Suppress("UNCHECKED_CAST")
                     val args = call.arguments as? Map<String, Any>
                     val endMillis = (args?.get("endMillis") as? Number)?.toLong()
-                    AppBlockingStore(this).focusSessionEndMillis = endMillis
+                    @Suppress("UNCHECKED_CAST")
+                    val packages = args?.get("blockedPackages") as? List<String>
+                    val store = AppBlockingStore(this)
+                    store.focusSessionEndMillis = endMillis
+                    if (packages != null) store.focusBlockedPackages = packages.toSet()
                     result.success(null)
                 }
                 "getFocusSessionStatus" -> {
                     result.success(AppBlockingStore(this).focusSessionEndMillis)
                 }
+                "launchApp" -> {
+                    val pkg = call.argument<String>("packageName")
+                    val launchIntent = pkg?.let { packageManager.getLaunchIntentForPackage(it) }
+                    if (launchIntent != null) {
+                        launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(launchIntent)
+                        result.success(true)
+                    } else {
+                        result.success(false)
+                    }
+                }
                 else -> result.notImplemented()
             }
         }
+    }
+
+    /** MainActivity is usually still alive in the background (e.g. when
+     *  BlockActivity's "Read 3 Ayahs" relaunches it with
+     *  FLAG_ACTIVITY_REORDER_TO_FRONT), so Android delivers the new intent
+     *  here instead of recreating the Activity — without this override,
+     *  `intent`/`getIntent()` would keep returning the stale original launch
+     *  intent and getPendingAyahChallenge() would never see the new extras. */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
     }
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
@@ -511,7 +536,13 @@ class MainActivity : AudioServiceActivity() {
             if (pkg == packageName) continue
             if (!seen.add(pkg)) continue
             val appInfo = info.activityInfo.applicationInfo
-            val isSystemApp = (appInfo.flags and android.content.pm.ApplicationInfo.FLAG_SYSTEM) != 0
+            // Preinstalled-but-Play-Store-updated apps (Google Messages, Gmail,
+            // YouTube, Maps...) carry FLAG_SYSTEM forever even though they're
+            // exactly the kind of everyday app a user wants to block — only
+            // FLAG_UPDATED_SYSTEM_APP being absent means it's truly untouched
+            // OEM bloatware.
+            val isSystemApp = (appInfo.flags and android.content.pm.ApplicationInfo.FLAG_SYSTEM) != 0 &&
+                (appInfo.flags and android.content.pm.ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) == 0
             // info.loadIcon() — not a second pm.getApplicationIcon(pkg) lookup —
             // resolves the icon directly from this already-visible ResolveInfo,
             // the exact same call the real launcher makes for its home screen

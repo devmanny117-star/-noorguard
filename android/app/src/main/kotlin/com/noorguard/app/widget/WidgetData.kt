@@ -61,8 +61,8 @@ data class WidgetData(
                 }
             }
 
-            val epochMillis = prefs.getLong("next_prayer_epoch_millis", -1L)
-            val focusEndMillis = prefs.getLong("focus_end_epoch_millis", -1L)
+            val epochMillis = getLong(prefs, "next_prayer_epoch_millis", -1L)
+            val focusEndMillis = getLong(prefs, "focus_end_epoch_millis", -1L)
             return WidgetData(
                 nextPrayerName = prefs.getString("next_prayer_name", "") ?: "",
                 nextPrayerTime = prefs.getString("next_prayer_time", "") ?: "",
@@ -84,6 +84,18 @@ data class WidgetData(
                 focusEndEpochMillis = if (focusEndMillis > 0) focusEndMillis else null,
                 labelFocusMode = prefs.getString("label_focus_mode", "Focus Mode") ?: "Focus Mode",
             )
+        }
+
+        /** home_widget's platform channel encodes a small Dart int (e.g. the `0`
+         * sentinel pushed for "no value") as a 32-bit Integer rather than Long,
+         * so it lands in SharedPreferences as an Int — prefs.getLong() then
+         * throws ClassCastException reading it back. Falls back to getInt(). */
+        private fun getLong(prefs: SharedPreferences, key: String, default: Long): Long {
+            return try {
+                prefs.getLong(key, default)
+            } catch (_: ClassCastException) {
+                prefs.getInt(key, default.toInt()).toLong()
+            }
         }
 
         /** Decodes a Double saved by home_widget, which stores it as raw long bits

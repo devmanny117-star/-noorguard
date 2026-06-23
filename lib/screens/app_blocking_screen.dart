@@ -2,11 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
-import '../models/installed_app.dart';
 import '../services/app_blocking_service.dart';
 import '../services/prayer_state.dart';
 import '../services/streak_service.dart';
 import 'app_blocking_setup_screen.dart';
+import 'installed_apps_picker_screen.dart';
 
 // Fixed dark palette — matches the Lock Screen / Focus Mode / setup-screen
 // family this feature belongs to, per the brand's navy + gold spec.
@@ -117,9 +117,16 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
   }
 
   Future<void> _openAppsPicker() async {
+    final l10n = AppLocalizations.of(context)!;
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => const _AppsPickerScreen()),
+      MaterialPageRoute(
+        builder: (_) => InstalledAppsPickerScreen(
+          title: l10n.appBlockingAppsTitle,
+          initiallySelected: _service.blockedPackages,
+          onToggle: _service.toggleBlockedPackage,
+        ),
+      ),
     );
     if (!mounted) return;
     setState(() {});
@@ -643,203 +650,6 @@ class _BufferSelector extends StatelessWidget {
             ),
           ),
       ],
-    );
-  }
-}
-
-// ─────────────────────────────────────────────
-// APPS PICKER SCREEN
-// ─────────────────────────────────────────────
-class _AppsPickerScreen extends StatefulWidget {
-  const _AppsPickerScreen();
-
-  @override
-  State<_AppsPickerScreen> createState() => _AppsPickerScreenState();
-}
-
-class _AppsPickerScreenState extends State<_AppsPickerScreen> {
-  final _service = AppBlockingService();
-  List<InstalledApp> _apps = [];
-  List<InstalledApp> _filtered = [];
-  bool _loading = true;
-  final _searchController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _load();
-    _searchController.addListener(_onSearch);
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _load() async {
-    final apps = await _service.getInstalledApps(forceRefresh: true);
-    if (!mounted) return;
-    setState(() {
-      _apps = apps;
-      _filtered = apps;
-      _loading = false;
-    });
-  }
-
-  void _onSearch() {
-    final q = _searchController.text.toLowerCase();
-    setState(() {
-      _filtered = q.isEmpty
-          ? _apps
-          : _apps.where((a) => a.appName.toLowerCase().contains(q)).toList();
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-
-    return Scaffold(
-      backgroundColor: _navy,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 8, 18, 0),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back_ios_rounded,
-                        size: 20, color: _white),
-                  ),
-                  Text(
-                    l10n.appBlockingAppsTitle,
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: _white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(18, 12, 18, 12),
-              child: TextField(
-                controller: _searchController,
-                style: GoogleFonts.lato(color: _white, fontSize: 14),
-                decoration: InputDecoration(
-                  hintText: l10n.appBlockingSearchHint,
-                  hintStyle: GoogleFonts.lato(color: _grey, fontSize: 14),
-                  prefixIcon: const Icon(Icons.search_rounded, color: _grey),
-                  filled: true,
-                  fillColor: _cardBg,
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    borderSide: BorderSide(color: _cardBorder),
-                  ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    borderSide: BorderSide(color: _cardBorder),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: _loading
-                  ? const Center(child: CircularProgressIndicator(color: _gold))
-                  : _filtered.isEmpty
-                      ? Center(
-                          child: Text(
-                            l10n.appBlockingNoAppsSelected,
-                            style: GoogleFonts.lato(color: _grey, fontSize: 14),
-                          ),
-                        )
-                      : ListView.builder(
-                          padding: const EdgeInsets.fromLTRB(18, 0, 18, 24),
-                          itemCount: _filtered.length,
-                          itemBuilder: (context, index) {
-                            final app = _filtered[index];
-                            final blocked =
-                                _service.blockedPackages.contains(app.packageName);
-                            return _AppPickerRow(
-                              app: app,
-                              blocked: blocked,
-                              onToggle: (value) async {
-                                await _service.toggleBlockedPackage(
-                                    app.packageName, value);
-                                if (mounted) setState(() {});
-                              },
-                            );
-                          },
-                        ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _AppPickerRow extends StatelessWidget {
-  final InstalledApp app;
-  final bool blocked;
-  final ValueChanged<bool> onToggle;
-
-  const _AppPickerRow({
-    required this.app,
-    required this.blocked,
-    required this.onToggle,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: _cardBg,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-            color: blocked ? _gold.withValues(alpha: 0.4) : _cardBorder),
-      ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: app.iconBytes != null
-                ? Image.memory(app.iconBytes!,
-                    width: 38, height: 38, fit: BoxFit.cover)
-                : Container(
-                    width: 38,
-                    height: 38,
-                    color: _cardBorder,
-                    child: const Icon(Icons.apps_rounded, color: _grey, size: 20),
-                  ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              app.appName,
-              style: GoogleFonts.lato(
-                fontSize: 14.5,
-                fontWeight: FontWeight.w600,
-                color: _white,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          Switch(
-            value: blocked,
-            activeThumbColor: _gold,
-            inactiveTrackColor: _cardBorder,
-            onChanged: onToggle,
-          ),
-        ],
-      ),
     );
   }
 }

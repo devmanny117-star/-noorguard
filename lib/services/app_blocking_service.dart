@@ -10,14 +10,13 @@ import 'streak_service.dart';
 enum BlockingMode { soft, firm, hard }
 
 /// A pending "Read 3 Ayahs" challenge handed off from the native block
-/// screen — completing it grants [blockedPackage] a bypass through the end
-/// of the prayer window that triggered it.
+/// screen — completing it grants [blockedPackage] a single-use bypass (this
+/// one re-entry only; leaving and reopening it blocks again).
 class AyahChallenge {
   final String blockedPackage;
-  final int windowEndMillis;
   static const targetCount = 3;
 
-  const AyahChallenge({required this.blockedPackage, required this.windowEndMillis});
+  const AyahChallenge({required this.blockedPackage});
 }
 
 /// One computed prayer block window for today — shared by [AppBlockingService
@@ -56,6 +55,10 @@ class AppBlockingService extends ChangeNotifier {
   int postMinutes = 15;
   Set<String> blockedPackages = {};
 
+  /// Focus Mode's own blocked-apps list — independent of [blockedPackages]
+  /// (the prayer-time list) once loaded once.
+  Set<String> focusBlockedPackages = {};
+
   Future<void> loadSettings() async {
     final prefs = await SharedPreferences.getInstance();
     enabled = prefs.getBool('app_blocking_enabled') ?? false;
@@ -70,6 +73,18 @@ class AppBlockingService extends ChangeNotifier {
     postMinutes = prefs.getInt('app_blocking_post_minutes') ?? 15;
     blockedPackages =
         (prefs.getStringList('app_blocking_packages') ?? []).toSet();
+
+    if (prefs.containsKey('focus_blocked_packages')) {
+      focusBlockedPackages =
+          (prefs.getStringList('focus_blocked_packages') ?? []).toSet();
+    } else {
+      // First run after Focus Mode got its own list — start from a copy of
+      // the prayer-time list so nothing silently stops being blocked, then
+      // persist immediately so this only ever copies once.
+      focusBlockedPackages = {...blockedPackages};
+      await prefs.setStringList(
+          'focus_blocked_packages', focusBlockedPackages.toList());
+    }
     notifyListeners();
   }
 
@@ -127,6 +142,21 @@ class AppBlockingService extends ChangeNotifier {
     await _persist();
   }
 
+  Future<void> toggleFocusBlockedPackage(String packageName, bool value) async {
+    if (value) {
+      focusBlockedPackages.add(packageName);
+    } else {
+      focusBlockedPackages.remove(packageName);
+    }
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(
+        'focus_blocked_packages', focusBlockedPackages.toList());
+    // No separate native push here — startFocusSession() always sends the
+    // current list fresh the moment a session actually starts, which is the
+    // only time this list matters to the AccessibilityService.
+  }
+
   /// Cached so screens that just need a few icons (Focus Mode) don't pay for
   /// a full re-fetch + re-decode of every installed app's icon on every
   /// build. Pass `forceRefresh: true` where freshness matters more than
@@ -154,11 +184,21 @@ class AppBlockingService extends ChangeNotifier {
   }
 
   /// Resolves the currently blocked packages to their real installed-app
-  /// data (name + icon), for previews like Focus Mode's blocked-apps row.
+  /// data (name + icon), for previews like App Blocking's settings screen.
   Future<List<InstalledApp>> getBlockedAppsWithIcons() async {
     final apps = await getInstalledApps();
     final byPackage = {for (final a in apps) a.packageName: a};
     return blockedPackages
+        .map((pkg) => byPackage[pkg])
+        .whereType<InstalledApp>()
+        .toList();
+  }
+
+  /// Same as [getBlockedAppsWithIcons] but for Focus Mode's own list.
+  Future<List<InstalledApp>> getFocusBlockedAppsWithIcons() async {
+    final apps = await getInstalledApps();
+    final byPackage = {for (final a in apps) a.packageName: a};
+    return focusBlockedPackages
         .map((pkg) => byPackage[pkg])
         .whereType<InstalledApp>()
         .toList();
@@ -192,22 +232,27 @@ class AppBlockingService extends ChangeNotifier {
       if (result == null) return null;
       final pkg = result['blockedPackage'] as String?;
       if (pkg == null) return null;
-      return AyahChallenge(
-        blockedPackage: pkg,
-        windowEndMillis: (result['windowEndMillis'] as num?)?.toInt() ?? 0,
-      );
+      return AyahChallenge(blockedPackage: pkg);
     } catch (_) {
       return null;
     }
   }
 
-  Future<void> grantAyahChallengeBypass(String packageName, int untilMillis) async {
+  Future<void> grantAyahChallengeBypass(String packageName) async {
     if (!Platform.isAndroid) return;
     try {
       await _channel.invokeMethod('grantAyahChallengeBypass', {
         'packageName': packageName,
-        'untilMillis': untilMillis,
       });
+    } catch (_) {}
+  }
+
+  /// Relaunches [packageName] — used to return the user to the app they were
+  /// trying to open once the "Read 3 Ayahs" challenge grants the bypass.
+  Future<void> launchApp(String packageName) async {
+    if (!Platform.isAndroid) return;
+    try {
+      await _channel.invokeMethod('launchApp', {'packageName': packageName});
     } catch (_) {}
   }
 
@@ -294,13 +339,18 @@ class AppBlockingService extends ChangeNotifier {
     }
   }
 
-  /// Starts a Focus Mode session — blocks the shared apps list for
-  /// [duration], independent of the prayer-time "enabled" toggle.
+  /// Starts (or extends, on resume from a prayer pause) a Focus Mode
+  /// session — blocks [focusBlockedPackages] for [duration], independent of
+  /// the prayer-time "enabled" toggle. Always sends the current focus apps
+  /// list fresh, since this is the only moment it needs to be in sync.
   Future<void> startFocusSession(Duration duration) async {
     if (!Platform.isAndroid) return;
     final endMillis = DateTime.now().add(duration).millisecondsSinceEpoch;
     try {
-      await _channel.invokeMethod('updateFocusSession', {'endMillis': endMillis});
+      await _channel.invokeMethod('updateFocusSession', {
+        'endMillis': endMillis,
+        'blockedPackages': focusBlockedPackages.toList(),
+      });
     } catch (_) {}
   }
 

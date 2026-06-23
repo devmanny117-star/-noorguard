@@ -97,7 +97,10 @@ class BlockActivity : Activity() {
 
     private fun onIPrayed() {
         if (prayerName.isNotBlank()) markPrayer(prayerName)
-        store.grantBypassUntil(blockedPackage, windowEndMillis)
+        // Single-use: lets the user back into this one app, but leaving and
+        // reopening it blocks again for the rest of the window — marking
+        // the prayer done doesn't unblock everything else for the day.
+        store.grantSingleUseBypass(blockedPackage)
         finishAndRemoveTask()
     }
 
