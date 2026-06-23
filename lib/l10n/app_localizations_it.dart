@@ -1860,6 +1860,20 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'Test';
+
+  @override
+  String get appBlockingTestDescription =>
+      'Attiva il blocco delle app per 2 minuti per confermare che funzioni su questo dispositivo.';
+
+  @override
+  String get appBlockingTestButton => 'Testa il blocco app (2 minuti)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'Blocco app attivo per 2 minuti — prova ad aprire un\'app bloccata';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'Attiva l\'accesso all\'Accessibilità per iniziare a bloccare';
 

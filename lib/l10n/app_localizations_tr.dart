@@ -1849,6 +1849,20 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'Test';
+
+  @override
+  String get appBlockingTestDescription =>
+      'Bu cihazda çalıştığını doğrulamak için Uygulama Engellemeyi 2 dakikalığına etkinleştirin.';
+
+  @override
+  String get appBlockingTestButton => 'Uygulama Engellemeyi Test Et (2 dakika)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'Uygulama Engelleme 2 dakika boyunca etkin — engellenen bir uygulamayı açmayı deneyin';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'Engellemeye başlamak için Erişilebilirlik iznini açın';
 

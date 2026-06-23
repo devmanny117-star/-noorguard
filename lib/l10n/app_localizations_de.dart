@@ -1859,6 +1859,20 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'Test';
+
+  @override
+  String get appBlockingTestDescription =>
+      'Aktiviere die App-Sperre für 2 Minuten, um zu bestätigen, dass sie auf diesem Gerät funktioniert.';
+
+  @override
+  String get appBlockingTestButton => 'App-Sperre testen (2 Minuten)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'App-Sperre für 2 Minuten aktiv — versuche, eine gesperrte App zu öffnen';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'Aktiviere den Bedienungshilfen-Zugriff, um mit dem Blockieren zu beginnen';
 

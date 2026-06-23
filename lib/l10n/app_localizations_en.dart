@@ -1840,6 +1840,20 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'Testing';
+
+  @override
+  String get appBlockingTestDescription =>
+      'Activate App Blocking for 2 minutes to confirm it\'s working on this device.';
+
+  @override
+  String get appBlockingTestButton => 'Test App Blocking (2 minutes)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'App Blocking active for 2 minutes — try opening a blocked app';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'Turn on Accessibility access to start blocking';
 

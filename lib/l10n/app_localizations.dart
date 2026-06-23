@@ -3418,6 +3418,30 @@ abstract class AppLocalizations {
   /// **'{count, plural, =0{No apps blocked} one{1 app blocked} other{{count} apps blocked}}'**
   String appBlockingAppsSelectedCount(int count);
 
+  /// Section label for the on-device App Blocking test button
+  ///
+  /// In en, this message translates to:
+  /// **'Testing'**
+  String get appBlockingTestSectionLabel;
+
+  /// Explains what the 2-minute test block window button does
+  ///
+  /// In en, this message translates to:
+  /// **'Activate App Blocking for 2 minutes to confirm it\'s working on this device.'**
+  String get appBlockingTestDescription;
+
+  /// Button that activates a 2-minute test App Blocking window
+  ///
+  /// In en, this message translates to:
+  /// **'Test App Blocking (2 minutes)'**
+  String get appBlockingTestButton;
+
+  /// Snackbar shown after the test block window is activated
+  ///
+  /// In en, this message translates to:
+  /// **'App Blocking active for 2 minutes — try opening a blocked app'**
+  String get appBlockingTestActiveSnackbar;
+
   /// Prompt shown when blocking is enabled but Accessibility permission is missing
   ///
   /// In en, this message translates to:

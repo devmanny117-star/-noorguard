@@ -1855,6 +1855,20 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'Kupima';
+
+  @override
+  String get appBlockingTestDescription =>
+      'Washa Kuzuia Programu kwa dakika 2 ili kuthibitisha kuwa inafanya kazi kwenye kifaa hiki.';
+
+  @override
+  String get appBlockingTestButton => 'Pima Kuzuia Programu (dakika 2)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'Kuzuia Programu kunafanya kazi kwa dakika 2 — jaribu kufungua programu iliyozuiwa';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'Wezesha ruhusa ya Ufikiaji ili kuanza kuzuia';
 

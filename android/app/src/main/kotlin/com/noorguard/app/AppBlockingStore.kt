@@ -47,16 +47,37 @@ class AppBlockingStore(context: Context) {
         focusSessionEndMillis = null
     }
 
+    /** Null when no manual "Test App Blocking" window is running — set by
+     * Dart via MainActivity.startTestBlockWindow (App Blocking settings
+     * screen's test button), for verifying the real prayer-block pathway
+     * on-device without waiting for an actual prayer time. Uses an empty
+     * prayer name (see activeBlockSource) so BlockActivity's "I Prayed"
+     * never writes a fake entry into the real streak-tracking prefs. */
+    var testWindowEndMillis: Long?
+        get() = prefs.getLong("test_window_end", 0L).takeIf { it > 0L }
+        set(value) {
+            val editor = prefs.edit()
+            if (value == null) editor.remove("test_window_end") else editor.putLong("test_window_end", value)
+            editor.apply()
+        }
+
     sealed class BlockSource {
         data class Prayer(val window: Window) : BlockSource()
         data class Focus(val endMillis: Long) : BlockSource()
     }
 
     /** Single decision point for "what, if anything, should block right now" —
-     * prayer windows outrank a running focus session, and a focus session is
-     * checked regardless of the [enabled] (prayer auto-blocking) toggle, since
-     * starting a session is its own explicit user action. */
+     * a manual test window or real prayer window outranks a running focus
+     * session, and a focus session is checked regardless of the [enabled]
+     * (prayer auto-blocking) toggle, since starting a session is its own
+     * explicit user action — same for a test window, which fires
+     * regardless of [enabled] since it's an explicit one-off check too. */
     fun activeBlockSource(prayerBlockingEnabled: Boolean, nowMillis: Long = System.currentTimeMillis()): BlockSource? {
+        val testEnd = testWindowEndMillis
+        if (testEnd != null) {
+            if (testEnd > nowMillis) return BlockSource.Prayer(Window("", nowMillis, testEnd))
+            testWindowEndMillis = null
+        }
         if (prayerBlockingEnabled) {
             activeWindow(nowMillis)?.let { return BlockSource.Prayer(it) }
         }

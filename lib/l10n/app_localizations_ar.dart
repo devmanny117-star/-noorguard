@@ -1828,6 +1828,20 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'الاختبار';
+
+  @override
+  String get appBlockingTestDescription =>
+      'فعّل حظر التطبيقات لمدة دقيقتين للتأكد من أنه يعمل على هذا الجهاز.';
+
+  @override
+  String get appBlockingTestButton => 'اختبار حظر التطبيقات (دقيقتان)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'حظر التطبيقات نشط لمدة دقيقتين — جرّب فتح أحد التطبيقات المحظورة';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'فعّل إذن إمكانية الوصول لبدء الحجب';
 

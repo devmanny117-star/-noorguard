@@ -1777,6 +1777,20 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'テスト';
+
+  @override
+  String get appBlockingTestDescription =>
+      'このデバイスで正しく動作することを確認するため、アプリブロックを2分間有効にします。';
+
+  @override
+  String get appBlockingTestButton => 'アプリブロックをテスト（2分間）';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'アプリブロックが2分間有効です — ブロック対象のアプリを開いてみてください';
+
+  @override
   String get appBlockingPermissionNeeded => 'ブロックを始めるにはユーザー補助のアクセスを有効にしてください';
 
   @override

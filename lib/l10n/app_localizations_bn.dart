@@ -1854,6 +1854,20 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'পরীক্ষা';
+
+  @override
+  String get appBlockingTestDescription =>
+      'এই ডিভাইসে এটি কাজ করছে কিনা নিশ্চিত করতে ২ মিনিটের জন্য অ্যাপ ব্লকিং সক্রিয় করুন।';
+
+  @override
+  String get appBlockingTestButton => 'অ্যাপ ব্লকিং পরীক্ষা করুন (২ মিনিট)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'অ্যাপ ব্লকিং ২ মিনিটের জন্য সক্রিয় — একটি ব্লক করা অ্যাপ খোলার চেষ্টা করুন';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'ব্লকিং শুরু করতে অ্যাক্সেসিবিলিটি অনুমতি চালু করুন';
 

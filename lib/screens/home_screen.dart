@@ -103,10 +103,23 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    AppBlockingService().loadSettings();
-    _loadPrayerTimes();
+    _loadAppBlockingThenPrayerTimes();
     _applyPendingPrayerMarks();
     _checkAyahChallenge();
+  }
+
+  /// loadSettings() must finish before _loadPrayerTimes() reaches
+  /// syncToNative() — AppBlockingService.blockedPackages starts out empty
+  /// until loadSettings() reads it from disk, and these previously raced
+  /// (both fired unawaited from initState()): whichever finished first won,
+  /// so a fast prayer-time fetch (e.g. a cached/fallback path with no
+  /// network call) could push an empty blocked-apps list to native even
+  /// though the user's selection was correctly persisted — silently leaving
+  /// nothing for the AccessibilityService to block all day.
+  Future<void> _loadAppBlockingThenPrayerTimes() async {
+    await AppBlockingService().loadSettings();
+    if (!mounted) return;
+    _loadPrayerTimes();
   }
 
   @override

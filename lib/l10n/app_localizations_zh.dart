@@ -1759,6 +1759,18 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => '测试';
+
+  @override
+  String get appBlockingTestDescription => '启动应用屏蔽 2 分钟，确认其在此设备上正常工作。';
+
+  @override
+  String get appBlockingTestButton => '测试应用屏蔽（2 分钟）';
+
+  @override
+  String get appBlockingTestActiveSnackbar => '应用屏蔽已启动 2 分钟 — 试着打开一个被屏蔽的应用';
+
+  @override
   String get appBlockingPermissionNeeded => '开启无障碍权限以开始屏蔽';
 
   @override

@@ -2253,6 +2253,22 @@
       }
     }
   },
+  "appBlockingTestSectionLabel": "Testing",
+  "@appBlockingTestSectionLabel": {
+    "description": "Section label for the on-device App Blocking test button"
+  },
+  "appBlockingTestDescription": "Activate App Blocking for 2 minutes to confirm it's working on this device.",
+  "@appBlockingTestDescription": {
+    "description": "Explains what the 2-minute test block window button does"
+  },
+  "appBlockingTestButton": "Test App Blocking (2 minutes)",
+  "@appBlockingTestButton": {
+    "description": "Button that activates a 2-minute test App Blocking window"
+  },
+  "appBlockingTestActiveSnackbar": "App Blocking active for 2 minutes — try opening a blocked app",
+  "@appBlockingTestActiveSnackbar": {
+    "description": "Snackbar shown after the test block window is activated"
+  },
   "appBlockingPermissionNeeded": "Turn on Accessibility access to start blocking",
   "@appBlockingPermissionNeeded": {
     "description": "Prompt shown when blocking is enabled but Accessibility permission is missing"

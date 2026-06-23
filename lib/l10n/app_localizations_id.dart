@@ -1855,6 +1855,20 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'Pengujian';
+
+  @override
+  String get appBlockingTestDescription =>
+      'Aktifkan Pemblokiran Aplikasi selama 2 menit untuk memastikan berfungsi di perangkat ini.';
+
+  @override
+  String get appBlockingTestButton => 'Uji Pemblokiran Aplikasi (2 menit)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'Pemblokiran Aplikasi aktif selama 2 menit — coba buka aplikasi yang diblokir';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'Aktifkan akses Aksesibilitas untuk mulai memblokir';
 

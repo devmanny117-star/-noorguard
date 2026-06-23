@@ -1844,6 +1844,20 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
+  String get appBlockingTestSectionLabel => 'ٹیسٹنگ';
+
+  @override
+  String get appBlockingTestDescription =>
+      'اس ڈیوائس پر اس کے کام کرنے کی تصدیق کے لیے ایپ بلاکنگ کو 2 منٹ کے لیے فعال کریں۔';
+
+  @override
+  String get appBlockingTestButton => 'ایپ بلاکنگ ٹیسٹ کریں (2 منٹ)';
+
+  @override
+  String get appBlockingTestActiveSnackbar =>
+      'ایپ بلاکنگ 2 منٹ کے لیے فعال ہے — کوئی بلاک شدہ ایپ کھولنے کی کوشش کریں';
+
+  @override
   String get appBlockingPermissionNeeded =>
       'بلاکنگ شروع کرنے کے لیے ایکسیسبیلٹی رسائی آن کریں';
 

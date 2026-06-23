@@ -16,8 +16,7 @@ const _gold = Color(0xFFC9A84C);
 /// prayer-time list and Focus Mode's own list — which list it's editing is
 /// entirely up to [initiallySelected]/[onToggle], this screen has no opinion
 /// on that. [pinSelectedToTop] sorts already-selected apps above the rest
-/// (Focus Mode); leave it off to keep the plain alphabetical order App
-/// Blocking's picker already had.
+/// with a gold divider before the remaining apps — both callers enable it.
 class InstalledAppsPickerScreen extends StatefulWidget {
   final String title;
   final Set<String> initiallySelected;
@@ -88,6 +87,13 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
     return [...selected, ...unselected];
   }
 
+  /// How many items at the front of [_displayed] are the pinned-selected
+  /// ones — also where the divider goes, if there's at least one of each.
+  int get _pinnedCount {
+    if (!widget.pinSelectedToTop) return 0;
+    return _filtered.where((a) => _selected.contains(a.packageName)).length;
+  }
+
   Future<void> _toggle(InstalledApp app, bool value) async {
     setState(() {
       if (value) {
@@ -103,6 +109,8 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final displayed = _displayed;
+    final pinnedCount = _pinnedCount;
+    final showDivider = pinnedCount > 0 && pinnedCount < displayed.length;
 
     return Scaffold(
       backgroundColor: _navy,
@@ -163,9 +171,16 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
                         )
                       : ListView.builder(
                           padding: const EdgeInsets.fromLTRB(18, 0, 18, 24),
-                          itemCount: displayed.length,
+                          itemCount: displayed.length + (showDivider ? 1 : 0),
                           itemBuilder: (context, index) {
-                            final app = displayed[index];
+                            if (showDivider && index == pinnedCount) {
+                              return const _PinnedDivider();
+                            }
+                            final appIndex =
+                                showDivider && index > pinnedCount
+                                    ? index - 1
+                                    : index;
+                            final app = displayed[appIndex];
                             final selected = _selected.contains(app.packageName);
                             return _AppPickerRow(
                               app: app,
@@ -178,6 +193,20 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Marks the boundary between pinned-selected apps and the rest, when
+/// [InstalledAppsPickerScreen.pinSelectedToTop] is on.
+class _PinnedDivider extends StatelessWidget {
+  const _PinnedDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      child: Container(height: 1.5, color: _gold.withValues(alpha: 0.35)),
     );
   }
 }

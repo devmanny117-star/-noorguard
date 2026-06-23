@@ -333,6 +333,19 @@ class AppBlockingService extends ChangeNotifier {
     } catch (_) {}
   }
 
+  /// Activates a manual block window for [duration] using the existing
+  /// prayer-time blocked-apps list and block screen — lets the App Blocking
+  /// settings screen's "Test App Blocking" button verify the real
+  /// AccessibilityService pathway on-device without waiting for an actual
+  /// prayer time.
+  Future<void> startTestBlockWindow(Duration duration) async {
+    if (!Platform.isAndroid) return;
+    final endMillis = DateTime.now().add(duration).millisecondsSinceEpoch;
+    try {
+      await _channel.invokeMethod('startTestBlockWindow', {'endMillis': endMillis});
+    } catch (_) {}
+  }
+
   DateTime _parseTime(String timeStr) {
     final parts = timeStr.split(' ');
     final timeParts = parts[0].split(':');

@@ -189,6 +189,13 @@ class MainActivity : AudioServiceActivity() {
                         result.success(false)
                     }
                 }
+                "startTestBlockWindow" -> {
+                    val endMillis = call.argument<Number>("endMillis")?.toLong()
+                    if (endMillis != null) {
+                        AppBlockingStore(this).testWindowEndMillis = endMillis
+                    }
+                    result.success(null)
+                }
                 else -> result.notImplemented()
             }
         }

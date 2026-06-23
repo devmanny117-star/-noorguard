@@ -116,6 +116,28 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
     await _syncNative();
   }
 
+  Future<void> _testAppBlocking() async {
+    if (!_accessibilityEnabled) {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const AppBlockingSetupScreen()),
+      );
+      await _refreshAccessibility();
+      if (!_accessibilityEnabled) return;
+    }
+    if (!mounted) return;
+    // Make sure native has the current blocked-apps list before testing —
+    // the test window reuses the same prayer-time list and block screen.
+    await _syncNative();
+    if (!mounted) return;
+    await _service.startTestBlockWindow(const Duration(minutes: 2));
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context)!;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(l10n.appBlockingTestActiveSnackbar)),
+    );
+  }
+
   Future<void> _openAppsPicker() async {
     final l10n = AppLocalizations.of(context)!;
     await Navigator.push(
@@ -125,6 +147,7 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
           title: l10n.appBlockingAppsTitle,
           initiallySelected: _service.blockedPackages,
           onToggle: _service.toggleBlockedPackage,
+          pinSelectedToTop: true,
         ),
       ),
     );
@@ -319,6 +342,49 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
                         ],
                       ),
                     ),
+                  if (Platform.isAndroid) ...[
+                    const SizedBox(height: 22),
+                    _SectionLabel(text: l10n.appBlockingTestSectionLabel),
+                    const SizedBox(height: 10),
+                    _Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            l10n.appBlockingTestDescription,
+                            style: GoogleFonts.lato(
+                              fontSize: 12.5,
+                              color: _grey,
+                              height: 1.5,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          SizedBox(
+                            width: double.infinity,
+                            child: OutlinedButton(
+                              onPressed: _testAppBlocking,
+                              style: OutlinedButton.styleFrom(
+                                foregroundColor: _gold,
+                                side: BorderSide(
+                                    color: _gold.withValues(alpha: 0.5)),
+                                padding: const EdgeInsets.symmetric(vertical: 12),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: Text(
+                                l10n.appBlockingTestButton,
+                                style: GoogleFonts.lato(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ],
               ),
       ),
