@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "Het is tijd om te bidden — overweeg even afstand te nemen.",
   "quranChallengeBannerTitle": "Lees 3 ayaat om te ontgrendelen",
   "quranChallengeBannerProgress": "{count} van {total} ayaat gelezen",
-  "quranChallengeComplete": "Goed gedaan — apps ontgrendeld"
+  "quranChallengeComplete": "Goed gedaan — apps ontgrendeld",
+  "focusBlockHeadline1": "Blijf gefocust",
+  "focusBlockHeadline2": "Ga door",
+  "endFocusSessionButton": "Focussessie beëindigen",
+  "focusPaused": "Gepauzeerd voor het gebed"
 }

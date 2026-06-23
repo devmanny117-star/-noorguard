@@ -1812,4 +1812,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => '做得好——应用已解锁';
+
+  @override
+  String get focusBlockHeadline1 => '保持专注';
+
+  @override
+  String get focusBlockHeadline2 => '继续坚持';
+
+  @override
+  String get endFocusSessionButton => '结束专注时段';
+
+  @override
+  String get focusPaused => '已暂停以进行礼拜';
 }

@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "نماز کا وقت ہے — ایک لمحے کے لیے دور ہونے پر غور کریں۔",
   "quranChallengeBannerTitle": "کھولنے کے لیے 3 آیات پڑھیں",
   "quranChallengeBannerProgress": "{total} میں سے {count} آیات پڑھی گئیں",
-  "quranChallengeComplete": "بہت خوب — ایپس کھل گئیں"
+  "quranChallengeComplete": "بہت خوب — ایپس کھل گئیں",
+  "focusBlockHeadline1": "توجہ مرکوز رکھیں",
+  "focusBlockHeadline2": "جاری رکھیں",
+  "endFocusSessionButton": "فوکس سیشن ختم کریں",
+  "focusPaused": "نماز کے لیے رکا ہوا"
 }

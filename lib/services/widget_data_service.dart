@@ -130,6 +130,34 @@ class WidgetDataService {
     await _updateAllWidgets();
   }
 
+  /// Pushes (or clears) Focus Mode state for the home-screen widgets —
+  /// called on session start/stop/complete, and again on resume from a
+  /// prayer pause (so the widget's stored end time reflects the extension).
+  /// Not re-pushed at the moment a pause *starts*: the widget's displayed
+  /// countdown may run a little stale for that short window, since the
+  /// underlying prayer block already takes priority regardless — a deliberate
+  /// scope cut rather than building a separate "paused" widget protocol.
+  static Future<void> pushFocusState({
+    required BuildContext context,
+    required bool active,
+    DateTime? endTime,
+  }) async {
+    if (kIsWeb) return;
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return;
+
+    await Future.wait([
+      HomeWidget.saveWidgetData('focus_active', active),
+      HomeWidget.saveWidgetData(
+        'focus_end_epoch_millis',
+        endTime?.millisecondsSinceEpoch ?? 0,
+      ),
+      HomeWidget.saveWidgetData('label_focus_mode', l10n.focusMode),
+    ]);
+
+    await _updateAllWidgets();
+  }
+
   static Future<void> _updateAllWidgets() async {
     for (final name in _androidWidgetNames) {
       try {

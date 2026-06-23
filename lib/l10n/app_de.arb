@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "Es ist Gebetszeit — überlege, dich kurz zurückzuziehen.",
   "quranChallengeBannerTitle": "Lies 3 Ayat zum Entsperren",
   "quranChallengeBannerProgress": "{count} von {total} Ayat gelesen",
-  "quranChallengeComplete": "Gut gemacht — Apps entsperrt"
+  "quranChallengeComplete": "Gut gemacht — Apps entsperrt",
+  "focusBlockHeadline1": "Bleib fokussiert",
+  "focusBlockHeadline2": "Mach weiter",
+  "endFocusSessionButton": "Fokus-Sitzung beenden",
+  "focusPaused": "Pausiert für das Gebet"
 }

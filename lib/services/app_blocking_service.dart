@@ -20,6 +20,19 @@ class AyahChallenge {
   const AyahChallenge({required this.blockedPackage, required this.windowEndMillis});
 }
 
+/// One computed prayer block window for today — shared by [AppBlockingService
+/// .syncToNative] (which serializes these for the native AccessibilityService)
+/// and Focus Mode (which checks live against these to pause/resume its timer).
+class PrayerWindow {
+  final String prayerName;
+  final DateTime start;
+  final DateTime end;
+
+  const PrayerWindow({required this.prayerName, required this.start, required this.end});
+
+  bool contains(DateTime time) => !time.isBefore(start) && !time.isAfter(end);
+}
+
 /// Owns App Blocking settings (on/off, mode, selected prayers, buffer
 /// minutes, blocked packages) and is the only thing that talks to the
 /// native Android side. Mirrors `PrayerState`'s singleton/ChangeNotifier
@@ -210,6 +223,28 @@ class AppBlockingService extends ChangeNotifier {
     return DateTime(now.year, now.month, now.day, hour, minute);
   }
 
+  /// Today's prayer block windows for the currently-selected prayers — the
+  /// single source both [syncToNative] (serializes for native) and Focus
+  /// Mode (live pause/resume check) compute from.
+  List<PrayerWindow> computeTodaysWindows(List<Prayer> todaysPrayers) {
+    final windows = <PrayerWindow>[];
+    for (final p in todaysPrayers) {
+      if (!selectedPrayers.contains(p.name)) continue;
+      DateTime time;
+      try {
+        time = _parseTime(p.time);
+      } catch (_) {
+        continue;
+      }
+      windows.add(PrayerWindow(
+        prayerName: p.name,
+        start: time.subtract(Duration(minutes: preMinutes)),
+        end: time.add(Duration(minutes: postMinutes)),
+      ));
+    }
+    return windows;
+  }
+
   /// Pushes the full native-side config: on/off, mode, blocked packages,
   /// today's prayer block windows, the current locale code (so the native
   /// block screen can pick the right language from the bundled verse
@@ -221,23 +256,13 @@ class AppBlockingService extends ChangeNotifier {
     if (!Platform.isAndroid) return;
     final l10n = AppLocalizations.of(context)!;
 
-    final windows = <Map<String, dynamic>>[];
-    for (final p in todaysPrayers) {
-      if (!selectedPrayers.contains(p.name)) continue;
-      DateTime time;
-      try {
-        time = _parseTime(p.time);
-      } catch (_) {
-        continue;
-      }
-      windows.add({
-        'prayerName': p.name,
-        'startEpochMillis':
-            time.subtract(Duration(minutes: preMinutes)).millisecondsSinceEpoch,
-        'endEpochMillis':
-            time.add(Duration(minutes: postMinutes)).millisecondsSinceEpoch,
-      });
-    }
+    final windows = computeTodaysWindows(todaysPrayers)
+        .map((w) => {
+              'prayerName': w.prayerName,
+              'startEpochMillis': w.start.millisecondsSinceEpoch,
+              'endEpochMillis': w.end.millisecondsSinceEpoch,
+            })
+        .toList();
 
     try {
       await _channel.invokeMethod('updateBlockingConfig', {
@@ -258,11 +283,46 @@ class AppBlockingService extends ChangeNotifier {
           'bypassConfirmCancel': l10n.appBlockingBypassConfirmCancel,
           'softReminderTitle': l10n.appBlockingSoftReminderTitle,
           'softReminderBody': l10n.appBlockingSoftReminderBody,
+          'focusHeadline1': l10n.focusBlockHeadline1,
+          'focusHeadline2': l10n.focusBlockHeadline2,
+          'endFocusSession': l10n.endFocusSessionButton,
         },
       });
     } catch (_) {
       // Best-effort — the in-app settings already reflect the change even
       // if pushing it to native fails (e.g. accessibility service absent).
+    }
+  }
+
+  /// Starts a Focus Mode session — blocks the shared apps list for
+  /// [duration], independent of the prayer-time "enabled" toggle.
+  Future<void> startFocusSession(Duration duration) async {
+    if (!Platform.isAndroid) return;
+    final endMillis = DateTime.now().add(duration).millisecondsSinceEpoch;
+    try {
+      await _channel.invokeMethod('updateFocusSession', {'endMillis': endMillis});
+    } catch (_) {}
+  }
+
+  Future<void> endFocusSession() async {
+    if (!Platform.isAndroid) return;
+    try {
+      await _channel.invokeMethod('updateFocusSession', {'endMillis': null});
+    } catch (_) {}
+  }
+
+  /// Pulls native truth for the running focus session — null if there isn't
+  /// one (including if the user ended it early from the native focus block
+  /// screen's "End Focus Session" button), so Dart's timer can reconcile
+  /// after returning from it.
+  Future<DateTime?> reconcileFocusSession() async {
+    if (!Platform.isAndroid) return null;
+    try {
+      final endMillis = await _channel.invokeMethod<int>('getFocusSessionStatus');
+      if (endMillis == null) return null;
+      return DateTime.fromMillisecondsSinceEpoch(endMillis);
+    } catch (_) {
+      return null;
     }
   }
 }

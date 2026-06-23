@@ -3519,6 +3519,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Well done — apps unlocked'**
   String get quranChallengeComplete;
+
+  /// First of two alternating headlines shown on the block screen during an active Focus Mode session
+  ///
+  /// In en, this message translates to:
+  /// **'Stay Focused'**
+  String get focusBlockHeadline1;
+
+  /// Second of two alternating headlines shown on the block screen during an active Focus Mode session
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Going'**
+  String get focusBlockHeadline2;
+
+  /// Primary button on the block screen when it was triggered by an active Focus Mode session (in place of "I Prayed")
+  ///
+  /// In en, this message translates to:
+  /// **'End Focus Session'**
+  String get endFocusSessionButton;
+
+  /// Status label shown on the Focus Mode timer when it's automatically paused during an active prayer block window
+  ///
+  /// In en, this message translates to:
+  /// **'Paused for prayer'**
+  String get focusPaused;
 }
 
 class _AppLocalizationsDelegate

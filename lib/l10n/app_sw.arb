@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "Ni wakati wa swala — fikiria kuondoka kwa muda mfupi.",
   "quranChallengeBannerTitle": "Soma Aya 3 Kufungua",
   "quranChallengeBannerProgress": "Aya {count} kati ya {total} zimesomwa",
-  "quranChallengeComplete": "Vizuri sana — programu zimefunguliwa"
+  "quranChallengeComplete": "Vizuri sana — programu zimefunguliwa",
+  "focusBlockHeadline1": "Dumisha Umakini",
+  "focusBlockHeadline2": "Endelea",
+  "endFocusSessionButton": "Komesha Kipindi cha Umakini",
+  "focusPaused": "Imesimamishwa kwa Swala"
 }

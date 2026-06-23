@@ -1910,4 +1910,16 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'সাবাশ — অ্যাপগুলো আনলক হয়েছে';
+
+  @override
+  String get focusBlockHeadline1 => 'মনোযোগ ধরে রাখুন';
+
+  @override
+  String get focusBlockHeadline2 => 'চালিয়ে যান';
+
+  @override
+  String get endFocusSessionButton => 'ফোকাস সেশন শেষ করুন';
+
+  @override
+  String get focusPaused => 'নামাজের জন্য বিরত';
 }

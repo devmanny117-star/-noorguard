@@ -9,10 +9,13 @@ import android.view.accessibility.AccessibilityEvent
 import androidx.core.app.NotificationCompat
 
 /**
- * Watches for foreground app changes and, when a blocked app opens during an
- * active prayer block window, either shows a gentle reminder (Soft mode) or
- * launches [BlockActivity] over it (Firm/Hard). All config and copy come
- * from [AppBlockingStore] — this service never talks to Dart directly.
+ * Watches for foreground app changes. When a blocked app opens, decides what
+ * (if anything) should block it via [AppBlockingStore.activeBlockSource] —
+ * a prayer block window outranks a running Focus Mode session, which is why
+ * prayer and focus can never both show a block screen at once. Soft mode
+ * only applies to the prayer path; a focus session always shows the full
+ * block screen. All config and copy come from [AppBlockingStore] — this
+ * service never talks to Dart directly.
  */
 class AppBlockerAccessibilityService : AccessibilityService() {
 
@@ -22,23 +25,29 @@ class AppBlockerAccessibilityService : AccessibilityService() {
         if (pkg == packageName) return
 
         val store = AppBlockingStore(this)
-        if (!store.enabled) return
         if (!store.blockedPackages.contains(pkg)) return
         if (store.isBypassed(pkg)) return
 
-        val window = store.activeWindow() ?: return
-
-        if (store.mode == "soft") {
-            showSoftReminder(store, pkg, window.startEpochMillis)
-        } else {
-            launchBlockActivity(pkg, window.prayerName, window.endEpochMillis)
+        when (val source = store.activeBlockSource(prayerBlockingEnabled = store.enabled)) {
+            is AppBlockingStore.BlockSource.Prayer -> {
+                if (store.mode == "soft") {
+                    showSoftReminder(store, pkg, source.window.startEpochMillis)
+                } else {
+                    launchBlockActivity(pkg, "prayer", source.window.prayerName, source.window.endEpochMillis)
+                }
+            }
+            is AppBlockingStore.BlockSource.Focus -> {
+                launchBlockActivity(pkg, "focus", "", source.endMillis)
+            }
+            null -> return
         }
     }
 
-    private fun launchBlockActivity(pkg: String, prayerName: String, windowEndMillis: Long) {
+    private fun launchBlockActivity(pkg: String, source: String, prayerName: String, windowEndMillis: Long) {
         val intent = Intent(this, BlockActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             putExtra(BlockActivity.EXTRA_BLOCKED_PACKAGE, pkg)
+            putExtra(BlockActivity.EXTRA_SOURCE, source)
             putExtra(BlockActivity.EXTRA_PRAYER_NAME, prayerName)
             putExtra(BlockActivity.EXTRA_WINDOW_END_MILLIS, windowEndMillis)
         }

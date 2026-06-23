@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "Es hora de orar — considera apartarte un momento.",
   "quranChallengeBannerTitle": "Lee 3 versículos para desbloquear",
   "quranChallengeBannerProgress": "{count} de {total} versículos leídos",
-  "quranChallengeComplete": "Bien hecho — apps desbloqueadas"
+  "quranChallengeComplete": "Bien hecho — apps desbloqueadas",
+  "focusBlockHeadline1": "Mantente enfocado",
+  "focusBlockHeadline2": "Sigue así",
+  "endFocusSessionButton": "Terminar sesión de enfoque",
+  "focusPaused": "En pausa por la oración"
 }

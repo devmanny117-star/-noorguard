@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "حان وقت الصلاة — فكّر في الانصراف لبرهة.",
   "quranChallengeBannerTitle": "اقرأ 3 آيات لفتح الحظر",
   "quranChallengeBannerProgress": "تمت قراءة {count} من {total} آيات",
-  "quranChallengeComplete": "أحسنت — تم فتح التطبيقات"
+  "quranChallengeComplete": "أحسنت — تم فتح التطبيقات",
+  "focusBlockHeadline1": "حافظ على تركيزك",
+  "focusBlockHeadline2": "استمر",
+  "endFocusSessionButton": "إنهاء جلسة التركيز",
+  "focusPaused": "متوقف للصلاة"
 }

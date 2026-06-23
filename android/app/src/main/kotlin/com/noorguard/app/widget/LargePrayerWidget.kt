@@ -48,13 +48,19 @@ class LargePrayerWidget : GlanceAppWidget() {
     private fun Content(context: Context, state: HomeWidgetGlanceState) {
         val data = WidgetData.from(state.preferences)
 
+        val cardBackground = GlanceModifier
+            .fillMaxSize()
+            .background(WidgetTheme.navy)
+            .cornerRadius(16.dp)
+            .padding(16.dp)
+
+        if (data.focusActive) {
+            FocusModeWidgetContent(context, data, cardBackground)
+            return
+        }
+
         Box(
-            modifier = GlanceModifier
-                .fillMaxSize()
-                .background(WidgetTheme.navy)
-                .cornerRadius(16.dp)
-                .padding(16.dp)
-                .clickable(onClick = actionStartActivity<MainActivity>(context)),
+            modifier = cardBackground.clickable(onClick = actionStartActivity<MainActivity>(context)),
         ) {
             Column(modifier = GlanceModifier.fillMaxSize()) {
                 Row(

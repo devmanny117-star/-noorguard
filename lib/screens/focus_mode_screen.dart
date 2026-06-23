@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/dua_model.dart';
 import '../models/installed_app.dart';
 import '../services/app_blocking_service.dart';
+import '../services/prayer_state.dart';
+import '../services/widget_data_service.dart';
 import '../theme/app_theme.dart';
 import '../l10n/app_localizations.dart';
 
@@ -21,10 +23,12 @@ class FocusModeScreen extends StatefulWidget {
 }
 
 class _FocusModeScreenState extends State<FocusModeScreen>
-    with TickerProviderStateMixin {
-  static const _presets = [15, 25, 45, 60];
-  int _selectedPreset = 1;
+    with TickerProviderStateMixin, WidgetsBindingObserver {
+  static const _fixedPresetMinutes = [30, 60, 120];
+  int _selectedMinutes = _fixedPresetMinutes.first;
+  bool _isCustomSelected = false;
   bool _isRunning = false;
+  bool _pausedForPrayer = false;
   late int _totalSeconds;
   late int _remaining;
   Timer? _timer;
@@ -41,7 +45,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
   @override
   void initState() {
     super.initState();
-    _totalSeconds = _presets[_selectedPreset] * 60;
+    WidgetsBinding.instance.addObserver(this);
+    _totalSeconds = _selectedMinutes * 60;
     _remaining = _totalSeconds;
 
     _pulseCtrl = AnimationController(
@@ -73,7 +78,34 @@ class _FocusModeScreenState extends State<FocusModeScreen>
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // The user may have ended the session early from the native focus block
+    // screen ("End Focus Session") while this screen was backgrounded —
+    // reconcile against native truth so the local timer doesn't keep running
+    // a session that's no longer actually blocking anything.
+    if (state == AppLifecycleState.resumed) _reconcileFocusSession();
+  }
+
+  Future<void> _reconcileFocusSession() async {
+    if (!_isRunning) return;
+    final nativeEnd = await AppBlockingService().reconcileFocusSession();
+    if (nativeEnd != null || !mounted) return;
+    _timer?.cancel();
+    setState(() {
+      _isRunning = false;
+      _pausedForPrayer = false;
+      _remaining = _totalSeconds;
+      _duaIndex = 0;
+    });
+    _duaFadeCtrl.value = 1.0;
+    if (mounted) {
+      await WidgetDataService.pushFocusState(context: context, active: false);
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _timer?.cancel();
     _pulseCtrl.dispose();
     _duaFadeCtrl.dispose();
@@ -84,10 +116,36 @@ class _FocusModeScreenState extends State<FocusModeScreen>
 
   void _startTimer() {
     setState(() => _isRunning = true);
+    final service = AppBlockingService();
+    service.startFocusSession(Duration(seconds: _remaining));
+    WidgetDataService.pushFocusState(
+      context: context,
+      active: true,
+      endTime: DateTime.now().add(Duration(seconds: _remaining)),
+    );
+
     _timer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (!mounted) {
         t.cancel();
         return;
+      }
+
+      final pausedNow = _isPausedForActivePrayerWindow();
+      if (pausedNow) {
+        if (!_pausedForPrayer) setState(() => _pausedForPrayer = true);
+        return;
+      }
+      if (_pausedForPrayer) {
+        setState(() => _pausedForPrayer = false);
+        // Extend the native session (and widget) by however long the pause
+        // lasted — the remaining duration is unchanged since it never
+        // decremented while paused.
+        service.startFocusSession(Duration(seconds: _remaining));
+        WidgetDataService.pushFocusState(
+          context: context,
+          active: true,
+          endTime: DateTime.now().add(Duration(seconds: _remaining)),
+        );
       }
 
       // Decrement first so the display reaches 00:00 before completing.
@@ -112,11 +170,31 @@ class _FocusModeScreenState extends State<FocusModeScreen>
     _timer?.cancel();
     setState(() {
       _isRunning = false;
-      _totalSeconds = _presets[_selectedPreset] * 60;
+      _pausedForPrayer = false;
+      _totalSeconds = _selectedMinutes * 60;
       _remaining = _totalSeconds;
       _duaIndex = 0;
     });
     _duaFadeCtrl.value = 1.0;
+    AppBlockingService().endFocusSession();
+    WidgetDataService.pushFocusState(context: context, active: false);
+  }
+
+  /// Live check (no native round-trip) against today's prayer windows —
+  /// reused from the same computation AppBlockingService pushes to native,
+  /// so Focus Mode's pause/resume always matches what's actually blocking.
+  bool _isPausedForActivePrayerWindow() {
+    final prayers = PrayerState().lastKnownPrayers;
+    if (prayers == null) return false;
+    final windows = AppBlockingService().computeTodaysWindows(prayers);
+    final now = DateTime.now();
+    for (final w in windows) {
+      if (w.contains(now)) {
+        final done = PrayerState().prayers[w.prayerName] ?? false;
+        if (!done) return true;
+      }
+    }
+    return false;
   }
 
   Future<void> _rotateDua() async {
@@ -130,6 +208,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
     HapticFeedback.heavyImpact();
     final completed = _totalSeconds;
     setState(() => _isRunning = false);
+    AppBlockingService().endFocusSession();
+    WidgetDataService.pushFocusState(context: context, active: false);
 
     showDialog<void>(
       context: context,
@@ -149,13 +229,76 @@ class _FocusModeScreenState extends State<FocusModeScreen>
     );
   }
 
-  void _selectPreset(int index) {
+  void _selectFixedPreset(int minutes) {
     if (_isRunning) return;
     setState(() {
-      _selectedPreset = index;
-      _totalSeconds = _presets[index] * 60;
+      _selectedMinutes = minutes;
+      _isCustomSelected = false;
+      _totalSeconds = minutes * 60;
       _remaining = _totalSeconds;
     });
+  }
+
+  Future<void> _selectCustomDuration() async {
+    if (_isRunning) return;
+    final l10n = AppLocalizations.of(context)!;
+    final colors = context.appColors;
+    final controller = TextEditingController();
+    final minutes = await showDialog<int>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: colors.cardBg,
+        title: Text(
+          l10n.customTimerMinutesTitle,
+          style: GoogleFonts.lato(
+            color: colors.primaryText,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        content: TextField(
+          controller: controller,
+          keyboardType: TextInputType.number,
+          autofocus: true,
+          style: TextStyle(color: colors.primaryText),
+          decoration: InputDecoration(
+            hintText: l10n.customTimerHint,
+            hintStyle: TextStyle(color: colors.secondaryText),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
+            ),
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.gold),
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(l10n.cancel,
+                style: GoogleFonts.lato(color: colors.secondaryText)),
+          ),
+          TextButton(
+            onPressed: () {
+              final value = int.tryParse(controller.text.trim());
+              if (value != null && value > 0) Navigator.pop(ctx, value);
+            },
+            child: Text(
+              l10n.start,
+              style: GoogleFonts.lato(
+                  color: AppColors.gold, fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (minutes != null && mounted) {
+      setState(() {
+        _selectedMinutes = minutes;
+        _isCustomSelected = true;
+        _totalSeconds = minutes * 60;
+        _remaining = _totalSeconds;
+      });
+    }
   }
 
   // ── Helpers ──────────────────────────────────────────────────────────────
@@ -196,15 +339,18 @@ class _FocusModeScreenState extends State<FocusModeScreen>
                       timeString: _formatTime(),
                       dua: focusDuas[_duaIndex],
                       duaFade: _duaFade,
-                      isRunning: _isRunning,
+                      isRunning: _isRunning && !_pausedForPrayer,
+                      pausedForPrayer: _pausedForPrayer,
                       pulse: _pulse,
                     ),
                     const SizedBox(height: 24),
-                    _PresetRow(
-                      presets: _presets,
-                      selected: _selectedPreset,
+                    _DurationRow(
+                      fixedMinutes: _fixedPresetMinutes,
+                      selectedMinutes: _selectedMinutes,
+                      isCustomSelected: _isCustomSelected,
                       locked: _isRunning,
-                      onSelect: _selectPreset,
+                      onSelectFixed: _selectFixedPreset,
+                      onSelectCustom: _selectCustomDuration,
                     ),
                     const SizedBox(height: 28),
                     _BlockedAppsPreview(
@@ -354,6 +500,7 @@ class _TimerCircle extends StatelessWidget {
   final Dua dua;
   final Animation<double> duaFade;
   final bool isRunning;
+  final bool pausedForPrayer;
   final Animation<double> pulse;
 
   const _TimerCircle({
@@ -362,6 +509,7 @@ class _TimerCircle extends StatelessWidget {
     required this.dua,
     required this.duaFade,
     required this.isRunning,
+    this.pausedForPrayer = false,
     required this.pulse,
   });
 
@@ -423,7 +571,9 @@ class _TimerCircle extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    isRunning ? l10n.remaining : l10n.ready,
+                    pausedForPrayer
+                        ? l10n.focusPaused
+                        : (isRunning ? l10n.remaining : l10n.ready),
                     style: GoogleFonts.lato(
                       fontSize: 11,
                       color: colors.secondaryText,
@@ -558,22 +708,25 @@ class _TimerRingPainter extends CustomPainter {
 // PRESET DURATION SELECTOR
 // ─────────────────────────────────────────────────────────────────────────────
 
-class _PresetRow extends StatelessWidget {
-  final List<int> presets;
-  final int selected;
+class _DurationRow extends StatelessWidget {
+  final List<int> fixedMinutes;
+  final int selectedMinutes;
+  final bool isCustomSelected;
   final bool locked;
-  final ValueChanged<int> onSelect;
+  final ValueChanged<int> onSelectFixed;
+  final VoidCallback onSelectCustom;
 
-  const _PresetRow({
-    required this.presets,
-    required this.selected,
+  const _DurationRow({
+    required this.fixedMinutes,
+    required this.selectedMinutes,
+    required this.isCustomSelected,
     required this.locked,
-    required this.onSelect,
+    required this.onSelectFixed,
+    required this.onSelectCustom,
   });
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
 
     return Column(
@@ -592,64 +745,118 @@ class _PresetRow extends StatelessWidget {
         Opacity(
           opacity: locked ? 0.45 : 1.0,
           child: Row(
-            children: List.generate(presets.length, (i) {
-              final isSelected = i == selected;
-              return Expanded(
-                child: GestureDetector(
-                  onTap: () => onSelect(i),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    margin: EdgeInsets.only(
-                        right: i < presets.length - 1 ? 10 : 0),
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    decoration: BoxDecoration(
-                      color: isSelected ? AppColors.gold : colors.cardBg,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: isSelected ? AppColors.gold : colors.border,
-                        width: 1.5,
-                      ),
-                      boxShadow: isSelected
-                          ? [
-                              BoxShadow(
-                                color: AppColors.gold.withValues(alpha: 0.28),
-                                blurRadius: 8,
-                                offset: const Offset(0, 3),
-                              ),
-                            ]
-                          : [],
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          '${presets[i]}',
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: isSelected
-                                ? Colors.white
-                                : colors.primaryText,
-                          ),
-                        ),
-                        Text(
-                          l10n.minutesAbbreviation,
-                          style: GoogleFonts.lato(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w600,
-                            color: isSelected
-                                ? Colors.white.withValues(alpha: 0.8)
-                                : colors.secondaryText,
-                          ),
-                        ),
-                      ],
-                    ),
+            children: [
+              for (int i = 0; i < fixedMinutes.length; i++)
+                Expanded(
+                  child: _DurationTile(
+                    margin: const EdgeInsets.only(right: 10),
+                    isSelected: !isCustomSelected && selectedMinutes == fixedMinutes[i],
+                    onTap: () => onSelectFixed(fixedMinutes[i]),
+                    primaryText: '${fixedMinutes[i]}',
+                    secondaryText: l10n.minutesAbbreviation,
                   ),
                 ),
-              );
-            }),
+              Expanded(
+                child: _DurationTile(
+                  margin: EdgeInsets.zero,
+                  isSelected: isCustomSelected,
+                  onTap: onSelectCustom,
+                  icon: Icons.edit_rounded,
+                  primaryText: l10n.custom,
+                ),
+              ),
+            ],
           ),
         ),
       ],
+    );
+  }
+}
+
+class _DurationTile extends StatelessWidget {
+  final EdgeInsets margin;
+  final bool isSelected;
+  final VoidCallback onTap;
+  final String primaryText;
+  final String? secondaryText;
+  final IconData? icon;
+
+  const _DurationTile({
+    required this.margin,
+    required this.isSelected,
+    required this.onTap,
+    required this.primaryText,
+    this.secondaryText,
+    this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.appColors;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        margin: margin,
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.gold : colors.cardBg,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: isSelected ? AppColors.gold : colors.border,
+            width: 1.5,
+          ),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: AppColors.gold.withValues(alpha: 0.28),
+                    blurRadius: 8,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
+              : [],
+        ),
+        child: Column(
+          children: [
+            if (icon != null)
+              Icon(
+                icon,
+                size: 18,
+                color: isSelected ? Colors.white : colors.primaryText,
+              )
+            else
+              Text(
+                primaryText,
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: isSelected ? Colors.white : colors.primaryText,
+                ),
+              ),
+            if (secondaryText != null)
+              Text(
+                secondaryText!,
+                style: GoogleFonts.lato(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected
+                      ? Colors.white.withValues(alpha: 0.8)
+                      : colors.secondaryText,
+                ),
+              )
+            else if (icon != null)
+              Text(
+                primaryText,
+                style: GoogleFonts.lato(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected ? Colors.white : colors.primaryText,
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1910,4 +1910,16 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'Goed gedaan — apps ontgrendeld';
+
+  @override
+  String get focusBlockHeadline1 => 'Blijf gefocust';
+
+  @override
+  String get focusBlockHeadline2 => 'Ga door';
+
+  @override
+  String get endFocusSessionButton => 'Focussessie beëindigen';
+
+  @override
+  String get focusPaused => 'Gepauzeerd voor het gebed';
 }

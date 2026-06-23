@@ -1911,4 +1911,16 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'Bagus — aplikasi terbuka kembali';
+
+  @override
+  String get focusBlockHeadline1 => 'Tetap Fokus';
+
+  @override
+  String get focusBlockHeadline2 => 'Terus Lanjutkan';
+
+  @override
+  String get endFocusSessionButton => 'Akhiri Sesi Fokus';
+
+  @override
+  String get focusPaused => 'Dijeda untuk Shalat';
 }

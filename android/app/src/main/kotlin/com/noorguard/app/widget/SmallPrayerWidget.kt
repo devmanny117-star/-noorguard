@@ -61,16 +61,30 @@ class SmallPrayerWidget : GlanceAppWidget() {
             ) {
                 Column(modifier = GlanceModifier.fillMaxWidth().wrapContentHeight()) {
                     Box(modifier = GlanceModifier.height(16.dp)) {
-                        Text(
-                            // Glance's TextStyle has no letterSpacing — approximated by
-                            // spacing the letters themselves.
-                            "N O O R   G U A R D",
-                            style = TextStyle(
-                                color = ColorProvider(WidgetTheme.gold.copy(alpha = 0.5f)),
-                                fontSize = 9.sp,
-                                fontWeight = FontWeight.Medium,
-                            ),
-                        )
+                        if (data.focusActive) {
+                            // Not enough room here for the full focus layout the
+                            // Medium/Large widgets swap to — just a brief status
+                            // line in place of the brand mark.
+                            Text(
+                                "🎯 ${data.labelFocusMode} • ${data.focusRemainingLabel()}",
+                                style = TextStyle(
+                                    color = ColorProvider(WidgetTheme.gold),
+                                    fontSize = 9.sp,
+                                    fontWeight = FontWeight.Medium,
+                                ),
+                            )
+                        } else {
+                            Text(
+                                // Glance's TextStyle has no letterSpacing — approximated by
+                                // spacing the letters themselves.
+                                "N O O R   G U A R D",
+                                style = TextStyle(
+                                    color = ColorProvider(WidgetTheme.gold.copy(alpha = 0.5f)),
+                                    fontSize = 9.sp,
+                                    fontWeight = FontWeight.Medium,
+                                ),
+                            )
+                        }
                     }
 
                     Spacer(modifier = GlanceModifier.height(6.dp))

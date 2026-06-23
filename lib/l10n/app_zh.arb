@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "礼拜时间到了——考虑暂时离开一下。",
   "quranChallengeBannerTitle": "阅读 3 节经文以解锁",
   "quranChallengeBannerProgress": "已读 {count}/{total} 节经文",
-  "quranChallengeComplete": "做得好——应用已解锁"
+  "quranChallengeComplete": "做得好——应用已解锁",
+  "focusBlockHeadline1": "保持专注",
+  "focusBlockHeadline2": "继续坚持",
+  "endFocusSessionButton": "结束专注时段",
+  "focusPaused": "已暂停以进行礼拜"
 }

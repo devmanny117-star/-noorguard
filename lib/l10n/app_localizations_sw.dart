@@ -1911,4 +1911,16 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'Vizuri sana — programu zimefunguliwa';
+
+  @override
+  String get focusBlockHeadline1 => 'Dumisha Umakini';
+
+  @override
+  String get focusBlockHeadline2 => 'Endelea';
+
+  @override
+  String get endFocusSessionButton => 'Komesha Kipindi cha Umakini';
+
+  @override
+  String get focusPaused => 'Imesimamishwa kwa Swala';
 }

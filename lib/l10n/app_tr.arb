@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "Namaz vakti geldi — biraz ara vermeyi düşün.",
   "quranChallengeBannerTitle": "Kilidi açmak için 3 Ayet Oku",
   "quranChallengeBannerProgress": "{total} ayetten {count} tanesi okundu",
-  "quranChallengeComplete": "Aferin — uygulamaların kilidi açıldı"
+  "quranChallengeComplete": "Aferin — uygulamaların kilidi açıldı",
+  "focusBlockHeadline1": "Odaklanmaya Devam Et",
+  "focusBlockHeadline2": "Devam Et",
+  "endFocusSessionButton": "Odaklanma Oturumunu Sonlandır",
+  "focusPaused": "Namaz İçin Duraklatıldı"
 }

@@ -1928,4 +1928,16 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'Bien joué — applis débloquées';
+
+  @override
+  String get focusBlockHeadline1 => 'Reste concentré';
+
+  @override
+  String get focusBlockHeadline2 => 'Continue';
+
+  @override
+  String get endFocusSessionButton => 'Terminer la session de concentration';
+
+  @override
+  String get focusPaused => 'En pause pour la prière';
 }

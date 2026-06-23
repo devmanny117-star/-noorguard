@@ -15,15 +15,20 @@ import java.util.Date
 import java.util.Locale
 
 /**
- * Full-screen Islamic block screen shown over a blocked app during an active
- * prayer block window (Firm/Hard modes). Plain Activity with a native XML
- * layout — not a second Flutter engine — matching [PrayerAlarmActivity]'s
+ * Full-screen Islamic block screen shown over a blocked app, either during an
+ * active prayer block window or a running Focus Mode session ([EXTRA_SOURCE]
+ * — "prayer" or "focus") — never both, since [AppBlockingStore.activeBlockSource]
+ * is the single decision point that picked one. Plain Activity with a native
+ * XML layout — not a second Flutter engine — matching [PrayerAlarmActivity]'s
  * existing pattern for instant, reliable full-screen takeover UI.
  */
 class BlockActivity : Activity() {
 
     companion object {
         const val EXTRA_BLOCKED_PACKAGE = "blocked_package"
+        const val EXTRA_SOURCE = "source"
+        const val SOURCE_PRAYER = "prayer"
+        const val SOURCE_FOCUS = "focus"
         const val EXTRA_PRAYER_NAME = "prayer_name"
         const val EXTRA_WINDOW_END_MILLIS = "window_end_millis"
         const val EXTRA_AYAH_CHALLENGE = "ayah_challenge"
@@ -31,8 +36,11 @@ class BlockActivity : Activity() {
 
     private lateinit var store: AppBlockingStore
     private var blockedPackage: String = ""
+    private var source: String = SOURCE_PRAYER
     private var prayerName: String = ""
     private var windowEndMillis: Long = 0L
+
+    private val isFocusSource get() = source == SOURCE_FOCUS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +48,7 @@ class BlockActivity : Activity() {
 
         store = AppBlockingStore(this)
         blockedPackage = intent.getStringExtra(EXTRA_BLOCKED_PACKAGE) ?: run { finish(); return }
+        source = intent.getStringExtra(EXTRA_SOURCE) ?: SOURCE_PRAYER
         prayerName = intent.getStringExtra(EXTRA_PRAYER_NAME) ?: ""
         windowEndMillis = intent.getLongExtra(EXTRA_WINDOW_END_MILLIS, System.currentTimeMillis())
 
@@ -51,11 +60,12 @@ class BlockActivity : Activity() {
     }
 
     private fun bindHeadline(strings: Map<String, String>) {
-        val headline = if (System.currentTimeMillis() % 2 == 0L) {
-            strings["headline1"]
+        val (key1, key2) = if (isFocusSource) {
+            "focusHeadline1" to "focusHeadline2"
         } else {
-            strings["headline2"]
+            "headline1" to "headline2"
         }
+        val headline = if (System.currentTimeMillis() % 2 == 0L) strings[key1] else strings[key2]
         findViewById<TextView>(R.id.textHeadline).text = headline
     }
 
@@ -72,8 +82,8 @@ class BlockActivity : Activity() {
 
     private fun bindButtons(strings: Map<String, String>) {
         findViewById<TextView>(R.id.btnIPrayed).apply {
-            text = strings["iPrayed"]
-            setOnClickListener { onIPrayed() }
+            text = if (isFocusSource) strings["endFocusSession"] else strings["iPrayed"]
+            setOnClickListener { if (isFocusSource) onEndFocusSession() else onIPrayed() }
         }
         findViewById<TextView>(R.id.btnReadAyahs).apply {
             text = strings["readAyahs"]
@@ -91,6 +101,13 @@ class BlockActivity : Activity() {
         finishAndRemoveTask()
     }
 
+    /** Focus Mode's primary action — no prayer to mark and no bypass needed,
+     *  since ending the session unblocks every app it was blocking. */
+    private fun onEndFocusSession() {
+        store.clearFocusSession()
+        finishAndRemoveTask()
+    }
+
     private fun onReadAyahs() {
         val launchIntent = Intent(this, MainActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
@@ -103,8 +120,10 @@ class BlockActivity : Activity() {
         finish()
     }
 
+    /** Always single-tap for Focus Mode (no streak at stake) — only the
+     *  prayer path's Hard mode adds the confirm-dialog friction. */
     private fun onEmergencyBypass(strings: Map<String, String>) {
-        if (store.mode == "hard") {
+        if (!isFocusSource && store.mode == "hard") {
             AlertDialog.Builder(this)
                 .setTitle(strings["bypassConfirmTitle"])
                 .setMessage(strings["bypassConfirmBody"])

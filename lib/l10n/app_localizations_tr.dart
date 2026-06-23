@@ -1904,4 +1904,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'Aferin — uygulamaların kilidi açıldı';
+
+  @override
+  String get focusBlockHeadline1 => 'Odaklanmaya Devam Et';
+
+  @override
+  String get focusBlockHeadline2 => 'Devam Et';
+
+  @override
+  String get endFocusSessionButton => 'Odaklanma Oturumunu Sonlandır';
+
+  @override
+  String get focusPaused => 'Namaz İçin Duraklatıldı';
 }

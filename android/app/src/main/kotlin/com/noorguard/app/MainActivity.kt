@@ -165,6 +165,16 @@ class MainActivity : AudioServiceActivity() {
                     AppBlockingStore(this).grantBypassUntil(pkg, until)
                     result.success(null)
                 }
+                "updateFocusSession" -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val args = call.arguments as? Map<String, Any>
+                    val endMillis = (args?.get("endMillis") as? Number)?.toLong()
+                    AppBlockingStore(this).focusSessionEndMillis = endMillis
+                    result.success(null)
+                }
+                "getFocusSessionStatus" -> {
+                    result.success(AppBlockingStore(this).focusSessionEndMillis)
+                }
                 else -> result.notImplemented()
             }
         }
@@ -495,6 +505,7 @@ class MainActivity : AudioServiceActivity() {
         val resolved = pm.queryIntentActivities(launcherIntent, 0)
         val seen = mutableSetOf<String>()
         val results = mutableListOf<Map<String, Any?>>()
+        var iconFailures = 0
         for (info in resolved) {
             val pkg = info.activityInfo.packageName
             if (pkg == packageName) continue
@@ -509,7 +520,9 @@ class MainActivity : AudioServiceActivity() {
             // generic icon, which is what made these look like placeholders.
             val iconBytes = try {
                 iconToPngBytes(info.loadIcon(pm))
-            } catch (_: Exception) {
+            } catch (e: Exception) {
+                iconFailures++
+                android.util.Log.e("AppBlocking", "Icon fetch failed for $pkg", e)
                 null
             }
             results.add(
@@ -521,6 +534,10 @@ class MainActivity : AudioServiceActivity() {
                 )
             )
         }
+        android.util.Log.i(
+            "AppBlocking",
+            "getInstalledApps: ${results.size} apps resolved, $iconFailures icon failures"
+        )
         return results
     }
 

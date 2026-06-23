@@ -1830,4 +1830,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'よくできました — アプリがロック解除されました';
+
+  @override
+  String get focusBlockHeadline1 => '集中を続けましょう';
+
+  @override
+  String get focusBlockHeadline2 => 'そのまま続けて';
+
+  @override
+  String get endFocusSessionButton => '集中セッションを終了';
+
+  @override
+  String get focusPaused => '礼拝のため一時停止中';
 }

@@ -1912,4 +1912,16 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'Muito bem — apps desbloqueados';
+
+  @override
+  String get focusBlockHeadline1 => 'Mantenha o foco';
+
+  @override
+  String get focusBlockHeadline2 => 'Continue assim';
+
+  @override
+  String get endFocusSessionButton => 'Encerrar sessão de foco';
+
+  @override
+  String get focusPaused => 'Pausado para a oração';
 }

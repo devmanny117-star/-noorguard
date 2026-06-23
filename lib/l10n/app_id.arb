@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "Sudah waktunya shalat — pertimbangkan untuk berhenti sejenak.",
   "quranChallengeBannerTitle": "Baca 3 Ayat untuk Membuka",
   "quranChallengeBannerProgress": "{count} dari {total} ayat terbaca",
-  "quranChallengeComplete": "Bagus — aplikasi terbuka kembali"
+  "quranChallengeComplete": "Bagus — aplikasi terbuka kembali",
+  "focusBlockHeadline1": "Tetap Fokus",
+  "focusBlockHeadline2": "Terus Lanjutkan",
+  "endFocusSessionButton": "Akhiri Sesi Fokus",
+  "focusPaused": "Dijeda untuk Shalat"
 }

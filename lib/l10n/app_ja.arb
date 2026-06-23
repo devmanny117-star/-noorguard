@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "礼拝の時間です — 少し離れることを考えてみましょう。",
   "quranChallengeBannerTitle": "解除するにはアーヤを3つ読んでください",
   "quranChallengeBannerProgress": "{total}節中{count}節を読みました",
-  "quranChallengeComplete": "よくできました — アプリがロック解除されました"
+  "quranChallengeComplete": "よくできました — アプリがロック解除されました",
+  "focusBlockHeadline1": "集中を続けましょう",
+  "focusBlockHeadline2": "そのまま続けて",
+  "endFocusSessionButton": "集中セッションを終了",
+  "focusPaused": "礼拝のため一時停止中"
 }

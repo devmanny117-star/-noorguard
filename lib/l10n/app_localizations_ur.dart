@@ -1899,4 +1899,16 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get quranChallengeComplete => 'بہت خوب — ایپس کھل گئیں';
+
+  @override
+  String get focusBlockHeadline1 => 'توجہ مرکوز رکھیں';
+
+  @override
+  String get focusBlockHeadline2 => 'جاری رکھیں';
+
+  @override
+  String get endFocusSessionButton => 'فوکس سیشن ختم کریں';
+
+  @override
+  String get focusPaused => 'نماز کے لیے رکا ہوا';
 }

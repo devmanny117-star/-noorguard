@@ -25,6 +25,39 @@ class AppBlockingStore(context: Context) {
     val strings: Map<String, String>
         get() = STRING_KEYS.associateWith { prefs.getString(it, "") ?: "" }
 
+    /** Null when no Focus Mode session is running. Set/cleared by Dart via
+     * MainActivity.updateFocusSession, and cleared natively when the user
+     * taps "End Focus Session" on the focus block screen. */
+    var focusSessionEndMillis: Long?
+        get() = prefs.getLong("focus_session_end", 0L).takeIf { it > 0L }
+        set(value) {
+            val editor = prefs.edit()
+            if (value == null) editor.remove("focus_session_end") else editor.putLong("focus_session_end", value)
+            editor.apply()
+        }
+
+    fun clearFocusSession() {
+        focusSessionEndMillis = null
+    }
+
+    sealed class BlockSource {
+        data class Prayer(val window: Window) : BlockSource()
+        data class Focus(val endMillis: Long) : BlockSource()
+    }
+
+    /** Single decision point for "what, if anything, should block right now" —
+     * prayer windows outrank a running focus session, and a focus session is
+     * checked regardless of the [enabled] (prayer auto-blocking) toggle, since
+     * starting a session is its own explicit user action. */
+    fun activeBlockSource(prayerBlockingEnabled: Boolean, nowMillis: Long = System.currentTimeMillis()): BlockSource? {
+        if (prayerBlockingEnabled) {
+            activeWindow(nowMillis)?.let { return BlockSource.Prayer(it) }
+        }
+        val focusEnd = focusSessionEndMillis
+        if (focusEnd != null && focusEnd > nowMillis) return BlockSource.Focus(focusEnd)
+        return null
+    }
+
     private fun windows(): List<Window> {
         val raw = prefs.getString("windows", "") ?: ""
         if (raw.isBlank()) return emptyList()
@@ -84,6 +117,7 @@ class AppBlockingStore(context: Context) {
             "headline1", "headline2", "iPrayed", "readAyahs", "emergencyBypass",
             "bypassConfirmTitle", "bypassConfirmBody", "bypassConfirmContinue", "bypassConfirmCancel",
             "softReminderTitle", "softReminderBody",
+            "focusHeadline1", "focusHeadline2", "endFocusSession",
         )
     }
 }

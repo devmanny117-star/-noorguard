@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "নামাজের সময় হয়েছে — একটু সময়ের জন্য দূরে থাকার কথা বিবেচনা করুন।",
   "quranChallengeBannerTitle": "আনলক করতে ৩টি আয়াত পড়ুন",
   "quranChallengeBannerProgress": "{total}টির মধ্যে {count}টি আয়াত পড়া হয়েছে",
-  "quranChallengeComplete": "সাবাশ — অ্যাপগুলো আনলক হয়েছে"
+  "quranChallengeComplete": "সাবাশ — অ্যাপগুলো আনলক হয়েছে",
+  "focusBlockHeadline1": "মনোযোগ ধরে রাখুন",
+  "focusBlockHeadline2": "চালিয়ে যান",
+  "endFocusSessionButton": "ফোকাস সেশন শেষ করুন",
+  "focusPaused": "নামাজের জন্য বিরত"
 }

@@ -2328,5 +2328,21 @@
   "quranChallengeComplete": "Well done — apps unlocked",
   "@quranChallengeComplete": {
     "description": "Message shown when the ayah-challenge is completed and the block is lifted"
+  },
+  "focusBlockHeadline1": "Stay Focused",
+  "@focusBlockHeadline1": {
+    "description": "First of two alternating headlines shown on the block screen during an active Focus Mode session"
+  },
+  "focusBlockHeadline2": "Keep Going",
+  "@focusBlockHeadline2": {
+    "description": "Second of two alternating headlines shown on the block screen during an active Focus Mode session"
+  },
+  "endFocusSessionButton": "End Focus Session",
+  "@endFocusSessionButton": {
+    "description": "Primary button on the block screen when it was triggered by an active Focus Mode session (in place of \"I Prayed\")"
+  },
+  "focusPaused": "Paused for prayer",
+  "@focusPaused": {
+    "description": "Status label shown on the Focus Mode timer when it's automatically paused during an active prayer block window"
   }
 }

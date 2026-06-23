@@ -31,6 +31,9 @@ data class WidgetData(
     val labelStreak: String,
     val labelDayStreak: String,
     val labelQibla: String,
+    val focusActive: Boolean,
+    val focusEndEpochMillis: Long?,
+    val labelFocusMode: String,
 ) {
     companion object {
         private const val DOUBLE_MARKER_PREFIX = "home_widget.double."
@@ -59,6 +62,7 @@ data class WidgetData(
             }
 
             val epochMillis = prefs.getLong("next_prayer_epoch_millis", -1L)
+            val focusEndMillis = prefs.getLong("focus_end_epoch_millis", -1L)
             return WidgetData(
                 nextPrayerName = prefs.getString("next_prayer_name", "") ?: "",
                 nextPrayerTime = prefs.getString("next_prayer_time", "") ?: "",
@@ -76,6 +80,9 @@ data class WidgetData(
                 labelStreak = prefs.getString("label_streak", "Streak") ?: "Streak",
                 labelDayStreak = prefs.getString("label_day_streak", "day streak") ?: "day streak",
                 labelQibla = prefs.getString("label_qibla", "Qibla") ?: "Qibla",
+                focusActive = prefs.getBoolean("focus_active", false),
+                focusEndEpochMillis = if (focusEndMillis > 0) focusEndMillis else null,
+                labelFocusMode = prefs.getString("label_focus_mode", "Focus Mode") ?: "Focus Mode",
             )
         }
 
@@ -99,6 +106,18 @@ data class WidgetData(
      * AppWidget's periodic update) so it stays accurate without a live timer. */
     fun countdownLabel(): String {
         val target = nextPrayerEpochMillis ?: return ""
+        val diff = target - System.currentTimeMillis()
+        if (diff <= 0) return ""
+        val totalMinutes = diff / 60000
+        val hours = totalMinutes / 60
+        val minutes = totalMinutes % 60
+        return if (hours > 0) "${hours}h ${minutes}m" else "${minutes}m"
+    }
+
+    /** Same "2h 15m" / "45m" style as [countdownLabel], for the running Focus
+     * Mode session instead of the next prayer. */
+    fun focusRemainingLabel(): String {
+        val target = focusEndEpochMillis ?: return ""
         val diff = target - System.currentTimeMillis()
         if (diff <= 0) return ""
         val totalMinutes = diff / 60000

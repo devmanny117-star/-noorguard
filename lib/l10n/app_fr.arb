@@ -565,5 +565,9 @@
   "appBlockingSoftReminderBody": "C'est l'heure de la prière — pense à t'éloigner un instant.",
   "quranChallengeBannerTitle": "Lis 3 versets pour débloquer",
   "quranChallengeBannerProgress": "{count} sur {total} versets lus",
-  "quranChallengeComplete": "Bien joué — applis débloquées"
+  "quranChallengeComplete": "Bien joué — applis débloquées",
+  "focusBlockHeadline1": "Reste concentré",
+  "focusBlockHeadline2": "Continue",
+  "endFocusSessionButton": "Terminer la session de concentration",
+  "focusPaused": "En pause pour la prière"
 }
