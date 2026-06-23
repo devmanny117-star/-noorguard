@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
@@ -679,7 +678,7 @@ class _AppsPickerScreenState extends State<_AppsPickerScreen> {
   }
 
   Future<void> _load() async {
-    final apps = await _service.getInstalledApps();
+    final apps = await _service.getInstalledApps(forceRefresh: true);
     if (!mounted) return;
     setState(() {
       _apps = apps;
@@ -811,7 +810,7 @@ class _AppPickerRow extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: app.iconBytes != null
-                ? Image.memory(Uint8List.fromList(app.iconBytes!),
+                ? Image.memory(app.iconBytes!,
                     width: 38, height: 38, fit: BoxFit.cover)
                 : Container(
                     width: 38,

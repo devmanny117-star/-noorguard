@@ -3,46 +3,15 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/app_model.dart';
 import '../models/dua_model.dart';
+import '../models/installed_app.dart';
+import '../services/app_blocking_service.dart';
 import '../theme/app_theme.dart';
 import '../l10n/app_localizations.dart';
 
-// The 4 specific apps shown as blocked in focus mode
-final _kFocusApps = <AppItem>[
-  AppItem(
-    name: 'Instagram',
-    category: 'Social Media',
-    icon: Icons.camera_alt_rounded,
-    iconColor: const Color(0xFFE1306C),
-    iconBg: const Color(0xFFFCE4EC),
-    isBlocked: true,
-  ),
-  AppItem(
-    name: 'TikTok',
-    category: 'Social Media',
-    icon: Icons.music_note_rounded,
-    iconColor: const Color(0xFF010101),
-    iconBg: const Color(0xFFF5F5F5),
-    isBlocked: true,
-  ),
-  AppItem(
-    name: 'YouTube',
-    category: 'Entertainment',
-    icon: Icons.play_circle_filled_rounded,
-    iconColor: const Color(0xFFFF0000),
-    iconBg: const Color(0xFFFFEBEE),
-    isBlocked: true,
-  ),
-  AppItem(
-    name: 'Twitter',
-    category: 'Social Media',
-    icon: Icons.alternate_email_rounded,
-    iconColor: const Color(0xFF1DA1F2),
-    iconBg: const Color(0xFFE3F2FD),
-    isBlocked: true,
-  ),
-];
+// Shown as blocked in Focus Mode's preview row, capped for the row's layout
+// — the count badge still reflects the full blocked-apps total.
+const _kFocusPreviewLimit = 4;
 
 class FocusModeScreen extends StatefulWidget {
   const FocusModeScreen({super.key});
@@ -66,6 +35,9 @@ class _FocusModeScreenState extends State<FocusModeScreen>
   late AnimationController _duaFadeCtrl;
   late Animation<double> _duaFade;
 
+  List<InstalledApp> _blockedApps = [];
+  bool _loadingBlockedApps = true;
+
   @override
   void initState() {
     super.initState();
@@ -83,6 +55,21 @@ class _FocusModeScreenState extends State<FocusModeScreen>
       duration: const Duration(milliseconds: 600),
     )..value = 1.0;
     _duaFade = CurvedAnimation(parent: _duaFadeCtrl, curve: Curves.easeInOut);
+
+    _loadBlockedApps();
+  }
+
+  /// Pulls the same apps selected in App Blocking, with their real launcher
+  /// icons — Focus Mode has no separate app-selection list of its own.
+  Future<void> _loadBlockedApps() async {
+    final service = AppBlockingService();
+    await service.loadSettings();
+    final apps = await service.getBlockedAppsWithIcons();
+    if (!mounted) return;
+    setState(() {
+      _blockedApps = apps;
+      _loadingBlockedApps = false;
+    });
   }
 
   @override
@@ -221,7 +208,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
                     ),
                     const SizedBox(height: 28),
                     _BlockedAppsPreview(
-                      apps: _kFocusApps,
+                      apps: _blockedApps,
+                      loading: _loadingBlockedApps,
                       isRunning: _isRunning,
                     ),
                     const SizedBox(height: 28),
@@ -671,11 +659,13 @@ class _PresetRow extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _BlockedAppsPreview extends StatelessWidget {
-  final List<AppItem> apps;
+  final List<InstalledApp> apps;
+  final bool loading;
   final bool isRunning;
 
   const _BlockedAppsPreview({
     required this.apps,
+    required this.loading,
     required this.isRunning,
   });
 
@@ -683,6 +673,7 @@ class _BlockedAppsPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
+    final preview = apps.take(_kFocusPreviewLimit).toList();
 
     return Container(
       padding: const EdgeInsets.all(18),
@@ -735,12 +726,29 @@ class _BlockedAppsPreview extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: apps
-                .map((a) => _BlockedAppIcon(app: a, isRunning: isRunning))
-                .toList(),
-          ),
+          if (loading)
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: Center(
+                child: SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+              ),
+            )
+          else if (preview.isEmpty)
+            Text(
+              l10n.appBlockingNoAppsSelected,
+              style: GoogleFonts.lato(fontSize: 12.5, color: colors.secondaryText),
+            )
+          else
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: preview
+                  .map((a) => _BlockedAppIcon(app: a, isRunning: isRunning))
+                  .toList(),
+            ),
         ],
       ),
     );
@@ -748,7 +756,7 @@ class _BlockedAppsPreview extends StatelessWidget {
 }
 
 class _BlockedAppIcon extends StatelessWidget {
-  final AppItem app;
+  final InstalledApp app;
   final bool isRunning;
 
   const _BlockedAppIcon({required this.app, required this.isRunning});
@@ -760,11 +768,14 @@ class _BlockedAppIcon extends StatelessWidget {
     Widget icon = Container(
       width: 52,
       height: 52,
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: app.iconBg,
+        color: colors.secondaryBg,
         borderRadius: BorderRadius.circular(14),
       ),
-      child: Icon(app.icon, color: app.iconColor, size: 28),
+      child: app.iconBytes != null
+          ? Image.memory(app.iconBytes!, fit: BoxFit.cover)
+          : Icon(Icons.apps_rounded, color: colors.secondaryText, size: 28),
     );
 
     // Grey out the icons only while a session is active
@@ -812,12 +823,18 @@ class _BlockedAppIcon extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 7),
-        Text(
-          app.name,
-          style: GoogleFonts.lato(
-            fontSize: 10,
-            color: colors.secondaryText,
-            fontWeight: FontWeight.w500,
+        SizedBox(
+          width: 60,
+          child: Text(
+            app.appName,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.lato(
+              fontSize: 10,
+              color: colors.secondaryText,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],

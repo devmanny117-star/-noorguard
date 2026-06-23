@@ -114,20 +114,41 @@ class AppBlockingService extends ChangeNotifier {
     await _persist();
   }
 
-  Future<List<InstalledApp>> getInstalledApps() async {
+  /// Cached so screens that just need a few icons (Focus Mode) don't pay for
+  /// a full re-fetch + re-decode of every installed app's icon on every
+  /// build. Pass `forceRefresh: true` where freshness matters more than
+  /// speed (the App Blocking apps picker, opened specifically to manage this
+  /// list).
+  List<InstalledApp>? _cachedApps;
+
+  Future<List<InstalledApp>> getInstalledApps({bool forceRefresh = false}) async {
     if (!Platform.isAndroid) return [];
+    if (!forceRefresh && _cachedApps != null) return _cachedApps!;
     try {
       final result =
           await _channel.invokeMethod<List<dynamic>>('getInstalledApps');
-      return (result ?? [])
+      final apps = (result ?? [])
           .map((e) => InstalledApp.fromMap(e as Map<dynamic, dynamic>))
           .where((a) => !a.isSystemApp)
           .toList()
         ..sort((a, b) =>
             a.appName.toLowerCase().compareTo(b.appName.toLowerCase()));
+      _cachedApps = apps;
+      return apps;
     } catch (_) {
-      return [];
+      return _cachedApps ?? [];
     }
+  }
+
+  /// Resolves the currently blocked packages to their real installed-app
+  /// data (name + icon), for previews like Focus Mode's blocked-apps row.
+  Future<List<InstalledApp>> getBlockedAppsWithIcons() async {
+    final apps = await getInstalledApps();
+    final byPackage = {for (final a in apps) a.packageName: a};
+    return blockedPackages
+        .map((pkg) => byPackage[pkg])
+        .whereType<InstalledApp>()
+        .toList();
   }
 
   Future<bool> isAccessibilityServiceEnabled() async {

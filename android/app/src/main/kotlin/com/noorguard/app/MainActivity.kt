@@ -501,8 +501,14 @@ class MainActivity : AudioServiceActivity() {
             if (!seen.add(pkg)) continue
             val appInfo = info.activityInfo.applicationInfo
             val isSystemApp = (appInfo.flags and android.content.pm.ApplicationInfo.FLAG_SYSTEM) != 0
+            // info.loadIcon() — not a second pm.getApplicationIcon(pkg) lookup —
+            // resolves the icon directly from this already-visible ResolveInfo,
+            // the exact same call the real launcher makes for its home screen
+            // icons. A separate by-package-name lookup can silently fail under
+            // Android 11+ package-visibility filtering and fall back to a
+            // generic icon, which is what made these look like placeholders.
             val iconBytes = try {
-                iconToPngBytes(pm.getApplicationIcon(pkg))
+                iconToPngBytes(info.loadIcon(pm))
             } catch (_: Exception) {
                 null
             }
@@ -519,7 +525,9 @@ class MainActivity : AudioServiceActivity() {
     }
 
     private fun iconToPngBytes(drawable: android.graphics.drawable.Drawable): ByteArray {
-        val size = 96
+        // 144px covers up to ~xxhdpi at the picker's 38dp row icon size without
+        // visible upscaling blur on high-density phones.
+        val size = 144
         val bitmap = if (drawable is android.graphics.drawable.BitmapDrawable) {
             android.graphics.Bitmap.createScaledBitmap(drawable.bitmap, size, size, true)
         } else {

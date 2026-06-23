@@ -1,8 +1,7 @@
 import 'dart:typed_data';
 
-/// A real, on-device app returned by the native `getInstalledApps` call —
-/// distinct from the hardcoded preview apps in `app_model.dart`, which Focus
-/// Mode still uses for its own mock "blocked apps" chips.
+/// A real, on-device app — name, package, and real launcher icon — returned
+/// by the native `getInstalledApps` call.
 class InstalledApp {
   final String packageName;
   final String appName;
@@ -19,9 +18,9 @@ class InstalledApp {
   factory InstalledApp.fromMap(Map<dynamic, dynamic> map) => InstalledApp(
         packageName: map['packageName'] as String,
         appName: map['appName'] as String,
-        iconBytes: map['icon'] != null
-            ? Uint8List.fromList(List<int>.from(map['icon'] as List))
-            : null,
+        // The platform channel's standard codec already decodes a Kotlin
+        // ByteArray straight into a Uint8List — no further conversion needed.
+        iconBytes: map['icon'] as Uint8List?,
         isSystemApp: map['isSystemApp'] as bool? ?? false,
       );
 }
