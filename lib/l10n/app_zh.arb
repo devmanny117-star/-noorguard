@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "保持专注",
   "focusBlockHeadline2": "继续坚持",
   "endFocusSessionButton": "结束专注时段",
-  "focusPaused": "已暂停以进行礼拜"
+  "focusPaused": "已暂停以进行礼拜",
+  "selectLocationTitle": "选择位置",
+  "useCurrentLocation": "使用当前位置",
+  "savedLocationsHeader": "已保存的位置",
+  "noSavedLocationsYet": "还没有保存的位置。在下方搜索以添加一个。",
+  "searchCityHint": "搜索城市名称…",
+  "addLocationTooltip": "添加位置",
+  "deleteLocationTooltip": "删除位置",
+  "locationNotFound": "未找到该位置。请尝试其他搜索。",
+  "maxLocationsReachedMessage": "您最多可以保存 {max} 个位置"
 }

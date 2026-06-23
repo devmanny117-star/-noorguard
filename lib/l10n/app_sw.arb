@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "Dumisha Umakini",
   "focusBlockHeadline2": "Endelea",
   "endFocusSessionButton": "Komesha Kipindi cha Umakini",
-  "focusPaused": "Imesimamishwa kwa Swala"
+  "focusPaused": "Imesimamishwa kwa Swala",
+  "selectLocationTitle": "Chagua Mahali",
+  "useCurrentLocation": "Tumia Mahali pa Sasa",
+  "savedLocationsHeader": "Maeneo Yaliyohifadhiwa",
+  "noSavedLocationsYet": "Hakuna maeneo yaliyohifadhiwa bado. Tafuta hapa chini ili kuongeza moja.",
+  "searchCityHint": "Tafuta jina la jiji…",
+  "addLocationTooltip": "Ongeza mahali",
+  "deleteLocationTooltip": "Futa mahali",
+  "locationNotFound": "Mahali hapakupatikana. Jaribu utafutaji mwingine.",
+  "maxLocationsReachedMessage": "Unaweza kuhifadhi hadi maeneo {max}"
 }

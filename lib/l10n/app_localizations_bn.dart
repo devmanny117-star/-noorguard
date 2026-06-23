@@ -1936,4 +1936,35 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get focusPaused => 'নামাজের জন্য বিরত';
+
+  @override
+  String get selectLocationTitle => 'অবস্থান নির্বাচন করুন';
+
+  @override
+  String get useCurrentLocation => 'বর্তমান অবস্থান ব্যবহার করুন';
+
+  @override
+  String get savedLocationsHeader => 'সংরক্ষিত অবস্থান';
+
+  @override
+  String get noSavedLocationsYet =>
+      'এখনও কোনো অবস্থান সংরক্ষিত নেই। যোগ করতে নিচে অনুসন্ধান করুন।';
+
+  @override
+  String get searchCityHint => 'শহরের নাম অনুসন্ধান করুন…';
+
+  @override
+  String get addLocationTooltip => 'অবস্থান যুক্ত করুন';
+
+  @override
+  String get deleteLocationTooltip => 'অবস্থান মুছুন';
+
+  @override
+  String get locationNotFound =>
+      'অবস্থান পাওয়া যায়নি। অন্য অনুসন্ধান চেষ্টা করুন।';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'আপনি সর্বোচ্চ $maxটি অবস্থান সংরক্ষণ করতে পারেন';
+  }
 }

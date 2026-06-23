@@ -1938,4 +1938,35 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get focusPaused => 'Pausado para a oração';
+
+  @override
+  String get selectLocationTitle => 'Selecionar localização';
+
+  @override
+  String get useCurrentLocation => 'Usar localização atual';
+
+  @override
+  String get savedLocationsHeader => 'Localizações salvas';
+
+  @override
+  String get noSavedLocationsYet =>
+      'Ainda não há localizações salvas. Pesquise abaixo para adicionar uma.';
+
+  @override
+  String get searchCityHint => 'Pesquisar nome da cidade…';
+
+  @override
+  String get addLocationTooltip => 'Adicionar localização';
+
+  @override
+  String get deleteLocationTooltip => 'Excluir localização';
+
+  @override
+  String get locationNotFound =>
+      'Localização não encontrada. Tente outra pesquisa.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'Você pode salvar até $max localizações';
+  }
 }

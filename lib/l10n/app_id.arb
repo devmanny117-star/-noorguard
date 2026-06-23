@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "Tetap Fokus",
   "focusBlockHeadline2": "Terus Lanjutkan",
   "endFocusSessionButton": "Akhiri Sesi Fokus",
-  "focusPaused": "Dijeda untuk Shalat"
+  "focusPaused": "Dijeda untuk Shalat",
+  "selectLocationTitle": "Pilih Lokasi",
+  "useCurrentLocation": "Gunakan Lokasi Saat Ini",
+  "savedLocationsHeader": "Lokasi Tersimpan",
+  "noSavedLocationsYet": "Belum ada lokasi tersimpan. Cari di bawah untuk menambahkannya.",
+  "searchCityHint": "Cari nama kota…",
+  "addLocationTooltip": "Tambah lokasi",
+  "deleteLocationTooltip": "Hapus lokasi",
+  "locationNotFound": "Lokasi tidak ditemukan. Coba pencarian lain.",
+  "maxLocationsReachedMessage": "Anda dapat menyimpan hingga {max} lokasi"
 }

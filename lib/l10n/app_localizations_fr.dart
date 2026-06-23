@@ -1955,4 +1955,35 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get focusPaused => 'En pause pour la prière';
+
+  @override
+  String get selectLocationTitle => 'Sélectionner un lieu';
+
+  @override
+  String get useCurrentLocation => 'Utiliser la position actuelle';
+
+  @override
+  String get savedLocationsHeader => 'Lieux enregistrés';
+
+  @override
+  String get noSavedLocationsYet =>
+      'Aucun lieu enregistré pour le moment. Recherchez ci-dessous pour en ajouter un.';
+
+  @override
+  String get searchCityHint => 'Rechercher un nom de ville…';
+
+  @override
+  String get addLocationTooltip => 'Ajouter un lieu';
+
+  @override
+  String get deleteLocationTooltip => 'Supprimer le lieu';
+
+  @override
+  String get locationNotFound =>
+      'Lieu introuvable. Essayez une autre recherche.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'Vous pouvez enregistrer jusqu\'à $max lieux';
+  }
 }

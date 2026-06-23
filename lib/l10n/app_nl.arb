@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "Blijf gefocust",
   "focusBlockHeadline2": "Ga door",
   "endFocusSessionButton": "Focussessie beëindigen",
-  "focusPaused": "Gepauzeerd voor het gebed"
+  "focusPaused": "Gepauzeerd voor het gebed",
+  "selectLocationTitle": "Locatie selecteren",
+  "useCurrentLocation": "Huidige locatie gebruiken",
+  "savedLocationsHeader": "Opgeslagen locaties",
+  "noSavedLocationsYet": "Nog geen opgeslagen locaties. Zoek hieronder om er een toe te voegen.",
+  "searchCityHint": "Zoek plaatsnaam…",
+  "addLocationTooltip": "Locatie toevoegen",
+  "deleteLocationTooltip": "Locatie verwijderen",
+  "locationNotFound": "Locatie niet gevonden. Probeer een andere zoekopdracht.",
+  "maxLocationsReachedMessage": "Je kunt tot {max} locaties opslaan"
 }

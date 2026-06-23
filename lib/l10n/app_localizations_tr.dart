@@ -1930,4 +1930,34 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get focusPaused => 'Namaz İçin Duraklatıldı';
+
+  @override
+  String get selectLocationTitle => 'Konum Seç';
+
+  @override
+  String get useCurrentLocation => 'Geçerli Konumu Kullan';
+
+  @override
+  String get savedLocationsHeader => 'Kayıtlı Konumlar';
+
+  @override
+  String get noSavedLocationsYet =>
+      'Henüz kayıtlı konum yok. Eklemek için aşağıdan arayın.';
+
+  @override
+  String get searchCityHint => 'Şehir adı ara…';
+
+  @override
+  String get addLocationTooltip => 'Konum ekle';
+
+  @override
+  String get deleteLocationTooltip => 'Konumu sil';
+
+  @override
+  String get locationNotFound => 'Konum bulunamadı. Farklı bir arama deneyin.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'En fazla $max konum kaydedebilirsiniz';
+  }
 }

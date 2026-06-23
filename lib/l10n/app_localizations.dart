@@ -3567,6 +3567,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Paused for prayer'**
   String get focusPaused;
+
+  /// Title of the location-management bottom sheet opened from the Qibla screen
+  ///
+  /// In en, this message translates to:
+  /// **'Select Location'**
+  String get selectLocationTitle;
+
+  /// Row label in the location sheet for switching back to the device's live GPS position
+  ///
+  /// In en, this message translates to:
+  /// **'Use Current Location'**
+  String get useCurrentLocation;
+
+  /// Section heading above the list of saved locations in the location sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Locations'**
+  String get savedLocationsHeader;
+
+  /// Empty-state message shown in the location sheet when no locations have been saved
+  ///
+  /// In en, this message translates to:
+  /// **'No saved locations yet. Search below to add one.'**
+  String get noSavedLocationsYet;
+
+  /// Hint text for the city-name search field in the location sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Search city name…'**
+  String get searchCityHint;
+
+  /// Tooltip for the button that adds the searched city as a saved location
+  ///
+  /// In en, this message translates to:
+  /// **'Add location'**
+  String get addLocationTooltip;
+
+  /// Tooltip for the button that deletes a saved location
+  ///
+  /// In en, this message translates to:
+  /// **'Delete location'**
+  String get deleteLocationTooltip;
+
+  /// Error message shown when a searched city name can't be geocoded
+  ///
+  /// In en, this message translates to:
+  /// **'Location not found. Try a different search.'**
+  String get locationNotFound;
+
+  /// Message shown in place of the search field once the saved-location limit is reached
+  ///
+  /// In en, this message translates to:
+  /// **'You can save up to {max} locations'**
+  String maxLocationsReachedMessage(int max);
 }
 
 class _AppLocalizationsDelegate

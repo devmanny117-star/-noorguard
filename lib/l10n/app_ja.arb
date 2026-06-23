@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "集中を続けましょう",
   "focusBlockHeadline2": "そのまま続けて",
   "endFocusSessionButton": "集中セッションを終了",
-  "focusPaused": "礼拝のため一時停止中"
+  "focusPaused": "礼拝のため一時停止中",
+  "selectLocationTitle": "場所を選択",
+  "useCurrentLocation": "現在の場所を使用",
+  "savedLocationsHeader": "保存した場所",
+  "noSavedLocationsYet": "保存された場所はまだありません。下で検索して追加してください。",
+  "searchCityHint": "都市名を検索…",
+  "addLocationTooltip": "場所を追加",
+  "deleteLocationTooltip": "場所を削除",
+  "locationNotFound": "場所が見つかりません。別の検索を試してください。",
+  "maxLocationsReachedMessage": "最大{max}件の場所を保存できます"
 }

@@ -1941,4 +1941,35 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get focusPaused => 'Pausiert für das Gebet';
+
+  @override
+  String get selectLocationTitle => 'Standort auswählen';
+
+  @override
+  String get useCurrentLocation => 'Aktuellen Standort verwenden';
+
+  @override
+  String get savedLocationsHeader => 'Gespeicherte Standorte';
+
+  @override
+  String get noSavedLocationsYet =>
+      'Noch keine gespeicherten Standorte. Suche unten, um einen hinzuzufügen.';
+
+  @override
+  String get searchCityHint => 'Stadtname suchen…';
+
+  @override
+  String get addLocationTooltip => 'Standort hinzufügen';
+
+  @override
+  String get deleteLocationTooltip => 'Standort löschen';
+
+  @override
+  String get locationNotFound =>
+      'Standort nicht gefunden. Versuche eine andere Suche.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'Du kannst bis zu $max Standorte speichern';
+  }
 }

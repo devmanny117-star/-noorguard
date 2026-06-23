@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "Mantenha o foco",
   "focusBlockHeadline2": "Continue assim",
   "endFocusSessionButton": "Encerrar sessão de foco",
-  "focusPaused": "Pausado para a oração"
+  "focusPaused": "Pausado para a oração",
+  "selectLocationTitle": "Selecionar localização",
+  "useCurrentLocation": "Usar localização atual",
+  "savedLocationsHeader": "Localizações salvas",
+  "noSavedLocationsYet": "Ainda não há localizações salvas. Pesquise abaixo para adicionar uma.",
+  "searchCityHint": "Pesquisar nome da cidade…",
+  "addLocationTooltip": "Adicionar localização",
+  "deleteLocationTooltip": "Excluir localização",
+  "locationNotFound": "Localização não encontrada. Tente outra pesquisa.",
+  "maxLocationsReachedMessage": "Você pode salvar até {max} localizações"
 }

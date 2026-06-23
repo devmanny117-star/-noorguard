@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "حافظ على تركيزك",
   "focusBlockHeadline2": "استمر",
   "endFocusSessionButton": "إنهاء جلسة التركيز",
-  "focusPaused": "متوقف للصلاة"
+  "focusPaused": "متوقف للصلاة",
+  "selectLocationTitle": "اختر الموقع",
+  "useCurrentLocation": "استخدام الموقع الحالي",
+  "savedLocationsHeader": "المواقع المحفوظة",
+  "noSavedLocationsYet": "لا توجد مواقع محفوظة حتى الآن. ابحث أدناه لإضافة موقع.",
+  "searchCityHint": "ابحث عن اسم المدينة…",
+  "addLocationTooltip": "إضافة موقع",
+  "deleteLocationTooltip": "حذف الموقع",
+  "locationNotFound": "لم يتم العثور على الموقع. حاول بحثًا مختلفًا.",
+  "maxLocationsReachedMessage": "يمكنك حفظ ما يصل إلى {max} مواقع"
 }

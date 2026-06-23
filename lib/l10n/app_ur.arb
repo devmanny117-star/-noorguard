@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "توجہ مرکوز رکھیں",
   "focusBlockHeadline2": "جاری رکھیں",
   "endFocusSessionButton": "فوکس سیشن ختم کریں",
-  "focusPaused": "نماز کے لیے رکا ہوا"
+  "focusPaused": "نماز کے لیے رکا ہوا",
+  "selectLocationTitle": "مقام منتخب کریں",
+  "useCurrentLocation": "موجودہ مقام استعمال کریں",
+  "savedLocationsHeader": "محفوظ مقامات",
+  "noSavedLocationsYet": "ابھی تک کوئی مقام محفوظ نہیں ہے۔ شامل کرنے کے لیے نیچے تلاش کریں۔",
+  "searchCityHint": "شہر کا نام تلاش کریں…",
+  "addLocationTooltip": "مقام شامل کریں",
+  "deleteLocationTooltip": "مقام حذف کریں",
+  "locationNotFound": "مقام نہیں ملا۔ مختلف تلاش آزمائیں۔",
+  "maxLocationsReachedMessage": "آپ زیادہ سے زیادہ {max} مقامات محفوظ کر سکتے ہیں"
 }

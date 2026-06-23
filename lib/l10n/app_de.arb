@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "Bleib fokussiert",
   "focusBlockHeadline2": "Mach weiter",
   "endFocusSessionButton": "Fokus-Sitzung beenden",
-  "focusPaused": "Pausiert für das Gebet"
+  "focusPaused": "Pausiert für das Gebet",
+  "selectLocationTitle": "Standort auswählen",
+  "useCurrentLocation": "Aktuellen Standort verwenden",
+  "savedLocationsHeader": "Gespeicherte Standorte",
+  "noSavedLocationsYet": "Noch keine gespeicherten Standorte. Suche unten, um einen hinzuzufügen.",
+  "searchCityHint": "Stadtname suchen…",
+  "addLocationTooltip": "Standort hinzufügen",
+  "deleteLocationTooltip": "Standort löschen",
+  "locationNotFound": "Standort nicht gefunden. Versuche eine andere Suche.",
+  "maxLocationsReachedMessage": "Du kannst bis zu {max} Standorte speichern"
 }

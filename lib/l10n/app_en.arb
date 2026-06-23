@@ -2360,5 +2360,46 @@
   "focusPaused": "Paused for prayer",
   "@focusPaused": {
     "description": "Status label shown on the Focus Mode timer when it's automatically paused during an active prayer block window"
+  },
+  "selectLocationTitle": "Select Location",
+  "@selectLocationTitle": {
+    "description": "Title of the location-management bottom sheet opened from the Qibla screen"
+  },
+  "useCurrentLocation": "Use Current Location",
+  "@useCurrentLocation": {
+    "description": "Row label in the location sheet for switching back to the device's live GPS position"
+  },
+  "savedLocationsHeader": "Saved Locations",
+  "@savedLocationsHeader": {
+    "description": "Section heading above the list of saved locations in the location sheet"
+  },
+  "noSavedLocationsYet": "No saved locations yet. Search below to add one.",
+  "@noSavedLocationsYet": {
+    "description": "Empty-state message shown in the location sheet when no locations have been saved"
+  },
+  "searchCityHint": "Search city name…",
+  "@searchCityHint": {
+    "description": "Hint text for the city-name search field in the location sheet"
+  },
+  "addLocationTooltip": "Add location",
+  "@addLocationTooltip": {
+    "description": "Tooltip for the button that adds the searched city as a saved location"
+  },
+  "deleteLocationTooltip": "Delete location",
+  "@deleteLocationTooltip": {
+    "description": "Tooltip for the button that deletes a saved location"
+  },
+  "locationNotFound": "Location not found. Try a different search.",
+  "@locationNotFound": {
+    "description": "Error message shown when a searched city name can't be geocoded"
+  },
+  "maxLocationsReachedMessage": "You can save up to {max} locations",
+  "@maxLocationsReachedMessage": {
+    "description": "Message shown in place of the search field once the saved-location limit is reached",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
   }
 }

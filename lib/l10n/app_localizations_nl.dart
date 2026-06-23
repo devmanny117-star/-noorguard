@@ -1936,4 +1936,35 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get focusPaused => 'Gepauzeerd voor het gebed';
+
+  @override
+  String get selectLocationTitle => 'Locatie selecteren';
+
+  @override
+  String get useCurrentLocation => 'Huidige locatie gebruiken';
+
+  @override
+  String get savedLocationsHeader => 'Opgeslagen locaties';
+
+  @override
+  String get noSavedLocationsYet =>
+      'Nog geen opgeslagen locaties. Zoek hieronder om er een toe te voegen.';
+
+  @override
+  String get searchCityHint => 'Zoek plaatsnaam…';
+
+  @override
+  String get addLocationTooltip => 'Locatie toevoegen';
+
+  @override
+  String get deleteLocationTooltip => 'Locatie verwijderen';
+
+  @override
+  String get locationNotFound =>
+      'Locatie niet gevonden. Probeer een andere zoekopdracht.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'Je kunt tot $max locaties opslaan';
+  }
 }

@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "Reste concentré",
   "focusBlockHeadline2": "Continue",
   "endFocusSessionButton": "Terminer la session de concentration",
-  "focusPaused": "En pause pour la prière"
+  "focusPaused": "En pause pour la prière",
+  "selectLocationTitle": "Sélectionner un lieu",
+  "useCurrentLocation": "Utiliser la position actuelle",
+  "savedLocationsHeader": "Lieux enregistrés",
+  "noSavedLocationsYet": "Aucun lieu enregistré pour le moment. Recherchez ci-dessous pour en ajouter un.",
+  "searchCityHint": "Rechercher un nom de ville…",
+  "addLocationTooltip": "Ajouter un lieu",
+  "deleteLocationTooltip": "Supprimer le lieu",
+  "locationNotFound": "Lieu introuvable. Essayez une autre recherche.",
+  "maxLocationsReachedMessage": "Vous pouvez enregistrer jusqu'à {max} lieux"
 }

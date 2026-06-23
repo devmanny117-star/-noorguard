@@ -1909,4 +1909,35 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get focusPaused => 'متوقف للصلاة';
+
+  @override
+  String get selectLocationTitle => 'اختر الموقع';
+
+  @override
+  String get useCurrentLocation => 'استخدام الموقع الحالي';
+
+  @override
+  String get savedLocationsHeader => 'المواقع المحفوظة';
+
+  @override
+  String get noSavedLocationsYet =>
+      'لا توجد مواقع محفوظة حتى الآن. ابحث أدناه لإضافة موقع.';
+
+  @override
+  String get searchCityHint => 'ابحث عن اسم المدينة…';
+
+  @override
+  String get addLocationTooltip => 'إضافة موقع';
+
+  @override
+  String get deleteLocationTooltip => 'حذف الموقع';
+
+  @override
+  String get locationNotFound =>
+      'لم يتم العثور على الموقع. حاول بحثًا مختلفًا.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'يمكنك حفظ ما يصل إلى $max مواقع';
+  }
 }

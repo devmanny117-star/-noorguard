@@ -1937,4 +1937,35 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get focusPaused => 'Imesimamishwa kwa Swala';
+
+  @override
+  String get selectLocationTitle => 'Chagua Mahali';
+
+  @override
+  String get useCurrentLocation => 'Tumia Mahali pa Sasa';
+
+  @override
+  String get savedLocationsHeader => 'Maeneo Yaliyohifadhiwa';
+
+  @override
+  String get noSavedLocationsYet =>
+      'Hakuna maeneo yaliyohifadhiwa bado. Tafuta hapa chini ili kuongeza moja.';
+
+  @override
+  String get searchCityHint => 'Tafuta jina la jiji…';
+
+  @override
+  String get addLocationTooltip => 'Ongeza mahali';
+
+  @override
+  String get deleteLocationTooltip => 'Futa mahali';
+
+  @override
+  String get locationNotFound =>
+      'Mahali hapakupatikana. Jaribu utafutaji mwingine.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'Unaweza kuhifadhi hadi maeneo $max';
+  }
 }

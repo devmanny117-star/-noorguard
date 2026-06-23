@@ -1922,4 +1922,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get focusPaused => 'Paused for prayer';
+
+  @override
+  String get selectLocationTitle => 'Select Location';
+
+  @override
+  String get useCurrentLocation => 'Use Current Location';
+
+  @override
+  String get savedLocationsHeader => 'Saved Locations';
+
+  @override
+  String get noSavedLocationsYet =>
+      'No saved locations yet. Search below to add one.';
+
+  @override
+  String get searchCityHint => 'Search city name…';
+
+  @override
+  String get addLocationTooltip => 'Add location';
+
+  @override
+  String get deleteLocationTooltip => 'Delete location';
+
+  @override
+  String get locationNotFound => 'Location not found. Try a different search.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'You can save up to $max locations';
+  }
 }

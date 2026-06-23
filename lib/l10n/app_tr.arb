@@ -573,5 +573,14 @@
   "focusBlockHeadline1": "Odaklanmaya Devam Et",
   "focusBlockHeadline2": "Devam Et",
   "endFocusSessionButton": "Odaklanma Oturumunu Sonlandır",
-  "focusPaused": "Namaz İçin Duraklatıldı"
+  "focusPaused": "Namaz İçin Duraklatıldı",
+  "selectLocationTitle": "Konum Seç",
+  "useCurrentLocation": "Geçerli Konumu Kullan",
+  "savedLocationsHeader": "Kayıtlı Konumlar",
+  "noSavedLocationsYet": "Henüz kayıtlı konum yok. Eklemek için aşağıdan arayın.",
+  "searchCityHint": "Şehir adı ara…",
+  "addLocationTooltip": "Konum ekle",
+  "deleteLocationTooltip": "Konumu sil",
+  "locationNotFound": "Konum bulunamadı. Farklı bir arama deneyin.",
+  "maxLocationsReachedMessage": "En fazla {max} konum kaydedebilirsiniz"
 }

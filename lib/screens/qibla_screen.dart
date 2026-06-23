@@ -9,6 +9,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:vibration/vibration.dart';
+import '../models/saved_location_model.dart';
+import '../services/location_service.dart';
 import '../services/qibla_service.dart';
 import '../l10n/app_localizations.dart';
 
@@ -102,6 +104,12 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   bool   _usingDefault  = false;
   String _locationLabel = '';
 
+  final _locationService = LocationService();
+  List<SavedLocation> _savedLocations = [];
+  // The saved-location id currently in effect, or null to use the device's
+  // live GPS position (the original behavior of this screen).
+  String? _selectedLocationId;
+
   // Needle state (unbounded accumulator for shortest-path interpolation)
   double _needleAngle     = 0;
   double _prevNeedleAngle = 0;
@@ -155,6 +163,8 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   }
 
   Future<void> _init() async {
+    _savedLocations = await _locationService.loadSavedLocations();
+    _selectedLocationId = await _locationService.loadSelectedLocationId();
     await _resolveLocation();
     if (!kIsWeb) {
       _subscribeCompass();
@@ -197,6 +207,11 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   // ── Location ─────────────────────────────────────────────────────────────────
 
   Future<void> _resolveLocation() async {
+    final saved = _findSavedLocation(_selectedLocationId);
+    if (saved != null) {
+      _applySavedLocation(saved);
+      return;
+    }
     try {
       var perm = await Geolocator.checkPermission();
       if (perm == LocationPermission.denied) {
@@ -225,6 +240,51 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
           : '${lat.toStringAsFixed(2)}°, ${lng.toStringAsFixed(2)}°';
       _isLoading = false;
     });
+  }
+
+  SavedLocation? _findSavedLocation(String? id) {
+    if (id == null) return null;
+    for (final loc in _savedLocations) {
+      if (loc.id == id) return loc;
+    }
+    return null;
+  }
+
+  void _applySavedLocation(SavedLocation loc) {
+    if (!mounted) return;
+    setState(() {
+      _qiblaBearing  = QiblaService.calculateQiblaDirection(loc.latitude, loc.longitude);
+      _usingDefault  = false;
+      _locationLabel = loc.name;
+      _isLoading = false;
+    });
+  }
+
+  /// Switches the active location — `id` is a saved location's id, or null
+  /// to fall back to the device's live GPS position. Re-loads the saved
+  /// list first so a location added moments ago in the selector sheet is
+  /// immediately recognised, then recomputes the Qibla bearing right away.
+  Future<void> _selectLocation(String? id) async {
+    _savedLocations = await _locationService.loadSavedLocations();
+    _selectedLocationId = id;
+    await _locationService.saveSelectedLocationId(id);
+    if (id == null && mounted) setState(() => _isLoading = true);
+    await _resolveLocation();
+  }
+
+  Future<void> _openLocationSheet() async {
+    await showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) => _LocationSelectorSheet(
+        initialLocations: _savedLocations,
+        selectedId: _selectedLocationId,
+        onSelect: _selectLocation,
+      ),
+    );
+    final refreshed = await _locationService.loadSavedLocations();
+    if (mounted) setState(() => _savedLocations = refreshed);
   }
 
   // ── Compass stream ────────────────────────────────────────────────────────────
@@ -423,7 +483,11 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
         child: Column(
           children: [
             const SizedBox(height: 16),
-            _LocationChip(label: _locationLabel, isDefault: _usingDefault),
+            _LocationChip(
+              label: _locationLabel,
+              isDefault: _usingDefault,
+              onTap: _openLocationSheet,
+            ),
             const SizedBox(height: 6),
             Text(
               l10n.directionToSacredHouse,
@@ -1069,40 +1133,369 @@ class _NeedlePainter extends CustomPainter {
 class _LocationChip extends StatelessWidget {
   final String label;
   final bool   isDefault;
-  const _LocationChip({required this.label, required this.isDefault});
+  final VoidCallback onTap;
+  const _LocationChip({
+    required this.label,
+    required this.isDefault,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-      decoration: BoxDecoration(
-        color: _kCard,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: _kGold.withValues(alpha: isDefault ? 0.18 : 0.40),
-          width: 1,
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            isDefault ? Icons.location_off_outlined : Icons.my_location_rounded,
-            color: isDefault ? Colors.white30 : _kGold,
-            size: 14,
-          ),
-          const SizedBox(width: 6),
-          Text(
-            label,
-            style: GoogleFonts.lato(
-              fontSize: 12,
-              color: isDefault
-                  ? Colors.white.withValues(alpha: 0.35)
-                  : Colors.white.withValues(alpha: 0.70),
-              letterSpacing: 0.3,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          decoration: BoxDecoration(
+            color: _kCard,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: _kGold.withValues(alpha: isDefault ? 0.18 : 0.40),
+              width: 1,
             ),
           ),
-        ],
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                isDefault ? Icons.location_off_outlined : Icons.my_location_rounded,
+                color: isDefault ? Colors.white30 : _kGold,
+                size: 14,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                label,
+                style: GoogleFonts.lato(
+                  fontSize: 12,
+                  color: isDefault
+                      ? Colors.white.withValues(alpha: 0.35)
+                      : Colors.white.withValues(alpha: 0.70),
+                  letterSpacing: 0.3,
+                ),
+              ),
+              const SizedBox(width: 2),
+              Icon(
+                Icons.keyboard_arrow_down_rounded,
+                size: 16,
+                color: isDefault
+                    ? Colors.white30
+                    : _kGold.withValues(alpha: 0.7),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Location selector bottom sheet ────────────────────────────────────────────
+
+class _LocationSelectorSheet extends StatefulWidget {
+  final List<SavedLocation> initialLocations;
+  final String? selectedId;
+  final ValueChanged<String?> onSelect;
+
+  const _LocationSelectorSheet({
+    required this.initialLocations,
+    required this.selectedId,
+    required this.onSelect,
+  });
+
+  @override
+  State<_LocationSelectorSheet> createState() => _LocationSelectorSheetState();
+}
+
+class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
+  final _locationService = LocationService();
+  final _searchController = TextEditingController();
+
+  late List<SavedLocation> _locations;
+  late String? _selectedId;
+  bool _isSearching = false;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _locations  = List.of(widget.initialLocations);
+    _selectedId = widget.selectedId;
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _select(String? id) {
+    widget.onSelect(id);
+    Navigator.of(context).pop();
+  }
+
+  Future<void> _addLocation() async {
+    final query = _searchController.text.trim();
+    if (query.isEmpty) return;
+    setState(() {
+      _isSearching = true;
+      _error = null;
+    });
+    try {
+      final newLocation = await _locationService.geocodeCityName(query);
+      final updated = await _locationService.addLocation(newLocation);
+      if (!mounted) return;
+      setState(() {
+        _locations = updated;
+        _isSearching = false;
+        _searchController.clear();
+      });
+      _select(newLocation.id);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _isSearching = false;
+        _error = AppLocalizations.of(context)!.locationNotFound;
+      });
+    }
+  }
+
+  Future<void> _deleteLocation(String id) async {
+    final updated = await _locationService.deleteLocation(id);
+    if (!mounted) return;
+    final wasSelected = _selectedId == id;
+    setState(() {
+      _locations = updated;
+      if (wasSelected) _selectedId = null;
+    });
+    if (wasSelected) widget.onSelect(null);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final maxHeight = MediaQuery.of(context).size.height * 0.8;
+    final atMax = _locations.length >= LocationService.maxSavedLocations;
+
+    return Padding(
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: _kNavy,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 12),
+                Center(
+                  child: Container(
+                    width: 36,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: _kGold.withValues(alpha: 0.3),
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 18),
+                Text(
+                  l10n.selectLocationTitle,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                InkWell(
+                  onTap: () => _select(null),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.my_location_rounded, size: 18, color: _kGold),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            l10n.useCurrentLocation,
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                              fontWeight: _selectedId == null
+                                  ? FontWeight.w700
+                                  : FontWeight.w400,
+                              color: _selectedId == null ? _kGold : Colors.white,
+                            ),
+                          ),
+                        ),
+                        if (_selectedId == null)
+                          const Icon(Icons.check_rounded, size: 18, color: _kGold),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(color: _kGold.withValues(alpha: 0.12), height: 1),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 14, 24, 6),
+                  child: Text(
+                    l10n.savedLocationsHeader,
+                    style: GoogleFonts.lato(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white.withValues(alpha: 0.4),
+                      letterSpacing: 0.6,
+                    ),
+                  ),
+                ),
+                if (_locations.isEmpty)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
+                    child: Text(
+                      l10n.noSavedLocationsYet,
+                      style: GoogleFonts.lato(
+                        fontSize: 13,
+                        color: Colors.white.withValues(alpha: 0.45),
+                        height: 1.4,
+                      ),
+                    ),
+                  )
+                else
+                  ..._locations.map((loc) {
+                    final isSelected = loc.id == _selectedId;
+                    return InkWell(
+                      onTap: () => _select(loc.id),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.place_rounded,
+                              size: 18,
+                              color: isSelected ? _kGold : Colors.white38,
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                loc.name,
+                                style: GoogleFonts.lato(
+                                  fontSize: 15,
+                                  fontWeight: isSelected
+                                      ? FontWeight.w700
+                                      : FontWeight.w400,
+                                  color: isSelected ? _kGold : Colors.white,
+                                ),
+                              ),
+                            ),
+                            if (isSelected)
+                              const Padding(
+                                padding: EdgeInsets.only(right: 4),
+                                child: Icon(Icons.check_rounded, size: 18, color: _kGold),
+                              ),
+                            IconButton(
+                              icon: const Icon(
+                                Icons.delete_outline_rounded,
+                                size: 20,
+                                color: Colors.white38,
+                              ),
+                              tooltip: l10n.deleteLocationTooltip,
+                              onPressed: () => _deleteLocation(loc.id),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+                Divider(color: _kGold.withValues(alpha: 0.12), height: 1),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
+                  child: atMax
+                      ? Text(
+                          l10n.maxLocationsReachedMessage(LocationService.maxSavedLocations),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 12,
+                            color: Colors.white.withValues(alpha: 0.4),
+                          ),
+                        )
+                      : Row(
+                          children: [
+                            Expanded(
+                              child: TextField(
+                                controller: _searchController,
+                                style: GoogleFonts.lato(color: Colors.white, fontSize: 14),
+                                textInputAction: TextInputAction.search,
+                                onSubmitted: (_) => _addLocation(),
+                                decoration: InputDecoration(
+                                  hintText: l10n.searchCityHint,
+                                  hintStyle: GoogleFonts.lato(
+                                    color: Colors.white38,
+                                    fontSize: 14,
+                                  ),
+                                  filled: true,
+                                  fillColor: _kCard,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 14,
+                                    vertical: 12,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            SizedBox(
+                              height: 44,
+                              width: 44,
+                              child: ElevatedButton(
+                                onPressed: _isSearching ? null : _addLocation,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: _kGold,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  padding: EdgeInsets.zero,
+                                ),
+                                child: _isSearching
+                                    ? const SizedBox(
+                                        width: 18,
+                                        height: 18,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: _kNavy,
+                                        ),
+                                      )
+                                    : Icon(
+                                        Icons.add_rounded,
+                                        color: _kNavy,
+                                        semanticLabel: l10n.addLocationTooltip,
+                                      ),
+                              ),
+                            ),
+                          ],
+                        ),
+                ),
+                if (_error != null)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
+                    child: Text(
+                      _error!,
+                      style: GoogleFonts.lato(fontSize: 12, color: const Color(0xFFEF5350)),
+                    ),
+                  ),
+                SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

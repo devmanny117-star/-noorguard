@@ -1925,4 +1925,34 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get focusPaused => 'نماز کے لیے رکا ہوا';
+
+  @override
+  String get selectLocationTitle => 'مقام منتخب کریں';
+
+  @override
+  String get useCurrentLocation => 'موجودہ مقام استعمال کریں';
+
+  @override
+  String get savedLocationsHeader => 'محفوظ مقامات';
+
+  @override
+  String get noSavedLocationsYet =>
+      'ابھی تک کوئی مقام محفوظ نہیں ہے۔ شامل کرنے کے لیے نیچے تلاش کریں۔';
+
+  @override
+  String get searchCityHint => 'شہر کا نام تلاش کریں…';
+
+  @override
+  String get addLocationTooltip => 'مقام شامل کریں';
+
+  @override
+  String get deleteLocationTooltip => 'مقام حذف کریں';
+
+  @override
+  String get locationNotFound => 'مقام نہیں ملا۔ مختلف تلاش آزمائیں۔';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'آپ زیادہ سے زیادہ $max مقامات محفوظ کر سکتے ہیں';
+  }
 }

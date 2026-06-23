@@ -1856,4 +1856,33 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get focusPaused => '礼拝のため一時停止中';
+
+  @override
+  String get selectLocationTitle => '場所を選択';
+
+  @override
+  String get useCurrentLocation => '現在の場所を使用';
+
+  @override
+  String get savedLocationsHeader => '保存した場所';
+
+  @override
+  String get noSavedLocationsYet => '保存された場所はまだありません。下で検索して追加してください。';
+
+  @override
+  String get searchCityHint => '都市名を検索…';
+
+  @override
+  String get addLocationTooltip => '場所を追加';
+
+  @override
+  String get deleteLocationTooltip => '場所を削除';
+
+  @override
+  String get locationNotFound => '場所が見つかりません。別の検索を試してください。';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return '最大$max件の場所を保存できます';
+  }
 }

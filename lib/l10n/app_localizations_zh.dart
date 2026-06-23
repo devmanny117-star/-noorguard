@@ -1836,4 +1836,33 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get focusPaused => '已暂停以进行礼拜';
+
+  @override
+  String get selectLocationTitle => '选择位置';
+
+  @override
+  String get useCurrentLocation => '使用当前位置';
+
+  @override
+  String get savedLocationsHeader => '已保存的位置';
+
+  @override
+  String get noSavedLocationsYet => '还没有保存的位置。在下方搜索以添加一个。';
+
+  @override
+  String get searchCityHint => '搜索城市名称…';
+
+  @override
+  String get addLocationTooltip => '添加位置';
+
+  @override
+  String get deleteLocationTooltip => '删除位置';
+
+  @override
+  String get locationNotFound => '未找到该位置。请尝试其他搜索。';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return '您最多可以保存 $max 个位置';
+  }
 }

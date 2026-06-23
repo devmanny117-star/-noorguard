@@ -1937,4 +1937,34 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get focusPaused => 'Dijeda untuk Shalat';
+
+  @override
+  String get selectLocationTitle => 'Pilih Lokasi';
+
+  @override
+  String get useCurrentLocation => 'Gunakan Lokasi Saat Ini';
+
+  @override
+  String get savedLocationsHeader => 'Lokasi Tersimpan';
+
+  @override
+  String get noSavedLocationsYet =>
+      'Belum ada lokasi tersimpan. Cari di bawah untuk menambahkannya.';
+
+  @override
+  String get searchCityHint => 'Cari nama kota…';
+
+  @override
+  String get addLocationTooltip => 'Tambah lokasi';
+
+  @override
+  String get deleteLocationTooltip => 'Hapus lokasi';
+
+  @override
+  String get locationNotFound => 'Lokasi tidak ditemukan. Coba pencarian lain.';
+
+  @override
+  String maxLocationsReachedMessage(int max) {
+    return 'Anda dapat menyimpan hingga $max lokasi';
+  }
 }
