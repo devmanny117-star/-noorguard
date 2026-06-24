@@ -1892,6 +1892,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get appBlockingHeadline2 => 'Guarda tu tiempo';
 
   @override
+  String get appBlockingDefaultTitle => 'Hora de oración';
+
+  @override
   String get appBlockingIPrayedButton => 'Ya oré';
 
   @override
@@ -1899,6 +1902,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'Salida de emergencia';
+
+  @override
+  String get appBlockingSkipForNow => 'Omitir por ahora';
 
   @override
   String get appBlockingBypassConfirmTitle => '¿Terminar tu racha?';

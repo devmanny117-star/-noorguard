@@ -1859,6 +1859,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appBlockingHeadline2 => 'احفظ وقتك';
 
   @override
+  String get appBlockingDefaultTitle => 'وقت الصلاة';
+
+  @override
   String get appBlockingIPrayedButton => 'صلّيت';
 
   @override
@@ -1866,6 +1869,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'تجاوز للطوارئ';
+
+  @override
+  String get appBlockingSkipForNow => 'تخطّ الآن';
 
   @override
   String get appBlockingBypassConfirmTitle => 'إنهاء سلسلتك؟';

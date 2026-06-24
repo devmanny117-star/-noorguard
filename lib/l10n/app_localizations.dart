@@ -3472,6 +3472,12 @@ abstract class AppLocalizations {
   /// **'Guard Your Time'**
   String get appBlockingHeadline2;
 
+  /// Big title fallback on the block screen when no specific prayer name is available (e.g. a manual on-device test window)
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Time'**
+  String get appBlockingDefaultTitle;
+
   /// Primary button on the block screen that immediately dismisses the block
   ///
   /// In en, this message translates to:
@@ -3489,6 +3495,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Emergency bypass'**
   String get appBlockingEmergencyBypass;
+
+  /// Clearly visible button shown only in Firm mode's block screen that dismisses it immediately, with no prayer confirmation or ayah reading required
+  ///
+  /// In en, this message translates to:
+  /// **'Skip for now'**
+  String get appBlockingSkipForNow;
 
   /// Title of the confirmation dialog shown before an emergency bypass in Hard mode
   ///

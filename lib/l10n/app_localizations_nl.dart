@@ -1886,6 +1886,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appBlockingHeadline2 => 'Bewaak je tijd';
 
   @override
+  String get appBlockingDefaultTitle => 'Gebedstijd';
+
+  @override
   String get appBlockingIPrayedButton => 'Ik heb gebeden';
 
   @override
@@ -1893,6 +1896,9 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'Noodomleiding';
+
+  @override
+  String get appBlockingSkipForNow => 'Voor nu overslaan';
 
   @override
   String get appBlockingBypassConfirmTitle => 'Je reeks beëindigen?';

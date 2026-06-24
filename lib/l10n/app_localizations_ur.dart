@@ -1875,6 +1875,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get appBlockingHeadline2 => 'اپنا وقت محفوظ رکھیں';
 
   @override
+  String get appBlockingDefaultTitle => 'نماز کا وقت';
+
+  @override
   String get appBlockingIPrayedButton => 'میں نے نماز پڑھی';
 
   @override
@@ -1882,6 +1885,9 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'ہنگامی نظرانداز';
+
+  @override
+  String get appBlockingSkipForNow => 'ابھی کے لیے نظرانداز کریں';
 
   @override
   String get appBlockingBypassConfirmTitle => 'اپنا سلسلہ ختم کریں؟';

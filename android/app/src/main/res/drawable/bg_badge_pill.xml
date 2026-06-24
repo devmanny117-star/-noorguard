@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solid mode-colored pill for the block screen's Soft/Firm/Hard badge —
+     color is overwritten at runtime via GradientDrawable.setColor(). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/gold" />
+    <corners android:radius="22dp" />
+</shape>

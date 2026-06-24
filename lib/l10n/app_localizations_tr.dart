@@ -1880,6 +1880,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get appBlockingHeadline2 => 'Zamanını Koru';
 
   @override
+  String get appBlockingDefaultTitle => 'Namaz Vakti';
+
+  @override
   String get appBlockingIPrayedButton => 'Namaz Kıldım';
 
   @override
@@ -1887,6 +1890,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'Acil Durum Atlatması';
+
+  @override
+  String get appBlockingSkipForNow => 'Şimdilik Atla';
 
   @override
   String get appBlockingBypassConfirmTitle => 'Serini sonlandırılsın mı?';

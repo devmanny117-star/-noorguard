@@ -128,6 +128,23 @@ class AppBlockingStore(context: Context) {
         return true
     }
 
+    /** Clears every leftover per-package bypass (timed and single-use) before
+     *  a fresh manual test window starts. Without this, bypassing an app
+     *  during one on-device test (e.g. tapping "Skip for now" in a Firm-mode
+     *  test) leaves `bypass_until_<pkg>` set until that window's end time —
+     *  silently swallowing the *next* test run on the same app/package in
+     *  [AppBlockerAccessibilityService], since [isBypassed] is checked before
+     *  mode is even read. Real (non-test) prayer windows are unaffected. */
+    fun clearAllBypasses() {
+        val editor = prefs.edit()
+        for (key in prefs.all.keys) {
+            if (key.startsWith("bypass_until_") || key.startsWith("bypass_once_")) {
+                editor.remove(key)
+            }
+        }
+        editor.apply()
+    }
+
     /** Once per active window per package, so Soft mode nags only once, not on every glance. */
     fun shouldShowSoftReminder(pkg: String, windowStart: Long): Boolean {
         val last = prefs.getLong("soft_reminder_shown_$pkg", 0L)
@@ -160,7 +177,8 @@ class AppBlockingStore(context: Context) {
 
     companion object {
         val STRING_KEYS = listOf(
-            "headline1", "headline2", "iPrayed", "readAyahs", "emergencyBypass",
+            "headline1", "headline2", "iPrayed", "readAyahs", "emergencyBypass", "skipForNow",
+            "focusModeTitle", "defaultTitle", "modeSoft", "modeFirm", "modeHard",
             "bypassConfirmTitle", "bypassConfirmBody", "bypassConfirmContinue", "bypassConfirmCancel",
             "softReminderTitle", "softReminderBody",
             "focusHeadline1", "focusHeadline2", "endFocusSession",

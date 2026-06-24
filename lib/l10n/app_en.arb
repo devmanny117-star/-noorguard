@@ -2289,6 +2289,10 @@
   "@appBlockingHeadline2": {
     "description": "Second of two alternating headlines shown on the full-screen block screen"
   },
+  "appBlockingDefaultTitle": "Prayer Time",
+  "@appBlockingDefaultTitle": {
+    "description": "Big title fallback on the block screen when no specific prayer name is available (e.g. a manual on-device test window)"
+  },
   "appBlockingIPrayedButton": "I Prayed",
   "@appBlockingIPrayedButton": {
     "description": "Primary button on the block screen that immediately dismisses the block"
@@ -2300,6 +2304,10 @@
   "appBlockingEmergencyBypass": "Emergency bypass",
   "@appBlockingEmergencyBypass": {
     "description": "Small dimmed button at the bottom of the block screen for emergencies"
+  },
+  "appBlockingSkipForNow": "Skip for now",
+  "@appBlockingSkipForNow": {
+    "description": "Clearly visible button shown only in Firm mode's block screen that dismisses it immediately, with no prayer confirmation or ayah reading required"
   },
   "appBlockingBypassConfirmTitle": "End your streak?",
   "@appBlockingBypassConfirmTitle": {

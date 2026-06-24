@@ -199,7 +199,12 @@ class MainActivity : AudioServiceActivity() {
                 "startTestBlockWindow" -> {
                     val endMillis = call.argument<Number>("endMillis")?.toLong()
                     if (endMillis != null) {
-                        AppBlockingStore(this).testWindowEndMillis = endMillis
+                        val store = AppBlockingStore(this)
+                        // Fresh test, fresh state — a bypass granted during a
+                        // previous test run (e.g. "Skip for now") must not
+                        // carry over and silently swallow this one.
+                        store.clearAllBypasses()
+                        store.testWindowEndMillis = endMillis
                     }
                     result.success(null)
                 }

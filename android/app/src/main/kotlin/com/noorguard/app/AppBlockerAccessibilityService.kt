@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import android.view.accessibility.AccessibilityEvent
 import androidx.core.app.NotificationCompat
 
@@ -22,29 +23,55 @@ import androidx.core.app.NotificationCompat
  */
 class AppBlockerAccessibilityService : AccessibilityService() {
 
+    companion object {
+        private const val TAG = "AppBlocker"
+    }
+
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
         if (event.eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) return
         val pkg = event.packageName?.toString() ?: return
         if (pkg == packageName) return
 
         val store = AppBlockingStore(this)
-        if (store.consumeSingleUseBypass(pkg)) return
-        if (store.isBypassed(pkg)) return
 
-        when (val source = store.activeBlockSource(prayerBlockingEnabled = store.enabled)) {
+        if (store.consumeSingleUseBypass(pkg)) {
+            Log.d(TAG, "$pkg: consumed single-use bypass, letting through")
+            return
+        }
+        if (store.isBypassed(pkg)) {
+            Log.d(TAG, "$pkg: timed bypass still active, letting through")
+            return
+        }
+
+        val source = store.activeBlockSource(prayerBlockingEnabled = store.enabled)
+        Log.d(TAG, "$pkg: mode=${store.mode} enabled=${store.enabled} source=$source")
+
+        when (source) {
             is AppBlockingStore.BlockSource.Prayer -> {
-                if (!store.blockedPackages.contains(pkg)) return
+                if (!store.blockedPackages.contains(pkg)) {
+                    Log.d(TAG, "$pkg: not in blockedPackages, ignoring")
+                    return
+                }
                 if (store.mode == "soft") {
+                    Log.d(TAG, "$pkg: soft mode, showing reminder notification")
                     showSoftReminder(store, pkg, source.window.startEpochMillis)
                 } else {
+                    Log.d(TAG, "$pkg: mode=${store.mode}, launching BlockActivity")
                     launchBlockActivity(pkg, "prayer", source.window.prayerName, source.window.endEpochMillis)
                 }
             }
             is AppBlockingStore.BlockSource.Focus -> {
-                if (!store.focusBlockedPackages.contains(pkg)) return
+                if (!store.focusBlockedPackages.contains(pkg)) {
+                    Log.d(TAG, "$pkg: not in focusBlockedPackages, ignoring")
+                    return
+                }
+                Log.d(TAG, "$pkg: focus source, launching BlockActivity")
                 launchBlockActivity(pkg, "focus", "", source.endMillis)
             }
-            null -> return
+            null -> {
+                Log.d(TAG, "$pkg: no active block source, ignoring")
+                return
+            }
         }
     }
 
@@ -56,6 +83,7 @@ class AppBlockerAccessibilityService : AccessibilityService() {
             putExtra(BlockActivity.EXTRA_PRAYER_NAME, prayerName)
             putExtra(BlockActivity.EXTRA_WINDOW_END_MILLIS, windowEndMillis)
         }
+        Log.d(TAG, "$pkg: starting BlockActivity (source=$source)")
         startActivity(intent)
     }
 

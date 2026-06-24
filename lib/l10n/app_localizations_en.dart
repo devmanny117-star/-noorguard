@@ -1872,6 +1872,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appBlockingHeadline2 => 'Guard Your Time';
 
   @override
+  String get appBlockingDefaultTitle => 'Prayer Time';
+
+  @override
   String get appBlockingIPrayedButton => 'I Prayed';
 
   @override
@@ -1879,6 +1882,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'Emergency bypass';
+
+  @override
+  String get appBlockingSkipForNow => 'Skip for now';
 
   @override
   String get appBlockingBypassConfirmTitle => 'End your streak?';

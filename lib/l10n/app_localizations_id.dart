@@ -1887,6 +1887,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get appBlockingHeadline2 => 'Jaga Waktumu';
 
   @override
+  String get appBlockingDefaultTitle => 'Waktu Shalat';
+
+  @override
   String get appBlockingIPrayedButton => 'Saya Sudah Shalat';
 
   @override
@@ -1894,6 +1897,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'Lewati untuk Darurat';
+
+  @override
+  String get appBlockingSkipForNow => 'Lewati untuk Sekarang';
 
   @override
   String get appBlockingBypassConfirmTitle => 'Akhiri rangkaian Anda?';

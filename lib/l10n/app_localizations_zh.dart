@@ -1787,6 +1787,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appBlockingHeadline2 => '守护你的时间';
 
   @override
+  String get appBlockingDefaultTitle => '礼拜时间';
+
+  @override
   String get appBlockingIPrayedButton => '我已礼拜';
 
   @override
@@ -1794,6 +1797,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => '紧急绕过';
+
+  @override
+  String get appBlockingSkipForNow => '暂时跳过';
 
   @override
   String get appBlockingBypassConfirmTitle => '结束你的连续记录？';

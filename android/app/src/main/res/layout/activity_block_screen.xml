@@ -5,12 +5,33 @@
     android:layout_height="match_parent"
     android:background="@color/navy">
 
+    <!-- Full-bleed mosque hero photo, swapped per prayer in code, same Ken
+         Burns slow-zoom treatment as PrayerAlarmActivity -->
+    <ImageView
+        android:id="@+id/imageHero"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop" />
+
+    <!-- Dark gradient overlay so text stays readable over the photo -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_hero_gradient" />
+
     <!-- Subtle gold frame around the whole screen, matching the alarm screen's style -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:background="@drawable/bg_border_gold" />
+
+    <!-- Ambient drifting gold particles, behind the text/buttons so they never interfere with reading or taps -->
+    <com.noorguard.app.ParticleView
+        android:id="@+id/particleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,40 +52,64 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:paddingHorizontal="32dp"
-                android:paddingTop="48dp"
+                android:paddingTop="56dp"
                 android:paddingBottom="16dp">
 
-                <!-- Gold crescent + star, with a soft pulsing glow behind it -->
+                <!-- Larger gold crescent + star, with a soft pulsing glow behind it -->
                 <FrameLayout
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="104dp"
+                    android:layout_height="104dp"
                     android:layout_gravity="center_horizontal">
 
                     <View
                         android:id="@+id/crescentGlow"
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
+                        android:layout_width="104dp"
+                        android:layout_height="104dp"
                         android:layout_gravity="center"
                         android:background="@drawable/glow_gold_radial" />
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
                         android:layout_gravity="center"
                         android:contentDescription="@null"
                         android:src="@drawable/ic_crescent_star_widget" />
+                </FrameLayout>
+
+                <!-- Big elegant title — the prayer name (e.g. "Maghrib") or "Focus Mode" -->
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp">
+
+                    <View
+                        android:layout_width="280dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/glow_gold_radial_large" />
+
+                    <TextView
+                        android:id="@+id/textBigTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/playfair_display"
+                        android:gravity="center"
+                        android:textColor="@color/gold"
+                        android:textSize="42sp"
+                        android:textStyle="bold" />
                 </FrameLayout>
 
                 <TextView
                     android:id="@+id/textHeadline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
+                    android:layout_marginTop="6dp"
                     android:fontFamily="@font/playfair_display"
                     android:gravity="center"
-                    android:textColor="@color/gold"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/cream_muted"
+                    android:textSize="17sp" />
 
                 <View
                     android:layout_width="64dp"
@@ -81,7 +126,7 @@
                     android:fontFamily="@font/scheherazade_new"
                     android:gravity="center"
                     android:lineSpacingExtra="6dp"
-                    android:textColor="@color/cream"
+                    android:textColor="@color/gold_light"
                     android:textSize="26sp" />
 
                 <TextView
@@ -121,25 +166,42 @@
             <TextView
                 android:id="@+id/btnIPrayed"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="58dp"
                 android:background="@drawable/bg_button_gold"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
-                android:letterSpacing="0.05"
+                android:letterSpacing="0.06"
                 android:textColor="@color/navy"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/btnReadAyahs"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="58dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_button_outline"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:letterSpacing="0.05"
+                android:letterSpacing="0.06"
                 android:textColor="@color/gold"
                 android:textSize="16sp" />
+
+            <!-- Firm mode only: an obviously visible, no-friction skip button —
+                 unlike the tiny btnEmergencyBypass link Hard mode keeps, this is
+                 a full-size button so Firm's lighter bypass is easy to find. -->
+            <TextView
+                android:id="@+id/btnSkipForNow"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_button_skip"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:textColor="@color/cream_muted"
+                android:textSize="15sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/btnEmergencyBypass"
@@ -152,5 +214,35 @@
                 android:textColor="@color/white_70"
                 android:textSize="12sp" />
         </LinearLayout>
+    </LinearLayout>
+
+    <!-- Mode badge — a solid Soft/Firm/Hard colored pill, hidden for Focus.
+         52dp top margin clears the status bar / camera cutout — the app's
+         other top|end badge (Adhan Playing, activity_prayer_alarm.xml) needs
+         44dp for the same reason since both sit outside the
+         fitsSystemWindows container below. -->
+    <LinearLayout
+        android:id="@+id/modeBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_badge_pill"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textModeBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.1"
+            android:textColor="@color/navy"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </LinearLayout>
 </FrameLayout>

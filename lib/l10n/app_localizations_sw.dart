@@ -1887,6 +1887,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get appBlockingHeadline2 => 'Linda Wakati Wako';
 
   @override
+  String get appBlockingDefaultTitle => 'Wakati wa Swala';
+
+  @override
   String get appBlockingIPrayedButton => 'Nimeswali';
 
   @override
@@ -1894,6 +1897,9 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => 'Kupita kwa Dharura';
+
+  @override
+  String get appBlockingSkipForNow => 'Ruka kwa Sasa';
 
   @override
   String get appBlockingBypassConfirmTitle => 'Komesha mfululizo wako?';

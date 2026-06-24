@@ -94,6 +94,17 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
     return _filtered.where((a) => _selected.contains(a.packageName)).length;
   }
 
+  /// Fixed slot height every row animates between — must match
+  /// [_AppPickerRow]'s height + bottom margin exactly, since [_topFor] uses
+  /// it to lay rows out in a [Stack] instead of a [ListView].
+  static const double _rowExtent = 70;
+  static const double _dividerSpace = 26;
+
+  double _topFor(int index, int pinnedCount, bool showDivider) {
+    final afterDivider = showDivider && index >= pinnedCount;
+    return index * _rowExtent + (afterDivider ? _dividerSpace : 0);
+  }
+
   Future<void> _toggle(InstalledApp app, bool value) async {
     setState(() {
       if (value) {
@@ -169,25 +180,51 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
                             style: GoogleFonts.lato(color: _grey, fontSize: 14),
                           ),
                         )
-                      : ListView.builder(
+                      : SingleChildScrollView(
                           padding: const EdgeInsets.fromLTRB(18, 0, 18, 24),
-                          itemCount: displayed.length + (showDivider ? 1 : 0),
-                          itemBuilder: (context, index) {
-                            if (showDivider && index == pinnedCount) {
-                              return const _PinnedDivider();
-                            }
-                            final appIndex =
-                                showDivider && index > pinnedCount
-                                    ? index - 1
-                                    : index;
-                            final app = displayed[appIndex];
-                            final selected = _selected.contains(app.packageName);
-                            return _AppPickerRow(
-                              app: app,
-                              selected: selected,
-                              onToggle: (value) => _toggle(app, value),
-                            );
-                          },
+                          child: SizedBox(
+                            height: displayed.length * _rowExtent +
+                                (showDivider ? _dividerSpace : 0),
+                            // A Stack of AnimatedPositioned rows (keyed by
+                            // package name) instead of ListView.builder —
+                            // toggling an app re-sorts `displayed`, and since
+                            // each row keeps the same key/element across that
+                            // rebuild, Flutter tweens its `top` to the new
+                            // slot instead of snapping there.
+                            child: Stack(
+                              children: [
+                                for (var i = 0; i < displayed.length; i++)
+                                  AnimatedPositioned(
+                                    key: ValueKey(displayed[i].packageName),
+                                    duration: const Duration(milliseconds: 320),
+                                    curve: Curves.easeOutCubic,
+                                    top: _topFor(i, pinnedCount, showDivider),
+                                    left: 0,
+                                    right: 0,
+                                    height: _rowExtent,
+                                    child: _AppPickerRow(
+                                      app: displayed[i],
+                                      selected: _selected
+                                          .contains(displayed[i].packageName),
+                                      onToggle: (value) =>
+                                          _toggle(displayed[i], value),
+                                    ),
+                                  ),
+                                if (showDivider)
+                                  AnimatedPositioned(
+                                    key: const ValueKey('_pinnedDivider'),
+                                    duration: const Duration(milliseconds: 320),
+                                    curve: Curves.easeOutCubic,
+                                    top: pinnedCount * _rowExtent +
+                                        (_dividerSpace - 1.5) / 2,
+                                    left: 0,
+                                    right: 0,
+                                    height: 1.5,
+                                    child: const _PinnedDividerLine(),
+                                  ),
+                              ],
+                            ),
+                          ),
                         ),
             ),
           ],
@@ -198,16 +235,14 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
 }
 
 /// Marks the boundary between pinned-selected apps and the rest, when
-/// [InstalledAppsPickerScreen.pinSelectedToTop] is on.
-class _PinnedDivider extends StatelessWidget {
-  const _PinnedDivider();
+/// [InstalledAppsPickerScreen.pinSelectedToTop] is on. Positioning/spacing is
+/// handled by the parent's AnimatedPositioned — this is just the line.
+class _PinnedDividerLine extends StatelessWidget {
+  const _PinnedDividerLine();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: Container(height: 1.5, color: _gold.withValues(alpha: 0.35)),
-    );
+    return Container(color: _gold.withValues(alpha: 0.35));
   }
 }
 
@@ -225,8 +260,9 @@ class _AppPickerRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 60,
       margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 14),
       decoration: BoxDecoration(
         color: _cardBg,
         borderRadius: BorderRadius.circular(14),
@@ -264,6 +300,7 @@ class _AppPickerRow extends StatelessWidget {
             value: selected,
             activeThumbColor: _gold,
             inactiveTrackColor: _cardBorder,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             onChanged: onToggle,
           ),
         ],

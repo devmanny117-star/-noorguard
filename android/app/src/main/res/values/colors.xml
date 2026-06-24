@@ -16,4 +16,8 @@
     <color name="card_dark">#FF1A2A3A</color>
     <!-- Matches the home screen prayer pills' decorative time dot -->
     <color name="green_dot">#FF4CAF50</color>
+    <!-- Block-screen mode badge — Soft/Firm/Hard, kept warm/muted to fit the navy+gold palette -->
+    <color name="mode_soft">#FFE3B23C</color>
+    <color name="mode_firm">#FFE08A3C</color>
+    <color name="mode_hard">#FFD9534F</color>
 </resources>

@@ -1807,6 +1807,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get appBlockingHeadline2 => 'あなたの時間を守る';
 
   @override
+  String get appBlockingDefaultTitle => '礼拝の時間';
+
+  @override
   String get appBlockingIPrayedButton => '礼拝しました';
 
   @override
@@ -1814,6 +1817,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get appBlockingEmergencyBypass => '緊急回避';
+
+  @override
+  String get appBlockingSkipForNow => '今はスキップ';
 
   @override
   String get appBlockingBypassConfirmTitle => '連続記録を終了しますか？';
