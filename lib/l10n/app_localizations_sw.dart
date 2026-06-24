@@ -2000,4 +2000,94 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => 'Anzisha Kipindi Kipya';
+
+  @override
+  String get tasbihUndoButton => 'Tendua';
+
+  @override
+  String get tasbihTapAnywhereHint => 'Gusa popote kwenye skrini ili kuhesabu';
+
+  @override
+  String get tasbihSoundToggleTooltip => 'Sauti ya mgusano';
+
+  @override
+  String get tasbihManageDhikrTooltip => 'Dhibiti dhikr';
+
+  @override
+  String get tasbihStatsTooltip => 'Tazama takwimu';
+
+  @override
+  String get tasbihDailyTotalLabel => 'Jumla ya Leo';
+
+  @override
+  String get tasbihRoundsTodayLabel => 'Mizunguko ya Leo';
+
+  @override
+  String get tasbihManageDhikrTitle => 'Dhibiti Dhikr';
+
+  @override
+  String get tasbihAddCustomDhikrButton => 'Ongeza Dhikr Maalum';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => 'Futa';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => 'Asili';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr => 'Unahitaji angalau dhikr moja';
+
+  @override
+  String get tasbihDhikrNameLabel => 'Jina';
+
+  @override
+  String get tasbihDhikrNameHint => 'mfano: Astaghfirullah';
+
+  @override
+  String get tasbihDhikrArabicLabel => 'Kiarabu (si lazima)';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => 'Tafadhali weka jina';
+
+  @override
+  String get tasbihSaveDhikrButton => 'Hifadhi';
+
+  @override
+  String get tasbihStatsTitle => 'Takwimu za Tasbihi';
+
+  @override
+  String get tasbihAllTimeTotalLabel => 'Jumla Yote';
+
+  @override
+  String get tasbihNoActivityYetMessage =>
+      'Anza kuhesabu ili kuona takwimu zako hapa.';
+
+  @override
+  String get tasbihSoundPickerTitle => 'Sauti ya Mgusano';
+
+  @override
+  String get tasbihSoundClassicClick => 'Mbofyo wa Kawaida';
+
+  @override
+  String get tasbihSoundSoftChime => 'Mlio Mpole';
+
+  @override
+  String get tasbihSoundStoneTap => 'Mgongo wa Jiwe';
+
+  @override
+  String get tasbihCurrentlyReciting => 'Inasomwa Sasa';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return 'kati ya $target';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => 'Tone la Mvua';
+
+  @override
+  String get tasbihSoundSoftFeather => 'Unyoya Mpole';
 }

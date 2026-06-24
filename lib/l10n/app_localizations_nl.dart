@@ -1999,4 +1999,94 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => 'Nieuwe sessie starten';
+
+  @override
+  String get tasbihUndoButton => 'Ongedaan maken';
+
+  @override
+  String get tasbihTapAnywhereHint => 'Tik ergens op het scherm om te tellen';
+
+  @override
+  String get tasbihSoundToggleTooltip => 'Tikgeluid';
+
+  @override
+  String get tasbihManageDhikrTooltip => 'Dhikr beheren';
+
+  @override
+  String get tasbihStatsTooltip => 'Statistieken bekijken';
+
+  @override
+  String get tasbihDailyTotalLabel => 'Totaal Vandaag';
+
+  @override
+  String get tasbihRoundsTodayLabel => 'Rondes Vandaag';
+
+  @override
+  String get tasbihManageDhikrTitle => 'Dhikr Beheren';
+
+  @override
+  String get tasbihAddCustomDhikrButton => 'Aangepaste Dhikr Toevoegen';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => 'Verwijderen';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => 'Ingebouwd';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr => 'Je hebt minstens één dhikr nodig';
+
+  @override
+  String get tasbihDhikrNameLabel => 'Naam';
+
+  @override
+  String get tasbihDhikrNameHint => 'bijv. Astaghfirullah';
+
+  @override
+  String get tasbihDhikrArabicLabel => 'Arabisch (optioneel)';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => 'Voer een naam in';
+
+  @override
+  String get tasbihSaveDhikrButton => 'Opslaan';
+
+  @override
+  String get tasbihStatsTitle => 'Tasbih-statistieken';
+
+  @override
+  String get tasbihAllTimeTotalLabel => 'Totaal Aller Tijden';
+
+  @override
+  String get tasbihNoActivityYetMessage =>
+      'Begin met tellen om je statistieken hier te zien.';
+
+  @override
+  String get tasbihSoundPickerTitle => 'Tikgeluid';
+
+  @override
+  String get tasbihSoundClassicClick => 'Klassieke Klik';
+
+  @override
+  String get tasbihSoundSoftChime => 'Zachte Chime';
+
+  @override
+  String get tasbihSoundStoneTap => 'Steentik';
+
+  @override
+  String get tasbihCurrentlyReciting => 'Nu Aan Het Reciteren';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return 'van $target';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => 'Regendruppel';
+
+  @override
+  String get tasbihSoundSoftFeather => 'Zachte Veer';
 }

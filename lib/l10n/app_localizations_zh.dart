@@ -1895,4 +1895,93 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => '开始新一轮';
+
+  @override
+  String get tasbihUndoButton => '撤销';
+
+  @override
+  String get tasbihTapAnywhereHint => '点击屏幕任意位置即可计数';
+
+  @override
+  String get tasbihSoundToggleTooltip => '点击音效';
+
+  @override
+  String get tasbihManageDhikrTooltip => '管理迪克尔';
+
+  @override
+  String get tasbihStatsTooltip => '查看统计';
+
+  @override
+  String get tasbihDailyTotalLabel => '今日总计';
+
+  @override
+  String get tasbihRoundsTodayLabel => '今日轮次';
+
+  @override
+  String get tasbihManageDhikrTitle => '管理迪克尔';
+
+  @override
+  String get tasbihAddCustomDhikrButton => '添加自定义迪克尔';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => '删除';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => '内置';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr => '您至少需要保留一个迪克尔';
+
+  @override
+  String get tasbihDhikrNameLabel => '名称';
+
+  @override
+  String get tasbihDhikrNameHint => '例如：Astaghfirullah';
+
+  @override
+  String get tasbihDhikrArabicLabel => '阿拉伯文（可选）';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => '请输入名称';
+
+  @override
+  String get tasbihSaveDhikrButton => '保存';
+
+  @override
+  String get tasbihStatsTitle => '念珠统计';
+
+  @override
+  String get tasbihAllTimeTotalLabel => '历史总计';
+
+  @override
+  String get tasbihNoActivityYetMessage => '开始计数即可在此查看您的统计数据。';
+
+  @override
+  String get tasbihSoundPickerTitle => '点击音效';
+
+  @override
+  String get tasbihSoundClassicClick => '经典咔嗒声';
+
+  @override
+  String get tasbihSoundSoftChime => '轻柔风铃声';
+
+  @override
+  String get tasbihSoundStoneTap => '石头轻敲声';
+
+  @override
+  String get tasbihCurrentlyReciting => '正在念诵';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return '／$target';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => '雨滴声';
+
+  @override
+  String get tasbihSoundSoftFeather => '轻柔羽触';
 }

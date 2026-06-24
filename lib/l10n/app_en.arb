@@ -2225,7 +2225,7 @@
     "placeholders": {
       "count": {
         "type": "int"
-}
+      }
     }
   },
   "appBlockingAppsTitle": "Blocked Apps",
@@ -2343,10 +2343,10 @@
     "placeholders": {
       "count": {
         "type": "int"
-},
+      },
       "total": {
         "type": "int"
-}
+      }
     }
   },
   "quranChallengeComplete": "Well done — apps unlocked",
@@ -2441,5 +2441,126 @@
   "tasbihStartNewSession": "Start New Session",
   "@tasbihStartNewSession": {
     "description": "Button in the celebration overlay that resets the tasbih counter to begin a new session"
+  },
+  "tasbihUndoButton": "Undo",
+  "@tasbihUndoButton": {
+    "description": "Button on the tasbih counter screen that undoes the last tap"
+  },
+  "tasbihTapAnywhereHint": "Tap anywhere on the screen to count",
+  "@tasbihTapAnywhereHint": {
+    "description": "One-time hint shown on the tasbih counter screen telling the user they can tap anywhere on screen to count"
+  },
+  "tasbihSoundToggleTooltip": "Tap sound",
+  "@tasbihSoundToggleTooltip": {
+    "description": "Tooltip for the icon button that toggles the optional tap sound on the tasbih counter screen"
+  },
+  "tasbihManageDhikrTooltip": "Manage dhikr",
+  "@tasbihManageDhikrTooltip": {
+    "description": "Tooltip for the icon button that opens the manage-dhikr sheet on the tasbih counter screen"
+  },
+  "tasbihStatsTooltip": "View stats",
+  "@tasbihStatsTooltip": {
+    "description": "Tooltip for the icon button that opens the tasbih stats screen"
+  },
+  "tasbihDailyTotalLabel": "Today's Total",
+  "@tasbihDailyTotalLabel": {
+    "description": "Label for the running total of dhikr tapped today, shown on the tasbih counter screen and stats screen"
+  },
+  "tasbihRoundsTodayLabel": "Rounds Today",
+  "@tasbihRoundsTodayLabel": {
+    "description": "Label for how many full 99-dhikr rounds were completed today"
+  },
+  "tasbihManageDhikrTitle": "Manage Dhikr",
+  "@tasbihManageDhikrTitle": {
+    "description": "Title of the bottom sheet that lists built-in and custom dhikr, allowing the user to add or delete custom ones"
+  },
+  "tasbihAddCustomDhikrButton": "Add Custom Dhikr",
+  "@tasbihAddCustomDhikrButton": {
+    "description": "Button label and dialog title for adding a custom dhikr beyond the built-in three"
+  },
+  "tasbihDeleteDhikrTooltip": "Delete",
+  "@tasbihDeleteDhikrTooltip": {
+    "description": "Tooltip for the delete icon next to a custom dhikr in the manage-dhikr sheet"
+  },
+  "tasbihBuiltInDhikrBadge": "Built-in",
+  "@tasbihBuiltInDhikrBadge": {
+    "description": "Small badge label shown next to the three built-in dhikr in the manage-dhikr sheet, indicating they can't be deleted"
+  },
+  "tasbihCannotDeleteLastDhikr": "You need at least one dhikr",
+  "@tasbihCannotDeleteLastDhikr": {
+    "description": "Snackbar shown if the user tries to delete the only remaining dhikr in their list"
+  },
+  "tasbihDhikrNameLabel": "Name",
+  "@tasbihDhikrNameLabel": {
+    "description": "Text field label for the name of a custom dhikr being added"
+  },
+  "tasbihDhikrNameHint": "e.g. Astaghfirullah",
+  "@tasbihDhikrNameHint": {
+    "description": "Placeholder hint text shown in the empty custom dhikr name field"
+  },
+  "tasbihDhikrArabicLabel": "Arabic (optional)",
+  "@tasbihDhikrArabicLabel": {
+    "description": "Text field label for the optional Arabic text of a custom dhikr being added"
+  },
+  "tasbihDhikrArabicHint": "أَسْتَغْفِرُ اللَّهَ",
+  "@tasbihDhikrArabicHint": {
+    "description": "Placeholder hint shown in the empty custom dhikr Arabic field — an example dhikr in Arabic script, same in every language"
+  },
+  "tasbihDhikrNameRequiredError": "Please enter a name",
+  "@tasbihDhikrNameRequiredError": {
+    "description": "Validation error shown when the user tries to save a custom dhikr without entering a name"
+  },
+  "tasbihSaveDhikrButton": "Save",
+  "@tasbihSaveDhikrButton": {
+    "description": "Button that saves a newly added custom dhikr"
+  },
+  "tasbihStatsTitle": "Tasbih Stats",
+  "@tasbihStatsTitle": {
+    "description": "Title of the tasbih stats screen"
+  },
+  "tasbihAllTimeTotalLabel": "All-Time Total",
+  "@tasbihAllTimeTotalLabel": {
+    "description": "Label for the lifetime total dhikr count across all sessions, shown on the tasbih stats screen"
+  },
+  "tasbihNoActivityYetMessage": "Start counting to see your stats here.",
+  "@tasbihNoActivityYetMessage": {
+    "description": "Banner shown on the tasbih stats screen when the user has no recorded tasbih activity yet"
+  },
+  "tasbihSoundPickerTitle": "Tap Sound",
+  "@tasbihSoundPickerTitle": {
+    "description": "Title of the bottom sheet where the user previews and picks which tap sound the tasbih counter plays"
+  },
+  "tasbihSoundClassicClick": "Classic Click",
+  "@tasbihSoundClassicClick": {
+    "description": "Name of the 'classic click' tap sound option — a soft wooden-bead click"
+  },
+  "tasbihSoundSoftChime": "Soft Chime",
+  "@tasbihSoundSoftChime": {
+    "description": "Name of the 'soft chime' tap sound option — a gentle bell/chime"
+  },
+  "tasbihSoundStoneTap": "Stone Tap",
+  "@tasbihSoundStoneTap": {
+    "description": "Name of the 'stone tap' tap sound option — a subtle stone/pebble tap"
+  },
+  "tasbihCurrentlyReciting": "Currently Reciting",
+  "@tasbihCurrentlyReciting": {
+    "description": "Tiny all-caps status label above the dhikr name on the tasbih counter screen"
+  },
+  "tasbihOfTarget": "of {target}",
+  "@tasbihOfTarget": {
+    "description": "Small dimmed text below the big count number, e.g. 'of 33'",
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "tasbihSoundRainDrop": "Rain Drop",
+  "@tasbihSoundRainDrop": {
+    "description": "Name of the 'rain drop' tap sound option — a single gentle, calming raindrop sound"
+  },
+  "tasbihSoundSoftFeather": "Soft Feather",
+  "@tasbihSoundSoftFeather": {
+    "description": "Name of the 'soft feather' tap sound option — an extremely subtle, barely audible brush/feather touch"
   }
 }

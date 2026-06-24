@@ -1916,4 +1916,93 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => '新しいセッションを開始';
+
+  @override
+  String get tasbihUndoButton => '元に戻す';
+
+  @override
+  String get tasbihTapAnywhereHint => '画面のどこをタップしてもカウントされます';
+
+  @override
+  String get tasbihSoundToggleTooltip => 'タップ音';
+
+  @override
+  String get tasbihManageDhikrTooltip => 'ズィクルを管理';
+
+  @override
+  String get tasbihStatsTooltip => '統計を見る';
+
+  @override
+  String get tasbihDailyTotalLabel => '今日の合計';
+
+  @override
+  String get tasbihRoundsTodayLabel => '今日の回数';
+
+  @override
+  String get tasbihManageDhikrTitle => 'ズィクルの管理';
+
+  @override
+  String get tasbihAddCustomDhikrButton => 'カスタムズィクルを追加';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => '削除';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => '組み込み';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr => '少なくとも1つのズィクルが必要です';
+
+  @override
+  String get tasbihDhikrNameLabel => '名前';
+
+  @override
+  String get tasbihDhikrNameHint => '例：アスタグフィルッラー';
+
+  @override
+  String get tasbihDhikrArabicLabel => 'アラビア語（任意）';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => '名前を入力してください';
+
+  @override
+  String get tasbihSaveDhikrButton => '保存';
+
+  @override
+  String get tasbihStatsTitle => 'タスビーフ統計';
+
+  @override
+  String get tasbihAllTimeTotalLabel => '全期間の合計';
+
+  @override
+  String get tasbihNoActivityYetMessage => 'カウントを始めると、ここに統計が表示されます。';
+
+  @override
+  String get tasbihSoundPickerTitle => 'タップ音';
+
+  @override
+  String get tasbihSoundClassicClick => 'クラシッククリック';
+
+  @override
+  String get tasbihSoundSoftChime => 'ソフトチャイム';
+
+  @override
+  String get tasbihSoundStoneTap => '石のタップ音';
+
+  @override
+  String get tasbihCurrentlyReciting => '現在唱えている';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return '／$target';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => '雨だれ';
+
+  @override
+  String get tasbihSoundSoftFeather => 'やわらかな羽';
 }

@@ -1992,4 +1992,95 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => 'Yeni Oturum Başlat';
+
+  @override
+  String get tasbihUndoButton => 'Geri Al';
+
+  @override
+  String get tasbihTapAnywhereHint =>
+      'Saymak için ekranın herhangi bir yerine dokunun';
+
+  @override
+  String get tasbihSoundToggleTooltip => 'Dokunma sesi';
+
+  @override
+  String get tasbihManageDhikrTooltip => 'Zikirleri yönet';
+
+  @override
+  String get tasbihStatsTooltip => 'İstatistikleri görüntüle';
+
+  @override
+  String get tasbihDailyTotalLabel => 'Bugünkü Toplam';
+
+  @override
+  String get tasbihRoundsTodayLabel => 'Bugünkü Turlar';
+
+  @override
+  String get tasbihManageDhikrTitle => 'Zikirleri Yönet';
+
+  @override
+  String get tasbihAddCustomDhikrButton => 'Özel Zikir Ekle';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => 'Sil';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => 'Yerleşik';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr => 'En az bir zikre ihtiyacınız var';
+
+  @override
+  String get tasbihDhikrNameLabel => 'Ad';
+
+  @override
+  String get tasbihDhikrNameHint => 'örn. Astağfirullah';
+
+  @override
+  String get tasbihDhikrArabicLabel => 'Arapça (isteğe bağlı)';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => 'Lütfen bir ad girin';
+
+  @override
+  String get tasbihSaveDhikrButton => 'Kaydet';
+
+  @override
+  String get tasbihStatsTitle => 'Tesbih İstatistikleri';
+
+  @override
+  String get tasbihAllTimeTotalLabel => 'Tüm Zamanların Toplamı';
+
+  @override
+  String get tasbihNoActivityYetMessage =>
+      'İstatistiklerinizi burada görmek için saymaya başlayın.';
+
+  @override
+  String get tasbihSoundPickerTitle => 'Dokunma Sesi';
+
+  @override
+  String get tasbihSoundClassicClick => 'Klasik Tıklama';
+
+  @override
+  String get tasbihSoundSoftChime => 'Yumuşak Çan Sesi';
+
+  @override
+  String get tasbihSoundStoneTap => 'Taş Vuruşu';
+
+  @override
+  String get tasbihCurrentlyReciting => 'Şu An Okunuyor';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return '$target üzerinden';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => 'Yağmur Damlası';
+
+  @override
+  String get tasbihSoundSoftFeather => 'Yumuşak Tüy';
 }

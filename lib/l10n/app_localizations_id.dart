@@ -1999,4 +1999,96 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => 'Mulai Sesi Baru';
+
+  @override
+  String get tasbihUndoButton => 'Urungkan';
+
+  @override
+  String get tasbihTapAnywhereHint =>
+      'Ketuk di mana saja pada layar untuk menghitung';
+
+  @override
+  String get tasbihSoundToggleTooltip => 'Suara ketukan';
+
+  @override
+  String get tasbihManageDhikrTooltip => 'Kelola dzikir';
+
+  @override
+  String get tasbihStatsTooltip => 'Lihat statistik';
+
+  @override
+  String get tasbihDailyTotalLabel => 'Total Hari Ini';
+
+  @override
+  String get tasbihRoundsTodayLabel => 'Putaran Hari Ini';
+
+  @override
+  String get tasbihManageDhikrTitle => 'Kelola Dzikir';
+
+  @override
+  String get tasbihAddCustomDhikrButton => 'Tambah Dzikir Khusus';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => 'Hapus';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => 'Bawaan';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr =>
+      'Anda memerlukan setidaknya satu dzikir';
+
+  @override
+  String get tasbihDhikrNameLabel => 'Nama';
+
+  @override
+  String get tasbihDhikrNameHint => 'contoh: Astaghfirullah';
+
+  @override
+  String get tasbihDhikrArabicLabel => 'Bahasa Arab (opsional)';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => 'Silakan masukkan nama';
+
+  @override
+  String get tasbihSaveDhikrButton => 'Simpan';
+
+  @override
+  String get tasbihStatsTitle => 'Statistik Tasbih';
+
+  @override
+  String get tasbihAllTimeTotalLabel => 'Total Keseluruhan';
+
+  @override
+  String get tasbihNoActivityYetMessage =>
+      'Mulai menghitung untuk melihat statistik Anda di sini.';
+
+  @override
+  String get tasbihSoundPickerTitle => 'Suara Ketukan';
+
+  @override
+  String get tasbihSoundClassicClick => 'Klik Klasik';
+
+  @override
+  String get tasbihSoundSoftChime => 'Lonceng Lembut';
+
+  @override
+  String get tasbihSoundStoneTap => 'Ketukan Batu';
+
+  @override
+  String get tasbihCurrentlyReciting => 'Sedang Membaca';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return 'dari $target';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => 'Tetesan Hujan';
+
+  @override
+  String get tasbihSoundSoftFeather => 'Bulu Lembut';
 }

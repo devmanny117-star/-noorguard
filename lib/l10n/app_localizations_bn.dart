@@ -1999,4 +1999,95 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => 'নতুন সেশন শুরু করুন';
+
+  @override
+  String get tasbihUndoButton => 'পূর্বাবস্থায় ফেরান';
+
+  @override
+  String get tasbihTapAnywhereHint =>
+      'গণনা করতে স্ক্রিনের যেকোনো জায়গায় ট্যাপ করুন';
+
+  @override
+  String get tasbihSoundToggleTooltip => 'ট্যাপ শব্দ';
+
+  @override
+  String get tasbihManageDhikrTooltip => 'জিকির পরিচালনা করুন';
+
+  @override
+  String get tasbihStatsTooltip => 'পরিসংখ্যান দেখুন';
+
+  @override
+  String get tasbihDailyTotalLabel => 'আজকের মোট';
+
+  @override
+  String get tasbihRoundsTodayLabel => 'আজকের পর্ব';
+
+  @override
+  String get tasbihManageDhikrTitle => 'জিকির পরিচালনা';
+
+  @override
+  String get tasbihAddCustomDhikrButton => 'কাস্টম জিকির যুক্ত করুন';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => 'মুছে ফেলুন';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => 'পূর্বনির্ধারিত';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr => 'আপনার অন্তত একটি জিকির প্রয়োজন';
+
+  @override
+  String get tasbihDhikrNameLabel => 'নাম';
+
+  @override
+  String get tasbihDhikrNameHint => 'যেমন: আস্তাগফিরুল্লাহ';
+
+  @override
+  String get tasbihDhikrArabicLabel => 'আরবি (ঐচ্ছিক)';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => 'একটি নাম লিখুন';
+
+  @override
+  String get tasbihSaveDhikrButton => 'সংরক্ষণ করুন';
+
+  @override
+  String get tasbihStatsTitle => 'তাসবিহ পরিসংখ্যান';
+
+  @override
+  String get tasbihAllTimeTotalLabel => 'সর্বমোট';
+
+  @override
+  String get tasbihNoActivityYetMessage =>
+      'আপনার পরিসংখ্যান দেখতে গণনা শুরু করুন।';
+
+  @override
+  String get tasbihSoundPickerTitle => 'ট্যাপ শব্দ';
+
+  @override
+  String get tasbihSoundClassicClick => 'ক্লাসিক ক্লিক';
+
+  @override
+  String get tasbihSoundSoftChime => 'নরম চাইম';
+
+  @override
+  String get tasbihSoundStoneTap => 'পাথরের টোকা';
+
+  @override
+  String get tasbihCurrentlyReciting => 'এখন আবৃত্তি করা হচ্ছে';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return '$target এর মধ্যে';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => 'বৃষ্টির ফোঁটা';
+
+  @override
+  String get tasbihSoundSoftFeather => 'কোমল পালক';
 }

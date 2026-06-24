@@ -3681,6 +3681,180 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start New Session'**
   String get tasbihStartNewSession;
+
+  /// Button on the tasbih counter screen that undoes the last tap
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get tasbihUndoButton;
+
+  /// One-time hint shown on the tasbih counter screen telling the user they can tap anywhere on screen to count
+  ///
+  /// In en, this message translates to:
+  /// **'Tap anywhere on the screen to count'**
+  String get tasbihTapAnywhereHint;
+
+  /// Tooltip for the icon button that toggles the optional tap sound on the tasbih counter screen
+  ///
+  /// In en, this message translates to:
+  /// **'Tap sound'**
+  String get tasbihSoundToggleTooltip;
+
+  /// Tooltip for the icon button that opens the manage-dhikr sheet on the tasbih counter screen
+  ///
+  /// In en, this message translates to:
+  /// **'Manage dhikr'**
+  String get tasbihManageDhikrTooltip;
+
+  /// Tooltip for the icon button that opens the tasbih stats screen
+  ///
+  /// In en, this message translates to:
+  /// **'View stats'**
+  String get tasbihStatsTooltip;
+
+  /// Label for the running total of dhikr tapped today, shown on the tasbih counter screen and stats screen
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Total'**
+  String get tasbihDailyTotalLabel;
+
+  /// Label for how many full 99-dhikr rounds were completed today
+  ///
+  /// In en, this message translates to:
+  /// **'Rounds Today'**
+  String get tasbihRoundsTodayLabel;
+
+  /// Title of the bottom sheet that lists built-in and custom dhikr, allowing the user to add or delete custom ones
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Dhikr'**
+  String get tasbihManageDhikrTitle;
+
+  /// Button label and dialog title for adding a custom dhikr beyond the built-in three
+  ///
+  /// In en, this message translates to:
+  /// **'Add Custom Dhikr'**
+  String get tasbihAddCustomDhikrButton;
+
+  /// Tooltip for the delete icon next to a custom dhikr in the manage-dhikr sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get tasbihDeleteDhikrTooltip;
+
+  /// Small badge label shown next to the three built-in dhikr in the manage-dhikr sheet, indicating they can't be deleted
+  ///
+  /// In en, this message translates to:
+  /// **'Built-in'**
+  String get tasbihBuiltInDhikrBadge;
+
+  /// Snackbar shown if the user tries to delete the only remaining dhikr in their list
+  ///
+  /// In en, this message translates to:
+  /// **'You need at least one dhikr'**
+  String get tasbihCannotDeleteLastDhikr;
+
+  /// Text field label for the name of a custom dhikr being added
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get tasbihDhikrNameLabel;
+
+  /// Placeholder hint text shown in the empty custom dhikr name field
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Astaghfirullah'**
+  String get tasbihDhikrNameHint;
+
+  /// Text field label for the optional Arabic text of a custom dhikr being added
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic (optional)'**
+  String get tasbihDhikrArabicLabel;
+
+  /// Placeholder hint shown in the empty custom dhikr Arabic field — an example dhikr in Arabic script, same in every language
+  ///
+  /// In en, this message translates to:
+  /// **'أَسْتَغْفِرُ اللَّهَ'**
+  String get tasbihDhikrArabicHint;
+
+  /// Validation error shown when the user tries to save a custom dhikr without entering a name
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a name'**
+  String get tasbihDhikrNameRequiredError;
+
+  /// Button that saves a newly added custom dhikr
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get tasbihSaveDhikrButton;
+
+  /// Title of the tasbih stats screen
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbih Stats'**
+  String get tasbihStatsTitle;
+
+  /// Label for the lifetime total dhikr count across all sessions, shown on the tasbih stats screen
+  ///
+  /// In en, this message translates to:
+  /// **'All-Time Total'**
+  String get tasbihAllTimeTotalLabel;
+
+  /// Banner shown on the tasbih stats screen when the user has no recorded tasbih activity yet
+  ///
+  /// In en, this message translates to:
+  /// **'Start counting to see your stats here.'**
+  String get tasbihNoActivityYetMessage;
+
+  /// Title of the bottom sheet where the user previews and picks which tap sound the tasbih counter plays
+  ///
+  /// In en, this message translates to:
+  /// **'Tap Sound'**
+  String get tasbihSoundPickerTitle;
+
+  /// Name of the 'classic click' tap sound option — a soft wooden-bead click
+  ///
+  /// In en, this message translates to:
+  /// **'Classic Click'**
+  String get tasbihSoundClassicClick;
+
+  /// Name of the 'soft chime' tap sound option — a gentle bell/chime
+  ///
+  /// In en, this message translates to:
+  /// **'Soft Chime'**
+  String get tasbihSoundSoftChime;
+
+  /// Name of the 'stone tap' tap sound option — a subtle stone/pebble tap
+  ///
+  /// In en, this message translates to:
+  /// **'Stone Tap'**
+  String get tasbihSoundStoneTap;
+
+  /// Tiny all-caps status label above the dhikr name on the tasbih counter screen
+  ///
+  /// In en, this message translates to:
+  /// **'Currently Reciting'**
+  String get tasbihCurrentlyReciting;
+
+  /// Small dimmed text below the big count number, e.g. 'of 33'
+  ///
+  /// In en, this message translates to:
+  /// **'of {target}'**
+  String tasbihOfTarget(int target);
+
+  /// Name of the 'rain drop' tap sound option — a single gentle, calming raindrop sound
+  ///
+  /// In en, this message translates to:
+  /// **'Rain Drop'**
+  String get tasbihSoundRainDrop;
+
+  /// Name of the 'soft feather' tap sound option — an extremely subtle, barely audible brush/feather touch
+  ///
+  /// In en, this message translates to:
+  /// **'Soft Feather'**
+  String get tasbihSoundSoftFeather;
 }
 
 class _AppLocalizationsDelegate

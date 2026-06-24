@@ -1971,4 +1971,93 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tasbihStartNewSession => 'ابدأ جلسة جديدة';
+
+  @override
+  String get tasbihUndoButton => 'تراجع';
+
+  @override
+  String get tasbihTapAnywhereHint => 'اضغط في أي مكان على الشاشة للعد';
+
+  @override
+  String get tasbihSoundToggleTooltip => 'صوت اللمس';
+
+  @override
+  String get tasbihManageDhikrTooltip => 'إدارة الأذكار';
+
+  @override
+  String get tasbihStatsTooltip => 'عرض الإحصائيات';
+
+  @override
+  String get tasbihDailyTotalLabel => 'إجمالي اليوم';
+
+  @override
+  String get tasbihRoundsTodayLabel => 'الجولات اليوم';
+
+  @override
+  String get tasbihManageDhikrTitle => 'إدارة الأذكار';
+
+  @override
+  String get tasbihAddCustomDhikrButton => 'إضافة ذكر مخصص';
+
+  @override
+  String get tasbihDeleteDhikrTooltip => 'حذف';
+
+  @override
+  String get tasbihBuiltInDhikrBadge => 'مدمج';
+
+  @override
+  String get tasbihCannotDeleteLastDhikr => 'تحتاج إلى ذكر واحد على الأقل';
+
+  @override
+  String get tasbihDhikrNameLabel => 'الاسم';
+
+  @override
+  String get tasbihDhikrNameHint => 'مثل: أستغفر الله';
+
+  @override
+  String get tasbihDhikrArabicLabel => 'العربية (اختياري)';
+
+  @override
+  String get tasbihDhikrArabicHint => 'أَسْتَغْفِرُ اللَّهَ';
+
+  @override
+  String get tasbihDhikrNameRequiredError => 'يرجى إدخال اسم';
+
+  @override
+  String get tasbihSaveDhikrButton => 'حفظ';
+
+  @override
+  String get tasbihStatsTitle => 'إحصائيات التسبيح';
+
+  @override
+  String get tasbihAllTimeTotalLabel => 'الإجمالي الكلي';
+
+  @override
+  String get tasbihNoActivityYetMessage => 'ابدأ العد لترى إحصائياتك هنا.';
+
+  @override
+  String get tasbihSoundPickerTitle => 'صوت اللمس';
+
+  @override
+  String get tasbihSoundClassicClick => 'نقرة كلاسيكية';
+
+  @override
+  String get tasbihSoundSoftChime => 'رنين هادئ';
+
+  @override
+  String get tasbihSoundStoneTap => 'نقرة حجرية';
+
+  @override
+  String get tasbihCurrentlyReciting => 'يُسبَّح الآن';
+
+  @override
+  String tasbihOfTarget(int target) {
+    return 'من $target';
+  }
+
+  @override
+  String get tasbihSoundRainDrop => 'قطرة مطر';
+
+  @override
+  String get tasbihSoundSoftFeather => 'ريشة ناعمة';
 }
