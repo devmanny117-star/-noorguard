@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "مقام حذف کریں",
   "locationNotFound": "مقام نہیں ملا۔ مختلف تلاش آزمائیں۔",
   "maxLocationsReachedMessage": "آپ زیادہ سے زیادہ {max} مقامات محفوظ کر سکتے ہیں",
-  "notificationsToggleUnconfirmed": "تبدیلی کی تصدیق نہیں ہو سکی — دوبارہ کوشش کریں"
+  "notificationsToggleUnconfirmed": "تبدیلی کی تصدیق نہیں ہو سکی — دوبارہ کوشش کریں",
+  "tasbihCounter": "تسبیح کاؤنٹر",
+  "tasbihCounterSubtitle": "اپنا ذکر شمار کریں",
+  "tasbihResetButton": "ری سیٹ",
+  "tasbihTotalLabel": "کل",
+  "tasbihCelebrationTitle": "تسبیح مکمل ہوگئی!",
+  "tasbihCelebrationBody": "آپ نے تمام 99 اذکار مکمل کر لیے۔ اللہ آپ کا ذکر قبول فرمائے۔",
+  "tasbihStartNewSession": "نیا سیشن شروع کریں"
 }

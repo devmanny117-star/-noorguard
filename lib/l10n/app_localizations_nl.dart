@@ -1977,4 +1977,26 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'Wijziging kon niet worden bevestigd — probeer het opnieuw';
+
+  @override
+  String get tasbihCounter => 'Tasbih-teller';
+
+  @override
+  String get tasbihCounterSubtitle => 'Tel je dhikr';
+
+  @override
+  String get tasbihResetButton => 'Resetten';
+
+  @override
+  String get tasbihTotalLabel => 'Totaal';
+
+  @override
+  String get tasbihCelebrationTitle => 'Tasbih voltooid!';
+
+  @override
+  String get tasbihCelebrationBody =>
+      'Je hebt alle 99 dhikr voltooid. Mag Allah je gedenken aanvaarden.';
+
+  @override
+  String get tasbihStartNewSession => 'Nieuwe sessie starten';
 }

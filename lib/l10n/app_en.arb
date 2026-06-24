@@ -2413,5 +2413,33 @@
   "notificationsToggleUnconfirmed": "Couldn't confirm the change — please try again",
   "@notificationsToggleUnconfirmed": {
     "description": "Snackbar shown when toggling the notification bell couldn't be verified against the system alarm scheduler"
+  },
+  "tasbihCounter": "Tasbih Counter",
+  "@tasbihCounter": {
+    "description": "Label for the tasbih/dhikr counter home-screen tile, and the title of the tasbih counter screen"
+  },
+  "tasbihCounterSubtitle": "Count your dhikr",
+  "@tasbihCounterSubtitle": {
+    "description": "Subtitle for the tasbih counter home-screen tile"
+  },
+  "tasbihResetButton": "Reset",
+  "@tasbihResetButton": {
+    "description": "Button on the tasbih counter screen that resets the count back to zero"
+  },
+  "tasbihTotalLabel": "Total",
+  "@tasbihTotalLabel": {
+    "description": "Label before the running session total on the tasbih counter screen, e.g. 'Total: 47 / 99'"
+  },
+  "tasbihCelebrationTitle": "Tasbih Complete!",
+  "@tasbihCelebrationTitle": {
+    "description": "Title shown in the celebration overlay once all 99 dhikr are completed"
+  },
+  "tasbihCelebrationBody": "You completed all 99 dhikr. May Allah accept your remembrance.",
+  "@tasbihCelebrationBody": {
+    "description": "Body text shown in the celebration overlay once all 99 dhikr are completed"
+  },
+  "tasbihStartNewSession": "Start New Session",
+  "@tasbihStartNewSession": {
+    "description": "Button in the celebration overlay that resets the tasbih counter to begin a new session"
   }
 }

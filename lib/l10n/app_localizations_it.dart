@@ -1983,4 +1983,26 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'Non è stato possibile confermare la modifica — riprova';
+
+  @override
+  String get tasbihCounter => 'Contatore Tasbih';
+
+  @override
+  String get tasbihCounterSubtitle => 'Conta il tuo dhikr';
+
+  @override
+  String get tasbihResetButton => 'Reimposta';
+
+  @override
+  String get tasbihTotalLabel => 'Totale';
+
+  @override
+  String get tasbihCelebrationTitle => 'Tasbih completato!';
+
+  @override
+  String get tasbihCelebrationBody =>
+      'Hai completato tutti i 99 dhikr. Possa Allah accettare il tuo ricordo.';
+
+  @override
+  String get tasbihStartNewSession => 'Inizia nuova sessione';
 }

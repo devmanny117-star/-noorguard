@@ -1978,4 +1978,26 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'Imeshindwa kuthibitisha mabadiliko — tafadhali jaribu tena';
+
+  @override
+  String get tasbihCounter => 'Kihesabu cha Tasbihi';
+
+  @override
+  String get tasbihCounterSubtitle => 'Hesabu dhikri yako';
+
+  @override
+  String get tasbihResetButton => 'Weka Upya';
+
+  @override
+  String get tasbihTotalLabel => 'Jumla';
+
+  @override
+  String get tasbihCelebrationTitle => 'Tasbihi Imekamilika!';
+
+  @override
+  String get tasbihCelebrationBody =>
+      'Umekamilisha dhikri zote 99. Mwenyezi Mungu akubali kumbukumbu yako.';
+
+  @override
+  String get tasbihStartNewSession => 'Anzisha Kipindi Kipya';
 }

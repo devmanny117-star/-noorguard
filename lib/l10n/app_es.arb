@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "Eliminar ubicación",
   "locationNotFound": "Ubicación no encontrada. Intenta otra búsqueda.",
   "maxLocationsReachedMessage": "Puedes guardar hasta {max} ubicaciones",
-  "notificationsToggleUnconfirmed": "No se pudo confirmar el cambio — inténtalo de nuevo"
+  "notificationsToggleUnconfirmed": "No se pudo confirmar el cambio — inténtalo de nuevo",
+  "tasbihCounter": "Contador de Tasbih",
+  "tasbihCounterSubtitle": "Cuenta tu dhikr",
+  "tasbihResetButton": "Reiniciar",
+  "tasbihTotalLabel": "Total",
+  "tasbihCelebrationTitle": "¡Tasbih completado!",
+  "tasbihCelebrationBody": "Completaste los 99 dhikr. Que Allah acepte tu recuerdo.",
+  "tasbihStartNewSession": "Iniciar nueva sesión"
 }

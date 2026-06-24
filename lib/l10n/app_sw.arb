@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "Futa mahali",
   "locationNotFound": "Mahali hapakupatikana. Jaribu utafutaji mwingine.",
   "maxLocationsReachedMessage": "Unaweza kuhifadhi hadi maeneo {max}",
-  "notificationsToggleUnconfirmed": "Imeshindwa kuthibitisha mabadiliko — tafadhali jaribu tena"
+  "notificationsToggleUnconfirmed": "Imeshindwa kuthibitisha mabadiliko — tafadhali jaribu tena",
+  "tasbihCounter": "Kihesabu cha Tasbihi",
+  "tasbihCounterSubtitle": "Hesabu dhikri yako",
+  "tasbihResetButton": "Weka Upya",
+  "tasbihTotalLabel": "Jumla",
+  "tasbihCelebrationTitle": "Tasbihi Imekamilika!",
+  "tasbihCelebrationBody": "Umekamilisha dhikri zote 99. Mwenyezi Mungu akubali kumbukumbu yako.",
+  "tasbihStartNewSession": "Anzisha Kipindi Kipya"
 }

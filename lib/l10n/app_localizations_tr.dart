@@ -1970,4 +1970,26 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'Değişiklik onaylanamadı — lütfen tekrar deneyin';
+
+  @override
+  String get tasbihCounter => 'Tesbih Sayacı';
+
+  @override
+  String get tasbihCounterSubtitle => 'Zikrini say';
+
+  @override
+  String get tasbihResetButton => 'Sıfırla';
+
+  @override
+  String get tasbihTotalLabel => 'Toplam';
+
+  @override
+  String get tasbihCelebrationTitle => 'Tesbih Tamamlandı!';
+
+  @override
+  String get tasbihCelebrationBody =>
+      '99 zikrin tümünü tamamladın. Allah zikrini kabul etsin.';
+
+  @override
+  String get tasbihStartNewSession => 'Yeni Oturum Başlat';
 }

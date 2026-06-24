@@ -1950,4 +1950,25 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'لم يتم تأكيد التغيير — حاول مرة أخرى';
+
+  @override
+  String get tasbihCounter => 'عداد التسبيح';
+
+  @override
+  String get tasbihCounterSubtitle => 'احصِ ذِكرك';
+
+  @override
+  String get tasbihResetButton => 'إعادة تعيين';
+
+  @override
+  String get tasbihTotalLabel => 'الإجمالي';
+
+  @override
+  String get tasbihCelebrationTitle => 'اكتمل التسبيح!';
+
+  @override
+  String get tasbihCelebrationBody => 'لقد أكملت 99 ذكرًا. تقبل الله ذكرك.';
+
+  @override
+  String get tasbihStartNewSession => 'ابدأ جلسة جديدة';
 }

@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "Locatie verwijderen",
   "locationNotFound": "Locatie niet gevonden. Probeer een andere zoekopdracht.",
   "maxLocationsReachedMessage": "Je kunt tot {max} locaties opslaan",
-  "notificationsToggleUnconfirmed": "Wijziging kon niet worden bevestigd — probeer het opnieuw"
+  "notificationsToggleUnconfirmed": "Wijziging kon niet worden bevestigd — probeer het opnieuw",
+  "tasbihCounter": "Tasbih-teller",
+  "tasbihCounterSubtitle": "Tel je dhikr",
+  "tasbihResetButton": "Resetten",
+  "tasbihTotalLabel": "Totaal",
+  "tasbihCelebrationTitle": "Tasbih voltooid!",
+  "tasbihCelebrationBody": "Je hebt alle 99 dhikr voltooid. Mag Allah je gedenken aanvaarden.",
+  "tasbihStartNewSession": "Nieuwe sessie starten"
 }

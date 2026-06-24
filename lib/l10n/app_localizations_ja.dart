@@ -1894,4 +1894,26 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notificationsToggleUnconfirmed => '変更を確認できませんでした — もう一度お試しください';
+
+  @override
+  String get tasbihCounter => 'タスビーカウンター';
+
+  @override
+  String get tasbihCounterSubtitle => 'ズィクルを数える';
+
+  @override
+  String get tasbihResetButton => 'リセット';
+
+  @override
+  String get tasbihTotalLabel => '合計';
+
+  @override
+  String get tasbihCelebrationTitle => 'タスビー完了！';
+
+  @override
+  String get tasbihCelebrationBody =>
+      '99回のズィクルを完了しました。アッラーがあなたの念誦を受け入れてくださいますように。';
+
+  @override
+  String get tasbihStartNewSession => '新しいセッションを開始';
 }

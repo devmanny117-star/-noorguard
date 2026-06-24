@@ -1874,4 +1874,25 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notificationsToggleUnconfirmed => '无法确认更改——请重试';
+
+  @override
+  String get tasbihCounter => '念珠计数器';
+
+  @override
+  String get tasbihCounterSubtitle => '记录你的赞念';
+
+  @override
+  String get tasbihResetButton => '重置';
+
+  @override
+  String get tasbihTotalLabel => '总计';
+
+  @override
+  String get tasbihCelebrationTitle => '赞念完成！';
+
+  @override
+  String get tasbihCelebrationBody => '你已完成全部99次赞念。愿安拉接受你的赞念。';
+
+  @override
+  String get tasbihStartNewSession => '开始新一轮';
 }

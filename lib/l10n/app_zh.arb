@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "删除位置",
   "locationNotFound": "未找到该位置。请尝试其他搜索。",
   "maxLocationsReachedMessage": "您最多可以保存 {max} 个位置",
-  "notificationsToggleUnconfirmed": "无法确认更改——请重试"
+  "notificationsToggleUnconfirmed": "无法确认更改——请重试",
+  "tasbihCounter": "念珠计数器",
+  "tasbihCounterSubtitle": "记录你的赞念",
+  "tasbihResetButton": "重置",
+  "tasbihTotalLabel": "总计",
+  "tasbihCelebrationTitle": "赞念完成！",
+  "tasbihCelebrationBody": "你已完成全部99次赞念。愿安拉接受你的赞念。",
+  "tasbihStartNewSession": "开始新一轮"
 }

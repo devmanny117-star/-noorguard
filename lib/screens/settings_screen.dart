@@ -15,6 +15,7 @@ import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
+import 'lock_screen.dart';
 import 'notification_setup_screen.dart';
 
 const _settingsBg = Color(0xFF0D1B2A);
@@ -315,6 +316,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   AdhanForegroundController().simulateForegroundPrayer();
                   _snack(l10n.testAdhanForegroundSnack);
                 },
+              ),
+              const _Divider(colors: cardColors),
+              _ActionRow(
+                label: l10n.lockScreen,
+                icon: Icons.lock_outline_rounded,
+                colors: cardColors,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const LockScreenPreview(),
+                  ),
+                ),
               ),
               if (!kIsWeb && Platform.isAndroid) ...[
                 const _Divider(colors: cardColors),

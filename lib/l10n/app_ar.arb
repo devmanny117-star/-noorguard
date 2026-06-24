@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "حذف الموقع",
   "locationNotFound": "لم يتم العثور على الموقع. حاول بحثًا مختلفًا.",
   "maxLocationsReachedMessage": "يمكنك حفظ ما يصل إلى {max} مواقع",
-  "notificationsToggleUnconfirmed": "لم يتم تأكيد التغيير — حاول مرة أخرى"
+  "notificationsToggleUnconfirmed": "لم يتم تأكيد التغيير — حاول مرة أخرى",
+  "tasbihCounter": "عداد التسبيح",
+  "tasbihCounterSubtitle": "احصِ ذِكرك",
+  "tasbihResetButton": "إعادة تعيين",
+  "tasbihTotalLabel": "الإجمالي",
+  "tasbihCelebrationTitle": "اكتمل التسبيح!",
+  "tasbihCelebrationBody": "لقد أكملت 99 ذكرًا. تقبل الله ذكرك.",
+  "tasbihStartNewSession": "ابدأ جلسة جديدة"
 }

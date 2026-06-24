@@ -1977,4 +1977,26 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'পরিবর্তনটি নিশ্চিত করা যায়নি — আবার চেষ্টা করুন';
+
+  @override
+  String get tasbihCounter => 'তাসবিহ কাউন্টার';
+
+  @override
+  String get tasbihCounterSubtitle => 'আপনার জিকির গণনা করুন';
+
+  @override
+  String get tasbihResetButton => 'রিসেট';
+
+  @override
+  String get tasbihTotalLabel => 'মোট';
+
+  @override
+  String get tasbihCelebrationTitle => 'তাসবিহ সম্পূর্ণ হয়েছে!';
+
+  @override
+  String get tasbihCelebrationBody =>
+      'আপনি ৯৯টি জিকির সম্পন্ন করেছেন। আল্লাহ আপনার জিকির কবুল করুন।';
+
+  @override
+  String get tasbihStartNewSession => 'নতুন সেশন শুরু করুন';
 }

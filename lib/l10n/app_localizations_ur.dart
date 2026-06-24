@@ -1965,4 +1965,26 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'تبدیلی کی تصدیق نہیں ہو سکی — دوبارہ کوشش کریں';
+
+  @override
+  String get tasbihCounter => 'تسبیح کاؤنٹر';
+
+  @override
+  String get tasbihCounterSubtitle => 'اپنا ذکر شمار کریں';
+
+  @override
+  String get tasbihResetButton => 'ری سیٹ';
+
+  @override
+  String get tasbihTotalLabel => 'کل';
+
+  @override
+  String get tasbihCelebrationTitle => 'تسبیح مکمل ہوگئی!';
+
+  @override
+  String get tasbihCelebrationBody =>
+      'آپ نے تمام 99 اذکار مکمل کر لیے۔ اللہ آپ کا ذکر قبول فرمائے۔';
+
+  @override
+  String get tasbihStartNewSession => 'نیا سیشن شروع کریں';
 }

@@ -1977,4 +1977,26 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get notificationsToggleUnconfirmed =>
       'Perubahan tidak dapat dikonfirmasi — coba lagi';
+
+  @override
+  String get tasbihCounter => 'Penghitung Tasbih';
+
+  @override
+  String get tasbihCounterSubtitle => 'Hitung dzikirmu';
+
+  @override
+  String get tasbihResetButton => 'Atur Ulang';
+
+  @override
+  String get tasbihTotalLabel => 'Total';
+
+  @override
+  String get tasbihCelebrationTitle => 'Tasbih Selesai!';
+
+  @override
+  String get tasbihCelebrationBody =>
+      'Anda telah menyelesaikan 99 dzikir. Semoga Allah menerima dzikir Anda.';
+
+  @override
+  String get tasbihStartNewSession => 'Mulai Sesi Baru';
 }

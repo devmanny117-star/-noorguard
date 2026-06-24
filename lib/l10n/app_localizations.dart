@@ -3639,6 +3639,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t confirm the change — please try again'**
   String get notificationsToggleUnconfirmed;
+
+  /// Label for the tasbih/dhikr counter home-screen tile, and the title of the tasbih counter screen
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbih Counter'**
+  String get tasbihCounter;
+
+  /// Subtitle for the tasbih counter home-screen tile
+  ///
+  /// In en, this message translates to:
+  /// **'Count your dhikr'**
+  String get tasbihCounterSubtitle;
+
+  /// Button on the tasbih counter screen that resets the count back to zero
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get tasbihResetButton;
+
+  /// Label before the running session total on the tasbih counter screen, e.g. 'Total: 47 / 99'
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get tasbihTotalLabel;
+
+  /// Title shown in the celebration overlay once all 99 dhikr are completed
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbih Complete!'**
+  String get tasbihCelebrationTitle;
+
+  /// Body text shown in the celebration overlay once all 99 dhikr are completed
+  ///
+  /// In en, this message translates to:
+  /// **'You completed all 99 dhikr. May Allah accept your remembrance.'**
+  String get tasbihCelebrationBody;
+
+  /// Button in the celebration overlay that resets the tasbih counter to begin a new session
+  ///
+  /// In en, this message translates to:
+  /// **'Start New Session'**
+  String get tasbihStartNewSession;
 }
 
 class _AppLocalizationsDelegate

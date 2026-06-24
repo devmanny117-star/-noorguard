@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "Hapus lokasi",
   "locationNotFound": "Lokasi tidak ditemukan. Coba pencarian lain.",
   "maxLocationsReachedMessage": "Anda dapat menyimpan hingga {max} lokasi",
-  "notificationsToggleUnconfirmed": "Perubahan tidak dapat dikonfirmasi — coba lagi"
+  "notificationsToggleUnconfirmed": "Perubahan tidak dapat dikonfirmasi — coba lagi",
+  "tasbihCounter": "Penghitung Tasbih",
+  "tasbihCounterSubtitle": "Hitung dzikirmu",
+  "tasbihResetButton": "Atur Ulang",
+  "tasbihTotalLabel": "Total",
+  "tasbihCelebrationTitle": "Tasbih Selesai!",
+  "tasbihCelebrationBody": "Anda telah menyelesaikan 99 dzikir. Semoga Allah menerima dzikir Anda.",
+  "tasbihStartNewSession": "Mulai Sesi Baru"
 }

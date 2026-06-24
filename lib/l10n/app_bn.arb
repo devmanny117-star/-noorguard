@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "অবস্থান মুছুন",
   "locationNotFound": "অবস্থান পাওয়া যায়নি। অন্য অনুসন্ধান চেষ্টা করুন।",
   "maxLocationsReachedMessage": "আপনি সর্বোচ্চ {max}টি অবস্থান সংরক্ষণ করতে পারেন",
-  "notificationsToggleUnconfirmed": "পরিবর্তনটি নিশ্চিত করা যায়নি — আবার চেষ্টা করুন"
+  "notificationsToggleUnconfirmed": "পরিবর্তনটি নিশ্চিত করা যায়নি — আবার চেষ্টা করুন",
+  "tasbihCounter": "তাসবিহ কাউন্টার",
+  "tasbihCounterSubtitle": "আপনার জিকির গণনা করুন",
+  "tasbihResetButton": "রিসেট",
+  "tasbihTotalLabel": "মোট",
+  "tasbihCelebrationTitle": "তাসবিহ সম্পূর্ণ হয়েছে!",
+  "tasbihCelebrationBody": "আপনি ৯৯টি জিকির সম্পন্ন করেছেন। আল্লাহ আপনার জিকির কবুল করুন।",
+  "tasbihStartNewSession": "নতুন সেশন শুরু করুন"
 }

@@ -585,5 +585,12 @@
   "deleteLocationTooltip": "Konumu sil",
   "locationNotFound": "Konum bulunamadı. Farklı bir arama deneyin.",
   "maxLocationsReachedMessage": "En fazla {max} konum kaydedebilirsiniz",
-  "notificationsToggleUnconfirmed": "Değişiklik onaylanamadı — lütfen tekrar deneyin"
+  "notificationsToggleUnconfirmed": "Değişiklik onaylanamadı — lütfen tekrar deneyin",
+  "tasbihCounter": "Tesbih Sayacı",
+  "tasbihCounterSubtitle": "Zikrini say",
+  "tasbihResetButton": "Sıfırla",
+  "tasbihTotalLabel": "Toplam",
+  "tasbihCelebrationTitle": "Tesbih Tamamlandı!",
+  "tasbihCelebrationBody": "99 zikrin tümünü tamamladın. Allah zikrini kabul etsin.",
+  "tasbihStartNewSession": "Yeni Oturum Başlat"
 }
