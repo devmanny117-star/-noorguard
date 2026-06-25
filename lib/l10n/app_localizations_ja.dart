@@ -212,6 +212,18 @@ class AppLocalizationsJa extends AppLocalizations {
   String get prayerNotifications => '礼拝通知';
 
   @override
+  String get statusOn => 'オン';
+
+  @override
+  String get statusOff => 'オフ';
+
+  @override
+  String get enableAllNotifications => 'すべての通知を有効にする';
+
+  @override
+  String get individualPrayers => '個別の礼拝';
+
+  @override
   String get appearance => '外観';
 
   @override
@@ -1617,6 +1629,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get testAdhanForegroundSnack => 'サイレントバナー付きで完全なアザーンを再生中';
+
+  @override
+  String get testRequiresNotificationsOn => 'これをテストするには、まず礼拝通知を有効にしてください';
 
   @override
   String get lockScreenSetupGuideButton => 'ロック画面アラート設定ガイド';

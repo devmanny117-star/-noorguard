@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/prayer_times_data.dart';
 import '../models/prayer_model.dart';
+import 'adhan_playback_service.dart';
 import 'notification_service.dart';
 import 'streak_service.dart';
 import 'widget_data_service.dart';
@@ -91,6 +92,9 @@ class PrayerState extends ChangeNotifier {
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('selected_adhan', id);
+    // Warm the in-memory cache for the new style so the next test/prayer
+    // playback is instant instead of streaming over the network.
+    AdhanPlaybackService().preload(id);
     // Re-schedule so already-queued reminders adopt the newly selected adhan
     // sound (a notification's sound is fixed once it's scheduled).
     await _rescheduleEnabledNotifications();

@@ -1,6 +1,7 @@
 package com.noorguard.app
 
 import android.accessibilityservice.AccessibilityService
+import android.app.ActivityOptions
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
@@ -25,6 +26,15 @@ class AppBlockerAccessibilityService : AccessibilityService() {
 
     companion object {
         private const val TAG = "AppBlocker"
+    }
+
+    /** Fires once when the system binds this long-running service — at boot,
+     *  or whenever the user (re)enables it in Settings — long before any
+     *  blocked app actually opens. The ideal moment to start warming
+     *  [BlockScreenCache] on a background thread. */
+    override fun onServiceConnected() {
+        super.onServiceConnected()
+        BlockScreenCache.warm(applicationContext)
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
@@ -84,7 +94,11 @@ class AppBlockerAccessibilityService : AccessibilityService() {
             putExtra(BlockActivity.EXTRA_WINDOW_END_MILLIS, windowEndMillis)
         }
         Log.d(TAG, "$pkg: starting BlockActivity (source=$source)")
-        startActivity(intent)
+        // Zero-duration transition — the default cross-task open animation
+        // (~300ms) is exactly the kind of perceived delay this screen needs
+        // to avoid; BlockActivity should just appear.
+        val options = ActivityOptions.makeCustomAnimation(this, 0, 0)
+        startActivity(intent, options.toBundle())
     }
 
     private fun showSoftReminder(store: AppBlockingStore, pkg: String, windowStart: Long) {

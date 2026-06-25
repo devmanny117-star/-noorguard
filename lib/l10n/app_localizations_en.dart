@@ -221,6 +221,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get prayerNotifications => 'Prayer Notifications';
 
   @override
+  String get statusOn => 'On';
+
+  @override
+  String get statusOff => 'Off';
+
+  @override
+  String get enableAllNotifications => 'Enable All Notifications';
+
+  @override
+  String get individualPrayers => 'Individual Prayers';
+
+  @override
   String get appearance => 'Appearance';
 
   @override
@@ -1676,6 +1688,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'Playing the full adhan with a silent banner';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'Turn on Prayer Notifications first to test this';
 
   @override
   String get lockScreenSetupGuideButton => 'Lock Screen Alert Setup Guide';

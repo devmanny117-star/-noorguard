@@ -211,6 +211,18 @@ class AppLocalizationsZh extends AppLocalizations {
   String get prayerNotifications => '礼拜提醒通知';
 
   @override
+  String get statusOn => '开';
+
+  @override
+  String get statusOff => '关';
+
+  @override
+  String get enableAllNotifications => '启用所有通知';
+
+  @override
+  String get individualPrayers => '单独礼拜';
+
+  @override
   String get appearance => '外观';
 
   @override
@@ -1599,6 +1611,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get testAdhanForegroundSnack => '正在播放完整宣礼，并显示静音横幅';
+
+  @override
+  String get testRequiresNotificationsOn => '请先启用礼拜提醒通知以测试此功能';
 
   @override
   String get lockScreenSetupGuideButton => '锁屏提醒设置指南';

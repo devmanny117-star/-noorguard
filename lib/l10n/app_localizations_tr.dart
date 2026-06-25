@@ -221,6 +221,18 @@ class AppLocalizationsTr extends AppLocalizations {
   String get prayerNotifications => 'Namaz Bildirimleri';
 
   @override
+  String get statusOn => 'Açık';
+
+  @override
+  String get statusOff => 'Kapalı';
+
+  @override
+  String get enableAllNotifications => 'Tüm Bildirimleri Etkinleştir';
+
+  @override
+  String get individualPrayers => 'Bireysel Namazlar';
+
+  @override
   String get appearance => 'Görünüm';
 
   @override
@@ -1682,6 +1694,10 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'Tam ezan sessiz bir banner ile çalınıyor';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'Bunu test etmek için önce Namaz Bildirimlerini açın';
 
   @override
   String get lockScreenSetupGuideButton =>

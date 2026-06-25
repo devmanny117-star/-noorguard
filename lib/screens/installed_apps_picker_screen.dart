@@ -58,23 +58,39 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
   }
 
   Future<void> _load() async {
-    final apps =
-        await AppBlockingService().getInstalledApps(forceRefresh: true);
+    final service = AppBlockingService();
+    // Shows the warm cache instantly if there is one — typically already
+    // true by the time this screen opens, since the cache is preloaded at
+    // app startup (see HomeScreen._loadAppBlockingThenPrayerTimes).
+    final cached = service.getInstalledAppsIfFullyCached();
+    if (cached != null) {
+      setState(() {
+        _apps = cached;
+        _filtered = _filterApps(cached);
+        _loading = false;
+      });
+    }
+    // Always refreshes in the background too, silently, so an app
+    // installed/uninstalled since the cache was last warmed still shows up
+    // correctly — the user only ever waits for this when [cached] was null.
+    final fresh = await service.getInstalledApps(forceRefresh: true);
     if (!mounted) return;
     setState(() {
-      _apps = apps;
-      _filtered = apps;
+      _apps = fresh;
+      _filtered = _filterApps(fresh);
       _loading = false;
     });
   }
 
-  void _onSearch() {
+  List<InstalledApp> _filterApps(List<InstalledApp> apps) {
     final q = _searchController.text.toLowerCase();
-    setState(() {
-      _filtered = q.isEmpty
-          ? _apps
-          : _apps.where((a) => a.appName.toLowerCase().contains(q)).toList();
-    });
+    return q.isEmpty
+        ? apps
+        : apps.where((a) => a.appName.toLowerCase().contains(q)).toList();
+  }
+
+  void _onSearch() {
+    setState(() => _filtered = _filterApps(_apps));
   }
 
   List<InstalledApp> get _displayed {
@@ -172,7 +188,7 @@ class _InstalledAppsPickerScreenState extends State<InstalledAppsPickerScreen> {
             ),
             Expanded(
               child: _loading
-                  ? const Center(child: CircularProgressIndicator(color: _gold))
+                  ? const _AppPickerSkeletonList()
                   : displayed.isEmpty
                       ? Center(
                           child: Text(
@@ -243,6 +259,107 @@ class _PinnedDividerLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(color: _gold.withValues(alpha: 0.35));
+  }
+}
+
+/// Shown only on the rare cold start where the installed-apps cache hasn't
+/// warmed up yet by the time this screen opens (it's normally already warm,
+/// preloaded at app startup) — a handful of pulsing row-shaped placeholders
+/// instead of a centered spinner, so the list shape is visible immediately.
+class _AppPickerSkeletonList extends StatelessWidget {
+  const _AppPickerSkeletonList();
+
+  static const int _rowCount = 8;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      padding: const EdgeInsets.fromLTRB(18, 0, 18, 24),
+      itemCount: _rowCount,
+      itemBuilder: (_, __) => const _AppPickerRowSkeleton(),
+    );
+  }
+}
+
+class _AppPickerRowSkeleton extends StatelessWidget {
+  const _AppPickerRowSkeleton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 60,
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 14),
+      decoration: BoxDecoration(
+        color: _cardBg,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: _cardBorder),
+      ),
+      child: Row(
+        children: [
+          _ShimmerBox(
+              width: 38, height: 38, borderRadius: BorderRadius.circular(10)),
+          const SizedBox(width: 12),
+          Expanded(
+            child: _ShimmerBox(
+                width: double.infinity,
+                height: 13,
+                borderRadius: BorderRadius.circular(4)),
+          ),
+          const SizedBox(width: 12),
+          _ShimmerBox(
+              width: 40, height: 22, borderRadius: BorderRadius.circular(11)),
+        ],
+      ),
+    );
+  }
+}
+
+/// A single gently-pulsing placeholder box — the lightweight building block
+/// for every skeleton row above.
+class _ShimmerBox extends StatefulWidget {
+  final double width;
+  final double height;
+  final BorderRadius borderRadius;
+
+  const _ShimmerBox({
+    required this.width,
+    required this.height,
+    required this.borderRadius,
+  });
+
+  @override
+  State<_ShimmerBox> createState() => _ShimmerBoxState();
+}
+
+class _ShimmerBoxState extends State<_ShimmerBox>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1100),
+  )..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: Tween<double>(begin: 0.35, end: 0.8).animate(
+        CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut),
+      ),
+      child: Container(
+        width: widget.width,
+        height: widget.height,
+        decoration: BoxDecoration(
+          color: _cardBorder,
+          borderRadius: widget.borderRadius,
+        ),
+      ),
+    );
   }
 }
 

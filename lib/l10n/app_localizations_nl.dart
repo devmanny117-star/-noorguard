@@ -221,6 +221,18 @@ class AppLocalizationsNl extends AppLocalizations {
   String get prayerNotifications => 'Gebedsmeldingen';
 
   @override
+  String get statusOn => 'Aan';
+
+  @override
+  String get statusOff => 'Uit';
+
+  @override
+  String get enableAllNotifications => 'Alle meldingen inschakelen';
+
+  @override
+  String get individualPrayers => 'Afzonderlijke Gebeden';
+
+  @override
   String get appearance => 'Weergave';
 
   @override
@@ -1686,6 +1698,10 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'De volledige adhan wordt afgespeeld met een geluidloze banner';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'Schakel eerst Gebedsmeldingen in om dit te testen';
 
   @override
   String get lockScreenSetupGuideButton =>

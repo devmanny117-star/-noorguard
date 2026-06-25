@@ -149,8 +149,9 @@ class AdhanForegroundController with WidgetsBindingObserver {
   /// Verification hook for the settings screen: reproduces what the user sees
   /// and hears when a reminder fires in the foreground — a soundless banner
   /// plus the full selected adhan — without touching any real scheduled
-  /// reminder.
+  /// reminder. Respects the master toggle like a real prayer fire would.
   Future<void> simulateForegroundPrayer() async {
+    if (!PrayerState().masterNotifications) return;
     _currentPrayerId = 0;
     isAdhanPlaying.value = true;
     await NotificationService().showSilentPrayerBanner(0, 'Fajr');

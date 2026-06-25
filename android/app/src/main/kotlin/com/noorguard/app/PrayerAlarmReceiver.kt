@@ -10,6 +10,7 @@ import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Build
 import android.os.PowerManager
+import android.util.Log
 import androidx.core.app.NotificationCompat
 
 /** Fires at the exact prayer time and posts the full-screen alarm notification. */
@@ -73,6 +74,18 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
+        // Defense in depth: this alarm should already have been cancelled if
+        // the user turned Prayer Notifications off, but a stale/duplicate
+        // AlarmManager entry must still never reach the user. The
+        // shared_preferences plugin stores Dart's prefs in a separate
+        // "FlutterSharedPreferences" file with a "flutter." key prefix (see
+        // PrayerForegroundService.restartIfEnabled for the same check).
+        val dartPrefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+        if (!dartPrefs.getBoolean("flutter.notif_master", true)) {
+            Log.d("PrayerAlarms", "onReceive: notif_master is false, dropping prayer alarm")
+            return
+        }
+
         val prayerName = intent.getStringExtra(EXTRA_PRAYER_NAME) ?: return
         val arabicName = intent.getStringExtra(EXTRA_PRAYER_ARABIC) ?: ""
         val prayerTime = intent.getStringExtra(EXTRA_PRAYER_TIME) ?: ""

@@ -222,6 +222,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get prayerNotifications => 'নামাজের নোটিফিকেশন';
 
   @override
+  String get statusOn => 'চালু';
+
+  @override
+  String get statusOff => 'বন্ধ';
+
+  @override
+  String get enableAllNotifications => 'সব নোটিফিকেশন চালু করুন';
+
+  @override
+  String get individualPrayers => 'পৃথক নামাজ';
+
+  @override
   String get appearance => 'চেহারা';
 
   @override
@@ -1685,6 +1697,10 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'নিঃশব্দ ব্যানারের সাথে সম্পূর্ণ আজান বাজানো হচ্ছে';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'এটি পরীক্ষা করতে প্রথমে নামাজের নোটিফিকেশন চালু করুন';
 
   @override
   String get lockScreenSetupGuideButton => 'লক স্ক্রিন অ্যালার্ট সেটআপ গাইড';

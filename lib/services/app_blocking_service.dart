@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../models/installed_app.dart';
 import '../models/prayer_model.dart';
+import '../utils/platform_utils.dart';
 import 'streak_service.dart';
 
 enum BlockingMode { soft, firm, hard }
@@ -178,6 +178,13 @@ class AppBlockingService extends ChangeNotifier {
   /// list).
   List<InstalledApp>? _cachedApps;
 
+  /// True only once a real native fetch (not just the persisted
+  /// icon-snapshot warm-up in [loadSettings]) has populated [_cachedApps]
+  /// with the *full* installed-apps list this session — lets
+  /// [getInstalledAppsIfFullyCached] tell "ready for the apps picker" apart
+  /// from "just enough for a few preview icons".
+  bool _fullAppsListCached = false;
+
   static const _appsSnapshotKey = 'cached_selected_apps_snapshot';
 
   /// Persists just the icon/name data for currently-selected packages (not
@@ -225,8 +232,10 @@ class AppBlockingService extends ChangeNotifier {
 
   Future<List<InstalledApp>> getInstalledApps(
       {bool forceRefresh = false}) async {
-    if (!Platform.isAndroid) return [];
-    if (!forceRefresh && _cachedApps != null) return _cachedApps!;
+    if (!isAndroidPlatform) return [];
+    if (!forceRefresh && _fullAppsListCached && _cachedApps != null) {
+      return _cachedApps!;
+    }
     try {
       final result =
           await _channel.invokeMethod<List<dynamic>>('getInstalledApps');
@@ -237,12 +246,21 @@ class AppBlockingService extends ChangeNotifier {
         ..sort((a, b) =>
             a.appName.toLowerCase().compareTo(b.appName.toLowerCase()));
       _cachedApps = apps;
+      _fullAppsListCached = true;
       await _persistAppsSnapshot();
       return apps;
     } catch (_) {
       return _cachedApps ?? [];
     }
   }
+
+  /// Returns the full installed-apps list instantly if a real native fetch
+  /// has already completed this session — null if only the small persisted
+  /// icon snapshot is warm (or nothing at all yet). The apps picker uses
+  /// this to show the list immediately when possible, falling back to a
+  /// skeleton placeholder only when it's genuinely not ready.
+  List<InstalledApp>? getInstalledAppsIfFullyCached() =>
+      _fullAppsListCached ? _cachedApps : null;
 
   /// Resolves the currently blocked packages to their real installed-app
   /// data (name + icon), for previews like App Blocking's settings screen.
@@ -282,7 +300,7 @@ class AppBlockingService extends ChangeNotifier {
   }
 
   Future<bool> isAccessibilityServiceEnabled() async {
-    if (!Platform.isAndroid) return false;
+    if (!isAndroidPlatform) return false;
     try {
       return await _channel
               .invokeMethod<bool>('isAccessibilityServiceEnabled') ??
@@ -293,7 +311,7 @@ class AppBlockingService extends ChangeNotifier {
   }
 
   Future<void> openAccessibilitySettings() async {
-    if (!Platform.isAndroid) return;
+    if (!isAndroidPlatform) return;
     try {
       await _channel.invokeMethod('openAccessibilitySettings');
     } catch (_) {}
@@ -302,7 +320,7 @@ class AppBlockingService extends ChangeNotifier {
   /// Consumes (clears) any ayah challenge BlockActivity attached when it
   /// launched MainActivity for the "Read 3 Ayahs" flow.
   Future<AyahChallenge?> consumePendingAyahChallenge() async {
-    if (!Platform.isAndroid) return null;
+    if (!isAndroidPlatform) return null;
     try {
       final result = await _channel
           .invokeMethod<Map<dynamic, dynamic>>('getPendingAyahChallenge');
@@ -316,7 +334,7 @@ class AppBlockingService extends ChangeNotifier {
   }
 
   Future<void> grantAyahChallengeBypass(String packageName) async {
-    if (!Platform.isAndroid) return;
+    if (!isAndroidPlatform) return;
     try {
       await _channel.invokeMethod('grantAyahChallengeBypass', {
         'packageName': packageName,
@@ -327,7 +345,7 @@ class AppBlockingService extends ChangeNotifier {
   /// Relaunches [packageName] — used to return the user to the app they were
   /// trying to open once the "Read 3 Ayahs" challenge grants the bypass.
   Future<void> launchApp(String packageName) async {
-    if (!Platform.isAndroid) return;
+    if (!isAndroidPlatform) return;
     try {
       await _channel.invokeMethod('launchApp', {'packageName': packageName});
     } catch (_) {}
@@ -339,7 +357,7 @@ class AppBlockingService extends ChangeNotifier {
   /// AccessibilityService pathway on-device without waiting for an actual
   /// prayer time.
   Future<void> startTestBlockWindow(Duration duration) async {
-    if (!Platform.isAndroid) return;
+    if (!isAndroidPlatform) return;
     final endMillis = DateTime.now().add(duration).millisecondsSinceEpoch;
     try {
       await _channel.invokeMethod('startTestBlockWindow', {'endMillis': endMillis});
@@ -388,7 +406,7 @@ class AppBlockingService extends ChangeNotifier {
     BuildContext context,
     List<Prayer> todaysPrayers,
   ) async {
-    if (!Platform.isAndroid) return;
+    if (!isAndroidPlatform) return;
     final l10n = AppLocalizations.of(context)!;
 
     final windows = computeTodaysWindows(todaysPrayers)
@@ -440,7 +458,7 @@ class AppBlockingService extends ChangeNotifier {
   /// the prayer-time "enabled" toggle. Always sends the current focus apps
   /// list fresh, since this is the only moment it needs to be in sync.
   Future<void> startFocusSession(Duration duration) async {
-    if (!Platform.isAndroid) return;
+    if (!isAndroidPlatform) return;
     final endMillis = DateTime.now().add(duration).millisecondsSinceEpoch;
     try {
       await _channel.invokeMethod('updateFocusSession', {
@@ -451,7 +469,7 @@ class AppBlockingService extends ChangeNotifier {
   }
 
   Future<void> endFocusSession() async {
-    if (!Platform.isAndroid) return;
+    if (!isAndroidPlatform) return;
     try {
       await _channel.invokeMethod('updateFocusSession', {'endMillis': null});
     } catch (_) {}
@@ -462,7 +480,7 @@ class AppBlockingService extends ChangeNotifier {
   /// screen's "End Focus Session" button), so Dart's timer can reconcile
   /// after returning from it.
   Future<DateTime?> reconcileFocusSession() async {
-    if (!Platform.isAndroid) return null;
+    if (!isAndroidPlatform) return null;
     try {
       final endMillis =
           await _channel.invokeMethod<int>('getFocusSessionStatus');

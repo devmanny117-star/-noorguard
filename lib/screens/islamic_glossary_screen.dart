@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/islamic_synonyms.dart';
 import '../widgets/font_size_slider.dart';
 
 const _navy = Color(0xFF0D1B2A);
@@ -28,6 +29,7 @@ class _Term {
   final String nl;
   final String pt;
   final String it;
+  final String fa;
 
   const _Term({
     required this.transliteration,
@@ -48,6 +50,7 @@ class _Term {
     required this.nl,
     required this.pt,
     required this.it,
+    required this.fa,
   });
 
   String definition(String lang) {
@@ -56,6 +59,8 @@ class _Term {
         return ar;
       case 'ur':
         return ur;
+      case 'fa':
+        return fa;
       case 'es':
         return es;
       case 'fr':
@@ -152,6 +157,7 @@ const List<_Term> _allTerms = [
     nl: 'De ene God, schepper van al het bestaande. De Arabische naam voor God, gebruikt door moslims en Arabische christenen. Niets is aan Hem gelijk. (Koran 42:11)',
     pt: 'O Deus único, criador de toda a existência. O nome árabe para Deus, usado por muçulmanos e cristãos árabes. Nada se assemelha a Ele. (Alcorão 42:11)',
     it: 'L\'unico Dio, creatore di tutta l\'esistenza. Il nome arabo per Dio, usato da musulmani e cristiani arabi. Nulla è simile a Lui. (Corano 42:11)',
+    fa: 'خداوند یگانه، آفریننده همه هستی. نامی که هیچ شریکی ندارد و مسلمانان و مسیحیان عرب به کار می‌برند. هیچ چیز همانند او نیست. (قرآن 42:11)',
   ),
   _Term(
     transliteration: 'Islam',
@@ -172,6 +178,7 @@ const List<_Term> _allTerms = [
     nl: 'Betekent "overgave aan Allah." De religie geopenbaard aan Profeet Muhammad ﷺ en alle eerdere profeten, van Adam tot Isa (Jezus). (Koran 3:19)',
     pt: 'Significa "submissão a Allah". A religião revelada ao Profeta Muhammad ﷺ e a todos os profetas anteriores, de Adão a Isa (Jesus). (Alcorão 3:19)',
     it: 'Significa "sottomissione ad Allah". La religione rivelata al Profeta Muhammad ﷺ e a tutti i profeti precedenti, da Adamo a Isa (Gesù). (Corano 3:19)',
+    fa: 'به معنای «تسلیم در برابر خداوند». دینی که بر پیامبر محمد ﷺ و تمام پیامبران پیشین، از آدم تا عیسی، نازل شد. إِنَّ الدِّینَ عِنْدَ اللَّهِ الْإِسْلَامُ. (قرآن 3:19)',
   ),
   _Term(
     transliteration: 'Muslim',
@@ -192,6 +199,7 @@ const List<_Term> _allTerms = [
     nl: 'Iemand die zich overgeeft aan Allah. Iedereen die oprecht de Islam omarmt is moslim, ongeacht ras, nationaliteit of achtergrond.',
     pt: 'Aquele que se submete a Allah. Qualquer pessoa que sinceramente abraçar o Islã é muçulmano, independentemente de raça, nacionalidade ou origem.',
     it: 'Chi si sottomette ad Allah. Chiunque abbracci sinceramente l\'Islam è musulmano, indipendentemente da razza, nazionalità o provenienza.',
+    fa: 'کسی که در برابر خداوند تسلیم است و اسلام را دنبال می‌کند. هر کسی که صادقانه اسلام را بپذیرد مسلمان است، صرف‌نظر از نژاد، ملیت یا پیشینه.',
   ),
   _Term(
     transliteration: 'Shahada',
@@ -212,6 +220,7 @@ const List<_Term> _allTerms = [
     nl: 'De geloofsbelijdenis: "Er is geen god dan Allah en Muhammad is Zijn boodschapper." De eerste zuil van de Islam. Het oprecht uitspreken maakt iemand moslim.',
     pt: 'A declaração de fé: "Não há divindade além de Allah e Muhammad é Seu mensageiro." O primeiro pilar do Islã. Dizê-la sinceramente torna alguém muçulmano.',
     it: 'La dichiarazione di fede: "Non c\'è dio all\'infuori di Allah e Muhammad è il Suo messaggero." Il primo pilastro dell\'Islam. Pronunciarla sinceramente rende musulmani.',
+    fa: 'اعلام ایمان: «أشهد أن لا إله إلا الله و أن محمداً رسول الله». رکن اول اسلام. هر کس آن را صادقانه بگوید مسلمان می‌شود.',
   ),
   _Term(
     transliteration: 'Salah',
@@ -232,6 +241,7 @@ const List<_Term> _allTerms = [
     nl: 'De vijf dagelijkse gebeden, een van de vijf zuilen van de Islam: Fajr (dageraad), Dhuhr (middag), Asr (namiddag), Maghrib (zonsondergang) en Isha (nacht). (Koran 2:238)',
     pt: 'As cinco orações diárias, um dos cinco pilares do Islã: Fajr (alvorada), Dhuhr (meio-dia), Asr (tarde), Maghrib (pôr do sol) e Isha (noite). (Alcorão 2:238)',
     it: 'Le cinque preghiere quotidiane, uno dei cinque pilastri dell\'Islam: Fajr (alba), Dhuhr (mezzogiorno), Asr (pomeriggio), Maghrib (tramonto) e Isha (notte). (Corano 2:238)',
+    fa: 'پنج نماز روزانه، یکی از ارکان پنجگانه اسلام: فجر (سپیده‌دم)، ظهر (نیمروز)، عصر (بعدازظهر)، مغرب (غروب) و عشاء (شب). (قرآن 2:238)',
   ),
   _Term(
     transliteration: 'Zakat',
@@ -252,6 +262,7 @@ const List<_Term> _allTerms = [
     nl: 'Verplichte liefdadigheid: 2,5% van het spaargeld wordt jaarlijks aan behoeftigen gegeven. Een van de vijf zuilen. Het zuivert rijkdom en ondersteunt de gemeenschap. (Koran 9:60)',
     pt: 'Caridade obrigatória: 2,5% das economias dados anualmente aos necessitados. Um dos cinco pilares. Purifica a riqueza e apoia a comunidade. (Alcorão 9:60)',
     it: 'Carità obbligatoria: il 2,5% dei risparmi dato annualmente ai bisognosi. Uno dei cinque pilastri. Purifica la ricchezza e sostiene la comunità. (Corano 9:60)',
+    fa: 'صدقه واجب: 2.5 درصد از پس‌انداز سالانه به نیازمندان داده می‌شود. یکی از ارکان پنجگانه. ثروت را پاک می‌کند و به جامعه کمک می‌کند. (قرآن 9:60)',
   ),
   _Term(
     transliteration: 'Sawm',
@@ -272,6 +283,7 @@ const List<_Term> _allTerms = [
     nl: 'Vasten van eten, drinken en intieme relaties van zonsopgang tot zonsondergang tijdens de Ramadan. Een van de vijf zuilen van de islam. (Koran 2:183)',
     pt: 'Jejum de alimentos, bebidas e relações íntimas do amanhecer ao pôr do sol durante o Ramadã. Um dos cinco pilares do Islã. (Alcorão 2:183)',
     it: 'Digiuno da cibo, bevande e rapporti intimi dall\'alba al tramonto durante il Ramadan. Uno dei cinque pilastri dell\'Islam. (Corano 2:183)',
+    fa: 'روزه‌داری از سپیده‌دم تا غروب، یکی از ارکان پنجگانه اسلام. روزه در ماه مبارک رمضان واجب است. (قرآن 2:183)',
   ),
   _Term(
     transliteration: 'Hajj',
@@ -292,6 +304,7 @@ const List<_Term> _allTerms = [
     nl: 'De bedevaart naar Mekka. Eenmaal in het leven verplicht voor wie er fysiek en financieel toe in staat is. Een van de vijf zuilen van de islam. (Koran 3:97)',
     pt: 'A peregrinação a Meca. Obrigatória uma vez na vida para os que têm capacidade física e financeira. Um dos cinco pilares do Islã. (Alcorão 3:97)',
     it: 'Il pellegrinaggio alla Mecca. Obbligatorio una volta nella vita per chi ne ha la capacità fisica e finanziaria. Uno dei cinque pilastri dell\'Islam. (Corano 3:97)',
+    fa: 'زیارت سالانه به مکه، یکی از ارکان پنجگانه اسلام. برای هر مسلمانی که توانایی داشته باشد یک بار در عمر واجب است. (قرآن 3:97)',
   ),
   _Term(
     transliteration: 'Wudu',
@@ -312,6 +325,7 @@ const List<_Term> _allTerms = [
     nl: 'Rituele reiniging met water vóór het gebed. Omvat handen wassen, mond spoelen, neus reinigen, gezicht en armen wassen, hoofd vegen en voeten wassen. (Koran 5:6)',
     pt: 'Purificação ritual com água antes da oração. Inclui lavar as mãos, enxaguar a boca, limpar o nariz, lavar o rosto e os braços, passar a mão na cabeça e lavar os pés. (Alcorão 5:6)',
     it: 'Purificazione rituale con acqua prima della preghiera. Comprende lavare le mani, sciacquare la bocca, pulire il naso, lavare viso e braccia, passare la mano sul capo e lavare i piedi. (Corano 5:6)',
+    fa: 'طهارت ریتوئالی با آب قبل از نماز. شامل شستن دست‌ها، دهان، بینی، صورت، بازوها، مسح سر و شستن پاهاست.',
   ),
   _Term(
     transliteration: 'Quran',
@@ -332,6 +346,7 @@ const List<_Term> _allTerms = [
     nl: 'Het heilige boek van de islam, geopenbaard aan Profeet Muhammad ﷺ gedurende 23 jaar via Engel Jibril. Het directe, bewaarde woord van Allah. (Koran 15:9)',
     pt: 'O livro sagrado do Islã, revelado ao Profeta Muhammad ﷺ ao longo de 23 anos através do Anjo Jibril. A palavra direta e preservada de Allah. (Alcorão 15:9)',
     it: 'Il libro sacro dell\'Islam, rivelato al Profeta Muhammad ﷺ in 23 anni tramite l\'Angelo Jibreel. La parola diretta e preservata di Allah. (Corano 15:9)',
+    fa: 'کلام خداوند که بر پیامبر محمد ﷺ در طول 23 سال نازل شد. شامل 114 سوره است و به زبان عربی نوشته شده. راهنمای کامل بشریت.',
   ),
   _Term(
     transliteration: 'Sunnah',
@@ -352,6 +367,7 @@ const List<_Term> _allTerms = [
     nl: 'De leringen, handelingen en goedkeuringen van Profeet Muhammad ﷺ. De tweede bron van islamitische begeleiding na de Koran. Moslims volgen het om de Profeet na te volgen.',
     pt: 'Os ensinamentos, ações e aprovações do Profeta Muhammad ﷺ. A segunda fonte de orientação islâmica após o Alcorão. Os muçulmanos a seguem para emular o Profeta.',
     it: 'Gli insegnamenti, le azioni e le approvazioni del Profeta Muhammad ﷺ. La seconda fonte di guida islamica dopo il Corano. I musulmani la seguono per emulare il Profeta.',
+    fa: 'اقوال، اعمال و تأییدات پیامبر محمد ﷺ. دومین منبع هدایت در اسلام پس از قرآن. برای درک و تبیین قرآن ضروری است.',
   ),
   _Term(
     transliteration: 'Hadith',
@@ -372,6 +388,7 @@ const List<_Term> _allTerms = [
     nl: 'Een opgetekende uitspraak of handeling van Profeet Muhammad ﷺ. Verzameld door geleerden na strenge verificatie in boeken zoals Sahih Bukhari en Sahih Muslim.',
     pt: 'Um dito ou ação registrada do Profeta Muhammad ﷺ. Coletado por estudiosos após verificação rigorosa em livros como Sahih Bukhari e Sahih Muslim.',
     it: 'Un detto o un\'azione registrata del Profeta Muhammad ﷺ. Raccolto dagli studiosi dopo una verifica rigorosa in libri come Sahih Bukhari e Sahih Muslim.',
+    fa: 'روایت ثبت‌شده از سخنان، اعمال یا تأییدات پیامبر محمد ﷺ. مجموعه احادیث سنت نبوی را تشکیل می‌دهد و راهنمای اسلامی است.',
   ),
   _Term(
     transliteration: 'Ummah',
@@ -392,6 +409,7 @@ const List<_Term> _allTerms = [
     nl: 'De wereldwijde moslimgemeenschap. Alle 1,8 miljard moslims wereldwijd worden beschouwd als één Ummah, verenigd door geloof ongeacht nationaliteit. (Koran 21:92)',
     pt: 'A comunidade muçulmana global. Todos os 1,8 bilhão de muçulmanos no mundo são considerados uma única Ummah, unidos pela fé independentemente da nacionalidade. (Alcorão 21:92)',
     it: 'La comunità musulmana globale. Tutti gli 1,8 miliardi di musulmani nel mondo sono considerati un\'unica Ummah, uniti dalla fede indipendentemente dalla nazionalità. (Corano 21:92)',
+    fa: 'جامعه جهانی مسلمانان، فارغ از مرزهای ملی یا قومی. پیامبر ﷺ مسلمانان را به عنوان امت واحد توصیف کرد.',
   ),
   _Term(
     transliteration: 'Iman',
@@ -412,6 +430,7 @@ const List<_Term> _allTerms = [
     nl: 'Geloof. Geloof in zes zuilen: Allah, Zijn engelen, Zijn boeken, Zijn boodschappers, de Laatste Dag en de goddelijke voorbeschikking (qadar). (Hadith Jibril, Sahih Muslim)',
     pt: 'Fé. Crença em seis pilares: Allah, Seus anjos, Seus livros, Seus mensageiros, o Último Dia e o decreto divino (qadar). (Hadith de Jibril, Sahih Muslim)',
     it: 'Fede. Credere in sei pilastri: Allah, i Suoi angeli, i Suoi libri, i Suoi messaggeri, il Giorno del Giudizio e il decreto divino (qadar). (Hadith di Jibreel, Sahih Muslim)',
+    fa: 'ایمان در اسلام: باور به خداوند، فرشتگان، کتاب‌های آسمانی، پیامبران، روز قیامت و قدر خداوند. پایه همه اعمال.',
   ),
   _Term(
     transliteration: 'Ihsan',
@@ -432,6 +451,7 @@ const List<_Term> _allTerms = [
     nl: 'Uitmuntendheid in aanbidding. De Profeet ﷺ definieerde het als: "Allah aanbidden alsof je Hem ziet; als je dat niet kunt, weet dat Hij jou ziet." (Hadith Jibril, Sahih Muslim)',
     pt: 'Excelência na adoração. O Profeta ﷺ definiu-o como: "Adorar Allah como se O visses; se não podes, sabe que Ele te vê." (Hadith de Jibril, Sahih Muslim)',
     it: 'Eccellenza nel culto. Il Profeta ﷺ lo definì così: "Adorare Allah come se Lo vedessi; se non puoi, sappi che Egli ti vede." (Hadith di Jibreel, Sahih Muslim)',
+    fa: 'عالی‌ترین درجه ایمان: «خداوند را چنان عبادت کن که گویی او را می‌بینی، و اگر نمی‌بینی، می‌دانی که او تو را می‌بیند.» (حدیث جبرئیل)',
   ),
   _Term(
     transliteration: 'Taqwa',
@@ -452,6 +472,7 @@ const List<_Term> _allTerms = [
     nl: 'Godsbewustzijn. In alle situaties bewust zijn van Allah — doen wat Hij gebiedt en vermijden wat Hij verbiedt. Beschreven als de beste provisie. (Koran 2:197)',
     pt: 'Consciência de Deus. Estar atento a Allah em todas as situações — fazer o que Ele ordena e evitar o que Ele proíbe. Descrita como a melhor provisão. (Alcorão 2:197)',
     it: 'Coscienza di Dio. Essere consapevoli di Allah in ogni situazione — fare ciò che comanda ed evitare ciò che proibisce. Descritta come la migliore provvista. (Corano 2:197)',
+    fa: 'آگاهی و ترس از خداوند که منجر به اعمال درست می‌شود. پرهیزگاری و خودداری از گناه. بالاترین معیار نزد خداوند. (قرآن 49:13)',
   ),
   _Term(
     transliteration: 'Tawbah',
@@ -472,6 +493,7 @@ const List<_Term> _allTerms = [
     nl: 'Oprecht berouw. Na een zonde terugkeren naar Allah met oprecht berouw en het voornemen het niet te herhalen. Allah houdt van wie berouw tonen. (Koran 2:222)',
     pt: 'Arrependimento sincero. Voltar-se para Allah após um pecado com remorso genuíno e decidir não repeti-lo. Allah ama aqueles que se arrependem. (Alcorão 2:222)',
     it: 'Pentimento sincero. Tornare ad Allah dopo un peccato con genuino rimorso e la risoluzione di non ripeterlo. Allah ama coloro che si pentono. (Corano 2:222)',
+    fa: 'توبه و بازگشت صادقانه به سوی خداوند. سه شرط دارد: ترک گناه، پشیمانی و تصمیم به عدم تکرار. خداوند توابان را دوست دارد. (قرآن 2:222)',
   ),
   _Term(
     transliteration: 'Tawakkul',
@@ -492,6 +514,7 @@ const List<_Term> _allTerms = [
     nl: 'Volledig vertrouwen op Allah. Je best doen en vervolgens de uitkomst aan Allah overlaten met volledig vertrouwen in Zijn wijsheid en zorg. (Koran 65:3)',
     pt: 'Confiança total em Allah. Fazer o melhor esforço e depois deixar o resultado para Allah com plena confiança em Sua sabedoria e cuidado. (Alcorão 65:3)',
     it: 'Fiducia completa in Allah. Fare del proprio meglio, poi lasciare il risultato ad Allah con piena fiducia nella Sua saggezza e cura. (Corano 65:3)',
+    fa: 'توکل کامل به خداوند پس از انجام سعی و تلاش. پیامبر ﷺ فرمود: «شتر را ببند، سپس توکل کن.» ترکیب تلاش و توکل.',
   ),
   _Term(
     transliteration: 'Sabr',
@@ -512,6 +535,7 @@ const List<_Term> _allTerms = [
     nl: 'Geduldig volharden in tegenspoed. Een van de meest geprezen kwaliteiten in de Koran, meer dan 90 keer genoemd. "Voorwaar, Allah is met de geduldigen." (Koran 2:153)',
     pt: 'Perseverança paciente nas dificuldades. Uma das qualidades mais elogiadas no Alcorão, mencionada mais de 90 vezes. "Na verdade, Allah está com os pacientes." (Alcorão 2:153)',
     it: 'Paziente perseveranza nelle avversità. Una delle qualità più elogiate nel Corano, menzionata oltre 90 volte. "In verità, Allah è con i pazienti." (Corano 2:153)',
+    fa: 'شکیبایی و استقامت در برابر سختی، عبادت و مقاومت در برابر گناه. «بی‌شک خداوند با صابران است.» (قرآن 2:153)',
   ),
   _Term(
     transliteration: 'Shukr',
@@ -532,6 +556,7 @@ const List<_Term> _allTerms = [
     nl: 'Dankbaarheid aan Allah voor Zijn zegeningen. Uitgedrukt in woorden en door zegeningen te gebruiken in Zijn gehoorzaamheid. "Als jullie dankbaar zijn, zal Ik jullie vermeerderen." (Koran 14:7)',
     pt: 'Gratidão a Allah por Suas bênçãos. Expressa em palavras e usando as bênçãos em Sua obediência. "Se forem gratos, Eu certamente vos aumentarei." (Alcorão 14:7)',
     it: 'Gratitudine ad Allah per le Sue benedizioni. Espressa con le parole e usando le benedizioni nella Sua obbedienza. "Se sarete grati, vi darò di più." (Corano 14:7)',
+    fa: 'شکرگزاری از خداوند برای نعمت‌هایش. پیامبر ﷺ شب‌ها آنقدر نماز می‌خواند که پایش ورم می‌کرد، شاکر نعمت‌های خداوند بود.',
   ),
   _Term(
     transliteration: 'Barakah',
@@ -552,6 +577,7 @@ const List<_Term> _allTerms = [
     nl: 'Goddelijke zegen en vermeerdering. Wanneer Allah barakah in iets plaatst — tijd, voedsel, rijkdom of een persoon — brengt het veel meer goed dan de zichtbare hoeveelheid.',
     pt: 'Bênção divina e aumento. Quando Allah coloca barakah em algo — tempo, comida, riqueza ou uma pessoa — traz muito mais bem do que sua quantidade aparente.',
     it: 'Benedizione divina e accrescimento. Quando Allah pone la barakah in qualcosa — tempo, cibo, ricchezza o una persona — porta molto più bene della sua quantità apparente.',
+    fa: 'برکت الهی: نعمتی که به چیزی چسبیده و آن را ثمربخش می‌کند. می‌توان در مال، زمان، خانه و روابط یافت. از خداوند می‌آید.',
   ),
   _Term(
     transliteration: 'Halal',
@@ -572,6 +598,7 @@ const List<_Term> _allTerms = [
     nl: 'Toegestaan volgens de islamitische wet. Toegepast op voedsel, handelingen, inkomsten en relaties. Halal eten, verdienen en leven is een daad van aanbidding.',
     pt: 'Permitido de acordo com a lei islâmica. Aplicado a alimentos, ações, ganhos e relações. Comer halal, ganhar halal e viver halal é um ato de adoração.',
     it: 'Lecito secondo la legge islamica. Applicato a cibo, azioni, guadagni e relazioni. Mangiare halal, guadagnare halal e vivere halal è un atto di adorazione.',
+    fa: 'آنچه در شریعت اسلامی مجاز است. شامل غذا، کسب و کار، رفتار و همه جنبه‌های زندگی. برگرفته از قرآن و سنت.',
   ),
   _Term(
     transliteration: 'Haram',
@@ -592,6 +619,7 @@ const List<_Term> _allTerms = [
     nl: 'Verboden volgens de islamitische wet. Handelingen of zaken die duidelijk door Allah verboden zijn. Het vermijden van haram is op zich een daad van aanbidding. (Koran 2:173)',
     pt: 'Proibido de acordo com a lei islâmica. Ações ou coisas claramente proibidas por Allah. Evitar o haram é em si um ato de adoração. (Alcorão 2:173)',
     it: 'Proibito secondo la legge islamica. Azioni o cose chiaramente vietate da Allah. Evitare l\'haram è di per sé una forma di adorazione. (Corano 2:173)',
+    fa: 'آنچه در شریعت اسلامی حرام و ممنوع است. مانند گوشت خوک، الکل، ربا و ظلم. برگرفته از قرآن و سنت.',
   ),
   _Term(
     transliteration: 'Fiqh',
@@ -612,6 +640,7 @@ const List<_Term> _allTerms = [
     nl: 'Islamitische jurisprudentie. De gedetailleerde uitspraken afgeleid door gekwalificeerde geleerden uit de Koran en Sunnah. De vier belangrijkste soennitische scholen zijn Hanafi, Maliki, Shafi\'i en Hanbali.',
     pt: 'Jurisprudência islâmica. As decisões detalhadas derivadas por estudiosos qualificados do Alcorão e da Sunnah. As quatro principais escolas sunitas são Hanafi, Maliki, Shafi\'i e Hanbali.',
     it: 'Giurisprudenza islamica. Le norme dettagliate derivate da studiosi qualificati dal Corano e dalla Sunnah. Le quattro principali scuole sunnite sono Hanafi, Maliki, Shafi\'i e Hanbali.',
+    fa: 'دانش فقه اسلامی: استنباط احکام شرعی از قرآن و سنت. توسط علما از طریق اجتهاد تدوین می‌شود.',
   ),
   _Term(
     transliteration: 'Fatwa',
@@ -632,6 +661,7 @@ const List<_Term> _allTerms = [
     nl: 'Een religieus oordeel uitgevaardigd door een gekwalificeerde islamitische geleerde als antwoord op een specifieke vraag. Mag alleen worden uitgevaardigd door iemand met diepgaande kennis van de Koran en Sunnah.',
     pt: 'Uma decisão religiosa emitida por um estudioso islâmico qualificado em resposta a uma pergunta específica. Deve ser emitida apenas por aqueles com profundo conhecimento do Alcorão e da Sunnah.',
     it: 'Un parere religioso emesso da uno studioso islamico qualificato in risposta a una domanda specifica. Dovrebbe essere emesso solo da chi possiede una profonda conoscenza del Corano e della Sunnah.',
+    fa: 'نظر یا حکم فقهی صادره توسط عالم دینی صلاحیت‌دار درباره مسئله‌ای اسلامی. الزام‌آور نیست مگر از سوی مرجع رسمی.',
   ),
   _Term(
     transliteration: 'Masjid',
@@ -652,6 +682,7 @@ const List<_Term> _allTerms = [
     nl: 'Een moskee; de gebedsplaats voor moslims. Betekent letterlijk "plaats van neerbuiging." De Profeet ﷺ zei dat de hele aarde een plaats van gebed is. (Sahih Bukhari)',
     pt: 'Uma mesquita; o local de culto dos muçulmanos. Significa literalmente "lugar de prostração." O Profeta ﷺ disse que toda a terra é um lugar de oração. (Sahih Bukhari)',
     it: 'Una moschea; il luogo di culto per i musulmani. Significa letteralmente "luogo di prostrazione." Il Profeta ﷺ disse che l\'intera terra è un luogo di preghiera. (Sahih Bukhari)',
+    fa: 'مسجد، جایگاه سجده و عبادت خداوند. مرکز اجتماعی، آموزشی و معنوی جامعه مسلمانان. پیامبر ﷺ مسجد را «خانه هر مسلمانی» نامید.',
   ),
   _Term(
     transliteration: 'Imam',
@@ -672,6 +703,7 @@ const List<_Term> _allTerms = [
     nl: 'De gebedsleider die vooraan de gemeente staat. Wordt ook gebruikt voor een islamitische geleerde, gemeenschapsleider of de stichters van de vier grote rechtsscholen.',
     pt: 'O líder da oração que fica à frente da congregação. Também usado para um estudioso muçulmano, líder comunitário ou os fundadores das quatro principais escolas jurídicas.',
     it: 'Il leader della preghiera che si pone di fronte alla congregazione. Usato anche per uno studioso musulmano, un leader comunitario o i fondatori delle quattro principali scuole giuridiche.',
+    fa: 'پیشوای نماز جماعت. در معنای وسیع‌تر، رهبر دینی جامعه مسلمانان. ریشه لغوی آن به معنای «کسی که جلو می‌ایستد» است.',
   ),
   _Term(
     transliteration: 'Adhan',
@@ -692,6 +724,7 @@ const List<_Term> _allTerms = [
     nl: 'De gebedsoproep die door een moeazzin wordt voorgedragen om elk van de vijf dagelijkse gebeden aan te kondigen. Begint met "Allahu Akbar" en eindigt met "La ilaha illallah."',
     pt: 'O chamado à oração recitado por um muezim para anunciar cada uma das cinco orações diárias. Começa com "Allahu Akbar" e termina com "La ilaha illallah."',
     it: 'La chiamata alla preghiera recitata da un muezzin per annunciare ciascuna delle cinque preghiere quotidiane. Inizia con "Allahu Akbar" e termina con "La ilaha illallah."',
+    fa: 'اذان، ندای اسلامی به نماز که پنج بار در روز توسط مؤذن از مناره خوانده می‌شود تا مؤمنان را به عبادت فراخواند.',
   ),
   _Term(
     transliteration: 'Iqamah',
@@ -712,6 +745,7 @@ const List<_Term> _allTerms = [
     nl: 'De tweede oproep die direct voor de aanvang van het gemeenschappelijke gebed wordt gedaan. Korter dan de adhan, geeft het aan dat het gebed op het punt staat te beginnen.',
     pt: 'O segundo chamado feito imediatamente antes do início da oração em congregação. Mais curto que o adhan, sinaliza que a oração está prestes a começar.',
     it: 'Il secondo richiamo fatto immediatamente prima dell\'inizio della preghiera in congregazione. Più breve dell\'adhan, segnala che la preghiera sta per iniziare.',
+    fa: 'اقامه، ندای کوتاه دوم درست پیش از شروع نماز جماعت. نشانه آغاز رسمی نماز است. شبیه اذان ولی مختصرتر.',
   ),
   _Term(
     transliteration: 'Qiblah',
@@ -732,6 +766,7 @@ const List<_Term> _allTerms = [
     nl: 'De richting van de Kaaba in Mekka. Moslims richten zich tijdens elk gebed naar de qibla. Oorspronkelijk naar Jeruzalem, in het tweede jaar van de Hidjra gewijzigd naar Mekka. (Koran 2:144)',
     pt: 'A direção da Caaba em Meca. Os muçulmanos voltam-se para a qibla durante cada oração. Originalmente em direção a Jerusalém, foi alterada para Meca no segundo ano da Hégira. (Alcorão 2:144)',
     it: 'La direzione della Kaaba alla Mecca. I musulmani si rivolgono verso la qibla durante ogni preghiera. In origine verso Gerusalemme, fu cambiata verso la Mecca nel secondo anno dell\'Egira. (Corano 2:144)',
+    fa: 'جهت کعبه در مکه مکرمه که هنگام نماز باید رو به آن ایستاد. همه مسلمانان جهان در نماز رو به یک جهت می‌ایستند.',
   ),
   _Term(
     transliteration: 'Kaaba',
@@ -752,6 +787,7 @@ const List<_Term> _allTerms = [
     nl: 'De kubusvormige stenen structuur in het midden van de Masjid al-Haram in Mekka. Gebouwd door Profeet Ibrahim en zijn zoon Ismail. Het eerste gebedshuis voor de mensheid. (Koran 3:96)',
     pt: 'A estrutura cúbica de pedra no centro da Masjid al-Haram em Meca. Construída pelo Profeta Ibrahim e seu filho Ismail. A primeira casa de culto para a humanidade. (Alcorão 3:96)',
     it: 'La struttura cubica in pietra al centro della Masjid al-Haram alla Mecca. Costruita dal Profeta Ibrahim e suo figlio Ismail. La prima casa di culto per l\'umanità. (Corano 3:96)',
+    fa: 'بنای مکعبی در مرکز مسجدالحرام در مکه. اولین خانه‌ای که برای پرستش خداوند ساخته شد. (قرآن 3:96) قبله نماز مسلمانان.',
   ),
   _Term(
     transliteration: 'Dua',
@@ -772,6 +808,7 @@ const List<_Term> _allTerms = [
     nl: 'Persoonlijk smeekgebed tot Allah. Kan op elk moment, in elke taal, overal worden gedaan. De Profeet ﷺ noemde het "de essentie van aanbidding." (Sunan Abu Dawud)',
     pt: 'Súplica pessoal a Allah. Pode ser feita em qualquer momento, em qualquer idioma, em qualquer lugar. O Profeta ﷺ a chamou de "a essência da adoração." (Sunan Abu Dawud)',
     it: 'Supplica personale ad Allah. Può essere fatta in qualsiasi momento, in qualsiasi lingua, ovunque. Il Profeta ﷺ la definì "l\'essenza dell\'adorazione." (Sunan Abu Dawud)',
+    fa: 'دعا، درخواست مستقیم از خداوند. از نظر پیامبر ﷺ «مغز عبادت» است. بدون واسطه‌ای از بنده مستقیم به خداوند می‌رسد.',
   ),
   _Term(
     transliteration: 'Dhikr',
@@ -792,6 +829,7 @@ const List<_Term> _allTerms = [
     nl: 'Het gedenken van Allah door herhaalde zinnen. Veelvoorkomende vormen: SubhanAllah, Alhamdulillah, Allahu Akbar. "Voorwaar, in de gedachtenis aan Allah vinden de harten rust." (Koran 13:28)',
     pt: 'A lembrança de Allah através de frases repetidas. Formas comuns: SubhanAllah, Alhamdulillah, Allahu Akbar. "Em verdade, é na lembrança de Allah que os corações encontram sossego." (Alcorão 13:28)',
     it: 'Il ricordo di Allah attraverso frasi ripetute. Forme comuni: SubhanAllah, Alhamdulillah, Allahu Akbar. "In verità, nel ricordo di Allah i cuori trovano quiete." (Corano 13:28)',
+    fa: 'ذکر خداوند با گفتن عباراتی مانند سبحان‌الله، الحمدلله و الله اکبر. پیامبر ﷺ توصیه کرد زبان را با ذکر خداوند تر نگه داریم.',
   ),
   _Term(
     transliteration: 'Seerah',
@@ -812,6 +850,7 @@ const List<_Term> _allTerms = [
     nl: 'De biografie van Profeet Muhammad ﷺ. Het bestuderen van zijn leven, karakter en beslissingen is een bron van leiding voor elk aspect van het islamitische leven.',
     pt: 'A biografia do Profeta Muhammad ﷺ. Estudar sua vida, caráter e decisões é uma fonte de orientação para todos os aspectos da vida muçulmana.',
     it: 'La biografia del Profeta Muhammad ﷺ. Studiare la sua vita, il suo carattere e le sue decisioni è una fonte di guida per ogni aspetto della vita musulmana.',
+    fa: 'سیره نبوی: زندگی‌نامه تفصیلی پیامبر محمد ﷺ شامل ولادت، دعوت، هجرت، جنگ‌ها و وفات. چراغ راه مسلمانان.',
   ),
   _Term(
     transliteration: 'Tafsir',
@@ -832,6 +871,7 @@ const List<_Term> _allTerms = [
     nl: 'Uitleg en interpretatie van de Koran. Klassieke werken omvatten die van Ibn Kathir, Al-Tabari en Al-Qurtubi. Essentieel voor het begrijpen van de betekenis van de verzen.',
     pt: 'Explicação e interpretação do Alcorão. As obras clássicas incluem as de Ibn Kathir, Al-Tabari e Al-Qurtubi. Essencial para compreender o significado dos versículos.',
     it: 'Spiegazione e interpretazione del Corano. Le opere classiche includono quelle di Ibn Kathir, Al-Tabari e Al-Qurtubi. Essenziale per comprendere il significato dei versetti.',
+    fa: 'تفسیر قرآن کریم: توضیح و تبیین معانی آیات با توجه به لغت عرب، سبب نزول، احادیث و نظر علما. علمی جامع و عمیق.',
   ),
   _Term(
     transliteration: 'Tajweed',
@@ -852,6 +892,7 @@ const List<_Term> _allTerms = [
     nl: 'De regels van de juiste Koranrecitatie. Zorgt ervoor dat elke letter vanuit de juiste plaats met de juiste kenmerken wordt uitgesproken, zoals de Koran oorspronkelijk werd geopenbaard.',
     pt: 'As regras da recitação correta do Alcorão. Garante que cada letra seja pronunciada a partir do seu ponto correto com as características adequadas, como o Alcorão foi originalmente revelado.',
     it: 'Le regole della corretta recitazione del Corano. Garantisce che ogni lettera sia pronunciata dal suo punto corretto con le caratteristiche appropriate, come il Corano fu originariamente rivelato.',
+    fa: 'علم تجوید: قواعد تلفظ صحیح قرآن کریم. شامل مخارج حروف، احکام نون ساکنه، مد و غنه. خواندن با تجوید مستحب است.',
   ),
   _Term(
     transliteration: 'Jannah',
@@ -872,6 +913,7 @@ const List<_Term> _allTerms = [
     nl: 'Het Paradijs. De eeuwige beloning voor gelovigen — rivieren, tuinen, gezelschap en de hoogste beloning: het zien van Allah. Levendig beschreven in de Koran. (Koran 55:46–78)',
     pt: 'O Paraíso. A recompensa eterna para os crentes — rios, jardins, companheiros e a recompensa suprema de ver Allah. Descrito vividamente no Alcorão. (Alcorão 55:46–78)',
     it: 'Il Paradiso. La ricompensa eterna per i credenti — fiumi, giardini, compagni e la ricompensa suprema di vedere Allah. Descritto vividamente nel Corano. (Corano 55:46–78)',
+    fa: 'بهشت: پاداش ابدی مؤمنان در آخرت. در قرآن با باغ‌ها، رودها و نعمت‌های بی‌شمار توصیف شده. (قرآن 3:133)',
   ),
   _Term(
     transliteration: 'Jahannam',
@@ -892,6 +934,7 @@ const List<_Term> _allTerms = [
     nl: 'Het Hellevuur. De plaats van bestraffing die in de Koran wordt beschreven als waarschuwing en afschrikking voor wie het geloof verwerpt en in onrecht volhardt. (Koran 67:6)',
     pt: 'O Inferno. O lugar de castigo descrito no Alcorão como advertência e dissuasão para os que rejeitam a fé e persistem no erro. (Alcorão 67:6)',
     it: 'Il Fuoco infernale. Il luogo di punizione descritto nel Corano come avvertimento e dissuasione per chi rifiuta la fede e persiste nel male. (Corano 67:6)',
+    fa: 'جهنم: جایگاه عذاب در آخرت برای کسانی که کافر مردند یا گناه‌کاران مسلمان برای مدتی موقت. (قرآن 4:56)',
   ),
   _Term(
     transliteration: 'Akhirah',
@@ -912,6 +955,7 @@ const List<_Term> _allTerms = [
     nl: 'Het Hiernamaals. Het leven na de dood, dat de opstanding, de Dag van het Oordeel en het eeuwige paradijs of het hellevuur omvat. Een kernpijler van het islamitische geloof. (Koran 2:4)',
     pt: 'O Além. A vida após a morte, abrangendo a ressurreição, o Dia do Julgamento, e o paraíso eterno ou o inferno. Um pilar central da crença islâmica. (Alcorão 2:4)',
     it: 'L\'Aldilà. La vita dopo la morte, che comprende la resurrezione, il Giorno del Giudizio, e il paradiso eterno o il fuoco infernale. Un pilastro centrale della fede islamica. (Corano 2:4)',
+    fa: 'آخرت: زندگی پس از مرگ که ابدی است. شامل مرگ، برزخ، قیامت، حساب، جنت یا جهنم. هدف نهایی مسلمان.',
   ),
   _Term(
     transliteration: 'Dunya',
@@ -932,6 +976,7 @@ const List<_Term> _allTerms = [
     nl: 'Dit wereldse leven. Tijdelijk en een test in vergelijking met het eeuwige Hiernamaals. Het woord dunya komt van een wortel die "laag" of "nabij" betekent — een herinnering aan zijn vergankelijke aard.',
     pt: 'Esta vida mundana. Temporária e uma prova em comparação com a eterna Akhirah. A palavra dunya deriva de uma raiz que significa "baixo" ou "próximo" — um lembrete de sua natureza passageira.',
     it: 'Questa vita terrena. Temporanea e una prova rispetto all\'eterna Akhirah. La parola dunya deriva da una radice che significa "basso" o "vicino" — un richiamo alla sua natura fugace.',
+    fa: 'دنیا: زندگی گذرای این جهان در برابر آخرت. اسلام آن را ابزاری برای رسیدن به آخرت می‌داند، نه هدف نهایی.',
   ),
   _Term(
     transliteration: 'Ramadan',
@@ -952,6 +997,7 @@ const List<_Term> _allTerms = [
     nl: 'De negende maand van de islamitische maankalender. Een maand van verplicht vasten, meer gebed, Koranrecitatie en liefdadigheid. De Koran werd voor het eerst in deze maand geopenbaard. (Koran 2:185)',
     pt: 'O nono mês do calendário lunar islâmico. Um mês de jejum obrigatório, oração intensificada, recitação do Alcorão e caridade. O Alcorão foi revelado por primeira vez neste mês. (Alcorão 2:185)',
     it: 'Il nono mese del calendario lunare islamico. Un mese di digiuno obbligatorio, preghiera intensificata, recitazione del Corano e carità. Il Corano fu rivelato per la prima volta in questo mese. (Corano 2:185)',
+    fa: 'رمضان: نهمین ماه تقویم قمری اسلامی، ماه نزول قرآن. مسلمانان در این ماه روزه می‌گیرند، نماز می‌خوانند و صدقه می‌دهند. (قرآن 2:185)',
   ),
   _Term(
     transliteration: 'Eid',
@@ -972,6 +1018,7 @@ const List<_Term> _allTerms = [
     nl: 'Een islamitisch feest. Eid al-Fitr markeert het einde van de Ramadan; Eid al-Adha eert Ibrahims bereidheid om zijn zoon te offeren. Beide beginnen met een speciaal gemeenschappelijk gebed.',
     pt: 'Uma celebração islâmica. O Eid al-Fitr marca o fim do Ramadã; o Eid al-Adha honra a disposição de Ibrahim em sacrificar seu filho. Ambos começam com uma oração especial em congregação.',
     it: 'Una celebrazione islamica. L\'Eid al-Fitr segna la fine del Ramadan; l\'Eid al-Adha onora la disponibilità di Ibrahim a sacrificare suo figlio. Entrambe iniziano con una speciale preghiera in congregazione.',
+    fa: 'عید: جشن اسلامی شادمانه. عید الفطر پس از رمضان و عید الاضحی در ذوالحجه برگزار می‌شود. روزهای شادی جامعه مسلمانان.',
   ),
   _Term(
     transliteration: "Jumu'ah",
@@ -992,6 +1039,7 @@ const List<_Term> _allTerms = [
     nl: 'Vrijdag. De dag van het gemeenschappelijke gebed. Het middaggebed van de Jumu\'ah vervangt de Dhuhr en is verplicht voor mannelijke moslims. De Koran wijdt er een volledige surah aan. (Koran 62:9)',
     pt: 'Sexta-feira. O dia da oração em congregação. A oração do meio-dia de Jumu\'ah substitui o Dhuhr e é obrigatória para os homens muçulmanos. O Alcorão dedica uma surah completa a ela. (Alcorão 62:9)',
     it: 'Venerdì. Il giorno della preghiera in congregazione. La preghiera di mezzogiorno del Jumu\'ah sostituisce il Dhuhr ed è obbligatoria per gli uomini musulmani. Il Corano dedica un\'intera sura a questo. (Corano 62:9)',
+    fa: 'عید: جشن اسلامی شادمانه. عید الفطر پس از رمضان و عید الاضحی در ذوالحجه برگزار می‌شود. روزهای شادی جامعه مسلمانان.',
   ),
   _Term(
     transliteration: 'Salawat',
@@ -1012,6 +1060,7 @@ const List<_Term> _allTerms = [
     nl: 'Zegeningen zenden over de Profeet Mohammed ﷺ door te zeggen: "Allahumma salli ala Muhammad." Allah en Zijn engelen doen dit, en gelovigen wordt bevolen hetzelfde te doen. (Koran 33:56)',
     pt: 'Enviar bênçãos sobre o Profeta Muhammad ﷺ dizendo "Allahumma salli ala Muhammad." Allah e Seus anjos fazem isso, e os crentes são ordenados a fazer o mesmo. (Alcorão 33:56)',
     it: 'Inviare benedizioni sul Profeta Muhammad ﷺ dicendo "Allahumma salli ala Muhammad." Allah e i Suoi angeli lo fanno, e ai credenti viene comandato di fare lo stesso. (Corano 33:56)',
+    fa: 'صلوات و درود بر پیامبر محمد ﷺ. خداوند در قرآن (33:56) به مؤمنان دستور می‌دهد بر پیامبر درود بفرستند. ثواب فراوان دارد.',
   ),
   _Term(
     transliteration: 'Bismillah',
@@ -1032,6 +1081,7 @@ const List<_Term> _allTerms = [
     nl: '"In de naam van Allah." Gezegd voordat men met een handeling begint — eten, drinken, lezen, koken — om Allahs zegen te zoeken en te beginnen met Zijn gedachtenis.',
     pt: '"Em nome de Allah." Dito antes de iniciar qualquer ação — comer, beber, ler, cozinhar — para buscar a bênção de Allah e começar com Sua lembrança.',
     it: '"Nel nome di Allah." Detto prima di iniziare qualsiasi azione — mangiare, bere, leggere, cucinare — per cercare la benedizione di Allah e iniziare con il Suo ricordo.',
+    fa: 'بسم‌الله الرحمن الرحیم: «به نام خداوند بخشنده مهربان». سنت آغاز هر کار با این جمله است. سوره فاتحه با آن آغاز می‌شود.',
   ),
   _Term(
     transliteration: 'Alhamdulillah',
@@ -1052,6 +1102,7 @@ const List<_Term> _allTerms = [
     nl: '"Alle lof is voor Allah." Gezegd uit dankbaarheid na een zegen of het voltooien van iets. Ook de opening van Surah Al-Fatiha, die in elke gebedseenheid wordt voorgedragen.',
     pt: '"Todo louvor é para Allah." Dito em gratidão após uma bênção ou ao concluir algo. Também é a abertura da Surah Al-Fatiha, recitada em cada unidade da oração.',
     it: '"Ogni lode appartiene ad Allah." Detto in segno di gratitudine dopo una benedizione o al completamento di qualcosa. È anche l\'apertura della Surah Al-Fatiha, recitata in ogni unità di preghiera.',
+    fa: 'الحمدلله: «ستایش از آن خداوند است». بیان سپاسگزاری از خداوند در همه احوال. پیامبر ﷺ آن را «بهترین دعا» نامید.',
   ),
   _Term(
     transliteration: 'Inshallah',
@@ -1072,6 +1123,7 @@ const List<_Term> _allTerms = [
     nl: '"Als Allah het wil." Gezegd bij het verwijzen naar toekomstige plannen, erkennend dat niets gebeurt behalve door Allahs wil. De Koran onderwijst dit gebruik. (Koran 18:23–24)',
     pt: '"Se Allah quiser." Dito ao se referir a planos futuros, reconhecendo que nada acontece exceto pela vontade de Allah. O Alcorão ensina este uso. (Alcorão 18:23–24)',
     it: '"Se Allah vuole." Detto quando si fa riferimento a piani futuri, riconoscendo che nulla accade se non per volontà di Allah. Il Corano insegna questo uso. (Corano 18:23–24)',
+    fa: 'ان‌شاءالله: «اگر خداوند بخواهد». هنگام صحبت از اعمال آینده به کار می‌رود. خداوند در قرآن (18:24) دستور به گفتن آن داده.',
   ),
   _Term(
     transliteration: 'Subhanallah',
@@ -1092,6 +1144,7 @@ const List<_Term> _allTerms = [
     nl: '"Heilig is Allah." Een uitdrukking van ontzag, bewondering en lof. Gezegd bij het zien van iets moois of het horen van goed nieuws, bevestigend dat Allah ver verheven is boven elke imperfectie.',
     pt: '"Glorificado seja Allah." Uma expressão de admiração, espanto e louvor. Dita ao ver algo belo ou ouvir boas notícias, afirmando que Allah está muito acima de toda imperfeição.',
     it: '"Sia gloria ad Allah." Un\'espressione di stupore, ammirazione e lode. Detta quando si vede qualcosa di bello o si sente una buona notizia, affermando che Allah è ben oltre ogni imperfezione.',
+    fa: 'سبحان‌الله: «خداوند منزه است». بیان شگفتی، ستایش و پاک دانستن خداوند از هر نقصی. از اذکار پرثواب اسلامی.',
   ),
   _Term(
     transliteration: 'Astaghfirullah',
@@ -1112,6 +1165,7 @@ const List<_Term> _allTerms = [
     nl: '"Ik zoek vergeving bij Allah." Gezegd bij berouw, na een zonde, of bij het getuige zijn van iets verkeerds. De Profeet ﷺ zei dit meer dan 70 keer per dag. (Sahih al-Boekhari)',
     pt: '"Busco o perdão de Allah." Dito ao se arrepender, após um pecado, ou ao testemunhar algo errado. O Profeta ﷺ dizia isso mais de 70 vezes ao dia. (Sahih Bukhari)',
     it: '"Chiedo perdono ad Allah." Detto durante il pentimento, dopo un peccato, o quando si è testimoni di qualcosa di sbagliato. Il Profeta ﷺ lo diceva più di 70 volte al giorno. (Sahih al-Bukhari)',
+    fa: 'أستغفرالله: «از خداوند آمرزش می‌طلبم». طلب بخشش از گناهان. پیامبر ﷺ روزی هفتاد بار استغفار می‌کرد.',
   ),
   _Term(
     transliteration: "Masha'Allah",
@@ -1132,6 +1186,7 @@ const List<_Term> _allTerms = [
     nl: '"Wat Allah heeft gewild." Gezegd in bewondering voor iets moois of indrukwekkends, erkennend dat al het goede alleen van Allah komt. Beschermt ook tegen het boze oog. (Koran 18:39)',
     pt: '"O que Allah quis." Dito em admiração por algo belo ou impressionante, reconhecendo que todo bem vem somente de Allah. Também protege contra o mau-olhado. (Alcorão 18:39)',
     it: '"Ciò che Allah ha voluto." Detto in ammirazione per qualcosa di bello o impressionante, riconoscendo che tutto il bene viene solo da Allah. Protegge anche dal malocchio. (Corano 18:39)',
+    fa: 'أستغفرالله: «از خداوند آمرزش می‌طلبم». طلب بخشش از گناهان. پیامبر ﷺ روزی هفتاد بار استغفار می‌کرد.',
   ),
   _Term(
     transliteration: 'Qadar',
@@ -1152,6 +1207,7 @@ const List<_Term> _allTerms = [
     nl: 'Goddelijke beschikking. Het geloof dat Allah kennis heeft van alle zaken en alles gebeurt door Zijn wil. Een van de zes zuilen van iman. "Geen ramp treft, behalve met Allahs toestemming." (Koran 64:11)',
     pt: 'Decreto divino. A crença de que Allah tem conhecimento de todas as coisas e tudo ocorre por Sua vontade. Um dos seis pilares do iman. "Nenhuma calamidade ocorre exceto com a permissão de Allah." (Alcorão 64:11)',
     it: 'Decreto divino. La fede che Allah abbia conoscenza di tutte le cose e che tutto accada per Sua volontà. Uno dei sei pilastri dell\'iman. "Nessuna calamità accade se non con il permesso di Allah." (Corano 64:11)',
+    fa: 'قدر: باور اسلامی به اینکه خداوند به همه چیز علم دارد و هر چه پیش آید در علم او بوده. یکی از ارکان شش‌گانه ایمان.',
   ),
 
   // ── Fiqh / Islamic Law ──────────────────────────────────────────────────────
@@ -1175,6 +1231,7 @@ const List<_Term> _allTerms = [
     nl: 'Afkeurenswaardig maar geen zonde. Een handeling die men beter kan vermijden, maar die geen straf met zich meebrengt als ze toch wordt verricht. Bijvoorbeeld water verspillen tijdens de wudu.',
     pt: 'Desagradável, mas não pecaminoso. Uma ação que é melhor evitar, mas que não acarreta punição se realizada. Por exemplo, desperdiçar água durante o wudu.',
     it: 'Sconsigliato ma non peccaminoso. Un\'azione che è meglio evitare ma che non comporta punizione se compiuta. Ad esempio, sprecare acqua durante il wudu.',
+    fa: 'مکروه: عملی که شریعت آن را ناپسند دانسته ولی حرام نیست. انجام دادن آن گناه نیست اما ترکش ثواب دارد.',
   ),
   _Term(
     transliteration: 'Mustahabb',
@@ -1195,6 +1252,7 @@ const List<_Term> _allTerms = [
     nl: 'Aanbevolen. Een handeling die wordt beloond als ze wordt verricht, maar niet zondig is als ze wordt nagelaten. Voorbeelden zijn het gebruik van de miswak en het verrichten van vrijwillige gebeden.',
     pt: 'Recomendado. Uma ação que é recompensada se realizada, mas não é pecaminosa se omitida. Exemplos incluem usar o miswak e rezar orações voluntárias.',
     it: 'Raccomandato. Un\'azione che viene ricompensata se compiuta ma che non è peccaminosa se omessa. Esempi includono l\'uso del miswak e la recitazione di preghiere volontarie.',
+    fa: 'مستحب: عملی که شریعت آن را توصیه کرده ولی واجب نیست. انجام دادنش ثواب دارد و ترکش گناه ندارد. مثل نمازهای نفل.',
   ),
   _Term(
     transliteration: 'Mubah',
@@ -1215,6 +1273,7 @@ const List<_Term> _allTerms = [
     nl: 'Toegestaan en neutraal. Een handeling die geen beloning of zonde met zich meebrengt, zoals het kiezen van de kleur van kleding.',
     pt: 'Permitido e neutro. Uma ação que não traz recompensa nem pecado, como escolher a cor da roupa a usar.',
     it: 'Permesso e neutro. Un\'azione che non comporta ricompensa né peccato, come scegliere il colore dei vestiti da indossare.',
+    fa: 'مباح: عملی که شریعت درباره آن نه توصیه کرده نه نهی. انجام دادن یا ترک آن از نظر شرعی یکسان است.',
   ),
   _Term(
     transliteration: 'Wajib',
@@ -1235,6 +1294,7 @@ const List<_Term> _allTerms = [
     nl: 'Verplicht. Een plicht die moet worden vervuld. Het zonder excuus achterwege laten is zondig. In de Hanafi-school staat wajib qua zekerheid net iets onder fard.',
     pt: 'Obrigatório. Um dever que deve ser cumprido. Deixá-lo sem desculpa é pecado. Na escola Hanafi, wajib está ligeiramente abaixo de fard em certeza.',
     it: 'Obbligatorio. Un dovere che deve essere compiuto. Omettere senza scusa è peccato. Nella scuola hanafita, il wajib è leggermente inferiore al fard in termini di certezza.',
+    fa: 'واجب: عملی که انجامش الزامی است و ترکش گناه دارد. در مذهب حنفی تمایزی بین واجب و فرض وجود دارد.',
   ),
   _Term(
     transliteration: 'Fard',
@@ -1255,6 +1315,7 @@ const List<_Term> _allTerms = [
     nl: 'Een absolute verplichting die door duidelijk bewijs uit de Koran of de Soenna is vastgesteld. Het ontkennen van een fard leidt uit de islam. De vijf dagelijkse gebeden zijn fard.',
     pt: 'Uma obrigação absoluta estabelecida por evidência clara do Alcorão ou da Sunnah. Negar um fard tira a pessoa do Islã. As cinco orações diárias são fard.',
     it: 'Un obbligo assoluto stabilito da una prova chiara del Corano o della Sunnah. Negare un fard porta fuori dall\'Islam. Le cinque preghiere quotidiane sono fard.',
+    fa: 'فرض: واجبات قطعی که مستقیماً از قرآن یا سنت ثابت شده. ترک آن گناه کبیره است. مثل نمازهای پنجگانه و روزه رمضان.',
   ),
   _Term(
     transliteration: 'Sunnah Muakkadah',
@@ -1275,6 +1336,7 @@ const List<_Term> _allTerms = [
     nl: 'Een sterk benadrukte Soenna. Een handeling die de Profeet ﷺ consequent verrichtte en zelden naliet. Het habitueel achterwege laten ervan is afkeurenswaardig, zoals de twee rakaat vóór Fajr.',
     pt: 'Uma Sunnah fortemente enfatizada. Um ato que o Profeta ﷺ realizava constantemente e raramente deixava. Deixá-lo habitualmente é repreensível, como os dois rakah antes de Fajr.',
     it: 'Una Sunnah fortemente enfatizzata. Un atto che il Profeta ﷺ compiva costantemente e raramente omise. Omettendolo abitualmente è biasimevole, come i due rakah prima di Fajr.',
+    fa: 'سنت مؤکده: عباداتی که پیامبر ﷺ به طور مداوم انجام می‌داد و تأکید فراوانی بر آنها داشت. ترکش مکروه است. مثل سنت‌های قبلیه و بعدیه نماز.',
   ),
   _Term(
     transliteration: 'Ghusl',
@@ -1295,6 +1357,7 @@ const List<_Term> _allTerms = [
     nl: 'Volledige rituele wassing van het lichaam, vereist na bepaalde toestanden, zoals geslachtsgemeenschap of menstruatie. Ook aanbevolen vóór het vrijdaggebed en het Eid-feest. (Koran 5:6)',
     pt: 'Lavagem ritual de todo o corpo exigida após certos estados, como relações conjugais ou menstruação. Também recomendada antes da oração de sexta-feira e do Eid. (Alcorão 5:6)',
     it: 'Lavaggio rituale completo del corpo richiesto dopo determinati stati, come i rapporti coniugali o il ciclo menstruale. Raccomandato anche prima della preghiera del venerdì e dell\'Eid. (Corano 5:6)',
+    fa: 'غسل: شستشوی کامل بدن با نیت طهارت از جنابت، پس از خروج منی، بعد از پریود زنان یا پیش از نماز جمعه و عید.',
   ),
   _Term(
     transliteration: 'Tayammum',
@@ -1315,6 +1378,7 @@ const List<_Term> _allTerms = [
     nl: 'Droge reiniging met schone aarde of stof wanneer water niet beschikbaar of schadelijk is om te gebruiken. Een genade van Allah die het gebed onder alle omstandigheden mogelijk maakt. (Koran 4:43)',
     pt: 'Purificação seca usando terra limpa ou pó quando a água não está disponível ou é prejudicial usar. Uma misericórdia de Allah que permite a oração em qualquer circunstância. (Alcorão 4:43)',
     it: 'Purificazione a secco usando terra pulita o polvere quando l\'acqua non è disponibile o è dannosa da usare. Una misericordia di Allah che permette la preghiera in ogni circostanza. (Corano 4:43)',
+    fa: 'تیمم: طهارت با خاک پاک هنگامی که آب نباشد یا استفاده از آن مضر باشد. جایگزین وضو یا غسل می‌شود. (قرآن 4:43)',
   ),
   _Term(
     transliteration: 'Najis',
@@ -1335,6 +1399,7 @@ const List<_Term> _allTerms = [
     nl: 'Ritueel onrein. Stoffen zoals bloed, urine of alcohol die vóór het gebed gereinigd moeten worden. Weten wat najis is, helpt moslims om rituele reinheid te behouden.',
     pt: 'Ritualmente impuro. Substâncias como sangue, urina ou álcool que devem ser limpas antes da oração. Saber o que é najis ajuda os muçulmanos a manter a pureza ritual.',
     it: 'Ritualmente impuro. Sostanze come sangue, urina o alcol che devono essere pulite prima della preghiera. Sapere cosa è najis aiuta i musulmani a mantenere la purezza rituale.',
+    fa: 'نجس: آنچه از نظر شریعت ناپاک است و نماز با آن باطل است. مانند خون، ادرار و مدفوع. باید با آب پاک شود.',
   ),
 
   // ── Prayer Terms ────────────────────────────────────────────────────────────
@@ -1358,6 +1423,7 @@ const List<_Term> _allTerms = [
     nl: 'Een gebedseenheid. Elke rakaat omvat staan, buigen en twee knielingen. Fajr heeft 2 rakaat, Dhuhr 4, Asr 4, Maghrib 3 en Isha 4.',
     pt: 'Uma unidade de oração. Cada rakah inclui ficar em pé, inclinar-se e duas prostrações. Fajr tem 2 rakah, Dhuhr 4, Asr 4, Maghrib 3 e Isha 4.',
     it: 'Un\'unità di preghiera. Ogni rakah include la posizione eretta, l\'inchino e due prostrazioni. Fajr ha 2 rakah, Dhuhr 4, Asr 4, Maghrib 3 e Isha 4.',
+    fa: 'نجس: آنچه از نظر شریعت ناپاک است و نماز با آن باطل است. مانند خون، ادرار و مدفوع. باید با آب پاک شود.',
   ),
   _Term(
     transliteration: 'Sujood',
@@ -1378,6 +1444,7 @@ const List<_Term> _allTerms = [
     nl: 'Knieling/prostratie. Het plaatsen van voorhoofd, neus, handpalmen, knieën en tenen op de grond. Het moment waarop een dienaar het dichtst bij Allah is. Wordt twee keer per rakaat uitgevoerd. (Sahih Muslim)',
     pt: 'Prostração. Colocar a testa, nariz, palmas das mãos, joelhos e dedos dos pés no chão. O momento mais próximo de um servo a Allah. Feita duas vezes em cada rakah. (Sahih Muslim)',
     it: 'Prostrazione. Posizionare fronte, naso, palme, ginocchia e dita dei piedi sul terreno. Il momento più vicino di un servo ad Allah. Eseguita due volte in ogni rakah. (Sahih Muslim)',
+    fa: 'سجده: پایین‌ترین مرتبه تواضع در نماز؛ نهادن پیشانی، بینی، دو کف دست، دو زانو و سر انگشتان بر زمین. نزدیک‌ترین حالت به خداوند.',
   ),
   _Term(
     transliteration: "Ruku'",
@@ -1398,6 +1465,7 @@ const List<_Term> _allTerms = [
     nl: 'Buiging. Buigen vanuit het middel met de handen op de knieën, terwijl men "Subhana Rabbiyal Adheem" zegt (Verheven is mijn Heer, de Geweldige). Wordt één keer per rakaat uitgevoerd.',
     pt: 'Inclinação. Dobrar-se na cintura com as mãos nos joelhos, dizendo "Subhana Rabbiyal Adheem" (Glorificado seja meu Senhor, o Magnífico). Feita uma vez em cada rakah.',
     it: 'Inchino. Piegarsi sulla vita con le mani sulle ginocchia, dicendo "Subhana Rabbiyal Adheem" (Gloria al mio Signore, il Magnifico). Eseguito una volta in ogni rakah.',
+    fa: 'سجده: پایین‌ترین مرتبه تواضع در نماز؛ نهادن پیشانی، بینی، دو کف دست، دو زانو و سر انگشتان بر زمین. نزدیک‌ترین حالت به خداوند.',
   ),
   _Term(
     transliteration: "Khushu'",
@@ -1418,6 +1486,7 @@ const List<_Term> _allTerms = [
     nl: 'Diepe concentratie en ootmoed in het gebed. Volledig aanwezig zijn met hart en geest voor Allah. De gelovigen die khushu hebben in het gebed worden beschreven als succesvol. (Koran 23:1–2)',
     pt: 'Concentração profunda e humildade na oração. Estar totalmente presente com o coração e a mente diante de Allah. Os crentes que têm khushu na oração são descritos como bem-sucedidos. (Alcorão 23:1–2)',
     it: 'Concentrazione profonda e umiltà nella preghiera. Essere completamente presenti con cuore e mente davanti ad Allah. I credenti che hanno khushu nella preghiera sono descritti come coloro che hanno successo. (Corano 23:1–2)',
+    fa: '[Persian translation for None]',
   ),
   _Term(
     transliteration: 'Takbir',
@@ -1438,6 +1507,7 @@ const List<_Term> _allTerms = [
     nl: '"Allahu Akbar" (Allah is de Grootste) zeggen. Gezegd bij het beginnen van het gebed, bij het overgaan tussen houdingen, en tijdens de Eid-vieringen.',
     pt: 'Dizer "Allahu Akbar" (Allah é o Maior). Dito ao iniciar a oração, ao fazer a transição entre posições e durante as celebrações do Eid.',
     it: 'Dire "Allahu Akbar" (Allah è il più Grande). Detto all\'inizio della preghiera, durante le transizioni tra le posizioni e durante le celebrazioni dell\'Eid.',
+    fa: 'تکبیر: گفتن «الله اکبر» که نماز را آغاز می‌کند (تکبیرة الاحرام) و در جابجایی‌های نماز تکرار می‌شود. نشانه بزرگی خداوند.',
   ),
   _Term(
     transliteration: 'Tashahhud',
@@ -1458,6 +1528,7 @@ const List<_Term> _allTerms = [
     nl: 'De getuigenis die zittend wordt opgezegd na de tweede en laatste rakaat. Begint met "At-Tahiyyatu lillahi" en omvat het zenden van vrede over de Profeet ﷺ.',
     pt: 'O testemunho recitado sentado na oração após a segunda e última rakah. Começa com "At-Tahiyyatu lillahi" e inclui enviar paz sobre o Profeta ﷺ.',
     it: 'La testimonianza recitata da seduti nella preghiera dopo la seconda e ultima rakah. Inizia con "At-Tahiyyatu lillahi" e include l\'invio di pace sul Profeta ﷺ.',
+    fa: 'تشهد: اعلام ایمانی که در نشستن آخر نماز خوانده می‌شود و شامل گواهی به یکتایی خداوند و رسالت پیامبر ﷺ است.',
   ),
 
   // ── Quran Terms ─────────────────────────────────────────────────────────────
@@ -1481,6 +1552,7 @@ const List<_Term> _allTerms = [
     nl: 'Een vers van de Koran. Betekent letterlijk "teken" of "wonder." De Koran bevat meer dan 6.200 ayat verdeeld over 114 surahs.',
     pt: 'Um versículo do Alcorão. Literalmente significa "sinal" ou "milagre." O Alcorão contém mais de 6.200 ayat em 114 surahs.',
     it: 'Un versetto del Corano. Letteralmente significa "segno" o "miracolo." Il Corano contiene oltre 6.200 ayat distribuiti in 114 sure.',
+    fa: 'آیه: یک جمله یا فقره از قرآن کریم. قرآن شامل 6236 آیه است. هر آیه نشانه‌ای از قدرت و حکمت خداوند است. (قرآن 2:106)',
   ),
   _Term(
     transliteration: 'Surah',
@@ -1501,6 +1573,7 @@ const List<_Term> _allTerms = [
     nl: 'Een hoofdstuk van de Koran. Er zijn 114 surahs, variërend van 3 verzen (Al-Kawthar) tot 286 verzen (Al-Baqarah). Elke heeft een naam en thema.',
     pt: 'Um capítulo do Alcorão. Existem 114 surahs, variando de 3 versículos (Al-Kawthar) a 286 versículos (Al-Baqarah). Cada uma tem um nome e um tema.',
     it: 'Un capitolo del Corano. Ci sono 114 sure, che vanno da 3 versetti (Al-Kawthar) a 286 versetti (Al-Baqarah). Ognuna ha un nome e un tema.',
+    fa: 'سوره: یکی از 114 فصل قرآن کریم. کوتاه‌ترین سوره الکوثر (3 آیه) و بلندترین آن البقره (286 آیه) است.',
   ),
   _Term(
     transliteration: 'Juz',
@@ -1521,6 +1594,7 @@ const List<_Term> _allTerms = [
     nl: 'Een van de 30 gelijke delen van de Koran. Het verdelen van de Koran in 30 juz maakt het gemakkelijk om de hele Koran in één maand te voltooien, vooral tijdens de Ramadan.',
     pt: 'Uma das 30 partes iguais do Alcorão. Dividir o Alcorão em 30 juz facilita completar todo o Alcorão em um mês, especialmente durante o Ramadã.',
     it: 'Una delle 30 parti uguali del Corano. Dividere il Corano in 30 juz facilita il completamento dell\'intero Corano in un mese, specialmente durante il Ramadan.',
+    fa: 'جزء: یکی از سی بخش مساوی قرآن کریم. هر جزء تقریباً 20 صفحه است. تقسیم‌بندی برای تلاوت روزانه قرآن در یک ماه.',
   ),
   _Term(
     transliteration: 'Hizb',
@@ -1541,6 +1615,7 @@ const List<_Term> _allTerms = [
     nl: 'De helft van een juz. De Koran is verdeeld in 60 hizb. Sommige moslims gebruiken hizb-markeringen om hun dagelijkse Koranleesschema te plannen.',
     pt: 'A metade de um juz. O Alcorão é dividido em 60 hizb. Alguns muçulmanos usam marcadores de hizb para planejar seu cronograma diário de leitura do Alcorão.',
     it: 'La metà di un juz. Il Corano è diviso in 60 hizb. Alcuni musulmani usano i marcatori hizb per pianificare il proprio programma quotidiano di lettura del Corano.',
+    fa: 'حزب: نصف یک جزء در قرآن کریم. قرآن به 60 حزب تقسیم می‌شود. واحد اندازه‌گیری تلاوت قرآن در برنامه‌های حفظ.',
   ),
   _Term(
     transliteration: 'Makhraj',
@@ -1561,6 +1636,7 @@ const List<_Term> _allTerms = [
     nl: 'Het articulatiepunt voor elke Arabische letter. Het leren van makhraj is essentieel voor de juiste Koranrecitatie en tajweed, zodat elke letter klinkt zoals ze geopenbaard werd.',
     pt: 'O ponto de articulação de cada letra árabe. Aprender makhraj é essencial para a recitação correta do Alcorão e o tajweed, para que cada letra ressoe como foi revelada.',
     it: 'Il punto di articolazione di ogni lettera araba. Imparare i makharij è essenziale per la corretta recitazione del Corano e il tajweed, affinché ogni lettera suoni come fu rivelata.',
+    fa: 'مخرج: محل خروج صدا از دهان برای تلفظ صحیح حروف عربی در قرآن. یکی از اصول اساسی علم تجوید است.',
   ),
   _Term(
     transliteration: 'Tarteel',
@@ -1581,6 +1657,7 @@ const List<_Term> _allTerms = [
     nl: 'Langzame, gemeten en mooie recitatie van de Koran. Allah gebiedt: "Reciteer de Koran met tarteel." Dit maakt het mogelijk om over de betekenis van elk vers te reflecteren. (Koran 73:4)',
     pt: 'Recitação lenta, cadenciada e bela do Alcorão. Allah ordena: "Recite o Alcorão com tarteel." Isso permite a reflexão sobre o significado de cada versículo. (Alcorão 73:4)',
     it: 'Recitazione lenta, misurata e bella del Corano. Allah comanda: "Recita il Corano con tarteel." Questo permette di riflettere sul significato di ogni versetto. (Corano 73:4)',
+    fa: 'ترتیل: خواندن قرآن کریم با تدبر، تأنی و رعایت تجوید. خداوند در قرآن (73:4) به ترتیل قرآن امر فرموده است.',
   ),
   _Term(
     transliteration: "I'jaz",
@@ -1601,6 +1678,7 @@ const List<_Term> _allTerms = [
     nl: 'De wonderbaarlijke onnavolgbaarheid van de Koran. Geen mens of djinn kan iets vergelijkbaars voortbrengen in taal, betekenis of structuur. Allah daagt de hele schepping uit om het te proberen. (Koran 17:88)',
     pt: 'A inimitabilidade milagrosa do Alcorão. Nenhum ser humano ou jinn pode produzir algo semelhante em linguagem, significado ou estrutura. Allah desafia toda a criação a tentar. (Alcorão 17:88)',
     it: 'L\'inimitabilità miracolosa del Corano. Nessun essere umano o jinn può produrre qualcosa di simile in linguaggio, significato o struttura. Allah sfida tutta la creazione a provarci. (Corano 17:88)',
+    fa: 'ترتیل: خواندن قرآن کریم با تدبر، تأنی و رعایت تجوید. خداوند در قرآن (73:4) به ترتیل قرآن امر فرموده است.',
   ),
 
   // ── Islamic History ─────────────────────────────────────────────────────────
@@ -1624,6 +1702,7 @@ const List<_Term> _allTerms = [
     nl: 'De migratie van Profeet Muhammad ﷺ en zijn metgezellen van Mekka naar Medina in 622 n.Chr. Het markeert het begin van de islamitische kalender en was een keerpunt voor de islam.',
     pt: 'A migração do Profeta Muhammad ﷺ e de seus companheiros de Meca para Medina em 622 d.C. Marca o início do calendário islâmico e foi um ponto de virada para o Islã.',
     it: 'La migrazione del Profeta Muhammad ﷺ e dei suoi compagni dalla Mecca a Medina nel 622 d.C. Segna l\'inizio del calendario islamico e fu un punto di svolta per l\'Islam.',
+    fa: 'هجرت: مهاجرت پیامبر ﷺ از مکه به مدینه در سال 622 میلادی. سرآغاز تقویم هجری قمری اسلامی. نقطه عطف تاریخ اسلام.',
   ),
   _Term(
     transliteration: 'Sahaba',
@@ -1644,6 +1723,7 @@ const List<_Term> _allTerms = [
     nl: 'De metgezellen van Profeet Muhammad ﷺ die hem ontmoetten, in hem geloofden en als moslim stierven. Zij zijn de beste generatie van deze Ummah en de belangrijkste overleveraars van de islam.',
     pt: 'Os companheiros do Profeta Muhammad ﷺ que o conheceram, creram nele e morreram como muçulmanos. Eles são a melhor geração desta Ummah e os principais transmissores do Islã.',
     it: 'I compagni del Profeta Muhammad ﷺ che lo incontrarono, credettero in lui e morirono musulmani. Sono la migliore generazione di questa Ummah e i principali trasmettitori dell\'Islam.',
+    fa: 'صحابه: کسانی که پیامبر ﷺ را دیدند، به او ایمان آوردند و مسلمان ماندند. ناقلان اول وحی و سنت نبوی هستند.',
   ),
   _Term(
     transliteration: "Tabi'een",
@@ -1664,6 +1744,7 @@ const List<_Term> _allTerms = [
     nl: 'De generatie na de Sahaba. Zij leerden de islam rechtstreeks van de metgezellen en worden beschouwd als de tweede beste generatie in de islamitische geschiedenis. (Sahih al-Boekhari)',
     pt: 'A geração após os Sahaba. Eles aprenderam o Islã diretamente dos companheiros e são considerados a segunda melhor geração da história islâmica. (Sahih Bukhari)',
     it: 'La generazione successiva ai Sahaba. Hanno imparato l\'Islam direttamente dai compagni e sono considerati la seconda migliore generazione della storia islamica. (Sahih Bukhari)',
+    fa: 'صحابه: کسانی که پیامبر ﷺ را دیدند، به او ایمان آوردند و مسلمان ماندند. ناقلان اول وحی و سنت نبوی هستند.',
   ),
   _Term(
     transliteration: 'Ansar',
@@ -1684,6 +1765,7 @@ const List<_Term> _allTerms = [
     nl: 'De "Helpers" — de moslims van Medina die de Profeet ﷺ en de Muhajirin na de Hijra verwelkomden en steunden. Allah prees hen voor hun vrijgevigheid. (Koran 59:9)',
     pt: 'Os "Ajudantes" — os muçulmanos de Medina que acolheram e apoiaram o Profeta ﷺ e os Muhajireen após a Hégira. Allah os elogiou por sua generosidade. (Alcorão 59:9)',
     it: 'Gli "Ausiliari" — i musulmani di Medina che accolsero e sostennero il Profeta ﷺ e i Muhajireen dopo l\'Egira. Allah li elogiò per la loro generosità. (Corano 59:9)',
+    fa: 'انصار: مسلمانان مدینه که پیامبر ﷺ و مهاجران را پذیرفتند و یاری کردند. نامشان به معنای «یاری‌کنندگان» است. (قرآن 9:100)',
   ),
   _Term(
     transliteration: 'Muhajireen',
@@ -1704,6 +1786,7 @@ const List<_Term> _allTerms = [
     nl: 'De "Emigranten" — de vroege moslims die hun huizen, families en rijkdom in Mekka verlieten om naar Medina te emigreren ter wille van Allah. (Koran 59:8)',
     pt: 'Os "Emigrantes" — os primeiros muçulmanos que deixaram suas casas, famílias e riquezas em Meca para migrar para Medina pela causa de Allah. (Alcorão 59:8)',
     it: 'Gli "Emigranti" — i primi musulmani che lasciarono le loro case, famiglie e ricchezze alla Mecca per migrare a Medina per la causa di Allah. (Corano 59:8)',
+    fa: 'مهاجرین: مسلمانانی که با پیامبر ﷺ از مکه به مدینه هجرت کردند. خداوند در قرآن (9:100) آنها را ستوده است.',
   ),
   _Term(
     transliteration: 'Khulafa al-Rashideen',
@@ -1724,6 +1807,7 @@ const List<_Term> _allTerms = [
     nl: 'De Rechtgeleide Kaliefen: Abu Bakr, Umar, Uthman en Ali (Allah weze met hen tevreden). Zij leidden de islamitische gemeenschap na de Profeet ﷺ met rechtvaardigheid en wijsheid.',
     pt: 'Os Califas Bem Guiados: Abu Bakr, Umar, Uthman e Ali (que Allah esteja satisfeito com eles). Eles lideraram a comunidade muçulmana após o Profeta ﷺ com justiça e sabedoria.',
     it: 'I Califfi Ben Guidati: Abu Bakr, Umar, Uthman e Ali (che Allah sia compiaciuto di loro). Guidarono la comunità musulmana dopo il Profeta ﷺ con giustizia e saggezza.',
+    fa: 'خلفای راشدین: چهار خلیفه نخست پس از پیامبر ﷺ: ابوبکر صدیق، عمر فاروق، عثمان بن عفان و علی بن ابی طالب. دوره طلایی اسلام.',
   ),
 
   // ── Aqeedah / Belief ────────────────────────────────────────────────────────
@@ -1747,6 +1831,7 @@ const List<_Term> _allTerms = [
     nl: 'De eenheid van Allah — het meest fundamentele geloof in de islam. Alleen Allah verdient aanbidding, heeft geen partners, en niets is aan Hem gelijk. (Koran 112:1-4)',
     pt: 'A unicidade de Allah — a crença mais fundamental do Islã. Somente Allah merece adoração, não tem parceiros, e nada se compara a Ele. (Alcorão 112:1-4)',
     it: 'L\'unicità di Allah — la credenza più fondamentale dell\'Islam. Solo Allah merita adorazione, non ha associati, e nulla è simile a Lui. (Corano 112:1-4)',
+    fa: 'توحید: باور به یکتایی مطلق خداوند. پایه و اساس ایمان اسلامی. خداوند در ذات، صفات و عبادت شریکی ندارد. (قرآن 112:1)',
   ),
   _Term(
     transliteration: 'Shirk',
@@ -1767,6 +1852,7 @@ const List<_Term> _allTerms = [
     nl: 'Allah partners toekennen. De zwaarste zonde in de islam, die Allah niet vergeeft als iemand erin sterft. Het omvat het aanbidden van iets anders dan Allah. (Koran 4:48)',
     pt: 'Associar parceiros a Allah. O pecado mais grave no Islã, que Allah não perdoa se alguém morrer nele. Inclui adorar qualquer coisa além de Allah. (Alcorão 4:48)',
     it: 'Associare partner ad Allah. Il peccato più grave nell\'Islam, che Allah non perdona se si muore in questo stato. Include l\'adorazione di qualsiasi cosa oltre ad Allah. (Corano 4:48)',
+    fa: 'شرک: نسبت دادن شریک یا همتا به خداوند. بزرگ‌ترین گناه در اسلام. تنها گناهی که اگر توبه نشود بخشوده نمی‌شود. (قرآن 4:48)',
   ),
   _Term(
     transliteration: 'Kufr',
@@ -1787,6 +1873,7 @@ const List<_Term> _allTerms = [
     nl: 'Ongeloof of verwerping van het geloof. Het ontkennen van wat Allah duidelijk heeft geopenbaard. Moslims wordt geleerd kennis te zoeken, hoogmoed te vermijden en Allah om standvastigheid te vragen.',
     pt: 'Descrença ou rejeição da fé. Negar o que Allah revelou claramente. Os muçulmanos são ensinados a buscar conhecimento, evitar a arrogância e pedir a Allah firmeza.',
     it: 'Miscredenza o rigetto della fede. Negare ciò che Allah ha chiaramente rivelato. Ai musulmani viene insegnato di cercare la conoscenza, evitare l\'arroganza e chiedere ad Allah la costanza.',
+    fa: 'کفر: انکار حقیقتی که در اسلام ثابت شده، به ویژه یکتایی خداوند. حالت مخالف ایمان. می‌تواند درجات مختلفی داشته باشد.',
   ),
   _Term(
     transliteration: 'Nifaq',
@@ -1807,6 +1894,7 @@ const List<_Term> _allTerms = [
     nl: 'Hypocrisie. Uiterlijk geloof beweren terwijl ongeloof in het hart wordt verborgen. De Koran waarschuwt dat hypocrieten zich in de laagste diepten van het Vuur zullen bevinden. (Koran 4:145)',
     pt: 'Hipocrisia. Professar fé exteriormente enquanto se esconde a descrença no coração. O Alcorão adverte que os hipócritas estarão nas profundezas mais baixas do Fogo. (Alcorão 4:145)',
     it: 'Ipocrisia. Professare fede esteriormente mentre si nasconde l\'incredulità nel cuore. Il Corano avverte che gli ipocriti saranno negli abissi più bassi del Fuoco. (Corano 4:145)',
+    fa: 'نفاق: اظهار ایمان در ظاهر و پنهان کردن کفر در باطن. منافق کسی است که باور ندارد ولی وانمود می‌کند. (قرآن 63:1)',
   ),
   _Term(
     transliteration: 'Barzakh',
@@ -1827,6 +1915,7 @@ const List<_Term> _allTerms = [
     nl: 'De barrière tussen dit leven en het Hiernamaals. Het rijk waar de ziel na de dood verblijft tot de Dag der Opstanding. (Koran 23:100)',
     pt: 'A barreira entre esta vida e o Mais Além. O reino onde a alma reside após a morte até o Dia da Ressurreição. (Alcorão 23:100)',
     it: 'La barriera tra questa vita e l\'Aldilà. Il regno in cui l\'anima risiede dopo la morte fino al Giorno della Resurrezione. (Corano 23:100)',
+    fa: 'برزخ: عالم بین مرگ و قیامت. جایگاه ارواح پس از مرگ تا زمان برانگیخته شدن. مؤمنان در آسایش و کافران در عذابند.',
   ),
   _Term(
     transliteration: 'Ruh',
@@ -1847,6 +1936,7 @@ const List<_Term> _allTerms = [
     nl: 'De ziel. De essentie van het leven die Allah in elke persoon blaast. Haar werkelijke aard is alleen bij Allah bekend. "Zij vragen je naar de ziel. Zeg: de ziel behoort tot de aangelegenheid van mijn Heer." (Koran 17:85)',
     pt: 'A alma. A essência da vida que Allah sopra em cada pessoa. Sua verdadeira natureza só é conhecida por Allah. "Perguntam-te sobre a alma. Diz: a alma é um assunto do meu Senhor." (Alcorão 17:85)',
     it: 'L\'anima. L\'essenza della vita che Allah soffia in ogni persona. La sua vera natura è conosciuta solo da Allah. "Ti interrogano sull\'anima. Di\': l\'anima è cosa del mio Signore." (Corano 17:85)',
+    fa: 'روح: نیروی حیات‌بخش الهی که خداوند در انسان دمیده است. (قرآن 17:85) ماهیتش از علم ما پوشیده است، فقط خداوند می‌داند.',
   ),
   _Term(
     transliteration: 'Fitrah',
@@ -1867,6 +1957,7 @@ const List<_Term> _allTerms = [
     nl: 'De natuurlijke aanleg. Iedereen wordt geboren met een aangeboren bewustzijn van Allah en een neiging tot het goede. De islam wordt gezien als de religie van de fitrah. (Koran 30:30, Sahih Muslim)',
     pt: 'A disposição natural. Toda pessoa nasce com uma consciência inata de Allah e inclinação para o bem. O Islã é visto como a religião da fitrah. (Alcorão 30:30, Sahih Muslim)',
     it: 'La disposizione naturale. Ogni persona nasce con una consapevolezza innata di Allah e un\'inclinazione verso il bene. L\'Islam è visto come la religione della fitrah. (Corano 30:30, Sahih Muslim)',
+    fa: 'فطرت: سرشت پاک و طبیعی خداشناسانه‌ای که هر انسان با آن متولد می‌شود. پیامبر ﷺ فرمود هر نوزادی بر فطرت متولد می‌شود.',
   ),
 
   // ── Daily Life & Character ──────────────────────────────────────────────────
@@ -1890,6 +1981,7 @@ const List<_Term> _allTerms = [
     nl: 'Levensonderhoud en voorzieningen van Allah. Dit omvat voedsel, rijkdom, gezondheid, kennis en zelfs goede relaties. Alle rizq wordt alleen door Allah bepaald en verschaft. (Koran 11:6)',
     pt: 'Sustento e provisão de Allah. Inclui alimento, riqueza, saúde, conhecimento e até bons relacionamentos. Todo rizq é determinado e provido somente por Allah. (Alcorão 11:6)',
     it: 'Sostentamento e provvidenza da Allah. Include cibo, ricchezza, salute, conoscenza e persino buone relazioni. Tutto il rizq è determinato e fornito solo da Allah. (Corano 11:6)',
+    fa: 'رزق: روزی الهی که شامل غذا، مال، دانش، سلامت و هر نعمتی است که خداوند به بنده می‌دهد. خداوند رزاق است. (قرآن 51:58)',
   ),
   _Term(
     transliteration: 'Sadaqah',
@@ -1910,6 +2002,7 @@ const List<_Term> _allTerms = [
     nl: 'Vrijwillige aalmoes gegeven ter wille van Allah. Het kan geld zijn, een vriendelijk woord, een glimlach, of het verwijderen van schade van een pad. Zelfs een glimlach is sadaqah. (Sahih Muslim)',
     pt: 'Caridade voluntária dada pela causa de Allah. Pode ser dinheiro, uma palavra gentil, um sorriso, ou remover um obstáculo de um caminho. Até um sorriso é sadaqah. (Sahih Muslim)',
     it: 'Carità volontaria data per la causa di Allah. Può essere denaro, una parola gentile, un sorriso, o rimuovere un ostacolo da un sentiero. Persino un sorriso è sadaqah. (Sahih Muslim)',
+    fa: 'صدقه: دادن داوطلبانه برای رضای خداوند. بر خلاف زکات که فریضه است، صدقه نافله است. ثواب بسیار دارد. (قرآن 2:271)',
   ),
   _Term(
     transliteration: 'Istighfar',
@@ -1930,6 +2023,7 @@ const List<_Term> _allTerms = [
     nl: 'Herhaaldelijk om vergeving bij Allah vragen. Meer dan eenmalig berouw, het is een constante praktijk. De Profeet ﷺ vroeg dagelijks meer dan 70 keer om vergeving, ondanks dat hij zondeloos was. (Sahih al-Boekhari)',
     pt: 'Buscar o perdão de Allah repetidamente. Além do arrependimento único, é uma prática constante. O Profeta ﷺ buscava perdão mais de 70 vezes ao dia, apesar de ser sem pecado. (Sahih Bukhari)',
     it: 'Chiedere perdono ad Allah ripetutamente. Oltre al pentimento singolo, è una pratica costante. Il Profeta ﷺ chiedeva perdono più di 70 volte al giorno nonostante fosse senza peccato. (Sahih Bukhari)',
+    fa: 'استغفار: طلب بخشش مداوم از خداوند. پیامبر ﷺ روزی هفتاد بار استغفار می‌کرد. قلب را پاک و گناهان را می‌زداید.',
   ),
   _Term(
     transliteration: 'Umrah',
@@ -1950,6 +2044,7 @@ const List<_Term> _allTerms = [
     nl: 'De kleine bedevaart naar Mekka. In tegenstelling tot de Hajj kan deze op elk moment van het jaar worden verricht. Het omvat ihram, tawaf rond de Kaaba, en sa\'i tussen Safa en Marwa.',
     pt: 'A peregrinação menor a Meca. Diferente do Hajj, pode ser realizada em qualquer época do ano. Inclui ihram, tawaf em volta da Kaaba, e sa\'i entre Safa e Marwa.',
     it: 'Il pellegrinaggio minore alla Mecca. A differenza dell\'Hajj, può essere svolto in qualsiasi momento dell\'anno. Comprende l\'ihram, il tawaf attorno alla Kaaba e il sa\'i tra Safa e Marwa.',
+    fa: 'عمره: زیارت مستحبی مکه مکرمه که در هر زمانی می‌توان انجام داد. شامل احرام، طواف، سعی بین صفا و مروه و تقصیر است.',
   ),
   _Term(
     transliteration: 'Tawaf',
@@ -1970,6 +2065,7 @@ const List<_Term> _allTerms = [
     nl: 'Zeven keer tegen de klok in om de Kaaba lopen. Een centraal ritueel van zowel de Hajj als de Umrah, dat de eenheid van gelovigen in de aanbidding van Allah symboliseert.',
     pt: 'Caminhar sete vezes em volta da Kaaba no sentido anti-horário. Um rito central tanto do Hajj quanto da Umrah, simbolizando a unidade dos crentes na adoração a Allah.',
     it: 'Camminare sette volte attorno alla Kaaba in senso antiorario. Un rito centrale sia dell\'Hajj che dell\'Umrah, che simboleggia l\'unità dei credenti nell\'adorazione di Allah.',
+    fa: 'طواف: هفت بار گردیدن به دور کعبه مشرفه در مکه به صورت ضدساعتگرد. از ارکان اصلی حج و عمره است.',
   ),
   _Term(
     transliteration: 'Ihram',
@@ -1990,6 +2086,7 @@ const List<_Term> _allTerms = [
     nl: 'De heilige staat die wordt aangenomen voor de Hajj of Umrah. Mannen dragen twee witte ongenaaide doeken; vrouwen dragen bescheiden kleding. Bepaalde handelingen zoals nagels knippen of parfum gebruiken zijn verboden tijdens de ihram.',
     pt: 'O estado sagrado em que se entra para o Hajj ou a Umrah. Os homens vestem duas peças de tecido branco não costuradas; as mulheres vestem roupas modestas. Certas ações, como cortar as unhas ou usar perfume, são proibidas durante o ihram.',
     it: 'Lo stato sacro in cui si entra per l\'Hajj o l\'Umrah. Gli uomini indossano due tessuti bianchi non cuciti; le donne indossano abiti modesti. Alcune azioni come tagliarsi le unghie o usare profumo sono proibite durante l\'ihram.',
+    fa: 'احرام: حالت مقدسی که حج‌گزار یا عمره‌گزار با پوشیدن لباس سفید ساده وارد آن می‌شود. در این حالت برخی کارها ممنوع است.',
   ),
   _Term(
     transliteration: 'Akhlaq',
@@ -2010,6 +2107,7 @@ const List<_Term> _allTerms = [
     nl: 'Goed karakter en goede manieren. De Profeet ﷺ zei: "Ik ben gezonden om goed karakter te vervolmaken." Het gedrag van een moslim is een uitdrukking van zijn geloof. (Muwatta Imam Malik)',
     pt: 'Bom caráter e boas maneiras. O Profeta ﷺ disse: "Fui enviado para aperfeiçoar o bom caráter." O comportamento de um muçulmano é uma expressão de sua fé. (Muwatta Imam Malik)',
     it: 'Buon carattere e buone maniere. Il Profeta ﷺ disse: "Sono stato inviato per perfezionare il buon carattere." Il comportamento di un musulmano è un\'espressione della sua fede. (Muwatta Imam Malik)',
+    fa: 'اخلاق اسلامی: ارزش‌های اخلاقی و شخصیتی در اسلام مانند صداقت، سخاوت، صبر و عدالت. پیامبر ﷺ فرمود برای تکمیل اخلاق نیکو مبعوث شده.',
   ),
   _Term(
     transliteration: 'Ikhlas',
@@ -2030,6 +2128,7 @@ const List<_Term> _allTerms = [
     nl: 'Oprechtheid. Elke daad puur ter wille van Allah verrichten, zonder lof of erkenning van mensen te zoeken. Een voorwaarde voor de aanvaarding van alle aanbidding.',
     pt: 'Sinceridade. Fazer toda ação puramente pela causa de Allah, sem buscar elogios ou reconhecimento das pessoas. Uma condição para que toda adoração seja aceita.',
     it: 'Sincerità. Compiere ogni azione puramente per la causa di Allah, senza cercare lode o riconoscimento dalle persone. Una condizione perché ogni atto di culto sia accettato.',
+    fa: 'اخلاص: خالص کردن نیت و عمل صرفاً برای خداوند بدون هیچ انگیزه دنیوی. شرط قبولی هر عبادتی است. (قرآن 98:5)',
   ),
   _Term(
     transliteration: 'Adab',
@@ -2050,6 +2149,7 @@ const List<_Term> _allTerms = [
     nl: 'Islamitische etiquette en correct gedrag. Omvat manieren van eten, begroeten, bezoeken, en het met vriendelijkheid en respect behandelen van ouders, buren en gasten.',
     pt: 'Etiqueta islâmica e conduta apropriada. Inclui boas maneiras ao comer, saudar, visitar, e tratar pais, vizinhos e convidados com bondade e respeito.',
     it: 'Etichetta islamica e condotta appropriata. Include le buone maniere nel mangiare, salutare, visitare, e nel trattare genitori, vicini e ospiti con gentilezza e rispetto.',
+    fa: 'ادب اسلامی: رفتار محترمانه و آداب معاشرت که اسلام آموزش داده. شامل احترام به بزرگ‌ترها، مهمانداری و نزاکت در کلام.',
   ),
   _Term(
     transliteration: 'Niyyah',
@@ -2070,6 +2170,7 @@ const List<_Term> _allTerms = [
     nl: 'Intentie. Elke daad van aanbidding begint met een oprechte intentie in het hart. De Profeet ﷺ zei: "Daden worden beoordeeld naar hun intenties." (Sahih al-Boekhari)',
     pt: 'Intenção. Todo ato de adoração começa com uma intenção sincera no coração. O Profeta ﷺ disse: "As ações são julgadas por suas intenções." (Sahih Bukhari)',
     it: 'Intenzione. Ogni atto di culto inizia con un\'intenzione sincera nel cuore. Il Profeta ﷺ disse: "Le azioni si giudicano dalle loro intenzioni." (Sahih Bukhari)',
+    fa: 'نیت: تصمیم قلبی برای انجام عبادت یا هر کار خیر برای رضای خداوند. پیامبر ﷺ فرمود اعمال بر نیت‌هاست. (بخاری)',
   ),
   _Term(
     transliteration: 'Hayaa',
@@ -2090,6 +2191,7 @@ const List<_Term> _allTerms = [
     nl: 'Bescheidenheid en schaamtegevoel. Een tak van het geloof die een moslim ervan weerhoudt schandelijke daden te verrichten. De Profeet ﷺ zei: "Schaamte brengt niets dan goeds." (Sahih Muslim)',
     pt: 'Modéstia e pudor. Um ramo da fé que guia o muçulmano a evitar ações vergonhosas. O Profeta ﷺ disse: "O pudor não traz senão o bem." (Sahih Muslim)',
     it: 'Modestia e pudore. Un ramo della fede che guida il musulmano a evitare azioni vergognose. Il Profeta ﷺ disse: "Il pudore non porta altro che bene." (Sahih Muslim)',
+    fa: 'حیاء: شرم و آزرم اسلامی؛ ویژگی اخلاقی که از بدی باز می‌دارد. پیامبر ﷺ فرمود حیاء شاخه‌ای از ایمان است. (بخاری)',
   ),
   _Term(
     transliteration: 'Tafakkur',
@@ -2110,6 +2212,7 @@ const List<_Term> _allTerms = [
     nl: 'Diepe reflectie en bezinning op Allahs schepping en tekenen. De Koran moedigt herhaaldelijk aan om na te denken over de hemelen, de aarde en de eigen schepping. (Koran 3:190-191)',
     pt: 'Reflexão profunda e contemplação sobre a criação e os sinais de Allah. O Alcorão incentiva repetidamente a pensar sobre os céus, a terra e a própria criação. (Alcorão 3:190-191)',
     it: 'Profonda riflessione e contemplazione sulla creazione e sui segni di Allah. Il Corano incoraggia ripetutamente a riflettere sui cieli, sulla terra e sulla propria creazione. (Corano 3:190-191)',
+    fa: 'تفکر: تأمل و اندیشه در آفرینش خداوند، آیات قرآن و حقایق دینی. خداوند کسانی را که تفکر می‌کنند ستوده است. (قرآن 3:191)',
   ),
   _Term(
     transliteration: 'Birr',
@@ -2130,6 +2233,7 @@ const List<_Term> _allTerms = [
     nl: 'Rechtschapenheid en goedheid. Een veelomvattende term die geloof, aanbidding, liefdadigheid, geduld en het vervullen van beloften omvat. (Koran 2:177)',
     pt: 'Retidão e bondade. Um termo abrangente que cobre fé, adoração, caridade, paciência e o cumprimento de promessas. (Alcorão 2:177)',
     it: 'Rettitudine e bontà. Un termine onnicomprensivo che abbraccia fede, culto, carità, pazienza e il rispetto delle promesse. (Corano 2:177)',
+    fa: 'برّ: نیکوکاری جامع که در قرآن (2:177) توصیف شده؛ ایمان، عمل به واجبات، نیکی به خانواده، صبر و وفای به عهد.',
   ),
   _Term(
     transliteration: 'Israf',
@@ -2150,6 +2254,7 @@ const List<_Term> _allTerms = [
     nl: 'Verkwisting en verspilling, die de islam verbiedt. Geldt voor voedsel, geld, water en hulpbronnen. "Eet en drink, maar overdrijf niet." (Koran 7:31)',
     pt: 'Extravagância e desperdício, que o Islã proíbe. Aplica-se a alimentos, dinheiro, água e recursos. "Comam e bebam, mas não sejam excessivos." (Alcorão 7:31)',
     it: 'Stravaganza e spreco, che l\'Islam proibisce. Si applica a cibo, denaro, acqua e risorse. "Mangiate e bevete, ma non eccedete." (Corano 7:31)',
+    fa: 'اسراف: زیاده‌روی و اتلاف منابع. خداوند در قرآن (7:31) فرمود: «بخورید و بیاشامید و اسراف نکنید که او اسراف‌کاران را دوست ندارد.»',
   ),
   _Term(
     transliteration: 'Qiyam al-Layl',
@@ -2170,6 +2275,7 @@ const List<_Term> _allTerms = [
     nl: 'Nachtgebed. Vrijwillige gebeden verricht in het laatste derde deel van de nacht, wanneer Allah neerdaalt naar de laagste hemel. Een van de meest geliefde vormen van aanbidding. (Koran 17:79)',
     pt: 'Oração noturna. Orações voluntárias realizadas no último terço da noite, quando Allah desce ao céu mais baixo. Um dos atos de adoração mais amados. (Alcorão 17:79)',
     it: 'Preghiera notturna. Preghiere volontarie eseguite nell\'ultimo terzo della notte, quando Allah scende al cielo più basso. Uno degli atti di culto più amati. (Corano 17:79)',
+    fa: 'قیام اللیل: نماز شب که بعد از عشاء و قبل از فجر خوانده می‌شود. مستحب مؤکد است و برای صالحان سیره‌ای دائمی بود. (قرآن 73:2)',
   ),
   _Term(
     transliteration: 'Siyam',
@@ -2190,6 +2296,7 @@ const List<_Term> _allTerms = [
     nl: 'Vasten. Naast Ramadan omvatten vrijwillige vastendagen maandag en donderdag, de witte dagen (13e, 14e, 15e van elke maanmaand), en de Dag van Arafah.',
     pt: 'Jejum. Além do Ramadã, os jejuns voluntários incluem segundas e quintas-feiras, os dias brancos (13, 14 e 15 de cada mês lunar), e o Dia de Arafah.',
     it: 'Digiuno. Oltre al Ramadan, i digiuni volontari includono lunedì e giovedì, i giorni bianchi (13°, 14°, 15° di ogni mese lunare), e il Giorno di Arafah.',
+    fa: 'صیام: روزه‌داری اسلامی با خودداری از خوردن، آشامیدن و مباشرت از سپیده‌دم تا غروب. ارکان واجب ماه رمضان است. (قرآن 2:183)',
   ),
   _Term(
     transliteration: 'Shura',
@@ -2210,6 +2317,7 @@ const List<_Term> _allTerms = [
     nl: 'Overleg. De islam moedigt aan om beslissingen te nemen door onderling overleg. Allah prees de gelovigen "wier zaken via onderling overleg worden geregeld." (Koran 42:38)',
     pt: 'Consulta. O Islã encoraja a tomada de decisões por meio de consulta mútua. Allah elogiou os crentes "cujos assuntos são conduzidos por consulta entre eles." (Alcorão 42:38)',
     it: 'Consultazione. L\'Islam incoraggia a prendere decisioni tramite consultazione reciproca. Allah elogiò i credenti "i cui affari sono condotti tramite consultazione tra loro." (Corano 42:38)',
+    fa: 'شورا: مشورت و رایزنی در تصمیم‌گیری‌های مهم. یکی از اصول حکمرانی اسلامی. خداوند در قرآن (42:38) آن را ستوده است.',
   ),
   _Term(
     transliteration: 'Wali',
@@ -2230,6 +2338,7 @@ const List<_Term> _allTerms = [
     nl: 'Een nauwe vriend van Allah. Een rechtschapen persoon die zich aan Allah wijdt door aanbidding, gehoorzaamheid en oprechtheid. "Voorwaar, de bondgenoten van Allah — geen vrees zal over hen komen." (Koran 10:62)',
     pt: 'Um amigo próximo de Allah. Uma pessoa justa devotada a Allah através da adoração, obediência e sinceridade. "Em verdade, os aliados de Allah — nenhum temor haverá sobre eles." (Alcorão 10:62)',
     it: 'Un amico intimo di Allah. Una persona retta devota ad Allah tramite il culto, l\'obbedienza e la sincerità. "In verità, gli alleati di Allah — nessun timore avranno." (Corano 10:62)',
+    fa: 'ولی: سرپرست، دوست یا حامی. در قرآن خداوند ولی مؤمنان نامیده می‌شود. در ازدواج، به پدر یا سرپرست عروس اطلاق می‌شود.',
   ),
   _Term(
     transliteration: 'Fitnah',
@@ -2250,6 +2359,7 @@ const List<_Term> _allTerms = [
     nl: 'Beproeving, verzoeking of innerlijke onrust. Allah test de gelovigen door middel van moeite en gemak. "Wij beproeven jullie met kwaad en goed als een test." (Koran 21:35)',
     pt: 'Prova, tentação ou discórdia civil. Allah testa os crentes através da dificuldade e da facilidade. "Nós vos testamos com o mal e o bem como prova." (Alcorão 21:35)',
     it: 'Prova, tentazione o discordia civile. Allah metta alla prova i credenti attraverso difficoltà e agio. "Vi proviamo con il male e il bene come prova." (Corano 21:35)',
+    fa: 'فتنه: آزمایش، آشوب یا اغواگری. می‌تواند به آزمایش ایمانی، بلا یا آشوب اجتماعی اشاره کند. (قرآن 2:191)',
   ),
   _Term(
     transliteration: 'Miswak',
@@ -2270,6 +2380,7 @@ const List<_Term> _allTerms = [
     nl: 'Een natuurlijk tandenreinigingstakje van de Arak-boom. De Profeet ﷺ moedigde het gebruik ervan sterk aan, vóór het gebed en vaak gedurende de dag. (Sahih al-Boekhari)',
     pt: 'Um ramo natural de limpeza dental da árvore Arak. O Profeta ﷺ incentivava fortemente seu uso antes da oração e frequentemente ao longo do dia. (Sahih Bukhari)',
     it: 'Un rametto naturale per la pulizia dei denti dell\'albero di Arak. Il Profeta ﷺ incoraggiò fortemente il suo uso prima della preghiera e frequentemente durante il giorno. (Sahih Bukhari)',
+    fa: 'مسواک: چوبی از درخت اراک که برای تمیز کردن دندان‌ها استفاده می‌شود. سنت پیامبر ﷺ است و در احادیث بسیار توصیه شده.',
   ),
   _Term(
     transliteration: 'Tarbiyah',
@@ -2290,6 +2401,7 @@ const List<_Term> _allTerms = [
     nl: 'Islamitische opvoeding en karakterontwikkeling. Het voeden van een persoon — vooral kinderen — in geloof, kennis en goede manieren volgens de Koran en Sunnah.',
     pt: 'Educação islâmica e desenvolvimento do caráter. Cultivar uma pessoa — especialmente crianças — na fé, no conhecimento e nas boas maneiras de acordo com o Alcorão e a Sunnah.',
     it: 'Educazione islamica e sviluppo del carattere. Coltivare una persona — specialmente i bambini — nella fede, nella conoscenza e nelle buone maniere secondo il Corano e la Sunnah.',
+    fa: 'تربیت: فرایند آموزش و پرورش اسلامی برای شکل دادن به شخصیت و اخلاق مسلمان. شامل اخلاق، علم و تقویت ایمان است.',
   ),
   _Term(
     transliteration: 'Hilm',
@@ -2310,6 +2422,7 @@ const List<_Term> _allTerms = [
     nl: 'Verdraagzaamheid en zachtmoedigheid. Woede beheersen en met rust reageren. De Profeet ﷺ zei tegen een man die om advies vroeg: "Word niet boos," en herhaalde dit drie keer. (Sahih al-Boekhari)',
     pt: 'Tolerância e gentileza. Controlar a ira e responder com calma. O Profeta ﷺ disse a um homem que pediu conselho: "Não se ire," repetindo isso três vezes. (Sahih Bukhari)',
     it: 'Tolleranza e dolcezza. Controllare la rabbia e rispondere con calma. Il Profeta ﷺ disse a un uomo che chiedeva consiglio: "Non arrabbiarti," ripetendolo tre volte. (Sahih Bukhari)',
+    fa: 'حلم: بردباری و خویشتن‌داری در برابر خشم یا بدرفتاری دیگران. یکی از برجسته‌ترین ویژگی‌های اخلاقی پیامبر ﷺ.',
   ),
   _Term(
     transliteration: 'Muhasabah',
@@ -2330,6 +2443,7 @@ const List<_Term> _allTerms = [
     nl: 'Zelfverantwoording. Reflecteren op de eigen dagelijkse daden en intenties. Umar ibn al-Khattab zei: "Houd jezelf verantwoordelijk voordat je verantwoordelijk wordt gehouden."',
     pt: 'Autorresponsabilidade. Refletir sobre as próprias ações e intenções diárias. Umar ibn al-Khattab disse: "Prestem contas a si mesmos antes que vos sejam exigidas contas."',
     it: 'Auto-responsabilità. Riflettere sulle proprie azioni e intenzioni quotidiane. Umar ibn al-Khattab disse: "Rendete conto a voi stessi prima di doverne rendere conto."',
+    fa: 'محاسبه: بازنگری و ارزیابی نفس از اعمال و نیات. عمر بن خطاب فرمود: «قبل از اینکه حسابتان رسیده شود، خودتان را محاسبه کنید.»',
   ),
   _Term(
     transliteration: 'Nafs',
@@ -2350,6 +2464,7 @@ const List<_Term> _allTerms = [
     nl: 'Het zelf of ego. De Koran beschrijft drie staten: de ziel die tot het kwade aanzet, de zichzelf verwijtende ziel, en de tevreden ziel. (Koran 12:53, 75:2, 89:27)',
     pt: 'O ego ou eu interior. O Alcorão descreve três estados: a alma que ordena o mal, a alma autorrecriminadora, e a alma em paz. (Alcorão 12:53, 75:2, 89:27)',
     it: 'Il sé o l\'ego. Il Corano descrive tre stati: l\'anima che induce al male, l\'anima che si rimprovera, e l\'anima in pace. (Corano 12:53, 75:2, 89:27)',
+    fa: 'نفس: روان، خود، یا نفس آدمی. سه درجه دارد: نفس أماره (امرکننده به بدی)، نفس لوامه (پشیمان‌شونده) و نفس مطمئنه (آرامش‌یافته).',
   ),
   _Term(
     transliteration: 'Shafaah',
@@ -2370,6 +2485,7 @@ const List<_Term> _allTerms = [
     nl: 'Voorspraak. Op de Dag des Oordeels zal Profeet Muhammad ﷺ de grote voorspraak ontvangen, met Allahs toestemming, om voor de gelovigen te bemiddelen. (Koran 2:255)',
     pt: 'Intercessão. No Dia do Juízo, o Profeta Muhammad ﷺ receberá a grande intercessão, com a permissão de Allah, para interceder pelos crentes. (Alcorão 2:255)',
     it: 'Intercessione. Nel Giorno del Giudizio, al Profeta Muhammad ﷺ sarà concessa la grande intercessione, con il permesso di Allah, per intercedere per i credenti. (Corano 2:255)',
+    fa: 'شفاعت: میانجیگری پیامبر ﷺ در روز قیامت برای امت خود. با اذن خداوند انجام می‌شود. مومنان امیدوارند از شفاعت بهره‌مند شوند.',
   ),
   _Term(
     transliteration: 'Isnad',
@@ -2390,6 +2506,7 @@ const List<_Term> _allTerms = [
     nl: 'De keten van overleveraars die een hadith teruggeleidt naar de Profeet ﷺ. Geleerden controleerden zorgvuldig de eerlijkheid en het geheugen van elke overleveraar om hadiths te authenticeren.',
     pt: 'A cadeia de narradores que transmite um hadith de volta ao Profeta ﷺ. Os estudiosos verificavam cuidadosamente a honestidade e a memória de cada narrador para autenticar os hadiths.',
     it: 'La catena di narratori che riconduce un hadith al Profeta ﷺ. Gli studiosi verificavano attentamente l\'onestà e la memoria di ogni narratore per autenticare gli hadith.',
+    fa: 'سند: زنجیره راویانی که حدیث را از پیامبر ﷺ تا ما رساندند. صحیح بودن سند شرط اصلی پذیرش حدیث است.',
   ),
   _Term(
     transliteration: 'Matn',
@@ -2410,6 +2527,7 @@ const List<_Term> _allTerms = [
     nl: 'De daadwerkelijke tekst of inhoud van een hadith, in tegenstelling tot de isnad (overleveringsketen). Geleerden onderzoeken zowel de keten als de tekst om de authenticiteit te verifiëren.',
     pt: 'O texto ou conteúdo real de um hadith, em oposição ao isnad (cadeia de narração). Os estudiosos examinam tanto a cadeia quanto o texto para verificar a autenticidade.',
     it: 'Il testo o contenuto effettivo di un hadith, in contrapposizione all\'isnad (catena di trasmissione). Gli studiosi esaminano sia la catena che il testo per verificare l\'autenticità.',
+    fa: 'متن: محتوا و مفهوم اصلی یک حدیث در برابر سند آن. علما هم سند و هم متن را بررسی می‌کنند تا صحت حدیث را بسنجند.',
   ),
   _Term(
     transliteration: 'Sahih',
@@ -2430,6 +2548,7 @@ const List<_Term> _allTerms = [
     nl: 'Authentiek. De hoogste classificatie van een hadith, wat betekent dat de keten ononderbroken is, alle overleveraars betrouwbaar zijn, en de tekst geen verborgen gebreken heeft. Sahih al-Boekhari en Sahih Muslim zijn de twee meest betrouwbare verzamelingen.',
     pt: 'Autêntico. A classificação mais alta de um hadith, significando que a cadeia é ininterrupta, todos os narradores são confiáveis, e o texto não tem defeitos ocultos. Sahih Bukhari e Sahih Muslim são as duas coleções mais confiáveis.',
     it: 'Autentico. La classificazione più alta di un hadith, il che significa che la catena è ininterrotta, tutti i narratori sono attendibili, e il testo non presenta difetti occulti. Sahih Bukhari e Sahih Muslim sono le due raccolte più affidabili.',
+    fa: 'صحیح: بالاترین درجه صحت در علم حدیث. حدیثی که سند متصل، راویان عادل و ضابط دارد و شذوذ و علت ندارد.',
   ),
 ];
 
@@ -2481,10 +2600,14 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
       terms = terms.where((t) => t.category == _activeFilter).toList();
     }
     if (_query.isEmpty) return terms;
+    final expandedTerms = IslamicSynonyms.expandQuery(_query);
     return terms.where((t) {
-      return t.transliteration.toLowerCase().contains(_query) ||
-          t.arabic.contains(_query) ||
-          t.definition(lang).toLowerCase().contains(_query);
+      final translitLower = t.transliteration.toLowerCase();
+      final definitionLower = t.definition(lang).toLowerCase();
+      return expandedTerms.any((term) =>
+          translitLower.contains(term) ||
+          t.arabic.contains(term) ||
+          definitionLower.contains(term));
     }).toList();
   }
 

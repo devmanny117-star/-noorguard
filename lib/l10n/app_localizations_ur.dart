@@ -221,6 +221,18 @@ class AppLocalizationsUr extends AppLocalizations {
   String get prayerNotifications => 'نماز کی اطلاعات';
 
   @override
+  String get statusOn => 'آن';
+
+  @override
+  String get statusOff => 'آف';
+
+  @override
+  String get enableAllNotifications => 'تمام اطلاعات فعال کریں';
+
+  @override
+  String get individualPrayers => 'انفرادی نمازیں';
+
+  @override
   String get appearance => 'ظاہری شکل';
 
   @override
@@ -1676,6 +1688,10 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'خاموش بینر کے ساتھ مکمل اذان چلائی جا رہی ہے';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'اسے آزمانے کے لیے پہلے نماز کی اطلاعات آن کریں';
 
   @override
   String get lockScreenSetupGuideButton => 'لاک اسکرین الرٹ سیٹ اپ گائیڈ';

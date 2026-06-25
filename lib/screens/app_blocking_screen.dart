@@ -1,10 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
 import '../services/app_blocking_service.dart';
 import '../services/prayer_state.dart';
 import '../services/streak_service.dart';
+import '../utils/platform_utils.dart';
 import 'app_blocking_setup_screen.dart';
 import 'installed_apps_picker_screen.dart';
 
@@ -75,7 +75,7 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
   }
 
   Future<void> _onToggleEnabled(bool value) async {
-    if (value && Platform.isAndroid && !_accessibilityEnabled) {
+    if (value && isAndroidPlatform && !_accessibilityEnabled) {
       await Navigator.push<bool>(
         context,
         MaterialPageRoute(builder: (_) => const AppBlockingSetupScreen()),
@@ -193,7 +193,7 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
                     onToggle: _onToggleEnabled,
                   ),
                   if (_service.enabled &&
-                      Platform.isAndroid &&
+                      isAndroidPlatform &&
                       !_accessibilityEnabled) ...[
                     const SizedBox(height: 14),
                     _PermissionBanner(
@@ -208,7 +208,7 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
                     ),
                   ],
                   const SizedBox(height: 18),
-                  if (Platform.isAndroid) ...[
+                  if (isAndroidPlatform) ...[
                     _SectionLabel(text: l10n.appBlockingModeLabel),
                     const SizedBox(height: 10),
                     _ModeCard(
@@ -268,7 +268,7 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
                   const SizedBox(height: 22),
                   _SectionLabel(text: l10n.appBlockingAppsTitle),
                   const SizedBox(height: 10),
-                  if (Platform.isAndroid)
+                  if (isAndroidPlatform)
                     _Card(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -342,7 +342,7 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
                         ],
                       ),
                     ),
-                  if (Platform.isAndroid) ...[
+                  if (isAndroidPlatform) ...[
                     const SizedBox(height: 22),
                     _SectionLabel(text: l10n.appBlockingTestSectionLabel),
                     const SizedBox(height: 10),

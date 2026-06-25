@@ -222,6 +222,18 @@ class AppLocalizationsId extends AppLocalizations {
   String get prayerNotifications => 'Notifikasi Sholat';
 
   @override
+  String get statusOn => 'Aktif';
+
+  @override
+  String get statusOff => 'Nonaktif';
+
+  @override
+  String get enableAllNotifications => 'Aktifkan Semua Notifikasi';
+
+  @override
+  String get individualPrayers => 'Sholat Individu';
+
+  @override
   String get appearance => 'Tampilan';
 
   @override
@@ -1687,6 +1699,10 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'Memutar adzan lengkap dengan spanduk senyap';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'Aktifkan Notifikasi Sholat dahulu untuk mengujinya';
 
   @override
   String get lockScreenSetupGuideButton =>

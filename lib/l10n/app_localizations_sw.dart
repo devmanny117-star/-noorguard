@@ -221,6 +221,18 @@ class AppLocalizationsSw extends AppLocalizations {
   String get prayerNotifications => 'Arifa za Swala';
 
   @override
+  String get statusOn => 'Imewashwa';
+
+  @override
+  String get statusOff => 'Imezimwa';
+
+  @override
+  String get enableAllNotifications => 'Wezesha Arifa Zote';
+
+  @override
+  String get individualPrayers => 'Swala Mojamoja';
+
+  @override
   String get appearance => 'Mwonekano';
 
   @override
@@ -1687,6 +1699,10 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'Inacheza adhana kamili na bango lisilo na sauti';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'Wezesha Arifa za Swala kwanza ili kujaribu hili';
 
   @override
   String get lockScreenSetupGuideButton =>

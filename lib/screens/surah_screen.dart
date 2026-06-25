@@ -57,7 +57,17 @@ class SurahScreen extends StatefulWidget {
   /// Ayahs" button — shows a progress banner and grants the bypass once
   /// [AyahChallenge.targetCount] distinct ayahs have been viewed.
   final AyahChallenge? ayahChallenge;
-  const SurahScreen({super.key, required this.surah, this.ayahChallenge});
+
+  /// When non-null, the reader scrolls to this verse number after the surah
+  /// finishes loading (used by the Quran search ayah results).
+  final int? initialVerseNumber;
+
+  const SurahScreen({
+    super.key,
+    required this.surah,
+    this.ayahChallenge,
+    this.initialVerseNumber,
+  });
 
   @override
   State<SurahScreen> createState() => _SurahScreenState();
@@ -175,6 +185,7 @@ class _SurahScreenState extends State<SurahScreen> {
   // scrolled into view with Scrollable.ensureVisible regardless of its
   // (variable) rendered height.
   final Map<int, GlobalKey> _verseKeys = {};
+  final ScrollController _scrollController = ScrollController();
 
   GlobalKey _verseKey(int verseNumber) =>
       _verseKeys.putIfAbsent(verseNumber, () => GlobalKey());
@@ -370,6 +381,7 @@ class _SurahScreenState extends State<SurahScreen> {
     // lock screen / notification media session for this player.
     _audioPlayer.dispose();
     _sleepCountdownTimer?.cancel();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -381,6 +393,25 @@ class _SurahScreenState extends State<SurahScreen> {
       _verses = verses;
       _loading = false;
     });
+    // Scroll to the requested verse if the screen was opened from a search
+    // result. Uses a two-step approach: first jump to an approximate offset so
+    // the ListView.builder builds the target item, then ensureVisible for
+    // precision.
+    final target = widget.initialVerseNumber;
+    if (target != null) {
+      final index = verses.indexWhere((v) => v.number == target);
+      if (index > 0) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted || !_scrollController.hasClients) return;
+          final max = _scrollController.position.maxScrollExtent;
+          final approx = (index / verses.length) * max;
+          _scrollController.jumpTo(approx.clamp(0.0, max));
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _scrollToVerse(target);
+          });
+        });
+      }
+    }
     // The playlist is built lazily on first play (see _playVerseAudio), not
     // here — setAudioSources() resets the player's current index to 0 as
     // soon as it's called, which would mark verse 1 "active" (showing the
@@ -775,6 +806,7 @@ class _SurahScreenState extends State<SurahScreen> {
                                     kFontScaleSteps[_fontScaleIndex]),
                               ),
                               child: ListView.builder(
+                                controller: _scrollController,
                                 physics: const BouncingScrollPhysics(),
                                 padding: EdgeInsets.fromLTRB(
                                   16,

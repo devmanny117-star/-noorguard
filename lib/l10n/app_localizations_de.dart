@@ -222,6 +222,18 @@ class AppLocalizationsDe extends AppLocalizations {
   String get prayerNotifications => 'Gebetsbenachrichtigungen';
 
   @override
+  String get statusOn => 'Ein';
+
+  @override
+  String get statusOff => 'Aus';
+
+  @override
+  String get enableAllNotifications => 'Alle Benachrichtigungen aktivieren';
+
+  @override
+  String get individualPrayers => 'Einzelne Gebete';
+
+  @override
   String get appearance => 'Darstellung';
 
   @override
@@ -1688,6 +1700,10 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'Der vollständige Adhan wird mit einem stillen Banner abgespielt';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'Aktiviere zuerst die Gebetsbenachrichtigungen, um dies zu testen';
 
   @override
   String get lockScreenSetupGuideButton =>

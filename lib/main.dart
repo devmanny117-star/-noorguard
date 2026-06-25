@@ -19,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'services/notification_service.dart';
 import 'services/prayer_state.dart';
 import 'services/adhan_foreground_controller.dart';
+import 'services/adhan_playback_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +36,10 @@ Future<void> main() async {
       // Matches the gold accent used on the Quran reader's player bar.
       notificationColor: const Color(0xFFD4AF37),
     );
+    // Fire-and-forget: warms the in-memory adhan cache in the background so
+    // the foreground test/prayer playback is instant instead of streaming
+    // the full track over the network on first use.
+    AdhanPlaybackService().preloadSelected();
   }
   runApp(
     ChangeNotifierProvider(
@@ -99,6 +104,7 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
               Locale('en'),
               Locale('ar'),
               Locale('ur'),
+              Locale('fa'),
               Locale('es'),
               Locale('de'),
               Locale('nl'),

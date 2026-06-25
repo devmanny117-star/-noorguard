@@ -10,6 +10,7 @@ import 'app_localizations_bn.dart';
 import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
+import 'app_localizations_fa.dart';
 import 'app_localizations_fr.dart';
 import 'app_localizations_id.dart';
 import 'app_localizations_it.dart';
@@ -112,6 +113,7 @@ abstract class AppLocalizations {
     Locale('de'),
     Locale('en'),
     Locale('es'),
+    Locale('fa'),
     Locale('fr'),
     Locale('id'),
     Locale('it'),
@@ -483,6 +485,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Prayer Notifications'**
   String get prayerNotifications;
+
+  /// Generic short label shown next to a settings row when its toggle is currently enabled
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get statusOn;
+
+  /// Generic short label shown next to a settings row when its toggle is currently disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get statusOff;
+
+  /// Master toggle label inside the Prayer Notifications sub-screen that turns all prayer notifications on/off
+  ///
+  /// In en, this message translates to:
+  /// **'Enable All Notifications'**
+  String get enableAllNotifications;
+
+  /// Section caption above the five per-prayer notification toggles in the Prayer Notifications sub-screen
+  ///
+  /// In en, this message translates to:
+  /// **'Individual Prayers'**
+  String get individualPrayers;
 
   /// Section header for appearance-related settings
   ///
@@ -3124,6 +3150,12 @@ abstract class AppLocalizations {
   /// **'Playing the full adhan with a silent banner'**
   String get testAdhanForegroundSnack;
 
+  /// Snackbar shown when tapping any Settings test button (test notification, test lock alarm, test in-app adhan) while the master Prayer Notifications toggle is off
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on Prayer Notifications first to test this'**
+  String get testRequiresNotificationsOn;
+
   /// Settings row: opens the Android lock screen alert setup guide
   ///
   /// In en, this message translates to:
@@ -3873,6 +3905,7 @@ class _AppLocalizationsDelegate
         'de',
         'en',
         'es',
+        'fa',
         'fr',
         'id',
         'it',
@@ -3902,6 +3935,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsEn();
     case 'es':
       return AppLocalizationsEs();
+    case 'fa':
+      return AppLocalizationsFa();
     case 'fr':
       return AppLocalizationsFr();
     case 'id':

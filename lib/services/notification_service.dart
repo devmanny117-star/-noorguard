@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
 import '../models/adhan_model.dart';
@@ -65,6 +66,18 @@ class NotificationService {
       );
 
   static const _alarmChannel = MethodChannel('adhan_control');
+
+  /// Reads the persisted master Prayer Notifications toggle directly from
+  /// SharedPreferences — the same `notif_master` key [PrayerState] writes —
+  /// rather than depending on [PrayerState] itself (which would create a
+  /// circular import, since it already imports this service). Every method
+  /// below that can actually deliver a notification, alarm, or sound to the
+  /// user checks this first, so a missed guard at any call site can never
+  /// let one through.
+  Future<bool> _masterNotificationsEnabled() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('notif_master') ?? true;
+  }
 
   Future<void> init() async {
     if (kIsWeb) return;
@@ -261,6 +274,7 @@ class NotificationService {
     required String channelDescription,
   }) async {
     if (kIsWeb || !Platform.isAndroid) return;
+    if (!await _masterNotificationsEnabled()) return;
     try {
       await _alarmChannel.invokeMethod('startKeepAliveService', {
         'title': title,
@@ -382,6 +396,7 @@ class NotificationService {
       List<Map<String, dynamic>> prayers,
       {required String adhanId}) async {
     if (kIsWeb) return;
+    if (!await _masterNotificationsEnabled()) return;
 
     await _ensureAndroidChannel(adhanSoundResource(adhanId));
     final details = _detailsFor(adhanId);
@@ -420,6 +435,7 @@ class NotificationService {
       int id, String name, DateTime time,
       {required String adhanId}) async {
     if (kIsWeb) return;
+    if (!await _masterNotificationsEnabled()) return;
     final notifyAt = time.subtract(const Duration(minutes: 15));
     if (notifyAt.isBefore(DateTime.now())) return;
 
@@ -453,6 +469,7 @@ class NotificationService {
   /// fires the AppDelegate's didReceive handler (→ stop adhan).
   Future<void> showSilentPrayerBanner(int id, String name) async {
     if (kIsWeb) return;
+    if (!await _masterNotificationsEnabled()) return;
     final message = _messageFor(name);
 
     if (!kIsWeb && Platform.isAndroid) {
@@ -542,6 +559,7 @@ class NotificationService {
       List<Map<String, dynamic>> prayers,
       {required String adhanId}) async {
     if (kIsWeb || !Platform.isAndroid) return;
+    if (!await _masterNotificationsEnabled()) return;
 
     try {
       await _alarmChannel.invokeMethod('cancelPrayerAlarms');
@@ -662,9 +680,12 @@ class NotificationService {
 
   /// Schedules a one-off test notification 10 seconds from now, for
   /// verifying that notifications (and the selected adhan sound) fire
-  /// correctly on a real device.
+  /// correctly on a real device. Respects the master toggle like every real
+  /// prayer notification — a "test" should never fire when the user has
+  /// notifications turned off.
   Future<void> scheduleTestNotification({required String adhanId}) async {
     if (kIsWeb) return;
+    if (!await _masterNotificationsEnabled()) return;
 
     await _ensureAndroidChannel(adhanSoundResource(adhanId));
     final notifyAt = DateTime.now().add(const Duration(seconds: 10));
@@ -700,12 +721,11 @@ class NotificationService {
     required List<Map<String, dynamic>> prayers,
   }) async {
     if (kIsWeb || !Platform.isAndroid) return;
-    // Deliberately does NOT check masterNotifications: this is a manual,
-    // on-demand debug trigger (Settings > Test Lock Alarm, debug builds
-    // only) whose entire purpose is to schedule alarm id=101 on demand so
-    // the bell's cancellation can be verified independent of the bell's
-    // current state — gating it would make it useless for that test.
-    debugPrint('NotificationService.scheduleTestFullScreenAlarm: manual test trigger, bypasses masterNotifications by design');
+    // No notification of any kind — including this manual debug trigger —
+    // should fire while the user has Prayer Notifications turned off. To
+    // verify cancellation behavior instead, schedule this test alarm while
+    // notifications are on, then toggle them off and confirm it disappears.
+    if (!await _masterNotificationsEnabled()) return;
 
     final List<Map<String, dynamic>> schedule = prayers.isNotEmpty
         ? prayers

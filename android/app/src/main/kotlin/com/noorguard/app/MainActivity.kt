@@ -117,16 +117,18 @@ class MainActivity : AudioServiceActivity() {
                     result.success(null)
                 }
                 "startKeepAliveService" -> {
-                    @Suppress("UNCHECKED_CAST")
-                    val args = call.arguments as Map<String, Any>
-                    PrayerForegroundService.start(
-                        this,
-                        args["title"] as String,
-                        args["text"] as String,
-                        args["channelName"] as String,
-                        args["channelDescription"] as String,
-                    )
-                    maybeRequestSamsungBatteryExemption()
+                    if (notificationsMasterEnabled()) {
+                        @Suppress("UNCHECKED_CAST")
+                        val args = call.arguments as Map<String, Any>
+                        PrayerForegroundService.start(
+                            this,
+                            args["title"] as String,
+                            args["text"] as String,
+                            args["channelName"] as String,
+                            args["channelDescription"] as String,
+                        )
+                        maybeRequestSamsungBatteryExemption()
+                    }
                     result.success(null)
                 }
                 "stopKeepAliveService" -> {
@@ -149,7 +151,14 @@ class MainActivity : AudioServiceActivity() {
                     result.success(null)
                 }
                 "getInstalledApps" -> {
-                    result.success(getInstalledApps())
+                    // Querying every launcher activity and decoding/scaling/
+                    // PNG-encoding each one's icon is too slow for the main
+                    // thread — without this, the call freezes the whole app
+                    // (not just Flutter's widget tree) for its full duration.
+                    Thread({
+                        val apps = getInstalledApps()
+                        runOnUiThread { result.success(apps) }
+                    }, "GetInstalledApps").start()
                 }
                 "isAccessibilityServiceEnabled" -> {
                     result.success(isAccessibilityServiceEnabled())
@@ -236,7 +245,22 @@ class MainActivity : AudioServiceActivity() {
         return super.dispatchKeyEvent(event)
     }
 
+    /**
+     * True only when the user's Dart-side Prayer Notifications master toggle
+     * is on. Read directly from the shared_preferences-backed file (Dart's
+     * prefs live in "FlutterSharedPreferences" with a "flutter." key prefix)
+     * so every native entry point that can show a notification, alarm, or
+     * sound can guard itself, independent of whether its Dart caller already
+     * checked. Mirrors the same check in PrayerForegroundService and
+     * PrayerAlarmReceiver.
+     */
+    private fun notificationsMasterEnabled(): Boolean {
+        val dartPrefs = getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE)
+        return dartPrefs.getBoolean("flutter.notif_master", true)
+    }
+
     private fun showSilentBanner(id: Int, title: String, body: String) {
+        if (!notificationsMasterEnabled()) return
         val channelId = "prayer_reminders_silent"
         val notifManager =
             getSystemService(NOTIFICATION_SERVICE) as NotificationManager
@@ -279,6 +303,10 @@ class MainActivity : AudioServiceActivity() {
     }
 
     private fun schedulePrayerAlarm(args: Map<String, Any>) {
+        if (!notificationsMasterEnabled()) {
+            Log.d(TAG, "schedulePrayerAlarm: notif_master is false, refusing to schedule")
+            return
+        }
         val prayerName = args["prayerName"] as String
         val arabicName = args["arabicName"] as String
         val prayerTime = args["prayerTime"] as String

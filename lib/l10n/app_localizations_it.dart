@@ -224,6 +224,18 @@ class AppLocalizationsIt extends AppLocalizations {
   String get prayerNotifications => 'Notifiche di Preghiera';
 
   @override
+  String get statusOn => 'Attivo';
+
+  @override
+  String get statusOff => 'Disattivo';
+
+  @override
+  String get enableAllNotifications => 'Attiva tutte le notifiche';
+
+  @override
+  String get individualPrayers => 'Preghiere Individuali';
+
+  @override
   String get appearance => 'Aspetto';
 
   @override
@@ -1691,6 +1703,10 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get testAdhanForegroundSnack =>
       'Riproduzione dell\'adhan completo con un banner silenzioso';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'Attiva prima le Notifiche di Preghiera per provare questo';
 
   @override
   String get lockScreenSetupGuideButton =>

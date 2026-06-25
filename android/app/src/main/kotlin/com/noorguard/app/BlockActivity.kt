@@ -54,6 +54,10 @@ class BlockActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // No-op past the very first call in the process — real warm-up
+        // happens much earlier, from AppBlockerAccessibilityService.onServiceConnected.
+        // This is just a defensive fallback for that one-in-a-million race.
+        BlockScreenCache.warm(this)
         setContentView(R.layout.activity_block_screen)
         findViewById<View>(R.id.rootContent).alpha = 0f
 
@@ -96,7 +100,11 @@ class BlockActivity : Activity() {
 
     private fun bindHero() {
         val hero = findViewById<ImageView>(R.id.imageHero)
-        hero.setImageResource(heroImageFor(prayerName))
+        val drawableId = heroImageFor(prayerName)
+        // Almost always already decoded by BlockScreenCache well before this
+        // screen ever opens; setImageResource is just the cold-start fallback.
+        val cached = BlockScreenCache.heroBitmap(drawableId)
+        if (cached != null) hero.setImageBitmap(cached) else hero.setImageResource(drawableId)
         startKenBurnsEffect(hero)
     }
 
@@ -162,7 +170,8 @@ class BlockActivity : Activity() {
         val verse = loadRandomVerse() ?: return
         findViewById<TextView>(R.id.textVerseArabic).apply {
             text = verse.arabic
-            typeface = ResourcesCompat.getFont(this@BlockActivity, R.font.scheherazade_new)
+            typeface = BlockScreenCache.arabicTypeface
+                ?: ResourcesCompat.getFont(this@BlockActivity, R.font.scheherazade_new)
         }
         findViewById<TextView>(R.id.textVerseTranslation).text =
             verse.translations[store.locale] ?: verse.translations["en"] ?: ""
@@ -267,9 +276,13 @@ class BlockActivity : Activity() {
         prefs.edit().putStringSet("marked_$today", updated).apply()
     }
 
-    private data class Verse(val reference: String, val arabic: String, val translations: Map<String, String>)
+    /** Picks from [BlockScreenCache]'s pre-parsed pool (warmed long before
+     *  this screen ever opens); only falls back to reading the JSON off disk
+     *  here if that cache somehow came up empty. */
+    private fun loadRandomVerse(): BlockScreenCache.Verse? =
+        BlockScreenCache.randomVerse() ?: loadRandomVerseFromDisk()
 
-    private fun loadRandomVerse(): Verse? {
+    private fun loadRandomVerseFromDisk(): BlockScreenCache.Verse? {
         return try {
             val stream = assets.open("flutter_assets/assets/data/block_screen_verses.json")
             val json = stream.bufferedReader().use(BufferedReader::readText)
@@ -282,7 +295,7 @@ class BlockActivity : Activity() {
             for (key in translationsObj.keys()) {
                 translations[key] = translationsObj.getString(key)
             }
-            Verse(
+            BlockScreenCache.Verse(
                 reference = pick.getString("reference"),
                 arabic = pick.getString("arabic"),
                 translations = translations,

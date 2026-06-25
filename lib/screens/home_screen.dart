@@ -119,6 +119,11 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   Future<void> _loadAppBlockingThenPrayerTimes() async {
     await AppBlockingService().loadSettings();
     if (!mounted) return;
+    // Fire-and-forget: warms the installed-apps cache now (the native fetch
+    // runs off Android's main thread) so the App Blocking and Focus Mode
+    // apps pickers open instantly instead of paying for it the first time
+    // either is opened.
+    AppBlockingService().getInstalledApps();
     _loadPrayerTimes();
   }
 

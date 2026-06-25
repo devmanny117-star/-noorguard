@@ -15,23 +15,11 @@ import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
-import 'lock_screen.dart';
 import 'notification_setup_screen.dart';
-
-const _settingsBg = Color(0xFF0D1B2A);
-const _cardNavy = Color(0xFF1B2E45);
-const _cardNavySecondary = Color(0xFF132338);
-const _cream = Color(0xFFF5EFE6);
-
-const _navyCardColors = AppColorScheme(
-  background: _settingsBg,
-  warmBg: _settingsBg,
-  cardBg: _cardNavy,
-  secondaryBg: _cardNavySecondary,
-  primaryText: _cream,
-  secondaryText: Color(0xB3F5EFE6),
-  border: Color(0x33C9A84C),
-);
+import 'settings_app_blocking_screen.dart';
+import 'settings_prayer_notifications_screen.dart';
+import 'settings_privacy_screen.dart';
+import 'settings_shared.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -60,18 +48,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'Tehran',
   ];
 
-  /// (stable key, localized label) pairs — the key is what `_blockDuration`
-  /// tracks so the selected pill survives a language switch.
-  static List<(String, String)> _durations(AppLocalizations l10n) => [
-        ('30min', l10n.duration30Min),
-        ('1hour', l10n.duration1Hour),
-        ('prayerWindow', l10n.durationPrayerWindowOnly),
-      ];
-
   static const _languages = [
     'English',
     'العربية',
     'اردو',
+    'فارسی',
     'Español',
     'Deutsch',
     'Nederlands',
@@ -90,6 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'English': 'en',
     'العربية': 'ar',
     'اردو': 'ur',
+    'فارسی': 'fa',
     'Español': 'es',
     'Deutsch': 'de',
     'Nederlands': 'nl',
@@ -108,6 +90,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'en': 'English',
     'ar': 'العربية',
     'ur': 'اردو',
+    'fa': 'فارسی',
     'es': 'Español',
     'de': 'Deutsch',
     'nl': 'Nederlands',
@@ -162,26 +145,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  /// Starts/stops the persistent foreground service alongside the master
-  /// notifications toggle — no point keeping the app alive in the background
-  /// for prayer alarms the user has turned off entirely.
-  Future<void> _onMasterNotificationsChanged(
-      PrayerState prayerState, bool value) async {
-    await prayerState.toggleMasterNotifications(value);
-    if (!mounted) return;
-    if (value) {
-      final l10n = AppLocalizations.of(context)!;
-      await NotificationService().startKeepAliveService(
-        title: l10n.appName,
-        text: l10n.keepAliveNotificationText,
-        channelName: l10n.keepAliveChannelName,
-        channelDescription: l10n.keepAliveChannelDescription,
-      );
-    } else {
-      await NotificationService().stopKeepAliveService();
-    }
-  }
-
   void _snack(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -218,7 +181,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final colors = context.appColors;
     final isDark = context.isDark;
-    const cardColors = _navyCardColors;
+    const cardColors = settingsNavyCardColors;
     final themeController = ThemeScope.of(context);
     final prayerState = context.watch<PrayerState>();
     final l10n = AppLocalizations.of(context)!;
@@ -237,7 +200,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: GoogleFonts.playfairDisplay(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
-                color: _cream,
+                color: settingsCream,
               ),
             ),
           ),
@@ -248,13 +211,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // ══════════════════════════════════════════════════════════════
         // SECTION 1 — PRAYER SETTINGS
         // ══════════════════════════════════════════════════════════════
-        _SectionHeader(title: l10n.prayerSettings),
+        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.prayerSettings)),
 
         SliverToBoxAdapter(
-          child: _Card(
+          child: SettingsCard(
             colors: cardColors,
             children: [
-              _SelectRow(
+              SettingsSelectRow(
                 label: l10n.calculationMethod,
                 value: _calculationMethod,
                 colors: cardColors,
@@ -265,27 +228,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   onSelect: (v) => setState(() => _calculationMethod = v),
                 ),
               ),
-              const _Divider(colors: cardColors),
-              _SelectRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsSelectRow(
                 label: l10n.adhanSound,
                 value: adhanStyleName(l10n, prayerState.selectedAdhanId),
                 colors: cardColors,
                 onTap: _showAdhanPicker,
               ),
-              const _Divider(colors: cardColors),
-              _ToggleRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsSelectRow(
                 label: l10n.prayerNotifications,
-                value: prayerState.masterNotifications,
+                value: prayerState.masterNotifications
+                    ? l10n.statusOn
+                    : l10n.statusOff,
                 colors: cardColors,
-                onChanged: (value) =>
-                    _onMasterNotificationsChanged(prayerState, value),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) =>
+                        const SettingsPrayerNotificationsScreen(),
+                  ),
+                ),
               ),
-              const _Divider(colors: cardColors),
-              _ActionRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
                 label: l10n.testNotificationButton,
                 icon: Icons.notifications_active_outlined,
                 colors: cardColors,
                 onTap: () {
+                  if (!prayerState.masterNotifications) {
+                    _snack(l10n.testRequiresNotificationsOn);
+                    return;
+                  }
                   NotificationService().scheduleTestNotification(
                     adhanId: prayerState.selectedAdhanId,
                   );
@@ -293,12 +266,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               ),
               if (kDebugMode && !kIsWeb && Platform.isAndroid) ...[
-                const _Divider(colors: cardColors),
-                _ActionRow(
+                const SettingsDivider(colors: cardColors),
+                SettingsActionRow(
                   label: l10n.testLockAlarmButton,
                   icon: Icons.fullscreen_rounded,
                   colors: cardColors,
                   onTap: () {
+                    if (!prayerState.masterNotifications) {
+                      _snack(l10n.testRequiresNotificationsOn);
+                      return;
+                    }
                     NotificationService().scheduleTestFullScreenAlarm(
                       adhanId: prayerState.selectedAdhanId,
                       prayers: prayerState.scheduledPrayerTimes ?? [],
@@ -307,30 +284,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
               ],
-              const _Divider(colors: cardColors),
-              _ActionRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
                 label: l10n.testAdhanForegroundButton,
                 icon: Icons.volume_up_outlined,
                 colors: cardColors,
                 onTap: () {
+                  if (!prayerState.masterNotifications) {
+                    _snack(l10n.testRequiresNotificationsOn);
+                    return;
+                  }
                   AdhanForegroundController().simulateForegroundPrayer();
                   _snack(l10n.testAdhanForegroundSnack);
                 },
               ),
-              const _Divider(colors: cardColors),
-              _ActionRow(
-                label: l10n.lockScreen,
-                icon: Icons.lock_outline_rounded,
-                colors: cardColors,
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => const LockScreenPreview(),
-                  ),
-                ),
-              ),
               if (!kIsWeb && Platform.isAndroid) ...[
-                const _Divider(colors: cardColors),
-                _ActionRow(
+                const SettingsDivider(colors: cardColors),
+                SettingsActionRow(
                   label: l10n.lockScreenSetupGuideButton,
                   icon: Icons.lock_clock_outlined,
                   colors: cardColors,
@@ -345,78 +315,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
 
-        const SliverToBoxAdapter(child: SizedBox(height: 10)),
-
-        // Individual prayer toggles
-        SliverToBoxAdapter(
-          child: _Card(
-            colors: cardColors,
-            children: [
-              _PrayerRow(
-                name: l10n.fajr,
-                icon: Icons.wb_twilight_rounded,
-                value: prayerState.notifications['fajr'] ?? true,
-                enabled: prayerState.masterNotifications,
-                colors: cardColors,
-                onChanged: (v) =>
-                    prayerState.togglePrayerNotification('fajr', v),
-              ),
-              const _Divider(colors: cardColors),
-              _PrayerRow(
-                name: l10n.dhuhr,
-                icon: Icons.wb_sunny_rounded,
-                value: prayerState.notifications['dhuhr'] ?? true,
-                enabled: prayerState.masterNotifications,
-                colors: cardColors,
-                onChanged: (v) =>
-                    prayerState.togglePrayerNotification('dhuhr', v),
-              ),
-              const _Divider(colors: cardColors),
-              _PrayerRow(
-                name: l10n.asr,
-                icon: Icons.light_mode_outlined,
-                value: prayerState.notifications['asr'] ?? true,
-                enabled: prayerState.masterNotifications,
-                colors: cardColors,
-                onChanged: (v) =>
-                    prayerState.togglePrayerNotification('asr', v),
-              ),
-              const _Divider(colors: cardColors),
-              _PrayerRow(
-                name: l10n.maghrib,
-                icon: Icons.nights_stay_rounded,
-                value: prayerState.notifications['maghrib'] ?? true,
-                enabled: prayerState.masterNotifications,
-                colors: cardColors,
-                onChanged: (v) =>
-                    prayerState.togglePrayerNotification('maghrib', v),
-              ),
-              const _Divider(colors: cardColors),
-              _PrayerRow(
-                name: l10n.isha,
-                icon: Icons.nightlight_rounded,
-                value: prayerState.notifications['isha'] ?? true,
-                enabled: prayerState.masterNotifications,
-                colors: cardColors,
-                onChanged: (v) =>
-                    prayerState.togglePrayerNotification('isha', v),
-              ),
-            ],
-          ),
-        ),
-
         const SliverToBoxAdapter(child: SizedBox(height: 28)),
 
         // ══════════════════════════════════════════════════════════════
         // SECTION 2 — APPEARANCE
         // ══════════════════════════════════════════════════════════════
-        _SectionHeader(title: l10n.appearance),
+        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.appearance)),
 
         SliverToBoxAdapter(
-          child: _Card(
+          child: SettingsCard(
             colors: cardColors,
             children: [
-              _ToggleRow(
+              SettingsToggleRow(
                 label: l10n.darkMode,
                 leadingIcon:
                     isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
@@ -424,8 +334,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 colors: cardColors,
                 onChanged: (_) => themeController.toggle(isDark),
               ),
-              const _Divider(colors: cardColors),
-              _SelectRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsSelectRow(
                 label: l10n.language,
                 value: _language,
                 colors: cardColors,
@@ -445,8 +355,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
               ),
-              const _Divider(colors: cardColors),
-              _ToggleRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsToggleRow(
                 label: l10n.beginnerMode,
                 subtitle: l10n.beginnerModeSubtitle,
                 leadingIcon: Icons.eco_outlined,
@@ -466,90 +376,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // ══════════════════════════════════════════════════════════════
         // SECTION 3 — APP BLOCKING
         // ══════════════════════════════════════════════════════════════
-        _SectionHeader(title: l10n.appBlocking),
+        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.appBlocking)),
 
         SliverToBoxAdapter(
-          child: _Card(
+          child: SettingsCard(
             colors: cardColors,
             children: [
-              _ToggleRow(
-                label: l10n.blockDuringPrayerTimes,
-                leadingIcon: Icons.security_rounded,
-                value: _blockDuringPrayer,
+              SettingsSelectRow(
+                label: l10n.appBlocking,
+                value: _blockDuringPrayer ? l10n.statusOn : l10n.statusOff,
                 colors: cardColors,
-                onChanged: (v) => setState(() => _blockDuringPrayer = v),
-              ),
-            ],
-          ),
-        ),
-
-        const SliverToBoxAdapter(child: SizedBox(height: 10)),
-
-        // Block duration pills
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l10n.blockDurationLabel,
-                  style: GoogleFonts.lato(
-                    fontSize: 11.5,
-                    fontWeight: FontWeight.w600,
-                    color: cardColors.secondaryText,
-                    letterSpacing: 0.4,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => SettingsAppBlockingScreen(
+                      blockDuringPrayer: _blockDuringPrayer,
+                      blockDuration: _blockDuration,
+                      onBlockDuringPrayerChanged: (v) =>
+                          setState(() => _blockDuringPrayer = v),
+                      onBlockDurationChanged: (v) =>
+                          setState(() => _blockDuration = v),
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                Row(
-                  children: List.generate(_durations(l10n).length, (i) {
-                    final (key, label) = _durations(l10n)[i];
-                    final selected = _blockDuration == key;
-                    return Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          right: i < _durations(l10n).length - 1 ? 8 : 0,
-                        ),
-                        child: GestureDetector(
-                          onTap: () => setState(() => _blockDuration = key),
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeOut,
-                            height: 44,
-                            decoration: BoxDecoration(
-                              color: selected
-                                  ? AppColors.gold.withValues(alpha: 0.12)
-                                  : cardColors.cardBg,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: selected
-                                    ? AppColors.gold
-                                    : cardColors.border,
-                                width: selected ? 1.5 : 1.0,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                label,
-                                style: GoogleFonts.lato(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: selected
-                                      ? AppColors.gold
-                                      : cardColors.secondaryText,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
 
@@ -558,71 +408,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // ══════════════════════════════════════════════════════════════
         // SECTION 4 — PRIVACY & TRUST
         // ══════════════════════════════════════════════════════════════
-        _SectionHeader(title: l10n.privacyAndTrust),
+        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.privacyAndTrust)),
 
         SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: cardColors.cardBg,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: AppColors.gold.withValues(alpha: 0.5),
-                  width: 1.5,
+          child: SettingsCard(
+            colors: cardColors,
+            children: [
+              SettingsActionRow(
+                label: l10n.privacyAndTrust,
+                icon: Icons.shield_rounded,
+                colors: cardColors,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const SettingsPrivacyScreen(),
+                  ),
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.shield_rounded,
-                        size: 17,
-                        color: AppColors.gold,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          l10n.privacyPromiseTitle,
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.gold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    l10n.privacyPromiseBody,
-                    style: GoogleFonts.lato(
-                      fontSize: 14,
-                      color: cardColors.primaryText,
-                      height: 1.65,
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-                  Container(
-                    height: 0.8,
-                    color: AppColors.gold.withValues(alpha: 0.25),
-                  ),
-                  const SizedBox(height: 14),
-                  Text(
-                    l10n.noorGuardMotto,
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 13.5,
-                      fontStyle: FontStyle.italic,
-                      color: AppColors.gold,
-                      height: 1.6,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            ],
           ),
         ),
 
@@ -631,10 +433,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         // ══════════════════════════════════════════════════════════════
         // SECTION 5 — ABOUT
         // ══════════════════════════════════════════════════════════════
-        _SectionHeader(title: l10n.aboutNoorGuard),
+        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.aboutNoorGuard)),
 
         SliverToBoxAdapter(
-          child: _Card(
+          child: SettingsCard(
             colors: cardColors,
             children: [
               _InfoRow(
@@ -642,36 +444,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 value: '1.0.0',
                 colors: cardColors,
               ),
-              const _Divider(colors: cardColors),
-              _ActionRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
                 label: l10n.rateApp,
                 icon: Icons.star_outline_rounded,
                 colors: cardColors,
                 onTap: () => _snack(l10n.openingAppStore),
               ),
-              const _Divider(colors: cardColors),
-              _ActionRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
                 label: l10n.shareApp,
                 icon: Icons.share_outlined,
                 colors: cardColors,
                 onTap: () => _snack(l10n.openingShareSheet),
               ),
-              const _Divider(colors: cardColors),
-              _ActionRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
                 label: l10n.contactSupport,
                 icon: Icons.mail_outline_rounded,
                 colors: cardColors,
                 onTap: () => _snack(l10n.openingSupportEmail),
               ),
-              const _Divider(colors: cardColors),
-              _ActionRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
                 label: l10n.privacyPolicy,
                 icon: Icons.shield_outlined,
                 colors: cardColors,
                 onTap: _openPrivacyPolicy,
               ),
-              const _Divider(colors: cardColors),
-              _ActionRow(
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
                 label: l10n.termsOfService,
                 icon: Icons.description_outlined,
                 colors: cardColors,
@@ -799,297 +601,6 @@ class _TranslationDisclaimerCard extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// LAYOUT HELPERS
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _SectionHeader extends StatelessWidget {
-  final String title;
-  const _SectionHeader({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(22, 0, 22, 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title.toUpperCase(),
-              style: GoogleFonts.lato(
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                color: AppColors.gold,
-                letterSpacing: 1.3,
-              ),
-            ),
-            const SizedBox(height: 6),
-            Container(
-              height: 1,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    AppColors.gold.withValues(alpha: 0.6),
-                    AppColors.gold.withValues(alpha: 0.0),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _Card extends StatelessWidget {
-  final List<Widget> children;
-  final AppColorScheme colors;
-
-  const _Card({required this.children, required this.colors});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          decoration: BoxDecoration(
-            color: colors.cardBg,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: colors.border),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: children,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _Divider extends StatelessWidget {
-  final AppColorScheme colors;
-  const _Divider({required this.colors});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 0.5,
-      margin: const EdgeInsets.only(left: 20),
-      color: colors.border,
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// ROW TYPES
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _ToggleRow extends StatelessWidget {
-  final String label;
-  final String? subtitle;
-  final IconData? leadingIcon;
-  final bool value;
-  final AppColorScheme colors;
-  final ValueChanged<bool> onChanged;
-
-  const _ToggleRow({
-    required this.label,
-    this.subtitle,
-    this.leadingIcon,
-    required this.value,
-    required this.colors,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 8),
-      child: Row(
-        children: [
-          if (leadingIcon != null) ...[
-            Icon(leadingIcon, size: 19, color: AppColors.gold),
-            const SizedBox(width: 12),
-          ],
-          Expanded(
-            child: subtitle != null
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(height: 4),
-                      Text(
-                        label,
-                        style: GoogleFonts.lato(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: colors.primaryText,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        subtitle!,
-                        style: GoogleFonts.lato(
-                          fontSize: 12,
-                          color: colors.secondaryText,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                    ],
-                  )
-                : Text(
-                    label,
-                    style: GoogleFonts.lato(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: colors.primaryText,
-                    ),
-                  ),
-          ),
-          Switch(
-            value: value,
-            onChanged: onChanged,
-            thumbColor: WidgetStateProperty.all(Colors.white),
-            trackColor: WidgetStateProperty.resolveWith((states) {
-              if (states.contains(WidgetState.selected)) {
-                return AppColors.gold;
-              }
-              return colors.secondaryBg;
-            }),
-            trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SelectRow extends StatelessWidget {
-  final String label;
-  final String value;
-  final AppColorScheme colors;
-  final VoidCallback onTap;
-
-  const _SelectRow({
-    required this.label,
-    required this.value,
-    required this.colors,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                label,
-                style: GoogleFonts.lato(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: colors.primaryText,
-                ),
-              ),
-            ),
-            Text(
-              value,
-              style: GoogleFonts.lato(
-                fontSize: 13.5,
-                fontWeight: FontWeight.w500,
-                color: AppColors.gold,
-              ),
-            ),
-            const SizedBox(width: 4),
-            Icon(
-              Icons.chevron_right_rounded,
-              size: 18,
-              color: AppColors.gold.withValues(alpha: 0.5),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _PrayerRow extends StatelessWidget {
-  final String name;
-  final IconData icon;
-  final bool value;
-  final bool enabled;
-  final AppColorScheme colors;
-  final ValueChanged<bool> onChanged;
-
-  const _PrayerRow({
-    required this.name,
-    required this.icon,
-    required this.value,
-    required this.enabled,
-    required this.colors,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final active = enabled && value;
-
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 8),
-      child: Row(
-        children: [
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            width: 34,
-            height: 34,
-            decoration: BoxDecoration(
-              color: active
-                  ? AppColors.gold.withValues(alpha: 0.12)
-                  : colors.secondaryBg,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(
-              icon,
-              size: 17,
-              color: active ? AppColors.gold : colors.secondaryText,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              name,
-              style: GoogleFonts.lato(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: enabled ? colors.primaryText : colors.secondaryText,
-              ),
-            ),
-          ),
-          Switch(
-            value: active,
-            onChanged: enabled ? onChanged : null,
-            thumbColor: WidgetStateProperty.all(Colors.white),
-            trackColor: WidgetStateProperty.resolveWith((states) {
-              if (!enabled) return colors.border;
-              if (states.contains(WidgetState.selected)) return AppColors.gold;
-              return colors.secondaryBg;
-            }),
-            trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class _InfoRow extends StatelessWidget {
   final String label;
   final String value;
@@ -1130,51 +641,6 @@ class _InfoRow extends StatelessWidget {
   }
 }
 
-class _ActionRow extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final AppColorScheme colors;
-  final VoidCallback onTap;
-
-  const _ActionRow({
-    required this.label,
-    required this.icon,
-    required this.colors,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
-        child: Row(
-          children: [
-            Icon(icon, size: 19, color: AppColors.gold),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                label,
-                style: GoogleFonts.lato(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: colors.primaryText,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.chevron_right_rounded,
-              size: 18,
-              color: AppColors.gold.withValues(alpha: 0.5),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 // ─────────────────────────────────────────────────────────────────────────────
 // OPTION PICKER BOTTOM SHEET
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1200,7 +666,7 @@ class _PickerSheet extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: Container(
         decoration: const BoxDecoration(
-          color: _settingsBg,
+          color: settingsBg,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
         child: SingleChildScrollView(
@@ -1222,7 +688,7 @@ class _PickerSheet extends StatelessWidget {
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
-                  color: _cream,
+                  color: settingsCream,
                 ),
               ),
               const SizedBox(height: 8),
@@ -1250,7 +716,7 @@ class _PickerSheet extends StatelessWidget {
                                   : FontWeight.w400,
                               color: isSelected
                                   ? AppColors.gold
-                                  : _cream,
+                                  : settingsCream,
                             ),
                           ),
                         ),
@@ -1321,7 +787,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
       constraints: BoxConstraints(maxHeight: maxHeight),
       child: Container(
         decoration: const BoxDecoration(
-          color: _settingsBg,
+          color: settingsBg,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
         child: SingleChildScrollView(
@@ -1343,7 +809,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
-                  color: _cream,
+                  color: settingsCream,
                 ),
               ),
               const SizedBox(height: 8),
@@ -1380,7 +846,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                                       : FontWeight.w400,
                                   color: isSelected
                                       ? AppColors.gold
-                                      : _cream,
+                                      : settingsCream,
                                 ),
                               ),
                               Text(
@@ -1388,7 +854,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                                 textDirection: TextDirection.rtl,
                                 style: GoogleFonts.scheherazadeNew(
                                   fontSize: 14,
-                                  color: _cream.withValues(alpha: 0.5),
+                                  color: settingsCream.withValues(alpha: 0.5),
                                 ),
                               ),
                             ],

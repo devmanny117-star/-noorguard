@@ -280,6 +280,22 @@
   "@prayerNotifications": {
     "description": "Settings toggle label for the master prayer notification switch"
   },
+  "statusOn": "On",
+  "@statusOn": {
+    "description": "Generic short label shown next to a settings row when its toggle is currently enabled"
+  },
+  "statusOff": "Off",
+  "@statusOff": {
+    "description": "Generic short label shown next to a settings row when its toggle is currently disabled"
+  },
+  "enableAllNotifications": "Enable All Notifications",
+  "@enableAllNotifications": {
+    "description": "Master toggle label inside the Prayer Notifications sub-screen that turns all prayer notifications on/off"
+  },
+  "individualPrayers": "Individual Prayers",
+  "@individualPrayers": {
+    "description": "Section caption above the five per-prayer notification toggles in the Prayer Notifications sub-screen"
+  },
   "appearance": "Appearance",
   "@appearance": {
     "description": "Section header for appearance-related settings"
@@ -2046,6 +2062,10 @@
   "testAdhanForegroundSnack": "Playing the full adhan with a silent banner",
   "@testAdhanForegroundSnack": {
     "description": "Snackbar shown after tapping the in-app adhan test button"
+  },
+  "testRequiresNotificationsOn": "Turn on Prayer Notifications first to test this",
+  "@testRequiresNotificationsOn": {
+    "description": "Snackbar shown when tapping any Settings test button (test notification, test lock alarm, test in-app adhan) while the master Prayer Notifications toggle is off"
   },
   "lockScreenSetupGuideButton": "Lock Screen Alert Setup Guide",
   "@lockScreenSetupGuideButton": {

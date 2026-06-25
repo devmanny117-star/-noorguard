@@ -219,6 +219,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get prayerNotifications => 'إشعارات الصلاة';
 
   @override
+  String get statusOn => 'تشغيل';
+
+  @override
+  String get statusOff => 'إيقاف';
+
+  @override
+  String get enableAllNotifications => 'تفعيل جميع الإشعارات';
+
+  @override
+  String get individualPrayers => 'الصلوات الفردية';
+
+  @override
   String get appearance => 'المظهر';
 
   @override
@@ -1664,6 +1676,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get testAdhanForegroundSnack => 'تشغيل الأذان كاملاً مع شعار صامت';
+
+  @override
+  String get testRequiresNotificationsOn =>
+      'فعّل إشعارات الصلاة أولاً لتجربة هذا';
 
   @override
   String get lockScreenSetupGuideButton => 'دليل إعداد تنبيهات شاشة القفل';
