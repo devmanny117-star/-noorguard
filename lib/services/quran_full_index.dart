@@ -41,7 +41,8 @@ class _E {
 const _localeEditions = <String, String>{
   'ur': 'ur.jalandhry',
   'fa': 'fa.ayeh',
-  'es': 'es.cortes',
+  // es.garcia uses ustedes/usted — correct Latin American Spanish (not vosotros/os).
+  'es': 'es.garcia',
   'fr': 'fr.hamidullah',
   'id': 'id.indonesian',
   'de': 'de.bubenheim',
@@ -115,6 +116,13 @@ class QuranFullIndex {
     final rawStripped = IslamicSynonyms.stripArticle(raw);
     final terms = IslamicSynonyms.expandQuery(raw);
     final useLocal = locale != 'en' && locale != 'ar' && locale == _localLocale;
+
+    // Self-healing: if locale translations are needed but not yet available,
+    // kick off (or retry) the load so the next search after the fetch completes
+    // will show localized results. Handles silent network failures too.
+    if (!useLocal && locale != 'en' && locale != 'ar') {
+      _ensureLocalized(locale);
+    }
 
     // ── Priority 1: curated topic-tagged ayahs ────────────────────────────
     final curated = AyahSearchIndex.search(query)
