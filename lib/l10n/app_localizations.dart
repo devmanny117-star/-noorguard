@@ -3887,6 +3887,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Soft Feather'**
   String get tasbihSoundSoftFeather;
+
+  /// Empty state heading on Quran search when no results match
+  ///
+  /// In en, this message translates to:
+  /// **'No ayahs found for \"{query}\"'**
+  String noAyahsFound(String query);
+
+  /// Subtitle suggesting alternative search approaches when no Quran results are found
+  ///
+  /// In en, this message translates to:
+  /// **'Try searching in English or Arabic, or use an Islamic term:'**
+  String get trySearchingQuran;
+
+  /// Progress banner shown while the Quran full-text index is being fetched
+  ///
+  /// In en, this message translates to:
+  /// **'Loading full Quran index…'**
+  String get loadingQuranIndex;
+
+  /// Comma-separated list of suggested Quran search terms shown as chips in the empty state
+  ///
+  /// In en, this message translates to:
+  /// **'patience, sabr, mercy, prayer, salah, forgiveness, tawbah, paradise, jannah, knowledge'**
+  String get quranSearchSuggestions;
 }
 
 class _AppLocalizationsDelegate

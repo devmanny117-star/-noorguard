@@ -2020,4 +2020,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'やわらかな羽';
+
+  @override
+  String noAyahsFound(String query) {
+    return '「$query」の節が見つかりませんでした';
+  }
+
+  @override
+  String get trySearchingQuran => '日本語、英語、またはアラビア語で検索するか、イスラームの用語を使用してください：';
+
+  @override
+  String get loadingQuranIndex => 'クルアーンの索引を読み込み中…';
+
+  @override
+  String get quranSearchSuggestions =>
+      '忍耐, サブル, 慈悲, 礼拝, 神への神之, 許し, タウバ, 天国, ジャンナ, 知識';
 }

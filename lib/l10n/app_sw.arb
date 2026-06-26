@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "Inasomwa Sasa",
   "tasbihOfTarget": "kati ya {target}",
   "tasbihSoundRainDrop": "Tone la Mvua",
-  "tasbihSoundSoftFeather": "Unyoya Mpole"
+  "tasbihSoundSoftFeather": "Unyoya Mpole",
+  "noAyahsFound": "Hakuna aya zilizopatikana kwa \"{query}\"",
+  "trySearchingQuran": "Jaribu kutafuta kwa Kiswahili, Kiingereza au Kiarabu, au tumia neno la Kiislamu:",
+  "loadingQuranIndex": "Inapakia faharasa ya Qurani…",
+  "quranSearchSuggestions": "subira, sabr, rehema, sala, salah, msamaha, tawbah, pepo, jannah, elimu"
 }

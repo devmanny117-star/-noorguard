@@ -1999,4 +1999,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => '轻柔羽触';
+
+  @override
+  String noAyahsFound(String query) {
+    return '未找到“$query”的相关经文';
+  }
+
+  @override
+  String get trySearchingQuran => '用中文、英文或阿拉伯文搜索，或使用伊斯兰术语：';
+
+  @override
+  String get loadingQuranIndex => '正在加载古兰经索引…';
+
+  @override
+  String get quranSearchSuggestions => '忍耐, 耐心, 慈悟, 礼拜, 祝福, 宽恕, 天堂, 知识, 感恩, 记主';
 }

@@ -61,11 +61,15 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String streakDays(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count روز',
-      one: '$count روز',
+      other: '$countString روز',
+      one: '$countString روز',
     );
     return '$_temp0';
   }
@@ -551,11 +555,15 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String appsBlockedCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count برنامه',
-      one: '$count برنامه',
+      other: '$countString برنامه',
+      one: '$countString برنامه',
     );
     return '$_temp0';
   }
@@ -579,11 +587,15 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String focusSessionMinutes(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count دقیقه',
-      one: '$count دقیقه',
+      other: '$countString دقیقه',
+      one: '$countString دقیقه',
     );
     return '$_temp0';
   }
@@ -924,8 +936,7 @@ class AppLocalizationsFa extends AppLocalizations {
       'آب را به بینی بکشید و آرام بیرون دهید. این کار را سه بار انجام دهید.';
 
   @override
-  String get wuduStep5Tip =>
-      'با دست راست آب بکشید و با دست چپ بیرون دهید.';
+  String get wuduStep5Tip => 'با دست راست آب بکشید و با دست چپ بیرون دهید.';
 
   @override
   String get wuduStep6Instruction =>
@@ -940,16 +951,14 @@ class AppLocalizationsFa extends AppLocalizations {
       'بازوی راست را از نوک انگشتان تا آرنج سه بار بشویید، سپس همین کار را با بازوی چپ انجام دهید.';
 
   @override
-  String get wuduStep7Tip =>
-      'در وضو همیشه از سمت راست قبل از چپ شروع کنید.';
+  String get wuduStep7Tip => 'در وضو همیشه از سمت راست قبل از چپ شروع کنید.';
 
   @override
   String get wuduStep8Instruction =>
       'دست‌هایتان را مرطوب کنید و یک بار از جلو به عقب و از عقب به جلو روی سر بکشید.';
 
   @override
-  String get wuduStep8Tip =>
-      'برخلاف شستن، مسح سر فقط یک بار انجام می‌شود.';
+  String get wuduStep8Tip => 'برخلاف شستن، مسح سر فقط یک بار انجام می‌شود.';
 
   @override
   String get wuduStep9Instruction =>
@@ -963,8 +972,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get islamicGlossaryTitle => 'واژه‌نامه اسلامی';
 
   @override
-  String get islamicGlossarySubtitle =>
-      '۵۱ اصطلاح از قرآن، سنت و علم کلاسیک';
+  String get islamicGlossarySubtitle => '۵۱ اصطلاح از قرآن، سنت و علم کلاسیک';
 
   @override
   String get searchTermsHint => 'جستجوی اصطلاحات، عربی، تعاریف...';
@@ -1007,7 +1015,8 @@ class AppLocalizationsFa extends AppLocalizations {
       'راهنمایی ملایم برای اولین قدم‌های شما به عنوان مسلمان جدید';
 
   @override
-  String get islamicGlossaryHubSubtitle => 'اصطلاحات رایج به‌سادگی توضیح داده شده';
+  String get islamicGlossaryHubSubtitle =>
+      'اصطلاحات رایج به‌سادگی توضیح داده شده';
 
   @override
   String get whyDoWeHubSubtitle => 'حکمت پشت اعمال روزمره';
@@ -1118,8 +1127,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get communityStoriesShareBtn => 'داستانتان را به اشتراک بگذارید';
 
   @override
-  String get communityStoriesShareSoon =>
-      'به زودی — این قابلیت در راه است!';
+  String get communityStoriesShareSoon => 'به زودی — این قابلیت در راه است!';
 
   @override
   String get communityStory1Name => 'عایشه (سابقاً سارا)';
@@ -1200,7 +1208,8 @@ class AppLocalizationsFa extends AppLocalizations {
       'در محله‌ای سخت بزرگ شدم. اسلام به من انضباط، هدف و برادری داد. اولین بار که سجده کردم، چیزی در من شکست — به بهترین شکل. گریه کردم و نمی‌توانستم توضیح دهم. حالا جوانان دیگری که راهشان به دین را می‌یابند را راهنمایی می‌کنم.';
 
   @override
-  String get inspiredByRealStories => 'الهام گرفته از سفرهای واقعی مسلمانان جدید';
+  String get inspiredByRealStories =>
+      'الهام گرفته از سفرهای واقعی مسلمانان جدید';
 
   @override
   String get storyFormTitle => 'داستانتان را به اشتراک بگذارید';
@@ -1249,8 +1258,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get beginnerMode => 'حالت مبتدی';
 
   @override
-  String get beginnerModeSubtitle =>
-      'نکات و راهنمایی اضافی برای مسلمانان جدید';
+  String get beginnerModeSubtitle => 'نکات و راهنمایی اضافی برای مسلمانان جدید';
 
   @override
   String get beginnerModeOn =>
@@ -1313,7 +1321,8 @@ class AppLocalizationsFa extends AppLocalizations {
   String get asmaUlHusnaTileSubtitle => 'اسامی خداوند';
 
   @override
-  String get onboardingTagline => 'از وقتتان محافظت کنید. نمازهایتان را گرامی بدارید.';
+  String get onboardingTagline =>
+      'از وقتتان محافظت کنید. نمازهایتان را گرامی بدارید.';
 
   @override
   String get onboardingChooseLanguage => 'زبانتان را انتخاب کنید';
@@ -1412,16 +1421,14 @@ class AppLocalizationsFa extends AppLocalizations {
   String get adhanPlaying => 'در حال پخش';
 
   @override
-  String get makkahDescription =>
-      'ندای سنتی نماز از مسجدالحرام در مکه.';
+  String get makkahDescription => 'ندای سنتی نماز از مسجدالحرام در مکه.';
 
   @override
   String get madinahDescription =>
       'نسخه‌ای آرامش‌بخش به سبک مسجد النبی در مدینه.';
 
   @override
-  String get egyptianDescription =>
-      'اذانی با لحن مصری و قرائت غنی.';
+  String get egyptianDescription => 'اذانی با لحن مصری و قرائت غنی.';
 
   @override
   String get adhanCallToWorship => 'ندای نماز';
@@ -1849,10 +1856,14 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String appBlockingAppsSelectedCount(int count) {
+    final intl.NumberFormat countNumberFormat =
+        intl.NumberFormat.decimalPattern(localeName);
+    final String countString = countNumberFormat.format(count);
+
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count برنامه مسدود',
+      other: '$countString برنامه مسدود',
       one: '۱ برنامه مسدود',
       zero: 'هیچ برنامه‌ای مسدود نشده',
     );
@@ -1878,8 +1889,7 @@ class AppLocalizationsFa extends AppLocalizations {
       'دسترسی به دسترس‌پذیری را روشن کنید تا مسدودسازی شروع شود';
 
   @override
-  String get appBlockingIosComingSoonTitle =>
-      'دسترسی به Screen Time — به زودی';
+  String get appBlockingIosComingSoonTitle => 'دسترسی به Screen Time — به زودی';
 
   @override
   String get appBlockingIosComingSoonBody =>
@@ -1972,8 +1982,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get deleteLocationTooltip => 'حذف موقعیت';
 
   @override
-  String get locationNotFound =>
-      'موقعیت پیدا نشد. جستجوی دیگری امتحان کنید.';
+  String get locationNotFound => 'موقعیت پیدا نشد. جستجوی دیگری امتحان کنید.';
 
   @override
   String maxLocationsReachedMessage(int max) {
@@ -2010,8 +2019,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get tasbihUndoButton => 'لغو';
 
   @override
-  String get tasbihTapAnywhereHint =>
-      'برای شمردن روی هر جای صفحه ضربه بزنید';
+  String get tasbihTapAnywhereHint => 'برای شمردن روی هر جای صفحه ضربه بزنید';
 
   @override
   String get tasbihSoundToggleTooltip => 'صدای ضربه';
@@ -2096,4 +2104,20 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'پر نرم';
+
+  @override
+  String noAyahsFound(String query) {
+    return 'هیچ آیه‌ای برای \"$query\" یافت نشد';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'به فارسی، انگلیسی یا عربی جستجو کنید یا از اصطلاح اسلامی استفاده کنید:';
+
+  @override
+  String get loadingQuranIndex => 'در حال بارگذاری فهرست قرآن…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'صبر, رحمت, نماز, عبادت, بخشش, توبه, بهشت, دانش, دعا, ذکر';
 }

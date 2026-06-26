@@ -116,13 +116,20 @@ class QuranFullIndex {
 
     // ── Priority 1: curated topic-tagged ayahs ────────────────────────────
     final curated = AyahSearchIndex.search(query)
-        .map((e) => QuranSearchResult(
-              surahNumber: e.surahNumber,
-              surahName: e.surahName,
-              ayahNumber: e.ayahNumber,
-              arabic: e.arabic,
-              translation: e.english,
-            ))
+        .map((e) {
+          String translation = e.english;
+          if (useLocal) {
+            final lc = _local['${e.surahNumber}:${e.ayahNumber}'];
+            if (lc != null && lc.isNotEmpty) translation = lc;
+          }
+          return QuranSearchResult(
+            surahNumber: e.surahNumber,
+            surahName: e.surahName,
+            ayahNumber: e.ayahNumber,
+            arabic: e.arabic,
+            translation: translation,
+          );
+        })
         .toList();
 
     if (_core.isEmpty) return curated.take(maxResults).toList();
@@ -132,11 +139,14 @@ class QuranFullIndex {
     };
 
     // ── Priority 2: full-text search on all 6 236 ayahs ──────────────────
-    final textMatches = <QuranSearchResult>[];
+    // Scored: 2 = whole-word match in translation, 1 = surah/Arabic match.
+    // Score 0 results are filtered out as too loosely related.
+    final textMatches = <MapEntry<int, QuranSearchResult>>[];
     for (final e in _core) {
       final key = '${e.s}:${e.a}';
       if (curatedKeys.contains(key)) continue;
-      if (!_matches(e, rawStripped, terms, useLocal)) continue;
+      final score = _scoreMatch(e, rawStripped, terms, useLocal);
+      if (score == 0) continue;
 
       String displayTranslation = e.en;
       if (useLocal) {
@@ -144,53 +154,77 @@ class QuranFullIndex {
         if (lc != null && lc.isNotEmpty) displayTranslation = lc;
       }
 
-      textMatches.add(QuranSearchResult(
+      textMatches.add(MapEntry(score, QuranSearchResult(
         surahNumber: e.s,
         surahName: e.n,
         ayahNumber: e.a,
         arabic: e.ar,
         translation: displayTranslation,
-      ));
+      )));
     }
 
     textMatches.sort((a, b) {
-      final c = a.surahNumber.compareTo(b.surahNumber);
-      return c != 0 ? c : a.ayahNumber.compareTo(b.ayahNumber);
+      final scoreCmp = b.key.compareTo(a.key); // higher score first
+      if (scoreCmp != 0) return scoreCmp;
+      final c = a.value.surahNumber.compareTo(b.value.surahNumber);
+      return c != 0 ? c : a.value.ayahNumber.compareTo(b.value.ayahNumber);
     });
 
-    return [...curated, ...textMatches].take(maxResults).toList();
+    return [...curated, ...textMatches.map((e) => e.value)].take(maxResults).toList();
   }
 
-  // ── Matching logic ──────────────────────────────────────────────────────────
+  // ── Matching / scoring logic ────────────────────────────────────────────────
 
-  static bool _matches(
+  // Returns 0 (no match), 1 (surah name / Arabic script), or
+  // 2 (whole-word match in English or localized translation).
+  // Only results with score >= 1 are included; score drives secondary sort.
+  static int _scoreMatch(
     _E e,
     String rawStripped,
     List<String> terms,
     bool useLocal,
   ) {
-    // English translation
+    // English translation — whole-word boundary match (avoids false positives
+    // like story mentions that contain the word but aren't topically relevant).
     final enL = e.en.toLowerCase();
-    if (terms.any((t) => t.length >= 3 && enL.contains(t))) return true;
+    if (terms.any((t) => t.length >= 3 && _containsWord(enL, t))) return 2;
 
-    // Localized translation
+    // Localized translation — substring match (non-ASCII scripts vary).
     if (useLocal) {
       final lc = _local['${e.s}:${e.a}'];
       if (lc != null && lc.isNotEmpty) {
         final lcL = lc.toLowerCase();
-        if (terms.any((t) => t.length >= 2 && lcL.contains(t))) return true;
+        if (terms.any((t) => t.length >= 2 && lcL.contains(t))) return 2;
       }
     }
 
-    // Surah name (Al- normalised)
+    // Surah name (Al- normalised) — lower priority.
     final nameStripped = IslamicSynonyms.stripArticle(e.n.toLowerCase());
-    if (rawStripped.length >= 2 && nameStripped.contains(rawStripped)) return true;
+    if (rawStripped.length >= 2 && nameStripped.contains(rawStripped)) return 1;
 
-    // Arabic script
-    if (rawStripped.length >= 2 && e.ar.contains(rawStripped)) return true;
+    // Arabic script.
+    if (rawStripped.length >= 2 && e.ar.contains(rawStripped)) return 1;
 
-    return false;
+    return 0;
   }
+
+  static bool _containsWord(String text, String word) {
+    int i = 0;
+    while (true) {
+      final pos = text.indexOf(word, i);
+      if (pos == -1) return false;
+      final before = pos == 0 || !_isWordChar(text.codeUnitAt(pos - 1));
+      final after = pos + word.length >= text.length ||
+          !_isWordChar(text.codeUnitAt(pos + word.length));
+      if (before && after) return true;
+      i = pos + 1;
+    }
+  }
+
+  static bool _isWordChar(int code) =>
+      (code >= 65 && code <= 90) ||
+      (code >= 97 && code <= 122) ||
+      (code >= 48 && code <= 57);
 
   // ── Localized translation loader ────────────────────────────────────────────
 

@@ -269,7 +269,7 @@ class _IndexingBanner extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(
-            'Loading full Quran index…',
+            AppLocalizations.of(context)!.loadingQuranIndex,
             style: GoogleFonts.lato(
               fontSize: 11,
               color: const Color(0xFF8A9BB0),
@@ -290,13 +290,14 @@ class _NoResultsState extends StatelessWidget {
   static const _gold = Color(0xFFD4AF37);
   static const _mutedText = Color(0xFF8A9BB0);
 
-  static const _suggestions = [
-    'patience', 'sabr', 'mercy', 'prayer', 'salah',
-    'forgiveness', 'tawbah', 'paradise', 'jannah', 'knowledge',
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final suggestions = l10n.quranSearchSuggestions
+        .split(',')
+        .map((s) => s.trim())
+        .where((s) => s.isNotEmpty)
+        .toList();
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -306,7 +307,7 @@ class _NoResultsState extends StatelessWidget {
             const Icon(Icons.search_off_rounded, color: _mutedText, size: 48),
             const SizedBox(height: 16),
             Text(
-              'No ayahs found for "$query"',
+              l10n.noAyahsFound(query),
               textAlign: TextAlign.center,
               style: GoogleFonts.playfairDisplay(
                 fontSize: 16,
@@ -316,7 +317,7 @@ class _NoResultsState extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              'Try searching in English or Arabic, or use an Islamic term:',
+              l10n.trySearchingQuran,
               textAlign: TextAlign.center,
               style: GoogleFonts.lato(fontSize: 12, color: _mutedText),
             ),
@@ -325,7 +326,7 @@ class _NoResultsState extends StatelessWidget {
               alignment: WrapAlignment.center,
               spacing: 6,
               runSpacing: 6,
-              children: _suggestions
+              children: suggestions
                   .map((s) => Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 4),

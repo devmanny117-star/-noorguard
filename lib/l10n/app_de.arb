@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "Wird Gerade Rezitiert",
   "tasbihOfTarget": "von {target}",
   "tasbihSoundRainDrop": "Regentropfen",
-  "tasbihSoundSoftFeather": "Sanfte Feder"
+  "tasbihSoundSoftFeather": "Sanfte Feder",
+  "noAyahsFound": "Keine Verse gefunden für \"{query}\"",
+  "trySearchingQuran": "Suche auf Deutsch, Englisch oder Arabisch oder nutze einen islamischen Begriff:",
+  "loadingQuranIndex": "Quran-Index wird geladen…",
+  "quranSearchSuggestions": "Geduld, Sabr, Barmherzigkeit, Gebet, Salah, Vergebung, Tawbah, Paradies, Jannah, Wissen"
 }

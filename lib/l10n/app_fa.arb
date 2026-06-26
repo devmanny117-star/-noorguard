@@ -786,5 +786,9 @@
     }
   },
   "tasbihSoundRainDrop": "قطره باران",
-  "tasbihSoundSoftFeather": "پر نرم"
+  "tasbihSoundSoftFeather": "پر نرم",
+  "noAyahsFound": "هیچ آیه‌ای برای \"{query}\" یافت نشد",
+  "trySearchingQuran": "به فارسی، انگلیسی یا عربی جستجو کنید یا از اصطلاح اسلامی استفاده کنید:",
+  "loadingQuranIndex": "در حال بارگذاری فهرست قرآن…",
+  "quranSearchSuggestions": "صبر, رحمت, نماز, عبادت, بخشش, توبه, بهشت, دانش, دعا, ذکر"
 }

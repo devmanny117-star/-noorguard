@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "ابھی پڑھا جا رہا ہے",
   "tasbihOfTarget": "{target} میں سے",
   "tasbihSoundRainDrop": "بارش کا قطرہ",
-  "tasbihSoundSoftFeather": "نرم پر"
+  "tasbihSoundSoftFeather": "نرم پر",
+  "noAyahsFound": "\"{query}\" کے لیے کوئی آیت نہیں ملی",
+  "trySearchingQuran": "اردو، انگریزی یا عربی میں تلاش کریں، یا اسلامی اصطلاح استعمال کریں:",
+  "loadingQuranIndex": "قرآن کا اشاریہ لوڈ ہو رہا ہے…",
+  "quranSearchSuggestions": "صبر, رحمت, نماز, معافی, توبہ, جنت, علم, دعا, ذکر, شکر"
 }

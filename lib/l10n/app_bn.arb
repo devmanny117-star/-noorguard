@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "এখন আবৃত্তি করা হচ্ছে",
   "tasbihOfTarget": "{target} এর মধ্যে",
   "tasbihSoundRainDrop": "বৃষ্টির ফোঁটা",
-  "tasbihSoundSoftFeather": "কোমল পালক"
+  "tasbihSoundSoftFeather": "কোমল পালক",
+  "noAyahsFound": "\"{query}\" এর জন্য কোনো আয়াত পাওয়া যায়নি",
+  "trySearchingQuran": "বাংলায় অনুসন্ধান করুন অথবা সার্চ বারে ইসলামিক পদ ব্যবহার করুন:",
+  "loadingQuranIndex": "কোরআন সূচক লোড হচ্ছে…",
+  "quranSearchSuggestions": "সবর, ধৈর্য, রহমত, সালাত, নামাজ, মাফ, তাওবা, জান্নাত, ইলম, জ্ঞান"
 }

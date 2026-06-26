@@ -2106,4 +2106,20 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'Unyoya Mpole';
+
+  @override
+  String noAyahsFound(String query) {
+    return 'Hakuna aya zilizopatikana kwa \"$query\"';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'Jaribu kutafuta kwa Kiswahili, Kiingereza au Kiarabu, au tumia neno la Kiislamu:';
+
+  @override
+  String get loadingQuranIndex => 'Inapakia faharasa ya Qurani…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'subira, sabr, rehema, sala, salah, msamaha, tawbah, pepo, jannah, elimu';
 }

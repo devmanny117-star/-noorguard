@@ -2106,4 +2106,20 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'কোমল পালক';
+
+  @override
+  String noAyahsFound(String query) {
+    return '\"$query\" এর জন্য কোনো আয়াত পাওয়া যায়নি';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'বাংলায় অনুসন্ধান করুন অথবা সার্চ বারে ইসলামিক পদ ব্যবহার করুন:';
+
+  @override
+  String get loadingQuranIndex => 'কোরআন সূচক লোড হচ্ছে…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'সবর, ধৈর্য, রহমত, সালাত, নামাজ, মাফ, তাওবা, জান্নাত, ইলম, জ্ঞান';
 }

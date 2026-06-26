@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "Nu Aan Het Reciteren",
   "tasbihOfTarget": "van {target}",
   "tasbihSoundRainDrop": "Regendruppel",
-  "tasbihSoundSoftFeather": "Zachte Veer"
+  "tasbihSoundSoftFeather": "Zachte Veer",
+  "noAyahsFound": "Geen verzen gevonden voor \"{query}\"",
+  "trySearchingQuran": "Zoek in het Nederlands, Engels of Arabisch, of gebruik een islamitische term:",
+  "loadingQuranIndex": "Koran-index laden…",
+  "quranSearchSuggestions": "geduld, sabr, barmhartigheid, gebed, salah, vergiffenis, tawbah, paradijs, jannah, kennis"
 }

@@ -2095,4 +2095,20 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'نرم پر';
+
+  @override
+  String noAyahsFound(String query) {
+    return '\"$query\" کے لیے کوئی آیت نہیں ملی';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'اردو، انگریزی یا عربی میں تلاش کریں، یا اسلامی اصطلاح استعمال کریں:';
+
+  @override
+  String get loadingQuranIndex => 'قرآن کا اشاریہ لوڈ ہو رہا ہے…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'صبر, رحمت, نماز, معافی, توبہ, جنت, علم, دعا, ذکر, شکر';
 }

@@ -2099,4 +2099,20 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'Yumuşak Tüy';
+
+  @override
+  String noAyahsFound(String query) {
+    return '\"$query\" için ayet bulunamadı';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'Türkçe, İngilizce veya Arapça arayın ya da İslamî bir terim kullanın:';
+
+  @override
+  String get loadingQuranIndex => 'Kuran dizini yükleniyor…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'sabır, sabr, merhamet, namaz, salah, af, tawbah, cennet, jannah, ilim';
 }

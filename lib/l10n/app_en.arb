@@ -2582,5 +2582,26 @@
   "tasbihSoundSoftFeather": "Soft Feather",
   "@tasbihSoundSoftFeather": {
     "description": "Name of the 'soft feather' tap sound option — an extremely subtle, barely audible brush/feather touch"
+  },
+  "noAyahsFound": "No ayahs found for \"{query}\"",
+  "@noAyahsFound": {
+    "description": "Empty state heading on Quran search when no results match",
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "trySearchingQuran": "Try searching in English or Arabic, or use an Islamic term:",
+  "@trySearchingQuran": {
+    "description": "Subtitle suggesting alternative search approaches when no Quran results are found"
+  },
+  "loadingQuranIndex": "Loading full Quran index…",
+  "@loadingQuranIndex": {
+    "description": "Progress banner shown while the Quran full-text index is being fetched"
+  },
+  "quranSearchSuggestions": "patience, sabr, mercy, prayer, salah, forgiveness, tawbah, paradise, jannah, knowledge",
+  "@quranSearchSuggestions": {
+    "description": "Comma-separated list of suggested Quran search terms shown as chips in the empty state"
   }
 }

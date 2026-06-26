@@ -504,6 +504,41 @@ const List<List<String>> _kSynonymGroups = [
     'companheiros', 'companheiros do profeta', // pt
     'compagni', 'compagni del profeta', // it
   ],
+  // ── Marriage / Family / Divorce ───────────────────────────────────────────
+  [
+    // English
+    'wife', 'wives', 'husband', 'husbands', 'marriage', 'married', 'marry',
+    'nikah', 'spouse', 'spouses', 'wedlock', 'wed', 'wedding',
+    'divorce', 'talaq', 'mahr', 'dowry', 'dower',
+    // Arabic
+    'زوج', 'زوجة', 'زواج', 'طلاق', 'مهر', 'نكاح',
+    // Urdu
+    'شادی', 'بیوی', 'شوہر', 'مہر',
+    // Spanish
+    'matrimonio', 'esposo', 'esposa', 'divorcio', 'casamiento',
+    // French
+    'mariage', 'époux', 'épouse', 'divorce',
+    // Indonesian
+    'pernikahan', 'istri', 'suami', 'cerai', 'menikah',
+    // Chinese
+    '婚姻', '妻子', '丈夫', '离婚',
+    // Japanese
+    '結婚', '妻', '夫', '離婚',
+    // Bengali
+    'বিবাহ', 'স্ত্রী', 'স্বামী', 'তালাক',
+    // Turkish
+    'evlilik', 'eş', 'boşanma', 'mehir',
+    // Swahili
+    'ndoa', 'mke', 'mume', 'talaka',
+    // German
+    'ehe', 'heirat', 'ehemann', 'ehefrau', 'scheidung',
+    // Dutch
+    'huwelijk', 'echtgenoot', 'echtgenote', 'echtscheiding',
+    // Portuguese
+    'casamento', 'esposa', 'divórcio',
+    // Italian
+    'matrimonio', 'marito', 'moglie', 'divorzio',
+  ],
   // ── Prophets (bilateral name mapping) ─────────────────────────────────────
   ['jesus', 'isa', 'عيسى'],
   ['moses', 'musa', 'موسى'],
@@ -539,7 +574,8 @@ class IslamicSynonyms {
       final lowerGroup = group.map((t) => t.toLowerCase()).toList();
       final bool matches = lowerGroup.contains(lq) ||
           (lq.length >= 3 &&
-              lowerGroup.any((t) => t.contains(lq) || lq.contains(t)));
+              lowerGroup.any(
+                  (t) => t.contains(lq) || (t.length >= 3 && lq.contains(t))));
       if (matches) {
         expanded.addAll(lowerGroup);
       }

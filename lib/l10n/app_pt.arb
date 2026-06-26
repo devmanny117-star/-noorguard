@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "Recitando Agora",
   "tasbihOfTarget": "de {target}",
   "tasbihSoundRainDrop": "Gota de Chuva",
-  "tasbihSoundSoftFeather": "Pena Suave"
+  "tasbihSoundSoftFeather": "Pena Suave",
+  "noAyahsFound": "Nenhum versículo encontrado para \"{query}\"",
+  "trySearchingQuran": "Pesquise em português, inglês ou árabe, ou use um termo islâmico:",
+  "loadingQuranIndex": "A carregar o índice do Alcorão…",
+  "quranSearchSuggestions": "paciência, sabr, misericórdia, oração, salah, perdão, tawbah, paraíso, jannah, conhecimento"
 }

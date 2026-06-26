@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "正在念诵",
   "tasbihOfTarget": "／{target}",
   "tasbihSoundRainDrop": "雨滴声",
-  "tasbihSoundSoftFeather": "轻柔羽触"
+  "tasbihSoundSoftFeather": "轻柔羽触",
+  "noAyahsFound": "未找到“{query}”的相关经文",
+  "trySearchingQuran": "用中文、英文或阿拉伯文搜索，或使用伊斯兰术语：",
+  "loadingQuranIndex": "正在加载古兰经索引…",
+  "quranSearchSuggestions": "忍耐, 耐心, 慈悟, 礼拜, 祝福, 宽恕, 天堂, 知识, 感恩, 记主"
 }

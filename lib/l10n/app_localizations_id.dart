@@ -2107,4 +2107,20 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'Bulu Lembut';
+
+  @override
+  String noAyahsFound(String query) {
+    return 'Tidak ada ayat ditemukan untuk \"$query\"';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'Coba cari dalam Bahasa Indonesia, Inggris, atau Arab, atau gunakan istilah Islam:';
+
+  @override
+  String get loadingQuranIndex => 'Memuat indeks Al-Quran…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'sabar, sabr, rahmat, shalat, salah, ampunan, tawbah, surga, jannah, ilmu';
 }

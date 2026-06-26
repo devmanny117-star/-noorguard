@@ -108,6 +108,24 @@ const List<AyahSearchEntry> _kAyahs = [
     topics: ['ramadan', 'fasting', 'sawm', 'quran', 'revelation'],
   ),
   AyahSearchEntry(
+    surahNumber: 2, surahName: 'Al-Baqarah', ayahNumber: 221,
+    arabic: 'وَلَا تَنكِحُوا الْمُشْرِكَاتِ حَتَّىٰ يُؤْمِنَّ ۚ وَلَأَمَةٌ مُّؤْمِنَةٌ خَيْرٌ مِّن مُّشْرِكَةٍ وَلَوْ أَعْجَبَتْكُمْ',
+    english: 'Do not marry polytheistic women until they believe. A believing slave woman is better than a polytheist even though she might please you.',
+    topics: ['marriage', 'nikah', 'wife', 'faith', 'spouse'],
+  ),
+  AyahSearchEntry(
+    surahNumber: 2, surahName: 'Al-Baqarah', ayahNumber: 229,
+    arabic: 'الطَّلَاقُ مَرَّتَانِ ۖ فَإِمْسَاكٌ بِمَعْرُوفٍ أَوْ تَسْرِيحٌ بِإِحْسَانٍ',
+    english: 'Divorce is twice. Then either keep her in kindness or release her with good treatment.',
+    topics: ['divorce', 'talaq', 'wife', 'husband', 'marriage'],
+  ),
+  AyahSearchEntry(
+    surahNumber: 2, surahName: 'Al-Baqarah', ayahNumber: 232,
+    arabic: 'وَإِذَا طَلَّقْتُمُ النِّسَاءَ فَبَلَغْنَ أَجَلَهُنَّ فَلَا تَعْضُلُوهُنَّ أَن يَنكِحْنَ أَزْوَاجَهُنَّ',
+    english: 'When you divorce women and they reach their term, do not prevent them from remarrying their husbands if they agree among themselves in an acceptable way.',
+    topics: ['divorce', 'talaq', 'wife', 'husband', 'marriage', 'nikah'],
+  ),
+  AyahSearchEntry(
     surahNumber: 2, surahName: 'Al-Baqarah', ayahNumber: 255,
     arabic: 'اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ',
     english: 'Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep.',
@@ -169,6 +187,30 @@ const List<AyahSearchEntry> _kAyahs = [
     topics: ['patience', 'sabr', 'faith'],
   ),
   // ── An-Nisa (4) ────────────────────────────────────────────────────────────
+  AyahSearchEntry(
+    surahNumber: 4, surahName: 'An-Nisa', ayahNumber: 3,
+    arabic: 'وَإِنْ خِفْتُمْ أَلَّا تُقْسِطُوا فِي الْيَتَامَىٰ فَانكِحُوا مَا طَابَ لَكُم مِّنَ النِّسَاءِ مَثْنَىٰ وَثُلَاثَ وَرُبَاعَ',
+    english: 'If you fear you will not deal fairly with orphan girls, then marry those that please you of other women, two or three or four.',
+    topics: ['marriage', 'nikah', 'wife', 'spouse'],
+  ),
+  AyahSearchEntry(
+    surahNumber: 4, surahName: 'An-Nisa', ayahNumber: 19,
+    arabic: 'يَا أَيُّهَا الَّذِينَ آمَنُوا لَا يَحِلُّ لَكُمْ أَن تَرِثُوا النِّسَاءَ كَرْهًا',
+    english: 'O you who believe! It is not lawful for you to inherit women by compulsion. And live with them in kindness.',
+    topics: ['marriage', 'wife', 'rights', 'women', 'family'],
+  ),
+  AyahSearchEntry(
+    surahNumber: 4, surahName: 'An-Nisa', ayahNumber: 21,
+    arabic: 'وَكَيْفَ تَأْخُذُونَهُ وَقَدْ أَفْضَىٰ بَعْضُكُمْ إِلَىٰ بَعْضٍ وَأَخَذْنَ مِنكُم مِّيثَاقًا غَلِيظًا',
+    english: 'How could you take it back while you have gone in unto each other and they have taken from you a solemn covenant?',
+    topics: ['marriage', 'mahr', 'covenant', 'wife', 'husband'],
+  ),
+  AyahSearchEntry(
+    surahNumber: 4, surahName: 'An-Nisa', ayahNumber: 34,
+    arabic: 'الرِّجَالُ قَوَّامُونَ عَلَى النِّسَاءِ بِمَا فَضَّلَ اللَّهُ بَعْضَهُمْ عَلَىٰ بَعْضٍ',
+    english: 'Men are the protectors and maintainers of women, as Allah has given one more strength than the other and because they spend from their wealth.',
+    topics: ['marriage', 'family', 'husband', 'wife', 'women'],
+  ),
   AyahSearchEntry(
     surahNumber: 4, surahName: 'An-Nisa', ayahNumber: 103,
     arabic: 'إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا',
@@ -353,6 +395,12 @@ const List<AyahSearchEntry> _kAyahs = [
   ),
   // ── An-Nur (24) ────────────────────────────────────────────────────────────
   AyahSearchEntry(
+    surahNumber: 24, surahName: 'An-Nur', ayahNumber: 32,
+    arabic: 'وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ',
+    english: 'Marry the unmarried among you and the righteous among your male and female slaves. If they are poor, Allah will enrich them from His bounty.',
+    topics: ['marriage', 'nikah', 'spouse', 'wed'],
+  ),
+  AyahSearchEntry(
     surahNumber: 24, surahName: 'An-Nur', ayahNumber: 35,
     arabic: 'اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ',
     english: 'Allah is the light of the heavens and the earth.',
@@ -378,6 +426,13 @@ const List<AyahSearchEntry> _kAyahs = [
     arabic: 'اتْلُ مَا أُوحِيَ إِلَيْكَ مِنَ الْكِتَابِ وَأَقِمِ الصَّلَاةَ ۖ إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ',
     english: 'Recite what has been revealed to you of the Book and establish prayer. Indeed, prayer prohibits immorality and wrongdoing.',
     topics: ['prayer', 'salah', 'quran', 'recitation'],
+  ),
+  // ── Ar-Rum (30) ────────────────────────────────────────────────────────────
+  AyahSearchEntry(
+    surahNumber: 30, surahName: 'Ar-Rum', ayahNumber: 21,
+    arabic: 'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً',
+    english: 'And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy.',
+    topics: ['marriage', 'spouse', 'family', 'love', 'mercy', 'wife', 'husband'],
   ),
   // ── Luqman (31) ────────────────────────────────────────────────────────────
   AyahSearchEntry(
@@ -492,6 +547,18 @@ const List<AyahSearchEntry> _kAyahs = [
     topics: ['prayer', 'friday', 'jummah', 'dhikr', 'faith'],
   ),
   // ── At-Talaq (65) ──────────────────────────────────────────────────────────
+  AyahSearchEntry(
+    surahNumber: 65, surahName: 'At-Talaq', ayahNumber: 1,
+    arabic: 'يَا أَيُّهَا النَّبِيُّ إِذَا طَلَّقْتُمُ النِّسَاءَ فَطَلِّقُوهُنَّ لِعِدَّتِهِنَّ وَأَحْصُوا الْعِدَّةَ',
+    english: 'O Prophet, when you divorce women, divorce them at the commencement of their waiting periods and keep count of the waiting period.',
+    topics: ['divorce', 'talaq', 'wife', 'marriage'],
+  ),
+  AyahSearchEntry(
+    surahNumber: 65, surahName: 'At-Talaq', ayahNumber: 2,
+    arabic: 'فَإِذَا بَلَغْنَ أَجَلَهُنَّ فَأَمْسِكُوهُنَّ بِمَعْرُوفٍ أَوْ فَارِقُوهُنَّ بِمَعْرُوفٍ',
+    english: 'When they have reached their term, either retain them in fairness or let them go in fairness.',
+    topics: ['divorce', 'talaq', 'wife', 'husband', 'marriage'],
+  ),
   AyahSearchEntry(
     surahNumber: 65, surahName: 'At-Talaq', ayahNumber: 3,
     arabic: 'وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',
@@ -685,9 +752,10 @@ class AyahSearchIndex {
         continue;
       }
 
-      // 3. English translation text match.
-      if (expandedTerms.any((t) =>
-          t.length >= 3 && entry.english.toLowerCase().contains(t))) {
+      // 3. English translation text match — whole-word only to avoid false
+      // positives from short synonym-group terms (e.g. 'fe' inside 'wife').
+      final enL = entry.english.toLowerCase();
+      if (expandedTerms.any((t) => t.length >= 3 && _containsWord(enL, t))) {
         add(entry);
         continue;
       }
@@ -705,4 +773,22 @@ class AyahSearchIndex {
     });
     return results;
   }
+
+  static bool _containsWord(String text, String word) {
+    int i = 0;
+    while (true) {
+      final pos = text.indexOf(word, i);
+      if (pos == -1) return false;
+      final before = pos == 0 || !_isWordChar(text.codeUnitAt(pos - 1));
+      final after = pos + word.length >= text.length ||
+          !_isWordChar(text.codeUnitAt(pos + word.length));
+      if (before && after) return true;
+      i = pos + 1;
+    }
+  }
+
+  static bool _isWordChar(int code) =>
+      (code >= 65 && code <= 90) ||
+      (code >= 97 && code <= 122) ||
+      (code >= 48 && code <= 57);
 }

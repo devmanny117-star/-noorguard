@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "現在唱えている",
   "tasbihOfTarget": "／{target}",
   "tasbihSoundRainDrop": "雨だれ",
-  "tasbihSoundSoftFeather": "やわらかな羽"
+  "tasbihSoundSoftFeather": "やわらかな羽",
+  "noAyahsFound": "「{query}」の節が見つかりませんでした",
+  "trySearchingQuran": "日本語、英語、またはアラビア語で検索するか、イスラームの用語を使用してください：",
+  "loadingQuranIndex": "クルアーンの索引を読み込み中…",
+  "quranSearchSuggestions": "忍耐, サブル, 慈悲, 礼拝, 神への神之, 許し, タウバ, 天国, ジャンナ, 知識"
 }

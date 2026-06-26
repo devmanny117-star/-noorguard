@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "يُسبَّح الآن",
   "tasbihOfTarget": "من {target}",
   "tasbihSoundRainDrop": "قطرة مطر",
-  "tasbihSoundSoftFeather": "ريشة ناعمة"
+  "tasbihSoundSoftFeather": "ريشة ناعمة",
+  "noAyahsFound": "لا توجد آيات لـ \"{query}\"",
+  "trySearchingQuran": "جرّب البحث بالعربية أو الإنجليزية، أو استخدم مصطلحاً إسلامياً:",
+  "loadingQuranIndex": "جارٍ تحميل فهرس القرآن…",
+  "quranSearchSuggestions": "صبر, رحمة, صلاة, مغفرة, توبة, جنة, علم, تقوى, دعاء, ذكر"
 }

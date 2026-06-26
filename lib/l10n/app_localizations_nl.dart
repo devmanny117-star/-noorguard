@@ -2105,4 +2105,20 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'Zachte Veer';
+
+  @override
+  String noAyahsFound(String query) {
+    return 'Geen verzen gevonden voor \"$query\"';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'Zoek in het Nederlands, Engels of Arabisch, of gebruik een islamitische term:';
+
+  @override
+  String get loadingQuranIndex => 'Koran-index laden…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'geduld, sabr, barmhartigheid, gebed, salah, vergiffenis, tawbah, paradijs, jannah, kennis';
 }

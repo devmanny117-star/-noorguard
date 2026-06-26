@@ -2090,4 +2090,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'Soft Feather';
+
+  @override
+  String noAyahsFound(String query) {
+    return 'No ayahs found for \"$query\"';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'Try searching in English or Arabic, or use an Islamic term:';
+
+  @override
+  String get loadingQuranIndex => 'Loading full Quran index…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'patience, sabr, mercy, prayer, salah, forgiveness, tawbah, paradise, jannah, knowledge';
 }

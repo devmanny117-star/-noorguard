@@ -2076,4 +2076,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'ريشة ناعمة';
+
+  @override
+  String noAyahsFound(String query) {
+    return 'لا توجد آيات لـ \"$query\"';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'جرّب البحث بالعربية أو الإنجليزية، أو استخدم مصطلحاً إسلامياً:';
+
+  @override
+  String get loadingQuranIndex => 'جارٍ تحميل فهرس القرآن…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'صبر, رحمة, صلاة, مغفرة, توبة, جنة, علم, تقوى, دعاء, ذكر';
 }

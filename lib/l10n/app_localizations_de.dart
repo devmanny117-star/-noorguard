@@ -2112,4 +2112,20 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get tasbihSoundSoftFeather => 'Sanfte Feder';
+
+  @override
+  String noAyahsFound(String query) {
+    return 'Keine Verse gefunden für \"$query\"';
+  }
+
+  @override
+  String get trySearchingQuran =>
+      'Suche auf Deutsch, Englisch oder Arabisch oder nutze einen islamischen Begriff:';
+
+  @override
+  String get loadingQuranIndex => 'Quran-Index wird geladen…';
+
+  @override
+  String get quranSearchSuggestions =>
+      'Geduld, Sabr, Barmherzigkeit, Gebet, Salah, Vergebung, Tawbah, Paradies, Jannah, Wissen';
 }

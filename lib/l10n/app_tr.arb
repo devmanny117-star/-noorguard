@@ -626,5 +626,9 @@
   "tasbihCurrentlyReciting": "Şu An Okunuyor",
   "tasbihOfTarget": "{target} üzerinden",
   "tasbihSoundRainDrop": "Yağmur Damlası",
-  "tasbihSoundSoftFeather": "Yumuşak Tüy"
+  "tasbihSoundSoftFeather": "Yumuşak Tüy",
+  "noAyahsFound": "\"{query}\" için ayet bulunamadı",
+  "trySearchingQuran": "Türkçe, İngilizce veya Arapça arayın ya da İslamî bir terim kullanın:",
+  "loadingQuranIndex": "Kuran dizini yükleniyor…",
+  "quranSearchSuggestions": "sabır, sabr, merhamet, namaz, salah, af, tawbah, cennet, jannah, ilim"
 }
