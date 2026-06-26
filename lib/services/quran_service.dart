@@ -28,8 +28,21 @@ String _localizeTranslation(String translation, String locale) {
 
 const _translationEditions = {
   'en': 'en.asad',
-  'ur': 'ur.jalandhry',
-  'es': 'es.cortes',
+  'ur': 'ur.jalandhry',   // Fateh Muhammad Jalandhry — standard Urdu
+  'es': 'es.garcia',      // García — Latin American Spanish (ustedes form)
+  'fr': 'fr.hamidullah',  // Hamidullah — only French option
+  'id': 'id.indonesian',  // Kemenag — standard Indonesian
+  'de': 'de.bubenheim',   // Bubenheim & Elyas — standard German Muslim
+  'nl': 'nl.leemhuis',    // Leemhuis — modern Dutch (Keyzer is 1860s archaic)
+  'tr': 'tr.diyanet',     // Diyanet — official Turkish religious authority
+  'bn': 'bn.bengali',     // Muhiuddin Khan — standard Bangladeshi
+  'zh': 'zh.majian',      // Ma Jian — standard Chinese Muslim
+  'ja': 'ja.japanese',    // only Japanese option
+  'pt': 'pt.elhayek',     // only Portuguese option
+  'it': 'it.piccardo',    // only Italian option
+  'sw': 'sw.barwani',     // only Swahili option
+  'fa': 'fa.fooladvand',  // Fooladvand — modern, widely-respected Persian
+  // 'ar' omitted: Arabic text is already the primary display language
 };
 
 Future<List<Verse>> fetchVerses(int surahNumber, {String locale = 'en'}) async {

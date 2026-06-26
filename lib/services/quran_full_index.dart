@@ -39,21 +39,21 @@ class _E {
 // ── Locale → alquran.cloud edition mapping ────────────────────────────────────
 
 const _localeEditions = <String, String>{
-  'ur': 'ur.jalandhry',
-  'fa': 'fa.ayeh',
-  // es.garcia uses ustedes/usted — correct Latin American Spanish (not vosotros/os).
-  'es': 'es.garcia',
-  'fr': 'fr.hamidullah',
-  'id': 'id.indonesian',
-  'de': 'de.bubenheim',
-  'nl': 'nl.keyzer',
-  'tr': 'tr.diyanet',
-  'bn': 'bn.bengali',
-  'zh': 'zh.majian',
-  'ja': 'ja.japanese',
-  'pt': 'pt.elhayek',
-  'it': 'it.piccardo',
-  'sw': 'sw.barwani',
+  'ur': 'ur.jalandhry',   // Fateh Muhammad Jalandhry — standard Urdu
+  'fa': 'fa.fooladvand',  // Fooladvand — modern Persian (fa.ayeh doesn't exist)
+  'es': 'es.garcia',      // García — Latin American Spanish (ustedes form)
+  'fr': 'fr.hamidullah',  // Hamidullah — only French option
+  'id': 'id.indonesian',  // Kemenag — standard Indonesian
+  'de': 'de.bubenheim',   // Bubenheim & Elyas — standard German Muslim
+  'nl': 'nl.leemhuis',    // Leemhuis — modern Dutch (Keyzer is 1860s archaic)
+  'tr': 'tr.diyanet',     // Diyanet — official Turkish religious authority
+  'bn': 'bn.bengali',     // Muhiuddin Khan — standard Bangladeshi
+  'zh': 'zh.majian',      // Ma Jian — standard Chinese Muslim
+  'ja': 'ja.japanese',    // only Japanese option
+  'pt': 'pt.elhayek',     // only Portuguese option
+  'it': 'it.piccardo',    // only Italian option
+  'sw': 'sw.barwani',     // only Swahili option
+  // 'en' and 'ar' handled separately — no extra edition needed
 };
 
 const _cacheVersion = 3;
