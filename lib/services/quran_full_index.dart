@@ -67,8 +67,10 @@ class QuranFullIndex {
 
   // Localized translations fetched on demand (key = "s:a").
   static final Map<String, String> _local = {};
-  static String? _localLocale;
+  static String? _localLocale;   // locale whose translations are in _local
   static bool _localLoading = false;
+  static String? _loadingLocale; // locale currently being fetched
+  static String? _pendingLocale; // locale queued while a different one loads
 
   static bool _coreLoading = false;
 
@@ -231,13 +233,20 @@ class QuranFullIndex {
   static void _ensureLocalized(String locale) {
     if (locale == 'en' || locale == 'ar') return; // no extra edition needed
     if (locale == _localLocale) return; // already loaded
-    if (_localLoading) return;
+    if (_localLoading) {
+      // A different locale fetch is in flight. Queue this one so it loads
+      // immediately after the current fetch finishes.
+      if (locale != _loadingLocale) _pendingLocale = locale;
+      return;
+    }
+    _pendingLocale = null;
     _loadLocalized(locale); // fire-and-forget
   }
 
   static Future<void> _loadLocalized(String locale) async {
     final edition = _localeEditions[locale];
     if (edition == null) return;
+    _loadingLocale = locale;
     _localLoading = true;
     try {
       final surahs = await _fetchEdition(edition);
@@ -256,6 +265,14 @@ class QuranFullIndex {
       // Silently fall back to English display
     } finally {
       _localLoading = false;
+      _loadingLocale = null;
+      // If a different locale was requested while this fetch was in flight,
+      // start it now so the user sees their chosen language.
+      final pending = _pendingLocale;
+      if (pending != null && pending != _localLocale) {
+        _pendingLocale = null;
+        _loadLocalized(pending); // fire-and-forget
+      }
     }
   }
 

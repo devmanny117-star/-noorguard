@@ -41,9 +41,22 @@ class _QuranScreenState extends State<QuranScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final locale = Localizations.localeOf(context).languageCode;
-    if (locale != _currentLocale) _currentLocale = locale;
-    // Idempotent — safe to call on every rebuild.
-    QuranFullIndex.ensure(locale);
+    if (locale != _currentLocale) {
+      _currentLocale = locale;
+      // Start fetching localized translations for the new language.
+      QuranFullIndex.ensure(locale);
+      // Re-run the active search immediately so suggestions, headings, and any
+      // already-loaded translations reflect the new language without requiring
+      // the user to clear and retype.
+      if (_query.isNotEmpty) {
+        setState(() {
+          _searchResults = QuranFullIndex.search(_query, locale);
+        });
+      }
+    } else {
+      // Idempotent — safe to call on every rebuild.
+      QuranFullIndex.ensure(locale);
+    }
   }
 
   @override
@@ -68,11 +81,12 @@ class _QuranScreenState extends State<QuranScreen> {
 
   void _onIndexUpdated() {
     if (!mounted) return;
-    // Re-run the active search now that more data is available.
+    // Guard: if the notifier fired for a different locale (race condition while
+    // language was changing), kick off loading for the locale we actually need.
+    QuranFullIndex.ensure(_currentLocale);
     if (_query.isNotEmpty) {
       setState(() {
-        _searchResults =
-            QuranFullIndex.search(_query, _currentLocale);
+        _searchResults = QuranFullIndex.search(_query, _currentLocale);
       });
     } else {
       // Trigger a rebuild so the index-status banner disappears.
