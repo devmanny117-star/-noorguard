@@ -194,10 +194,22 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
+      padding: EdgeInsets.fromLTRB(isIOS ? 4 : 20, 16, 20, 8),
       child: Row(
         children: [
+          if (isIOS)
+            IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios_new,
+                color: Colors.white,
+                size: 20,
+              ),
+              onPressed: () => Navigator.pop(context),
+              padding: EdgeInsets.zero,
+              visualDensity: VisualDensity.compact,
+            ),
           Text(
             l10n.alQuran,
             style: GoogleFonts.playfairDisplay(

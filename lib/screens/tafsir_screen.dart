@@ -384,40 +384,53 @@ class _TafsirCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode;
     final asbab = entry.asbabText(locale);
+    final tafsirText = entry.tafsirText(locale);
 
     return _TafsirCardShell(
       verseLabel: entry.verseLabel,
       arabic: arabic,
       translation: translation,
-      tafsirBody: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            entry.tafsirText(locale),
-            style: GoogleFonts.lato(
-              fontSize: 13.5,
-              color: Colors.white.withValues(alpha: 0.85),
-              height: 1.7,
+      tafsirBody: tafsirText != null
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  tafsirText,
+                  style: GoogleFonts.lato(
+                    fontSize: 13.5,
+                    color: Colors.white.withValues(alpha: 0.85),
+                    height: 1.7,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: entry.scholarKeys.map((key) {
+                    final scholar = tafsirScholars[key];
+                    if (scholar == null) return const SizedBox.shrink();
+                    return _ScholarBadge(
+                      label: '${l10n.scholarSource}: ${scholar.name(locale)}',
+                    );
+                  }).toList(),
+                ),
+                if (asbab != null) ...[
+                  const SizedBox(height: 12),
+                  _AsbabBox(title: l10n.asbabAlNuzul, text: asbab),
+                ],
+              ],
+            )
+          : Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(
+                l10n.tafsirNotAvailable,
+                style: GoogleFonts.lato(
+                  fontSize: 13,
+                  color: const Color(0xFF8A9BB0),
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ),
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: entry.scholarKeys.map((key) {
-              final scholar = tafsirScholars[key];
-              if (scholar == null) return const SizedBox.shrink();
-              return _ScholarBadge(
-                label: '${l10n.scholarSource}: ${scholar.name(locale)}',
-              );
-            }).toList(),
-          ),
-          if (asbab != null) ...[
-            const SizedBox(height: 12),
-            _AsbabBox(title: l10n.asbabAlNuzul, text: asbab),
-          ],
-        ],
-      ),
     );
   }
 }

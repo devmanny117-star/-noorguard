@@ -28,6 +28,12 @@ class TafsirApiService {
 
   static const _baseUrl = 'https://quranenc.com/api/v1/translation/sura';
 
+  // TODO: Add quranenc.com source keys for the 12 languages currently missing
+  // tafsir API coverage — they return null and show "not available" to users:
+  //   fr (French), id (Indonesian), zh (Chinese), ja (Japanese), bn (Bengali),
+  //   tr (Turkish), sw (Swahili), de (German), nl (Dutch), pt (Portuguese),
+  //   it (Italian), fa (Persian)
+  // Browse available keys at: https://quranenc.com/api/v1/translations/list
   static const Map<String, List<_TafsirSource>> _sources = {
     'en': [
       _TafsirSource('english_ibn_katheer', 'Tafsir Ibn Kathir'),
@@ -84,7 +90,8 @@ class TafsirApiService {
     int surahNumber,
     String language,
   ) async {
-    final candidates = _sources[language] ?? _sources['en']!;
+    final candidates = _sources[language];
+    if (candidates == null) return null;
     for (final source in candidates) {
       final result = await _fetchFromKey(source, surahNumber);
       if (result != null && result.isNotEmpty) return result;

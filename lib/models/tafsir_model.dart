@@ -89,11 +89,11 @@ class TafsirEntry {
   String get verseLabel =>
       verses.length == 1 ? '${verses.first}' : '${verses.first}-${verses.last}';
 
-  String tafsirText(String locale) => tafsir[locale] ?? tafsir['en']!;
+  String? tafsirText(String locale) => tafsir[locale];
 
   String? asbabText(String locale) {
     final entries = asbabAlNuzul;
     if (entries == null) return null;
-    return entries[locale] ?? entries['en'];
+    return entries[locale];
   }
 }
