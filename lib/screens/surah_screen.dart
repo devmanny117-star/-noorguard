@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -387,7 +388,9 @@ class _SurahScreenState extends State<SurahScreen> {
 
   Future<void> _load(String locale) async {
     final verses = await fetchVerses(widget.surah.number, locale: locale);
-    _artworkUri = await _getQuranArtworkUri();
+    if (!kIsWeb) {
+      _artworkUri = await _getQuranArtworkUri();
+    }
     if (!mounted) return;
     setState(() {
       _verses = verses;
