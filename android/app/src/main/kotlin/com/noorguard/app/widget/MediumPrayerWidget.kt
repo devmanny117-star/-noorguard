@@ -109,7 +109,7 @@ class MediumPrayerWidget : GlanceAppWidget() {
                 Box(
                     modifier = GlanceModifier
                         .fillMaxWidth()
-                        .height(1.dp)
+                        .height(1.5.dp)
                         .background(WidgetTheme.gold.copy(alpha = 0.25f)),
                 ) {}
 
