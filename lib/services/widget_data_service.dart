@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:home_widget/home_widget.dart';
@@ -40,7 +41,7 @@ class WidgetDataService {
     double? lat,
     double? lng,
   }) async {
-    if (kIsWeb) return;
+    if (kIsWeb || Platform.isIOS) return;
     final l10n = AppLocalizations.of(context);
     if (l10n == null) return;
     final locale = Localizations.localeOf(context).languageCode;
@@ -104,7 +105,7 @@ class WidgetDataService {
     required BuildContext context,
     required List<Prayer> prayers,
   }) async {
-    if (kIsWeb) return;
+    if (kIsWeb || Platform.isIOS) return;
     final l10n = AppLocalizations.of(context);
     if (l10n == null) return;
 
@@ -142,7 +143,7 @@ class WidgetDataService {
     required bool active,
     DateTime? endTime,
   }) async {
-    if (kIsWeb) return;
+    if (kIsWeb || Platform.isIOS) return;
     final l10n = AppLocalizations.of(context);
     if (l10n == null) return;
 
