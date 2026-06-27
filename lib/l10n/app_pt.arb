@@ -662,5 +662,82 @@
   "splashAppName": "Noor Guard",
   "splashTagline": "Guarda o teu tempo. Honra as tuas orações.",
   "stopAdhan": "Parar Adhan",
-  "duasSearchEmpty": "Tente uma categoria diferente ou outro termo de pesquisa."
+  "duasSearchEmpty": "Tente uma categoria diferente ou outro termo de pesquisa.",
+  "onboardingSkip": "Pular",
+  "@onboardingSkip": {
+    "description": "Skip button on the onboarding welcome screen"
+  },
+  "onboardingWelcomeTo": "Bem-vindo ao",
+  "@onboardingWelcomeTo": {
+    "description": "First part of the welcome heading on the onboarding screen"
+  },
+  "onboardingSubtitle": "Seu companheiro na bela jornada do Islã.",
+  "@onboardingSubtitle": {
+    "description": "Subtitle below the app name on the onboarding welcome screen"
+  },
+  "onboardingLetsGetStarted": "Vamos começar",
+  "@onboardingLetsGetStarted": {
+    "description": "Primary CTA button on the onboarding welcome screen"
+  },
+  "onboardingStepOf": "{step} de {total}",
+  "@onboardingStepOf": {
+    "description": "Step counter shown top-right on onboarding pages 2 to 4",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingWhatsYourName": "Qual é o seu nome?",
+  "@onboardingWhatsYourName": {
+    "description": "Title on the name-entry onboarding screen"
+  },
+  "onboardingNameSubtitle": "Adoraríamos saber como nos dirigir a você.",
+  "@onboardingNameSubtitle": {
+    "description": "Subtitle on the name-entry onboarding screen"
+  },
+  "onboardingNameHint": "Digite seu nome",
+  "@onboardingNameHint": {
+    "description": "Hint text inside the name text field on the onboarding screen"
+  },
+  "onboardingContinue": "Continuar",
+  "@onboardingContinue": {
+    "description": "Continue button label on onboarding screens 2 and 3"
+  },
+  "onboardingAreYouNewToIslam": "Você é novo no Islã?",
+  "@onboardingAreYouNewToIslam": {
+    "description": "Title on the Islam-mode selection onboarding screen"
+  },
+  "onboardingModeSubtitle": "Vamos personalizar sua experiência com base em sua jornada.",
+  "@onboardingModeSubtitle": {
+    "description": "Subtitle on the Islam-mode selection onboarding screen"
+  },
+  "onboardingNewToIslam": "Sou novo no Islã",
+  "@onboardingNewToIslam": {
+    "description": "Label on the beginner-mode card on the onboarding screen"
+  },
+  "onboardingNewToIslamDesc": "Modo iniciante com orientação passo a passo",
+  "@onboardingNewToIslamDesc": {
+    "description": "Description on the beginner-mode card on the onboarding screen"
+  },
+  "onboardingFamiliarWithIslam": "Estou familiarizado com o Islã",
+  "@onboardingFamiliarWithIslam": {
+    "description": "Label on the regular-mode card on the onboarding screen"
+  },
+  "onboardingFamiliarWithIslamDesc": "Modo regular com todos os recursos",
+  "@onboardingFamiliarWithIslamDesc": {
+    "description": "Description on the regular-mode card on the onboarding screen"
+  },
+  "greetingWithName": "As-Salāmu 'Alaikum, {name} 👋",
+  "@greetingWithName": {
+    "description": "Personalized greeting shown on the home screen header when user has set their name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }

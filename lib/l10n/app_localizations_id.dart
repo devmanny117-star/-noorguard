@@ -2234,4 +2234,59 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get duasSearchEmpty =>
       'Coba kategori lain atau kata kunci pencarian yang berbeda.';
+
+  @override
+  String get onboardingSkip => 'Lewati';
+
+  @override
+  String get onboardingWelcomeTo => 'Selamat datang di';
+
+  @override
+  String get onboardingSubtitle => 'Teman perjalanan indah Anda dalam Islam.';
+
+  @override
+  String get onboardingLetsGetStarted => 'Mari Mulai';
+
+  @override
+  String onboardingStepOf(int step, int total) {
+    return '$step dari $total';
+  }
+
+  @override
+  String get onboardingWhatsYourName => 'Siapa nama Anda?';
+
+  @override
+  String get onboardingNameSubtitle => 'Kami ingin tahu cara menyapa Anda.';
+
+  @override
+  String get onboardingNameHint => 'Masukkan nama Anda';
+
+  @override
+  String get onboardingContinue => 'Lanjutkan';
+
+  @override
+  String get onboardingAreYouNewToIslam => 'Apakah Anda baru mengenal Islam?';
+
+  @override
+  String get onboardingModeSubtitle =>
+      'Kami akan menyesuaikan pengalaman Anda berdasarkan perjalanan Anda.';
+
+  @override
+  String get onboardingNewToIslam => 'Saya baru mengenal Islam';
+
+  @override
+  String get onboardingNewToIslamDesc =>
+      'Mode pemula dengan panduan langkah demi langkah';
+
+  @override
+  String get onboardingFamiliarWithIslam => 'Saya sudah mengenal Islam';
+
+  @override
+  String get onboardingFamiliarWithIslamDesc =>
+      'Mode reguler dengan fitur lengkap';
+
+  @override
+  String greetingWithName(String name) {
+    return 'As-Salāmu \'Alaikum, $name 👋';
+  }
 }

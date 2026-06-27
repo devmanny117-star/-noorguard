@@ -1,15 +1,13 @@
-import 'dart:io';
 import 'dart:math' as math;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
-import '../locale_controller.dart';
+import 'beginner_home_screen.dart';
 import 'home_screen.dart';
-import 'notification_setup_screen.dart';
 
-// Fixed onboarding palette — always dark regardless of system theme
+// Always dark — onboarding never inherits the system theme.
 const _bg = Color(0xFF0D1B2A);
 const _gold = Color(0xFFC9A84C);
 const _mutedGold = Color(0xFFA08532);
@@ -31,35 +29,42 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final _pageController = PageController();
-  int _currentPage = 0;
-  String _selectedLanguage = 'English';
+  String _userName = '';
+  bool? _beginnerMode;
 
-  static const _localeCodeMap = {
-    'English': 'en',
-    'Arabic': 'ar',
-    'Urdu': 'ur',
-    'Spanish': 'es',
-    'German': 'de',
-    'Dutch': 'nl',
-    'Portuguese': 'pt',
-    'Italian': 'it',
-    'French': 'fr',
-    'Indonesian': 'id',
-    'Chinese': 'zh',
-    'Japanese': 'ja',
-    'Bengali': 'bn',
-    'Turkish': 'tr',
-    'Swahili': 'sw',
-  };
+  void _nextPage() {
+    _pageController.nextPage(
+      duration: const Duration(milliseconds: 420),
+      curve: Curves.easeInOutCubic,
+    );
+  }
 
-  Future<void> _onLanguageSelected(String lang) async {
-    setState(() => _selectedLanguage = lang);
-    final code = _localeCodeMap[lang] ?? 'en';
+  void _prevPage() {
+    _pageController.previousPage(
+      duration: const Duration(milliseconds: 420),
+      curve: Curves.easeInOutCubic,
+    );
+  }
+
+  Future<void> _completeOnboarding() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('app_locale', code);
-    if (mounted) {
-      LocaleScope.of(context).onLocaleChange(Locale(code));
-    }
+    await prefs.setBool('onboarding_complete', true);
+    // Marks the Samsung notification wizard as done — new onboarding
+    // handles the basic notification prompt inline, so users skip that screen.
+    await prefs.setBool('notification_setup_complete', true);
+    if (_userName.isNotEmpty) await prefs.setString('user_name', _userName);
+    await prefs.setBool('beginner_mode', _beginnerMode ?? false);
+    if (!mounted) return;
+    final isBeginner = _beginnerMode ?? false;
+    Navigator.of(context).pushReplacement(
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) =>
+            isBeginner ? const BeginnerHomeScreen() : const HomeScreen(),
+        transitionsBuilder: (_, anim, __, child) =>
+            FadeTransition(opacity: anim, child: child),
+        transitionDuration: const Duration(milliseconds: 700),
+      ),
+    );
   }
 
   @override
@@ -68,287 +73,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     super.dispose();
   }
 
-  void _nextPage() {
-    _pageController.nextPage(
-      duration: const Duration(milliseconds: 450),
-      curve: Curves.easeInOutCubic,
-    );
-  }
-
-  Future<void> _goToHome() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('onboarding_complete', true);
-    if (!mounted) return;
-    final needsNotificationSetup = !kIsWeb &&
-        Platform.isAndroid &&
-        !(prefs.getBool('notification_setup_complete') ?? false);
-    Navigator.of(context).pushReplacement(
-      PageRouteBuilder(
-        pageBuilder: (_, __, ___) => needsNotificationSetup
-            ? const NotificationSetupScreen(isFirstLaunch: true)
-            : const HomeScreen(),
-        transitionsBuilder: (_, animation, __, child) =>
-            FadeTransition(opacity: animation, child: child),
-        transitionDuration: const Duration(milliseconds: 700),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: _bg,
-      body: Stack(
-        children: [
-          // Full-screen Islamic geometric pattern (always below everything)
-          Positioned.fill(
-            child: CustomPaint(painter: _GeometricPatternPainter()),
-          ),
-
-          SafeArea(
-            child: Column(
-              children: [
-                Expanded(
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged: (i) => setState(() => _currentPage = i),
-                    // Prevent swipe-back from completion screen
-                    physics: _currentPage == 3
-                        ? const NeverScrollableScrollPhysics()
-                        : const BouncingScrollPhysics(),
-                    children: [
-                      _WelcomePage(
-                        selectedLanguage: _selectedLanguage,
-                        onLanguageSelected: _onLanguageSelected,
-                        onNext: _nextPage,
-                      ),
-                      _LocationPage(onNext: _nextPage),
-                      _NotificationPage(onNext: _nextPage),
-                      _ReadyPage(onEnter: _goToHome),
-                    ],
-                  ),
-                ),
-                // Progress dots
-                _PageDots(current: _currentPage, total: 4),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ),
-        ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
       ),
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SCREEN 1 — WELCOME & LANGUAGE
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _WelcomePage extends StatelessWidget {
-  final String selectedLanguage;
-  final ValueChanged<String> onLanguageSelected;
-  final VoidCallback onNext;
-
-  static const _languages = [
-    ('English', 'English', false),
-    ('العربية', 'Arabic', true),
-    ('اردو', 'Urdu', true),
-    ('Español', 'Spanish', false),
-    ('Deutsch', 'German', false),
-    ('Nederlands', 'Dutch', false),
-    ('Português', 'Portuguese', false),
-    ('Italiano', 'Italian', false),
-    ('Français', 'French', false),
-    ('Bahasa Indonesia', 'Indonesian', false),
-    ('中文', 'Chinese', false),
-    ('日本語', 'Japanese', false),
-    ('বাংলা', 'Bengali', false),
-    ('Türkçe', 'Turkish', false),
-    ('Kiswahili', 'Swahili', false),
-  ];
-
-  const _WelcomePage({
-    required this.selectedLanguage,
-    required this.onLanguageSelected,
-    required this.onNext,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.symmetric(horizontal: 28),
-      child: Column(
-        children: [
-          const SizedBox(height: 28),
-
-          // Logo — crescent + star in layered gold rings (matches "All Set" screen)
-          const _CrescentLogo(),
-
-          const SizedBox(height: 28),
-
-          // App name
-          Text(
-            l10n.appName,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 40,
-              fontWeight: FontWeight.w700,
-              color: _white,
-              letterSpacing: 0.5,
-              height: 1.1,
-            ),
-          ),
-
-          const SizedBox(height: 6),
-
-          // Arabic / Urdu transliteration
-          Text(
-            'نور گارڈ',
-            style: GoogleFonts.scheherazadeNew(
-              fontSize: 24,
-              color: _gold,
-              height: 1.5,
-            ),
-          ),
-
-          const SizedBox(height: 10),
-
-          Text(
-            l10n.onboardingTagline,
-            style: GoogleFonts.lato(
-              fontSize: 14.5,
-              fontStyle: FontStyle.italic,
-              color: _white.withValues(alpha: 0.55),
-              letterSpacing: 0.3,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 36),
-
-          // Thin gold divider
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                    height: 0.6, color: _gold.withValues(alpha: 0.25)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Text(
-                  l10n.onboardingChooseLanguage,
-                  style: GoogleFonts.lato(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: _grey,
-                    letterSpacing: 0.8,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                    height: 0.6, color: _gold.withValues(alpha: 0.25)),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 16),
-
-          // Language grid
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            childAspectRatio: 2.6,
-            children: _languages.map((lang) {
-              final (label, id, isRtl) = lang;
-              return _LangCard(
-                label: label,
-                identifier: id,
-                isSelected: selectedLanguage == id,
-                onTap: () => onLanguageSelected(id),
-                isRtl: isRtl,
-              );
-            }).toList(),
-          ),
-
-          const SizedBox(height: 32),
-
-          _GoldButton(label: l10n.onboardingGetStarted, onTap: onNext),
-
-          const SizedBox(height: 28),
-        ],
-      ),
-    );
-  }
-}
-
-class _LangCard extends StatelessWidget {
-  final String label;
-  final String identifier;
-  final bool isSelected;
-  final VoidCallback onTap;
-  final bool isRtl;
-
-  const _LangCard({
-    required this.label,
-    required this.identifier,
-    required this.isSelected,
-    required this.onTap,
-    this.isRtl = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeOut,
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        decoration: BoxDecoration(
-          color: isSelected ? _gold.withValues(alpha: 0.12) : _cardBg,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: isSelected ? _gold : _cardBorder,
-            width: isSelected ? 1.5 : 1.0,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+      child: Scaffold(
+        backgroundColor: _bg,
+        body: PageView(
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
           children: [
-            // Gold dot when selected
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: isSelected ? 6 : 0,
-              height: isSelected ? 6 : 0,
-              margin: EdgeInsets.only(right: isSelected ? 7 : 0),
-              decoration: const BoxDecoration(
-                color: _gold,
-                shape: BoxShape.circle,
-              ),
+            _WelcomePage(
+              onNext: _nextPage,
+              onSkip: _completeOnboarding,
             ),
-            Flexible(
-              child: Text(
-                label,
-                style: isRtl
-                    ? GoogleFonts.scheherazadeNew(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: isSelected ? _gold : _white,
-                      )
-                    : GoogleFonts.lato(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: isSelected ? _gold : _white,
-                      ),
-                overflow: TextOverflow.ellipsis,
-                textAlign: isRtl ? TextAlign.right : TextAlign.center,
-              ),
+            _NamePage(
+              onNext: (name) {
+                setState(() => _userName = name);
+                _nextPage();
+              },
+              onBack: _prevPage,
             ),
+            _IslamModePage(
+              onNext: (isBeginner) {
+                setState(() => _beginnerMode = isBeginner);
+                _nextPage();
+              },
+              onBack: _prevPage,
+            ),
+            _LocationPage(onNext: _nextPage, onBack: _prevPage),
+            _NotificationPage(onComplete: _completeOnboarding, onBack: _prevPage),
           ],
         ),
       ),
@@ -357,582 +115,523 @@ class _LangCard extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SCREEN 2 — LOCATION PERMISSION
+// SCREEN 1 – WELCOME
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _WelcomePage extends StatefulWidget {
+  final VoidCallback onNext;
+  final VoidCallback onSkip;
+  const _WelcomePage({required this.onNext, required this.onSkip});
+
+  @override
+  State<_WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<_WelcomePage>
+    with TickerProviderStateMixin {
+  late final AnimationController _floatCtrl;
+  late final AnimationController _twinkleCtrl;
+  late final Animation<double> _floatAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _floatCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2800),
+    )..repeat(reverse: true);
+    _floatAnim = Tween<double>(begin: -7.0, end: 7.0).animate(
+      CurvedAnimation(parent: _floatCtrl, curve: Curves.easeInOut),
+    );
+    _twinkleCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1600),
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _floatCtrl.dispose();
+    _twinkleCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final size = MediaQuery.sizeOf(context);
+    final topPad = MediaQuery.paddingOf(context).top;
+    final botPad = MediaQuery.paddingOf(context).bottom;
+    final archSize = size.width * 0.76;
+
+    return Stack(
+      children: [
+        Column(
+          children: [
+            SizedBox(height: topPad + 16),
+            // ── arch + animations (55% of screen) ──────────────────────────
+            SizedBox(
+              height: size.height * 0.52,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Subtle radial glow behind arch
+                  Positioned.fill(
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: RadialGradient(
+                          center: const Alignment(0, -0.1),
+                          radius: 0.75,
+                          colors: [
+                            _gold.withValues(alpha: 0.07),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Arch outline
+                  CustomPaint(
+                    size: Size(archSize, archSize),
+                    painter: _IslamicArchPainter(),
+                  ),
+                  // Twinkling stars
+                  AnimatedBuilder(
+                    animation: _twinkleCtrl,
+                    builder: (_, __) => CustomPaint(
+                      size: Size(archSize, archSize),
+                      painter: _StarsPainter(twinkle: _twinkleCtrl.value),
+                    ),
+                  ),
+                  // Floating crescent
+                  AnimatedBuilder(
+                    animation: _floatAnim,
+                    builder: (_, __) => Transform.translate(
+                      offset: Offset(0, _floatAnim.value),
+                      child: SizedBox(
+                        width: archSize * 0.30,
+                        height: archSize * 0.30,
+                        child: const CustomPaint(painter: _CrescentPainter()),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // ── bottom text block ───────────────────────────────────────────
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      l10n.onboardingWelcomeTo.toUpperCase(),
+                      style: GoogleFonts.lato(
+                        fontSize: 13,
+                        color: _gold,
+                        letterSpacing: 2.5,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Noor Guard',
+                      style: GoogleFonts.playfairDisplay(
+                        fontSize: 44,
+                        fontWeight: FontWeight.w800,
+                        color: _white,
+                        height: 1.05,
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    Text(
+                      l10n.onboardingSubtitle,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                        fontSize: 15,
+                        color: _grey,
+                        height: 1.55,
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+                    const _PageDots(currentPage: 0, totalPages: 3),
+                    const SizedBox(height: 28),
+                    _GoldButton(
+                      label: l10n.onboardingLetsGetStarted,
+                      onTap: widget.onNext,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: botPad + 16),
+          ],
+        ),
+        // Skip button
+        Positioned(
+          top: topPad + 8,
+          right: 16,
+          child: TextButton(
+            onPressed: widget.onSkip,
+            style: TextButton.styleFrom(
+              foregroundColor: _grey,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            ),
+            child: Text(
+              l10n.onboardingSkip,
+              style: GoogleFonts.lato(fontSize: 15, color: _grey),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCREEN 2 – NAME
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _NamePage extends StatefulWidget {
+  final void Function(String name) onNext;
+  final VoidCallback onBack;
+  const _NamePage({required this.onNext, required this.onBack});
+
+  @override
+  State<_NamePage> createState() => _NamePageState();
+}
+
+class _NamePageState extends State<_NamePage> {
+  final _controller = TextEditingController();
+  String _name = '';
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final botPad = MediaQuery.paddingOf(context).bottom;
+
+    return Column(
+      children: [
+        SafeArea(child: _StepHeader(onBack: widget.onBack, step: 2)),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Column(
+              children: [
+                const SizedBox(height: 32),
+                const _IconCircle(icon: Icons.person_outline_rounded),
+                const SizedBox(height: 28),
+                Text(
+                  l10n.onboardingWhatsYourName,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: _white,
+                    height: 1.2,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  l10n.onboardingNameSubtitle,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(fontSize: 15, color: _grey, height: 1.5),
+                ),
+                const SizedBox(height: 36),
+                TextField(
+                  controller: _controller,
+                  onChanged: (v) => setState(() => _name = v.trim()),
+                  autofocus: false,
+                  textCapitalization: TextCapitalization.words,
+                  style: GoogleFonts.lato(fontSize: 17, color: _white),
+                  cursorColor: _gold,
+                  decoration: InputDecoration(
+                    hintText: l10n.onboardingNameHint,
+                    hintStyle: GoogleFonts.lato(color: _grey.withValues(alpha: 0.6)),
+                    filled: true,
+                    fillColor: _cardBg,
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: _cardBorder),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: _cardBorder),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: const BorderSide(color: _gold, width: 1.5),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 36),
+                _GoldButton(
+                  label: l10n.onboardingContinue,
+                  onTap: _name.isNotEmpty ? () => widget.onNext(_name) : null,
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: botPad + 16),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCREEN 3 – ISLAM MODE
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _IslamModePage extends StatefulWidget {
+  final void Function(bool isBeginner) onNext;
+  final VoidCallback onBack;
+  const _IslamModePage({required this.onNext, required this.onBack});
+
+  @override
+  State<_IslamModePage> createState() => _IslamModePageState();
+}
+
+class _IslamModePageState extends State<_IslamModePage> {
+  bool? _selected; // true = beginner, false = familiar
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final botPad = MediaQuery.paddingOf(context).bottom;
+
+    return Column(
+      children: [
+        SafeArea(child: _StepHeader(onBack: widget.onBack, step: 3)),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: Column(
+              children: [
+                const SizedBox(height: 28),
+                const _IconCircle(icon: Icons.people_outline_rounded),
+                const SizedBox(height: 24),
+                Text(
+                  l10n.onboardingAreYouNewToIslam,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    color: _white,
+                    height: 1.25,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  l10n.onboardingModeSubtitle,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(fontSize: 14, color: _grey, height: 1.5),
+                ),
+                const SizedBox(height: 32),
+                _ModeCard(
+                  selected: _selected == true,
+                  onTap: () => setState(() => _selected = true),
+                  icon: Icons.nightlight_round,
+                  title: l10n.onboardingNewToIslam,
+                  desc: l10n.onboardingNewToIslamDesc,
+                ),
+                const SizedBox(height: 14),
+                _ModeCard(
+                  selected: _selected == false,
+                  onTap: () => setState(() => _selected = false),
+                  icon: Icons.menu_book_outlined,
+                  title: l10n.onboardingFamiliarWithIslam,
+                  desc: l10n.onboardingFamiliarWithIslamDesc,
+                ),
+                const SizedBox(height: 36),
+                _GoldButton(
+                  label: l10n.onboardingContinue,
+                  onTap: _selected != null
+                      ? () => widget.onNext(_selected!)
+                      : null,
+                ),
+              ],
+            ),
+          ),
+        ),
+        SizedBox(height: botPad + 16),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCREEN 4 – LOCATION
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _LocationPage extends StatelessWidget {
   final VoidCallback onNext;
-  const _LocationPage({required this.onNext});
+  final VoidCallback onBack;
+  const _LocationPage({required this.onNext, required this.onBack});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28),
-      child: Column(
-        children: [
-          const Spacer(flex: 2),
+    final botPad = MediaQuery.paddingOf(context).bottom;
 
-          // Location pin with layered glow rings
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: 136,
-                height: 136,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _gold.withValues(alpha: 0.05),
-                ),
-              ),
-              Container(
-                width: 108,
-                height: 108,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _gold.withValues(alpha: 0.09),
-                ),
-              ),
-              Container(
-                width: 82,
-                height: 82,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _gold.withValues(alpha: 0.14),
-                  border: Border.all(
-                    color: _gold.withValues(alpha: 0.30),
-                    width: 1,
+    return Column(
+      children: [
+        SafeArea(child: _StepHeader(onBack: onBack, step: 4)),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const _IconCircle(icon: Icons.location_on_outlined),
+                const SizedBox(height: 28),
+                Text(
+                  l10n.onboardingLocationTitle,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    color: _white,
+                    height: 1.25,
                   ),
                 ),
-              ),
-              const Icon(Icons.location_on_rounded, size: 42, color: _gold),
-            ],
-          ),
-
-          const SizedBox(height: 36),
-
-          Text(
-            l10n.onboardingLocationTitle,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-              color: _white,
-              height: 1.15,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 16),
-
-          Text(
-            l10n.onboardingLocationDesc,
-            style: GoogleFonts.lato(
-              fontSize: 15,
-              color: _white.withValues(alpha: 0.62),
-              height: 1.70,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 24),
-
-          // Privacy promise banner
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
-            decoration: BoxDecoration(
-              color: _gold.withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(
-                color: _gold.withValues(alpha: 0.22),
-              ),
-            ),
-            child: Row(
-              children: [
-                const Icon(Icons.shield_rounded, size: 17, color: _gold),
-                const SizedBox(width: 10),
-                Expanded(
+                const SizedBox(height: 12),
+                Text(
+                  l10n.onboardingLocationDesc,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(fontSize: 14, color: _grey, height: 1.55),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  decoration: BoxDecoration(
+                    color: _gold.withValues(alpha: 0.07),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: _gold.withValues(alpha: 0.22)),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.lock_outline, color: _gold, size: 16),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          l10n.onboardingPrivacyBanner,
+                          style: GoogleFonts.lato(
+                            fontSize: 12,
+                            color: _gold.withValues(alpha: 0.85),
+                            height: 1.4,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 36),
+                _GoldButton(label: l10n.onboardingAllowLocation, onTap: onNext),
+                const SizedBox(height: 10),
+                TextButton(
+                  onPressed: onNext,
+                  style: TextButton.styleFrom(foregroundColor: _grey),
                   child: Text(
-                    l10n.onboardingPrivacyBanner,
-                    style: GoogleFonts.lato(
-                      fontSize: 13,
-                      color: _gold,
-                      fontWeight: FontWeight.w600,
-                      height: 1.45,
-                    ),
+                    l10n.onboardingSkipForNow,
+                    style: GoogleFonts.lato(color: _grey, fontSize: 15),
                   ),
                 ),
               ],
             ),
           ),
-
-          const Spacer(flex: 3),
-
-          _GoldButton(label: l10n.onboardingAllowLocation, onTap: onNext),
-
-          const SizedBox(height: 18),
-
-          GestureDetector(
-            onTap: onNext,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Text(
-                l10n.onboardingSkipForNow,
-                style: GoogleFonts.lato(
-                  fontSize: 14,
-                  color: _grey,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 20),
-        ],
-      ),
+        ),
+        SizedBox(height: botPad + 16),
+      ],
     );
   }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SCREEN 3 — NOTIFICATION PERMISSION
+// SCREEN 5 – NOTIFICATION
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _NotificationPage extends StatelessWidget {
-  final VoidCallback onNext;
-  const _NotificationPage({required this.onNext});
+  final VoidCallback onComplete;
+  final VoidCallback onBack;
+  const _NotificationPage({required this.onComplete, required this.onBack});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28),
-      child: Column(
-        children: [
-          const Spacer(flex: 2),
+    final botPad = MediaQuery.paddingOf(context).bottom;
 
-          // Animated pulsing bell
-          const _PulsingBell(),
-
-          const SizedBox(height: 36),
-
-          Text(
-            l10n.onboardingNotificationTitle,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-              color: _white,
-              height: 1.15,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 16),
-
-          Text(
-            l10n.onboardingNotificationDesc,
-            style: GoogleFonts.lato(
-              fontSize: 15,
-              color: _white.withValues(alpha: 0.62),
-              height: 1.70,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: 24),
-
-          // Feature chips
-          Row(
+    return Column(
+      children: [
+        SafeArea(
+          child: Row(
             children: [
-              _FeatureChip(
-                icon: Icons.mosque_rounded,
-                label: l10n.onboardingAdhanAlerts,
-              ),
-              const SizedBox(width: 10),
-              _FeatureChip(
-                icon: Icons.timer_rounded,
-                label: l10n.onboardingCustomTiming,
-              ),
-              const SizedBox(width: 10),
-              _FeatureChip(
-                icon: Icons.tune_rounded,
-                label: l10n.onboardingAdjustable,
+              IconButton(
+                onPressed: onBack,
+                icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                    color: _white, size: 20),
               ),
             ],
           ),
-
-          const Spacer(flex: 3),
-
-          _GoldButton(label: l10n.onboardingEnableNotifications, onTap: onNext),
-
-          const SizedBox(height: 18),
-
-          GestureDetector(
-            onTap: onNext,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Text(
-                l10n.onboardingMaybeLater,
-                style: GoogleFonts.lato(
-                  fontSize: 14,
-                  color: _grey,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 20),
-        ],
-      ),
-    );
-  }
-}
-
-class _PulsingBell extends StatefulWidget {
-  const _PulsingBell();
-
-  @override
-  State<_PulsingBell> createState() => _PulsingBellState();
-}
-
-class _PulsingBellState extends State<_PulsingBell>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _ctrl;
-  late final Animation<double> _pulse;
-
-  @override
-  void initState() {
-    super.initState();
-    _ctrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1800),
-    )..repeat(reverse: true);
-    _pulse = CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut);
-  }
-
-  @override
-  void dispose() {
-    _ctrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _pulse,
-      builder: (_, __) {
-        return Stack(
-          alignment: Alignment.center,
-          children: [
-            // Outermost expanding ring
-            Container(
-              width: 130 + _pulse.value * 16,
-              height: 130 + _pulse.value * 16,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _gold.withValues(alpha: 0.03 + _pulse.value * 0.025),
-              ),
-            ),
-            Container(
-              width: 108,
-              height: 108,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _gold.withValues(alpha: 0.08),
-              ),
-            ),
-            Container(
-              width: 82,
-              height: 82,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: _gold.withValues(alpha: 0.14),
-                border: Border.all(
-                  color: _gold.withValues(alpha: 0.28),
-                  width: 1,
-                ),
-              ),
-            ),
-            // Bell wobble — slight rotation tick
-            Transform.rotate(
-              angle: math.sin(_ctrl.value * math.pi * 2) * 0.12,
-              child: const Icon(
-                Icons.notifications_rounded,
-                size: 44,
-                color: _gold,
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _FeatureChip extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  const _FeatureChip({required this.icon, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
-        decoration: BoxDecoration(
-          color: _cardBg,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: _cardBorder),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 22, color: _gold),
-            const SizedBox(height: 5),
-            Text(
-              label,
-              style: GoogleFonts.lato(
-                fontSize: 10.5,
-                color: _white.withValues(alpha: 0.65),
-                fontWeight: FontWeight.w600,
-                height: 1.2,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SCREEN 4 — ALL SET
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _ReadyPage extends StatefulWidget {
-  final VoidCallback onEnter;
-  const _ReadyPage({required this.onEnter});
-
-  @override
-  State<_ReadyPage> createState() => _ReadyPageState();
-}
-
-class _ReadyPageState extends State<_ReadyPage>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _ctrl;
-  late final Animation<double> _fadeIn;
-  late final Animation<double> _slideUp;
-
-  @override
-  void initState() {
-    super.initState();
-    _ctrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 800),
-    );
-    _fadeIn = CurvedAnimation(parent: _ctrl, curve: Curves.easeOut);
-    _slideUp = Tween(begin: 30.0, end: 0.0).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic),
-    );
-    // Slight delay so you see the page land before elements animate in
-    Future.delayed(const Duration(milliseconds: 120), () {
-      if (mounted) _ctrl.forward();
-    });
-  }
-
-  @override
-  void dispose() {
-    _ctrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    return AnimatedBuilder(
-      animation: _ctrl,
-      builder: (_, child) => Opacity(
-        opacity: _fadeIn.value,
-        child: Transform.translate(
-          offset: Offset(0, _slideUp.value),
-          child: child,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28),
-        child: Column(
-          children: [
-            const Spacer(flex: 2),
-
-            // Crescent in gold ring with checkmark overlay
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: 140,
-                  height: 140,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _gold.withValues(alpha: 0.07),
-                  ),
-                ),
-                Container(
-                  width: 112,
-                  height: 112,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _gold.withValues(alpha: 0.11),
-                    border: Border.all(
-                      color: _gold.withValues(alpha: 0.30),
-                      width: 1.5,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 74,
-                  height: 74,
-                  child: CustomPaint(painter: _CrescentPainter()),
-                ),
-                // Small checkmark badge
-                Positioned(
-                  bottom: 14,
-                  right: 14,
-                  child: Container(
-                    width: 28,
-                    height: 28,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1B5E20),
-                      shape: BoxShape.circle,
-                      border: Border.all(color: _bg, width: 2),
-                    ),
-                    child: const Icon(
-                      Icons.check_rounded,
-                      size: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 30),
-
-            Text(
-              l10n.onboardingAllSetTitle,
-              style: GoogleFonts.playfairDisplay(
-                fontSize: 34,
-                fontWeight: FontWeight.w700,
-                color: _white,
-                height: 1.1,
-              ),
-              textAlign: TextAlign.center,
-            ),
-
-            const SizedBox(height: 10),
-
-            Text(
-              l10n.onboardingAllSetDesc,
-              style: GoogleFonts.lato(
-                fontSize: 14.5,
-                color: _white.withValues(alpha: 0.58),
-                height: 1.65,
-              ),
-              textAlign: TextAlign.center,
-            ),
-
-            const SizedBox(height: 32),
-
-            // Feature summary cards
-            _SummaryTile(
-              icon: Icons.access_time_rounded,
-              label: l10n.onboardingPrayerTimesLabel,
-              desc: l10n.onboardingPrayerTimesDesc,
-            ),
-            const SizedBox(height: 10),
-            _SummaryTile(
-              icon: Icons.lock_outline_rounded,
-              label: l10n.onboardingLockScreenLabel,
-              desc: l10n.onboardingLockScreenDesc,
-            ),
-            const SizedBox(height: 10),
-            _SummaryTile(
-              icon: Icons.security_rounded,
-              label: l10n.onboardingPrayerGuardLabel,
-              desc: l10n.onboardingPrayerGuardDesc,
-            ),
-
-            const Spacer(flex: 3),
-
-            _GoldButton(label: l10n.onboardingEnterApp, onTap: widget.onEnter),
-
-            const SizedBox(height: 20),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SummaryTile extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String desc;
-
-  const _SummaryTile({
-    required this.icon,
-    required this.label,
-    required this.desc,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
-      decoration: BoxDecoration(
-        color: _cardBg,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: _cardBorder),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: _gold.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(11),
-            ),
-            child: Icon(icon, size: 20, color: _gold),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const _IconCircle(icon: Icons.notifications_outlined),
+                const SizedBox(height: 28),
                 Text(
-                  label,
-                  style: GoogleFonts.lato(
-                    fontSize: 13.5,
+                  l10n.onboardingNotificationTitle,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 26,
                     fontWeight: FontWeight.w700,
                     color: _white,
+                    height: 1.25,
                   ),
                 ),
-                const SizedBox(height: 2),
+                const SizedBox(height: 12),
                 Text(
-                  desc,
-                  style: GoogleFonts.lato(
-                    fontSize: 11.5,
-                    color: _grey,
-                    height: 1.3,
+                  l10n.onboardingNotificationDesc,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(fontSize: 14, color: _grey, height: 1.55),
+                ),
+                const SizedBox(height: 28),
+                _FeatureRow(icon: Icons.volume_up_outlined, label: l10n.onboardingAdhanAlerts),
+                const SizedBox(height: 10),
+                _FeatureRow(icon: Icons.tune_rounded, label: l10n.onboardingCustomTiming),
+                const SizedBox(height: 10),
+                _FeatureRow(icon: Icons.timer_outlined, label: l10n.onboardingAdjustable),
+                const SizedBox(height: 36),
+                _GoldButton(
+                    label: l10n.onboardingEnableNotifications, onTap: onComplete),
+                const SizedBox(height: 10),
+                TextButton(
+                  onPressed: onComplete,
+                  style: TextButton.styleFrom(foregroundColor: _grey),
+                  child: Text(
+                    l10n.onboardingMaybeLater,
+                    style: GoogleFonts.lato(color: _grey, fontSize: 15),
                   ),
                 ),
               ],
             ),
           ),
-          const Icon(Icons.check_circle_rounded, size: 18, color: _gold),
-        ],
-      ),
+        ),
+        SizedBox(height: botPad + 16),
+      ],
     );
   }
 }
@@ -941,42 +640,93 @@ class _SummaryTile extends StatelessWidget {
 // SHARED COMPONENTS
 // ─────────────────────────────────────────────────────────────────────────────
 
+class _StepHeader extends StatelessWidget {
+  final VoidCallback onBack;
+  final int step;
+  const _StepHeader({required this.onBack, required this.step});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Row(
+      children: [
+        IconButton(
+          onPressed: onBack,
+          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+              color: _white, size: 20),
+        ),
+        const Spacer(),
+        Text(
+          l10n.onboardingStepOf(step, 4),
+          style: GoogleFonts.lato(color: _grey, fontSize: 14),
+        ),
+        const SizedBox(width: 16),
+      ],
+    );
+  }
+}
+
+class _IconCircle extends StatelessWidget {
+  final IconData icon;
+  const _IconCircle({required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      height: 80,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: _gold.withValues(alpha: 0.10),
+        border: Border.all(color: _gold.withValues(alpha: 0.28), width: 1.5),
+      ),
+      child: Icon(icon, color: _gold, size: 38),
+    );
+  }
+}
+
 class _GoldButton extends StatelessWidget {
   final String label;
-  final VoidCallback onTap;
-
+  final VoidCallback? onTap;
   const _GoldButton({required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    final enabled = onTap != null;
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        height: 58,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: 56,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFFD9B45A), _gold, _mutedGold],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: BorderRadius.circular(18),
-          boxShadow: [
-            BoxShadow(
-              color: _gold.withValues(alpha: 0.38),
-              blurRadius: 22,
-              offset: const Offset(0, 7),
-            ),
-          ],
+          gradient: enabled
+              ? const LinearGradient(
+                  colors: [Color(0xFFD4A832), _mutedGold],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+              : null,
+          color: enabled ? null : _cardBg,
+          borderRadius: BorderRadius.circular(14),
+          border: enabled ? null : Border.all(color: _cardBorder),
+          boxShadow: enabled
+              ? [
+                  BoxShadow(
+                    color: _gold.withValues(alpha: 0.28),
+                    blurRadius: 14,
+                    offset: const Offset(0, 5),
+                  )
+                ]
+              : null,
         ),
         child: Center(
           child: Text(
             label,
             style: GoogleFonts.lato(
-              fontSize: 16.5,
+              fontSize: 17,
               fontWeight: FontWeight.w700,
-              color: _bg,
-              letterSpacing: 0.4,
+              color: enabled ? _bg : _grey,
+              letterSpacing: 0.3,
             ),
           ),
         ),
@@ -986,25 +736,23 @@ class _GoldButton extends StatelessWidget {
 }
 
 class _PageDots extends StatelessWidget {
-  final int current;
-  final int total;
-
-  const _PageDots({required this.current, required this.total});
+  final int currentPage;
+  final int totalPages;
+  const _PageDots({required this.currentPage, required this.totalPages});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(total, (i) {
-        final isActive = i == current;
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(totalPages, (i) {
+        final active = i == currentPage;
         return AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 250),
           margin: const EdgeInsets.symmetric(horizontal: 4),
-          width: isActive ? 26.0 : 8.0,
+          width: active ? 20 : 8,
           height: 8,
           decoration: BoxDecoration(
-            color: isActive ? _gold : _gold.withValues(alpha: 0.28),
+            color: active ? _gold : _grey.withValues(alpha: 0.35),
             borderRadius: BorderRadius.circular(4),
           ),
         );
@@ -1013,46 +761,210 @@ class _PageDots extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// WELCOME SCREEN — CRESCENT LOGO
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _CrescentLogo extends StatelessWidget {
-  const _CrescentLogo();
+class _ModeCard extends StatelessWidget {
+  final bool selected;
+  final VoidCallback onTap;
+  final IconData icon;
+  final String title;
+  final String desc;
+  const _ModeCard({
+    required this.selected,
+    required this.onTap,
+    required this.icon,
+    required this.title,
+    required this.desc,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: selected ? _gold.withValues(alpha: 0.07) : _cardBg,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: selected ? _gold : _cardBorder,
+            width: selected ? 1.5 : 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 46,
+              height: 46,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: selected
+                    ? _gold.withValues(alpha: 0.14)
+                    : _cardBorder,
+              ),
+              child: Icon(icon,
+                  color: selected ? _gold : _grey, size: 22),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.lato(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: selected ? _white : _white.withValues(alpha: 0.80),
+                    ),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
+                    desc,
+                    style: GoogleFonts.lato(fontSize: 12, color: _grey, height: 1.4),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            Icon(
+              selected
+                  ? Icons.check_circle_rounded
+                  : Icons.radio_button_unchecked,
+              color: selected ? _gold : _grey.withValues(alpha: 0.50),
+              size: 22,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FeatureRow extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  const _FeatureRow({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
       children: [
         Container(
-          width: 140,
-          height: 140,
+          width: 36,
+          height: 36,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: _gold.withValues(alpha: 0.07),
+            color: _gold.withValues(alpha: 0.10),
           ),
+          child: Icon(icon, color: _gold, size: 17),
         ),
-        Container(
-          width: 112,
-          height: 112,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: _gold.withValues(alpha: 0.11),
-            border: Border.all(
-              color: _gold.withValues(alpha: 0.30),
-              width: 1.5,
-            ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(
+            label,
+            style: GoogleFonts.lato(fontSize: 14, color: _white.withValues(alpha: 0.85)),
           ),
-        ),
-        const SizedBox(
-          width: 74,
-          height: 74,
-          child: CustomPaint(painter: _CrescentPainter()),
         ),
       ],
     );
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PAINTERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _IslamicArchPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+
+    final paint = Paint()
+      ..color = _gold.withValues(alpha: 0.52)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.6
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+
+    final left = w * 0.18;
+    final right = w * 0.82;
+    final base = h * 0.92;
+    final shoulder = h * 0.54;
+    final peak = h * 0.07;
+    final midX = w / 2;
+    final spanH = shoulder - peak;
+
+    // Pointed Islamic arch — two cubic beziers meeting at the peak
+    final path = Path()
+      ..moveTo(left, base)
+      ..lineTo(left, shoulder)
+      ..cubicTo(
+        left, shoulder - spanH * 0.55,
+        midX - (midX - left) * 0.35, peak + spanH * 0.15,
+        midX, peak,
+      )
+      ..cubicTo(
+        midX + (right - midX) * 0.35, peak + spanH * 0.15,
+        right, shoulder - spanH * 0.55,
+        right, shoulder,
+      )
+      ..lineTo(right, base)
+      ..lineTo(left, base);
+
+    canvas.drawPath(path, paint);
+
+    // Decorative small diamond at the arch peak
+    final diamondPaint = Paint()
+      ..color = _gold.withValues(alpha: 0.70)
+      ..style = PaintingStyle.fill;
+    const ds = 4.0;
+    final diamondPath = Path()
+      ..moveTo(midX, peak - ds)
+      ..lineTo(midX + ds, peak)
+      ..lineTo(midX, peak + ds)
+      ..lineTo(midX - ds, peak)
+      ..close();
+    canvas.drawPath(diamondPath, diamondPaint);
+
+    // Thin horizontal springing line at shoulder level
+    final springPaint = Paint()
+      ..color = _gold.withValues(alpha: 0.22)
+      ..strokeWidth = 0.8;
+    canvas.drawLine(Offset(left, shoulder), Offset(right, shoulder), springPaint);
+  }
+
+  @override
+  bool shouldRepaint(_IslamicArchPainter _) => false;
+}
+
+class _StarsPainter extends CustomPainter {
+  final double twinkle;
+  const _StarsPainter({required this.twinkle});
+
+  static const List<List<double>> _positions = [
+    [0.12, 0.18], [0.88, 0.22], [0.08, 0.60],
+    [0.92, 0.50], [0.50, 0.04], [0.28, 0.09],
+    [0.72, 0.10],
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    for (int i = 0; i < _positions.length; i++) {
+      final phase = ((i * 0.41) + twinkle) % 1.0;
+      final alpha = 0.25 + 0.55 * math.sin(phase * math.pi);
+      canvas.drawCircle(
+        Offset(size.width * _positions[i][0], size.height * _positions[i][1]),
+        1.8,
+        Paint()
+          ..color = _gold.withValues(alpha: alpha)
+          ..style = PaintingStyle.fill,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_StarsPainter old) => old.twinkle != twinkle;
 }
 
 class _CrescentPainter extends CustomPainter {
@@ -1064,110 +976,30 @@ class _CrescentPainter extends CustomPainter {
     final cy = size.height / 2;
     final r = size.width * 0.40;
 
-    final paint = Paint()
-      ..color = _gold
-      ..style = PaintingStyle.fill;
+    // Glow
+    canvas.drawCircle(
+      Offset(cx, cy),
+      r * 1.3,
+      Paint()
+        ..color = _gold.withValues(alpha: 0.10)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 14),
+    );
 
-    // Crescent: outer circle minus offset inner circle
-    final outer = Path()
+    // Crescent: clip to outer circle, fill gold, cut inner circle offset right
+    final clip = Path()
       ..addOval(Rect.fromCircle(center: Offset(cx, cy), radius: r));
-    final inner = Path()
-      ..addOval(Rect.fromCircle(
-        center: Offset(cx + r * 0.34, cy - r * 0.08),
-        radius: r * 0.78,
-      ));
-    final crescent = Path.combine(PathOperation.difference, outer, inner);
-
     canvas.save();
-    canvas.translate(cx, cy);
-    canvas.rotate(-math.pi / 9);
-    canvas.translate(-cx, -cy);
-    canvas.drawPath(crescent, paint);
-    canvas.restore();
-
-    // 5-pointed star
-    _drawStar(canvas, paint, Offset(cx + r * 0.72, cy - r * 0.60), r * 0.20);
-  }
-
-  void _drawStar(Canvas canvas, Paint paint, Offset center, double r) {
-    final path = Path();
-    for (int i = 0; i < 5; i++) {
-      final outer = i * 2 * math.pi / 5 - math.pi / 2;
-      final inner = outer + math.pi / 5;
-      final ox = center.dx + r * math.cos(outer);
-      final oy = center.dy + r * math.sin(outer);
-      final ix = center.dx + r * 0.38 * math.cos(inner);
-      final iy = center.dy + r * 0.38 * math.sin(inner);
-      i == 0 ? path.moveTo(ox, oy) : path.lineTo(ox, oy);
-      path.lineTo(ix, iy);
-    }
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(_CrescentPainter old) => false;
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// BACKGROUND — ISLAMIC GEOMETRIC PATTERN
-// ─────────────────────────────────────────────────────────────────────────────
-
-class _GeometricPatternPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFFC9A84C).withValues(alpha: 0.032)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 0.9;
-
-    const tileW = 78.0;
-    const tileH = 78.0;
-
-    final cols = (size.width / tileW).ceil() + 2;
-    final rows = (size.height / tileH).ceil() + 2;
-
-    for (int row = -1; row < rows; row++) {
-      for (int col = -1; col < cols; col++) {
-        final dx = col * tileW + (row.isOdd ? tileW / 2 : 0);
-        final dy = row * tileH;
-        _drawStar8(canvas, paint, Offset(dx, dy), tileW * 0.32);
-
-        // Connecting squares at midpoints
-        if (row.isEven) {
-          _drawSquare(canvas, paint, Offset(dx + tileW / 2, dy + tileH / 2),
-              tileW * 0.14);
-        }
-      }
-    }
-  }
-
-  void _drawStar8(Canvas canvas, Paint paint, Offset center, double r) {
-    final path = Path();
-    for (int i = 0; i < 8; i++) {
-      final outerA = i * math.pi / 4 - math.pi / 8;
-      final innerA = outerA + math.pi / 8;
-      final ox = center.dx + r * math.cos(outerA);
-      final oy = center.dy + r * math.sin(outerA);
-      final ix = center.dx + r * 0.41 * math.cos(innerA);
-      final iy = center.dy + r * 0.41 * math.sin(innerA);
-      i == 0 ? path.moveTo(ox, oy) : path.lineTo(ox, oy);
-      path.lineTo(ix, iy);
-    }
-    path.close();
-    canvas.drawPath(path, paint);
-  }
-
-  void _drawSquare(Canvas canvas, Paint paint, Offset center, double r) {
-    final rect = Rect.fromCenter(center: center, width: r * 2, height: r * 2);
-    canvas.save();
-    canvas.translate(center.dx, center.dy);
-    canvas.rotate(math.pi / 4);
-    canvas.translate(-center.dx, -center.dy);
-    canvas.drawRect(rect, paint);
+    canvas.clipPath(clip);
+    canvas.drawCircle(Offset(cx, cy), r,
+        Paint()..color = _gold..style = PaintingStyle.fill);
+    canvas.drawCircle(
+      Offset(cx + r * 0.30, cy - r * 0.04),
+      r * 0.80,
+      Paint()..color = _bg..style = PaintingStyle.fill,
+    );
     canvas.restore();
   }
 
   @override
-  bool shouldRepaint(_GeometricPatternPainter old) => false;
+  bool shouldRepaint(_CrescentPainter _) => false;
 }

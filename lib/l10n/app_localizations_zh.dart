@@ -2109,4 +2109,56 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get duasSearchEmpty => '请尝试其他分类或搜索词。';
+
+  @override
+  String get onboardingSkip => '跳过';
+
+  @override
+  String get onboardingWelcomeTo => '欢迎使用';
+
+  @override
+  String get onboardingSubtitle => '您在美丽的伊斯兰之旅中的伴侣。';
+
+  @override
+  String get onboardingLetsGetStarted => '开始吧';
+
+  @override
+  String onboardingStepOf(int step, int total) {
+    return '$total 中的 $step';
+  }
+
+  @override
+  String get onboardingWhatsYourName => '您叫什么名字？';
+
+  @override
+  String get onboardingNameSubtitle => '我们很想知道如何称呼您。';
+
+  @override
+  String get onboardingNameHint => '输入您的名字';
+
+  @override
+  String get onboardingContinue => '继续';
+
+  @override
+  String get onboardingAreYouNewToIslam => '您是伊斯兰的新人吗？';
+
+  @override
+  String get onboardingModeSubtitle => '我们将根据您的旅程个性化您的体验。';
+
+  @override
+  String get onboardingNewToIslam => '我是伊斯兰新人';
+
+  @override
+  String get onboardingNewToIslamDesc => '适合初学者的逐步引导模式';
+
+  @override
+  String get onboardingFamiliarWithIslam => '我熟悉伊斯兰';
+
+  @override
+  String get onboardingFamiliarWithIslamDesc => '具有完整功能的常规模式';
+
+  @override
+  String greetingWithName(String name) {
+    return 'السلام عليكم，$name 👋';
+  }
 }

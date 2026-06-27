@@ -2132,4 +2132,56 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get duasSearchEmpty => '別のカテゴリまたは検索キーワードを試してください。';
+
+  @override
+  String get onboardingSkip => 'スキップ';
+
+  @override
+  String get onboardingWelcomeTo => 'へようこそ';
+
+  @override
+  String get onboardingSubtitle => 'イスラムの美しい旅の伴侶。';
+
+  @override
+  String get onboardingLetsGetStarted => 'はじめましょう';
+
+  @override
+  String onboardingStepOf(int step, int total) {
+    return '$totalのうち$step';
+  }
+
+  @override
+  String get onboardingWhatsYourName => 'お名前は？';
+
+  @override
+  String get onboardingNameSubtitle => 'あなたのことをどう呼べばいいか教えてください。';
+
+  @override
+  String get onboardingNameHint => '名前を入力してください';
+
+  @override
+  String get onboardingContinue => '続ける';
+
+  @override
+  String get onboardingAreYouNewToIslam => 'イスラムは初めてですか？';
+
+  @override
+  String get onboardingModeSubtitle => 'あなたの旅に基づいて体験をカスタマイズします。';
+
+  @override
+  String get onboardingNewToIslam => 'イスラムは初めてです';
+
+  @override
+  String get onboardingNewToIslamDesc => 'ステップバイステップのガイダンス付き初心者モード';
+
+  @override
+  String get onboardingFamiliarWithIslam => 'イスラムをよく知っています';
+
+  @override
+  String get onboardingFamiliarWithIslamDesc => 'すべての機能を備えた通常モード';
+
+  @override
+  String greetingWithName(String name) {
+    return 'アッサラーム・アライクム、$name 👋';
+  }
 }

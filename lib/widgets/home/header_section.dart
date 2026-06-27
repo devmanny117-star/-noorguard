@@ -14,8 +14,13 @@ const _kNotificationsOffRed = Color(0xFFEF5350);
 
 class HeaderSection extends StatelessWidget {
   final VoidCallback onOpenSettings;
+  final String userName;
 
-  const HeaderSection({super.key, required this.onOpenSettings});
+  const HeaderSection({
+    super.key,
+    required this.onOpenSettings,
+    this.userName = '',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +40,11 @@ class HeaderSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  l10n.assalamualaikum,
+                  userName.isNotEmpty
+                      ? l10n.greetingWithName(userName)
+                      : l10n.assalamualaikum,
                   style: GoogleFonts.playfairDisplay(
-                    fontSize: 32,
+                    fontSize: userName.isNotEmpty ? 26 : 32,
                     fontWeight: FontWeight.w800,
                     color: colors.primaryText,
                     height: 1.15,

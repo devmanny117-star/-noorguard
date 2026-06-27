@@ -4103,6 +4103,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try a different category or search term.'**
   String get duasSearchEmpty;
+
+  /// Skip button on the onboarding welcome screen
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get onboardingSkip;
+
+  /// First part of the welcome heading on the onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to'**
+  String get onboardingWelcomeTo;
+
+  /// Subtitle below the app name on the onboarding welcome screen
+  ///
+  /// In en, this message translates to:
+  /// **'Your companion on the beautiful journey of Islam.'**
+  String get onboardingSubtitle;
+
+  /// Primary CTA button on the onboarding welcome screen
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s Get Started'**
+  String get onboardingLetsGetStarted;
+
+  /// Step counter shown top-right on onboarding pages 2 to 4
+  ///
+  /// In en, this message translates to:
+  /// **'{step} of {total}'**
+  String onboardingStepOf(int step, int total);
+
+  /// Title on the name-entry onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'What\'s your name?'**
+  String get onboardingWhatsYourName;
+
+  /// Subtitle on the name-entry onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'We\'d love to know how to address you.'**
+  String get onboardingNameSubtitle;
+
+  /// Hint text inside the name text field on the onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get onboardingNameHint;
+
+  /// Continue button label on onboarding screens 2 and 3
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get onboardingContinue;
+
+  /// Title on the Islam-mode selection onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'Are you new to Islam?'**
+  String get onboardingAreYouNewToIslam;
+
+  /// Subtitle on the Islam-mode selection onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll personalize your experience based on your journey.'**
+  String get onboardingModeSubtitle;
+
+  /// Label on the beginner-mode card on the onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m new to Islam'**
+  String get onboardingNewToIslam;
+
+  /// Description on the beginner-mode card on the onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner mode with step-by-step guidance'**
+  String get onboardingNewToIslamDesc;
+
+  /// Label on the regular-mode card on the onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m familiar with Islam'**
+  String get onboardingFamiliarWithIslam;
+
+  /// Description on the regular-mode card on the onboarding screen
+  ///
+  /// In en, this message translates to:
+  /// **'Regular mode with full features'**
+  String get onboardingFamiliarWithIslamDesc;
+
+  /// Personalized greeting shown on the home screen header when user has set their name
+  ///
+  /// In en, this message translates to:
+  /// **'As-Salāmu \'Alaikum, {name} 👋'**
+  String greetingWithName(String name);
 }
 
 class _AppLocalizationsDelegate

@@ -2216,4 +2216,59 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get duasSearchEmpty => 'کوئی اور زمرہ یا تلاش کی اصطلاح آزمائیں۔';
+
+  @override
+  String get onboardingSkip => 'چھوڑیں';
+
+  @override
+  String get onboardingWelcomeTo => 'خوش آمدید';
+
+  @override
+  String get onboardingSubtitle => 'اسلام کے خوبصورت سفر میں آپ کا ساتھی۔';
+
+  @override
+  String get onboardingLetsGetStarted => 'چلیں شروع کریں';
+
+  @override
+  String onboardingStepOf(int step, int total) {
+    return '$total میں سے $step';
+  }
+
+  @override
+  String get onboardingWhatsYourName => 'آپ کا نام کیا ہے؟';
+
+  @override
+  String get onboardingNameSubtitle =>
+      'ہم جاننا چاہتے ہیں کہ آپ کو کیسے مخاطب کریں۔';
+
+  @override
+  String get onboardingNameHint => 'اپنا نام درج کریں';
+
+  @override
+  String get onboardingContinue => 'جاری رکھیں';
+
+  @override
+  String get onboardingAreYouNewToIslam => 'کیا آپ اسلام میں نئے ہیں؟';
+
+  @override
+  String get onboardingModeSubtitle =>
+      'ہم آپ کے سفر کی بنیاد پر آپ کا تجربہ ذاتی بنائیں گے۔';
+
+  @override
+  String get onboardingNewToIslam => 'میں اسلام میں نیا ہوں';
+
+  @override
+  String get onboardingNewToIslamDesc => 'مبتدی موڈ قدم بقدم رہنمائی کے ساتھ';
+
+  @override
+  String get onboardingFamiliarWithIslam => 'میں اسلام سے واقف ہوں';
+
+  @override
+  String get onboardingFamiliarWithIslamDesc =>
+      'تمام خصوصیات کے ساتھ باقاعدہ موڈ';
+
+  @override
+  String greetingWithName(String name) {
+    return 'السلام علیکم، $name 👋';
+  }
 }

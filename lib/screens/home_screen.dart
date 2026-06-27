@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/app_theme.dart';
 import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
@@ -99,6 +100,7 @@ class _HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   List<Prayer>? _prayers;
+  String _userName = '';
 
   @override
   void initState() {
@@ -107,6 +109,12 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     _loadAppBlockingThenPrayerTimes();
     _applyPendingPrayerMarks();
     _checkAyahChallenge();
+    _loadUserName();
+  }
+
+  Future<void> _loadUserName() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (mounted) setState(() => _userName = prefs.getString('user_name') ?? '');
   }
 
   /// loadSettings() must finish before _loadPrayerTimes() reaches
@@ -287,7 +295,7 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 4),
-          HeaderSection(onOpenSettings: widget.onOpenSettings),
+          HeaderSection(onOpenSettings: widget.onOpenSettings, userName: _userName),
           const SizedBox(height: 6),
           PrayerTimesCard(prayers: _prayers, onNextPrayerTap: widget.onOpenPrayers),
           const HeroCard(),

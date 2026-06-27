@@ -2223,4 +2223,58 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get duasSearchEmpty =>
       'دسته‌بندی یا عبارت جستجوی دیگری را امتحان کنید.';
+
+  @override
+  String get onboardingSkip => 'رد شدن';
+
+  @override
+  String get onboardingWelcomeTo => 'خوش آمدید به';
+
+  @override
+  String get onboardingSubtitle => 'یارو گسار شما در سفر زیبای اسلام.';
+
+  @override
+  String get onboardingLetsGetStarted => 'شروع کنیم';
+
+  @override
+  String onboardingStepOf(int step, int total) {
+    return '$step از $total';
+  }
+
+  @override
+  String get onboardingWhatsYourName => 'نام شما چیست؟';
+
+  @override
+  String get onboardingNameSubtitle =>
+      'دوست داریم بدانیم چطور شما را خطاب کنیم.';
+
+  @override
+  String get onboardingNameHint => 'نام خود را وارد کنید';
+
+  @override
+  String get onboardingContinue => 'ادامه';
+
+  @override
+  String get onboardingAreYouNewToIslam => 'آیا با اسلام تازه آشنا شده‌اید؟';
+
+  @override
+  String get onboardingModeSubtitle =>
+      'تجربه شما را بر اساس مسیرتان شخصی‌سازی می‌کنیم.';
+
+  @override
+  String get onboardingNewToIslam => 'من تازه مسلمان شده‌ام';
+
+  @override
+  String get onboardingNewToIslamDesc => 'حالت مبتدی با راهنمای گام به گام';
+
+  @override
+  String get onboardingFamiliarWithIslam => 'با اسلام آشنا هستم';
+
+  @override
+  String get onboardingFamiliarWithIslamDesc => 'حالت عادی با تمام ویژگی‌ها';
+
+  @override
+  String greetingWithName(String name) {
+    return 'سلام، $name 👋';
+  }
 }

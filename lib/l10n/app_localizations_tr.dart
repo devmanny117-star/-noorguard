@@ -2222,4 +2222,58 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get duasSearchEmpty =>
       'Farklı bir kategori veya arama terimi deneyin.';
+
+  @override
+  String get onboardingSkip => 'Atla';
+
+  @override
+  String get onboardingWelcomeTo => 'Hoş geldiniz';
+
+  @override
+  String get onboardingSubtitle => 'İslam\'ın güzel yolculuğunda yoldaşınız.';
+
+  @override
+  String get onboardingLetsGetStarted => 'Başlayalım';
+
+  @override
+  String onboardingStepOf(int step, int total) {
+    return '$total içinde $step';
+  }
+
+  @override
+  String get onboardingWhatsYourName => 'Adınız ne?';
+
+  @override
+  String get onboardingNameSubtitle =>
+      'Sizi nasıl hitap edeceğimizi bilmek isteriz.';
+
+  @override
+  String get onboardingNameHint => 'Adınızı girin';
+
+  @override
+  String get onboardingContinue => 'Devam';
+
+  @override
+  String get onboardingAreYouNewToIslam => 'İslam\'da yeni misiniz?';
+
+  @override
+  String get onboardingModeSubtitle =>
+      'Yolculuğunuza göre deneyiminizi kişiselleştireceğiz.';
+
+  @override
+  String get onboardingNewToIslam => 'İslam\'da yeniyim';
+
+  @override
+  String get onboardingNewToIslamDesc => 'Adım adım rehberlikle başlangıç modu';
+
+  @override
+  String get onboardingFamiliarWithIslam => 'İslam\'a aşınayım';
+
+  @override
+  String get onboardingFamiliarWithIslamDesc => 'Tüm özelliklerle normal mod';
+
+  @override
+  String greetingWithName(String name) {
+    return 'Es-Selâmü Aleyküm, $name 👋';
+  }
 }

@@ -2235,4 +2235,61 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get duasSearchEmpty =>
       'Prueba una categoría diferente o un término de búsqueda distinto.';
+
+  @override
+  String get onboardingSkip => 'Omitir';
+
+  @override
+  String get onboardingWelcomeTo => 'Bienvenido a';
+
+  @override
+  String get onboardingSubtitle =>
+      'Tu compañero en el hermoso camino del Islam.';
+
+  @override
+  String get onboardingLetsGetStarted => 'Empecemos';
+
+  @override
+  String onboardingStepOf(int step, int total) {
+    return '$step de $total';
+  }
+
+  @override
+  String get onboardingWhatsYourName => '¿Cómo te llamas?';
+
+  @override
+  String get onboardingNameSubtitle =>
+      'Nos encantaría saber cómo dirigirnos a ti.';
+
+  @override
+  String get onboardingNameHint => 'Ingresa tu nombre';
+
+  @override
+  String get onboardingContinue => 'Continuar';
+
+  @override
+  String get onboardingAreYouNewToIslam => '¿Eres nuevo en el Islam?';
+
+  @override
+  String get onboardingModeSubtitle =>
+      'Personalizaremos tu experiencia según tu camino.';
+
+  @override
+  String get onboardingNewToIslam => 'Soy nuevo en el Islam';
+
+  @override
+  String get onboardingNewToIslamDesc =>
+      'Modo principiante con guía paso a paso';
+
+  @override
+  String get onboardingFamiliarWithIslam => 'Estoy familiarizado con el Islam';
+
+  @override
+  String get onboardingFamiliarWithIslamDesc =>
+      'Modo regular con todas las funciones';
+
+  @override
+  String greetingWithName(String name) {
+    return 'As-Salāmu \'Alaikum, $name 👋';
+  }
 }

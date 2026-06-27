@@ -10,6 +10,7 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'locale_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'screens/beginner_home_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/notification_setup_screen.dart';
 import 'screens/onboarding_screen.dart';
@@ -211,11 +212,14 @@ class _SplashScreenState extends State<SplashScreen>
       // Existing installs that already finished onboarding before this guide
       // existed still get routed through it once, since they're the ones
       // most likely to be missing the Samsung-specific lock screen toggle.
+      final beginnerMode = prefs.getBool('beginner_mode') ?? false;
       Widget next;
       if (!onboardingComplete) {
         next = const OnboardingScreen();
       } else if (!kIsWeb && Platform.isAndroid && !notificationSetupComplete) {
         next = const NotificationSetupScreen(isFirstLaunch: true);
+      } else if (beginnerMode) {
+        next = const BeginnerHomeScreen();
       } else {
         next = const HomeScreen();
       }
