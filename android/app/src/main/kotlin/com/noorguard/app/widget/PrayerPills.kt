@@ -66,7 +66,7 @@ private fun PrayerPill(prayer: WidgetPrayer, modifier: GlanceModifier) {
                 maxLines = 1,
                 style = TextStyle(
                     color = ColorProvider(nameColor),
-                    fontSize = 10.sp,
+                    fontSize = 12.sp,
                     fontWeight = if (prayer.isNext) FontWeight.Bold else FontWeight.Normal,
                 ),
             )
@@ -75,7 +75,7 @@ private fun PrayerPill(prayer: WidgetPrayer, modifier: GlanceModifier) {
                 prayer.time,
                 style = TextStyle(
                     color = ColorProvider(timeColor),
-                    fontSize = 13.sp,
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
                 ),
             )
