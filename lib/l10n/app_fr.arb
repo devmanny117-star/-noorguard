@@ -739,5 +739,94 @@
         "type": "String"
       }
     }
+  },
+  "beginnerDaySinceShahada": "Jour {days} en tant que musulman",
+  "@beginnerDaySinceShahada": {
+    "description": "Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "beginnerEssential1": "Guide pour les nouveaux musulmans",
+  "@beginnerEssential1": {
+    "description": "Beginner checklist item 1 — New Muslim guide"
+  },
+  "beginnerEssential2": "Apprendre le Wudu (Purification)",
+  "@beginnerEssential2": {
+    "description": "Beginner checklist item 2 — Wudu guide"
+  },
+  "beginnerEssential3": "Comment prier (Étape par étape)",
+  "@beginnerEssential3": {
+    "description": "Beginner checklist item 3 — How to pray"
+  },
+  "beginnerEssential4": "Sourate Al-Fatiha (L'Ouverture)",
+  "@beginnerEssential4": {
+    "description": "Beginner checklist item 4 — Surah Al-Fatiha"
+  },
+  "beginnerEssential5": "Duas quotidiens (Supplications)",
+  "@beginnerEssential5": {
+    "description": "Beginner checklist item 5 — Daily duas"
+  },
+  "beginnerEssential6": "Comprendre la Shahada",
+  "@beginnerEssential6": {
+    "description": "Beginner checklist item 6 — Shahada understanding"
+  },
+  "beginnerEssential7": "Termes islamiques et glossaire",
+  "@beginnerEssential7": {
+    "description": "Beginner checklist item 7 — Islamic glossary"
+  },
+  "beginnerExploreAll": "Explorer toutes les fonctionnalités",
+  "@beginnerExploreAll": {
+    "description": "Label for button that unlocks all Noor Guard features"
+  },
+  "beginnerExploreSubtitle": "Passer à l'expérience Noor Guard complète",
+  "@beginnerExploreSubtitle": {
+    "description": "Subtitle under Explore All Features button"
+  },
+  "beginnerLearnSalah": "Apprendre le Salah",
+  "@beginnerLearnSalah": {
+    "description": "Beginner toolbox card label — learn how to pray"
+  },
+  "beginnerMayAllahGuide": "Qu'Allah guide tes pas et bénisse ton chemin.",
+  "@beginnerMayAllahGuide": {
+    "description": "Subtitle blessing shown on beginner journey card"
+  },
+  "beginnerMuslimEssentials": "ESSENTIELS DU MUSULMAN",
+  "@beginnerMuslimEssentials": {
+    "description": "Section header for the Muslim essentials checklist"
+  },
+  "beginnerQuote1": "Certes, avec la difficulté vient la facilité. — Coran 94:6",
+  "@beginnerQuote1": {
+    "description": "Rotating inspirational quote 1 — Quran 94:6"
+  },
+  "beginnerQuote2": "Respecte les commandements d'Allah et Il prendra soin de toi.",
+  "@beginnerQuote2": {
+    "description": "Rotating inspirational quote 2 — prophetic hadith"
+  },
+  "beginnerQuote3": "Allah regarde ton cœur et tes actes, pas ton apparence.",
+  "@beginnerQuote3": {
+    "description": "Rotating inspirational quote 3 — Allah sees deeds"
+  },
+  "beginnerQuote4": "Chaque pas vers la prière est un pas vers la paix.",
+  "@beginnerQuote4": {
+    "description": "Rotating inspirational quote 4 — prayer and peace"
+  },
+  "beginnerQuote5": "Le meilleur d'entre vous est celui qui apprend le Coran et l'enseigne.",
+  "@beginnerQuote5": {
+    "description": "Rotating inspirational quote 5 — learn and teach Quran"
+  },
+  "beginnerTapToSetShahadaDate": "Appuie pour définir ta date de Shahada",
+  "@beginnerTapToSetShahadaDate": {
+    "description": "Prompt to set Shahada date when not yet set"
+  },
+  "beginnerToolboxSection": "BOÎTE À OUTILS DÉBUTANT",
+  "@beginnerToolboxSection": {
+    "description": "Section header for beginner toolbox cards"
+  },
+  "beginnerYourJourney": "TON CHEMIN",
+  "@beginnerYourJourney": {
+    "description": "Section header for the journey / Shahada tracker"
   }
 }

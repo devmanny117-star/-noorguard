@@ -739,5 +739,94 @@
         "type": "String"
       }
     }
+  },
+  "beginnerDaySinceShahada": "Dag {days} als moslim",
+  "@beginnerDaySinceShahada": {
+    "description": "Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "beginnerEssential1": "Gids voor nieuwe moslims",
+  "@beginnerEssential1": {
+    "description": "Beginner checklist item 1 — New Muslim guide"
+  },
+  "beginnerEssential2": "Wudu leren (rituele reiniging)",
+  "@beginnerEssential2": {
+    "description": "Beginner checklist item 2 — Wudu guide"
+  },
+  "beginnerEssential3": "Hoe te bidden (Stap voor stap)",
+  "@beginnerEssential3": {
+    "description": "Beginner checklist item 3 — How to pray"
+  },
+  "beginnerEssential4": "Surah Al-Fatiha (De Opening)",
+  "@beginnerEssential4": {
+    "description": "Beginner checklist item 4 — Surah Al-Fatiha"
+  },
+  "beginnerEssential5": "Dagelijkse Duas (Smeekbeden)",
+  "@beginnerEssential5": {
+    "description": "Beginner checklist item 5 — Daily duas"
+  },
+  "beginnerEssential6": "De Shahada begrijpen",
+  "@beginnerEssential6": {
+    "description": "Beginner checklist item 6 — Shahada understanding"
+  },
+  "beginnerEssential7": "Islamitische termen & woordenlijst",
+  "@beginnerEssential7": {
+    "description": "Beginner checklist item 7 — Islamic glossary"
+  },
+  "beginnerExploreAll": "Alle functies verkennen",
+  "@beginnerExploreAll": {
+    "description": "Label for button that unlocks all Noor Guard features"
+  },
+  "beginnerExploreSubtitle": "Schakel over naar de volledige Noor Guard-ervaring",
+  "@beginnerExploreSubtitle": {
+    "description": "Subtitle under Explore All Features button"
+  },
+  "beginnerLearnSalah": "Salah leren",
+  "@beginnerLearnSalah": {
+    "description": "Beginner toolbox card label — learn how to pray"
+  },
+  "beginnerMayAllahGuide": "Moge Allah je stappen leiden en je reis zegenen.",
+  "@beginnerMayAllahGuide": {
+    "description": "Subtitle blessing shown on beginner journey card"
+  },
+  "beginnerMuslimEssentials": "MOSLIM ESSENTIALS",
+  "@beginnerMuslimEssentials": {
+    "description": "Section header for the Muslim essentials checklist"
+  },
+  "beginnerQuote1": "Voorwaar, met moeilijkheid komt gemak. — Koran 94:6",
+  "@beginnerQuote1": {
+    "description": "Rotating inspirational quote 1 — Quran 94:6"
+  },
+  "beginnerQuote2": "Zorg voor Allah's geboden en Hij zal voor jou zorgen.",
+  "@beginnerQuote2": {
+    "description": "Rotating inspirational quote 2 — prophetic hadith"
+  },
+  "beginnerQuote3": "Allah kijkt naar je hart en daden, niet naar je uiterlijk.",
+  "@beginnerQuote3": {
+    "description": "Rotating inspirational quote 3 — Allah sees deeds"
+  },
+  "beginnerQuote4": "Elke stap naar het gebed is een stap naar vrede.",
+  "@beginnerQuote4": {
+    "description": "Rotating inspirational quote 4 — prayer and peace"
+  },
+  "beginnerQuote5": "De beste onder jullie leert de Koran en onderwijst hem.",
+  "@beginnerQuote5": {
+    "description": "Rotating inspirational quote 5 — learn and teach Quran"
+  },
+  "beginnerTapToSetShahadaDate": "Tik om je Shahada-datum in te stellen",
+  "@beginnerTapToSetShahadaDate": {
+    "description": "Prompt to set Shahada date when not yet set"
+  },
+  "beginnerToolboxSection": "BEGINNERS GEREEDSCHAPSKIST",
+  "@beginnerToolboxSection": {
+    "description": "Section header for beginner toolbox cards"
+  },
+  "beginnerYourJourney": "JOUW REIS",
+  "@beginnerYourJourney": {
+    "description": "Section header for the journey / Shahada tracker"
   }
 }

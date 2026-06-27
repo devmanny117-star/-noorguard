@@ -2276,4 +2276,76 @@ class AppLocalizationsTr extends AppLocalizations {
   String greetingWithName(String name) {
     return 'Es-Selâmü Aleyküm, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'Müslüman olarak $days. gün';
+  }
+
+  @override
+  String get beginnerEssential1 => 'Yeni Müslüman Rehberim';
+
+  @override
+  String get beginnerEssential2 => 'Abdest Öğren';
+
+  @override
+  String get beginnerEssential3 => 'Nasıl Namaz Kılınır (Adım Adım)';
+
+  @override
+  String get beginnerEssential4 => 'Fatiha Suresi (Açılış)';
+
+  @override
+  String get beginnerEssential5 => 'Günlük Dualar';
+
+  @override
+  String get beginnerEssential6 => 'Şehadeti Anlamak';
+
+  @override
+  String get beginnerEssential7 => 'İslami Terimler ve Sözlük';
+
+  @override
+  String get beginnerExploreAll => 'Tüm Özellikleri Keşfet';
+
+  @override
+  String get beginnerExploreSubtitle => 'Tam Noor Guard deneyimine geçin';
+
+  @override
+  String get beginnerLearnSalah => 'Namaz Öğren';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'Allah adımlarınızı yönlendirsin ve yolculuğunuzu bereketlendirsin.';
+
+  @override
+  String get beginnerMuslimEssentials => 'MÜSLÜMAN ESASLARI';
+
+  @override
+  String get beginnerQuote1 =>
+      'Şüphesiz, güçlükle birlikte bir kolaylık vardır. — Kuran 94:6';
+
+  @override
+  String get beginnerQuote2 =>
+      'Allah\'ın emirlerini gözet, O da seni gözetsin.';
+
+  @override
+  String get beginnerQuote3 =>
+      'Allah, görünüşüne değil, kalbine ve amellerine bakar.';
+
+  @override
+  String get beginnerQuote4 =>
+      'Namaza atılan her adım, huzura atılan bir adımdır.';
+
+  @override
+  String get beginnerQuote5 =>
+      'Aranızın en hayırlısı Kur\'an\'ı öğrenen ve öğretendir.';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'Şehadet tarihini ayarlamak için dokun';
+
+  @override
+  String get beginnerToolboxSection => 'BAŞLANGIÇ ARAÇ KUTUSU';
+
+  @override
+  String get beginnerYourJourney => 'SENİN YOLCULUĞUNn';
 }

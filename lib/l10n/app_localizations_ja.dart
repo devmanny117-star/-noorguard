@@ -2184,4 +2184,69 @@ class AppLocalizationsJa extends AppLocalizations {
   String greetingWithName(String name) {
     return 'アッサラーム・アライクム、$name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'イスラム教徒になって$days日目';
+  }
+
+  @override
+  String get beginnerEssential1 => '新しいムスリムのガイド';
+
+  @override
+  String get beginnerEssential2 => 'ウドゥー（清めの作法）を学ぶ';
+
+  @override
+  String get beginnerEssential3 => '礼拝の方法（ステップバイステップ）';
+
+  @override
+  String get beginnerEssential4 => 'アル＝ファーティハ章（開端の章）';
+
+  @override
+  String get beginnerEssential5 => '日々のドゥア（祈り）';
+
+  @override
+  String get beginnerEssential6 => 'シャハーダを理解する';
+
+  @override
+  String get beginnerEssential7 => 'イスラムの用語とグロッサリー';
+
+  @override
+  String get beginnerExploreAll => 'すべての機能を探索する';
+
+  @override
+  String get beginnerExploreSubtitle => '完全なNoor Guardの体験に切り替える';
+
+  @override
+  String get beginnerLearnSalah => 'サラーを学ぶ';
+
+  @override
+  String get beginnerMayAllahGuide => 'アッラーがあなたの歩みを導き、旅を祝福されますように。';
+
+  @override
+  String get beginnerMuslimEssentials => 'ムスリムの基礎';
+
+  @override
+  String get beginnerQuote1 => '困難の後には必ず安らぎが来る。 — クルアーン94:6';
+
+  @override
+  String get beginnerQuote2 => 'アッラーの命令を守れば、アッラーはあなたを守ってくださる。';
+
+  @override
+  String get beginnerQuote3 => 'アッラーはあなたの外見ではなく、心と行いを見ておられる。';
+
+  @override
+  String get beginnerQuote4 => '礼拝に向かう一歩一歩が、平和への一歩である。';
+
+  @override
+  String get beginnerQuote5 => 'あなたたちの中で最も優れた者は、クルアーンを学びそれを教える者である。';
+
+  @override
+  String get beginnerTapToSetShahadaDate => 'シャハーダの日付を設定するにはタップしてください';
+
+  @override
+  String get beginnerToolboxSection => '初心者ツールボックス';
+
+  @override
+  String get beginnerYourJourney => 'あなたの旅';
 }

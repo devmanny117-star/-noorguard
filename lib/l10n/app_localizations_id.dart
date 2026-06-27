@@ -2289,4 +2289,77 @@ class AppLocalizationsId extends AppLocalizations {
   String greetingWithName(String name) {
     return 'As-Salāmu \'Alaikum, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'Hari ke-$days sebagai Muslim';
+  }
+
+  @override
+  String get beginnerEssential1 => 'Panduan Muslim Baru';
+
+  @override
+  String get beginnerEssential2 => 'Pelajari Wudu (Bersuci)';
+
+  @override
+  String get beginnerEssential3 => 'Cara Shalat (Langkah demi Langkah)';
+
+  @override
+  String get beginnerEssential4 => 'Surah Al-Fatihah (Pembuka)';
+
+  @override
+  String get beginnerEssential5 => 'Doa Harian (Bacaan Zikir)';
+
+  @override
+  String get beginnerEssential6 => 'Memahami Syahadat';
+
+  @override
+  String get beginnerEssential7 => 'Istilah Islam & Glosarium';
+
+  @override
+  String get beginnerExploreAll => 'Jelajahi Semua Fitur';
+
+  @override
+  String get beginnerExploreSubtitle =>
+      'Beralih ke pengalaman Noor Guard penuh';
+
+  @override
+  String get beginnerLearnSalah => 'Pelajari Shalat';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'Semoga Allah membimbing langkahmu dan memberkati perjalananmu.';
+
+  @override
+  String get beginnerMuslimEssentials => 'ESENSIAL MUSLIM';
+
+  @override
+  String get beginnerQuote1 =>
+      'Sesungguhnya bersama kesulitan ada kemudahan. — QS 94:6';
+
+  @override
+  String get beginnerQuote2 =>
+      'Jagalah perintah Allah, niscaya Allah menjagamu.';
+
+  @override
+  String get beginnerQuote3 =>
+      'Allah melihat hati dan amalanmu, bukan penampilanmu.';
+
+  @override
+  String get beginnerQuote4 =>
+      'Setiap langkah menuju shalat adalah langkah menuju kedamaian.';
+
+  @override
+  String get beginnerQuote5 =>
+      'Sebaik-baik kalian adalah yang mempelajari Al-Quran dan mengajarkannya.';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'Ketuk untuk mengatur tanggal Syahadatmu';
+
+  @override
+  String get beginnerToolboxSection => 'KOTAK ALAT PEMULA';
+
+  @override
+  String get beginnerYourJourney => 'PERJALANANMU';
 }

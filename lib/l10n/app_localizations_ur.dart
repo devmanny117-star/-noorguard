@@ -2271,4 +2271,74 @@ class AppLocalizationsUr extends AppLocalizations {
   String greetingWithName(String name) {
     return 'السلام علیکم، $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'مسلمان کے طور پر $days واں دن';
+  }
+
+  @override
+  String get beginnerEssential1 => 'نئے مسلمان کی رہنمائی';
+
+  @override
+  String get beginnerEssential2 => 'وضو سیکھیں';
+
+  @override
+  String get beginnerEssential3 => 'نماز کا طریقہ (قدم بہ قدم)';
+
+  @override
+  String get beginnerEssential4 => 'سورۃ الفاتحہ';
+
+  @override
+  String get beginnerEssential5 => 'روزانہ کی دعائیں';
+
+  @override
+  String get beginnerEssential6 => 'شہادت کو سمجھنا';
+
+  @override
+  String get beginnerEssential7 => 'اسلامی اصطلاحات اور لغت';
+
+  @override
+  String get beginnerExploreAll => 'تمام خصوصیات دیکھیں';
+
+  @override
+  String get beginnerExploreSubtitle => 'مکمل نور گارڈ تجربے میں تبدیل ہوں';
+
+  @override
+  String get beginnerLearnSalah => 'نماز سیکھیں';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'اللہ آپ کے ہر قدم کی رہنمائی فرمائے اور آپ کے سفر کو مبارک کرے۔';
+
+  @override
+  String get beginnerMuslimEssentials => 'مسلمان کی بنیادی باتیں';
+
+  @override
+  String get beginnerQuote1 => 'بے شک تکلیف کے ساتھ آسانی ہے۔ — قرآن ٩٤:٦';
+
+  @override
+  String get beginnerQuote2 =>
+      'اللہ کے احکام کی حفاظت کرو، وہ تمہاری حفاظت کرے گا۔';
+
+  @override
+  String get beginnerQuote3 =>
+      'اللہ تعالیٰ تمہاری صورتوں اور مالوں کو نہیں دیکھتا، بلکہ وہ تمہارے دلوں اور اعمال کو دیکھتا ہے۔';
+
+  @override
+  String get beginnerQuote4 => 'نماز کی طرف ہر قدم امن کی طرف ایک قدم ہے۔';
+
+  @override
+  String get beginnerQuote5 =>
+      'تم میں سے بہترین وہ ہے جو قرآن سیکھے اور سکھائے۔';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'شہادت کی تاریخ سیٹ کرنے کے لیے ٹیپ کریں';
+
+  @override
+  String get beginnerToolboxSection => 'ابتدائی ٹول باکس';
+
+  @override
+  String get beginnerYourJourney => 'آپ کا سفر';
 }

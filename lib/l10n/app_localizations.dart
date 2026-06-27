@@ -4199,6 +4199,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'As-Salāmu \'Alaikum, {name} 👋'**
   String greetingWithName(String name);
+
+  /// Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'
+  ///
+  /// In en, this message translates to:
+  /// **'Day {days} as a Muslim'**
+  String beginnerDaySinceShahada(int days);
+
+  /// Beginner checklist item 1 — New Muslim guide
+  ///
+  /// In en, this message translates to:
+  /// **'My New Muslim Guide'**
+  String get beginnerEssential1;
+
+  /// Beginner checklist item 2 — Wudu guide
+  ///
+  /// In en, this message translates to:
+  /// **'Learn Wudu (Ritual Purification)'**
+  String get beginnerEssential2;
+
+  /// Beginner checklist item 3 — How to pray
+  ///
+  /// In en, this message translates to:
+  /// **'How to Pray (Step by Step)'**
+  String get beginnerEssential3;
+
+  /// Beginner checklist item 4 — Surah Al-Fatiha
+  ///
+  /// In en, this message translates to:
+  /// **'Surah Al-Fatiha (The Opening)'**
+  String get beginnerEssential4;
+
+  /// Beginner checklist item 5 — Daily duas
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Duas (Supplications)'**
+  String get beginnerEssential5;
+
+  /// Beginner checklist item 6 — Shahada understanding
+  ///
+  /// In en, this message translates to:
+  /// **'Understanding the Shahada'**
+  String get beginnerEssential6;
+
+  /// Beginner checklist item 7 — Islamic glossary
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic Terms & Glossary'**
+  String get beginnerEssential7;
+
+  /// Label for button that unlocks all Noor Guard features
+  ///
+  /// In en, this message translates to:
+  /// **'Explore All Features'**
+  String get beginnerExploreAll;
+
+  /// Subtitle under Explore All Features button
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to the full Noor Guard experience'**
+  String get beginnerExploreSubtitle;
+
+  /// Beginner toolbox card label — learn how to pray
+  ///
+  /// In en, this message translates to:
+  /// **'Learn Salah'**
+  String get beginnerLearnSalah;
+
+  /// Subtitle blessing shown on beginner journey card
+  ///
+  /// In en, this message translates to:
+  /// **'May Allah guide your steps and bless your journey.'**
+  String get beginnerMayAllahGuide;
+
+  /// Section header for the Muslim essentials checklist
+  ///
+  /// In en, this message translates to:
+  /// **'MUSLIM ESSENTIALS'**
+  String get beginnerMuslimEssentials;
+
+  /// Rotating inspirational quote 1 — Quran 94:6
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, with hardship comes ease. — Quran 94:6'**
+  String get beginnerQuote1;
+
+  /// Rotating inspirational quote 2 — prophetic hadith
+  ///
+  /// In en, this message translates to:
+  /// **'Take care of Allah\'s commands, He will take care of you.'**
+  String get beginnerQuote2;
+
+  /// Rotating inspirational quote 3 — Allah sees deeds
+  ///
+  /// In en, this message translates to:
+  /// **'Allah looks at your hearts and deeds, not your appearance.'**
+  String get beginnerQuote3;
+
+  /// Rotating inspirational quote 4 — prayer and peace
+  ///
+  /// In en, this message translates to:
+  /// **'Every step toward prayer is a step toward peace.'**
+  String get beginnerQuote4;
+
+  /// Rotating inspirational quote 5 — learn and teach Quran
+  ///
+  /// In en, this message translates to:
+  /// **'The best among you learns the Quran and teaches it.'**
+  String get beginnerQuote5;
+
+  /// Prompt to set Shahada date when not yet set
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to set your Shahada date'**
+  String get beginnerTapToSetShahadaDate;
+
+  /// Section header for beginner toolbox cards
+  ///
+  /// In en, this message translates to:
+  /// **'BEGINNER TOOLBOX'**
+  String get beginnerToolboxSection;
+
+  /// Section header for the journey / Shahada tracker
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR JOURNEY'**
+  String get beginnerYourJourney;
 }
 
 class _AppLocalizationsDelegate

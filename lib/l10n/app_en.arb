@@ -2808,5 +2808,94 @@
         "type": "String"
       }
     }
+  },
+  "beginnerDaySinceShahada": "Day {days} as a Muslim",
+  "@beginnerDaySinceShahada": {
+    "description": "Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "beginnerEssential1": "My New Muslim Guide",
+  "@beginnerEssential1": {
+    "description": "Beginner checklist item 1 — New Muslim guide"
+  },
+  "beginnerEssential2": "Learn Wudu (Ritual Purification)",
+  "@beginnerEssential2": {
+    "description": "Beginner checklist item 2 — Wudu guide"
+  },
+  "beginnerEssential3": "How to Pray (Step by Step)",
+  "@beginnerEssential3": {
+    "description": "Beginner checklist item 3 — How to pray"
+  },
+  "beginnerEssential4": "Surah Al-Fatiha (The Opening)",
+  "@beginnerEssential4": {
+    "description": "Beginner checklist item 4 — Surah Al-Fatiha"
+  },
+  "beginnerEssential5": "Daily Duas (Supplications)",
+  "@beginnerEssential5": {
+    "description": "Beginner checklist item 5 — Daily duas"
+  },
+  "beginnerEssential6": "Understanding the Shahada",
+  "@beginnerEssential6": {
+    "description": "Beginner checklist item 6 — Shahada understanding"
+  },
+  "beginnerEssential7": "Islamic Terms & Glossary",
+  "@beginnerEssential7": {
+    "description": "Beginner checklist item 7 — Islamic glossary"
+  },
+  "beginnerExploreAll": "Explore All Features",
+  "@beginnerExploreAll": {
+    "description": "Label for button that unlocks all Noor Guard features"
+  },
+  "beginnerExploreSubtitle": "Switch to the full Noor Guard experience",
+  "@beginnerExploreSubtitle": {
+    "description": "Subtitle under Explore All Features button"
+  },
+  "beginnerLearnSalah": "Learn Salah",
+  "@beginnerLearnSalah": {
+    "description": "Beginner toolbox card label — learn how to pray"
+  },
+  "beginnerMayAllahGuide": "May Allah guide your steps and bless your journey.",
+  "@beginnerMayAllahGuide": {
+    "description": "Subtitle blessing shown on beginner journey card"
+  },
+  "beginnerMuslimEssentials": "MUSLIM ESSENTIALS",
+  "@beginnerMuslimEssentials": {
+    "description": "Section header for the Muslim essentials checklist"
+  },
+  "beginnerQuote1": "Indeed, with hardship comes ease. — Quran 94:6",
+  "@beginnerQuote1": {
+    "description": "Rotating inspirational quote 1 — Quran 94:6"
+  },
+  "beginnerQuote2": "Take care of Allah's commands, He will take care of you.",
+  "@beginnerQuote2": {
+    "description": "Rotating inspirational quote 2 — prophetic hadith"
+  },
+  "beginnerQuote3": "Allah looks at your hearts and deeds, not your appearance.",
+  "@beginnerQuote3": {
+    "description": "Rotating inspirational quote 3 — Allah sees deeds"
+  },
+  "beginnerQuote4": "Every step toward prayer is a step toward peace.",
+  "@beginnerQuote4": {
+    "description": "Rotating inspirational quote 4 — prayer and peace"
+  },
+  "beginnerQuote5": "The best among you learns the Quran and teaches it.",
+  "@beginnerQuote5": {
+    "description": "Rotating inspirational quote 5 — learn and teach Quran"
+  },
+  "beginnerTapToSetShahadaDate": "Tap to set your Shahada date",
+  "@beginnerTapToSetShahadaDate": {
+    "description": "Prompt to set Shahada date when not yet set"
+  },
+  "beginnerToolboxSection": "BEGINNER TOOLBOX",
+  "@beginnerToolboxSection": {
+    "description": "Section header for beginner toolbox cards"
+  },
+  "beginnerYourJourney": "YOUR JOURNEY",
+  "@beginnerYourJourney": {
+    "description": "Section header for the journey / Shahada tracker"
   }
 }

@@ -739,5 +739,94 @@
         "type": "String"
       }
     }
+  },
+  "beginnerDaySinceShahada": "成为穆斯林第{days}天",
+  "@beginnerDaySinceShahada": {
+    "description": "Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "beginnerEssential1": "新穆斯林指南",
+  "@beginnerEssential1": {
+    "description": "Beginner checklist item 1 — New Muslim guide"
+  },
+  "beginnerEssential2": "学习小净（净礼）",
+  "@beginnerEssential2": {
+    "description": "Beginner checklist item 2 — Wudu guide"
+  },
+  "beginnerEssential3": "如何礼拜（逐步指南）",
+  "@beginnerEssential3": {
+    "description": "Beginner checklist item 3 — How to pray"
+  },
+  "beginnerEssential4": "《开端章》（法提哈章）",
+  "@beginnerEssential4": {
+    "description": "Beginner checklist item 4 — Surah Al-Fatiha"
+  },
+  "beginnerEssential5": "日常祈祷（杜阿）",
+  "@beginnerEssential5": {
+    "description": "Beginner checklist item 5 — Daily duas"
+  },
+  "beginnerEssential6": "理解清真言（作证词）",
+  "@beginnerEssential6": {
+    "description": "Beginner checklist item 6 — Shahada understanding"
+  },
+  "beginnerEssential7": "伊斯兰术语与词汇表",
+  "@beginnerEssential7": {
+    "description": "Beginner checklist item 7 — Islamic glossary"
+  },
+  "beginnerExploreAll": "探索所有功能",
+  "@beginnerExploreAll": {
+    "description": "Label for button that unlocks all Noor Guard features"
+  },
+  "beginnerExploreSubtitle": "切换至完整的Noor Guard体验",
+  "@beginnerExploreSubtitle": {
+    "description": "Subtitle under Explore All Features button"
+  },
+  "beginnerLearnSalah": "学习礼拜",
+  "@beginnerLearnSalah": {
+    "description": "Beginner toolbox card label — learn how to pray"
+  },
+  "beginnerMayAllahGuide": "愿真主引导你的脚步，祝福你的旅程。",
+  "@beginnerMayAllahGuide": {
+    "description": "Subtitle blessing shown on beginner journey card"
+  },
+  "beginnerMuslimEssentials": "穆斯林基础",
+  "@beginnerMuslimEssentials": {
+    "description": "Section header for the Muslim essentials checklist"
+  },
+  "beginnerQuote1": "困难之后必有安逸。——《古兰经》第94章第6节",
+  "@beginnerQuote1": {
+    "description": "Rotating inspirational quote 1 — Quran 94:6"
+  },
+  "beginnerQuote2": "遵守真主的命令，真主将保佑你。",
+  "@beginnerQuote2": {
+    "description": "Rotating inspirational quote 2 — prophetic hadith"
+  },
+  "beginnerQuote3": "真主看的是你的内心和行为，而非你的外表。",
+  "@beginnerQuote3": {
+    "description": "Rotating inspirational quote 3 — Allah sees deeds"
+  },
+  "beginnerQuote4": "每一步走向礼拜，都是走向平静的一步。",
+  "@beginnerQuote4": {
+    "description": "Rotating inspirational quote 4 — prayer and peace"
+  },
+  "beginnerQuote5": "你们中最好的人是学习古兰经并教授它的人。",
+  "@beginnerQuote5": {
+    "description": "Rotating inspirational quote 5 — learn and teach Quran"
+  },
+  "beginnerTapToSetShahadaDate": "点击设置您的作证词日期",
+  "@beginnerTapToSetShahadaDate": {
+    "description": "Prompt to set Shahada date when not yet set"
+  },
+  "beginnerToolboxSection": "初学者工具箱",
+  "@beginnerToolboxSection": {
+    "description": "Section header for beginner toolbox cards"
+  },
+  "beginnerYourJourney": "你的旅程",
+  "@beginnerYourJourney": {
+    "description": "Section header for the journey / Shahada tracker"
   }
 }

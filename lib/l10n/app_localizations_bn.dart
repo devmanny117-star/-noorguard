@@ -2283,4 +2283,76 @@ class AppLocalizationsBn extends AppLocalizations {
   String greetingWithName(String name) {
     return 'আস-সালামু আলাইকুম, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'মুসলিম হিসেবে $daysতম দিন';
+  }
+
+  @override
+  String get beginnerEssential1 => 'নতুন মুসলিমের গাইড';
+
+  @override
+  String get beginnerEssential2 => 'অযু শিখুন (পবিত্রতা অর্জন)';
+
+  @override
+  String get beginnerEssential3 => 'কিভাবে নামাজ পড়বেন (ধাপে ধাপে)';
+
+  @override
+  String get beginnerEssential4 => 'সূরা আল-ফাতিহা (শুরু)';
+
+  @override
+  String get beginnerEssential5 => 'দৈনিক দোয়া (প্রার্থনা)';
+
+  @override
+  String get beginnerEssential6 => 'শাহাদাহ বোঝা';
+
+  @override
+  String get beginnerEssential7 => 'ইসলামিক পরিভাষা ও গ্লোসারি';
+
+  @override
+  String get beginnerExploreAll => 'সব ফিচার এক্সপ্লোর করুন';
+
+  @override
+  String get beginnerExploreSubtitle =>
+      'সম্পূর্ণ Noor Guard অভিজ্ঞতায় স্যুইচ করুন';
+
+  @override
+  String get beginnerLearnSalah => 'সালাহ শিখুন';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'আল্লাহ আপনার পদক্ষেপ পরিচালনা করুন এবং আপনার যাত্রা আশীর্বাদ করুন।';
+
+  @override
+  String get beginnerMuslimEssentials => 'মুসলিমের মৌলিক বিষয়';
+
+  @override
+  String get beginnerQuote1 => 'নিশ্চয়ই কষ্টের সাথে সহজতা আছে। — কুরআন ৯৪:৬';
+
+  @override
+  String get beginnerQuote2 =>
+      'আল্লাহর আদেশ মেনে চলো, তিনি তোমাকে রক্ষা করবেন।';
+
+  @override
+  String get beginnerQuote3 =>
+      'আল্লাহ তোমার চেহারা নয়, তোমার হৃদয় ও কাজ দেখেন।';
+
+  @override
+  String get beginnerQuote4 =>
+      'নামাজের দিকে প্রতিটি পদক্ষেপ শান্তির দিকে একটি পদক্ষেপ।';
+
+  @override
+  String get beginnerQuote5 =>
+      'তোমাদের মধ্যে সর্বোত্তম সে, যে কুরআন শেখে এবং শেখায়।';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'আপনার শাহাদাহ তারিখ সেট করতে ট্যাপ করুন';
+
+  @override
+  String get beginnerToolboxSection => 'নতুনদের টুলবক্স';
+
+  @override
+  String get beginnerYourJourney => 'আপনার যাত্রা';
 }

@@ -2161,4 +2161,69 @@ class AppLocalizationsZh extends AppLocalizations {
   String greetingWithName(String name) {
     return 'السلام عليكم，$name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return '成为穆斯林第$days天';
+  }
+
+  @override
+  String get beginnerEssential1 => '新穆斯林指南';
+
+  @override
+  String get beginnerEssential2 => '学习小净（净礼）';
+
+  @override
+  String get beginnerEssential3 => '如何礼拜（逐步指南）';
+
+  @override
+  String get beginnerEssential4 => '《开端章》（法提哈章）';
+
+  @override
+  String get beginnerEssential5 => '日常祈祷（杜阿）';
+
+  @override
+  String get beginnerEssential6 => '理解清真言（作证词）';
+
+  @override
+  String get beginnerEssential7 => '伊斯兰术语与词汇表';
+
+  @override
+  String get beginnerExploreAll => '探索所有功能';
+
+  @override
+  String get beginnerExploreSubtitle => '切换至完整的Noor Guard体验';
+
+  @override
+  String get beginnerLearnSalah => '学习礼拜';
+
+  @override
+  String get beginnerMayAllahGuide => '愿真主引导你的脚步，祝福你的旅程。';
+
+  @override
+  String get beginnerMuslimEssentials => '穆斯林基础';
+
+  @override
+  String get beginnerQuote1 => '困难之后必有安逸。——《古兰经》第94章第6节';
+
+  @override
+  String get beginnerQuote2 => '遵守真主的命令，真主将保佑你。';
+
+  @override
+  String get beginnerQuote3 => '真主看的是你的内心和行为，而非你的外表。';
+
+  @override
+  String get beginnerQuote4 => '每一步走向礼拜，都是走向平静的一步。';
+
+  @override
+  String get beginnerQuote5 => '你们中最好的人是学习古兰经并教授它的人。';
+
+  @override
+  String get beginnerTapToSetShahadaDate => '点击设置您的作证词日期';
+
+  @override
+  String get beginnerToolboxSection => '初学者工具箱';
+
+  @override
+  String get beginnerYourJourney => '你的旅程';
 }

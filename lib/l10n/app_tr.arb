@@ -739,5 +739,94 @@
         "type": "String"
       }
     }
+  },
+  "beginnerDaySinceShahada": "Müslüman olarak {days}. gün",
+  "@beginnerDaySinceShahada": {
+    "description": "Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "beginnerEssential1": "Yeni Müslüman Rehberim",
+  "@beginnerEssential1": {
+    "description": "Beginner checklist item 1 — New Muslim guide"
+  },
+  "beginnerEssential2": "Abdest Öğren",
+  "@beginnerEssential2": {
+    "description": "Beginner checklist item 2 — Wudu guide"
+  },
+  "beginnerEssential3": "Nasıl Namaz Kılınır (Adım Adım)",
+  "@beginnerEssential3": {
+    "description": "Beginner checklist item 3 — How to pray"
+  },
+  "beginnerEssential4": "Fatiha Suresi (Açılış)",
+  "@beginnerEssential4": {
+    "description": "Beginner checklist item 4 — Surah Al-Fatiha"
+  },
+  "beginnerEssential5": "Günlük Dualar",
+  "@beginnerEssential5": {
+    "description": "Beginner checklist item 5 — Daily duas"
+  },
+  "beginnerEssential6": "Şehadeti Anlamak",
+  "@beginnerEssential6": {
+    "description": "Beginner checklist item 6 — Shahada understanding"
+  },
+  "beginnerEssential7": "İslami Terimler ve Sözlük",
+  "@beginnerEssential7": {
+    "description": "Beginner checklist item 7 — Islamic glossary"
+  },
+  "beginnerExploreAll": "Tüm Özellikleri Keşfet",
+  "@beginnerExploreAll": {
+    "description": "Label for button that unlocks all Noor Guard features"
+  },
+  "beginnerExploreSubtitle": "Tam Noor Guard deneyimine geçin",
+  "@beginnerExploreSubtitle": {
+    "description": "Subtitle under Explore All Features button"
+  },
+  "beginnerLearnSalah": "Namaz Öğren",
+  "@beginnerLearnSalah": {
+    "description": "Beginner toolbox card label — learn how to pray"
+  },
+  "beginnerMayAllahGuide": "Allah adımlarınızı yönlendirsin ve yolculuğunuzu bereketlendirsin.",
+  "@beginnerMayAllahGuide": {
+    "description": "Subtitle blessing shown on beginner journey card"
+  },
+  "beginnerMuslimEssentials": "MÜSLÜMAN ESASLARI",
+  "@beginnerMuslimEssentials": {
+    "description": "Section header for the Muslim essentials checklist"
+  },
+  "beginnerQuote1": "Şüphesiz, güçlükle birlikte bir kolaylık vardır. — Kuran 94:6",
+  "@beginnerQuote1": {
+    "description": "Rotating inspirational quote 1 — Quran 94:6"
+  },
+  "beginnerQuote2": "Allah'ın emirlerini gözet, O da seni gözetsin.",
+  "@beginnerQuote2": {
+    "description": "Rotating inspirational quote 2 — prophetic hadith"
+  },
+  "beginnerQuote3": "Allah, görünüşüne değil, kalbine ve amellerine bakar.",
+  "@beginnerQuote3": {
+    "description": "Rotating inspirational quote 3 — Allah sees deeds"
+  },
+  "beginnerQuote4": "Namaza atılan her adım, huzura atılan bir adımdır.",
+  "@beginnerQuote4": {
+    "description": "Rotating inspirational quote 4 — prayer and peace"
+  },
+  "beginnerQuote5": "Aranızın en hayırlısı Kur'an'ı öğrenen ve öğretendir.",
+  "@beginnerQuote5": {
+    "description": "Rotating inspirational quote 5 — learn and teach Quran"
+  },
+  "beginnerTapToSetShahadaDate": "Şehadet tarihini ayarlamak için dokun",
+  "@beginnerTapToSetShahadaDate": {
+    "description": "Prompt to set Shahada date when not yet set"
+  },
+  "beginnerToolboxSection": "BAŞLANGIÇ ARAÇ KUTUSU",
+  "@beginnerToolboxSection": {
+    "description": "Section header for beginner toolbox cards"
+  },
+  "beginnerYourJourney": "SENİN YOLCULUĞUNn",
+  "@beginnerYourJourney": {
+    "description": "Section header for the journey / Shahada tracker"
   }
 }

@@ -2292,4 +2292,77 @@ class AppLocalizationsEs extends AppLocalizations {
   String greetingWithName(String name) {
     return 'As-Salāmu \'Alaikum, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'Día $days como musulmán';
+  }
+
+  @override
+  String get beginnerEssential1 => 'Guía para nuevos musulmanes';
+
+  @override
+  String get beginnerEssential2 => 'Aprender Wudu (Purificación ritual)';
+
+  @override
+  String get beginnerEssential3 => 'Cómo orar (Paso a paso)';
+
+  @override
+  String get beginnerEssential4 => 'Surah Al-Fatiha (La Apertura)';
+
+  @override
+  String get beginnerEssential5 => 'Duas diarios (Súplicas)';
+
+  @override
+  String get beginnerEssential6 => 'Entendiendo la Shahada';
+
+  @override
+  String get beginnerEssential7 => 'Términos islámicos y glosario';
+
+  @override
+  String get beginnerExploreAll => 'Explorar todas las funciones';
+
+  @override
+  String get beginnerExploreSubtitle =>
+      'Cambia a la experiencia completa de Noor Guard';
+
+  @override
+  String get beginnerLearnSalah => 'Aprender Salah';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'Que Allah guíe tus pasos y bendiga tu camino.';
+
+  @override
+  String get beginnerMuslimEssentials => 'ESENCIALES DEL MUSULMÁN';
+
+  @override
+  String get beginnerQuote1 =>
+      'Ciertamente, con la dificultad viene la facilidad. — Corán 94:6';
+
+  @override
+  String get beginnerQuote2 => 'Cuida los mandatos de Allah y Él te cuidará.';
+
+  @override
+  String get beginnerQuote3 =>
+      'Allah mira tu corazón y tus obras, no tu apariencia.';
+
+  @override
+  String get beginnerQuote4 =>
+      'Cada paso hacia la oración es un paso hacia la paz.';
+
+  @override
+  String get beginnerQuote5 =>
+      'El mejor de vosotros es quien aprende el Corán y lo enseña.';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'Toca para establecer tu fecha de Shahada';
+
+  @override
+  String get beginnerToolboxSection =>
+      'CAJA DE HERRAMIENTAS PARA PRINCIPIANTES';
+
+  @override
+  String get beginnerYourJourney => 'TU CAMINO';
 }

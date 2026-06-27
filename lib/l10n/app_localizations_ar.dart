@@ -2247,4 +2247,70 @@ class AppLocalizationsAr extends AppLocalizations {
   String greetingWithName(String name) {
     return 'السلام عليكم، $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'اليوم $days كمسلم';
+  }
+
+  @override
+  String get beginnerEssential1 => 'دليلي كمسلم جديد';
+
+  @override
+  String get beginnerEssential2 => 'تعلم الوضوء';
+
+  @override
+  String get beginnerEssential3 => 'كيفية الصلاة خطوة بخطوة';
+
+  @override
+  String get beginnerEssential4 => 'سورة الفاتحة';
+
+  @override
+  String get beginnerEssential5 => 'الأدعية اليومية';
+
+  @override
+  String get beginnerEssential6 => 'فهم الشهادة';
+
+  @override
+  String get beginnerEssential7 => 'المصطلحات والمعجم الإسلامي';
+
+  @override
+  String get beginnerExploreAll => 'استكشف جميع الميزات';
+
+  @override
+  String get beginnerExploreSubtitle => 'انتقل إلى تجربة نور غارد الكاملة';
+
+  @override
+  String get beginnerLearnSalah => 'تعلم الصلاة';
+
+  @override
+  String get beginnerMayAllahGuide => 'أعانك الله على كل خطوة وبارك في رحلتك.';
+
+  @override
+  String get beginnerMuslimEssentials => 'أساسيات المسلم';
+
+  @override
+  String get beginnerQuote1 => 'إِنَّ مَعَ الْعُسْرِ يُسْرًا — القرآن ٩٤:٦';
+
+  @override
+  String get beginnerQuote2 => 'احفظ الله يحفظك.';
+
+  @override
+  String get beginnerQuote3 =>
+      'إن الله لا ينظر إلى صوركم وأموالكم، ولكن ينظر إلى قلوبكم وأعمالكم.';
+
+  @override
+  String get beginnerQuote4 => 'كل خطوة نحو الصلاة هي خطوة نحو السلام.';
+
+  @override
+  String get beginnerQuote5 => 'خيركم من تعلم القرآن وعلمه.';
+
+  @override
+  String get beginnerTapToSetShahadaDate => 'اضغط لتعيين تاريخ شهادتك';
+
+  @override
+  String get beginnerToolboxSection => 'أدوات المبتدئ';
+
+  @override
+  String get beginnerYourJourney => 'رحلتك';
 }

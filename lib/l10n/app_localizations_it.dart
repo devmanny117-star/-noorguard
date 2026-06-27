@@ -2294,4 +2294,78 @@ class AppLocalizationsIt extends AppLocalizations {
   String greetingWithName(String name) {
     return 'As-Salāmu \'Alaikum, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'Giorno $days come musulmano';
+  }
+
+  @override
+  String get beginnerEssential1 => 'Guida per nuovi musulmani';
+
+  @override
+  String get beginnerEssential2 => 'Imparare il Wudu';
+
+  @override
+  String get beginnerEssential3 => 'Come pregare (Passo dopo passo)';
+
+  @override
+  String get beginnerEssential4 => 'Surah Al-Fatiha (L\'Apertura)';
+
+  @override
+  String get beginnerEssential5 => 'Dua quotidiane (Suppliche)';
+
+  @override
+  String get beginnerEssential6 => 'Capire la Shahada';
+
+  @override
+  String get beginnerEssential7 => 'Termini islamici e glossario';
+
+  @override
+  String get beginnerExploreAll => 'Esplora tutte le funzionalità';
+
+  @override
+  String get beginnerExploreSubtitle =>
+      'Passa all\'esperienza completa di Noor Guard';
+
+  @override
+  String get beginnerLearnSalah => 'Imparare il Salah';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'Che Allah guidi i tuoi passi e benedica il tuo cammino.';
+
+  @override
+  String get beginnerMuslimEssentials => 'FONDAMENTALI DEL MUSULMANO';
+
+  @override
+  String get beginnerQuote1 =>
+      'In verità, con la difficoltà viene la facilità. — Corano 94:6';
+
+  @override
+  String get beginnerQuote2 =>
+      'Rispetta i comandi di Allah e Lui si prenderà cura di te.';
+
+  @override
+  String get beginnerQuote3 =>
+      'Allah guarda il tuo cuore e le tue azioni, non il tuo aspetto.';
+
+  @override
+  String get beginnerQuote4 =>
+      'Ogni passo verso la preghiera è un passo verso la pace.';
+
+  @override
+  String get beginnerQuote5 =>
+      'Il migliore tra voi è colui che apprende il Corano e lo insegna.';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'Tocca per impostare la data della tua Shahada';
+
+  @override
+  String get beginnerToolboxSection =>
+      'CASSETTA DEGLI ATTREZZI PER PRINCIPIANTI';
+
+  @override
+  String get beginnerYourJourney => 'IL TUO CAMMINO';
 }

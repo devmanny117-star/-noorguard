@@ -2270,4 +2270,75 @@ class AppLocalizationsEn extends AppLocalizations {
   String greetingWithName(String name) {
     return 'As-Salāmu \'Alaikum, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'Day $days as a Muslim';
+  }
+
+  @override
+  String get beginnerEssential1 => 'My New Muslim Guide';
+
+  @override
+  String get beginnerEssential2 => 'Learn Wudu (Ritual Purification)';
+
+  @override
+  String get beginnerEssential3 => 'How to Pray (Step by Step)';
+
+  @override
+  String get beginnerEssential4 => 'Surah Al-Fatiha (The Opening)';
+
+  @override
+  String get beginnerEssential5 => 'Daily Duas (Supplications)';
+
+  @override
+  String get beginnerEssential6 => 'Understanding the Shahada';
+
+  @override
+  String get beginnerEssential7 => 'Islamic Terms & Glossary';
+
+  @override
+  String get beginnerExploreAll => 'Explore All Features';
+
+  @override
+  String get beginnerExploreSubtitle =>
+      'Switch to the full Noor Guard experience';
+
+  @override
+  String get beginnerLearnSalah => 'Learn Salah';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'May Allah guide your steps and bless your journey.';
+
+  @override
+  String get beginnerMuslimEssentials => 'MUSLIM ESSENTIALS';
+
+  @override
+  String get beginnerQuote1 => 'Indeed, with hardship comes ease. — Quran 94:6';
+
+  @override
+  String get beginnerQuote2 =>
+      'Take care of Allah\'s commands, He will take care of you.';
+
+  @override
+  String get beginnerQuote3 =>
+      'Allah looks at your hearts and deeds, not your appearance.';
+
+  @override
+  String get beginnerQuote4 =>
+      'Every step toward prayer is a step toward peace.';
+
+  @override
+  String get beginnerQuote5 =>
+      'The best among you learns the Quran and teaches it.';
+
+  @override
+  String get beginnerTapToSetShahadaDate => 'Tap to set your Shahada date';
+
+  @override
+  String get beginnerToolboxSection => 'BEGINNER TOOLBOX';
+
+  @override
+  String get beginnerYourJourney => 'YOUR JOURNEY';
 }

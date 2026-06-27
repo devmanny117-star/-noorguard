@@ -2277,4 +2277,72 @@ class AppLocalizationsFa extends AppLocalizations {
   String greetingWithName(String name) {
     return 'سلام، $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'روز $days به‌عنوان مسلمان';
+  }
+
+  @override
+  String get beginnerEssential1 => 'راهنمای مسلمان جدید';
+
+  @override
+  String get beginnerEssential2 => 'یادگیری وضو';
+
+  @override
+  String get beginnerEssential3 => 'نحوه نماز (گام به گام)';
+
+  @override
+  String get beginnerEssential4 => 'سوره الفاتحه';
+
+  @override
+  String get beginnerEssential5 => 'دعاهای روزانه';
+
+  @override
+  String get beginnerEssential6 => 'درک شهادتین';
+
+  @override
+  String get beginnerEssential7 => 'اصطلاحات اسلامی و واژه‌نامه';
+
+  @override
+  String get beginnerExploreAll => 'کشف همه ویژگی‌ها';
+
+  @override
+  String get beginnerExploreSubtitle => 'به تجربه کامل Noor Guard بروید';
+
+  @override
+  String get beginnerLearnSalah => 'یادگیری نماز';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'خداوند گام‌های شما را هدایت کند و سفرتان را برکت دهد.';
+
+  @override
+  String get beginnerMuslimEssentials => 'اصول مسلمان';
+
+  @override
+  String get beginnerQuote1 => 'به‌راستی با هر سختی آسانی است. — قرآن ۹۴:۶';
+
+  @override
+  String get beginnerQuote2 => 'حق الله را رعایت کن، تا خداوند تو را نگه دارد.';
+
+  @override
+  String get beginnerQuote3 =>
+      'خداوند به چهره و ثروت شما نمی‌نگرد، بلکه به دل‌ها و اعمال شما می‌نگرد.';
+
+  @override
+  String get beginnerQuote4 => 'هر قدم به سوی نماز، قدمی به سوی آرامش است.';
+
+  @override
+  String get beginnerQuote5 =>
+      'بهترین شما کسی است که قرآن را یاد می‌گیرد و یاد می‌دهد.';
+
+  @override
+  String get beginnerTapToSetShahadaDate => 'برای تنظیم تاریخ شهادت ضربه بزنید';
+
+  @override
+  String get beginnerToolboxSection => 'جعبه‌ابزار مبتدی';
+
+  @override
+  String get beginnerYourJourney => 'سفر شما';
 }

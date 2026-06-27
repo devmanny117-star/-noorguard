@@ -2284,4 +2284,76 @@ class AppLocalizationsSw extends AppLocalizations {
   String greetingWithName(String name) {
     return 'As-Salāmu \'Alaikum, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'Siku $days kama Mwislamu';
+  }
+
+  @override
+  String get beginnerEssential1 => 'Mwongozo wa Mwislamu Mpya';
+
+  @override
+  String get beginnerEssential2 => 'Jifunze Udhu (Utakaso)';
+
+  @override
+  String get beginnerEssential3 => 'Jinsi ya Kuswali (Hatua kwa Hatua)';
+
+  @override
+  String get beginnerEssential4 => 'Sura Al-Fatiha (Ufunguzi)';
+
+  @override
+  String get beginnerEssential5 => 'Dua za Kila Siku';
+
+  @override
+  String get beginnerEssential6 => 'Kuelewa Shahada';
+
+  @override
+  String get beginnerEssential7 => 'Masharti ya Kiislamu na Kamusi';
+
+  @override
+  String get beginnerExploreAll => 'Chunguza Vipengele Vyote';
+
+  @override
+  String get beginnerExploreSubtitle =>
+      'Badilisha kwa uzoefu kamili wa Noor Guard';
+
+  @override
+  String get beginnerLearnSalah => 'Jifunze Sala';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'Allah aongoza hatua zako na abariki safari yako.';
+
+  @override
+  String get beginnerMuslimEssentials => 'MAMBO MUHIMU YA MWISLAMU';
+
+  @override
+  String get beginnerQuote1 =>
+      'Hakika pamoja na ugumu kuna urahisi. — Quran 94:6';
+
+  @override
+  String get beginnerQuote2 => 'Angalia amri za Allah, Yeye atakuangalia.';
+
+  @override
+  String get beginnerQuote3 =>
+      'Allah anaangalia moyo na matendo yako, si mwonekano wako.';
+
+  @override
+  String get beginnerQuote4 =>
+      'Kila hatua kuelekea sala ni hatua kuelekea amani.';
+
+  @override
+  String get beginnerQuote5 =>
+      'Bora wenu ni yule anayejifunza Quran na kuifundisha.';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'Gusa kuweka tarehe yako ya Shahada';
+
+  @override
+  String get beginnerToolboxSection => 'SANDUKU LA ZANA LA MWANZO';
+
+  @override
+  String get beginnerYourJourney => 'SAFARI YAKO';
 }

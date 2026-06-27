@@ -2288,4 +2288,77 @@ class AppLocalizationsPt extends AppLocalizations {
   String greetingWithName(String name) {
     return 'As-Salāmu \'Alaikum, $name 👋';
   }
+
+  @override
+  String beginnerDaySinceShahada(int days) {
+    return 'Dia $days como muçulmano';
+  }
+
+  @override
+  String get beginnerEssential1 => 'Guia para novos muçulmanos';
+
+  @override
+  String get beginnerEssential2 => 'Aprender Wudu (Purificação ritual)';
+
+  @override
+  String get beginnerEssential3 => 'Como rezar (Passo a passo)';
+
+  @override
+  String get beginnerEssential4 => 'Surah Al-Fatiha (A Abertura)';
+
+  @override
+  String get beginnerEssential5 => 'Duas diárias (Súplicas)';
+
+  @override
+  String get beginnerEssential6 => 'Entendendo a Shahada';
+
+  @override
+  String get beginnerEssential7 => 'Termos islâmicos e glossário';
+
+  @override
+  String get beginnerExploreAll => 'Explorar todos os recursos';
+
+  @override
+  String get beginnerExploreSubtitle =>
+      'Mude para a experiência completa do Noor Guard';
+
+  @override
+  String get beginnerLearnSalah => 'Aprender Salah';
+
+  @override
+  String get beginnerMayAllahGuide =>
+      'Que Allah guie seus passos e abençoe sua jornada.';
+
+  @override
+  String get beginnerMuslimEssentials => 'ESSENCIAIS DO MUÇULMANO';
+
+  @override
+  String get beginnerQuote1 =>
+      'Certamente, com a dificuldade vem a facilidade. — Alcorão 94:6';
+
+  @override
+  String get beginnerQuote2 =>
+      'Cuide dos mandamentos de Allah e Ele cuidará de você.';
+
+  @override
+  String get beginnerQuote3 =>
+      'Allah olha para o teu coração e ações, não para a tua aparência.';
+
+  @override
+  String get beginnerQuote4 =>
+      'Cada passo em direção à oração é um passo em direção à paz.';
+
+  @override
+  String get beginnerQuote5 =>
+      'O melhor entre vós é aquele que aprende o Alcorão e o ensina.';
+
+  @override
+  String get beginnerTapToSetShahadaDate =>
+      'Toque para definir sua data de Shahada';
+
+  @override
+  String get beginnerToolboxSection => 'CAIXA DE FERRAMENTAS PARA INICIANTES';
+
+  @override
+  String get beginnerYourJourney => 'SUA JORNADA';
 }
