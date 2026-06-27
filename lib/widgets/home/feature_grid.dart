@@ -76,6 +76,7 @@ class FeatureGrid extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
       child: Container(
         width: double.infinity,
+        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           color: _kBg,
           borderRadius: BorderRadius.circular(24),
@@ -84,23 +85,34 @@ class FeatureGrid extends StatelessWidget {
             width: 1,
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
           children: [
-            // Row 1
-            _CardRow(
-              items: row1,
-              onTap: (id, label) => _navigate(context, id, label),
+            const Positioned.fill(
+              child: CustomPaint(
+                painter: GeometricPatternPainter(
+                  color: _kBorderGold,
+                  alpha: 0.09,
+                ),
+              ),
             ),
-            const SizedBox(height: 16),
-            // Gold divider with diamond ornament
-            const _GoldDivider(),
-            const SizedBox(height: 16),
-            // Row 2
-            _CardRow(
-              items: row2,
-              onTap: (id, label) => _navigate(context, id, label),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _CardRow(
+                    items: row1,
+                    onTap: (id, label) => _navigate(context, id, label),
+                  ),
+                  const SizedBox(height: 16),
+                  const _GoldDivider(),
+                  const SizedBox(height: 16),
+                  _CardRow(
+                    items: row2,
+                    onTap: (id, label) => _navigate(context, id, label),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -4,12 +4,18 @@ import 'package:flutter/material.dart';
 /// Subtle repeating 8-pointed Islamic star pattern, used as a background
 /// texture on dark navy/gold cards (Revert Corner, unified prayer card).
 class GeometricPatternPainter extends CustomPainter {
-  const GeometricPatternPainter();
+  final Color color;
+  final double alpha;
+
+  const GeometricPatternPainter({
+    this.color = const Color(0xFFD4AF37),
+    this.alpha = 0.07,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFFD4AF37).withValues(alpha: 0.07)
+      ..color = color.withValues(alpha: alpha)
       ..strokeWidth = 0.8
       ..style = PaintingStyle.stroke;
 
@@ -41,5 +47,6 @@ class GeometricPatternPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(GeometricPatternPainter old) => false;
+  bool shouldRepaint(GeometricPatternPainter old) =>
+      old.color != color || old.alpha != alpha;
 }

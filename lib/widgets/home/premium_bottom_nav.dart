@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../l10n/app_localizations.dart';
+import '../geometric_pattern_painter.dart';
 
 // ── Colours ───────────────────────────────────────────────────────────────────
 
@@ -110,8 +111,8 @@ class NavigationItem extends StatelessWidget {
               Transform.scale(
                 scale: 1.0 + 0.08 * t,
                 child: Container(
-                  width: 52,
-                  height: 52,
+                  width: 44,
+                  height: 44,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _kGold.withValues(alpha: t),
@@ -175,7 +176,19 @@ class _Pill extends StatelessWidget {
               borderRadius: BorderRadius.circular(42),
               border: Border.all(color: _kBorderGold, width: 1),
             ),
-            child: child,
+            child: Stack(
+              children: [
+                const Positioned.fill(
+                  child: CustomPaint(
+                    painter: GeometricPatternPainter(
+                      color: _kBorderGold,
+                      alpha: 0.09,
+                    ),
+                  ),
+                ),
+                child,
+              ],
+            ),
           ),
         ),
       ),
