@@ -34,12 +34,12 @@ const _kEmojiTop    = _kNeedleTipY - _kEmojiSize / 2;
 const _kLpfAlpha = 0.12;
 
 // Needle must be within this many degrees of Mecca to trigger the gold glow.
-const _kAlignThresholdDeg = 5.0;
+const _kAlignThresholdDeg = 15.0;
 
 // ── Haptic feedback zones ─────────────────────────────────────────────────────
 
 // Degrees-off-Qibla thresholds for each haptic zone.
-const _kCloseThresholdDeg      = 15.0;
+const _kCloseThresholdDeg      = 30.0;
 const _kApproachingThresholdDeg = 45.0;
 
 enum _HapticZone { none, approaching, close, aligned }
@@ -377,7 +377,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     if (!kIsWeb && Platform.isIOS) {
       switch (zone) {
         case _HapticZone.approaching:
-          HapticFeedback.lightImpact();
+          HapticFeedback.heavyImpact();
         case _HapticZone.close:
           HapticFeedback.mediumImpact();
         case _HapticZone.aligned:
@@ -389,15 +389,15 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     }
     if (!kIsWeb && Platform.isAndroid && _vibratorAvailable) {
       final amplitude = switch (zone) {
-        _HapticZone.approaching => 70,
-        _HapticZone.close       => 150,
+        _HapticZone.approaching => 150,
+        _HapticZone.close       => 210,
         _HapticZone.aligned     => 255,
         _HapticZone.none        => -1,
       };
       final duration = switch (zone) {
-        _HapticZone.approaching => 60,
-        _HapticZone.close       => 90,
-        _HapticZone.aligned     => 110,
+        _HapticZone.approaching => 80,
+        _HapticZone.close       => 110,
+        _HapticZone.aligned     => 130,
         _HapticZone.none        => 0,
       };
       if (duration > 0) Vibration.vibrate(duration: duration, amplitude: amplitude);
@@ -506,6 +506,34 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                     const SizedBox(height: 12),
                   ],
                   _buildCompass(l10n),
+                  const SizedBox(height: 16),
+                  Text(
+                    l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: _kGold,
+                    ),
+                  ),
+                  if (!kIsWeb) ...[
+                    const SizedBox(height: 16),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: _kCard,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: _kGold.withValues(alpha: 0.15), width: 1),
+                      ),
+                      child: Text(
+                        l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
+                        style: GoogleFonts.lato(
+                          fontSize: 13,
+                          color: Colors.white.withValues(alpha: 0.5),
+                          letterSpacing: 1.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
@@ -527,7 +555,6 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                     )
                   : const SizedBox.shrink(key: ValueKey('no-cal')),
             ),
-            _buildReadout(l10n),
             if (!kIsWeb) ...[
               const SizedBox(height: 16),
               _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
@@ -627,40 +654,6 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     );
   }
 
-  // ── Readout ───────────────────────────────────────────────────────────────────
-
-  Widget _buildReadout(AppLocalizations l10n) {
-    return Column(
-      children: [
-        Text(
-          l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
-          style: GoogleFonts.playfairDisplay(
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
-            color: _kGold,
-          ),
-        ),
-        const SizedBox(height: 10),
-        if (!kIsWeb)
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: _kCard,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: _kGold.withValues(alpha: 0.15), width: 1),
-            ),
-            child: Text(
-              l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
-              style: GoogleFonts.lato(
-                fontSize: 13,
-                color: Colors.white.withValues(alpha: 0.5),
-                letterSpacing: 1.0,
-              ),
-            ),
-          ),
-      ],
-    );
-  }
 }
 
 // ── Accuracy badge ────────────────────────────────────────────────────────────
