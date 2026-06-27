@@ -35,7 +35,7 @@ fun PrayerPillsRow(prayers: List<WidgetPrayer>) {
             if (index > 0) Spacer(modifier = GlanceModifier.width(4.dp))
             PrayerPill(
                 prayer = prayer,
-                modifier = GlanceModifier.defaultWeight().height(68.dp),
+                modifier = GlanceModifier.defaultWeight().height(80.dp),
             )
         }
     }
