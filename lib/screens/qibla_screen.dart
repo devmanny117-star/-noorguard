@@ -143,7 +143,6 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   // Haptic feedback as the needle approaches Qibla
   _HapticZone _hapticZone = _HapticZone.none;
   Timer? _hapticPulseTimer;
-  Timer? _alignedStopTimer;
   bool _vibratorAvailable = false;
 
   // Tracks the app's foreground/background state (set by
@@ -340,7 +339,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     if (zone == _hapticZone) return; // already in this zone — let it run
     _hapticZone = zone;
     _hapticPulseTimer?.cancel();
-    _alignedStopTimer?.cancel();
+    _hapticPulseTimer = null;
 
     switch (zone) {
       case _HapticZone.none:
@@ -358,18 +357,12 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
           (_) => _firePulse(_HapticZone.close),
         );
       case _HapticZone.aligned:
-        // Rapid strong pulses to signal perfect alignment, then stop on their
-        // own after 3 seconds so the phone doesn't keep buzzing if the user
-        // holds it steady on Qibla.
-        _firePulse(_HapticZone.aligned);
+        // Repeating heavy pulse every 400 ms while the needle stays on Qibla.
+        // No immediate fire — the timer alone drives all haptics for this zone.
         _hapticPulseTimer = Timer.periodic(
-          const Duration(milliseconds: 150),
-          (_) => _firePulse(_HapticZone.aligned),
+          const Duration(milliseconds: 400),
+          (_) => HapticFeedback.heavyImpact(),
         );
-        _alignedStopTimer = Timer(const Duration(seconds: 3), () {
-          _hapticPulseTimer?.cancel();
-          _hapticPulseTimer = null;
-        });
     }
   }
 
@@ -407,8 +400,6 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   void _stopHaptics() {
     _hapticPulseTimer?.cancel();
     _hapticPulseTimer = null;
-    _alignedStopTimer?.cancel();
-    _alignedStopTimer = null;
     _hapticZone = _HapticZone.none;
     if (!kIsWeb && Platform.isAndroid && _vibratorAvailable) {
       Vibration.cancel();
