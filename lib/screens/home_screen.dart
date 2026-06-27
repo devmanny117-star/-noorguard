@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import '../theme/app_theme.dart';
@@ -15,6 +14,7 @@ import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
 import '../widgets/home/feature_grid.dart';
+import '../widgets/home/premium_bottom_nav.dart';
 import 'prayers_screen.dart';
 import 'qibla_screen.dart';
 import 'quran_screen.dart';
@@ -59,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       },
       child: Scaffold(
+        extendBody: true,
         backgroundColor: colors.background,
         body: SafeArea(
           child: IndexedStack(
@@ -77,8 +78,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: _BottomNav(
-          selectedIndex: _selectedIndex,
+        bottomNavigationBar: PremiumBottomNavigationBar(
+          currentIndex: _selectedIndex,
           onTap: (i) => setState(() => _selectedIndex = i),
         ),
       ),
@@ -293,130 +294,6 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
           const RevertCornerCard(),
           const FeatureGrid(),
         ],
-      ),
-    );
-  }
-}
-
-
-class _BottomNav extends StatelessWidget {
-  final int selectedIndex;
-  final ValueChanged<int> onTap;
-
-  const _BottomNav({required this.selectedIndex, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.appColors;
-    final l10n = AppLocalizations.of(context)!;
-
-    return Container(
-      decoration: BoxDecoration(
-        color: colors.cardBg,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.07),
-            blurRadius: 16,
-            offset: const Offset(0, -3),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        top: false,
-        child: SizedBox(
-          height: 60,
-          child: Row(
-            children: [
-              _NavItem(
-                icon: Icons.home_outlined,
-                selectedIcon: Icons.home_rounded,
-                label: l10n.home,
-                isSelected: selectedIndex == 0,
-                onTap: () => onTap(0),
-              ),
-              _NavItem(
-                icon: Icons.menu_book_outlined,
-                selectedIcon: Icons.menu_book_rounded,
-                label: l10n.quran,
-                isSelected: selectedIndex == 1,
-                onTap: () => onTap(1),
-              ),
-              _NavItem(
-                icon: Icons.explore_outlined,
-                selectedIcon: Icons.explore_rounded,
-                label: l10n.qibla,
-                isSelected: selectedIndex == 2,
-                onTap: () => onTap(2),
-              ),
-              _NavItem(
-                icon: Icons.grid_view_outlined,
-                selectedIcon: Icons.grid_view_rounded,
-                label: l10n.more,
-                isSelected: selectedIndex == 3,
-                onTap: () => onTap(3),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _NavItem extends StatelessWidget {
-  final IconData icon;
-  final IconData selectedIcon;
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const _NavItem({
-    required this.icon,
-    required this.selectedIcon,
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.appColors;
-    final color = isSelected ? AppColors.gold : colors.secondaryText;
-
-    return Expanded(
-      child: GestureDetector(
-        onTap: onTap,
-        behavior: HitTestBehavior.opaque,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              height: 2.5,
-              width: isSelected ? 28.0 : 0.0,
-              margin: const EdgeInsets.only(bottom: 7),
-              decoration: BoxDecoration(
-                color: AppColors.gold,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-            Icon(
-              isSelected ? selectedIcon : icon,
-              size: 22,
-              color: color,
-            ),
-            const SizedBox(height: 3),
-            Text(
-              label,
-              style: GoogleFonts.lato(
-                fontSize: 10,
-                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
-                color: color,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
