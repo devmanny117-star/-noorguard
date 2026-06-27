@@ -8,9 +8,9 @@ import 'beginner_home_screen.dart';
 import 'home_screen.dart';
 
 // Always dark — onboarding never inherits the system theme.
-const _bg = Color(0xFF0D1B2A);
-const _bgGradCenter = Color(0xFF101E31);
-const _bgGradEdge = Color(0xFF081321);
+const _bg = Color(0xFF081321);
+const _bgGradCenter = Color(0xFF0D1827);
+const _bgGradEdge = Color(0xFF060E1C);
 const _titleGold = Color(0xFFD4AF37);
 const _gold = Color(0xFFC9A84C);
 const _mutedGold = Color(0xFFA08532);
@@ -165,9 +165,8 @@ class _WelcomePageState extends State<_WelcomePage>
     final size = MediaQuery.sizeOf(context);
     final topPad = MediaQuery.paddingOf(context).top;
     final botPad = MediaQuery.paddingOf(context).bottom;
-    // Arch fills top 55% — use a tall rectangle so the arch gains height.
-    final archW = size.width * 0.82;
-    final archH = size.height * 0.50;
+    final archW = size.width * 0.92;
+    final archH = size.height * 0.53;
 
     return Stack(
       children: [
@@ -186,16 +185,16 @@ class _WelcomePageState extends State<_WelcomePage>
         Column(
           children: [
             SizedBox(height: topPad + 16),
-            // ── arch + animations (55% of screen) ──────────────────────────
+            // ── arch + animations (58% of screen) ──────────────────────────
             SizedBox(
-              height: size.height * 0.55,
+              height: size.height * 0.58,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  // Arch outline
+                  // Arch with gradient fill + ornate Mughal outline
                   CustomPaint(
                     size: Size(archW, archH),
-                    painter: _IslamicArchPainter(),
+                    painter: const _IslamicArchPainter(),
                   ),
                   // Twinkling stars inside the arch
                   AnimatedBuilder(
@@ -205,14 +204,34 @@ class _WelcomePageState extends State<_WelcomePage>
                       painter: _StarsPainter(twinkle: _twinkleCtrl.value),
                     ),
                   ),
-                  // Floating crescent
+                  // Gold glow behind moon (animated with float)
                   AnimatedBuilder(
                     animation: _floatAnim,
                     builder: (_, __) => Transform.translate(
-                      offset: Offset(0, _floatAnim.value),
+                      offset: Offset(0, -archH * 0.06 + _floatAnim.value),
+                      child: Container(
+                        width: archW * 0.30,
+                        height: archW * 0.30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: RadialGradient(
+                            colors: [
+                              _gold.withValues(alpha: 0.16),
+                              _gold.withValues(alpha: 0.0),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Floating crescent (30% smaller, center-lower)
+                  AnimatedBuilder(
+                    animation: _floatAnim,
+                    builder: (_, __) => Transform.translate(
+                      offset: Offset(0, -archH * 0.06 + _floatAnim.value),
                       child: SizedBox(
-                        width: archW * 0.26,
-                        height: archW * 0.26,
+                        width: archW * 0.18,
+                        height: archW * 0.18,
                         child: const CustomPaint(painter: _CrescentPainter()),
                       ),
                     ),
@@ -903,63 +922,120 @@ class _FeatureRow extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _IslamicArchPainter extends CustomPainter {
+  const _IslamicArchPainter();
+
   @override
   void paint(Canvas canvas, Size size) {
     final w = size.width;
     final h = size.height;
+    final mid = w / 2;
 
-    final paint = Paint()
-      ..color = _gold.withValues(alpha: 0.52)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.6
-      ..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round;
+    // Pillar positions
+    final left = w * 0.10;
+    final right = w * 0.90;
+    final base = h * 0.96;
+    final shoulder = h * 0.65;
 
-    final left = w * 0.18;
-    final right = w * 0.82;
-    final base = h * 0.92;
-    final shoulder = h * 0.54;
-    final peak = h * 0.07;
-    final midX = w / 2;
-    final spanH = shoulder - peak;
+    // Three-cusp Mughal ogee arch points
+    final lCuspX = w * 0.23;  final lCuspY = h * 0.43;
+    final lDipX  = w * 0.37;  final lDipY  = h * 0.27;
+    final peakY  = h * 0.05;
+    final rDipX  = w * 0.63;  final rDipY  = h * 0.27;
+    final rCuspX = w * 0.77;  final rCuspY = h * 0.43;
 
-    // Pointed Islamic arch — two cubic beziers meeting at the peak
-    final path = Path()
+    final archPath = Path()
       ..moveTo(left, base)
       ..lineTo(left, shoulder)
-      ..cubicTo(
-        left, shoulder - spanH * 0.55,
-        midX - (midX - left) * 0.35, peak + spanH * 0.15,
-        midX, peak,
-      )
-      ..cubicTo(
-        midX + (right - midX) * 0.35, peak + spanH * 0.15,
-        right, shoulder - spanH * 0.55,
-        right, shoulder,
-      )
+      // Left pillar → left cusp (gentle outward curve)
+      ..cubicTo(left,      h * 0.56,
+                w * 0.16, lCuspY,
+                lCuspX,   lCuspY)
+      // Left cusp → left dip (concave inward)
+      ..cubicTo(w * 0.30, h * 0.41,
+                w * 0.34, lDipY + h * 0.02,
+                lDipX,    lDipY)
+      // Left dip → center peak (main arch rise)
+      ..cubicTo(w * 0.40, h * 0.13,
+                w * 0.45, peakY + h * 0.04,
+                mid,      peakY)
+      // Center peak → right dip (mirror)
+      ..cubicTo(w * 0.55, peakY + h * 0.04,
+                w * 0.60, h * 0.13,
+                rDipX,    rDipY)
+      // Right dip → right cusp
+      ..cubicTo(w * 0.66, rDipY + h * 0.02,
+                w * 0.70, h * 0.41,
+                rCuspX,   rCuspY)
+      // Right cusp → right pillar
+      ..cubicTo(w * 0.84, rCuspY,
+                right,    h * 0.56,
+                right,    shoulder)
       ..lineTo(right, base)
       ..lineTo(left, base);
 
-    canvas.drawPath(path, paint);
+    // 1. Dark radial gradient fill inside arch
+    canvas.save();
+    canvas.clipPath(archPath);
+    canvas.drawRect(
+      Rect.fromLTWH(0, 0, w, h),
+      Paint()
+        ..shader = const RadialGradient(
+          center: Alignment(0, -0.2),
+          radius: 0.75,
+          colors: [Color(0x35101E31), Color(0x88060E1C)],
+        ).createShader(Rect.fromLTWH(0, 0, w, h)),
+    );
+    canvas.restore();
 
-    // Decorative small diamond at the arch peak
-    final diamondPaint = Paint()
-      ..color = _gold.withValues(alpha: 0.70)
-      ..style = PaintingStyle.fill;
+    // 2. Gold outline stroke
+    canvas.drawPath(
+      archPath,
+      Paint()
+        ..color = _gold.withValues(alpha: 0.58)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.6
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round,
+    );
+
+    // 3. Diamond at center peak
     const ds = 4.0;
-    final diamondPath = Path()
-      ..moveTo(midX, peak - ds)
-      ..lineTo(midX + ds, peak)
-      ..lineTo(midX, peak + ds)
-      ..lineTo(midX - ds, peak)
-      ..close();
-    canvas.drawPath(diamondPath, diamondPaint);
+    canvas.drawPath(
+      Path()
+        ..moveTo(mid, peakY - ds)
+        ..lineTo(mid + ds, peakY)
+        ..lineTo(mid, peakY + ds)
+        ..lineTo(mid - ds, peakY)
+        ..close(),
+      Paint()
+        ..color = _gold.withValues(alpha: 0.85)
+        ..style = PaintingStyle.fill,
+    );
 
-    // Thin horizontal springing line at shoulder level
-    final springPaint = Paint()
-      ..color = _gold.withValues(alpha: 0.22)
-      ..strokeWidth = 0.8;
-    canvas.drawLine(Offset(left, shoulder), Offset(right, shoulder), springPaint);
+    // 4. Small diamonds at cusp tips
+    const cs = 2.8;
+    for (final (cx, cy) in [(lCuspX, lCuspY), (rCuspX, rCuspY)]) {
+      canvas.drawPath(
+        Path()
+          ..moveTo(cx, cy - cs)
+          ..lineTo(cx + cs, cy)
+          ..lineTo(cx, cy + cs)
+          ..lineTo(cx - cs, cy)
+          ..close(),
+        Paint()
+          ..color = _gold.withValues(alpha: 0.55)
+          ..style = PaintingStyle.fill,
+      );
+    }
+
+    // 5. Shoulder springing line
+    canvas.drawLine(
+      Offset(left, shoulder),
+      Offset(right, shoulder),
+      Paint()
+        ..color = _gold.withValues(alpha: 0.20)
+        ..strokeWidth = 0.8,
+    );
   }
 
   @override
@@ -970,23 +1046,24 @@ class _StarsPainter extends CustomPainter {
   final double twinkle;
   const _StarsPainter({required this.twinkle});
 
-  // All positions are inside the arch (x: 0.25–0.75, y: 0.18–0.80)
+  // [x, y, radius] — all inside arch bounds, avoiding the crescent center
   static const List<List<double>> _positions = [
-    [0.34, 0.22], [0.66, 0.24], [0.28, 0.44],
-    [0.72, 0.42], [0.50, 0.18], [0.42, 0.60],
-    [0.58, 0.62], [0.50, 0.75],
+    [0.34, 0.22, 2.5], [0.66, 0.24, 2.0], [0.27, 0.44, 3.5],
+    [0.73, 0.42, 3.0], [0.50, 0.15, 4.0], [0.40, 0.62, 2.0],
+    [0.60, 0.63, 2.5], [0.50, 0.78, 3.0], [0.37, 0.32, 2.0],
+    [0.63, 0.33, 2.5], [0.44, 0.52, 3.5], [0.56, 0.53, 2.0],
   ];
 
   @override
   void paint(Canvas canvas, Size size) {
     for (int i = 0; i < _positions.length; i++) {
       final phase = ((i * 0.41) + twinkle) % 1.0;
-      final alpha = 0.15 + 0.35 * math.sin(phase * math.pi);
+      final alpha = 0.45 + 0.35 * math.sin(phase * math.pi);
       canvas.drawCircle(
         Offset(size.width * _positions[i][0], size.height * _positions[i][1]),
-        1.8,
+        _positions[i][2],
         Paint()
-          ..color = _gold.withValues(alpha: alpha)
+          ..color = _white.withValues(alpha: alpha)
           ..style = PaintingStyle.fill,
       );
     }
