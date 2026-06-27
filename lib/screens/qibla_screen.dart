@@ -478,9 +478,10 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
 
   Widget _buildBody(AppLocalizations l10n) {
     return SafeArea(
-      child: Padding(
+      child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 16),
             _LocationChip(
@@ -497,46 +498,48 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                 letterSpacing: 0.4,
               ),
             ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (!kIsWeb) ...[
-                    _AccuracyBadge(level: _accuracyLevel),
-                    const SizedBox(height: 12),
-                  ],
-                  _buildCompass(l10n),
-                  const SizedBox(height: 16),
-                  Text(
-                    l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                      color: _kGold,
-                    ),
-                  ),
-                  if (!kIsWeb) ...[
-                    const SizedBox(height: 16),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      decoration: BoxDecoration(
-                        color: _kCard,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: _kGold.withValues(alpha: 0.15), width: 1),
-                      ),
-                      child: Text(
-                        l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
-                        style: GoogleFonts.lato(
-                          fontSize: 13,
-                          color: Colors.white.withValues(alpha: 0.5),
-                          letterSpacing: 1.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
+            if (!kIsWeb) ...[
+              const SizedBox(height: 16),
+              _AccuracyBadge(level: _accuracyLevel),
+            ],
+            const SizedBox(height: 16),
+            // 1. Compass dial
+            _buildCompass(l10n),
+            // 2.
+            const SizedBox(height: 16),
+            // 3. Degree label
+            Text(
+              l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
+              style: GoogleFonts.playfairDisplay(
+                fontSize: 22,
+                fontWeight: FontWeight.w700,
+                color: _kGold,
               ),
             ),
+            // 4.
+            const SizedBox(height: 12),
+            // 5. Heading badge
+            if (!kIsWeb)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  color: _kCard,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: _kGold.withValues(alpha: 0.15), width: 1),
+                ),
+                child: Text(
+                  l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
+                  style: GoogleFonts.lato(
+                    fontSize: 13,
+                    color: Colors.white.withValues(alpha: 0.5),
+                    letterSpacing: 1.0,
+                  ),
+                ),
+              ),
+            // 6.
+            const SizedBox(height: 20),
+            // 7 & 8. Spirit level label + circle + "Tilt to level" text
+            if (!kIsWeb) _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
             // Calibration prompt — slides in/out automatically
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 350),
@@ -547,7 +550,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
               child: _showCalibration
                   ? Padding(
                       key: const ValueKey('cal'),
-                      padding: const EdgeInsets.only(bottom: 12),
+                      padding: const EdgeInsets.only(top: 12),
                       child: _CalibrationPrompt(
                         onDismiss: () =>
                             setState(() => _calibrationDismissed = true),
@@ -555,15 +558,11 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                     )
                   : const SizedBox.shrink(key: ValueKey('no-cal')),
             ),
-            if (!kIsWeb) ...[
-              const SizedBox(height: 16),
-              _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
-            ],
             if (kIsWeb) ...[
               const SizedBox(height: 24),
               _WebNote(label: l10n.compassRequiresDevice),
             ],
-            const SizedBox(height: 120),
+            const SizedBox(height: 32),
           ],
         ),
       ),
