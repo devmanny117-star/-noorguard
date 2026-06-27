@@ -9,6 +9,9 @@ import 'home_screen.dart';
 
 // Always dark — onboarding never inherits the system theme.
 const _bg = Color(0xFF0D1B2A);
+const _bgGradCenter = Color(0xFF101E31);
+const _bgGradEdge = Color(0xFF081321);
+const _titleGold = Color(0xFFD4AF37);
 const _gold = Color(0xFFC9A84C);
 const _mutedGold = Color(0xFFA08532);
 const _white = Color(0xFFF5F5F0);
@@ -162,44 +165,43 @@ class _WelcomePageState extends State<_WelcomePage>
     final size = MediaQuery.sizeOf(context);
     final topPad = MediaQuery.paddingOf(context).top;
     final botPad = MediaQuery.paddingOf(context).bottom;
-    final archSize = size.width * 0.76;
+    // Arch fills top 55% — use a tall rectangle so the arch gains height.
+    final archW = size.width * 0.82;
+    final archH = size.height * 0.50;
 
     return Stack(
       children: [
+        // Full-screen radial gradient background
+        const Positioned.fill(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: RadialGradient(
+                center: Alignment(0, -0.7),
+                radius: 1.3,
+                colors: [_bgGradCenter, _bgGradEdge],
+              ),
+            ),
+          ),
+        ),
         Column(
           children: [
             SizedBox(height: topPad + 16),
             // ── arch + animations (55% of screen) ──────────────────────────
             SizedBox(
-              height: size.height * 0.52,
+              height: size.height * 0.55,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  // Subtle radial glow behind arch
-                  Positioned.fill(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: RadialGradient(
-                          center: const Alignment(0, -0.1),
-                          radius: 0.75,
-                          colors: [
-                            _gold.withValues(alpha: 0.07),
-                            Colors.transparent,
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
                   // Arch outline
                   CustomPaint(
-                    size: Size(archSize, archSize),
+                    size: Size(archW, archH),
                     painter: _IslamicArchPainter(),
                   ),
-                  // Twinkling stars
+                  // Twinkling stars inside the arch
                   AnimatedBuilder(
                     animation: _twinkleCtrl,
                     builder: (_, __) => CustomPaint(
-                      size: Size(archSize, archSize),
+                      size: Size(archW, archH),
                       painter: _StarsPainter(twinkle: _twinkleCtrl.value),
                     ),
                   ),
@@ -209,8 +211,8 @@ class _WelcomePageState extends State<_WelcomePage>
                     builder: (_, __) => Transform.translate(
                       offset: Offset(0, _floatAnim.value),
                       child: SizedBox(
-                        width: archSize * 0.30,
-                        height: archSize * 0.30,
+                        width: archW * 0.26,
+                        height: archW * 0.26,
                         child: const CustomPaint(painter: _CrescentPainter()),
                       ),
                     ),
@@ -226,40 +228,55 @@ class _WelcomePageState extends State<_WelcomePage>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      l10n.onboardingWelcomeTo.toUpperCase(),
-                      style: GoogleFonts.lato(
-                        fontSize: 13,
-                        color: _gold,
-                        letterSpacing: 2.5,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      'Noor Guard',
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: 44,
-                        fontWeight: FontWeight.w800,
+                      l10n.onboardingWelcomeTo,
+                      style: GoogleFonts.inter(
+                        fontSize: 18,
                         color: _white,
-                        height: 1.05,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
-                    const SizedBox(height: 14),
+                    const SizedBox(height: 4),
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Noor',
+                            style: GoogleFonts.inter(
+                              fontSize: 38,
+                              fontWeight: FontWeight.w600,
+                              color: _white,
+                              height: 1.1,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ' Guard',
+                            style: GoogleFonts.inter(
+                              fontSize: 38,
+                              fontWeight: FontWeight.w600,
+                              color: _titleGold,
+                              height: 1.1,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 12),
                     Text(
                       l10n.onboardingSubtitle,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
-                        fontSize: 15,
+                        fontSize: 14,
                         color: _grey,
                         height: 1.55,
                       ),
                     ),
-                    const SizedBox(height: 32),
-                    const _PageDots(currentPage: 0, totalPages: 3),
                     const SizedBox(height: 28),
+                    const _PageDots(currentPage: 0, totalPages: 3),
+                    const SizedBox(height: 24),
                     _GoldButton(
                       label: l10n.onboardingLetsGetStarted,
                       onTap: widget.onNext,
+                      showArrow: true,
                     ),
                   ],
                 ),
@@ -688,7 +705,8 @@ class _IconCircle extends StatelessWidget {
 class _GoldButton extends StatelessWidget {
   final String label;
   final VoidCallback? onTap;
-  const _GoldButton({required this.label, required this.onTap});
+  final bool showArrow;
+  const _GoldButton({required this.label, required this.onTap, this.showArrow = false});
 
   @override
   Widget build(BuildContext context) {
@@ -720,14 +738,24 @@ class _GoldButton extends StatelessWidget {
               : null,
         ),
         child: Center(
-          child: Text(
-            label,
-            style: GoogleFonts.lato(
-              fontSize: 17,
-              fontWeight: FontWeight.w700,
-              color: enabled ? _bg : _grey,
-              letterSpacing: 0.3,
-            ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                label,
+                style: GoogleFonts.lato(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: enabled ? _bg : _grey,
+                  letterSpacing: 0.3,
+                ),
+              ),
+              if (showArrow && enabled) ...[
+                const SizedBox(width: 8),
+                const Icon(Icons.arrow_forward_rounded,
+                    color: _bg, size: 18),
+              ],
+            ],
           ),
         ),
       ),
@@ -942,17 +970,18 @@ class _StarsPainter extends CustomPainter {
   final double twinkle;
   const _StarsPainter({required this.twinkle});
 
+  // All positions are inside the arch (x: 0.25–0.75, y: 0.18–0.80)
   static const List<List<double>> _positions = [
-    [0.12, 0.18], [0.88, 0.22], [0.08, 0.60],
-    [0.92, 0.50], [0.50, 0.04], [0.28, 0.09],
-    [0.72, 0.10],
+    [0.34, 0.22], [0.66, 0.24], [0.28, 0.44],
+    [0.72, 0.42], [0.50, 0.18], [0.42, 0.60],
+    [0.58, 0.62], [0.50, 0.75],
   ];
 
   @override
   void paint(Canvas canvas, Size size) {
     for (int i = 0; i < _positions.length; i++) {
       final phase = ((i * 0.41) + twinkle) % 1.0;
-      final alpha = 0.25 + 0.55 * math.sin(phase * math.pi);
+      final alpha = 0.15 + 0.35 * math.sin(phase * math.pi);
       canvas.drawCircle(
         Offset(size.width * _positions[i][0], size.height * _positions[i][1]),
         1.8,
