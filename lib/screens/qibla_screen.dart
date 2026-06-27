@@ -34,20 +34,21 @@ const _kEmojiTop    = _kNeedleTipY - _kEmojiSize / 2;
 const _kLpfAlpha = 0.12;
 
 // Needle must be within this many degrees of Mecca to trigger the gold glow.
-const _kAlignThresholdDeg = 15.0;
+const _kAlignThresholdDeg = 3.0;
 
 // ── Haptic feedback zones ─────────────────────────────────────────────────────
 
-// Degrees-off-Qibla thresholds for each haptic zone.
-const _kCloseThresholdDeg      = 30.0;
-const _kApproachingThresholdDeg = 45.0;
+// Degrees-off-Qibla boundaries for proximity haptic zones.
+const _kZoneAlignedDeg   = 3.0;  // within 3°  → aligned
+const _kZoneVeryCloseDeg = 8.0;  // 3° – 8°   → very close
+const _kZoneCloseDeg     = 15.0; // 8° – 15°  → close
 
-enum _HapticZone { none, approaching, close, aligned }
+enum _HapticZone { none, close, veryClose, aligned }
 
 _HapticZone _hapticZoneFor(double degreesOff) {
-  if (degreesOff <= _kAlignThresholdDeg)   return _HapticZone.aligned;
-  if (degreesOff <= _kCloseThresholdDeg)   return _HapticZone.close;
-  if (degreesOff <= _kApproachingThresholdDeg) return _HapticZone.approaching;
+  if (degreesOff <= _kZoneAlignedDeg)   return _HapticZone.aligned;
+  if (degreesOff <= _kZoneVeryCloseDeg) return _HapticZone.veryClose;
+  if (degreesOff <= _kZoneCloseDeg)     return _HapticZone.close;
   return _HapticZone.none;
 }
 
@@ -336,80 +337,56 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   void _updateHaptics(double degreesOff) {
     if (kIsWeb || !_isScreenVisible) return;
     final zone = _hapticZoneFor(degreesOff);
-    if (zone == _hapticZone) return; // already in this zone — let it run
+    if (zone == _hapticZone) return; // same zone — timer already running
     _hapticZone = zone;
     _hapticPulseTimer?.cancel();
     _hapticPulseTimer = null;
 
-    switch (zone) {
-      case _HapticZone.none:
-        break;
-      case _HapticZone.approaching:
-        _firePulse(_HapticZone.approaching);
-        _hapticPulseTimer = Timer.periodic(
-          const Duration(seconds: 2),
-          (_) => _firePulse(_HapticZone.approaching),
-        );
-      case _HapticZone.close:
-        _firePulse(_HapticZone.close);
-        _hapticPulseTimer = Timer.periodic(
-          const Duration(seconds: 1),
-          (_) => _firePulse(_HapticZone.close),
-        );
-      case _HapticZone.aligned:
-        if (Platform.isIOS) {
-          // Triple heavy burst every 400 ms — each burst fires three impacts
-          // 80 ms apart (~160 ms total), well within the 400 ms window.
-          _hapticPulseTimer = Timer.periodic(
-            const Duration(milliseconds: 400),
-            (_) async {
-              HapticFeedback.heavyImpact();
-              await Future.delayed(const Duration(milliseconds: 80));
-              HapticFeedback.heavyImpact();
-              await Future.delayed(const Duration(milliseconds: 80));
-              HapticFeedback.heavyImpact();
-            },
-          );
-        } else if (Platform.isAndroid && _vibratorAvailable) {
-          _hapticPulseTimer = Timer.periodic(
-            const Duration(milliseconds: 500),
-            (_) => Vibration.vibrate(
-              pattern: [0, 200, 100, 200],
-              intensities: [0, 255, 0, 255],
-            ),
-          );
+    if (zone == _HapticZone.none) return;
+
+    final interval = switch (zone) {
+      _HapticZone.close     => const Duration(milliseconds: 600),
+      _HapticZone.veryClose => const Duration(milliseconds: 400),
+      _HapticZone.aligned   => const Duration(milliseconds: 350),
+      _HapticZone.none      => const Duration(milliseconds: 600),
+    };
+
+    _hapticPulseTimer = Timer.periodic(interval, (_) {
+      if (Platform.isIOS) {
+        switch (_hapticZone) {
+          case _HapticZone.close:
+            HapticFeedback.lightImpact();
+          case _HapticZone.veryClose:
+            HapticFeedback.mediumImpact();
+          case _HapticZone.aligned:
+            _fireTripleBurst();
+          case _HapticZone.none:
+            break;
         }
-    }
+      } else if (Platform.isAndroid && _vibratorAvailable) {
+        switch (_hapticZone) {
+          case _HapticZone.close:
+            Vibration.vibrate(duration: 80, amplitude: 80);
+          case _HapticZone.veryClose:
+            Vibration.vibrate(duration: 120, amplitude: 170);
+          case _HapticZone.aligned:
+            Vibration.vibrate(
+              pattern: [0, 200, 80, 200],
+              intensities: [0, 255, 0, 255],
+            );
+          case _HapticZone.none:
+            break;
+        }
+      }
+    });
   }
 
-  void _firePulse(_HapticZone zone) {
-    if (!kIsWeb && Platform.isIOS) {
-      switch (zone) {
-        case _HapticZone.approaching:
-          HapticFeedback.heavyImpact();
-        case _HapticZone.close:
-          HapticFeedback.mediumImpact();
-        case _HapticZone.aligned:
-        case _HapticZone.none:
-          break;
-      }
-      return;
-    }
-    if (!kIsWeb && Platform.isAndroid && _vibratorAvailable) {
-      final amplitude = switch (zone) {
-        _HapticZone.approaching => 150,
-        _HapticZone.close       => 210,
-        _HapticZone.aligned     => -1,
-        _HapticZone.none        => -1,
-      };
-      final duration = switch (zone) {
-        _HapticZone.approaching => 80,
-        _HapticZone.close       => 110,
-        _HapticZone.aligned     => 0,
-        _HapticZone.none        => 0,
-      };
-      if (duration > 0) Vibration.vibrate(duration: duration, amplitude: amplitude);
-    }
+  Future<void> _fireTripleBurst() async {
+    HapticFeedback.heavyImpact();
+    await Future.delayed(const Duration(milliseconds: 80));
+    HapticFeedback.heavyImpact();
+    await Future.delayed(const Duration(milliseconds: 80));
+    HapticFeedback.heavyImpact();
   }
 
   void _stopHaptics() {
