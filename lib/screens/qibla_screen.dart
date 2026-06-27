@@ -357,12 +357,28 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
           (_) => _firePulse(_HapticZone.close),
         );
       case _HapticZone.aligned:
-        // Repeating heavy pulse every 400 ms while the needle stays on Qibla.
-        // No immediate fire — the timer alone drives all haptics for this zone.
-        _hapticPulseTimer = Timer.periodic(
-          const Duration(milliseconds: 400),
-          (_) => HapticFeedback.heavyImpact(),
-        );
+        if (Platform.isIOS) {
+          // Triple heavy burst every 400 ms — each burst fires three impacts
+          // 80 ms apart (~160 ms total), well within the 400 ms window.
+          _hapticPulseTimer = Timer.periodic(
+            const Duration(milliseconds: 400),
+            (_) async {
+              HapticFeedback.heavyImpact();
+              await Future.delayed(const Duration(milliseconds: 80));
+              HapticFeedback.heavyImpact();
+              await Future.delayed(const Duration(milliseconds: 80));
+              HapticFeedback.heavyImpact();
+            },
+          );
+        } else if (Platform.isAndroid && _vibratorAvailable) {
+          _hapticPulseTimer = Timer.periodic(
+            const Duration(milliseconds: 500),
+            (_) => Vibration.vibrate(
+              pattern: [0, 200, 100, 200],
+              intensities: [0, 255, 0, 255],
+            ),
+          );
+        }
     }
   }
 
@@ -374,7 +390,6 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
         case _HapticZone.close:
           HapticFeedback.mediumImpact();
         case _HapticZone.aligned:
-          HapticFeedback.heavyImpact();
         case _HapticZone.none:
           break;
       }
@@ -384,13 +399,13 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
       final amplitude = switch (zone) {
         _HapticZone.approaching => 150,
         _HapticZone.close       => 210,
-        _HapticZone.aligned     => 255,
+        _HapticZone.aligned     => -1,
         _HapticZone.none        => -1,
       };
       final duration = switch (zone) {
         _HapticZone.approaching => 80,
         _HapticZone.close       => 110,
-        _HapticZone.aligned     => 130,
+        _HapticZone.aligned     => 0,
         _HapticZone.none        => 0,
       };
       if (duration > 0) Vibration.vibrate(duration: duration, amplitude: amplitude);
