@@ -152,8 +152,8 @@ class FeatureCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 4),
-              Icon(icon, color: _kGold, size: 32),
-              const SizedBox(height: 10),
+              Icon(icon, color: _kGold, size: 28),
+              const SizedBox(height: 4),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Text(
@@ -161,15 +161,14 @@ class FeatureCard extends StatelessWidget {
                   style: GoogleFonts.inter(
                     color: _kGold,
                     fontWeight: FontWeight.w500,
-                    fontSize: 9,
+                    fontSize: 8.5,
                     letterSpacing: 0.3,
                     height: 1.2,
                     decoration: TextDecoration.none,
                   ),
                   textAlign: TextAlign.center,
                   maxLines: 2,
-                  softWrap: true,
-                  overflow: TextOverflow.visible,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               const SizedBox(height: 4),
