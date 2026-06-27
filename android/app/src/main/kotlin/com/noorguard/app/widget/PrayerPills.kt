@@ -32,10 +32,10 @@ private val pillDotGrey = Color(0xFF6B7785)
 fun PrayerPillsRow(prayers: List<WidgetPrayer>) {
     Row(modifier = GlanceModifier.fillMaxWidth()) {
         for ((index, prayer) in prayers.withIndex()) {
-            if (index > 0) Spacer(modifier = GlanceModifier.width(4.dp))
+            if (index > 0) Spacer(modifier = GlanceModifier.width(6.dp))
             PrayerPill(
                 prayer = prayer,
-                modifier = GlanceModifier.defaultWeight().height(80.dp),
+                modifier = GlanceModifier.defaultWeight().height(68.dp),
             )
         }
     }
@@ -66,17 +66,16 @@ private fun PrayerPill(prayer: WidgetPrayer, modifier: GlanceModifier) {
                 maxLines = 1,
                 style = TextStyle(
                     color = ColorProvider(nameColor),
-                    fontSize = 14.sp,
+                    fontSize = 10.sp,
                     fontWeight = if (prayer.isNext) FontWeight.Bold else FontWeight.Normal,
                 ),
             )
             Spacer(modifier = GlanceModifier.height(1.dp))
             Text(
                 prayer.time,
-                maxLines = 1,
                 style = TextStyle(
                     color = ColorProvider(timeColor),
-                    fontSize = 15.sp,
+                    fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
                 ),
             )
@@ -104,7 +103,7 @@ private fun PrayerPill(prayer: WidgetPrayer, modifier: GlanceModifier) {
                         .fillMaxHeight()
                         .background(ImageProvider(R.drawable.bg_widget_pill_current))
                         .cornerRadius(10.dp)
-                        .padding(horizontal = 2.dp),
+                        .padding(horizontal = 4.dp),
                     contentAlignment = Alignment.Center,
                 ) {
                     pillContent()
@@ -117,7 +116,7 @@ private fun PrayerPill(prayer: WidgetPrayer, modifier: GlanceModifier) {
                 modifier = modifier
                     .background(ImageProvider(R.drawable.bg_widget_pill_done))
                     .cornerRadius(10.dp)
-                    .padding(horizontal = 2.dp),
+                    .padding(horizontal = 4.dp),
                 contentAlignment = Alignment.Center,
             ) {
                 pillContent()
@@ -129,7 +128,7 @@ private fun PrayerPill(prayer: WidgetPrayer, modifier: GlanceModifier) {
                 modifier = modifier
                     .background(ImageProvider(R.drawable.bg_widget_pill_upcoming))
                     .cornerRadius(10.dp)
-                    .padding(horizontal = 2.dp),
+                    .padding(horizontal = 4.dp),
                 contentAlignment = Alignment.Center,
             ) {
                 pillContent()
