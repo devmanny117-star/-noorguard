@@ -497,11 +497,18 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                 letterSpacing: 0.4,
               ),
             ),
-            if (!kIsWeb) ...[
-              const SizedBox(height: 8),
-              _AccuracyBadge(level: _accuracyLevel),
-            ],
-            Expanded(child: Center(child: _buildCompass(l10n))),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (!kIsWeb) ...[
+                    _AccuracyBadge(level: _accuracyLevel),
+                    const SizedBox(height: 12),
+                  ],
+                  _buildCompass(l10n),
+                ],
+              ),
+            ),
             // Calibration prompt — slides in/out automatically
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 350),
@@ -529,7 +536,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
               const SizedBox(height: 24),
               _WebNote(label: l10n.compassRequiresDevice),
             ],
-            const SizedBox(height: 20),
+            const SizedBox(height: 120),
           ],
         ),
       ),
