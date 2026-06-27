@@ -288,7 +288,7 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        'Noor Guard',
+                        AppLocalizations.of(context)!.splashAppName,
                         style: GoogleFonts.playfairDisplay(
                           fontSize: 34,
                           fontWeight: FontWeight.w700,
@@ -298,7 +298,7 @@ class _SplashScreenState extends State<SplashScreen>
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Guard your time. Honor your prayers.',
+                        AppLocalizations.of(context)!.splashTagline,
                         style: GoogleFonts.lato(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
@@ -359,7 +359,7 @@ class _StopAdhanButton extends StatelessWidget {
           onPressed: AdhanForegroundController().stopAdhan,
           icon: const Icon(Icons.stop_rounded, size: 22),
           label: Text(
-            'Stop Adhan',
+            AppLocalizations.of(context)!.stopAdhan,
             style: GoogleFonts.lato(
               fontSize: 16,
               fontWeight: FontWeight.w700,

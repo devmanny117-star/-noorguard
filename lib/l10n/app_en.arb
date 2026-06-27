@@ -2603,5 +2603,133 @@
   "quranSearchSuggestions": "patience, sabr, mercy, prayer, salah, forgiveness, tawbah, paradise, jannah, knowledge",
   "@quranSearchSuggestions": {
     "description": "Comma-separated list of suggested Quran search terms shown as chips in the empty state"
+  },
+  "heroVerse1": "Guard strictly your prayers, especially the middle prayer.",
+  "@heroVerse1": {
+    "description": "Quran verse on hero card slide 1 — Al-Baqarah 2:238"
+  },
+  "heroVerse2": "Indeed, prayer has been decreed upon the believers a decree of specified times.",
+  "@heroVerse2": {
+    "description": "Quran verse on hero card slide 2 — An-Nisa 4:103"
+  },
+  "heroVerse3": "And seek help through patience and prayer.",
+  "@heroVerse3": {
+    "description": "Quran verse on hero card slide 3 — Al-Baqarah 2:45"
+  },
+  "heroVerse4": "So remember Me; I will remember you. And be grateful to Me and do not deny Me.",
+  "@heroVerse4": {
+    "description": "Quran verse on hero card slide 4 — Al-Baqarah 2:152"
+  },
+  "heroVerse5": "And whoever relies upon Allah — then He is sufficient for him.",
+  "@heroVerse5": {
+    "description": "Quran verse on hero card slide 5 — At-Talaq 65:3"
+  },
+  "heroVerse6": "Indeed, the first House established for mankind was that at Makkah — blessed and a guidance for the worlds.",
+  "@heroVerse6": {
+    "description": "Quran verse on hero card slide 6 — Ali Imran 3:96"
+  },
+  "heroVerse7": "Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.",
+  "@heroVerse7": {
+    "description": "Quran verse on hero card slide 7 — Al-Ankabut 29:45"
+  },
+  "heroVerse8": "Verily, in the remembrance of Allah do hearts find rest.",
+  "@heroVerse8": {
+    "description": "Quran verse on hero card slide 8 — Ar-Ra'd 13:28"
+  },
+  "heroVerse9": "Call upon Me; I will respond to you.",
+  "@heroVerse9": {
+    "description": "Quran verse on hero card slide 9 — Ghafir 40:60"
+  },
+  "heroVerse10": "If you are grateful, I will surely increase you in favor.",
+  "@heroVerse10": {
+    "description": "Quran verse on hero card slide 10 — Ibrahim 14:7"
+  },
+  "heroVerse11": "Allah does not burden a soul beyond that it can bear.",
+  "@heroVerse11": {
+    "description": "Quran verse on hero card slide 11 — Al-Baqarah 2:286"
+  },
+  "heroVerse12": "Indeed, Allah is with the patient.",
+  "@heroVerse12": {
+    "description": "Quran verse on hero card slide 12 — Al-Baqarah 2:153"
+  },
+  "heroVerse13": "My mercy encompasses all things.",
+  "@heroVerse13": {
+    "description": "Quran verse on hero card slide 13 — Al-A'raf 7:156"
+  },
+  "heroVerse14": "And do good; indeed, Allah loves the doers of good.",
+  "@heroVerse14": {
+    "description": "Quran verse on hero card slide 14 — Al-Baqarah 2:195"
+  },
+  "heroVerse15": "This is the Book about which there is no doubt, a guidance for those conscious of Allah.",
+  "@heroVerse15": {
+    "description": "Quran verse on hero card slide 15 — Al-Baqarah 2:2"
+  },
+  "accuracyHigh": "High Accuracy",
+  "@accuracyHigh": {
+    "description": "Qibla accuracy badge label — high sensor accuracy"
+  },
+  "accuracyMedium": "Medium Accuracy",
+  "@accuracyMedium": {
+    "description": "Qibla accuracy badge label — medium sensor accuracy"
+  },
+  "accuracyLow": "Low Accuracy",
+  "@accuracyLow": {
+    "description": "Qibla accuracy badge label — low sensor accuracy"
+  },
+  "accuracyCalibrating": "Calibrating…",
+  "@accuracyCalibrating": {
+    "description": "Qibla accuracy badge label — compass is being calibrated"
+  },
+  "compassNeedsCalibration": "Compass needs calibration",
+  "@compassNeedsCalibration": {
+    "description": "Heading of the calibration prompt shown when compass accuracy is low"
+  },
+  "compassCalibrationHint": "Move your phone slowly in a figure-8 motion to improve accuracy.",
+  "@compassCalibrationHint": {
+    "description": "Body of the calibration prompt — instructions for figure-8 motion"
+  },
+  "spiritLevelLabel": "Spirit Level",
+  "@spiritLevelLabel": {
+    "description": "Label above the spirit-level bubble widget on the Qibla screen"
+  },
+  "spiritLevelLevelText": "✓  Level",
+  "@spiritLevelLevelText": {
+    "description": "Spirit level status when the phone is flat — checkmark + \"Level\""
+  },
+  "spiritLevelTiltText": "Tilt to level",
+  "@spiritLevelTiltText": {
+    "description": "Spirit level status when the phone is tilted and needs leveling"
+  },
+  "compassNorth": "N",
+  "@compassNorth": {
+    "description": "Cardinal direction North on the compass dial"
+  },
+  "compassEast": "E",
+  "@compassEast": {
+    "description": "Cardinal direction East on the compass dial"
+  },
+  "compassSouth": "S",
+  "@compassSouth": {
+    "description": "Cardinal direction South on the compass dial"
+  },
+  "compassWest": "W",
+  "@compassWest": {
+    "description": "Cardinal direction West on the compass dial"
+  },
+  "splashAppName": "Noor Guard",
+  "@splashAppName": {
+    "description": "App name shown on the splash screen (brand name, same in all languages)"
+  },
+  "splashTagline": "Guard your time. Honor your prayers.",
+  "@splashTagline": {
+    "description": "Tagline shown below the app name on the splash screen"
+  },
+  "stopAdhan": "Stop Adhan",
+  "@stopAdhan": {
+    "description": "Label on the floating button that stops a playing adhan"
+  },
+  "duasSearchEmpty": "Try a different category or search term.",
+  "@duasSearchEmpty": {
+    "description": "Secondary line of the empty state on the Duas screen when search returns no results"
   }
 }

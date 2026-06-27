@@ -2013,4 +2013,100 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get quranSearchSuggestions => '忍耐, 耐心, 慈悟, 礼拜, 祝福, 宽恕, 天堂, 知识, 感恩, 记主';
+
+  @override
+  String get heroVerse1 => '你们要谨守拜功，尤其是中间的那次礼拜。';
+
+  @override
+  String get heroVerse2 => '礼拜对于信士确是定时的义务。';
+
+  @override
+  String get heroVerse3 => '你们当以坚忍和礼拜求佑助。';
+
+  @override
+  String get heroVerse4 => '故你们应记念我，我必记念你们。你们应感谢我，而不要辜负我。';
+
+  @override
+  String get heroVerse5 => '谁托靠真主，真主必定佑护他。';
+
+  @override
+  String get heroVerse6 => '确实，为众人而最早建立的清真寺，是位于麦加的那一座——吉祥的、全世界的向导。';
+
+  @override
+  String get heroVerse7 => '确实，礼拜能禁止丑事和恶行，记念真主确是更重要的。';
+
+  @override
+  String get heroVerse8 => '确实，只有记念真主，才能使心灵平静。';
+
+  @override
+  String get heroVerse9 => '你们当祈求我，我必响应你们。';
+
+  @override
+  String get heroVerse10 => '如果你们感谢，我必增加你们的恩典。';
+
+  @override
+  String get heroVerse11 => '真主不使任何人负担他所不能承受的。';
+
+  @override
+  String get heroVerse12 => '真主确是与坚忍者同在的。';
+
+  @override
+  String get heroVerse13 => '我的慈恩包罗万象。';
+
+  @override
+  String get heroVerse14 => '你们应行善，真主确实喜爱行善的人。';
+
+  @override
+  String get heroVerse15 => '这部经典，其中毫无疑义，是敬畏者的向导。';
+
+  @override
+  String get accuracyHigh => '高精度';
+
+  @override
+  String get accuracyMedium => '中等精度';
+
+  @override
+  String get accuracyLow => '低精度';
+
+  @override
+  String get accuracyCalibrating => '校准中…';
+
+  @override
+  String get compassNeedsCalibration => '指南针需要校准';
+
+  @override
+  String get compassCalibrationHint => '慢慢将手机做8字形运动以提高精度。';
+
+  @override
+  String get spiritLevelLabel => '水平仪';
+
+  @override
+  String get spiritLevelLevelText => '✓  水平';
+
+  @override
+  String get spiritLevelTiltText => '倾斜以调平';
+
+  @override
+  String get compassNorth => '北';
+
+  @override
+  String get compassEast => '东';
+
+  @override
+  String get compassSouth => '南';
+
+  @override
+  String get compassWest => '西';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => '守护你的时间。尊重你的礼拜。';
+
+  @override
+  String get stopAdhan => '停止阿赞';
+
+  @override
+  String get duasSearchEmpty => '请尝试其他分类或搜索词。';
 }

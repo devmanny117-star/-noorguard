@@ -2111,4 +2111,109 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'صبر, رحمت, نماز, معافی, توبہ, جنت, علم, دعا, ذکر, شکر';
+
+  @override
+  String get heroVerse1 =>
+      'اپنی نمازوں کی حفاظت کرو، خاص طور پر درمیانی نماز کی۔';
+
+  @override
+  String get heroVerse2 => 'بے شک نماز مومنوں پر وقت مقرر کر کے فرض کی گئی ہے۔';
+
+  @override
+  String get heroVerse3 => 'صبر اور نماز سے مدد مانگو۔';
+
+  @override
+  String get heroVerse4 =>
+      'پس مجھے یاد کرو، میں تمہیں یاد کروں گا۔ اور میرا شکر کرو اور ناشکری مت کرو۔';
+
+  @override
+  String get heroVerse5 => 'اور جو اللہ پر توکل کرے تو وہ اسے کافی ہے۔';
+
+  @override
+  String get heroVerse6 =>
+      'بے شک سب سے پہلا گھر جو لوگوں کے لیے بنایا گیا وہ مکہ میں ہے، برکت والا اور سارے جہان کے لیے ہدایت۔';
+
+  @override
+  String get heroVerse7 =>
+      'بے شک نماز بے حیائی اور برائی سے روکتی ہے، اور اللہ کا ذکر سب سے بڑا ہے۔';
+
+  @override
+  String get heroVerse8 => 'یاد رکھو! اللہ کی یاد سے ہی دل اطمینان پاتے ہیں۔';
+
+  @override
+  String get heroVerse9 => 'مجھ سے دعا کرو، میں قبول کروں گا۔';
+
+  @override
+  String get heroVerse10 =>
+      'اگر تم شکر گزار ہو گے تو میں تمہیں اور زیادہ دوں گا۔';
+
+  @override
+  String get heroVerse11 =>
+      'اللہ کسی نفس کو اس کی طاقت سے زیادہ تکلیف نہیں دیتا۔';
+
+  @override
+  String get heroVerse12 => 'بے شک اللہ صبر کرنے والوں کے ساتھ ہے۔';
+
+  @override
+  String get heroVerse13 => 'میری رحمت ہر چیز کو گھیرے ہوئے ہے۔';
+
+  @override
+  String get heroVerse14 =>
+      'اور نیکی کرو، بے شک اللہ نیکی کرنے والوں کو پسند کرتا ہے۔';
+
+  @override
+  String get heroVerse15 =>
+      'یہ وہ کتاب ہے جس میں کوئی شک نہیں، پرہیزگاروں کے لیے ہدایت ہے۔';
+
+  @override
+  String get accuracyHigh => 'اعلیٰ درستگی';
+
+  @override
+  String get accuracyMedium => 'درمیانی درستگی';
+
+  @override
+  String get accuracyLow => 'کم درستگی';
+
+  @override
+  String get accuracyCalibrating => 'کیلیبریشن ہو رہی ہے…';
+
+  @override
+  String get compassNeedsCalibration => 'قطب نما کو کیلیبریشن کی ضرورت ہے';
+
+  @override
+  String get compassCalibrationHint =>
+      'درستگی بہتر کرنے کے لیے فون کو آہستہ آہستہ 8 کی شکل میں حرکت دیں۔';
+
+  @override
+  String get spiritLevelLabel => 'بلبلہ پیمانہ';
+
+  @override
+  String get spiritLevelLevelText => '✓  برابر';
+
+  @override
+  String get spiritLevelTiltText => 'سیدھا کریں';
+
+  @override
+  String get compassNorth => 'ش';
+
+  @override
+  String get compassEast => 'م';
+
+  @override
+  String get compassSouth => 'ج';
+
+  @override
+  String get compassWest => 'مغ';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'اپنا وقت بچاؤ۔ اپنی نماز کا احترام کرو۔';
+
+  @override
+  String get stopAdhan => 'اذان بند کریں';
+
+  @override
+  String get duasSearchEmpty => 'کوئی اور زمرہ یا تلاش کی اصطلاح آزمائیں۔';
 }

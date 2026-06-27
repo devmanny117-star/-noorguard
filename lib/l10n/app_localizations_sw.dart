@@ -2122,4 +2122,111 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'subira, sabr, rehema, sala, salah, msamaha, tawbah, pepo, jannah, elimu';
+
+  @override
+  String get heroVerse1 => 'Simamieni sala zote, hasa sala ya kati.';
+
+  @override
+  String get heroVerse2 =>
+      'Hakika sala imewajibika kwa waumini kwa nyakati zilizowekwa.';
+
+  @override
+  String get heroVerse3 => 'Tafuteni msaada kwa subira na sala.';
+
+  @override
+  String get heroVerse4 =>
+      'Basi niorodhesheni, nami nitawakumbuka ninyi. Na nishukuruni wala msikukufurue.';
+
+  @override
+  String get heroVerse5 =>
+      'Na anayemtegemea Mwenyezi Mungu, basi Yeye atamtosha.';
+
+  @override
+  String get heroVerse6 =>
+      'Hakika nyumba ya kwanza iliyowekwa kwa ajili ya watu ni ile iliyoko Makkah, yenye baraka na mwongozo kwa walimwengu wote.';
+
+  @override
+  String get heroVerse7 =>
+      'Hakika sala inazuia mambo ya aibu na mabaya, na kukumbuka Mwenyezi Mungu ni kubwa zaidi.';
+
+  @override
+  String get heroVerse8 =>
+      'Tambua kwamba kwa kukumbuka Mwenyezi Mungu ndipo moyo hupata utulivu.';
+
+  @override
+  String get heroVerse9 => 'Niendeeni, nitajibu maombi yenu.';
+
+  @override
+  String get heroVerse10 => 'Mkishukuru hakika nitawaongezea.';
+
+  @override
+  String get heroVerse11 => 'Mwenyezi Mungu hamsumbui mtu zaidi ya uwezo wake.';
+
+  @override
+  String get heroVerse12 =>
+      'Hakika Mwenyezi Mungu yuko pamoja na wenye subira.';
+
+  @override
+  String get heroVerse13 => 'Rehema yangu imekusanya kila kitu.';
+
+  @override
+  String get heroVerse14 =>
+      'Fanyeni mema; hakika Mwenyezi Mungu anawapenda wafanyao mema.';
+
+  @override
+  String get heroVerse15 =>
+      'Hii ni Kitabu ambacho hakuna shaka ndani yake, ni mwongozo kwa wachamngu.';
+
+  @override
+  String get accuracyHigh => 'Usahihi wa Juu';
+
+  @override
+  String get accuracyMedium => 'Usahihi wa Kati';
+
+  @override
+  String get accuracyLow => 'Usahihi wa Chini';
+
+  @override
+  String get accuracyCalibrating => 'Inakalibreti…';
+
+  @override
+  String get compassNeedsCalibration => 'Dira inahitaji kalibreti';
+
+  @override
+  String get compassCalibrationHint =>
+      'Sogeza simu yako polepole kwa mwendo wa nane kuboresha usahihi.';
+
+  @override
+  String get spiritLevelLabel => 'Kipimo cha Usawa';
+
+  @override
+  String get spiritLevelLevelText => '✓  Sawa';
+
+  @override
+  String get spiritLevelTiltText => 'Inamisha kuweka sawa';
+
+  @override
+  String get compassNorth => 'Ka';
+
+  @override
+  String get compassEast => 'Ma';
+
+  @override
+  String get compassSouth => 'Ku';
+
+  @override
+  String get compassWest => 'Mg';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'Linda wakati wako. Heshimu sala zako.';
+
+  @override
+  String get stopAdhan => 'Simamisha Adhan';
+
+  @override
+  String get duasSearchEmpty =>
+      'Jaribu kategori nyingine au neno tofauti la utafutaji.';
 }

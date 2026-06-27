@@ -76,11 +76,11 @@ Color _accuracyColor(_Accuracy a) => switch (a) {
   _Accuracy.unknown => const Color(0xFFEF5350),
 };
 
-String _accuracyLabel(_Accuracy a) => switch (a) {
-  _Accuracy.high    => 'High Accuracy',
-  _Accuracy.medium  => 'Medium Accuracy',
-  _Accuracy.low     => 'Low Accuracy',
-  _Accuracy.unknown => 'Calibrating…',
+String _accuracyLabel(_Accuracy a, AppLocalizations l10n) => switch (a) {
+  _Accuracy.high    => l10n.accuracyHigh,
+  _Accuracy.medium  => l10n.accuracyMedium,
+  _Accuracy.low     => l10n.accuracyLow,
+  _Accuracy.unknown => l10n.accuracyCalibrating,
 };
 
 // ── Screen ────────────────────────────────────────────────────────────────────
@@ -501,7 +501,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
               const SizedBox(height: 8),
               _AccuracyBadge(level: _accuracyLevel),
             ],
-            Expanded(child: Center(child: _buildCompass())),
+            Expanded(child: Center(child: _buildCompass(l10n))),
             // Calibration prompt — slides in/out automatically
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 350),
@@ -538,7 +538,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
 
   // ── Compass widget ────────────────────────────────────────────────────────────
 
-  Widget _buildCompass() {
+  Widget _buildCompass(AppLocalizations l10n) {
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: _prevNeedleAngle, end: _needleAngle),
       duration: const Duration(milliseconds: 320),
@@ -561,10 +561,15 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                   painter: _AlignmentGlowPainter(strength: glow),
                 ),
 
-              // Fixed compass dial (never repaints)
+              // Fixed compass dial (repaints only when locale changes)
               CustomPaint(
                 size: const Size(_kCompassSize, _kCompassSize),
-                painter: _CompassDialPainter(),
+                painter: _CompassDialPainter(
+                  north: l10n.compassNorth,
+                  east:  l10n.compassEast,
+                  south: l10n.compassSouth,
+                  west:  l10n.compassWest,
+                ),
               ),
 
               // Rotating needle + Kaaba emoji
@@ -659,8 +664,9 @@ class _AccuracyBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final color = _accuracyColor(level);
-    final label = _accuracyLabel(level);
+    final label = _accuracyLabel(level, l10n);
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 400),
       child: Container(
@@ -730,7 +736,7 @@ class _CalibrationPrompt extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Compass needs calibration',
+                  AppLocalizations.of(context)!.compassNeedsCalibration,
                   style: GoogleFonts.lato(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
@@ -739,7 +745,7 @@ class _CalibrationPrompt extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Move your phone slowly in a figure-8 motion to improve accuracy.',
+                  AppLocalizations.of(context)!.compassCalibrationHint,
                   style: GoogleFonts.lato(
                     fontSize: 11,
                     color: Colors.white.withValues(alpha: 0.55),
@@ -796,7 +802,7 @@ class _SpiritLevel extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              'Spirit Level',
+              AppLocalizations.of(context)!.spiritLevelLabel,
               style: GoogleFonts.lato(
                 fontSize: 11,
                 color: Colors.white.withValues(alpha: 0.38),
@@ -812,7 +818,9 @@ class _SpiritLevel extends StatelessWidget {
         ),
         const SizedBox(height: 5),
         Text(
-          isLevel ? '✓  Level' : 'Tilt to level',
+          isLevel
+              ? AppLocalizations.of(context)!.spiritLevelLevelText
+              : AppLocalizations.of(context)!.spiritLevelTiltText,
           style: GoogleFonts.lato(
             fontSize: 11,
             fontWeight: FontWeight.w600,
@@ -963,6 +971,18 @@ class _AlignmentGlowPainter extends CustomPainter {
 // ── Compass dial painter ──────────────────────────────────────────────────────
 
 class _CompassDialPainter extends CustomPainter {
+  final String north;
+  final String east;
+  final String south;
+  final String west;
+
+  const _CompassDialPainter({
+    required this.north,
+    required this.east,
+    required this.south,
+    required this.west,
+  });
+
   @override
   void paint(Canvas canvas, Size size) {
     final cx = size.width  / 2;
@@ -1032,10 +1052,10 @@ class _CompassDialPainter extends CustomPainter {
     }
 
     // Cardinal letters
-    _paintCardinal(canvas, cx, cy, r, 'N',   0, large: true);
-    _paintCardinal(canvas, cx, cy, r, 'E',  90);
-    _paintCardinal(canvas, cx, cy, r, 'S', 180);
-    _paintCardinal(canvas, cx, cy, r, 'W', 270);
+    _paintCardinal(canvas, cx, cy, r, north,   0, large: true);
+    _paintCardinal(canvas, cx, cy, r, east,   90);
+    _paintCardinal(canvas, cx, cy, r, south, 180);
+    _paintCardinal(canvas, cx, cy, r, west,  270);
   }
 
   void _paintCardinal(Canvas canvas, double cx, double cy, double r,
@@ -1061,7 +1081,9 @@ class _CompassDialPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CompassDialPainter old) => false;
+  bool shouldRepaint(_CompassDialPainter old) =>
+      old.north != north || old.east != east ||
+      old.south != south || old.west != west;
 }
 
 // ── Needle painter ────────────────────────────────────────────────────────────

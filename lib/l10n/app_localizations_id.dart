@@ -2123,4 +2123,115 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'sabar, sabr, rahmat, shalat, salah, ampunan, tawbah, surga, jannah, ilmu';
+
+  @override
+  String get heroVerse1 =>
+      'Peliharalah semua shalatmu, dan (peliharalah) shalat wustha.';
+
+  @override
+  String get heroVerse2 =>
+      'Sungguh, shalat itu adalah kewajiban yang ditentukan waktunya atas orang-orang yang beriman.';
+
+  @override
+  String get heroVerse3 => 'Jadikanlah sabar dan shalat sebagai penolongmu.';
+
+  @override
+  String get heroVerse4 =>
+      'Maka ingatlah kepada-Ku, niscaya Aku ingat kepadamu. Bersyukurlah kepada-Ku dan janganlah kamu ingkar kepada-Ku.';
+
+  @override
+  String get heroVerse5 =>
+      'Dan barangsiapa bertawakal kepada Allah, maka Dia akan mencukupkan (keperluan)nya.';
+
+  @override
+  String get heroVerse6 =>
+      'Sesungguhnya rumah yang pertama kali dibangun untuk tempat beribadah manusia adalah Baitullah di Makkah yang diberkahi dan menjadi petunjuk bagi seluruh alam.';
+
+  @override
+  String get heroVerse7 =>
+      'Sesungguhnya shalat itu mencegah dari perbuatan keji dan mungkar, dan sungguh, mengingat Allah itu lebih besar.';
+
+  @override
+  String get heroVerse8 =>
+      'Ingatlah, hanya dengan mengingat Allah hati menjadi tenteram.';
+
+  @override
+  String get heroVerse9 =>
+      'Berdoalah kepada-Ku, niscaya akan Kuperkenankan bagimu.';
+
+  @override
+  String get heroVerse10 =>
+      'Jika kamu bersyukur, niscaya Aku akan menambah (nikmat) kepadamu.';
+
+  @override
+  String get heroVerse11 =>
+      'Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya.';
+
+  @override
+  String get heroVerse12 =>
+      'Sesungguhnya Allah beserta orang-orang yang sabar.';
+
+  @override
+  String get heroVerse13 => 'Rahmat-Ku meliputi segala sesuatu.';
+
+  @override
+  String get heroVerse14 =>
+      'Dan berbuat baiklah; sesungguhnya Allah menyukai orang-orang yang berbuat baik.';
+
+  @override
+  String get heroVerse15 =>
+      'Kitab (Al-Qur\'an) ini tidak ada keraguan padanya; petunjuk bagi mereka yang bertakwa.';
+
+  @override
+  String get accuracyHigh => 'Akurasi Tinggi';
+
+  @override
+  String get accuracyMedium => 'Akurasi Sedang';
+
+  @override
+  String get accuracyLow => 'Akurasi Rendah';
+
+  @override
+  String get accuracyCalibrating => 'Mengkalibrasi…';
+
+  @override
+  String get compassNeedsCalibration => 'Kompas perlu dikalibrasi';
+
+  @override
+  String get compassCalibrationHint =>
+      'Gerakkan ponsel Anda perlahan dalam gerakan angka delapan untuk meningkatkan akurasi.';
+
+  @override
+  String get spiritLevelLabel => 'Waterpass';
+
+  @override
+  String get spiritLevelLevelText => '✓  Datar';
+
+  @override
+  String get spiritLevelTiltText => 'Miringkan untuk meratakan';
+
+  @override
+  String get compassNorth => 'U';
+
+  @override
+  String get compassEast => 'T';
+
+  @override
+  String get compassSouth => 'S';
+
+  @override
+  String get compassWest => 'B';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'Jaga waktumu. Hormati shalatmu.';
+
+  @override
+  String get stopAdhan => 'Hentikan Adzan';
+
+  @override
+  String get duasSearchEmpty =>
+      'Coba kategori lain atau kata kunci pencarian yang berbeda.';
 }

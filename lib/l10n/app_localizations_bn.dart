@@ -2122,4 +2122,110 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'সবর, ধৈর্য, রহমত, সালাত, নামাজ, মাফ, তাওবা, জান্নাত, ইলম, জ্ঞান';
+
+  @override
+  String get heroVerse1 =>
+      'তোমরা নামাযসমূহ যত্নসহকারে পালন কর, বিশেষতঃ মধ্যবর্তী নামায।';
+
+  @override
+  String get heroVerse2 => 'নিশ্চয়ই নামায মুমিনদের উপর নির্দিষ্ট সময়ে ফরয।';
+
+  @override
+  String get heroVerse3 => 'ধৈর্য ও নামাযের মাধ্যমে সাহায্য প্রার্থনা কর।';
+
+  @override
+  String get heroVerse4 =>
+      'অতএব তোমরা আমাকে স্মরণ কর, আমি তোমাদের স্মরণ করব। আর আমার কৃতজ্ঞতা প্রকাশ কর এবং অকৃতজ্ঞ হয়ো না।';
+
+  @override
+  String get heroVerse5 => 'যে আল্লাহর উপর ভরসা করে, তার জন্য তিনিই যথেষ্ট।';
+
+  @override
+  String get heroVerse6 =>
+      'নিশ্চয়ই মানুষের জন্য সর্বপ্রথম যে ঘর স্থাপিত হয়েছিল তা মক্কায়, যা বরকতময় এবং বিশ্বজগতের জন্য পথপ্রদর্শক।';
+
+  @override
+  String get heroVerse7 =>
+      'নিশ্চয়ই নামায অশ্লীলতা ও মন্দ কাজ থেকে বিরত রাখে। আর আল্লাহর স্মরণ সর্বশ্রেষ্ঠ।';
+
+  @override
+  String get heroVerse8 => 'জেনে রাখ, আল্লাহর স্মরণেই অন্তরসমূহ প্রশান্ত হয়।';
+
+  @override
+  String get heroVerse9 => 'আমাকে ডাক, আমি তোমাদের ডাকে সাড়া দেব।';
+
+  @override
+  String get heroVerse10 =>
+      'যদি তোমরা কৃতজ্ঞ হও তাহলে অবশ্যই তোমাদের আরও বেশি দেব।';
+
+  @override
+  String get heroVerse11 =>
+      'আল্লাহ কোনো আত্মাকে তার সাধ্যের অতিরিক্ত বোঝা দেন না।';
+
+  @override
+  String get heroVerse12 => 'নিশ্চয়ই আল্লাহ ধৈর্যশীলদের সাথে আছেন।';
+
+  @override
+  String get heroVerse13 => 'আমার রহমত সব কিছু পরিব্যাপ্ত।';
+
+  @override
+  String get heroVerse14 =>
+      'ভালো কাজ কর, নিশ্চয়ই আল্লাহ সৎকর্মশীলদের ভালোবাসেন।';
+
+  @override
+  String get heroVerse15 =>
+      'এটি সেই কিতাব যাতে কোনো সন্দেহ নেই, মুত্তাকীদের জন্য পথপ্রদর্শক।';
+
+  @override
+  String get accuracyHigh => 'উচ্চ নির্ভুলতা';
+
+  @override
+  String get accuracyMedium => 'মধ্যম নির্ভুলতা';
+
+  @override
+  String get accuracyLow => 'কম নির্ভুলতা';
+
+  @override
+  String get accuracyCalibrating => 'ক্যালিব্রেট হচ্ছে…';
+
+  @override
+  String get compassNeedsCalibration => 'কম্পাসের ক্যালিব্রেশন প্রয়োজন';
+
+  @override
+  String get compassCalibrationHint =>
+      'নির্ভুলতা উন্নত করতে ফোনটি আস্তে আস্তে ৮-এর মতো আকারে সরান।';
+
+  @override
+  String get spiritLevelLabel => 'স্পিরিট লেভেল';
+
+  @override
+  String get spiritLevelLevelText => '✓  সমান';
+
+  @override
+  String get spiritLevelTiltText => 'সমান করতে কাত করুন';
+
+  @override
+  String get compassNorth => 'উ';
+
+  @override
+  String get compassEast => 'পূ';
+
+  @override
+  String get compassSouth => 'দ';
+
+  @override
+  String get compassWest => 'প';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'তোমার সময় রক্ষা কর। তোমার নামাযকে সম্মান কর।';
+
+  @override
+  String get stopAdhan => 'আযান বন্ধ করুন';
+
+  @override
+  String get duasSearchEmpty =>
+      'অন্য একটি বিভাগ বা অনুসন্ধান শব্দ চেষ্টা করুন।';
 }

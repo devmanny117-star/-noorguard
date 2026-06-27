@@ -3,87 +3,30 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../l10n/app_localizations.dart';
 import '../../theme/app_theme.dart';
 
 // Each slide pairs one image with one Quran verse so both rotate together.
 typedef _Slide = ({String image, String verse, String ref});
 
-const List<_Slide> _kSlides = [
-  (
-    image: 'assets/images/mosques/mosque_1.jpg',
-    verse: 'Guard strictly your prayers, especially the middle prayer.',
-    ref: 'Al-Baqarah 2:238',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_2.jpg',
-    verse: 'Indeed, prayer has been decreed upon the believers a decree of specified times.',
-    ref: 'An-Nisaʼ 4:103',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_3.jpg',
-    verse: 'And seek help through patience and prayer.',
-    ref: 'Al-Baqarah 2:45',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_4.jpg',
-    verse: 'So remember Me; I will remember you. And be grateful to Me and do not deny Me.',
-    ref: 'Al-Baqarah 2:152',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_5.jpg',
-    verse: 'And whoever relies upon Allah — then He is sufficient for him.',
-    ref: 'At-Talaq 65:3',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_6.jpg', // Kaaba during Hajj
-    verse: 'Indeed, the first House established for mankind was that at Makkah — blessed and a guidance for the worlds.',
-    ref: 'Ali ʼImran 3:96',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_7.jpg', // Prophet's Mosque interior — worshippers praying
-    verse: 'Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.',
-    ref: 'Al-ʻAnkabut 29:45',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_8.jpg', // Blue Mosque interior
-    verse: 'Verily, in the remembrance of Allah do hearts find rest.',
-    ref: 'Ar-Raʻd 13:28',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_1.jpg',
-    verse: 'Call upon Me; I will respond to you.',
-    ref: 'Ghafir 40:60',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_2.jpg',
-    verse: 'If you are grateful, I will surely increase you in favor.',
-    ref: 'Ibrahim 14:7',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_3.jpg',
-    verse: 'Allah does not burden a soul beyond that it can bear.',
-    ref: 'Al-Baqarah 2:286',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_4.jpg',
-    verse: 'Indeed, Allah is with the patient.',
-    ref: 'Al-Baqarah 2:153',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_5.jpg',
-    verse: 'My mercy encompasses all things.',
-    ref: 'Al-Aʻraf 7:156',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_6.jpg',
-    verse: 'And do good; indeed, Allah loves the doers of good.',
-    ref: 'Al-Baqarah 2:195',
-  ),
-  (
-    image: 'assets/images/mosques/mosque_7.jpg',
-    verse: 'This is the Book about which there is no doubt, a guidance for those conscious of Allah.',
-    ref: 'Al-Baqarah 2:2',
-  ),
+const int _kSlideCount = 15;
+
+List<_Slide> _buildSlides(AppLocalizations l10n) => [
+  (image: 'assets/images/mosques/mosque_1.jpg', verse: l10n.heroVerse1,  ref: 'Al-Baqarah 2:238'),
+  (image: 'assets/images/mosques/mosque_2.jpg', verse: l10n.heroVerse2,  ref: 'An-Nisaʼ 4:103'),
+  (image: 'assets/images/mosques/mosque_3.jpg', verse: l10n.heroVerse3,  ref: 'Al-Baqarah 2:45'),
+  (image: 'assets/images/mosques/mosque_4.jpg', verse: l10n.heroVerse4,  ref: 'Al-Baqarah 2:152'),
+  (image: 'assets/images/mosques/mosque_5.jpg', verse: l10n.heroVerse5,  ref: 'At-Talaq 65:3'),
+  (image: 'assets/images/mosques/mosque_6.jpg', verse: l10n.heroVerse6,  ref: 'Ali ʼImran 3:96'),   // Kaaba during Hajj
+  (image: 'assets/images/mosques/mosque_7.jpg', verse: l10n.heroVerse7,  ref: 'Al-ʻAnkabut 29:45'), // Prophet's Mosque interior
+  (image: 'assets/images/mosques/mosque_8.jpg', verse: l10n.heroVerse8,  ref: 'Ar-Raʻd 13:28'),    // Blue Mosque interior
+  (image: 'assets/images/mosques/mosque_1.jpg', verse: l10n.heroVerse9,  ref: 'Ghafir 40:60'),
+  (image: 'assets/images/mosques/mosque_2.jpg', verse: l10n.heroVerse10, ref: 'Ibrahim 14:7'),
+  (image: 'assets/images/mosques/mosque_3.jpg', verse: l10n.heroVerse11, ref: 'Al-Baqarah 2:286'),
+  (image: 'assets/images/mosques/mosque_4.jpg', verse: l10n.heroVerse12, ref: 'Al-Baqarah 2:153'),
+  (image: 'assets/images/mosques/mosque_5.jpg', verse: l10n.heroVerse13, ref: 'Al-Aʻraf 7:156'),
+  (image: 'assets/images/mosques/mosque_6.jpg', verse: l10n.heroVerse14, ref: 'Al-Baqarah 2:195'),
+  (image: 'assets/images/mosques/mosque_7.jpg', verse: l10n.heroVerse15, ref: 'Al-Baqarah 2:2'),
 ];
 
 class HeroCard extends StatefulWidget {
@@ -101,7 +44,7 @@ class _HeroCardState extends State<HeroCard> {
   void initState() {
     super.initState();
     _timer = Timer.periodic(const Duration(seconds: 5), (_) {
-      if (mounted) setState(() => _index = (_index + 1) % _kSlides.length);
+      if (mounted) setState(() => _index = (_index + 1) % _kSlideCount);
     });
   }
 
@@ -113,7 +56,8 @@ class _HeroCardState extends State<HeroCard> {
 
   @override
   Widget build(BuildContext context) {
-    final slide = _kSlides[_index];
+    final l10n = AppLocalizations.of(context)!;
+    final slide = _buildSlides(l10n)[_index];
     // Android text is slightly larger for readability on the wider range of
     // screen densities and OEM fonts encountered on Android devices.
     final bool isAndroid = !kIsWeb && Platform.isAndroid;

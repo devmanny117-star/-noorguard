@@ -2120,4 +2120,107 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'صبر, رحمت, نماز, عبادت, بخشش, توبه, بهشت, دانش, دعا, ذکر';
+
+  @override
+  String get heroVerse1 => 'نمازها را به‌ویژه نماز میانه را نگه دارید.';
+
+  @override
+  String get heroVerse2 => 'همانا نماز بر مؤمنان در وقت‌های معین واجب شده است.';
+
+  @override
+  String get heroVerse3 => 'از صبر و نماز یاری بجویید.';
+
+  @override
+  String get heroVerse4 =>
+      'پس مرا یاد کنید تا شما را یاد کنم. و سپاسگزار من باشید و کفران نعمت نکنید.';
+
+  @override
+  String get heroVerse5 => 'هر کس بر خدا توکل کند، او برای او کافی است.';
+
+  @override
+  String get heroVerse6 =>
+      'همانا اولین خانه‌ای که برای مردم بنا شد همان است که در مکه است، مبارک و هدایتی برای جهانیان.';
+
+  @override
+  String get heroVerse7 =>
+      'همانا نماز از زشتی‌ها و ناشایسته‌ها باز می‌دارد، و ذکر خدا بزرگ‌تر است.';
+
+  @override
+  String get heroVerse8 => 'آگاه باشید که دل‌ها تنها با یاد خدا آرام می‌گیرند.';
+
+  @override
+  String get heroVerse9 => 'مرا بخوانید تا اجابت کنم شما را.';
+
+  @override
+  String get heroVerse10 => 'اگر سپاسگزار باشید قطعاً بر نعمت شما می‌افزایم.';
+
+  @override
+  String get heroVerse11 =>
+      'خداوند هیچ کس را جز به اندازه توانش تکلیف نمی‌کند.';
+
+  @override
+  String get heroVerse12 => 'همانا خداوند با صابران است.';
+
+  @override
+  String get heroVerse13 => 'رحمت من همه چیز را فرا گرفته است.';
+
+  @override
+  String get heroVerse14 => 'نیکی کنید که خداوند نیکوکاران را دوست دارد.';
+
+  @override
+  String get heroVerse15 =>
+      'این کتابی است که هیچ شکی در آن نیست، هدایتی برای پرهیزکاران.';
+
+  @override
+  String get accuracyHigh => 'دقت بالا';
+
+  @override
+  String get accuracyMedium => 'دقت متوسط';
+
+  @override
+  String get accuracyLow => 'دقت پایین';
+
+  @override
+  String get accuracyCalibrating => 'در حال کالیبراسیون…';
+
+  @override
+  String get compassNeedsCalibration => 'قطب‌نما نیاز به کالیبراسیون دارد';
+
+  @override
+  String get compassCalibrationHint =>
+      'برای بهبود دقت، گوشی خود را به آرامی به شکل عدد ۸ حرکت دهید.';
+
+  @override
+  String get spiritLevelLabel => 'تراز';
+
+  @override
+  String get spiritLevelLevelText => '✓  تراز';
+
+  @override
+  String get spiritLevelTiltText => 'کج کنید تا تراز شود';
+
+  @override
+  String get compassNorth => 'ش';
+
+  @override
+  String get compassEast => 'خ';
+
+  @override
+  String get compassSouth => 'ج';
+
+  @override
+  String get compassWest => 'با';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'از وقتت محافظت کن. نمازت را احترام بگذار.';
+
+  @override
+  String get stopAdhan => 'توقف اذان';
+
+  @override
+  String get duasSearchEmpty =>
+      'دسته‌بندی یا عبارت جستجوی دیگری را امتحان کنید.';
 }

@@ -2115,4 +2115,111 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'sabır, sabr, merhamet, namaz, salah, af, tawbah, cennet, jannah, ilim';
+
+  @override
+  String get heroVerse1 =>
+      'Namazları ve özellikle orta namazı titizlikle yerine getirin.';
+
+  @override
+  String get heroVerse2 =>
+      'Şüphesiz namaz, müminlere belirli vakitlerde farz kılınmıştır.';
+
+  @override
+  String get heroVerse3 => 'Sabır ve namazla yardım isteyin.';
+
+  @override
+  String get heroVerse4 =>
+      'O hâlde siz beni anın ki ben de sizi anayım. Bana şükredin; bana nankörlük etmeyin.';
+
+  @override
+  String get heroVerse5 => 'Kim Allah\'a tevekkül ederse Allah ona yeter.';
+
+  @override
+  String get heroVerse6 =>
+      'Şüphesiz insanlar için kurulan ilk ev, Mekke\'deki o mübarek ve âlemlere hidayet rehberi olan evdir.';
+
+  @override
+  String get heroVerse7 =>
+      'Şüphesiz namaz, hayâsızlıktan ve kötülükten alıkoyar. Allah\'ı zikretmek ise en büyük ibadettir.';
+
+  @override
+  String get heroVerse8 =>
+      'İyi biliniz ki kalpler ancak Allah\'ın zikriyle huzur bulur.';
+
+  @override
+  String get heroVerse9 => 'Bana dua edin, size karşılık vereyim.';
+
+  @override
+  String get heroVerse10 => 'Eğer şükredersen elbette sizi artırırım.';
+
+  @override
+  String get heroVerse11 =>
+      'Allah, hiçbir nefse taşıyabileceğinden fazlasını yüklemez.';
+
+  @override
+  String get heroVerse12 => 'Şüphesiz Allah sabredenlerle beraberdir.';
+
+  @override
+  String get heroVerse13 => 'Rahmetim her şeyi kuşatmıştır.';
+
+  @override
+  String get heroVerse14 =>
+      'İyilik yapın; şüphesiz Allah iyilik yapanları sever.';
+
+  @override
+  String get heroVerse15 =>
+      'Bu, kendisinde hiç şüphe olmayan kitaptır. Allah\'a karşı gelmekten sakınanlar için yol göstericidir.';
+
+  @override
+  String get accuracyHigh => 'Yüksek Doğruluk';
+
+  @override
+  String get accuracyMedium => 'Orta Doğruluk';
+
+  @override
+  String get accuracyLow => 'Düşük Doğruluk';
+
+  @override
+  String get accuracyCalibrating => 'Kalibre ediliyor…';
+
+  @override
+  String get compassNeedsCalibration => 'Pusula kalibrasyona ihtiyaç duyuyor';
+
+  @override
+  String get compassCalibrationHint =>
+      'Doğruluğu artırmak için telefonunuzu yavaşça 8 rakamı şeklinde hareket ettirin.';
+
+  @override
+  String get spiritLevelLabel => 'Su Terazisi';
+
+  @override
+  String get spiritLevelLevelText => '✓  Düzgün';
+
+  @override
+  String get spiritLevelTiltText => 'Düzlemek için eğin';
+
+  @override
+  String get compassNorth => 'K';
+
+  @override
+  String get compassEast => 'D';
+
+  @override
+  String get compassSouth => 'G';
+
+  @override
+  String get compassWest => 'B';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'Zamanını koru. Namazlarına sahip çık.';
+
+  @override
+  String get stopAdhan => 'Ezan\'ı Durdur';
+
+  @override
+  String get duasSearchEmpty =>
+      'Farklı bir kategori veya arama terimi deneyin.';
 }

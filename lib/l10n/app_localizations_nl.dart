@@ -2121,4 +2121,111 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'geduld, sabr, barmhartigheid, gebed, salah, vergiffenis, tawbah, paradijs, jannah, kennis';
+
+  @override
+  String get heroVerse1 =>
+      'Onderhoudt nauwgezet de gebeden, in het bijzonder het middelste gebed.';
+
+  @override
+  String get heroVerse2 =>
+      'Waarlijk, het gebed is de gelovigen op vaste tijden voorgeschreven.';
+
+  @override
+  String get heroVerse3 => 'Zoekt hulp in geduld en gebed.';
+
+  @override
+  String get heroVerse4 =>
+      'Gedenkt Mij dan, zodat Ik u zal gedenken. En dankt Mij en weest niet ondankbaar.';
+
+  @override
+  String get heroVerse5 =>
+      'En wie op Allah vertrouwt, Hij zal hem voldoende zijn.';
+
+  @override
+  String get heroVerse6 =>
+      'Waarlijk, het eerste Huis dat voor de mensen is gesteld, is dat in Makkah – gezegend en een leiding voor de werelden.';
+
+  @override
+  String get heroVerse7 =>
+      'Waarlijk, het gebed weerhoudt van ontucht en het verwerpelijke, en de gedachtenis aan Allah is groter.';
+
+  @override
+  String get heroVerse8 =>
+      'Weet, dat alleen in de gedachtenis aan Allah de harten rust vinden.';
+
+  @override
+  String get heroVerse9 => 'Roept Mij aan; Ik zal u verhoren.';
+
+  @override
+  String get heroVerse10 =>
+      'Als jullie dankbaar zijn, zal Ik jullie zeker meer geven.';
+
+  @override
+  String get heroVerse11 => 'Allah belast geen ziel boven zijn vermogen.';
+
+  @override
+  String get heroVerse12 => 'Waarlijk, Allah is met de geduldigen.';
+
+  @override
+  String get heroVerse13 => 'Mijn barmhartigheid omvat alle dingen.';
+
+  @override
+  String get heroVerse14 =>
+      'En doet het goede; waarlijk, Allah heeft de weldoeners lief.';
+
+  @override
+  String get heroVerse15 =>
+      'Dit is het Boek waaraan geen twijfel is, een leidraad voor de godvrezenden.';
+
+  @override
+  String get accuracyHigh => 'Hoge nauwkeurigheid';
+
+  @override
+  String get accuracyMedium => 'Gemiddelde nauwkeurigheid';
+
+  @override
+  String get accuracyLow => 'Lage nauwkeurigheid';
+
+  @override
+  String get accuracyCalibrating => 'Kalibreren…';
+
+  @override
+  String get compassNeedsCalibration => 'Kompas moet worden gekalibreerd';
+
+  @override
+  String get compassCalibrationHint =>
+      'Beweeg je telefoon langzaam in een 8-beweging om de nauwkeurigheid te verbeteren.';
+
+  @override
+  String get spiritLevelLabel => 'Waterpas';
+
+  @override
+  String get spiritLevelLevelText => '✓  Waterpas';
+
+  @override
+  String get spiritLevelTiltText => 'Kantel om te nivelleren';
+
+  @override
+  String get compassNorth => 'N';
+
+  @override
+  String get compassEast => 'O';
+
+  @override
+  String get compassSouth => 'Z';
+
+  @override
+  String get compassWest => 'W';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'Waak over je tijd. Eer je gebeden.';
+
+  @override
+  String get stopAdhan => 'Adhan stoppen';
+
+  @override
+  String get duasSearchEmpty => 'Probeer een andere categorie of zoekterm.';
 }

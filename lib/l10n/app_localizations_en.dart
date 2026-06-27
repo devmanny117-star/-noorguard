@@ -2106,4 +2106,112 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'patience, sabr, mercy, prayer, salah, forgiveness, tawbah, paradise, jannah, knowledge';
+
+  @override
+  String get heroVerse1 =>
+      'Guard strictly your prayers, especially the middle prayer.';
+
+  @override
+  String get heroVerse2 =>
+      'Indeed, prayer has been decreed upon the believers a decree of specified times.';
+
+  @override
+  String get heroVerse3 => 'And seek help through patience and prayer.';
+
+  @override
+  String get heroVerse4 =>
+      'So remember Me; I will remember you. And be grateful to Me and do not deny Me.';
+
+  @override
+  String get heroVerse5 =>
+      'And whoever relies upon Allah — then He is sufficient for him.';
+
+  @override
+  String get heroVerse6 =>
+      'Indeed, the first House established for mankind was that at Makkah — blessed and a guidance for the worlds.';
+
+  @override
+  String get heroVerse7 =>
+      'Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.';
+
+  @override
+  String get heroVerse8 =>
+      'Verily, in the remembrance of Allah do hearts find rest.';
+
+  @override
+  String get heroVerse9 => 'Call upon Me; I will respond to you.';
+
+  @override
+  String get heroVerse10 =>
+      'If you are grateful, I will surely increase you in favor.';
+
+  @override
+  String get heroVerse11 =>
+      'Allah does not burden a soul beyond that it can bear.';
+
+  @override
+  String get heroVerse12 => 'Indeed, Allah is with the patient.';
+
+  @override
+  String get heroVerse13 => 'My mercy encompasses all things.';
+
+  @override
+  String get heroVerse14 =>
+      'And do good; indeed, Allah loves the doers of good.';
+
+  @override
+  String get heroVerse15 =>
+      'This is the Book about which there is no doubt, a guidance for those conscious of Allah.';
+
+  @override
+  String get accuracyHigh => 'High Accuracy';
+
+  @override
+  String get accuracyMedium => 'Medium Accuracy';
+
+  @override
+  String get accuracyLow => 'Low Accuracy';
+
+  @override
+  String get accuracyCalibrating => 'Calibrating…';
+
+  @override
+  String get compassNeedsCalibration => 'Compass needs calibration';
+
+  @override
+  String get compassCalibrationHint =>
+      'Move your phone slowly in a figure-8 motion to improve accuracy.';
+
+  @override
+  String get spiritLevelLabel => 'Spirit Level';
+
+  @override
+  String get spiritLevelLevelText => '✓  Level';
+
+  @override
+  String get spiritLevelTiltText => 'Tilt to level';
+
+  @override
+  String get compassNorth => 'N';
+
+  @override
+  String get compassEast => 'E';
+
+  @override
+  String get compassSouth => 'S';
+
+  @override
+  String get compassWest => 'W';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'Guard your time. Honor your prayers.';
+
+  @override
+  String get stopAdhan => 'Stop Adhan';
+
+  @override
+  String get duasSearchEmpty => 'Try a different category or search term.';
 }

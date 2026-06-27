@@ -3911,6 +3911,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'patience, sabr, mercy, prayer, salah, forgiveness, tawbah, paradise, jannah, knowledge'**
   String get quranSearchSuggestions;
+
+  /// Quran verse on hero card slide 1 — Al-Baqarah 2:238
+  ///
+  /// In en, this message translates to:
+  /// **'Guard strictly your prayers, especially the middle prayer.'**
+  String get heroVerse1;
+
+  /// Quran verse on hero card slide 2 — An-Nisa 4:103
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, prayer has been decreed upon the believers a decree of specified times.'**
+  String get heroVerse2;
+
+  /// Quran verse on hero card slide 3 — Al-Baqarah 2:45
+  ///
+  /// In en, this message translates to:
+  /// **'And seek help through patience and prayer.'**
+  String get heroVerse3;
+
+  /// Quran verse on hero card slide 4 — Al-Baqarah 2:152
+  ///
+  /// In en, this message translates to:
+  /// **'So remember Me; I will remember you. And be grateful to Me and do not deny Me.'**
+  String get heroVerse4;
+
+  /// Quran verse on hero card slide 5 — At-Talaq 65:3
+  ///
+  /// In en, this message translates to:
+  /// **'And whoever relies upon Allah — then He is sufficient for him.'**
+  String get heroVerse5;
+
+  /// Quran verse on hero card slide 6 — Ali Imran 3:96
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, the first House established for mankind was that at Makkah — blessed and a guidance for the worlds.'**
+  String get heroVerse6;
+
+  /// Quran verse on hero card slide 7 — Al-Ankabut 29:45
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.'**
+  String get heroVerse7;
+
+  /// Quran verse on hero card slide 8 — Ar-Ra'd 13:28
+  ///
+  /// In en, this message translates to:
+  /// **'Verily, in the remembrance of Allah do hearts find rest.'**
+  String get heroVerse8;
+
+  /// Quran verse on hero card slide 9 — Ghafir 40:60
+  ///
+  /// In en, this message translates to:
+  /// **'Call upon Me; I will respond to you.'**
+  String get heroVerse9;
+
+  /// Quran verse on hero card slide 10 — Ibrahim 14:7
+  ///
+  /// In en, this message translates to:
+  /// **'If you are grateful, I will surely increase you in favor.'**
+  String get heroVerse10;
+
+  /// Quran verse on hero card slide 11 — Al-Baqarah 2:286
+  ///
+  /// In en, this message translates to:
+  /// **'Allah does not burden a soul beyond that it can bear.'**
+  String get heroVerse11;
+
+  /// Quran verse on hero card slide 12 — Al-Baqarah 2:153
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, Allah is with the patient.'**
+  String get heroVerse12;
+
+  /// Quran verse on hero card slide 13 — Al-A'raf 7:156
+  ///
+  /// In en, this message translates to:
+  /// **'My mercy encompasses all things.'**
+  String get heroVerse13;
+
+  /// Quran verse on hero card slide 14 — Al-Baqarah 2:195
+  ///
+  /// In en, this message translates to:
+  /// **'And do good; indeed, Allah loves the doers of good.'**
+  String get heroVerse14;
+
+  /// Quran verse on hero card slide 15 — Al-Baqarah 2:2
+  ///
+  /// In en, this message translates to:
+  /// **'This is the Book about which there is no doubt, a guidance for those conscious of Allah.'**
+  String get heroVerse15;
+
+  /// Qibla accuracy badge label — high sensor accuracy
+  ///
+  /// In en, this message translates to:
+  /// **'High Accuracy'**
+  String get accuracyHigh;
+
+  /// Qibla accuracy badge label — medium sensor accuracy
+  ///
+  /// In en, this message translates to:
+  /// **'Medium Accuracy'**
+  String get accuracyMedium;
+
+  /// Qibla accuracy badge label — low sensor accuracy
+  ///
+  /// In en, this message translates to:
+  /// **'Low Accuracy'**
+  String get accuracyLow;
+
+  /// Qibla accuracy badge label — compass is being calibrated
+  ///
+  /// In en, this message translates to:
+  /// **'Calibrating…'**
+  String get accuracyCalibrating;
+
+  /// Heading of the calibration prompt shown when compass accuracy is low
+  ///
+  /// In en, this message translates to:
+  /// **'Compass needs calibration'**
+  String get compassNeedsCalibration;
+
+  /// Body of the calibration prompt — instructions for figure-8 motion
+  ///
+  /// In en, this message translates to:
+  /// **'Move your phone slowly in a figure-8 motion to improve accuracy.'**
+  String get compassCalibrationHint;
+
+  /// Label above the spirit-level bubble widget on the Qibla screen
+  ///
+  /// In en, this message translates to:
+  /// **'Spirit Level'**
+  String get spiritLevelLabel;
+
+  /// Spirit level status when the phone is flat — checkmark + "Level"
+  ///
+  /// In en, this message translates to:
+  /// **'✓  Level'**
+  String get spiritLevelLevelText;
+
+  /// Spirit level status when the phone is tilted and needs leveling
+  ///
+  /// In en, this message translates to:
+  /// **'Tilt to level'**
+  String get spiritLevelTiltText;
+
+  /// Cardinal direction North on the compass dial
+  ///
+  /// In en, this message translates to:
+  /// **'N'**
+  String get compassNorth;
+
+  /// Cardinal direction East on the compass dial
+  ///
+  /// In en, this message translates to:
+  /// **'E'**
+  String get compassEast;
+
+  /// Cardinal direction South on the compass dial
+  ///
+  /// In en, this message translates to:
+  /// **'S'**
+  String get compassSouth;
+
+  /// Cardinal direction West on the compass dial
+  ///
+  /// In en, this message translates to:
+  /// **'W'**
+  String get compassWest;
+
+  /// App name shown on the splash screen (brand name, same in all languages)
+  ///
+  /// In en, this message translates to:
+  /// **'Noor Guard'**
+  String get splashAppName;
+
+  /// Tagline shown below the app name on the splash screen
+  ///
+  /// In en, this message translates to:
+  /// **'Guard your time. Honor your prayers.'**
+  String get splashTagline;
+
+  /// Label on the floating button that stops a playing adhan
+  ///
+  /// In en, this message translates to:
+  /// **'Stop Adhan'**
+  String get stopAdhan;
+
+  /// Secondary line of the empty state on the Duas screen when search returns no results
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different category or search term.'**
+  String get duasSearchEmpty;
 }
 
 class _AppLocalizationsDelegate

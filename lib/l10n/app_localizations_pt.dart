@@ -2125,4 +2125,111 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'paciência, sabr, misericórdia, oração, salah, perdão, tawbah, paraíso, jannah, conhecimento';
+
+  @override
+  String get heroVerse1 =>
+      'Guardai fielmente as orações, especialmente a oração do meio.';
+
+  @override
+  String get heroVerse2 =>
+      'Verdadeiramente, a oração foi prescrita aos crentes em horas determinadas.';
+
+  @override
+  String get heroVerse3 => 'Buscai auxílio na paciência e na oração.';
+
+  @override
+  String get heroVerse4 =>
+      'Lembrai-Me, portanto, e Eu vos lembrarei. Agradecei-Me e não sejais ingratos.';
+
+  @override
+  String get heroVerse5 => 'E quem confia em Allah, Ele lhe é suficiente.';
+
+  @override
+  String get heroVerse6 =>
+      'Com efeito, a primeira Casa estabelecida para os homens foi a de Makkah, bendita e guia para os mundos.';
+
+  @override
+  String get heroVerse7 =>
+      'Na verdade, a oração proíbe a indecência e o mal, e a lembrança de Allah é maior.';
+
+  @override
+  String get heroVerse8 =>
+      'Em verdade, pela lembrança de Allah os corações encontram descanso.';
+
+  @override
+  String get heroVerse9 => 'Invocai-Me; Eu vos responderei.';
+
+  @override
+  String get heroVerse10 => 'Se fordes agradecidos, certamente vos darei mais.';
+
+  @override
+  String get heroVerse11 =>
+      'Allah não sobrecarrega nenhuma alma além de sua capacidade.';
+
+  @override
+  String get heroVerse12 => 'Em verdade, Allah está com os pacientes.';
+
+  @override
+  String get heroVerse13 => 'A Minha misericórdia abrange todas as coisas.';
+
+  @override
+  String get heroVerse14 =>
+      'E fazei o bem; em verdade, Allah ama os que fazem o bem.';
+
+  @override
+  String get heroVerse15 =>
+      'Este é o Livro do qual não há dúvida, uma orientação para os tementes a Allah.';
+
+  @override
+  String get accuracyHigh => 'Alta precisão';
+
+  @override
+  String get accuracyMedium => 'Precisão média';
+
+  @override
+  String get accuracyLow => 'Baixa precisão';
+
+  @override
+  String get accuracyCalibrating => 'A calibrar…';
+
+  @override
+  String get compassNeedsCalibration => 'Bússola precisa de calibração';
+
+  @override
+  String get compassCalibrationHint =>
+      'Mova o telemóvel lentamente em forma de 8 para melhorar a precisão.';
+
+  @override
+  String get spiritLevelLabel => 'Nível de bolha';
+
+  @override
+  String get spiritLevelLevelText => '✓  Nivelado';
+
+  @override
+  String get spiritLevelTiltText => 'Inclina para nivelar';
+
+  @override
+  String get compassNorth => 'N';
+
+  @override
+  String get compassEast => 'L';
+
+  @override
+  String get compassSouth => 'S';
+
+  @override
+  String get compassWest => 'O';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'Guarda o teu tempo. Honra as tuas orações.';
+
+  @override
+  String get stopAdhan => 'Parar Adhan';
+
+  @override
+  String get duasSearchEmpty =>
+      'Tente uma categoria diferente ou outro termo de pesquisa.';
 }

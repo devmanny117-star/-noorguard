@@ -620,7 +620,7 @@ class _EmptyState extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Try a different category or search term.',
+            l10n.duasSearchEmpty,
             style: GoogleFonts.lato(fontSize: 13, color: colors.secondaryText),
             textAlign: TextAlign.center,
           ),

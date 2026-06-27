@@ -2092,4 +2092,107 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'صبر, رحمة, صلاة, مغفرة, توبة, جنة, علم, تقوى, دعاء, ذكر';
+
+  @override
+  String get heroVerse1 =>
+      'حَافِظُوا عَلَى الصَّلَوَاتِ وَالصَّلَاةِ الْوُسْطَى';
+
+  @override
+  String get heroVerse2 =>
+      'إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا';
+
+  @override
+  String get heroVerse3 => 'وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ';
+
+  @override
+  String get heroVerse4 =>
+      'فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ';
+
+  @override
+  String get heroVerse5 => 'وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ';
+
+  @override
+  String get heroVerse6 =>
+      'إِنَّ أَوَّلَ بَيْتٍ وُضِعَ لِلنَّاسِ لَلَّذِي بِبَكَّةَ مُبَارَكًا وَهُدًى لِّلْعَالَمِينَ';
+
+  @override
+  String get heroVerse7 =>
+      'إِنَّ الصَّلَاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنكَرِ وَلَذِكْرُ اللَّهِ أَكْبَرُ';
+
+  @override
+  String get heroVerse8 => 'أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ';
+
+  @override
+  String get heroVerse9 => 'ادْعُونِي أَسْتَجِبْ لَكُمْ';
+
+  @override
+  String get heroVerse10 => 'لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ';
+
+  @override
+  String get heroVerse11 => 'لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا';
+
+  @override
+  String get heroVerse12 => 'إِنَّ اللَّهَ مَعَ الصَّابِرِينَ';
+
+  @override
+  String get heroVerse13 => 'وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ';
+
+  @override
+  String get heroVerse14 => 'وَأَحْسِنُوا إِنَّ اللَّهَ يُحِبُّ الْمُحْسِنِينَ';
+
+  @override
+  String get heroVerse15 =>
+      'ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِّلْمُتَّقِينَ';
+
+  @override
+  String get accuracyHigh => 'دقة عالية';
+
+  @override
+  String get accuracyMedium => 'دقة متوسطة';
+
+  @override
+  String get accuracyLow => 'دقة منخفضة';
+
+  @override
+  String get accuracyCalibrating => 'جارٍ المعايرة…';
+
+  @override
+  String get compassNeedsCalibration => 'البوصلة تحتاج إلى معايرة';
+
+  @override
+  String get compassCalibrationHint =>
+      'حرّك هاتفك ببطء في شكل رقم 8 لتحسين الدقة.';
+
+  @override
+  String get spiritLevelLabel => 'الميزان';
+
+  @override
+  String get spiritLevelLevelText => '✓  مستوٍ';
+
+  @override
+  String get spiritLevelTiltText => 'ميّل للمعايرة';
+
+  @override
+  String get compassNorth => 'ش';
+
+  @override
+  String get compassEast => 'شق';
+
+  @override
+  String get compassSouth => 'ج';
+
+  @override
+  String get compassWest => 'غ';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'احرص على وقتك. أكرم صلاتك.';
+
+  @override
+  String get stopAdhan => 'إيقاف الأذان';
+
+  @override
+  String get duasSearchEmpty => 'جرّب فئة مختلفة أو مصطلح بحث آخر.';
 }

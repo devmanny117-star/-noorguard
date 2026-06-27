@@ -2142,4 +2142,112 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       'patience, sabr, miséricorde, prière, salah, pardon, tawbah, paradis, jannah, connaissance';
+
+  @override
+  String get heroVerse1 =>
+      'Observez scrupuleusement les prières, surtout la prière du milieu.';
+
+  @override
+  String get heroVerse2 =>
+      'En vérité, la prière a été prescrite aux croyants à des heures déterminées.';
+
+  @override
+  String get heroVerse3 => 'Cherchez secours dans la patience et la prière.';
+
+  @override
+  String get heroVerse4 =>
+      'Rappelez-vous de Moi, Je vous mentionnerai. Soyez-Moi reconnaissants et ne M\'ingratifiez pas.';
+
+  @override
+  String get heroVerse5 => 'Et quiconque se confie à Allah, Il lui suffira.';
+
+  @override
+  String get heroVerse6 =>
+      'Certes, la première maison établie pour les hommes est bien celle de Makkah, bénie et guidant les mondes.';
+
+  @override
+  String get heroVerse7 =>
+      'En vérité, la prière préserve de la turpitude et du blâmable, et certes, le rappel d\'Allah est plus grand.';
+
+  @override
+  String get heroVerse8 =>
+      'Assurément, c\'est par le rappel d\'Allah que les cœurs se tranquillisent.';
+
+  @override
+  String get heroVerse9 => 'Invoquez-Moi, Je vous répondrai.';
+
+  @override
+  String get heroVerse10 =>
+      'Si vous êtes reconnaissants, Je vous donnerai certainement davantage.';
+
+  @override
+  String get heroVerse11 =>
+      'Allah n\'impose à aucune âme une charge supérieure à sa capacité.';
+
+  @override
+  String get heroVerse12 => 'Certes, Allah est avec les endurants.';
+
+  @override
+  String get heroVerse13 => 'Ma miséricorde embrasse toute chose.';
+
+  @override
+  String get heroVerse14 =>
+      'Faites le bien; certes, Allah aime ceux qui font le bien.';
+
+  @override
+  String get heroVerse15 =>
+      'C\'est le Livre au sujet duquel il n\'y a aucun doute, un guide pour les pieux.';
+
+  @override
+  String get accuracyHigh => 'Haute précision';
+
+  @override
+  String get accuracyMedium => 'Précision moyenne';
+
+  @override
+  String get accuracyLow => 'Faible précision';
+
+  @override
+  String get accuracyCalibrating => 'Étalonnage…';
+
+  @override
+  String get compassNeedsCalibration => 'La boussole a besoin d\'étalonnage';
+
+  @override
+  String get compassCalibrationHint =>
+      'Déplacez lentement votre téléphone en forme de 8 pour améliorer la précision.';
+
+  @override
+  String get spiritLevelLabel => 'Niveau à bulle';
+
+  @override
+  String get spiritLevelLevelText => '✓  Nivelé';
+
+  @override
+  String get spiritLevelTiltText => 'Inclinez pour niveler';
+
+  @override
+  String get compassNorth => 'N';
+
+  @override
+  String get compassEast => 'E';
+
+  @override
+  String get compassSouth => 'S';
+
+  @override
+  String get compassWest => 'O';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => 'Préserve ton temps. Honore tes prières.';
+
+  @override
+  String get stopAdhan => 'Arrêter l\'Adhan';
+
+  @override
+  String get duasSearchEmpty =>
+      'Essaie une autre catégorie ou un autre terme de recherche.';
 }

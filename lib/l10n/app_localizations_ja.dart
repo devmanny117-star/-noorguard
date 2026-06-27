@@ -2035,4 +2035,101 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get quranSearchSuggestions =>
       '忍耐, サブル, 慈悲, 礼拝, 神への神之, 許し, タウバ, 天国, ジャンナ, 知識';
+
+  @override
+  String get heroVerse1 => '礼拝を守りなさい、特に中間の礼拝を。';
+
+  @override
+  String get heroVerse2 => 'まことに礼拝は、信者たちに時刻を定めた義務とされている。';
+
+  @override
+  String get heroVerse3 => '忍耐と礼拝によって助けを求めなさい。';
+
+  @override
+  String get heroVerse4 =>
+      'それゆえ、あなたがたは私を念じなさい、私はあなたがたを念じよう。そして私に感謝し、私を拒絶してはならない。';
+
+  @override
+  String get heroVerse5 => 'アッラーに信頼する者は、アッラーが彼に十分である。';
+
+  @override
+  String get heroVerse6 => 'まことに人々のために最初に建てられた家は、マッカにある家であり、祝福され、世界の人々への指針である。';
+
+  @override
+  String get heroVerse7 => 'まことに礼拝は醜行と悪事を禁ずる、そしてアッラーを念じることはより偉大である。';
+
+  @override
+  String get heroVerse8 => 'まことにアッラーを念じることによってのみ、心は安らぎを得る。';
+
+  @override
+  String get heroVerse9 => '私に祈りなさい、私はあなたがたに答えよう。';
+
+  @override
+  String get heroVerse10 => 'もしあなたがたが感謝するなら、必ず恵みを増し加える。';
+
+  @override
+  String get heroVerse11 => 'アッラーはいかなる魂にもその能力以上を課せられない。';
+
+  @override
+  String get heroVerse12 => 'まことにアッラーは忍耐強い者たちと共にある。';
+
+  @override
+  String get heroVerse13 => '私の慈悲はすべてのものを包んでいる。';
+
+  @override
+  String get heroVerse14 => '善を行いなさい、まことにアッラーは善を行う者を愛する。';
+
+  @override
+  String get heroVerse15 => 'これは疑いのない書物であり、アッラーを畏れる人々への指針である。';
+
+  @override
+  String get accuracyHigh => '高精度';
+
+  @override
+  String get accuracyMedium => '中程度の精度';
+
+  @override
+  String get accuracyLow => '低精度';
+
+  @override
+  String get accuracyCalibrating => 'キャリブレーション中…';
+
+  @override
+  String get compassNeedsCalibration => 'コンパスのキャリブレーションが必要です';
+
+  @override
+  String get compassCalibrationHint => '精度を向上させるには、スマートフォンをゆっくりと8の字に動かしてください。';
+
+  @override
+  String get spiritLevelLabel => '水準器';
+
+  @override
+  String get spiritLevelLevelText => '✓  水平';
+
+  @override
+  String get spiritLevelTiltText => '傾けて水平に';
+
+  @override
+  String get compassNorth => '北';
+
+  @override
+  String get compassEast => '東';
+
+  @override
+  String get compassSouth => '南';
+
+  @override
+  String get compassWest => '西';
+
+  @override
+  String get splashAppName => 'Noor Guard';
+
+  @override
+  String get splashTagline => '時間を守れ。礼拝を大切に。';
+
+  @override
+  String get stopAdhan => 'アザーンを停止';
+
+  @override
+  String get duasSearchEmpty => '別のカテゴリまたは検索キーワードを試してください。';
 }
