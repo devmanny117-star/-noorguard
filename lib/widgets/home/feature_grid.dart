@@ -129,14 +129,18 @@ class FeatureCard extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1,
         child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [_kCardTop, _kCardBottom],
             ),
-            borderRadius: BorderRadius.all(Radius.circular(22)),
-            boxShadow: [
+            borderRadius: const BorderRadius.all(Radius.circular(22)),
+            border: Border.all(
+              color: _kBorderGold.withValues(alpha: 0.60),
+              width: 1,
+            ),
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black38,
                 blurRadius: 8,
@@ -157,7 +161,7 @@ class FeatureCard extends StatelessWidget {
                   style: GoogleFonts.inter(
                     color: _kGold,
                     fontWeight: FontWeight.w500,
-                    fontSize: 11,
+                    fontSize: 10,
                     letterSpacing: 0.3,
                     height: 1.2,
                   ),
