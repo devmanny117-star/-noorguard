@@ -194,10 +194,10 @@ class _WelcomePageState extends State<_WelcomePage>
     final size = MediaQuery.sizeOf(context);
     final topPad = MediaQuery.paddingOf(context).top;
     final botPad = MediaQuery.paddingOf(context).bottom;
-    const crescentSize = 120.0; // 60px radius
+    const crescentSize = 80.0; // 40px radius
     final archSectionH = size.height * 0.52;
-    // Moon in upper third of arch interior → ~28% above Stack center
-    final moonOffset = archSectionH * 0.28;
+    // Moon: center of arch, slightly above middle → 10% above Stack center
+    final moonOffset = archSectionH * 0.10;
 
     return FadeTransition(
       opacity: _fadeAnim,
@@ -987,50 +987,60 @@ class _IslamicArchPainter extends CustomPainter {
     final h = size.height;
     final mid = w / 2;
 
-    // Wide Mughal arch: 85% of canvas width, centered
-    final left     = w * 0.075;
-    final right    = w * 0.925;
+    // Arch spans 90% of canvas width, centered
+    final left     = w * 0.05;
+    final right    = w * 0.95;
+    final archW    = w * 0.90;
     final base     = h * 0.99;
-    final shoulder = h * 0.58;
+    final shoulder = h * 0.85; // arch fills 85% of section height
     final peak     = h * 0.04;
+    final flare    = w * 0.028; // outward bell at column base
 
-    // Ornate ogee: two bezier segments per side, creating the Mughal S-curve.
-    // Each side goes: straight pillar → slight outward flare → concave inward → rise to peak.
-    // The two inflection points (lI, rI) are the visible decorative cusps.
-    final lIx = left  + w * 0.175;
-    const lIy = 0.34;   // fraction of h
-    final rIx = right - w * 0.175;
+    // Ornate Mughal ogee inflection cusps
+    final lIx = left  + archW * 0.175;
+    const lIy = 0.50; // fraction of h — mid-height with taller arch
+    final rIx = right - archW * 0.175;
 
     final path = Path()
-      ..moveTo(left, base)
-      ..lineTo(left, shoulder)
-      // Left pillar top → left inflection (outward flare + first inward curve)
+      // Left column: curved outward at base (mosque column flare)
+      ..moveTo(left - flare, base)
       ..cubicTo(
-        left - w * 0.012, h * 0.490,  // slight outward from pillar
-        left + w * 0.038, h * 0.380,  // curving inward
+        left - flare, h * 0.91,
+        left,         h * 0.89,
+        left,         shoulder,
+      )
+      // Left pillar top → left inflection (outward flare + inward S-curve)
+      ..cubicTo(
+        left - w * 0.012, h * 0.78,
+        left + w * 0.040, h * 0.63,
         lIx,              h * lIy,
       )
-      // Left inflection → peak (second inward curve, concave rise)
+      // Left inflection → peak (concave rise)
       ..cubicTo(
-        lIx + w * 0.075, h * 0.195,
-        mid  - w * 0.070, peak + h * 0.052,
+        lIx + w * 0.082, h * 0.31,
+        mid  - w * 0.072, peak + h * 0.055,
         mid,              peak,
       )
       // Peak → right inflection (mirror)
       ..cubicTo(
-        mid  + w * 0.070, peak + h * 0.052,
-        rIx  - w * 0.075, h * 0.195,
+        mid  + w * 0.072, peak + h * 0.055,
+        rIx  - w * 0.082, h * 0.31,
         rIx,              h * lIy,
       )
       // Right inflection → right pillar top (mirror)
       ..cubicTo(
-        right - w * 0.038, h * 0.380,
-        right + w * 0.012, h * 0.490,
-        right, shoulder,
+        right - w * 0.040, h * 0.63,
+        right + w * 0.012, h * 0.78,
+        right,             shoulder,
       )
-      ..lineTo(right, base);
+      // Right column: curves outward at base (mirror flare)
+      ..cubicTo(
+        right,         h * 0.89,
+        right + flare, h * 0.91,
+        right + flare, base,
+      );
 
-    // Subtle dark radial gradient fill inside the arch
+    // Subtle dark gradient fill inside arch
     final fillPath = Path.from(path)..close();
     canvas.save();
     canvas.clipPath(fillPath);
@@ -1038,12 +1048,22 @@ class _IslamicArchPainter extends CustomPainter {
       Rect.fromLTWH(0, 0, w, h),
       Paint()
         ..shader = const RadialGradient(
-          center: Alignment(0, -0.30),
-          radius: 0.80,
-          colors: [Color(0x1C132240), Color(0x6E060D1B)],
-        ).createShader(Rect.fromLTWH(left, peak, right - left, shoulder - peak)),
+          center: Alignment(0, -0.20),
+          radius: 0.85,
+          colors: [Color(0x1C132240), Color(0x72060D1B)],
+        ).createShader(
+            Rect.fromLTWH(left - flare, peak, archW + 2 * flare, shoulder - peak)),
     );
     canvas.restore();
+
+    // Very subtle gold glow at the arch peak
+    canvas.drawCircle(
+      Offset(mid, peak),
+      w * 0.09,
+      Paint()
+        ..color = _gold.withValues(alpha: 0.28)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 14),
+    );
 
     // 2 px stroke, ornate gold #C9A84C
     canvas.drawPath(
@@ -1086,13 +1106,18 @@ class _StarsPainter extends CustomPainter {
   final double twinkle;
   const _StarsPainter({required this.twinkle});
 
-  // [x, y, radius] — inside wide Mughal arch, avoiding moon area (center upper)
+  // [x, y, radius] — inside arch, scattered around moon (~0.50, 0.40), avoiding it
   static const List<List<double>> _positions = [
-    [0.20, 0.32, 2.0], [0.80, 0.31, 2.0],
-    [0.17, 0.48, 2.5], [0.83, 0.47, 2.5],
-    [0.27, 0.18, 2.0], [0.73, 0.17, 2.0],
-    [0.38, 0.52, 1.8], [0.62, 0.51, 1.8],
-    [0.28, 0.40, 2.5], [0.72, 0.39, 2.5],
+    [0.50, 0.10, 2.0], // directly above moon, near peak
+    [0.25, 0.20, 2.0], // upper left
+    [0.75, 0.20, 2.0], // upper right
+    [0.12, 0.42, 2.5], // far left, level with moon
+    [0.88, 0.42, 2.5], // far right, level with moon
+    [0.30, 0.62, 2.0], // lower left
+    [0.70, 0.62, 2.0], // lower right
+    [0.20, 0.75, 2.5], // far lower left
+    [0.80, 0.75, 2.5], // far lower right
+    [0.50, 0.80, 2.0], // bottom center
   ];
 
   @override
