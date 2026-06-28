@@ -224,6 +224,7 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.only(bottom: 100),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -257,7 +258,6 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
           const _ToolboxCard(),
           // Section 6: Explore All Features
           _ExploreAllCard(onTap: _switchToFullMode),
-          const SizedBox(height: 100),
         ],
       ),
     );
