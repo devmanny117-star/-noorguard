@@ -9,11 +9,8 @@ import 'home_screen.dart';
 
 // Always dark — onboarding never inherits the system theme.
 const _bg = Color(0xFF081321);
-const _bgGradCenter = Color(0xFF0D1827);
-const _bgGradEdge = Color(0xFF060E1C);
 const _titleGold = Color(0xFFD4AF37);
 const _gold = Color(0xFFC9A84C);
-const _mutedGold = Color(0xFFA08532);
 const _white = Color(0xFFF5F5F0);
 const _grey = Color(0xFF6B7A8D);
 const _cardBg = Color(0xFF152535);
@@ -132,30 +129,62 @@ class _WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<_WelcomePage>
     with TickerProviderStateMixin {
+  late final AnimationController _fadeCtrl;
   late final AnimationController _floatCtrl;
   late final AnimationController _twinkleCtrl;
+  late final AnimationController _buttonCtrl;
+  late final Animation<double> _fadeAnim;
   late final Animation<double> _floatAnim;
+  late final Animation<double> _buttonFadeAnim;
+  late final Animation<Offset> _buttonSlideAnim;
 
   @override
   void initState() {
     super.initState();
+    // 400ms screen fade-in
+    _fadeCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    )..forward();
+    _fadeAnim = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeOut);
+
+    // Slow moon float: 3.5s, repeat reverse
     _floatCtrl = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2800),
+      duration: const Duration(milliseconds: 3500),
     )..repeat(reverse: true);
-    _floatAnim = Tween<double>(begin: -7.0, end: 7.0).animate(
+    _floatAnim = Tween<double>(begin: -9.0, end: 9.0).animate(
       CurvedAnimation(parent: _floatCtrl, curve: Curves.easeInOut),
     );
+
+    // Star twinkle
     _twinkleCtrl = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1600),
+      duration: const Duration(milliseconds: 1800),
     )..repeat(reverse: true);
+
+    // Button fades + slides up after brief delay
+    _buttonCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 550),
+    );
+    Future.delayed(const Duration(milliseconds: 250), () {
+      if (mounted) _buttonCtrl.forward();
+    });
+    _buttonFadeAnim =
+        CurvedAnimation(parent: _buttonCtrl, curve: Curves.easeOut);
+    _buttonSlideAnim =
+        Tween<Offset>(begin: const Offset(0, 0.22), end: Offset.zero).animate(
+      CurvedAnimation(parent: _buttonCtrl, curve: Curves.easeOutCubic),
+    );
   }
 
   @override
   void dispose() {
+    _fadeCtrl.dispose();
     _floatCtrl.dispose();
     _twinkleCtrl.dispose();
+    _buttonCtrl.dispose();
     super.dispose();
   }
 
@@ -165,162 +194,198 @@ class _WelcomePageState extends State<_WelcomePage>
     final size = MediaQuery.sizeOf(context);
     final topPad = MediaQuery.paddingOf(context).top;
     final botPad = MediaQuery.paddingOf(context).bottom;
-    final archW = size.width * 0.92;
-    final archH = size.height * 0.53;
+    const crescentSize = 120.0; // 60px radius
+    final archSectionH = size.height * 0.52;
+    // Moon in upper third of arch interior → ~28% above Stack center
+    final moonOffset = archSectionH * 0.28;
 
-    return Stack(
-      children: [
-        // Full-screen radial gradient background
-        const Positioned.fill(
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                center: Alignment(0, -0.7),
-                radius: 1.3,
-                colors: [_bgGradCenter, _bgGradEdge],
+    return FadeTransition(
+      opacity: _fadeAnim,
+      child: Stack(
+        children: [
+          // Radial gradient: brighter center-top, dark edges
+          const Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment(0, -0.55),
+                  radius: 1.15,
+                  colors: [Color(0xFF101E31), Color(0xFF081321)],
+                ),
               ),
             ),
           ),
-        ),
-        Column(
-          children: [
-            SizedBox(height: topPad + 16),
-            // ── arch + animations (58% of screen) ──────────────────────────
-            SizedBox(
-              height: size.height * 0.58,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  // Arch with gradient fill + ornate Mughal outline
-                  CustomPaint(
-                    size: Size(archW, archH),
-                    painter: const _IslamicArchPainter(),
-                  ),
-                  // Twinkling stars inside the arch
-                  AnimatedBuilder(
-                    animation: _twinkleCtrl,
-                    builder: (_, __) => CustomPaint(
-                      size: Size(archW, archH),
-                      painter: _StarsPainter(twinkle: _twinkleCtrl.value),
+
+          Column(
+            children: [
+              SizedBox(height: topPad + 12),
+
+              // ── Arch section ───────────────────────────────────────────────
+              SizedBox(
+                height: archSectionH,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // Wide Mughal arch fills entire section
+                    const Positioned.fill(
+                      child: CustomPaint(painter: _IslamicArchPainter()),
                     ),
-                  ),
-                  // Gold glow behind moon (animated with float)
-                  AnimatedBuilder(
-                    animation: _floatAnim,
-                    builder: (_, __) => Transform.translate(
-                      offset: Offset(0, -archH * 0.06 + _floatAnim.value),
-                      child: Container(
-                        width: archW * 0.30,
-                        height: archW * 0.30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: RadialGradient(
-                            colors: [
-                              _gold.withValues(alpha: 0.16),
-                              _gold.withValues(alpha: 0.0),
-                            ],
+                    // 10 star particles inside arch
+                    AnimatedBuilder(
+                      animation: _twinkleCtrl,
+                      builder: (_, __) => Positioned.fill(
+                        child: CustomPaint(
+                          painter: _StarsPainter(twinkle: _twinkleCtrl.value),
+                        ),
+                      ),
+                    ),
+                    // Gold glow behind crescent — positioned upper third
+                    AnimatedBuilder(
+                      animation: _floatAnim,
+                      builder: (_, __) => Transform.translate(
+                        offset: Offset(0, -moonOffset + _floatAnim.value),
+                        child: Container(
+                          width: crescentSize * 1.65,
+                          height: crescentSize * 1.65,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(
+                              colors: [
+                                _titleGold.withValues(alpha: 0.18),
+                                _titleGold.withValues(alpha: 0.0),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  // Floating crescent (30% smaller, center-lower)
-                  AnimatedBuilder(
-                    animation: _floatAnim,
-                    builder: (_, __) => Transform.translate(
-                      offset: Offset(0, -archH * 0.06 + _floatAnim.value),
-                      child: SizedBox(
-                        width: archW * 0.18,
-                        height: archW * 0.18,
-                        child: const CustomPaint(painter: _CrescentPainter()),
+                    // Crescent moon — upper third of arch
+                    AnimatedBuilder(
+                      animation: _floatAnim,
+                      builder: (_, __) => Transform.translate(
+                        offset: Offset(0, -moonOffset + _floatAnim.value),
+                        child: const SizedBox(
+                          width: crescentSize,
+                          height: crescentSize,
+                          child: CustomPaint(painter: _CrescentPainter()),
+                        ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // ── bottom text block ───────────────────────────────────────────
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      l10n.onboardingWelcomeTo,
-                      style: GoogleFonts.inter(
-                        fontSize: 18,
-                        color: _white,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Noor',
-                            style: GoogleFonts.inter(
-                              fontSize: 38,
-                              fontWeight: FontWeight.w600,
-                              color: _white,
-                              height: 1.1,
-                            ),
-                          ),
-                          TextSpan(
-                            text: ' Guard',
-                            style: GoogleFonts.inter(
-                              fontSize: 38,
-                              fontWeight: FontWeight.w600,
-                              color: _titleGold,
-                              height: 1.1,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      l10n.onboardingSubtitle,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                        color: _grey,
-                        height: 1.55,
-                      ),
-                    ),
-                    const SizedBox(height: 28),
-                    const _PageDots(currentPage: 0, totalPages: 3),
-                    const SizedBox(height: 24),
-                    _GoldButton(
-                      label: l10n.onboardingLetsGetStarted,
-                      onTap: widget.onNext,
-                      showArrow: true,
                     ),
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: botPad + 16),
-          ],
-        ),
-        // Skip button
-        Positioned(
-          top: topPad + 8,
-          right: 16,
-          child: TextButton(
-            onPressed: widget.onSkip,
-            style: TextButton.styleFrom(
-              foregroundColor: _grey,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            ),
-            child: Text(
-              l10n.onboardingSkip,
-              style: GoogleFonts.lato(fontSize: 15, color: _grey),
+
+              // ── Text + CTA section ─────────────────────────────────────────
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // "Welcome to"
+                      Text(
+                        l10n.onboardingWelcomeTo,
+                        style: GoogleFonts.inter(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFFF8F8F8)
+                              .withValues(alpha: 0.72),
+                          letterSpacing: 0.2,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      // "Noor Guard" — "Guard" in gold
+                      Text.rich(
+                        TextSpan(children: [
+                          TextSpan(
+                            text: 'Noor ',
+                            style: GoogleFonts.inter(
+                              fontSize: 40,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFFF8F8F8),
+                              height: 1.1,
+                              letterSpacing: -0.5,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Guard',
+                            style: GoogleFonts.inter(
+                              fontSize: 40,
+                              fontWeight: FontWeight.w600,
+                              color: _titleGold,
+                              height: 1.1,
+                              letterSpacing: -0.5,
+                            ),
+                          ),
+                        ]),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 14),
+                      // Subtitle — max 70% width, white 65% opacity
+                      ConstrainedBox(
+                        constraints:
+                            BoxConstraints(maxWidth: size.width * 0.70),
+                        child: Text(
+                          l10n.onboardingSubtitle,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFFF8F8F8)
+                                .withValues(alpha: 0.62),
+                            height: 1.6,
+                            letterSpacing: 0.1,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 28),
+                      const _PageDots(currentPage: 0, totalPages: 3),
+                      const SizedBox(height: 22),
+                      // Button slides up + fades in
+                      SlideTransition(
+                        position: _buttonSlideAnim,
+                        child: FadeTransition(
+                          opacity: _buttonFadeAnim,
+                          child: _GoldButton(
+                            label: l10n.onboardingLetsGetStarted,
+                            onTap: widget.onNext,
+                            showArrow: true,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              SizedBox(height: botPad + 16),
+            ],
+          ),
+
+          // Skip — top-right, gold
+          Positioned(
+            top: topPad + 8,
+            right: 16,
+            child: TextButton(
+              onPressed: widget.onSkip,
+              style: TextButton.styleFrom(
+                foregroundColor: _titleGold,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                overlayColor: _titleGold,
+              ),
+              child: Text(
+                l10n.onboardingSkip,
+                style: GoogleFonts.inter(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: _titleGold,
+                ),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -734,25 +799,18 @@ class _GoldButton extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        height: 56,
+        height: 58,
         decoration: BoxDecoration(
-          gradient: enabled
-              ? const LinearGradient(
-                  colors: [Color(0xFFD4A832), _mutedGold],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                )
-              : null,
-          color: enabled ? null : _cardBg,
-          borderRadius: BorderRadius.circular(14),
+          color: enabled ? _titleGold : _cardBg,
+          borderRadius: BorderRadius.circular(18),
           border: enabled ? null : Border.all(color: _cardBorder),
           boxShadow: enabled
               ? [
                   BoxShadow(
-                    color: _gold.withValues(alpha: 0.28),
-                    blurRadius: 14,
-                    offset: const Offset(0, 5),
-                  )
+                    color: _titleGold.withValues(alpha: 0.32),
+                    blurRadius: 18,
+                    offset: const Offset(0, 6),
+                  ),
                 ]
               : null,
         ),
@@ -762,17 +820,16 @@ class _GoldButton extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: GoogleFonts.lato(
+                style: GoogleFonts.inter(
                   fontSize: 17,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   color: enabled ? _bg : _grey,
-                  letterSpacing: 0.3,
+                  letterSpacing: 0.1,
                 ),
               ),
               if (showArrow && enabled) ...[
                 const SizedBox(width: 8),
-                const Icon(Icons.arrow_forward_rounded,
-                    color: _bg, size: 18),
+                const Icon(Icons.arrow_forward_rounded, color: _bg, size: 19),
               ],
             ],
           ),
@@ -930,110 +987,93 @@ class _IslamicArchPainter extends CustomPainter {
     final h = size.height;
     final mid = w / 2;
 
-    // Pillar positions
-    final left = w * 0.10;
-    final right = w * 0.90;
-    final base = h * 0.96;
-    final shoulder = h * 0.65;
+    // Wide Mughal arch: 85% of canvas width, centered
+    final left     = w * 0.075;
+    final right    = w * 0.925;
+    final base     = h * 0.99;
+    final shoulder = h * 0.58;
+    final peak     = h * 0.04;
 
-    // Three-cusp Mughal ogee arch points
-    final lCuspX = w * 0.23;  final lCuspY = h * 0.43;
-    final lDipX  = w * 0.37;  final lDipY  = h * 0.27;
-    final peakY  = h * 0.05;
-    final rDipX  = w * 0.63;  final rDipY  = h * 0.27;
-    final rCuspX = w * 0.77;  final rCuspY = h * 0.43;
+    // Ornate ogee: two bezier segments per side, creating the Mughal S-curve.
+    // Each side goes: straight pillar → slight outward flare → concave inward → rise to peak.
+    // The two inflection points (lI, rI) are the visible decorative cusps.
+    final lIx = left  + w * 0.175;
+    const lIy = 0.34;   // fraction of h
+    final rIx = right - w * 0.175;
 
-    final archPath = Path()
+    final path = Path()
       ..moveTo(left, base)
       ..lineTo(left, shoulder)
-      // Left pillar → left cusp (gentle outward curve)
-      ..cubicTo(left,      h * 0.56,
-                w * 0.16, lCuspY,
-                lCuspX,   lCuspY)
-      // Left cusp → left dip (concave inward)
-      ..cubicTo(w * 0.30, h * 0.41,
-                w * 0.34, lDipY + h * 0.02,
-                lDipX,    lDipY)
-      // Left dip → center peak (main arch rise)
-      ..cubicTo(w * 0.40, h * 0.13,
-                w * 0.45, peakY + h * 0.04,
-                mid,      peakY)
-      // Center peak → right dip (mirror)
-      ..cubicTo(w * 0.55, peakY + h * 0.04,
-                w * 0.60, h * 0.13,
-                rDipX,    rDipY)
-      // Right dip → right cusp
-      ..cubicTo(w * 0.66, rDipY + h * 0.02,
-                w * 0.70, h * 0.41,
-                rCuspX,   rCuspY)
-      // Right cusp → right pillar
-      ..cubicTo(w * 0.84, rCuspY,
-                right,    h * 0.56,
-                right,    shoulder)
-      ..lineTo(right, base)
-      ..lineTo(left, base);
+      // Left pillar top → left inflection (outward flare + first inward curve)
+      ..cubicTo(
+        left - w * 0.012, h * 0.490,  // slight outward from pillar
+        left + w * 0.038, h * 0.380,  // curving inward
+        lIx,              h * lIy,
+      )
+      // Left inflection → peak (second inward curve, concave rise)
+      ..cubicTo(
+        lIx + w * 0.075, h * 0.195,
+        mid  - w * 0.070, peak + h * 0.052,
+        mid,              peak,
+      )
+      // Peak → right inflection (mirror)
+      ..cubicTo(
+        mid  + w * 0.070, peak + h * 0.052,
+        rIx  - w * 0.075, h * 0.195,
+        rIx,              h * lIy,
+      )
+      // Right inflection → right pillar top (mirror)
+      ..cubicTo(
+        right - w * 0.038, h * 0.380,
+        right + w * 0.012, h * 0.490,
+        right, shoulder,
+      )
+      ..lineTo(right, base);
 
-    // 1. Dark radial gradient fill inside arch
+    // Subtle dark radial gradient fill inside the arch
+    final fillPath = Path.from(path)..close();
     canvas.save();
-    canvas.clipPath(archPath);
+    canvas.clipPath(fillPath);
     canvas.drawRect(
       Rect.fromLTWH(0, 0, w, h),
       Paint()
         ..shader = const RadialGradient(
-          center: Alignment(0, -0.2),
-          radius: 0.75,
-          colors: [Color(0x35101E31), Color(0x88060E1C)],
-        ).createShader(Rect.fromLTWH(0, 0, w, h)),
+          center: Alignment(0, -0.30),
+          radius: 0.80,
+          colors: [Color(0x1C132240), Color(0x6E060D1B)],
+        ).createShader(Rect.fromLTWH(left, peak, right - left, shoulder - peak)),
     );
     canvas.restore();
 
-    // 2. Gold outline stroke
+    // 2 px stroke, ornate gold #C9A84C
     canvas.drawPath(
-      archPath,
+      path,
       Paint()
-        ..color = _gold.withValues(alpha: 0.58)
+        ..color = _gold.withValues(alpha: 0.92)
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.6
+        ..strokeWidth = 2.0
         ..strokeCap = StrokeCap.round
         ..strokeJoin = StrokeJoin.round,
     );
 
-    // 3. Diamond at center peak
+    // Small diamond at peak
     const ds = 4.0;
     canvas.drawPath(
       Path()
-        ..moveTo(mid, peakY - ds)
-        ..lineTo(mid + ds, peakY)
-        ..lineTo(mid, peakY + ds)
-        ..lineTo(mid - ds, peakY)
+        ..moveTo(mid, peak - ds)
+        ..lineTo(mid + ds, peak)
+        ..lineTo(mid, peak + ds)
+        ..lineTo(mid - ds, peak)
         ..close(),
-      Paint()
-        ..color = _gold.withValues(alpha: 0.85)
-        ..style = PaintingStyle.fill,
+      Paint()..color = _gold..style = PaintingStyle.fill,
     );
 
-    // 4. Small diamonds at cusp tips
-    const cs = 2.8;
-    for (final (cx, cy) in [(lCuspX, lCuspY), (rCuspX, rCuspY)]) {
-      canvas.drawPath(
-        Path()
-          ..moveTo(cx, cy - cs)
-          ..lineTo(cx + cs, cy)
-          ..lineTo(cx, cy + cs)
-          ..lineTo(cx - cs, cy)
-          ..close(),
-        Paint()
-          ..color = _gold.withValues(alpha: 0.55)
-          ..style = PaintingStyle.fill,
-      );
-    }
-
-    // 5. Shoulder springing line
+    // Springline at shoulder (very subtle)
     canvas.drawLine(
       Offset(left, shoulder),
       Offset(right, shoulder),
       Paint()
-        ..color = _gold.withValues(alpha: 0.20)
+        ..color = _gold.withValues(alpha: 0.18)
         ..strokeWidth = 0.8,
     );
   }
@@ -1046,24 +1086,25 @@ class _StarsPainter extends CustomPainter {
   final double twinkle;
   const _StarsPainter({required this.twinkle});
 
-  // [x, y, radius] — all inside arch bounds, avoiding the crescent center
+  // [x, y, radius] — inside wide Mughal arch, avoiding moon area (center upper)
   static const List<List<double>> _positions = [
-    [0.34, 0.22, 2.5], [0.66, 0.24, 2.0], [0.27, 0.44, 3.5],
-    [0.73, 0.42, 3.0], [0.50, 0.15, 4.0], [0.40, 0.62, 2.0],
-    [0.60, 0.63, 2.5], [0.50, 0.78, 3.0], [0.37, 0.32, 2.0],
-    [0.63, 0.33, 2.5], [0.44, 0.52, 3.5], [0.56, 0.53, 2.0],
+    [0.20, 0.32, 2.0], [0.80, 0.31, 2.0],
+    [0.17, 0.48, 2.5], [0.83, 0.47, 2.5],
+    [0.27, 0.18, 2.0], [0.73, 0.17, 2.0],
+    [0.38, 0.52, 1.8], [0.62, 0.51, 1.8],
+    [0.28, 0.40, 2.5], [0.72, 0.39, 2.5],
   ];
 
   @override
   void paint(Canvas canvas, Size size) {
     for (int i = 0; i < _positions.length; i++) {
-      final phase = ((i * 0.41) + twinkle) % 1.0;
-      final alpha = 0.45 + 0.35 * math.sin(phase * math.pi);
+      final phase = ((i * 0.37) + twinkle) % 1.0;
+      final alpha = 0.50 + 0.14 * math.sin(phase * math.pi); // stays near 0.6
       canvas.drawCircle(
         Offset(size.width * _positions[i][0], size.height * _positions[i][1]),
         _positions[i][2],
         Paint()
-          ..color = _white.withValues(alpha: alpha)
+          ..color = const Color(0xFFF8F8F8).withValues(alpha: alpha)
           ..style = PaintingStyle.fill,
       );
     }
@@ -1080,27 +1121,35 @@ class _CrescentPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final cx = size.width / 2;
     final cy = size.height / 2;
-    final r = size.width * 0.40;
+    final r = size.width * 0.50; // 60 px when SizedBox is 120px
 
-    // Glow
+    // Soft outer glow
     canvas.drawCircle(
       Offset(cx, cy),
-      r * 1.3,
+      r * 1.5,
       Paint()
-        ..color = _gold.withValues(alpha: 0.10)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 14),
+        ..color = _titleGold.withValues(alpha: 0.12)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 18),
+    );
+    // Inner glow (tighter, brighter)
+    canvas.drawCircle(
+      Offset(cx, cy),
+      r * 1.05,
+      Paint()
+        ..color = _titleGold.withValues(alpha: 0.08)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
     );
 
-    // Crescent: clip to outer circle, fill gold, cut inner circle offset right
+    // Crescent: fill outer circle, cut inner circle offset to create crescent
     final clip = Path()
       ..addOval(Rect.fromCircle(center: Offset(cx, cy), radius: r));
     canvas.save();
     canvas.clipPath(clip);
-    canvas.drawCircle(Offset(cx, cy), r,
-        Paint()..color = _gold..style = PaintingStyle.fill);
     canvas.drawCircle(
-      Offset(cx + r * 0.30, cy - r * 0.04),
-      r * 0.80,
+        Offset(cx, cy), r, Paint()..color = _titleGold..style = PaintingStyle.fill);
+    canvas.drawCircle(
+      Offset(cx + r * 0.32, cy - r * 0.04),
+      r * 0.78,
       Paint()..color = _bg..style = PaintingStyle.fill,
     );
     canvas.restore();
