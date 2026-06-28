@@ -20,6 +20,8 @@ import 'settings_app_blocking_screen.dart';
 import 'settings_prayer_notifications_screen.dart';
 import 'settings_privacy_screen.dart';
 import 'settings_shared.dart';
+import 'beginner_home_screen.dart';
+import 'home_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -364,7 +366,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 colors: cardColors,
                 onChanged: (v) {
                   context.read<PrayerState>().toggleBeginnerMode(v);
-                  if (v) _snack(l10n.beginnerModeOn);
+                  if (v) {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (_) => const BeginnerHomeScreen()),
+                      (route) => false,
+                    );
+                  } else {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => const HomeScreen()),
+                      (route) => false,
+                    );
+                  }
                 },
               ),
             ],
