@@ -2182,7 +2182,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String greetingWithName(String name) {
-    return 'アッサラーム・アライクム、$name 👋';
+    return 'アッサラーム・アライクム、$name 🤲';
   }
 
   @override

@@ -2275,7 +2275,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String greetingWithName(String name) {
-    return 'سلام، $name 👋';
+    return 'سلام، $name 🤲';
   }
 
   @override

@@ -2286,7 +2286,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String greetingWithName(String name) {
-    return 'As-Salāmu \'Alaikum, $name 👋';
+    return 'As-Salāmu \'Alaikum, $name 🤲';
   }
 
   @override

@@ -2269,7 +2269,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String greetingWithName(String name) {
-    return 'السلام علیکم، $name 👋';
+    return 'السلام علیکم، $name 🤲';
   }
 
   @override

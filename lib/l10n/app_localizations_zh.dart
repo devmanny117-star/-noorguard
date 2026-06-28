@@ -2159,7 +2159,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String greetingWithName(String name) {
-    return 'السلام عليكم，$name 👋';
+    return 'السلام عليكم，$name 🤲';
   }
 
   @override
