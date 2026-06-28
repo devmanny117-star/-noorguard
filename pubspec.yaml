@@ -35,6 +35,7 @@ dependencies:
   vibration: ^3.2.0
   home_widget: ^0.9.3
   wakelock_plus: ^1.6.1
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/arch.svg
     - assets/images/mosques/
     - assets/data/block_screen_verses.json
     - assets/sounds/

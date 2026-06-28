@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 440" preserveAspectRatio="none">
+  <defs>
+
+    <!-- Interior fill: subtle dark radial gradient, lighter toward peak -->
+    <radialGradient id="archFill" cx="50%" cy="20%" r="80%"
+                    gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#132240" stop-opacity="0.11"/>
+      <stop offset="100%" stop-color="#060D1B" stop-opacity="0.44"/>
+    </radialGradient>
+
+    <!-- Gold glow at the arch peak -->
+    <radialGradient id="peakGlow" cx="50%" cy="50%" r="50%"
+                    gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#C9A84C" stop-opacity="0.30"/>
+      <stop offset="55%"  stop-color="#C9A84C" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </radialGradient>
+
+  </defs>
+
+  <!--
+    Mughal arch geometry (all coordinates in the 390 × 440 viewBox):
+
+    Columns (90% of width = 351 px, centered → left pillar x=19.5, right x=370.5).
+    Each column base flares ~11 px outward before rising straight to the shoulder.
+    Shoulder y = 374 (85% of 440).  Peak y = 18 (4% of 440).
+
+    Ornate ogee: two cubic-bezier S-curves per half.
+      Left half:
+        shoulder (19.5, 374)
+          → slight outward flare (CP: 14.8, 343) then inward (CP: 35.1, 277)
+          → left cusp/inflection (81, 220)
+          → rise (CP: 113, 136 → 167, 42)
+          → peak (195, 18)
+      Right half mirrors left.
+
+    Columns (with outward base flare):
+      Left:  (8.5, 436) -C(8.5,400)(19.5,392)-> (19.5, 374)
+      Right: (370.5, 374) -C(370.5,392)(381.5,400)-> (381.5, 436)
+  -->
+
+  <!-- Closed path for gradient fill (adds bottom closing line) -->
+  <path d="
+    M 8.5,436
+    C 8.5,400   19.5,392  19.5,374
+    C 14.8,343  35.1,277   81,220
+    C 113,136   167,42    195,18
+    C 223,42    277,136   309,220
+    C 354.9,277 375.2,343 370.5,374
+    C 370.5,392 381.5,400 381.5,436
+    Z"
+    fill="url(#archFill)" stroke="none"/>
+
+  <!-- Gold glow circle at the peak -->
+  <circle cx="195" cy="18" r="44" fill="url(#peakGlow)"/>
+
+  <!-- Arch outline — open at the bottom like a real archway -->
+  <path d="
+    M 8.5,436
+    C 8.5,400   19.5,392  19.5,374
+    C 14.8,343  35.1,277   81,220
+    C 113,136   167,42    195,18
+    C 223,42    277,136   309,220
+    C 354.9,277 375.2,343 370.5,374
+    C 370.5,392 381.5,400 381.5,436"
+    fill="none"
+    stroke="#C9A84C" stroke-opacity="0.92"
+    stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Springline at shoulder level -->
+  <line x1="19.5" y1="374" x2="370.5" y2="374"
+        stroke="#C9A84C" stroke-opacity="0.18" stroke-width="0.8"/>
+
+  <!-- Diamond ornament at the peak -->
+  <path d="M 195,13 L 200.5,18 L 195,23 L 189.5,18 Z"
+        fill="#C9A84C"/>
+
+</svg>

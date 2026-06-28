@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
@@ -226,9 +227,12 @@ class _WelcomePageState extends State<_WelcomePage>
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Wide Mughal arch fills entire section
-                    const Positioned.fill(
-                      child: CustomPaint(painter: _IslamicArchPainter()),
+                    // Mughal arch SVG — vector asset, no procedural geometry
+                    Positioned.fill(
+                      child: SvgPicture.asset(
+                        'assets/arch.svg',
+                        fit: BoxFit.fill,
+                      ),
                     ),
                     // 10 star particles inside arch
                     AnimatedBuilder(
@@ -975,132 +979,8 @@ class _FeatureRow extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PAINTERS
+// PAINTERS  (arch shape is assets/arch.svg — see SvgPicture in build())
 // ─────────────────────────────────────────────────────────────────────────────
-
-class _IslamicArchPainter extends CustomPainter {
-  const _IslamicArchPainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final w = size.width;
-    final h = size.height;
-    final mid = w / 2;
-
-    // Arch spans 90% of canvas width, centered
-    final left     = w * 0.05;
-    final right    = w * 0.95;
-    final archW    = w * 0.90;
-    final base     = h * 0.99;
-    final shoulder = h * 0.85; // arch fills 85% of section height
-    final peak     = h * 0.04;
-    final flare    = w * 0.028; // outward bell at column base
-
-    // Ornate Mughal ogee inflection cusps
-    final lIx = left  + archW * 0.175;
-    const lIy = 0.50; // fraction of h — mid-height with taller arch
-    final rIx = right - archW * 0.175;
-
-    final path = Path()
-      // Left column: curved outward at base (mosque column flare)
-      ..moveTo(left - flare, base)
-      ..cubicTo(
-        left - flare, h * 0.91,
-        left,         h * 0.89,
-        left,         shoulder,
-      )
-      // Left pillar top → left inflection (outward flare + inward S-curve)
-      ..cubicTo(
-        left - w * 0.012, h * 0.78,
-        left + w * 0.040, h * 0.63,
-        lIx,              h * lIy,
-      )
-      // Left inflection → peak (concave rise)
-      ..cubicTo(
-        lIx + w * 0.082, h * 0.31,
-        mid  - w * 0.072, peak + h * 0.055,
-        mid,              peak,
-      )
-      // Peak → right inflection (mirror)
-      ..cubicTo(
-        mid  + w * 0.072, peak + h * 0.055,
-        rIx  - w * 0.082, h * 0.31,
-        rIx,              h * lIy,
-      )
-      // Right inflection → right pillar top (mirror)
-      ..cubicTo(
-        right - w * 0.040, h * 0.63,
-        right + w * 0.012, h * 0.78,
-        right,             shoulder,
-      )
-      // Right column: curves outward at base (mirror flare)
-      ..cubicTo(
-        right,         h * 0.89,
-        right + flare, h * 0.91,
-        right + flare, base,
-      );
-
-    // Subtle dark gradient fill inside arch
-    final fillPath = Path.from(path)..close();
-    canvas.save();
-    canvas.clipPath(fillPath);
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, w, h),
-      Paint()
-        ..shader = const RadialGradient(
-          center: Alignment(0, -0.20),
-          radius: 0.85,
-          colors: [Color(0x1C132240), Color(0x72060D1B)],
-        ).createShader(
-            Rect.fromLTWH(left - flare, peak, archW + 2 * flare, shoulder - peak)),
-    );
-    canvas.restore();
-
-    // Very subtle gold glow at the arch peak
-    canvas.drawCircle(
-      Offset(mid, peak),
-      w * 0.09,
-      Paint()
-        ..color = _gold.withValues(alpha: 0.28)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 14),
-    );
-
-    // 2 px stroke, ornate gold #C9A84C
-    canvas.drawPath(
-      path,
-      Paint()
-        ..color = _gold.withValues(alpha: 0.92)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.0
-        ..strokeCap = StrokeCap.round
-        ..strokeJoin = StrokeJoin.round,
-    );
-
-    // Small diamond at peak
-    const ds = 4.0;
-    canvas.drawPath(
-      Path()
-        ..moveTo(mid, peak - ds)
-        ..lineTo(mid + ds, peak)
-        ..lineTo(mid, peak + ds)
-        ..lineTo(mid - ds, peak)
-        ..close(),
-      Paint()..color = _gold..style = PaintingStyle.fill,
-    );
-
-    // Springline at shoulder (very subtle)
-    canvas.drawLine(
-      Offset(left, shoulder),
-      Offset(right, shoulder),
-      Paint()
-        ..color = _gold.withValues(alpha: 0.18)
-        ..strokeWidth = 0.8,
-    );
-  }
-
-  @override
-  bool shouldRepaint(_IslamicArchPainter _) => false;
-}
 
 class _StarsPainter extends CustomPainter {
   final double twinkle;
