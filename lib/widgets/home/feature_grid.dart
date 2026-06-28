@@ -139,7 +139,7 @@ class FeatureCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AspectRatio(
-        aspectRatio: 1.1,
+        aspectRatio: 1.2,
         child: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -164,7 +164,7 @@ class FeatureCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 4),
-              Icon(icon, color: _kGold, size: 36),
+              Icon(icon, color: _kGold, size: 32),
               const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -173,7 +173,7 @@ class FeatureCard extends StatelessWidget {
                   style: GoogleFonts.inter(
                     color: _kGold,
                     fontWeight: FontWeight.w500,
-                    fontSize: 11,
+                    fontSize: 10,
                     letterSpacing: 0.3,
                     height: 1.2,
                     decoration: TextDecoration.none,
