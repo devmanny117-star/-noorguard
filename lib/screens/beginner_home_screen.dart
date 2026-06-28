@@ -10,14 +10,19 @@ import '../l10n/app_localizations.dart';
 import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
 import '../widgets/home/feature_grid.dart';
+import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
+import '../widgets/home/premium_bottom_nav.dart';
 import 'duas_screen.dart';
 import 'home_screen.dart';
 import 'how_to_pray_screen.dart';
 import 'islamic_glossary_screen.dart';
 import 'new_muslim_hub_screen.dart';
 import 'prayers_screen.dart';
+import 'qibla_screen.dart';
+import 'quran_screen.dart';
+import 'settings_screen.dart';
 import 'surah_screen.dart';
 import 'wudu_guide_screen.dart';
 
@@ -45,6 +50,72 @@ class BeginnerHomeScreen extends StatefulWidget {
 }
 
 class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
+  int _selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (didPop) return;
+        if (_selectedIndex != 0) {
+          setState(() => _selectedIndex = 0);
+        } else {
+          SystemNavigator.pop();
+        }
+      },
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,
+        ),
+        child: Scaffold(
+          extendBody: true,
+          backgroundColor: _kNavy,
+          body: SafeArea(
+            child: IndexedStack(
+              index: _selectedIndex,
+              children: [
+                _BeginnerBody(
+                  onOpenSettings: () => setState(() => _selectedIndex = 3),
+                  onOpenPrayers:  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const PrayersScreen()),
+                  ),
+                ),
+                const QuranScreen(),
+                QiblaScreen(isActive: _selectedIndex == 2),
+                const SettingsScreen(),
+              ],
+            ),
+          ),
+          bottomNavigationBar: PremiumBottomNavigationBar(
+            currentIndex: _selectedIndex,
+            onTap: (i) => setState(() => _selectedIndex = i),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Body (home tab) ────────────────────────────────────────────────────────────
+
+class _BeginnerBody extends StatefulWidget {
+  final VoidCallback onOpenSettings;
+  final VoidCallback onOpenPrayers;
+
+  const _BeginnerBody({
+    required this.onOpenSettings,
+    required this.onOpenPrayers,
+  });
+
+  @override
+  State<_BeginnerBody> createState() => _BeginnerBodyState();
+}
+
+class _BeginnerBodyState extends State<_BeginnerBody> {
   List<Prayer>? _prayers;
   String        _userName     = '';
   DateTime?     _shahadaDate;
@@ -84,9 +155,9 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
   Future<void> _loadPrayerTimes() async {
     try {
       await Geolocator.requestPermission();
-      final pos = await Geolocator.getCurrentPosition();
-      final marks = await placemarkFromCoordinates(pos.latitude, pos.longitude);
-      final city    = marks.first.locality       ?? 'Sacramento';
+      final pos    = await Geolocator.getCurrentPosition();
+      final marks  = await placemarkFromCoordinates(pos.latitude, pos.longitude);
+      final city   = marks.first.locality       ?? 'Sacramento';
       final country = marks.first.isoCountryCode ?? 'US';
       final prayers = await fetchPrayerTimes(city: city, country: country);
       if (mounted) setState(() => _prayers = prayers);
@@ -146,57 +217,48 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
     );
   }
 
-  int    get _daysSince  => _shahadaDate == null ? 0 : DateTime.now().difference(_shahadaDate!).inDays;
-  double get _progress   => _shahadaDate == null ? 0 : (_daysSince / 30.0).clamp(0.0, 1.0);
+  int    get _daysSince => _shahadaDate == null ? 0 : DateTime.now().difference(_shahadaDate!).inDays;
+  double get _progress  => _shahadaDate == null ? 0 : (_daysSince / 30.0).clamp(0.0, 1.0);
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.dark,
-      ),
-      child: Scaffold(
-        backgroundColor: _kNavy,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Section 1: Prayer Times Card
-                PrayerTimesCard(
-                  prayers: _prayers,
-                  onNextPrayerTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const PrayersScreen()),
-                  ),
-                ),
-                // Section 2: Hero Card
-                const HeroCard(),
-                // Section 3: Journey + Greeting Card
-                _JourneyCard(
-                  userName:    _userName,
-                  daysSince:   _shahadaDate != null ? _daysSince : null,
-                  progress:    _progress,
-                  quoteIndex:  _quoteIndex,
-                  onSetDate:   _pickShahadaDate,
-                ),
-                // Section 4: Muslim Essentials Checklist
-                _EssentialsCard(
-                  checked:  _essentials,
-                  onToggle: _toggleEssential,
-                ),
-                // Section 5: Beginner Toolbox
-                const _ToolboxCard(),
-                // Section 6: Explore All Features
-                _ExploreAllCard(onTap: _switchToFullMode),
-                const SizedBox(height: 100),
-              ],
-            ),
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header: greeting (top-left) + 3 icon buttons (top-right)
+          const SizedBox(height: 4),
+          HeaderSection(
+            onOpenSettings: widget.onOpenSettings,
+            userName: _userName,
           ),
-        ),
+          const SizedBox(height: 6),
+          // Section 1: Prayer Times Card
+          PrayerTimesCard(
+            prayers: _prayers,
+            onNextPrayerTap: widget.onOpenPrayers,
+          ),
+          // Section 2: Hero Card
+          const HeroCard(),
+          // Section 3: Journey Card
+          _JourneyCard(
+            daysSince:  _shahadaDate != null ? _daysSince : null,
+            progress:   _progress,
+            quoteIndex: _quoteIndex,
+            onSetDate:  _pickShahadaDate,
+          ),
+          // Section 4: Muslim Essentials Checklist
+          _EssentialsCard(
+            checked:  _essentials,
+            onToggle: _toggleEssential,
+          ),
+          // Section 5: Beginner Toolbox
+          const _ToolboxCard(),
+          // Section 6: Explore All Features
+          _ExploreAllCard(onTap: _switchToFullMode),
+          const SizedBox(height: 100),
+        ],
       ),
     );
   }
@@ -226,14 +288,12 @@ class _SectionCard extends StatelessWidget {
 // ── Section 3: Journey Card ────────────────────────────────────────────────────
 
 class _JourneyCard extends StatelessWidget {
-  final String    userName;
-  final int?      daysSince;
-  final double    progress;
-  final int       quoteIndex;
+  final int?         daysSince;
+  final double       progress;
+  final int          quoteIndex;
   final VoidCallback onSetDate;
 
   const _JourneyCard({
-    required this.userName,
     required this.daysSince,
     required this.progress,
     required this.quoteIndex,
@@ -256,47 +316,7 @@ class _JourneyCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Greeting
-          Row(
-            children: [
-              const Icon(Icons.nightlight_round, color: _kGold, size: 18),
-              const SizedBox(width: 8),
-              Text(
-                l10n.assalamualaikum.toUpperCase(),
-                style: GoogleFonts.lato(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                  color: _kGold,
-                  letterSpacing: 1.4,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Text(
-            userName.isNotEmpty
-                ? l10n.greetingWithName(userName)
-                : l10n.assalamualaikum,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 21,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-              height: 1.2,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            l10n.beginnerMayAllahGuide,
-            style: GoogleFonts.lato(
-              fontSize: 12,
-              color: Colors.white.withValues(alpha: 0.45),
-              height: 1.4,
-            ),
-          ),
-          const SizedBox(height: 14),
-          Divider(color: _kGold.withValues(alpha: 0.20), height: 1),
-          const SizedBox(height: 14),
-          // Journey label
+          // Section label
           Text(
             l10n.beginnerYourJourney,
             style: GoogleFonts.lato(
@@ -311,7 +331,6 @@ class _JourneyCard extends StatelessWidget {
           if (daysSince != null) ...[
             Row(
               children: [
-                // Circular progress
                 SizedBox(
                   width: 60,
                   height: 60,
@@ -354,7 +373,8 @@ class _JourneyCard extends StatelessWidget {
                         child: LinearProgressIndicator(
                           value: progress,
                           backgroundColor: _kGold.withValues(alpha: 0.15),
-                          valueColor: const AlwaysStoppedAnimation<Color>(_kGold),
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(_kGold),
                           minHeight: 5,
                         ),
                       ),
@@ -443,10 +463,7 @@ class _EssentialsCard extends StatelessWidget {
           const SizedBox(height: 8),
           for (int i = 0; i < items.length; i++) ...[
             if (i > 0)
-              Divider(
-                color: _kGold.withValues(alpha: 0.10),
-                height: 1,
-              ),
+              Divider(color: _kGold.withValues(alpha: 0.10), height: 1),
             _EssentialItem(
               label:      items[i].label,
               checked:    checked[i],
@@ -542,10 +559,10 @@ class _ToolboxCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     final items = <({IconData icon, String label, Widget screen})>[
-      (icon: Icons.self_improvement_rounded,  label: l10n.beginnerLearnSalah,  screen: const HowToPrayScreen()),
-      (icon: Icons.water_drop_rounded,        label: l10n.wuduGuide,           screen: const WuduGuideScreen()),
-      (icon: Icons.menu_book_rounded,         label: l10n.islamicGlossary,     screen: const IslamicGlossaryScreen()),
-      (icon: Icons.favorite_rounded,          label: l10n.revertCorner,        screen: const NewMuslimHubScreen()),
+      (icon: Icons.self_improvement_rounded, label: l10n.beginnerLearnSalah, screen: const HowToPrayScreen()),
+      (icon: Icons.water_drop_rounded,       label: l10n.wuduGuide,          screen: const WuduGuideScreen()),
+      (icon: Icons.menu_book_rounded,        label: l10n.islamicGlossary,    screen: const IslamicGlossaryScreen()),
+      (icon: Icons.favorite_rounded,         label: l10n.revertCorner,       screen: const NewMuslimHubScreen()),
     ];
 
     return _SectionCard(
@@ -568,10 +585,8 @@ class _ToolboxCard extends StatelessWidget {
                 child: FeatureCard(
                   icon:  items[0].icon,
                   label: items[0].label,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => items[0].screen),
-                  ),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => items[0].screen)),
                 ),
               ),
               const SizedBox(width: 10),
@@ -579,10 +594,8 @@ class _ToolboxCard extends StatelessWidget {
                 child: FeatureCard(
                   icon:  items[1].icon,
                   label: items[1].label,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => items[1].screen),
-                  ),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => items[1].screen)),
                 ),
               ),
             ],
@@ -594,10 +607,8 @@ class _ToolboxCard extends StatelessWidget {
                 child: FeatureCard(
                   icon:  items[2].icon,
                   label: items[2].label,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => items[2].screen),
-                  ),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => items[2].screen)),
                 ),
               ),
               const SizedBox(width: 10),
@@ -605,10 +616,8 @@ class _ToolboxCard extends StatelessWidget {
                 child: FeatureCard(
                   icon:  items[3].icon,
                   label: items[3].label,
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => items[3].screen),
-                  ),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => items[3].screen)),
                 ),
               ),
             ],
