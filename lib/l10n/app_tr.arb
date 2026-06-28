@@ -731,7 +731,7 @@
   "@onboardingFamiliarWithIslamDesc": {
     "description": "Description on the regular-mode card on the onboarding screen"
   },
-  "greetingWithName": "Es-Selâmü Aleyküm, {name} 👋",
+  "greetingWithName": "Es-Selâmü Aleyküm, {name} 🤲",
   "@greetingWithName": {
     "description": "Personalized greeting shown on the home screen header when user has set their name",
     "placeholders": {

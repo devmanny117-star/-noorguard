@@ -4197,7 +4197,7 @@ abstract class AppLocalizations {
   /// Personalized greeting shown on the home screen header when user has set their name
   ///
   /// In en, this message translates to:
-  /// **'As-Salāmu \'Alaikum, {name} 👋'**
+  /// **'As-Salāmu \'Alaikum, {name} 🤲'**
   String greetingWithName(String name);
 
   /// Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'
