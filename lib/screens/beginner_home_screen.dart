@@ -224,9 +224,10 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.only(bottom: 100),
+      padding: const EdgeInsets.only(bottom: 90),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           // Header: greeting (top-left) + 3 icon buttons (top-right)
           const SizedBox(height: 4),
@@ -639,7 +640,7 @@ class _ExploreAllCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+      padding: const EdgeInsets.only(left: 18, right: 18, top: 6),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
