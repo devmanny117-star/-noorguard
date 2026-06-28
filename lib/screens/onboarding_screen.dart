@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
@@ -131,11 +130,9 @@ class _WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<_WelcomePage>
     with TickerProviderStateMixin {
   late final AnimationController _fadeCtrl;
-  late final AnimationController _floatCtrl;
   late final AnimationController _twinkleCtrl;
   late final AnimationController _buttonCtrl;
   late final Animation<double> _fadeAnim;
-  late final Animation<double> _floatAnim;
   late final Animation<double> _buttonFadeAnim;
   late final Animation<Offset> _buttonSlideAnim;
 
@@ -148,15 +145,6 @@ class _WelcomePageState extends State<_WelcomePage>
       duration: const Duration(milliseconds: 400),
     )..forward();
     _fadeAnim = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeOut);
-
-    // Slow moon float: 3.5s, repeat reverse
-    _floatCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 3500),
-    )..repeat(reverse: true);
-    _floatAnim = Tween<double>(begin: -9.0, end: 9.0).animate(
-      CurvedAnimation(parent: _floatCtrl, curve: Curves.easeInOut),
-    );
 
     // Star twinkle
     _twinkleCtrl = AnimationController(
@@ -183,7 +171,6 @@ class _WelcomePageState extends State<_WelcomePage>
   @override
   void dispose() {
     _fadeCtrl.dispose();
-    _floatCtrl.dispose();
     _twinkleCtrl.dispose();
     _buttonCtrl.dispose();
     super.dispose();
@@ -195,10 +182,6 @@ class _WelcomePageState extends State<_WelcomePage>
     final size = MediaQuery.sizeOf(context);
     final topPad = MediaQuery.paddingOf(context).top;
     final botPad = MediaQuery.paddingOf(context).bottom;
-    const crescentSize = 80.0; // 40px radius
-    final archSectionH = size.height * 0.52;
-    // Moon: center of arch, slightly above middle → 10% above Stack center
-    final moonOffset = archSectionH * 0.10;
 
     return FadeTransition(
       opacity: _fadeAnim,
@@ -221,57 +204,21 @@ class _WelcomePageState extends State<_WelcomePage>
             children: [
               SizedBox(height: topPad + 12),
 
-              // ── Arch section ───────────────────────────────────────────────
+              // ── Mosque section: upper 50% of screen ───────────────────────
               SizedBox(
-                height: archSectionH,
+                height: size.height * 0.50,
                 child: Stack(
-                  alignment: Alignment.center,
                   children: [
-                    // Mughal arch SVG — vector asset, no procedural geometry
-                    Positioned.fill(
-                      child: SvgPicture.asset(
-                        'assets/arch.svg',
-                        fit: BoxFit.fill,
-                      ),
+                    // Mosque silhouette — gold outline, no fill
+                    const Positioned.fill(
+                      child: CustomPaint(painter: _MasjidPainter()),
                     ),
-                    // 10 star particles inside arch
+                    // Star particles scattered in the sky around the mosque
                     AnimatedBuilder(
                       animation: _twinkleCtrl,
                       builder: (_, __) => Positioned.fill(
                         child: CustomPaint(
                           painter: _StarsPainter(twinkle: _twinkleCtrl.value),
-                        ),
-                      ),
-                    ),
-                    // Gold glow behind crescent — positioned upper third
-                    AnimatedBuilder(
-                      animation: _floatAnim,
-                      builder: (_, __) => Transform.translate(
-                        offset: Offset(0, -moonOffset + _floatAnim.value),
-                        child: Container(
-                          width: crescentSize * 1.65,
-                          height: crescentSize * 1.65,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: RadialGradient(
-                              colors: [
-                                _titleGold.withValues(alpha: 0.18),
-                                _titleGold.withValues(alpha: 0.0),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Crescent moon — upper third of arch
-                    AnimatedBuilder(
-                      animation: _floatAnim,
-                      builder: (_, __) => Transform.translate(
-                        offset: Offset(0, -moonOffset + _floatAnim.value),
-                        child: const SizedBox(
-                          width: crescentSize,
-                          height: crescentSize,
-                          child: CustomPaint(painter: _CrescentPainter()),
                         ),
                       ),
                     ),
@@ -986,18 +933,18 @@ class _StarsPainter extends CustomPainter {
   final double twinkle;
   const _StarsPainter({required this.twinkle});
 
-  // [x, y, radius] — inside arch, scattered around moon (~0.50, 0.40), avoiding it
+  // [x, y, radius] — stars in the night sky around the mosque silhouette
   static const List<List<double>> _positions = [
-    [0.50, 0.10, 2.0], // directly above moon, near peak
-    [0.25, 0.20, 2.0], // upper left
-    [0.75, 0.20, 2.0], // upper right
-    [0.12, 0.42, 2.5], // far left, level with moon
-    [0.88, 0.42, 2.5], // far right, level with moon
-    [0.30, 0.62, 2.0], // lower left
-    [0.70, 0.62, 2.0], // lower right
-    [0.20, 0.75, 2.5], // far lower left
-    [0.80, 0.75, 2.5], // far lower right
-    [0.50, 0.80, 2.0], // bottom center
+    [0.08, 0.06, 2.0], // upper left sky
+    [0.92, 0.05, 2.0], // upper right sky
+    [0.22, 0.03, 2.5], // top left
+    [0.78, 0.04, 2.5], // top right
+    [0.50, 0.02, 2.0], // top center, above mosque peak
+    [0.04, 0.24, 1.8], // far left sky
+    [0.96, 0.22, 1.8], // far right sky
+    [0.14, 0.13, 2.0], // mid-left sky
+    [0.86, 0.11, 2.0], // mid-right sky
+    [0.36, 0.07, 1.5], // above mosque, left of center
   ];
 
   @override
@@ -1019,47 +966,254 @@ class _StarsPainter extends CustomPainter {
   bool shouldRepaint(_StarsPainter old) => old.twinkle != twinkle;
 }
 
-class _CrescentPainter extends CustomPainter {
-  const _CrescentPainter();
+// ─────────────────────────────────────────────────────────────────────────────
+// Mosque silhouette — gold outline only, 2px stroke, #C9A84C, no fill
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _MasjidPainter extends CustomPainter {
+  const _MasjidPainter();
 
   @override
   void paint(Canvas canvas, Size size) {
-    final cx = size.width / 2;
-    final cy = size.height / 2;
-    final r = size.width * 0.50; // 60 px when SizedBox is 120px
+    final w = size.width;
+    final h = size.height;
+    final mid = w / 2;
 
-    // Soft outer glow
-    canvas.drawCircle(
-      Offset(cx, cy),
-      r * 1.5,
+    // Mosque spans 80% of canvas width, centered
+    final mW     = w * 0.80;
+    final mLeft  = w * 0.10;
+    final mRight = w * 0.90;
+    final baseY  = h * 0.90;
+
+    // ── Vertical reference points ─────────────────────────────────────────────
+    final structTopY       = baseY  - mW * 0.180; // top of side walls
+    final drumTopY         = structTopY - mW * 0.048; // drum below main dome
+    final domePeakY        = drumTopY   - mW * 0.338; // tip of main dome
+    final sideMinTopY      = structTopY - mW * 0.295; // top of side minarets
+    final centerMinCapBase = domePeakY  - mW * 0.120; // base of center min cap
+    final centerMinTopY    = domePeakY  - mW * 0.162; // tip of center minaret
+
+    // ── Horizontal widths ─────────────────────────────────────────────────────
+    final drumHalfW      = mW * 0.170;
+    final domeBulgeHalfW = mW * 0.185; // widest point of onion dome
+    final domeBulgeY     = drumTopY - mW * 0.095;
+    final domeNeckHalfW  = mW * 0.080; // narrowest waist
+    final domeNeckY      = drumTopY - mW * 0.215;
+    final leftDomeCx     = mid - mW * 0.300;
+    final rightDomeCx    = mid + mW * 0.300;
+    final sideDomeHalfW  = mW * 0.090;
+    final sideDomePeakY  = structTopY - mW * 0.120;
+    final sideDomeNeckW  = mW * 0.040;
+    final sideDomeNeckY  = structTopY - mW * 0.070;
+    final sideMinHalfW   = mW * 0.022;
+    final leftMinCx      = mLeft + mW * 0.050;
+    final rightMinCx     = mRight - mW * 0.050;
+    final sideMinCapH    = mW * 0.042;
+    final centerMinHalfW = mW * 0.024;
+    final doorHalfW      = mW * 0.055;
+    final doorTopY       = baseY - mW * 0.148;
+    final doorPeakY      = doorTopY - mW * 0.058;
+
+    // ── Subtle gold glow behind the whole mosque ──────────────────────────────
+    final glowCenter = Offset(mid, (structTopY + baseY) / 2);
+    final glowRect   = Rect.fromCenter(
+        center: glowCenter, width: mW * 1.10, height: mW * 0.75);
+    canvas.drawOval(
+      glowRect,
       Paint()
-        ..color = _titleGold.withValues(alpha: 0.12)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 18),
-    );
-    // Inner glow (tighter, brighter)
-    canvas.drawCircle(
-      Offset(cx, cy),
-      r * 1.05,
-      Paint()
-        ..color = _titleGold.withValues(alpha: 0.08)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8),
+        ..shader = RadialGradient(
+          colors: [
+            _gold.withValues(alpha: 0.09),
+            _gold.withValues(alpha: 0.0),
+          ],
+        ).createShader(glowRect),
     );
 
-    // Crescent: fill outer circle, cut inner circle offset to create crescent
-    final clip = Path()
-      ..addOval(Rect.fromCircle(center: Offset(cx, cy), radius: r));
-    canvas.save();
-    canvas.clipPath(clip);
-    canvas.drawCircle(
-        Offset(cx, cy), r, Paint()..color = _titleGold..style = PaintingStyle.fill);
-    canvas.drawCircle(
-      Offset(cx + r * 0.32, cy - r * 0.04),
-      r * 0.78,
-      Paint()..color = _bg..style = PaintingStyle.fill,
+    // ── Stroke paint ──────────────────────────────────────────────────────────
+    final s = Paint()
+      ..color = _gold.withValues(alpha: 0.92)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+
+    // ── Side minarets (drawn before walls so bases are covered) ───────────────
+    for (final cx in [leftMinCx, rightMinCx]) {
+      final capBaseY = sideMinTopY + sideMinCapH;
+      // Minaret body sides
+      canvas.drawLine(Offset(cx - sideMinHalfW, baseY),
+          Offset(cx - sideMinHalfW, capBaseY), s);
+      canvas.drawLine(Offset(cx + sideMinHalfW, baseY),
+          Offset(cx + sideMinHalfW, capBaseY), s);
+      // Pointed spire cap
+      canvas.drawPath(
+        Path()
+          ..moveTo(cx - sideMinHalfW, capBaseY)
+          ..lineTo(cx, sideMinTopY)
+          ..lineTo(cx + sideMinHalfW, capBaseY),
+        s,
+      );
+      // Decorative band on body
+      final bandY = capBaseY + mW * 0.048;
+      canvas.drawLine(
+          Offset(cx - sideMinHalfW, bandY), Offset(cx + sideMinHalfW, bandY), s);
+      // Crescent at tip
+      _drawCrescent(canvas, Offset(cx, sideMinTopY - mW * 0.018), mW * 0.020);
+    }
+
+    // ── Main body walls ───────────────────────────────────────────────────────
+    // Left wall + roof to left dome
+    canvas.drawPath(
+      Path()
+        ..moveTo(mLeft, baseY)
+        ..lineTo(mLeft, structTopY)
+        ..lineTo(leftDomeCx - sideDomeHalfW, structTopY),
+      s,
     );
-    canvas.restore();
+    // Roof segment: left dome right edge → drum left edge
+    canvas.drawLine(Offset(leftDomeCx + sideDomeHalfW, structTopY),
+        Offset(mid - drumHalfW, structTopY), s);
+    // Roof segment: drum right edge → right dome left edge
+    canvas.drawLine(Offset(mid + drumHalfW, structTopY),
+        Offset(rightDomeCx - sideDomeHalfW, structTopY), s);
+    // Right wall + roof from right dome
+    canvas.drawPath(
+      Path()
+        ..moveTo(rightDomeCx + sideDomeHalfW, structTopY)
+        ..lineTo(mRight, structTopY)
+        ..lineTo(mRight, baseY),
+      s,
+    );
+
+    // ── Drum (vertical sides, rising from roof to dome base) ──────────────────
+    canvas.drawLine(Offset(mid - drumHalfW, structTopY),
+        Offset(mid - drumHalfW, drumTopY), s);
+    canvas.drawLine(Offset(mid + drumHalfW, structTopY),
+        Offset(mid + drumHalfW, drumTopY), s);
+
+    // ── Side domes (small onion domes on the roof) ────────────────────────────
+    for (final cx in [leftDomeCx, rightDomeCx]) {
+      canvas.drawPath(
+        Path()
+          ..moveTo(cx - sideDomeHalfW, structTopY)
+          ..cubicTo(cx - sideDomeHalfW, structTopY - mW * 0.030,
+              cx - sideDomeNeckW, sideDomeNeckY - mW * 0.005,
+              cx - sideDomeNeckW, sideDomeNeckY)
+          ..cubicTo(cx - sideDomeNeckW, sideDomeNeckY - mW * 0.025,
+              cx - mW * 0.010, sideDomePeakY + mW * 0.012,
+              cx, sideDomePeakY)
+          ..cubicTo(cx + mW * 0.010, sideDomePeakY + mW * 0.012,
+              cx + sideDomeNeckW, sideDomeNeckY - mW * 0.025,
+              cx + sideDomeNeckW, sideDomeNeckY)
+          ..cubicTo(cx + sideDomeNeckW, sideDomeNeckY - mW * 0.005,
+              cx + sideDomeHalfW, structTopY - mW * 0.030,
+              cx + sideDomeHalfW, structTopY),
+        s,
+      );
+    }
+
+    // ── Main dome: classic onion shape ────────────────────────────────────────
+    canvas.drawPath(
+      Path()
+        ..moveTo(mid - drumHalfW, drumTopY)
+        // Left side: drum edge → belly (flares out)
+        ..cubicTo(
+          mid - domeBulgeHalfW, drumTopY - mW * 0.040,
+          mid - domeBulgeHalfW, domeBulgeY + mW * 0.018,
+          mid - domeBulgeHalfW, domeBulgeY,
+        )
+        // Left: belly → neck (narrows inward)
+        ..cubicTo(
+          mid - domeBulgeHalfW, domeBulgeY - mW * 0.050,
+          mid - domeNeckHalfW,  domeNeckY  + mW * 0.018,
+          mid - domeNeckHalfW,  domeNeckY,
+        )
+        // Left: neck → peak
+        ..cubicTo(
+          mid - domeNeckHalfW, domeNeckY  - mW * 0.045,
+          mid - mW * 0.020,    domePeakY  + mW * 0.038,
+          mid,                 domePeakY,
+        )
+        // Right: peak → neck
+        ..cubicTo(
+          mid + mW * 0.020,   domePeakY  + mW * 0.038,
+          mid + domeNeckHalfW, domeNeckY - mW * 0.045,
+          mid + domeNeckHalfW, domeNeckY,
+        )
+        // Right: neck → belly
+        ..cubicTo(
+          mid + domeNeckHalfW,  domeNeckY  + mW * 0.018,
+          mid + domeBulgeHalfW, domeBulgeY - mW * 0.050,
+          mid + domeBulgeHalfW, domeBulgeY,
+        )
+        // Right: belly → drum edge
+        ..cubicTo(
+          mid + domeBulgeHalfW, domeBulgeY + mW * 0.018,
+          mid + domeBulgeHalfW, drumTopY   - mW * 0.040,
+          mid + drumHalfW,      drumTopY,
+        ),
+      s,
+    );
+
+    // ── Center minaret (tallest, rises above dome peak) ───────────────────────
+    canvas.drawPath(
+      Path()
+        ..moveTo(mid - centerMinHalfW, domePeakY)
+        ..lineTo(mid - centerMinHalfW, centerMinCapBase)
+        ..lineTo(mid, centerMinTopY)
+        ..lineTo(mid + centerMinHalfW, centerMinCapBase)
+        ..lineTo(mid + centerMinHalfW, domePeakY),
+      s,
+    );
+    // Decorative band on center minaret body
+    canvas.drawLine(
+      Offset(mid - centerMinHalfW, centerMinCapBase + mW * 0.038),
+      Offset(mid + centerMinHalfW, centerMinCapBase + mW * 0.038),
+      s,
+    );
+    // Crescent at tip
+    _drawCrescent(canvas, Offset(mid, centerMinTopY - mW * 0.015), mW * 0.018);
+
+    // ── Base line ─────────────────────────────────────────────────────────────
+    canvas.drawLine(Offset(mLeft, baseY), Offset(mRight, baseY), s);
+
+    // ── Arched entrance door ──────────────────────────────────────────────────
+    canvas.drawPath(
+      Path()
+        ..moveTo(mid - doorHalfW, baseY)
+        ..lineTo(mid - doorHalfW, doorTopY)
+        ..cubicTo(
+          mid - doorHalfW, doorTopY - mW * 0.028,
+          mid - mW * 0.012, doorPeakY + mW * 0.010,
+          mid, doorPeakY,
+        )
+        ..cubicTo(
+          mid + mW * 0.012, doorPeakY + mW * 0.010,
+          mid + doorHalfW, doorTopY - mW * 0.028,
+          mid + doorHalfW, doorTopY,
+        )
+        ..lineTo(mid + doorHalfW, baseY),
+      s,
+    );
+  }
+
+  // Small filled crescent at each minaret tip
+  void _drawCrescent(Canvas canvas, Offset center, double r) {
+    final outer = Path()
+      ..addOval(Rect.fromCircle(center: center, radius: r));
+    final inner = Path()
+      ..addOval(Rect.fromCircle(
+        center: Offset(center.dx + r * 0.30, center.dy),
+        radius: r * 0.76,
+      ));
+    canvas.drawPath(
+      Path.combine(PathOperation.difference, outer, inner),
+      Paint()
+        ..color = _gold
+        ..style = PaintingStyle.fill,
+    );
   }
 
   @override
-  bool shouldRepaint(_CrescentPainter _) => false;
+  bool shouldRepaint(_MasjidPainter _) => false;
 }
