@@ -9,6 +9,7 @@ import '../data/prayer_times_data.dart';
 import '../l10n/app_localizations.dart';
 import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
+import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/home/feature_grid.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
@@ -222,45 +223,46 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return CustomScrollView(
       physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.only(bottom: 90),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Header: greeting (top-left) + 3 icon buttons (top-right)
-          const SizedBox(height: 4),
-          HeaderSection(
-            onOpenSettings: widget.onOpenSettings,
-            userName: _userName,
+      slivers: [
+        SliverList(
+          delegate: SliverChildListDelegate([
+            const SizedBox(height: 4),
+            HeaderSection(
+              onOpenSettings: widget.onOpenSettings,
+              userName: _userName,
+            ),
+            const SizedBox(height: 6),
+            PrayerTimesCard(
+              prayers: _prayers,
+              onNextPrayerTap: widget.onOpenPrayers,
+            ),
+            const HeroCard(),
+            _JourneyCard(
+              daysSince:  _shahadaDate != null ? _daysSince : null,
+              progress:   _progress,
+              quoteIndex: _quoteIndex,
+              onSetDate:  _pickShahadaDate,
+            ),
+            _EssentialsCard(
+              checked:  _essentials,
+              onToggle: _toggleEssential,
+            ),
+            const _ToolboxCard(),
+          ]),
+        ),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 90),
+              child: _ExploreAllCard(onTap: _switchToFullMode),
+            ),
           ),
-          const SizedBox(height: 6),
-          // Section 1: Prayer Times Card
-          PrayerTimesCard(
-            prayers: _prayers,
-            onNextPrayerTap: widget.onOpenPrayers,
-          ),
-          // Section 2: Hero Card
-          const HeroCard(),
-          // Section 3: Journey Card
-          _JourneyCard(
-            daysSince:  _shahadaDate != null ? _daysSince : null,
-            progress:   _progress,
-            quoteIndex: _quoteIndex,
-            onSetDate:  _pickShahadaDate,
-          ),
-          // Section 4: Muslim Essentials Checklist
-          _EssentialsCard(
-            checked:  _essentials,
-            onToggle: _toggleEssential,
-          ),
-          // Section 5: Beginner Toolbox
-          const _ToolboxCard(),
-          // Section 6: Explore All Features
-          _ExploreAllCard(onTap: _switchToFullMode),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -449,9 +451,19 @@ class _EssentialsCard extends StatelessWidget {
     ];
 
     return _SectionCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
+          const Positioned.fill(
+            child: CustomPaint(
+              painter: GeometricPatternPainter(
+                color: _kGold,
+                alpha: 0.09,
+              ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           Text(
             l10n.beginnerMuslimEssentials,
             style: GoogleFonts.lato(
@@ -475,6 +487,8 @@ class _EssentialsCard extends StatelessWidget {
               ),
             ),
           ],
+        ],
+      ),
         ],
       ),
     );
@@ -567,9 +581,19 @@ class _ToolboxCard extends StatelessWidget {
     ];
 
     return _SectionCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
+          const Positioned.fill(
+            child: CustomPaint(
+              painter: GeometricPatternPainter(
+                color: _kGold,
+                alpha: 0.09,
+              ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           Text(
             l10n.beginnerToolboxSection,
             style: GoogleFonts.lato(
@@ -623,6 +647,8 @@ class _ToolboxCard extends StatelessWidget {
               ),
             ],
           ),
+        ],
+      ),
         ],
       ),
     );
