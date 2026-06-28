@@ -10,7 +10,6 @@ import '../l10n/app_localizations.dart';
 import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
 import '../widgets/geometric_pattern_painter.dart';
-import '../widgets/home/feature_grid.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
@@ -224,7 +223,7 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       slivers: [
         SliverList(
           delegate: SliverChildListDelegate([
@@ -585,71 +584,165 @@ class _ToolboxCard extends StatelessWidget {
         children: [
           const Positioned.fill(
             child: CustomPaint(
-              painter: GeometricPatternPainter(
-                color: _kGold,
-                alpha: 0.09,
-              ),
+              painter: GeometricPatternPainter(color: _kGold, alpha: 0.09),
             ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          Text(
-            l10n.beginnerToolboxSection,
-            style: GoogleFonts.lato(
-              fontSize: 10,
-              fontWeight: FontWeight.w700,
-              color: _kGold,
-              letterSpacing: 1.4,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Row(
-            children: [
-              Expanded(
-                child: FeatureCard(
-                  icon:  items[0].icon,
-                  label: items[0].label,
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => items[0].screen)),
+              Text(
+                l10n.beginnerToolboxSection,
+                style: GoogleFonts.lato(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  color: _kGold,
+                  letterSpacing: 1.4,
                 ),
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: FeatureCard(
-                  icon:  items[1].icon,
-                  label: items[1].label,
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => items[1].screen)),
+              const SizedBox(height: 5),
+              Container(
+                width: 36,
+                height: 2,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [_kGold, _kGold.withValues(alpha: 0.0)],
+                  ),
+                  borderRadius: BorderRadius.circular(1),
                 ),
               ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                child: FeatureCard(
-                  icon:  items[2].icon,
-                  label: items[2].label,
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => items[2].screen)),
-                ),
+              const SizedBox(height: 14),
+              Row(
+                children: [
+                  Expanded(
+                    child: _ToolboxItemCard(
+                      icon:  items[0].icon,
+                      label: items[0].label,
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => items[0].screen)),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _ToolboxItemCard(
+                      icon:  items[1].icon,
+                      label: items[1].label,
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => items[1].screen)),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: FeatureCard(
-                  icon:  items[3].icon,
-                  label: items[3].label,
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => items[3].screen)),
-                ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: _ToolboxItemCard(
+                      icon:  items[2].icon,
+                      label: items[2].label,
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => items[2].screen)),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _ToolboxItemCard(
+                      icon:  items[3].icon,
+                      label: items[3].label,
+                      onTap: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => items[3].screen)),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ],
       ),
-        ],
+    );
+  }
+}
+
+class _ToolboxItemCard extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  const _ToolboxItemCard({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AspectRatio(
+        aspectRatio: 0.9,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color(0xFF182F48), Color(0xFF091420)],
+            ),
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(
+              color: _kGold.withValues(alpha: 0.65),
+              width: 1,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: _kGold.withValues(alpha: 0.20),
+                blurRadius: 14,
+                spreadRadius: 1,
+              ),
+              const BoxShadow(
+                color: Colors.black38,
+                blurRadius: 8,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(18),
+            child: Stack(
+              children: [
+                const Positioned.fill(
+                  child: CustomPaint(
+                    painter: GeometricPatternPainter(
+                      color: _kGold,
+                      alpha: 0.07,
+                    ),
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(icon, color: _kGold, size: 44),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: Text(
+                        label,
+                        style: GoogleFonts.playfairDisplay(
+                          color: _kCream,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          height: 1.3,
+                          decoration: TextDecoration.none,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
