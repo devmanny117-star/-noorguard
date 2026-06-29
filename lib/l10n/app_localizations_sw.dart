@@ -2580,4 +2580,120 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'Mwenyezi Mungu akubali sala yako.';
+
+  @override
+  String get fatihaIntroTitle => 'Mama wa Qurani';
+
+  @override
+  String get fatihaIntroBody =>
+      'Surah Al-Fatiha ni surah kubwa zaidi katika Qurani. Inasomwa katika kila rakaa ya sala — angalau mara 17 kwa siku. Ni mazungumzo kamili kati ya mtumishi na Allah, na mlango wa kila sala.';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'Ibn Kathir anaandika: \'Al-Fatiha ina kiini cha Qurani nzima — ni sala, tamko la utumishi, na ombi la uongofu kuelekea Njia Iliyonyooka.\' — Tafsir Ibn Kathir';
+
+  @override
+  String get shahadaScreenTitle => 'Shahada';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation =>
+      'Hakuna mungu ila Allah, Muhammad ni Mtume wa Allah';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'Neno kwa Neno';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'Hakuna';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'mungu / mola';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'isipokuwa';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'Allah (Mungu peke yake)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'Muhammad';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'Mtume / Nabii';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'wa Allah';
+
+  @override
+  String get shahadaMeaningTitle => 'Maana na Umuhimu';
+
+  @override
+  String get shahadaMeaningBody =>
+      'Shahada ni tamko la imani ambalo huunda msingi wa Uislamu. Ni wa kwanza wa Nguzo Tano. Kwa kusema maneno haya kwa imani ya dhati, mtu anaingia Uislamu. Ibn Kathir anaeleza kwamba sehemu ya kwanza inakanusha miungu yote ya uongo na kuthibitisha umoja kamili wa Allah.';
+
+  @override
+  String get shahadaMomentTitle => 'Wakati wa Shahada';
+
+  @override
+  String get shahadaMomentBody =>
+      'Mtu anapotamka Shahada kwa mara ya kwanza kwa imani ya kweli, kitu kizito kinatokea — wanaanza maisha mapya. Mtume ﷺ alisema: \'Mtu yeyote anayesema hakuna mungu ila Allah na haaamini chochote kinachoadhiwa badala yake, mali na damu yake vinalindwa.\' (Sahih Muslim). Dhambi zote za zamani zinasamehewa. Karibu Uislamu.';
+
+  @override
+  String get shahadaPronunciationTitle => 'Mwongozo wa Matamshi';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

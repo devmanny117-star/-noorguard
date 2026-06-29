@@ -1112,4 +1112,149 @@
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
   }
+,
+  "fatihaIntroTitle": "A Mãe do Alcorão",
+  "@fatihaIntroTitle": {
+    "description": "fatihaIntroTitle"
+  },
+  "fatihaIntroBody": "A Surah Al-Fatiha é a maior surah do Alcorão. É recitada em cada unidade de oração — pelo menos 17 vezes por dia. É uma conversa completa entre o servo e Allah, e uma porta de entrada para cada oração.",
+  "@fatihaIntroBody": {
+    "description": "fatihaIntroBody"
+  },
+  "fatihaIntroIbnKathir": "Ibn Kathir escreve: 'Al-Fatiha contém a essência de todo o Alcorão — é uma oração, uma declaração de servidão e um pedido de guia para o Caminho Reto.' — Tafsir Ibn Kathir",
+  "@fatihaIntroIbnKathir": {
+    "description": "fatihaIntroIbnKathir"
+  },
+  "shahadaScreenTitle": "A Shahada",
+  "@shahadaScreenTitle": {
+    "description": "shahadaScreenTitle"
+  },
+  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "@shahadaArabicText": {
+    "description": "shahadaArabicText"
+  },
+  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "@shahadaTransliteration": {
+    "description": "shahadaTransliteration"
+  },
+  "shahadaTranslation": "Não há deus além de Allah, Muhammad é o Mensageiro de Allah",
+  "@shahadaTranslation": {
+    "description": "shahadaTranslation"
+  },
+  "shahadaWordBreakdownTitle": "Palavra por Palavra",
+  "@shahadaWordBreakdownTitle": {
+    "description": "shahadaWordBreakdownTitle"
+  },
+  "shahadaWord1Arabic": "لَا",
+  "@shahadaWord1Arabic": {
+    "description": "shahadaWord1Arabic"
+  },
+  "shahadaWord1Trans": "Lā",
+  "@shahadaWord1Trans": {
+    "description": "shahadaWord1Trans"
+  },
+  "shahadaWord1Meaning": "Não há",
+  "@shahadaWord1Meaning": {
+    "description": "shahadaWord1Meaning"
+  },
+  "shahadaWord2Arabic": "إِلَٰهَ",
+  "@shahadaWord2Arabic": {
+    "description": "shahadaWord2Arabic"
+  },
+  "shahadaWord2Trans": "ilāha",
+  "@shahadaWord2Trans": {
+    "description": "shahadaWord2Trans"
+  },
+  "shahadaWord2Meaning": "divindade / deus",
+  "@shahadaWord2Meaning": {
+    "description": "shahadaWord2Meaning"
+  },
+  "shahadaWord3Arabic": "إِلَّا",
+  "@shahadaWord3Arabic": {
+    "description": "shahadaWord3Arabic"
+  },
+  "shahadaWord3Trans": "illā",
+  "@shahadaWord3Trans": {
+    "description": "shahadaWord3Trans"
+  },
+  "shahadaWord3Meaning": "exceto",
+  "@shahadaWord3Meaning": {
+    "description": "shahadaWord3Meaning"
+  },
+  "shahadaWord4Arabic": "اللَّهُ",
+  "@shahadaWord4Arabic": {
+    "description": "shahadaWord4Arabic"
+  },
+  "shahadaWord4Trans": "Allāhu",
+  "@shahadaWord4Trans": {
+    "description": "shahadaWord4Trans"
+  },
+  "shahadaWord4Meaning": "Allah (Deus somente)",
+  "@shahadaWord4Meaning": {
+    "description": "shahadaWord4Meaning"
+  },
+  "shahadaWord5Arabic": "مُحَمَّدٌ",
+  "@shahadaWord5Arabic": {
+    "description": "shahadaWord5Arabic"
+  },
+  "shahadaWord5Trans": "Muḥammadun",
+  "@shahadaWord5Trans": {
+    "description": "shahadaWord5Trans"
+  },
+  "shahadaWord5Meaning": "Muhammad",
+  "@shahadaWord5Meaning": {
+    "description": "shahadaWord5Meaning"
+  },
+  "shahadaWord6Arabic": "رَّسُولُ",
+  "@shahadaWord6Arabic": {
+    "description": "shahadaWord6Arabic"
+  },
+  "shahadaWord6Trans": "Rasūlu",
+  "@shahadaWord6Trans": {
+    "description": "shahadaWord6Trans"
+  },
+  "shahadaWord6Meaning": "Mensageiro / Profeta",
+  "@shahadaWord6Meaning": {
+    "description": "shahadaWord6Meaning"
+  },
+  "shahadaWord7Arabic": "اللَّهِ",
+  "@shahadaWord7Arabic": {
+    "description": "shahadaWord7Arabic"
+  },
+  "shahadaWord7Trans": "Allāhi",
+  "@shahadaWord7Trans": {
+    "description": "shahadaWord7Trans"
+  },
+  "shahadaWord7Meaning": "de Allah",
+  "@shahadaWord7Meaning": {
+    "description": "shahadaWord7Meaning"
+  },
+  "shahadaMeaningTitle": "Significado & Importância",
+  "@shahadaMeaningTitle": {
+    "description": "shahadaMeaningTitle"
+  },
+  "shahadaMeaningBody": "A Shahada é a declaração de fé que forma a base do Islã. É o primeiro dos Cinco Pilares. Ao pronunciar estas palavras com sincera convicção, uma pessoa entra no Islã. Ibn Kathir explica que a primeira parte nega todas as falsas divindades e afirma a unicidade absoluta de Allah.",
+  "@shahadaMeaningBody": {
+    "description": "shahadaMeaningBody"
+  },
+  "shahadaMomentTitle": "O Momento da Shahada",
+  "@shahadaMomentTitle": {
+    "description": "shahadaMomentTitle"
+  },
+  "shahadaMomentBody": "Quando uma pessoa pronuncia a Shahada pela primeira vez com verdadeira fé no coração, algo profundo acontece — ela começa uma nova vida. O Profeta ﷺ disse: 'Quem disser que não há deus além de Allah e não acreditar em nada que seja adorado além d'Ele, sua riqueza e sangue estão protegidos.' (Sahih Muslim). Todos os pecados passados são perdoados. Bem-vindo ao Islã.",
+  "@shahadaMomentBody": {
+    "description": "shahadaMomentBody"
+  },
+  "shahadaPronunciationTitle": "Guia de Pronúncia",
+  "@shahadaPronunciationTitle": {
+    "description": "shahadaPronunciationTitle"
+  },
+  "shahadaPronunciationPart1": "Laa · i · LAA · ha · il · LAL · LAH",
+  "@shahadaPronunciationPart1": {
+    "description": "shahadaPronunciationPart1"
+  },
+  "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
+  "@shahadaPronunciationPart2": {
+    "description": "shahadaPronunciationPart2"
+  }
 }

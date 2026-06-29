@@ -2565,4 +2565,120 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'May Allah accept your prayer.';
+
+  @override
+  String get fatihaIntroTitle => 'The Mother of the Quran';
+
+  @override
+  String get fatihaIntroBody =>
+      'Surah Al-Fatiha is the greatest surah in the Quran. It is recited in every unit of prayer — at least 17 times daily. It is a complete conversation between the servant and Allah, and a gateway to every prayer.';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'Ibn Kathir writes: \'Al-Fatiha contains the essence of the entire Quran — it is a prayer, a declaration of servitude, and a request for guidance to the Straight Path.\' — Tafsir Ibn Kathir';
+
+  @override
+  String get shahadaScreenTitle => 'The Shahada';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation =>
+      'There is no god but Allah, Muhammad is the Messenger of Allah';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'Word by Word';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'There is no';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'deity / god';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'except';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'Allah (God alone)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'Muhammad';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'Messenger / Prophet';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'of Allah';
+
+  @override
+  String get shahadaMeaningTitle => 'Meaning & Significance';
+
+  @override
+  String get shahadaMeaningBody =>
+      'The Shahada is the declaration of faith that forms the foundation of Islam. It is the first of the Five Pillars. By speaking these words with sincere conviction, a person enters the fold of Islam. Ibn Kathir explains that the first part — \'There is no god but Allah\' — negates all false deities and affirms the absolute oneness of Allah. The second part — \'Muhammad is the Messenger of Allah\' — acknowledges that we receive our guidance through the Prophet ﷺ.';
+
+  @override
+  String get shahadaMomentTitle => 'The Moment of Shahada';
+
+  @override
+  String get shahadaMomentBody =>
+      'When a person speaks the Shahada for the first time with true belief in their heart, something profound happens — they begin a new life. The Prophet ﷺ said: \'Whoever says there is no god but Allah and disbelieves in everything worshipped besides Him, his wealth and blood are protected.\' (Sahih Muslim). All past sins are forgiven. A new chapter begins. This declaration is not just words — it is a covenant between you and your Creator, a turning point that angels witness and record. Welcome to the fold of Islam.';
+
+  @override
+  String get shahadaPronunciationTitle => 'Pronunciation Guide';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

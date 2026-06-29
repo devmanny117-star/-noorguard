@@ -2573,4 +2573,120 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'Allah namazınızı kabul etsin.';
+
+  @override
+  String get fatihaIntroTitle => 'Kur\'an\'ın Anası';
+
+  @override
+  String get fatihaIntroBody =>
+      'Surah Al-Fatiha, Kuran\'daki en büyük suredir. Her namaz rekatında okunur — günde en az 17 kez. Kul ile Allah arasında tam bir konuşmadır ve her namazın kapısıdır.';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'İbn Kesir şöyle yazar: \'Al-Fatiha, tüm Kuran\'ın özünü içerir — bu bir dua, kulluk beyanı ve Doğru Yola hidayet isteğidir.\' — Tefsir İbn Kesir';
+
+  @override
+  String get shahadaScreenTitle => 'Şehadet';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation =>
+      'Allah\'tan başka ilah yoktur, Muhammed Allah\'ın Resulüdür';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'Kelime Kelime';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'Yoktur';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'ilah / tanrı';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'hariç';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'Allah (yalnız Allah)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'Muhammed';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'Resul / Peygamber';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'Allah\'ın';
+
+  @override
+  String get shahadaMeaningTitle => 'Anlam ve Önemi';
+
+  @override
+  String get shahadaMeaningBody =>
+      'Şehadet, İslam\'ın temelini oluşturan iman beyanıdır. Beş Şartın ilkidir. Bu kelimeleri samimi bir inançla söyleyerek kişi İslam\'a girer. İbn Kesir, birinci kısmın tüm sahte ilahları reddettiğini ve Allah\'ın mutlak birliğini onayladığını açıklar.';
+
+  @override
+  String get shahadaMomentTitle => 'Şehadet Anı';
+
+  @override
+  String get shahadaMomentBody =>
+      'Bir kişi ilk kez gerçek bir inançla Şehadeti söylediğinde, derin bir şey olur — yeni bir hayata başlarlar. Peygamber ﷺ şöyle buyurdu: \'Kim Allah\'tan başka ilah olmadığını söyler ve O\'ndan başka ibadet edilen her şeyi inkâr ederse, malı ve kanı korunmuştur.\' (Sahih Müslim). Geçmişteki tüm günahlar affedilir. İslam\'a hoş geldiniz.';
+
+  @override
+  String get shahadaPronunciationTitle => 'Telaffuz Kılavuzu';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

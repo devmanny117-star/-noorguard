@@ -1112,4 +1112,149 @@
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
   }
+,
+  "fatihaIntroTitle": "قرآن کی ماں",
+  "@fatihaIntroTitle": {
+    "description": "fatihaIntroTitle"
+  },
+  "fatihaIntroBody": "سورۃ الفاتحہ قرآن کریم کی عظیم ترین سورت ہے۔ یہ نماز کی ہر رکعت میں پڑھی جاتی ہے — روزانہ کم از کم 17 مرتبہ۔ یہ بندے اور اللہ کے درمیان ایک مکمل گفتگو ہے، اور ہر نماز کا دروازہ ہے۔",
+  "@fatihaIntroBody": {
+    "description": "fatihaIntroBody"
+  },
+  "fatihaIntroIbnKathir": "ابن کثیر لکھتے ہیں: 'الفاتحہ میں پورے قرآن کا جوہر موجود ہے — یہ دعا ہے، بندگی کا اقرار ہے، اور سیدھے راستے کی طرف ہدایت کی درخواست ہے۔' — تفسیر ابن کثیر",
+  "@fatihaIntroIbnKathir": {
+    "description": "fatihaIntroIbnKathir"
+  },
+  "shahadaScreenTitle": "شہادت",
+  "@shahadaScreenTitle": {
+    "description": "shahadaScreenTitle"
+  },
+  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "@shahadaArabicText": {
+    "description": "shahadaArabicText"
+  },
+  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "@shahadaTransliteration": {
+    "description": "shahadaTransliteration"
+  },
+  "shahadaTranslation": "اللہ کے سوا کوئی معبود نہیں، محمد اللہ کے رسول ہیں",
+  "@shahadaTranslation": {
+    "description": "shahadaTranslation"
+  },
+  "shahadaWordBreakdownTitle": "لفظ بلفظ",
+  "@shahadaWordBreakdownTitle": {
+    "description": "shahadaWordBreakdownTitle"
+  },
+  "shahadaWord1Arabic": "لَا",
+  "@shahadaWord1Arabic": {
+    "description": "shahadaWord1Arabic"
+  },
+  "shahadaWord1Trans": "Lā",
+  "@shahadaWord1Trans": {
+    "description": "shahadaWord1Trans"
+  },
+  "shahadaWord1Meaning": "کوئی نہیں",
+  "@shahadaWord1Meaning": {
+    "description": "shahadaWord1Meaning"
+  },
+  "shahadaWord2Arabic": "إِلَٰهَ",
+  "@shahadaWord2Arabic": {
+    "description": "shahadaWord2Arabic"
+  },
+  "shahadaWord2Trans": "ilāha",
+  "@shahadaWord2Trans": {
+    "description": "shahadaWord2Trans"
+  },
+  "shahadaWord2Meaning": "معبود / خدا",
+  "@shahadaWord2Meaning": {
+    "description": "shahadaWord2Meaning"
+  },
+  "shahadaWord3Arabic": "إِلَّا",
+  "@shahadaWord3Arabic": {
+    "description": "shahadaWord3Arabic"
+  },
+  "shahadaWord3Trans": "illā",
+  "@shahadaWord3Trans": {
+    "description": "shahadaWord3Trans"
+  },
+  "shahadaWord3Meaning": "سوائے",
+  "@shahadaWord3Meaning": {
+    "description": "shahadaWord3Meaning"
+  },
+  "shahadaWord4Arabic": "اللَّهُ",
+  "@shahadaWord4Arabic": {
+    "description": "shahadaWord4Arabic"
+  },
+  "shahadaWord4Trans": "Allāhu",
+  "@shahadaWord4Trans": {
+    "description": "shahadaWord4Trans"
+  },
+  "shahadaWord4Meaning": "اللہ (تنہا معبود)",
+  "@shahadaWord4Meaning": {
+    "description": "shahadaWord4Meaning"
+  },
+  "shahadaWord5Arabic": "مُحَمَّدٌ",
+  "@shahadaWord5Arabic": {
+    "description": "shahadaWord5Arabic"
+  },
+  "shahadaWord5Trans": "Muḥammadun",
+  "@shahadaWord5Trans": {
+    "description": "shahadaWord5Trans"
+  },
+  "shahadaWord5Meaning": "محمد",
+  "@shahadaWord5Meaning": {
+    "description": "shahadaWord5Meaning"
+  },
+  "shahadaWord6Arabic": "رَّسُولُ",
+  "@shahadaWord6Arabic": {
+    "description": "shahadaWord6Arabic"
+  },
+  "shahadaWord6Trans": "Rasūlu",
+  "@shahadaWord6Trans": {
+    "description": "shahadaWord6Trans"
+  },
+  "shahadaWord6Meaning": "رسول / نبی",
+  "@shahadaWord6Meaning": {
+    "description": "shahadaWord6Meaning"
+  },
+  "shahadaWord7Arabic": "اللَّهِ",
+  "@shahadaWord7Arabic": {
+    "description": "shahadaWord7Arabic"
+  },
+  "shahadaWord7Trans": "Allāhi",
+  "@shahadaWord7Trans": {
+    "description": "shahadaWord7Trans"
+  },
+  "shahadaWord7Meaning": "اللہ کے",
+  "@shahadaWord7Meaning": {
+    "description": "shahadaWord7Meaning"
+  },
+  "shahadaMeaningTitle": "معنی اور اہمیت",
+  "@shahadaMeaningTitle": {
+    "description": "shahadaMeaningTitle"
+  },
+  "shahadaMeaningBody": "شہادت ایمان کا وہ اعلان ہے جو اسلام کی بنیاد بناتا ہے۔ یہ پانچ ارکانِ اسلام میں سے پہلا رکن ہے۔ ان کلمات کو خلوص اور یقین کے ساتھ کہنے سے انسان اسلام میں داخل ہوتا ہے۔ ابن کثیر وضاحت کرتے ہیں کہ پہلا حصہ تمام جھوٹے معبودوں کی نفی کرتا ہے اور اللہ کی مطلق وحدانیت کا اثبات کرتا ہے۔",
+  "@shahadaMeaningBody": {
+    "description": "shahadaMeaningBody"
+  },
+  "shahadaMomentTitle": "شہادت کا لمحہ",
+  "@shahadaMomentTitle": {
+    "description": "shahadaMomentTitle"
+  },
+  "shahadaMomentBody": "جب کوئی شخص پہلی بار سچے دل کے یقین کے ساتھ شہادت پڑھتا ہے، تو کچھ گہرا واقع ہوتا ہے — وہ ایک نئی زندگی شروع کرتا ہے۔ نبیﷺ نے فرمایا: 'جس نے لا إله إلا الله کہا اور اس کے سوا جو بھی پوجا جاتا ہے اس سے انکار کیا، اس کا مال اور خون محفوظ ہو گیا۔' (صحیح مسلم)۔ ماضی کے تمام گناہ معاف ہو جاتے ہیں۔ اسلام کے دامن میں خوش آمدید۔",
+  "@shahadaMomentBody": {
+    "description": "shahadaMomentBody"
+  },
+  "shahadaPronunciationTitle": "تلفظ کی رہنمائی",
+  "@shahadaPronunciationTitle": {
+    "description": "shahadaPronunciationTitle"
+  },
+  "shahadaPronunciationPart1": "Laa · i · LAA · ha · il · LAL · LAH",
+  "@shahadaPronunciationPart1": {
+    "description": "shahadaPronunciationPart1"
+  },
+  "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
+  "@shahadaPronunciationPart2": {
+    "description": "shahadaPronunciationPart2"
+  }
 }

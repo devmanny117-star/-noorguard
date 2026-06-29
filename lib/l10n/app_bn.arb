@@ -1112,4 +1112,149 @@
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
   }
+,
+  "fatihaIntroTitle": "কোরআনের মা",
+  "@fatihaIntroTitle": {
+    "description": "fatihaIntroTitle"
+  },
+  "fatihaIntroBody": "সূরা আল-ফাতিহা কোরআনের সবচেয়ে মহান সূরা। এটি নামাজের প্রতিটি রাকাতে পাঠ করা হয় — প্রতিদিন কমপক্ষে ১৭ বার। এটি বান্দা ও আল্লাহর মধ্যে একটি সম্পূর্ণ কথোপকথন এবং প্রতিটি নামাজের প্রবেশদ্বার।",
+  "@fatihaIntroBody": {
+    "description": "fatihaIntroBody"
+  },
+  "fatihaIntroIbnKathir": "ইবনে কাছির লিখেছেন: 'আল-ফাতিহায় পুরো কোরআনের সারমর্ম রয়েছে — এটি একটি দুআ, দাসত্বের ঘোষণা, এবং সরল পথে হেদায়েতের অনুরোধ।' — তাফসির ইবনে কাছির",
+  "@fatihaIntroIbnKathir": {
+    "description": "fatihaIntroIbnKathir"
+  },
+  "shahadaScreenTitle": "শাহাদাহ",
+  "@shahadaScreenTitle": {
+    "description": "shahadaScreenTitle"
+  },
+  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "@shahadaArabicText": {
+    "description": "shahadaArabicText"
+  },
+  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "@shahadaTransliteration": {
+    "description": "shahadaTransliteration"
+  },
+  "shahadaTranslation": "আল্লাহ ছাড়া কোনো উপাস্য নেই, মুহাম্মাদ আল্লাহর রাসূল",
+  "@shahadaTranslation": {
+    "description": "shahadaTranslation"
+  },
+  "shahadaWordBreakdownTitle": "শব্দে শব্দে",
+  "@shahadaWordBreakdownTitle": {
+    "description": "shahadaWordBreakdownTitle"
+  },
+  "shahadaWord1Arabic": "لَا",
+  "@shahadaWord1Arabic": {
+    "description": "shahadaWord1Arabic"
+  },
+  "shahadaWord1Trans": "Lā",
+  "@shahadaWord1Trans": {
+    "description": "shahadaWord1Trans"
+  },
+  "shahadaWord1Meaning": "নেই",
+  "@shahadaWord1Meaning": {
+    "description": "shahadaWord1Meaning"
+  },
+  "shahadaWord2Arabic": "إِلَٰهَ",
+  "@shahadaWord2Arabic": {
+    "description": "shahadaWord2Arabic"
+  },
+  "shahadaWord2Trans": "ilāha",
+  "@shahadaWord2Trans": {
+    "description": "shahadaWord2Trans"
+  },
+  "shahadaWord2Meaning": "উপাস্য / দেবতা",
+  "@shahadaWord2Meaning": {
+    "description": "shahadaWord2Meaning"
+  },
+  "shahadaWord3Arabic": "إِلَّا",
+  "@shahadaWord3Arabic": {
+    "description": "shahadaWord3Arabic"
+  },
+  "shahadaWord3Trans": "illā",
+  "@shahadaWord3Trans": {
+    "description": "shahadaWord3Trans"
+  },
+  "shahadaWord3Meaning": "ছাড়া",
+  "@shahadaWord3Meaning": {
+    "description": "shahadaWord3Meaning"
+  },
+  "shahadaWord4Arabic": "اللَّهُ",
+  "@shahadaWord4Arabic": {
+    "description": "shahadaWord4Arabic"
+  },
+  "shahadaWord4Trans": "Allāhu",
+  "@shahadaWord4Trans": {
+    "description": "shahadaWord4Trans"
+  },
+  "shahadaWord4Meaning": "আল্লাহ (এক ঈশ্বর)",
+  "@shahadaWord4Meaning": {
+    "description": "shahadaWord4Meaning"
+  },
+  "shahadaWord5Arabic": "مُحَمَّدٌ",
+  "@shahadaWord5Arabic": {
+    "description": "shahadaWord5Arabic"
+  },
+  "shahadaWord5Trans": "Muḥammadun",
+  "@shahadaWord5Trans": {
+    "description": "shahadaWord5Trans"
+  },
+  "shahadaWord5Meaning": "মুহাম্মাদ",
+  "@shahadaWord5Meaning": {
+    "description": "shahadaWord5Meaning"
+  },
+  "shahadaWord6Arabic": "رَّسُولُ",
+  "@shahadaWord6Arabic": {
+    "description": "shahadaWord6Arabic"
+  },
+  "shahadaWord6Trans": "Rasūlu",
+  "@shahadaWord6Trans": {
+    "description": "shahadaWord6Trans"
+  },
+  "shahadaWord6Meaning": "রাসূল / নবী",
+  "@shahadaWord6Meaning": {
+    "description": "shahadaWord6Meaning"
+  },
+  "shahadaWord7Arabic": "اللَّهِ",
+  "@shahadaWord7Arabic": {
+    "description": "shahadaWord7Arabic"
+  },
+  "shahadaWord7Trans": "Allāhi",
+  "@shahadaWord7Trans": {
+    "description": "shahadaWord7Trans"
+  },
+  "shahadaWord7Meaning": "আল্লাহর",
+  "@shahadaWord7Meaning": {
+    "description": "shahadaWord7Meaning"
+  },
+  "shahadaMeaningTitle": "অর্থ ও গুরুত্ব",
+  "@shahadaMeaningTitle": {
+    "description": "shahadaMeaningTitle"
+  },
+  "shahadaMeaningBody": "শাহাদাহ হলো বিশ্বাসের সেই ঘোষণা যা ইসলামের ভিত্তি গঠন করে। এটি পাঁচটি স্তম্ভের মধ্যে প্রথম। আন্তরিক বিশ্বাসের সাথে এই শব্দগুলি উচ্চারণ করার মাধ্যমে একজন ব্যক্তি ইসলামে প্রবেশ করে। ইবনে কাছির ব্যাখ্যা করেন যে প্রথম অংশ সমস্ত মিথ্যা দেবতাদের অস্বীকার করে এবং আল্লাহর পরম একত্বকে নিশ্চিত করে।",
+  "@shahadaMeaningBody": {
+    "description": "shahadaMeaningBody"
+  },
+  "shahadaMomentTitle": "শাহাদাহর মুহূর্ত",
+  "@shahadaMomentTitle": {
+    "description": "shahadaMomentTitle"
+  },
+  "shahadaMomentBody": "যখন কোনো ব্যক্তি প্রথমবার সত্যিকারের বিশ্বাস নিয়ে শাহাদাহ পাঠ করে, তখন কিছু গভীর ঘটনা ঘটে — সে একটি নতুন জীবন শুরু করে। নবী ﷺ বলেছেন: 'যে ব্যক্তি বলে আল্লাহ ছাড়া কোনো উপাস্য নেই এবং আল্লাহ ছাড়া যা কিছু পূজা করা হয় তা অস্বীকার করে, তার সম্পদ ও রক্ত সুরক্ষিত হয়।' (সহিহ মুসলিম)। অতীতের সমস্ত পাপ ক্ষমা করা হয়। ইসলামে স্বাগতম।",
+  "@shahadaMomentBody": {
+    "description": "shahadaMomentBody"
+  },
+  "shahadaPronunciationTitle": "উচ্চারণ গাইড",
+  "@shahadaPronunciationTitle": {
+    "description": "shahadaPronunciationTitle"
+  },
+  "shahadaPronunciationPart1": "Laa · i · LAA · ha · il · LAL · LAH",
+  "@shahadaPronunciationPart1": {
+    "description": "shahadaPronunciationPart1"
+  },
+  "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
+  "@shahadaPronunciationPart2": {
+    "description": "shahadaPronunciationPart2"
+  }
 }

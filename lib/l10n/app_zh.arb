@@ -1112,4 +1112,149 @@
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
   }
+,
+  "fatihaIntroTitle": "古兰经之母",
+  "@fatihaIntroTitle": {
+    "description": "fatihaIntroTitle"
+  },
+  "fatihaIntroBody": "苏拉·法蒂哈是古兰经中最伟大的章节。它在每一个礼拜单位中诵读——每天至少17次。这是仆人与真主之间完整的对话，也是每次礼拜的入口。",
+  "@fatihaIntroBody": {
+    "description": "fatihaIntroBody"
+  },
+  "fatihaIntroIbnKathir": "伊本·卡西尔写道：'法蒂哈包含整部古兰经的精华——它是祈祷、奴仆身份的宣言，以及对引导至正道的请求。'——伊本·卡西尔注释",
+  "@fatihaIntroIbnKathir": {
+    "description": "fatihaIntroIbnKathir"
+  },
+  "shahadaScreenTitle": "清真言",
+  "@shahadaScreenTitle": {
+    "description": "shahadaScreenTitle"
+  },
+  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "@shahadaArabicText": {
+    "description": "shahadaArabicText"
+  },
+  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "@shahadaTransliteration": {
+    "description": "shahadaTransliteration"
+  },
+  "shahadaTranslation": "除安拉外，别无神灵，穆罕默德是安拉的使者",
+  "@shahadaTranslation": {
+    "description": "shahadaTranslation"
+  },
+  "shahadaWordBreakdownTitle": "逐词解析",
+  "@shahadaWordBreakdownTitle": {
+    "description": "shahadaWordBreakdownTitle"
+  },
+  "shahadaWord1Arabic": "لَا",
+  "@shahadaWord1Arabic": {
+    "description": "shahadaWord1Arabic"
+  },
+  "shahadaWord1Trans": "Lā",
+  "@shahadaWord1Trans": {
+    "description": "shahadaWord1Trans"
+  },
+  "shahadaWord1Meaning": "没有",
+  "@shahadaWord1Meaning": {
+    "description": "shahadaWord1Meaning"
+  },
+  "shahadaWord2Arabic": "إِلَٰهَ",
+  "@shahadaWord2Arabic": {
+    "description": "shahadaWord2Arabic"
+  },
+  "shahadaWord2Trans": "ilāha",
+  "@shahadaWord2Trans": {
+    "description": "shahadaWord2Trans"
+  },
+  "shahadaWord2Meaning": "神 / 主",
+  "@shahadaWord2Meaning": {
+    "description": "shahadaWord2Meaning"
+  },
+  "shahadaWord3Arabic": "إِلَّا",
+  "@shahadaWord3Arabic": {
+    "description": "shahadaWord3Arabic"
+  },
+  "shahadaWord3Trans": "illā",
+  "@shahadaWord3Trans": {
+    "description": "shahadaWord3Trans"
+  },
+  "shahadaWord3Meaning": "除了",
+  "@shahadaWord3Meaning": {
+    "description": "shahadaWord3Meaning"
+  },
+  "shahadaWord4Arabic": "اللَّهُ",
+  "@shahadaWord4Arabic": {
+    "description": "shahadaWord4Arabic"
+  },
+  "shahadaWord4Trans": "Allāhu",
+  "@shahadaWord4Trans": {
+    "description": "shahadaWord4Trans"
+  },
+  "shahadaWord4Meaning": "安拉（独一的主）",
+  "@shahadaWord4Meaning": {
+    "description": "shahadaWord4Meaning"
+  },
+  "shahadaWord5Arabic": "مُحَمَّدٌ",
+  "@shahadaWord5Arabic": {
+    "description": "shahadaWord5Arabic"
+  },
+  "shahadaWord5Trans": "Muḥammadun",
+  "@shahadaWord5Trans": {
+    "description": "shahadaWord5Trans"
+  },
+  "shahadaWord5Meaning": "穆罕默德",
+  "@shahadaWord5Meaning": {
+    "description": "shahadaWord5Meaning"
+  },
+  "shahadaWord6Arabic": "رَّسُولُ",
+  "@shahadaWord6Arabic": {
+    "description": "shahadaWord6Arabic"
+  },
+  "shahadaWord6Trans": "Rasūlu",
+  "@shahadaWord6Trans": {
+    "description": "shahadaWord6Trans"
+  },
+  "shahadaWord6Meaning": "使者 / 先知",
+  "@shahadaWord6Meaning": {
+    "description": "shahadaWord6Meaning"
+  },
+  "shahadaWord7Arabic": "اللَّهِ",
+  "@shahadaWord7Arabic": {
+    "description": "shahadaWord7Arabic"
+  },
+  "shahadaWord7Trans": "Allāhi",
+  "@shahadaWord7Trans": {
+    "description": "shahadaWord7Trans"
+  },
+  "shahadaWord7Meaning": "安拉的",
+  "@shahadaWord7Meaning": {
+    "description": "shahadaWord7Meaning"
+  },
+  "shahadaMeaningTitle": "含义与意义",
+  "@shahadaMeaningTitle": {
+    "description": "shahadaMeaningTitle"
+  },
+  "shahadaMeaningBody": "清真言是构成伊斯兰教基础的信仰宣言。这是五功之首。真诚地念出这些话，一个人就进入了伊斯兰教。伊本·卡西尔解释说，第一部分否定一切假神，肯定安拉绝对的独一性。",
+  "@shahadaMeaningBody": {
+    "description": "shahadaMeaningBody"
+  },
+  "shahadaMomentTitle": "念清真言的时刻",
+  "@shahadaMomentTitle": {
+    "description": "shahadaMomentTitle"
+  },
+  "shahadaMomentBody": "当一个人第一次用真诚的心念诵清真言时，深刻的事情发生了——他们开始了新的生命。先知ﷺ说：'凡说除安拉外别无神灵，并不信仰除祂之外所崇拜的一切者，其财产和血统受到保护。'（穆斯林圣训集）。过去所有的罪孽都被宽恕。欢迎来到伊斯兰。",
+  "@shahadaMomentBody": {
+    "description": "shahadaMomentBody"
+  },
+  "shahadaPronunciationTitle": "发音指南",
+  "@shahadaPronunciationTitle": {
+    "description": "shahadaPronunciationTitle"
+  },
+  "shahadaPronunciationPart1": "Laa · i · LAA · ha · il · LAL · LAH",
+  "@shahadaPronunciationPart1": {
+    "description": "shahadaPronunciationPart1"
+  },
+  "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
+  "@shahadaPronunciationPart2": {
+    "description": "shahadaPronunciationPart2"
+  }
 }

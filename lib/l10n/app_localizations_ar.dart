@@ -2535,4 +2535,119 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'تقبَّل الله صلاتك.';
+
+  @override
+  String get fatihaIntroTitle => 'أم القرآن';
+
+  @override
+  String get fatihaIntroBody =>
+      'سورة الفاتحة هي أعظم سورة في القرآن الكريم. تُتلى في كل ركعة من ركعات الصلاة — ما لا يقل عن 17 مرة يومياً. وهي حوار كامل بين العبد وربه، وبوابة كل صلاة.';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'قال ابن كثير: «الفاتحة تحتوي على جوهر القرآن كله — فهي دعاء، وإقرار بالعبودية، وطلب للهداية إلى الصراط المستقيم.» — تفسير ابن كثير';
+
+  @override
+  String get shahadaScreenTitle => 'الشهادة';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation => 'لا إله إلا الله، محمد رسول الله';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'كلمة كلمة';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'لا يوجد';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'إله / معبود';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'إلا / سوى';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'الله (المعبود الحق)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'محمد';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'رسول / نبي';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'الله';
+
+  @override
+  String get shahadaMeaningTitle => 'المعنى والأهمية';
+
+  @override
+  String get shahadaMeaningBody =>
+      'الشهادة هي إعلان الإيمان الذي يُشكّل أساس الإسلام. وهي الركن الأول من أركان الإسلام الخمسة. بقول هذه الكلمات بإخلاص وقناعة، يدخل الإنسان في الإسلام. يوضح ابن كثير أن الجزء الأول — \'لا إله إلا الله\' — ينفي جميع الآلهة الباطلة ويؤكد وحدانية الله المطلقة.';
+
+  @override
+  String get shahadaMomentTitle => 'لحظة الشهادة';
+
+  @override
+  String get shahadaMomentBody =>
+      'عندما ينطق شخص بالشهادة للمرة الأولى بإيمان حقيقي في قلبه، يحدث شيء عظيم — يبدأ حياة جديدة. قال النبي ﷺ: \'من قال لا إله إلا الله وكفر بما يعبد من دون الله، حُرّم ماله ودمه\' (صحيح مسلم). تُغفر جميع الذنوب السابقة. يبدأ فصل جديد. مرحباً في الإسلام.';
+
+  @override
+  String get shahadaPronunciationTitle => 'دليل النطق';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

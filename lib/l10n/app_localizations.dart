@@ -4739,6 +4739,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'May Allah accept your prayer.'**
   String get howToPrayAccepted;
+
+  /// fatihaIntroTitle
+  ///
+  /// In en, this message translates to:
+  /// **'The Mother of the Quran'**
+  String get fatihaIntroTitle;
+
+  /// fatihaIntroBody
+  ///
+  /// In en, this message translates to:
+  /// **'Surah Al-Fatiha is the greatest surah in the Quran. It is recited in every unit of prayer — at least 17 times daily. It is a complete conversation between the servant and Allah, and a gateway to every prayer.'**
+  String get fatihaIntroBody;
+
+  /// fatihaIntroIbnKathir
+  ///
+  /// In en, this message translates to:
+  /// **'Ibn Kathir writes: \'Al-Fatiha contains the essence of the entire Quran — it is a prayer, a declaration of servitude, and a request for guidance to the Straight Path.\' — Tafsir Ibn Kathir'**
+  String get fatihaIntroIbnKathir;
+
+  /// shahadaScreenTitle
+  ///
+  /// In en, this message translates to:
+  /// **'The Shahada'**
+  String get shahadaScreenTitle;
+
+  /// shahadaArabicText
+  ///
+  /// In en, this message translates to:
+  /// **'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ'**
+  String get shahadaArabicText;
+
+  /// shahadaTransliteration
+  ///
+  /// In en, this message translates to:
+  /// **'Lā ilāha illallāh, Muḥammadun rasūlullāh'**
+  String get shahadaTransliteration;
+
+  /// shahadaTranslation
+  ///
+  /// In en, this message translates to:
+  /// **'There is no god but Allah, Muhammad is the Messenger of Allah'**
+  String get shahadaTranslation;
+
+  /// shahadaWordBreakdownTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Word by Word'**
+  String get shahadaWordBreakdownTitle;
+
+  /// shahadaWord1Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'لَا'**
+  String get shahadaWord1Arabic;
+
+  /// shahadaWord1Trans
+  ///
+  /// In en, this message translates to:
+  /// **'Lā'**
+  String get shahadaWord1Trans;
+
+  /// shahadaWord1Meaning
+  ///
+  /// In en, this message translates to:
+  /// **'There is no'**
+  String get shahadaWord1Meaning;
+
+  /// shahadaWord2Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'إِلَٰهَ'**
+  String get shahadaWord2Arabic;
+
+  /// shahadaWord2Trans
+  ///
+  /// In en, this message translates to:
+  /// **'ilāha'**
+  String get shahadaWord2Trans;
+
+  /// shahadaWord2Meaning
+  ///
+  /// In en, this message translates to:
+  /// **'deity / god'**
+  String get shahadaWord2Meaning;
+
+  /// shahadaWord3Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'إِلَّا'**
+  String get shahadaWord3Arabic;
+
+  /// shahadaWord3Trans
+  ///
+  /// In en, this message translates to:
+  /// **'illā'**
+  String get shahadaWord3Trans;
+
+  /// shahadaWord3Meaning
+  ///
+  /// In en, this message translates to:
+  /// **'except'**
+  String get shahadaWord3Meaning;
+
+  /// shahadaWord4Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'اللَّهُ'**
+  String get shahadaWord4Arabic;
+
+  /// shahadaWord4Trans
+  ///
+  /// In en, this message translates to:
+  /// **'Allāhu'**
+  String get shahadaWord4Trans;
+
+  /// shahadaWord4Meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Allah (God alone)'**
+  String get shahadaWord4Meaning;
+
+  /// shahadaWord5Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'مُحَمَّدٌ'**
+  String get shahadaWord5Arabic;
+
+  /// shahadaWord5Trans
+  ///
+  /// In en, this message translates to:
+  /// **'Muḥammadun'**
+  String get shahadaWord5Trans;
+
+  /// shahadaWord5Meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Muhammad'**
+  String get shahadaWord5Meaning;
+
+  /// shahadaWord6Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'رَّسُولُ'**
+  String get shahadaWord6Arabic;
+
+  /// shahadaWord6Trans
+  ///
+  /// In en, this message translates to:
+  /// **'Rasūlu'**
+  String get shahadaWord6Trans;
+
+  /// shahadaWord6Meaning
+  ///
+  /// In en, this message translates to:
+  /// **'Messenger / Prophet'**
+  String get shahadaWord6Meaning;
+
+  /// shahadaWord7Arabic
+  ///
+  /// In en, this message translates to:
+  /// **'اللَّهِ'**
+  String get shahadaWord7Arabic;
+
+  /// shahadaWord7Trans
+  ///
+  /// In en, this message translates to:
+  /// **'Allāhi'**
+  String get shahadaWord7Trans;
+
+  /// shahadaWord7Meaning
+  ///
+  /// In en, this message translates to:
+  /// **'of Allah'**
+  String get shahadaWord7Meaning;
+
+  /// shahadaMeaningTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Meaning & Significance'**
+  String get shahadaMeaningTitle;
+
+  /// shahadaMeaningBody
+  ///
+  /// In en, this message translates to:
+  /// **'The Shahada is the declaration of faith that forms the foundation of Islam. It is the first of the Five Pillars. By speaking these words with sincere conviction, a person enters the fold of Islam. Ibn Kathir explains that the first part — \'There is no god but Allah\' — negates all false deities and affirms the absolute oneness of Allah. The second part — \'Muhammad is the Messenger of Allah\' — acknowledges that we receive our guidance through the Prophet ﷺ.'**
+  String get shahadaMeaningBody;
+
+  /// shahadaMomentTitle
+  ///
+  /// In en, this message translates to:
+  /// **'The Moment of Shahada'**
+  String get shahadaMomentTitle;
+
+  /// shahadaMomentBody
+  ///
+  /// In en, this message translates to:
+  /// **'When a person speaks the Shahada for the first time with true belief in their heart, something profound happens — they begin a new life. The Prophet ﷺ said: \'Whoever says there is no god but Allah and disbelieves in everything worshipped besides Him, his wealth and blood are protected.\' (Sahih Muslim). All past sins are forgiven. A new chapter begins. This declaration is not just words — it is a covenant between you and your Creator, a turning point that angels witness and record. Welcome to the fold of Islam.'**
+  String get shahadaMomentBody;
+
+  /// shahadaPronunciationTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pronunciation Guide'**
+  String get shahadaPronunciationTitle;
+
+  /// shahadaPronunciationPart1
+  ///
+  /// In en, this message translates to:
+  /// **'Laa · i · LAA · ha · il · LAL · LAH'**
+  String get shahadaPronunciationPart1;
+
+  /// shahadaPronunciationPart2
+  ///
+  /// In en, this message translates to:
+  /// **'Mu · HAM · ma · dun · ra · SUU · lul · LAH'**
+  String get shahadaPronunciationPart2;
 }
 
 class _AppLocalizationsDelegate

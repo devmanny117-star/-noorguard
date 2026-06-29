@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:flutter/foundation.dart';
@@ -426,6 +427,8 @@ class _SurahScreenState extends State<SurahScreen> {
   // Surah 9 (At-Tawbah) is the only surah without Bismillah.
   bool get _showBismillah => widget.surah.number != 9;
 
+  bool get _isFatiha => widget.surah.number == 1;
+
   /// One playable item per verse, in surah order, each tagged with the
   /// metadata (surah, verse, reciter) shown in the lock screen / status bar
   /// media notification.
@@ -817,15 +820,24 @@ class _SurahScreenState extends State<SurahScreen> {
                                   16,
                                   _showPlayerBar ? 110 : 16,
                                 ),
-                                itemCount:
-                                    _verses.length + (_showBismillah ? 1 : 0),
+                                itemCount: _verses.length +
+                                    (_showBismillah ? 1 : 0) +
+                                    (_isFatiha ? 1 : 0),
                                 itemBuilder: (context, index) {
                                   if (_showBismillah && index == 0) {
                                     return _BismillahHeader(
                                         textScale: _textScale);
                                   }
-                                  final verse = _verses[
-                                      _showBismillah ? index - 1 : index];
+                                  final introIndex =
+                                      _showBismillah ? 1 : 0;
+                                  if (_isFatiha && index == introIndex) {
+                                    return const _FatihaIntroCard();
+                                  }
+                                  final headerCount =
+                                      (_showBismillah ? 1 : 0) +
+                                          (_isFatiha ? 1 : 0);
+                                  final verse =
+                                      _verses[index - headerCount];
                                   final challengeActive =
                                       widget.ayahChallenge != null &&
                                           !_challengeComplete;
@@ -836,7 +848,8 @@ class _SurahScreenState extends State<SurahScreen> {
                                       textScale: _textScale,
                                       isLast: index ==
                                           _verses.length +
-                                              (_showBismillah ? 0 : -1),
+                                              headerCount -
+                                              1,
                                       isActive:
                                           _playingVerseNumber == verse.number,
                                       isPlaying:
@@ -1642,6 +1655,165 @@ class _SleepChip extends StatelessWidget {
       ),
     );
   }
+}
+
+// ── Al-Fatiha intro card ──────────────────────────────────────────────────────
+
+class _FatihaIntroCard extends StatelessWidget {
+  const _FatihaIntroCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: _cardColor,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: _gold.withValues(alpha: 0.7), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: _gold.withValues(alpha: 0.14),
+            blurRadius: 32,
+            spreadRadius: 4,
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(17),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: CustomPaint(painter: _IslamicPatternPainter()),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(22, 28, 22, 26),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Text(
+                      'الْفَاتِحَة',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.scheherazadeNew(
+                        fontSize: 52,
+                        color: _gold,
+                        height: 1.5,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    l10n.fatihaIntroTitle,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: _gold,
+                      letterSpacing: 0.4,
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  Container(height: 1, color: _gold.withValues(alpha: 0.28)),
+                  const SizedBox(height: 18),
+                  Text(
+                    l10n.fatihaIntroBody,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.lato(
+                      fontSize: 14,
+                      color: Colors.white.withValues(alpha: 0.87),
+                      height: 1.75,
+                    ),
+                  ),
+                  const SizedBox(height: 18),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+                    decoration: BoxDecoration(
+                      color: _gold.withValues(alpha: 0.07),
+                      borderRadius: BorderRadius.circular(12),
+                      border:
+                          Border.all(color: _gold.withValues(alpha: 0.28)),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Icons.format_quote_rounded,
+                          color: _gold.withValues(alpha: 0.55),
+                          size: 18,
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            l10n.fatihaIntroIbnKathir,
+                            style: GoogleFonts.lato(
+                              fontSize: 13,
+                              fontStyle: FontStyle.italic,
+                              color: _gold.withValues(alpha: 0.88),
+                              height: 1.65,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _IslamicPatternPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = const Color(0xFFD4AF37).withValues(alpha: 0.055)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 0.7;
+
+    const step = 36.0;
+    const r = 13.0;
+    for (double x = 0; x <= size.width + step; x += step) {
+      for (double y = 0; y <= size.height + step; y += step) {
+        _drawStar8(canvas, paint, Offset(x, y), r);
+      }
+    }
+  }
+
+  void _drawStar8(Canvas canvas, Paint paint, Offset center, double r) {
+    final path = Path();
+    final inner = r * 0.42;
+    for (int i = 0; i < 8; i++) {
+      final outerAngle = i * math.pi / 4 - math.pi / 2;
+      final innerAngle = outerAngle + math.pi / 8;
+      final ox = center.dx + r * math.cos(outerAngle);
+      final oy = center.dy + r * math.sin(outerAngle);
+      final ix = center.dx + inner * math.cos(innerAngle);
+      final iy = center.dy + inner * math.sin(innerAngle);
+      if (i == 0) {
+        path.moveTo(ox, oy);
+      } else {
+        path.lineTo(ix, iy);
+        path.lineTo(ox, oy);
+      }
+    }
+    // close back through the last inner point
+    const lastInner = 7 * math.pi / 4 - math.pi / 2 + math.pi / 8;
+    path.lineTo(
+      center.dx + inner * math.cos(lastInner),
+      center.dy + inner * math.sin(lastInner),
+    );
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 // ── Bismillah header ──────────────────────────────────────────────────────────

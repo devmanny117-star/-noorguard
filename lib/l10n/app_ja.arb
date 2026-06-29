@@ -1112,4 +1112,149 @@
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
   }
+,
+  "fatihaIntroTitle": "クルアーンの母",
+  "@fatihaIntroTitle": {
+    "description": "fatihaIntroTitle"
+  },
+  "fatihaIntroBody": "スーラ・アル=ファーティハはクルアーンで最も偉大なスーラです。礼拝の各単位で朗誦されます — 毎日少なくとも17回。それはしもべとアッラーとの完全な会話であり、すべての礼拝への入口です。",
+  "@fatihaIntroBody": {
+    "description": "fatihaIntroBody"
+  },
+  "fatihaIntroIbnKathir": "イブン・カスィールは書いています：「アル=ファーティハにはクルアーン全体の本質が含まれています — それは祈り、僕従の宣言、そして正しい道への導きの求めです。」— タフスィール・イブン・カスィール",
+  "@fatihaIntroIbnKathir": {
+    "description": "fatihaIntroIbnKathir"
+  },
+  "shahadaScreenTitle": "シャハーダ",
+  "@shahadaScreenTitle": {
+    "description": "shahadaScreenTitle"
+  },
+  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "@shahadaArabicText": {
+    "description": "shahadaArabicText"
+  },
+  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "@shahadaTransliteration": {
+    "description": "shahadaTransliteration"
+  },
+  "shahadaTranslation": "アッラーの他に神はなく、ムハンマドはアッラーの使徒である",
+  "@shahadaTranslation": {
+    "description": "shahadaTranslation"
+  },
+  "shahadaWordBreakdownTitle": "一語ずつ",
+  "@shahadaWordBreakdownTitle": {
+    "description": "shahadaWordBreakdownTitle"
+  },
+  "shahadaWord1Arabic": "لَا",
+  "@shahadaWord1Arabic": {
+    "description": "shahadaWord1Arabic"
+  },
+  "shahadaWord1Trans": "Lā",
+  "@shahadaWord1Trans": {
+    "description": "shahadaWord1Trans"
+  },
+  "shahadaWord1Meaning": "存在しない",
+  "@shahadaWord1Meaning": {
+    "description": "shahadaWord1Meaning"
+  },
+  "shahadaWord2Arabic": "إِلَٰهَ",
+  "@shahadaWord2Arabic": {
+    "description": "shahadaWord2Arabic"
+  },
+  "shahadaWord2Trans": "ilāha",
+  "@shahadaWord2Trans": {
+    "description": "shahadaWord2Trans"
+  },
+  "shahadaWord2Meaning": "神 / 神性",
+  "@shahadaWord2Meaning": {
+    "description": "shahadaWord2Meaning"
+  },
+  "shahadaWord3Arabic": "إِلَّا",
+  "@shahadaWord3Arabic": {
+    "description": "shahadaWord3Arabic"
+  },
+  "shahadaWord3Trans": "illā",
+  "@shahadaWord3Trans": {
+    "description": "shahadaWord3Trans"
+  },
+  "shahadaWord3Meaning": "以外",
+  "@shahadaWord3Meaning": {
+    "description": "shahadaWord3Meaning"
+  },
+  "shahadaWord4Arabic": "اللَّهُ",
+  "@shahadaWord4Arabic": {
+    "description": "shahadaWord4Arabic"
+  },
+  "shahadaWord4Trans": "Allāhu",
+  "@shahadaWord4Trans": {
+    "description": "shahadaWord4Trans"
+  },
+  "shahadaWord4Meaning": "アッラー（唯一の神）",
+  "@shahadaWord4Meaning": {
+    "description": "shahadaWord4Meaning"
+  },
+  "shahadaWord5Arabic": "مُحَمَّدٌ",
+  "@shahadaWord5Arabic": {
+    "description": "shahadaWord5Arabic"
+  },
+  "shahadaWord5Trans": "Muḥammadun",
+  "@shahadaWord5Trans": {
+    "description": "shahadaWord5Trans"
+  },
+  "shahadaWord5Meaning": "ムハンマド",
+  "@shahadaWord5Meaning": {
+    "description": "shahadaWord5Meaning"
+  },
+  "shahadaWord6Arabic": "رَّسُولُ",
+  "@shahadaWord6Arabic": {
+    "description": "shahadaWord6Arabic"
+  },
+  "shahadaWord6Trans": "Rasūlu",
+  "@shahadaWord6Trans": {
+    "description": "shahadaWord6Trans"
+  },
+  "shahadaWord6Meaning": "使徒 / 預言者",
+  "@shahadaWord6Meaning": {
+    "description": "shahadaWord6Meaning"
+  },
+  "shahadaWord7Arabic": "اللَّهِ",
+  "@shahadaWord7Arabic": {
+    "description": "shahadaWord7Arabic"
+  },
+  "shahadaWord7Trans": "Allāhi",
+  "@shahadaWord7Trans": {
+    "description": "shahadaWord7Trans"
+  },
+  "shahadaWord7Meaning": "アッラーの",
+  "@shahadaWord7Meaning": {
+    "description": "shahadaWord7Meaning"
+  },
+  "shahadaMeaningTitle": "意味と重要性",
+  "@shahadaMeaningTitle": {
+    "description": "shahadaMeaningTitle"
+  },
+  "shahadaMeaningBody": "シャハーダはイスラムの基盤を形成する信仰の宣言です。これは五つの柱の最初のものです。誠実な確信を持ってこれらの言葉を語ることで、人はイスラムに入ります。イブン・カスィールは、最初の部分が全ての偽りの神々を否定し、アッラーの絶対的な唯一性を確認すると説明しています。",
+  "@shahadaMeaningBody": {
+    "description": "shahadaMeaningBody"
+  },
+  "shahadaMomentTitle": "シャハーダの瞬間",
+  "@shahadaMomentTitle": {
+    "description": "shahadaMomentTitle"
+  },
+  "shahadaMomentBody": "人がシャハーダを初めて真の信仰を持って唱えると、深いことが起こります — 彼らは新しい人生を始めます。預言者ﷺは言いました：「アッラーの他に神はないと言い、それ以外に崇拝されるものを信じない者は、その財産と血は守られる。」（サヒーフ・ムスリム）。過去の全ての罪が許されます。イスラムへようこそ。",
+  "@shahadaMomentBody": {
+    "description": "shahadaMomentBody"
+  },
+  "shahadaPronunciationTitle": "発音ガイド",
+  "@shahadaPronunciationTitle": {
+    "description": "shahadaPronunciationTitle"
+  },
+  "shahadaPronunciationPart1": "Laa · i · LAA · ha · il · LAL · LAH",
+  "@shahadaPronunciationPart1": {
+    "description": "shahadaPronunciationPart1"
+  },
+  "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
+  "@shahadaPronunciationPart2": {
+    "description": "shahadaPronunciationPart2"
+  }
 }

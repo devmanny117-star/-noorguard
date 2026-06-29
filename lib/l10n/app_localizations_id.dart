@@ -2587,4 +2587,120 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'Semoga Allah menerima shalat Anda.';
+
+  @override
+  String get fatihaIntroTitle => 'Induk Al-Quran';
+
+  @override
+  String get fatihaIntroBody =>
+      'Surah Al-Fatiha adalah surah terbesar dalam Al-Quran. Dibaca di setiap unit salat — setidaknya 17 kali sehari. Ini adalah percakapan lengkap antara hamba dan Allah, dan pintu gerbang setiap salat.';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'Ibn Kathir menulis: \'Al-Fatiha mengandung inti dari seluruh Al-Quran — ini adalah doa, pernyataan penghambaan, dan permohonan petunjuk menuju Jalan yang Lurus.\' — Tafsir Ibn Kathir';
+
+  @override
+  String get shahadaScreenTitle => 'Syahadat';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation =>
+      'Tidak ada tuhan selain Allah, Muhammad adalah Rasul Allah';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'Kata per Kata';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'Tidak ada';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'tuhan / sembahan';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'kecuali';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'Allah (Tuhan semata)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'Muhammad';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'Rasul / Nabi';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'Allah';
+
+  @override
+  String get shahadaMeaningTitle => 'Makna & Pentingnya';
+
+  @override
+  String get shahadaMeaningBody =>
+      'Syahadat adalah pernyataan iman yang membentuk landasan Islam. Ini adalah yang pertama dari Lima Rukun. Dengan mengucapkan kata-kata ini dengan keyakinan yang tulus, seseorang masuk Islam. Ibn Kathir menjelaskan bahwa bagian pertama menolak semua tuhan palsu dan menegaskan keesaan mutlak Allah.';
+
+  @override
+  String get shahadaMomentTitle => 'Momen Syahadat';
+
+  @override
+  String get shahadaMomentBody =>
+      'Ketika seseorang mengucapkan Syahadat untuk pertama kalinya dengan keyakinan yang tulus di hatinya, sesuatu yang mendalam terjadi — mereka memulai hidup baru. Nabi ﷺ bersabda: \'Barangsiapa yang berkata tidak ada tuhan selain Allah dan tidak percaya kepada apapun yang disembah selain-Nya, harta dan darahnya terlindungi.\' (Shahih Muslim). Semua dosa masa lalu diampuni. Selamat datang di Islam.';
+
+  @override
+  String get shahadaPronunciationTitle => 'Panduan Pengucapan';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

@@ -2586,4 +2586,120 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'Que Allah aceite sua oração.';
+
+  @override
+  String get fatihaIntroTitle => 'A Mãe do Alcorão';
+
+  @override
+  String get fatihaIntroBody =>
+      'A Surah Al-Fatiha é a maior surah do Alcorão. É recitada em cada unidade de oração — pelo menos 17 vezes por dia. É uma conversa completa entre o servo e Allah, e uma porta de entrada para cada oração.';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'Ibn Kathir escreve: \'Al-Fatiha contém a essência de todo o Alcorão — é uma oração, uma declaração de servidão e um pedido de guia para o Caminho Reto.\' — Tafsir Ibn Kathir';
+
+  @override
+  String get shahadaScreenTitle => 'A Shahada';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation =>
+      'Não há deus além de Allah, Muhammad é o Mensageiro de Allah';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'Palavra por Palavra';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'Não há';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'divindade / deus';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'exceto';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'Allah (Deus somente)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'Muhammad';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'Mensageiro / Profeta';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'de Allah';
+
+  @override
+  String get shahadaMeaningTitle => 'Significado & Importância';
+
+  @override
+  String get shahadaMeaningBody =>
+      'A Shahada é a declaração de fé que forma a base do Islã. É o primeiro dos Cinco Pilares. Ao pronunciar estas palavras com sincera convicção, uma pessoa entra no Islã. Ibn Kathir explica que a primeira parte nega todas as falsas divindades e afirma a unicidade absoluta de Allah.';
+
+  @override
+  String get shahadaMomentTitle => 'O Momento da Shahada';
+
+  @override
+  String get shahadaMomentBody =>
+      'Quando uma pessoa pronuncia a Shahada pela primeira vez com verdadeira fé no coração, algo profundo acontece — ela começa uma nova vida. O Profeta ﷺ disse: \'Quem disser que não há deus além de Allah e não acreditar em nada que seja adorado além d\'Ele, sua riqueza e sangue estão protegidos.\' (Sahih Muslim). Todos os pecados passados são perdoados. Bem-vindo ao Islã.';
+
+  @override
+  String get shahadaPronunciationTitle => 'Guia de Pronúncia';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

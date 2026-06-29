@@ -2471,4 +2471,119 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'アッラーが礼拝をお受けくださいますように。';
+
+  @override
+  String get fatihaIntroTitle => 'クルアーンの母';
+
+  @override
+  String get fatihaIntroBody =>
+      'スーラ・アル=ファーティハはクルアーンで最も偉大なスーラです。礼拝の各単位で朗誦されます — 毎日少なくとも17回。それはしもべとアッラーとの完全な会話であり、すべての礼拝への入口です。';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'イブン・カスィールは書いています：「アル=ファーティハにはクルアーン全体の本質が含まれています — それは祈り、僕従の宣言、そして正しい道への導きの求めです。」— タフスィール・イブン・カスィール';
+
+  @override
+  String get shahadaScreenTitle => 'シャハーダ';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation => 'アッラーの他に神はなく、ムハンマドはアッラーの使徒である';
+
+  @override
+  String get shahadaWordBreakdownTitle => '一語ずつ';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => '存在しない';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => '神 / 神性';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => '以外';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'アッラー（唯一の神）';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'ムハンマド';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => '使徒 / 預言者';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'アッラーの';
+
+  @override
+  String get shahadaMeaningTitle => '意味と重要性';
+
+  @override
+  String get shahadaMeaningBody =>
+      'シャハーダはイスラムの基盤を形成する信仰の宣言です。これは五つの柱の最初のものです。誠実な確信を持ってこれらの言葉を語ることで、人はイスラムに入ります。イブン・カスィールは、最初の部分が全ての偽りの神々を否定し、アッラーの絶対的な唯一性を確認すると説明しています。';
+
+  @override
+  String get shahadaMomentTitle => 'シャハーダの瞬間';
+
+  @override
+  String get shahadaMomentBody =>
+      '人がシャハーダを初めて真の信仰を持って唱えると、深いことが起こります — 彼らは新しい人生を始めます。預言者ﷺは言いました：「アッラーの他に神はないと言い、それ以外に崇拝されるものを信じない者は、その財産と血は守られる。」（サヒーフ・ムスリム）。過去の全ての罪が許されます。イスラムへようこそ。';
+
+  @override
+  String get shahadaPronunciationTitle => '発音ガイド';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

@@ -2444,4 +2444,119 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => '愿真主接受您的礼拜。';
+
+  @override
+  String get fatihaIntroTitle => '古兰经之母';
+
+  @override
+  String get fatihaIntroBody =>
+      '苏拉·法蒂哈是古兰经中最伟大的章节。它在每一个礼拜单位中诵读——每天至少17次。这是仆人与真主之间完整的对话，也是每次礼拜的入口。';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      '伊本·卡西尔写道：\'法蒂哈包含整部古兰经的精华——它是祈祷、奴仆身份的宣言，以及对引导至正道的请求。\'——伊本·卡西尔注释';
+
+  @override
+  String get shahadaScreenTitle => '清真言';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation => '除安拉外，别无神灵，穆罕默德是安拉的使者';
+
+  @override
+  String get shahadaWordBreakdownTitle => '逐词解析';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => '没有';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => '神 / 主';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => '除了';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => '安拉（独一的主）';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => '穆罕默德';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => '使者 / 先知';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => '安拉的';
+
+  @override
+  String get shahadaMeaningTitle => '含义与意义';
+
+  @override
+  String get shahadaMeaningBody =>
+      '清真言是构成伊斯兰教基础的信仰宣言。这是五功之首。真诚地念出这些话，一个人就进入了伊斯兰教。伊本·卡西尔解释说，第一部分否定一切假神，肯定安拉绝对的独一性。';
+
+  @override
+  String get shahadaMomentTitle => '念清真言的时刻';
+
+  @override
+  String get shahadaMomentBody =>
+      '当一个人第一次用真诚的心念诵清真言时，深刻的事情发生了——他们开始了新的生命。先知ﷺ说：\'凡说除安拉外别无神灵，并不信仰除祂之外所崇拜的一切者，其财产和血统受到保护。\'（穆斯林圣训集）。过去所有的罪孽都被宽恕。欢迎来到伊斯兰。';
+
+  @override
+  String get shahadaPronunciationTitle => '发音指南';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

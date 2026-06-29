@@ -2580,4 +2580,120 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'আল্লাহ আপনার নামাজ কবুল করুন।';
+
+  @override
+  String get fatihaIntroTitle => 'কোরআনের মা';
+
+  @override
+  String get fatihaIntroBody =>
+      'সূরা আল-ফাতিহা কোরআনের সবচেয়ে মহান সূরা। এটি নামাজের প্রতিটি রাকাতে পাঠ করা হয় — প্রতিদিন কমপক্ষে ১৭ বার। এটি বান্দা ও আল্লাহর মধ্যে একটি সম্পূর্ণ কথোপকথন এবং প্রতিটি নামাজের প্রবেশদ্বার।';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'ইবনে কাছির লিখেছেন: \'আল-ফাতিহায় পুরো কোরআনের সারমর্ম রয়েছে — এটি একটি দুআ, দাসত্বের ঘোষণা, এবং সরল পথে হেদায়েতের অনুরোধ।\' — তাফসির ইবনে কাছির';
+
+  @override
+  String get shahadaScreenTitle => 'শাহাদাহ';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation =>
+      'আল্লাহ ছাড়া কোনো উপাস্য নেই, মুহাম্মাদ আল্লাহর রাসূল';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'শব্দে শব্দে';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'নেই';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'উপাস্য / দেবতা';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'ছাড়া';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'আল্লাহ (এক ঈশ্বর)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'মুহাম্মাদ';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'রাসূল / নবী';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'আল্লাহর';
+
+  @override
+  String get shahadaMeaningTitle => 'অর্থ ও গুরুত্ব';
+
+  @override
+  String get shahadaMeaningBody =>
+      'শাহাদাহ হলো বিশ্বাসের সেই ঘোষণা যা ইসলামের ভিত্তি গঠন করে। এটি পাঁচটি স্তম্ভের মধ্যে প্রথম। আন্তরিক বিশ্বাসের সাথে এই শব্দগুলি উচ্চারণ করার মাধ্যমে একজন ব্যক্তি ইসলামে প্রবেশ করে। ইবনে কাছির ব্যাখ্যা করেন যে প্রথম অংশ সমস্ত মিথ্যা দেবতাদের অস্বীকার করে এবং আল্লাহর পরম একত্বকে নিশ্চিত করে।';
+
+  @override
+  String get shahadaMomentTitle => 'শাহাদাহর মুহূর্ত';
+
+  @override
+  String get shahadaMomentBody =>
+      'যখন কোনো ব্যক্তি প্রথমবার সত্যিকারের বিশ্বাস নিয়ে শাহাদাহ পাঠ করে, তখন কিছু গভীর ঘটনা ঘটে — সে একটি নতুন জীবন শুরু করে। নবী ﷺ বলেছেন: \'যে ব্যক্তি বলে আল্লাহ ছাড়া কোনো উপাস্য নেই এবং আল্লাহ ছাড়া যা কিছু পূজা করা হয় তা অস্বীকার করে, তার সম্পদ ও রক্ত সুরক্ষিত হয়।\' (সহিহ মুসলিম)। অতীতের সমস্ত পাপ ক্ষমা করা হয়। ইসলামে স্বাগতম।';
+
+  @override
+  String get shahadaPronunciationTitle => 'উচ্চারণ গাইড';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }

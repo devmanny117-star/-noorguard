@@ -2582,4 +2582,120 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get howToPrayAccepted => 'Moge Allah uw gebed aanvaarden.';
+
+  @override
+  String get fatihaIntroTitle => 'De Moeder van de Koran';
+
+  @override
+  String get fatihaIntroBody =>
+      'Surah Al-Fatiha is de grootste soera in de Koran. Ze wordt in elke gebedseenheid gereciteerd — ten minste 17 keer per dag. Het is een volledig gesprek tussen de dienaar en Allah, en een toegangspoort tot elk gebed.';
+
+  @override
+  String get fatihaIntroIbnKathir =>
+      'Ibn Kathir schrijft: \'Al-Fatiha bevat de essentie van de hele Koran — het is een gebed, een verklaring van dienstbaarheid en een verzoek om leiding naar het rechte pad.\' — Tafsir Ibn Kathir';
+
+  @override
+  String get shahadaScreenTitle => 'De Sjahada';
+
+  @override
+  String get shahadaArabicText =>
+      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+
+  @override
+  String get shahadaTransliteration =>
+      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+
+  @override
+  String get shahadaTranslation =>
+      'Er is geen god dan Allah, Muhammad is de Boodschapper van Allah';
+
+  @override
+  String get shahadaWordBreakdownTitle => 'Woord voor Woord';
+
+  @override
+  String get shahadaWord1Arabic => 'لَا';
+
+  @override
+  String get shahadaWord1Trans => 'Lā';
+
+  @override
+  String get shahadaWord1Meaning => 'Er is geen';
+
+  @override
+  String get shahadaWord2Arabic => 'إِلَٰهَ';
+
+  @override
+  String get shahadaWord2Trans => 'ilāha';
+
+  @override
+  String get shahadaWord2Meaning => 'godheid / god';
+
+  @override
+  String get shahadaWord3Arabic => 'إِلَّا';
+
+  @override
+  String get shahadaWord3Trans => 'illā';
+
+  @override
+  String get shahadaWord3Meaning => 'behalve';
+
+  @override
+  String get shahadaWord4Arabic => 'اللَّهُ';
+
+  @override
+  String get shahadaWord4Trans => 'Allāhu';
+
+  @override
+  String get shahadaWord4Meaning => 'Allah (God alleen)';
+
+  @override
+  String get shahadaWord5Arabic => 'مُحَمَّدٌ';
+
+  @override
+  String get shahadaWord5Trans => 'Muḥammadun';
+
+  @override
+  String get shahadaWord5Meaning => 'Muhammad';
+
+  @override
+  String get shahadaWord6Arabic => 'رَّسُولُ';
+
+  @override
+  String get shahadaWord6Trans => 'Rasūlu';
+
+  @override
+  String get shahadaWord6Meaning => 'Boodschapper / Profeet';
+
+  @override
+  String get shahadaWord7Arabic => 'اللَّهِ';
+
+  @override
+  String get shahadaWord7Trans => 'Allāhi';
+
+  @override
+  String get shahadaWord7Meaning => 'van Allah';
+
+  @override
+  String get shahadaMeaningTitle => 'Betekenis & Belang';
+
+  @override
+  String get shahadaMeaningBody =>
+      'De Sjahada is de geloofsbelijdenis die de basis van de Islam vormt. Het is de eerste van de Vijf Pilaren. Door deze woorden met oprechte overtuiging uit te spreken, treedt iemand de Islam binnen. Ibn Kathir legt uit dat het eerste deel alle valse goden ontkent en de absolute eenheid van Allah bevestigt.';
+
+  @override
+  String get shahadaMomentTitle => 'Het Moment van de Sjahada';
+
+  @override
+  String get shahadaMomentBody =>
+      'Wanneer iemand de Sjahada voor de eerste keer uitspreekt met echt geloof in zijn hart, gebeurt er iets diepzinnigs — zij beginnen een nieuw leven. De Profeet ﷺ zei: \'Wie zegt dat er geen god is dan Allah en niet gelooft in alles wat buiten Hem wordt aanbeden, zijn rijkdom en bloed zijn beschermd.\' (Sahih Muslim). Alle vroegere zonden worden vergeven. Welkom in de Islam.';
+
+  @override
+  String get shahadaPronunciationTitle => 'Uitspraakgids';
+
+  @override
+  String get shahadaPronunciationPart1 => 'Laa · i · LAA · ha · il · LAL · LAH';
+
+  @override
+  String get shahadaPronunciationPart2 =>
+      'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
 }
