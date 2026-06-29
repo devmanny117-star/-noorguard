@@ -828,5 +828,288 @@
   "beginnerYourJourney": "JOUW REIS",
   "@beginnerYourJourney": {
     "description": "Section header for the journey / Shahada tracker"
+  },
+  "journeyMonth1Name": "Maand 1: De Basis",
+  "@journeyMonth1Name": {
+    "description": "journeyMonth1Name"
+  },
+  "journeyMonth2Name": "Maand 2: Gewoonten opbouwen",
+  "@journeyMonth2Name": {
+    "description": "journeyMonth2Name"
+  },
+  "journeyMonth3Name": "Maand 3: Geloof verdiepen",
+  "@journeyMonth3Name": {
+    "description": "journeyMonth3Name"
+  },
+  "journeyTasksCompleted": "{done}/{total} gedaan",
+  "@journeyTasksCompleted": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyViewFull": "Volledige reis bekijken →",
+  "@journeyViewFull": {
+    "description": "journeyViewFull"
+  },
+  "journeyTask2_1": "7 dagen alle 5 gebeden bidden",
+  "@journeyTask2_1": {
+    "description": "journeyTask2_1"
+  },
+  "journeyTask2_2": "10 meer Dua's leren",
+  "@journeyTask2_2": {
+    "description": "journeyTask2_2"
+  },
+  "journeyTask2_3": "Eerste Juz van de Quran lezen",
+  "@journeyTask2_3": {
+    "description": "journeyTask2_3"
+  },
+  "journeyTask2_4": "99 Namen van Allah leren",
+  "@journeyTask2_4": {
+    "description": "journeyTask2_4"
+  },
+  "journeyTask2_5": "7 dagen dagelijks de Tasbih-teller gebruiken",
+  "@journeyTask2_5": {
+    "description": "journeyTask2_5"
+  },
+  "journeyTask2_6": "Sunnah-gebeden leren",
+  "@journeyTask2_6": {
+    "description": "journeyTask2_6"
+  },
+  "journeyTask2_7": "Jouw lokale Masjid vinden",
+  "@journeyTask2_7": {
+    "description": "journeyTask2_7"
+  },
+  "journeyTask3_1": "Surah Al-Baqarah lezen",
+  "@journeyTask3_1": {
+    "description": "journeyTask3_1"
+  },
+  "journeyTask3_2": "Leren over Zakat",
+  "@journeyTask3_2": {
+    "description": "journeyTask3_2"
+  },
+  "journeyTask3_3": "Leren over vasten (Sawm)",
+  "@journeyTask3_3": {
+    "description": "journeyTask3_3"
+  },
+  "journeyTask3_4": "3 nieuwe Soera's memoriseren",
+  "@journeyTask3_4": {
+    "description": "journeyTask3_4"
+  },
+  "journeyTask3_5": "Leren over Hajj",
+  "@journeyTask3_5": {
+    "description": "journeyTask3_5"
+  },
+  "journeyTask3_6": "Islam delen met iemand",
+  "@journeyTask3_6": {
+    "description": "journeyTask3_6"
+  },
+  "journeyTask3_7": "Islamitisch Woordenboek voltooien",
+  "@journeyTask3_7": {
+    "description": "journeyTask3_7"
+  },
+  "journeyTimelineTitle": "Mijn Reis",
+  "@journeyTimelineTitle": {
+    "description": "journeyTimelineTitle"
+  },
+  "journeyCompleted": "Voltooid",
+  "@journeyCompleted": {
+    "description": "journeyCompleted"
+  },
+  "journeyInProgress": "Bezig",
+  "@journeyInProgress": {
+    "description": "journeyInProgress"
+  },
+  "journeyLocked": "Vergrendeld",
+  "@journeyLocked": {
+    "description": "journeyLocked"
+  },
+  "wuduThreeTimes": "3 keer",
+  "@wuduThreeTimes": {
+    "description": "wuduThreeTimes"
+  },
+  "wuduDuaBefore": "Du'a vóór Wudu",
+  "@wuduDuaBefore": {
+    "description": "wuduDuaBefore"
+  },
+  "wuduDuaAfter": "Du'a na Wudu",
+  "@wuduDuaAfter": {
+    "description": "wuduDuaAfter"
+  },
+  "wuduDuaBeforeArabic": "بِسْمِ اللَّهِ",
+  "@wuduDuaBeforeArabic": {
+    "description": "wuduDuaBeforeArabic"
+  },
+  "wuduDuaBeforeTranslit": "Bismillāh",
+  "@wuduDuaBeforeTranslit": {
+    "description": "wuduDuaBeforeTranslit"
+  },
+  "wuduDuaBeforeTranslation": "In de naam van Allah",
+  "@wuduDuaBeforeTranslation": {
+    "description": "wuduDuaBeforeTranslation"
+  },
+  "wuduDuaAfterArabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+  "@wuduDuaAfterArabic": {
+    "description": "wuduDuaAfterArabic"
+  },
+  "wuduDuaAfterTranslit": "Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.",
+  "@wuduDuaAfterTranslit": {
+    "description": "wuduDuaAfterTranslit"
+  },
+  "wuduDuaAfterTranslation": "Ik getuig dat er geen godheid is die aanbidding verdient behalve Allah, Alleen, zonder deelgenoot, en ik getuig dat Muhammad Zijn dienaar en boodschapper is. O Allah, maak mij tot degenen die zich bekeren en degenen die zich reinigen.",
+  "@wuduDuaAfterTranslation": {
+    "description": "wuduDuaAfterTranslation"
+  },
+  "wuduCompleteButton": "Ik heb Wudu voltooid",
+  "@wuduCompleteButton": {
+    "description": "wuduCompleteButton"
+  },
+  "howToPrayStepOpeningDua": "Openingssmeekbede",
+  "@howToPrayStepOpeningDua": {
+    "description": "howToPrayStepOpeningDua"
+  },
+  "howToPrayStepAlFatiha": "Soera Al-Fatiha",
+  "@howToPrayStepAlFatiha": {
+    "description": "howToPrayStepAlFatiha"
+  },
+  "howToPrayStepSurah": "Korte soera",
+  "@howToPrayStepSurah": {
+    "description": "howToPrayStepSurah"
+  },
+  "howToPrayStepTashahhudShort": "Tashahhud (middenzit)",
+  "@howToPrayStepTashahhudShort": {
+    "description": "howToPrayStepTashahhudShort"
+  },
+  "howToPrayStepSalawat": "Salawat op de Profeet ﷺ",
+  "@howToPrayStepSalawat": {
+    "description": "howToPrayStepSalawat"
+  },
+  "howToPrayTransTakbir": "Allah is de Grootste",
+  "@howToPrayTransTakbir": {
+    "description": "howToPrayTransTakbir"
+  },
+  "howToPrayTransOpeningDua": "Glorie zij U, o Allah, en met Uw lof; gezegend is Uw naam, verheven is Uw majesteit, er is geen god dan U.",
+  "@howToPrayTransOpeningDua": {
+    "description": "howToPrayTransOpeningDua"
+  },
+  "howToPrayTransFatiha": "In de naam van Allah, de Barmhartige, de Genadevolle. Alle lof zij Allah, de Heer der werelden. De Barmhartige, de Genadevolle. Meester van de Dag des Oordeels. U alleen aanbidden wij en U alleen vragen wij om hulp. Leid ons op het rechte pad — het pad van degenen die U gunst hebt bewezen, niet van degenen die toorn hebben opgelopen, noch van de dwalenden.",
+  "@howToPrayTransFatiha": {
+    "description": "howToPrayTransFatiha"
+  },
+  "howToPrayTransRuku": "Glorie zij mijn Heer, de Allerhoogste",
+  "@howToPrayTransRuku": {
+    "description": "howToPrayTransRuku"
+  },
+  "howToPrayTransItidal": "Allah hoort degene die Hem prijst. Onze Heer, alle lof zij U.",
+  "@howToPrayTransItidal": {
+    "description": "howToPrayTransItidal"
+  },
+  "howToPrayTransSujood": "Glorie zij mijn Heer, de Verhevene",
+  "@howToPrayTransSujood": {
+    "description": "howToPrayTransSujood"
+  },
+  "howToPrayTransJalsa": "Mijn Heer, vergeef mij",
+  "@howToPrayTransJalsa": {
+    "description": "howToPrayTransJalsa"
+  },
+  "howToPrayTransTashahhud": "Alle groeten, gebeden en goede woorden behoren Allah toe. Vrede zij met u, o Profeet, en de genade van Allah en Zijn zegeningen. Vrede zij met ons en met de rechtschapen dienaren van Allah. Ik getuig dat er geen god is dan Allah, en ik getuig dat Muhammad Zijn dienaar en boodschapper is.",
+  "@howToPrayTransTashahhud": {
+    "description": "howToPrayTransTashahhud"
+  },
+  "howToPrayTransSalawat": "O Allah, schenk Uw genade aan Muhammad en de familie van Muhammad, zoals U Uw genade hebt geschonken aan Ibrahim en de familie van Ibrahim — U bent waarlijk de Meest Lofwaardige, de Meest Glorieuze. O Allah, zegen Muhammad en de familie van Muhammad, zoals U Ibrahim en de familie van Ibrahim hebt gezegend — U bent waarlijk de Meest Lofwaardige, de Meest Glorieuze.",
+  "@howToPrayTransSalawat": {
+    "description": "howToPrayTransSalawat"
+  },
+  "howToPrayTransTasleem": "Vrede en de genade van Allah zij met jullie",
+  "@howToPrayTransTasleem": {
+    "description": "howToPrayTransTasleem"
+  },
+  "howToPrayOpeningDuaInstruction": "Reciteer dit zachtjes direct na de openingstakbir. Het wordt slechts eenmaal uitgesproken, aan het begin van het gebed.",
+  "@howToPrayOpeningDuaInstruction": {
+    "description": "howToPrayOpeningDuaInstruction"
+  },
+  "howToPraySurahInstruction": "Na Al-Fatiha een soera reciteren die u uit uw hoofd kent. Soera Al-Ikhlas (hierboven) is ideaal voor beginners — alleen in de eerste twee rak'ahs.",
+  "@howToPraySurahInstruction": {
+    "description": "howToPraySurahInstruction"
+  },
+  "howToPrayItidalInstruction": "Zeg 'Sami' Allahu liman hamidah' terwijl u opstaat, dan rechtop staan voor 'Rabbana wa lakal hamd'.",
+  "@howToPrayItidalInstruction": {
+    "description": "howToPrayItidalInstruction"
+  },
+  "howToPrayMiddleTashahhudInstruction": "Ga zitten na de 2e rak'ah. Hef uw rechter wijsvinger op bij de Shahada. Bij 3- en 4-rak'ah gebeden staat u daarna weer op.",
+  "@howToPrayMiddleTashahhudInstruction": {
+    "description": "howToPrayMiddleTashahhudInstruction"
+  },
+  "howToPraySalawatInstruction": "Reciteer de Salawat direct na de laatste Tashahhud, alleen in de laatste zit, voor de Tasleem.",
+  "@howToPraySalawatInstruction": {
+    "description": "howToPraySalawatInstruction"
+  },
+  "howToPrayTasleemInstruction": "Draai uw hoofd naar rechts, spreek de Tasleem uit, draai dan naar links en herhaal. Uw gebed is voltooid.",
+  "@howToPrayTasleemInstruction": {
+    "description": "howToPrayTasleemInstruction"
+  },
+  "howToPrayOnceOpens": "Eenmaal — opent het gebed",
+  "@howToPrayOnceOpens": {
+    "description": "howToPrayOnceOpens"
+  },
+  "howToPrayFirstRakahOnly": "Alleen 1e rak'ah",
+  "@howToPrayFirstRakahOnly": {
+    "description": "howToPrayFirstRakahOnly"
+  },
+  "howToPrayFirst2RakahsOnly": "Alleen eerste 2 rak'ahs",
+  "@howToPrayFirst2RakahsOnly": {
+    "description": "howToPrayFirst2RakahsOnly"
+  },
+  "howToPrayEveryRakah": "Elke rak'ah",
+  "@howToPrayEveryRakah": {
+    "description": "howToPrayEveryRakah"
+  },
+  "howToPrayAfter2ndRakah": "Na de 2e rak'ah",
+  "@howToPrayAfter2ndRakah": {
+    "description": "howToPrayAfter2ndRakah"
+  },
+  "howToPrayFinalSittingOnly": "Alleen laatste zit",
+  "@howToPrayFinalSittingOnly": {
+    "description": "howToPrayFinalSittingOnly"
+  },
+  "howToPrayClosesThePrayer": "Sluit het gebed af",
+  "@howToPrayClosesThePrayer": {
+    "description": "howToPrayClosesThePrayer"
+  },
+  "howToPraySectionBefore": "Voor het gebed",
+  "@howToPraySectionBefore": {
+    "description": "howToPraySectionBefore"
+  },
+  "howToPraySectionRakah": "Rak'ah",
+  "@howToPraySectionRakah": {
+    "description": "howToPraySectionRakah"
+  },
+  "howToPraySectionMiddleSitting": "Middenzit",
+  "@howToPraySectionMiddleSitting": {
+    "description": "howToPraySectionMiddleSitting"
+  },
+  "howToPraySectionFinalSitting": "Laatste zit",
+  "@howToPraySectionFinalSitting": {
+    "description": "howToPraySectionFinalSitting"
+  },
+  "howToPrayRakahLabel": "Rak'ahs",
+  "@howToPrayRakahLabel": {
+    "description": "howToPrayRakahLabel"
+  },
+  "howToPrayCompleteButton": "Ik heb mijn gebed voltooid",
+  "@howToPrayCompleteButton": {
+    "description": "howToPrayCompleteButton"
+  },
+  "howToPrayMashaallah": "Masha'Allah!",
+  "@howToPrayMashaallah": {
+    "description": "howToPrayMashaallah"
+  },
+  "howToPrayAccepted": "Moge Allah uw gebed aanvaarden.",
+  "@howToPrayAccepted": {
+    "description": "howToPrayAccepted"
   }
 }

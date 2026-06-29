@@ -988,5 +988,288 @@
   "beginnerYourJourney": "سفر شما",
   "@beginnerYourJourney": {
     "description": "Section header for the journey / Shahada tracker"
+  },
+  "journeyMonth1Name": "ماه اول: بنیاد",
+  "@journeyMonth1Name": {
+    "description": "journeyMonth1Name"
+  },
+  "journeyMonth2Name": "ماه دوم: شکل‌گیری عادات",
+  "@journeyMonth2Name": {
+    "description": "journeyMonth2Name"
+  },
+  "journeyMonth3Name": "ماه سوم: عمیق‌تر کردن ایمان",
+  "@journeyMonth3Name": {
+    "description": "journeyMonth3Name"
+  },
+  "journeyTasksCompleted": "{done}/{total} انجام شد",
+  "@journeyTasksCompleted": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyViewFull": "مشاهده سفر کامل →",
+  "@journeyViewFull": {
+    "description": "journeyViewFull"
+  },
+  "journeyTask2_1": "7 روز تمام 5 نماز را بخوانید",
+  "@journeyTask2_1": {
+    "description": "journeyTask2_1"
+  },
+  "journeyTask2_2": "10 دعای بیشتر یاد بگیرید",
+  "@journeyTask2_2": {
+    "description": "journeyTask2_2"
+  },
+  "journeyTask2_3": "اولین جزء قرآن را بخوانید",
+  "@journeyTask2_3": {
+    "description": "journeyTask2_3"
+  },
+  "journeyTask2_4": "99 نام خداوند را یاد بگیرید",
+  "@journeyTask2_4": {
+    "description": "journeyTask2_4"
+  },
+  "journeyTask2_5": "7 روز روزانه از شمارنده تسبیح استفاده کنید",
+  "@journeyTask2_5": {
+    "description": "journeyTask2_5"
+  },
+  "journeyTask2_6": "نمازهای سنت را یاد بگیرید",
+  "@journeyTask2_6": {
+    "description": "journeyTask2_6"
+  },
+  "journeyTask2_7": "مسجد محلی خود را پیدا کنید",
+  "@journeyTask2_7": {
+    "description": "journeyTask2_7"
+  },
+  "journeyTask3_1": "سوره البقره را بخوانید",
+  "@journeyTask3_1": {
+    "description": "journeyTask3_1"
+  },
+  "journeyTask3_2": "درباره زکات یاد بگیرید",
+  "@journeyTask3_2": {
+    "description": "journeyTask3_2"
+  },
+  "journeyTask3_3": "درباره روزه یاد بگیرید",
+  "@journeyTask3_3": {
+    "description": "journeyTask3_3"
+  },
+  "journeyTask3_4": "3 سوره جدید حفظ کنید",
+  "@journeyTask3_4": {
+    "description": "journeyTask3_4"
+  },
+  "journeyTask3_5": "درباره حج یاد بگیرید",
+  "@journeyTask3_5": {
+    "description": "journeyTask3_5"
+  },
+  "journeyTask3_6": "اسلام را با کسی به اشتراک بگذارید",
+  "@journeyTask3_6": {
+    "description": "journeyTask3_6"
+  },
+  "journeyTask3_7": "فرهنگ لغت اسلامی را کامل کنید",
+  "@journeyTask3_7": {
+    "description": "journeyTask3_7"
+  },
+  "journeyTimelineTitle": "سفر من",
+  "@journeyTimelineTitle": {
+    "description": "journeyTimelineTitle"
+  },
+  "journeyCompleted": "تکمیل شد",
+  "@journeyCompleted": {
+    "description": "journeyCompleted"
+  },
+  "journeyInProgress": "در حال انجام",
+  "@journeyInProgress": {
+    "description": "journeyInProgress"
+  },
+  "journeyLocked": "قفل شده",
+  "@journeyLocked": {
+    "description": "journeyLocked"
+  },
+  "wuduThreeTimes": "۳ بار",
+  "@wuduThreeTimes": {
+    "description": "wuduThreeTimes"
+  },
+  "wuduDuaBefore": "دعا قبل از وضو",
+  "@wuduDuaBefore": {
+    "description": "wuduDuaBefore"
+  },
+  "wuduDuaAfter": "دعا بعد از وضو",
+  "@wuduDuaAfter": {
+    "description": "wuduDuaAfter"
+  },
+  "wuduDuaBeforeArabic": "بِسْمِ اللَّهِ",
+  "@wuduDuaBeforeArabic": {
+    "description": "wuduDuaBeforeArabic"
+  },
+  "wuduDuaBeforeTranslit": "Bismillāh",
+  "@wuduDuaBeforeTranslit": {
+    "description": "wuduDuaBeforeTranslit"
+  },
+  "wuduDuaBeforeTranslation": "به نام خدا",
+  "@wuduDuaBeforeTranslation": {
+    "description": "wuduDuaBeforeTranslation"
+  },
+  "wuduDuaAfterArabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+  "@wuduDuaAfterArabic": {
+    "description": "wuduDuaAfterArabic"
+  },
+  "wuduDuaAfterTranslit": "Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.",
+  "@wuduDuaAfterTranslit": {
+    "description": "wuduDuaAfterTranslit"
+  },
+  "wuduDuaAfterTranslation": "گواهی می‌دهم که هیچ معبودی جز الله نیست، یکتاست و شریکی ندارد، و گواهی می‌دهم که محمد ﷺ بنده و رسول اوست. خدایا مرا از توبه‌کاران و از پاکیزگان قرار بده.",
+  "@wuduDuaAfterTranslation": {
+    "description": "wuduDuaAfterTranslation"
+  },
+  "wuduCompleteButton": "وضو را کامل کردم",
+  "@wuduCompleteButton": {
+    "description": "wuduCompleteButton"
+  },
+  "howToPrayStepOpeningDua": "دعای افتتاح",
+  "@howToPrayStepOpeningDua": {
+    "description": "howToPrayStepOpeningDua"
+  },
+  "howToPrayStepAlFatiha": "سوره فاتحه",
+  "@howToPrayStepAlFatiha": {
+    "description": "howToPrayStepAlFatiha"
+  },
+  "howToPrayStepSurah": "سوره کوتاه",
+  "@howToPrayStepSurah": {
+    "description": "howToPrayStepSurah"
+  },
+  "howToPrayStepTashahhudShort": "تشهد (نشستن میانی)",
+  "@howToPrayStepTashahhudShort": {
+    "description": "howToPrayStepTashahhudShort"
+  },
+  "howToPrayStepSalawat": "صلوات بر پیامبر ﷺ",
+  "@howToPrayStepSalawat": {
+    "description": "howToPrayStepSalawat"
+  },
+  "howToPrayTransTakbir": "خداوند بزرگ‌ترین است",
+  "@howToPrayTransTakbir": {
+    "description": "howToPrayTransTakbir"
+  },
+  "howToPrayTransOpeningDua": "خداوندا! تو پاکی و ستایشت می‌کنم؛ نامت مبارک است، جلالت متعال است، و هیچ معبودی جز تو نیست.",
+  "@howToPrayTransOpeningDua": {
+    "description": "howToPrayTransOpeningDua"
+  },
+  "howToPrayTransFatiha": "به نام خداوند بخشنده مهربان. ستایش مخصوص خداوند، پروردگار جهانیان است. خداوند بخشنده مهربان. فرمانروای روز جزا. تنها تو را می‌پرستیم و تنها از تو یاری می‌جوییم. ما را به راه راست هدایت فرما — راه کسانی که به آن‌ها نعمت دادی، نه راه کسانی که مورد غضب قرار گرفتند، و نه راه گمراهان.",
+  "@howToPrayTransFatiha": {
+    "description": "howToPrayTransFatiha"
+  },
+  "howToPrayTransRuku": "پاک است پروردگار بزرگم",
+  "@howToPrayTransRuku": {
+    "description": "howToPrayTransRuku"
+  },
+  "howToPrayTransItidal": "خداوند کسی را که او را ستایش کند می‌شنود. پروردگارا، ستایش تنها برای توست.",
+  "@howToPrayTransItidal": {
+    "description": "howToPrayTransItidal"
+  },
+  "howToPrayTransSujood": "پاک است پروردگار اعلایم",
+  "@howToPrayTransSujood": {
+    "description": "howToPrayTransSujood"
+  },
+  "howToPrayTransJalsa": "پروردگارا، مرا ببخش",
+  "@howToPrayTransJalsa": {
+    "description": "howToPrayTransJalsa"
+  },
+  "howToPrayTransTashahhud": "همه سلام‌ها، نمازها و سخنان نیک از آنِ خداوند است. سلام بر تو ای پیامبر و رحمت و برکات خداوند. سلام بر ما و بر بندگان صالح خداوند. گواهی می‌دهم که هیچ معبودی جز خداوند نیست و محمد بنده و فرستاده اوست.",
+  "@howToPrayTransTashahhud": {
+    "description": "howToPrayTransTashahhud"
+  },
+  "howToPrayTransSalawat": "خداوندا! بر محمد و آل محمد درود فرست، همان‌گونه که بر ابراهیم و آل ابراهیم درود فرستادی — همانا تو ستوده و بزرگواری. خداوندا! بر محمد و آل محمد برکت ارزانی دار، همان‌گونه که بر ابراهیم و آل ابراهیم برکت دادی — همانا تو ستوده و بزرگواری.",
+  "@howToPrayTransSalawat": {
+    "description": "howToPrayTransSalawat"
+  },
+  "howToPrayTransTasleem": "سلام و رحمت خداوند بر شما باد",
+  "@howToPrayTransTasleem": {
+    "description": "howToPrayTransTasleem"
+  },
+  "howToPrayOpeningDuaInstruction": "این دعا را آهسته بلافاصله پس از تکبیرة الاحرام بخوانید. تنها یک‌بار در ابتدای نماز خوانده می‌شود.",
+  "@howToPrayOpeningDuaInstruction": {
+    "description": "howToPrayOpeningDuaInstruction"
+  },
+  "howToPraySurahInstruction": "پس از فاتحه، هر سوره‌ای که حفظ دارید بخوانید. سوره اخلاص (بالا) برای مبتدیان ایده‌آل است — فقط در دو رکعت اول خوانده می‌شود.",
+  "@howToPraySurahInstruction": {
+    "description": "howToPraySurahInstruction"
+  },
+  "howToPrayItidalInstruction": "هنگام برخاستن بگویید «سمع الله لمن حمده»، سپس کاملاً راست بایستید و «ربنا ولک الحمد» بگویید.",
+  "@howToPrayItidalInstruction": {
+    "description": "howToPrayItidalInstruction"
+  },
+  "howToPrayMiddleTashahhudInstruction": "پس از رکعت دوم بنشینید. هنگام شهادت انگشت سبابه راست را بلند کنید. در نمازهای سه و چهار رکعتی، پس از این نشستن دوباره بلند می‌شوید.",
+  "@howToPrayMiddleTashahhudInstruction": {
+    "description": "howToPrayMiddleTashahhudInstruction"
+  },
+  "howToPraySalawatInstruction": "بلافاصله پس از تشهد آخر، فقط در آخرین نشستن، قبل از سلام، صلوات بخوانید.",
+  "@howToPraySalawatInstruction": {
+    "description": "howToPraySalawatInstruction"
+  },
+  "howToPrayTasleemInstruction": "سرتان را به سمت راست برگردانید و سلام بدهید، سپس به سمت چپ و تکرار کنید. نماز شما پایان یافت.",
+  "@howToPrayTasleemInstruction": {
+    "description": "howToPrayTasleemInstruction"
+  },
+  "howToPrayOnceOpens": "یک بار — نماز را آغاز می‌کند",
+  "@howToPrayOnceOpens": {
+    "description": "howToPrayOnceOpens"
+  },
+  "howToPrayFirstRakahOnly": "فقط رکعت اول",
+  "@howToPrayFirstRakahOnly": {
+    "description": "howToPrayFirstRakahOnly"
+  },
+  "howToPrayFirst2RakahsOnly": "فقط دو رکعت اول",
+  "@howToPrayFirst2RakahsOnly": {
+    "description": "howToPrayFirst2RakahsOnly"
+  },
+  "howToPrayEveryRakah": "هر رکعت",
+  "@howToPrayEveryRakah": {
+    "description": "howToPrayEveryRakah"
+  },
+  "howToPrayAfter2ndRakah": "بعد از رکعت دوم",
+  "@howToPrayAfter2ndRakah": {
+    "description": "howToPrayAfter2ndRakah"
+  },
+  "howToPrayFinalSittingOnly": "فقط نشستن آخر",
+  "@howToPrayFinalSittingOnly": {
+    "description": "howToPrayFinalSittingOnly"
+  },
+  "howToPrayClosesThePrayer": "نماز را ختم می‌کند",
+  "@howToPrayClosesThePrayer": {
+    "description": "howToPrayClosesThePrayer"
+  },
+  "howToPraySectionBefore": "قبل از نماز",
+  "@howToPraySectionBefore": {
+    "description": "howToPraySectionBefore"
+  },
+  "howToPraySectionRakah": "رکعت",
+  "@howToPraySectionRakah": {
+    "description": "howToPraySectionRakah"
+  },
+  "howToPraySectionMiddleSitting": "نشستن میانی",
+  "@howToPraySectionMiddleSitting": {
+    "description": "howToPraySectionMiddleSitting"
+  },
+  "howToPraySectionFinalSitting": "نشستن آخر",
+  "@howToPraySectionFinalSitting": {
+    "description": "howToPraySectionFinalSitting"
+  },
+  "howToPrayRakahLabel": "رکعت",
+  "@howToPrayRakahLabel": {
+    "description": "howToPrayRakahLabel"
+  },
+  "howToPrayCompleteButton": "نمازم را تمام کردم",
+  "@howToPrayCompleteButton": {
+    "description": "howToPrayCompleteButton"
+  },
+  "howToPrayMashaallah": "ما شاء الله!",
+  "@howToPrayMashaallah": {
+    "description": "howToPrayMashaallah"
+  },
+  "howToPrayAccepted": "خداوند نمازت را قبول کند.",
+  "@howToPrayAccepted": {
+    "description": "howToPrayAccepted"
   }
 }

@@ -828,5 +828,288 @@
   "beginnerYourJourney": "你的旅程",
   "@beginnerYourJourney": {
     "description": "Section header for the journey / Shahada tracker"
+  },
+  "journeyMonth1Name": "第一个月：基础",
+  "@journeyMonth1Name": {
+    "description": "journeyMonth1Name"
+  },
+  "journeyMonth2Name": "第二个月：养成习惯",
+  "@journeyMonth2Name": {
+    "description": "journeyMonth2Name"
+  },
+  "journeyMonth3Name": "第三个月：深化信仰",
+  "@journeyMonth3Name": {
+    "description": "journeyMonth3Name"
+  },
+  "journeyTasksCompleted": "已完成 {done}/{total}",
+  "@journeyTasksCompleted": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyViewFull": "查看完整旅程 →",
+  "@journeyViewFull": {
+    "description": "journeyViewFull"
+  },
+  "journeyTask2_1": "连续7天完成5次礼拜",
+  "@journeyTask2_1": {
+    "description": "journeyTask2_1"
+  },
+  "journeyTask2_2": "再学10段祈祷词",
+  "@journeyTask2_2": {
+    "description": "journeyTask2_2"
+  },
+  "journeyTask2_3": "阅读《古兰经》第一卷",
+  "@journeyTask2_3": {
+    "description": "journeyTask2_3"
+  },
+  "journeyTask2_4": "学习真主99个名字",
+  "@journeyTask2_4": {
+    "description": "journeyTask2_4"
+  },
+  "journeyTask2_5": "连续7天每日使用念珠计数器",
+  "@journeyTask2_5": {
+    "description": "journeyTask2_5"
+  },
+  "journeyTask2_6": "学习圣行礼拜",
+  "@journeyTask2_6": {
+    "description": "journeyTask2_6"
+  },
+  "journeyTask2_7": "找到当地清真寺",
+  "@journeyTask2_7": {
+    "description": "journeyTask2_7"
+  },
+  "journeyTask3_1": "阅读苏拉·巴卡拉",
+  "@journeyTask3_1": {
+    "description": "journeyTask3_1"
+  },
+  "journeyTask3_2": "了解天课（扎卡特）",
+  "@journeyTask3_2": {
+    "description": "journeyTask3_2"
+  },
+  "journeyTask3_3": "了解封斋（斋戒）",
+  "@journeyTask3_3": {
+    "description": "journeyTask3_3"
+  },
+  "journeyTask3_4": "背诵3段新苏拉",
+  "@journeyTask3_4": {
+    "description": "journeyTask3_4"
+  },
+  "journeyTask3_5": "了解朝觐（哈吉）",
+  "@journeyTask3_5": {
+    "description": "journeyTask3_5"
+  },
+  "journeyTask3_6": "与他人分享伊斯兰",
+  "@journeyTask3_6": {
+    "description": "journeyTask3_6"
+  },
+  "journeyTask3_7": "完成伊斯兰词汇表",
+  "@journeyTask3_7": {
+    "description": "journeyTask3_7"
+  },
+  "journeyTimelineTitle": "我的旅程",
+  "@journeyTimelineTitle": {
+    "description": "journeyTimelineTitle"
+  },
+  "journeyCompleted": "已完成",
+  "@journeyCompleted": {
+    "description": "journeyCompleted"
+  },
+  "journeyInProgress": "进行中",
+  "@journeyInProgress": {
+    "description": "journeyInProgress"
+  },
+  "journeyLocked": "已锁定",
+  "@journeyLocked": {
+    "description": "journeyLocked"
+  },
+  "wuduThreeTimes": "3次",
+  "@wuduThreeTimes": {
+    "description": "wuduThreeTimes"
+  },
+  "wuduDuaBefore": "净礼前的祈祷",
+  "@wuduDuaBefore": {
+    "description": "wuduDuaBefore"
+  },
+  "wuduDuaAfter": "净礼后的祈祷",
+  "@wuduDuaAfter": {
+    "description": "wuduDuaAfter"
+  },
+  "wuduDuaBeforeArabic": "بِسْمِ اللَّهِ",
+  "@wuduDuaBeforeArabic": {
+    "description": "wuduDuaBeforeArabic"
+  },
+  "wuduDuaBeforeTranslit": "Bismillāh",
+  "@wuduDuaBeforeTranslit": {
+    "description": "wuduDuaBeforeTranslit"
+  },
+  "wuduDuaBeforeTranslation": "奉真主之名",
+  "@wuduDuaBeforeTranslation": {
+    "description": "wuduDuaBeforeTranslation"
+  },
+  "wuduDuaAfterArabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+  "@wuduDuaAfterArabic": {
+    "description": "wuduDuaAfterArabic"
+  },
+  "wuduDuaAfterTranslit": "Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.",
+  "@wuduDuaAfterTranslit": {
+    "description": "wuduDuaAfterTranslit"
+  },
+  "wuduDuaAfterTranslation": "我作证万物非主，唯有真主，独一无二，无与伦比。我作证穆罕默德是祂的仆人和使者。主啊，使我成为悔过者，使我成为清洁者。",
+  "@wuduDuaAfterTranslation": {
+    "description": "wuduDuaAfterTranslation"
+  },
+  "wuduCompleteButton": "我完成了净礼",
+  "@wuduCompleteButton": {
+    "description": "wuduCompleteButton"
+  },
+  "howToPrayStepOpeningDua": "开场祈祷",
+  "@howToPrayStepOpeningDua": {
+    "description": "howToPrayStepOpeningDua"
+  },
+  "howToPrayStepAlFatiha": "法提哈章",
+  "@howToPrayStepAlFatiha": {
+    "description": "howToPrayStepAlFatiha"
+  },
+  "howToPrayStepSurah": "短章",
+  "@howToPrayStepSurah": {
+    "description": "howToPrayStepSurah"
+  },
+  "howToPrayStepTashahhudShort": "作证词（中间坐）",
+  "@howToPrayStepTashahhudShort": {
+    "description": "howToPrayStepTashahhudShort"
+  },
+  "howToPrayStepSalawat": "向先知 ﷺ 祈祷",
+  "@howToPrayStepSalawat": {
+    "description": "howToPrayStepSalawat"
+  },
+  "howToPrayTransTakbir": "真主至大",
+  "@howToPrayTransTakbir": {
+    "description": "howToPrayTransTakbir"
+  },
+  "howToPrayTransOpeningDua": "赞美你，真主啊，以你的赞美；你的名字是吉祥的，你的尊严是崇高的，除你之外无真主。",
+  "@howToPrayTransOpeningDua": {
+    "description": "howToPrayTransOpeningDua"
+  },
+  "howToPrayTransFatiha": "以至仁至慈的真主之名。一切赞美归真主，全世界的主。至仁至慈的主。报应日的主。我们只崇拜你，只向你求助。求你引导我们走上正路——你所赐恩典的人们的路，不是那些受谴怒的人的路，也不是那些迷途的人的路。",
+  "@howToPrayTransFatiha": {
+    "description": "howToPrayTransFatiha"
+  },
+  "howToPrayTransRuku": "赞美我的伟大之主",
+  "@howToPrayTransRuku": {
+    "description": "howToPrayTransRuku"
+  },
+  "howToPrayTransItidal": "真主倾听赞美祂之人。我们的主，一切赞美归于你。",
+  "@howToPrayTransItidal": {
+    "description": "howToPrayTransItidal"
+  },
+  "howToPrayTransSujood": "赞美我的至高之主",
+  "@howToPrayTransSujood": {
+    "description": "howToPrayTransSujood"
+  },
+  "howToPrayTransJalsa": "我的主，求你饶恕我",
+  "@howToPrayTransJalsa": {
+    "description": "howToPrayTransJalsa"
+  },
+  "howToPrayTransTashahhud": "一切问候、祈祷和美言都属于真主。愿真主赐平安给你，先知啊，以及祂的慈悯与祝福。愿真主赐平安给我们和祂的虔诚仆人。我作证除真主外无神，我作证穆罕默德是祂的仆人和使者。",
+  "@howToPrayTransTashahhud": {
+    "description": "howToPrayTransTashahhud"
+  },
+  "howToPrayTransSalawat": "真主啊，求你赐福于穆罕默德及其家人，犹如你赐福于易卜拉欣及其家人——你确是值得赞美的、尊贵的。真主啊，求你赐恩于穆罕默德及其家人，犹如你赐恩于易卜拉欣及其家人——你确是值得赞美的、尊贵的。",
+  "@howToPrayTransSalawat": {
+    "description": "howToPrayTransSalawat"
+  },
+  "howToPrayTransTasleem": "愿平安与真主的慈悯降于你们",
+  "@howToPrayTransTasleem": {
+    "description": "howToPrayTransTasleem"
+  },
+  "howToPrayOpeningDuaInstruction": "在开场大赞词之后，轻声诵读此祈祷词。仅在礼拜开始时诵读一次。",
+  "@howToPrayOpeningDuaInstruction": {
+    "description": "howToPrayOpeningDuaInstruction"
+  },
+  "howToPraySurahInstruction": "法提哈之后，诵读你记住的任何章节。以哈斯章（如上）非常适合初学者——仅在前两拜诵读。",
+  "@howToPraySurahInstruction": {
+    "description": "howToPraySurahInstruction"
+  },
+  "howToPrayItidalInstruction": "起身时念'萨米阿拉呼',起立后念'拉巴那瓦拉卡勒罕'。",
+  "@howToPrayItidalInstruction": {
+    "description": "howToPrayItidalInstruction"
+  },
+  "howToPrayMiddleTashahhudInstruction": "第二拜后坐下，念作证词时举起右手食指。三拜和四拜礼拜中，此后将再次起立。",
+  "@howToPrayMiddleTashahhudInstruction": {
+    "description": "howToPrayMiddleTashahhudInstruction"
+  },
+  "howToPraySalawatInstruction": "在最后的作证词之后，仅在最后一次坐中，道萨拉姆之前，诵读祈祷词。",
+  "@howToPraySalawatInstruction": {
+    "description": "howToPraySalawatInstruction"
+  },
+  "howToPrayTasleemInstruction": "头转向右边，诵读萨拉姆，再转向左边重复。您的礼拜已完成。",
+  "@howToPrayTasleemInstruction": {
+    "description": "howToPrayTasleemInstruction"
+  },
+  "howToPrayOnceOpens": "一次——开始礼拜",
+  "@howToPrayOnceOpens": {
+    "description": "howToPrayOnceOpens"
+  },
+  "howToPrayFirstRakahOnly": "仅第一拜",
+  "@howToPrayFirstRakahOnly": {
+    "description": "howToPrayFirstRakahOnly"
+  },
+  "howToPrayFirst2RakahsOnly": "仅前两拜",
+  "@howToPrayFirst2RakahsOnly": {
+    "description": "howToPrayFirst2RakahsOnly"
+  },
+  "howToPrayEveryRakah": "每拜",
+  "@howToPrayEveryRakah": {
+    "description": "howToPrayEveryRakah"
+  },
+  "howToPrayAfter2ndRakah": "第二拜后",
+  "@howToPrayAfter2ndRakah": {
+    "description": "howToPrayAfter2ndRakah"
+  },
+  "howToPrayFinalSittingOnly": "仅最后坐",
+  "@howToPrayFinalSittingOnly": {
+    "description": "howToPrayFinalSittingOnly"
+  },
+  "howToPrayClosesThePrayer": "结束礼拜",
+  "@howToPrayClosesThePrayer": {
+    "description": "howToPrayClosesThePrayer"
+  },
+  "howToPraySectionBefore": "礼拜前",
+  "@howToPraySectionBefore": {
+    "description": "howToPraySectionBefore"
+  },
+  "howToPraySectionRakah": "拜",
+  "@howToPraySectionRakah": {
+    "description": "howToPraySectionRakah"
+  },
+  "howToPraySectionMiddleSitting": "中间坐",
+  "@howToPraySectionMiddleSitting": {
+    "description": "howToPraySectionMiddleSitting"
+  },
+  "howToPraySectionFinalSitting": "最后坐",
+  "@howToPraySectionFinalSitting": {
+    "description": "howToPraySectionFinalSitting"
+  },
+  "howToPrayRakahLabel": "拜",
+  "@howToPrayRakahLabel": {
+    "description": "howToPrayRakahLabel"
+  },
+  "howToPrayCompleteButton": "我已完成礼拜",
+  "@howToPrayCompleteButton": {
+    "description": "howToPrayCompleteButton"
+  },
+  "howToPrayMashaallah": "马沙阿拉！",
+  "@howToPrayMashaallah": {
+    "description": "howToPrayMashaallah"
+  },
+  "howToPrayAccepted": "愿真主接受您的礼拜。",
+  "@howToPrayAccepted": {
+    "description": "howToPrayAccepted"
   }
 }

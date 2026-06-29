@@ -828,5 +828,288 @@
   "beginnerYourJourney": "আপনার যাত্রা",
   "@beginnerYourJourney": {
     "description": "Section header for the journey / Shahada tracker"
+  },
+  "journeyMonth1Name": "মাস ১: ভিত্তি",
+  "@journeyMonth1Name": {
+    "description": "journeyMonth1Name"
+  },
+  "journeyMonth2Name": "মাস ২: অভ্যাস গঠন",
+  "@journeyMonth2Name": {
+    "description": "journeyMonth2Name"
+  },
+  "journeyMonth3Name": "মাস ৩: ইমান গভীর করা",
+  "@journeyMonth3Name": {
+    "description": "journeyMonth3Name"
+  },
+  "journeyTasksCompleted": "{done}/{total} সম্পন্ন",
+  "@journeyTasksCompleted": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyViewFull": "সম্পূর্ণ যাত্রা দেখুন →",
+  "@journeyViewFull": {
+    "description": "journeyViewFull"
+  },
+  "journeyTask2_1": "৭ দিন সব ৫ ওয়াক্ত নামাজ পড়ুন",
+  "@journeyTask2_1": {
+    "description": "journeyTask2_1"
+  },
+  "journeyTask2_2": "আরো ১০টি দোয়া শিখুন",
+  "@journeyTask2_2": {
+    "description": "journeyTask2_2"
+  },
+  "journeyTask2_3": "কুরআনের প্রথম জুজ পড়ুন",
+  "@journeyTask2_3": {
+    "description": "journeyTask2_3"
+  },
+  "journeyTask2_4": "আল্লাহর ৯৯ নাম শিখুন",
+  "@journeyTask2_4": {
+    "description": "journeyTask2_4"
+  },
+  "journeyTask2_5": "৭ দিন প্রতিদিন তাসবিহ কাউন্টার ব্যবহার করুন",
+  "@journeyTask2_5": {
+    "description": "journeyTask2_5"
+  },
+  "journeyTask2_6": "সুন্নাত নামাজ শিখুন",
+  "@journeyTask2_6": {
+    "description": "journeyTask2_6"
+  },
+  "journeyTask2_7": "আপনার স্থানীয় মসজিদ খুঁজুন",
+  "@journeyTask2_7": {
+    "description": "journeyTask2_7"
+  },
+  "journeyTask3_1": "সূরাহ আল-বাকারা পড়ুন",
+  "@journeyTask3_1": {
+    "description": "journeyTask3_1"
+  },
+  "journeyTask3_2": "জাকাত সম্পর্কে জানুন",
+  "@journeyTask3_2": {
+    "description": "journeyTask3_2"
+  },
+  "journeyTask3_3": "রোজা (সাওম) সম্পর্কে জানুন",
+  "@journeyTask3_3": {
+    "description": "journeyTask3_3"
+  },
+  "journeyTask3_4": "৩টি নতুন সূরাহ মুখস্থ করুন",
+  "@journeyTask3_4": {
+    "description": "journeyTask3_4"
+  },
+  "journeyTask3_5": "হজ্জ সম্পর্কে জানুন",
+  "@journeyTask3_5": {
+    "description": "journeyTask3_5"
+  },
+  "journeyTask3_6": "কারোর সাথে ইসলাম শেয়ার করুন",
+  "@journeyTask3_6": {
+    "description": "journeyTask3_6"
+  },
+  "journeyTask3_7": "ইসলামিক শব্দকোষ সম্পন্ন করুন",
+  "@journeyTask3_7": {
+    "description": "journeyTask3_7"
+  },
+  "journeyTimelineTitle": "আমার যাত্রা",
+  "@journeyTimelineTitle": {
+    "description": "journeyTimelineTitle"
+  },
+  "journeyCompleted": "সম্পন্ন",
+  "@journeyCompleted": {
+    "description": "journeyCompleted"
+  },
+  "journeyInProgress": "চলমান",
+  "@journeyInProgress": {
+    "description": "journeyInProgress"
+  },
+  "journeyLocked": "বন্ধ",
+  "@journeyLocked": {
+    "description": "journeyLocked"
+  },
+  "wuduThreeTimes": "৩ বার",
+  "@wuduThreeTimes": {
+    "description": "wuduThreeTimes"
+  },
+  "wuduDuaBefore": "ওজুর আগের দোয়া",
+  "@wuduDuaBefore": {
+    "description": "wuduDuaBefore"
+  },
+  "wuduDuaAfter": "ওজুর পরের দোয়া",
+  "@wuduDuaAfter": {
+    "description": "wuduDuaAfter"
+  },
+  "wuduDuaBeforeArabic": "بِسْمِ اللَّهِ",
+  "@wuduDuaBeforeArabic": {
+    "description": "wuduDuaBeforeArabic"
+  },
+  "wuduDuaBeforeTranslit": "Bismillāh",
+  "@wuduDuaBeforeTranslit": {
+    "description": "wuduDuaBeforeTranslit"
+  },
+  "wuduDuaBeforeTranslation": "আল্লাহর নামে",
+  "@wuduDuaBeforeTranslation": {
+    "description": "wuduDuaBeforeTranslation"
+  },
+  "wuduDuaAfterArabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+  "@wuduDuaAfterArabic": {
+    "description": "wuduDuaAfterArabic"
+  },
+  "wuduDuaAfterTranslit": "Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.",
+  "@wuduDuaAfterTranslit": {
+    "description": "wuduDuaAfterTranslit"
+  },
+  "wuduDuaAfterTranslation": "আমি সাক্ষ্য দিচ্ছি যে আল্লাহ ছাড়া কোনো সত্যিকারের ইলাহ নেই, তিনি একক, তাঁর কোনো অংশীদার নেই, এবং আমি সাক্ষ্য দিচ্ছি যে মুহাম্মদ ﷺ তাঁর বান্দা ও রাসূল। হে আল্লাহ, আমাকে তাওবাকারীদের মধ্যে এবং পবিত্রতা অর্জনকারীদের মধ্যে গণ্য করুন।",
+  "@wuduDuaAfterTranslation": {
+    "description": "wuduDuaAfterTranslation"
+  },
+  "wuduCompleteButton": "আমি ওজু সম্পন্ন করেছি",
+  "@wuduCompleteButton": {
+    "description": "wuduCompleteButton"
+  },
+  "howToPrayStepOpeningDua": "শুরুর দু'আ",
+  "@howToPrayStepOpeningDua": {
+    "description": "howToPrayStepOpeningDua"
+  },
+  "howToPrayStepAlFatiha": "সূরা আল-ফাতিহা",
+  "@howToPrayStepAlFatiha": {
+    "description": "howToPrayStepAlFatiha"
+  },
+  "howToPrayStepSurah": "ছোট সূরা",
+  "@howToPrayStepSurah": {
+    "description": "howToPrayStepSurah"
+  },
+  "howToPrayStepTashahhudShort": "তাশাহহুদ (মধ্যবর্তী বসা)",
+  "@howToPrayStepTashahhudShort": {
+    "description": "howToPrayStepTashahhudShort"
+  },
+  "howToPrayStepSalawat": "নবীর ﷺ উপর দরুদ",
+  "@howToPrayStepSalawat": {
+    "description": "howToPrayStepSalawat"
+  },
+  "howToPrayTransTakbir": "আল্লাহ সর্বমহান",
+  "@howToPrayTransTakbir": {
+    "description": "howToPrayTransTakbir"
+  },
+  "howToPrayTransOpeningDua": "হে আল্লাহ! তুমি পবিত্র এবং তোমার প্রশংসা করি; তোমার নাম বরকতময়, তোমার মহিমা সর্বোচ্চ, তুমি ছাড়া কোনো ইলাহ নেই।",
+  "@howToPrayTransOpeningDua": {
+    "description": "howToPrayTransOpeningDua"
+  },
+  "howToPrayTransFatiha": "পরম করুণাময়, অতি দয়ালু আল্লাহর নামে। সমস্ত প্রশংসা বিশ্বজগতের প্রতিপালক আল্লাহর জন্য। পরম করুণাময়, অতি দয়ালু। বিচার দিনের অধিপতি। শুধু তোমারই আমরা ইবাদত করি এবং শুধু তোমার কাছেই সাহায্য চাই। আমাদের সরল পথে পরিচালিত করো — যাদের প্রতি তুমি অনুগ্রহ করেছ তাদের পথে, যাদের উপর ক্রোধ হয়েছে তাদের পথে নয়, এবং যারা পথভ্রষ্ট তাদের পথেও নয়।",
+  "@howToPrayTransFatiha": {
+    "description": "howToPrayTransFatiha"
+  },
+  "howToPrayTransRuku": "আমার মহান প্রতিপালকের পবিত্রতা বর্ণনা করি",
+  "@howToPrayTransRuku": {
+    "description": "howToPrayTransRuku"
+  },
+  "howToPrayTransItidal": "আল্লাহ তার কথা শুনেন যে তাঁর প্রশংসা করে। হে আমাদের প্রতিপালক, সকল প্রশংসা তোমার জন্য।",
+  "@howToPrayTransItidal": {
+    "description": "howToPrayTransItidal"
+  },
+  "howToPrayTransSujood": "আমার সর্বোচ্চ প্রতিপালকের পবিত্রতা বর্ণনা করি",
+  "@howToPrayTransSujood": {
+    "description": "howToPrayTransSujood"
+  },
+  "howToPrayTransJalsa": "হে আমার প্রতিপালক, আমাকে ক্ষমা করো",
+  "@howToPrayTransJalsa": {
+    "description": "howToPrayTransJalsa"
+  },
+  "howToPrayTransTashahhud": "সকল অভিবাদন, নামাজ ও ভালো কথা আল্লাহর জন্য। হে নবী, আপনার উপর শান্তি বর্ষিত হোক এবং আল্লাহর রহমত ও বরকত। আমাদের এবং আল্লাহর সৎ বান্দাদের উপর শান্তি বর্ষিত হোক। আমি সাক্ষ্য দিচ্ছি যে আল্লাহ ছাড়া কোনো ইলাহ নেই এবং মুহাম্মদ তাঁর বান্দা ও রাসূল।",
+  "@howToPrayTransTashahhud": {
+    "description": "howToPrayTransTashahhud"
+  },
+  "howToPrayTransSalawat": "হে আল্লাহ, মুহাম্মদ ﷺ এবং মুহাম্মদের পরিবারের উপর রহমত বর্ষণ করো যেভাবে তুমি ইব্রাহিম এবং ইব্রাহিমের পরিবারের উপর রহমত বর্ষণ করেছিলে — নিশ্চয়ই তুমি প্রশংসনীয় ও মহিমান্বিত। হে আল্লাহ, মুহাম্মদ এবং তাঁর পরিবারের উপর বরকত দাও যেভাবে তুমি ইব্রাহিম এবং তাঁর পরিবারের উপর বরকত দিয়েছিলে — নিশ্চয়ই তুমি প্রশংসনীয় ও মহিমান্বিত।",
+  "@howToPrayTransSalawat": {
+    "description": "howToPrayTransSalawat"
+  },
+  "howToPrayTransTasleem": "তোমাদের উপর শান্তি ও আল্লাহর রহমত বর্ষিত হোক",
+  "@howToPrayTransTasleem": {
+    "description": "howToPrayTransTasleem"
+  },
+  "howToPrayOpeningDuaInstruction": "তাকবিরের পরপরই এই দু'আ আস্তে পড়ুন। এটি শুধু একবার, নামাজের একদম শুরুতে পড়া হয়।",
+  "@howToPrayOpeningDuaInstruction": {
+    "description": "howToPrayOpeningDuaInstruction"
+  },
+  "howToPraySurahInstruction": "ফাতিহার পর যে কোনো সূরা পড়ুন। সূরা ইখলাস (উপরে) নতুনদের জন্য আদর্শ — শুধু প্রথম দুই রাকাতে পড়া হয়।",
+  "@howToPraySurahInstruction": {
+    "description": "howToPraySurahInstruction"
+  },
+  "howToPrayItidalInstruction": "উঠার সময় 'সামিআল্লাহু লিমান হামিদাহ' বলুন, তারপর সোজা দাঁড়িয়ে 'রব্বানা লাকাল হামদ' বলুন।",
+  "@howToPrayItidalInstruction": {
+    "description": "howToPrayItidalInstruction"
+  },
+  "howToPrayMiddleTashahhudInstruction": "২য় রাকাতের পর বসুন। শাহাদাত পড়ার সময় ডান তর্জনী উঠান। ৩ ও ৪ রাকাত নামাজে এর পর আবার উঠতে হবে।",
+  "@howToPrayMiddleTashahhudInstruction": {
+    "description": "howToPrayMiddleTashahhudInstruction"
+  },
+  "howToPraySalawatInstruction": "শেষ তাশাহহুদের পরপরই দরুদ পড়ুন, শুধু শেষ বসায়, সালামের আগে।",
+  "@howToPraySalawatInstruction": {
+    "description": "howToPraySalawatInstruction"
+  },
+  "howToPrayTasleemInstruction": "মাথা ডানদিকে ঘুরিয়ে সালাম দিন, তারপর বামদিকে ঘুরিয়ে পুনরায় বলুন। আপনার নামাজ সম্পন্ন হয়েছে।",
+  "@howToPrayTasleemInstruction": {
+    "description": "howToPrayTasleemInstruction"
+  },
+  "howToPrayOnceOpens": "একবার — নামাজ শুরু হয়",
+  "@howToPrayOnceOpens": {
+    "description": "howToPrayOnceOpens"
+  },
+  "howToPrayFirstRakahOnly": "শুধু ১ম রাকাত",
+  "@howToPrayFirstRakahOnly": {
+    "description": "howToPrayFirstRakahOnly"
+  },
+  "howToPrayFirst2RakahsOnly": "শুধু প্রথম ২ রাকাত",
+  "@howToPrayFirst2RakahsOnly": {
+    "description": "howToPrayFirst2RakahsOnly"
+  },
+  "howToPrayEveryRakah": "প্রতি রাকাতে",
+  "@howToPrayEveryRakah": {
+    "description": "howToPrayEveryRakah"
+  },
+  "howToPrayAfter2ndRakah": "২য় রাকাতের পর",
+  "@howToPrayAfter2ndRakah": {
+    "description": "howToPrayAfter2ndRakah"
+  },
+  "howToPrayFinalSittingOnly": "শুধু শেষ বসায়",
+  "@howToPrayFinalSittingOnly": {
+    "description": "howToPrayFinalSittingOnly"
+  },
+  "howToPrayClosesThePrayer": "নামাজ শেষ করে",
+  "@howToPrayClosesThePrayer": {
+    "description": "howToPrayClosesThePrayer"
+  },
+  "howToPraySectionBefore": "নামাজের আগে",
+  "@howToPraySectionBefore": {
+    "description": "howToPraySectionBefore"
+  },
+  "howToPraySectionRakah": "রাকাত",
+  "@howToPraySectionRakah": {
+    "description": "howToPraySectionRakah"
+  },
+  "howToPraySectionMiddleSitting": "মধ্যবর্তী বসা",
+  "@howToPraySectionMiddleSitting": {
+    "description": "howToPraySectionMiddleSitting"
+  },
+  "howToPraySectionFinalSitting": "শেষ বসা",
+  "@howToPraySectionFinalSitting": {
+    "description": "howToPraySectionFinalSitting"
+  },
+  "howToPrayRakahLabel": "রাকাত",
+  "@howToPrayRakahLabel": {
+    "description": "howToPrayRakahLabel"
+  },
+  "howToPrayCompleteButton": "আমি নামাজ শেষ করেছি",
+  "@howToPrayCompleteButton": {
+    "description": "howToPrayCompleteButton"
+  },
+  "howToPrayMashaallah": "মাশাআল্লাহ!",
+  "@howToPrayMashaallah": {
+    "description": "howToPrayMashaallah"
+  },
+  "howToPrayAccepted": "আল্লাহ আপনার নামাজ কবুল করুন।",
+  "@howToPrayAccepted": {
+    "description": "howToPrayAccepted"
   }
 }

@@ -828,5 +828,288 @@
   "beginnerYourJourney": "SUA JORNADA",
   "@beginnerYourJourney": {
     "description": "Section header for the journey / Shahada tracker"
+  },
+  "journeyMonth1Name": "Mês 1: O Fundamento",
+  "@journeyMonth1Name": {
+    "description": "journeyMonth1Name"
+  },
+  "journeyMonth2Name": "Mês 2: Construindo Hábitos",
+  "@journeyMonth2Name": {
+    "description": "journeyMonth2Name"
+  },
+  "journeyMonth3Name": "Mês 3: Aprofundando a Fé",
+  "@journeyMonth3Name": {
+    "description": "journeyMonth3Name"
+  },
+  "journeyTasksCompleted": "{done}/{total} concluído",
+  "@journeyTasksCompleted": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyViewFull": "Ver jornada completa →",
+  "@journeyViewFull": {
+    "description": "journeyViewFull"
+  },
+  "journeyTask2_1": "Realizar as 5 orações por 7 dias",
+  "@journeyTask2_1": {
+    "description": "journeyTask2_1"
+  },
+  "journeyTask2_2": "Aprender mais 10 Duas",
+  "@journeyTask2_2": {
+    "description": "journeyTask2_2"
+  },
+  "journeyTask2_3": "Ler o primeiro Juz do Alcörão",
+  "@journeyTask2_3": {
+    "description": "journeyTask2_3"
+  },
+  "journeyTask2_4": "Aprender os 99 Nomes de Allah",
+  "@journeyTask2_4": {
+    "description": "journeyTask2_4"
+  },
+  "journeyTask2_5": "Usar o contador de Tasbih diariamente por 7 dias",
+  "@journeyTask2_5": {
+    "description": "journeyTask2_5"
+  },
+  "journeyTask2_6": "Aprender as orações Sunnah",
+  "@journeyTask2_6": {
+    "description": "journeyTask2_6"
+  },
+  "journeyTask2_7": "Encontrar sua Masjid local",
+  "@journeyTask2_7": {
+    "description": "journeyTask2_7"
+  },
+  "journeyTask3_1": "Ler a Surah Al-Baqarah",
+  "@journeyTask3_1": {
+    "description": "journeyTask3_1"
+  },
+  "journeyTask3_2": "Aprender sobre Zakat",
+  "@journeyTask3_2": {
+    "description": "journeyTask3_2"
+  },
+  "journeyTask3_3": "Aprender sobre o Jejum (Sawm)",
+  "@journeyTask3_3": {
+    "description": "journeyTask3_3"
+  },
+  "journeyTask3_4": "Memorizar 3 novas Surahs",
+  "@journeyTask3_4": {
+    "description": "journeyTask3_4"
+  },
+  "journeyTask3_5": "Aprender sobre o Hajj",
+  "@journeyTask3_5": {
+    "description": "journeyTask3_5"
+  },
+  "journeyTask3_6": "Compartilhar o Islam com alguém",
+  "@journeyTask3_6": {
+    "description": "journeyTask3_6"
+  },
+  "journeyTask3_7": "Completar o Glossário Islâmico",
+  "@journeyTask3_7": {
+    "description": "journeyTask3_7"
+  },
+  "journeyTimelineTitle": "Minha Jornada",
+  "@journeyTimelineTitle": {
+    "description": "journeyTimelineTitle"
+  },
+  "journeyCompleted": "Concluído",
+  "@journeyCompleted": {
+    "description": "journeyCompleted"
+  },
+  "journeyInProgress": "Em Andamento",
+  "@journeyInProgress": {
+    "description": "journeyInProgress"
+  },
+  "journeyLocked": "Bloqueado",
+  "@journeyLocked": {
+    "description": "journeyLocked"
+  },
+  "wuduThreeTimes": "3 vezes",
+  "@wuduThreeTimes": {
+    "description": "wuduThreeTimes"
+  },
+  "wuduDuaBefore": "Du'a antes do Wudu",
+  "@wuduDuaBefore": {
+    "description": "wuduDuaBefore"
+  },
+  "wuduDuaAfter": "Du'a depois do Wudu",
+  "@wuduDuaAfter": {
+    "description": "wuduDuaAfter"
+  },
+  "wuduDuaBeforeArabic": "بِسْمِ اللَّهِ",
+  "@wuduDuaBeforeArabic": {
+    "description": "wuduDuaBeforeArabic"
+  },
+  "wuduDuaBeforeTranslit": "Bismillāh",
+  "@wuduDuaBeforeTranslit": {
+    "description": "wuduDuaBeforeTranslit"
+  },
+  "wuduDuaBeforeTranslation": "Em nome de Allah",
+  "@wuduDuaBeforeTranslation": {
+    "description": "wuduDuaBeforeTranslation"
+  },
+  "wuduDuaAfterArabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+  "@wuduDuaAfterArabic": {
+    "description": "wuduDuaAfterArabic"
+  },
+  "wuduDuaAfterTranslit": "Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.",
+  "@wuduDuaAfterTranslit": {
+    "description": "wuduDuaAfterTranslit"
+  },
+  "wuduDuaAfterTranslation": "Testemunho que não há divindade digna de adoração exceto Allah, Único, sem associados, e testemunho que Muhammad é Seu servo e mensageiro. Ó Allah, torna-me dos que se arrependem e dos que se purificam.",
+  "@wuduDuaAfterTranslation": {
+    "description": "wuduDuaAfterTranslation"
+  },
+  "wuduCompleteButton": "Completei o Wudu",
+  "@wuduCompleteButton": {
+    "description": "wuduCompleteButton"
+  },
+  "howToPrayStepOpeningDua": "Du'a inicial",
+  "@howToPrayStepOpeningDua": {
+    "description": "howToPrayStepOpeningDua"
+  },
+  "howToPrayStepAlFatiha": "Surata Al-Fatiha",
+  "@howToPrayStepAlFatiha": {
+    "description": "howToPrayStepAlFatiha"
+  },
+  "howToPrayStepSurah": "Surata curta",
+  "@howToPrayStepSurah": {
+    "description": "howToPrayStepSurah"
+  },
+  "howToPrayStepTashahhudShort": "Tashahhud (sentada intermediária)",
+  "@howToPrayStepTashahhudShort": {
+    "description": "howToPrayStepTashahhudShort"
+  },
+  "howToPrayStepSalawat": "Salawat ao Profeta ﷺ",
+  "@howToPrayStepSalawat": {
+    "description": "howToPrayStepSalawat"
+  },
+  "howToPrayTransTakbir": "Allah é o Maior",
+  "@howToPrayTransTakbir": {
+    "description": "howToPrayTransTakbir"
+  },
+  "howToPrayTransOpeningDua": "Glória seja a Ti, ó Allah, e com Teu louvor; bendito é Teu nome, exaltada é Tua majestade, não há deus além de Ti.",
+  "@howToPrayTransOpeningDua": {
+    "description": "howToPrayTransOpeningDua"
+  },
+  "howToPrayTransFatiha": "Em nome de Allah, o Clemente, o Misericordioso. Todo o louvor pertence a Allah, Senhor dos mundos. O Clemente, o Misericordioso. Soberano do Dia do Juízo. Somente a Ti adoramos e somente a Ti pedimos socorro. Guia-nos pelo caminho reto — o caminho daqueles a quem abençoaste, não o dos que mereceram a ira, nem o dos que se extraviaram.",
+  "@howToPrayTransFatiha": {
+    "description": "howToPrayTransFatiha"
+  },
+  "howToPrayTransRuku": "Glória ao meu Senhor, o Supremo",
+  "@howToPrayTransRuku": {
+    "description": "howToPrayTransRuku"
+  },
+  "howToPrayTransItidal": "Allah ouve aquele que O louva. Nosso Senhor, e a Ti todo o louvor.",
+  "@howToPrayTransItidal": {
+    "description": "howToPrayTransItidal"
+  },
+  "howToPrayTransSujood": "Glória ao meu Senhor, o Altíssimo",
+  "@howToPrayTransSujood": {
+    "description": "howToPrayTransSujood"
+  },
+  "howToPrayTransJalsa": "Meu Senhor, perdoa-me",
+  "@howToPrayTransJalsa": {
+    "description": "howToPrayTransJalsa"
+  },
+  "howToPrayTransTashahhud": "Todas as saudações, orações e boas palavras pertencem a Allah. Paz seja contigo, ó Profeta, e a misericórdia de Allah e Suas bênçãos. Paz seja conosco e com os servos justos de Allah. Testemunho que não há deus além de Allah, e testemunho que Muhammad é Seu servo e mensageiro.",
+  "@howToPrayTransTashahhud": {
+    "description": "howToPrayTransTashahhud"
+  },
+  "howToPrayTransSalawat": "Ó Allah, envia Tua graça sobre Muhammad e a família de Muhammad, como enviaste Tua graça sobre Ibrahima e a família de Ibrahima — Tu és o Mais Digno de louvor, o Mais Glorioso. Ó Allah, abençoa Muhammad e a família de Muhammad, como abençoaste Ibrahima e a família de Ibrahima — Tu és o Mais Digno de louvor, o Mais Glorioso.",
+  "@howToPrayTransSalawat": {
+    "description": "howToPrayTransSalawat"
+  },
+  "howToPrayTransTasleem": "Que a paz e a misericórdia de Allah estejam convosco",
+  "@howToPrayTransTasleem": {
+    "description": "howToPrayTransTasleem"
+  },
+  "howToPrayOpeningDuaInstruction": "Recite isso suavemente logo após o Takbir inicial. É dito apenas uma vez, no início da oração.",
+  "@howToPrayOpeningDuaInstruction": {
+    "description": "howToPrayOpeningDuaInstruction"
+  },
+  "howToPraySurahInstruction": "Após Al-Fatiha, recite qualquer surata memorizada. A surata Al-Ikhlas (acima) é perfeita para iniciantes — recitada apenas nas duas primeiras rak'ahs.",
+  "@howToPraySurahInstruction": {
+    "description": "howToPraySurahInstruction"
+  },
+  "howToPrayItidalInstruction": "Diga 'Sami' Allahu liman hamidah' ao se levantar, depois fique ereto antes de dizer 'Rabbana wa lakal hamd'.",
+  "@howToPrayItidalInstruction": {
+    "description": "howToPrayItidalInstruction"
+  },
+  "howToPrayMiddleTashahhudInstruction": "Sente-se após a 2ª rak'ah. Levante o dedo indicador direito ao pronunciar a Shahada. Em orações de 3 e 4 rak'ahs, você se levantará novamente.",
+  "@howToPrayMiddleTashahhudInstruction": {
+    "description": "howToPrayMiddleTashahhudInstruction"
+  },
+  "howToPraySalawatInstruction": "Recite o Salawat logo após o Tashahhud final, apenas na última sentada, antes do Tasleem.",
+  "@howToPraySalawatInstruction": {
+    "description": "howToPraySalawatInstruction"
+  },
+  "howToPrayTasleemInstruction": "Vire a cabeça para a direita e diga o Tasleem, depois para a esquerda e repita. Sua oração está concluída.",
+  "@howToPrayTasleemInstruction": {
+    "description": "howToPrayTasleemInstruction"
+  },
+  "howToPrayOnceOpens": "Uma vez — abre a oração",
+  "@howToPrayOnceOpens": {
+    "description": "howToPrayOnceOpens"
+  },
+  "howToPrayFirstRakahOnly": "Apenas 1ª rak'ah",
+  "@howToPrayFirstRakahOnly": {
+    "description": "howToPrayFirstRakahOnly"
+  },
+  "howToPrayFirst2RakahsOnly": "Apenas as 2 primeiras rak'ahs",
+  "@howToPrayFirst2RakahsOnly": {
+    "description": "howToPrayFirst2RakahsOnly"
+  },
+  "howToPrayEveryRakah": "Cada rak'ah",
+  "@howToPrayEveryRakah": {
+    "description": "howToPrayEveryRakah"
+  },
+  "howToPrayAfter2ndRakah": "Após a 2ª rak'ah",
+  "@howToPrayAfter2ndRakah": {
+    "description": "howToPrayAfter2ndRakah"
+  },
+  "howToPrayFinalSittingOnly": "Apenas sentada final",
+  "@howToPrayFinalSittingOnly": {
+    "description": "howToPrayFinalSittingOnly"
+  },
+  "howToPrayClosesThePrayer": "Encerra a oração",
+  "@howToPrayClosesThePrayer": {
+    "description": "howToPrayClosesThePrayer"
+  },
+  "howToPraySectionBefore": "Antes de Orar",
+  "@howToPraySectionBefore": {
+    "description": "howToPraySectionBefore"
+  },
+  "howToPraySectionRakah": "Rak'ah",
+  "@howToPraySectionRakah": {
+    "description": "howToPraySectionRakah"
+  },
+  "howToPraySectionMiddleSitting": "Sentada intermediária",
+  "@howToPraySectionMiddleSitting": {
+    "description": "howToPraySectionMiddleSitting"
+  },
+  "howToPraySectionFinalSitting": "Sentada final",
+  "@howToPraySectionFinalSitting": {
+    "description": "howToPraySectionFinalSitting"
+  },
+  "howToPrayRakahLabel": "Rak'ahs",
+  "@howToPrayRakahLabel": {
+    "description": "howToPrayRakahLabel"
+  },
+  "howToPrayCompleteButton": "Completei minha oração",
+  "@howToPrayCompleteButton": {
+    "description": "howToPrayCompleteButton"
+  },
+  "howToPrayMashaallah": "Masha'Allah!",
+  "@howToPrayMashaallah": {
+    "description": "howToPrayMashaallah"
+  },
+  "howToPrayAccepted": "Que Allah aceite sua oração.",
+  "@howToPrayAccepted": {
+    "description": "howToPrayAccepted"
   }
 }

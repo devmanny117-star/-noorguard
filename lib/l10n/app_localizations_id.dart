@@ -2362,4 +2362,229 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get beginnerYourJourney => 'PERJALANANMU';
+
+  @override
+  String get journeyMonth1Name => 'Bulan 1: Fondasi';
+
+  @override
+  String get journeyMonth2Name => 'Bulan 2: Membangun Kebiasaan';
+
+  @override
+  String get journeyMonth3Name => 'Bulan 3: Memperdalam Iman';
+
+  @override
+  String journeyTasksCompleted(int done, int total) {
+    return '$done/$total selesai';
+  }
+
+  @override
+  String get journeyViewFull => 'Lihat perjalanan lengkap →';
+
+  @override
+  String get journeyTask2_1 => 'Sholat 5 waktu selama 7 hari';
+
+  @override
+  String get journeyTask2_2 => 'Pelajari 10 Doa lagi';
+
+  @override
+  String get journeyTask2_3 => 'Baca Juz pertama Al-Quran';
+
+  @override
+  String get journeyTask2_4 => 'Pelajari 99 Nama Allah';
+
+  @override
+  String get journeyTask2_5 =>
+      'Gunakan Penghitung Tasbih setiap hari selama 7 hari';
+
+  @override
+  String get journeyTask2_6 => 'Pelajari sholat Sunnah';
+
+  @override
+  String get journeyTask2_7 => 'Temukan Masjid lokal Anda';
+
+  @override
+  String get journeyTask3_1 => 'Baca Surah Al-Baqarah';
+
+  @override
+  String get journeyTask3_2 => 'Pelajari tentang Zakat';
+
+  @override
+  String get journeyTask3_3 => 'Pelajari tentang Puasa (Sawm)';
+
+  @override
+  String get journeyTask3_4 => 'Hafal 3 Surah baru';
+
+  @override
+  String get journeyTask3_5 => 'Pelajari tentang Haji';
+
+  @override
+  String get journeyTask3_6 => 'Bagikan Islam kepada seseorang';
+
+  @override
+  String get journeyTask3_7 => 'Selesaikan Glosarium Islam';
+
+  @override
+  String get journeyTimelineTitle => 'Perjalanan Saya';
+
+  @override
+  String get journeyCompleted => 'Selesai';
+
+  @override
+  String get journeyInProgress => 'Sedang Berlangsung';
+
+  @override
+  String get journeyLocked => 'Terkunci';
+
+  @override
+  String get wuduThreeTimes => '3 kali';
+
+  @override
+  String get wuduDuaBefore => 'Doa Sebelum Wudu';
+
+  @override
+  String get wuduDuaAfter => 'Doa Setelah Wudu';
+
+  @override
+  String get wuduDuaBeforeArabic => 'بِسْمِ اللَّهِ';
+
+  @override
+  String get wuduDuaBeforeTranslit => 'Bismillāh';
+
+  @override
+  String get wuduDuaBeforeTranslation => 'Dengan nama Allah';
+
+  @override
+  String get wuduDuaAfterArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ';
+
+  @override
+  String get wuduDuaAfterTranslit =>
+      'Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.';
+
+  @override
+  String get wuduDuaAfterTranslation =>
+      'Aku bersaksi bahwa tidak ada tuhan yang berhak disembah selain Allah, tiada sekutu bagi-Nya, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya. Ya Allah, jadikanlah aku termasuk orang-orang yang bertaubat dan orang-orang yang mensucikan diri.';
+
+  @override
+  String get wuduCompleteButton => 'Saya telah selesai berwudu';
+
+  @override
+  String get howToPrayStepOpeningDua => 'Doa Iftitah';
+
+  @override
+  String get howToPrayStepAlFatiha => 'Surah Al-Fatihah';
+
+  @override
+  String get howToPrayStepSurah => 'Surah Pendek';
+
+  @override
+  String get howToPrayStepTashahhudShort => 'Tasyahud (Duduk Tengah)';
+
+  @override
+  String get howToPrayStepSalawat => 'Shalawat atas Nabi ﷺ';
+
+  @override
+  String get howToPrayTransTakbir => 'Allah Maha Besar';
+
+  @override
+  String get howToPrayTransOpeningDua =>
+      'Maha Suci Engkau, ya Allah, dan segala puji bagi-Mu; Maha Berkah nama-Mu, Maha Tinggi kebesaran-Mu, dan tidak ada Tuhan selain Engkau.';
+
+  @override
+  String get howToPrayTransFatiha =>
+      'Dengan menyebut nama Allah Yang Maha Pengasih lagi Maha Penyayang. Segala puji bagi Allah, Tuhan seluruh alam. Yang Maha Pengasih lagi Maha Penyayang. Pemilik hari pembalasan. Hanya kepada Engkau kami menyembah dan hanya kepada Engkau kami mohon pertolongan. Bimbinglah kami ke jalan yang lurus — jalan orang-orang yang telah Engkau beri nikmat, bukan jalan mereka yang dimurkai, dan bukan pula jalan mereka yang sesat.';
+
+  @override
+  String get howToPrayTransRuku => 'Maha Suci Tuhanku Yang Maha Agung';
+
+  @override
+  String get howToPrayTransItidal =>
+      'Allah mendengar orang yang memuji-Nya. Ya Tuhan kami, hanya bagi-Mu segala puji.';
+
+  @override
+  String get howToPrayTransSujood => 'Maha Suci Tuhanku Yang Maha Tinggi';
+
+  @override
+  String get howToPrayTransJalsa => 'Ya Tuhanku, ampunilah aku';
+
+  @override
+  String get howToPrayTransTashahhud =>
+      'Segala penghormatan, doa, dan perkataan baik adalah milik Allah. Salam sejahtera atasmu wahai Nabi, serta rahmat Allah dan keberkahan-Nya. Salam sejahtera atas kami dan atas hamba-hamba Allah yang saleh. Aku bersaksi bahwa tidak ada Tuhan selain Allah, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya.';
+
+  @override
+  String get howToPrayTransSalawat =>
+      'Ya Allah, limpahkanlah rahmat kepada Muhammad dan keluarga Muhammad, sebagaimana Engkau melimpahkan rahmat kepada Ibrahim dan keluarga Ibrahim — sesungguhnya Engkau Maha Terpuji lagi Maha Mulia. Ya Allah, berkahilah Muhammad dan keluarga Muhammad, sebagaimana Engkau memberkahi Ibrahim dan keluarga Ibrahim — sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.';
+
+  @override
+  String get howToPrayTransTasleem =>
+      'Semoga keselamatan dan rahmat Allah atas kalian';
+
+  @override
+  String get howToPrayOpeningDuaInstruction =>
+      'Bacalah doa ini dengan pelan setelah Takbiratul Ihram. Dibaca hanya sekali di awal shalat.';
+
+  @override
+  String get howToPraySurahInstruction =>
+      'Setelah Al-Fatihah, bacalah surah yang Anda hafal. Surah Al-Ikhlas (di atas) sangat cocok untuk pemula — dibaca hanya pada dua rakaat pertama.';
+
+  @override
+  String get howToPrayItidalInstruction =>
+      'Ucapkan \'Sami\' Allahu liman hamidah\' saat bangkit, lalu berdiri tegak dan ucapkan \'Rabbana wa lakal hamd\'.';
+
+  @override
+  String get howToPrayMiddleTashahhudInstruction =>
+      'Duduklah setelah rakaat ke-2. Angkat telunjuk kanan saat membaca Syahadat. Untuk shalat 3 dan 4 rakaat, Anda akan berdiri kembali setelah duduk ini.';
+
+  @override
+  String get howToPraySalawatInstruction =>
+      'Bacalah shalawat segera setelah tasyahud akhir, hanya pada duduk terakhir, sebelum salam.';
+
+  @override
+  String get howToPrayTasleemInstruction =>
+      'Palingkan kepala ke kanan dan ucapkan salam, lalu ke kiri dan ulangi. Shalat Anda telah selesai.';
+
+  @override
+  String get howToPrayOnceOpens => 'Sekali — membuka shalat';
+
+  @override
+  String get howToPrayFirstRakahOnly => 'Rakaat 1 saja';
+
+  @override
+  String get howToPrayFirst2RakahsOnly => '2 Rakaat pertama saja';
+
+  @override
+  String get howToPrayEveryRakah => 'Setiap rakaat';
+
+  @override
+  String get howToPrayAfter2ndRakah => 'Setelah rakaat ke-2';
+
+  @override
+  String get howToPrayFinalSittingOnly => 'Hanya duduk terakhir';
+
+  @override
+  String get howToPrayClosesThePrayer => 'Menutup shalat';
+
+  @override
+  String get howToPraySectionBefore => 'Sebelum Shalat';
+
+  @override
+  String get howToPraySectionRakah => 'Rakaat';
+
+  @override
+  String get howToPraySectionMiddleSitting => 'Duduk Tengah';
+
+  @override
+  String get howToPraySectionFinalSitting => 'Duduk Terakhir';
+
+  @override
+  String get howToPrayRakahLabel => 'Rakaat';
+
+  @override
+  String get howToPrayCompleteButton => 'Saya telah menyelesaikan shalat';
+
+  @override
+  String get howToPrayMashaallah => 'Masha\'Allah!';
+
+  @override
+  String get howToPrayAccepted => 'Semoga Allah menerima shalat Anda.';
 }

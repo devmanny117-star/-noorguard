@@ -2348,4 +2348,229 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get beginnerYourJourney => 'SENİN YOLCULUĞUNn';
+
+  @override
+  String get journeyMonth1Name => 'Ay 1: Temel';
+
+  @override
+  String get journeyMonth2Name => 'Ay 2: Alışkanlık Oluşturma';
+
+  @override
+  String get journeyMonth3Name => 'Ay 3: İmanı Derinleştirme';
+
+  @override
+  String journeyTasksCompleted(int done, int total) {
+    return '$done/$total tamamlandı';
+  }
+
+  @override
+  String get journeyViewFull => 'Tam yolculuğu görüntüle →';
+
+  @override
+  String get journeyTask2_1 => '7 gün boyunca 5 vakit namaz kılmak';
+
+  @override
+  String get journeyTask2_2 => '10 Dua daha öğrenmek';
+
+  @override
+  String get journeyTask2_3 => 'Kuran\'ın ilk Cüzyünü okumak';
+
+  @override
+  String get journeyTask2_4 => 'Allah\'ın 99 İsmini öğrenmek';
+
+  @override
+  String get journeyTask2_5 =>
+      '7 gün boyunca her gün Tesbih Sayıcısını kullanmak';
+
+  @override
+  String get journeyTask2_6 => 'Sünnet namazları öğrenmek';
+
+  @override
+  String get journeyTask2_7 => 'Yerel Camii\'ni bulmak';
+
+  @override
+  String get journeyTask3_1 => 'Bakara Suresini okumak';
+
+  @override
+  String get journeyTask3_2 => 'Zekat hakkında öğrenmek';
+
+  @override
+  String get journeyTask3_3 => 'Oruç (Savm) hakkında öğrenmek';
+
+  @override
+  String get journeyTask3_4 => '3 yeni Sure ezberlemek';
+
+  @override
+  String get journeyTask3_5 => 'Hac hakkında öğrenmek';
+
+  @override
+  String get journeyTask3_6 => 'Biriyle İslam\'ı paylaşmak';
+
+  @override
+  String get journeyTask3_7 => 'İslam Sözlüğünü tamamlamak';
+
+  @override
+  String get journeyTimelineTitle => 'Benim Yolculuğum';
+
+  @override
+  String get journeyCompleted => 'Tamamlandı';
+
+  @override
+  String get journeyInProgress => 'Devam Ediyor';
+
+  @override
+  String get journeyLocked => 'Kilitli';
+
+  @override
+  String get wuduThreeTimes => '3 kez';
+
+  @override
+  String get wuduDuaBefore => 'Abdest Öncesi Dua';
+
+  @override
+  String get wuduDuaAfter => 'Abdest Sonrası Dua';
+
+  @override
+  String get wuduDuaBeforeArabic => 'بِسْمِ اللَّهِ';
+
+  @override
+  String get wuduDuaBeforeTranslit => 'Bismillāh';
+
+  @override
+  String get wuduDuaBeforeTranslation => 'Allah\'ın adıyla';
+
+  @override
+  String get wuduDuaAfterArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ';
+
+  @override
+  String get wuduDuaAfterTranslit =>
+      'Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.';
+
+  @override
+  String get wuduDuaAfterTranslation =>
+      'Allah\'tan başka ibadete layık ilah olmadığına ve O\'nun ortağı bulunmadığına şehadet ederim; Muhammed\'in O\'nun kulu ve rasulü olduğuna da şehadet ederim. Allah\'ım, beni tövbe edenlerden ve temizlenenlerden eyle.';
+
+  @override
+  String get wuduCompleteButton => 'Abdestimi tamamladım';
+
+  @override
+  String get howToPrayStepOpeningDua => 'Açılış Duası';
+
+  @override
+  String get howToPrayStepAlFatiha => 'Fatiha Suresi';
+
+  @override
+  String get howToPrayStepSurah => 'Kısa Sure';
+
+  @override
+  String get howToPrayStepTashahhudShort => 'Tahiyyat (Ara Oturuş)';
+
+  @override
+  String get howToPrayStepSalawat => 'Peygambere ﷺ Salavat';
+
+  @override
+  String get howToPrayTransTakbir => 'Allah en büyüktür';
+
+  @override
+  String get howToPrayTransOpeningDua =>
+      'Seni tenzih ederim, Ya Allah, ve hamd senindir; ismin mübarektir, şanın yücedir, senden başka ilah yoktur.';
+
+  @override
+  String get howToPrayTransFatiha =>
+      'Rahman ve Rahim olan Allah\'ın adıyla. Hamd, alemlerin Rabbi Allah\'a mahsustur. Rahman\'dır, Rahim\'dir. Din Gününün sahibidir. Yalnız Sana ibadet eder ve yalnız Senden yardım dileriz. Bizi doğru yola ilet — kendilerine nimet verdiklerinin yoluna, gazaba uğrayanların ve sapkınların yoluna değil.';
+
+  @override
+  String get howToPrayTransRuku => 'Yüce Rabbimi tenzih ederim';
+
+  @override
+  String get howToPrayTransItidal =>
+      'Allah kendini öveni işitir. Rabbimiz, hamd yalnız Sanadır.';
+
+  @override
+  String get howToPrayTransSujood => 'En Yüce Rabbimi tenzih ederim';
+
+  @override
+  String get howToPrayTransJalsa => 'Rabbim, beni bağışla';
+
+  @override
+  String get howToPrayTransTashahhud =>
+      'Bütün tazimler, dualar ve güzel sözler Allah\'a aittir. Selam sana ey Peygamber, Allah\'ın rahmeti ve bereketleri de. Selam bize ve Allah\'ın salih kullarına. Allah\'tan başka ilah olmadığına ve Muhammed\'in O\'nun kulu ve elçisi olduğuna şehadet ederim.';
+
+  @override
+  String get howToPrayTransSalawat =>
+      'Allah\'ım! İbrahim\'e ve İbrahim ailesine salat ettiğin gibi, Muhammed\'e ve Muhammed ailesine de salat et — şüphesiz Sen övülmeye layıksın, şan sahibisin. Allah\'ım! İbrahim\'i ve İbrahim ailesini mübarek kıldığın gibi, Muhammed\'i ve Muhammed ailesini de mübarek kıl — şüphesiz Sen övülmeye layıksın, şan sahibisin.';
+
+  @override
+  String get howToPrayTransTasleem =>
+      'Allah\'ın selam ve rahmeti üzerinize olsun';
+
+  @override
+  String get howToPrayOpeningDuaInstruction =>
+      'İftitah tekbiri alındıktan hemen sonra bu duayı sessizce okuyun. Sadece bir kez, namazın başında okunur.';
+
+  @override
+  String get howToPraySurahInstruction =>
+      'Fatiha\'dan sonra ezberlediğiniz bir sure okuyun. İhlas Suresi (yukarıda) başlangıç için mükemmeldir — yalnızca ilk iki rekatta okunur.';
+
+  @override
+  String get howToPrayItidalInstruction =>
+      'Kalkarken \'Semi\' Allahu limen hamideh\' deyin, ardından dik durup \'Rabbena ve lekel hamd\' deyin.';
+
+  @override
+  String get howToPrayMiddleTashahhudInstruction =>
+      '2. rekattan sonra oturun. Şehadet okurken sağ işaret parmağını kaldırın. 3 ve 4 rekatlı namazlarda bu oturuştan sonra tekrar kalkacaksınız.';
+
+  @override
+  String get howToPraySalawatInstruction =>
+      'Son tahiyyattan hemen sonra, yalnızca son oturuşta, selam vermeden önce salawat okuyun.';
+
+  @override
+  String get howToPrayTasleemInstruction =>
+      'Başınızı sağa çevirin ve selam verin, ardından sola çevirin ve tekrarlayın. Namazınız tamamlanmıştır.';
+
+  @override
+  String get howToPrayOnceOpens => 'Bir kez — namazı başlatır';
+
+  @override
+  String get howToPrayFirstRakahOnly => 'Yalnızca 1. rekat';
+
+  @override
+  String get howToPrayFirst2RakahsOnly => 'Yalnızca ilk 2 rekat';
+
+  @override
+  String get howToPrayEveryRakah => 'Her rekatta';
+
+  @override
+  String get howToPrayAfter2ndRakah => '2. rekattan sonra';
+
+  @override
+  String get howToPrayFinalSittingOnly => 'Yalnızca son oturuş';
+
+  @override
+  String get howToPrayClosesThePrayer => 'Namazı kapatır';
+
+  @override
+  String get howToPraySectionBefore => 'Namazdan Önce';
+
+  @override
+  String get howToPraySectionRakah => 'Rekat';
+
+  @override
+  String get howToPraySectionMiddleSitting => 'Ara Oturuş';
+
+  @override
+  String get howToPraySectionFinalSitting => 'Son Oturuş';
+
+  @override
+  String get howToPrayRakahLabel => 'Rekat';
+
+  @override
+  String get howToPrayCompleteButton => 'Namazımı Tamamladım';
+
+  @override
+  String get howToPrayMashaallah => 'Masha\'Allah!';
+
+  @override
+  String get howToPrayAccepted => 'Allah namazınızı kabul etsin.';
 }

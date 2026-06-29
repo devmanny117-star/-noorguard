@@ -2356,4 +2356,228 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get beginnerYourJourney => 'SAFARI YAKO';
+
+  @override
+  String get journeyMonth1Name => 'Mwezi 1: Msingi';
+
+  @override
+  String get journeyMonth2Name => 'Mwezi 2: Kujenga Tabia';
+
+  @override
+  String get journeyMonth3Name => 'Mwezi 3: Kuimarisha Imani';
+
+  @override
+  String journeyTasksCompleted(int done, int total) {
+    return '$done/$total imekamilika';
+  }
+
+  @override
+  String get journeyViewFull => 'Tazama safari nzima →';
+
+  @override
+  String get journeyTask2_1 => 'Swali sala 5 kwa siku 7';
+
+  @override
+  String get journeyTask2_2 => 'Jifunze Dua 10 zaidi';
+
+  @override
+  String get journeyTask2_3 => 'Soma Juz ya kwanza ya Quran';
+
+  @override
+  String get journeyTask2_4 => 'Jifunze Majina 99 ya Allah';
+
+  @override
+  String get journeyTask2_5 => 'Tumia Kihesabu cha Tasbih kila siku kwa siku 7';
+
+  @override
+  String get journeyTask2_6 => 'Jifunze sala za Sunnah';
+
+  @override
+  String get journeyTask2_7 => 'Pata Msikiti wako wa karibu';
+
+  @override
+  String get journeyTask3_1 => 'Soma Surah Al-Baqarah';
+
+  @override
+  String get journeyTask3_2 => 'Jifunza kuhusu Zakat';
+
+  @override
+  String get journeyTask3_3 => 'Jifunza kuhusu Kufunga (Sawm)';
+
+  @override
+  String get journeyTask3_4 => 'Hifadhi Surah 3 mpya';
+
+  @override
+  String get journeyTask3_5 => 'Jifunza kuhusu Hija';
+
+  @override
+  String get journeyTask3_6 => 'Shiriki Uislamu na mtu';
+
+  @override
+  String get journeyTask3_7 => 'Kamilisha Kamusi ya Kiislamu';
+
+  @override
+  String get journeyTimelineTitle => 'Safari Yangu';
+
+  @override
+  String get journeyCompleted => 'Imekamilika';
+
+  @override
+  String get journeyInProgress => 'Inaendelea';
+
+  @override
+  String get journeyLocked => 'Imefungwa';
+
+  @override
+  String get wuduThreeTimes => 'mara 3';
+
+  @override
+  String get wuduDuaBefore => 'Dua Kabla ya Wudu';
+
+  @override
+  String get wuduDuaAfter => 'Dua Baada ya Wudu';
+
+  @override
+  String get wuduDuaBeforeArabic => 'بِسْمِ اللَّهِ';
+
+  @override
+  String get wuduDuaBeforeTranslit => 'Bismillāh';
+
+  @override
+  String get wuduDuaBeforeTranslation => 'Kwa jina la Allah';
+
+  @override
+  String get wuduDuaAfterArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ';
+
+  @override
+  String get wuduDuaAfterTranslit =>
+      'Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.';
+
+  @override
+  String get wuduDuaAfterTranslation =>
+      'Nashuhudia kwamba hakuna mungu anayestahili kuabudiwa isipokuwa Allah, Peke Yake, bila mshirika, na nashuhudia kwamba Muhammad ni mtumishi Wake na mtume Wake. Ewe Allah, nifanye miongoni mwa wanaotubu na wanaojitakasa.';
+
+  @override
+  String get wuduCompleteButton => 'Nimekamilisha Wudu';
+
+  @override
+  String get howToPrayStepOpeningDua => 'Dua ya kuanza';
+
+  @override
+  String get howToPrayStepAlFatiha => 'Sura Al-Fatiha';
+
+  @override
+  String get howToPrayStepSurah => 'Sura fupi';
+
+  @override
+  String get howToPrayStepTashahhudShort => 'Tashahhud (kukaa kati)';
+
+  @override
+  String get howToPrayStepSalawat => 'Salawat kwa Nabii ﷺ';
+
+  @override
+  String get howToPrayTransTakbir => 'Mwenyezi Mungu ni Mkubwa zaidi';
+
+  @override
+  String get howToPrayTransOpeningDua =>
+      'Umetukuka, Ee Mwenyezi Mungu, na Sifa Zako; jina Lako limebarikiwa, utukufu Wako umetukuka, wala hakuna mungu isipokuwa Wewe.';
+
+  @override
+  String get howToPrayTransFatiha =>
+      'Kwa jina la Mwenyezi Mungu, Mwenye rehema nyingi, Mwenye kurehemu. Sifa zote ni za Mwenyezi Mungu, Mola Mlezi wa walimwengu wote. Mwenye rehema nyingi, Mwenye kurehemu. Mwenye kumiliki Siku ya Malipo. Wewe peke yako tunakuabudu na Wewe peke yako tunaomba msaada. Tuongoze njia iliyonyooka — njia ya wale uliowaneemesha, si ya wale waliokasiriwa, wala ya waliopotoka.';
+
+  @override
+  String get howToPrayTransRuku => 'Ametakasika Mola wangu Mtukufu';
+
+  @override
+  String get howToPrayTransItidal =>
+      'Mwenyezi Mungu husikia yeyote anayemsifu. Mola wetu, na Sifa zote ni Zako.';
+
+  @override
+  String get howToPrayTransSujood => 'Ametakasika Mola wangu Aliye Juu';
+
+  @override
+  String get howToPrayTransJalsa => 'Mola wangu, nisamehe';
+
+  @override
+  String get howToPrayTransTashahhud =>
+      'Salamu zote, sala na maneno mazuri ni ya Mwenyezi Mungu. Amani iwe juu yako, Ee Nabii, na rehema ya Mwenyezi Mungu na baraka Zake. Amani iwe juu yetu na juu ya waja wema wa Mwenyezi Mungu. Nashuhudia kwamba hapana mungu ila Mwenyezi Mungu, na nashuhudia kwamba Muhammad ni mja Wake na Mtume Wake.';
+
+  @override
+  String get howToPrayTransSalawat =>
+      'Ee Mwenyezi Mungu, mrehemu Muhammad na familia ya Muhammad kama ulivyomrehemu Ibrahim na familia ya Ibrahim — hakika Wewe ni Msifiwa Mtukufu. Ee Mwenyezi Mungu, mbariki Muhammad na familia ya Muhammad kama ulivyombariki Ibrahim na familia ya Ibrahim — hakika Wewe ni Msifiwa Mtukufu.';
+
+  @override
+  String get howToPrayTransTasleem =>
+      'Amani na rehema ya Mwenyezi Mungu iwe juu yenu';
+
+  @override
+  String get howToPrayOpeningDuaInstruction =>
+      'Soma hii kwa sauti ya chini baada ya Takbir ya mwanzo. Inasomwa mara moja tu mwanzoni mwa sala.';
+
+  @override
+  String get howToPraySurahInstruction =>
+      'Baada ya Al-Fatiha, soma sura yoyote unayoijua kwa moyo. Sura Al-Ikhlas (juu) ni nzuri kwa wanaoanza — inasomwa katika rakaa mbili za kwanza tu.';
+
+  @override
+  String get howToPrayItidalInstruction =>
+      'Sema \'Sami\' Allahu liman hamidah\' unapoinuka, kisha simama wima kabla ya kusema \'Rabbana wa lakal hamd\'.';
+
+  @override
+  String get howToPrayMiddleTashahhudInstruction =>
+      'Kaa baada ya rakaa ya 2. Nyanyua kidole cha shahada cha mkono wa kulia unaposema Shahada. Kwa sala za rakaa 3 na 4, utasimama tena baada ya kukaa huku.';
+
+  @override
+  String get howToPraySalawatInstruction =>
+      'Soma Salawat mara baada ya Tashahhud ya mwisho, katika kukaa kwa mwisho tu, kabla ya Tasleem.';
+
+  @override
+  String get howToPrayTasleemInstruction =>
+      'Geuza kichwa kulia na useme Tasleem, kisha geuka kushoto na rudia. Sala yako imekamilika.';
+
+  @override
+  String get howToPrayOnceOpens => 'Mara moja — inaanza sala';
+
+  @override
+  String get howToPrayFirstRakahOnly => 'Rakaa ya 1 tu';
+
+  @override
+  String get howToPrayFirst2RakahsOnly => 'Rakaa 2 za kwanza tu';
+
+  @override
+  String get howToPrayEveryRakah => 'Kila rakaa';
+
+  @override
+  String get howToPrayAfter2ndRakah => 'Baada ya rakaa ya 2';
+
+  @override
+  String get howToPrayFinalSittingOnly => 'Kukaa kwa mwisho tu';
+
+  @override
+  String get howToPrayClosesThePrayer => 'Inamaliza sala';
+
+  @override
+  String get howToPraySectionBefore => 'Kabla ya Sala';
+
+  @override
+  String get howToPraySectionRakah => 'Rakaa';
+
+  @override
+  String get howToPraySectionMiddleSitting => 'Kukaa Katikati';
+
+  @override
+  String get howToPraySectionFinalSitting => 'Kukaa kwa Mwisho';
+
+  @override
+  String get howToPrayRakahLabel => 'Rakaa';
+
+  @override
+  String get howToPrayCompleteButton => 'Nimekamilisha sala yangu';
+
+  @override
+  String get howToPrayMashaallah => 'Masha\'Allah!';
+
+  @override
+  String get howToPrayAccepted => 'Mwenyezi Mungu akubali sala yako.';
 }

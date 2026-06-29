@@ -2355,4 +2355,229 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get beginnerYourJourney => 'আপনার যাত্রা';
+
+  @override
+  String get journeyMonth1Name => 'মাস ১: ভিত্তি';
+
+  @override
+  String get journeyMonth2Name => 'মাস ২: অভ্যাস গঠন';
+
+  @override
+  String get journeyMonth3Name => 'মাস ৩: ইমান গভীর করা';
+
+  @override
+  String journeyTasksCompleted(int done, int total) {
+    return '$done/$total সম্পন্ন';
+  }
+
+  @override
+  String get journeyViewFull => 'সম্পূর্ণ যাত্রা দেখুন →';
+
+  @override
+  String get journeyTask2_1 => '৭ দিন সব ৫ ওয়াক্ত নামাজ পড়ুন';
+
+  @override
+  String get journeyTask2_2 => 'আরো ১০টি দোয়া শিখুন';
+
+  @override
+  String get journeyTask2_3 => 'কুরআনের প্রথম জুজ পড়ুন';
+
+  @override
+  String get journeyTask2_4 => 'আল্লাহর ৯৯ নাম শিখুন';
+
+  @override
+  String get journeyTask2_5 => '৭ দিন প্রতিদিন তাসবিহ কাউন্টার ব্যবহার করুন';
+
+  @override
+  String get journeyTask2_6 => 'সুন্নাত নামাজ শিখুন';
+
+  @override
+  String get journeyTask2_7 => 'আপনার স্থানীয় মসজিদ খুঁজুন';
+
+  @override
+  String get journeyTask3_1 => 'সূরাহ আল-বাকারা পড়ুন';
+
+  @override
+  String get journeyTask3_2 => 'জাকাত সম্পর্কে জানুন';
+
+  @override
+  String get journeyTask3_3 => 'রোজা (সাওম) সম্পর্কে জানুন';
+
+  @override
+  String get journeyTask3_4 => '৩টি নতুন সূরাহ মুখস্থ করুন';
+
+  @override
+  String get journeyTask3_5 => 'হজ্জ সম্পর্কে জানুন';
+
+  @override
+  String get journeyTask3_6 => 'কারোর সাথে ইসলাম শেয়ার করুন';
+
+  @override
+  String get journeyTask3_7 => 'ইসলামিক শব্দকোষ সম্পন্ন করুন';
+
+  @override
+  String get journeyTimelineTitle => 'আমার যাত্রা';
+
+  @override
+  String get journeyCompleted => 'সম্পন্ন';
+
+  @override
+  String get journeyInProgress => 'চলমান';
+
+  @override
+  String get journeyLocked => 'বন্ধ';
+
+  @override
+  String get wuduThreeTimes => '৩ বার';
+
+  @override
+  String get wuduDuaBefore => 'ওজুর আগের দোয়া';
+
+  @override
+  String get wuduDuaAfter => 'ওজুর পরের দোয়া';
+
+  @override
+  String get wuduDuaBeforeArabic => 'بِسْمِ اللَّهِ';
+
+  @override
+  String get wuduDuaBeforeTranslit => 'Bismillāh';
+
+  @override
+  String get wuduDuaBeforeTranslation => 'আল্লাহর নামে';
+
+  @override
+  String get wuduDuaAfterArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ';
+
+  @override
+  String get wuduDuaAfterTranslit =>
+      'Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.';
+
+  @override
+  String get wuduDuaAfterTranslation =>
+      'আমি সাক্ষ্য দিচ্ছি যে আল্লাহ ছাড়া কোনো সত্যিকারের ইলাহ নেই, তিনি একক, তাঁর কোনো অংশীদার নেই, এবং আমি সাক্ষ্য দিচ্ছি যে মুহাম্মদ ﷺ তাঁর বান্দা ও রাসূল। হে আল্লাহ, আমাকে তাওবাকারীদের মধ্যে এবং পবিত্রতা অর্জনকারীদের মধ্যে গণ্য করুন।';
+
+  @override
+  String get wuduCompleteButton => 'আমি ওজু সম্পন্ন করেছি';
+
+  @override
+  String get howToPrayStepOpeningDua => 'শুরুর দু\'আ';
+
+  @override
+  String get howToPrayStepAlFatiha => 'সূরা আল-ফাতিহা';
+
+  @override
+  String get howToPrayStepSurah => 'ছোট সূরা';
+
+  @override
+  String get howToPrayStepTashahhudShort => 'তাশাহহুদ (মধ্যবর্তী বসা)';
+
+  @override
+  String get howToPrayStepSalawat => 'নবীর ﷺ উপর দরুদ';
+
+  @override
+  String get howToPrayTransTakbir => 'আল্লাহ সর্বমহান';
+
+  @override
+  String get howToPrayTransOpeningDua =>
+      'হে আল্লাহ! তুমি পবিত্র এবং তোমার প্রশংসা করি; তোমার নাম বরকতময়, তোমার মহিমা সর্বোচ্চ, তুমি ছাড়া কোনো ইলাহ নেই।';
+
+  @override
+  String get howToPrayTransFatiha =>
+      'পরম করুণাময়, অতি দয়ালু আল্লাহর নামে। সমস্ত প্রশংসা বিশ্বজগতের প্রতিপালক আল্লাহর জন্য। পরম করুণাময়, অতি দয়ালু। বিচার দিনের অধিপতি। শুধু তোমারই আমরা ইবাদত করি এবং শুধু তোমার কাছেই সাহায্য চাই। আমাদের সরল পথে পরিচালিত করো — যাদের প্রতি তুমি অনুগ্রহ করেছ তাদের পথে, যাদের উপর ক্রোধ হয়েছে তাদের পথে নয়, এবং যারা পথভ্রষ্ট তাদের পথেও নয়।';
+
+  @override
+  String get howToPrayTransRuku => 'আমার মহান প্রতিপালকের পবিত্রতা বর্ণনা করি';
+
+  @override
+  String get howToPrayTransItidal =>
+      'আল্লাহ তার কথা শুনেন যে তাঁর প্রশংসা করে। হে আমাদের প্রতিপালক, সকল প্রশংসা তোমার জন্য।';
+
+  @override
+  String get howToPrayTransSujood =>
+      'আমার সর্বোচ্চ প্রতিপালকের পবিত্রতা বর্ণনা করি';
+
+  @override
+  String get howToPrayTransJalsa => 'হে আমার প্রতিপালক, আমাকে ক্ষমা করো';
+
+  @override
+  String get howToPrayTransTashahhud =>
+      'সকল অভিবাদন, নামাজ ও ভালো কথা আল্লাহর জন্য। হে নবী, আপনার উপর শান্তি বর্ষিত হোক এবং আল্লাহর রহমত ও বরকত। আমাদের এবং আল্লাহর সৎ বান্দাদের উপর শান্তি বর্ষিত হোক। আমি সাক্ষ্য দিচ্ছি যে আল্লাহ ছাড়া কোনো ইলাহ নেই এবং মুহাম্মদ তাঁর বান্দা ও রাসূল।';
+
+  @override
+  String get howToPrayTransSalawat =>
+      'হে আল্লাহ, মুহাম্মদ ﷺ এবং মুহাম্মদের পরিবারের উপর রহমত বর্ষণ করো যেভাবে তুমি ইব্রাহিম এবং ইব্রাহিমের পরিবারের উপর রহমত বর্ষণ করেছিলে — নিশ্চয়ই তুমি প্রশংসনীয় ও মহিমান্বিত। হে আল্লাহ, মুহাম্মদ এবং তাঁর পরিবারের উপর বরকত দাও যেভাবে তুমি ইব্রাহিম এবং তাঁর পরিবারের উপর বরকত দিয়েছিলে — নিশ্চয়ই তুমি প্রশংসনীয় ও মহিমান্বিত।';
+
+  @override
+  String get howToPrayTransTasleem =>
+      'তোমাদের উপর শান্তি ও আল্লাহর রহমত বর্ষিত হোক';
+
+  @override
+  String get howToPrayOpeningDuaInstruction =>
+      'তাকবিরের পরপরই এই দু\'আ আস্তে পড়ুন। এটি শুধু একবার, নামাজের একদম শুরুতে পড়া হয়।';
+
+  @override
+  String get howToPraySurahInstruction =>
+      'ফাতিহার পর যে কোনো সূরা পড়ুন। সূরা ইখলাস (উপরে) নতুনদের জন্য আদর্শ — শুধু প্রথম দুই রাকাতে পড়া হয়।';
+
+  @override
+  String get howToPrayItidalInstruction =>
+      'উঠার সময় \'সামিআল্লাহু লিমান হামিদাহ\' বলুন, তারপর সোজা দাঁড়িয়ে \'রব্বানা লাকাল হামদ\' বলুন।';
+
+  @override
+  String get howToPrayMiddleTashahhudInstruction =>
+      '২য় রাকাতের পর বসুন। শাহাদাত পড়ার সময় ডান তর্জনী উঠান। ৩ ও ৪ রাকাত নামাজে এর পর আবার উঠতে হবে।';
+
+  @override
+  String get howToPraySalawatInstruction =>
+      'শেষ তাশাহহুদের পরপরই দরুদ পড়ুন, শুধু শেষ বসায়, সালামের আগে।';
+
+  @override
+  String get howToPrayTasleemInstruction =>
+      'মাথা ডানদিকে ঘুরিয়ে সালাম দিন, তারপর বামদিকে ঘুরিয়ে পুনরায় বলুন। আপনার নামাজ সম্পন্ন হয়েছে।';
+
+  @override
+  String get howToPrayOnceOpens => 'একবার — নামাজ শুরু হয়';
+
+  @override
+  String get howToPrayFirstRakahOnly => 'শুধু ১ম রাকাত';
+
+  @override
+  String get howToPrayFirst2RakahsOnly => 'শুধু প্রথম ২ রাকাত';
+
+  @override
+  String get howToPrayEveryRakah => 'প্রতি রাকাতে';
+
+  @override
+  String get howToPrayAfter2ndRakah => '২য় রাকাতের পর';
+
+  @override
+  String get howToPrayFinalSittingOnly => 'শুধু শেষ বসায়';
+
+  @override
+  String get howToPrayClosesThePrayer => 'নামাজ শেষ করে';
+
+  @override
+  String get howToPraySectionBefore => 'নামাজের আগে';
+
+  @override
+  String get howToPraySectionRakah => 'রাকাত';
+
+  @override
+  String get howToPraySectionMiddleSitting => 'মধ্যবর্তী বসা';
+
+  @override
+  String get howToPraySectionFinalSitting => 'শেষ বসা';
+
+  @override
+  String get howToPrayRakahLabel => 'রাকাত';
+
+  @override
+  String get howToPrayCompleteButton => 'আমি নামাজ শেষ করেছি';
+
+  @override
+  String get howToPrayMashaallah => 'মাশাআল্লাহ!';
+
+  @override
+  String get howToPrayAccepted => 'আল্লাহ আপনার নামাজ কবুল করুন।';
 }

@@ -4325,6 +4325,420 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'YOUR JOURNEY'**
   String get beginnerYourJourney;
+
+  /// journeyMonth1Name
+  ///
+  /// In en, this message translates to:
+  /// **'Month 1: The Foundation'**
+  String get journeyMonth1Name;
+
+  /// journeyMonth2Name
+  ///
+  /// In en, this message translates to:
+  /// **'Month 2: Building Habits'**
+  String get journeyMonth2Name;
+
+  /// journeyMonth3Name
+  ///
+  /// In en, this message translates to:
+  /// **'Month 3: Deepening Faith'**
+  String get journeyMonth3Name;
+
+  /// No description provided for @journeyTasksCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} done'**
+  String journeyTasksCompleted(int done, int total);
+
+  /// journeyViewFull
+  ///
+  /// In en, this message translates to:
+  /// **'View full journey →'**
+  String get journeyViewFull;
+
+  /// journeyTask2_1
+  ///
+  /// In en, this message translates to:
+  /// **'Pray all 5 prayers for 7 days'**
+  String get journeyTask2_1;
+
+  /// journeyTask2_2
+  ///
+  /// In en, this message translates to:
+  /// **'Learn 10 more Duas'**
+  String get journeyTask2_2;
+
+  /// journeyTask2_3
+  ///
+  /// In en, this message translates to:
+  /// **'Read the first Juz of the Quran'**
+  String get journeyTask2_3;
+
+  /// journeyTask2_4
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the 99 Names of Allah'**
+  String get journeyTask2_4;
+
+  /// journeyTask2_5
+  ///
+  /// In en, this message translates to:
+  /// **'Use the Tasbih Counter daily for 7 days'**
+  String get journeyTask2_5;
+
+  /// journeyTask2_6
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the Sunnah prayers'**
+  String get journeyTask2_6;
+
+  /// journeyTask2_7
+  ///
+  /// In en, this message translates to:
+  /// **'Find your local Masjid'**
+  String get journeyTask2_7;
+
+  /// journeyTask3_1
+  ///
+  /// In en, this message translates to:
+  /// **'Read Surah Al-Baqarah'**
+  String get journeyTask3_1;
+
+  /// journeyTask3_2
+  ///
+  /// In en, this message translates to:
+  /// **'Learn about Zakat'**
+  String get journeyTask3_2;
+
+  /// journeyTask3_3
+  ///
+  /// In en, this message translates to:
+  /// **'Learn about Fasting (Sawm)'**
+  String get journeyTask3_3;
+
+  /// journeyTask3_4
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize 3 new Surahs'**
+  String get journeyTask3_4;
+
+  /// journeyTask3_5
+  ///
+  /// In en, this message translates to:
+  /// **'Learn about Hajj'**
+  String get journeyTask3_5;
+
+  /// journeyTask3_6
+  ///
+  /// In en, this message translates to:
+  /// **'Share Islam with someone'**
+  String get journeyTask3_6;
+
+  /// journeyTask3_7
+  ///
+  /// In en, this message translates to:
+  /// **'Complete the Islamic Glossary'**
+  String get journeyTask3_7;
+
+  /// journeyTimelineTitle
+  ///
+  /// In en, this message translates to:
+  /// **'My Journey'**
+  String get journeyTimelineTitle;
+
+  /// journeyCompleted
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get journeyCompleted;
+
+  /// journeyInProgress
+  ///
+  /// In en, this message translates to:
+  /// **'In Progress'**
+  String get journeyInProgress;
+
+  /// journeyLocked
+  ///
+  /// In en, this message translates to:
+  /// **'Locked'**
+  String get journeyLocked;
+
+  /// wuduThreeTimes
+  ///
+  /// In en, this message translates to:
+  /// **'3 times'**
+  String get wuduThreeTimes;
+
+  /// wuduDuaBefore
+  ///
+  /// In en, this message translates to:
+  /// **'Dua Before Wudu'**
+  String get wuduDuaBefore;
+
+  /// wuduDuaAfter
+  ///
+  /// In en, this message translates to:
+  /// **'Dua After Wudu'**
+  String get wuduDuaAfter;
+
+  /// wuduDuaBeforeArabic
+  ///
+  /// In en, this message translates to:
+  /// **'بِسْمِ اللَّهِ'**
+  String get wuduDuaBeforeArabic;
+
+  /// wuduDuaBeforeTranslit
+  ///
+  /// In en, this message translates to:
+  /// **'Bismillāh'**
+  String get wuduDuaBeforeTranslit;
+
+  /// wuduDuaBeforeTranslation
+  ///
+  /// In en, this message translates to:
+  /// **'In the name of Allah'**
+  String get wuduDuaBeforeTranslation;
+
+  /// wuduDuaAfterArabic
+  ///
+  /// In en, this message translates to:
+  /// **'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ'**
+  String get wuduDuaAfterArabic;
+
+  /// wuduDuaAfterTranslit
+  ///
+  /// In en, this message translates to:
+  /// **'Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.'**
+  String get wuduDuaAfterTranslit;
+
+  /// wuduDuaAfterTranslation
+  ///
+  /// In en, this message translates to:
+  /// **'I bear witness that there is no deity worthy of worship except Allah alone, with no partner. I bear witness that Muhammad is His servant and messenger. O Allah, make me of those who repent and those who purify themselves.'**
+  String get wuduDuaAfterTranslation;
+
+  /// wuduCompleteButton
+  ///
+  /// In en, this message translates to:
+  /// **'I completed Wudu'**
+  String get wuduCompleteButton;
+
+  /// howToPrayStepOpeningDua
+  ///
+  /// In en, this message translates to:
+  /// **'Opening Du\'a'**
+  String get howToPrayStepOpeningDua;
+
+  /// howToPrayStepAlFatiha
+  ///
+  /// In en, this message translates to:
+  /// **'Surah Al-Fatiha'**
+  String get howToPrayStepAlFatiha;
+
+  /// howToPrayStepSurah
+  ///
+  /// In en, this message translates to:
+  /// **'Short Surah'**
+  String get howToPrayStepSurah;
+
+  /// howToPrayStepTashahhudShort
+  ///
+  /// In en, this message translates to:
+  /// **'Tashahhud (Middle)'**
+  String get howToPrayStepTashahhudShort;
+
+  /// howToPrayStepSalawat
+  ///
+  /// In en, this message translates to:
+  /// **'Salawat on the Prophet (PBUH)'**
+  String get howToPrayStepSalawat;
+
+  /// howToPrayTransTakbir
+  ///
+  /// In en, this message translates to:
+  /// **'Allah is the Greatest'**
+  String get howToPrayTransTakbir;
+
+  /// howToPrayTransOpeningDua
+  ///
+  /// In en, this message translates to:
+  /// **'Glory be to You, O Allah, and with Your praise; blessed is Your name, exalted is Your majesty, there is no god but You.'**
+  String get howToPrayTransOpeningDua;
+
+  /// howToPrayTransFatiha
+  ///
+  /// In en, this message translates to:
+  /// **'In the name of Allah, the Most Gracious, the Most Merciful. All praise is for Allah, Lord of all the worlds. The Most Gracious, the Most Merciful. Master of the Day of Judgment. You alone we worship, and You alone we ask for help. Guide us to the straight path — the path of those You have blessed, not of those who have earned anger, nor of those who have gone astray.'**
+  String get howToPrayTransFatiha;
+
+  /// howToPrayTransRuku
+  ///
+  /// In en, this message translates to:
+  /// **'Glory be to my Lord, the Most Great'**
+  String get howToPrayTransRuku;
+
+  /// howToPrayTransItidal
+  ///
+  /// In en, this message translates to:
+  /// **'Allah hears the one who praises Him. Our Lord, and to You is all praise.'**
+  String get howToPrayTransItidal;
+
+  /// howToPrayTransSujood
+  ///
+  /// In en, this message translates to:
+  /// **'Glory be to my Lord, the Most High'**
+  String get howToPrayTransSujood;
+
+  /// howToPrayTransJalsa
+  ///
+  /// In en, this message translates to:
+  /// **'My Lord, forgive me'**
+  String get howToPrayTransJalsa;
+
+  /// howToPrayTransTashahhud
+  ///
+  /// In en, this message translates to:
+  /// **'All greetings, prayers, and good words belong to Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and messenger.'**
+  String get howToPrayTransTashahhud;
+
+  /// howToPrayTransSalawat
+  ///
+  /// In en, this message translates to:
+  /// **'O Allah, send Your grace on Muhammad and the family of Muhammad, as You sent Your grace on Ibrahim and the family of Ibrahim — You are the Most Praiseworthy, Most Glorious. O Allah, bless Muhammad and the family of Muhammad, as You blessed Ibrahim and the family of Ibrahim — You are the Most Praiseworthy, Most Glorious.'**
+  String get howToPrayTransSalawat;
+
+  /// howToPrayTransTasleem
+  ///
+  /// In en, this message translates to:
+  /// **'Peace and the mercy of Allah be upon you'**
+  String get howToPrayTransTasleem;
+
+  /// howToPrayOpeningDuaInstruction
+  ///
+  /// In en, this message translates to:
+  /// **'Recite this quietly right after the Opening Takbir. It is said only once, at the very start of the prayer.'**
+  String get howToPrayOpeningDuaInstruction;
+
+  /// howToPraySurahInstruction
+  ///
+  /// In en, this message translates to:
+  /// **'After Al-Fatiha, recite any surah you know. Surah Al-Ikhlas (shown above) is perfect for beginners — recited in the first two Rak\'ahs only.'**
+  String get howToPraySurahInstruction;
+
+  /// howToPrayItidalInstruction
+  ///
+  /// In en, this message translates to:
+  /// **'Say \'Sami\' Allahu liman hamidah\' as you rise, then stand fully upright before saying \'Rabbana wa lakal hamd\'.'**
+  String get howToPrayItidalInstruction;
+
+  /// howToPrayMiddleTashahhudInstruction
+  ///
+  /// In en, this message translates to:
+  /// **'Sit after the 2nd Rak\'ah. Raise your right index finger when saying the Shahada. For 3 and 4 Rak\'ah prayers, stand again after this sitting.'**
+  String get howToPrayMiddleTashahhudInstruction;
+
+  /// howToPraySalawatInstruction
+  ///
+  /// In en, this message translates to:
+  /// **'Recite the Salawat immediately after the full Tashahhud, in the final sitting only, before closing with Tasleem.'**
+  String get howToPraySalawatInstruction;
+
+  /// howToPrayTasleemInstruction
+  ///
+  /// In en, this message translates to:
+  /// **'Turn your head to the right and say the Tasleem, then turn to the left and repeat. Your prayer is now complete.'**
+  String get howToPrayTasleemInstruction;
+
+  /// howToPrayOnceOpens
+  ///
+  /// In en, this message translates to:
+  /// **'Once — opens the prayer'**
+  String get howToPrayOnceOpens;
+
+  /// howToPrayFirstRakahOnly
+  ///
+  /// In en, this message translates to:
+  /// **'Rak\'ah 1 only'**
+  String get howToPrayFirstRakahOnly;
+
+  /// howToPrayFirst2RakahsOnly
+  ///
+  /// In en, this message translates to:
+  /// **'First 2 Rak\'ahs only'**
+  String get howToPrayFirst2RakahsOnly;
+
+  /// howToPrayEveryRakah
+  ///
+  /// In en, this message translates to:
+  /// **'Every Rak\'ah'**
+  String get howToPrayEveryRakah;
+
+  /// howToPrayAfter2ndRakah
+  ///
+  /// In en, this message translates to:
+  /// **'After 2nd Rak\'ah'**
+  String get howToPrayAfter2ndRakah;
+
+  /// howToPrayFinalSittingOnly
+  ///
+  /// In en, this message translates to:
+  /// **'Final Sitting only'**
+  String get howToPrayFinalSittingOnly;
+
+  /// howToPrayClosesThePrayer
+  ///
+  /// In en, this message translates to:
+  /// **'Closes the prayer'**
+  String get howToPrayClosesThePrayer;
+
+  /// howToPraySectionBefore
+  ///
+  /// In en, this message translates to:
+  /// **'Before You Pray'**
+  String get howToPraySectionBefore;
+
+  /// howToPraySectionRakah
+  ///
+  /// In en, this message translates to:
+  /// **'Rak\'ah'**
+  String get howToPraySectionRakah;
+
+  /// howToPraySectionMiddleSitting
+  ///
+  /// In en, this message translates to:
+  /// **'Middle Sitting'**
+  String get howToPraySectionMiddleSitting;
+
+  /// howToPraySectionFinalSitting
+  ///
+  /// In en, this message translates to:
+  /// **'Final Sitting'**
+  String get howToPraySectionFinalSitting;
+
+  /// howToPrayRakahLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Rak\'ahs'**
+  String get howToPrayRakahLabel;
+
+  /// howToPrayCompleteButton
+  ///
+  /// In en, this message translates to:
+  /// **'I Completed My Prayer'**
+  String get howToPrayCompleteButton;
+
+  /// howToPrayMashaallah
+  ///
+  /// In en, this message translates to:
+  /// **'Masha\'Allah!'**
+  String get howToPrayMashaallah;
+
+  /// howToPrayAccepted
+  ///
+  /// In en, this message translates to:
+  /// **'May Allah accept your prayer.'**
+  String get howToPrayAccepted;
 }
 
 class _AppLocalizationsDelegate

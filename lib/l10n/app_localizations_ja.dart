@@ -2249,4 +2249,226 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get beginnerYourJourney => 'あなたの旅';
+
+  @override
+  String get journeyMonth1Name => '第1ヶ月：基礎';
+
+  @override
+  String get journeyMonth2Name => '第2ヶ月：習慣を作る';
+
+  @override
+  String get journeyMonth3Name => '第3ヶ月：信仰を深める';
+
+  @override
+  String journeyTasksCompleted(int done, int total) {
+    return '$done/$total 完了';
+  }
+
+  @override
+  String get journeyViewFull => '旅程の全体を見る →';
+
+  @override
+  String get journeyTask2_1 => '7日間すべての5つの礼拝を行う';
+
+  @override
+  String get journeyTask2_2 => 'さらに10のドゥアを学ぶ';
+
+  @override
+  String get journeyTask2_3 => 'コーランの最初のジュズを読む';
+
+  @override
+  String get journeyTask2_4 => 'アッラーの99の御名を学ぶ';
+
+  @override
+  String get journeyTask2_5 => '7日間毎日タスビーフカウンターを使う';
+
+  @override
+  String get journeyTask2_6 => 'スンナ礼拝を学ぶ';
+
+  @override
+  String get journeyTask2_7 => '地元のマスジドを見つける';
+
+  @override
+  String get journeyTask3_1 => 'スーラ・バカラを読む';
+
+  @override
+  String get journeyTask3_2 => 'ザカートについて学ぶ';
+
+  @override
+  String get journeyTask3_3 => '断食（サウム）について学ぶ';
+
+  @override
+  String get journeyTask3_4 => '3つの新しいスーラを暗記する';
+
+  @override
+  String get journeyTask3_5 => 'ハッジについて学ぶ';
+
+  @override
+  String get journeyTask3_6 => '誰かにイスラームを伝える';
+
+  @override
+  String get journeyTask3_7 => 'イスラーム用語集を完成させる';
+
+  @override
+  String get journeyTimelineTitle => '私の旅';
+
+  @override
+  String get journeyCompleted => '完了';
+
+  @override
+  String get journeyInProgress => '進行中';
+
+  @override
+  String get journeyLocked => 'ロック中';
+
+  @override
+  String get wuduThreeTimes => '3回';
+
+  @override
+  String get wuduDuaBefore => 'ウドゥー前のドゥアー';
+
+  @override
+  String get wuduDuaAfter => 'ウドゥー後のドゥアー';
+
+  @override
+  String get wuduDuaBeforeArabic => 'بِسْمِ اللَّهِ';
+
+  @override
+  String get wuduDuaBeforeTranslit => 'Bismillāh';
+
+  @override
+  String get wuduDuaBeforeTranslation => 'アッラーのみ名において';
+
+  @override
+  String get wuduDuaAfterArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ';
+
+  @override
+  String get wuduDuaAfterTranslit =>
+      'Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.';
+
+  @override
+  String get wuduDuaAfterTranslation =>
+      'アッラーのほか礼拝に値する神はなく、アッラーはひとりであり、パートナーがないことを証言します。ムハンマドはアッラーの僕であり使徒であることを証言します。アッラーよ、私を悔悟者のなかに、そして身を清める者のなかに入れてください。';
+
+  @override
+  String get wuduCompleteButton => 'ウドゥーを完了しました';
+
+  @override
+  String get howToPrayStepOpeningDua => '開始のドゥア';
+
+  @override
+  String get howToPrayStepAlFatiha => 'スーラ・アル＝ファーティハ';
+
+  @override
+  String get howToPrayStepSurah => '短いスーラ';
+
+  @override
+  String get howToPrayStepTashahhudShort => 'タシャッフド（中間の着席）';
+
+  @override
+  String get howToPrayStepSalawat => '預言者 ﷺ への祝福';
+
+  @override
+  String get howToPrayTransTakbir => 'アッラーは最も偉大なり';
+
+  @override
+  String get howToPrayTransOpeningDua =>
+      'アッラーよ、あなたを讃えます。あなたの御名は祝福され、あなたの威厳は崇高であり、あなた以外に神はいません。';
+
+  @override
+  String get howToPrayTransFatiha =>
+      '慈悲深く慈愛あまねきアッラーの御名において。全ての賞賛は世界の主、アッラーに属す。慈悲深く慈愛あまねき主。審判の日の主。我らはあなたのみを礼拝し、あなたのみに助けを求めます。我らを正しい道へ導いてください――あなたが恵みを与えた人々の道へ、怒りを受けた人々の道でも、迷い人の道でもなく。';
+
+  @override
+  String get howToPrayTransRuku => '偉大なる我が主を讃えます';
+
+  @override
+  String get howToPrayTransItidal => 'アッラーは彼を讃える者の声を聞く。我らの主よ、称賛はあなたのみに。';
+
+  @override
+  String get howToPrayTransSujood => '最高なる我が主を讃えます';
+
+  @override
+  String get howToPrayTransJalsa => '主よ、我を赦したまえ';
+
+  @override
+  String get howToPrayTransTashahhud =>
+      '全ての挨拶、祈り、良い言葉はアッラーに属します。預言者よ、あなたに平安と神の慈悲と祝福があらんことを。我らとアッラーの敬虔な僕たちに平安があらんことを。アッラーの他に神はなく、ムハンマドはその僕と使徒であることを証言します。';
+
+  @override
+  String get howToPrayTransSalawat =>
+      'アッラーよ、ムハンマドとムハンマドの家族に恩寵を与えてください。あなたがイブラヒームとその家族に恩寵を与えたように。あなたは誠に讃えられ、栄光に満ちています。アッラーよ、ムハンマドとその家族を祝福してください。イブラヒームとその家族を祝福されたように。あなたは誠に讃えられ、栄光に満ちています。';
+
+  @override
+  String get howToPrayTransTasleem => 'あなたがたに平安とアッラーの慈悲があらんことを';
+
+  @override
+  String get howToPrayOpeningDuaInstruction =>
+      '開始のタクビールの直後に静かにこのドゥアを唱えます。礼拝の最初に一度だけ唱えます。';
+
+  @override
+  String get howToPraySurahInstruction =>
+      'ファーティハの後、暗記したスーラを唱えます。スーラ・イフラース（上記）は初心者に最適で、最初の2ラクアのみに唱えます。';
+
+  @override
+  String get howToPrayItidalInstruction =>
+      '起き上がりながら「サミア・アッラーフ」を唱え、完全に直立してから「ラッバナー・ワ・ラカル・ハムド」を唱えます。';
+
+  @override
+  String get howToPrayMiddleTashahhudInstruction =>
+      '第2ラクアの後に座ります。シャハーダを唱えるときに右人差し指を上げます。3・4ラクアの礼拝では、この後また立ち上がります。';
+
+  @override
+  String get howToPraySalawatInstruction =>
+      '最後のタシャッフドの直後、最後の着席のみで、タスリームの前にサラワートを唱えます。';
+
+  @override
+  String get howToPrayTasleemInstruction =>
+      '頭を右に向けてタスリームを唱え、次に左に向けて繰り返します。礼拝が完了しました。';
+
+  @override
+  String get howToPrayOnceOpens => '一度だけ — 礼拝を開始する';
+
+  @override
+  String get howToPrayFirstRakahOnly => '第1ラクアのみ';
+
+  @override
+  String get howToPrayFirst2RakahsOnly => '最初の2ラクアのみ';
+
+  @override
+  String get howToPrayEveryRakah => '全ラクア';
+
+  @override
+  String get howToPrayAfter2ndRakah => '第2ラクア後';
+
+  @override
+  String get howToPrayFinalSittingOnly => '最後の着席のみ';
+
+  @override
+  String get howToPrayClosesThePrayer => '礼拝を締めくくる';
+
+  @override
+  String get howToPraySectionBefore => '礼拝前';
+
+  @override
+  String get howToPraySectionRakah => 'ラクア';
+
+  @override
+  String get howToPraySectionMiddleSitting => '中間の着席';
+
+  @override
+  String get howToPraySectionFinalSitting => '最後の着席';
+
+  @override
+  String get howToPrayRakahLabel => 'ラクア';
+
+  @override
+  String get howToPrayCompleteButton => '礼拝を終えました';
+
+  @override
+  String get howToPrayMashaallah => 'マーシャー・アッラー！';
+
+  @override
+  String get howToPrayAccepted => 'アッラーが礼拝をお受けくださいますように。';
 }

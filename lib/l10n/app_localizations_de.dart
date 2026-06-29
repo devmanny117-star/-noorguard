@@ -2365,4 +2365,228 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get beginnerYourJourney => 'DEIN WEG';
+
+  @override
+  String get journeyMonth1Name => 'Monat 1: Das Fundament';
+
+  @override
+  String get journeyMonth2Name => 'Monat 2: Gewohnheiten aufbauen';
+
+  @override
+  String get journeyMonth3Name => 'Monat 3: Den Glauben vertiefen';
+
+  @override
+  String journeyTasksCompleted(int done, int total) {
+    return '$done/$total erledigt';
+  }
+
+  @override
+  String get journeyViewFull => 'Vollständige Reise anzeigen →';
+
+  @override
+  String get journeyTask2_1 => '7 Tage lang alle 5 Gebete beten';
+
+  @override
+  String get journeyTask2_2 => '10 weitere Duas lernen';
+
+  @override
+  String get journeyTask2_3 => 'Den ersten Juz des Korans lesen';
+
+  @override
+  String get journeyTask2_4 => 'Die 99 Namen Allahs lernen';
+
+  @override
+  String get journeyTask2_5 => '7 Tage täglich den Tasbih-Zähler verwenden';
+
+  @override
+  String get journeyTask2_6 => 'Die Sunnah-Gebete lernen';
+
+  @override
+  String get journeyTask2_7 => 'Deine lokale Moschee finden';
+
+  @override
+  String get journeyTask3_1 => 'Sure Al-Baqarah lesen';
+
+  @override
+  String get journeyTask3_2 => 'Über Zakat lernen';
+
+  @override
+  String get journeyTask3_3 => 'Über das Fasten (Sawm) lernen';
+
+  @override
+  String get journeyTask3_4 => '3 neue Suren auswendig lernen';
+
+  @override
+  String get journeyTask3_5 => 'Über Hadsch lernen';
+
+  @override
+  String get journeyTask3_6 => 'Den Islam mit jemandem teilen';
+
+  @override
+  String get journeyTask3_7 => 'Das islamische Glossar vervollständigen';
+
+  @override
+  String get journeyTimelineTitle => 'Meine Reise';
+
+  @override
+  String get journeyCompleted => 'Abgeschlossen';
+
+  @override
+  String get journeyInProgress => 'In Bearbeitung';
+
+  @override
+  String get journeyLocked => 'Gesperrt';
+
+  @override
+  String get wuduThreeTimes => '3 Mal';
+
+  @override
+  String get wuduDuaBefore => 'Du\'a vor dem Wudu';
+
+  @override
+  String get wuduDuaAfter => 'Du\'a nach dem Wudu';
+
+  @override
+  String get wuduDuaBeforeArabic => 'بِسْمِ اللَّهِ';
+
+  @override
+  String get wuduDuaBeforeTranslit => 'Bismillāh';
+
+  @override
+  String get wuduDuaBeforeTranslation => 'Im Namen Allahs';
+
+  @override
+  String get wuduDuaAfterArabic =>
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ';
+
+  @override
+  String get wuduDuaAfterTranslit =>
+      'Ash-hadu an lā ilāha illallāh, waḥdahu lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh. Allāhumma ijʿalnī min al-tawwābīn, wajʿalnī min al-mutaṭahhirīn.';
+
+  @override
+  String get wuduDuaAfterTranslation =>
+      'Ich bezeuge, dass es keinen Gott außer Allah gibt, Einzig, ohne Partner, und ich bezeuge, dass Muhammad Sein Diener und Gesandter ist. O Allah, mache mich zu denen, die bereuen, und zu denen, die sich reinigen.';
+
+  @override
+  String get wuduCompleteButton => 'Ich habe das Wudu abgeschlossen';
+
+  @override
+  String get howToPrayStepOpeningDua => 'Eröffnungsgebet';
+
+  @override
+  String get howToPrayStepAlFatiha => 'Sure Al-Fatiha';
+
+  @override
+  String get howToPrayStepSurah => 'Kurze Sure';
+
+  @override
+  String get howToPrayStepTashahhudShort => 'Tashahhud (mittleres Sitzen)';
+
+  @override
+  String get howToPrayStepSalawat => 'Salawat auf den Propheten ﷺ';
+
+  @override
+  String get howToPrayTransTakbir => 'Allah ist der Größte';
+
+  @override
+  String get howToPrayTransOpeningDua =>
+      'Gepriesen seist Du, o Allah, und mit Deinem Lob; gesegnet ist Dein Name, erhaben ist Deine Majestät, es gibt keinen Gott außer Dir.';
+
+  @override
+  String get howToPrayTransFatiha =>
+      'Im Namen Allahs, des Allbarmherzigen, des Barmherzigen. Alles Lob gebührt Allah, dem Herrn der Welten. Dem Allbarmherzigen, dem Barmherzigen. Dem Herrscher am Tag des Gerichts. Dir allein dienen wir und Dich allein bitten wir um Hilfe. Führe uns den geraden Weg — den Weg derer, denen Du Gnade erwiesen hast, nicht derer, die den Zorn auf sich geladen haben, und nicht der Irregeleiteten.';
+
+  @override
+  String get howToPrayTransRuku => 'Gepriesen sei mein Herr, der Allerhöchste';
+
+  @override
+  String get howToPrayTransItidal =>
+      'Allah hört denjenigen, der Ihn lobt. Unser Herr, und Dir gebührt alles Lob.';
+
+  @override
+  String get howToPrayTransSujood => 'Gepriesen sei mein Herr, der Erhabenste';
+
+  @override
+  String get howToPrayTransJalsa => 'Mein Herr, vergib mir';
+
+  @override
+  String get howToPrayTransTashahhud =>
+      'Alle Grüße, Gebete und guten Taten gehören Allah. Friede sei mit dir, o Prophet, und die Barmherzigkeit Allahs und Seine Segnungen. Friede sei mit uns und mit den rechtschaffenen Dienern Allahs. Ich bezeuge, dass es keinen Gott gibt außer Allah, und ich bezeuge, dass Muhammad Sein Diener und Gesandter ist.';
+
+  @override
+  String get howToPrayTransSalawat =>
+      'O Allah, sende Deine Gnade auf Muhammad und auf die Familie Muhammads, wie Du Deine Gnade auf Ibrahim und die Familie Ibrahims gesandt hast — Du bist wahrlich der Lobenswürdigste, der Glorreichste. O Allah, segne Muhammad und die Familie Muhammads, wie Du Ibrahim und die Familie Ibrahims gesegnet hast — Du bist wahrlich der Lobenswürdigste, der Glorreichste.';
+
+  @override
+  String get howToPrayTransTasleem =>
+      'Friede und Allahs Barmherzigkeit seien mit euch';
+
+  @override
+  String get howToPrayOpeningDuaInstruction =>
+      'Sprich dieses Gebet leise direkt nach dem Eröffnungs-Takbir. Es wird nur einmal zu Beginn des Gebets gesprochen.';
+
+  @override
+  String get howToPraySurahInstruction =>
+      'Nach Al-Fatiha eine auswendig gelernte Sure rezitieren. Sure Al-Ikhlas (oben) ist ideal für Anfänger — wird nur in den ersten zwei Rak\'ahs gelesen.';
+
+  @override
+  String get howToPrayItidalInstruction =>
+      'Sage \'Sami\' Allahu liman hamidah\' beim Aufrichten, dann stehe gerade und sage \'Rabbana wa lakal hamd\'.';
+
+  @override
+  String get howToPrayMiddleTashahhudInstruction =>
+      'Setze dich nach der 2. Rak\'ah. Hebe den rechten Zeigefinger beim Sprechen der Schahada. Bei 3- und 4-Rak\'ah-Gebeten stehst du danach wieder auf.';
+
+  @override
+  String get howToPraySalawatInstruction =>
+      'Rezitiere das Salawat direkt nach dem abschließenden Tashahhud, nur im letzten Sitzen, vor dem Tasleem.';
+
+  @override
+  String get howToPrayTasleemInstruction =>
+      'Drehe den Kopf nach rechts und sprich das Tasleem, dann nach links und wiederhole es. Dein Gebet ist nun beendet.';
+
+  @override
+  String get howToPrayOnceOpens => 'Einmal — eröffnet das Gebet';
+
+  @override
+  String get howToPrayFirstRakahOnly => 'Nur 1. Rak\'ah';
+
+  @override
+  String get howToPrayFirst2RakahsOnly => 'Nur die ersten 2 Rak\'ahs';
+
+  @override
+  String get howToPrayEveryRakah => 'Jede Rak\'ah';
+
+  @override
+  String get howToPrayAfter2ndRakah => 'Nach der 2. Rak\'ah';
+
+  @override
+  String get howToPrayFinalSittingOnly => 'Nur letztes Sitzen';
+
+  @override
+  String get howToPrayClosesThePrayer => 'Beendet das Gebet';
+
+  @override
+  String get howToPraySectionBefore => 'Vor dem Gebet';
+
+  @override
+  String get howToPraySectionRakah => 'Rak\'ah';
+
+  @override
+  String get howToPraySectionMiddleSitting => 'Mittleres Sitzen';
+
+  @override
+  String get howToPraySectionFinalSitting => 'Abschließendes Sitzen';
+
+  @override
+  String get howToPrayRakahLabel => 'Rak\'ahs';
+
+  @override
+  String get howToPrayCompleteButton => 'Ich habe mein Gebet abgeschlossen';
+
+  @override
+  String get howToPrayMashaallah => 'Masha\'Allah!';
+
+  @override
+  String get howToPrayAccepted => 'Möge Allah dein Gebet annehmen.';
 }
