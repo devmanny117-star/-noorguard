@@ -10,6 +10,7 @@
   "focusMode": "专注模式",
   "appBlocking": "应用屏蔽",
   "islamicCalendar": "伊斯兰历",
+  "islamicCalendarSubtitle": "伊斯兰历日期与节日",
   "duas": "杜阿祈祷文",
   "quran": "古兰经",
   "settings": "设置",
@@ -785,6 +786,7 @@
   "@beginnerExploreSubtitle": {
     "description": "Subtitle under Explore All Features button"
   },
+  "beginnerExploreFeaturesSubtitle": "Noor Guard 的全部功能",
   "beginnerLearnSalah": "学习礼拜",
   "@beginnerLearnSalah": {
     "description": "Beginner toolbox card label — learn how to pray"
@@ -1111,8 +1113,7 @@
   "howToPrayAccepted": "愿真主接受您的礼拜。",
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
-  }
-,
+  },
   "fatihaIntroTitle": "古兰经之母",
   "@fatihaIntroTitle": {
     "description": "fatihaIntroTitle"
@@ -1129,15 +1130,15 @@
   "@shahadaScreenTitle": {
     "description": "shahadaScreenTitle"
   },
-  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
   "@shahadaArabicText": {
     "description": "shahadaArabicText"
   },
-  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "shahadaTransliteration": "Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh",
   "@shahadaTransliteration": {
     "description": "shahadaTransliteration"
   },
-  "shahadaTranslation": "除安拉外，别无神灵，穆罕默德是安拉的使者",
+  "shahadaTranslation": "我作证除了真主安拉之外没有应当崇拜的，我又作证穆罕默德是安拉的使者",
   "@shahadaTranslation": {
     "description": "shahadaTranslation"
   },
@@ -1256,5 +1257,17 @@
   "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
   "@shahadaPronunciationPart2": {
     "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "逐步指南",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "礼拜前的净化",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "114个伊斯兰术语解释",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
   }
 }

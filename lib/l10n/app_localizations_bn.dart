@@ -39,6 +39,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get islamicCalendar => 'ইসলামিক ক্যালেন্ডার';
 
   @override
+  String get islamicCalendarSubtitle => 'হিজরি তারিখ ও ঘটনা';
+
+  @override
   String get duas => 'দোয়া';
 
   @override
@@ -2318,6 +2321,9 @@ class AppLocalizationsBn extends AppLocalizations {
       'সম্পূর্ণ Noor Guard অভিজ্ঞতায় স্যুইচ করুন';
 
   @override
+  String get beginnerExploreFeaturesSubtitle => 'নূর গার্ডের সবকিছু';
+
+  @override
   String get beginnerLearnSalah => 'সালাহ শিখুন';
 
   @override
@@ -2597,15 +2603,15 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
   String get shahadaTranslation =>
-      'আল্লাহ ছাড়া কোনো উপাস্য নেই, মুহাম্মাদ আল্লাহর রাসূল';
+      'আমি সাক্ষ্য দিচ্ছি যে আল্লাহ ছাড়া কোনো উপাস্য নেই, এবং আমি সাক্ষ্য দিচ্ছি যে মুহাম্মাদ আল্লাহর রাসূল';
 
   @override
   String get shahadaWordBreakdownTitle => 'শব্দে শব্দে';
@@ -2696,4 +2702,13 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => 'ধাপে ধাপে গাইড';
+
+  @override
+  String get toolboxWuduSubtitle => 'নামাজের আগে পবিত্রতা';
+
+  @override
+  String get toolboxGlossarySubtitle => '১১৪টি ইসলামিক পরিভাষা ব্যাখ্যা';
 }

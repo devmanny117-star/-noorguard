@@ -10,6 +10,7 @@
   "focusMode": "Mode Fokus",
   "appBlocking": "Pemblokiran Aplikasi",
   "islamicCalendar": "Kalender Islam",
+  "islamicCalendarSubtitle": "Tanggal Hijri & acara",
   "duas": "Doa",
   "quran": "Al-Qur'an",
   "settings": "Pengaturan",
@@ -785,6 +786,7 @@
   "@beginnerExploreSubtitle": {
     "description": "Subtitle under Explore All Features button"
   },
+  "beginnerExploreFeaturesSubtitle": "Semua yang Noor Guard tawarkan",
   "beginnerLearnSalah": "Pelajari Shalat",
   "@beginnerLearnSalah": {
     "description": "Beginner toolbox card label — learn how to pray"
@@ -1111,8 +1113,7 @@
   "howToPrayAccepted": "Semoga Allah menerima shalat Anda.",
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
-  }
-,
+  },
   "fatihaIntroTitle": "Induk Al-Quran",
   "@fatihaIntroTitle": {
     "description": "fatihaIntroTitle"
@@ -1129,15 +1130,15 @@
   "@shahadaScreenTitle": {
     "description": "shahadaScreenTitle"
   },
-  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
   "@shahadaArabicText": {
     "description": "shahadaArabicText"
   },
-  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "shahadaTransliteration": "Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh",
   "@shahadaTransliteration": {
     "description": "shahadaTransliteration"
   },
-  "shahadaTranslation": "Tidak ada tuhan selain Allah, Muhammad adalah Rasul Allah",
+  "shahadaTranslation": "Aku bersaksi bahwa tidak ada tuhan selain Allah, dan aku bersaksi bahwa Muhammad adalah utusan Allah",
   "@shahadaTranslation": {
     "description": "shahadaTranslation"
   },
@@ -1256,5 +1257,17 @@
   "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
   "@shahadaPronunciationPart2": {
     "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "Panduan langkah demi langkah",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "Bersuci sebelum shalat",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "114 istilah Islam dijelaskan",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
   }
 }

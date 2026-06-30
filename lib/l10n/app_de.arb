@@ -10,6 +10,7 @@
   "focusMode": "Fokus-Modus",
   "appBlocking": "App-Sperre",
   "islamicCalendar": "Islamischer Kalender",
+  "islamicCalendarSubtitle": "Hijri-Daten & Ereignisse",
   "duas": "Duas",
   "quran": "Koran",
   "settings": "Einstellungen",
@@ -785,6 +786,7 @@
   "@beginnerExploreSubtitle": {
     "description": "Subtitle under Explore All Features button"
   },
+  "beginnerExploreFeaturesSubtitle": "Alles, was Noor Guard zu bieten hat",
   "beginnerLearnSalah": "Salah lernen",
   "@beginnerLearnSalah": {
     "description": "Beginner toolbox card label — learn how to pray"
@@ -1111,8 +1113,7 @@
   "howToPrayAccepted": "Möge Allah dein Gebet annehmen.",
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
-  }
-,
+  },
   "fatihaIntroTitle": "Die Mutter des Qurans",
   "@fatihaIntroTitle": {
     "description": "fatihaIntroTitle"
@@ -1129,15 +1130,15 @@
   "@shahadaScreenTitle": {
     "description": "shahadaScreenTitle"
   },
-  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
   "@shahadaArabicText": {
     "description": "shahadaArabicText"
   },
-  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "shahadaTransliteration": "Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh",
   "@shahadaTransliteration": {
     "description": "shahadaTransliteration"
   },
-  "shahadaTranslation": "Es gibt keinen Gott außer Allah, Muhammad ist der Gesandte Allahs",
+  "shahadaTranslation": "Ich bezeuge, dass es keine Gottheit außer Allah gibt, und ich bezeuge, dass Muhammad der Gesandte Allahs ist",
   "@shahadaTranslation": {
     "description": "shahadaTranslation"
   },
@@ -1256,5 +1257,17 @@
   "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
   "@shahadaPronunciationPart2": {
     "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "Schritt-für-Schritt-Anleitung",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "Reinigung vor dem Gebet",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "114 islamische Begriffe erklärt",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
   }
 }

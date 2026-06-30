@@ -39,6 +39,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get islamicCalendar => 'Kalenda ya Kiislamu';
 
   @override
+  String get islamicCalendarSubtitle => 'Tarehe za Hijri na matukio';
+
+  @override
   String get duas => 'Dua';
 
   @override
@@ -2319,6 +2322,10 @@ class AppLocalizationsSw extends AppLocalizations {
       'Badilisha kwa uzoefu kamili wa Noor Guard';
 
   @override
+  String get beginnerExploreFeaturesSubtitle =>
+      'Kila kitu Noor Guard ina kutoa';
+
+  @override
   String get beginnerLearnSalah => 'Jifunze Sala';
 
   @override
@@ -2597,15 +2604,15 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
   String get shahadaTranslation =>
-      'Hakuna mungu ila Allah, Muhammad ni Mtume wa Allah';
+      'Nashuhudia kwamba hakuna mungu ila Allah, na nashuhudia kwamba Muhammad ni Mtume wa Allah';
 
   @override
   String get shahadaWordBreakdownTitle => 'Neno kwa Neno';
@@ -2696,4 +2703,13 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => 'Mwongozo wa hatua kwa hatua';
+
+  @override
+  String get toolboxWuduSubtitle => 'Utakaso kabla ya sala';
+
+  @override
+  String get toolboxGlossarySubtitle => 'Maneno 114 ya Kiislamu yaliyoelezwa';
 }

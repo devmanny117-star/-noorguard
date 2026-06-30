@@ -10,6 +10,7 @@
   "focusMode": "フォーカスモード",
   "appBlocking": "アプリブロック",
   "islamicCalendar": "イスラム暦",
+  "islamicCalendarSubtitle": "ヒジュラ暦の日付と行事",
   "duas": "ドゥアー",
   "quran": "クルアーン",
   "settings": "設定",
@@ -785,6 +786,7 @@
   "@beginnerExploreSubtitle": {
     "description": "Subtitle under Explore All Features button"
   },
+  "beginnerExploreFeaturesSubtitle": "Noor Guardのすべての機能",
   "beginnerLearnSalah": "サラーを学ぶ",
   "@beginnerLearnSalah": {
     "description": "Beginner toolbox card label — learn how to pray"
@@ -1111,8 +1113,7 @@
   "howToPrayAccepted": "アッラーが礼拝をお受けくださいますように。",
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
-  }
-,
+  },
   "fatihaIntroTitle": "クルアーンの母",
   "@fatihaIntroTitle": {
     "description": "fatihaIntroTitle"
@@ -1129,15 +1130,15 @@
   "@shahadaScreenTitle": {
     "description": "shahadaScreenTitle"
   },
-  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
   "@shahadaArabicText": {
     "description": "shahadaArabicText"
   },
-  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "shahadaTransliteration": "Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh",
   "@shahadaTransliteration": {
     "description": "shahadaTransliteration"
   },
-  "shahadaTranslation": "アッラーの他に神はなく、ムハンマドはアッラーの使徒である",
+  "shahadaTranslation": "私はアッラーの他に神はいないと証言します。そして私はムハンマドはアッラーの使徒であると証言します",
   "@shahadaTranslation": {
     "description": "shahadaTranslation"
   },
@@ -1256,5 +1257,17 @@
   "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
   "@shahadaPronunciationPart2": {
     "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "ステップバイステップガイド",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "礼拝前の清め",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "114のイスラーム用語解説",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
   }
 }

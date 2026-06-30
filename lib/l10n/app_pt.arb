@@ -10,6 +10,7 @@
   "focusMode": "Modo Foco",
   "appBlocking": "Bloqueio de Apps",
   "islamicCalendar": "Calendário Islâmico",
+  "islamicCalendarSubtitle": "Datas hijri e eventos",
   "duas": "Duas",
   "quran": "Alcorão",
   "settings": "Configurações",
@@ -785,6 +786,7 @@
   "@beginnerExploreSubtitle": {
     "description": "Subtitle under Explore All Features button"
   },
+  "beginnerExploreFeaturesSubtitle": "Tudo o que o Noor Guard tem a oferecer",
   "beginnerLearnSalah": "Aprender Salah",
   "@beginnerLearnSalah": {
     "description": "Beginner toolbox card label — learn how to pray"
@@ -1111,8 +1113,7 @@
   "howToPrayAccepted": "Que Allah aceite sua oração.",
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
-  }
-,
+  },
   "fatihaIntroTitle": "A Mãe do Alcorão",
   "@fatihaIntroTitle": {
     "description": "fatihaIntroTitle"
@@ -1129,15 +1130,15 @@
   "@shahadaScreenTitle": {
     "description": "shahadaScreenTitle"
   },
-  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
   "@shahadaArabicText": {
     "description": "shahadaArabicText"
   },
-  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "shahadaTransliteration": "Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh",
   "@shahadaTransliteration": {
     "description": "shahadaTransliteration"
   },
-  "shahadaTranslation": "Não há deus além de Allah, Muhammad é o Mensageiro de Allah",
+  "shahadaTranslation": "Testemunho que não há divindade além de Allah, e testemunho que Muhammad é o mensageiro de Allah",
   "@shahadaTranslation": {
     "description": "shahadaTranslation"
   },
@@ -1256,5 +1257,17 @@
   "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
   "@shahadaPronunciationPart2": {
     "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "Guia passo a passo",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "Purificação antes da oração",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "114 termos islâmicos explicados",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
   }
 }

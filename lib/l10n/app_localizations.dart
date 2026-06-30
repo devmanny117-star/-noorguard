@@ -186,6 +186,12 @@ abstract class AppLocalizations {
   /// **'Islamic Calendar'**
   String get islamicCalendar;
 
+  /// Subtitle for the Islamic Calendar feature tile
+  ///
+  /// In en, this message translates to:
+  /// **'Hijri dates & events'**
+  String get islamicCalendarSubtitle;
+
   /// Label for the supplication library feature
   ///
   /// In en, this message translates to:
@@ -4260,6 +4266,12 @@ abstract class AppLocalizations {
   /// **'Switch to the full Noor Guard experience'**
   String get beginnerExploreSubtitle;
 
+  /// Subtitle inside the Explore All Features modal sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Everything Noor Guard has to offer'**
+  String get beginnerExploreFeaturesSubtitle;
+
   /// Beginner toolbox card label — learn how to pray
   ///
   /// In en, this message translates to:
@@ -4767,19 +4779,19 @@ abstract class AppLocalizations {
   /// shahadaArabicText
   ///
   /// In en, this message translates to:
-  /// **'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ'**
+  /// **'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ'**
   String get shahadaArabicText;
 
   /// shahadaTransliteration
   ///
   /// In en, this message translates to:
-  /// **'Lā ilāha illallāh, Muḥammadun rasūlullāh'**
+  /// **'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh'**
   String get shahadaTransliteration;
 
   /// shahadaTranslation
   ///
   /// In en, this message translates to:
-  /// **'There is no god but Allah, Muhammad is the Messenger of Allah'**
+  /// **'I bear witness that there is no deity except Allah, and I bear witness that Muhammad is the messenger of Allah'**
   String get shahadaTranslation;
 
   /// shahadaWordBreakdownTitle
@@ -4955,6 +4967,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mu · HAM · ma · dun · ra · SUU · lul · LAH'**
   String get shahadaPronunciationPart2;
+
+  /// toolboxLearnSalahSubtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Step by step guide'**
+  String get toolboxLearnSalahSubtitle;
+
+  /// toolboxWuduSubtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Purification before prayer'**
+  String get toolboxWuduSubtitle;
+
+  /// toolboxGlossarySubtitle
+  ///
+  /// In en, this message translates to:
+  /// **'114 Islamic terms explained'**
+  String get toolboxGlossarySubtitle;
 }
 
 class _AppLocalizationsDelegate

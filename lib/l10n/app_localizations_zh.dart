@@ -39,6 +39,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get islamicCalendar => '伊斯兰历';
 
   @override
+  String get islamicCalendarSubtitle => '伊斯兰历日期与节日';
+
+  @override
   String get duas => '杜阿祈祷文';
 
   @override
@@ -2195,6 +2198,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get beginnerExploreSubtitle => '切换至完整的Noor Guard体验';
 
   @override
+  String get beginnerExploreFeaturesSubtitle => 'Noor Guard 的全部功能';
+
+  @override
   String get beginnerLearnSalah => '学习礼拜';
 
   @override
@@ -2461,14 +2467,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
-  String get shahadaTranslation => '除安拉外，别无神灵，穆罕默德是安拉的使者';
+  String get shahadaTranslation => '我作证除了真主安拉之外没有应当崇拜的，我又作证穆罕默德是安拉的使者';
 
   @override
   String get shahadaWordBreakdownTitle => '逐词解析';
@@ -2559,4 +2565,13 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => '逐步指南';
+
+  @override
+  String get toolboxWuduSubtitle => '礼拜前的净化';
+
+  @override
+  String get toolboxGlossarySubtitle => '114个伊斯兰术语解释';
 }

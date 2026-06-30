@@ -39,6 +39,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get islamicCalendar => 'İslami Takvim';
 
   @override
+  String get islamicCalendarSubtitle => 'Hicri tarihler ve etkinlikler';
+
+  @override
   String get duas => 'Dualar';
 
   @override
@@ -2310,6 +2313,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get beginnerExploreSubtitle => 'Tam Noor Guard deneyimine geçin';
 
   @override
+  String get beginnerExploreFeaturesSubtitle =>
+      'Noor Guard\'ın sunduğu her şey';
+
+  @override
   String get beginnerLearnSalah => 'Namaz Öğren';
 
   @override
@@ -2590,15 +2597,15 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
   String get shahadaTranslation =>
-      'Allah\'tan başka ilah yoktur, Muhammed Allah\'ın Resulüdür';
+      'Allah\'tan başka ilah olmadığına şehadet ederim ve Muhammed\'in Allah\'ın Resulü olduğuna şehadet ederim';
 
   @override
   String get shahadaWordBreakdownTitle => 'Kelime Kelime';
@@ -2689,4 +2696,13 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => 'Adım adım rehber';
+
+  @override
+  String get toolboxWuduSubtitle => 'Namazdan önce temizlik';
+
+  @override
+  String get toolboxGlossarySubtitle => '114 İslami terim açıklandı';
 }

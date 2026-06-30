@@ -10,6 +10,7 @@
   "focusMode": "حالت تمرکز",
   "appBlocking": "مسدودسازی برنامه",
   "islamicCalendar": "تقویم اسلامی",
+  "islamicCalendarSubtitle": "تاریخ‌های هجری و رویدادها",
   "duas": "دعاها",
   "quran": "قرآن",
   "settings": "تنظیمات",
@@ -945,6 +946,7 @@
   "@beginnerExploreSubtitle": {
     "description": "Subtitle under Explore All Features button"
   },
+  "beginnerExploreFeaturesSubtitle": "همه چیزی که نور گارد ارائه می‌دهد",
   "beginnerLearnSalah": "یادگیری نماز",
   "@beginnerLearnSalah": {
     "description": "Beginner toolbox card label — learn how to pray"
@@ -1271,8 +1273,7 @@
   "howToPrayAccepted": "خداوند نمازت را قبول کند.",
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
-  }
-,
+  },
   "fatihaIntroTitle": "ام القرآن",
   "@fatihaIntroTitle": {
     "description": "fatihaIntroTitle"
@@ -1289,15 +1290,15 @@
   "@shahadaScreenTitle": {
     "description": "shahadaScreenTitle"
   },
-  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
   "@shahadaArabicText": {
     "description": "shahadaArabicText"
   },
-  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "shahadaTransliteration": "Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh",
   "@shahadaTransliteration": {
     "description": "shahadaTransliteration"
   },
-  "shahadaTranslation": "هیچ معبودی جز الله نیست، محمد فرستاده الله است",
+  "shahadaTranslation": "شهادت می‌دهم که معبودی جز الله نیست و شهادت می‌دهم که محمد فرستاده الله است",
   "@shahadaTranslation": {
     "description": "shahadaTranslation"
   },
@@ -1416,5 +1417,17 @@
   "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
   "@shahadaPronunciationPart2": {
     "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "راهنمای گام به گام",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "طهارت قبل از نماز",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "۱۱۴ اصطلاح اسلامی توضیح داده شده",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
   }
 }

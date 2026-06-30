@@ -39,6 +39,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get islamicCalendar => 'Islamitische Kalender';
 
   @override
+  String get islamicCalendarSubtitle => 'Hijri-datums & evenementen';
+
+  @override
   String get duas => 'Smeekbeden';
 
   @override
@@ -2320,6 +2323,10 @@ class AppLocalizationsNl extends AppLocalizations {
       'Schakel over naar de volledige Noor Guard-ervaring';
 
   @override
+  String get beginnerExploreFeaturesSubtitle =>
+      'Alles wat Noor Guard te bieden heeft';
+
+  @override
   String get beginnerLearnSalah => 'Salah leren';
 
   @override
@@ -2599,15 +2606,15 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
   String get shahadaTranslation =>
-      'Er is geen god dan Allah, Muhammad is de Boodschapper van Allah';
+      'Ik getuig dat er geen godheid is behalve Allah, en ik getuig dat Muhammad de boodschapper van Allah is';
 
   @override
   String get shahadaWordBreakdownTitle => 'Woord voor Woord';
@@ -2698,4 +2705,13 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => 'Stap voor stap gids';
+
+  @override
+  String get toolboxWuduSubtitle => 'Reiniging voor het gebed';
+
+  @override
+  String get toolboxGlossarySubtitle => '114 islamitische termen uitgelegd';
 }

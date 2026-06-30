@@ -39,6 +39,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get islamicCalendar => 'Calendario Islámico';
 
   @override
+  String get islamicCalendarSubtitle => 'Fechas hijri y eventos';
+
+  @override
   String get duas => 'Duas';
 
   @override
@@ -2327,6 +2330,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'Cambia a la experiencia completa de Noor Guard';
 
   @override
+  String get beginnerExploreFeaturesSubtitle =>
+      'Todo lo que Noor Guard tiene para ofrecer';
+
+  @override
   String get beginnerLearnSalah => 'Aprender Salah';
 
   @override
@@ -2606,15 +2613,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
   String get shahadaTranslation =>
-      'No hay dios sino Allah, Muhammad es el Mensajero de Allah';
+      'Doy testimonio de que no hay más deidad que Allah, y doy testimonio de que Muhammad es el mensajero de Allah';
 
   @override
   String get shahadaWordBreakdownTitle => 'Palabra por Palabra';
@@ -2705,4 +2712,13 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => 'Guía paso a paso';
+
+  @override
+  String get toolboxWuduSubtitle => 'Purificación antes de la oración';
+
+  @override
+  String get toolboxGlossarySubtitle => '114 términos islámicos explicados';
 }

@@ -39,6 +39,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get islamicCalendar => 'تقویم اسلامی';
 
   @override
+  String get islamicCalendarSubtitle => 'تاریخ‌های هجری و رویدادها';
+
+  @override
   String get duas => 'دعاها';
 
   @override
@@ -2311,6 +2314,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get beginnerExploreSubtitle => 'به تجربه کامل Noor Guard بروید';
 
   @override
+  String get beginnerExploreFeaturesSubtitle =>
+      'همه چیزی که نور گارد ارائه می‌دهد';
+
+  @override
   String get beginnerLearnSalah => 'یادگیری نماز';
 
   @override
@@ -2585,15 +2592,15 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
   String get shahadaTranslation =>
-      'هیچ معبودی جز الله نیست، محمد فرستاده الله است';
+      'شهادت می‌دهم که معبودی جز الله نیست و شهادت می‌دهم که محمد فرستاده الله است';
 
   @override
   String get shahadaWordBreakdownTitle => 'کلمه به کلمه';
@@ -2684,4 +2691,13 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => 'راهنمای گام به گام';
+
+  @override
+  String get toolboxWuduSubtitle => 'طهارت قبل از نماز';
+
+  @override
+  String get toolboxGlossarySubtitle => '۱۱۴ اصطلاح اسلامی توضیح داده شده';
 }

@@ -39,6 +39,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get islamicCalendar => 'イスラム暦';
 
   @override
+  String get islamicCalendarSubtitle => 'ヒジュラ暦の日付と行事';
+
+  @override
   String get duas => 'ドゥアー';
 
   @override
@@ -2218,6 +2221,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get beginnerExploreSubtitle => '完全なNoor Guardの体験に切り替える';
 
   @override
+  String get beginnerExploreFeaturesSubtitle => 'Noor Guardのすべての機能';
+
+  @override
   String get beginnerLearnSalah => 'サラーを学ぶ';
 
   @override
@@ -2488,14 +2494,15 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get shahadaArabicText =>
-      'لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ';
+      'أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ';
 
   @override
   String get shahadaTransliteration =>
-      'Lā ilāha illallāh, Muḥammadun rasūlullāh';
+      'Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh';
 
   @override
-  String get shahadaTranslation => 'アッラーの他に神はなく、ムハンマドはアッラーの使徒である';
+  String get shahadaTranslation =>
+      '私はアッラーの他に神はいないと証言します。そして私はムハンマドはアッラーの使徒であると証言します';
 
   @override
   String get shahadaWordBreakdownTitle => '一語ずつ';
@@ -2586,4 +2593,13 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get shahadaPronunciationPart2 =>
       'Mu · HAM · ma · dun · ra · SUU · lul · LAH';
+
+  @override
+  String get toolboxLearnSalahSubtitle => 'ステップバイステップガイド';
+
+  @override
+  String get toolboxWuduSubtitle => '礼拝前の清め';
+
+  @override
+  String get toolboxGlossarySubtitle => '114のイスラーム用語解説';
 }

@@ -40,6 +40,10 @@
   "@islamicCalendar": {
     "description": "Label for the Hijri calendar feature"
   },
+  "islamicCalendarSubtitle": "Hijri dates & events",
+  "@islamicCalendarSubtitle": {
+    "description": "Subtitle for the Islamic Calendar feature tile"
+  },
   "duas": "Duas",
   "@duas": {
     "description": "Label for the supplication library feature"
@@ -2854,6 +2858,10 @@
   "@beginnerExploreSubtitle": {
     "description": "Subtitle under Explore All Features button"
   },
+  "beginnerExploreFeaturesSubtitle": "Everything Noor Guard has to offer",
+  "@beginnerExploreFeaturesSubtitle": {
+    "description": "Subtitle inside the Explore All Features modal sheet"
+  },
   "beginnerLearnSalah": "Learn Salah",
   "@beginnerLearnSalah": {
     "description": "Beginner toolbox card label — learn how to pray"
@@ -3180,8 +3188,7 @@
   "howToPrayAccepted": "May Allah accept your prayer.",
   "@howToPrayAccepted": {
     "description": "howToPrayAccepted"
-  }
-,
+  },
   "fatihaIntroTitle": "The Mother of the Quran",
   "@fatihaIntroTitle": {
     "description": "fatihaIntroTitle"
@@ -3198,15 +3205,15 @@
   "@shahadaScreenTitle": {
     "description": "shahadaScreenTitle"
   },
-  "shahadaArabicText": "لَا إِلَٰهَ إِلَّا اللَّهُ مُحَمَّدٌ رَّسُولُ اللَّهِ",
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
   "@shahadaArabicText": {
     "description": "shahadaArabicText"
   },
-  "shahadaTransliteration": "Lā ilāha illallāh, Muḥammadun rasūlullāh",
+  "shahadaTransliteration": "Ash-hadu an lā ilāha illā-llāh, wa ash-hadu anna Muḥammadan rasūlu-llāh",
   "@shahadaTransliteration": {
     "description": "shahadaTransliteration"
   },
-  "shahadaTranslation": "There is no god but Allah, Muhammad is the Messenger of Allah",
+  "shahadaTranslation": "I bear witness that there is no deity except Allah, and I bear witness that Muhammad is the messenger of Allah",
   "@shahadaTranslation": {
     "description": "shahadaTranslation"
   },
@@ -3325,5 +3332,17 @@
   "shahadaPronunciationPart2": "Mu · HAM · ma · dun · ra · SUU · lul · LAH",
   "@shahadaPronunciationPart2": {
     "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "Step by step guide",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "Purification before prayer",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "114 Islamic terms explained",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
   }
 }
