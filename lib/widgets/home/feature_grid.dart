@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../crescent_star_painter.dart';
 import '../geometric_pattern_painter.dart';
 import '../../screens/adhan_screen.dart';
 import '../../screens/app_blocking_screen.dart';
@@ -324,10 +325,9 @@ class RevertCornerCard extends StatelessWidget {
                           color: const Color(0xFFD4AF37).withValues(alpha: 0.45),
                         ),
                       ),
-                      child: const Icon(
-                        Icons.nightlight_rounded,
-                        color: Color(0xFFD4AF37),
-                        size: 24,
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: CustomPaint(painter: CrescentStarPainter()),
                       ),
                     ),
                     const SizedBox(width: 14),

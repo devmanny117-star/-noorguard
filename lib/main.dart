@@ -223,7 +223,7 @@ class _SplashScreenState extends State<SplashScreen>
       } else if (!kIsWeb && Platform.isAndroid && !notificationSetupComplete) {
         next = const NotificationSetupScreen(isFirstLaunch: true);
       } else if (beginnerMode) {
-        next = const BeginnerHomeScreen();
+        next = BeginnerHomeScreen(switchToHome: () => const HomeScreen());
       } else {
         next = const HomeScreen();
       }

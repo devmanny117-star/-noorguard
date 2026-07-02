@@ -168,7 +168,7 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     ));
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => const BeginnerHomeScreen(),
+        pageBuilder: (_, __, ___) => BeginnerHomeScreen(switchToHome: () => const HomeScreen()),
         transitionsBuilder: (_, animation, __, child) =>
             FadeTransition(opacity: animation, child: child),
         transitionDuration: const Duration(milliseconds: 400),

@@ -9,6 +9,7 @@ import '../data/prayer_times_data.dart';
 import '../l10n/app_localizations.dart';
 import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
+import '../theme/app_theme.dart';
 import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/share_sheet.dart';
@@ -35,12 +36,8 @@ import 'tafsir_of_the_day_screen.dart';
 import 'tasbih_screen.dart';
 import 'why_do_we_screen.dart';
 import 'wudu_guide_screen.dart';
-import 'home_screen.dart';
 
-const _kNavy   = Color(0xFF0D1B2A);
-const _kCard   = Color(0xFF0f1e30);
-const _kGold   = Color(0xFFC9A84C);
-const _kCream  = Color(0xFFF5EFE6);
+const _kGold = Color(0xFFC9A84C);
 
 enum _ShahadaDisplayMode { days, months, years }
 
@@ -56,7 +53,8 @@ const _kAlFatiha = Surah(
 // ── BeginnerHomeScreen ─────────────────────────────────────────────────────────
 
 class BeginnerHomeScreen extends StatefulWidget {
-  const BeginnerHomeScreen({super.key});
+  final Widget Function()? switchToHome;
+  const BeginnerHomeScreen({super.key, this.switchToHome});
 
   @override
   State<BeginnerHomeScreen> createState() => _BeginnerHomeScreenState();
@@ -78,23 +76,30 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
         }
       },
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: const SystemUiOverlayStyle(
+        value: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness:
+              Theme.of(context).brightness == Brightness.dark
+                  ? Brightness.light
+                  : Brightness.dark,
+          statusBarBrightness:
+              Theme.of(context).brightness == Brightness.dark
+                  ? Brightness.dark
+                  : Brightness.light,
         ),
         child: Scaffold(
           extendBody: true,
-          backgroundColor: _kNavy,
+          backgroundColor: context.appColors.background,
           body: SafeArea(
             child: IndexedStack(
               index: _selectedIndex,
               children: [
                 _BeginnerBody(
-                  onOpenPrayers:  () => Navigator.push(
+                  onOpenPrayers: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const PrayersScreen()),
                   ),
+                  switchToHome: widget.switchToHome,
                 ),
                 const QuranScreen(),
                 QiblaScreen(isActive: _selectedIndex == 2),
@@ -116,9 +121,11 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
 
 class _BeginnerBody extends StatefulWidget {
   final VoidCallback onOpenPrayers;
+  final Widget Function()? switchToHome;
 
   const _BeginnerBody({
     required this.onOpenPrayers,
+    this.switchToHome,
   });
 
   @override
@@ -203,9 +210,11 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
       margin: const EdgeInsets.all(16),
       duration: const Duration(seconds: 2),
     ));
+    final builder = widget.switchToHome;
+    if (builder == null) return;
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => const HomeScreen(),
+        pageBuilder: (_, __, ___) => builder(),
         transitionsBuilder: (_, animation, __, child) =>
             FadeTransition(opacity: animation, child: child),
         transitionDuration: const Duration(milliseconds: 400),
@@ -227,17 +236,27 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
       initialDate: now,
       firstDate: DateTime(2000),
       lastDate: now,
-      builder: (ctx, child) => Theme(
-        data: Theme.of(ctx).copyWith(
-          colorScheme: const ColorScheme.dark(
-            primary: _kGold,
-            onPrimary: _kNavy,
-            surface: _kCard,
-            onSurface: _kCream,
+      builder: (ctx, child) {
+        final isDark = Theme.of(ctx).brightness == Brightness.dark;
+        return Theme(
+          data: Theme.of(ctx).copyWith(
+            colorScheme: isDark
+                ? const ColorScheme.dark(
+                    primary: _kGold,
+                    onPrimary: Color(0xFF0D1B2A),
+                    surface: Color(0xFF0F1E30),
+                    onSurface: Color(0xFFF5EFE6),
+                  )
+                : ColorScheme.light(
+                    primary: _kGold,
+                    onPrimary: Colors.white,
+                    surface: Colors.white,
+                    onSurface: Theme.of(ctx).colorScheme.onSurface,
+                  ),
           ),
-        ),
-        child: child!,
-      ),
+          child: child!,
+        );
+      },
     );
     if (picked == null || !mounted) return;
     final prefs = await SharedPreferences.getInstance();
@@ -377,7 +396,7 @@ class _SectionCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: _kCard,
+        color: context.appColors.cardBg,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: _kGold.withValues(alpha: 0.45), width: 1),
       ),
@@ -448,7 +467,7 @@ class _JourneyCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
       decoration: BoxDecoration(
-        color: _kCard,
+        color: context.appColors.cardBg,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: _kGold.withValues(alpha: 0.50), width: 1),
         boxShadow: [
@@ -520,7 +539,7 @@ class _JourneyCard extends StatelessWidget {
                             'Shahada: ${_formatDate(shahadaDate!)}',
                             style: GoogleFonts.lato(
                               fontSize: 12,
-                              color: _kCream.withValues(alpha: 0.65),
+                              color: context.appColors.secondaryText,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -973,10 +992,11 @@ class _JourneyTaskRowState extends State<_JourneyTaskRow>
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                   color: widget.checked
-                      ? Colors.white.withValues(alpha: 0.35)
-                      : Colors.white,
+                      ? context.appColors.primaryText.withValues(alpha: 0.35)
+                      : context.appColors.primaryText,
                   decoration: widget.checked ? TextDecoration.lineThrough : null,
-                  decorationColor: Colors.white.withValues(alpha: 0.25),
+                  decorationColor:
+                      context.appColors.primaryText.withValues(alpha: 0.25),
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -1112,16 +1132,20 @@ class _ToolboxFeatureCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFF101E31), Color(0xFF081321)],
-          ),
+          color: isDark ? null : context.appColors.secondaryBg,
+          gradient: isDark
+              ? const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFF101E31), Color(0xFF081321)],
+                )
+              : null,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: _kGold.withValues(alpha: 0.55), width: 1),
           boxShadow: const [
@@ -1156,7 +1180,7 @@ class _ToolboxFeatureCard extends StatelessWidget {
                 Text(
                   label,
                   style: GoogleFonts.lato(
-                    color: _kCream,
+                    color: context.appColors.primaryText,
                     fontWeight: FontWeight.w700,
                     fontSize: 12,
                     letterSpacing: 0.2,
@@ -1222,9 +1246,9 @@ class _ExploreAllFeaturesSheet extends StatelessWidget {
       expand: false,
       builder: (_, scrollController) {
         return Container(
-          decoration: const BoxDecoration(
-            color: _kNavy,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          decoration: BoxDecoration(
+            color: context.appColors.background,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: Stack(
             children: [
@@ -1272,7 +1296,7 @@ class _ExploreAllFeaturesSheet extends StatelessWidget {
                           l10n.beginnerExploreFeaturesSubtitle,
                           style: GoogleFonts.lato(
                             fontSize: 13,
-                            color: _kCream.withValues(alpha: 0.70),
+                            color: context.appColors.secondaryText,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -1341,16 +1365,20 @@ class _FeatureModalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFF101E31), Color(0xFF081321)],
-          ),
+          color: isDark ? null : context.appColors.secondaryBg,
+          gradient: isDark
+              ? const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFF101E31), Color(0xFF081321)],
+                )
+              : null,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: _kGold.withValues(alpha: 0.55),
@@ -1384,7 +1412,7 @@ class _FeatureModalCard extends StatelessWidget {
                 Text(
                   label,
                   style: GoogleFonts.lato(
-                    color: _kCream,
+                    color: context.appColors.primaryText,
                     fontWeight: FontWeight.w700,
                     fontSize: 12,
                     letterSpacing: 0.2,
@@ -1458,7 +1486,7 @@ class _ExploreAllCard extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: context.appColors.primaryText,
                       ),
                     ),
                     const SizedBox(height: 3),
@@ -1466,7 +1494,7 @@ class _ExploreAllCard extends StatelessWidget {
                       l10n.beginnerExploreSubtitle,
                       style: GoogleFonts.lato(
                         fontSize: 12,
-                        color: Colors.white.withValues(alpha: 0.50),
+                        color: context.appColors.secondaryText,
                       ),
                     ),
                   ],
@@ -1480,9 +1508,9 @@ class _ExploreAllCard extends StatelessWidget {
                   color: _kGold,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.chevron_right_rounded,
-                  color: _kNavy,
+                  color: context.appColors.background,
                   size: 22,
                 ),
               ),
@@ -1543,9 +1571,9 @@ class _ShahadaOptionsSheetState extends State<_ShahadaOptionsSheet> {
     final hasDate   = widget.shahadaDate != null;
 
     return Container(
-      decoration: const BoxDecoration(
-        color: _kCard,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
+      decoration: BoxDecoration(
+        color: context.appColors.cardBg,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(22)),
       ),
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom + 28,
@@ -1600,7 +1628,7 @@ class _ShahadaOptionsSheetState extends State<_ShahadaOptionsSheet> {
                 _fmt(widget.shahadaDate!),
                 style: GoogleFonts.lato(
                   fontSize: 12,
-                  color: _kCream.withValues(alpha: 0.45),
+                  color: context.appColors.secondaryText,
                 ),
               ),
             ),
@@ -1636,7 +1664,7 @@ class _ShahadaOptionsSheetState extends State<_ShahadaOptionsSheet> {
                       style: GoogleFonts.lato(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: _kCream,
+                        color: context.appColors.primaryText,
                       ),
                     ),
                   ),
@@ -1694,7 +1722,7 @@ class _ShahadaOptionsSheetState extends State<_ShahadaOptionsSheet> {
                       'Years unlocks after 1 year as a Muslim',
                       style: GoogleFonts.lato(
                         fontSize: 11,
-                        color: _kCream.withValues(alpha: 0.35),
+                        color: context.appColors.secondaryText,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
