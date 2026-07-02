@@ -2736,4 +2736,151 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114 termes islamiques expliqués';
+
+  @override
+  String get shareSheetTitle => 'Partager';
+
+  @override
+  String get shareAnAyah => 'Partager un Ayah';
+
+  @override
+  String get shareADua => 'Partager un Dua';
+
+  @override
+  String get shareANameOfAllah => 'Partager un Nom d\'Allah';
+
+  @override
+  String get shareAHadith => 'Partager un Hadith';
+
+  @override
+  String get shareViaLabel => 'Partagé via Noor Guard';
+
+  @override
+  String get shareCardAyahLabel => '✦ Ayah du Jour';
+
+  @override
+  String get shareCardDuaLabel => '✦ Dua';
+
+  @override
+  String get shareCardNameLabel => '✦ Nom d\'Allah';
+
+  @override
+  String get shareCardHadithLabel => '✦ Hadith';
+
+  @override
+  String get sharePickDuaTitle => 'Choisir un Dua à Partager';
+
+  @override
+  String get shareError => 'Impossible de créer l\'image';
+
+  @override
+  String get shareAyahSubtitle => 'Choisir parmi 15 versets coraniques';
+
+  @override
+  String get shareDuaSubtitle => 'Choisir dans la bibliothèque';
+
+  @override
+  String get shareNameSubtitle => 'Choisir parmi les 99 Beaux Noms';
+
+  @override
+  String get shareHadithSubtitle => 'Choisir parmi 10 hadiths authentiques';
+
+  @override
+  String get shareThisDua => 'Partager Ce Dua';
+
+  @override
+  String get sharePickAyahTitle => 'Choisir un Ayah à Partager';
+
+  @override
+  String get searchAyahs => 'Rechercher des ayahs…';
+
+  @override
+  String get noAyahsFoundShort => 'Aucun ayah trouvé';
+
+  @override
+  String get shareThisAyah => 'Partager Cet Ayah';
+
+  @override
+  String get sharePickNameTitle => 'Choisir un Nom à Partager';
+
+  @override
+  String get shareThisName => 'Partager Ce Nom';
+
+  @override
+  String get sharePickHadithTitle => 'Choisir un Hadith à Partager';
+
+  @override
+  String get searchHadiths => 'Rechercher des hadiths…';
+
+  @override
+  String get noHadithsFound => 'Aucun hadith trouvé';
+
+  @override
+  String get shareThisHadith => 'Partager Ce Hadith';
+
+  @override
+  String get backToBasics => 'Retour aux Fondamentaux';
+
+  @override
+  String get backToBasicsSubtitle =>
+      'Votre guide sur les fondements de l\'Islam';
+
+  @override
+  String get fivePillarsOfIslam => 'Les 5 Piliers de l\'Islam';
+
+  @override
+  String get pillarLearnMore => 'En savoir plus';
+
+  @override
+  String get pillarShowLess => 'Voir moins';
+
+  @override
+  String get pillar1Name => 'Chahada';
+
+  @override
+  String get pillar1Desc => 'Déclaration de Foi';
+
+  @override
+  String get pillar1Detail =>
+      'La Chahada est le témoignage qu\'il n\'y a de dieu qu\'Allah et que Muhammad ﷺ est Son messager. La prononcer avec une foi sincère est la porte d\'entrée dans l\'Islam et le fondement de la foi musulmane.';
+
+  @override
+  String get pillar2Name => 'Salah';
+
+  @override
+  String get pillar2Desc => 'Les Cinq Prières Quotidiennes';
+
+  @override
+  String get pillar2Detail =>
+      'Le Salah est la prière rituelle effectuée cinq fois par jour — Fajr, Dhuhr, Asr, Maghrib et Isha. C\'est un lien direct entre le croyant et Allah, un rappel constant de Sa présence.';
+
+  @override
+  String get pillar3Name => 'Zakat';
+
+  @override
+  String get pillar3Desc => 'Aumône Obligatoire';
+
+  @override
+  String get pillar3Detail =>
+      'La Zakat est le don annuel de 2,5% de ses économies aux plus démunis. Elle purifie la richesse, réduit les inégalités et rappelle aux croyants que toute provision vient d\'Allah.';
+
+  @override
+  String get pillar4Name => 'Siyam';
+
+  @override
+  String get pillar4Desc => 'Jeûne du Ramadan';
+
+  @override
+  String get pillar4Detail =>
+      'Le Siyam est le jeûne observé durant le mois sacré de Ramadan, s\'abstenant de manger, boire et pécher du lever au coucher du soleil. Il développe la taqwa et la gratitude envers Allah.';
+
+  @override
+  String get pillar5Name => 'Hajj';
+
+  @override
+  String get pillar5Desc => 'Pèlerinage à La Mecque';
+
+  @override
+  String get pillar5Detail =>
+      'Le Hajj est le pèlerinage à la ville sacrée de La Mecque, obligatoire une fois dans sa vie pour tout musulman physiquement et financièrement capable. Symbole puissant d\'unité et de soumission à Allah.';
 }

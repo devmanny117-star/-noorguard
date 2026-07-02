@@ -2602,4 +2602,150 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114のイスラーム用語解説';
+
+  @override
+  String get shareSheetTitle => 'シェア';
+
+  @override
+  String get shareAnAyah => 'アーヤをシェア';
+
+  @override
+  String get shareADua => 'ドゥアーをシェア';
+
+  @override
+  String get shareANameOfAllah => 'アッラーのお名前をシェア';
+
+  @override
+  String get shareAHadith => 'ハディースをシェア';
+
+  @override
+  String get shareViaLabel => 'Noor Guard でシェア';
+
+  @override
+  String get shareCardAyahLabel => '✦ 今日のアーヤ';
+
+  @override
+  String get shareCardDuaLabel => '✦ ドゥアー';
+
+  @override
+  String get shareCardNameLabel => '✦ アッラーのお名前';
+
+  @override
+  String get shareCardHadithLabel => '✦ ハディース';
+
+  @override
+  String get sharePickDuaTitle => 'シェアするドゥアーを選んでください';
+
+  @override
+  String get shareError => 'シェア画像を作成できませんでした';
+
+  @override
+  String get shareAyahSubtitle => '15のクルアーンの節から選択';
+
+  @override
+  String get shareDuaSubtitle => 'ライブラリから選択';
+
+  @override
+  String get shareNameSubtitle => '全99の美しい名前から選択';
+
+  @override
+  String get shareHadithSubtitle => '10のハディースから選択';
+
+  @override
+  String get shareThisDua => 'このドゥアーをシェア';
+
+  @override
+  String get sharePickAyahTitle => 'シェアするアーヤを選択';
+
+  @override
+  String get searchAyahs => 'アーヤを検索…';
+
+  @override
+  String get noAyahsFoundShort => 'アーヤが見つかりません';
+
+  @override
+  String get shareThisAyah => 'このアーヤをシェア';
+
+  @override
+  String get sharePickNameTitle => 'シェアする名前を選択';
+
+  @override
+  String get shareThisName => 'この名前をシェア';
+
+  @override
+  String get sharePickHadithTitle => 'シェアするハディースを選択';
+
+  @override
+  String get searchHadiths => 'ハディースを検索…';
+
+  @override
+  String get noHadithsFound => 'ハディースが見つかりません';
+
+  @override
+  String get shareThisHadith => 'このハディースをシェア';
+
+  @override
+  String get backToBasics => '基礎に戻る';
+
+  @override
+  String get backToBasicsSubtitle => 'イスラムの基本事項ガイド';
+
+  @override
+  String get fivePillarsOfIslam => 'イスラムの五行';
+
+  @override
+  String get pillarLearnMore => '詳しく見る';
+
+  @override
+  String get pillarShowLess => '閉じる';
+
+  @override
+  String get pillar1Name => 'シャハーダ';
+
+  @override
+  String get pillar1Desc => '信仰の証言';
+
+  @override
+  String get pillar1Detail =>
+      'シャハーダとは「アッラー以外に神はなく、ムハンマドﷺはその使徒である」という証言です。誠実な信仰を持ってこれを唱えることがイスラムへの入口であり、ムスリムの信仰の土台です。';
+
+  @override
+  String get pillar2Name => 'サラート';
+
+  @override
+  String get pillar2Desc => '1日5回の礼拝';
+
+  @override
+  String get pillar2Detail =>
+      'サラートは1日5回行われる礼拝です——ファジュル、ズフル、アスル、マグリブ、イシャー。それは礼拝者とアッラーの直接的な繋がりであり、その存在を常に思い起こさせます。';
+
+  @override
+  String get pillar3Name => 'ザカート';
+
+  @override
+  String get pillar3Desc => '義務的な喜捨';
+
+  @override
+  String get pillar3Detail =>
+      'ザカートは貯蓄の2.5%を毎年困窮者に施すことです。財産を清め、不平等を減らし、すべての糧はアッラーから与えられることを信者に思い起こさせます。';
+
+  @override
+  String get pillar4Name => 'サウム';
+
+  @override
+  String get pillar4Desc => 'ラマダーン月の断食';
+
+  @override
+  String get pillar4Detail =>
+      'サウムは神聖なラマダーン月中、夜明けから日没まで食事・飲料・罪を断つ断食です。タクワー（神を意識すること）と感謝の気持ちを育みます。';
+
+  @override
+  String get pillar5Name => 'ハッジ';
+
+  @override
+  String get pillar5Desc => 'メッカへの巡礼';
+
+  @override
+  String get pillar5Detail =>
+      'ハッジは聖なる都市メッカへの巡礼で、身体的・経済的に能力のあるすべてのムスリムに一生に一度義務付けられています。団結とアッラーへの服従の強力な象徴です。';
 }

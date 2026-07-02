@@ -2697,4 +2697,150 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114 Islamic terms explained';
+
+  @override
+  String get shareSheetTitle => 'Share';
+
+  @override
+  String get shareAnAyah => 'Share an Ayah';
+
+  @override
+  String get shareADua => 'Share a Dua';
+
+  @override
+  String get shareANameOfAllah => 'Share a Name of Allah';
+
+  @override
+  String get shareAHadith => 'Share a Hadith';
+
+  @override
+  String get shareViaLabel => 'Shared via Noor Guard';
+
+  @override
+  String get shareCardAyahLabel => '✦ Ayah of the Day';
+
+  @override
+  String get shareCardDuaLabel => '✦ Dua';
+
+  @override
+  String get shareCardNameLabel => '✦ Name of Allah';
+
+  @override
+  String get shareCardHadithLabel => '✦ Hadith';
+
+  @override
+  String get sharePickDuaTitle => 'Pick a Dua to Share';
+
+  @override
+  String get shareError => 'Could not create share image';
+
+  @override
+  String get shareAyahSubtitle => 'Pick from 15 Quranic verses';
+
+  @override
+  String get shareDuaSubtitle => 'Pick from the library';
+
+  @override
+  String get shareNameSubtitle => 'Pick from all 99 Beautiful Names';
+
+  @override
+  String get shareHadithSubtitle => 'Pick from 10 authentic hadiths';
+
+  @override
+  String get shareThisDua => 'Share This Dua';
+
+  @override
+  String get sharePickAyahTitle => 'Pick an Ayah to Share';
+
+  @override
+  String get searchAyahs => 'Search ayahs…';
+
+  @override
+  String get noAyahsFoundShort => 'No ayahs found';
+
+  @override
+  String get shareThisAyah => 'Share This Ayah';
+
+  @override
+  String get sharePickNameTitle => 'Pick a Name to Share';
+
+  @override
+  String get shareThisName => 'Share This Name';
+
+  @override
+  String get sharePickHadithTitle => 'Pick a Hadith to Share';
+
+  @override
+  String get searchHadiths => 'Search hadiths…';
+
+  @override
+  String get noHadithsFound => 'No hadiths found';
+
+  @override
+  String get shareThisHadith => 'Share This Hadith';
+
+  @override
+  String get backToBasics => 'Back to Basics';
+
+  @override
+  String get backToBasicsSubtitle => 'Your guide to the essentials of Islam';
+
+  @override
+  String get fivePillarsOfIslam => 'The 5 Pillars of Islam';
+
+  @override
+  String get pillarLearnMore => 'Learn more';
+
+  @override
+  String get pillarShowLess => 'Show less';
+
+  @override
+  String get pillar1Name => 'Shahada';
+
+  @override
+  String get pillar1Desc => 'Declaration of Faith';
+
+  @override
+  String get pillar1Detail =>
+      'The Shahada is the testimony that there is no god but Allah and that Muhammad ﷺ is His messenger. Reciting it with sincere belief is the entry point into Islam and the foundation of a Muslim\'s faith.';
+
+  @override
+  String get pillar2Name => 'Salah';
+
+  @override
+  String get pillar2Desc => 'Five Daily Prayers';
+
+  @override
+  String get pillar2Detail =>
+      'Salah is the ritual prayer performed five times a day — Fajr, Dhuhr, Asr, Maghrib, and Isha. It is a direct connection between the worshipper and Allah, and a constant reminder of His presence throughout the day.';
+
+  @override
+  String get pillar3Name => 'Zakat';
+
+  @override
+  String get pillar3Desc => 'Obligatory Charity';
+
+  @override
+  String get pillar3Detail =>
+      'Zakat is the annual giving of 2.5% of one\'s savings to those in need. It purifies wealth, reduces inequality, and reminds believers that all provision ultimately comes from Allah.';
+
+  @override
+  String get pillar4Name => 'Sawm';
+
+  @override
+  String get pillar4Desc => 'Fasting in Ramadan';
+
+  @override
+  String get pillar4Detail =>
+      'Sawm is the fast observed during the holy month of Ramadan, abstaining from food, drink, and sin from dawn to sunset. It builds taqwa (God-consciousness) and gratitude for Allah\'s blessings.';
+
+  @override
+  String get pillar5Name => 'Hajj';
+
+  @override
+  String get pillar5Desc => 'Pilgrimage to Mecca';
+
+  @override
+  String get pillar5Detail =>
+      'Hajj is the pilgrimage to the sacred city of Mecca, obligatory once in a lifetime for every Muslim who is physically and financially able. It is a powerful symbol of unity and submission to Allah.';
 }

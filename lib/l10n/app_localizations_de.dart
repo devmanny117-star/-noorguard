@@ -2721,4 +2721,151 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114 islamische Begriffe erklärt';
+
+  @override
+  String get shareSheetTitle => 'Teilen';
+
+  @override
+  String get shareAnAyah => 'Einen Ayah teilen';
+
+  @override
+  String get shareADua => 'Ein Dua teilen';
+
+  @override
+  String get shareANameOfAllah => 'Einen Namen Allahs teilen';
+
+  @override
+  String get shareAHadith => 'Einen Hadith teilen';
+
+  @override
+  String get shareViaLabel => 'Geteilt über Noor Guard';
+
+  @override
+  String get shareCardAyahLabel => '✦ Ayah des Tages';
+
+  @override
+  String get shareCardDuaLabel => '✦ Dua';
+
+  @override
+  String get shareCardNameLabel => '✦ Name Allahs';
+
+  @override
+  String get shareCardHadithLabel => '✦ Hadith';
+
+  @override
+  String get sharePickDuaTitle => 'Ein Dua zum Teilen auswählen';
+
+  @override
+  String get shareError => 'Bild konnte nicht erstellt werden';
+
+  @override
+  String get shareAyahSubtitle => 'Wähle aus 15 Koranversen';
+
+  @override
+  String get shareDuaSubtitle => 'Aus der Bibliothek wählen';
+
+  @override
+  String get shareNameSubtitle => 'Wähle aus allen 99 Schönen Namen';
+
+  @override
+  String get shareHadithSubtitle => 'Wähle aus 10 authentischen Hadithen';
+
+  @override
+  String get shareThisDua => 'Dieses Dua teilen';
+
+  @override
+  String get sharePickAyahTitle => 'Einen Vers zum Teilen auswählen';
+
+  @override
+  String get searchAyahs => 'Verse suchen…';
+
+  @override
+  String get noAyahsFoundShort => 'Keine Verse gefunden';
+
+  @override
+  String get shareThisAyah => 'Diesen Vers teilen';
+
+  @override
+  String get sharePickNameTitle => 'Einen Namen zum Teilen auswählen';
+
+  @override
+  String get shareThisName => 'Diesen Namen teilen';
+
+  @override
+  String get sharePickHadithTitle => 'Einen Hadith zum Teilen auswählen';
+
+  @override
+  String get searchHadiths => 'Hadithe suchen…';
+
+  @override
+  String get noHadithsFound => 'Keine Hadithe gefunden';
+
+  @override
+  String get shareThisHadith => 'Diesen Hadith teilen';
+
+  @override
+  String get backToBasics => 'Zurück zu den Grundlagen';
+
+  @override
+  String get backToBasicsSubtitle =>
+      'Dein Leitfaden zu den Grundlagen des Islam';
+
+  @override
+  String get fivePillarsOfIslam => 'Die 5 Säulen des Islam';
+
+  @override
+  String get pillarLearnMore => 'Mehr erfahren';
+
+  @override
+  String get pillarShowLess => 'Weniger anzeigen';
+
+  @override
+  String get pillar1Name => 'Schahada';
+
+  @override
+  String get pillar1Desc => 'Glaubensbekenntnis';
+
+  @override
+  String get pillar1Detail =>
+      'Die Schahada ist das Zeugnis, dass es keinen Gott außer Allah gibt und dass Muhammad ﷺ Sein Gesandter ist. Sie mit aufrichtigem Glauben zu sprechen ist der Eintritt in den Islam und das Fundament des muslimischen Glaubens.';
+
+  @override
+  String get pillar2Name => 'Salah';
+
+  @override
+  String get pillar2Desc => 'Fünf tägliche Gebete';
+
+  @override
+  String get pillar2Detail =>
+      'Salah ist das rituelle Gebet, das fünfmal täglich verrichtet wird — Fajr, Dhuhr, Asr, Maghrib und Ischa. Es ist eine direkte Verbindung zwischen dem Gläubigen und Allah, eine ständige Erinnerung an Seine Gegenwart.';
+
+  @override
+  String get pillar3Name => 'Zakat';
+
+  @override
+  String get pillar3Desc => 'Pflichtspende';
+
+  @override
+  String get pillar3Detail =>
+      'Zakat ist die jährliche Abgabe von 2,5% des Ersparten an Bedürftige. Sie reinigt das Vermögen, verringert Ungleichheit und erinnert Gläubige daran, dass aller Reichtum von Allah stammt.';
+
+  @override
+  String get pillar4Name => 'Sawm';
+
+  @override
+  String get pillar4Desc => 'Fasten im Ramadan';
+
+  @override
+  String get pillar4Detail =>
+      'Sawm ist das Fasten im heiligen Monat Ramadan, bei dem von der Morgendämmerung bis zum Sonnenuntergang auf Essen, Trinken und Sünde verzichtet wird. Es fördert Taqwa und Dankbarkeit gegenüber Allah.';
+
+  @override
+  String get pillar5Name => 'Hadsch';
+
+  @override
+  String get pillar5Desc => 'Pilgerfahrt nach Mekka';
+
+  @override
+  String get pillar5Detail =>
+      'Der Hadsch ist die Pilgerfahrt zur heiligen Stadt Mekka, die für jeden körperlich und finanziell fähigen Muslim einmal im Leben verpflichtend ist. Er ist ein mächtiges Symbol der Einheit und der Unterwerfung unter Allah.';
 }

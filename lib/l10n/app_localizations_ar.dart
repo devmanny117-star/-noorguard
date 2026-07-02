@@ -2666,4 +2666,150 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '١١٤ مصطلح إسلامي موضّح';
+
+  @override
+  String get shareSheetTitle => 'مشاركة';
+
+  @override
+  String get shareAnAyah => 'مشاركة آية';
+
+  @override
+  String get shareADua => 'مشاركة دعاء';
+
+  @override
+  String get shareANameOfAllah => 'مشاركة اسم من أسماء الله';
+
+  @override
+  String get shareAHadith => 'مشاركة حديث';
+
+  @override
+  String get shareViaLabel => 'تمت المشاركة عبر نور غارد';
+
+  @override
+  String get shareCardAyahLabel => '✦ آية اليوم';
+
+  @override
+  String get shareCardDuaLabel => '✦ دعاء';
+
+  @override
+  String get shareCardNameLabel => '✦ اسم الله';
+
+  @override
+  String get shareCardHadithLabel => '✦ حديث';
+
+  @override
+  String get sharePickDuaTitle => 'اختر دعاءً للمشاركة';
+
+  @override
+  String get shareError => 'تعذّر إنشاء صورة المشاركة';
+
+  @override
+  String get shareAyahSubtitle => 'اختر من ١٥ آية قرآنية';
+
+  @override
+  String get shareDuaSubtitle => 'اختر من المكتبة';
+
+  @override
+  String get shareNameSubtitle => 'اختر من الأسماء الحسنى التسعة والتسعين';
+
+  @override
+  String get shareHadithSubtitle => 'اختر من ١٠ أحاديث صحيحة';
+
+  @override
+  String get shareThisDua => 'شارك هذا الدعاء';
+
+  @override
+  String get sharePickAyahTitle => 'اختر آية للمشاركة';
+
+  @override
+  String get searchAyahs => 'ابحث عن آيات…';
+
+  @override
+  String get noAyahsFoundShort => 'لم يُعثر على آيات';
+
+  @override
+  String get shareThisAyah => 'شارك هذه الآية';
+
+  @override
+  String get sharePickNameTitle => 'اختر اسمًا للمشاركة';
+
+  @override
+  String get shareThisName => 'شارك هذا الاسم';
+
+  @override
+  String get sharePickHadithTitle => 'اختر حديثًا للمشاركة';
+
+  @override
+  String get searchHadiths => 'ابحث عن أحاديث…';
+
+  @override
+  String get noHadithsFound => 'لم يُعثر على أحاديث';
+
+  @override
+  String get shareThisHadith => 'شارك هذا الحديث';
+
+  @override
+  String get backToBasics => 'العودة إلى الأساسيات';
+
+  @override
+  String get backToBasicsSubtitle => 'دليلك إلى أساسيات الإسلام';
+
+  @override
+  String get fivePillarsOfIslam => 'أركان الإسلام الخمسة';
+
+  @override
+  String get pillarLearnMore => 'اعرف المزيد';
+
+  @override
+  String get pillarShowLess => 'أقل';
+
+  @override
+  String get pillar1Name => 'الشهادة';
+
+  @override
+  String get pillar1Desc => 'شهادة الإيمان';
+
+  @override
+  String get pillar1Detail =>
+      'الشهادة هي الشهادة أن لا إله إلا الله وأن محمداً ﷺ رسوله. النطق بها بإخلاص هو بوابة الدخول إلى الإسلام وأساس إيمان المسلم.';
+
+  @override
+  String get pillar2Name => 'الصلاة';
+
+  @override
+  String get pillar2Desc => 'الصلوات الخمس اليومية';
+
+  @override
+  String get pillar2Detail =>
+      'الصلاة هي العبادة المؤداة خمس مرات في اليوم — الفجر والظهر والعصر والمغرب والعشاء. إنها صلة مباشرة بين العبد وربه وتذكير دائم بحضوره.';
+
+  @override
+  String get pillar3Name => 'الزكاة';
+
+  @override
+  String get pillar3Desc => 'الصدقة الواجبة';
+
+  @override
+  String get pillar3Detail =>
+      'الزكاة هي إخراج 2.5% من المدخرات سنوياً للمحتاجين. تطهر الأموال وتذكّر المؤمن أن الرزق كله من الله.';
+
+  @override
+  String get pillar4Name => 'الصوم';
+
+  @override
+  String get pillar4Desc => 'صيام رمضان';
+
+  @override
+  String get pillar4Detail =>
+      'الصوم هو الامتناع عن الطعام والشراب والذنوب من الفجر إلى الغروب طوال شهر رمضان. يبني التقوى والشكر لله.';
+
+  @override
+  String get pillar5Name => 'الحج';
+
+  @override
+  String get pillar5Desc => 'الحج إلى مكة المكرمة';
+
+  @override
+  String get pillar5Detail =>
+      'الحج هو زيارة البيت الحرام في مكة المكرمة، فريضة مرة في العمر لكل مسلم مستطيع. رمز عظيم للوحدة والخضوع لله.';
 }

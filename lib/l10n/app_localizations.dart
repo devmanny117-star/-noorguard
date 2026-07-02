@@ -4985,6 +4985,288 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'114 Islamic terms explained'**
   String get toolboxGlossarySubtitle;
+
+  /// shareSheetTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get shareSheetTitle;
+
+  /// shareAnAyah
+  ///
+  /// In en, this message translates to:
+  /// **'Share an Ayah'**
+  String get shareAnAyah;
+
+  /// shareADua
+  ///
+  /// In en, this message translates to:
+  /// **'Share a Dua'**
+  String get shareADua;
+
+  /// shareANameOfAllah
+  ///
+  /// In en, this message translates to:
+  /// **'Share a Name of Allah'**
+  String get shareANameOfAllah;
+
+  /// shareAHadith
+  ///
+  /// In en, this message translates to:
+  /// **'Share a Hadith'**
+  String get shareAHadith;
+
+  /// shareViaLabel
+  ///
+  /// In en, this message translates to:
+  /// **'Shared via Noor Guard'**
+  String get shareViaLabel;
+
+  /// shareCardAyahLabel
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Ayah of the Day'**
+  String get shareCardAyahLabel;
+
+  /// shareCardDuaLabel
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Dua'**
+  String get shareCardDuaLabel;
+
+  /// shareCardNameLabel
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Name of Allah'**
+  String get shareCardNameLabel;
+
+  /// shareCardHadithLabel
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Hadith'**
+  String get shareCardHadithLabel;
+
+  /// sharePickDuaTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a Dua to Share'**
+  String get sharePickDuaTitle;
+
+  /// shareError
+  ///
+  /// In en, this message translates to:
+  /// **'Could not create share image'**
+  String get shareError;
+
+  /// shareAyahSubtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from 15 Quranic verses'**
+  String get shareAyahSubtitle;
+
+  /// shareDuaSubtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from the library'**
+  String get shareDuaSubtitle;
+
+  /// shareNameSubtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from all 99 Beautiful Names'**
+  String get shareNameSubtitle;
+
+  /// shareHadithSubtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick from 10 authentic hadiths'**
+  String get shareHadithSubtitle;
+
+  /// shareThisDua
+  ///
+  /// In en, this message translates to:
+  /// **'Share This Dua'**
+  String get shareThisDua;
+
+  /// sharePickAyahTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick an Ayah to Share'**
+  String get sharePickAyahTitle;
+
+  /// searchAyahs
+  ///
+  /// In en, this message translates to:
+  /// **'Search ayahs…'**
+  String get searchAyahs;
+
+  /// noAyahsFoundShort
+  ///
+  /// In en, this message translates to:
+  /// **'No ayahs found'**
+  String get noAyahsFoundShort;
+
+  /// shareThisAyah
+  ///
+  /// In en, this message translates to:
+  /// **'Share This Ayah'**
+  String get shareThisAyah;
+
+  /// sharePickNameTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a Name to Share'**
+  String get sharePickNameTitle;
+
+  /// shareThisName
+  ///
+  /// In en, this message translates to:
+  /// **'Share This Name'**
+  String get shareThisName;
+
+  /// sharePickHadithTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a Hadith to Share'**
+  String get sharePickHadithTitle;
+
+  /// searchHadiths
+  ///
+  /// In en, this message translates to:
+  /// **'Search hadiths…'**
+  String get searchHadiths;
+
+  /// noHadithsFound
+  ///
+  /// In en, this message translates to:
+  /// **'No hadiths found'**
+  String get noHadithsFound;
+
+  /// shareThisHadith
+  ///
+  /// In en, this message translates to:
+  /// **'Share This Hadith'**
+  String get shareThisHadith;
+
+  /// Title for the Back to Basics screen
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Basics'**
+  String get backToBasics;
+
+  /// Subtitle for the Back to Basics screen
+  ///
+  /// In en, this message translates to:
+  /// **'Your guide to the essentials of Islam'**
+  String get backToBasicsSubtitle;
+
+  /// Section header for the five pillars
+  ///
+  /// In en, this message translates to:
+  /// **'The 5 Pillars of Islam'**
+  String get fivePillarsOfIslam;
+
+  /// Expand a pillar detail
+  ///
+  /// In en, this message translates to:
+  /// **'Learn more'**
+  String get pillarLearnMore;
+
+  /// Collapse a pillar detail
+  ///
+  /// In en, this message translates to:
+  /// **'Show less'**
+  String get pillarShowLess;
+
+  /// Name of the first pillar
+  ///
+  /// In en, this message translates to:
+  /// **'Shahada'**
+  String get pillar1Name;
+
+  /// Short description of Shahada
+  ///
+  /// In en, this message translates to:
+  /// **'Declaration of Faith'**
+  String get pillar1Desc;
+
+  /// Expanded detail of Shahada
+  ///
+  /// In en, this message translates to:
+  /// **'The Shahada is the testimony that there is no god but Allah and that Muhammad ﷺ is His messenger. Reciting it with sincere belief is the entry point into Islam and the foundation of a Muslim\'s faith.'**
+  String get pillar1Detail;
+
+  /// Name of the second pillar
+  ///
+  /// In en, this message translates to:
+  /// **'Salah'**
+  String get pillar2Name;
+
+  /// Short description of Salah
+  ///
+  /// In en, this message translates to:
+  /// **'Five Daily Prayers'**
+  String get pillar2Desc;
+
+  /// Expanded detail of Salah
+  ///
+  /// In en, this message translates to:
+  /// **'Salah is the ritual prayer performed five times a day — Fajr, Dhuhr, Asr, Maghrib, and Isha. It is a direct connection between the worshipper and Allah, and a constant reminder of His presence throughout the day.'**
+  String get pillar2Detail;
+
+  /// Name of the third pillar
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat'**
+  String get pillar3Name;
+
+  /// Short description of Zakat
+  ///
+  /// In en, this message translates to:
+  /// **'Obligatory Charity'**
+  String get pillar3Desc;
+
+  /// Expanded detail of Zakat
+  ///
+  /// In en, this message translates to:
+  /// **'Zakat is the annual giving of 2.5% of one\'s savings to those in need. It purifies wealth, reduces inequality, and reminds believers that all provision ultimately comes from Allah.'**
+  String get pillar3Detail;
+
+  /// Name of the fourth pillar
+  ///
+  /// In en, this message translates to:
+  /// **'Sawm'**
+  String get pillar4Name;
+
+  /// Short description of Sawm
+  ///
+  /// In en, this message translates to:
+  /// **'Fasting in Ramadan'**
+  String get pillar4Desc;
+
+  /// Expanded detail of Sawm
+  ///
+  /// In en, this message translates to:
+  /// **'Sawm is the fast observed during the holy month of Ramadan, abstaining from food, drink, and sin from dawn to sunset. It builds taqwa (God-consciousness) and gratitude for Allah\'s blessings.'**
+  String get pillar4Detail;
+
+  /// Name of the fifth pillar
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj'**
+  String get pillar5Name;
+
+  /// Short description of Hajj
+  ///
+  /// In en, this message translates to:
+  /// **'Pilgrimage to Mecca'**
+  String get pillar5Desc;
+
+  /// Expanded detail of Hajj
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj is the pilgrimage to the sacred city of Mecca, obligatory once in a lifetime for every Muslim who is physically and financially able. It is a powerful symbol of unity and submission to Allah.'**
+  String get pillar5Detail;
 }
 
 class _AppLocalizationsDelegate

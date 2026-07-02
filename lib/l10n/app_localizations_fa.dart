@@ -2700,4 +2700,150 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '۱۱۴ اصطلاح اسلامی توضیح داده شده';
+
+  @override
+  String get shareSheetTitle => 'اشتراک‌گذاری';
+
+  @override
+  String get shareAnAyah => 'اشتراک‌گذاری یک آیه';
+
+  @override
+  String get shareADua => 'اشتراک‌گذاری یک دعا';
+
+  @override
+  String get shareANameOfAllah => 'اشتراک‌گذاری نامی از اسماء الله';
+
+  @override
+  String get shareAHadith => 'اشتراک‌گذاری یک حدیث';
+
+  @override
+  String get shareViaLabel => 'اشتراک‌گذاری شده از طریق نور گارد';
+
+  @override
+  String get shareCardAyahLabel => '✦ آیه روز';
+
+  @override
+  String get shareCardDuaLabel => '✦ دعا';
+
+  @override
+  String get shareCardNameLabel => '✦ نام الله';
+
+  @override
+  String get shareCardHadithLabel => '✦ حدیث';
+
+  @override
+  String get sharePickDuaTitle => 'یک دعا برای اشتراک‌گذاری انتخاب کنید';
+
+  @override
+  String get shareError => 'امکان ایجاد تصویر اشتراک‌گذاری وجود ندارد';
+
+  @override
+  String get shareAyahSubtitle => 'از ۱۵ آیه قرآنی انتخاب کنید';
+
+  @override
+  String get shareDuaSubtitle => 'از کتابخانه انتخاب کنید';
+
+  @override
+  String get shareNameSubtitle => 'از تمام ۹۹ نام زیبا انتخاب کنید';
+
+  @override
+  String get shareHadithSubtitle => 'از ۱۰ حدیث معتبر انتخاب کنید';
+
+  @override
+  String get shareThisDua => 'این دعا را اشتراک‌گذاری کنید';
+
+  @override
+  String get sharePickAyahTitle => 'یک آیه برای اشتراک‌گذاری انتخاب کنید';
+
+  @override
+  String get searchAyahs => 'جستجوی آیه‌ها…';
+
+  @override
+  String get noAyahsFoundShort => 'آیه‌ای یافت نشد';
+
+  @override
+  String get shareThisAyah => 'این آیه را به اشتراک بگذارید';
+
+  @override
+  String get sharePickNameTitle => 'یک نام برای اشتراک‌گذاری انتخاب کنید';
+
+  @override
+  String get shareThisName => 'این نام را به اشتراک بگذارید';
+
+  @override
+  String get sharePickHadithTitle => 'یک حدیث برای اشتراک‌گذاری انتخاب کنید';
+
+  @override
+  String get searchHadiths => 'جستجوی احادیث…';
+
+  @override
+  String get noHadithsFound => 'حدیثی یافت نشد';
+
+  @override
+  String get shareThisHadith => 'این حدیث را به اشتراک بگذارید';
+
+  @override
+  String get backToBasics => 'بازگشت به اصول';
+
+  @override
+  String get backToBasicsSubtitle => 'راهنمای شما به اصول اسلام';
+
+  @override
+  String get fivePillarsOfIslam => 'پنج رکن اسلام';
+
+  @override
+  String get pillarLearnMore => 'بیشتر بدانید';
+
+  @override
+  String get pillarShowLess => 'کمتر نشان بده';
+
+  @override
+  String get pillar1Name => 'شهادت';
+
+  @override
+  String get pillar1Desc => 'اعلام ایمان';
+
+  @override
+  String get pillar1Detail =>
+      'شهادت گواهی است که هیچ معبودی جز الله نیست و محمد ﷺ فرستاده اوست. بیان آن با اعتقاد صادقانه دروازه ورود به اسلام و پایه ایمان مسلمانان است.';
+
+  @override
+  String get pillar2Name => 'نماز';
+
+  @override
+  String get pillar2Desc => 'پنج نماز روزانه';
+
+  @override
+  String get pillar2Detail =>
+      'نماز عبادتی است که پنج بار در روز ادا می‌شود — صبح، ظهر، عصر، مغرب و عشاء. پیوندی مستقیم میان بنده و الله است و یادآوری دائمی حضور اوست.';
+
+  @override
+  String get pillar3Name => 'زکات';
+
+  @override
+  String get pillar3Desc => 'صدقه واجب';
+
+  @override
+  String get pillar3Detail =>
+      'زکات پرداخت سالانه ۲.۵٪ از پس‌انداز به نیازمندان است. ثروت را پاک می‌کند، نابرابری را کاهش می‌دهد و به مؤمنان یادآوری می‌کند که هر روزی از سوی الله است.';
+
+  @override
+  String get pillar4Name => 'روزه';
+
+  @override
+  String get pillar4Desc => 'روزه در ماه رمضان';
+
+  @override
+  String get pillar4Detail =>
+      'روزه، خودداری از خوردن، نوشیدن و گناه از سپیده‌دم تا غروب در ماه مبارک رمضان است. تقوا و سپاسگزاری برای نعمت‌های الله را می‌پروراند.';
+
+  @override
+  String get pillar5Name => 'حج';
+
+  @override
+  String get pillar5Desc => 'حج به مکه';
+
+  @override
+  String get pillar5Detail =>
+      'حج زیارت شهر مقدس مکه است که برای هر مسلمان توانمند از نظر جسمی و مالی یک بار در عمر واجب است. نمادی قدرتمند از وحدت و تسلیم در برابر الله است.';
 }

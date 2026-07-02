@@ -2712,4 +2712,150 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => 'Maneno 114 ya Kiislamu yaliyoelezwa';
+
+  @override
+  String get shareSheetTitle => 'Shiriki';
+
+  @override
+  String get shareAnAyah => 'Shiriki Aya';
+
+  @override
+  String get shareADua => 'Shiriki Dua';
+
+  @override
+  String get shareANameOfAllah => 'Shiriki Jina la Allah';
+
+  @override
+  String get shareAHadith => 'Shiriki Hadithi';
+
+  @override
+  String get shareViaLabel => 'Imeshirikiwa kupitia Noor Guard';
+
+  @override
+  String get shareCardAyahLabel => '✦ Aya ya Leo';
+
+  @override
+  String get shareCardDuaLabel => '✦ Dua';
+
+  @override
+  String get shareCardNameLabel => '✦ Jina la Allah';
+
+  @override
+  String get shareCardHadithLabel => '✦ Hadithi';
+
+  @override
+  String get sharePickDuaTitle => 'Chagua Dua ya Kushiriki';
+
+  @override
+  String get shareError => 'Haikuweza kuunda picha ya kushiriki';
+
+  @override
+  String get shareAyahSubtitle => 'Chagua kutoka aya 15 za Quran';
+
+  @override
+  String get shareDuaSubtitle => 'Chagua kutoka kwenye maktaba';
+
+  @override
+  String get shareNameSubtitle => 'Chagua kutoka kwa Majina yote 99 Mazuri';
+
+  @override
+  String get shareHadithSubtitle => 'Chagua kutoka hadithi 10 sahihi';
+
+  @override
+  String get shareThisDua => 'Shiriki Dua Hii';
+
+  @override
+  String get sharePickAyahTitle => 'Chagua Aya ya Kushiriki';
+
+  @override
+  String get searchAyahs => 'Tafuta aya…';
+
+  @override
+  String get noAyahsFoundShort => 'Hakuna aya zilizopo';
+
+  @override
+  String get shareThisAyah => 'Shiriki Aya Hii';
+
+  @override
+  String get sharePickNameTitle => 'Chagua Jina la Kushiriki';
+
+  @override
+  String get shareThisName => 'Shiriki Jina Hili';
+
+  @override
+  String get sharePickHadithTitle => 'Chagua Hadithi ya Kushiriki';
+
+  @override
+  String get searchHadiths => 'Tafuta hadithi…';
+
+  @override
+  String get noHadithsFound => 'Hakuna hadithi zilizopo';
+
+  @override
+  String get shareThisHadith => 'Shiriki Hadithi Hii';
+
+  @override
+  String get backToBasics => 'Rudi kwa Msingi';
+
+  @override
+  String get backToBasicsSubtitle => 'Mwongozo wako wa misingi ya Uislamu';
+
+  @override
+  String get fivePillarsOfIslam => 'Nguzo 5 za Uislamu';
+
+  @override
+  String get pillarLearnMore => 'Jifunza zaidi';
+
+  @override
+  String get pillarShowLess => 'Onyesha kidogo';
+
+  @override
+  String get pillar1Name => 'Shahada';
+
+  @override
+  String get pillar1Desc => 'Tangazo la Imani';
+
+  @override
+  String get pillar1Detail =>
+      'Shahada ni ushuhuda kwamba hapana mungu ila Allah na kwamba Muhammad ﷺ ni Mtume Wake. Kuisema kwa imani ya kweli ni mlango wa kuingia Uislamu na msingi wa imani ya Mwislamu.';
+
+  @override
+  String get pillar2Name => 'Sala';
+
+  @override
+  String get pillar2Desc => 'Sala Tano za Kila Siku';
+
+  @override
+  String get pillar2Detail =>
+      'Sala ni ibada inayotekelezwa mara tano kwa siku — Fajr, Dhuhr, Asr, Maghrib na Isha. Ni uhusiano wa moja kwa moja kati ya mwaabudu na Allah, ukumbusho wa daima wa uwepo Wake.';
+
+  @override
+  String get pillar3Name => 'Zakat';
+
+  @override
+  String get pillar3Desc => 'Sadaka ya Lazima';
+
+  @override
+  String get pillar3Detail =>
+      'Zakat ni kutoa 2.5% ya akiba kwa wahitaji kila mwaka. Inasafisha mali, inapunguza ukosefu wa usawa, na inakumbusha waumini kwamba riziki yote inatoka kwa Allah.';
+
+  @override
+  String get pillar4Name => 'Saumu';
+
+  @override
+  String get pillar4Desc => 'Kufunga Ramadhan';
+
+  @override
+  String get pillar4Detail =>
+      'Saumu ni kufunga wakati wa mwezi mtukufu wa Ramadhan, kuacha kula, kunywa na dhambi kutoka alfajiri hadi machweo ya jua. Hujenga taqwa na shukrani kwa neema za Allah.';
+
+  @override
+  String get pillar5Name => 'Hijja';
+
+  @override
+  String get pillar5Desc => 'Hija kwenda Makka';
+
+  @override
+  String get pillar5Detail =>
+      'Hijja ni hija ya kwenda mji mtakatifu wa Makka, ambayo ni wajibu mara moja katika maisha kwa kila Mwislamu mwenye uwezo. Ni ishara yenye nguvu ya umoja na utii kwa Allah.';
 }

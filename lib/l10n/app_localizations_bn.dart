@@ -2711,4 +2711,150 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '১১৪টি ইসলামিক পরিভাষা ব্যাখ্যা';
+
+  @override
+  String get shareSheetTitle => 'শেয়ার করুন';
+
+  @override
+  String get shareAnAyah => 'একটি আয়াত শেয়ার করুন';
+
+  @override
+  String get shareADua => 'একটি দোয়া শেয়ার করুন';
+
+  @override
+  String get shareANameOfAllah => 'আল্লাহর একটি নাম শেয়ার করুন';
+
+  @override
+  String get shareAHadith => 'একটি হাদিস শেয়ার করুন';
+
+  @override
+  String get shareViaLabel => 'নূর গার্ডের মাধ্যমে শেয়ার করা হয়েছে';
+
+  @override
+  String get shareCardAyahLabel => '✦ আজকের আয়াত';
+
+  @override
+  String get shareCardDuaLabel => '✦ দোয়া';
+
+  @override
+  String get shareCardNameLabel => '✦ আল্লাহর নাম';
+
+  @override
+  String get shareCardHadithLabel => '✦ হাদিস';
+
+  @override
+  String get sharePickDuaTitle => 'শেয়ার করার জন্য একটি দোয়া বেছে নিন';
+
+  @override
+  String get shareError => 'শেয়ার ইমেজ তৈরি করা যায়নি';
+
+  @override
+  String get shareAyahSubtitle => '১৫টি কোরআনের আয়াত থেকে বেছে নিন';
+
+  @override
+  String get shareDuaSubtitle => 'লাইব্রেরি থেকে বেছে নিন';
+
+  @override
+  String get shareNameSubtitle => 'সকল ৯৯টি সুন্দর নাম থেকে বেছে নিন';
+
+  @override
+  String get shareHadithSubtitle => '১০টি বিশুদ্ধ হাদিস থেকে বেছে নিন';
+
+  @override
+  String get shareThisDua => 'এই দোয়াটি শেয়ার করুন';
+
+  @override
+  String get sharePickAyahTitle => 'শেয়ার করতে একটি আয়াত বেছে নিন';
+
+  @override
+  String get searchAyahs => 'আয়াত অনুসন্ধান করুন…';
+
+  @override
+  String get noAyahsFoundShort => 'কোনো আয়াত পাওয়া যায়নি';
+
+  @override
+  String get shareThisAyah => 'এই আয়াত শেয়ার করুন';
+
+  @override
+  String get sharePickNameTitle => 'শেয়ার করতে একটি নাম বেছে নিন';
+
+  @override
+  String get shareThisName => 'এই নাম শেয়ার করুন';
+
+  @override
+  String get sharePickHadithTitle => 'শেয়ার করতে একটি হাদিস বেছে নিন';
+
+  @override
+  String get searchHadiths => 'হাদিস অনুসন্ধান করুন…';
+
+  @override
+  String get noHadithsFound => 'কোনো হাদিস পাওয়া যায়নি';
+
+  @override
+  String get shareThisHadith => 'এই হাদিস শেয়ার করুন';
+
+  @override
+  String get backToBasics => 'মূল বিষয়ে ফিরে যান';
+
+  @override
+  String get backToBasicsSubtitle => 'ইসলামের মূল বিষয়গুলির নির্দেশিকা';
+
+  @override
+  String get fivePillarsOfIslam => 'ইসলামের পাঁচ স্তম্ভ';
+
+  @override
+  String get pillarLearnMore => 'আরও জানুন';
+
+  @override
+  String get pillarShowLess => 'কম দেখান';
+
+  @override
+  String get pillar1Name => 'শাহাদাহ';
+
+  @override
+  String get pillar1Desc => 'বিশ্বাসের ঘোষণা';
+
+  @override
+  String get pillar1Detail =>
+      'শাহাদাহ হল এই সাক্ষ্য যে আল্লাহ ছাড়া কোনো ইলাহ নেই এবং মুহাম্মাদ ﷺ তাঁর রাসূল। আন্তরিক বিশ্বাস নিয়ে এটি পাঠ করা ইসলামে প্রবেশের দ্বার এবং মুসলিম বিশ্বাসের ভিত্তি।';
+
+  @override
+  String get pillar2Name => 'সালাত';
+
+  @override
+  String get pillar2Desc => 'দৈনিক পাঁচ ওয়াক্ত নামাজ';
+
+  @override
+  String get pillar2Detail =>
+      'সালাত হল প্রতিদিন পাঁচবার আদায় করা আনুষ্ঠানিক নামাজ — ফজর, যোহর, আসর, মাগরিব ও ইশা। এটি ইবাদতকারী ও আল্লাহর মধ্যে সরাসরি সম্পর্ক এবং তাঁর উপস্থিতির নিরন্তর স্মারক।';
+
+  @override
+  String get pillar3Name => 'যাকাত';
+
+  @override
+  String get pillar3Desc => 'বাধ্যতামূলক দান';
+
+  @override
+  String get pillar3Detail =>
+      'যাকাত হল সঞ্চয়ের ২.৫% প্রতি বছর প্রয়োজনগ্রস্তদের মধ্যে বিতরণ করা। এটি সম্পদ পরিশুদ্ধ করে, বৈষম্য কমায় এবং বিশ্বাসীকে স্মরণ করিয়ে দেয় যে সকল রিযিক আল্লাহর পক্ষ থেকে।';
+
+  @override
+  String get pillar4Name => 'সাওম';
+
+  @override
+  String get pillar4Desc => 'রমজানে রোজা';
+
+  @override
+  String get pillar4Detail =>
+      'সাওম হল পবিত্র রমজান মাসে ফজর থেকে সূর্যাস্ত পর্যন্ত পানাহার ও পাপ থেকে বিরত থাকা। এটি তাকওয়া ও আল্লাহর নেয়ামতের প্রতি কৃতজ্ঞতা তৈরি করে।';
+
+  @override
+  String get pillar5Name => 'হজ';
+
+  @override
+  String get pillar5Desc => 'মক্কায় হজ্জ';
+
+  @override
+  String get pillar5Detail =>
+      'হজ হল পবিত্র মক্কা নগরীতে তীর্থযাত্রা, যা সামর্থ্যবান প্রতিটি মুসলিমের জীবনে একবার ফরজ। এটি ঐক্য ও আল্লাহর প্রতি আনুগত্যের শক্তিশালী প্রতীক।';
 }

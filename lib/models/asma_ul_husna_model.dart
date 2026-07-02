@@ -1,3 +1,5 @@
+import '../data/asma_meanings.dart';
+
 /// One of the 99 Beautiful Names of Allah (Asma ul Husna).
 class AsmaName {
   final int number;
@@ -14,8 +16,10 @@ class AsmaName {
     required this.explanation,
   });
 
-  /// Short translated meaning, e.g. "The Most Gracious".
-  String meaningText(String locale) => meaning[locale] ?? meaning['en']!;
+  /// Short translated meaning — tries internal map first, then the full
+  /// 16-locale table in asma_meanings.dart, then falls back to English.
+  String meaningText(String locale) =>
+      meaning[locale] ?? asmaNameMeaning(number, locale);
 
   /// Longer explanation of the name's significance.
   String explanationText(String locale) =>

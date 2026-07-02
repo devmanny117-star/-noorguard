@@ -2719,4 +2719,150 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114 istilah Islam dijelaskan';
+
+  @override
+  String get shareSheetTitle => 'Bagikan';
+
+  @override
+  String get shareAnAyah => 'Bagikan Ayat';
+
+  @override
+  String get shareADua => 'Bagikan Doa';
+
+  @override
+  String get shareANameOfAllah => 'Bagikan Nama Allah';
+
+  @override
+  String get shareAHadith => 'Bagikan Hadits';
+
+  @override
+  String get shareViaLabel => 'Dibagikan melalui Noor Guard';
+
+  @override
+  String get shareCardAyahLabel => '✦ Ayat Hari Ini';
+
+  @override
+  String get shareCardDuaLabel => '✦ Doa';
+
+  @override
+  String get shareCardNameLabel => '✦ Nama Allah';
+
+  @override
+  String get shareCardHadithLabel => '✦ Hadits';
+
+  @override
+  String get sharePickDuaTitle => 'Pilih Doa untuk Dibagikan';
+
+  @override
+  String get shareError => 'Gagal membuat gambar berbagi';
+
+  @override
+  String get shareAyahSubtitle => 'Pilih dari 15 ayat Al-Quran';
+
+  @override
+  String get shareDuaSubtitle => 'Pilih dari perpustakaan';
+
+  @override
+  String get shareNameSubtitle => 'Pilih dari semua 99 Nama Indah';
+
+  @override
+  String get shareHadithSubtitle => 'Pilih dari 10 hadits sahih';
+
+  @override
+  String get shareThisDua => 'Bagikan Doa Ini';
+
+  @override
+  String get sharePickAyahTitle => 'Pilih Ayah untuk Dibagikan';
+
+  @override
+  String get searchAyahs => 'Cari ayah…';
+
+  @override
+  String get noAyahsFoundShort => 'Tidak ada ayah yang ditemukan';
+
+  @override
+  String get shareThisAyah => 'Bagikan Ayah Ini';
+
+  @override
+  String get sharePickNameTitle => 'Pilih Nama untuk Dibagikan';
+
+  @override
+  String get shareThisName => 'Bagikan Nama Ini';
+
+  @override
+  String get sharePickHadithTitle => 'Pilih Hadits untuk Dibagikan';
+
+  @override
+  String get searchHadiths => 'Cari hadits…';
+
+  @override
+  String get noHadithsFound => 'Tidak ada hadits yang ditemukan';
+
+  @override
+  String get shareThisHadith => 'Bagikan Hadits Ini';
+
+  @override
+  String get backToBasics => 'Kembali ke Dasar';
+
+  @override
+  String get backToBasicsSubtitle => 'Panduan Anda tentang pokok-pokok Islam';
+
+  @override
+  String get fivePillarsOfIslam => '5 Rukun Islam';
+
+  @override
+  String get pillarLearnMore => 'Pelajari lebih lanjut';
+
+  @override
+  String get pillarShowLess => 'Tampilkan lebih sedikit';
+
+  @override
+  String get pillar1Name => 'Syahadat';
+
+  @override
+  String get pillar1Desc => 'Pernyataan Iman';
+
+  @override
+  String get pillar1Detail =>
+      'Syahadat adalah kesaksian bahwa tidak ada tuhan selain Allah dan bahwa Muhammad ﷺ adalah utusan-Nya. Mengucapkannya dengan keyakinan yang tulus adalah pintu masuk ke Islam dan fondasi iman seorang Muslim.';
+
+  @override
+  String get pillar2Name => 'Shalat';
+
+  @override
+  String get pillar2Desc => 'Lima Shalat Harian';
+
+  @override
+  String get pillar2Detail =>
+      'Shalat adalah ibadah ritual yang dilakukan lima kali sehari — Subuh, Dzuhur, Ashar, Maghrib, dan Isya. Ini adalah hubungan langsung antara hamba dan Allah, pengingat konstan akan kehadiran-Nya.';
+
+  @override
+  String get pillar3Name => 'Zakat';
+
+  @override
+  String get pillar3Desc => 'Sedekah Wajib';
+
+  @override
+  String get pillar3Detail =>
+      'Zakat adalah pemberian tahunan 2,5% dari tabungan kepada mereka yang membutuhkan. Ia menyucikan harta, mengurangi ketimpangan, dan mengingatkan orang beriman bahwa semua rezeki berasal dari Allah.';
+
+  @override
+  String get pillar4Name => 'Puasa';
+
+  @override
+  String get pillar4Desc => 'Puasa di Bulan Ramadan';
+
+  @override
+  String get pillar4Detail =>
+      'Puasa adalah menahan diri dari makan, minum, dan dosa dari fajar hingga terbenamnya matahari selama bulan suci Ramadan. Membangun taqwa dan rasa syukur atas nikmat Allah.';
+
+  @override
+  String get pillar5Name => 'Haji';
+
+  @override
+  String get pillar5Desc => 'Ziarah ke Mekkah';
+
+  @override
+  String get pillar5Detail =>
+      'Haji adalah ibadah ziarah ke kota suci Mekkah, wajib sekali seumur hidup bagi setiap Muslim yang mampu secara fisik dan finansial. Simbol persatuan dan ketundukan kepada Allah yang kuat.';
 }

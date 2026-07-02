@@ -2705,4 +2705,150 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114 İslami terim açıklandı';
+
+  @override
+  String get shareSheetTitle => 'Paylaş';
+
+  @override
+  String get shareAnAyah => 'Ayet Paylaş';
+
+  @override
+  String get shareADua => 'Dua Paylaş';
+
+  @override
+  String get shareANameOfAllah => 'Allah\'ın Adını Paylaş';
+
+  @override
+  String get shareAHadith => 'Hadis Paylaş';
+
+  @override
+  String get shareViaLabel => 'Noor Guard aracılığıyla paylaşıldı';
+
+  @override
+  String get shareCardAyahLabel => '✦ Günün Ayeti';
+
+  @override
+  String get shareCardDuaLabel => '✦ Dua';
+
+  @override
+  String get shareCardNameLabel => '✦ Allah\'ın Adı';
+
+  @override
+  String get shareCardHadithLabel => '✦ Hadis';
+
+  @override
+  String get sharePickDuaTitle => 'Paylaşmak İçin Bir Dua Seçin';
+
+  @override
+  String get shareError => 'Paylaşım görseli oluşturulamadı';
+
+  @override
+  String get shareAyahSubtitle => '15 Kuran ayetinden seç';
+
+  @override
+  String get shareDuaSubtitle => 'Kütüphaneden seçin';
+
+  @override
+  String get shareNameSubtitle => 'Tüm 99 Güzel İsimden seç';
+
+  @override
+  String get shareHadithSubtitle => '10 sahih hadisten seç';
+
+  @override
+  String get shareThisDua => 'Bu Duayı Paylaş';
+
+  @override
+  String get sharePickAyahTitle => 'Paylaşmak için Ayet Seç';
+
+  @override
+  String get searchAyahs => 'Ayet ara…';
+
+  @override
+  String get noAyahsFoundShort => 'Ayet bulunamadı';
+
+  @override
+  String get shareThisAyah => 'Bu Ayeti Paylaş';
+
+  @override
+  String get sharePickNameTitle => 'Paylaşmak için İsim Seç';
+
+  @override
+  String get shareThisName => 'Bu İsmi Paylaş';
+
+  @override
+  String get sharePickHadithTitle => 'Paylaşmak için Hadis Seç';
+
+  @override
+  String get searchHadiths => 'Hadis ara…';
+
+  @override
+  String get noHadithsFound => 'Hadis bulunamadı';
+
+  @override
+  String get shareThisHadith => 'Bu Hadisi Paylaş';
+
+  @override
+  String get backToBasics => 'Temellere Dön';
+
+  @override
+  String get backToBasicsSubtitle => 'İslam\'ın temellerine rehberiniz';
+
+  @override
+  String get fivePillarsOfIslam => 'İslam\'ın 5 Şartı';
+
+  @override
+  String get pillarLearnMore => 'Daha fazla bilgi';
+
+  @override
+  String get pillarShowLess => 'Daha az göster';
+
+  @override
+  String get pillar1Name => 'Kelime-i Şehadet';
+
+  @override
+  String get pillar1Desc => 'İman Beyanı';
+
+  @override
+  String get pillar1Detail =>
+      'Kelime-i Şehadet, Allah\'tan başka ilah olmadığına ve Muhammed\'in ﷺ O\'nun elçisi olduğuna tanıklıktır. Samimi bir inançla söylenmesi, İslam\'a girişin kapısı ve Müslüman inancının temelidir.';
+
+  @override
+  String get pillar2Name => 'Namaz';
+
+  @override
+  String get pillar2Desc => 'Günde Beş Vakit Namaz';
+
+  @override
+  String get pillar2Detail =>
+      'Namaz, günde beş kez kılınan ibadet — Sabah, Öğle, İkindi, Akşam ve Yatsı. İbadet eden ile Allah arasında doğrudan bir bağdır ve O\'nun varlığını sürekli hatırlatır.';
+
+  @override
+  String get pillar3Name => 'Zekat';
+
+  @override
+  String get pillar3Desc => 'Zorunlu Bağış';
+
+  @override
+  String get pillar3Detail =>
+      'Zekat, birikimin %2,5\'ini her yıl ihtiyaç sahiplerine vermektir. Serveti arındırır, eşitsizliği azaltır ve tüm rızkın Allah\'tan geldiğini hatırlatır.';
+
+  @override
+  String get pillar4Name => 'Oruç';
+
+  @override
+  String get pillar4Desc => 'Ramazan\'da Oruç';
+
+  @override
+  String get pillar4Detail =>
+      'Oruç, kutsal Ramazan ayında şafaktan güneş batımına kadar yeme, içme ve günahtan kaçınmaktır. Takva ve Allah\'ın nimetlerine şükran duygusu geliştirir.';
+
+  @override
+  String get pillar5Name => 'Hac';
+
+  @override
+  String get pillar5Desc => 'Mekke\'ye Hac';
+
+  @override
+  String get pillar5Detail =>
+      'Hac, kutsal Mekke şehrine yapılan hac ibadetidir. Beden ve mali açıdan güç yetiren her Müslüman için ömründe bir kez farzdır. Birlik ve Allah\'a teslimiyet sembolüdür.';
 }

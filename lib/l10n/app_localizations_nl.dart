@@ -2714,4 +2714,151 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114 islamitische termen uitgelegd';
+
+  @override
+  String get shareSheetTitle => 'Delen';
+
+  @override
+  String get shareAnAyah => 'Een Ayah delen';
+
+  @override
+  String get shareADua => 'Een Dua delen';
+
+  @override
+  String get shareANameOfAllah => 'Een Naam van Allah delen';
+
+  @override
+  String get shareAHadith => 'Een Hadith delen';
+
+  @override
+  String get shareViaLabel => 'Gedeeld via Noor Guard';
+
+  @override
+  String get shareCardAyahLabel => '✦ Ayah van de Dag';
+
+  @override
+  String get shareCardDuaLabel => '✦ Dua';
+
+  @override
+  String get shareCardNameLabel => '✦ Naam van Allah';
+
+  @override
+  String get shareCardHadithLabel => '✦ Hadith';
+
+  @override
+  String get sharePickDuaTitle => 'Kies een Dua om te Delen';
+
+  @override
+  String get shareError => 'Kon geen afbeelding maken';
+
+  @override
+  String get shareAyahSubtitle => 'Kies uit 15 Koranverzen';
+
+  @override
+  String get shareDuaSubtitle => 'Kies uit de bibliotheek';
+
+  @override
+  String get shareNameSubtitle => 'Kies uit alle 99 Mooie Namen';
+
+  @override
+  String get shareHadithSubtitle => 'Kies uit 10 authentieke hadiths';
+
+  @override
+  String get shareThisDua => 'Dit Dua Delen';
+
+  @override
+  String get sharePickAyahTitle => 'Kies een Ayah om te Delen';
+
+  @override
+  String get searchAyahs => 'Zoek ayahs…';
+
+  @override
+  String get noAyahsFoundShort => 'Geen ayahs gevonden';
+
+  @override
+  String get shareThisAyah => 'Deel Deze Ayah';
+
+  @override
+  String get sharePickNameTitle => 'Kies een Naam om te Delen';
+
+  @override
+  String get shareThisName => 'Deel Deze Naam';
+
+  @override
+  String get sharePickHadithTitle => 'Kies een Hadith om te Delen';
+
+  @override
+  String get searchHadiths => 'Zoek hadiths…';
+
+  @override
+  String get noHadithsFound => 'Geen hadiths gevonden';
+
+  @override
+  String get shareThisHadith => 'Deel Deze Hadith';
+
+  @override
+  String get backToBasics => 'Terug naar de Basis';
+
+  @override
+  String get backToBasicsSubtitle =>
+      'Jouw gids voor de grondbeginselen van de islam';
+
+  @override
+  String get fivePillarsOfIslam => 'De 5 Zuilen van de Islam';
+
+  @override
+  String get pillarLearnMore => 'Meer leren';
+
+  @override
+  String get pillarShowLess => 'Minder tonen';
+
+  @override
+  String get pillar1Name => 'Shahada';
+
+  @override
+  String get pillar1Desc => 'Geloofsbelijdenis';
+
+  @override
+  String get pillar1Detail =>
+      'De Shahada is de getuigenis dat er geen god is dan Allah en dat Muhammad ﷺ Zijn boodschapper is. Het met oprechte overtuiging uitspreken is de poort tot de islam en het fundament van het moslimgeloof.';
+
+  @override
+  String get pillar2Name => 'Salah';
+
+  @override
+  String get pillar2Desc => 'Vijf Dagelijkse Gebeden';
+
+  @override
+  String get pillar2Detail =>
+      'Salah is het rituele gebed dat vijf keer per dag wordt verricht — Fajr, Dhuhr, Asr, Maghrib en Isha. Het is een directe verbinding tussen de aanbidder en Allah, een constante herinnering aan Zijn aanwezigheid.';
+
+  @override
+  String get pillar3Name => 'Zakat';
+
+  @override
+  String get pillar3Desc => 'Verplichte Liefdadigheid';
+
+  @override
+  String get pillar3Detail =>
+      'Zakat is het jaarlijkse weggeven van 2,5% van besparingen aan behoeftigen. Het zuivert rijkdom, vermindert ongelijkheid en herinnert gelovigen eraan dat alle voorziening van Allah komt.';
+
+  @override
+  String get pillar4Name => 'Sawm';
+
+  @override
+  String get pillar4Desc => 'Vasten in Ramadan';
+
+  @override
+  String get pillar4Detail =>
+      'Sawm is het vasten gedurende de heilige maand Ramadan, waarbij van zonsopgang tot zonsondergang wordt afgezien van eten, drinken en zonde. Het bouwt taqwa op en dankbaarheid voor Allah\'s zegeningen.';
+
+  @override
+  String get pillar5Name => 'Hadj';
+
+  @override
+  String get pillar5Desc => 'Bedevaart naar Mekka';
+
+  @override
+  String get pillar5Detail =>
+      'De Hadj is de bedevaart naar de heilige stad Mekka, die voor elke lichamelijk en financieel capabele moslim eenmaal in zijn leven verplicht is. Een krachtig symbool van eenheid en onderwerping aan Allah.';
 }

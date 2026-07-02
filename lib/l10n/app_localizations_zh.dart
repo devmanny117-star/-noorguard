@@ -2574,4 +2574,150 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '114个伊斯兰术语解释';
+
+  @override
+  String get shareSheetTitle => '分享';
+
+  @override
+  String get shareAnAyah => '分享经文';
+
+  @override
+  String get shareADua => '分享祈祷词';
+
+  @override
+  String get shareANameOfAllah => '分享真主之名';
+
+  @override
+  String get shareAHadith => '分享圣训';
+
+  @override
+  String get shareViaLabel => '通过 Noor Guard 分享';
+
+  @override
+  String get shareCardAyahLabel => '✦ 今日经文';
+
+  @override
+  String get shareCardDuaLabel => '✦ 祈祷词';
+
+  @override
+  String get shareCardNameLabel => '✦ 真主之名';
+
+  @override
+  String get shareCardHadithLabel => '✦ 圣训';
+
+  @override
+  String get sharePickDuaTitle => '选择要分享的祈祷词';
+
+  @override
+  String get shareError => '无法创建分享图片';
+
+  @override
+  String get shareAyahSubtitle => '从15段经文中选择';
+
+  @override
+  String get shareDuaSubtitle => '从库中选择';
+
+  @override
+  String get shareNameSubtitle => '从全部99个美名中选择';
+
+  @override
+  String get shareHadithSubtitle => '从10段圣训中选择';
+
+  @override
+  String get shareThisDua => '分享这段祈祷词';
+
+  @override
+  String get sharePickAyahTitle => '选择一段经文分享';
+
+  @override
+  String get searchAyahs => '搜索经文…';
+
+  @override
+  String get noAyahsFoundShort => '未找到经文';
+
+  @override
+  String get shareThisAyah => '分享此经文';
+
+  @override
+  String get sharePickNameTitle => '选择一个名字分享';
+
+  @override
+  String get shareThisName => '分享此名字';
+
+  @override
+  String get sharePickHadithTitle => '选择一段圣训分享';
+
+  @override
+  String get searchHadiths => '搜索圣训…';
+
+  @override
+  String get noHadithsFound => '未找到圣训';
+
+  @override
+  String get shareThisHadith => '分享此圣训';
+
+  @override
+  String get backToBasics => '回归基础';
+
+  @override
+  String get backToBasicsSubtitle => '您的伊斯兰基础知识指南';
+
+  @override
+  String get fivePillarsOfIslam => '伊斯兰五功';
+
+  @override
+  String get pillarLearnMore => '了解更多';
+
+  @override
+  String get pillarShowLess => '收起';
+
+  @override
+  String get pillar1Name => '清真言';
+
+  @override
+  String get pillar1Desc => '信仰的宣言';
+
+  @override
+  String get pillar1Detail =>
+      '清真言是见证除安拉外别无神灵，穆罕默德ﷺ是安拉使者的证言。以真诚的信仰念诵它是进入伊斯兰的门槛，也是穆斯林信仰的基础。';
+
+  @override
+  String get pillar2Name => '礼拜';
+
+  @override
+  String get pillar2Desc => '每日五次礼拜';
+
+  @override
+  String get pillar2Detail =>
+      '礼拜是每天五次进行的宗教功课——晨礼、晌礼、晡礼、昏礼和宵礼。它是信徒与安拉之间的直接联系，时刻提醒安拉的存在。';
+
+  @override
+  String get pillar3Name => '天课';
+
+  @override
+  String get pillar3Desc => '法定施舍';
+
+  @override
+  String get pillar3Detail =>
+      '天课是每年将储蓄的2.5%施舍给有需要的人。它净化财富、减少不平等，并提醒信徒所有赐予皆来自安拉。';
+
+  @override
+  String get pillar4Name => '封斋';
+
+  @override
+  String get pillar4Desc => '斋月封斋';
+
+  @override
+  String get pillar4Detail =>
+      '封斋是在神圣的斋月期间，从黎明到日落戒食、戒水、戒罪。它培养虔诚（塔格瓦）并对安拉的恩典心存感恩。';
+
+  @override
+  String get pillar5Name => '朝觐';
+
+  @override
+  String get pillar5Desc => '麦加朝圣';
+
+  @override
+  String get pillar5Detail =>
+      '朝觐是前往圣城麦加的朝圣，对每一位有能力的穆斯林而言，一生须履行一次。它是团结与顺从安拉的强大象征。';
 }

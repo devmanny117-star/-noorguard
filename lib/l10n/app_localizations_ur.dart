@@ -2695,4 +2695,150 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get toolboxGlossarySubtitle => '١١٤ اسلامی اصطلاحات کی وضاحت';
+
+  @override
+  String get shareSheetTitle => 'شیئر کریں';
+
+  @override
+  String get shareAnAyah => 'ایک آیت شیئر کریں';
+
+  @override
+  String get shareADua => 'ایک دعا شیئر کریں';
+
+  @override
+  String get shareANameOfAllah => 'اللہ کا ایک نام شیئر کریں';
+
+  @override
+  String get shareAHadith => 'ایک حدیث شیئر کریں';
+
+  @override
+  String get shareViaLabel => 'نور گارڈ کے ذریعے شیئر کیا گیا';
+
+  @override
+  String get shareCardAyahLabel => '✦ آج کی آیت';
+
+  @override
+  String get shareCardDuaLabel => '✦ دعا';
+
+  @override
+  String get shareCardNameLabel => '✦ اللہ کا نام';
+
+  @override
+  String get shareCardHadithLabel => '✦ حدیث';
+
+  @override
+  String get sharePickDuaTitle => 'شیئر کرنے کے لیے دعا چنیں';
+
+  @override
+  String get shareError => 'تصویر بنانے میں ناکامی';
+
+  @override
+  String get shareAyahSubtitle => '١٥ قرآنی آیات میں سے چنیں';
+
+  @override
+  String get shareDuaSubtitle => 'لائبریری سے چنیں';
+
+  @override
+  String get shareNameSubtitle => 'تمام ٩٩ اسمائے حسنیٰ میں سے چنیں';
+
+  @override
+  String get shareHadithSubtitle => '١٠ مستند احادیث میں سے چنیں';
+
+  @override
+  String get shareThisDua => 'یہ دعا شیئر کریں';
+
+  @override
+  String get sharePickAyahTitle => 'شیئر کرنے کے لیے آیت چنیں';
+
+  @override
+  String get searchAyahs => 'آیات تلاش کریں…';
+
+  @override
+  String get noAyahsFoundShort => 'کوئی آیت نہیں ملی';
+
+  @override
+  String get shareThisAyah => 'یہ آیت شیئر کریں';
+
+  @override
+  String get sharePickNameTitle => 'شیئر کرنے کے لیے نام چنیں';
+
+  @override
+  String get shareThisName => 'یہ نام شیئر کریں';
+
+  @override
+  String get sharePickHadithTitle => 'شیئر کرنے کے لیے حدیث چنیں';
+
+  @override
+  String get searchHadiths => 'احادیث تلاش کریں…';
+
+  @override
+  String get noHadithsFound => 'کوئی حدیث نہیں ملی';
+
+  @override
+  String get shareThisHadith => 'یہ حدیث شیئر کریں';
+
+  @override
+  String get backToBasics => 'بنیادی باتوں کی طرف واپسی';
+
+  @override
+  String get backToBasicsSubtitle => 'اسلام کی بنیادی باتوں کی رہنمائی';
+
+  @override
+  String get fivePillarsOfIslam => 'اسلام کے پانچ ارکان';
+
+  @override
+  String get pillarLearnMore => 'مزید جانیں';
+
+  @override
+  String get pillarShowLess => 'کم دکھائیں';
+
+  @override
+  String get pillar1Name => 'شہادت';
+
+  @override
+  String get pillar1Desc => 'ایمان کا اقرار';
+
+  @override
+  String get pillar1Detail =>
+      'شہادت اس گواہی کا نام ہے کہ اللہ کے سوا کوئی معبود نہیں اور محمد ﷺ اس کے رسول ہیں۔ خلوص دل سے اس کا اقرار اسلام میں داخلے کی بنیاد ہے۔';
+
+  @override
+  String get pillar2Name => 'نماز';
+
+  @override
+  String get pillar2Desc => 'پانچ وقت کی نماز';
+
+  @override
+  String get pillar2Detail =>
+      'نماز دن میں پانچ بار ادا کی جانے والی عبادت ہے — فجر، ظہر، عصر، مغرب اور عشاء۔ یہ بندے اور اللہ کے درمیان براہ راست تعلق ہے۔';
+
+  @override
+  String get pillar3Name => 'زکوٰۃ';
+
+  @override
+  String get pillar3Desc => 'واجب صدقہ';
+
+  @override
+  String get pillar3Detail =>
+      'زکوٰۃ ہر سال بچت کا 2.5% ضرورت مندوں کو دینا ہے۔ یہ مال کو پاک کرتی ہے اور یاد دلاتی ہے کہ سب رزق اللہ کی طرف سے ہے۔';
+
+  @override
+  String get pillar4Name => 'روزہ';
+
+  @override
+  String get pillar4Desc => 'رمضان میں روزہ';
+
+  @override
+  String get pillar4Detail =>
+      'روزہ ماہ رمضان میں فجر سے غروب تک کھانے پینے اور گناہوں سے پرہیز کرنا ہے۔ یہ تقوی اور اللہ کی نعمتوں پر شکر گزاری پیدا کرتا ہے۔';
+
+  @override
+  String get pillar5Name => 'حج';
+
+  @override
+  String get pillar5Desc => 'مکہ مکرمہ کا سفر';
+
+  @override
+  String get pillar5Detail =>
+      'حج مکہ مکرمہ کا مقدس سفر ہے جو ہر قادر مسلمان پر زندگی میں ایک بار فرض ہے۔ یہ اتحاد اور اللہ کے سامنے سرتسلیم خم کرنے کی عظیم علامت ہے۔';
 }
