@@ -637,7 +637,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get blockingTimingInfo =>
-      'مسدودسازی ۵ دقیقه قبل از هر نماز فعال و ۱۵ دقیقه بعد از آن رفع می‌شود.';
+      'مسدودسازی ۵ دقیقه قبل از هر نماز فعال و ۳۰ دقیقه بعد از آن رفع می‌شود.';
 
   @override
   String get blockedDuringPrayers => 'مسدود در زمان نمازها';
@@ -1681,17 +1681,17 @@ class AppLocalizationsFa extends AppLocalizations {
   String get notifSetupDoneButton => 'تمام';
 
   @override
-  String get testNotificationButton => 'ارسال اعلان آزمایشی (۱۰ ثانیه)';
+  String get testNotificationButton => 'ارسال اعلان آزمایشی (۲۰ ثانیه)';
 
   @override
-  String get testNotificationSnack => 'اعلان آزمایشی در ۱۰ ثانیه می‌رسد';
+  String get testNotificationSnack => 'اعلان آزمایشی در ۲۰ ثانیه می‌رسد';
 
   @override
-  String get testLockAlarmButton => 'آزمایش زنگ قفل تمام‌صفحه (۱۰ ثانیه)';
+  String get testLockAlarmButton => 'آزمایش زنگ قفل تمام‌صفحه (۲۰ ثانیه)';
 
   @override
   String get testLockAlarmSnack =>
-      'زنگ قفل در ۱۰ ثانیه فعال می‌شود — الان گوشی را قفل کنید';
+      'زنگ قفل در ۲۰ ثانیه فعال می‌شود — الان گوشی را قفل کنید';
 
   @override
   String get testAdhanForegroundButton => 'آزمایش اذان داخل برنامه (پیش‌زمینه)';
@@ -2738,7 +2738,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get shareError => 'امکان ایجاد تصویر اشتراک‌گذاری وجود ندارد';
 
   @override
-  String get shareAyahSubtitle => 'از ۱۵ آیه قرآنی انتخاب کنید';
+  String get shareAyahSubtitle => 'از ۳۰ آیه قرآنی انتخاب کنید';
 
   @override
   String get shareDuaSubtitle => 'از کتابخانه انتخاب کنید';
@@ -2747,7 +2747,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get shareNameSubtitle => 'از تمام ۹۹ نام زیبا انتخاب کنید';
 
   @override
-  String get shareHadithSubtitle => 'از ۱۰ حدیث معتبر انتخاب کنید';
+  String get shareHadithSubtitle => 'از ۲۰ حدیث معتبر انتخاب کنید';
 
   @override
   String get shareThisDua => 'این دعا را اشتراک‌گذاری کنید';
@@ -2796,6 +2796,12 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'کمتر نشان بده';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'شهادت';

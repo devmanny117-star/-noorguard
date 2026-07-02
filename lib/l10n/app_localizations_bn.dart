@@ -626,7 +626,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get blockingTimingInfo =>
-      'প্রতিটি নামাজের ৫ মিনিট আগে ব্লকিং সক্রিয় হয় এবং ১৫ মিনিট পরে উঠে যায়।';
+      'প্রতিটি নামাজের ৫ মিনিট আগে ব্লকিং সক্রিয় হয় এবং ৩০ মিনিট পরে উঠে যায়।';
 
   @override
   String get blockedDuringPrayers => 'নামাজের সময় ব্লক করা হয়েছে';
@@ -1680,18 +1680,18 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get testNotificationButton =>
-      'পরীক্ষামূলক নোটিফিকেশন পাঠান (১০ সেকেন্ড)';
+      'পরীক্ষামূলক নোটিফিকেশন পাঠান (২০ সেকেন্ড)';
 
   @override
-  String get testNotificationSnack => 'পরীক্ষামূলক নোটিফিকেশন ১০ সেকেন্ডে আসবে';
+  String get testNotificationSnack => 'পরীক্ষামূলক নোটিফিকেশন ২০ সেকেন্ডে আসবে';
 
   @override
   String get testLockAlarmButton =>
-      'ফুল-স্ক্রিন লক অ্যালার্ম পরীক্ষা করুন (১০ সেকেন্ড)';
+      'ফুল-স্ক্রিন লক অ্যালার্ম পরীক্ষা করুন (২০ সেকেন্ড)';
 
   @override
   String get testLockAlarmSnack =>
-      'লক অ্যালার্ম ১০ সেকেন্ডে বাজবে — এখনই আপনার ফোন লক করুন';
+      'লক অ্যালার্ম ২০ সেকেন্ডে বাজবে — এখনই আপনার ফোন লক করুন';
 
   @override
   String get testAdhanForegroundButton =>
@@ -2383,7 +2383,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get journeyTask2_1 => '৭ দিন সব ৫ ওয়াক্ত নামাজ পড়ুন';
 
   @override
-  String get journeyTask2_2 => 'আরো ১০টি দোয়া শিখুন';
+  String get journeyTask2_2 => 'আরো ২০টি দোয়া শিখুন';
 
   @override
   String get journeyTask2_3 => 'কুরআনের প্রথম জুজ পড়ুন';
@@ -2749,7 +2749,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get shareError => 'শেয়ার ইমেজ তৈরি করা যায়নি';
 
   @override
-  String get shareAyahSubtitle => '১৫টি কোরআনের আয়াত থেকে বেছে নিন';
+  String get shareAyahSubtitle => '৩০টি কোরআনের আয়াত থেকে বেছে নিন';
 
   @override
   String get shareDuaSubtitle => 'লাইব্রেরি থেকে বেছে নিন';
@@ -2758,7 +2758,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get shareNameSubtitle => 'সকল ৯৯টি সুন্দর নাম থেকে বেছে নিন';
 
   @override
-  String get shareHadithSubtitle => '১০টি বিশুদ্ধ হাদিস থেকে বেছে নিন';
+  String get shareHadithSubtitle => '২০টি বিশুদ্ধ হাদিস থেকে বেছে নিন';
 
   @override
   String get shareThisDua => 'এই দোয়াটি শেয়ার করুন';
@@ -2807,6 +2807,12 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'কম দেখান';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'শাহাদাহ';

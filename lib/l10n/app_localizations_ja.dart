@@ -2640,7 +2640,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get shareError => 'シェア画像を作成できませんでした';
 
   @override
-  String get shareAyahSubtitle => '15のクルアーンの節から選択';
+  String get shareAyahSubtitle => '30のクルアーンの節から選択';
 
   @override
   String get shareDuaSubtitle => 'ライブラリから選択';
@@ -2649,7 +2649,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get shareNameSubtitle => '全99の美しい名前から選択';
 
   @override
-  String get shareHadithSubtitle => '10のハディースから選択';
+  String get shareHadithSubtitle => '20のハディースから選択';
 
   @override
   String get shareThisDua => 'このドゥアーをシェア';
@@ -2698,6 +2698,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pillarShowLess => '閉じる';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'シャハーダ';

@@ -2743,7 +2743,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get shareError => 'Paylaşım görseli oluşturulamadı';
 
   @override
-  String get shareAyahSubtitle => '15 Kuran ayetinden seç';
+  String get shareAyahSubtitle => '30 Kuran ayetinden seç';
 
   @override
   String get shareDuaSubtitle => 'Kütüphaneden seçin';
@@ -2752,7 +2752,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get shareNameSubtitle => 'Tüm 99 Güzel İsimden seç';
 
   @override
-  String get shareHadithSubtitle => '10 sahih hadisten seç';
+  String get shareHadithSubtitle => '20 sahih hadisten seç';
 
   @override
   String get shareThisDua => 'Bu Duayı Paylaş';
@@ -2801,6 +2801,12 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'Daha az göster';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'Kelime-i Şehadet';

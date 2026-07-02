@@ -2757,7 +2757,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get shareError => 'Gagal membuat gambar berbagi';
 
   @override
-  String get shareAyahSubtitle => 'Pilih dari 15 ayat Al-Quran';
+  String get shareAyahSubtitle => 'Pilih dari 30 ayat Al-Quran';
 
   @override
   String get shareDuaSubtitle => 'Pilih dari perpustakaan';
@@ -2766,7 +2766,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get shareNameSubtitle => 'Pilih dari semua 99 Nama Indah';
 
   @override
-  String get shareHadithSubtitle => 'Pilih dari 10 hadits sahih';
+  String get shareHadithSubtitle => 'Pilih dari 20 hadits sahih';
 
   @override
   String get shareThisDua => 'Bagikan Doa Ini';
@@ -2815,6 +2815,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'Tampilkan lebih sedikit';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'Syahadat';

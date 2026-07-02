@@ -2735,7 +2735,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareError => 'Could not create share image';
 
   @override
-  String get shareAyahSubtitle => 'Pick from 15 Quranic verses';
+  String get shareAyahSubtitle => 'Pick from 30 Quranic verses';
 
   @override
   String get shareDuaSubtitle => 'Pick from the library';
@@ -2744,7 +2744,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareNameSubtitle => 'Pick from all 99 Beautiful Names';
 
   @override
-  String get shareHadithSubtitle => 'Pick from 10 authentic hadiths';
+  String get shareHadithSubtitle => 'Pick from 20 authentic hadiths';
 
   @override
   String get shareThisDua => 'Share This Dua';
@@ -2793,6 +2793,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'Show less';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'Shahada';

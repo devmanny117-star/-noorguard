@@ -2774,7 +2774,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get shareError => 'Impossible de créer l\'image';
 
   @override
-  String get shareAyahSubtitle => 'Choisir parmi 15 versets coraniques';
+  String get shareAyahSubtitle => 'Choisir parmi 30 versets coraniques';
 
   @override
   String get shareDuaSubtitle => 'Choisir dans la bibliothèque';
@@ -2783,7 +2783,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get shareNameSubtitle => 'Choisir parmi les 99 Beaux Noms';
 
   @override
-  String get shareHadithSubtitle => 'Choisir parmi 10 hadiths authentiques';
+  String get shareHadithSubtitle => 'Choisir parmi 20 hadiths authentiques';
 
   @override
   String get shareThisDua => 'Partager Ce Dua';
@@ -2833,6 +2833,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'Voir moins';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'Chahada';

@@ -12,7 +12,6 @@ import '../data/duas_data.dart';
 import '../data/share_data.dart';
 import '../l10n/app_localizations.dart';
 import '../models/asma_ul_husna_model.dart';
-import '../widgets/home/hero_card_data.dart';
 import 'share_card.dart';
 import 'geometric_pattern_painter.dart';
 
@@ -170,14 +169,14 @@ class _ShareSheetBodyState extends State<_ShareSheetBody> {
       context,
       MaterialPageRoute(
         builder: (_) => _AyahPickerScreen(
-          onPick: (idx) {
+          onPick: (ayah) {
             final l10n = AppLocalizations.of(context)!;
             _captureAndShare(
               typeLabel: l10n.shareCardAyahLabel,
-              arabic: ayahArabic[idx],
-              transliteration: ayahTranslit[idx],
-              translation: heroVerseTranslation(l10n, idx),
-              source: ayahRefs[idx],
+              arabic: ayah.arabic,
+              transliteration: ayah.transliteration,
+              translation: ayah.translationFor(l10n.localeName),
+              source: ayah.source,
               brandingLabel: l10n.shareViaLabel,
             );
           },
@@ -744,24 +743,92 @@ PreferredSizeWidget _buildPickerSearchBar({
   );
 }
 
-// ── Shared selected-state card decoration ────────────────────────────────────
+// ── Premium picker card ───────────────────────────────────────────────────────
 
-BoxDecoration _pickerCardDecoration(bool isSelected) => BoxDecoration(
-  color: isSelected ? _kGold.withValues(alpha: 0.10) : Colors.transparent,
-  borderRadius: BorderRadius.circular(14),
-  border: Border.all(
-    color: isSelected ? _kGold.withValues(alpha: 0.80) : Colors.transparent,
-    width: 1.5,
+class _PickerCard extends StatelessWidget {
+  final bool isSelected;
+  final VoidCallback onTap;
+  final Widget child;
+  const _PickerCard({required this.isSelected, required this.onTap, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeOutCubic,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: isSelected ? _kGold.withValues(alpha: 0.70) : Colors.transparent,
+          width: 1.5,
+        ),
+        boxShadow: [
+          if (isSelected)
+            BoxShadow(color: _kGold.withValues(alpha: 0.22), blurRadius: 14)
+          else
+            const BoxShadow(color: Color(0x22000000), blurRadius: 4, offset: Offset(0, 2)),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(14),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(14),
+          splashColor: _kGold.withValues(alpha: 0.10),
+          highlightColor: _kGold.withValues(alpha: 0.05),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(13),
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(width: 3, color: _kGold),
+                  Expanded(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [Color(0xFF132235), _kCard],
+                        ),
+                      ),
+                      padding: const EdgeInsets.fromLTRB(11, 14, 12, 14),
+                      child: child,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Widget _goldPill(String text) => Container(
+  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+  decoration: BoxDecoration(
+    color: _kGold.withValues(alpha: 0.12),
+    borderRadius: BorderRadius.circular(20),
+    border: Border.all(color: _kGold.withValues(alpha: 0.40)),
   ),
-  boxShadow: isSelected
-      ? [BoxShadow(color: _kGold.withValues(alpha: 0.22), blurRadius: 12)]
-      : null,
+  child: Text(
+    text,
+    style: GoogleFonts.lato(
+      fontSize: 10,
+      fontWeight: FontWeight.w600,
+      color: _kGold,
+      letterSpacing: 0.3,
+    ),
+  ),
 );
 
 // ── Ayah picker screen ────────────────────────────────────────────────────────
 
 class _AyahPickerScreen extends StatefulWidget {
-  final void Function(int index) onPick;
+  final void Function(ShareAyah ayah) onPick;
   const _AyahPickerScreen({required this.onPick});
 
   @override
@@ -770,26 +837,27 @@ class _AyahPickerScreen extends StatefulWidget {
 
 class _AyahPickerScreenState extends State<_AyahPickerScreen> {
   String _query = '';
-  int? _selected;
+  ShareAyah? _selected;
 
   void _commit() {
     if (_selected == null) return;
-    final idx = _selected!;
+    final ayah = _selected!;
     Navigator.pop(context);
-    widget.onPick(idx);
+    widget.onPick(ayah);
   }
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n   = AppLocalizations.of(context)!;
+    final locale = l10n.localeName;
 
-    final indices = List.generate(ayahArabic.length, (i) => i).where((i) {
+    final ayahs = shareAyahs.where((a) {
       if (_query.isEmpty) return true;
       final q = _query.toLowerCase();
-      return ayahArabic[i].contains(q) ||
-          ayahTranslit[i].toLowerCase().contains(q) ||
-          ayahRefs[i].toLowerCase().contains(q) ||
-          heroVerseTranslation(l10n, i).toLowerCase().contains(q);
+      return a.arabic.contains(q) ||
+          a.transliteration.toLowerCase().contains(q) ||
+          a.source.toLowerCase().contains(q) ||
+          a.translationFor(locale).toLowerCase().contains(q);
     }).toList();
 
     return Scaffold(
@@ -817,7 +885,7 @@ class _AyahPickerScreenState extends State<_AyahPickerScreen> {
         label: l10n.shareThisAyah,
         onTap: _commit,
       ),
-      body: indices.isEmpty
+      body: ayahs.isEmpty
           ? Center(
               child: Text(
                 l10n.noAyahsFoundShort,
@@ -828,16 +896,16 @@ class _AyahPickerScreenState extends State<_AyahPickerScreen> {
             )
           : ListView.separated(
               padding: EdgeInsets.fromLTRB(16, 8, 16, _selected != null ? 8 : 32),
-              itemCount: indices.length,
+              itemCount: ayahs.length,
               separatorBuilder: (_, __) => const SizedBox(height: 4),
               itemBuilder: (_, i) {
-                final idx   = indices[i];
-                final isSel = _selected == idx;
+                final ayah  = ayahs[i];
+                final isSel = _selected == ayah;
                 return _AyahCard(
-                  index: idx,
-                  l10n: l10n,
+                  ayah: ayah,
+                  locale: locale,
                   isSelected: isSel,
-                  onTap: () => setState(() => _selected = isSel ? null : idx),
+                  onTap: () => setState(() => _selected = isSel ? null : ayah),
                 );
               },
             ),
@@ -848,91 +916,70 @@ class _AyahPickerScreenState extends State<_AyahPickerScreen> {
 // ── Ayah card ─────────────────────────────────────────────────────────────────
 
 class _AyahCard extends StatelessWidget {
-  final int index;
-  final AppLocalizations l10n;
+  final ShareAyah ayah;
+  final String locale;
   final bool isSelected;
   final VoidCallback onTap;
 
   const _AyahCard({
-    required this.index,
-    required this.l10n,
+    required this.ayah,
+    required this.locale,
     required this.isSelected,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeOutCubic,
-      decoration: _pickerCardDecoration(isSelected),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(14),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(14),
-          splashColor: _kGold.withValues(alpha: 0.10),
-          highlightColor: _kGold.withValues(alpha: 0.05),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
-            child: Row(
+    return _PickerCard(
+      isSelected: isSelected,
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: Text(
-                          ayahArabic[index],
-                          style: GoogleFonts.scheherazadeNew(
-                            fontSize: 18,
-                            color: _kGold,
-                            height: 1.6,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        heroVerseTranslation(l10n, index),
-                        style: GoogleFonts.lato(
-                          fontSize: 13,
-                          color: _kCream.withValues(alpha: 0.80),
-                          height: 1.4,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        ayahRefs[index],
-                        style: GoogleFonts.lato(
-                          fontSize: 11,
-                          fontStyle: FontStyle.italic,
-                          color: _kGold.withValues(alpha: 0.65),
-                        ),
-                      ),
-                    ],
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    ayah.arabic,
+                    style: GoogleFonts.scheherazadeNew(
+                      fontSize: 22,
+                      color: _kGold,
+                      height: 1.6,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                SizedBox(
-                  width: 28,
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 180),
-                    child: isSelected
-                        ? const Icon(Icons.check_circle_rounded,
-                            key: ValueKey('check'), color: _kGold, size: 22)
-                        : const SizedBox.shrink(key: ValueKey('empty')),
+                const SizedBox(height: 6),
+                Text(
+                  ayah.translationFor(locale),
+                  style: GoogleFonts.lato(
+                    fontSize: 13,
+                    color: _kCream.withValues(alpha: 0.80),
+                    height: 1.4,
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
+                const SizedBox(height: 6),
+                _goldPill(ayah.source),
               ],
             ),
           ),
-        ),
+          SizedBox(
+            width: 28,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 180),
+              child: isSelected
+                  ? const Icon(Icons.check_circle_rounded,
+                      key: ValueKey('check'), color: _kGold, size: 22)
+                  : const SizedBox.shrink(key: ValueKey('empty')),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -1042,91 +1089,77 @@ class _NameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeOutCubic,
-      decoration: _pickerCardDecoration(isSelected),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(14),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(14),
-          splashColor: _kGold.withValues(alpha: 0.10),
-          highlightColor: _kGold.withValues(alpha: 0.05),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+    return _PickerCard(
+      isSelected: isSelected,
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 32,
+            height: 32,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: _kGold.withValues(alpha: 0.12),
+              shape: BoxShape.circle,
+              border: Border.all(color: _kGold.withValues(alpha: 0.30)),
+            ),
+            child: Text(
+              '${name.number}',
+              style: GoogleFonts.lato(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                color: _kGold,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 32,
-                  height: 32,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: _kGold.withValues(alpha: 0.12),
-                    shape: BoxShape.circle,
-                    border: Border.all(color: _kGold.withValues(alpha: 0.30)),
-                  ),
+                Directionality(
+                  textDirection: TextDirection.rtl,
                   child: Text(
-                    '${name.number}',
-                    style: GoogleFonts.lato(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
+                    name.arabic,
+                    style: GoogleFonts.scheherazadeNew(
+                      fontSize: 24,
                       color: _kGold,
+                      height: 1.4,
                     ),
                   ),
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: Text(
-                          name.arabic,
-                          style: GoogleFonts.scheherazadeNew(
-                            fontSize: 20,
-                            color: _kGold,
-                            height: 1.4,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        name.transliteration,
-                        style: GoogleFonts.lato(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: _kCream,
-                        ),
-                      ),
-                      const SizedBox(height: 1),
-                      Text(
-                        name.meaningText(locale),
-                        style: GoogleFonts.lato(
-                          fontSize: 12,
-                          color: _kCream.withValues(alpha: 0.65),
-                        ),
-                      ),
-                    ],
+                const SizedBox(height: 2),
+                Text(
+                  name.transliteration,
+                  style: GoogleFonts.lato(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: _kCream,
                   ),
                 ),
-                SizedBox(
-                  width: 28,
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 180),
-                    child: isSelected
-                        ? const Icon(Icons.check_circle_rounded,
-                            key: ValueKey('check'), color: _kGold, size: 22)
-                        : const SizedBox.shrink(key: ValueKey('empty')),
+                const SizedBox(height: 1),
+                Text(
+                  name.meaningText(locale),
+                  style: GoogleFonts.lato(
+                    fontSize: 12,
+                    color: _kCream.withValues(alpha: 0.65),
                   ),
                 ),
               ],
             ),
           ),
-        ),
+          SizedBox(
+            width: 28,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 180),
+              child: isSelected
+                  ? const Icon(Icons.check_circle_rounded,
+                      key: ValueKey('check'), color: _kGold, size: 22)
+                  : const SizedBox.shrink(key: ValueKey('empty')),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -1237,77 +1270,56 @@ class _HadithCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeOutCubic,
-      decoration: _pickerCardDecoration(isSelected),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(14),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(14),
-          splashColor: _kGold.withValues(alpha: 0.10),
-          highlightColor: _kGold.withValues(alpha: 0.05),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
-            child: Row(
+    return _PickerCard(
+      isSelected: isSelected,
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: Text(
-                          hadith.arabic,
-                          style: GoogleFonts.scheherazadeNew(
-                            fontSize: 18,
-                            color: _kGold,
-                            height: 1.6,
-                          ),
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        hadith.translationFor(locale),
-                        style: GoogleFonts.lato(
-                          fontSize: 13,
-                          color: _kCream.withValues(alpha: 0.80),
-                          height: 1.4,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        hadith.source,
-                        style: GoogleFonts.lato(
-                          fontSize: 11,
-                          fontStyle: FontStyle.italic,
-                          color: _kGold.withValues(alpha: 0.65),
-                        ),
-                      ),
-                    ],
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    hadith.arabic,
+                    style: GoogleFonts.scheherazadeNew(
+                      fontSize: 22,
+                      color: _kGold,
+                      height: 1.6,
+                    ),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                SizedBox(
-                  width: 28,
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 180),
-                    child: isSelected
-                        ? const Icon(Icons.check_circle_rounded,
-                            key: ValueKey('check'), color: _kGold, size: 22)
-                        : const SizedBox.shrink(key: ValueKey('empty')),
+                const SizedBox(height: 6),
+                Text(
+                  hadith.translationFor(locale),
+                  style: GoogleFonts.lato(
+                    fontSize: 13,
+                    color: _kCream.withValues(alpha: 0.80),
+                    height: 1.4,
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
+                const SizedBox(height: 6),
+                _goldPill(hadith.source),
               ],
             ),
           ),
-        ),
+          SizedBox(
+            width: 28,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 180),
+              child: isSelected
+                  ? const Icon(Icons.check_circle_rounded,
+                      key: ValueKey('check'), color: _kGold, size: 22)
+                  : const SizedBox.shrink(key: ValueKey('empty')),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -1330,102 +1342,60 @@ class _DuaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeOutCubic,
-      decoration: BoxDecoration(
-        color: isSelected
-            ? _kGold.withValues(alpha: 0.10)
-            : Colors.transparent,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(
-          color: isSelected
-              ? _kGold.withValues(alpha: 0.80)
-              : Colors.transparent,
-          width: 1.5,
-        ),
-        boxShadow: isSelected
-            ? [
-                BoxShadow(
-                  color: _kGold.withValues(alpha: 0.22),
-                  blurRadius: 12,
-                  spreadRadius: 0,
-                ),
-              ]
-            : null,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(14),
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(14),
-          splashColor: _kGold.withValues(alpha: 0.10),
-          highlightColor: _kGold.withValues(alpha: 0.05),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 14, 12, 14),
-            child: Row(
+    return _PickerCard(
+      isSelected: isSelected,
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: Text(
-                          dua.arabic,
-                          style: GoogleFonts.scheherazadeNew(
-                            fontSize: 18,
-                            color: _kGold,
-                            height: 1.6,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        dua.translationFor(locale),
-                        style: GoogleFonts.lato(
-                          fontSize: 13,
-                          color: _kCream.withValues(alpha: 0.80),
-                          height: 1.4,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        dua.source,
-                        style: GoogleFonts.lato(
-                          fontSize: 11,
-                          fontStyle: FontStyle.italic,
-                          color: _kGold.withValues(alpha: 0.65),
-                        ),
-                      ),
-                    ],
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    dua.arabic,
+                    style: GoogleFonts.scheherazadeNew(
+                      fontSize: 22,
+                      color: _kGold,
+                      height: 1.6,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                // Checkmark column — always the same width so text doesn't jump.
-                SizedBox(
-                  width: 28,
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 180),
-                    child: isSelected
-                        ? const Icon(
-                            Icons.check_circle_rounded,
-                            key: ValueKey('check'),
-                            color: _kGold,
-                            size: 22,
-                          )
-                        : const SizedBox.shrink(key: ValueKey('empty')),
+                const SizedBox(height: 6),
+                Text(
+                  dua.translationFor(locale),
+                  style: GoogleFonts.lato(
+                    fontSize: 13,
+                    color: _kCream.withValues(alpha: 0.80),
+                    height: 1.4,
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
+                const SizedBox(height: 6),
+                _goldPill(dua.source),
               ],
             ),
           ),
-        ),
+          SizedBox(
+            width: 28,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 180),
+              child: isSelected
+                  ? const Icon(
+                      Icons.check_circle_rounded,
+                      key: ValueKey('check'),
+                      color: _kGold,
+                      size: 22,
+                    )
+                  : const SizedBox.shrink(key: ValueKey('empty')),
+            ),
+          ),
+        ],
       ),
     );
   }

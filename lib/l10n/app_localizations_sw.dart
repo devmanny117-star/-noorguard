@@ -2750,7 +2750,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get shareError => 'Haikuweza kuunda picha ya kushiriki';
 
   @override
-  String get shareAyahSubtitle => 'Chagua kutoka aya 15 za Quran';
+  String get shareAyahSubtitle => 'Chagua kutoka aya 30 za Quran';
 
   @override
   String get shareDuaSubtitle => 'Chagua kutoka kwenye maktaba';
@@ -2759,7 +2759,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get shareNameSubtitle => 'Chagua kutoka kwa Majina yote 99 Mazuri';
 
   @override
-  String get shareHadithSubtitle => 'Chagua kutoka hadithi 10 sahihi';
+  String get shareHadithSubtitle => 'Chagua kutoka hadithi 20 sahihi';
 
   @override
   String get shareThisDua => 'Shiriki Dua Hii';
@@ -2808,6 +2808,12 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'Onyesha kidogo';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'Shahada';

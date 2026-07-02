@@ -5061,7 +5061,7 @@ abstract class AppLocalizations {
   /// shareAyahSubtitle
   ///
   /// In en, this message translates to:
-  /// **'Pick from 15 Quranic verses'**
+  /// **'Pick from 30 Quranic verses'**
   String get shareAyahSubtitle;
 
   /// shareDuaSubtitle
@@ -5079,7 +5079,7 @@ abstract class AppLocalizations {
   /// shareHadithSubtitle
   ///
   /// In en, this message translates to:
-  /// **'Pick from 10 authentic hadiths'**
+  /// **'Pick from 20 authentic hadiths'**
   String get shareHadithSubtitle;
 
   /// shareThisDua
@@ -5177,6 +5177,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show less'**
   String get pillarShowLess;
+
+  /// Button to expand all 5 pillar detail texts
+  ///
+  /// In en, this message translates to:
+  /// **'Show Details'**
+  String get pillarsShowDetails;
+
+  /// Button to collapse all 5 pillar detail texts
+  ///
+  /// In en, this message translates to:
+  /// **'Hide Details'**
+  String get pillarsHideDetails;
 
   /// Name of the first pillar
   ///

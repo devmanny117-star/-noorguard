@@ -2612,7 +2612,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get shareError => '无法创建分享图片';
 
   @override
-  String get shareAyahSubtitle => '从15段经文中选择';
+  String get shareAyahSubtitle => '从30段经文中选择';
 
   @override
   String get shareDuaSubtitle => '从库中选择';
@@ -2621,7 +2621,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get shareNameSubtitle => '从全部99个美名中选择';
 
   @override
-  String get shareHadithSubtitle => '从10段圣训中选择';
+  String get shareHadithSubtitle => '从20段圣训中选择';
 
   @override
   String get shareThisDua => '分享这段祈祷词';
@@ -2670,6 +2670,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get pillarShowLess => '收起';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => '清真言';

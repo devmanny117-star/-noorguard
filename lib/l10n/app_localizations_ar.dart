@@ -1660,18 +1660,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notifSetupDoneButton => 'تم';
 
   @override
-  String get testNotificationButton => 'إرسال إشعار تجريبي (١٠ ثوانٍ)';
+  String get testNotificationButton => 'إرسال إشعار تجريبي (٢٠ ثوانٍ)';
 
   @override
-  String get testNotificationSnack => 'سيصل الإشعار التجريبي خلال ١٠ ثوانٍ';
+  String get testNotificationSnack => 'سيصل الإشعار التجريبي خلال ٢٠ ثوانٍ';
 
   @override
   String get testLockAlarmButton =>
-      'اختبار تنبيه القفل بكامل الشاشة (١٠ ثوانٍ)';
+      'اختبار تنبيه القفل بكامل الشاشة (٢٠ ثوانٍ)';
 
   @override
   String get testLockAlarmSnack =>
-      'سينطلق تنبيه القفل خلال ١٠ ثوانٍ — اقفل هاتفك الآن';
+      'سينطلق تنبيه القفل خلال ٢٠ ثوانٍ — اقفل هاتفك الآن';
 
   @override
   String get testAdhanForegroundButton =>
@@ -2704,7 +2704,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shareError => 'تعذّر إنشاء صورة المشاركة';
 
   @override
-  String get shareAyahSubtitle => 'اختر من ١٥ آية قرآنية';
+  String get shareAyahSubtitle => 'اختر من ٣٠ آية قرآنية';
 
   @override
   String get shareDuaSubtitle => 'اختر من المكتبة';
@@ -2713,7 +2713,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shareNameSubtitle => 'اختر من الأسماء الحسنى التسعة والتسعين';
 
   @override
-  String get shareHadithSubtitle => 'اختر من ١٠ أحاديث صحيحة';
+  String get shareHadithSubtitle => 'اختر من ٢٠ أحاديث صحيحة';
 
   @override
   String get shareThisDua => 'شارك هذا الدعاء';
@@ -2762,6 +2762,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'أقل';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'الشهادة';

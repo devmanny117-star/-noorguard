@@ -2752,7 +2752,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get shareError => 'Kon geen afbeelding maken';
 
   @override
-  String get shareAyahSubtitle => 'Kies uit 15 Koranverzen';
+  String get shareAyahSubtitle => 'Kies uit 30 Koranverzen';
 
   @override
   String get shareDuaSubtitle => 'Kies uit de bibliotheek';
@@ -2761,7 +2761,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get shareNameSubtitle => 'Kies uit alle 99 Mooie Namen';
 
   @override
-  String get shareHadithSubtitle => 'Kies uit 10 authentieke hadiths';
+  String get shareHadithSubtitle => 'Kies uit 20 authentieke hadiths';
 
   @override
   String get shareThisDua => 'Dit Dua Delen';
@@ -2811,6 +2811,12 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'Minder tonen';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'Shahada';

@@ -2733,7 +2733,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get shareError => 'تصویر بنانے میں ناکامی';
 
   @override
-  String get shareAyahSubtitle => '١٥ قرآنی آیات میں سے چنیں';
+  String get shareAyahSubtitle => '٣٠ قرآنی آیات میں سے چنیں';
 
   @override
   String get shareDuaSubtitle => 'لائبریری سے چنیں';
@@ -2742,7 +2742,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get shareNameSubtitle => 'تمام ٩٩ اسمائے حسنیٰ میں سے چنیں';
 
   @override
-  String get shareHadithSubtitle => '١٠ مستند احادیث میں سے چنیں';
+  String get shareHadithSubtitle => '٢٠ مستند احادیث میں سے چنیں';
 
   @override
   String get shareThisDua => 'یہ دعا شیئر کریں';
@@ -2791,6 +2791,12 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get pillarShowLess => 'کم دکھائیں';
+
+  @override
+  String get pillarsShowDetails => 'Show Details';
+
+  @override
+  String get pillarsHideDetails => 'Hide Details';
 
   @override
   String get pillar1Name => 'شہادت';
