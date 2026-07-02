@@ -2743,6 +2743,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get shareError => 'Paylaşım görseli oluşturulamadı';
 
   @override
+  String get shareCardVerseLabel => '✦ Kuran Ayeti';
+
+  @override
   String get shareAyahSubtitle => '30 Kuran ayetinden seç';
 
   @override
@@ -2797,16 +2800,19 @@ class AppLocalizationsTr extends AppLocalizations {
   String get fivePillarsOfIslam => 'İslam\'ın 5 Şartı';
 
   @override
+  String get fivePillarsSubtitle => 'İslam inancının temelleri';
+
+  @override
   String get pillarLearnMore => 'Daha fazla bilgi';
 
   @override
   String get pillarShowLess => 'Daha az göster';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'Detayları Göster';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'Detayları Gizle';
 
   @override
   String get pillar1Name => 'Kelime-i Şehadet';
@@ -2816,7 +2822,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'Kelime-i Şehadet, Allah\'tan başka ilah olmadığına ve Muhammed\'in ﷺ O\'nun elçisi olduğuna tanıklıktır. Samimi bir inançla söylenmesi, İslam\'a girişin kapısı ve Müslüman inancının temelidir.';
+      'Iman bildirisi Islamin temelidir. \'Allahtan baska ilah yoktur ve Muhammed Onun elcisidir\' diyerek kisi samimi bir sekilde Islama girer.';
 
   @override
   String get pillar2Name => 'Namaz';
@@ -2826,7 +2832,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'Namaz, günde beş kez kılınan ibadet — Sabah, Öğle, İkindi, Akşam ve Yatsı. İbadet eden ile Allah arasında doğrudan bir bağdır ve O\'nun varlığını sürekli hatırlatır.';
+      'Bes vakit namaz, bir Muslim ile Allah arasindaki dogrudan bagdir. Sabah, ogle, ikindi, aksam ve yatsida kilinarak Muslumانın tum gununu Allahi anmak uzerine kurar.';
 
   @override
   String get pillar3Name => 'Zekat';
@@ -2836,7 +2842,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'Zekat, birikimin %2,5\'ini her yıl ihtiyaç sahiplerine vermektir. Serveti arındırır, eşitsizliği azaltır ve tüm rızkın Allah\'tan geldiğini hatırlatır.';
+      'Zekat, ihtiyac sahiplerine yillik tasarruflarin yuzde iki bucugunu vermek farzdir. Serveti arindirir ve Muslim toplumunun baglarini guclendirir.';
 
   @override
   String get pillar4Name => 'Oruç';
@@ -2846,7 +2852,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'Oruç, kutsal Ramazan ayında şafaktan güneş batımına kadar yeme, içme ve günahtan kaçınmaktır. Takva ve Allah\'ın nimetlerine şükran duygusu geliştirir.';
+      'Mubarek Ramazan ayinda safaktan gun batimina kadar oruc tutulur. Muslümanlar takva (Allah bilinci) ve sukrana ulasmak icin yiyecek, icecek ve gunahtan uzak durur.';
 
   @override
   String get pillar5Name => 'Hac';
@@ -2856,5 +2862,5 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'Hac, kutsal Mekke şehrine yapılan hac ibadetidir. Beden ve mali açıdan güç yetiren her Müslüman için ömründe bir kez farzdır. Birlik ve Allah\'a teslimiyet sembolüdür.';
+      'Mekkaye hac, bedensel ve mali gucu yeten her Muslümana hayatinda bir kez farzdir. Ayni zamanda yeryuzundeki en buyuk yillik insan topluluğudur.';
 }

@@ -2774,6 +2774,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get shareError => 'Impossible de créer l\'image';
 
   @override
+  String get shareCardVerseLabel => '✦ Verset Coranique';
+
+  @override
   String get shareAyahSubtitle => 'Choisir parmi 30 versets coraniques';
 
   @override
@@ -2829,16 +2832,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String get fivePillarsOfIslam => 'Les 5 Piliers de l\'Islam';
 
   @override
+  String get fivePillarsSubtitle => 'Les fondements de la foi islamique';
+
+  @override
   String get pillarLearnMore => 'En savoir plus';
 
   @override
   String get pillarShowLess => 'Voir moins';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'Afficher les détails';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'Masquer les détails';
 
   @override
   String get pillar1Name => 'Chahada';
@@ -2848,7 +2854,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'La Chahada est le témoignage qu\'il n\'y a de dieu qu\'Allah et que Muhammad ﷺ est Son messager. La prononcer avec une foi sincère est la porte d\'entrée dans l\'Islam et le fondement de la foi musulmane.';
+      'La declaration de foi est le fondement de l\'Islam. En disant sincerement \'Il n\'y a de dieu qu\'Allah et Muhammad est Son messager\', une personne entre dans l\'Islam.';
 
   @override
   String get pillar2Name => 'Salah';
@@ -2858,7 +2864,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'Le Salah est la prière rituelle effectuée cinq fois par jour — Fajr, Dhuhr, Asr, Maghrib et Isha. C\'est un lien direct entre le croyant et Allah, un rappel constant de Sa présence.';
+      'Les cinq prieres quotidiennes sont la connexion directe entre un musulman et Allah. Effectuees a l\'aube, a midi, en apres-midi, au coucher du soleil et la nuit, elles structurent toute la journee du musulman autour du souvenir d\'Allah.';
 
   @override
   String get pillar3Name => 'Zakat';
@@ -2868,7 +2874,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'La Zakat est le don annuel de 2,5% de ses économies aux plus démunis. Elle purifie la richesse, réduit les inégalités et rappelle aux croyants que toute provision vient d\'Allah.';
+      'La Zakat est l\'aumoene annuelle obligatoire de 2,5% de ses economies donnee aux necessiteux. Elle purifie la richesse et renforce les liens de la communaute musulmane.';
 
   @override
   String get pillar4Name => 'Siyam';
@@ -2878,7 +2884,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'Le Siyam est le jeûne observé durant le mois sacré de Ramadan, s\'abstenant de manger, boire et pécher du lever au coucher du soleil. Il développe la taqwa et la gratitude envers Allah.';
+      'Le jeune pendant le beni mois de Ramadan du lever au coucher du soleil. Les musulmans s\'abstiennent de nourriture, de boisson et de peche pour atteindre le taqwa (conscience de Dieu) et la gratitude.';
 
   @override
   String get pillar5Name => 'Hajj';
@@ -2888,5 +2894,5 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'Le Hajj est le pèlerinage à la ville sacrée de La Mecque, obligatoire une fois dans sa vie pour tout musulman physiquement et financièrement capable. Symbole puissant d\'unité et de soumission à Allah.';
+      'Le pelerinage a La Mecque est obligatoire une fois dans la vie pour tout musulman physiquement et financierement capable. C\'est le plus grand rassemblement annuel de personnes sur terre.';
 }

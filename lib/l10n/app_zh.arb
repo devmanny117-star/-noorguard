@@ -1271,98 +1271,207 @@
     "description": "toolboxGlossarySubtitle"
   },
   "shareSheetTitle": "分享",
-  "@shareSheetTitle": { "description": "shareSheetTitle" },
+  "@shareSheetTitle": {
+    "description": "shareSheetTitle"
+  },
   "shareAnAyah": "分享经文",
-  "@shareAnAyah": { "description": "shareAnAyah" },
+  "@shareAnAyah": {
+    "description": "shareAnAyah"
+  },
   "shareADua": "分享祈祷词",
-  "@shareADua": { "description": "shareADua" },
+  "@shareADua": {
+    "description": "shareADua"
+  },
   "shareANameOfAllah": "分享真主之名",
-  "@shareANameOfAllah": { "description": "shareANameOfAllah" },
+  "@shareANameOfAllah": {
+    "description": "shareANameOfAllah"
+  },
   "shareAHadith": "分享圣训",
-  "@shareAHadith": { "description": "shareAHadith" },
+  "@shareAHadith": {
+    "description": "shareAHadith"
+  },
   "shareViaLabel": "通过 Noor Guard 分享",
-  "@shareViaLabel": { "description": "shareViaLabel" },
+  "@shareViaLabel": {
+    "description": "shareViaLabel"
+  },
   "shareCardAyahLabel": "✦ 今日经文",
-  "@shareCardAyahLabel": { "description": "shareCardAyahLabel" },
+  "@shareCardAyahLabel": {
+    "description": "shareCardAyahLabel"
+  },
   "shareCardDuaLabel": "✦ 祈祷词",
-  "@shareCardDuaLabel": { "description": "shareCardDuaLabel" },
+  "@shareCardDuaLabel": {
+    "description": "shareCardDuaLabel"
+  },
   "shareCardNameLabel": "✦ 真主之名",
-  "@shareCardNameLabel": { "description": "shareCardNameLabel" },
+  "@shareCardNameLabel": {
+    "description": "shareCardNameLabel"
+  },
   "shareCardHadithLabel": "✦ 圣训",
-  "@shareCardHadithLabel": { "description": "shareCardHadithLabel" },
+  "@shareCardHadithLabel": {
+    "description": "shareCardHadithLabel"
+  },
   "sharePickDuaTitle": "选择要分享的祈祷词",
-  "@sharePickDuaTitle": { "description": "sharePickDuaTitle" },
+  "@sharePickDuaTitle": {
+    "description": "sharePickDuaTitle"
+  },
   "shareError": "无法创建分享图片",
-  "@shareError": { "description": "shareError" },
+  "@shareError": {
+    "description": "shareError"
+  },
+    "shareCardVerseLabel": "✦ 《古兰经》节",
+  "@shareCardVerseLabel": {
+    "description": "shareCardVerseLabel"
+  },
   "shareAyahSubtitle": "从30段经文中选择",
-  "@shareAyahSubtitle": { "description": "shareAyahSubtitle" },
+  "@shareAyahSubtitle": {
+    "description": "shareAyahSubtitle"
+  },
   "shareDuaSubtitle": "从库中选择",
-  "@shareDuaSubtitle": { "description": "shareDuaSubtitle" },
+  "@shareDuaSubtitle": {
+    "description": "shareDuaSubtitle"
+  },
   "shareNameSubtitle": "从全部99个美名中选择",
-  "@shareNameSubtitle": { "description": "shareNameSubtitle" },
+  "@shareNameSubtitle": {
+    "description": "shareNameSubtitle"
+  },
   "shareHadithSubtitle": "从20段圣训中选择",
-  "@shareHadithSubtitle": { "description": "shareHadithSubtitle" },
+  "@shareHadithSubtitle": {
+    "description": "shareHadithSubtitle"
+  },
   "shareThisDua": "分享这段祈祷词",
-  "@shareThisDua": { "description": "shareThisDua" },
+  "@shareThisDua": {
+    "description": "shareThisDua"
+  },
   "sharePickAyahTitle": "选择一段经文分享",
-  "@sharePickAyahTitle": { "description": "sharePickAyahTitle" },
+  "@sharePickAyahTitle": {
+    "description": "sharePickAyahTitle"
+  },
   "searchAyahs": "搜索经文…",
-  "@searchAyahs": { "description": "searchAyahs" },
+  "@searchAyahs": {
+    "description": "searchAyahs"
+  },
   "noAyahsFoundShort": "未找到经文",
-  "@noAyahsFoundShort": { "description": "noAyahsFoundShort" },
+  "@noAyahsFoundShort": {
+    "description": "noAyahsFoundShort"
+  },
   "shareThisAyah": "分享此经文",
-  "@shareThisAyah": { "description": "shareThisAyah" },
+  "@shareThisAyah": {
+    "description": "shareThisAyah"
+  },
   "sharePickNameTitle": "选择一个名字分享",
-  "@sharePickNameTitle": { "description": "sharePickNameTitle" },
+  "@sharePickNameTitle": {
+    "description": "sharePickNameTitle"
+  },
   "shareThisName": "分享此名字",
-  "@shareThisName": { "description": "shareThisName" },
+  "@shareThisName": {
+    "description": "shareThisName"
+  },
   "sharePickHadithTitle": "选择一段圣训分享",
-  "@sharePickHadithTitle": { "description": "sharePickHadithTitle" },
+  "@sharePickHadithTitle": {
+    "description": "sharePickHadithTitle"
+  },
   "searchHadiths": "搜索圣训…",
-  "@searchHadiths": { "description": "searchHadiths" },
+  "@searchHadiths": {
+    "description": "searchHadiths"
+  },
   "noHadithsFound": "未找到圣训",
-  "@noHadithsFound": { "description": "noHadithsFound" },
+  "@noHadithsFound": {
+    "description": "noHadithsFound"
+  },
   "shareThisHadith": "分享此圣训",
-  "@shareThisHadith": { "description": "shareThisHadith" },
-
+  "@shareThisHadith": {
+    "description": "shareThisHadith"
+  },
   "backToBasics": "回归基础",
-  "@backToBasics": { "description": "backToBasics" },
+  "@backToBasics": {
+    "description": "backToBasics"
+  },
   "backToBasicsSubtitle": "您的伊斯兰基础知识指南",
-  "@backToBasicsSubtitle": { "description": "backToBasicsSubtitle" },
+  "@backToBasicsSubtitle": {
+    "description": "backToBasicsSubtitle"
+  },
   "fivePillarsOfIslam": "伊斯兰五功",
-  "@fivePillarsOfIslam": { "description": "fivePillarsOfIslam" },
+  "@fivePillarsOfIslam": {
+    "description": "fivePillarsOfIslam"
+  },
+  "fivePillarsSubtitle": "伊斯兰信仰的基础",
+  "@fivePillarsSubtitle": {
+    "description": "fivePillarsSubtitle"
+  },
   "pillarLearnMore": "了解更多",
-  "@pillarLearnMore": { "description": "pillarLearnMore" },
+  "@pillarLearnMore": {
+    "description": "pillarLearnMore"
+  },
   "pillarShowLess": "收起",
-  "@pillarShowLess": { "description": "pillarShowLess" },
+  "@pillarShowLess": {
+    "description": "pillarShowLess"
+  },
+  "pillarsShowDetails": "显示详情",
+  "@pillarsShowDetails": {
+    "description": "pillarsShowDetails"
+  },
+  "pillarsHideDetails": "隐藏详情",
+  "@pillarsHideDetails": {
+    "description": "pillarsHideDetails"
+  },
   "pillar1Name": "清真言",
-  "@pillar1Name": { "description": "pillar1Name" },
+  "@pillar1Name": {
+    "description": "pillar1Name"
+  },
   "pillar1Desc": "信仰的宣言",
-  "@pillar1Desc": { "description": "pillar1Desc" },
-  "pillar1Detail": "清真言是见证除安拉外别无神灵，穆罕默德ﷺ是安拉使者的证言。以真诚的信仰念诵它是进入伊斯兰的门槛，也是穆斯林信仰的基础。",
-  "@pillar1Detail": { "description": "pillar1Detail" },
+  "@pillar1Desc": {
+    "description": "pillar1Desc"
+  },
+  "pillar1Detail": "信仰证言是伊斯兰的基础。真诚说出「万物非主，唯有真主，穆罕默德是真主的使者」，一个人便进入伊斯兰。",
+  "@pillar1Detail": {
+    "description": "pillar1Detail"
+  },
   "pillar2Name": "礼拜",
-  "@pillar2Name": { "description": "pillar2Name" },
+  "@pillar2Name": {
+    "description": "pillar2Name"
+  },
   "pillar2Desc": "每日五次礼拜",
-  "@pillar2Desc": { "description": "pillar2Desc" },
-  "pillar2Detail": "礼拜是每天五次进行的宗教功课——晨礼、晌礼、晡礼、昏礼和宵礼。它是信徒与安拉之间的直接联系，时刻提醒安拉的存在。",
-  "@pillar2Detail": { "description": "pillar2Detail" },
+  "@pillar2Desc": {
+    "description": "pillar2Desc"
+  },
+  "pillar2Detail": "每日五次礼拜是穆斯林与安拉之间的直接联系。分别在黎明、正午、下午、日落和夜晚礼拜，使穆斯林整天围绕着对安拉的记念。",
+  "@pillar2Detail": {
+    "description": "pillar2Detail"
+  },
   "pillar3Name": "天课",
-  "@pillar3Name": { "description": "pillar3Name" },
+  "@pillar3Name": {
+    "description": "pillar3Name"
+  },
   "pillar3Desc": "法定施舍",
-  "@pillar3Desc": { "description": "pillar3Desc" },
-  "pillar3Detail": "天课是每年将储蓄的2.5%施舍给有需要的人。它净化财富、减少不平等，并提醒信徒所有赐予皆来自安拉。",
-  "@pillar3Detail": { "description": "pillar3Detail" },
+  "@pillar3Desc": {
+    "description": "pillar3Desc"
+  },
+  "pillar3Detail": "天课是每年将储蓄的2.5%强制施舍给有需要者的义务。它净化财富，加强穆斯林社区的纽带。",
+  "@pillar3Detail": {
+    "description": "pillar3Detail"
+  },
   "pillar4Name": "封斋",
-  "@pillar4Name": { "description": "pillar4Name" },
+  "@pillar4Name": {
+    "description": "pillar4Name"
+  },
   "pillar4Desc": "斋月封斋",
-  "@pillar4Desc": { "description": "pillar4Desc" },
-  "pillar4Detail": "封斋是在神圣的斋月期间，从黎明到日落戒食、戒水、戒罪。它培养虔诚（塔格瓦）并对安拉的恩典心存感恩。",
-  "@pillar4Detail": { "description": "pillar4Detail" },
+  "@pillar4Desc": {
+    "description": "pillar4Desc"
+  },
+  "pillar4Detail": "在吉祥的斋月从黎明到日落封斋。穆斯林戒除饮食和罪恶，以获得塔格瓦（对真主的敬畏）与感恩之心。",
+  "@pillar4Detail": {
+    "description": "pillar4Detail"
+  },
   "pillar5Name": "朝觐",
-  "@pillar5Name": { "description": "pillar5Name" },
+  "@pillar5Name": {
+    "description": "pillar5Name"
+  },
   "pillar5Desc": "麦加朝圣",
-  "@pillar5Desc": { "description": "pillar5Desc" },
-  "pillar5Detail": "朝觐是前往圣城麦加的朝圣，对每一位有能力的穆斯林而言，一生须履行一次。它是团结与顺从安拉的强大象征。",
-  "@pillar5Detail": { "description": "pillar5Detail" }
+  "@pillar5Desc": {
+    "description": "pillar5Desc"
+  },
+  "pillar5Detail": "前往麦加朝觐是每位有能力的穆斯林一生中必须完成一次的功课，也是地球上规模最大的年度人类聚集。",
+  "@pillar5Detail": {
+    "description": "pillar5Detail"
+  }
 }

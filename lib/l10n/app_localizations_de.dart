@@ -2759,6 +2759,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shareError => 'Bild konnte nicht erstellt werden';
 
   @override
+  String get shareCardVerseLabel => '✦ Koranvers';
+
+  @override
   String get shareAyahSubtitle => 'Wähle aus 30 Koranversen';
 
   @override
@@ -2814,16 +2817,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get fivePillarsOfIslam => 'Die 5 Säulen des Islam';
 
   @override
+  String get fivePillarsSubtitle => 'Die Grundlagen des islamischen Glaubens';
+
+  @override
   String get pillarLearnMore => 'Mehr erfahren';
 
   @override
   String get pillarShowLess => 'Weniger anzeigen';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'Details anzeigen';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'Details ausblenden';
 
   @override
   String get pillar1Name => 'Schahada';
@@ -2833,7 +2839,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'Die Schahada ist das Zeugnis, dass es keinen Gott außer Allah gibt und dass Muhammad ﷺ Sein Gesandter ist. Sie mit aufrichtigem Glauben zu sprechen ist der Eintritt in den Islam und das Fundament des muslimischen Glaubens.';
+      'Das Glaubensbekenntnis ist das Fundament des Islams. Indem man aufrichtig sagt \'Es gibt keinen Gott ausser Allah und Muhammad ist Sein Gesandter\', tritt man in den Islam ein.';
 
   @override
   String get pillar2Name => 'Salah';
@@ -2843,7 +2849,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'Salah ist das rituelle Gebet, das fünfmal täglich verrichtet wird — Fajr, Dhuhr, Asr, Maghrib und Ischa. Es ist eine direkte Verbindung zwischen dem Gläubigen und Allah, eine ständige Erinnerung an Seine Gegenwart.';
+      'Die funf taglichen Gebete sind die direkte Verbindung zwischen einem Muslim und Allah. Bei Morgengrauen, Mittag, Nachmittag, Sonnenuntergang und Nacht verrichtet, gestalten sie den ganzen Tag des Muslims um die Erinnerung an Allah.';
 
   @override
   String get pillar3Name => 'Zakat';
@@ -2853,7 +2859,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'Zakat ist die jährliche Abgabe von 2,5% des Ersparten an Bedürftige. Sie reinigt das Vermögen, verringert Ungleichheit und erinnert Gläubige daran, dass aller Reichtum von Allah stammt.';
+      'Zakat ist die Pflichtabgabe von 2,5% der jahrlichen Ersparnisse fur Bedurftige. Sie reinigt das Vermogen und starkt den Zusammenhalt der muslimischen Gemeinschaft.';
 
   @override
   String get pillar4Name => 'Sawm';
@@ -2863,7 +2869,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'Sawm ist das Fasten im heiligen Monat Ramadan, bei dem von der Morgendämmerung bis zum Sonnenuntergang auf Essen, Trinken und Sünde verzichtet wird. Es fördert Taqwa und Dankbarkeit gegenüber Allah.';
+      'Das Fasten im gesegneten Monat Ramadan von der Morgendammerung bis zum Sonnenuntergang. Muslime enthalten sich von Essen, Trinken und Sunde, um Taqwa (Gottesbewusstsein) und Dankbarkeit zu erlangen.';
 
   @override
   String get pillar5Name => 'Hadsch';
@@ -2873,5 +2879,5 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'Der Hadsch ist die Pilgerfahrt zur heiligen Stadt Mekka, die für jeden körperlich und finanziell fähigen Muslim einmal im Leben verpflichtend ist. Er ist ein mächtiges Symbol der Einheit und der Unterwerfung unter Allah.';
+      'Die Pilgerfahrt nach Mekka ist einmal im Leben Pflicht fur jeden korperlich und finanziell fahigen Muslim. Sie ist die grosste jahrliche Menschenversammlung auf der Erde.';
 }

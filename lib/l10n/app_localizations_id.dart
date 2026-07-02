@@ -2757,6 +2757,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get shareError => 'Gagal membuat gambar berbagi';
 
   @override
+  String get shareCardVerseLabel => '✦ Ayat Quran';
+
+  @override
   String get shareAyahSubtitle => 'Pilih dari 30 ayat Al-Quran';
 
   @override
@@ -2811,16 +2814,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get fivePillarsOfIslam => '5 Rukun Islam';
 
   @override
+  String get fivePillarsSubtitle => 'Fondasi keyakinan Islam';
+
+  @override
   String get pillarLearnMore => 'Pelajari lebih lanjut';
 
   @override
   String get pillarShowLess => 'Tampilkan lebih sedikit';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'Tampilkan Detail';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'Sembunyikan Detail';
 
   @override
   String get pillar1Name => 'Syahadat';
@@ -2830,7 +2836,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'Syahadat adalah kesaksian bahwa tidak ada tuhan selain Allah dan bahwa Muhammad ﷺ adalah utusan-Nya. Mengucapkannya dengan keyakinan yang tulus adalah pintu masuk ke Islam dan fondasi iman seorang Muslim.';
+      'Pernyataan iman adalah dasar Islam. Dengan tulus mengucapkan \'Tidak ada tuhan selain Allah dan Muhammad adalah utusan-Nya\', seseorang masuk ke dalam Islam.';
 
   @override
   String get pillar2Name => 'Shalat';
@@ -2840,7 +2846,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'Shalat adalah ibadah ritual yang dilakukan lima kali sehari — Subuh, Dzuhur, Ashar, Maghrib, dan Isya. Ini adalah hubungan langsung antara hamba dan Allah, pengingat konstan akan kehadiran-Nya.';
+      'Shalat lima waktu adalah hubungan langsung antara seorang Muslim dan Allah. Dilaksanakan saat fajar, siang, ashar, maghrib, dan isya, shalat mengatur seluruh hari Muslim di sekitar dzikrullah.';
 
   @override
   String get pillar3Name => 'Zakat';
@@ -2850,7 +2856,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'Zakat adalah pemberian tahunan 2,5% dari tabungan kepada mereka yang membutuhkan. Ia menyucikan harta, mengurangi ketimpangan, dan mengingatkan orang beriman bahwa semua rezeki berasal dari Allah.';
+      'Zakat adalah sedekah wajib tahunan sebesar 2,5% dari tabungan yang diberikan kepada yang membutuhkan. Zakat menyucikan harta dan mempererat tali persaudaraan umat Islam.';
 
   @override
   String get pillar4Name => 'Puasa';
@@ -2860,7 +2866,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'Puasa adalah menahan diri dari makan, minum, dan dosa dari fajar hingga terbenamnya matahari selama bulan suci Ramadan. Membangun taqwa dan rasa syukur atas nikmat Allah.';
+      'Puasa selama bulan Ramadan yang penuh berkah dari fajar hingga terbenam matahari. Muslim menahan diri dari makan, minum, dan dosa untuk meraih taqwa (kesadaran akan Allah) dan rasa syukur.';
 
   @override
   String get pillar5Name => 'Haji';
@@ -2870,5 +2876,5 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'Haji adalah ibadah ziarah ke kota suci Mekkah, wajib sekali seumur hidup bagi setiap Muslim yang mampu secara fisik dan finansial. Simbol persatuan dan ketundukan kepada Allah yang kuat.';
+      'Haji ke Mekah wajib dilaksanakan sekali seumur hidup bagi setiap Muslim yang mampu secara fisik dan finansial. Ini adalah pertemuan tahunan manusia terbesar di muka bumi.';
 }

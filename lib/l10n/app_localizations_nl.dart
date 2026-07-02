@@ -2752,6 +2752,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get shareError => 'Kon geen afbeelding maken';
 
   @override
+  String get shareCardVerseLabel => '✦ Koranvers';
+
+  @override
   String get shareAyahSubtitle => 'Kies uit 30 Koranverzen';
 
   @override
@@ -2807,16 +2810,20 @@ class AppLocalizationsNl extends AppLocalizations {
   String get fivePillarsOfIslam => 'De 5 Zuilen van de Islam';
 
   @override
+  String get fivePillarsSubtitle =>
+      'De grondslagen van het islamitische geloof';
+
+  @override
   String get pillarLearnMore => 'Meer leren';
 
   @override
   String get pillarShowLess => 'Minder tonen';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'Details tonen';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'Details verbergen';
 
   @override
   String get pillar1Name => 'Shahada';
@@ -2826,7 +2833,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'De Shahada is de getuigenis dat er geen god is dan Allah en dat Muhammad ﷺ Zijn boodschapper is. Het met oprechte overtuiging uitspreken is de poort tot de islam en het fundament van het moslimgeloof.';
+      'De geloofsbelijdenis is de basis van de islam. Door oprecht te zeggen \'Er is geen god dan Allah en Muhammad is Zijn boodschapper\', treedt iemand de islam binnen.';
 
   @override
   String get pillar2Name => 'Salah';
@@ -2836,7 +2843,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'Salah is het rituele gebed dat vijf keer per dag wordt verricht — Fajr, Dhuhr, Asr, Maghrib en Isha. Het is een directe verbinding tussen de aanbidder en Allah, een constante herinnering aan Zijn aanwezigheid.';
+      'De vijf dagelijkse gebeden zijn de directe verbinding tussen een moslim en Allah. Gebeden bij dageraad, middag, namiddag, zonsondergang en nacht structureren de hele dag van de moslim rond de herinnering aan Allah.';
 
   @override
   String get pillar3Name => 'Zakat';
@@ -2846,7 +2853,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'Zakat is het jaarlijkse weggeven van 2,5% van besparingen aan behoeftigen. Het zuivert rijkdom, vermindert ongelijkheid en herinnert gelovigen eraan dat alle voorziening van Allah komt.';
+      'Zakat is de verplichte jaarlijkse aalmoes van 2,5% van iemands spaargeld voor mensen in nood. Het zuivert rijkdom en versterkt de banden van de moslimgemeenschap.';
 
   @override
   String get pillar4Name => 'Sawm';
@@ -2856,7 +2863,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'Sawm is het vasten gedurende de heilige maand Ramadan, waarbij van zonsopgang tot zonsondergang wordt afgezien van eten, drinken en zonde. Het bouwt taqwa op en dankbaarheid voor Allah\'s zegeningen.';
+      'Vasten tijdens de gezegende maand Ramadan van dageraad tot zonsondergang. Moslims onthouden zich van eten, drinken en zonde om taqwa (godsbewustzijn) en dankbaarheid te bereiken.';
 
   @override
   String get pillar5Name => 'Hadj';
@@ -2866,5 +2873,5 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'De Hadj is de bedevaart naar de heilige stad Mekka, die voor elke lichamelijk en financieel capabele moslim eenmaal in zijn leven verplicht is. Een krachtig symbool van eenheid en onderwerping aan Allah.';
+      'De bedevaart naar Mekka is eens in een leven verplicht voor elke moslim die fysiek en financieel in staat is. Het is de grootste jaarlijkse bijeenkomst van mensen op aarde.';
 }

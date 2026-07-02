@@ -3346,102 +3346,207 @@
     "description": "toolboxGlossarySubtitle"
   },
   "shareSheetTitle": "Share",
-  "@shareSheetTitle": { "description": "shareSheetTitle" },
+  "@shareSheetTitle": {
+    "description": "shareSheetTitle"
+  },
   "shareAnAyah": "Share an Ayah",
-  "@shareAnAyah": { "description": "shareAnAyah" },
+  "@shareAnAyah": {
+    "description": "shareAnAyah"
+  },
   "shareADua": "Share a Dua",
-  "@shareADua": { "description": "shareADua" },
+  "@shareADua": {
+    "description": "shareADua"
+  },
   "shareANameOfAllah": "Share a Name of Allah",
-  "@shareANameOfAllah": { "description": "shareANameOfAllah" },
+  "@shareANameOfAllah": {
+    "description": "shareANameOfAllah"
+  },
   "shareAHadith": "Share a Hadith",
-  "@shareAHadith": { "description": "shareAHadith" },
+  "@shareAHadith": {
+    "description": "shareAHadith"
+  },
   "shareViaLabel": "Shared via Noor Guard",
-  "@shareViaLabel": { "description": "shareViaLabel" },
+  "@shareViaLabel": {
+    "description": "shareViaLabel"
+  },
   "shareCardAyahLabel": "✦ Ayah of the Day",
-  "@shareCardAyahLabel": { "description": "shareCardAyahLabel" },
+  "@shareCardAyahLabel": {
+    "description": "shareCardAyahLabel"
+  },
   "shareCardDuaLabel": "✦ Dua",
-  "@shareCardDuaLabel": { "description": "shareCardDuaLabel" },
+  "@shareCardDuaLabel": {
+    "description": "shareCardDuaLabel"
+  },
   "shareCardNameLabel": "✦ Name of Allah",
-  "@shareCardNameLabel": { "description": "shareCardNameLabel" },
+  "@shareCardNameLabel": {
+    "description": "shareCardNameLabel"
+  },
   "shareCardHadithLabel": "✦ Hadith",
-  "@shareCardHadithLabel": { "description": "shareCardHadithLabel" },
+  "@shareCardHadithLabel": {
+    "description": "shareCardHadithLabel"
+  },
   "sharePickDuaTitle": "Pick a Dua to Share",
-  "@sharePickDuaTitle": { "description": "sharePickDuaTitle" },
+  "@sharePickDuaTitle": {
+    "description": "sharePickDuaTitle"
+  },
   "shareError": "Could not create share image",
-  "@shareError": { "description": "shareError" },
+  "@shareError": {
+    "description": "shareError"
+  },
+    "shareCardVerseLabel": "✦ Quranic Verse",
+  "@shareCardVerseLabel": {
+    "description": "shareCardVerseLabel"
+  },
   "shareAyahSubtitle": "Pick from 30 Quranic verses",
-  "@shareAyahSubtitle": { "description": "shareAyahSubtitle" },
+  "@shareAyahSubtitle": {
+    "description": "shareAyahSubtitle"
+  },
   "shareDuaSubtitle": "Pick from the library",
-  "@shareDuaSubtitle": { "description": "shareDuaSubtitle" },
+  "@shareDuaSubtitle": {
+    "description": "shareDuaSubtitle"
+  },
   "shareNameSubtitle": "Pick from all 99 Beautiful Names",
-  "@shareNameSubtitle": { "description": "shareNameSubtitle" },
+  "@shareNameSubtitle": {
+    "description": "shareNameSubtitle"
+  },
   "shareHadithSubtitle": "Pick from 20 authentic hadiths",
-  "@shareHadithSubtitle": { "description": "shareHadithSubtitle" },
+  "@shareHadithSubtitle": {
+    "description": "shareHadithSubtitle"
+  },
   "shareThisDua": "Share This Dua",
-  "@shareThisDua": { "description": "shareThisDua" },
+  "@shareThisDua": {
+    "description": "shareThisDua"
+  },
   "sharePickAyahTitle": "Pick an Ayah to Share",
-  "@sharePickAyahTitle": { "description": "sharePickAyahTitle" },
+  "@sharePickAyahTitle": {
+    "description": "sharePickAyahTitle"
+  },
   "searchAyahs": "Search ayahs…",
-  "@searchAyahs": { "description": "searchAyahs" },
+  "@searchAyahs": {
+    "description": "searchAyahs"
+  },
   "noAyahsFoundShort": "No ayahs found",
-  "@noAyahsFoundShort": { "description": "noAyahsFoundShort" },
+  "@noAyahsFoundShort": {
+    "description": "noAyahsFoundShort"
+  },
   "shareThisAyah": "Share This Ayah",
-  "@shareThisAyah": { "description": "shareThisAyah" },
+  "@shareThisAyah": {
+    "description": "shareThisAyah"
+  },
   "sharePickNameTitle": "Pick a Name to Share",
-  "@sharePickNameTitle": { "description": "sharePickNameTitle" },
+  "@sharePickNameTitle": {
+    "description": "sharePickNameTitle"
+  },
   "shareThisName": "Share This Name",
-  "@shareThisName": { "description": "shareThisName" },
+  "@shareThisName": {
+    "description": "shareThisName"
+  },
   "sharePickHadithTitle": "Pick a Hadith to Share",
-  "@sharePickHadithTitle": { "description": "sharePickHadithTitle" },
+  "@sharePickHadithTitle": {
+    "description": "sharePickHadithTitle"
+  },
   "searchHadiths": "Search hadiths…",
-  "@searchHadiths": { "description": "searchHadiths" },
+  "@searchHadiths": {
+    "description": "searchHadiths"
+  },
   "noHadithsFound": "No hadiths found",
-  "@noHadithsFound": { "description": "noHadithsFound" },
+  "@noHadithsFound": {
+    "description": "noHadithsFound"
+  },
   "shareThisHadith": "Share This Hadith",
-  "@shareThisHadith": { "description": "shareThisHadith" },
-
+  "@shareThisHadith": {
+    "description": "shareThisHadith"
+  },
   "backToBasics": "Back to Basics",
-  "@backToBasics": { "description": "Title for the Back to Basics screen" },
+  "@backToBasics": {
+    "description": "Title for the Back to Basics screen"
+  },
   "backToBasicsSubtitle": "Your guide to the essentials of Islam",
-  "@backToBasicsSubtitle": { "description": "Subtitle for the Back to Basics screen" },
+  "@backToBasicsSubtitle": {
+    "description": "Subtitle for the Back to Basics screen"
+  },
   "fivePillarsOfIslam": "The 5 Pillars of Islam",
-  "@fivePillarsOfIslam": { "description": "Section header for the five pillars" },
+  "@fivePillarsOfIslam": {
+    "description": "Section header for the five pillars"
+  },
+  "fivePillarsSubtitle": "The foundations of Islamic faith",
+  "@fivePillarsSubtitle": {
+    "description": "Subtitle for the 5 Pillars card"
+  },
   "pillarLearnMore": "Learn more",
-  "@pillarLearnMore": { "description": "Expand a pillar detail" },
+  "@pillarLearnMore": {
+    "description": "Expand a pillar detail"
+  },
   "pillarShowLess": "Show less",
-  "@pillarShowLess": { "description": "Collapse a pillar detail" },
+  "@pillarShowLess": {
+    "description": "Collapse a pillar detail"
+  },
   "pillarsShowDetails": "Show Details",
-  "@pillarsShowDetails": { "description": "Button to expand all 5 pillar detail texts" },
+  "@pillarsShowDetails": {
+    "description": "Button to expand all 5 pillar detail texts"
+  },
   "pillarsHideDetails": "Hide Details",
-  "@pillarsHideDetails": { "description": "Button to collapse all 5 pillar detail texts" },
+  "@pillarsHideDetails": {
+    "description": "Button to collapse all 5 pillar detail texts"
+  },
   "pillar1Name": "Shahada",
-  "@pillar1Name": { "description": "Name of the first pillar" },
+  "@pillar1Name": {
+    "description": "Name of the first pillar"
+  },
   "pillar1Desc": "Declaration of Faith",
-  "@pillar1Desc": { "description": "Short description of Shahada" },
-  "pillar1Detail": "The Shahada is the testimony that there is no god but Allah and that Muhammad ﷺ is His messenger. Reciting it with sincere belief is the entry point into Islam and the foundation of a Muslim's faith.",
-  "@pillar1Detail": { "description": "Expanded detail of Shahada" },
+  "@pillar1Desc": {
+    "description": "Short description of Shahada"
+  },
+  "pillar1Detail": "The declaration of faith is the foundation of Islam. By sincerely saying 'There is no god but Allah, and Muhammad is His messenger,' a person enters the fold of Islam.",
+  "@pillar1Detail": {
+    "description": "Expanded detail of Shahada"
+  },
   "pillar2Name": "Salah",
-  "@pillar2Name": { "description": "Name of the second pillar" },
+  "@pillar2Name": {
+    "description": "Name of the second pillar"
+  },
   "pillar2Desc": "Five Daily Prayers",
-  "@pillar2Desc": { "description": "Short description of Salah" },
-  "pillar2Detail": "Salah is the ritual prayer performed five times a day — Fajr, Dhuhr, Asr, Maghrib, and Isha. It is a direct connection between the worshipper and Allah, and a constant reminder of His presence throughout the day.",
-  "@pillar2Detail": { "description": "Expanded detail of Salah" },
+  "@pillar2Desc": {
+    "description": "Short description of Salah"
+  },
+  "pillar2Detail": "The five daily prayers are the direct connection between a Muslim and Allah. Prayed at dawn, midday, afternoon, sunset, and night, they structure the Muslim's entire day around remembrance of Allah.",
+  "@pillar2Detail": {
+    "description": "Expanded detail of Salah"
+  },
   "pillar3Name": "Zakat",
-  "@pillar3Name": { "description": "Name of the third pillar" },
+  "@pillar3Name": {
+    "description": "Name of the third pillar"
+  },
   "pillar3Desc": "Obligatory Charity",
-  "@pillar3Desc": { "description": "Short description of Zakat" },
-  "pillar3Detail": "Zakat is the annual giving of 2.5% of one's savings to those in need. It purifies wealth, reduces inequality, and reminds believers that all provision ultimately comes from Allah.",
-  "@pillar3Detail": { "description": "Expanded detail of Zakat" },
+  "@pillar3Desc": {
+    "description": "Short description of Zakat"
+  },
+  "pillar3Detail": "Zakat is the obligatory annual charity of 2.5% of one's savings given to those in need. It purifies wealth and strengthens the bonds of the Muslim community.",
+  "@pillar3Detail": {
+    "description": "Expanded detail of Zakat"
+  },
   "pillar4Name": "Sawm",
-  "@pillar4Name": { "description": "Name of the fourth pillar" },
+  "@pillar4Name": {
+    "description": "Name of the fourth pillar"
+  },
   "pillar4Desc": "Fasting in Ramadan",
-  "@pillar4Desc": { "description": "Short description of Sawm" },
-  "pillar4Detail": "Sawm is the fast observed during the holy month of Ramadan, abstaining from food, drink, and sin from dawn to sunset. It builds taqwa (God-consciousness) and gratitude for Allah's blessings.",
-  "@pillar4Detail": { "description": "Expanded detail of Sawm" },
+  "@pillar4Desc": {
+    "description": "Short description of Sawm"
+  },
+  "pillar4Detail": "Fasting during the blessed month of Ramadan from dawn to sunset. Muslims abstain from food, drink, and sin to achieve taqwa (God-consciousness) and gratitude.",
+  "@pillar4Detail": {
+    "description": "Expanded detail of Sawm"
+  },
   "pillar5Name": "Hajj",
-  "@pillar5Name": { "description": "Name of the fifth pillar" },
+  "@pillar5Name": {
+    "description": "Name of the fifth pillar"
+  },
   "pillar5Desc": "Pilgrimage to Mecca",
-  "@pillar5Desc": { "description": "Short description of Hajj" },
-  "pillar5Detail": "Hajj is the pilgrimage to the sacred city of Mecca, obligatory once in a lifetime for every Muslim who is physically and financially able. It is a powerful symbol of unity and submission to Allah.",
-  "@pillar5Detail": { "description": "Expanded detail of Hajj" }
+  "@pillar5Desc": {
+    "description": "Short description of Hajj"
+  },
+  "pillar5Detail": "The pilgrimage to Mecca is required once in a lifetime for every Muslim who is physically and financially able. It is the largest annual gathering of people on earth.",
+  "@pillar5Detail": {
+    "description": "Expanded detail of Hajj"
+  }
 }

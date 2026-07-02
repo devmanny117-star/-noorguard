@@ -2733,6 +2733,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get shareError => 'تصویر بنانے میں ناکامی';
 
   @override
+  String get shareCardVerseLabel => '✦ قرآنی آیت';
+
+  @override
   String get shareAyahSubtitle => '٣٠ قرآنی آیات میں سے چنیں';
 
   @override
@@ -2787,16 +2790,19 @@ class AppLocalizationsUr extends AppLocalizations {
   String get fivePillarsOfIslam => 'اسلام کے پانچ ارکان';
 
   @override
+  String get fivePillarsSubtitle => 'اسلامی ایمان کی بنیادیں';
+
+  @override
   String get pillarLearnMore => 'مزید جانیں';
 
   @override
   String get pillarShowLess => 'کم دکھائیں';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'تفصیلات دکھائیں';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'تفصیلات چھپائیں';
 
   @override
   String get pillar1Name => 'شہادت';
@@ -2806,7 +2812,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'شہادت اس گواہی کا نام ہے کہ اللہ کے سوا کوئی معبود نہیں اور محمد ﷺ اس کے رسول ہیں۔ خلوص دل سے اس کا اقرار اسلام میں داخلے کی بنیاد ہے۔';
+      'ایمان کا اقرار اسلام کی بنیاد ہے۔ دل سے \'لا إله إلا الله ومحمد رسول الله\' کہنے سے انسان اسلام میں داخل ہوتا ہے۔';
 
   @override
   String get pillar2Name => 'نماز';
@@ -2816,7 +2822,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'نماز دن میں پانچ بار ادا کی جانے والی عبادت ہے — فجر، ظہر، عصر، مغرب اور عشاء۔ یہ بندے اور اللہ کے درمیان براہ راست تعلق ہے۔';
+      'پانچ وقت کی نمازیں مسلمان اور اللہ کے درمیان براہ راست تعلق ہیں۔ فجر، ظہر، عصر، مغرب اور عشاء میں ادا کی جاتی ہیں اور پورا دن اللہ کی یاد میں گزارنے کا ذریعہ ہیں۔';
 
   @override
   String get pillar3Name => 'زکوٰۃ';
@@ -2826,7 +2832,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'زکوٰۃ ہر سال بچت کا 2.5% ضرورت مندوں کو دینا ہے۔ یہ مال کو پاک کرتی ہے اور یاد دلاتی ہے کہ سب رزق اللہ کی طرف سے ہے۔';
+      'زکاۃ ایک سال کی بچت کا ڈھائی فیصد ضرورت مندوں کو دینے کی واجب عبادت ہے جو مال کو پاک کرتی اور امت کے رشتوں کو مضبوط بناتی ہے۔';
 
   @override
   String get pillar4Name => 'روزہ';
@@ -2836,7 +2842,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'روزہ ماہ رمضان میں فجر سے غروب تک کھانے پینے اور گناہوں سے پرہیز کرنا ہے۔ یہ تقوی اور اللہ کی نعمتوں پر شکر گزاری پیدا کرتا ہے۔';
+      'ماہ مبارک رمضان میں فجر سے غروب تک روزہ رکھا جاتا ہے۔ مسلمان کھانے، پینے اور گناہ سے پرہیز کرتے ہیں تاکہ تقوی اور شکر گزاری حاصل ہو۔';
 
   @override
   String get pillar5Name => 'حج';
@@ -2846,5 +2852,5 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'حج مکہ مکرمہ کا مقدس سفر ہے جو ہر قادر مسلمان پر زندگی میں ایک بار فرض ہے۔ یہ اتحاد اور اللہ کے سامنے سرتسلیم خم کرنے کی عظیم علامت ہے۔';
+      'مکہ مکرمہ کا حج ہر اس مسلمان پر زندگی میں ایک بار فرض ہے جو جسمانی اور مالی طور پر قادر ہو اور یہ دنیا کا سب سے بڑا سالانہ انسانی اجتماع ہے۔';
 }

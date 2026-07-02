@@ -15,6 +15,7 @@ import '../models/reciter_model.dart';
 import '../models/surah_model.dart';
 import '../services/app_blocking_service.dart';
 import '../services/quran_service.dart';
+import '../services/share_helper.dart';
 import '../services/tafsir_api_service.dart';
 import '../widgets/font_size_slider.dart';
 import 'tafsir_screen.dart';
@@ -514,6 +515,32 @@ class _SurahScreenState extends State<SurahScreen> {
 
   // ── Verse tafsir bottom sheet ────────────────────────────────────────────
 
+  Future<void> _shareVerse(Verse verse) async {
+    final l10n = AppLocalizations.of(context)!;
+    final source = '${widget.surah.englishName} ${widget.surah.number}:${verse.number}';
+    try {
+      await shareContent(
+        context: context,
+        typeLabel: l10n.shareCardVerseLabel,
+        arabic: verse.arabic,
+        transliteration: verse.transliteration,
+        translation: verse.translation.isNotEmpty ? verse.translation : verse.arabic,
+        source: source,
+        brandingLabel: l10n.shareViaLabel,
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(l10n.shareError,
+            style: GoogleFonts.lato(color: Colors.white)),
+        backgroundColor: const Color(0xFF2C2C2A),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(16),
+      ));
+    }
+  }
+
   void _showVerseTafsir(Verse verse) {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode;
@@ -860,6 +887,7 @@ class _SurahScreenState extends State<SurahScreen> {
                                           _playVerseAudio(verse.number),
                                       onTafsirTap: () =>
                                           _showVerseTafsir(verse),
+                                      onShareTap: () => _shareVerse(verse),
                                       challengeActive: challengeActive,
                                       challengeSeen:
                                           _seenVerses.contains(verse.number),
@@ -1879,6 +1907,7 @@ class _VerseTile extends StatelessWidget {
   final String playTooltip;
   final VoidCallback onPlayTap;
   final VoidCallback onTafsirTap;
+  final VoidCallback? onShareTap;
 
   /// True while an ayah-reading challenge is in progress — shows the
   /// read/unread indicator dot next to the verse number.
@@ -1898,6 +1927,7 @@ class _VerseTile extends StatelessWidget {
     required this.playTooltip,
     required this.onPlayTap,
     required this.onTafsirTap,
+    this.onShareTap,
     this.challengeActive = false,
     this.challengeSeen = false,
     this.justConfirmed = false,
@@ -2026,6 +2056,25 @@ class _VerseTile extends StatelessWidget {
                   children: [
                     _TafsirButton(onTap: onTafsirTap),
                     const Spacer(),
+                    if (onShareTap != null) ...[
+                      GestureDetector(
+                        onTap: onShareTap,
+                        child: Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _gold.withValues(alpha: 0.10),
+                            border: Border.all(
+                                color: _gold.withValues(alpha: 0.45)),
+                          ),
+                          alignment: Alignment.center,
+                          child: const Icon(Icons.share_rounded,
+                              color: _gold, size: 15),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                    ],
                     _PlayButton(
                       isPlaying: isPlaying,
                       tooltip: playTooltip,

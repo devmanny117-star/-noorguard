@@ -1271,98 +1271,207 @@
     "description": "toolboxGlossarySubtitle"
   },
   "shareSheetTitle": "مشاركة",
-  "@shareSheetTitle": { "description": "shareSheetTitle" },
+  "@shareSheetTitle": {
+    "description": "shareSheetTitle"
+  },
   "shareAnAyah": "مشاركة آية",
-  "@shareAnAyah": { "description": "shareAnAyah" },
+  "@shareAnAyah": {
+    "description": "shareAnAyah"
+  },
   "shareADua": "مشاركة دعاء",
-  "@shareADua": { "description": "shareADua" },
+  "@shareADua": {
+    "description": "shareADua"
+  },
   "shareANameOfAllah": "مشاركة اسم من أسماء الله",
-  "@shareANameOfAllah": { "description": "shareANameOfAllah" },
+  "@shareANameOfAllah": {
+    "description": "shareANameOfAllah"
+  },
   "shareAHadith": "مشاركة حديث",
-  "@shareAHadith": { "description": "shareAHadith" },
+  "@shareAHadith": {
+    "description": "shareAHadith"
+  },
   "shareViaLabel": "تمت المشاركة عبر نور غارد",
-  "@shareViaLabel": { "description": "shareViaLabel" },
+  "@shareViaLabel": {
+    "description": "shareViaLabel"
+  },
   "shareCardAyahLabel": "✦ آية اليوم",
-  "@shareCardAyahLabel": { "description": "shareCardAyahLabel" },
+  "@shareCardAyahLabel": {
+    "description": "shareCardAyahLabel"
+  },
   "shareCardDuaLabel": "✦ دعاء",
-  "@shareCardDuaLabel": { "description": "shareCardDuaLabel" },
+  "@shareCardDuaLabel": {
+    "description": "shareCardDuaLabel"
+  },
   "shareCardNameLabel": "✦ اسم الله",
-  "@shareCardNameLabel": { "description": "shareCardNameLabel" },
+  "@shareCardNameLabel": {
+    "description": "shareCardNameLabel"
+  },
   "shareCardHadithLabel": "✦ حديث",
-  "@shareCardHadithLabel": { "description": "shareCardHadithLabel" },
+  "@shareCardHadithLabel": {
+    "description": "shareCardHadithLabel"
+  },
   "sharePickDuaTitle": "اختر دعاءً للمشاركة",
-  "@sharePickDuaTitle": { "description": "sharePickDuaTitle" },
+  "@sharePickDuaTitle": {
+    "description": "sharePickDuaTitle"
+  },
   "shareError": "تعذّر إنشاء صورة المشاركة",
-  "@shareError": { "description": "shareError" },
+  "@shareError": {
+    "description": "shareError"
+  },
+    "shareCardVerseLabel": "✦ آية قرآنية",
+  "@shareCardVerseLabel": {
+    "description": "shareCardVerseLabel"
+  },
   "shareAyahSubtitle": "اختر من ٣٠ آية قرآنية",
-  "@shareAyahSubtitle": { "description": "shareAyahSubtitle" },
+  "@shareAyahSubtitle": {
+    "description": "shareAyahSubtitle"
+  },
   "shareDuaSubtitle": "اختر من المكتبة",
-  "@shareDuaSubtitle": { "description": "shareDuaSubtitle" },
+  "@shareDuaSubtitle": {
+    "description": "shareDuaSubtitle"
+  },
   "shareNameSubtitle": "اختر من الأسماء الحسنى التسعة والتسعين",
-  "@shareNameSubtitle": { "description": "shareNameSubtitle" },
+  "@shareNameSubtitle": {
+    "description": "shareNameSubtitle"
+  },
   "shareHadithSubtitle": "اختر من ٢٠ أحاديث صحيحة",
-  "@shareHadithSubtitle": { "description": "shareHadithSubtitle" },
+  "@shareHadithSubtitle": {
+    "description": "shareHadithSubtitle"
+  },
   "shareThisDua": "شارك هذا الدعاء",
-  "@shareThisDua": { "description": "shareThisDua" },
+  "@shareThisDua": {
+    "description": "shareThisDua"
+  },
   "sharePickAyahTitle": "اختر آية للمشاركة",
-  "@sharePickAyahTitle": { "description": "sharePickAyahTitle" },
+  "@sharePickAyahTitle": {
+    "description": "sharePickAyahTitle"
+  },
   "searchAyahs": "ابحث عن آيات…",
-  "@searchAyahs": { "description": "searchAyahs" },
+  "@searchAyahs": {
+    "description": "searchAyahs"
+  },
   "noAyahsFoundShort": "لم يُعثر على آيات",
-  "@noAyahsFoundShort": { "description": "noAyahsFoundShort" },
+  "@noAyahsFoundShort": {
+    "description": "noAyahsFoundShort"
+  },
   "shareThisAyah": "شارك هذه الآية",
-  "@shareThisAyah": { "description": "shareThisAyah" },
+  "@shareThisAyah": {
+    "description": "shareThisAyah"
+  },
   "sharePickNameTitle": "اختر اسمًا للمشاركة",
-  "@sharePickNameTitle": { "description": "sharePickNameTitle" },
+  "@sharePickNameTitle": {
+    "description": "sharePickNameTitle"
+  },
   "shareThisName": "شارك هذا الاسم",
-  "@shareThisName": { "description": "shareThisName" },
+  "@shareThisName": {
+    "description": "shareThisName"
+  },
   "sharePickHadithTitle": "اختر حديثًا للمشاركة",
-  "@sharePickHadithTitle": { "description": "sharePickHadithTitle" },
+  "@sharePickHadithTitle": {
+    "description": "sharePickHadithTitle"
+  },
   "searchHadiths": "ابحث عن أحاديث…",
-  "@searchHadiths": { "description": "searchHadiths" },
+  "@searchHadiths": {
+    "description": "searchHadiths"
+  },
   "noHadithsFound": "لم يُعثر على أحاديث",
-  "@noHadithsFound": { "description": "noHadithsFound" },
+  "@noHadithsFound": {
+    "description": "noHadithsFound"
+  },
   "shareThisHadith": "شارك هذا الحديث",
-  "@shareThisHadith": { "description": "shareThisHadith" },
-
+  "@shareThisHadith": {
+    "description": "shareThisHadith"
+  },
   "backToBasics": "العودة إلى الأساسيات",
-  "@backToBasics": { "description": "backToBasics" },
+  "@backToBasics": {
+    "description": "backToBasics"
+  },
   "backToBasicsSubtitle": "دليلك إلى أساسيات الإسلام",
-  "@backToBasicsSubtitle": { "description": "backToBasicsSubtitle" },
+  "@backToBasicsSubtitle": {
+    "description": "backToBasicsSubtitle"
+  },
   "fivePillarsOfIslam": "أركان الإسلام الخمسة",
-  "@fivePillarsOfIslam": { "description": "fivePillarsOfIslam" },
+  "@fivePillarsOfIslam": {
+    "description": "fivePillarsOfIslam"
+  },
+  "fivePillarsSubtitle": "أسس الإيمان الإسلامي",
+  "@fivePillarsSubtitle": {
+    "description": "fivePillarsSubtitle"
+  },
   "pillarLearnMore": "اعرف المزيد",
-  "@pillarLearnMore": { "description": "pillarLearnMore" },
+  "@pillarLearnMore": {
+    "description": "pillarLearnMore"
+  },
   "pillarShowLess": "أقل",
-  "@pillarShowLess": { "description": "pillarShowLess" },
+  "@pillarShowLess": {
+    "description": "pillarShowLess"
+  },
+  "pillarsShowDetails": "عرض التفاصيل",
+  "@pillarsShowDetails": {
+    "description": "pillarsShowDetails"
+  },
+  "pillarsHideDetails": "إخفاء التفاصيل",
+  "@pillarsHideDetails": {
+    "description": "pillarsHideDetails"
+  },
   "pillar1Name": "الشهادة",
-  "@pillar1Name": { "description": "pillar1Name" },
+  "@pillar1Name": {
+    "description": "pillar1Name"
+  },
   "pillar1Desc": "شهادة الإيمان",
-  "@pillar1Desc": { "description": "pillar1Desc" },
-  "pillar1Detail": "الشهادة هي الشهادة أن لا إله إلا الله وأن محمداً ﷺ رسوله. النطق بها بإخلاص هو بوابة الدخول إلى الإسلام وأساس إيمان المسلم.",
-  "@pillar1Detail": { "description": "pillar1Detail" },
+  "@pillar1Desc": {
+    "description": "pillar1Desc"
+  },
+  "pillar1Detail": "إعلان الشهادة هو أساس الإسلام. بقول 'لا إله إلا الله ومحمد رسول الله' بصدق يدخل المرء في الإسلام.",
+  "@pillar1Detail": {
+    "description": "pillar1Detail"
+  },
   "pillar2Name": "الصلاة",
-  "@pillar2Name": { "description": "pillar2Name" },
+  "@pillar2Name": {
+    "description": "pillar2Name"
+  },
   "pillar2Desc": "الصلوات الخمس اليومية",
-  "@pillar2Desc": { "description": "pillar2Desc" },
-  "pillar2Detail": "الصلاة هي العبادة المؤداة خمس مرات في اليوم — الفجر والظهر والعصر والمغرب والعشاء. إنها صلة مباشرة بين العبد وربه وتذكير دائم بحضوره.",
-  "@pillar2Detail": { "description": "pillar2Detail" },
+  "@pillar2Desc": {
+    "description": "pillar2Desc"
+  },
+  "pillar2Detail": "الصلوات الخمس هي الصلة المباشرة بين المسلم وربه. تُصلى عند الفجر والظهر والعصر والمغرب والعشاء وتنظّم يوم المسلم كله حول ذكر الله.",
+  "@pillar2Detail": {
+    "description": "pillar2Detail"
+  },
   "pillar3Name": "الزكاة",
-  "@pillar3Name": { "description": "pillar3Name" },
+  "@pillar3Name": {
+    "description": "pillar3Name"
+  },
   "pillar3Desc": "الصدقة الواجبة",
-  "@pillar3Desc": { "description": "pillar3Desc" },
-  "pillar3Detail": "الزكاة هي إخراج 2.5% من المدخرات سنوياً للمحتاجين. تطهر الأموال وتذكّر المؤمن أن الرزق كله من الله.",
-  "@pillar3Detail": { "description": "pillar3Detail" },
+  "@pillar3Desc": {
+    "description": "pillar3Desc"
+  },
+  "pillar3Detail": "الزكاة هي الصدقة الواجبة سنوياً بنسبة 2.5٪ من المدخرات للمحتاجين، تطهر المال وتوثّق أواصر المجتمع المسلم.",
+  "@pillar3Detail": {
+    "description": "pillar3Detail"
+  },
   "pillar4Name": "الصوم",
-  "@pillar4Name": { "description": "pillar4Name" },
+  "@pillar4Name": {
+    "description": "pillar4Name"
+  },
   "pillar4Desc": "صيام رمضان",
-  "@pillar4Desc": { "description": "pillar4Desc" },
-  "pillar4Detail": "الصوم هو الامتناع عن الطعام والشراب والذنوب من الفجر إلى الغروب طوال شهر رمضان. يبني التقوى والشكر لله.",
-  "@pillar4Detail": { "description": "pillar4Detail" },
+  "@pillar4Desc": {
+    "description": "pillar4Desc"
+  },
+  "pillar4Detail": "الصيام في شهر رمضان المبارك من الفجر حتى المغرب، يمتنع المسلم فيه عن الطعام والشراب والذنوب ابتغاء التقوى والشكر.",
+  "@pillar4Detail": {
+    "description": "pillar4Detail"
+  },
   "pillar5Name": "الحج",
-  "@pillar5Name": { "description": "pillar5Name" },
+  "@pillar5Name": {
+    "description": "pillar5Name"
+  },
   "pillar5Desc": "الحج إلى مكة المكرمة",
-  "@pillar5Desc": { "description": "pillar5Desc" },
-  "pillar5Detail": "الحج هو زيارة البيت الحرام في مكة المكرمة، فريضة مرة في العمر لكل مسلم مستطيع. رمز عظيم للوحدة والخضوع لله.",
-  "@pillar5Detail": { "description": "pillar5Detail" }
+  "@pillar5Desc": {
+    "description": "pillar5Desc"
+  },
+  "pillar5Detail": "الحج إلى مكة المكرمة فريضة مرة في العمر على كل مسلم مستطيع جسدياً ومالياً، وهو أكبر تجمع بشري سنوي على وجه الأرض.",
+  "@pillar5Detail": {
+    "description": "pillar5Detail"
+  }
 }

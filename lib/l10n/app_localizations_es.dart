@@ -2759,6 +2759,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get shareError => 'No se pudo crear la imagen';
 
   @override
+  String get shareCardVerseLabel => '✦ Verso Coránico';
+
+  @override
   String get shareAyahSubtitle => 'Elige entre 30 versículos coránicos';
 
   @override
@@ -2813,16 +2816,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get fivePillarsOfIslam => 'Los 5 Pilares del Islam';
 
   @override
+  String get fivePillarsSubtitle => 'Los fundamentos de la fe islámica';
+
+  @override
   String get pillarLearnMore => 'Saber más';
 
   @override
   String get pillarShowLess => 'Ver menos';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'Mostrar detalles';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'Ocultar detalles';
 
   @override
   String get pillar1Name => 'Shahada';
@@ -2832,7 +2838,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'La Shahada es el testimonio de que no hay dios más que Allah y que Mahoma ﷺ es Su mensajero. Pronunciarla con sincera creencia es la puerta de entrada al Islam y el fundamento de la fe musulmana.';
+      'La declaracion de fe es el fundamento del Islam. Al decir sinceramente \'No hay mas dios que Allah y Muhammad es Su mensajero\', una persona entra en el Islam.';
 
   @override
   String get pillar2Name => 'Salah';
@@ -2842,7 +2848,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'El Salah es la oración ritual realizada cinco veces al día — Fajr, Dhuhr, Asr, Maghrib e Isha. Es una conexión directa entre el adorador y Allah, un recordatorio constante de Su presencia.';
+      'Las cinco oraciones diarias son la conexion directa entre un musulman y Allah. Realizadas al amanecer, al mediodia, por la tarde, al atardecer y de noche, estructuran todo el dia del musulman en torno al recuerdo de Allah.';
 
   @override
   String get pillar3Name => 'Zakat';
@@ -2852,7 +2858,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'El Zakat es la entrega anual del 2.5% de los ahorros a quienes lo necesitan. Purifica la riqueza, reduce la desigualdad y recuerda a los creyentes que toda provisión viene de Allah.';
+      'El Zakat es la caridad anual obligatoria del 2,5% de los ahorros entregada a los necesitados. Purifica la riqueza y fortalece los lazos de la comunidad musulmana.';
 
   @override
   String get pillar4Name => 'Sawm';
@@ -2862,7 +2868,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'El Sawm es el ayuno durante el mes sagrado de Ramadán, absteniéndose de comer, beber y pecar desde el amanecer hasta la puesta de sol. Cultiva la taqwa y la gratitud a Allah.';
+      'El ayuno durante el bendito mes de Ramadan desde el amanecer hasta el atardecer. Los musulmanes se abstienen de comida, bebida y pecado para alcanzar el taqwa (conciencia de Dios) y la gratitud.';
 
   @override
   String get pillar5Name => 'Hajj';
@@ -2872,5 +2878,5 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'El Hajj es la peregrinación a la ciudad sagrada de La Meca, obligatoria una vez en la vida para todo musulmán capaz. Es un poderoso símbolo de unidad y sumisión a Allah.';
+      'La peregrinacion a La Meca es obligatoria una vez en la vida para todo musulman fisica y economicamente capaz. Es la mayor reunion anual de personas en la tierra.';
 }

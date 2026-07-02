@@ -2750,6 +2750,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get shareError => 'Haikuweza kuunda picha ya kushiriki';
 
   @override
+  String get shareCardVerseLabel => '✦ Aya ya Kurani';
+
+  @override
   String get shareAyahSubtitle => 'Chagua kutoka aya 30 za Quran';
 
   @override
@@ -2804,16 +2807,19 @@ class AppLocalizationsSw extends AppLocalizations {
   String get fivePillarsOfIslam => 'Nguzo 5 za Uislamu';
 
   @override
+  String get fivePillarsSubtitle => 'Misingi ya imani ya Kiislamu';
+
+  @override
   String get pillarLearnMore => 'Jifunza zaidi';
 
   @override
   String get pillarShowLess => 'Onyesha kidogo';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'Onyesha Maelezo';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'Ficha Maelezo';
 
   @override
   String get pillar1Name => 'Shahada';
@@ -2823,7 +2829,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'Shahada ni ushuhuda kwamba hapana mungu ila Allah na kwamba Muhammad ﷺ ni Mtume Wake. Kuisema kwa imani ya kweli ni mlango wa kuingia Uislamu na msingi wa imani ya Mwislamu.';
+      'Tamko la imani ni msingi wa Uislamu. Kwa kusema kwa moyo \'Hapana mungu ila Allah na Muhammad ni Mtume Wake\', mtu anaingia katika Uislamu.';
 
   @override
   String get pillar2Name => 'Sala';
@@ -2833,7 +2839,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'Sala ni ibada inayotekelezwa mara tano kwa siku — Fajr, Dhuhr, Asr, Maghrib na Isha. Ni uhusiano wa moja kwa moja kati ya mwaabudu na Allah, ukumbusho wa daima wa uwepo Wake.';
+      'Sala tano za kila siku ni uhusiano wa moja kwa moja kati ya Mwislamu na Allah. Zinasaliwa alfajiri, adhuhuri, alasiri, magharibi na isha, zikipanga siku nzima ya Mwislamu kuzunguka kumkumbuka Allah.';
 
   @override
   String get pillar3Name => 'Zakat';
@@ -2843,7 +2849,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'Zakat ni kutoa 2.5% ya akiba kwa wahitaji kila mwaka. Inasafisha mali, inapunguza ukosefu wa usawa, na inakumbusha waumini kwamba riziki yote inatoka kwa Allah.';
+      'Zaka ni sadaka ya lazima ya asilimia 2.5 ya akiba ya kila mwaka inayotolewa kwa wahitaji. Inasafisha mali na kuimarisha mshikamano wa jumuiya ya Kiislamu.';
 
   @override
   String get pillar4Name => 'Saumu';
@@ -2853,7 +2859,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'Saumu ni kufunga wakati wa mwezi mtukufu wa Ramadhan, kuacha kula, kunywa na dhambi kutoka alfajiri hadi machweo ya jua. Hujenga taqwa na shukrani kwa neema za Allah.';
+      'Kufunga wakati wa mwezi mtukufu wa Ramadhan kutoka alfajiri hadi jua kutua. Waislamu wanajizuia chakula, kinywaji na dhambi ili kufikia taqwa (ufahamu wa Mungu) na shukrani.';
 
   @override
   String get pillar5Name => 'Hijja';
@@ -2863,5 +2869,5 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'Hijja ni hija ya kwenda mji mtakatifu wa Makka, ambayo ni wajibu mara moja katika maisha kwa kila Mwislamu mwenye uwezo. Ni ishara yenye nguvu ya umoja na utii kwa Allah.';
+      'Hija kwenda Makka ni wajibu mara moja kwa maisha kwa kila Mwislamu mwenye uwezo wa kimwili na kiuchumi. Ni mkusanyiko mkubwa zaidi wa watu duniani kila mwaka.';
 }

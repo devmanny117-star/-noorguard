@@ -2749,6 +2749,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get shareError => 'শেয়ার ইমেজ তৈরি করা যায়নি';
 
   @override
+  String get shareCardVerseLabel => '✦ কোরআনের আয়াত';
+
+  @override
   String get shareAyahSubtitle => '৩০টি কোরআনের আয়াত থেকে বেছে নিন';
 
   @override
@@ -2803,16 +2806,19 @@ class AppLocalizationsBn extends AppLocalizations {
   String get fivePillarsOfIslam => 'ইসলামের পাঁচ স্তম্ভ';
 
   @override
+  String get fivePillarsSubtitle => 'ইসলামিক বিশ্বাসের ভিত্তি';
+
+  @override
   String get pillarLearnMore => 'আরও জানুন';
 
   @override
   String get pillarShowLess => 'কম দেখান';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'বিস্তারিত দেখুন';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'বিস্তারিত লুকান';
 
   @override
   String get pillar1Name => 'শাহাদাহ';
@@ -2822,7 +2828,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'শাহাদাহ হল এই সাক্ষ্য যে আল্লাহ ছাড়া কোনো ইলাহ নেই এবং মুহাম্মাদ ﷺ তাঁর রাসূল। আন্তরিক বিশ্বাস নিয়ে এটি পাঠ করা ইসলামে প্রবেশের দ্বার এবং মুসলিম বিশ্বাসের ভিত্তি।';
+      'বিশ্বাসের ঘোষণা ইসলামের ভিত্তি। আন্তরিকভাবে \'আল্লাহ ছাড়া কোনো উপাস্য নেই এবং মুহাম্মদ তাঁর রাসূল\' বলার মাধ্যমে একজন ব্যক্তি ইসলামে প্রবেশ করেন।';
 
   @override
   String get pillar2Name => 'সালাত';
@@ -2832,7 +2838,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'সালাত হল প্রতিদিন পাঁচবার আদায় করা আনুষ্ঠানিক নামাজ — ফজর, যোহর, আসর, মাগরিব ও ইশা। এটি ইবাদতকারী ও আল্লাহর মধ্যে সরাসরি সম্পর্ক এবং তাঁর উপস্থিতির নিরন্তর স্মারক।';
+      'পাঁচ ওয়াক্ত নামাজ একজন মুসলিম ও আল্লাহর মধ্যে সরাসরি সেতুবন্ধন। ফজর, যোহর, আসর, মাগরিব ও ইশায় আদায় হয় এবং সারাদিনকে আল্লাহর স্মরণে সংগঠিত করে।';
 
   @override
   String get pillar3Name => 'যাকাত';
@@ -2842,7 +2848,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'যাকাত হল সঞ্চয়ের ২.৫% প্রতি বছর প্রয়োজনগ্রস্তদের মধ্যে বিতরণ করা। এটি সম্পদ পরিশুদ্ধ করে, বৈষম্য কমায় এবং বিশ্বাসীকে স্মরণ করিয়ে দেয় যে সকল রিযিক আল্লাহর পক্ষ থেকে।';
+      'যাকাত হলো বার্ষিক সঞ্চয়ের ২.৫% অভাবীদের দেওয়ার বাধ্যতামূলক ইবাদত। এটি সম্পদ পবিত্র করে এবং মুসলিম সম্প্রদায়ের বন্ধন দৃঢ় করে।';
 
   @override
   String get pillar4Name => 'সাওম';
@@ -2852,7 +2858,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'সাওম হল পবিত্র রমজান মাসে ফজর থেকে সূর্যাস্ত পর্যন্ত পানাহার ও পাপ থেকে বিরত থাকা। এটি তাকওয়া ও আল্লাহর নেয়ামতের প্রতি কৃতজ্ঞতা তৈরি করে।';
+      'পবিত্র রমজান মাসে ভোর থেকে সূর্যাস্ত পর্যন্ত রোজা রাখা হয়। মুসলিমরা তাকওয়া ও কৃতজ্ঞতা অর্জনের জন্য খাদ্য, পানীয় ও পাপ থেকে বিরত থাকেন।';
 
   @override
   String get pillar5Name => 'হজ';
@@ -2862,5 +2868,5 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'হজ হল পবিত্র মক্কা নগরীতে তীর্থযাত্রা, যা সামর্থ্যবান প্রতিটি মুসলিমের জীবনে একবার ফরজ। এটি ঐক্য ও আল্লাহর প্রতি আনুগত্যের শক্তিশালী প্রতীক।';
+      'মক্কায় হজ প্রতিটি শারীরিক ও আর্থিকভাবে সক্ষম মুসলিমের জন্য জীবনে একবার ফরজ। এটি পৃথিবীতে মানুষের সবচেয়ে বড় বার্ষিক সমাবেশ।';
 }

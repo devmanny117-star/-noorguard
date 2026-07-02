@@ -2738,6 +2738,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get shareError => 'امکان ایجاد تصویر اشتراک‌گذاری وجود ندارد';
 
   @override
+  String get shareCardVerseLabel => '✦ آیه قرآن';
+
+  @override
   String get shareAyahSubtitle => 'از ۳۰ آیه قرآنی انتخاب کنید';
 
   @override
@@ -2792,16 +2795,19 @@ class AppLocalizationsFa extends AppLocalizations {
   String get fivePillarsOfIslam => 'پنج رکن اسلام';
 
   @override
+  String get fivePillarsSubtitle => 'پایه‌های ایمان اسلامی';
+
+  @override
   String get pillarLearnMore => 'بیشتر بدانید';
 
   @override
   String get pillarShowLess => 'کمتر نشان بده';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'نمایش جزئیات';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'پنهان کردن جزئیات';
 
   @override
   String get pillar1Name => 'شهادت';
@@ -2811,7 +2817,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'شهادت گواهی است که هیچ معبودی جز الله نیست و محمد ﷺ فرستاده اوست. بیان آن با اعتقاد صادقانه دروازه ورود به اسلام و پایه ایمان مسلمانان است.';
+      'اعلام ایمان پایه اسلام است. با گفتن صادقانه «لا إله إلا الله ومحمد رسول الله» شخص وارد اسلام می‌شود.';
 
   @override
   String get pillar2Name => 'نماز';
@@ -2821,7 +2827,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'نماز عبادتی است که پنج بار در روز ادا می‌شود — صبح، ظهر، عصر، مغرب و عشاء. پیوندی مستقیم میان بنده و الله است و یادآوری دائمی حضور اوست.';
+      'نمازهای پنجگانه ارتباط مستقیم بین مسلمان و خداوند است. در صبح، ظهر، عصر، مغرب و عشاء خوانده می‌شود و کل روز مسلمان را حول یاد خداوند سازمان می‌دهد.';
 
   @override
   String get pillar3Name => 'زکات';
@@ -2831,7 +2837,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'زکات پرداخت سالانه ۲.۵٪ از پس‌انداز به نیازمندان است. ثروت را پاک می‌کند، نابرابری را کاهش می‌دهد و به مؤمنان یادآوری می‌کند که هر روزی از سوی الله است.';
+      'زکات صدقه سالانه اجباری ۲.۵٪ از پس‌انداز به نیازمندان است. ثروت را پاک می‌کند و پیوندهای جامعه مسلمان را تقویت می‌کند.';
 
   @override
   String get pillar4Name => 'روزه';
@@ -2841,7 +2847,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'روزه، خودداری از خوردن، نوشیدن و گناه از سپیده‌دم تا غروب در ماه مبارک رمضان است. تقوا و سپاسگزاری برای نعمت‌های الله را می‌پروراند.';
+      'روزه‌داری در ماه مبارک رمضان از سپیده‌دم تا غروب. مسلمانان از غذا، نوشیدنی و گناه پرهیز می‌کنند تا به تقوی و سپاسگزاری دست یابند.';
 
   @override
   String get pillar5Name => 'حج';
@@ -2851,5 +2857,5 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'حج زیارت شهر مقدس مکه است که برای هر مسلمان توانمند از نظر جسمی و مالی یک بار در عمر واجب است. نمادی قدرتمند از وحدت و تسلیم در برابر الله است.';
+      'حج به مکه برای هر مسلمانی که از نظر جسمی و مالی قادر باشد یک بار در عمر واجب است. همچنین بزرگ‌ترین گردهمایی سالانه مردم در روی زمین است.';
 }

@@ -2735,6 +2735,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareError => 'Could not create share image';
 
   @override
+  String get shareCardVerseLabel => '✦ Quranic Verse';
+
+  @override
   String get shareAyahSubtitle => 'Pick from 30 Quranic verses';
 
   @override
@@ -2789,6 +2792,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fivePillarsOfIslam => 'The 5 Pillars of Islam';
 
   @override
+  String get fivePillarsSubtitle => 'The foundations of Islamic faith';
+
+  @override
   String get pillarLearnMore => 'Learn more';
 
   @override
@@ -2808,7 +2814,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'The Shahada is the testimony that there is no god but Allah and that Muhammad ﷺ is His messenger. Reciting it with sincere belief is the entry point into Islam and the foundation of a Muslim\'s faith.';
+      'The declaration of faith is the foundation of Islam. By sincerely saying \'There is no god but Allah, and Muhammad is His messenger,\' a person enters the fold of Islam.';
 
   @override
   String get pillar2Name => 'Salah';
@@ -2818,7 +2824,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'Salah is the ritual prayer performed five times a day — Fajr, Dhuhr, Asr, Maghrib, and Isha. It is a direct connection between the worshipper and Allah, and a constant reminder of His presence throughout the day.';
+      'The five daily prayers are the direct connection between a Muslim and Allah. Prayed at dawn, midday, afternoon, sunset, and night, they structure the Muslim\'s entire day around remembrance of Allah.';
 
   @override
   String get pillar3Name => 'Zakat';
@@ -2828,7 +2834,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'Zakat is the annual giving of 2.5% of one\'s savings to those in need. It purifies wealth, reduces inequality, and reminds believers that all provision ultimately comes from Allah.';
+      'Zakat is the obligatory annual charity of 2.5% of one\'s savings given to those in need. It purifies wealth and strengthens the bonds of the Muslim community.';
 
   @override
   String get pillar4Name => 'Sawm';
@@ -2838,7 +2844,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'Sawm is the fast observed during the holy month of Ramadan, abstaining from food, drink, and sin from dawn to sunset. It builds taqwa (God-consciousness) and gratitude for Allah\'s blessings.';
+      'Fasting during the blessed month of Ramadan from dawn to sunset. Muslims abstain from food, drink, and sin to achieve taqwa (God-consciousness) and gratitude.';
 
   @override
   String get pillar5Name => 'Hajj';
@@ -2848,5 +2854,5 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'Hajj is the pilgrimage to the sacred city of Mecca, obligatory once in a lifetime for every Muslim who is physically and financially able. It is a powerful symbol of unity and submission to Allah.';
+      'The pilgrimage to Mecca is required once in a lifetime for every Muslim who is physically and financially able. It is the largest annual gathering of people on earth.';
 }

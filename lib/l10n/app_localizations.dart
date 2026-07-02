@@ -5058,6 +5058,12 @@ abstract class AppLocalizations {
   /// **'Could not create share image'**
   String get shareError;
 
+  /// shareCardVerseLabel
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Quranic Verse'**
+  String get shareCardVerseLabel;
+
   /// shareAyahSubtitle
   ///
   /// In en, this message translates to:
@@ -5166,6 +5172,12 @@ abstract class AppLocalizations {
   /// **'The 5 Pillars of Islam'**
   String get fivePillarsOfIslam;
 
+  /// Subtitle for the 5 Pillars card
+  ///
+  /// In en, this message translates to:
+  /// **'The foundations of Islamic faith'**
+  String get fivePillarsSubtitle;
+
   /// Expand a pillar detail
   ///
   /// In en, this message translates to:
@@ -5205,7 +5217,7 @@ abstract class AppLocalizations {
   /// Expanded detail of Shahada
   ///
   /// In en, this message translates to:
-  /// **'The Shahada is the testimony that there is no god but Allah and that Muhammad ﷺ is His messenger. Reciting it with sincere belief is the entry point into Islam and the foundation of a Muslim\'s faith.'**
+  /// **'The declaration of faith is the foundation of Islam. By sincerely saying \'There is no god but Allah, and Muhammad is His messenger,\' a person enters the fold of Islam.'**
   String get pillar1Detail;
 
   /// Name of the second pillar
@@ -5223,7 +5235,7 @@ abstract class AppLocalizations {
   /// Expanded detail of Salah
   ///
   /// In en, this message translates to:
-  /// **'Salah is the ritual prayer performed five times a day — Fajr, Dhuhr, Asr, Maghrib, and Isha. It is a direct connection between the worshipper and Allah, and a constant reminder of His presence throughout the day.'**
+  /// **'The five daily prayers are the direct connection between a Muslim and Allah. Prayed at dawn, midday, afternoon, sunset, and night, they structure the Muslim\'s entire day around remembrance of Allah.'**
   String get pillar2Detail;
 
   /// Name of the third pillar
@@ -5241,7 +5253,7 @@ abstract class AppLocalizations {
   /// Expanded detail of Zakat
   ///
   /// In en, this message translates to:
-  /// **'Zakat is the annual giving of 2.5% of one\'s savings to those in need. It purifies wealth, reduces inequality, and reminds believers that all provision ultimately comes from Allah.'**
+  /// **'Zakat is the obligatory annual charity of 2.5% of one\'s savings given to those in need. It purifies wealth and strengthens the bonds of the Muslim community.'**
   String get pillar3Detail;
 
   /// Name of the fourth pillar
@@ -5259,7 +5271,7 @@ abstract class AppLocalizations {
   /// Expanded detail of Sawm
   ///
   /// In en, this message translates to:
-  /// **'Sawm is the fast observed during the holy month of Ramadan, abstaining from food, drink, and sin from dawn to sunset. It builds taqwa (God-consciousness) and gratitude for Allah\'s blessings.'**
+  /// **'Fasting during the blessed month of Ramadan from dawn to sunset. Muslims abstain from food, drink, and sin to achieve taqwa (God-consciousness) and gratitude.'**
   String get pillar4Detail;
 
   /// Name of the fifth pillar
@@ -5277,7 +5289,7 @@ abstract class AppLocalizations {
   /// Expanded detail of Hajj
   ///
   /// In en, this message translates to:
-  /// **'Hajj is the pilgrimage to the sacred city of Mecca, obligatory once in a lifetime for every Muslim who is physically and financially able. It is a powerful symbol of unity and submission to Allah.'**
+  /// **'The pilgrimage to Mecca is required once in a lifetime for every Muslim who is physically and financially able. It is the largest annual gathering of people on earth.'**
   String get pillar5Detail;
 }
 

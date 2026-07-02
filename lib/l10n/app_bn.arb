@@ -1271,98 +1271,207 @@
     "description": "toolboxGlossarySubtitle"
   },
   "shareSheetTitle": "শেয়ার করুন",
-  "@shareSheetTitle": { "description": "shareSheetTitle" },
+  "@shareSheetTitle": {
+    "description": "shareSheetTitle"
+  },
   "shareAnAyah": "একটি আয়াত শেয়ার করুন",
-  "@shareAnAyah": { "description": "shareAnAyah" },
+  "@shareAnAyah": {
+    "description": "shareAnAyah"
+  },
   "shareADua": "একটি দোয়া শেয়ার করুন",
-  "@shareADua": { "description": "shareADua" },
+  "@shareADua": {
+    "description": "shareADua"
+  },
   "shareANameOfAllah": "আল্লাহর একটি নাম শেয়ার করুন",
-  "@shareANameOfAllah": { "description": "shareANameOfAllah" },
+  "@shareANameOfAllah": {
+    "description": "shareANameOfAllah"
+  },
   "shareAHadith": "একটি হাদিস শেয়ার করুন",
-  "@shareAHadith": { "description": "shareAHadith" },
+  "@shareAHadith": {
+    "description": "shareAHadith"
+  },
   "shareViaLabel": "নূর গার্ডের মাধ্যমে শেয়ার করা হয়েছে",
-  "@shareViaLabel": { "description": "shareViaLabel" },
+  "@shareViaLabel": {
+    "description": "shareViaLabel"
+  },
   "shareCardAyahLabel": "✦ আজকের আয়াত",
-  "@shareCardAyahLabel": { "description": "shareCardAyahLabel" },
+  "@shareCardAyahLabel": {
+    "description": "shareCardAyahLabel"
+  },
   "shareCardDuaLabel": "✦ দোয়া",
-  "@shareCardDuaLabel": { "description": "shareCardDuaLabel" },
+  "@shareCardDuaLabel": {
+    "description": "shareCardDuaLabel"
+  },
   "shareCardNameLabel": "✦ আল্লাহর নাম",
-  "@shareCardNameLabel": { "description": "shareCardNameLabel" },
+  "@shareCardNameLabel": {
+    "description": "shareCardNameLabel"
+  },
   "shareCardHadithLabel": "✦ হাদিস",
-  "@shareCardHadithLabel": { "description": "shareCardHadithLabel" },
+  "@shareCardHadithLabel": {
+    "description": "shareCardHadithLabel"
+  },
   "sharePickDuaTitle": "শেয়ার করার জন্য একটি দোয়া বেছে নিন",
-  "@sharePickDuaTitle": { "description": "sharePickDuaTitle" },
+  "@sharePickDuaTitle": {
+    "description": "sharePickDuaTitle"
+  },
   "shareError": "শেয়ার ইমেজ তৈরি করা যায়নি",
-  "@shareError": { "description": "shareError" },
+  "@shareError": {
+    "description": "shareError"
+  },
+    "shareCardVerseLabel": "✦ কোরআনের আয়াত",
+  "@shareCardVerseLabel": {
+    "description": "shareCardVerseLabel"
+  },
   "shareAyahSubtitle": "৩০টি কোরআনের আয়াত থেকে বেছে নিন",
-  "@shareAyahSubtitle": { "description": "shareAyahSubtitle" },
+  "@shareAyahSubtitle": {
+    "description": "shareAyahSubtitle"
+  },
   "shareDuaSubtitle": "লাইব্রেরি থেকে বেছে নিন",
-  "@shareDuaSubtitle": { "description": "shareDuaSubtitle" },
+  "@shareDuaSubtitle": {
+    "description": "shareDuaSubtitle"
+  },
   "shareNameSubtitle": "সকল ৯৯টি সুন্দর নাম থেকে বেছে নিন",
-  "@shareNameSubtitle": { "description": "shareNameSubtitle" },
+  "@shareNameSubtitle": {
+    "description": "shareNameSubtitle"
+  },
   "shareHadithSubtitle": "২০টি বিশুদ্ধ হাদিস থেকে বেছে নিন",
-  "@shareHadithSubtitle": { "description": "shareHadithSubtitle" },
+  "@shareHadithSubtitle": {
+    "description": "shareHadithSubtitle"
+  },
   "shareThisDua": "এই দোয়াটি শেয়ার করুন",
-  "@shareThisDua": { "description": "shareThisDua" },
+  "@shareThisDua": {
+    "description": "shareThisDua"
+  },
   "sharePickAyahTitle": "শেয়ার করতে একটি আয়াত বেছে নিন",
-  "@sharePickAyahTitle": { "description": "sharePickAyahTitle" },
+  "@sharePickAyahTitle": {
+    "description": "sharePickAyahTitle"
+  },
   "searchAyahs": "আয়াত অনুসন্ধান করুন…",
-  "@searchAyahs": { "description": "searchAyahs" },
+  "@searchAyahs": {
+    "description": "searchAyahs"
+  },
   "noAyahsFoundShort": "কোনো আয়াত পাওয়া যায়নি",
-  "@noAyahsFoundShort": { "description": "noAyahsFoundShort" },
+  "@noAyahsFoundShort": {
+    "description": "noAyahsFoundShort"
+  },
   "shareThisAyah": "এই আয়াত শেয়ার করুন",
-  "@shareThisAyah": { "description": "shareThisAyah" },
+  "@shareThisAyah": {
+    "description": "shareThisAyah"
+  },
   "sharePickNameTitle": "শেয়ার করতে একটি নাম বেছে নিন",
-  "@sharePickNameTitle": { "description": "sharePickNameTitle" },
+  "@sharePickNameTitle": {
+    "description": "sharePickNameTitle"
+  },
   "shareThisName": "এই নাম শেয়ার করুন",
-  "@shareThisName": { "description": "shareThisName" },
+  "@shareThisName": {
+    "description": "shareThisName"
+  },
   "sharePickHadithTitle": "শেয়ার করতে একটি হাদিস বেছে নিন",
-  "@sharePickHadithTitle": { "description": "sharePickHadithTitle" },
+  "@sharePickHadithTitle": {
+    "description": "sharePickHadithTitle"
+  },
   "searchHadiths": "হাদিস অনুসন্ধান করুন…",
-  "@searchHadiths": { "description": "searchHadiths" },
+  "@searchHadiths": {
+    "description": "searchHadiths"
+  },
   "noHadithsFound": "কোনো হাদিস পাওয়া যায়নি",
-  "@noHadithsFound": { "description": "noHadithsFound" },
+  "@noHadithsFound": {
+    "description": "noHadithsFound"
+  },
   "shareThisHadith": "এই হাদিস শেয়ার করুন",
-  "@shareThisHadith": { "description": "shareThisHadith" },
-
+  "@shareThisHadith": {
+    "description": "shareThisHadith"
+  },
   "backToBasics": "মূল বিষয়ে ফিরে যান",
-  "@backToBasics": { "description": "backToBasics" },
+  "@backToBasics": {
+    "description": "backToBasics"
+  },
   "backToBasicsSubtitle": "ইসলামের মূল বিষয়গুলির নির্দেশিকা",
-  "@backToBasicsSubtitle": { "description": "backToBasicsSubtitle" },
+  "@backToBasicsSubtitle": {
+    "description": "backToBasicsSubtitle"
+  },
   "fivePillarsOfIslam": "ইসলামের পাঁচ স্তম্ভ",
-  "@fivePillarsOfIslam": { "description": "fivePillarsOfIslam" },
+  "@fivePillarsOfIslam": {
+    "description": "fivePillarsOfIslam"
+  },
+  "fivePillarsSubtitle": "ইসলামিক বিশ্বাসের ভিত্তি",
+  "@fivePillarsSubtitle": {
+    "description": "fivePillarsSubtitle"
+  },
   "pillarLearnMore": "আরও জানুন",
-  "@pillarLearnMore": { "description": "pillarLearnMore" },
+  "@pillarLearnMore": {
+    "description": "pillarLearnMore"
+  },
   "pillarShowLess": "কম দেখান",
-  "@pillarShowLess": { "description": "pillarShowLess" },
+  "@pillarShowLess": {
+    "description": "pillarShowLess"
+  },
+  "pillarsShowDetails": "বিস্তারিত দেখুন",
+  "@pillarsShowDetails": {
+    "description": "pillarsShowDetails"
+  },
+  "pillarsHideDetails": "বিস্তারিত লুকান",
+  "@pillarsHideDetails": {
+    "description": "pillarsHideDetails"
+  },
   "pillar1Name": "শাহাদাহ",
-  "@pillar1Name": { "description": "pillar1Name" },
+  "@pillar1Name": {
+    "description": "pillar1Name"
+  },
   "pillar1Desc": "বিশ্বাসের ঘোষণা",
-  "@pillar1Desc": { "description": "pillar1Desc" },
-  "pillar1Detail": "শাহাদাহ হল এই সাক্ষ্য যে আল্লাহ ছাড়া কোনো ইলাহ নেই এবং মুহাম্মাদ ﷺ তাঁর রাসূল। আন্তরিক বিশ্বাস নিয়ে এটি পাঠ করা ইসলামে প্রবেশের দ্বার এবং মুসলিম বিশ্বাসের ভিত্তি।",
-  "@pillar1Detail": { "description": "pillar1Detail" },
+  "@pillar1Desc": {
+    "description": "pillar1Desc"
+  },
+  "pillar1Detail": "বিশ্বাসের ঘোষণা ইসলামের ভিত্তি। আন্তরিকভাবে 'আল্লাহ ছাড়া কোনো উপাস্য নেই এবং মুহাম্মদ তাঁর রাসূল' বলার মাধ্যমে একজন ব্যক্তি ইসলামে প্রবেশ করেন।",
+  "@pillar1Detail": {
+    "description": "pillar1Detail"
+  },
   "pillar2Name": "সালাত",
-  "@pillar2Name": { "description": "pillar2Name" },
+  "@pillar2Name": {
+    "description": "pillar2Name"
+  },
   "pillar2Desc": "দৈনিক পাঁচ ওয়াক্ত নামাজ",
-  "@pillar2Desc": { "description": "pillar2Desc" },
-  "pillar2Detail": "সালাত হল প্রতিদিন পাঁচবার আদায় করা আনুষ্ঠানিক নামাজ — ফজর, যোহর, আসর, মাগরিব ও ইশা। এটি ইবাদতকারী ও আল্লাহর মধ্যে সরাসরি সম্পর্ক এবং তাঁর উপস্থিতির নিরন্তর স্মারক।",
-  "@pillar2Detail": { "description": "pillar2Detail" },
+  "@pillar2Desc": {
+    "description": "pillar2Desc"
+  },
+  "pillar2Detail": "পাঁচ ওয়াক্ত নামাজ একজন মুসলিম ও আল্লাহর মধ্যে সরাসরি সেতুবন্ধন। ফজর, যোহর, আসর, মাগরিব ও ইশায় আদায় হয় এবং সারাদিনকে আল্লাহর স্মরণে সংগঠিত করে।",
+  "@pillar2Detail": {
+    "description": "pillar2Detail"
+  },
   "pillar3Name": "যাকাত",
-  "@pillar3Name": { "description": "pillar3Name" },
+  "@pillar3Name": {
+    "description": "pillar3Name"
+  },
   "pillar3Desc": "বাধ্যতামূলক দান",
-  "@pillar3Desc": { "description": "pillar3Desc" },
-  "pillar3Detail": "যাকাত হল সঞ্চয়ের ২.৫% প্রতি বছর প্রয়োজনগ্রস্তদের মধ্যে বিতরণ করা। এটি সম্পদ পরিশুদ্ধ করে, বৈষম্য কমায় এবং বিশ্বাসীকে স্মরণ করিয়ে দেয় যে সকল রিযিক আল্লাহর পক্ষ থেকে।",
-  "@pillar3Detail": { "description": "pillar3Detail" },
+  "@pillar3Desc": {
+    "description": "pillar3Desc"
+  },
+  "pillar3Detail": "যাকাত হলো বার্ষিক সঞ্চয়ের ২.৫% অভাবীদের দেওয়ার বাধ্যতামূলক ইবাদত। এটি সম্পদ পবিত্র করে এবং মুসলিম সম্প্রদায়ের বন্ধন দৃঢ় করে।",
+  "@pillar3Detail": {
+    "description": "pillar3Detail"
+  },
   "pillar4Name": "সাওম",
-  "@pillar4Name": { "description": "pillar4Name" },
+  "@pillar4Name": {
+    "description": "pillar4Name"
+  },
   "pillar4Desc": "রমজানে রোজা",
-  "@pillar4Desc": { "description": "pillar4Desc" },
-  "pillar4Detail": "সাওম হল পবিত্র রমজান মাসে ফজর থেকে সূর্যাস্ত পর্যন্ত পানাহার ও পাপ থেকে বিরত থাকা। এটি তাকওয়া ও আল্লাহর নেয়ামতের প্রতি কৃতজ্ঞতা তৈরি করে।",
-  "@pillar4Detail": { "description": "pillar4Detail" },
+  "@pillar4Desc": {
+    "description": "pillar4Desc"
+  },
+  "pillar4Detail": "পবিত্র রমজান মাসে ভোর থেকে সূর্যাস্ত পর্যন্ত রোজা রাখা হয়। মুসলিমরা তাকওয়া ও কৃতজ্ঞতা অর্জনের জন্য খাদ্য, পানীয় ও পাপ থেকে বিরত থাকেন।",
+  "@pillar4Detail": {
+    "description": "pillar4Detail"
+  },
   "pillar5Name": "হজ",
-  "@pillar5Name": { "description": "pillar5Name" },
+  "@pillar5Name": {
+    "description": "pillar5Name"
+  },
   "pillar5Desc": "মক্কায় হজ্জ",
-  "@pillar5Desc": { "description": "pillar5Desc" },
-  "pillar5Detail": "হজ হল পবিত্র মক্কা নগরীতে তীর্থযাত্রা, যা সামর্থ্যবান প্রতিটি মুসলিমের জীবনে একবার ফরজ। এটি ঐক্য ও আল্লাহর প্রতি আনুগত্যের শক্তিশালী প্রতীক।",
-  "@pillar5Detail": { "description": "pillar5Detail" }
+  "@pillar5Desc": {
+    "description": "pillar5Desc"
+  },
+  "pillar5Detail": "মক্কায় হজ প্রতিটি শারীরিক ও আর্থিকভাবে সক্ষম মুসলিমের জন্য জীবনে একবার ফরজ। এটি পৃথিবীতে মানুষের সবচেয়ে বড় বার্ষিক সমাবেশ।",
+  "@pillar5Detail": {
+    "description": "pillar5Detail"
+  }
 }

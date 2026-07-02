@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../data/duas_data.dart';
 import '../l10n/app_localizations.dart';
+import '../services/share_helper.dart';
 import '../widgets/font_size_slider.dart';
 import '../widgets/geometric_pattern_painter.dart';
 
@@ -100,6 +101,33 @@ class _DuasScreenState extends State<DuasScreen>
     });
   }
 
+  Future<void> _shareDua(CategorizedDua dua) async {
+    final l10n = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).languageCode;
+    final translation = locale == 'ar' ? dua.arabic : dua.translationFor(locale);
+    try {
+      await shareContent(
+        context: context,
+        typeLabel: l10n.shareCardDuaLabel,
+        arabic: dua.arabic,
+        transliteration: dua.transliteration,
+        translation: translation,
+        source: dua.source,
+        brandingLabel: l10n.shareViaLabel,
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(l10n.shareError,
+            style: GoogleFonts.lato(color: Colors.white)),
+        backgroundColor: const Color(0xFF2C2C2A),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(16),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -163,6 +191,7 @@ class _DuasScreenState extends State<DuasScreen>
                                     dua: duas[i],
                                     isBookmarked: _bookmarked.contains(globalIndex),
                                     onBookmarkTap: () => _toggleBookmark(globalIndex),
+                                    onShareTap: () => _shareDua(duas[i]),
                                   );
                                 },
                               ),
@@ -509,11 +538,13 @@ class _DuaCard extends StatelessWidget {
   final CategorizedDua dua;
   final bool isBookmarked;
   final VoidCallback onBookmarkTap;
+  final VoidCallback onShareTap;
 
   const _DuaCard({
     required this.dua,
     required this.isBookmarked,
     required this.onBookmarkTap,
+    required this.onShareTap,
   });
 
   String? _localizedTranslation(BuildContext context) {
@@ -666,6 +697,14 @@ class _DuaCard extends StatelessWidget {
                       color: _kGold,
                       fontWeight: FontWeight.w600,
                     ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: onShareTap,
+                  child: Icon(
+                    Icons.share_rounded,
+                    size: 18,
+                    color: _kGold.withValues(alpha: 0.80),
                   ),
                 ),
               ],

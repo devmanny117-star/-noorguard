@@ -2704,6 +2704,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shareError => 'تعذّر إنشاء صورة المشاركة';
 
   @override
+  String get shareCardVerseLabel => '✦ آية قرآنية';
+
+  @override
   String get shareAyahSubtitle => 'اختر من ٣٠ آية قرآنية';
 
   @override
@@ -2758,16 +2761,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get fivePillarsOfIslam => 'أركان الإسلام الخمسة';
 
   @override
+  String get fivePillarsSubtitle => 'أسس الإيمان الإسلامي';
+
+  @override
   String get pillarLearnMore => 'اعرف المزيد';
 
   @override
   String get pillarShowLess => 'أقل';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => 'عرض التفاصيل';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => 'إخفاء التفاصيل';
 
   @override
   String get pillar1Name => 'الشهادة';
@@ -2777,7 +2783,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'الشهادة هي الشهادة أن لا إله إلا الله وأن محمداً ﷺ رسوله. النطق بها بإخلاص هو بوابة الدخول إلى الإسلام وأساس إيمان المسلم.';
+      'إعلان الشهادة هو أساس الإسلام. بقول \'لا إله إلا الله ومحمد رسول الله\' بصدق يدخل المرء في الإسلام.';
 
   @override
   String get pillar2Name => 'الصلاة';
@@ -2787,7 +2793,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'الصلاة هي العبادة المؤداة خمس مرات في اليوم — الفجر والظهر والعصر والمغرب والعشاء. إنها صلة مباشرة بين العبد وربه وتذكير دائم بحضوره.';
+      'الصلوات الخمس هي الصلة المباشرة بين المسلم وربه. تُصلى عند الفجر والظهر والعصر والمغرب والعشاء وتنظّم يوم المسلم كله حول ذكر الله.';
 
   @override
   String get pillar3Name => 'الزكاة';
@@ -2797,7 +2803,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'الزكاة هي إخراج 2.5% من المدخرات سنوياً للمحتاجين. تطهر الأموال وتذكّر المؤمن أن الرزق كله من الله.';
+      'الزكاة هي الصدقة الواجبة سنوياً بنسبة 2.5٪ من المدخرات للمحتاجين، تطهر المال وتوثّق أواصر المجتمع المسلم.';
 
   @override
   String get pillar4Name => 'الصوم';
@@ -2807,7 +2813,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'الصوم هو الامتناع عن الطعام والشراب والذنوب من الفجر إلى الغروب طوال شهر رمضان. يبني التقوى والشكر لله.';
+      'الصيام في شهر رمضان المبارك من الفجر حتى المغرب، يمتنع المسلم فيه عن الطعام والشراب والذنوب ابتغاء التقوى والشكر.';
 
   @override
   String get pillar5Name => 'الحج';
@@ -2817,5 +2823,5 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'الحج هو زيارة البيت الحرام في مكة المكرمة، فريضة مرة في العمر لكل مسلم مستطيع. رمز عظيم للوحدة والخضوع لله.';
+      'الحج إلى مكة المكرمة فريضة مرة في العمر على كل مسلم مستطيع جسدياً ومالياً، وهو أكبر تجمع بشري سنوي على وجه الأرض.';
 }

@@ -2640,6 +2640,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get shareError => 'シェア画像を作成できませんでした';
 
   @override
+  String get shareCardVerseLabel => '✦ クルアーン節';
+
+  @override
   String get shareAyahSubtitle => '30のクルアーンの節から選択';
 
   @override
@@ -2694,16 +2697,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get fivePillarsOfIslam => 'イスラムの五行';
 
   @override
+  String get fivePillarsSubtitle => 'イスラム信仰の基盤';
+
+  @override
   String get pillarLearnMore => '詳しく見る';
 
   @override
   String get pillarShowLess => '閉じる';
 
   @override
-  String get pillarsShowDetails => 'Show Details';
+  String get pillarsShowDetails => '詳細を表示';
 
   @override
-  String get pillarsHideDetails => 'Hide Details';
+  String get pillarsHideDetails => '詳細を非表示';
 
   @override
   String get pillar1Name => 'シャハーダ';
@@ -2713,7 +2719,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pillar1Detail =>
-      'シャハーダとは「アッラー以外に神はなく、ムハンマドﷺはその使徒である」という証言です。誠実な信仰を持ってこれを唱えることがイスラムへの入口であり、ムスリムの信仰の土台です。';
+      '信仰告白はイスラームの基盤です。「アッラーの他に神はなく、ムハンマドはアッラーの使徒である」と誠心誠意唱えることで、その人はイスラームに入ります。';
 
   @override
   String get pillar2Name => 'サラート';
@@ -2723,7 +2729,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pillar2Detail =>
-      'サラートは1日5回行われる礼拝です——ファジュル、ズフル、アスル、マグリブ、イシャー。それは礼拝者とアッラーの直接的な繋がりであり、その存在を常に思い起こさせます。';
+      '1日5回の礼拝はムスリムとアッラーとの直接のつながりです。夜明け、正午、午後、日没、夜に行われ、ムスリムの一日全体をアッラーへの想念で満たします。';
 
   @override
   String get pillar3Name => 'ザカート';
@@ -2733,7 +2739,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pillar3Detail =>
-      'ザカートは貯蓄の2.5%を毎年困窮者に施すことです。財産を清め、不平等を減らし、すべての糧はアッラーから与えられることを信者に思い起こさせます。';
+      'ザカートは、貯蓄の2.5%を困窮者に毎年納める義務的な喜捨です。財産を清め、ムスリムコミュニティの絆を深めます。';
 
   @override
   String get pillar4Name => 'サウム';
@@ -2743,7 +2749,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pillar4Detail =>
-      'サウムは神聖なラマダーン月中、夜明けから日没まで食事・飲料・罪を断つ断食です。タクワー（神を意識すること）と感謝の気持ちを育みます。';
+      '祝福されたラマダン月に夜明けから日没まで断食します。ムスリムは食事・飲み物・罪を断ち、タクワー（神への畏敬）と感謝を育みます。';
 
   @override
   String get pillar5Name => 'ハッジ';
@@ -2753,5 +2759,5 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get pillar5Detail =>
-      'ハッジは聖なる都市メッカへの巡礼で、身体的・経済的に能力のあるすべてのムスリムに一生に一度義務付けられています。団結とアッラーへの服従の強力な象徴です。';
+      'メッカへの巡礼は、身体的・経済的に可能なすべてのムスリムにとって生涯に一度の義務です。地球上で最大の年次人類集会でもあります。';
 }

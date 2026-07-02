@@ -1271,98 +1271,207 @@
     "description": "toolboxGlossarySubtitle"
   },
   "shareSheetTitle": "شیئر کریں",
-  "@shareSheetTitle": { "description": "shareSheetTitle" },
+  "@shareSheetTitle": {
+    "description": "shareSheetTitle"
+  },
   "shareAnAyah": "ایک آیت شیئر کریں",
-  "@shareAnAyah": { "description": "shareAnAyah" },
+  "@shareAnAyah": {
+    "description": "shareAnAyah"
+  },
   "shareADua": "ایک دعا شیئر کریں",
-  "@shareADua": { "description": "shareADua" },
+  "@shareADua": {
+    "description": "shareADua"
+  },
   "shareANameOfAllah": "اللہ کا ایک نام شیئر کریں",
-  "@shareANameOfAllah": { "description": "shareANameOfAllah" },
+  "@shareANameOfAllah": {
+    "description": "shareANameOfAllah"
+  },
   "shareAHadith": "ایک حدیث شیئر کریں",
-  "@shareAHadith": { "description": "shareAHadith" },
+  "@shareAHadith": {
+    "description": "shareAHadith"
+  },
   "shareViaLabel": "نور گارڈ کے ذریعے شیئر کیا گیا",
-  "@shareViaLabel": { "description": "shareViaLabel" },
+  "@shareViaLabel": {
+    "description": "shareViaLabel"
+  },
   "shareCardAyahLabel": "✦ آج کی آیت",
-  "@shareCardAyahLabel": { "description": "shareCardAyahLabel" },
+  "@shareCardAyahLabel": {
+    "description": "shareCardAyahLabel"
+  },
   "shareCardDuaLabel": "✦ دعا",
-  "@shareCardDuaLabel": { "description": "shareCardDuaLabel" },
+  "@shareCardDuaLabel": {
+    "description": "shareCardDuaLabel"
+  },
   "shareCardNameLabel": "✦ اللہ کا نام",
-  "@shareCardNameLabel": { "description": "shareCardNameLabel" },
+  "@shareCardNameLabel": {
+    "description": "shareCardNameLabel"
+  },
   "shareCardHadithLabel": "✦ حدیث",
-  "@shareCardHadithLabel": { "description": "shareCardHadithLabel" },
+  "@shareCardHadithLabel": {
+    "description": "shareCardHadithLabel"
+  },
   "sharePickDuaTitle": "شیئر کرنے کے لیے دعا چنیں",
-  "@sharePickDuaTitle": { "description": "sharePickDuaTitle" },
+  "@sharePickDuaTitle": {
+    "description": "sharePickDuaTitle"
+  },
   "shareError": "تصویر بنانے میں ناکامی",
-  "@shareError": { "description": "shareError" },
+  "@shareError": {
+    "description": "shareError"
+  },
+    "shareCardVerseLabel": "✦ قرآنی آیت",
+  "@shareCardVerseLabel": {
+    "description": "shareCardVerseLabel"
+  },
   "shareAyahSubtitle": "٣٠ قرآنی آیات میں سے چنیں",
-  "@shareAyahSubtitle": { "description": "shareAyahSubtitle" },
+  "@shareAyahSubtitle": {
+    "description": "shareAyahSubtitle"
+  },
   "shareDuaSubtitle": "لائبریری سے چنیں",
-  "@shareDuaSubtitle": { "description": "shareDuaSubtitle" },
+  "@shareDuaSubtitle": {
+    "description": "shareDuaSubtitle"
+  },
   "shareNameSubtitle": "تمام ٩٩ اسمائے حسنیٰ میں سے چنیں",
-  "@shareNameSubtitle": { "description": "shareNameSubtitle" },
+  "@shareNameSubtitle": {
+    "description": "shareNameSubtitle"
+  },
   "shareHadithSubtitle": "٢٠ مستند احادیث میں سے چنیں",
-  "@shareHadithSubtitle": { "description": "shareHadithSubtitle" },
+  "@shareHadithSubtitle": {
+    "description": "shareHadithSubtitle"
+  },
   "shareThisDua": "یہ دعا شیئر کریں",
-  "@shareThisDua": { "description": "shareThisDua" },
+  "@shareThisDua": {
+    "description": "shareThisDua"
+  },
   "sharePickAyahTitle": "شیئر کرنے کے لیے آیت چنیں",
-  "@sharePickAyahTitle": { "description": "sharePickAyahTitle" },
+  "@sharePickAyahTitle": {
+    "description": "sharePickAyahTitle"
+  },
   "searchAyahs": "آیات تلاش کریں…",
-  "@searchAyahs": { "description": "searchAyahs" },
+  "@searchAyahs": {
+    "description": "searchAyahs"
+  },
   "noAyahsFoundShort": "کوئی آیت نہیں ملی",
-  "@noAyahsFoundShort": { "description": "noAyahsFoundShort" },
+  "@noAyahsFoundShort": {
+    "description": "noAyahsFoundShort"
+  },
   "shareThisAyah": "یہ آیت شیئر کریں",
-  "@shareThisAyah": { "description": "shareThisAyah" },
+  "@shareThisAyah": {
+    "description": "shareThisAyah"
+  },
   "sharePickNameTitle": "شیئر کرنے کے لیے نام چنیں",
-  "@sharePickNameTitle": { "description": "sharePickNameTitle" },
+  "@sharePickNameTitle": {
+    "description": "sharePickNameTitle"
+  },
   "shareThisName": "یہ نام شیئر کریں",
-  "@shareThisName": { "description": "shareThisName" },
+  "@shareThisName": {
+    "description": "shareThisName"
+  },
   "sharePickHadithTitle": "شیئر کرنے کے لیے حدیث چنیں",
-  "@sharePickHadithTitle": { "description": "sharePickHadithTitle" },
+  "@sharePickHadithTitle": {
+    "description": "sharePickHadithTitle"
+  },
   "searchHadiths": "احادیث تلاش کریں…",
-  "@searchHadiths": { "description": "searchHadiths" },
+  "@searchHadiths": {
+    "description": "searchHadiths"
+  },
   "noHadithsFound": "کوئی حدیث نہیں ملی",
-  "@noHadithsFound": { "description": "noHadithsFound" },
+  "@noHadithsFound": {
+    "description": "noHadithsFound"
+  },
   "shareThisHadith": "یہ حدیث شیئر کریں",
-  "@shareThisHadith": { "description": "shareThisHadith" },
-
+  "@shareThisHadith": {
+    "description": "shareThisHadith"
+  },
   "backToBasics": "بنیادی باتوں کی طرف واپسی",
-  "@backToBasics": { "description": "backToBasics" },
+  "@backToBasics": {
+    "description": "backToBasics"
+  },
   "backToBasicsSubtitle": "اسلام کی بنیادی باتوں کی رہنمائی",
-  "@backToBasicsSubtitle": { "description": "backToBasicsSubtitle" },
+  "@backToBasicsSubtitle": {
+    "description": "backToBasicsSubtitle"
+  },
   "fivePillarsOfIslam": "اسلام کے پانچ ارکان",
-  "@fivePillarsOfIslam": { "description": "fivePillarsOfIslam" },
+  "@fivePillarsOfIslam": {
+    "description": "fivePillarsOfIslam"
+  },
+  "fivePillarsSubtitle": "اسلامی ایمان کی بنیادیں",
+  "@fivePillarsSubtitle": {
+    "description": "fivePillarsSubtitle"
+  },
   "pillarLearnMore": "مزید جانیں",
-  "@pillarLearnMore": { "description": "pillarLearnMore" },
+  "@pillarLearnMore": {
+    "description": "pillarLearnMore"
+  },
   "pillarShowLess": "کم دکھائیں",
-  "@pillarShowLess": { "description": "pillarShowLess" },
+  "@pillarShowLess": {
+    "description": "pillarShowLess"
+  },
+  "pillarsShowDetails": "تفصیلات دکھائیں",
+  "@pillarsShowDetails": {
+    "description": "pillarsShowDetails"
+  },
+  "pillarsHideDetails": "تفصیلات چھپائیں",
+  "@pillarsHideDetails": {
+    "description": "pillarsHideDetails"
+  },
   "pillar1Name": "شہادت",
-  "@pillar1Name": { "description": "pillar1Name" },
+  "@pillar1Name": {
+    "description": "pillar1Name"
+  },
   "pillar1Desc": "ایمان کا اقرار",
-  "@pillar1Desc": { "description": "pillar1Desc" },
-  "pillar1Detail": "شہادت اس گواہی کا نام ہے کہ اللہ کے سوا کوئی معبود نہیں اور محمد ﷺ اس کے رسول ہیں۔ خلوص دل سے اس کا اقرار اسلام میں داخلے کی بنیاد ہے۔",
-  "@pillar1Detail": { "description": "pillar1Detail" },
+  "@pillar1Desc": {
+    "description": "pillar1Desc"
+  },
+  "pillar1Detail": "ایمان کا اقرار اسلام کی بنیاد ہے۔ دل سے 'لا إله إلا الله ومحمد رسول الله' کہنے سے انسان اسلام میں داخل ہوتا ہے۔",
+  "@pillar1Detail": {
+    "description": "pillar1Detail"
+  },
   "pillar2Name": "نماز",
-  "@pillar2Name": { "description": "pillar2Name" },
+  "@pillar2Name": {
+    "description": "pillar2Name"
+  },
   "pillar2Desc": "پانچ وقت کی نماز",
-  "@pillar2Desc": { "description": "pillar2Desc" },
-  "pillar2Detail": "نماز دن میں پانچ بار ادا کی جانے والی عبادت ہے — فجر، ظہر، عصر، مغرب اور عشاء۔ یہ بندے اور اللہ کے درمیان براہ راست تعلق ہے۔",
-  "@pillar2Detail": { "description": "pillar2Detail" },
+  "@pillar2Desc": {
+    "description": "pillar2Desc"
+  },
+  "pillar2Detail": "پانچ وقت کی نمازیں مسلمان اور اللہ کے درمیان براہ راست تعلق ہیں۔ فجر، ظہر، عصر، مغرب اور عشاء میں ادا کی جاتی ہیں اور پورا دن اللہ کی یاد میں گزارنے کا ذریعہ ہیں۔",
+  "@pillar2Detail": {
+    "description": "pillar2Detail"
+  },
   "pillar3Name": "زکوٰۃ",
-  "@pillar3Name": { "description": "pillar3Name" },
+  "@pillar3Name": {
+    "description": "pillar3Name"
+  },
   "pillar3Desc": "واجب صدقہ",
-  "@pillar3Desc": { "description": "pillar3Desc" },
-  "pillar3Detail": "زکوٰۃ ہر سال بچت کا 2.5% ضرورت مندوں کو دینا ہے۔ یہ مال کو پاک کرتی ہے اور یاد دلاتی ہے کہ سب رزق اللہ کی طرف سے ہے۔",
-  "@pillar3Detail": { "description": "pillar3Detail" },
+  "@pillar3Desc": {
+    "description": "pillar3Desc"
+  },
+  "pillar3Detail": "زکاۃ ایک سال کی بچت کا ڈھائی فیصد ضرورت مندوں کو دینے کی واجب عبادت ہے جو مال کو پاک کرتی اور امت کے رشتوں کو مضبوط بناتی ہے۔",
+  "@pillar3Detail": {
+    "description": "pillar3Detail"
+  },
   "pillar4Name": "روزہ",
-  "@pillar4Name": { "description": "pillar4Name" },
+  "@pillar4Name": {
+    "description": "pillar4Name"
+  },
   "pillar4Desc": "رمضان میں روزہ",
-  "@pillar4Desc": { "description": "pillar4Desc" },
-  "pillar4Detail": "روزہ ماہ رمضان میں فجر سے غروب تک کھانے پینے اور گناہوں سے پرہیز کرنا ہے۔ یہ تقوی اور اللہ کی نعمتوں پر شکر گزاری پیدا کرتا ہے۔",
-  "@pillar4Detail": { "description": "pillar4Detail" },
+  "@pillar4Desc": {
+    "description": "pillar4Desc"
+  },
+  "pillar4Detail": "ماہ مبارک رمضان میں فجر سے غروب تک روزہ رکھا جاتا ہے۔ مسلمان کھانے، پینے اور گناہ سے پرہیز کرتے ہیں تاکہ تقوی اور شکر گزاری حاصل ہو۔",
+  "@pillar4Detail": {
+    "description": "pillar4Detail"
+  },
   "pillar5Name": "حج",
-  "@pillar5Name": { "description": "pillar5Name" },
+  "@pillar5Name": {
+    "description": "pillar5Name"
+  },
   "pillar5Desc": "مکہ مکرمہ کا سفر",
-  "@pillar5Desc": { "description": "pillar5Desc" },
-  "pillar5Detail": "حج مکہ مکرمہ کا مقدس سفر ہے جو ہر قادر مسلمان پر زندگی میں ایک بار فرض ہے۔ یہ اتحاد اور اللہ کے سامنے سرتسلیم خم کرنے کی عظیم علامت ہے۔",
-  "@pillar5Detail": { "description": "pillar5Detail" }
+  "@pillar5Desc": {
+    "description": "pillar5Desc"
+  },
+  "pillar5Detail": "مکہ مکرمہ کا حج ہر اس مسلمان پر زندگی میں ایک بار فرض ہے جو جسمانی اور مالی طور پر قادر ہو اور یہ دنیا کا سب سے بڑا سالانہ انسانی اجتماع ہے۔",
+  "@pillar5Detail": {
+    "description": "pillar5Detail"
+  }
 }
