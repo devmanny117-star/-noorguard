@@ -1,4 +1,5 @@
 import '../data/asma_meanings.dart';
+import '../data/asma_explanations.dart';
 
 /// One of the 99 Beautiful Names of Allah (Asma ul Husna).
 class AsmaName {
@@ -22,8 +23,12 @@ class AsmaName {
       meaning[locale] ?? asmaNameMeaning(number, locale);
 
   /// Longer explanation of the name's significance.
-  String explanationText(String locale) =>
-      explanation[locale] ?? explanation['en']!;
+  String explanationText(String locale) {
+    final internal = explanation[locale];
+    if (internal != null) return internal;
+    final ext = asmaNameExplanation(number, locale);
+    return ext.isNotEmpty ? ext : explanation['en']!;
+  }
 }
 
 const List<AsmaName> asmaUlHusnaNames = [

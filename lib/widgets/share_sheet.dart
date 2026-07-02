@@ -1146,6 +1146,21 @@ class _NameCard extends StatelessWidget {
                     color: _kCream.withValues(alpha: 0.65),
                   ),
                 ),
+                const SizedBox(height: 5),
+                Directionality(
+                  textDirection: (locale == 'ar' || locale == 'ur' || locale == 'fa')
+                      ? TextDirection.rtl
+                      : TextDirection.ltr,
+                  child: Text(
+                    name.explanationText(locale),
+                    style: GoogleFonts.lato(
+                      fontSize: 11,
+                      fontStyle: FontStyle.italic,
+                      color: _kGold.withValues(alpha: 0.70),
+                      height: 1.4,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
