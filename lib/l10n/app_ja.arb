@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ クルアーン節",
+  "shareCardVerseLabel": "✦ クルアーン節",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ アッラーの99の御名",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "30のクルアーンの節から選択",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "メッカへの巡礼は、身体的・経済的に可能なすべてのムスリムにとって生涯に一度の義務です。地球上で最大の年次人類集会でもあります。",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "新しいムスリムモードに切り替えました",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "通常モードに切り替えました",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ 《古兰经》节",
+  "shareCardVerseLabel": "✦ 《古兰经》节",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ 真主九十九名",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "从30段经文中选择",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "前往麦加朝觐是每位有能力的穆斯林一生中必须完成一次的功课，也是地球上规模最大的年度人类聚集。",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "已切换到新穆斯林模式",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "已切换到普通模式",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

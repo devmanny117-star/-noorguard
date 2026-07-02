@@ -35,6 +35,7 @@ import 'tafsir_of_the_day_screen.dart';
 import 'tasbih_screen.dart';
 import 'why_do_we_screen.dart';
 import 'wudu_guide_screen.dart';
+import 'home_screen.dart';
 
 const _kNavy   = Color(0xFF0D1B2A);
 const _kCard   = Color(0xFF0f1e30);
@@ -188,6 +189,30 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
     }
   }
 
+  Future<void> _toggleMode() async {
+    final l10n = AppLocalizations.of(context)!;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('beginner_mode', false);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(l10n.switchedToRegularMode,
+          style: GoogleFonts.lato(color: Colors.white)),
+      backgroundColor: const Color(0xFF1B3A2D),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.all(16),
+      duration: const Duration(seconds: 2),
+    ));
+    Navigator.of(context).pushReplacement(
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) => const HomeScreen(),
+        transitionsBuilder: (_, animation, __, child) =>
+            FadeTransition(opacity: animation, child: child),
+        transitionDuration: const Duration(milliseconds: 400),
+      ),
+    );
+  }
+
   Future<void> _toggleTask(int index) async {
     final prefs    = await SharedPreferences.getInstance();
     final newValue = !_tasks[index];
@@ -282,6 +307,8 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
             HeaderSection(
               onShare: () => showShareSheet(context),
               userName: _userName,
+              isBeginnerMode: true,
+              onModeToggle: _toggleMode,
             ),
             const SizedBox(height: 6),
             PrayerTimesCard(
@@ -981,7 +1008,7 @@ class _ToolboxCard extends StatelessWidget {
       (icon: Icons.airline_seat_flat,        label: l10n.beginnerLearnSalah, subtitle: l10n.toolboxLearnSalahSubtitle, screen: const HowToPrayScreen()),
       (icon: Icons.water_drop_rounded,       label: l10n.wuduGuide,          subtitle: l10n.toolboxWuduSubtitle,          screen: const WuduGuideScreen()),
       (icon: Icons.menu_book_rounded,        label: l10n.islamicGlossary,    subtitle: l10n.toolboxGlossarySubtitle,      screen: const IslamicGlossaryScreen()),
-      (icon: Icons.favorite_rounded,         label: l10n.revertCorner,       subtitle: l10n.subtitleYourGuideToIslam,     screen: const NewMuslimHubScreen()),
+      (icon: Icons.favorite_rounded,         label: l10n.backToBasics,       subtitle: l10n.backToBasicsSubtitle,         screen: const NewMuslimHubScreen()),
     ];
 
     return _SectionCard(

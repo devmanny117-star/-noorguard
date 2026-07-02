@@ -2760,6 +2760,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Ayat Quran';
 
   @override
+  String get shareCardAsmaLabel => '✦ Asma ul-Husna';
+
+  @override
   String get shareAyahSubtitle => 'Pilih dari 30 ayat Al-Quran';
 
   @override
@@ -2877,4 +2880,10 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'Haji ke Mekah wajib dilaksanakan sekali seumur hidup bagi setiap Muslim yang mampu secara fisik dan finansial. Ini adalah pertemuan tahunan manusia terbesar di muka bumi.';
+
+  @override
+  String get switchedToNewMuslimMode => 'Beralih ke Mode Muslim Baru';
+
+  @override
+  String get switchedToRegularMode => 'Beralih ke Mode Reguler';
 }

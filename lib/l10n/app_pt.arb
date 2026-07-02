@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ Versículo do Alcorão",
+  "shareCardVerseLabel": "✦ Versículo do Alcorão",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ Asma ul-Husna",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "Escolha entre 30 versículos corânicos",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "A peregrinacao a Meca e obrigatoria uma vez na vida para todo muculmano fisica e financeiramente capaz. E a maior reuniao anual de pessoas na terra.",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "Mudado para o Modo Novo Muçulmano",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "Mudado para o Modo Regular",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

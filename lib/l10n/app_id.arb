@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ Ayat Quran",
+  "shareCardVerseLabel": "✦ Ayat Quran",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ Asma ul-Husna",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "Pilih dari 30 ayat Al-Quran",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "Haji ke Mekah wajib dilaksanakan sekali seumur hidup bagi setiap Muslim yang mampu secara fisik dan finansial. Ini adalah pertemuan tahunan manusia terbesar di muka bumi.",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "Beralih ke Mode Muslim Baru",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "Beralih ke Mode Reguler",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

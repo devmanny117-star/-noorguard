@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ Verset Coranique",
+  "shareCardVerseLabel": "✦ Verset Coranique",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ Asma ul-Husna",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "Choisir parmi 30 versets coraniques",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "Le pelerinage a La Mecque est obligatoire une fois dans la vie pour tout musulman physiquement et financierement capable. C'est le plus grand rassemblement annuel de personnes sur terre.",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "Passé au mode Nouveau Musulman",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "Passé au mode Normal",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

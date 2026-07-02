@@ -3393,9 +3393,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ Quranic Verse",
+  "shareCardVerseLabel": "✦ Quranic Verse",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ Asma ul-Husna",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "Pick from 30 Quranic verses",
   "@shareAyahSubtitle": {
@@ -3548,5 +3552,13 @@
   "pillar5Detail": "The pilgrimage to Mecca is required once in a lifetime for every Muslim who is physically and financially able. It is the largest annual gathering of people on earth.",
   "@pillar5Detail": {
     "description": "Expanded detail of Hajj"
+  },
+  "switchedToNewMuslimMode": "Switched to New Muslim Mode",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "Switched to Regular Mode",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

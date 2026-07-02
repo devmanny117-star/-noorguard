@@ -1478,9 +1478,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ آیه قرآن",
+  "shareCardVerseLabel": "✦ آیه قرآن",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ اسماء الحسنی",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "از ۳۰ آیه قرآنی انتخاب کنید",
   "@shareAyahSubtitle": {
@@ -1633,5 +1637,13 @@
   "pillar5Detail": "حج به مکه برای هر مسلمانی که از نظر جسمی و مالی قادر باشد یک بار در عمر واجب است. همچنین بزرگ‌ترین گردهمایی سالانه مردم در روی زمین است.",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "به حالت مسلمان جدید تغییر یافت",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "به حالت عادی تغییر یافت",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

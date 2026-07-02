@@ -2762,6 +2762,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Koranvers';
 
   @override
+  String get shareCardAsmaLabel => '✦ Asma ul-Husna';
+
+  @override
   String get shareAyahSubtitle => 'Wähle aus 30 Koranversen';
 
   @override
@@ -2880,4 +2883,10 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'Die Pilgerfahrt nach Mekka ist einmal im Leben Pflicht fur jeden korperlich und finanziell fahigen Muslim. Sie ist die grosste jahrliche Menschenversammlung auf der Erde.';
+
+  @override
+  String get switchedToNewMuslimMode => 'Zum Neuen-Muslim-Modus gewechselt';
+
+  @override
+  String get switchedToRegularMode => 'Zum normalen Modus gewechselt';
 }

@@ -2746,6 +2746,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Kuran Ayeti';
 
   @override
+  String get shareCardAsmaLabel => '✦ Esmaü\'l-Hüsna';
+
+  @override
   String get shareAyahSubtitle => '30 Kuran ayetinden seç';
 
   @override
@@ -2863,4 +2866,10 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'Mekkaye hac, bedensel ve mali gucu yeten her Muslümana hayatinda bir kez farzdir. Ayni zamanda yeryuzundeki en buyuk yillik insan topluluğudur.';
+
+  @override
+  String get switchedToNewMuslimMode => 'Yeni Müslüman Moduna geçildi';
+
+  @override
+  String get switchedToRegularMode => 'Normal Moda geçildi';
 }

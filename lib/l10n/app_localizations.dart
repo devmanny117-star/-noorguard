@@ -5064,6 +5064,12 @@ abstract class AppLocalizations {
   /// **'✦ Quranic Verse'**
   String get shareCardVerseLabel;
 
+  /// shareCardAsmaLabel
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Asma ul-Husna'**
+  String get shareCardAsmaLabel;
+
   /// shareAyahSubtitle
   ///
   /// In en, this message translates to:
@@ -5291,6 +5297,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The pilgrimage to Mecca is required once in a lifetime for every Muslim who is physically and financially able. It is the largest annual gathering of people on earth.'**
   String get pillar5Detail;
+
+  /// Snackbar shown when switching to New Muslim Mode
+  ///
+  /// In en, this message translates to:
+  /// **'Switched to New Muslim Mode'**
+  String get switchedToNewMuslimMode;
+
+  /// Snackbar shown when switching back to Regular Mode
+  ///
+  /// In en, this message translates to:
+  /// **'Switched to Regular Mode'**
+  String get switchedToRegularMode;
 }
 
 class _AppLocalizationsDelegate

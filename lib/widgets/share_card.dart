@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'geometric_pattern_painter.dart';
+import 'crescent_star_painter.dart';
 
 const _kNavy   = Color(0xFF0D1B2A);
 const _kGold   = Color(0xFFC9A84C);
@@ -152,12 +153,12 @@ class ShareCardWidget extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(
-                          Icons.nightlight_round,
-                          color: _kGold,
-                          size: 16,
+                        const SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: CustomPaint(painter: CrescentStarPainter()),
                         ),
-                        const SizedBox(width: 6),
+                        const SizedBox(width: 7),
                         Text(
                           'NOOR GUARD',
                           style: GoogleFonts.playfairDisplay(

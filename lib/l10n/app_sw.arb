@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ Aya ya Kurani",
+  "shareCardVerseLabel": "✦ Aya ya Kurani",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ Asma ul-Husna",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "Chagua kutoka aya 30 za Quran",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "Hija kwenda Makka ni wajibu mara moja kwa maisha kwa kila Mwislamu mwenye uwezo wa kimwili na kiuchumi. Ni mkusanyiko mkubwa zaidi wa watu duniani kila mwaka.",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "Umebadilishwa hadi Hali ya Muislamu Mpya",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "Umebadilishwa hadi Hali ya Kawaida",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
 import '../models/asma_ul_husna_model.dart';
+import '../services/share_helper.dart';
 import '../widgets/font_size_slider.dart';
 
 class AsmaUlHusnaScreen extends StatefulWidget {
@@ -35,6 +36,27 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
   void _onFontScaleChanged(int index) {
     setState(() => _fontScaleIndex = index);
     saveFontScaleIndex('asma', index);
+  }
+
+  Future<void> _shareName(AsmaName name) async {
+    final l10n = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).languageCode;
+    try {
+      await shareContent(
+        context: context,
+        typeLabel: l10n.shareCardAsmaLabel,
+        arabic: name.arabic,
+        transliteration: name.transliteration,
+        translation: name.meaningText(locale),
+        source: 'Al-Asma ul-Husna #${name.number}',
+        brandingLabel: l10n.shareViaLabel,
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.shareError)),
+      );
+    }
   }
 
   @override
@@ -138,6 +160,7 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
                             name: name,
                             locale: locale,
                             significanceLabel: l10n.asmaSignificance,
+                            onShareTap: () => _shareName(name),
                           ),
                         );
                       },
@@ -253,11 +276,13 @@ class _AsmaCard extends StatefulWidget {
   final AsmaName name;
   final String locale;
   final String significanceLabel;
+  final VoidCallback onShareTap;
 
   const _AsmaCard({
     required this.name,
     required this.locale,
     required this.significanceLabel,
+    required this.onShareTap,
   });
 
   @override
@@ -347,6 +372,26 @@ class _AsmaCardState extends State<_AsmaCard> {
                     ],
                   ),
                 ),
+                GestureDetector(
+                  onTap: widget.onShareTap,
+                  child: Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _gold.withValues(alpha: 0.10),
+                      border: Border.all(
+                          color: _gold.withValues(alpha: 0.50), width: 1),
+                    ),
+                    alignment: Alignment.center,
+                    child: const Icon(
+                      Icons.share_rounded,
+                      size: 15,
+                      color: _gold,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 6),
                 AnimatedRotation(
                   turns: _expanded ? 0.5 : 0,
                   duration: const Duration(milliseconds: 200),

@@ -219,8 +219,8 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 - Always put prompts and commands in code blocks
 - Be concise — no long explanations unless asked
 - No motivational filler phrases
-- After every fix, remind Manny to test on Z Fold 7 (`flutter run -d RFCY71SEQZJ`) or iPhone 17e (`flutter run -d 00008150-00093840119B401C`)
-- To view UI always suggest: `flutter run -d chrome`
+- **Build order is mandatory:** After every change, always run `flutter run -d chrome` first for visual inspection. Only run `flutter run -d RFCY71SEQZJ` (Z Fold 7) or `flutter run -d 00008150-00093840119B401C` (iPhone 17e) after Chrome review is approved by Manny.
+- Never deploy to a physical device without Chrome approval first.
 
 ---
 

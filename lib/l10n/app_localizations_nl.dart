@@ -2755,6 +2755,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Koranvers';
 
   @override
+  String get shareCardAsmaLabel => '✦ Asma ul-Husna';
+
+  @override
   String get shareAyahSubtitle => 'Kies uit 30 Koranverzen';
 
   @override
@@ -2874,4 +2877,11 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'De bedevaart naar Mekka is eens in een leven verplicht voor elke moslim die fysiek en financieel in staat is. Het is de grootste jaarlijkse bijeenkomst van mensen op aarde.';
+
+  @override
+  String get switchedToNewMuslimMode =>
+      'Overgeschakeld naar Nieuwe Moslimmodus';
+
+  @override
+  String get switchedToRegularMode => 'Overgeschakeld naar normale modus';
 }

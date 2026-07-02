@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/app_theme.dart';
 import '../models/prayer_model.dart';
@@ -23,6 +24,7 @@ import 'settings_screen.dart';
 import 'surah_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/share_sheet.dart';
+import 'beginner_home_screen.dart';
 
 // Always available offline as the ayah-challenge's reading target — avoids
 // waiting on fetchSurahs() just to resolve this one well-known surah's
@@ -148,6 +150,30 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     // MainActivity rather than creating a fresh one — needs a re-check on
     // resume; initState() alone only ever sees it on a true cold start.
     if (state == AppLifecycleState.resumed) _checkAyahChallenge();
+  }
+
+  Future<void> _toggleMode() async {
+    final l10n = AppLocalizations.of(context)!;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('beginner_mode', true);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(l10n.switchedToNewMuslimMode,
+          style: GoogleFonts.lato(color: Colors.white)),
+      backgroundColor: const Color(0xFF1B3A2D),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.all(16),
+      duration: const Duration(seconds: 2),
+    ));
+    Navigator.of(context).pushReplacement(
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) => const BeginnerHomeScreen(),
+        transitionsBuilder: (_, animation, __, child) =>
+            FadeTransition(opacity: animation, child: child),
+        transitionDuration: const Duration(milliseconds: 400),
+      ),
+    );
   }
 
   Future<void> _checkAyahChallenge() async {
@@ -294,7 +320,12 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 4),
-          HeaderSection(onShare: () => showShareSheet(context), userName: _userName),
+          HeaderSection(
+            onShare: () => showShareSheet(context),
+            userName: _userName,
+            isBeginnerMode: false,
+            onModeToggle: _toggleMode,
+          ),
           const SizedBox(height: 6),
           PrayerTimesCard(prayers: _prayers, onNextPrayerTap: widget.onOpenPrayers),
           const HeroCard(),

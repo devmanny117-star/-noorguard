@@ -6,6 +6,7 @@ import '../../services/prayer_state.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/theme_controller.dart';
 import '../../l10n/app_localizations.dart';
+import '../crescent_star_painter.dart';
 
 // Matches the "low accuracy / alert" red used elsewhere in the app (e.g. the
 // Qibla screen's accuracy badge) so the disabled-bell state reads as a clear
@@ -15,11 +16,15 @@ const _kNotificationsOffRed = Color(0xFFEF5350);
 class HeaderSection extends StatelessWidget {
   final VoidCallback onShare;
   final String userName;
+  final bool isBeginnerMode;
+  final VoidCallback? onModeToggle;
 
   const HeaderSection({
     super.key,
     required this.onShare,
     this.userName = '',
+    this.isBeginnerMode = false,
+    this.onModeToggle,
   });
 
   @override
@@ -65,6 +70,20 @@ class HeaderSection extends StatelessWidget {
           const SizedBox(width: 12),
           Row(
             children: [
+              if (onModeToggle != null) ...[
+                _CircleButton(
+                  onTap: onModeToggle!,
+                  child: isBeginnerMode
+                      ? const Icon(Icons.person_rounded,
+                          size: 20, color: AppColors.gold)
+                      : const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CustomPaint(painter: CrescentStarPainter()),
+                        ),
+                ),
+                const SizedBox(width: 8),
+              ],
               // Dark/light mode toggle
               _CircleButton(
                 onTap: () => controller.toggle(isDark),

@@ -2777,6 +2777,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Verset Coranique';
 
   @override
+  String get shareCardAsmaLabel => '✦ Asma ul-Husna';
+
+  @override
   String get shareAyahSubtitle => 'Choisir parmi 30 versets coraniques';
 
   @override
@@ -2895,4 +2898,10 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'Le pelerinage a La Mecque est obligatoire une fois dans la vie pour tout musulman physiquement et financierement capable. C\'est le plus grand rassemblement annuel de personnes sur terre.';
+
+  @override
+  String get switchedToNewMuslimMode => 'Passé au mode Nouveau Musulman';
+
+  @override
+  String get switchedToRegularMode => 'Passé au mode Normal';
 }

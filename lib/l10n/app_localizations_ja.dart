@@ -2643,6 +2643,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get shareCardVerseLabel => '✦ クルアーン節';
 
   @override
+  String get shareCardAsmaLabel => '✦ アッラーの99の御名';
+
+  @override
   String get shareAyahSubtitle => '30のクルアーンの節から選択';
 
   @override
@@ -2760,4 +2763,10 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'メッカへの巡礼は、身体的・経済的に可能なすべてのムスリムにとって生涯に一度の義務です。地球上で最大の年次人類集会でもあります。';
+
+  @override
+  String get switchedToNewMuslimMode => '新しいムスリムモードに切り替えました';
+
+  @override
+  String get switchedToRegularMode => '通常モードに切り替えました';
 }

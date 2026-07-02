@@ -2615,6 +2615,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get shareCardVerseLabel => '✦ 《古兰经》节';
 
   @override
+  String get shareCardAsmaLabel => '✦ 真主九十九名';
+
+  @override
   String get shareAyahSubtitle => '从30段经文中选择';
 
   @override
@@ -2729,4 +2732,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get pillar5Detail => '前往麦加朝觐是每位有能力的穆斯林一生中必须完成一次的功课，也是地球上规模最大的年度人类聚集。';
+
+  @override
+  String get switchedToNewMuslimMode => '已切换到新穆斯林模式';
+
+  @override
+  String get switchedToRegularMode => '已切换到普通模式';
 }

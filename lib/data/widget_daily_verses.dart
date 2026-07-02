@@ -29,6 +29,7 @@ final List<WidgetDailyVerse> widgetDailyVerses = [
       'bn': 'নিশ্চয় নামাজ অশ্লীলতা ও অসৎ কাজ থেকে বিরত রাখে, এবং আল্লাহর স্মরণই সর্বশ্রেষ্ঠ।',
       'tr': 'Şüphesiz namaz, çirkin işlerden ve kötülükten alıkoyar. Allah\'ı zikretmek elbette en büyük (ibadet)tir.',
       'sw': 'Hakika Sala huzuia uchafu na uovu, na kumtaja Mwenyezi Mungu ni jambo kubwa zaidi.',
+      'fa': 'همانا نماز از فحشا و منکر باز می‌دارد و یاد خداوند بزرگ‌تر است.',
     },
   ),
   const WidgetDailyVerse(
@@ -49,6 +50,7 @@ final List<WidgetDailyVerse> widgetDailyVerses = [
       'bn': 'যে আল্লাহর উপর নির্ভর করে, তার জন্য তিনিই যথেষ্ট।',
       'tr': 'Kim Allah\'a tevekkül ederse, O ona yeter.',
       'sw': 'Na anayemtegemea Mwenyezi Mungu, basi Yeye ndiye anamtosha.',
+      'fa': 'و هر کس بر خداوند توکل کند، پس او برایش کافی است.',
     },
   ),
   const WidgetDailyVerse(
@@ -69,6 +71,7 @@ final List<WidgetDailyVerse> widgetDailyVerses = [
       'bn': 'জেনে রাখ, আল্লাহর স্মরণেই অন্তর প্রশান্ত হয়।',
       'tr': 'Bilesiniz ki, kalpler ancak Allah\'ı zikretmekle huzur bulur.',
       'sw': 'Hakika kwa kumtaja Mwenyezi Mungu nyoyo hutulia.',
+      'fa': 'آگاه باشید که با یاد خداوند دل‌ها آرام می‌گیرد.',
     },
   ),
 ];

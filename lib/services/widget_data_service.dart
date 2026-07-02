@@ -85,6 +85,7 @@ class WidgetDataService {
       HomeWidget.saveWidgetData('hijri_date', hijri.format(monthNames)),
       HomeWidget.saveWidgetData('location_label', locationLabel),
       HomeWidget.saveWidgetData('qibla_bearing_degrees', bearing),
+      HomeWidget.saveWidgetData('daily_verse_arabic', verse.forLocale('ar')),
       HomeWidget.saveWidgetData('daily_verse_text', verse.forLocale(locale)),
       HomeWidget.saveWidgetData('daily_verse_ref', verse.reference),
       HomeWidget.saveWidgetData('locale_code', locale),

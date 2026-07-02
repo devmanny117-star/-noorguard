@@ -2753,6 +2753,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Aya ya Kurani';
 
   @override
+  String get shareCardAsmaLabel => '✦ Asma ul-Husna';
+
+  @override
   String get shareAyahSubtitle => 'Chagua kutoka aya 30 za Quran';
 
   @override
@@ -2870,4 +2873,11 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'Hija kwenda Makka ni wajibu mara moja kwa maisha kwa kila Mwislamu mwenye uwezo wa kimwili na kiuchumi. Ni mkusanyiko mkubwa zaidi wa watu duniani kila mwaka.';
+
+  @override
+  String get switchedToNewMuslimMode =>
+      'Umebadilishwa hadi Hali ya Muislamu Mpya';
+
+  @override
+  String get switchedToRegularMode => 'Umebadilishwa hadi Hali ya Kawaida';
 }

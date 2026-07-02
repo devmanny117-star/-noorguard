@@ -2060,17 +2060,18 @@ class _VerseTile extends StatelessWidget {
                       GestureDetector(
                         onTap: onShareTap,
                         child: Container(
-                          width: 32,
-                          height: 32,
+                          width: 34,
+                          height: 34,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: _gold.withValues(alpha: 0.10),
+                            color: _gold.withValues(alpha: 0.12),
                             border: Border.all(
-                                color: _gold.withValues(alpha: 0.45)),
+                                color: _gold.withValues(alpha: 0.60),
+                                width: 1.2),
                           ),
                           alignment: Alignment.center,
                           child: const Icon(Icons.share_rounded,
-                              color: _gold, size: 15),
+                              color: _gold, size: 16),
                         ),
                       ),
                       const SizedBox(width: 8),

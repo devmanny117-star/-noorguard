@@ -338,7 +338,7 @@ class RevertCornerCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            l10n.revertCorner,
+                            l10n.backToBasics,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.playfairDisplay(
@@ -349,7 +349,7 @@ class RevertCornerCard extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            '${l10n.subtitleYourGuideToIslam} 🌙',
+                            '${l10n.backToBasicsSubtitle} 🌙',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.lato(

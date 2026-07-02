@@ -2759,6 +2759,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Versículo do Alcorão';
 
   @override
+  String get shareCardAsmaLabel => '✦ Asma ul-Husna';
+
+  @override
   String get shareAyahSubtitle => 'Escolha entre 30 versículos corânicos';
 
   @override
@@ -2876,4 +2879,10 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'A peregrinacao a Meca e obrigatoria uma vez na vida para todo muculmano fisica e financeiramente capaz. E a maior reuniao anual de pessoas na terra.';
+
+  @override
+  String get switchedToNewMuslimMode => 'Mudado para o Modo Novo Muçulmano';
+
+  @override
+  String get switchedToRegularMode => 'Mudado para o Modo Regular';
 }

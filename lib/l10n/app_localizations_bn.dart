@@ -2752,6 +2752,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get shareCardVerseLabel => '✦ কোরআনের আয়াত';
 
   @override
+  String get shareCardAsmaLabel => '✦ আসমাউল হুসনা';
+
+  @override
   String get shareAyahSubtitle => '৩০টি কোরআনের আয়াত থেকে বেছে নিন';
 
   @override
@@ -2869,4 +2872,10 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'মক্কায় হজ প্রতিটি শারীরিক ও আর্থিকভাবে সক্ষম মুসলিমের জন্য জীবনে একবার ফরজ। এটি পৃথিবীতে মানুষের সবচেয়ে বড় বার্ষিক সমাবেশ।';
+
+  @override
+  String get switchedToNewMuslimMode => 'নতুন মুসলিম মোডে পরিবর্তন করা হয়েছে';
+
+  @override
+  String get switchedToRegularMode => 'সাধারণ মোডে পরিবর্তন করা হয়েছে';
 }

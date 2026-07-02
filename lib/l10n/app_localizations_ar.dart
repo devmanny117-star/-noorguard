@@ -2707,6 +2707,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get shareCardVerseLabel => '✦ آية قرآنية';
 
   @override
+  String get shareCardAsmaLabel => '✦ الأسماء الحسنى';
+
+  @override
   String get shareAyahSubtitle => 'اختر من ٣٠ آية قرآنية';
 
   @override
@@ -2824,4 +2827,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'الحج إلى مكة المكرمة فريضة مرة في العمر على كل مسلم مستطيع جسدياً ومالياً، وهو أكبر تجمع بشري سنوي على وجه الأرض.';
+
+  @override
+  String get switchedToNewMuslimMode => 'تم التحويل إلى وضع المسلم الجديد';
+
+  @override
+  String get switchedToRegularMode => 'تم التحويل إلى الوضع العادي';
 }

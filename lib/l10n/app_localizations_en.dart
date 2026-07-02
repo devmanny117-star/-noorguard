@@ -2738,6 +2738,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareCardVerseLabel => '✦ Quranic Verse';
 
   @override
+  String get shareCardAsmaLabel => '✦ Asma ul-Husna';
+
+  @override
   String get shareAyahSubtitle => 'Pick from 30 Quranic verses';
 
   @override
@@ -2855,4 +2858,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'The pilgrimage to Mecca is required once in a lifetime for every Muslim who is physically and financially able. It is the largest annual gathering of people on earth.';
+
+  @override
+  String get switchedToNewMuslimMode => 'Switched to New Muslim Mode';
+
+  @override
+  String get switchedToRegularMode => 'Switched to Regular Mode';
 }

@@ -223,9 +223,9 @@ class _DuasSliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return SliverAppBar(
       pinned: true,
-      expandedHeight: 160,
       backgroundColor: _kNavy,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
@@ -243,16 +243,21 @@ class _DuasSliverAppBar extends StatelessWidget {
               size: 16, color: _kGold),
         ),
       ),
-      flexibleSpace: const FlexibleSpaceBar(
-        collapseMode: CollapseMode.pin,
-        background: _Header(),
+      title: Text(
+        l10n.duas,
+        style: GoogleFonts.playfairDisplay(
+          fontSize: 20,
+          fontWeight: FontWeight.w800,
+          color: _kGold,
+        ),
       ),
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
+        preferredSize: const Size.fromHeight(112),
         child: Container(
           color: _kNavy,
           child: Column(
             children: [
+              const SizedBox(height: 12),
               _SearchBar(controller: searchController),
               const SizedBox(height: 8),
               _CategoryRow(
@@ -267,74 +272,6 @@ class _DuasSliverAppBar extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// ─── Header ───────────────────────────────────────────────────────────────────
-
-class _Header extends StatelessWidget {
-  const _Header();
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-
-    return Container(
-      color: _kNavy,
-      padding: const EdgeInsets.only(top: 88, left: 22, right: 22, bottom: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.duas,
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: 32,
-                        fontWeight: FontWeight.w800,
-                        color: _kCream,
-                        height: 1.1,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      l10n.dailySupplications,
-                      style: GoogleFonts.lato(
-                        fontSize: 14,
-                        color: _kCream.withValues(alpha: 0.55),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Text(
-                'دُعَاء',
-                style: GoogleFonts.scheherazadeNew(
-                  fontSize: 38,
-                  color: _kGold.withValues(alpha: 0.18),
-                  height: 1.0,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Container(
-            height: 2,
-            width: 40,
-            decoration: BoxDecoration(
-              color: _kGold,
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -574,7 +511,7 @@ class _DuaCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Arabic text + bookmark
+          // Arabic text + share + bookmark
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 20, 16, 16),
             child: Row(
@@ -593,6 +530,26 @@ class _DuaCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
+                GestureDetector(
+                  onTap: onShareTap,
+                  child: Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _kGold.withValues(alpha: 0.10),
+                      border: Border.all(
+                          color: _kGold.withValues(alpha: 0.50), width: 1),
+                    ),
+                    alignment: Alignment.center,
+                    child: const Icon(
+                      Icons.share_rounded,
+                      size: 15,
+                      color: _kGold,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
                 GestureDetector(
                   onTap: onBookmarkTap,
                   child: AnimatedSwitcher(
@@ -697,14 +654,6 @@ class _DuaCard extends StatelessWidget {
                       color: _kGold,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: onShareTap,
-                  child: Icon(
-                    Icons.share_rounded,
-                    size: 18,
-                    color: _kGold.withValues(alpha: 0.80),
                   ),
                 ),
               ],

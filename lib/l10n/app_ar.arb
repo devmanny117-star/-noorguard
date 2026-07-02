@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ آية قرآنية",
+  "shareCardVerseLabel": "✦ آية قرآنية",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ الأسماء الحسنى",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "اختر من ٣٠ آية قرآنية",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "الحج إلى مكة المكرمة فريضة مرة في العمر على كل مسلم مستطيع جسدياً ومالياً، وهو أكبر تجمع بشري سنوي على وجه الأرض.",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "تم التحويل إلى وضع المسلم الجديد",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "تم التحويل إلى الوضع العادي",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

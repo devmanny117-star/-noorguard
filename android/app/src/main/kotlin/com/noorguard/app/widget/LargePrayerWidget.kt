@@ -50,8 +50,8 @@ class LargePrayerWidget : GlanceAppWidget() {
 
         val cardBackground = GlanceModifier
             .fillMaxSize()
-            .background(WidgetTheme.navy)
-            .cornerRadius(16.dp)
+            .background(ImageProvider(R.drawable.bg_widget_card))
+            .cornerRadius(20.dp)
             .padding(16.dp)
 
         if (data.focusActive) {
@@ -104,15 +104,31 @@ class LargePrayerWidget : GlanceAppWidget() {
                 // Daily verse + Qibla bearing, side by side.
                 Row(modifier = GlanceModifier.fillMaxWidth()) {
                     Column(modifier = GlanceModifier.defaultWeight()) {
-                        Text(
-                            "“${data.dailyVerseText}”",
-                            maxLines = 3,
-                            style = TextStyle(
-                                color = ColorProvider(WidgetTheme.cream),
-                                fontSize = 12.sp,
-                                fontStyle = FontStyle.Italic,
-                            ),
-                        )
+                        if (data.dailyVerseArabic.isNotEmpty()) {
+                            Text(
+                                data.dailyVerseArabic,
+                                maxLines = 2,
+                                style = TextStyle(
+                                    color = ColorProvider(WidgetTheme.gold),
+                                    fontSize = 22.sp,
+                                    fontWeight = FontWeight.Bold,
+                                ),
+                            )
+                            Box(modifier = GlanceModifier.height(4.dp)) {}
+                        }
+                        if (data.dailyVerseText.isNotEmpty() &&
+                            data.dailyVerseText != data.dailyVerseArabic) {
+                            Text(
+                                "“${data.dailyVerseText}”",
+                                maxLines = 2,
+                                style = TextStyle(
+                                    color = ColorProvider(WidgetTheme.cream),
+                                    fontSize = 17.sp,
+                                    fontStyle = FontStyle.Italic,
+                                ),
+                            )
+                            Box(modifier = GlanceModifier.height(2.dp)) {}
+                        }
                         Text(
                             data.dailyVerseRef,
                             style = TextStyle(

@@ -1318,9 +1318,13 @@
   "@shareError": {
     "description": "shareError"
   },
-    "shareCardVerseLabel": "✦ قرآنی آیت",
+  "shareCardVerseLabel": "✦ قرآنی آیت",
   "@shareCardVerseLabel": {
     "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ اسماء الحسنیٰ",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
   },
   "shareAyahSubtitle": "٣٠ قرآنی آیات میں سے چنیں",
   "@shareAyahSubtitle": {
@@ -1473,5 +1477,13 @@
   "pillar5Detail": "مکہ مکرمہ کا حج ہر اس مسلمان پر زندگی میں ایک بار فرض ہے جو جسمانی اور مالی طور پر قادر ہو اور یہ دنیا کا سب سے بڑا سالانہ انسانی اجتماع ہے۔",
   "@pillar5Detail": {
     "description": "pillar5Detail"
+  },
+  "switchedToNewMuslimMode": "نئے مسلم موڈ پر سوئچ کیا گیا",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "باقاعدہ موڈ پر سوئچ کیا گیا",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
   }
 }

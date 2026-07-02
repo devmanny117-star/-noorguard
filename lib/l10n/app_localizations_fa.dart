@@ -2741,6 +2741,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get shareCardVerseLabel => '✦ آیه قرآن';
 
   @override
+  String get shareCardAsmaLabel => '✦ اسماء الحسنی';
+
+  @override
   String get shareAyahSubtitle => 'از ۳۰ آیه قرآنی انتخاب کنید';
 
   @override
@@ -2858,4 +2861,10 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get pillar5Detail =>
       'حج به مکه برای هر مسلمانی که از نظر جسمی و مالی قادر باشد یک بار در عمر واجب است. همچنین بزرگ‌ترین گردهمایی سالانه مردم در روی زمین است.';
+
+  @override
+  String get switchedToNewMuslimMode => 'به حالت مسلمان جدید تغییر یافت';
+
+  @override
+  String get switchedToRegularMode => 'به حالت عادی تغییر یافت';
 }
