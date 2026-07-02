@@ -73,10 +73,10 @@ class FeatureGrid extends StatelessWidget {
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 3),
       child: Container(
         width: double.infinity,
-        clipBehavior: Clip.antiAlias,
+        clipBehavior: Clip.none,
         decoration: BoxDecoration(
           color: _kBg,
           borderRadius: BorderRadius.circular(24),
@@ -139,7 +139,7 @@ class FeatureCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AspectRatio(
-        aspectRatio: 1.2,
+        aspectRatio: 1.15,
         child: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -163,9 +163,8 @@ class FeatureCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Icon(icon, color: _kGold, size: 26),
               const SizedBox(height: 4),
-              Icon(icon, color: _kGold, size: 32),
-              const SizedBox(height: 8),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Text(
@@ -183,7 +182,6 @@ class FeatureCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              const SizedBox(height: 4),
             ],
           ),
         ),
@@ -283,7 +281,7 @@ class RevertCornerCard extends StatelessWidget {
       ),
       child: Container(
         height: 140,
-        margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+        margin: const EdgeInsets.only(left: 18, right: 18, top: 8),
         decoration: BoxDecoration(
           color: const Color(0xFF0D1B2A),
           borderRadius: BorderRadius.circular(20),

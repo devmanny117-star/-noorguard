@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../data/duas_data.dart';
-import '../theme/app_theme.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/font_size_slider.dart';
+import '../widgets/geometric_pattern_painter.dart';
+
+const _kNavy  = Color(0xFF0D1B2A);
+const _kCard  = Color(0xFF152840);
+const _kGold  = Color(0xFFC9A84C);
+const _kCream = Color(0xFFF5EFE6);
 
 class DuasScreen extends StatefulWidget {
   const DuasScreen({super.key});
@@ -97,67 +102,76 @@ class _DuasScreenState extends State<DuasScreen>
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
     final duas = _visibleDuas;
 
     return Scaffold(
-      backgroundColor: colors.background,
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          _DuasSliverAppBar(
-            searchController: _searchController,
-            selectedCategoryId: _selectedCategoryId,
-            onCategorySelected: _selectCategory,
-          ),
-          SliverToBoxAdapter(
-            child: FontSizeSlider(
-              index: _fontScaleIndex,
-              onChanged: _onFontScaleChanged,
+      backgroundColor: _kNavy,
+      body: Stack(
+        children: [
+          const Positioned.fill(
+            child: CustomPaint(
+              painter: GeometricPatternPainter(color: _kGold, alpha: 0.04),
             ),
           ),
-          SliverToBoxAdapter(
-            child: MediaQuery(
-              data: MediaQuery.of(context).copyWith(
-                textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+          CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              _DuasSliverAppBar(
+                searchController: _searchController,
+                selectedCategoryId: _selectedCategoryId,
+                onCategorySelected: _selectCategory,
               ),
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: duas.isEmpty
-                    ? const _EmptyState()
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 20, 20, 4),
-                            child: Text(
-                              l10n.supplications(duas.length),
-                              style: GoogleFonts.lato(
-                                fontSize: 12,
-                                color: colors.secondaryText,
-                                fontWeight: FontWeight.w500,
+              SliverToBoxAdapter(
+                child: _PremiumFontSizeSlider(
+                  index: _fontScaleIndex,
+                  onChanged: _onFontScaleChanged,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: MediaQuery(
+                  data: MediaQuery.of(context).copyWith(
+                    textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
+                  ),
+                  child: FadeTransition(
+                    opacity: _fadeAnimation,
+                    child: duas.isEmpty
+                        ? const _EmptyState()
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(20, 16, 20, 4),
+                                child: Text(
+                                  l10n.supplications(duas.length),
+                                  style: GoogleFonts.lato(
+                                    fontSize: 12,
+                                    color: _kCream.withValues(alpha: 0.45),
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
                               ),
-                            ),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                padding: const EdgeInsets.fromLTRB(16, 6, 16, 40),
+                                itemCount: duas.length,
+                                itemBuilder: (context, i) {
+                                  final globalIndex = allDuas.indexOf(duas[i]);
+                                  return _DuaCard(
+                                    dua: duas[i],
+                                    isBookmarked: _bookmarked.contains(globalIndex),
+                                    onBookmarkTap: () => _toggleBookmark(globalIndex),
+                                  );
+                                },
+                              ),
+                            ],
                           ),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: const EdgeInsets.fromLTRB(16, 6, 16, 24),
-                            itemCount: duas.length,
-                            itemBuilder: (context, i) {
-                              final globalIndex = allDuas.indexOf(duas[i]);
-                              return _DuaCard(
-                                dua: duas[i],
-                                isBookmarked: _bookmarked.contains(globalIndex),
-                                onBookmarkTap: () => _toggleBookmark(globalIndex),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
@@ -180,28 +194,34 @@ class _DuasSliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
-
     return SliverAppBar(
       pinned: true,
-      expandedHeight: 176,
-      backgroundColor: colors.background,
+      expandedHeight: 160,
+      backgroundColor: _kNavy,
+      surfaceTintColor: Colors.transparent,
       elevation: 0,
-      scrolledUnderElevation: 0.6,
-      shadowColor: Colors.black.withValues(alpha: 0.08),
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios_rounded,
-            size: 20, color: colors.primaryText),
-        onPressed: () => Navigator.pop(context),
+      scrolledUnderElevation: 0,
+      leading: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Container(
+          margin: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: _kCard,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: _kGold.withValues(alpha: 0.3)),
+          ),
+          child: const Icon(Icons.arrow_back_ios_new_rounded,
+              size: 16, color: _kGold),
+        ),
       ),
-      flexibleSpace: FlexibleSpaceBar(
+      flexibleSpace: const FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
         background: _Header(),
       ),
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(104),
+        preferredSize: const Size.fromHeight(100),
         child: Container(
-          color: colors.background,
+          color: _kNavy,
           child: Column(
             children: [
               _SearchBar(controller: searchController),
@@ -210,8 +230,11 @@ class _DuasSliverAppBar extends StatelessWidget {
                 selected: selectedCategoryId,
                 onSelected: onCategorySelected,
               ),
-              const SizedBox(height: 6),
-              Container(height: 1, color: colors.border),
+              const SizedBox(height: 8),
+              Container(
+                height: 1,
+                color: _kGold.withValues(alpha: 0.15),
+              ),
             ],
           ),
         ),
@@ -223,14 +246,15 @@ class _DuasSliverAppBar extends StatelessWidget {
 // ─── Header ───────────────────────────────────────────────────────────────────
 
 class _Header extends StatelessWidget {
+  const _Header();
+
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
 
     return Container(
-      color: colors.background,
-      padding: const EdgeInsets.only(top: 90, left: 22, right: 22, bottom: 8),
+      color: _kNavy,
+      padding: const EdgeInsets.only(top: 88, left: 22, right: 22, bottom: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -246,7 +270,7 @@ class _Header extends StatelessWidget {
                       style: GoogleFonts.playfairDisplay(
                         fontSize: 32,
                         fontWeight: FontWeight.w800,
-                        color: colors.primaryText,
+                        color: _kCream,
                         height: 1.1,
                       ),
                     ),
@@ -255,7 +279,7 @@ class _Header extends StatelessWidget {
                       l10n.dailySupplications,
                       style: GoogleFonts.lato(
                         fontSize: 14,
-                        color: colors.secondaryText,
+                        color: _kCream.withValues(alpha: 0.55),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -266,7 +290,7 @@ class _Header extends StatelessWidget {
                 'دُعَاء',
                 style: GoogleFonts.scheherazadeNew(
                   fontSize: 38,
-                  color: AppColors.gold.withValues(alpha: 0.15),
+                  color: _kGold.withValues(alpha: 0.18),
                   height: 1.0,
                 ),
               ),
@@ -277,7 +301,7 @@ class _Header extends StatelessWidget {
             height: 2,
             width: 40,
             decoration: BoxDecoration(
-              color: AppColors.gold,
+              color: _kGold,
               borderRadius: BorderRadius.circular(2),
             ),
           ),
@@ -295,7 +319,6 @@ class _SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
 
     return Padding(
@@ -303,25 +326,23 @@ class _SearchBar extends StatelessWidget {
       child: Container(
         height: 44,
         decoration: BoxDecoration(
-          color: colors.secondaryBg,
+          color: _kCard,
           borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: _kGold.withValues(alpha: 0.4)),
         ),
         child: TextField(
           controller: controller,
-          style: GoogleFonts.lato(
-            fontSize: 14,
-            color: colors.primaryText,
-          ),
+          style: GoogleFonts.lato(fontSize: 14, color: _kCream),
           decoration: InputDecoration(
             hintText: l10n.searchDuas,
             hintStyle: GoogleFonts.lato(
               fontSize: 14,
-              color: colors.secondaryText,
+              color: _kCream.withValues(alpha: 0.35),
             ),
             prefixIcon: Icon(
               Icons.search_rounded,
               size: 20,
-              color: colors.secondaryText,
+              color: _kGold.withValues(alpha: 0.8),
             ),
             suffixIcon: ValueListenableBuilder<TextEditingValue>(
               valueListenable: controller,
@@ -332,7 +353,7 @@ class _SearchBar extends StatelessWidget {
                       child: Icon(
                         Icons.cancel_rounded,
                         size: 18,
-                        color: colors.secondaryText,
+                        color: _kGold.withValues(alpha: 0.6),
                       ),
                     ),
             ),
@@ -347,28 +368,17 @@ class _SearchBar extends StatelessWidget {
 
 String _localizedCategoryLabel(AppLocalizations l10n, DuaCategory category) {
   switch (category.id) {
-    case 'morning_evening':
-      return l10n.morningAndEvening;
-    case 'prayer':
-      return l10n.prayer;
-    case 'food':
-      return l10n.foodAndDrink;
-    case 'travel':
-      return l10n.travel;
-    case 'home':
-      return l10n.home;
-    case 'anxiety':
-      return l10n.anxietyAndStress;
-    case 'gratitude':
-      return l10n.gratitude;
-    case 'protection':
-      return l10n.protection;
-    case 'family':
-      return l10n.family;
-    case 'forgiveness':
-      return l10n.forgiveness;
-    default:
-      return category.label;
+    case 'morning_evening': return l10n.morningAndEvening;
+    case 'prayer':          return l10n.prayer;
+    case 'food':            return l10n.foodAndDrink;
+    case 'travel':          return l10n.travel;
+    case 'home':            return l10n.home;
+    case 'anxiety':         return l10n.anxietyAndStress;
+    case 'gratitude':       return l10n.gratitude;
+    case 'protection':      return l10n.protection;
+    case 'family':          return l10n.family;
+    case 'forgiveness':     return l10n.forgiveness;
+    default:                return category.label;
   }
 }
 
@@ -382,7 +392,6 @@ class _CategoryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
     final categories = [
       ('all', l10n.all, '📖'),
@@ -406,8 +415,14 @@ class _CategoryRow extends StatelessWidget {
               curve: Curves.easeOut,
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               decoration: BoxDecoration(
-                color: isActive ? AppColors.gold : colors.secondaryBg,
+                color: isActive ? _kGold : Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: isActive
+                      ? _kGold
+                      : _kGold.withValues(alpha: 0.35),
+                  width: 1,
+                ),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -419,7 +434,7 @@ class _CategoryRow extends StatelessWidget {
                     style: GoogleFonts.lato(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
-                      color: isActive ? Colors.white : colors.secondaryText,
+                      color: isActive ? _kNavy : _kCream.withValues(alpha: 0.7),
                     ),
                   ),
                 ],
@@ -427,6 +442,62 @@ class _CategoryRow extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+// ─── Font Size Slider ─────────────────────────────────────────────────────────
+
+class _PremiumFontSizeSlider extends StatelessWidget {
+  final int index;
+  final ValueChanged<int> onChanged;
+
+  const _PremiumFontSizeSlider({required this.index, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 10, 20, 4),
+      child: Row(
+        children: [
+          Text(
+            'A',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: _kGold.withValues(alpha: 0.45),
+            ),
+          ),
+          Expanded(
+            child: SliderTheme(
+              data: SliderThemeData(
+                trackHeight: 2,
+                activeTrackColor: _kGold.withValues(alpha: 0.7),
+                inactiveTrackColor: _kGold.withValues(alpha: 0.15),
+                thumbColor: _kGold,
+                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6),
+                overlayShape: const RoundSliderOverlayShape(overlayRadius: 14),
+                tickMarkShape: SliderTickMarkShape.noTickMark,
+              ),
+              child: Slider(
+                value: index.toDouble(),
+                min: 0,
+                max: (kFontScaleSteps.length - 1).toDouble(),
+                divisions: kFontScaleSteps.length - 1,
+                onChanged: (v) => onChanged(v.round()),
+              ),
+            ),
+          ),
+          Text(
+            'A',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: _kGold.withValues(alpha: 0.9),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -453,26 +524,26 @@ class _DuaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final translation = _localizedTranslation(context);
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 14),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: colors.cardBg,
+        color: _kCard,
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: _kGold.withValues(alpha: 0.35), width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.055),
-            blurRadius: 14,
-            offset: const Offset(0, 4),
+            color: Colors.black.withValues(alpha: 0.25),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
         ],
-        border: Border.all(color: colors.border, width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // Arabic text + bookmark
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 20, 16, 16),
             child: Row(
@@ -484,13 +555,13 @@ class _DuaCard extends StatelessWidget {
                     textAlign: TextAlign.right,
                     textDirection: TextDirection.rtl,
                     style: GoogleFonts.scheherazadeNew(
-                      fontSize: 24,
-                      color: colors.primaryText,
+                      fontSize: 26,
+                      color: _kGold,
                       height: 1.85,
                     ),
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 10),
                 GestureDetector(
                   onTap: onBookmarkTap,
                   child: AnimatedSwitcher(
@@ -503,7 +574,7 @@ class _DuaCard extends StatelessWidget {
                           : Icons.bookmark_border_rounded,
                       key: ValueKey(isBookmarked),
                       size: 22,
-                      color: isBookmarked ? AppColors.gold : colors.secondaryText,
+                      color: _kGold,
                     ),
                   ),
                 ),
@@ -511,6 +582,7 @@ class _DuaCard extends StatelessWidget {
             ),
           ),
 
+          // Divider
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
@@ -518,10 +590,16 @@ class _DuaCard extends StatelessWidget {
                 Container(
                   height: 1.5,
                   width: 36,
-                  color: AppColors.gold,
+                  decoration: BoxDecoration(
+                    color: _kGold,
+                    borderRadius: BorderRadius.circular(1),
+                  ),
                 ),
                 Expanded(
-                  child: Container(height: 1, color: colors.border),
+                  child: Container(
+                    height: 1,
+                    color: _kGold.withValues(alpha: 0.15),
+                  ),
                 ),
               ],
             ),
@@ -529,6 +607,7 @@ class _DuaCard extends StatelessWidget {
 
           const SizedBox(height: 14),
 
+          // Transliteration
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
@@ -536,12 +615,13 @@ class _DuaCard extends StatelessWidget {
               style: GoogleFonts.lato(
                 fontSize: 13,
                 fontStyle: FontStyle.italic,
-                color: colors.secondaryText,
+                color: _kCream.withValues(alpha: 0.6),
                 height: 1.6,
               ),
             ),
           ),
 
+          // Translation
           if (translation != null) ...[
             const SizedBox(height: 10),
             Padding(
@@ -550,7 +630,7 @@ class _DuaCard extends StatelessWidget {
                 translation,
                 style: GoogleFonts.lato(
                   fontSize: 14,
-                  color: colors.primaryText,
+                  color: _kCream.withValues(alpha: 0.88),
                   height: 1.6,
                   fontWeight: FontWeight.w500,
                 ),
@@ -560,9 +640,13 @@ class _DuaCard extends StatelessWidget {
 
           const SizedBox(height: 14),
 
+          // Source footer
           Container(
             decoration: BoxDecoration(
-              color: colors.secondaryBg,
+              color: _kNavy.withValues(alpha: 0.5),
+              border: Border(
+                top: BorderSide(color: _kGold.withValues(alpha: 0.15)),
+              ),
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
@@ -571,15 +655,15 @@ class _DuaCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Row(
               children: [
-                const Icon(Icons.menu_book_outlined,
-                    size: 13, color: AppColors.gold),
+                Icon(Icons.menu_book_outlined,
+                    size: 13, color: _kGold.withValues(alpha: 0.8)),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(
                     dua.source,
                     style: GoogleFonts.lato(
                       fontSize: 11.5,
-                      color: AppColors.gold,
+                      color: _kGold,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -600,7 +684,6 @@ class _EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
 
     return Padding(
@@ -614,14 +697,17 @@ class _EmptyState extends StatelessWidget {
             style: GoogleFonts.playfairDisplay(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: colors.primaryText,
+              color: _kCream,
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
           Text(
             l10n.duasSearchEmpty,
-            style: GoogleFonts.lato(fontSize: 13, color: colors.secondaryText),
+            style: GoogleFonts.lato(
+              fontSize: 13,
+              color: _kCream.withValues(alpha: 0.5),
+            ),
             textAlign: TextAlign.center,
           ),
         ],

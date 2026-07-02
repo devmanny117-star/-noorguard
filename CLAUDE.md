@@ -210,3 +210,50 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 - The `IndexedStack` in `home_screen.dart` holds placeholder tabs; replace with real screen widgets as features are built
 - Arabic text uses `Scheherazade New` from google_fonts — import it before using
 - Keep warm/cream tones; avoid pure white or cold blue; the brand is warm and grounded
+
+---
+
+## Workflow Rules
+
+- Never explain GitHub setup or ask about pushing to GitHub unprompted
+- Always put prompts and commands in code blocks
+- Be concise — no long explanations unless asked
+- No motivational filler phrases
+- After every fix, remind Manny to test on Z Fold 7 (`flutter run -d RFCY71SEQZJ`) or iPhone 17e (`flutter run -d 00008150-00093840119B401C`)
+- To view UI always suggest: `flutter run -d chrome`
+
+---
+
+## Languages
+
+- App supports **16 languages** (Persian/Farsi added June 2026)
+- Every feature must work in ALL 16 languages from day one — never ship English-only
+- Languages: English, Arabic, Urdu, Mexican Spanish, French, Indonesian, Chinese, Japanese, Bengali, Turkish, Swahili, German, Dutch, Portuguese, Italian, Persian/Farsi
+
+---
+
+## Key Fixes (Lessons Learned)
+
+- **Home screen overflow:** `AspectRatio` changed from `1.2` to `1.15` in `feature_grid.dart`
+- **BeginnerHomeScreen gap:** use `Column + Spacer() + SizedBox(16)` not hardcoded padding in `SliverFillRemaining`
+- **Block screen speed:** `BlockScreenCache` pre-loads bitmaps at startup
+- **App selector speed:** installed apps pre-loaded in background at startup
+- **Notification toggle:** must gate ALL layers — Dart + native Android + foreground service
+- **iOS HomeWidget:** all calls guarded with `Platform.isAndroid`
+- **Quran search:** uses `QuranFullIndex` with 6,236 ayahs, synonym expansion, 16 languages
+
+---
+
+## Git Tags
+
+- `v1-pre-launch-stable` — safe restore point before overflow fixes
+- `v1-pre-launch-stable-2` — safe restore point after overflow fixes
+
+---
+
+## Design System
+
+- **Colors:** dark navy `#0D1B2A`, gold `#C9A84C`, cream `#F5EFE6`
+- **Fonts:** Playfair Display for headings, Scheherazade New for Arabic/Persian text
+- **No moon emoji** — use `Icons.nightlight_round` colored `#C9A84C`
+- Premium aesthetic throughout — this is a paid app

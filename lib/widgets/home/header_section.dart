@@ -13,12 +13,12 @@ import '../../l10n/app_localizations.dart';
 const _kNotificationsOffRed = Color(0xFFEF5350);
 
 class HeaderSection extends StatelessWidget {
-  final VoidCallback onOpenSettings;
+  final VoidCallback onShare;
   final String userName;
 
   const HeaderSection({
     super.key,
-    required this.onOpenSettings,
+    required this.onShare,
     this.userName = '',
   });
 
@@ -97,10 +97,10 @@ class HeaderSection extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               _CircleButton(
-                onTap: onOpenSettings,
-                child: Icon(
-                  Icons.settings_outlined,
-                  color: colors.primaryText,
+                onTap: onShare,
+                child: const Icon(
+                  Icons.share_rounded,
+                  color: Color(0xFFC9A84C),
                   size: 21,
                 ),
               ),

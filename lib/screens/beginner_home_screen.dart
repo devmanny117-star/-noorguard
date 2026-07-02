@@ -11,6 +11,7 @@ import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
 import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/home/header_section.dart';
+import '../widgets/share_sheet.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
 import '../widgets/home/premium_bottom_nav.dart';
@@ -89,7 +90,6 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
               index: _selectedIndex,
               children: [
                 _BeginnerBody(
-                  onOpenSettings: () => setState(() => _selectedIndex = 3),
                   onOpenPrayers:  () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const PrayersScreen()),
@@ -114,11 +114,9 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
 // ── Body (home tab) ────────────────────────────────────────────────────────────
 
 class _BeginnerBody extends StatefulWidget {
-  final VoidCallback onOpenSettings;
   final VoidCallback onOpenPrayers;
 
   const _BeginnerBody({
-    required this.onOpenSettings,
     required this.onOpenPrayers,
   });
 
@@ -282,7 +280,7 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
           delegate: SliverChildListDelegate([
             const SizedBox(height: 4),
             HeaderSection(
-              onOpenSettings: widget.onOpenSettings,
+              onShare: () => showShareSheet(context),
               userName: _userName,
             ),
             const SizedBox(height: 6),

@@ -22,6 +22,7 @@ import 'quran_screen.dart';
 import 'settings_screen.dart';
 import 'surah_screen.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/share_sheet.dart';
 
 // Always available offline as the ayah-challenge's reading target — avoids
 // waiting on fetchSurahs() just to resolve this one well-known surah's
@@ -67,7 +68,6 @@ class _HomeScreenState extends State<HomeScreen> {
             index: _selectedIndex,
             children: [
               _HomeBody(
-                onOpenSettings: () => setState(() => _selectedIndex = 3),
                 onOpenPrayers: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const PrayersScreen()),
@@ -89,10 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _HomeBody extends StatefulWidget {
-  final VoidCallback onOpenSettings;
   final VoidCallback onOpenPrayers;
 
-  const _HomeBody({required this.onOpenSettings, required this.onOpenPrayers});
+  const _HomeBody({required this.onOpenPrayers});
 
   @override
   State<_HomeBody> createState() => _HomeBodyState();
@@ -295,7 +294,7 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 4),
-          HeaderSection(onOpenSettings: widget.onOpenSettings, userName: _userName),
+          HeaderSection(onShare: () => showShareSheet(context), userName: _userName),
           const SizedBox(height: 6),
           PrayerTimesCard(prayers: _prayers, onNextPrayerTap: widget.onOpenPrayers),
           const HeroCard(),

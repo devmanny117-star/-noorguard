@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/geometric_pattern_painter.dart';
 import 'beginner_home_screen.dart';
 import 'home_screen.dart';
 
@@ -378,7 +379,7 @@ class _NamePageState extends State<_NamePage> {
             child: Column(
               children: [
                 const SizedBox(height: 32),
-                const _IconCircle(icon: Icons.person_outline_rounded),
+                const _IslamicStarCircle(),
                 const SizedBox(height: 28),
                 Text(
                   l10n.onboardingWhatsYourName,
@@ -836,57 +837,90 @@ class _ModeCard extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.all(18),
         decoration: BoxDecoration(
-          color: selected ? _gold.withValues(alpha: 0.07) : _cardBg,
+          color: selected ? _gold.withValues(alpha: 0.09) : _cardBg,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: selected ? _gold : _cardBorder,
-            width: selected ? 1.5 : 1,
+            width: selected ? 2.0 : 1,
           ),
+          boxShadow: selected
+              ? [
+                  BoxShadow(
+                    color: _gold.withValues(alpha: 0.24),
+                    blurRadius: 18,
+                    spreadRadius: 1,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
+              : null,
         ),
-        child: Row(
+        child: Stack(
           children: [
-            Container(
-              width: 46,
-              height: 46,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: selected
-                    ? _gold.withValues(alpha: 0.14)
-                    : _cardBorder,
+            // Islamic geometric pattern background
+            Positioned.fill(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: CustomPaint(
+                  painter: GeometricPatternPainter(
+                    color: _gold,
+                    alpha: selected ? 0.09 : 0.05,
+                  ),
+                ),
               ),
-              child: Icon(icon,
-                  color: selected ? _gold : _grey, size: 22),
             ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Padding(
+              padding: const EdgeInsets.all(18),
+              child: Row(
                 children: [
-                  Text(
-                    title,
-                    style: GoogleFonts.lato(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: selected ? _white : _white.withValues(alpha: 0.80),
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    width: 46,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: selected
+                          ? _gold.withValues(alpha: 0.20)
+                          : _gold.withValues(alpha: 0.09),
+                      border: Border.all(
+                        color: _gold.withValues(alpha: selected ? 0.55 : 0.25),
+                        width: 1,
+                      ),
+                    ),
+                    child: Icon(icon, color: _gold, size: 22),
+                  ),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: GoogleFonts.lato(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: selected ? _white : _white.withValues(alpha: 0.80),
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          desc,
+                          style: GoogleFonts.lato(
+                              fontSize: 12, color: _grey, height: 1.4),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 3),
-                  Text(
-                    desc,
-                    style: GoogleFonts.lato(fontSize: 12, color: _grey, height: 1.4),
+                  const SizedBox(width: 8),
+                  Icon(
+                    selected
+                        ? Icons.check_circle_rounded
+                        : Icons.radio_button_unchecked,
+                    color: selected ? _gold : _grey.withValues(alpha: 0.50),
+                    size: 22,
                   ),
                 ],
               ),
-            ),
-            const SizedBox(width: 8),
-            Icon(
-              selected
-                  ? Icons.check_circle_rounded
-                  : Icons.radio_button_unchecked,
-              color: selected ? _gold : _grey.withValues(alpha: 0.50),
-              size: 22,
             ),
           ],
         ),
@@ -923,6 +957,81 @@ class _FeatureRow extends StatelessWidget {
       ],
     );
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ISLAMIC STAR ICON — Screen 2 avatar replacement
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _IslamicStarCircle extends StatelessWidget {
+  const _IslamicStarCircle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 80,
+      height: 80,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: _gold.withValues(alpha: 0.10),
+        border: Border.all(color: _gold.withValues(alpha: 0.40), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: _gold.withValues(alpha: 0.18),
+            blurRadius: 20,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: const CustomPaint(painter: _IslamicStarPainter()),
+    );
+  }
+}
+
+class _IslamicStarPainter extends CustomPainter {
+  const _IslamicStarPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final cx = size.width / 2;
+    final cy = size.height / 2;
+    final outerR = size.width * 0.30;
+    final innerR = outerR * 0.48;
+    const points = 8;
+
+    final path = Path();
+    for (int i = 0; i < points * 2; i++) {
+      final angle = (i * math.pi / points) - math.pi / 2;
+      final r = i.isEven ? outerR : innerR;
+      final x = cx + r * math.cos(angle);
+      final y = cy + r * math.sin(angle);
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+    path.close();
+
+    // Subtle outer glow
+    canvas.drawPath(
+      path,
+      Paint()
+        ..color = _gold.withValues(alpha: 0.18)
+        ..style = PaintingStyle.fill
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+    );
+    // Solid gold star
+    canvas.drawPath(
+      path,
+      Paint()
+        ..color = _gold
+        ..style = PaintingStyle.fill,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_IslamicStarPainter _) => false;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

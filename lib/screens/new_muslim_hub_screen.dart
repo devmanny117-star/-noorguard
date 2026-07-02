@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
+import 'back_to_basics_screen.dart';
 import 'community_stories_screen.dart';
 import 'how_to_pray_screen.dart';
 import 'islamic_glossary_screen.dart';
-import 'new_muslim_checklist_screen.dart';
 import 'why_do_we_screen.dart';
 import 'wudu_guide_screen.dart';
 
@@ -31,6 +31,12 @@ class NewMuslimHubScreen extends StatelessWidget {
 
   static List<_HubItem> _items(AppLocalizations l10n) => [
     _HubItem(
+      title: l10n.backToBasics,
+      subtitle: l10n.backToBasicsSubtitle,
+      icon: Icons.auto_stories_outlined,
+      destination: const BackToBasicsScreen(),
+    ),
+    _HubItem(
       title: l10n.wuduGuide,
       subtitle: l10n.wuduGuideSubtitle,
       icon: Icons.water_drop_outlined,
@@ -41,12 +47,6 @@ class NewMuslimHubScreen extends StatelessWidget {
       subtitle: l10n.howToPraySubtitle,
       icon: Icons.mosque_outlined,
       destination: const HowToPrayScreen(),
-    ),
-    _HubItem(
-      title: l10n.newMuslimChecklist,
-      subtitle: l10n.newMuslimChecklistSubtitle,
-      icon: Icons.checklist_rounded,
-      destination: const NewMuslimChecklistScreen(),
     ),
     _HubItem(
       title: l10n.islamicGlossary,

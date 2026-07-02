@@ -36,6 +36,7 @@ dependencies:
   home_widget: ^0.9.3
   wakelock_plus: ^1.6.1
   flutter_svg: ^2.0.10+1
+  share_plus: ^13.2.0
 
 dev_dependencies:
   flutter_test:

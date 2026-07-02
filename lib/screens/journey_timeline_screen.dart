@@ -12,6 +12,7 @@ import 'islamic_glossary_screen.dart';
 import 'new_muslim_hub_screen.dart';
 import 'shahada_screen.dart';
 import 'surah_screen.dart';
+import 'why_do_we_screen.dart';
 import 'wudu_guide_screen.dart';
 
 const _kNavy   = Color(0xFF0D1B2A);
@@ -72,7 +73,7 @@ class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
       case 3: return const HowToPrayScreen();
       case 4: return const DuasScreen();
       case 5: return const IslamicGlossaryScreen();
-      case 6: return const NewMuslimHubScreen();
+      case 6: return const WhyDoWeScreen();
       default: return const NewMuslimHubScreen();
     }
   }
@@ -222,7 +223,7 @@ class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
     l10n.beginnerEssential3, // How to Pray
     l10n.beginnerEssential5, // Daily Duas
     l10n.beginnerEssential7, // Glossary
-    l10n.beginnerEssential1, // New Muslim Guide
+    l10n.whyDoWe, // Why Do We...
   ];
 
   List<String> _buildMonth2Tasks(AppLocalizations l10n) => [

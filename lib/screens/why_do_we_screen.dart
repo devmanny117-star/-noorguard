@@ -120,7 +120,6 @@ class _WhyDoWeScreenState extends State<WhyDoWeScreen> {
                     icon: topic.icon,
                     question: topic.question(l10n),
                     answer: topic.answer(l10n),
-                    sourceBadge: l10n.whyDoWeSourceBadge,
                     isOpen: isOpen,
                     onTap: () => setState(() => _expanded = isOpen ? null : i),
                   );
@@ -183,7 +182,6 @@ class _TopicCard extends StatelessWidget {
   final IconData icon;
   final String question;
   final String answer;
-  final String sourceBadge;
   final bool isOpen;
   final VoidCallback onTap;
 
@@ -192,7 +190,6 @@ class _TopicCard extends StatelessWidget {
     required this.icon,
     required this.question,
     required this.answer,
-    required this.sourceBadge,
     required this.isOpen,
     required this.onTap,
   });
@@ -288,33 +285,6 @@ class _TopicCard extends StatelessWidget {
                         fontSize: 13.5,
                         color: Colors.white.withValues(alpha: 0.82),
                         height: 1.6,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: _gold.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(8),
-                        border:
-                            Border.all(color: _gold.withValues(alpha: 0.3)),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.menu_book_outlined,
-                              size: 12, color: _gold.withValues(alpha: 0.85)),
-                          const SizedBox(width: 5),
-                          Text(
-                            sourceBadge,
-                            style: GoogleFonts.lato(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w700,
-                              color: _gold.withValues(alpha: 0.9),
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                   ],
