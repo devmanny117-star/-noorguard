@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "Normal Moda geçildi",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard Canlı",
+  "liveNotifChannelDescription": "Kilit ekranınızda namaz geri sayımı ve günlük İslami içerik",
+  "liveNotifHeaderAyah": "GÜNÜN AYETİ",
+  "liveNotifHeaderDua": "GÜNÜN DUASI",
+  "liveNotifHeaderWord": "GÜNÜN KELİMESİ",
+  "liveNotifHeaderName": "ALLAH'IN İSMİ",
+  "liveNotifHeaderHadith": "GÜNÜN HADİSİ",
+  "liveNotifCountdownHoursMinutes": "{hours} sa {minutes} dk sonra",
+  "liveNotifCountdownMinutes": "{minutes} dk sonra",
+  "liveNotifCountdownNow": "Namaz vakti geldi"
 }

@@ -2878,4 +2878,39 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'সাধারণ মোডে পরিবর্তন করা হয়েছে';
+
+  @override
+  String get liveNotifChannelName => 'Noor Guard লাইভ';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'লক স্ক্রিনে নামাজের কাউন্টডাউন এবং দৈনিক ইসলামিক বিষয়বস্তু';
+
+  @override
+  String get liveNotifHeaderAyah => 'আজকের আয়াত';
+
+  @override
+  String get liveNotifHeaderDua => 'আজকের দোয়া';
+
+  @override
+  String get liveNotifHeaderWord => 'আজকের শব্দ';
+
+  @override
+  String get liveNotifHeaderName => 'আল্লাহর নাম';
+
+  @override
+  String get liveNotifHeaderHadith => 'আজকের হাদিস';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return '$hours ঘণ্টা $minutes মিনিট পরে';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return '$minutes মিনিট পরে';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'নামাজের সময় হয়েছে';
 }

@@ -2884,4 +2884,39 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'Overgeschakeld naar normale modus';
+
+  @override
+  String get liveNotifChannelName => 'Noor Guard Live';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'Gebedsaftelling en dagelijkse islamitische content op je vergrendelscherm';
+
+  @override
+  String get liveNotifHeaderAyah => 'AYAH VAN DE DAG';
+
+  @override
+  String get liveNotifHeaderDua => 'DUA VAN DE DAG';
+
+  @override
+  String get liveNotifHeaderWord => 'WOORD VAN DE DAG';
+
+  @override
+  String get liveNotifHeaderName => 'NAAM VAN ALLAH';
+
+  @override
+  String get liveNotifHeaderHadith => 'HADITH VAN DE DAG';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return 'over ${hours}u ${minutes}m';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return 'over ${minutes}m';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'Tijd om te bidden';
 }

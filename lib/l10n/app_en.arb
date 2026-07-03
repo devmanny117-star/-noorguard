@@ -3560,5 +3560,58 @@
   "switchedToRegularMode": "Switched to Regular Mode",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
+  },
+  "liveNotifChannelName": "Noor Guard Live",
+  "@liveNotifChannelName": {
+    "description": "Android notification channel name for the persistent live lock-screen notification"
+  },
+  "liveNotifChannelDescription": "Prayer countdown and daily Islamic content on your lock screen",
+  "@liveNotifChannelDescription": {
+    "description": "Android notification channel description for the persistent live lock-screen notification"
+  },
+  "liveNotifHeaderAyah": "AYAH OF THE DAY",
+  "@liveNotifHeaderAyah": {
+    "description": "Header above the rotating daily ayah in the live notification (uppercase where the script has case)"
+  },
+  "liveNotifHeaderDua": "DAILY DUA",
+  "@liveNotifHeaderDua": {
+    "description": "Header above the rotating daily dua in the live notification"
+  },
+  "liveNotifHeaderWord": "WORD OF THE DAY",
+  "@liveNotifHeaderWord": {
+    "description": "Header above the rotating daily glossary word in the live notification"
+  },
+  "liveNotifHeaderName": "NAME OF ALLAH",
+  "@liveNotifHeaderName": {
+    "description": "Header above the rotating daily Name of Allah in the live notification"
+  },
+  "liveNotifHeaderHadith": "HADITH OF THE DAY",
+  "@liveNotifHeaderHadith": {
+    "description": "Header above the rotating daily hadith in the live notification"
+  },
+  "liveNotifCountdownHoursMinutes": "in {hours}h {minutes}m",
+  "@liveNotifCountdownHoursMinutes": {
+    "description": "Countdown to the next prayer, hours + minutes. Passed to native code as a template with literal {hours}/{minutes} placeholders.",
+    "placeholders": {
+      "hours": {
+        "type": "Object"
+      },
+      "minutes": {
+        "type": "Object"
+      }
+    }
+  },
+  "liveNotifCountdownMinutes": "in {minutes}m",
+  "@liveNotifCountdownMinutes": {
+    "description": "Countdown to the next prayer, under one hour. Passed to native code as a template with a literal {minutes} placeholder.",
+    "placeholders": {
+      "minutes": {
+        "type": "Object"
+      }
+    }
+  },
+  "liveNotifCountdownNow": "It's time to pray",
+  "@liveNotifCountdownNow": {
+    "description": "Shown in the live notification when the next prayer's time has arrived"
   }
 }

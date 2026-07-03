@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "تم التحويل إلى الوضع العادي",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "نور غارد مباشر",
+  "liveNotifChannelDescription": "العد التنازلي للصلاة ومحتوى إسلامي يومي على شاشة القفل",
+  "liveNotifHeaderAyah": "آية اليوم",
+  "liveNotifHeaderDua": "دعاء اليوم",
+  "liveNotifHeaderWord": "كلمة اليوم",
+  "liveNotifHeaderName": "اسم من أسماء الله الحسنى",
+  "liveNotifHeaderHadith": "حديث اليوم",
+  "liveNotifCountdownHoursMinutes": "بعد {hours} س {minutes} د",
+  "liveNotifCountdownMinutes": "بعد {minutes} د",
+  "liveNotifCountdownNow": "حان وقت الصلاة"
 }

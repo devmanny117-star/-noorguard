@@ -2886,4 +2886,39 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'Beralih ke Mode Reguler';
+
+  @override
+  String get liveNotifChannelName => 'Noor Guard Live';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'Hitung mundur salat dan konten Islami harian di layar kunci Anda';
+
+  @override
+  String get liveNotifHeaderAyah => 'AYAT HARI INI';
+
+  @override
+  String get liveNotifHeaderDua => 'DOA HARI INI';
+
+  @override
+  String get liveNotifHeaderWord => 'KATA HARI INI';
+
+  @override
+  String get liveNotifHeaderName => 'NAMA ALLAH';
+
+  @override
+  String get liveNotifHeaderHadith => 'HADIS HARI INI';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return 'dalam ${hours}j ${minutes}mnt';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return 'dalam ${minutes}mnt';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'Waktunya salat';
 }

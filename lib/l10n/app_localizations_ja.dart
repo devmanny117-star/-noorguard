@@ -2769,4 +2769,38 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => '通常モードに切り替えました';
+
+  @override
+  String get liveNotifChannelName => 'Noor Guard ライブ';
+
+  @override
+  String get liveNotifChannelDescription => 'ロック画面に礼拝カウントダウンと毎日のイスラーム・コンテンツを表示';
+
+  @override
+  String get liveNotifHeaderAyah => '今日のアーヤ';
+
+  @override
+  String get liveNotifHeaderDua => '今日のドゥアー';
+
+  @override
+  String get liveNotifHeaderWord => '今日の言葉';
+
+  @override
+  String get liveNotifHeaderName => 'アッラーの御名';
+
+  @override
+  String get liveNotifHeaderHadith => '今日のハディース';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return 'あと$hours時間$minutes分';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return 'あと$minutes分';
+  }
+
+  @override
+  String get liveNotifCountdownNow => '礼拝の時間です';
 }

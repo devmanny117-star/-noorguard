@@ -2872,4 +2872,39 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'Normal Moda geçildi';
+
+  @override
+  String get liveNotifChannelName => 'Noor Guard Canlı';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'Kilit ekranınızda namaz geri sayımı ve günlük İslami içerik';
+
+  @override
+  String get liveNotifHeaderAyah => 'GÜNÜN AYETİ';
+
+  @override
+  String get liveNotifHeaderDua => 'GÜNÜN DUASI';
+
+  @override
+  String get liveNotifHeaderWord => 'GÜNÜN KELİMESİ';
+
+  @override
+  String get liveNotifHeaderName => 'ALLAH\'IN İSMİ';
+
+  @override
+  String get liveNotifHeaderHadith => 'GÜNÜN HADİSİ';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return '$hours sa $minutes dk sonra';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return '$minutes dk sonra';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'Namaz vakti geldi';
 }

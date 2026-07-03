@@ -2833,4 +2833,39 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'تم التحويل إلى الوضع العادي';
+
+  @override
+  String get liveNotifChannelName => 'نور غارد مباشر';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'العد التنازلي للصلاة ومحتوى إسلامي يومي على شاشة القفل';
+
+  @override
+  String get liveNotifHeaderAyah => 'آية اليوم';
+
+  @override
+  String get liveNotifHeaderDua => 'دعاء اليوم';
+
+  @override
+  String get liveNotifHeaderWord => 'كلمة اليوم';
+
+  @override
+  String get liveNotifHeaderName => 'اسم من أسماء الله الحسنى';
+
+  @override
+  String get liveNotifHeaderHadith => 'حديث اليوم';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return 'بعد $hours س $minutes د';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return 'بعد $minutes د';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'حان وقت الصلاة';
 }

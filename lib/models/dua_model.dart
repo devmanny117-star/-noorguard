@@ -4,7 +4,7 @@ class Dua {
   final String source;
 
   /// Translations keyed by locale code (en, es, ur, fr, id, zh, ja, bn, tr,
-  /// sw, de, nl, pt, it). No 'ar' entry — Arabic-locale readers are served
+  /// sw, de, nl, pt, it, fa). No 'ar' entry — Arabic-locale readers are served
   /// directly by [arabic] above, the same convention used in duas_screen.dart.
   final Map<String, String> translations;
 
@@ -39,6 +39,7 @@ const List<Dua> lockScreenDuas = [
       'nl': 'O Allah, ik vraag U om vergeving en welzijn\nin dit leven en het volgende.',
       'pt': 'Ó Allah, peço-Te perdão e bem-estar\nnesta vida e na próxima.',
       'it': 'O Allah, Ti chiedo perdono e benessere\nin questa vita e nell\'altra.',
+      'fa': 'خدایا، از تو گذشت و عافیت را\nدر دنیا و آخرت می‌خواهم.',
     },
   ),
   Dua(
@@ -60,6 +61,7 @@ const List<Dua> lockScreenDuas = [
       'nl': 'Geprezen zij Allah en aan Hem behoort de lof.\nGeprezen zij Allah, de Verhevene.',
       'pt': 'Glorificado seja Allah e Seu é o louvor.\nGlorificado seja Allah, o Magnífico.',
       'it': 'Gloria ad Allah e a Lui appartiene la lode.\nGloria ad Allah, il Magnifico.',
+      'fa': 'پاک و منزه است خدا و ستایش از آن اوست.\nپاک و منزه است خدای بزرگ.',
     },
   ),
   Dua(
@@ -81,6 +83,7 @@ const List<Dua> lockScreenDuas = [
       'nl': 'Onze Heer, geef ons het goede in dit leven en het goede\nin het volgende, en bescherm ons tegen de bestraffing van het Vuur.',
       'pt': 'Senhor nosso, dá-nos o bem nesta vida e o bem\nna próxima, e protege-nos do castigo do Fogo.',
       'it': 'Signore nostro, dacci il bene in questa vita e il bene\nnell\'altra, e proteggici dal castigo del Fuoco.',
+      'fa': 'پروردگارا، در دنیا به ما نیکی عطا کن و در آخرت\nنیز نیکی، و ما را از عذاب آتش نگاه دار.',
     },
   ),
   Dua(
@@ -102,6 +105,7 @@ const List<Dua> lockScreenDuas = [
       'nl': 'Allah is ons genoeg, en Hij is de beste\nBeheerder, de beste Beschermer.',
       'pt': 'Allah nos basta, e Ele é o melhor\nadministrador, o melhor Protetor.',
       'it': 'Allah ci basta, ed Egli è il miglior\namministratore, il miglior Protettore.',
+      'fa': 'خدا ما را بس است و او بهترین\nکارساز و بهترین یاور است.',
     },
   ),
   Dua(
@@ -123,6 +127,7 @@ const List<Dua> lockScreenDuas = [
       'nl': 'Mijn Heer, verruim mijn borst\nen maak mijn taak gemakkelijk voor mij.',
       'pt': 'Senhor meu, expande o meu peito\ne facilita a minha tarefa.',
       'it': 'Signore mio, allarga il mio petto\ne facilita il mio compito.',
+      'fa': 'پروردگارا، سینه‌ام را برایم بگشا\nو کارم را برایم آسان گردان.',
     },
   ),
 ];
@@ -147,6 +152,7 @@ const List<Dua> focusDuas = [
       'nl': 'Geprezen zij Allah en aan Hem behoort de lof.',
       'pt': 'Glorificado seja Allah e Seu é o louvor.',
       'it': 'Gloria ad Allah e a Lui appartiene la lode.',
+      'fa': 'پاک و منزه است خدا و ستایش از آن اوست.',
     },
   ),
   Dua(
@@ -168,6 +174,7 @@ const List<Dua> focusDuas = [
       'nl': 'Allah is de Grootste, de Allergrootste.\nAlle overvloedige lof behoort aan Allah.',
       'pt': 'Allah é o maior, o Imenso.\nTodo louvor abundante pertence a Allah.',
       'it': 'Allah è il più grande, il Sommamente Grande.\nOgni abbondante lode appartiene ad Allah.',
+      'fa': 'خدا بزرگ‌تر است، بسیار بزرگ.\nو ستایش فراوان از آن خداست.',
     },
   ),
   Dua(
@@ -189,6 +196,7 @@ const List<Dua> focusDuas = [
       'nl': 'Er is geen god dan Allah,\nHem alleen, zonder enige partner.',
       'pt': 'Não há divindade senão Allah,\núnico, sem qualquer parceiro.',
       'it': 'Non c\'è divinità se non Allah,\nLui solo, senza alcun socio.',
+      'fa': 'معبودی جز خدا نیست،\nیگانه است و شریکی ندارد.',
     },
   ),
   Dua(
@@ -210,6 +218,7 @@ const List<Dua> focusDuas = [
       'nl': 'Ik vraag Allah, de Verhevene, om vergeving,\nnaast Wie niemand het recht heeft aanbeden te worden.',
       'pt': 'Peço perdão a Allah, o Magnífico,\nalém de Quem ninguém tem o direito de ser adorado.',
       'it': 'Chiedo perdono ad Allah, il Magnifico,\noltre il Quale nessuno ha il diritto di essere adorato.',
+      'fa': 'از خدای بزرگ آمرزش می‌خواهم،\nکه جز او هیچ معبود برحقی نیست.',
     },
   ),
 ];

@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "Zum normalen Modus gewechselt",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard Live",
+  "liveNotifChannelDescription": "Gebets-Countdown und tägliche islamische Inhalte auf dem Sperrbildschirm",
+  "liveNotifHeaderAyah": "AYA DES TAGES",
+  "liveNotifHeaderDua": "DUA DES TAGES",
+  "liveNotifHeaderWord": "WORT DES TAGES",
+  "liveNotifHeaderName": "NAME ALLAHS",
+  "liveNotifHeaderHadith": "HADITH DES TAGES",
+  "liveNotifCountdownHoursMinutes": "in {hours} Std. {minutes} Min.",
+  "liveNotifCountdownMinutes": "in {minutes} Min.",
+  "liveNotifCountdownNow": "Zeit zum Gebet"
 }

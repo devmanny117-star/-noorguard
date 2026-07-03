@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "Umebadilishwa hadi Hali ya Kawaida",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard Moja kwa Moja",
+  "liveNotifChannelDescription": "Hesabu ya kurudi nyuma ya sala na maudhui ya Kiislamu ya kila siku kwenye skrini yako ya kufunga",
+  "liveNotifHeaderAyah": "AYA YA LEO",
+  "liveNotifHeaderDua": "DUA YA LEO",
+  "liveNotifHeaderWord": "NENO LA LEO",
+  "liveNotifHeaderName": "JINA LA ALLAH",
+  "liveNotifHeaderHadith": "HADITHI YA LEO",
+  "liveNotifCountdownHoursMinutes": "baada ya saa {hours} na dakika {minutes}",
+  "liveNotifCountdownMinutes": "baada ya dakika {minutes}",
+  "liveNotifCountdownNow": "Ni wakati wa kusali"
 }

@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "通常モードに切り替えました",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard ライブ",
+  "liveNotifChannelDescription": "ロック画面に礼拝カウントダウンと毎日のイスラーム・コンテンツを表示",
+  "liveNotifHeaderAyah": "今日のアーヤ",
+  "liveNotifHeaderDua": "今日のドゥアー",
+  "liveNotifHeaderWord": "今日の言葉",
+  "liveNotifHeaderName": "アッラーの御名",
+  "liveNotifHeaderHadith": "今日のハディース",
+  "liveNotifCountdownHoursMinutes": "あと{hours}時間{minutes}分",
+  "liveNotifCountdownMinutes": "あと{minutes}分",
+  "liveNotifCountdownNow": "礼拝の時間です"
 }

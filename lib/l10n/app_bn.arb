@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "সাধারণ মোডে পরিবর্তন করা হয়েছে",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard লাইভ",
+  "liveNotifChannelDescription": "লক স্ক্রিনে নামাজের কাউন্টডাউন এবং দৈনিক ইসলামিক বিষয়বস্তু",
+  "liveNotifHeaderAyah": "আজকের আয়াত",
+  "liveNotifHeaderDua": "আজকের দোয়া",
+  "liveNotifHeaderWord": "আজকের শব্দ",
+  "liveNotifHeaderName": "আল্লাহর নাম",
+  "liveNotifHeaderHadith": "আজকের হাদিস",
+  "liveNotifCountdownHoursMinutes": "{hours} ঘণ্টা {minutes} মিনিট পরে",
+  "liveNotifCountdownMinutes": "{minutes} মিনিট পরে",
+  "liveNotifCountdownNow": "নামাজের সময় হয়েছে"
 }

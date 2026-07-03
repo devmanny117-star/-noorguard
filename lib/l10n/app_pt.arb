@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "Mudado para o Modo Regular",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard ao Vivo",
+  "liveNotifChannelDescription": "Contagem regressiva da oração e conteúdo islâmico diário na sua tela de bloqueio",
+  "liveNotifHeaderAyah": "AYAH DO DIA",
+  "liveNotifHeaderDua": "DUA DO DIA",
+  "liveNotifHeaderWord": "PALAVRA DO DIA",
+  "liveNotifHeaderName": "NOME DE ALLAH",
+  "liveNotifHeaderHadith": "HADITH DO DIA",
+  "liveNotifCountdownHoursMinutes": "em {hours}h {minutes}min",
+  "liveNotifCountdownMinutes": "em {minutes}min",
+  "liveNotifCountdownNow": "É hora de rezar"
 }

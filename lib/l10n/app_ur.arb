@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "باقاعدہ موڈ پر سوئچ کیا گیا",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "نور گارڈ لائیو",
+  "liveNotifChannelDescription": "لاک اسکرین پر نماز کا کاؤنٹ ڈاؤن اور روزانہ اسلامی مواد",
+  "liveNotifHeaderAyah": "آج کی آیت",
+  "liveNotifHeaderDua": "آج کی دعا",
+  "liveNotifHeaderWord": "آج کا لفظ",
+  "liveNotifHeaderName": "اللہ کا نام",
+  "liveNotifHeaderHadith": "آج کی حدیث",
+  "liveNotifCountdownHoursMinutes": "{hours} گھنٹے {minutes} منٹ میں",
+  "liveNotifCountdownMinutes": "{minutes} منٹ میں",
+  "liveNotifCountdownNow": "نماز کا وقت ہو گیا"
 }

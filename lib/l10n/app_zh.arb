@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "已切换到普通模式",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard 实时通知",
+  "liveNotifChannelDescription": "锁屏上的礼拜倒计时和每日伊斯兰内容",
+  "liveNotifHeaderAyah": "今日经文",
+  "liveNotifHeaderDua": "今日杜阿",
+  "liveNotifHeaderWord": "今日词汇",
+  "liveNotifHeaderName": "安拉的尊名",
+  "liveNotifHeaderHadith": "今日圣训",
+  "liveNotifCountdownHoursMinutes": "{hours}小时{minutes}分钟后",
+  "liveNotifCountdownMinutes": "{minutes}分钟后",
+  "liveNotifCountdownNow": "礼拜时间到了"
 }

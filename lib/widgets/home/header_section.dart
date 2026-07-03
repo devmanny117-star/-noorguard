@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '../../services/live_notification_service.dart';
 import '../../services/notification_service.dart';
 import '../../services/prayer_state.dart';
 import '../../theme/app_theme.dart';
@@ -148,11 +149,19 @@ class HeaderSection extends StatelessWidget {
     // foreground service running (or stopped) regardless of the new state,
     // since only the Settings screen's switch used to do this.
     if (enabled) {
+      // Refresh the live notification payload first when today's prayer
+      // times are already known, so the service comes back with a current
+      // countdown instead of the last session's.
+      final scheduled = PrayerState().scheduledPrayerTimes;
+      if (scheduled != null && context.mounted) {
+        await LiveNotificationService.push(context: context, prayers: scheduled);
+      }
+      if (!context.mounted) return;
       await NotificationService().startKeepAliveService(
         title: l10n.appName,
         text: l10n.keepAliveNotificationText,
-        channelName: l10n.keepAliveChannelName,
-        channelDescription: l10n.keepAliveChannelDescription,
+        channelName: l10n.liveNotifChannelName,
+        channelDescription: l10n.liveNotifChannelDescription,
       );
     } else {
       await NotificationService().stopKeepAliveService();

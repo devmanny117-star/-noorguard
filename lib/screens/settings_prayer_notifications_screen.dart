@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../l10n/app_localizations.dart';
+import '../services/live_notification_service.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import 'settings_shared.dart';
@@ -26,12 +27,20 @@ class _SettingsPrayerNotificationsScreenState
     await prayerState.toggleMasterNotifications(value);
     if (!mounted) return;
     if (value) {
+      // Refresh the live notification payload first when today's prayer
+      // times are already known, so the service comes back with a current
+      // countdown instead of the last session's.
+      final scheduled = PrayerState().scheduledPrayerTimes;
+      if (scheduled != null) {
+        await LiveNotificationService.push(context: context, prayers: scheduled);
+      }
+      if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;
       await NotificationService().startKeepAliveService(
         title: l10n.appName,
         text: l10n.keepAliveNotificationText,
-        channelName: l10n.keepAliveChannelName,
-        channelDescription: l10n.keepAliveChannelDescription,
+        channelName: l10n.liveNotifChannelName,
+        channelDescription: l10n.liveNotifChannelDescription,
       );
     } else {
       await NotificationService().stopKeepAliveService();

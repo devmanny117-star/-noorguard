@@ -9,6 +9,7 @@ import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
 import '../data/prayer_times_data.dart';
 import '../services/app_blocking_service.dart';
+import '../services/live_notification_service.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
@@ -283,21 +284,27 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
       data,
       adhanId: adhanId,
     );
-    _startKeepAliveServiceIfNeeded();
+    _startKeepAliveServiceIfNeeded(data);
   }
 
   /// Keeps the app classified as foreground so prayer alarms and
   /// notifications keep being delivered reliably in the background — only
-  /// while the user has prayer notifications turned on at all.
-  Future<void> _startKeepAliveServiceIfNeeded() async {
+  /// while the user has prayer notifications turned on at all. The service's
+  /// persistent notification doubles as the "Noor Guard Live" lock-screen
+  /// notification, so its localized payload (next-prayer countdown + rotating
+  /// daily content) is refreshed first.
+  Future<void> _startKeepAliveServiceIfNeeded(
+      List<Map<String, dynamic>> data) async {
     if (!PrayerState().masterNotifications) return;
+    if (!mounted) return;
+    await LiveNotificationService.push(context: context, prayers: data);
     if (!mounted) return;
     final l10n = AppLocalizations.of(context)!;
     await NotificationService().startKeepAliveService(
       title: l10n.appName,
       text: l10n.keepAliveNotificationText,
-      channelName: l10n.keepAliveChannelName,
-      channelDescription: l10n.keepAliveChannelDescription,
+      channelName: l10n.liveNotifChannelName,
+      channelDescription: l10n.liveNotifChannelDescription,
     );
   }
 

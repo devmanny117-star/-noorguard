@@ -1645,5 +1645,15 @@
   "switchedToRegularMode": "به حالت عادی تغییر یافت",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "نور گارد زنده",
+  "liveNotifChannelDescription": "شمارش معکوس نماز و محتوای اسلامی روزانه روی صفحه قفل",
+  "liveNotifHeaderAyah": "آیه روز",
+  "liveNotifHeaderDua": "دعای روز",
+  "liveNotifHeaderWord": "واژه روز",
+  "liveNotifHeaderName": "نامی از نام‌های خدا",
+  "liveNotifHeaderHadith": "حدیث روز",
+  "liveNotifCountdownHoursMinutes": "{hours} ساعت و {minutes} دقیقه دیگر",
+  "liveNotifCountdownMinutes": "{minutes} دقیقه دیگر",
+  "liveNotifCountdownNow": "وقت نماز است"
 }

@@ -2880,4 +2880,39 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'Umebadilishwa hadi Hali ya Kawaida';
+
+  @override
+  String get liveNotifChannelName => 'Noor Guard Moja kwa Moja';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'Hesabu ya kurudi nyuma ya sala na maudhui ya Kiislamu ya kila siku kwenye skrini yako ya kufunga';
+
+  @override
+  String get liveNotifHeaderAyah => 'AYA YA LEO';
+
+  @override
+  String get liveNotifHeaderDua => 'DUA YA LEO';
+
+  @override
+  String get liveNotifHeaderWord => 'NENO LA LEO';
+
+  @override
+  String get liveNotifHeaderName => 'JINA LA ALLAH';
+
+  @override
+  String get liveNotifHeaderHadith => 'HADITHI YA LEO';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return 'baada ya saa $hours na dakika $minutes';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return 'baada ya dakika $minutes';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'Ni wakati wa kusali';
 }

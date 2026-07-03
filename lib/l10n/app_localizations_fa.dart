@@ -2867,4 +2867,39 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'به حالت عادی تغییر یافت';
+
+  @override
+  String get liveNotifChannelName => 'نور گارد زنده';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'شمارش معکوس نماز و محتوای اسلامی روزانه روی صفحه قفل';
+
+  @override
+  String get liveNotifHeaderAyah => 'آیه روز';
+
+  @override
+  String get liveNotifHeaderDua => 'دعای روز';
+
+  @override
+  String get liveNotifHeaderWord => 'واژه روز';
+
+  @override
+  String get liveNotifHeaderName => 'نامی از نام‌های خدا';
+
+  @override
+  String get liveNotifHeaderHadith => 'حدیث روز';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return '$hours ساعت و $minutes دقیقه دیگر';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return '$minutes دقیقه دیگر';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'وقت نماز است';
 }

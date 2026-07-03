@@ -5309,6 +5309,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Switched to Regular Mode'**
   String get switchedToRegularMode;
+
+  /// Android notification channel name for the persistent live lock-screen notification
+  ///
+  /// In en, this message translates to:
+  /// **'Noor Guard Live'**
+  String get liveNotifChannelName;
+
+  /// Android notification channel description for the persistent live lock-screen notification
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer countdown and daily Islamic content on your lock screen'**
+  String get liveNotifChannelDescription;
+
+  /// Header above the rotating daily ayah in the live notification (uppercase where the script has case)
+  ///
+  /// In en, this message translates to:
+  /// **'AYAH OF THE DAY'**
+  String get liveNotifHeaderAyah;
+
+  /// Header above the rotating daily dua in the live notification
+  ///
+  /// In en, this message translates to:
+  /// **'DAILY DUA'**
+  String get liveNotifHeaderDua;
+
+  /// Header above the rotating daily glossary word in the live notification
+  ///
+  /// In en, this message translates to:
+  /// **'WORD OF THE DAY'**
+  String get liveNotifHeaderWord;
+
+  /// Header above the rotating daily Name of Allah in the live notification
+  ///
+  /// In en, this message translates to:
+  /// **'NAME OF ALLAH'**
+  String get liveNotifHeaderName;
+
+  /// Header above the rotating daily hadith in the live notification
+  ///
+  /// In en, this message translates to:
+  /// **'HADITH OF THE DAY'**
+  String get liveNotifHeaderHadith;
+
+  /// Countdown to the next prayer, hours + minutes. Passed to native code as a template with literal {hours}/{minutes} placeholders.
+  ///
+  /// In en, this message translates to:
+  /// **'in {hours}h {minutes}m'**
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes);
+
+  /// Countdown to the next prayer, under one hour. Passed to native code as a template with a literal {minutes} placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'in {minutes}m'**
+  String liveNotifCountdownMinutes(Object minutes);
+
+  /// Shown in the live notification when the next prayer's time has arrived
+  ///
+  /// In en, this message translates to:
+  /// **'It\'s time to pray'**
+  String get liveNotifCountdownNow;
 }
 
 class _AppLocalizationsDelegate

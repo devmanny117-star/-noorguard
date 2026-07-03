@@ -2994,3 +2994,34 @@ class _EmptyState extends StatelessWidget {
     );
   }
 }
+
+// ── Daily glossary term (live notification) ──────────────────────────────────
+
+/// Read-only view of one glossary term, exposed for the persistent live
+/// notification's "Word of the Day" rotation without making this screen's
+/// internal term list public.
+class DailyGlossaryTerm {
+  final String arabic;
+  final String transliteration;
+  final String definition;
+
+  const DailyGlossaryTerm({
+    required this.arabic,
+    required this.transliteration,
+    required this.definition,
+  });
+}
+
+/// Number of terms available to the daily rotation.
+int get glossaryTermCount => _allTerms.length;
+
+/// The glossary term at [index] (wrapped to the list length), with its
+/// definition resolved for [locale].
+DailyGlossaryTerm glossaryTermAt(int index, String locale) {
+  final t = _allTerms[index % _allTerms.length];
+  return DailyGlossaryTerm(
+    arabic: t.arabic,
+    transliteration: t.transliteration,
+    definition: t.definition(locale),
+  );
+}

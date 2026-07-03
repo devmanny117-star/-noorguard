@@ -2738,4 +2738,38 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => '已切换到普通模式';
+
+  @override
+  String get liveNotifChannelName => 'Noor Guard 实时通知';
+
+  @override
+  String get liveNotifChannelDescription => '锁屏上的礼拜倒计时和每日伊斯兰内容';
+
+  @override
+  String get liveNotifHeaderAyah => '今日经文';
+
+  @override
+  String get liveNotifHeaderDua => '今日杜阿';
+
+  @override
+  String get liveNotifHeaderWord => '今日词汇';
+
+  @override
+  String get liveNotifHeaderName => '安拉的尊名';
+
+  @override
+  String get liveNotifHeaderHadith => '今日圣训';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return '$hours小时$minutes分钟后';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return '$minutes分钟后';
+  }
+
+  @override
+  String get liveNotifCountdownNow => '礼拜时间到了';
 }

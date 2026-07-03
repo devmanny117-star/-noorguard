@@ -2862,4 +2862,39 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get switchedToRegularMode => 'باقاعدہ موڈ پر سوئچ کیا گیا';
+
+  @override
+  String get liveNotifChannelName => 'نور گارڈ لائیو';
+
+  @override
+  String get liveNotifChannelDescription =>
+      'لاک اسکرین پر نماز کا کاؤنٹ ڈاؤن اور روزانہ اسلامی مواد';
+
+  @override
+  String get liveNotifHeaderAyah => 'آج کی آیت';
+
+  @override
+  String get liveNotifHeaderDua => 'آج کی دعا';
+
+  @override
+  String get liveNotifHeaderWord => 'آج کا لفظ';
+
+  @override
+  String get liveNotifHeaderName => 'اللہ کا نام';
+
+  @override
+  String get liveNotifHeaderHadith => 'آج کی حدیث';
+
+  @override
+  String liveNotifCountdownHoursMinutes(Object hours, Object minutes) {
+    return '$hours گھنٹے $minutes منٹ میں';
+  }
+
+  @override
+  String liveNotifCountdownMinutes(Object minutes) {
+    return '$minutes منٹ میں';
+  }
+
+  @override
+  String get liveNotifCountdownNow => 'نماز کا وقت ہو گیا';
 }

@@ -1485,5 +1485,15 @@
   "switchedToRegularMode": "Beralih ke Mode Reguler",
   "@switchedToRegularMode": {
     "description": "Snackbar shown when switching back to Regular Mode"
-  }
+  },
+  "liveNotifChannelName": "Noor Guard Live",
+  "liveNotifChannelDescription": "Hitung mundur salat dan konten Islami harian di layar kunci Anda",
+  "liveNotifHeaderAyah": "AYAT HARI INI",
+  "liveNotifHeaderDua": "DOA HARI INI",
+  "liveNotifHeaderWord": "KATA HARI INI",
+  "liveNotifHeaderName": "NAMA ALLAH",
+  "liveNotifHeaderHadith": "HADIS HARI INI",
+  "liveNotifCountdownHoursMinutes": "dalam {hours}j {minutes}mnt",
+  "liveNotifCountdownMinutes": "dalam {minutes}mnt",
+  "liveNotifCountdownNow": "Waktunya salat"
 }
