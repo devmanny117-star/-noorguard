@@ -3137,4 +3137,28 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get storiesLoadError => 'Tidak dapat memuat kisah. Periksa koneksimu.';
+
+  @override
+  String get storiesDiscardTitle => 'Buang cerita Anda?';
+
+  @override
+  String get storiesDiscard => 'Buang';
+
+  @override
+  String get storiesKeepWriting => 'Lanjut Menulis';
+
+  @override
+  String get storiesSaveDraft => 'Simpan Draf';
+
+  @override
+  String get storiesDraftSaved => 'Draf tersimpan';
+
+  @override
+  String get storiesDeleteDraft => 'Hapus Draf';
+
+  @override
+  String get storiesContinueDraft => 'Lanjutkan draf Anda';
+
+  @override
+  String get storiesStartFresh => 'Mulai dari awal';
 }

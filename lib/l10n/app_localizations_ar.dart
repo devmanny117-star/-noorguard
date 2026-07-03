@@ -3080,4 +3080,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get storiesLoadError => 'تعذر تحميل القصص. تحقق من اتصالك.';
+
+  @override
+  String get storiesDiscardTitle => 'هل تريد تجاهل قصتك؟';
+
+  @override
+  String get storiesDiscard => 'تجاهل';
+
+  @override
+  String get storiesKeepWriting => 'متابعة الكتابة';
+
+  @override
+  String get storiesSaveDraft => 'حفظ المسودة';
+
+  @override
+  String get storiesDraftSaved => 'تم حفظ المسودة';
+
+  @override
+  String get storiesDeleteDraft => 'حذف المسودة';
+
+  @override
+  String get storiesContinueDraft => 'أكمل مسودتك';
+
+  @override
+  String get storiesStartFresh => 'ابدأ من جديد';
 }

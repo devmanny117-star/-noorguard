@@ -3136,4 +3136,28 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'No se pudieron cargar las historias. Revisa tu conexión.';
+
+  @override
+  String get storiesDiscardTitle => '¿Descartar tu historia?';
+
+  @override
+  String get storiesDiscard => 'Descartar';
+
+  @override
+  String get storiesKeepWriting => 'Seguir escribiendo';
+
+  @override
+  String get storiesSaveDraft => 'Guardar borrador';
+
+  @override
+  String get storiesDraftSaved => 'Borrador guardado';
+
+  @override
+  String get storiesDeleteDraft => 'Eliminar borrador';
+
+  @override
+  String get storiesContinueDraft => 'Continúa tu borrador';
+
+  @override
+  String get storiesStartFresh => 'Empezar de nuevo';
 }

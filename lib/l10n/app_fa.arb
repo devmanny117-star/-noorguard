@@ -1724,5 +1724,13 @@
   "storiesAvatarInitials": "حروف اول",
   "storiesAvatarIcon": "آیکون",
   "storiesAvatarPattern": "الگو",
-  "storiesLoadError": "بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید."
+  "storiesLoadError": "بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید.",
+  "storiesDiscardTitle": "از داستان خود صرف‌نظر می‌کنید؟",
+  "storiesDiscard": "صرف‌نظر",
+  "storiesKeepWriting": "ادامه نوشتن",
+  "storiesSaveDraft": "ذخیره پیش‌نویس",
+  "storiesDraftSaved": "پیش‌نویس ذخیره شد",
+  "storiesDeleteDraft": "حذف پیش‌نویس",
+  "storiesContinueDraft": "پیش‌نویس خود را ادامه دهید",
+  "storiesStartFresh": "شروع دوباره"
 }

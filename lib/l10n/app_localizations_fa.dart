@@ -3115,4 +3115,28 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید.';
+
+  @override
+  String get storiesDiscardTitle => 'از داستان خود صرف‌نظر می‌کنید؟';
+
+  @override
+  String get storiesDiscard => 'صرف‌نظر';
+
+  @override
+  String get storiesKeepWriting => 'ادامه نوشتن';
+
+  @override
+  String get storiesSaveDraft => 'ذخیره پیش‌نویس';
+
+  @override
+  String get storiesDraftSaved => 'پیش‌نویس ذخیره شد';
+
+  @override
+  String get storiesDeleteDraft => 'حذف پیش‌نویس';
+
+  @override
+  String get storiesContinueDraft => 'پیش‌نویس خود را ادامه دهید';
+
+  @override
+  String get storiesStartFresh => 'شروع دوباره';
 }

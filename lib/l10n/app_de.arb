@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Initialen",
   "storiesAvatarIcon": "Symbol",
   "storiesAvatarPattern": "Muster",
-  "storiesLoadError": "Geschichten konnten nicht geladen werden. Prüfe deine Verbindung."
+  "storiesLoadError": "Geschichten konnten nicht geladen werden. Prüfe deine Verbindung.",
+  "storiesDiscardTitle": "Geschichte verwerfen?",
+  "storiesDiscard": "Verwerfen",
+  "storiesKeepWriting": "Weiterschreiben",
+  "storiesSaveDraft": "Entwurf speichern",
+  "storiesDraftSaved": "Entwurf gespeichert",
+  "storiesDeleteDraft": "Entwurf löschen",
+  "storiesContinueDraft": "Entwurf fortsetzen",
+  "storiesStartFresh": "Neu beginnen"
 }

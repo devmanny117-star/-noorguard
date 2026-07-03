@@ -3141,4 +3141,28 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'Geschichten konnten nicht geladen werden. Prüfe deine Verbindung.';
+
+  @override
+  String get storiesDiscardTitle => 'Geschichte verwerfen?';
+
+  @override
+  String get storiesDiscard => 'Verwerfen';
+
+  @override
+  String get storiesKeepWriting => 'Weiterschreiben';
+
+  @override
+  String get storiesSaveDraft => 'Entwurf speichern';
+
+  @override
+  String get storiesDraftSaved => 'Entwurf gespeichert';
+
+  @override
+  String get storiesDeleteDraft => 'Entwurf löschen';
+
+  @override
+  String get storiesContinueDraft => 'Entwurf fortsetzen';
+
+  @override
+  String get storiesStartFresh => 'Neu beginnen';
 }

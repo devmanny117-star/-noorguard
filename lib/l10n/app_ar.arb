@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "الأحرف الأولى",
   "storiesAvatarIcon": "أيقونة",
   "storiesAvatarPattern": "نقش",
-  "storiesLoadError": "تعذر تحميل القصص. تحقق من اتصالك."
+  "storiesLoadError": "تعذر تحميل القصص. تحقق من اتصالك.",
+  "storiesDiscardTitle": "هل تريد تجاهل قصتك؟",
+  "storiesDiscard": "تجاهل",
+  "storiesKeepWriting": "متابعة الكتابة",
+  "storiesSaveDraft": "حفظ المسودة",
+  "storiesDraftSaved": "تم حفظ المسودة",
+  "storiesDeleteDraft": "حذف المسودة",
+  "storiesContinueDraft": "أكمل مسودتك",
+  "storiesStartFresh": "ابدأ من جديد"
 }

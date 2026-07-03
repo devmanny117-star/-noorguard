@@ -3129,4 +3129,28 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'Imeshindikana kupakia hadithi. Angalia muunganisho wako.';
+
+  @override
+  String get storiesDiscardTitle => 'Utupe hadithi yako?';
+
+  @override
+  String get storiesDiscard => 'Tupa';
+
+  @override
+  String get storiesKeepWriting => 'Endelea Kuandika';
+
+  @override
+  String get storiesSaveDraft => 'Hifadhi Rasimu';
+
+  @override
+  String get storiesDraftSaved => 'Rasimu imehifadhiwa';
+
+  @override
+  String get storiesDeleteDraft => 'Futa Rasimu';
+
+  @override
+  String get storiesContinueDraft => 'Endelea na rasimu yako';
+
+  @override
+  String get storiesStartFresh => 'Anza upya';
 }

@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Baş Harfler",
   "storiesAvatarIcon": "Simge",
   "storiesAvatarPattern": "Desen",
-  "storiesLoadError": "Hikayeler yüklenemedi. Bağlantını kontrol et."
+  "storiesLoadError": "Hikayeler yüklenemedi. Bağlantını kontrol et.",
+  "storiesDiscardTitle": "Hikayeniz silinsin mi?",
+  "storiesDiscard": "Sil",
+  "storiesKeepWriting": "Yazmaya Devam Et",
+  "storiesSaveDraft": "Taslağı Kaydet",
+  "storiesDraftSaved": "Taslak kaydedildi",
+  "storiesDeleteDraft": "Taslağı Sil",
+  "storiesContinueDraft": "Taslağınıza devam edin",
+  "storiesStartFresh": "Yeniden başla"
 }

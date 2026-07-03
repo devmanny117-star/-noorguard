@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Iniciales",
   "storiesAvatarIcon": "Ícono",
   "storiesAvatarPattern": "Patrón",
-  "storiesLoadError": "No se pudieron cargar las historias. Revisa tu conexión."
+  "storiesLoadError": "No se pudieron cargar las historias. Revisa tu conexión.",
+  "storiesDiscardTitle": "¿Descartar tu historia?",
+  "storiesDiscard": "Descartar",
+  "storiesKeepWriting": "Seguir escribiendo",
+  "storiesSaveDraft": "Guardar borrador",
+  "storiesDraftSaved": "Borrador guardado",
+  "storiesDeleteDraft": "Eliminar borrador",
+  "storiesContinueDraft": "Continúa tu borrador",
+  "storiesStartFresh": "Empezar de nuevo"
 }

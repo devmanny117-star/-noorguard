@@ -3115,4 +3115,28 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'Couldn\'t load stories. Check your connection.';
+
+  @override
+  String get storiesDiscardTitle => 'Discard your story?';
+
+  @override
+  String get storiesDiscard => 'Discard';
+
+  @override
+  String get storiesKeepWriting => 'Keep Writing';
+
+  @override
+  String get storiesSaveDraft => 'Save Draft';
+
+  @override
+  String get storiesDraftSaved => 'Draft saved';
+
+  @override
+  String get storiesDeleteDraft => 'Delete Draft';
+
+  @override
+  String get storiesContinueDraft => 'Continue your draft';
+
+  @override
+  String get storiesStartFresh => 'Start fresh';
 }

@@ -1417,6 +1417,16 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
   String? _sheetUid;
   bool _submitting = false;
 
+  /// True while a draft exists in SharedPreferences (shows Delete Draft).
+  bool _hasDraft = false;
+
+  /// True after a draft was restored into the form ("Continue your draft").
+  bool _showDraftBanner = false;
+
+  /// Snapshot of the form right after prefill/restore — the back button
+  /// only asks to discard when the current snapshot differs from this.
+  String _cleanSnapshot = '';
+
   @override
   void initState() {
     super.initState();
@@ -1440,10 +1450,163 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
       _shahadaDate = editing.shahadaDate;
       _background = editing.backgroundImage;
     } else {
-      CommunityStoriesService.savedAuthorName().then((name) {
-        if (mounted && name.isNotEmpty) _nameController.text = name;
+      CommunityStoriesService.savedStoryDraft().then((draft) {
+        if (!mounted) return;
+        if (draft != null) {
+          setState(() {
+            _applyDraft(draft);
+            _hasDraft = true;
+            _showDraftBanner = true;
+            _cleanSnapshot = _formSnapshot();
+          });
+        } else {
+          CommunityStoriesService.savedAuthorName().then((name) {
+            if (mounted && name.isNotEmpty) {
+              _nameController.text = name;
+              _cleanSnapshot = _formSnapshot();
+            }
+          });
+        }
       });
     }
+    _cleanSnapshot = _formSnapshot();
+  }
+
+  /// One string covering every field the user can change — cheap dirty check.
+  String _formSnapshot() => [
+        _nameController.text.trim(),
+        _anonymous.toString(),
+        _country?.name ?? '',
+        _category.name,
+        _shahadaDate?.toIso8601String() ?? '',
+        _storyController.text,
+        _background ?? '',
+        _avatarType,
+        _avatarData ?? '',
+      ].join(' ');
+
+  void _applyDraft(Map<String, dynamic> draft) {
+    _nameController.text = (draft['name'] as String?) ?? '';
+    _anonymous = (draft['anonymous'] as bool?) ?? false;
+    _country = storyCountries
+        .where((c) => c.name == (draft['country'] as String?))
+        .firstOrNull;
+    _countryController.text =
+        _country == null ? '' : '${_country!.flag}  ${_country!.name}';
+    _category = StoryCategory.values
+            .where((c) => c.name == (draft['category'] as String?))
+            .firstOrNull ??
+        StoryCategory.revert;
+    final shahadaMillis = draft['shahadaDate'] as int?;
+    _shahadaDate = shahadaMillis == null
+        ? null
+        : DateTime.fromMillisecondsSinceEpoch(shahadaMillis);
+    _storyController.text = (draft['story'] as String?) ?? '';
+    _background = draft['background'] as String?;
+    _avatarType = (draft['avatarType'] as String?) ?? 'initials';
+    _avatarData = draft['avatarData'] as String?;
+  }
+
+  Future<void> _saveDraft() async {
+    final l10n = AppLocalizations.of(context)!;
+    await CommunityStoriesService.saveStoryDraft({
+      'name': _nameController.text.trim(),
+      'anonymous': _anonymous,
+      'country': _country?.name,
+      'category': _category.name,
+      'shahadaDate': _shahadaDate?.millisecondsSinceEpoch,
+      'story': _storyController.text,
+      'background': _background,
+      'avatarType': _avatarType,
+      'avatarData': _avatarData,
+    });
+    if (!mounted) return;
+    setState(() {
+      _hasDraft = true;
+      _cleanSnapshot = _formSnapshot();
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(l10n.storiesDraftSaved),
+        backgroundColor: _kCard,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(color: _kGold.withValues(alpha: 0.5)),
+        ),
+      ),
+    );
+  }
+
+  /// Delete Draft button and the banner's "Start fresh": clears the stored
+  /// draft and resets every field to a blank form.
+  Future<void> _deleteDraft() async {
+    await CommunityStoriesService.clearStoryDraft();
+    if (!mounted) return;
+    setState(() {
+      _hasDraft = false;
+      _showDraftBanner = false;
+      _nameController.clear();
+      _storyController.clear();
+      _countryController.clear();
+      _anonymous = false;
+      _country = null;
+      _category = StoryCategory.revert;
+      _shahadaDate = null;
+      _background = null;
+      _avatarType = 'initials';
+      _avatarData = null;
+      _cleanSnapshot = _formSnapshot();
+    });
+  }
+
+  Future<void> _onBackPressed() async {
+    if (_formSnapshot() == _cleanSnapshot) {
+      Navigator.pop(context);
+      return;
+    }
+    final l10n = AppLocalizations.of(context)!;
+    final discard = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: _kCard,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18),
+          side: BorderSide(color: _kGold.withValues(alpha: 0.35)),
+        ),
+        title: Text(
+          l10n.storiesDiscardTitle,
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: _kCream,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: Text(
+              l10n.storiesKeepWriting,
+              style: GoogleFonts.lato(
+                fontWeight: FontWeight.w700,
+                color: _kGold,
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, true),
+            child: Text(
+              l10n.storiesDiscard,
+              style: GoogleFonts.lato(
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFFE57373),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (discard == true && mounted) Navigator.pop(context);
   }
 
   @override
@@ -1534,6 +1697,8 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
           avatarType: _avatarType,
           avatarData: _avatarData,
         );
+        // The story is submitted — a leftover draft would just resurface it.
+        await CommunityStoriesService.clearStoryDraft();
       }
       if (!mounted) return;
       Navigator.pop(context);
@@ -1946,19 +2111,141 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
                 ),
               ),
               const SizedBox(height: 14),
-              Center(
-                child: Text(
-                  widget.editing != null
-                      ? l10n.storiesEditTitle
-                      : l10n.communityStoriesShareBtn,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                    color: _kGold,
+              Row(
+                children: [
+                  // iOS-style back chevron — confirms first if the form has
+                  // unsaved changes.
+                  GestureDetector(
+                    onTap: _onBackPressed,
+                    child: Container(
+                      width: 36,
+                      height: 36,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _kNavy,
+                        border:
+                            Border.all(color: _kGold.withValues(alpha: 0.35)),
+                      ),
+                      child: const Icon(Icons.arrow_back_ios_new_rounded,
+                          size: 16, color: _kGold),
+                    ),
                   ),
-                ),
+                  Expanded(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          widget.editing != null
+                              ? l10n.storiesEditTitle
+                              : l10n.communityStoriesShareBtn,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.playfairDisplay(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w700,
+                            color: _kGold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (widget.editing == null) ...[
+                    if (_hasDraft) ...[
+                      Tooltip(
+                        message: l10n.storiesDeleteDraft,
+                        child: GestureDetector(
+                          onTap: _deleteDraft,
+                          child: Container(
+                            width: 36,
+                            height: 36,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _kNavy,
+                              border: Border.all(
+                                color: const Color(0xFFE57373)
+                                    .withValues(alpha: 0.45),
+                              ),
+                            ),
+                            child: const Icon(Icons.delete_outline_rounded,
+                                size: 18, color: Color(0xFFE57373)),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                    GestureDetector(
+                      onTap: _saveDraft,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: _kGold,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Text(
+                          l10n.storiesSaveDraft,
+                          style: GoogleFonts.lato(
+                            fontSize: 11.5,
+                            fontWeight: FontWeight.w800,
+                            color: _kNavy,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ] else
+                    // Keeps the title centered when there are no end buttons.
+                    const SizedBox(width: 36),
+                ],
               ),
               const SizedBox(height: 18),
+              if (_showDraftBanner) ...[
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 6, 8),
+                  decoration: BoxDecoration(
+                    color: _kGold.withValues(alpha: 0.10),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: _kGold.withValues(alpha: 0.35)),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.edit_note_rounded,
+                          size: 20, color: _kGold),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          l10n.storiesContinueDraft,
+                          style: GoogleFonts.lato(
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w700,
+                            color: _kCream,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: _deleteDraft,
+                        style: TextButton.styleFrom(
+                          padding:
+                              const EdgeInsets.symmetric(horizontal: 10),
+                          minimumSize: const Size(0, 32),
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
+                        child: Text(
+                          l10n.storiesStartFresh,
+                          style: GoogleFonts.lato(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                            color: _kGold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 14),
+              ],
               _label(l10n.storiesNameLabel.toUpperCase()),
               const SizedBox(height: 8),
               TextField(

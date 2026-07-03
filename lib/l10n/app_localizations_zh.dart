@@ -2972,4 +2972,28 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get storiesLoadError => '无法加载故事，请检查网络连接。';
+
+  @override
+  String get storiesDiscardTitle => '放弃您的故事？';
+
+  @override
+  String get storiesDiscard => '放弃';
+
+  @override
+  String get storiesKeepWriting => '继续写作';
+
+  @override
+  String get storiesSaveDraft => '保存草稿';
+
+  @override
+  String get storiesDraftSaved => '草稿已保存';
+
+  @override
+  String get storiesDeleteDraft => '删除草稿';
+
+  @override
+  String get storiesContinueDraft => '继续您的草稿';
+
+  @override
+  String get storiesStartFresh => '重新开始';
 }

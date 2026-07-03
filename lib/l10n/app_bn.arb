@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "আদ্যক্ষর",
   "storiesAvatarIcon": "আইকন",
   "storiesAvatarPattern": "নকশা",
-  "storiesLoadError": "গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।"
+  "storiesLoadError": "গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।",
+  "storiesDiscardTitle": "আপনার গল্পটি বাতিল করবেন?",
+  "storiesDiscard": "বাতিল করুন",
+  "storiesKeepWriting": "লেখা চালিয়ে যান",
+  "storiesSaveDraft": "খসড়া সংরক্ষণ করুন",
+  "storiesDraftSaved": "খসড়া সংরক্ষিত হয়েছে",
+  "storiesDeleteDraft": "খসড়া মুছুন",
+  "storiesContinueDraft": "আপনার খসড়া চালিয়ে যান",
+  "storiesStartFresh": "নতুন করে শুরু করুন"
 }

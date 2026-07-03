@@ -3003,4 +3003,28 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get storiesLoadError => 'ストーリーを読み込めませんでした。接続を確認してください。';
+
+  @override
+  String get storiesDiscardTitle => 'ストーリーを破棄しますか？';
+
+  @override
+  String get storiesDiscard => '破棄';
+
+  @override
+  String get storiesKeepWriting => '書き続ける';
+
+  @override
+  String get storiesSaveDraft => '下書きを保存';
+
+  @override
+  String get storiesDraftSaved => '下書きを保存しました';
+
+  @override
+  String get storiesDeleteDraft => '下書きを削除';
+
+  @override
+  String get storiesContinueDraft => '下書きの続きから';
+
+  @override
+  String get storiesStartFresh => '最初からやり直す';
 }

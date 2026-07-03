@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "イニシャル",
   "storiesAvatarIcon": "アイコン",
   "storiesAvatarPattern": "パターン",
-  "storiesLoadError": "ストーリーを読み込めませんでした。接続を確認してください。"
+  "storiesLoadError": "ストーリーを読み込めませんでした。接続を確認してください。",
+  "storiesDiscardTitle": "ストーリーを破棄しますか？",
+  "storiesDiscard": "破棄",
+  "storiesKeepWriting": "書き続ける",
+  "storiesSaveDraft": "下書きを保存",
+  "storiesDraftSaved": "下書きを保存しました",
+  "storiesDeleteDraft": "下書きを削除",
+  "storiesContinueDraft": "下書きの続きから",
+  "storiesStartFresh": "最初からやり直す"
 }

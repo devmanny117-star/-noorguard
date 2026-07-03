@@ -3129,4 +3129,28 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।';
+
+  @override
+  String get storiesDiscardTitle => 'আপনার গল্পটি বাতিল করবেন?';
+
+  @override
+  String get storiesDiscard => 'বাতিল করুন';
+
+  @override
+  String get storiesKeepWriting => 'লেখা চালিয়ে যান';
+
+  @override
+  String get storiesSaveDraft => 'খসড়া সংরক্ষণ করুন';
+
+  @override
+  String get storiesDraftSaved => 'খসড়া সংরক্ষিত হয়েছে';
+
+  @override
+  String get storiesDeleteDraft => 'খসড়া মুছুন';
+
+  @override
+  String get storiesContinueDraft => 'আপনার খসড়া চালিয়ে যান';
+
+  @override
+  String get storiesStartFresh => 'নতুন করে শুরু করুন';
 }

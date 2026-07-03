@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Inisial",
   "storiesAvatarIcon": "Ikon",
   "storiesAvatarPattern": "Pola",
-  "storiesLoadError": "Tidak dapat memuat kisah. Periksa koneksimu."
+  "storiesLoadError": "Tidak dapat memuat kisah. Periksa koneksimu.",
+  "storiesDiscardTitle": "Buang cerita Anda?",
+  "storiesDiscard": "Buang",
+  "storiesKeepWriting": "Lanjut Menulis",
+  "storiesSaveDraft": "Simpan Draf",
+  "storiesDraftSaved": "Draf tersimpan",
+  "storiesDeleteDraft": "Hapus Draf",
+  "storiesContinueDraft": "Lanjutkan draf Anda",
+  "storiesStartFresh": "Mulai dari awal"
 }

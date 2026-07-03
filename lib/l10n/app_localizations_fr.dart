@@ -3157,4 +3157,28 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'Impossible de charger les histoires. Vérifiez votre connexion.';
+
+  @override
+  String get storiesDiscardTitle => 'Abandonner votre histoire ?';
+
+  @override
+  String get storiesDiscard => 'Abandonner';
+
+  @override
+  String get storiesKeepWriting => 'Continuer à écrire';
+
+  @override
+  String get storiesSaveDraft => 'Enregistrer le brouillon';
+
+  @override
+  String get storiesDraftSaved => 'Brouillon enregistré';
+
+  @override
+  String get storiesDeleteDraft => 'Supprimer le brouillon';
+
+  @override
+  String get storiesContinueDraft => 'Reprendre votre brouillon';
+
+  @override
+  String get storiesStartFresh => 'Recommencer';
 }

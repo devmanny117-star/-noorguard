@@ -3119,4 +3119,28 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'Hikayeler yüklenemedi. Bağlantını kontrol et.';
+
+  @override
+  String get storiesDiscardTitle => 'Hikayeniz silinsin mi?';
+
+  @override
+  String get storiesDiscard => 'Sil';
+
+  @override
+  String get storiesKeepWriting => 'Yazmaya Devam Et';
+
+  @override
+  String get storiesSaveDraft => 'Taslağı Kaydet';
+
+  @override
+  String get storiesDraftSaved => 'Taslak kaydedildi';
+
+  @override
+  String get storiesDeleteDraft => 'Taslağı Sil';
+
+  @override
+  String get storiesContinueDraft => 'Taslağınıza devam edin';
+
+  @override
+  String get storiesStartFresh => 'Yeniden başla';
 }

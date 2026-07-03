@@ -3892,5 +3892,37 @@
   "storiesLoadError": "Couldn't load stories. Check your connection.",
   "@storiesLoadError": {
     "description": "Error state when stories fail to load"
+  },
+  "storiesDiscardTitle": "Discard your story?",
+  "@storiesDiscardTitle": {
+    "description": "Confirm dialog title when leaving the submit form with unsaved changes"
+  },
+  "storiesDiscard": "Discard",
+  "@storiesDiscard": {
+    "description": "Destructive option in the discard-story dialog"
+  },
+  "storiesKeepWriting": "Keep Writing",
+  "@storiesKeepWriting": {
+    "description": "Safe option in the discard-story dialog (stay in the form)"
+  },
+  "storiesSaveDraft": "Save Draft",
+  "@storiesSaveDraft": {
+    "description": "Header pill button that saves the form as a local draft"
+  },
+  "storiesDraftSaved": "Draft saved",
+  "@storiesDraftSaved": {
+    "description": "Snackbar after the draft is saved"
+  },
+  "storiesDeleteDraft": "Delete Draft",
+  "@storiesDeleteDraft": {
+    "description": "Header button that deletes the saved draft and resets the form"
+  },
+  "storiesContinueDraft": "Continue your draft",
+  "@storiesContinueDraft": {
+    "description": "Banner shown when a saved draft was restored into the form"
+  },
+  "storiesStartFresh": "Start fresh",
+  "@storiesStartFresh": {
+    "description": "Banner action that clears the draft and resets the form"
   }
 }

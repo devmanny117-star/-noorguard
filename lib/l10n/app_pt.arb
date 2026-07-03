@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Iniciais",
   "storiesAvatarIcon": "Ícone",
   "storiesAvatarPattern": "Padrão",
-  "storiesLoadError": "Não foi possível carregar as histórias. Verifique sua conexão."
+  "storiesLoadError": "Não foi possível carregar as histórias. Verifique sua conexão.",
+  "storiesDiscardTitle": "Descartar sua história?",
+  "storiesDiscard": "Descartar",
+  "storiesKeepWriting": "Continuar escrevendo",
+  "storiesSaveDraft": "Salvar rascunho",
+  "storiesDraftSaved": "Rascunho salvo",
+  "storiesDeleteDraft": "Excluir rascunho",
+  "storiesContinueDraft": "Continue seu rascunho",
+  "storiesStartFresh": "Começar de novo"
 }

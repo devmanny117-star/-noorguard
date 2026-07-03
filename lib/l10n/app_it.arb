@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Iniziali",
   "storiesAvatarIcon": "Icona",
   "storiesAvatarPattern": "Motivo",
-  "storiesLoadError": "Impossibile caricare le storie. Controlla la connessione."
+  "storiesLoadError": "Impossibile caricare le storie. Controlla la connessione.",
+  "storiesDiscardTitle": "Scartare la tua storia?",
+  "storiesDiscard": "Scarta",
+  "storiesKeepWriting": "Continua a scrivere",
+  "storiesSaveDraft": "Salva bozza",
+  "storiesDraftSaved": "Bozza salvata",
+  "storiesDeleteDraft": "Elimina bozza",
+  "storiesContinueDraft": "Continua la tua bozza",
+  "storiesStartFresh": "Ricomincia da capo"
 }

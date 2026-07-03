@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -19,6 +20,7 @@ class CommunityStoriesService {
   static const _userIdKey = 'community_user_id';
   static const _authorNameKey = 'community_author_name';
   static const _savedStoriesKey = 'saved_story_ids';
+  static const _storyDraftKey = 'community_story_draft';
   static const int maxStories = 100;
 
   static String? _cachedUserId;
@@ -114,6 +116,30 @@ class CommunityStoriesService {
       });
       return stories;
     });
+  }
+
+  // ── Story draft (local, one at a time) ────────────────────────────────────
+
+  /// The locally saved submit-form draft, or null if none (or unreadable).
+  static Future<Map<String, dynamic>?> savedStoryDraft() async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_storyDraftKey);
+    if (raw == null || raw.isEmpty) return null;
+    try {
+      return jsonDecode(raw) as Map<String, dynamic>;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Future<void> saveStoryDraft(Map<String, dynamic> draft) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_storyDraftKey, jsonEncode(draft));
+  }
+
+  static Future<void> clearStoryDraft() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_storyDraftKey);
   }
 
   // ── Saved stories (local bookmarks) ───────────────────────────────────────

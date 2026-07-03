@@ -3110,4 +3110,28 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔';
+
+  @override
+  String get storiesDiscardTitle => 'کیا آپ اپنی کہانی مسترد کرنا چاہتے ہیں؟';
+
+  @override
+  String get storiesDiscard => 'مسترد کریں';
+
+  @override
+  String get storiesKeepWriting => 'لکھنا جاری رکھیں';
+
+  @override
+  String get storiesSaveDraft => 'مسودہ محفوظ کریں';
+
+  @override
+  String get storiesDraftSaved => 'مسودہ محفوظ ہو گیا';
+
+  @override
+  String get storiesDeleteDraft => 'مسودہ حذف کریں';
+
+  @override
+  String get storiesContinueDraft => 'اپنا مسودہ جاری رکھیں';
+
+  @override
+  String get storiesStartFresh => 'نئے سرے سے شروع کریں';
 }

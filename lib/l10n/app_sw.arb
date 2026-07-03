@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Herufi za Kwanza",
   "storiesAvatarIcon": "Ikoni",
   "storiesAvatarPattern": "Muundo",
-  "storiesLoadError": "Imeshindikana kupakia hadithi. Angalia muunganisho wako."
+  "storiesLoadError": "Imeshindikana kupakia hadithi. Angalia muunganisho wako.",
+  "storiesDiscardTitle": "Utupe hadithi yako?",
+  "storiesDiscard": "Tupa",
+  "storiesKeepWriting": "Endelea Kuandika",
+  "storiesSaveDraft": "Hifadhi Rasimu",
+  "storiesDraftSaved": "Rasimu imehifadhiwa",
+  "storiesDeleteDraft": "Futa Rasimu",
+  "storiesContinueDraft": "Endelea na rasimu yako",
+  "storiesStartFresh": "Anza upya"
 }

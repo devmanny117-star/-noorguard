@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "ابتدائی حروف",
   "storiesAvatarIcon": "آئیکن",
   "storiesAvatarPattern": "نقش",
-  "storiesLoadError": "کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔"
+  "storiesLoadError": "کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔",
+  "storiesDiscardTitle": "کیا آپ اپنی کہانی مسترد کرنا چاہتے ہیں؟",
+  "storiesDiscard": "مسترد کریں",
+  "storiesKeepWriting": "لکھنا جاری رکھیں",
+  "storiesSaveDraft": "مسودہ محفوظ کریں",
+  "storiesDraftSaved": "مسودہ محفوظ ہو گیا",
+  "storiesDeleteDraft": "مسودہ حذف کریں",
+  "storiesContinueDraft": "اپنا مسودہ جاری رکھیں",
+  "storiesStartFresh": "نئے سرے سے شروع کریں"
 }

@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Initiales",
   "storiesAvatarIcon": "Icône",
   "storiesAvatarPattern": "Motif",
-  "storiesLoadError": "Impossible de charger les histoires. Vérifiez votre connexion."
+  "storiesLoadError": "Impossible de charger les histoires. Vérifiez votre connexion.",
+  "storiesDiscardTitle": "Abandonner votre histoire ?",
+  "storiesDiscard": "Abandonner",
+  "storiesKeepWriting": "Continuer à écrire",
+  "storiesSaveDraft": "Enregistrer le brouillon",
+  "storiesDraftSaved": "Brouillon enregistré",
+  "storiesDeleteDraft": "Supprimer le brouillon",
+  "storiesContinueDraft": "Reprendre votre brouillon",
+  "storiesStartFresh": "Recommencer"
 }

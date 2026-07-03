@@ -5765,6 +5765,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Couldn\'t load stories. Check your connection.'**
   String get storiesLoadError;
+
+  /// Confirm dialog title when leaving the submit form with unsaved changes
+  ///
+  /// In en, this message translates to:
+  /// **'Discard your story?'**
+  String get storiesDiscardTitle;
+
+  /// Destructive option in the discard-story dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Discard'**
+  String get storiesDiscard;
+
+  /// Safe option in the discard-story dialog (stay in the form)
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Writing'**
+  String get storiesKeepWriting;
+
+  /// Header pill button that saves the form as a local draft
+  ///
+  /// In en, this message translates to:
+  /// **'Save Draft'**
+  String get storiesSaveDraft;
+
+  /// Snackbar after the draft is saved
+  ///
+  /// In en, this message translates to:
+  /// **'Draft saved'**
+  String get storiesDraftSaved;
+
+  /// Header button that deletes the saved draft and resets the form
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Draft'**
+  String get storiesDeleteDraft;
+
+  /// Banner shown when a saved draft was restored into the form
+  ///
+  /// In en, this message translates to:
+  /// **'Continue your draft'**
+  String get storiesContinueDraft;
+
+  /// Banner action that clears the draft and resets the form
+  ///
+  /// In en, this message translates to:
+  /// **'Start fresh'**
+  String get storiesStartFresh;
 }
 
 class _AppLocalizationsDelegate

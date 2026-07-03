@@ -3136,4 +3136,28 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get storiesLoadError =>
       'Verhalen konden niet worden geladen. Controleer je verbinding.';
+
+  @override
+  String get storiesDiscardTitle => 'Je verhaal weggooien?';
+
+  @override
+  String get storiesDiscard => 'Weggooien';
+
+  @override
+  String get storiesKeepWriting => 'Verder schrijven';
+
+  @override
+  String get storiesSaveDraft => 'Concept opslaan';
+
+  @override
+  String get storiesDraftSaved => 'Concept opgeslagen';
+
+  @override
+  String get storiesDeleteDraft => 'Concept verwijderen';
+
+  @override
+  String get storiesContinueDraft => 'Ga verder met je concept';
+
+  @override
+  String get storiesStartFresh => 'Opnieuw beginnen';
 }

@@ -1564,5 +1564,13 @@
   "storiesAvatarInitials": "Initialen",
   "storiesAvatarIcon": "Icoon",
   "storiesAvatarPattern": "Patroon",
-  "storiesLoadError": "Verhalen konden niet worden geladen. Controleer je verbinding."
+  "storiesLoadError": "Verhalen konden niet worden geladen. Controleer je verbinding.",
+  "storiesDiscardTitle": "Je verhaal weggooien?",
+  "storiesDiscard": "Weggooien",
+  "storiesKeepWriting": "Verder schrijven",
+  "storiesSaveDraft": "Concept opslaan",
+  "storiesDraftSaved": "Concept opgeslagen",
+  "storiesDeleteDraft": "Concept verwijderen",
+  "storiesContinueDraft": "Ga verder met je concept",
+  "storiesStartFresh": "Opnieuw beginnen"
 }
