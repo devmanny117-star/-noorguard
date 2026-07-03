@@ -2988,4 +2988,8 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'নিশ্চয়ই আল্লাহ তাদের সাথে আছেন যারা তাকওয়া অবলম্বন করে এবং যারা সৎকর্ম করে।';
+
+  @override
+  String get focusButtonSubtitle =>
+      'যা গুরুত্বপূর্ণ তার জন্য আপনার সময় রক্ষা করুন';
 }

@@ -2976,4 +2976,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'Indeed, Allah is with those who fear Him and those who do good.';
+
+  @override
+  String get focusButtonSubtitle => 'Protect your time for what matters';
 }

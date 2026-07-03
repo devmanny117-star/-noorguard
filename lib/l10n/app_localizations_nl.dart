@@ -2996,4 +2996,8 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'Voorwaar, Allah is met degenen die Hem vrezen en degenen die goed doen.';
+
+  @override
+  String get focusButtonSubtitle =>
+      'Bescherm je tijd voor wat er echt toe doet';
 }

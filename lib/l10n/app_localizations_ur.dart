@@ -2971,4 +2971,7 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'بیشک اللہ ان کے ساتھ ہے جو تقویٰ اختیار کرتے ہیں اور جو نیکی کرتے ہیں۔';
+
+  @override
+  String get focusButtonSubtitle => 'اپنا وقت اہم چیزوں کے لیے محفوظ رکھیں';
 }

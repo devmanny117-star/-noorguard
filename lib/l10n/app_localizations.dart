@@ -5495,6 +5495,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Indeed, Allah is with those who fear Him and those who do good.'**
   String get heroVerse30;
+
+  /// Subtitle under the Begin Focus button on the Focus Mode screen
+  ///
+  /// In en, this message translates to:
+  /// **'Protect your time for what matters'**
+  String get focusButtonSubtitle;
 }
 
 class _AppLocalizationsDelegate

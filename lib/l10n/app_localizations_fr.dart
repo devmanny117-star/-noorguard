@@ -3015,4 +3015,7 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'En vérité, Allah est avec ceux qui Le craignent et ceux qui font le bien.';
+
+  @override
+  String get focusButtonSubtitle => 'Protégez votre temps pour ce qui compte';
 }

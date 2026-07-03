@@ -3003,4 +3003,7 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'In verità Allah è con coloro che Lo temono e con coloro che fanno il bene.';
+
+  @override
+  String get focusButtonSubtitle => 'Proteggi il tuo tempo per ciò che conta';
 }

@@ -2835,4 +2835,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get heroVerse30 => '真主确实与敬畏他的人和行善的人同在。';
+
+  @override
+  String get focusButtonSubtitle => '守护你的时间，专注真正重要的事';
 }

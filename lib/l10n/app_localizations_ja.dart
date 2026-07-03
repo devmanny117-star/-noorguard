@@ -2866,4 +2866,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get heroVerse30 => 'まことにアッラーは、主を畏れる者と善を行う者と共におられる。';
+
+  @override
+  String get focusButtonSubtitle => '大切なことのために時間を守りましょう';
 }

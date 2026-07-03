@@ -8,13 +8,28 @@ import '../models/installed_app.dart';
 import '../services/app_blocking_service.dart';
 import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
-import '../theme/app_theme.dart';
+import '../widgets/geometric_pattern_painter.dart';
 import '../l10n/app_localizations.dart';
 import 'installed_apps_picker_screen.dart';
 
 // Shown as blocked in Focus Mode's preview row, capped for the row's layout
 // — the count badge still reflects the full blocked-apps total.
 const _kFocusPreviewLimit = 4;
+
+// Premium dark navy design system — hardcoded, never theme-dependent.
+const _kNavy = Color(0xFF0D1B2A);
+const _kCard = Color(0xFF0F1E30);
+const _kGold = Color(0xFFC9A84C);
+const _kCream = Color(0xFFF5EFE6);
+const _kMutedGold = Color(0xFFB08D3E);
+const _kStopRed = Color(0xFFEF5350);
+
+/// Shared card chrome: #0f1e30 fill, 1px gold border at 30%, 14px radius.
+BoxDecoration _cardDecoration() => BoxDecoration(
+      color: _kCard,
+      borderRadius: BorderRadius.circular(14),
+      border: Border.all(color: _kGold.withValues(alpha: 0.3), width: 1),
+    );
 
 class FocusModeScreen extends StatefulWidget {
   const FocusModeScreen({super.key});
@@ -272,16 +287,19 @@ class _FocusModeScreenState extends State<FocusModeScreen>
   Future<void> _selectCustomDuration() async {
     if (_isRunning) return;
     final l10n = AppLocalizations.of(context)!;
-    final colors = context.appColors;
     final controller = TextEditingController();
     final minutes = await showDialog<int>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: colors.cardBg,
+        backgroundColor: _kCard,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+          side: BorderSide(color: _kGold.withValues(alpha: 0.3)),
+        ),
         title: Text(
           l10n.customTimerMinutesTitle,
           style: GoogleFonts.lato(
-            color: colors.primaryText,
+            color: _kCream,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -289,16 +307,15 @@ class _FocusModeScreenState extends State<FocusModeScreen>
           controller: controller,
           keyboardType: TextInputType.number,
           autofocus: true,
-          style: TextStyle(color: colors.primaryText),
+          style: const TextStyle(color: _kCream),
           decoration: InputDecoration(
             hintText: l10n.customTimerHint,
-            hintStyle: TextStyle(color: colors.secondaryText),
+            hintStyle: TextStyle(color: _kCream.withValues(alpha: 0.4)),
             enabledBorder: UnderlineInputBorder(
-              borderSide:
-                  BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
+              borderSide: BorderSide(color: _kGold.withValues(alpha: 0.5)),
             ),
             focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColors.gold),
+              borderSide: BorderSide(color: _kGold),
             ),
           ),
         ),
@@ -306,7 +323,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
           TextButton(
             onPressed: () => Navigator.pop(ctx),
             child: Text(l10n.cancel,
-                style: GoogleFonts.lato(color: colors.secondaryText)),
+                style:
+                    GoogleFonts.lato(color: _kCream.withValues(alpha: 0.6))),
           ),
           TextButton(
             onPressed: () {
@@ -315,8 +333,8 @@ class _FocusModeScreenState extends State<FocusModeScreen>
             },
             child: Text(
               l10n.start,
-              style: GoogleFonts.lato(
-                  color: AppColors.gold, fontWeight: FontWeight.w700),
+              style:
+                  GoogleFonts.lato(color: _kGold, fontWeight: FontWeight.w700),
             ),
           ),
         ],
@@ -347,61 +365,69 @@ class _FocusModeScreenState extends State<FocusModeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
-
     return Scaffold(
-      backgroundColor: colors.warmBg,
-      body: SafeArea(
-        child: Column(
-          children: [
-            _Header(isRunning: _isRunning),
-            Expanded(
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 22),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    const _SubtitleCard(),
-                    const SizedBox(height: 28),
-                    _TimerCircle(
-                      progress: _progress,
-                      timeString: _formatTime(),
-                      dua: focusDuas[_duaIndex],
-                      duaFade: _duaFade,
-                      isRunning: _isRunning && !_pausedForPrayer,
-                      pausedForPrayer: _pausedForPrayer,
-                      pulse: _pulse,
-                    ),
-                    const SizedBox(height: 24),
-                    _DurationRow(
-                      fixedMinutes: _fixedPresetMinutes,
-                      selectedMinutes: _selectedMinutes,
-                      isCustomSelected: _isCustomSelected,
-                      locked: _isRunning,
-                      onSelectFixed: _selectFixedPreset,
-                      onSelectCustom: _selectCustomDuration,
-                    ),
-                    const SizedBox(height: 28),
-                    _BlockedAppsPreview(
-                      apps: _blockedApps,
-                      selectedCount: _blockedAppsCount,
-                      iconsReady: _blockedAppsIconsReady,
-                      isRunning: _isRunning,
-                      onSelectApps: _isRunning ? null : _openAppsPicker,
-                    ),
-                    const SizedBox(height: 28),
-                    _StartStopButton(
-                      isRunning: _isRunning,
-                      onTap: _isRunning ? _stopTimer : _startTimer,
-                    ),
-                    const SizedBox(height: 24),
-                  ],
-                ),
-              ),
+      backgroundColor: _kNavy,
+      body: Stack(
+        children: [
+          // Islamic 8-pointed star field behind everything.
+          const Positioned.fill(
+            child: CustomPaint(
+              painter: GeometricPatternPainter(color: _kGold, alpha: 0.06),
             ),
-          ],
-        ),
+          ),
+          SafeArea(
+            child: Column(
+              children: [
+                _Header(isRunning: _isRunning),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 8),
+                        const _SubtitleCard(),
+                        const SizedBox(height: 16),
+                        _TimerCard(
+                          progress: _progress,
+                          timeString: _formatTime(),
+                          dua: focusDuas[_duaIndex],
+                          duaFade: _duaFade,
+                          isRunning: _isRunning && !_pausedForPrayer,
+                          pausedForPrayer: _pausedForPrayer,
+                          pulse: _pulse,
+                        ),
+                        const SizedBox(height: 16),
+                        _DurationCard(
+                          fixedMinutes: _fixedPresetMinutes,
+                          selectedMinutes: _selectedMinutes,
+                          isCustomSelected: _isCustomSelected,
+                          locked: _isRunning,
+                          onSelectFixed: _selectFixedPreset,
+                          onSelectCustom: _selectCustomDuration,
+                        ),
+                        const SizedBox(height: 16),
+                        _BlockedAppsCard(
+                          apps: _blockedApps,
+                          selectedCount: _blockedAppsCount,
+                          iconsReady: _blockedAppsIconsReady,
+                          isRunning: _isRunning,
+                          onSelectApps: _isRunning ? null : _openAppsPicker,
+                        ),
+                        const SizedBox(height: 16),
+                        _BeginFocusButton(
+                          isRunning: _isRunning,
+                          onTap: _isRunning ? _stopTimer : _startTimer,
+                        ),
+                        const SizedBox(height: 24),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -417,19 +443,18 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 12, 22, 4),
+      padding: const EdgeInsets.fromLTRB(8, 12, 20, 4),
       child: Row(
         children: [
           IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,
-              color: colors.primaryText,
+              color: _kGold,
             ),
           ),
           Text(
@@ -437,7 +462,7 @@ class _Header extends StatelessWidget {
             style: GoogleFonts.playfairDisplay(
               fontSize: 22,
               fontWeight: FontWeight.w700,
-              color: colors.primaryText,
+              color: _kGold,
             ),
           ),
           const Spacer(),
@@ -447,8 +472,9 @@ class _Header extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: AppColors.deepGreen.withValues(alpha: 0.1),
+                color: _kGold.withValues(alpha: 0.10),
                 borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: _kGold.withValues(alpha: 0.4)),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -457,7 +483,7 @@ class _Header extends StatelessWidget {
                     width: 6,
                     height: 6,
                     decoration: const BoxDecoration(
-                      color: AppColors.deepGreen,
+                      color: _kGold,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -467,7 +493,7 @@ class _Header extends StatelessWidget {
                     style: GoogleFonts.lato(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
-                      color: AppColors.deepGreen,
+                      color: _kGold,
                     ),
                   ),
                 ],
@@ -491,18 +517,14 @@ class _SubtitleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
-      decoration: BoxDecoration(
-        color: AppColors.deepGreen.withValues(alpha: 0.07),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.deepGreen.withValues(alpha: 0.12)),
-      ),
+      padding: const EdgeInsets.all(16),
+      decoration: _cardDecoration(),
       child: Row(
         children: [
           const Icon(
             Icons.mosque_rounded,
             size: 18,
-            color: AppColors.deepGreen,
+            color: _kGold,
           ),
           const SizedBox(width: 10),
           Expanded(
@@ -510,7 +532,7 @@ class _SubtitleCard extends StatelessWidget {
               l10n.focusModeSubtitle,
               style: GoogleFonts.lato(
                 fontSize: 13,
-                color: AppColors.deepGreen,
+                color: _kCream.withValues(alpha: 0.85),
                 height: 1.45,
                 fontWeight: FontWeight.w500,
               ),
@@ -523,10 +545,10 @@ class _SubtitleCard extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TIMER CIRCLE
+// TIMER CARD (ring + countdown + rotating dhikr)
 // ─────────────────────────────────────────────────────────────────────────────
 
-class _TimerCircle extends StatelessWidget {
+class _TimerCard extends StatelessWidget {
   final double progress;
   final String timeString;
   final Dua dua;
@@ -535,7 +557,7 @@ class _TimerCircle extends StatelessWidget {
   final bool pausedForPrayer;
   final Animation<double> pulse;
 
-  const _TimerCircle({
+  const _TimerCard({
     required this.progress,
     required this.timeString,
     required this.dua,
@@ -547,200 +569,174 @@ class _TimerCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
+    final langCode = Localizations.localeOf(context).languageCode;
+    final label = pausedForPrayer
+        ? l10n.focusPaused
+        : (isRunning ? l10n.remaining : l10n.ready);
 
-    return AnimatedBuilder(
-      animation: pulse,
-      builder: (_, __) {
-        final glowRadius = isRunning ? (16 + pulse.value * 14) : 0.0;
-        return Container(
-          width: 290,
-          height: 290,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: isRunning
-                ? [
-                    BoxShadow(
-                      color: AppColors.gold
-                          .withValues(alpha: 0.18 + pulse.value * 0.10),
-                      blurRadius: glowRadius,
-                      spreadRadius: 2,
-                    ),
-                  ]
-                : [],
-          ),
-          child: CustomPaint(
-            painter: _TimerRingPainter(
-              progress: progress,
-              trackColor: colors.border,
-            ),
-            child: Container(
-              margin: const EdgeInsets.all(16),
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: _cardDecoration(),
+      child: Column(
+        children: [
+          const SizedBox(height: 8),
+          AnimatedBuilder(
+            animation: pulse,
+            builder: (_, __) => Container(
+              width: 180,
+              height: 180,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: colors.cardBg,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.gold.withValues(alpha: 0.06),
-                    blurRadius: 20,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+                boxShadow: isRunning
+                    ? [
+                        BoxShadow(
+                          color: _kGold.withValues(
+                              alpha: 0.12 + pulse.value * 0.08),
+                          blurRadius: 14 + pulse.value * 12,
+                          spreadRadius: 2,
+                        ),
+                      ]
+                    : [],
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    timeString,
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 52,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.gold,
-                      letterSpacing: -1,
-                      height: 1.0,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    pausedForPrayer
-                        ? l10n.focusPaused
-                        : (isRunning ? l10n.remaining : l10n.ready),
-                    style: GoogleFonts.lato(
-                      fontSize: 11,
-                      color: colors.secondaryText,
-                      letterSpacing: 1.2,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Container(
-                    width: 36,
-                    height: 1.5,
-                    color: AppColors.gold.withValues(alpha: 0.35),
-                  ),
-                  const SizedBox(height: 14),
-                  FadeTransition(
-                    opacity: duaFade,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 22),
-                      child: Column(
-                        children: [
-                          Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: Text(
-                              dua.arabic.replaceAll('\n', ' '),
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                height: 1.6,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          const SizedBox(height: 6),
-                          if (Localizations.localeOf(context).languageCode !=
-                              'ar')
-                            Text(
-                              dua
-                                  .translationFor(
-                                    Localizations.localeOf(context)
-                                        .languageCode,
-                                  )
-                                  .replaceAll('\n', ' '),
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.lato(
-                                fontSize: 10.5,
-                                color: colors.secondaryText,
-                                height: 1.45,
-                                fontStyle: FontStyle.italic,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                        ],
+              child: CustomPaint(
+                painter: _TimerRingPainter(progress: progress),
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        timeString,
+                        style: GoogleFonts.lato(
+                          fontSize: 38,
+                          fontWeight: FontWeight.w700,
+                          color: _kCream,
+                          height: 1.0,
+                          letterSpacing: -0.5,
+                        ),
                       ),
-                    ),
+                      const SizedBox(height: 6),
+                      Text(
+                        label.toUpperCase(),
+                        style: GoogleFonts.lato(
+                          fontSize: 11,
+                          color: _kGold,
+                          letterSpacing: 1.5,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        );
-      },
+          const SizedBox(height: 18),
+          Container(
+            width: 36,
+            height: 1,
+            color: _kGold.withValues(alpha: 0.35),
+          ),
+          const SizedBox(height: 14),
+          FadeTransition(
+            opacity: duaFade,
+            child: Column(
+              children: [
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Text(
+                    dua.arabic.replaceAll('\n', ' '),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.scheherazadeNew(
+                      fontSize: 18,
+                      color: _kGold,
+                      height: 1.6,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (langCode != 'ar') ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    dua.translationFor(langCode).replaceAll('\n', ' '),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.lato(
+                      fontSize: 11,
+                      color: _kCream.withValues(alpha: 0.6),
+                      height: 1.45,
+                      fontStyle: FontStyle.italic,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: 4),
+        ],
+      ),
     );
   }
 }
 
 // Ring: starts full (progress=1.0), depletes to empty (progress=0.0).
+// Thin 2px track at 15% gold, 2.5px round-capped gold progress arc from
+// 12 o'clock, faint gold inner fill.
 class _TimerRingPainter extends CustomPainter {
   final double progress;
-  final Color trackColor;
 
-  _TimerRingPainter({required this.progress, required this.trackColor});
+  _TimerRingPainter({required this.progress});
 
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
-    final radius = size.width / 2 - 6;
+    final radius = size.width / 2 - 2;
 
-    // Background track
-    final trackPaint = Paint()
-      ..color = trackColor
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 10;
-    canvas.drawCircle(center, radius, trackPaint);
+    // Inner fill
+    canvas.drawCircle(
+      center,
+      radius - 2,
+      Paint()..color = _kGold.withValues(alpha: 0.04),
+    );
+
+    // Full-circle track
+    canvas.drawCircle(
+      center,
+      radius,
+      Paint()
+        ..color = _kGold.withValues(alpha: 0.15)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2,
+    );
 
     if (progress <= 0) return;
 
-    final rect = Rect.fromCircle(center: center, radius: radius);
-
-    // Gradient arc — sweeps from 12 o'clock clockwise by progress fraction
-    final shader = SweepGradient(
-      startAngle: -math.pi / 2,
-      endAngle: -math.pi / 2 + 2 * math.pi * progress,
-      colors: const [
-        Color(0xFFE8D5A3),
-        AppColors.gold,
-        AppColors.mutedGold,
-      ],
-    ).createShader(rect);
-
-    final arcPaint = Paint()
-      ..shader = shader
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 10
-      ..strokeCap = StrokeCap.round;
-
+    // Progress arc — sweeps clockwise from 12 o'clock (-90°).
     canvas.drawArc(
-      rect,
+      Rect.fromCircle(center: center, radius: radius),
       -math.pi / 2,
       2 * math.pi * progress,
       false,
-      arcPaint,
+      Paint()
+        ..color = _kGold
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2.5
+        ..strokeCap = StrokeCap.round,
     );
-
-    // Leading dot at the tip of the arc
-    final endAngle = -math.pi / 2 + 2 * math.pi * progress;
-    final dotCenter = Offset(
-      center.dx + radius * math.cos(endAngle),
-      center.dy + radius * math.sin(endAngle),
-    );
-    canvas.drawCircle(dotCenter, 6, Paint()..color = AppColors.gold);
-    canvas.drawCircle(dotCenter, 3, Paint()..color = Colors.white);
   }
 
   @override
-  bool shouldRepaint(_TimerRingPainter old) =>
-      old.progress != progress || old.trackColor != trackColor;
+  bool shouldRepaint(_TimerRingPainter old) => old.progress != progress;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PRESET DURATION SELECTOR
+// DURATION CARD
 // ─────────────────────────────────────────────────────────────────────────────
 
-class _DurationRow extends StatelessWidget {
+class _DurationCard extends StatelessWidget {
   final List<int> fixedMinutes;
   final int selectedMinutes;
   final bool isCustomSelected;
@@ -748,7 +744,7 @@ class _DurationRow extends StatelessWidget {
   final ValueChanged<int> onSelectFixed;
   final VoidCallback onSelectCustom;
 
-  const _DurationRow({
+  const _DurationCard({
     required this.fixedMinutes,
     required this.selectedMinutes,
     required this.isCustomSelected,
@@ -761,133 +757,90 @@ class _DurationRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          l10n.duration.toUpperCase(),
-          style: GoogleFonts.lato(
-            fontSize: 11,
-            fontWeight: FontWeight.w700,
-            color: AppColors.gold,
-            letterSpacing: 1.3,
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: _cardDecoration(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.duration.toUpperCase(),
+            style: GoogleFonts.lato(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              color: _kGold,
+              letterSpacing: 1.3,
+            ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Opacity(
-          opacity: locked ? 0.45 : 1.0,
-          child: Row(
-            children: [
-              for (int i = 0; i < fixedMinutes.length; i++)
+          const SizedBox(height: 12),
+          Opacity(
+            opacity: locked ? 0.45 : 1.0,
+            child: Row(
+              children: [
+                for (final minutes in fixedMinutes) ...[
+                  Expanded(
+                    child: _DurationPill(
+                      label: '$minutes',
+                      isSelected:
+                          !isCustomSelected && selectedMinutes == minutes,
+                      onTap: () => onSelectFixed(minutes),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                ],
                 Expanded(
-                  child: _DurationTile(
-                    margin: const EdgeInsets.only(right: 10),
-                    isSelected:
-                        !isCustomSelected && selectedMinutes == fixedMinutes[i],
-                    onTap: () => onSelectFixed(fixedMinutes[i]),
-                    primaryText: '${fixedMinutes[i]}',
-                    secondaryText: l10n.minutesAbbreviation,
+                  child: _DurationPill(
+                    label: l10n.custom,
+                    isSelected: isCustomSelected,
+                    onTap: onSelectCustom,
                   ),
                 ),
-              Expanded(
-                child: _DurationTile(
-                  margin: EdgeInsets.zero,
-                  isSelected: isCustomSelected,
-                  onTap: onSelectCustom,
-                  icon: Icons.edit_rounded,
-                  primaryText: l10n.custom,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
 
-class _DurationTile extends StatelessWidget {
-  final EdgeInsets margin;
+class _DurationPill extends StatelessWidget {
+  final String label;
   final bool isSelected;
   final VoidCallback onTap;
-  final String primaryText;
-  final String? secondaryText;
-  final IconData? icon;
 
-  const _DurationTile({
-    required this.margin,
+  const _DurationPill({
+    required this.label,
     required this.isSelected,
     required this.onTap,
-    required this.primaryText,
-    this.secondaryText,
-    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
-
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        margin: margin,
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        height: 40,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.gold : colors.cardBg,
-          borderRadius: BorderRadius.circular(12),
+          color: isSelected ? _kGold : Colors.transparent,
+          borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected ? AppColors.gold : colors.border,
-            width: 1.5,
+            color: isSelected ? _kGold : _kGold.withValues(alpha: 0.3),
+            width: 1,
           ),
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: AppColors.gold.withValues(alpha: 0.28),
-                    blurRadius: 8,
-                    offset: const Offset(0, 3),
-                  ),
-                ]
-              : [],
         ),
-        child: Column(
-          children: [
-            if (icon != null)
-              Icon(
-                icon,
-                size: 18,
-                color: isSelected ? Colors.white : colors.primaryText,
-              )
-            else
-              Text(
-                primaryText,
-                style: GoogleFonts.playfairDisplay(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: isSelected ? Colors.white : colors.primaryText,
-                ),
-              ),
-            if (secondaryText != null)
-              Text(
-                secondaryText!,
-                style: GoogleFonts.lato(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w600,
-                  color: isSelected
-                      ? Colors.white.withValues(alpha: 0.8)
-                      : colors.secondaryText,
-                ),
-              )
-            else if (icon != null)
-              Text(
-                primaryText,
-                style: GoogleFonts.lato(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w600,
-                  color: isSelected ? Colors.white : colors.primaryText,
-                ),
-              ),
-          ],
+        child: Text(
+          label,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: GoogleFonts.lato(
+            fontSize: 13,
+            fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+            color: isSelected ? _kNavy : _kCream,
+          ),
         ),
       ),
     );
@@ -895,17 +848,17 @@ class _DurationTile extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// BLOCKED APPS PREVIEW
+// BLOCKED APPS CARD
 // ─────────────────────────────────────────────────────────────────────────────
 
-class _BlockedAppsPreview extends StatelessWidget {
+class _BlockedAppsCard extends StatelessWidget {
   final List<InstalledApp> apps;
   final int selectedCount;
   final bool iconsReady;
   final bool isRunning;
   final VoidCallback? onSelectApps;
 
-  const _BlockedAppsPreview({
+  const _BlockedAppsCard({
     required this.apps,
     required this.selectedCount,
     required this.iconsReady,
@@ -915,57 +868,38 @@ class _BlockedAppsPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
     final preview = apps.take(_kFocusPreviewLimit).toList();
 
     return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: colors.cardBg,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: colors.border),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 12,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: _cardDecoration(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text(
-                l10n.blockedDuringFocus,
-                style: GoogleFonts.lato(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                  color: colors.primaryText,
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                  color:
-                      isRunning ? const Color(0xFFFFEBEE) : colors.secondaryBg,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  l10n.appsBlockedCount(selectedCount),
-                  style: GoogleFonts.lato(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    color: isRunning
-                        ? const Color(0xFFB71C1C)
-                        : colors.secondaryText,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            l10n.blockedDuringFocus.toUpperCase(),
+            style: GoogleFonts.lato(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              color: _kGold,
+              letterSpacing: 1.3,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            selectedCount == 0
+                ? l10n.appBlockingNoAppsSelected
+                : l10n.appsBlockedCount(selectedCount),
+            style: GoogleFonts.lato(
+              fontSize: 12.5,
+              fontWeight:
+                  selectedCount == 0 ? FontWeight.w400 : FontWeight.w600,
+              color: selectedCount == 0
+                  ? _kCream.withValues(alpha: 0.5)
+                  : _kCream.withValues(alpha: 0.85),
+            ),
           ),
           // Real icons only render once the installed-apps cache is warm
           // (e.g. the picker below has been opened this session) — selecting
@@ -973,15 +907,8 @@ class _BlockedAppsPreview extends StatelessWidget {
           // non-zero count with cold icons shows neither, rather than a
           // spinner, so opening this screen never feels like it's waiting
           // on anything.
-          if (selectedCount == 0) ...[
-            const SizedBox(height: 16),
-            Text(
-              l10n.appBlockingNoAppsSelected,
-              style:
-                  GoogleFonts.lato(fontSize: 12.5, color: colors.secondaryText),
-            ),
-          ] else if (iconsReady) ...[
-            const SizedBox(height: 16),
+          if (selectedCount > 0 && iconsReady) ...[
+            const SizedBox(height: 14),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: preview
@@ -996,16 +923,15 @@ class _BlockedAppsPreview extends StatelessWidget {
               child: OutlinedButton(
                 onPressed: onSelectApps,
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: AppColors.gold,
-                  side:
-                      BorderSide(color: AppColors.gold.withValues(alpha: 0.5)),
+                  foregroundColor: _kGold,
+                  side: BorderSide(color: _kGold.withValues(alpha: 0.5)),
                   padding: const EdgeInsets.symmetric(vertical: 11),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
                 child: Text(
-                  l10n.appBlockingSelectAppsButton,
+                  '+ ${l10n.appBlockingSelectAppsButton}',
                   style: GoogleFonts.lato(
                       fontSize: 13, fontWeight: FontWeight.w700),
                 ),
@@ -1026,19 +952,19 @@ class _BlockedAppIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
-
     Widget icon = Container(
       width: 52,
       height: 52,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: colors.secondaryBg,
+        color: _kNavy,
         borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: _kGold.withValues(alpha: 0.15)),
       ),
       child: app.iconBytes != null
           ? Image.memory(app.iconBytes!, fit: BoxFit.cover)
-          : Icon(Icons.apps_rounded, color: colors.secondaryText, size: 28),
+          : Icon(Icons.apps_rounded,
+              color: _kCream.withValues(alpha: 0.5), size: 28),
     );
 
     // Grey out the icons only while a session is active
@@ -1085,11 +1011,9 @@ class _BlockedAppIcon extends StatelessWidget {
                 width: 18,
                 height: 18,
                 decoration: BoxDecoration(
-                  color: isRunning
-                      ? const Color(0xFFB71C1C)
-                      : colors.secondaryText,
+                  color: isRunning ? const Color(0xFFB71C1C) : _kMutedGold,
                   shape: BoxShape.circle,
-                  border: Border.all(color: colors.cardBg, width: 1.5),
+                  border: Border.all(color: _kCard, width: 1.5),
                 ),
                 child: const Icon(
                   Icons.block_rounded,
@@ -1110,7 +1034,7 @@ class _BlockedAppIcon extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.lato(
               fontSize: 10,
-              color: colors.secondaryText,
+              color: _kCream.withValues(alpha: 0.6),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -1121,60 +1045,70 @@ class _BlockedAppIcon extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// START / STOP BUTTON
+// BEGIN FOCUS BUTTON
 // ─────────────────────────────────────────────────────────────────────────────
 
-class _StartStopButton extends StatelessWidget {
+class _BeginFocusButton extends StatelessWidget {
   final bool isRunning;
   final VoidCallback onTap;
 
-  const _StartStopButton({required this.isRunning, required this.onTap});
+  const _BeginFocusButton({required this.isRunning, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final accent = isRunning ? _kStopRed : _kGold;
+
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         width: double.infinity,
-        height: 58,
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: isRunning
-                ? [const Color(0xFFB71C1C), const Color(0xFFD32F2F)]
-                : [AppColors.gold, AppColors.mutedGold],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
+            colors: [
+              accent.withValues(alpha: 0.2),
+              accent.withValues(alpha: 0.05),
+            ],
           ),
-          borderRadius: BorderRadius.circular(18),
-          boxShadow: [
-            BoxShadow(
-              color: (isRunning ? const Color(0xFFB71C1C) : AppColors.gold)
-                  .withValues(alpha: 0.35),
-              blurRadius: 16,
-              offset: const Offset(0, 5),
-            ),
-          ],
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: accent.withValues(alpha: 0.5), width: 1),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
           children: [
-            Icon(
-              isRunning ? Icons.stop_rounded : Icons.play_arrow_rounded,
-              color: Colors.white,
-              size: 26,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  isRunning ? Icons.stop_rounded : Icons.play_arrow_rounded,
+                  color: accent,
+                  size: 20,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  isRunning ? l10n.stopFocus : l10n.startFocus,
+                  style: GoogleFonts.lato(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: accent,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 10),
-            Text(
-              isRunning ? l10n.stopFocus : l10n.startFocus,
-              style: GoogleFonts.lato(
-                fontSize: 17,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-                letterSpacing: 0.4,
+            if (!isRunning) ...[
+              const SizedBox(height: 4),
+              Text(
+                l10n.focusButtonSubtitle,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.lato(
+                  fontSize: 11,
+                  color: _kCream.withValues(alpha: 0.5),
+                ),
               ),
-            ),
+            ],
           ],
         ),
       ),
@@ -1202,7 +1136,6 @@ class _CompletionDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     final l10n = AppLocalizations.of(context)!;
 
     return Dialog(
@@ -1211,15 +1144,15 @@ class _CompletionDialog extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(28),
         decoration: BoxDecoration(
-          color: colors.cardBg,
+          color: _kCard,
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: AppColors.gold.withValues(alpha: 0.45),
+            color: _kGold.withValues(alpha: 0.45),
             width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
-              color: AppColors.gold.withValues(alpha: 0.12),
+              color: _kGold.withValues(alpha: 0.12),
               blurRadius: 32,
               offset: const Offset(0, 8),
             ),
@@ -1234,16 +1167,16 @@ class _CompletionDialog extends StatelessWidget {
               height: 76,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.gold.withValues(alpha: 0.1),
+                color: _kGold.withValues(alpha: 0.1),
                 border: Border.all(
-                  color: AppColors.gold.withValues(alpha: 0.3),
+                  color: _kGold.withValues(alpha: 0.3),
                   width: 1.5,
                 ),
               ),
               child: const Icon(
                 Icons.nightlight_round,
                 size: 38,
-                color: AppColors.gold,
+                color: _kGold,
               ),
             ),
 
@@ -1254,7 +1187,7 @@ class _CompletionDialog extends StatelessWidget {
               style: GoogleFonts.playfairDisplay(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
-                color: AppColors.gold,
+                color: _kGold,
               ),
               textAlign: TextAlign.center,
             ),
@@ -1266,7 +1199,7 @@ class _CompletionDialog extends StatelessWidget {
               style: GoogleFonts.lato(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: colors.primaryText,
+                color: _kCream,
               ),
               textAlign: TextAlign.center,
             ),
@@ -1277,7 +1210,7 @@ class _CompletionDialog extends StatelessWidget {
               l10n.stayedFocusedFor(_durationLabel(l10n)),
               style: GoogleFonts.lato(
                 fontSize: 14,
-                color: colors.secondaryText,
+                color: _kCream.withValues(alpha: 0.6),
                 height: 1.5,
               ),
               textAlign: TextAlign.center,
@@ -1289,10 +1222,10 @@ class _CompletionDialog extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: AppColors.gold.withValues(alpha: 0.08),
+                color: _kGold.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColors.gold.withValues(alpha: 0.2),
+                  color: _kGold.withValues(alpha: 0.2),
                 ),
               ),
               child: Text(
@@ -1300,7 +1233,7 @@ class _CompletionDialog extends StatelessWidget {
                 style: GoogleFonts.playfairDisplay(
                   fontSize: 12.5,
                   fontStyle: FontStyle.italic,
-                  color: AppColors.gold,
+                  color: _kGold,
                   height: 1.6,
                 ),
                 textAlign: TextAlign.center,
@@ -1317,14 +1250,14 @@ class _CompletionDialog extends StatelessWidget {
                 height: 52,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [AppColors.gold, AppColors.mutedGold],
+                    colors: [_kGold, _kMutedGold],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(14),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.gold.withValues(alpha: 0.32),
+                      color: _kGold.withValues(alpha: 0.32),
                       blurRadius: 14,
                       offset: const Offset(0, 5),
                     ),
@@ -1336,7 +1269,7 @@ class _CompletionDialog extends StatelessWidget {
                     style: GoogleFonts.lato(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: _kNavy,
                       letterSpacing: 0.3,
                     ),
                   ),

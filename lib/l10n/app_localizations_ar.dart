@@ -2943,4 +2943,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'إِنَّ اللَّهَ مَعَ الَّذِينَ اتَّقَوا وَّالَّذِينَ هُم مُّحْسِنُونَ';
+
+  @override
+  String get focusButtonSubtitle => 'احمِ وقتك لما هو أهم';
 }

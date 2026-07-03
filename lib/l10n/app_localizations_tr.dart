@@ -2980,4 +2980,7 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'Şüphesiz Allah, takva sahipleriyle ve iyilik edenlerle beraberdir.';
+
+  @override
+  String get focusButtonSubtitle => 'Zamanını önemli olan için koru';
 }

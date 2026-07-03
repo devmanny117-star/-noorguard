@@ -2975,4 +2975,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get heroVerse30 => 'همانا خداوند با پرهیزگاران و نیکوکاران است.';
+
+  @override
+  String get focusButtonSubtitle => 'از وقت خود برای آنچه مهم است محافظت کنید';
 }

@@ -2990,4 +2990,7 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'Hakika Mwenyezi Mungu yu pamoja na wamchao na wale watendao mema.';
+
+  @override
+  String get focusButtonSubtitle => 'Linda muda wako kwa yale muhimu';
 }

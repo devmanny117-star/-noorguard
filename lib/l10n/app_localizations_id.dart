@@ -2998,4 +2998,7 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get heroVerse30 =>
       'Sesungguhnya Allah beserta orang-orang yang bertakwa dan orang-orang yang berbuat kebaikan.';
+
+  @override
+  String get focusButtonSubtitle => 'Lindungi waktumu untuk hal yang penting';
 }

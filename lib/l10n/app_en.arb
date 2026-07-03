@@ -3697,5 +3697,9 @@
   "heroVerse30": "Indeed, Allah is with those who fear Him and those who do good.",
   "@heroVerse30": {
     "description": "Hero card rotating Quran verse (An-Nahl 16:128)"
+  },
+  "focusButtonSubtitle": "Protect your time for what matters",
+  "@focusButtonSubtitle": {
+    "description": "Subtitle under the Begin Focus button on the Focus Mode screen"
   }
 }
