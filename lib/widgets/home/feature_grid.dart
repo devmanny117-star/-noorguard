@@ -348,16 +348,16 @@ class RevertCornerCard extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 4),
-                          // 2 lines at 11px so longer translations wrap
+                          // 2 lines at 12px so longer translations wrap
                           // instead of truncating; worst case (2-line title +
-                          // 2-line subtitle ≈ 83px) still fits the card's
+                          // 2-line subtitle ≈ 86px) still fits the card's
                           // 140px height with its 16px vertical padding.
                           Text(
                             '${l10n.backToBasicsSubtitle} 🌙',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.lato(
-                              fontSize: 11,
+                              fontSize: 12,
                               color: const Color(0xFFD4AF37),
                             ),
                           ),
