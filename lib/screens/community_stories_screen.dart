@@ -1380,10 +1380,18 @@ class _SubmitStorySheet extends StatefulWidget {
   State<_SubmitStorySheet> createState() => _SubmitStorySheetState();
 }
 
-class _SubmitStorySheetState extends State<_SubmitStorySheet> {
+class _SubmitStorySheetState extends State<_SubmitStorySheet>
+    with SingleTickerProviderStateMixin {
   final _nameController = TextEditingController();
   final _storyController = TextEditingController();
   final _countryController = TextEditingController();
+  final _storyFocus = FocusNode();
+
+  /// Drives the gold pulsing border while the card editor is focused.
+  late final AnimationController _pulseController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1100),
+  );
   bool _anonymous = false;
   Country? _country;
   StoryCategory _category = StoryCategory.revert;
@@ -1396,6 +1404,7 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
   @override
   void initState() {
     super.initState();
+    _storyFocus.addListener(_onStoryFocusChange);
     final editing = widget.editing;
     if (editing != null) {
       _nameController.text = editing.name;
@@ -1421,7 +1430,19 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
     _nameController.dispose();
     _storyController.dispose();
     _countryController.dispose();
+    _storyFocus.dispose();
+    _pulseController.dispose();
     super.dispose();
+  }
+
+  void _onStoryFocusChange() {
+    if (_storyFocus.hasFocus) {
+      _pulseController.repeat(reverse: true);
+    } else {
+      _pulseController.stop();
+      _pulseController.value = 0;
+    }
+    setState(() {});
   }
 
   Future<void> _pickDate() async {
@@ -1539,6 +1560,150 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
           color: _kGold,
         ),
       );
+
+  /// The card editor: the user types their story directly onto a live
+  /// preview of the finished card (background, overlay, author footer).
+  Widget _cardEditor(AppLocalizations l10n) {
+    final name = (_anonymous || _nameController.text.trim().isEmpty)
+        ? l10n.storiesAnonymous
+        : _nameController.text.trim();
+
+    return GestureDetector(
+      onTap: _storyFocus.requestFocus,
+      child: AnimatedBuilder(
+        animation: _pulseController,
+        builder: (context, child) {
+          final focused = _storyFocus.hasFocus;
+          final t = _pulseController.value;
+          return Container(
+            height: 220,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              color: _kNavy,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: _kGold.withValues(
+                    alpha: focused ? 0.45 + 0.5 * t : 0.35),
+                width: focused ? 1.6 : 1,
+              ),
+              boxShadow: focused
+                  ? [
+                      BoxShadow(
+                        color: _kGold.withValues(alpha: 0.10 + 0.18 * t),
+                        blurRadius: 16,
+                      ),
+                    ]
+                  : null,
+            ),
+            child: child,
+          );
+        },
+        child: Stack(
+          children: [
+            if (_background != null) ...[
+              Positioned.fill(
+                child: Image.asset(
+                  _background!,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                ),
+              ),
+              Positioned.fill(
+                child: Container(color: Colors.black.withValues(alpha: 0.5)),
+              ),
+            ] else
+              Positioned.fill(
+                child: Center(
+                  child: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Text(
+                      'بِسْمِ اللَّهِ',
+                      style: GoogleFonts.scheherazadeNew(
+                        fontSize: 36,
+                        color: _kGold.withValues(alpha: 0.30),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(14, 12, 14, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _storyController,
+                        focusNode: _storyFocus,
+                        maxLines: null,
+                        expands: true,
+                        maxLength: 3000,
+                        textAlignVertical: TextAlignVertical.top,
+                        onChanged: (_) => setState(() {}),
+                        scrollPadding: const EdgeInsets.only(bottom: 220),
+                        cursorColor: _kGold,
+                        style: _storySerif(color: _kCream, fontSize: 14),
+                        decoration: InputDecoration(
+                          isCollapsed: true,
+                          border: InputBorder.none,
+                          counterText: '',
+                          hintText: l10n.storiesStoryHint,
+                          hintStyle: _storySerif(
+                            color: _kCream.withValues(alpha: 0.5),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Flexible(
+                          child: Text(
+                            name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.playfairDisplay(
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w700,
+                              color: _kGold,
+                            ),
+                          ),
+                        ),
+                        if (_country != null) ...[
+                          const SizedBox(width: 6),
+                          Flexible(
+                            child: Text(
+                              '${_country!.flag} ${_country!.name}',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.lato(
+                                fontSize: 11,
+                                color: _kCream.withValues(alpha: 0.65),
+                              ),
+                            ),
+                          ),
+                        ],
+                        const Spacer(),
+                        Text(
+                          '${_storyController.text.length}/3000',
+                          style: GoogleFonts.lato(
+                            fontSize: 10.5,
+                            color: _kCream.withValues(alpha: 0.5),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   /// Instant type-ahead results under the country field; hidden once a
   /// country is picked (typing again clears the pick and re-opens them).
@@ -1758,21 +1923,7 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
               const SizedBox(height: 14),
               _label(l10n.storiesYourStoryLabel.toUpperCase()),
               const SizedBox(height: 8),
-              TextField(
-                controller: _storyController,
-                minLines: 5,
-                maxLines: 10,
-                maxLength: 3000,
-                style:
-                    GoogleFonts.lato(fontSize: 14, color: _kCream, height: 1.5),
-                onChanged: (_) => setState(() {}),
-                decoration: _fieldDecoration(l10n.storiesStoryHint).copyWith(
-                  counterStyle: GoogleFonts.lato(
-                    fontSize: 10,
-                    color: _kCream.withValues(alpha: 0.35),
-                  ),
-                ),
-              ),
+              _cardEditor(l10n),
               const SizedBox(height: 14),
               _label(l10n.storiesChooseBackground.toUpperCase()),
               const SizedBox(height: 8),
@@ -1828,18 +1979,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                   );
                 },
               ),
-              const SizedBox(height: 14),
-              _label(l10n.storiesPreviewLabel.toUpperCase()),
-              const SizedBox(height: 8),
-              _StoryPreviewCard(
-                name: (_anonymous || _nameController.text.trim().isEmpty)
-                    ? l10n.storiesAnonymous
-                    : _nameController.text.trim(),
-                story: _storyController.text.trim(),
-                storyHint: l10n.storiesStoryHint,
-                background: _background,
-                country: _country,
-              ),
               const SizedBox(height: 18),
               GestureDetector(
                 onTap: _submit,
@@ -1882,105 +2021,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-/// Live preview of how the story card will look — updates as the user
-/// types or changes the background selection.
-class _StoryPreviewCard extends StatelessWidget {
-  final String name;
-  final String story;
-  final String storyHint;
-  final String? background;
-  final Country? country;
-
-  const _StoryPreviewCard({
-    required this.name,
-    required this.story,
-    required this.storyHint,
-    required this.background,
-    required this.country,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 120,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: _kCard,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: _kGold.withValues(alpha: 0.35)),
-      ),
-      child: Stack(
-        children: [
-          if (background != null) ...[
-            Positioned.fill(
-              child: Image.asset(
-                background!,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
-              ),
-            ),
-            Positioned.fill(
-              child: Container(color: Colors.black.withValues(alpha: 0.45)),
-            ),
-          ],
-          PositionedDirectional(
-            start: 0,
-            top: 0,
-            bottom: 0,
-            child: Container(width: 3, color: _kGold),
-          ),
-          Positioned.fill(
-            child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(15, 12, 12, 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: _kGold,
-                    ),
-                  ),
-                  if (country != null) ...[
-                    const SizedBox(height: 2),
-                    Text(
-                      '${country!.flag} ${country!.name}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.lato(
-                        fontSize: 10.5,
-                        color: _kCream.withValues(alpha: 0.6),
-                      ),
-                    ),
-                  ],
-                  const SizedBox(height: 6),
-                  Expanded(
-                    child: Text(
-                      story.isEmpty ? storyHint : story,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.lato(
-                        fontSize: 12,
-                        height: 1.5,
-                        color: _kCream.withValues(
-                            alpha: story.isEmpty ? 0.4 : 0.88),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
