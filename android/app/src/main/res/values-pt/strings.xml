@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="accessibility_service_description">O Noor Guard usa este serviço de Acessibilidade apenas para perceber quando um app bloqueado é aberto durante a oração. Ele nunca lê suas mensagens, fotos ou dados pessoais.</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">Noor Guard</string>
+    <string name="keep_alive_text">Notificações de oração ativas</string>
+    <string name="live_channel_name">Noor Guard ao Vivo</string>
 </resources>

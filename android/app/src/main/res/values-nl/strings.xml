@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="accessibility_service_description">Noor Guard gebruikt deze toegankelijkheidsservice alleen om te merken wanneer een geblokkeerde app wordt geopend tijdens het gebed. Het leest nooit je berichten, foto\'s of persoonlijke gegevens.</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">Noor Guard</string>
+    <string name="keep_alive_text">Gebedsmeldingen actief</string>
+    <string name="live_channel_name">Noor Guard Live</string>
 </resources>

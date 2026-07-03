@@ -138,11 +138,12 @@ class PrayerForegroundService : Service() {
             }
 
             Log.d("PrayerAlarms", "restartIfEnabled: restarting keep-alive service after reboot")
-            val title = prefs.getString(KEY_TITLE, "Noor Guard") ?: "Noor Guard"
-            val text = prefs.getString(KEY_TEXT, "Prayer notifications active")
-                ?: "Prayer notifications active"
-            val channelName = prefs.getString(KEY_CHANNEL_NAME, "Noor Guard Live")
-                ?: "Noor Guard Live"
+            val title = prefs.getString(KEY_TITLE, null)
+                ?: context.getString(R.string.keep_alive_title)
+            val text = prefs.getString(KEY_TEXT, null)
+                ?: context.getString(R.string.keep_alive_text)
+            val channelName = prefs.getString(KEY_CHANNEL_NAME, null)
+                ?: context.getString(R.string.live_channel_name)
             val channelDescription = prefs.getString(KEY_CHANNEL_DESCRIPTION, "") ?: ""
             ContextCompat.startForegroundService(
                 context,
@@ -164,8 +165,12 @@ class PrayerForegroundService : Service() {
         }
     }
 
-    private var fallbackTitle = "Noor Guard"
-    private var fallbackText = "Prayer notifications active"
+    // Resolved lazily via getString() at first use — a Service has no usable
+    // Context at field-initialization time. Dart normally overrides these
+    // with the in-app language's strings; the resources only cover the gap
+    // before that first push (localized to the device language).
+    private var fallbackTitle: String? = null
+    private var fallbackText: String? = null
 
     private val handler = Handler(Looper.getMainLooper())
     private val updateRunnable = object : Runnable {
@@ -181,7 +186,8 @@ class PrayerForegroundService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         fallbackTitle = intent?.getStringExtra(EXTRA_TITLE) ?: fallbackTitle
         fallbackText = intent?.getStringExtra(EXTRA_TEXT) ?: fallbackText
-        val channelName = intent?.getStringExtra(EXTRA_CHANNEL_NAME) ?: "Noor Guard Live"
+        val channelName = intent?.getStringExtra(EXTRA_CHANNEL_NAME)
+            ?: getString(R.string.live_channel_name)
         val channelDescription = intent?.getStringExtra(EXTRA_CHANNEL_DESCRIPTION) ?: ""
 
         ensureChannel(channelName, channelDescription)
@@ -247,8 +253,8 @@ class PrayerForegroundService : Service() {
             // No payload yet (service started before the home screen's first
             // prayer-time resolution) — plain keep-alive notification.
             return builder
-                .setContentTitle(fallbackTitle)
-                .setContentText(fallbackText)
+                .setContentTitle(fallbackTitle ?: getString(R.string.keep_alive_title))
+                .setContentText(fallbackText ?: getString(R.string.keep_alive_text))
                 .build()
         }
 

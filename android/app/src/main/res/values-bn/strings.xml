@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="accessibility_service_description">Noor Guard শুধুমাত্র এটি বোঝার জন্য এই অ্যাক্সেসিবিলিটি সার্ভিস ব্যবহার করে যে নামাজের সময় কোনো ব্লক করা অ্যাপ খোলা হয়েছে কিনা। এটি কখনোই আপনার বার্তা, ছবি বা ব্যক্তিগত তথ্য পড়ে না।</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">Noor Guard</string>
+    <string name="keep_alive_text">নামাজের নোটিফিকেশন সক্রিয়</string>
+    <string name="live_channel_name">Noor Guard লাইভ</string>
 </resources>

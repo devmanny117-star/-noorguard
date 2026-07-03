@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="accessibility_service_description">Noor Guard 仅使用此无障碍服务来检测在礼拜时间打开了被屏蔽的应用。它绝不会读取你的消息、照片或任何个人数据。</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">Noor Guard</string>
+    <string name="keep_alive_text">礼拜通知已启用</string>
+    <string name="live_channel_name">Noor Guard 实时通知</string>
 </resources>

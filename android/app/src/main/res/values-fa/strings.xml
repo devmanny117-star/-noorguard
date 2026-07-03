@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">نور گارد</string>
+    <string name="keep_alive_text">اعلان‌های نماز فعال</string>
+    <string name="live_channel_name">نور گارد زنده</string>
+</resources>

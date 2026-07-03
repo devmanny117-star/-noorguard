@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="accessibility_service_description">Noor Guard, bu Erişilebilirlik hizmetini yalnızca namaz vakti engellenen bir uygulamanın açıldığını fark etmek için kullanır. Mesajlarını, fotoğraflarını veya herhangi bir kişisel verini asla okumaz.</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">Noor Guard</string>
+    <string name="keep_alive_text">Namaz bildirimleri etkin</string>
+    <string name="live_channel_name">Noor Guard Canlı</string>
 </resources>

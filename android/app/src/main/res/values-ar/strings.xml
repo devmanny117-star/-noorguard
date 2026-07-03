@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="accessibility_service_description">يستخدم نور جارد خدمة إمكانية الوصول هذه فقط لملاحظة فتح أحد التطبيقات المحظورة وقت الصلاة. لا يقرأ رسائلك أو صورك أو أي بيانات شخصية أبدًا.</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">نور غارد</string>
+    <string name="keep_alive_text">إشعارات الصلاة نشطة</string>
+    <string name="live_channel_name">نور غارد مباشر</string>
 </resources>

@@ -10,4 +10,10 @@
     <string name="widget_large_description">Prayer times, streak, daily verse, and Qibla direction.</string>
 
     <string name="accessibility_service_description">Noor Guard uses this Accessibility service only to notice when a blocked app opens during prayer time. It never reads your messages, photos, or any personal data.</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">Noor Guard</string>
+    <string name="keep_alive_text">Prayer notifications active</string>
+    <string name="live_channel_name">Noor Guard Live</string>
 </resources>

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="accessibility_service_description">نور گارڈ یہ ایکسیسبیلٹی سروس صرف یہ جاننے کے لیے استعمال کرتا ہے کہ نماز کے وقت کوئی مسدود ایپ کھولی گئی ہے۔ یہ آپ کے پیغامات، تصاویر یا کوئی ذاتی معلومات کبھی نہیں پڑھتا۔</string>
+
+    <!-- PrayerForegroundService fallbacks: shown only if the service starts
+         before Dart has pushed its (in-app-language) localized strings. -->
+    <string name="keep_alive_title">نور گارڈ</string>
+    <string name="keep_alive_text">نماز کی اطلاعات فعال ہیں</string>
+    <string name="live_channel_name">نور گارڈ لائیو</string>
 </resources>
