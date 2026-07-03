@@ -2103,6 +2103,11 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
+                // Explicit padding + no clip: without these the grid crops
+                // the last row (and the selected tile's glow) against the
+                // Submit button.
+                padding: const EdgeInsets.only(top: 2, bottom: 14),
+                clipBehavior: Clip.none,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   mainAxisSpacing: 8,

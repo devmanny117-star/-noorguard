@@ -7,8 +7,14 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     match /stories/{storyId} {
-      // Anyone can read approved stories only.
-      allow read: if resource.data.status == 'approved';
+      // Approved stories are public. Pending stories are also readable so
+      // the author's own submission can show up for them right away — the
+      // app only ever queries pending docs filtered to its own per-install
+      // userId. (No auth in v1, so this can't be enforced server-side;
+      // pending stories are unpublished-but-not-secret. Revisit if
+      // anonymous Firebase Auth is added.)
+      allow read: if resource.data.status == 'approved'
+        || resource.data.status == 'pending';
 
       // Anyone can submit a story, but it must arrive as a pending,
       // non-featured document with sane field types and sizes.
