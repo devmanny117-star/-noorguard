@@ -9,11 +9,26 @@ import '../l10n/app_localizations.dart';
 import '../models/community_story.dart';
 import '../services/community_stories_service.dart';
 import '../services/share_helper.dart';
+import '../widgets/geometric_pattern_painter.dart';
+import '../widgets/tasbih/tasbih_mosque_silhouette.dart';
 
+const _kBg = Color(0xFF0A1628);
 const _kNavy = Color(0xFF0D1B2A);
-const _kCard = Color(0xFF0F1E30);
+const _kCard = Color(0xFF0D1F35);
 const _kGold = Color(0xFFC9A84C);
 const _kCream = Color(0xFFF5EFE6);
+
+/// Classic serif ("Georgia") used for the featured story quote. Georgia is
+/// bundled on iOS/macOS/web; Android falls back to its system serif.
+TextStyle _storySerif({required Color color, double fontSize = 14.5}) =>
+    TextStyle(
+      fontFamily: 'Georgia',
+      fontFamilyFallback: const ['Times New Roman', 'serif'],
+      fontStyle: FontStyle.italic,
+      fontSize: fontSize,
+      height: 1.6,
+      color: color,
+    );
 
 String storyCategoryLabel(AppLocalizations l10n, StoryCategory category) {
   switch (category) {
@@ -96,14 +111,48 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: _kNavy,
+      backgroundColor: _kBg,
       appBar: AppBar(
-        backgroundColor: _kNavy,
+        backgroundColor: _kBg,
         foregroundColor: _kGold,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Column(
+      body: Stack(
+        children: [
+          // Subtle Islamic geometric pattern behind the header, fading out.
+          PositionedDirectional(
+            top: 0,
+            start: 0,
+            end: 0,
+            child: SizedBox(
+              height: 150,
+              child: IgnorePointer(
+                child: ShaderMask(
+                  shaderCallback: (rect) => const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.white, Colors.transparent],
+                  ).createShader(rect),
+                  child: const CustomPaint(
+                    size: Size.infinite,
+                    painter: GeometricPatternPainter(
+                      color: _kGold,
+                      alpha: 0.06,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          _buildBody(context, l10n),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext context, AppLocalizations l10n) {
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _Header(onShareYours: _openSubmitSheet),
@@ -169,8 +218,7 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
                   ),
           ),
         ],
-      ),
-    );
+      );
   }
 }
 
@@ -215,7 +263,7 @@ class _Header extends StatelessWidget {
                   l10n.communityStoriesScreenSubtitle,
                   style: GoogleFonts.lato(
                     fontSize: 12,
-                    color: _kCream.withValues(alpha: 0.6),
+                    color: _kGold.withValues(alpha: 0.65),
                   ),
                 ),
               ],
@@ -226,18 +274,24 @@ class _Header extends StatelessWidget {
             onTap: onShareYours,
             child: Container(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
-                color: _kGold.withValues(alpha: 0.12),
+                color: _kGold,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: _kGold.withValues(alpha: 0.5)),
+                boxShadow: [
+                  BoxShadow(
+                    color: _kGold.withValues(alpha: 0.30),
+                    blurRadius: 12,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
               ),
               child: Text(
                 '✍️ ${l10n.storiesShareYours}',
                 style: GoogleFonts.lato(
                   fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                  color: _kGold,
+                  fontWeight: FontWeight.w800,
+                  color: _kBg,
                 ),
               ),
             ),
@@ -288,7 +342,7 @@ class _FilterTabs extends StatelessWidget {
                 color: isActive ? _kGold : Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: isActive ? _kGold : _kGold.withValues(alpha: 0.35),
+                  color: isActive ? _kGold : _kGold.withValues(alpha: 0.45),
                 ),
               ),
               child: Text(
@@ -296,7 +350,7 @@ class _FilterTabs extends StatelessWidget {
                 style: GoogleFonts.lato(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
-                  color: isActive ? _kNavy : _kCream.withValues(alpha: 0.75),
+                  color: isActive ? _kBg : _kGold.withValues(alpha: 0.85),
                 ),
               ),
             ),
@@ -323,97 +377,182 @@ class _FeaturedStoryCard extends StatelessWidget {
     final name = storyDisplayName(l10n, story);
 
     return Container(
-      padding: const EdgeInsets.all(18),
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: _kCard,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: _kGold.withValues(alpha: 0.65), width: 1.2),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: _kGold.withValues(alpha: 0.75), width: 1.3),
         boxShadow: [
           BoxShadow(
-            color: _kGold.withValues(alpha: 0.10),
-            blurRadius: 20,
-            offset: const Offset(0, 5),
+            color: _kGold.withValues(alpha: 0.12),
+            blurRadius: 22,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
-      child: Stack(
-        children: [
-          const PositionedDirectional(
-            bottom: 0,
-            end: 0,
-            child: Opacity(
-              opacity: 0.08,
-              child: SizedBox(
-                width: 46,
-                height: 46,
-                child: CustomPaint(
-                  painter: CrescentStarPainter(color: _kGold),
-                ),
-              ),
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '✦ ${l10n.storiesFeaturedLabel.toUpperCase()}',
-                style: GoogleFonts.lato(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 1.4,
-                  color: _kGold,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                '"${story.story}"',
-                maxLines: 5,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.playfairDisplay(
-                  fontSize: 16,
-                  fontStyle: FontStyle.italic,
-                  color: _kCream,
-                  height: 1.55,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Row(
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // ── Mosque silhouette panel (start side) ────────────────────
+            SizedBox(
+              width: 92,
+              child: Stack(
+                fit: StackFit.expand,
                 children: [
-                  _InitialsCircle(story: story),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          name,
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: _kGold,
-                          ),
+                  const DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xFF0A1628), Color(0xFF2A3450)],
+                      ),
+                    ),
+                  ),
+                  const PositionedDirectional(
+                    top: 12,
+                    end: 14,
+                    child: Opacity(
+                      opacity: 0.55,
+                      child: SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CustomPaint(
+                          painter: CrescentStarPainter(color: _kGold),
                         ),
-                        Text(
-                          [
-                            '${story.countryFlag} ${story.country}',
-                            if (story.shahadaDate != null)
-                              '${story.shahadaDate!.year}',
-                          ].join(' · '),
-                          style: GoogleFonts.lato(
-                            fontSize: 11.5,
-                            color: _kCream.withValues(alpha: 0.6),
-                          ),
-                        ),
-                      ],
+                      ),
+                    ),
+                  ),
+                  TasbihMosqueSilhouette(
+                    color: _kGold.withValues(alpha: 0.5),
+                  ),
+                  PositionedDirectional(
+                    end: 0,
+                    top: 0,
+                    bottom: 0,
+                    child: Container(
+                      width: 1,
+                      color: _kGold.withValues(alpha: 0.3),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
-              _ReactionsRow(story: story, service: service),
-            ],
-          ),
-        ],
+            ),
+            // ── Quote + author (end side) ───────────────────────────────
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 14),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      '✦ ${l10n.storiesFeaturedLabel.toUpperCase()}',
+                      style: GoogleFonts.lato(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.4,
+                        color: _kGold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Text(
+                        '“',
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: 42,
+                          height: 0.8,
+                          fontWeight: FontWeight.w700,
+                          color: _kGold.withValues(alpha: 0.4),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      story.story,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                      style: _storySerif(color: _kCream),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Text(
+                        '”',
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: 42,
+                          height: 0.9,
+                          fontWeight: FontWeight.w700,
+                          color: _kGold.withValues(alpha: 0.4),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Container(
+                      height: 1,
+                      color: _kGold.withValues(alpha: 0.35),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        _AuthorAvatar(story: story, size: 40),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                name,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.playfairDisplay(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  color: _kGold,
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                '${story.countryFlag} ${story.country}',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.lato(
+                                  fontSize: 11.5,
+                                  color: _kCream.withValues(alpha: 0.6),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (story.shahadaDate != null) ...[
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: _kGold,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              l10n.storyShahadaDate(
+                                  '${story.shahadaDate!.year}'),
+                              style: GoogleFonts.lato(
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w800,
+                                color: _kBg,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    _ReactionsRow(story: story, service: service),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -446,125 +585,95 @@ class _StoryCardState extends State<_StoryCard> {
       decoration: BoxDecoration(
         color: _kCard,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: _kGold.withValues(alpha: 0.25)),
+        border: Border.all(color: _kGold.withValues(alpha: 0.15)),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          // ── Top visual: photo or Bismillah placeholder ──────────────────
-          SizedBox(
-            height: 110,
-            width: double.infinity,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                if (story.photoUrl != null)
-                  Image.network(
-                    story.photoUrl!,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => const _BismillahBanner(),
-                  )
-                else
-                  const _BismillahBanner(),
-                // Dark scrim so the badges stay readable on any photo.
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black.withValues(alpha: 0.30),
-                        _kCard.withValues(alpha: 0.95),
-                      ],
-                    ),
-                  ),
-                ),
-                PositionedDirectional(
-                  top: 10,
-                  start: 12,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: _kNavy.withValues(alpha: 0.75),
-                      borderRadius: BorderRadius.circular(20),
-                      border:
-                          Border.all(color: _kGold.withValues(alpha: 0.6)),
-                    ),
-                    child: Text(
-                      storyCategoryLabel(l10n, story.category),
-                      style: GoogleFonts.lato(
-                        fontSize: 10.5,
-                        fontWeight: FontWeight.w700,
-                        color: _kGold,
-                      ),
-                    ),
-                  ),
-                ),
-                PositionedDirectional(
-                  top: 10,
-                  end: 12,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: _kNavy.withValues(alpha: 0.75),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      '${story.countryFlag} ${story.country}',
-                      style: GoogleFonts.lato(
-                        fontSize: 10.5,
-                        fontWeight: FontWeight.w600,
-                        color: _kCream,
-                      ),
-                    ),
-                  ),
-                ),
-                // Crescent watermark
-                const PositionedDirectional(
-                  bottom: 6,
-                  end: 10,
-                  child: Opacity(
-                    opacity: 0.14,
-                    child: SizedBox(
-                      width: 34,
-                      height: 34,
-                      child: CustomPaint(
-                        painter: CrescentStarPainter(color: _kGold),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          // Gold accent strip on the start edge.
+          PositionedDirectional(
+            start: 0,
+            top: 0,
+            bottom: 0,
+            child: Container(width: 3, color: _kGold),
           ),
-
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 14),
+            padding: const EdgeInsetsDirectional.fromSTEB(19, 14, 16, 14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  storyDisplayName(l10n, story),
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: _kGold,
-                  ),
-                ),
-                if (story.shahadaDate != null) ...[
-                  const SizedBox(height: 2),
-                  Text(
-                    l10n.storyShahadaDate(
-                        _formatMonthYear(context, story.shahadaDate!)),
-                    style: GoogleFonts.lato(
-                      fontSize: 11.5,
-                      color: _kCream.withValues(alpha: 0.55),
+                // ── Category badge + timestamp ──────────────────────────
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: _kGold.withValues(alpha: 0.14),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                            color: _kGold.withValues(alpha: 0.55)),
+                      ),
+                      child: Text(
+                        storyCategoryLabel(l10n, story.category),
+                        style: GoogleFonts.lato(
+                          fontSize: 10.5,
+                          fontWeight: FontWeight.w700,
+                          color: _kGold,
+                        ),
+                      ),
                     ),
-                  ),
-                ],
-                const SizedBox(height: 8),
+                    const Spacer(),
+                    if (story.dateSubmitted != null)
+                      Text(
+                        _formatMonthYear(context, story.dateSubmitted!),
+                        style: GoogleFonts.lato(
+                          fontSize: 11,
+                          color: _kCream.withValues(alpha: 0.5),
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                // ── Author row ──────────────────────────────────────────
+                Row(
+                  children: [
+                    _AuthorAvatar(story: story, size: 40),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            storyDisplayName(l10n, story),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.playfairDisplay(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: _kGold,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            [
+                              '${story.countryFlag} ${story.country}',
+                              if (story.shahadaDate != null)
+                                l10n.storyShahadaDate(
+                                    '${story.shahadaDate!.year}'),
+                            ].join(' · '),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.lato(
+                              fontSize: 11.5,
+                              color: _kCream.withValues(alpha: 0.6),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
                 Text(
                   story.story,
                   maxLines: _expanded ? null : 3,
@@ -600,31 +709,10 @@ class _StoryCardState extends State<_StoryCard> {
   }
 }
 
-class _BismillahBanner extends StatelessWidget {
-  const _BismillahBanner();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: _kNavy,
-      alignment: Alignment.center,
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Text(
-          'بِسْمِ اللَّه',
-          style: GoogleFonts.scheherazadeNew(
-            fontSize: 34,
-            color: _kGold.withValues(alpha: 0.45),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _InitialsCircle extends StatelessWidget {
+class _AuthorAvatar extends StatelessWidget {
   final CommunityStory story;
-  const _InitialsCircle({required this.story});
+  final double size;
+  const _AuthorAvatar({required this.story, this.size = 40});
 
   @override
   Widget build(BuildContext context) {
@@ -632,23 +720,32 @@ class _InitialsCircle extends StatelessWidget {
     final initials = (story.anonymous || story.name.isEmpty)
         ? l10n.storiesAnonymous.substring(0, 1).toUpperCase()
         : story.initials;
-    return Container(
-      width: 38,
-      height: 38,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: _kGold.withValues(alpha: 0.12),
-        border: Border.all(color: _kGold.withValues(alpha: 0.6)),
-      ),
+    final fallback = Center(
       child: Text(
         initials,
         style: GoogleFonts.playfairDisplay(
-          fontSize: 14,
+          fontSize: size * 0.35,
           fontWeight: FontWeight.w800,
           color: _kGold,
         ),
       ),
+    );
+    return Container(
+      width: size,
+      height: size,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: _kGold.withValues(alpha: 0.12),
+        border: Border.all(color: _kGold.withValues(alpha: 0.7)),
+      ),
+      child: story.photoUrl == null
+          ? fallback
+          : Image.network(
+              story.photoUrl!,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => fallback,
+            ),
     );
   }
 }
@@ -754,8 +851,8 @@ class _ReactionChip extends StatelessWidget {
           '$emoji $count',
           style: GoogleFonts.lato(
             fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: active ? _kGold : _kCream.withValues(alpha: 0.75),
+            fontWeight: FontWeight.w700,
+            color: active ? _kGold : _kGold.withValues(alpha: 0.8),
           ),
         ),
       ),
