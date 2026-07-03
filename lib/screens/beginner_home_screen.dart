@@ -992,11 +992,11 @@ class _JourneyTaskRowState extends State<_JourneyTaskRow>
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
                   color: widget.checked
-                      ? context.appColors.primaryText.withValues(alpha: 0.35)
-                      : context.appColors.primaryText,
+                      ? const Color(0xFFF5EFE6).withValues(alpha: 0.35)
+                      : const Color(0xFFF5EFE6),
                   decoration: widget.checked ? TextDecoration.lineThrough : null,
                   decorationColor:
-                      context.appColors.primaryText.withValues(alpha: 0.25),
+                      const Color(0xFFF5EFE6).withValues(alpha: 0.25),
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
