@@ -2993,4 +2993,98 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'Linda muda wako kwa yale muhimu';
+
+  @override
+  String get ourStories => 'Hadithi Zetu';
+
+  @override
+  String get storiesSeeAll => 'Tazama zote';
+
+  @override
+  String get storiesReadMore => 'Soma zaidi';
+
+  @override
+  String get storiesFeaturedLabel => 'Hadithi Teule';
+
+  @override
+  String get storiesFilterReverts => 'Waliosilimu';
+
+  @override
+  String get storyCategoryRevert => 'Aliyesilimu';
+
+  @override
+  String get storyCategoryBornMuslim => 'Muislamu wa kuzaliwa';
+
+  @override
+  String get storyCategoryReturning => 'Anayerejea';
+
+  @override
+  String get storiesShareYours => 'Shiriki Yako';
+
+  @override
+  String get storiesEmptyTitle => 'Bado hakuna hadithi';
+
+  @override
+  String get storiesEmptySubtitle => 'Kuwa wa kwanza kushiriki safari yako';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'Shahada: $date';
+  }
+
+  @override
+  String get storiesComments => 'Maoni';
+
+  @override
+  String get storiesAddComment => 'Ongeza maoni…';
+
+  @override
+  String get storiesAnonymous => 'Bila jina';
+
+  @override
+  String get storiesNameLabel => 'Jina lako';
+
+  @override
+  String get storiesPostAnonymously => 'Chapisha bila jina';
+
+  @override
+  String get storiesCountryLabel => 'Nchi';
+
+  @override
+  String get storiesCategoryLabel => 'Kundi';
+
+  @override
+  String get storiesShahadaDateLabel => 'Tarehe ya Shahada (hiari)';
+
+  @override
+  String get storiesYourStoryLabel => 'Hadithi yako';
+
+  @override
+  String get storiesStoryHint => 'Tueleze safari yako…';
+
+  @override
+  String get storiesUploadPhoto => 'Pakia picha (hiari)';
+
+  @override
+  String get storiesChangePhoto => 'Badilisha picha';
+
+  @override
+  String get storiesSubmitButton => 'Wasilisha';
+
+  @override
+  String get storiesSubmitted =>
+      'JazakAllah khair! Hadithi yako imewasilishwa kwa ukaguzi.';
+
+  @override
+  String get storiesSubmitError => 'Hitilafu imetokea. Tafadhali jaribu tena.';
+
+  @override
+  String get storiesFillRequired => 'Tafadhali ongeza hadithi yako na nchi.';
+
+  @override
+  String get storiesShareCardLabel => 'Hadithi ya Jumuiya';
+
+  @override
+  String get storiesLoadError =>
+      'Imeshindikana kupakia hadithi. Angalia muunganisho wako.';
 }

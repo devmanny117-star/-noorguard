@@ -2974,4 +2974,98 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'اپنا وقت اہم چیزوں کے لیے محفوظ رکھیں';
+
+  @override
+  String get ourStories => 'ہماری کہانیاں';
+
+  @override
+  String get storiesSeeAll => 'سب دیکھیں';
+
+  @override
+  String get storiesReadMore => 'مزید پڑھیں';
+
+  @override
+  String get storiesFeaturedLabel => 'نمایاں کہانی';
+
+  @override
+  String get storiesFilterReverts => 'نو مسلم';
+
+  @override
+  String get storyCategoryRevert => 'نو مسلم';
+
+  @override
+  String get storyCategoryBornMuslim => 'پیدائشی مسلمان';
+
+  @override
+  String get storyCategoryReturning => 'واپس آنے والا';
+
+  @override
+  String get storiesShareYours => 'اپنی کہانی شیئر کریں';
+
+  @override
+  String get storiesEmptyTitle => 'ابھی کوئی کہانی نہیں';
+
+  @override
+  String get storiesEmptySubtitle => 'اپنی کہانی شیئر کرنے والے پہلے شخص بنیں';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'شہادت: $date';
+  }
+
+  @override
+  String get storiesComments => 'تبصرے';
+
+  @override
+  String get storiesAddComment => 'تبصرہ لکھیں…';
+
+  @override
+  String get storiesAnonymous => 'گمنام';
+
+  @override
+  String get storiesNameLabel => 'آپ کا نام';
+
+  @override
+  String get storiesPostAnonymously => 'گمنام طور پر شائع کریں';
+
+  @override
+  String get storiesCountryLabel => 'ملک';
+
+  @override
+  String get storiesCategoryLabel => 'زمرہ';
+
+  @override
+  String get storiesShahadaDateLabel => 'شہادت کی تاریخ (اختیاری)';
+
+  @override
+  String get storiesYourStoryLabel => 'آپ کی کہانی';
+
+  @override
+  String get storiesStoryHint => 'اپنے سفر کے بارے میں بتائیں…';
+
+  @override
+  String get storiesUploadPhoto => 'تصویر اپ لوڈ کریں (اختیاری)';
+
+  @override
+  String get storiesChangePhoto => 'تصویر تبدیل کریں';
+
+  @override
+  String get storiesSubmitButton => 'جمع کروائیں';
+
+  @override
+  String get storiesSubmitted =>
+      'جزاک اللہ خیر! آپ کی کہانی جائزے کے لیے جمع کر دی گئی ہے۔';
+
+  @override
+  String get storiesSubmitError => 'کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔';
+
+  @override
+  String get storiesFillRequired => 'براہ کرم اپنی کہانی اور ملک شامل کریں۔';
+
+  @override
+  String get storiesShareCardLabel => 'کمیونٹی کی کہانی';
+
+  @override
+  String get storiesLoadError =>
+      'کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔';
 }

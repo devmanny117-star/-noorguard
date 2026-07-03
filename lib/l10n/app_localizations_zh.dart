@@ -2838,4 +2838,96 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => '守护你的时间，专注真正重要的事';
+
+  @override
+  String get ourStories => '我们的故事';
+
+  @override
+  String get storiesSeeAll => '查看全部';
+
+  @override
+  String get storiesReadMore => '阅读更多';
+
+  @override
+  String get storiesFeaturedLabel => '精选故事';
+
+  @override
+  String get storiesFilterReverts => '归信者';
+
+  @override
+  String get storyCategoryRevert => '归信者';
+
+  @override
+  String get storyCategoryBornMuslim => '生而为穆斯林';
+
+  @override
+  String get storyCategoryReturning => '回归者';
+
+  @override
+  String get storiesShareYours => '分享你的故事';
+
+  @override
+  String get storiesEmptyTitle => '暂无故事';
+
+  @override
+  String get storiesEmptySubtitle => '成为第一个分享心路历程的人';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return '清真言：$date';
+  }
+
+  @override
+  String get storiesComments => '评论';
+
+  @override
+  String get storiesAddComment => '添加评论…';
+
+  @override
+  String get storiesAnonymous => '匿名';
+
+  @override
+  String get storiesNameLabel => '你的名字';
+
+  @override
+  String get storiesPostAnonymously => '匿名发布';
+
+  @override
+  String get storiesCountryLabel => '国家';
+
+  @override
+  String get storiesCategoryLabel => '类别';
+
+  @override
+  String get storiesShahadaDateLabel => '清真言日期（可选）';
+
+  @override
+  String get storiesYourStoryLabel => '你的故事';
+
+  @override
+  String get storiesStoryHint => '讲述你的心路历程…';
+
+  @override
+  String get storiesUploadPhoto => '上传照片（可选）';
+
+  @override
+  String get storiesChangePhoto => '更换照片';
+
+  @override
+  String get storiesSubmitButton => '提交';
+
+  @override
+  String get storiesSubmitted => '愿真主回赐你！你的故事已提交审核。';
+
+  @override
+  String get storiesSubmitError => '出错了，请重试。';
+
+  @override
+  String get storiesFillRequired => '请填写你的故事和国家。';
+
+  @override
+  String get storiesShareCardLabel => '社区故事';
+
+  @override
+  String get storiesLoadError => '无法加载故事，请检查网络连接。';
 }

@@ -17,7 +17,6 @@ import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
 import '../widgets/home/feature_grid.dart';
-import '../widgets/home/our_stories_card.dart';
 import '../widgets/home/premium_bottom_nav.dart';
 import 'prayers_screen.dart';
 import 'qibla_screen.dart';
@@ -338,7 +337,6 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
           PrayerTimesCard(prayers: _prayers, onNextPrayerTap: widget.onOpenPrayers),
           const HeroCard(),
           const RevertCornerCard(),
-          const OurStoriesCard(),
           const FeatureGrid(),
         ],
       ),

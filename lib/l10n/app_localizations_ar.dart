@@ -2946,4 +2946,96 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'احمِ وقتك لما هو أهم';
+
+  @override
+  String get ourStories => 'قصصنا';
+
+  @override
+  String get storiesSeeAll => 'عرض الكل';
+
+  @override
+  String get storiesReadMore => 'اقرأ المزيد';
+
+  @override
+  String get storiesFeaturedLabel => 'قصة مميزة';
+
+  @override
+  String get storiesFilterReverts => 'المهتدون';
+
+  @override
+  String get storyCategoryRevert => 'مهتدٍ';
+
+  @override
+  String get storyCategoryBornMuslim => 'مسلم بالولادة';
+
+  @override
+  String get storyCategoryReturning => 'عائد';
+
+  @override
+  String get storiesShareYours => 'شارك قصتك';
+
+  @override
+  String get storiesEmptyTitle => 'لا توجد قصص بعد';
+
+  @override
+  String get storiesEmptySubtitle => 'كن أول من يشارك رحلته';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'الشهادة: $date';
+  }
+
+  @override
+  String get storiesComments => 'التعليقات';
+
+  @override
+  String get storiesAddComment => 'أضف تعليقًا…';
+
+  @override
+  String get storiesAnonymous => 'مجهول';
+
+  @override
+  String get storiesNameLabel => 'اسمك';
+
+  @override
+  String get storiesPostAnonymously => 'النشر كمجهول';
+
+  @override
+  String get storiesCountryLabel => 'البلد';
+
+  @override
+  String get storiesCategoryLabel => 'الفئة';
+
+  @override
+  String get storiesShahadaDateLabel => 'تاريخ الشهادة (اختياري)';
+
+  @override
+  String get storiesYourStoryLabel => 'قصتك';
+
+  @override
+  String get storiesStoryHint => 'حدثنا عن رحلتك…';
+
+  @override
+  String get storiesUploadPhoto => 'تحميل صورة (اختياري)';
+
+  @override
+  String get storiesChangePhoto => 'تغيير الصورة';
+
+  @override
+  String get storiesSubmitButton => 'إرسال';
+
+  @override
+  String get storiesSubmitted => 'جزاك الله خيرًا! تم إرسال قصتك للمراجعة.';
+
+  @override
+  String get storiesSubmitError => 'حدث خطأ ما. حاول مرة أخرى.';
+
+  @override
+  String get storiesFillRequired => 'يرجى إضافة قصتك وبلدك.';
+
+  @override
+  String get storiesShareCardLabel => 'قصة من المجتمع';
+
+  @override
+  String get storiesLoadError => 'تعذر تحميل القصص. تحقق من اتصالك.';
 }

@@ -2979,4 +2979,98 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'Protect your time for what matters';
+
+  @override
+  String get ourStories => 'Our Stories';
+
+  @override
+  String get storiesSeeAll => 'See all';
+
+  @override
+  String get storiesReadMore => 'Read More';
+
+  @override
+  String get storiesFeaturedLabel => 'Featured Story';
+
+  @override
+  String get storiesFilterReverts => 'Reverts';
+
+  @override
+  String get storyCategoryRevert => 'Revert';
+
+  @override
+  String get storyCategoryBornMuslim => 'Born Muslim';
+
+  @override
+  String get storyCategoryReturning => 'Returning';
+
+  @override
+  String get storiesShareYours => 'Share Yours';
+
+  @override
+  String get storiesEmptyTitle => 'No stories yet';
+
+  @override
+  String get storiesEmptySubtitle => 'Be the first to share your journey';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'Shahada: $date';
+  }
+
+  @override
+  String get storiesComments => 'Comments';
+
+  @override
+  String get storiesAddComment => 'Add a comment…';
+
+  @override
+  String get storiesAnonymous => 'Anonymous';
+
+  @override
+  String get storiesNameLabel => 'Your name';
+
+  @override
+  String get storiesPostAnonymously => 'Post anonymously';
+
+  @override
+  String get storiesCountryLabel => 'Country';
+
+  @override
+  String get storiesCategoryLabel => 'Category';
+
+  @override
+  String get storiesShahadaDateLabel => 'Date of Shahada (optional)';
+
+  @override
+  String get storiesYourStoryLabel => 'Your Story';
+
+  @override
+  String get storiesStoryHint => 'Tell us about your journey…';
+
+  @override
+  String get storiesUploadPhoto => 'Upload Photo (optional)';
+
+  @override
+  String get storiesChangePhoto => 'Change Photo';
+
+  @override
+  String get storiesSubmitButton => 'Submit';
+
+  @override
+  String get storiesSubmitted =>
+      'JazakAllah khair! Your story has been submitted for review.';
+
+  @override
+  String get storiesSubmitError => 'Something went wrong. Please try again.';
+
+  @override
+  String get storiesFillRequired => 'Please add your story and country.';
+
+  @override
+  String get storiesShareCardLabel => 'Community Story';
+
+  @override
+  String get storiesLoadError =>
+      'Couldn\'t load stories. Check your connection.';
 }

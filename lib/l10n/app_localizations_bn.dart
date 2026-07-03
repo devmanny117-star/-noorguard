@@ -2992,4 +2992,99 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get focusButtonSubtitle =>
       'যা গুরুত্বপূর্ণ তার জন্য আপনার সময় রক্ষা করুন';
+
+  @override
+  String get ourStories => 'আমাদের গল্প';
+
+  @override
+  String get storiesSeeAll => 'সব দেখুন';
+
+  @override
+  String get storiesReadMore => 'আরও পড়ুন';
+
+  @override
+  String get storiesFeaturedLabel => 'নির্বাচিত গল্প';
+
+  @override
+  String get storiesFilterReverts => 'নওমুসলিম';
+
+  @override
+  String get storyCategoryRevert => 'নওমুসলিম';
+
+  @override
+  String get storyCategoryBornMuslim => 'জন্মগত মুসলিম';
+
+  @override
+  String get storyCategoryReturning => 'প্রত্যাবর্তনকারী';
+
+  @override
+  String get storiesShareYours => 'আপনারটি শেয়ার করুন';
+
+  @override
+  String get storiesEmptyTitle => 'এখনও কোনো গল্প নেই';
+
+  @override
+  String get storiesEmptySubtitle =>
+      'আপনার যাত্রা শেয়ার করা প্রথম ব্যক্তি হোন';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'শাহাদা: $date';
+  }
+
+  @override
+  String get storiesComments => 'মন্তব্য';
+
+  @override
+  String get storiesAddComment => 'একটি মন্তব্য যোগ করুন…';
+
+  @override
+  String get storiesAnonymous => 'বেনামী';
+
+  @override
+  String get storiesNameLabel => 'আপনার নাম';
+
+  @override
+  String get storiesPostAnonymously => 'বেনামে পোস্ট করুন';
+
+  @override
+  String get storiesCountryLabel => 'দেশ';
+
+  @override
+  String get storiesCategoryLabel => 'বিভাগ';
+
+  @override
+  String get storiesShahadaDateLabel => 'শাহাদার তারিখ (ঐচ্ছিক)';
+
+  @override
+  String get storiesYourStoryLabel => 'আপনার গল্প';
+
+  @override
+  String get storiesStoryHint => 'আপনার যাত্রা সম্পর্কে বলুন…';
+
+  @override
+  String get storiesUploadPhoto => 'ছবি আপলোড করুন (ঐচ্ছিক)';
+
+  @override
+  String get storiesChangePhoto => 'ছবি পরিবর্তন করুন';
+
+  @override
+  String get storiesSubmitButton => 'জমা দিন';
+
+  @override
+  String get storiesSubmitted =>
+      'জাযাকাল্লাহ খাইর! আপনার গল্প পর্যালোচনার জন্য জমা হয়েছে।';
+
+  @override
+  String get storiesSubmitError => 'কিছু ভুল হয়েছে। আবার চেষ্টা করুন।';
+
+  @override
+  String get storiesFillRequired => 'অনুগ্রহ করে আপনার গল্প ও দেশ যোগ করুন।';
+
+  @override
+  String get storiesShareCardLabel => 'কমিউনিটির গল্প';
+
+  @override
+  String get storiesLoadError =>
+      'গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।';
 }

@@ -5501,6 +5501,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Protect your time for what matters'**
   String get focusButtonSubtitle;
+
+  /// Community stories: home card + screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Our Stories'**
+  String get ourStories;
+
+  /// Home card link to open all stories
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get storiesSeeAll;
+
+  /// Expand a truncated story
+  ///
+  /// In en, this message translates to:
+  /// **'Read More'**
+  String get storiesReadMore;
+
+  /// Badge on the featured story card
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Story'**
+  String get storiesFeaturedLabel;
+
+  /// Filter tab: revert stories
+  ///
+  /// In en, this message translates to:
+  /// **'Reverts'**
+  String get storiesFilterReverts;
+
+  /// Story category badge: revert
+  ///
+  /// In en, this message translates to:
+  /// **'Revert'**
+  String get storyCategoryRevert;
+
+  /// Story category badge + filter: born Muslim
+  ///
+  /// In en, this message translates to:
+  /// **'Born Muslim'**
+  String get storyCategoryBornMuslim;
+
+  /// Story category badge + filter: returning to Islam
+  ///
+  /// In en, this message translates to:
+  /// **'Returning'**
+  String get storyCategoryReturning;
+
+  /// Header button opening the submit-story form
+  ///
+  /// In en, this message translates to:
+  /// **'Share Yours'**
+  String get storiesShareYours;
+
+  /// Empty state title when no stories are approved yet
+  ///
+  /// In en, this message translates to:
+  /// **'No stories yet'**
+  String get storiesEmptyTitle;
+
+  /// Empty state subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Be the first to share your journey'**
+  String get storiesEmptySubtitle;
+
+  /// Shahada date line on a story card
+  ///
+  /// In en, this message translates to:
+  /// **'Shahada: {date}'**
+  String storyShahadaDate(Object date);
+
+  /// Comments sheet title
+  ///
+  /// In en, this message translates to:
+  /// **'Comments'**
+  String get storiesComments;
+
+  /// Comment input hint
+  ///
+  /// In en, this message translates to:
+  /// **'Add a comment…'**
+  String get storiesAddComment;
+
+  /// Fallback author name for anonymous stories/comments
+  ///
+  /// In en, this message translates to:
+  /// **'Anonymous'**
+  String get storiesAnonymous;
+
+  /// Submit form: name field label
+  ///
+  /// In en, this message translates to:
+  /// **'Your name'**
+  String get storiesNameLabel;
+
+  /// Submit form: anonymous toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Post anonymously'**
+  String get storiesPostAnonymously;
+
+  /// Submit form: country dropdown label
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get storiesCountryLabel;
+
+  /// Submit form: category selector label
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get storiesCategoryLabel;
+
+  /// Submit form: optional shahada date picker label
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Shahada (optional)'**
+  String get storiesShahadaDateLabel;
+
+  /// Submit form: story field label
+  ///
+  /// In en, this message translates to:
+  /// **'Your Story'**
+  String get storiesYourStoryLabel;
+
+  /// Submit form: story field hint
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about your journey…'**
+  String get storiesStoryHint;
+
+  /// Submit form: photo upload button
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Photo (optional)'**
+  String get storiesUploadPhoto;
+
+  /// Submit form: photo replace button
+  ///
+  /// In en, this message translates to:
+  /// **'Change Photo'**
+  String get storiesChangePhoto;
+
+  /// Submit form: submit button
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get storiesSubmitButton;
+
+  /// Confirmation after story submission
+  ///
+  /// In en, this message translates to:
+  /// **'JazakAllah khair! Your story has been submitted for review.'**
+  String get storiesSubmitted;
+
+  /// Generic submission error
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get storiesSubmitError;
+
+  /// Validation when story/country missing
+  ///
+  /// In en, this message translates to:
+  /// **'Please add your story and country.'**
+  String get storiesFillRequired;
+
+  /// Type label on the story share card
+  ///
+  /// In en, this message translates to:
+  /// **'Community Story'**
+  String get storiesShareCardLabel;
+
+  /// Error state when stories fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t load stories. Check your connection.'**
+  String get storiesLoadError;
 }
 
 class _AppLocalizationsDelegate

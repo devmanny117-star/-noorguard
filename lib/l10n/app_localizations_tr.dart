@@ -2983,4 +2983,98 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'Zamanını önemli olan için koru';
+
+  @override
+  String get ourStories => 'Hikayelerimiz';
+
+  @override
+  String get storiesSeeAll => 'Tümünü gör';
+
+  @override
+  String get storiesReadMore => 'Devamını oku';
+
+  @override
+  String get storiesFeaturedLabel => 'Öne Çıkan Hikaye';
+
+  @override
+  String get storiesFilterReverts => 'Mühtediler';
+
+  @override
+  String get storyCategoryRevert => 'Mühtedi';
+
+  @override
+  String get storyCategoryBornMuslim => 'Doğuştan Müslüman';
+
+  @override
+  String get storyCategoryReturning => 'Geri Dönen';
+
+  @override
+  String get storiesShareYours => 'Seninkini Paylaş';
+
+  @override
+  String get storiesEmptyTitle => 'Henüz hikaye yok';
+
+  @override
+  String get storiesEmptySubtitle => 'Yolculuğunu paylaşan ilk kişi ol';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'Şehadet: $date';
+  }
+
+  @override
+  String get storiesComments => 'Yorumlar';
+
+  @override
+  String get storiesAddComment => 'Yorum ekle…';
+
+  @override
+  String get storiesAnonymous => 'Anonim';
+
+  @override
+  String get storiesNameLabel => 'Adınız';
+
+  @override
+  String get storiesPostAnonymously => 'Anonim olarak paylaş';
+
+  @override
+  String get storiesCountryLabel => 'Ülke';
+
+  @override
+  String get storiesCategoryLabel => 'Kategori';
+
+  @override
+  String get storiesShahadaDateLabel => 'Şehadet tarihi (isteğe bağlı)';
+
+  @override
+  String get storiesYourStoryLabel => 'Hikayen';
+
+  @override
+  String get storiesStoryHint => 'Yolculuğunu bize anlat…';
+
+  @override
+  String get storiesUploadPhoto => 'Fotoğraf yükle (isteğe bağlı)';
+
+  @override
+  String get storiesChangePhoto => 'Fotoğrafı değiştir';
+
+  @override
+  String get storiesSubmitButton => 'Gönder';
+
+  @override
+  String get storiesSubmitted =>
+      'Allah razı olsun! Hikayen incelenmek üzere gönderildi.';
+
+  @override
+  String get storiesSubmitError => 'Bir şeyler ters gitti. Lütfen tekrar dene.';
+
+  @override
+  String get storiesFillRequired => 'Lütfen hikayeni ve ülkeni ekle.';
+
+  @override
+  String get storiesShareCardLabel => 'Topluluk Hikayesi';
+
+  @override
+  String get storiesLoadError =>
+      'Hikayeler yüklenemedi. Bağlantını kontrol et.';
 }

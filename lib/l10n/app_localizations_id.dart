@@ -3001,4 +3001,98 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'Lindungi waktumu untuk hal yang penting';
+
+  @override
+  String get ourStories => 'Kisah Kami';
+
+  @override
+  String get storiesSeeAll => 'Lihat semua';
+
+  @override
+  String get storiesReadMore => 'Baca selengkapnya';
+
+  @override
+  String get storiesFeaturedLabel => 'Kisah Pilihan';
+
+  @override
+  String get storiesFilterReverts => 'Mualaf';
+
+  @override
+  String get storyCategoryRevert => 'Mualaf';
+
+  @override
+  String get storyCategoryBornMuslim => 'Muslim sejak lahir';
+
+  @override
+  String get storyCategoryReturning => 'Kembali';
+
+  @override
+  String get storiesShareYours => 'Bagikan Kisahmu';
+
+  @override
+  String get storiesEmptyTitle => 'Belum ada kisah';
+
+  @override
+  String get storiesEmptySubtitle =>
+      'Jadilah yang pertama membagikan perjalananmu';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'Syahadat: $date';
+  }
+
+  @override
+  String get storiesComments => 'Komentar';
+
+  @override
+  String get storiesAddComment => 'Tambahkan komentar…';
+
+  @override
+  String get storiesAnonymous => 'Anonim';
+
+  @override
+  String get storiesNameLabel => 'Namamu';
+
+  @override
+  String get storiesPostAnonymously => 'Kirim secara anonim';
+
+  @override
+  String get storiesCountryLabel => 'Negara';
+
+  @override
+  String get storiesCategoryLabel => 'Kategori';
+
+  @override
+  String get storiesShahadaDateLabel => 'Tanggal Syahadat (opsional)';
+
+  @override
+  String get storiesYourStoryLabel => 'Kisahmu';
+
+  @override
+  String get storiesStoryHint => 'Ceritakan perjalananmu…';
+
+  @override
+  String get storiesUploadPhoto => 'Unggah Foto (opsional)';
+
+  @override
+  String get storiesChangePhoto => 'Ganti Foto';
+
+  @override
+  String get storiesSubmitButton => 'Kirim';
+
+  @override
+  String get storiesSubmitted =>
+      'JazakAllah khair! Kisahmu telah dikirim untuk ditinjau.';
+
+  @override
+  String get storiesSubmitError => 'Terjadi kesalahan. Silakan coba lagi.';
+
+  @override
+  String get storiesFillRequired => 'Harap isi kisah dan negaramu.';
+
+  @override
+  String get storiesShareCardLabel => 'Kisah Komunitas';
+
+  @override
+  String get storiesLoadError => 'Tidak dapat memuat kisah. Periksa koneksimu.';
 }

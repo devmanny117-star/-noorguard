@@ -6,10 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
-import 'firebase_options.dart';
 import 'locale_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/beginner_home_screen.dart';
@@ -23,20 +21,9 @@ import 'services/notification_service.dart';
 import 'services/prayer_state.dart';
 import 'services/adhan_foreground_controller.dart';
 import 'services/adhan_playback_service.dart';
-import 'services/community_stories_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Community Stories runs on Firebase. Until `flutterfire configure` has
-  // been run, firebase_options.dart is a placeholder that throws — the app
-  // then runs normally with the Firebase-backed features hidden.
-  try {
-    await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
-    CommunityStoriesService.firebaseAvailable = true;
-  } catch (_) {
-    CommunityStoriesService.firebaseAvailable = false;
-  }
   if (!kIsWeb) tz_data.initializeTimeZones();
   await NotificationService().init();
   if (!kIsWeb) {

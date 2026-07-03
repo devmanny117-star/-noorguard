@@ -2978,4 +2978,99 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'از وقت خود برای آنچه مهم است محافظت کنید';
+
+  @override
+  String get ourStories => 'داستان‌های ما';
+
+  @override
+  String get storiesSeeAll => 'مشاهده همه';
+
+  @override
+  String get storiesReadMore => 'ادامه مطلب';
+
+  @override
+  String get storiesFeaturedLabel => 'داستان برگزیده';
+
+  @override
+  String get storiesFilterReverts => 'نومسلمانان';
+
+  @override
+  String get storyCategoryRevert => 'نومسلمان';
+
+  @override
+  String get storyCategoryBornMuslim => 'مسلمان‌زاده';
+
+  @override
+  String get storyCategoryReturning => 'بازگشته';
+
+  @override
+  String get storiesShareYours => 'داستان خود را به اشتراک بگذارید';
+
+  @override
+  String get storiesEmptyTitle => 'هنوز داستانی نیست';
+
+  @override
+  String get storiesEmptySubtitle =>
+      'اولین نفری باشید که سفر خود را به اشتراک می‌گذارد';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'شهادتین: $date';
+  }
+
+  @override
+  String get storiesComments => 'نظرات';
+
+  @override
+  String get storiesAddComment => 'نظری بنویسید…';
+
+  @override
+  String get storiesAnonymous => 'ناشناس';
+
+  @override
+  String get storiesNameLabel => 'نام شما';
+
+  @override
+  String get storiesPostAnonymously => 'انتشار به‌صورت ناشناس';
+
+  @override
+  String get storiesCountryLabel => 'کشور';
+
+  @override
+  String get storiesCategoryLabel => 'دسته‌بندی';
+
+  @override
+  String get storiesShahadaDateLabel => 'تاریخ شهادتین (اختیاری)';
+
+  @override
+  String get storiesYourStoryLabel => 'داستان شما';
+
+  @override
+  String get storiesStoryHint => 'از سفر خود برایمان بگویید…';
+
+  @override
+  String get storiesUploadPhoto => 'بارگذاری عکس (اختیاری)';
+
+  @override
+  String get storiesChangePhoto => 'تغییر عکس';
+
+  @override
+  String get storiesSubmitButton => 'ارسال';
+
+  @override
+  String get storiesSubmitted =>
+      'جزاک‌الله خیر! داستان شما برای بررسی ارسال شد.';
+
+  @override
+  String get storiesSubmitError => 'مشکلی پیش آمد. دوباره تلاش کنید.';
+
+  @override
+  String get storiesFillRequired => 'لطفاً داستان و کشور خود را وارد کنید.';
+
+  @override
+  String get storiesShareCardLabel => 'داستان انجمن';
+
+  @override
+  String get storiesLoadError =>
+      'بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید.';
 }

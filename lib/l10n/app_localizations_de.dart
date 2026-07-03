@@ -3003,4 +3003,100 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => 'Schütze deine Zeit für das, was zählt';
+
+  @override
+  String get ourStories => 'Unsere Geschichten';
+
+  @override
+  String get storiesSeeAll => 'Alle ansehen';
+
+  @override
+  String get storiesReadMore => 'Weiterlesen';
+
+  @override
+  String get storiesFeaturedLabel => 'Ausgewählte Geschichte';
+
+  @override
+  String get storiesFilterReverts => 'Konvertiten';
+
+  @override
+  String get storyCategoryRevert => 'Konvertit';
+
+  @override
+  String get storyCategoryBornMuslim => 'Geborener Muslim';
+
+  @override
+  String get storyCategoryReturning => 'Rückkehrer';
+
+  @override
+  String get storiesShareYours => 'Deine teilen';
+
+  @override
+  String get storiesEmptyTitle => 'Noch keine Geschichten';
+
+  @override
+  String get storiesEmptySubtitle => 'Teile als Erster deine Reise';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'Schahada: $date';
+  }
+
+  @override
+  String get storiesComments => 'Kommentare';
+
+  @override
+  String get storiesAddComment => 'Kommentar hinzufügen…';
+
+  @override
+  String get storiesAnonymous => 'Anonym';
+
+  @override
+  String get storiesNameLabel => 'Dein Name';
+
+  @override
+  String get storiesPostAnonymously => 'Anonym veröffentlichen';
+
+  @override
+  String get storiesCountryLabel => 'Land';
+
+  @override
+  String get storiesCategoryLabel => 'Kategorie';
+
+  @override
+  String get storiesShahadaDateLabel => 'Datum der Schahada (optional)';
+
+  @override
+  String get storiesYourStoryLabel => 'Deine Geschichte';
+
+  @override
+  String get storiesStoryHint => 'Erzähl uns von deiner Reise…';
+
+  @override
+  String get storiesUploadPhoto => 'Foto hochladen (optional)';
+
+  @override
+  String get storiesChangePhoto => 'Foto ändern';
+
+  @override
+  String get storiesSubmitButton => 'Absenden';
+
+  @override
+  String get storiesSubmitted =>
+      'JazakAllah khair! Deine Geschichte wurde zur Überprüfung eingereicht.';
+
+  @override
+  String get storiesSubmitError =>
+      'Etwas ist schiefgelaufen. Bitte versuche es erneut.';
+
+  @override
+  String get storiesFillRequired =>
+      'Bitte füge deine Geschichte und dein Land hinzu.';
+
+  @override
+  String get storiesShareCardLabel => 'Community-Geschichte';
+
+  @override
+  String get storiesLoadError =>
+      'Geschichten konnten nicht geladen werden. Prüfe deine Verbindung.';
 }

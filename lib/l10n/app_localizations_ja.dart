@@ -2869,4 +2869,96 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get focusButtonSubtitle => '大切なことのために時間を守りましょう';
+
+  @override
+  String get ourStories => '私たちのストーリー';
+
+  @override
+  String get storiesSeeAll => 'すべて見る';
+
+  @override
+  String get storiesReadMore => '続きを読む';
+
+  @override
+  String get storiesFeaturedLabel => '注目のストーリー';
+
+  @override
+  String get storiesFilterReverts => '改宗者';
+
+  @override
+  String get storyCategoryRevert => '改宗者';
+
+  @override
+  String get storyCategoryBornMuslim => '生まれつきのムスリム';
+
+  @override
+  String get storyCategoryReturning => '回帰者';
+
+  @override
+  String get storiesShareYours => 'あなたの物語を';
+
+  @override
+  String get storiesEmptyTitle => 'まだストーリーがありません';
+
+  @override
+  String get storiesEmptySubtitle => '最初にあなたの歩みを共有しましょう';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'シャハーダ：$date';
+  }
+
+  @override
+  String get storiesComments => 'コメント';
+
+  @override
+  String get storiesAddComment => 'コメントを追加…';
+
+  @override
+  String get storiesAnonymous => '匿名';
+
+  @override
+  String get storiesNameLabel => 'お名前';
+
+  @override
+  String get storiesPostAnonymously => '匿名で投稿';
+
+  @override
+  String get storiesCountryLabel => '国';
+
+  @override
+  String get storiesCategoryLabel => 'カテゴリー';
+
+  @override
+  String get storiesShahadaDateLabel => 'シャハーダの日付（任意）';
+
+  @override
+  String get storiesYourStoryLabel => 'あなたのストーリー';
+
+  @override
+  String get storiesStoryHint => 'あなたの歩みを聞かせてください…';
+
+  @override
+  String get storiesUploadPhoto => '写真をアップロード（任意）';
+
+  @override
+  String get storiesChangePhoto => '写真を変更';
+
+  @override
+  String get storiesSubmitButton => '送信';
+
+  @override
+  String get storiesSubmitted => 'ジャザーカッラー・ハイル！ストーリーは審査のため送信されました。';
+
+  @override
+  String get storiesSubmitError => 'エラーが発生しました。もう一度お試しください。';
+
+  @override
+  String get storiesFillRequired => 'ストーリーと国を入力してください。';
+
+  @override
+  String get storiesShareCardLabel => 'コミュニティストーリー';
+
+  @override
+  String get storiesLoadError => 'ストーリーを読み込めませんでした。接続を確認してください。';
 }

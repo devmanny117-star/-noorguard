@@ -3000,4 +3000,98 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get focusButtonSubtitle =>
       'Bescherm je tijd voor wat er echt toe doet';
+
+  @override
+  String get ourStories => 'Onze verhalen';
+
+  @override
+  String get storiesSeeAll => 'Alles bekijken';
+
+  @override
+  String get storiesReadMore => 'Lees meer';
+
+  @override
+  String get storiesFeaturedLabel => 'Uitgelicht verhaal';
+
+  @override
+  String get storiesFilterReverts => 'Bekeerlingen';
+
+  @override
+  String get storyCategoryRevert => 'Bekeerling';
+
+  @override
+  String get storyCategoryBornMuslim => 'Geboren moslim';
+
+  @override
+  String get storyCategoryReturning => 'Terugkerend';
+
+  @override
+  String get storiesShareYours => 'Deel de jouwe';
+
+  @override
+  String get storiesEmptyTitle => 'Nog geen verhalen';
+
+  @override
+  String get storiesEmptySubtitle => 'Deel als eerste jouw reis';
+
+  @override
+  String storyShahadaDate(Object date) {
+    return 'Sjahada: $date';
+  }
+
+  @override
+  String get storiesComments => 'Reacties';
+
+  @override
+  String get storiesAddComment => 'Voeg een reactie toe…';
+
+  @override
+  String get storiesAnonymous => 'Anoniem';
+
+  @override
+  String get storiesNameLabel => 'Je naam';
+
+  @override
+  String get storiesPostAnonymously => 'Anoniem plaatsen';
+
+  @override
+  String get storiesCountryLabel => 'Land';
+
+  @override
+  String get storiesCategoryLabel => 'Categorie';
+
+  @override
+  String get storiesShahadaDateLabel => 'Datum van de sjahada (optioneel)';
+
+  @override
+  String get storiesYourStoryLabel => 'Jouw verhaal';
+
+  @override
+  String get storiesStoryHint => 'Vertel ons over je reis…';
+
+  @override
+  String get storiesUploadPhoto => 'Foto uploaden (optioneel)';
+
+  @override
+  String get storiesChangePhoto => 'Foto wijzigen';
+
+  @override
+  String get storiesSubmitButton => 'Versturen';
+
+  @override
+  String get storiesSubmitted =>
+      'JazakAllah khair! Je verhaal is ingediend ter beoordeling.';
+
+  @override
+  String get storiesSubmitError => 'Er ging iets mis. Probeer het opnieuw.';
+
+  @override
+  String get storiesFillRequired => 'Voeg je verhaal en land toe.';
+
+  @override
+  String get storiesShareCardLabel => 'Communityverhaal';
+
+  @override
+  String get storiesLoadError =>
+      'Verhalen konden niet worden geladen. Controleer je verbinding.';
 }

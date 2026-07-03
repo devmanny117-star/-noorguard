@@ -3701,5 +3701,128 @@
   "focusButtonSubtitle": "Protect your time for what matters",
   "@focusButtonSubtitle": {
     "description": "Subtitle under the Begin Focus button on the Focus Mode screen"
+  },
+  "ourStories": "Our Stories",
+  "@ourStories": {
+    "description": "Community stories: home card + screen title"
+  },
+  "storiesSeeAll": "See all",
+  "@storiesSeeAll": {
+    "description": "Home card link to open all stories"
+  },
+  "storiesReadMore": "Read More",
+  "@storiesReadMore": {
+    "description": "Expand a truncated story"
+  },
+  "storiesFeaturedLabel": "Featured Story",
+  "@storiesFeaturedLabel": {
+    "description": "Badge on the featured story card"
+  },
+  "storiesFilterReverts": "Reverts",
+  "@storiesFilterReverts": {
+    "description": "Filter tab: revert stories"
+  },
+  "storyCategoryRevert": "Revert",
+  "@storyCategoryRevert": {
+    "description": "Story category badge: revert"
+  },
+  "storyCategoryBornMuslim": "Born Muslim",
+  "@storyCategoryBornMuslim": {
+    "description": "Story category badge + filter: born Muslim"
+  },
+  "storyCategoryReturning": "Returning",
+  "@storyCategoryReturning": {
+    "description": "Story category badge + filter: returning to Islam"
+  },
+  "storiesShareYours": "Share Yours",
+  "@storiesShareYours": {
+    "description": "Header button opening the submit-story form"
+  },
+  "storiesEmptyTitle": "No stories yet",
+  "@storiesEmptyTitle": {
+    "description": "Empty state title when no stories are approved yet"
+  },
+  "storiesEmptySubtitle": "Be the first to share your journey",
+  "@storiesEmptySubtitle": {
+    "description": "Empty state subtitle"
+  },
+  "storyShahadaDate": "Shahada: {date}",
+  "@storyShahadaDate": {
+    "description": "Shahada date line on a story card",
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "storiesComments": "Comments",
+  "@storiesComments": {
+    "description": "Comments sheet title"
+  },
+  "storiesAddComment": "Add a comment…",
+  "@storiesAddComment": {
+    "description": "Comment input hint"
+  },
+  "storiesAnonymous": "Anonymous",
+  "@storiesAnonymous": {
+    "description": "Fallback author name for anonymous stories/comments"
+  },
+  "storiesNameLabel": "Your name",
+  "@storiesNameLabel": {
+    "description": "Submit form: name field label"
+  },
+  "storiesPostAnonymously": "Post anonymously",
+  "@storiesPostAnonymously": {
+    "description": "Submit form: anonymous toggle"
+  },
+  "storiesCountryLabel": "Country",
+  "@storiesCountryLabel": {
+    "description": "Submit form: country dropdown label"
+  },
+  "storiesCategoryLabel": "Category",
+  "@storiesCategoryLabel": {
+    "description": "Submit form: category selector label"
+  },
+  "storiesShahadaDateLabel": "Date of Shahada (optional)",
+  "@storiesShahadaDateLabel": {
+    "description": "Submit form: optional shahada date picker label"
+  },
+  "storiesYourStoryLabel": "Your Story",
+  "@storiesYourStoryLabel": {
+    "description": "Submit form: story field label"
+  },
+  "storiesStoryHint": "Tell us about your journey…",
+  "@storiesStoryHint": {
+    "description": "Submit form: story field hint"
+  },
+  "storiesUploadPhoto": "Upload Photo (optional)",
+  "@storiesUploadPhoto": {
+    "description": "Submit form: photo upload button"
+  },
+  "storiesChangePhoto": "Change Photo",
+  "@storiesChangePhoto": {
+    "description": "Submit form: photo replace button"
+  },
+  "storiesSubmitButton": "Submit",
+  "@storiesSubmitButton": {
+    "description": "Submit form: submit button"
+  },
+  "storiesSubmitted": "JazakAllah khair! Your story has been submitted for review.",
+  "@storiesSubmitted": {
+    "description": "Confirmation after story submission"
+  },
+  "storiesSubmitError": "Something went wrong. Please try again.",
+  "@storiesSubmitError": {
+    "description": "Generic submission error"
+  },
+  "storiesFillRequired": "Please add your story and country.",
+  "@storiesFillRequired": {
+    "description": "Validation when story/country missing"
+  },
+  "storiesShareCardLabel": "Community Story",
+  "@storiesShareCardLabel": {
+    "description": "Type label on the story share card"
+  },
+  "storiesLoadError": "Couldn't load stories. Check your connection.",
+  "@storiesLoadError": {
+    "description": "Error state when stories fail to load"
   }
 }
