@@ -169,72 +169,72 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
 
   Widget _buildBody(BuildContext context, AppLocalizations l10n) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _Header(onShareYours: _openSubmitSheet),
-          const SizedBox(height: 14),
-          _FilterTabs(
-            selected: _filter,
-            onSelected: (f) => setState(() => _filter = f),
-          ),
-          const SizedBox(height: 4),
-          Expanded(
-            child: !CommunityStoriesService.firebaseAvailable
-                ? _EmptyState(
-                    title: l10n.storiesEmptyTitle,
-                    subtitle: l10n.storiesEmptySubtitle,
-                  )
-                : StreamBuilder<List<CommunityStory>>(
-                    stream: _service.approvedStories(),
-                    builder: (context, snap) {
-                      if (snap.hasError) {
-                        return _EmptyState(
-                          title: l10n.storiesLoadError,
-                          subtitle: '',
-                        );
-                      }
-                      if (!snap.hasData) {
-                        return const Center(
-                          child: CircularProgressIndicator(color: _kGold),
-                        );
-                      }
-                      final all = snap.data!;
-                      final featured = _filter == null
-                          ? all.where((s) => s.featured).firstOrNull
-                          : null;
-                      final regular = all
-                          .where((s) =>
-                              (_filter == null || s.category == _filter) &&
-                              s.id != featured?.id)
-                          .toList();
-                      if (featured == null && regular.isEmpty) {
-                        return _EmptyState(
-                          title: l10n.storiesEmptyTitle,
-                          subtitle: l10n.storiesEmptySubtitle,
-                        );
-                      }
-                      return ListView(
-                        physics: const BouncingScrollPhysics(),
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
-                        children: [
-                          if (featured != null) ...[
-                            _FeaturedStoryCard(
-                              story: featured,
-                              service: _service,
-                            ),
-                            const SizedBox(height: 16),
-                          ],
-                          for (final story in regular) ...[
-                            _StoryCard(story: story, service: _service),
-                            const SizedBox(height: 14),
-                          ],
-                        ],
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _Header(onShareYours: _openSubmitSheet),
+        const SizedBox(height: 14),
+        _FilterTabs(
+          selected: _filter,
+          onSelected: (f) => setState(() => _filter = f),
+        ),
+        const SizedBox(height: 4),
+        Expanded(
+          child: !CommunityStoriesService.firebaseAvailable
+              ? _EmptyState(
+                  title: l10n.storiesEmptyTitle,
+                  subtitle: l10n.storiesEmptySubtitle,
+                )
+              : StreamBuilder<List<CommunityStory>>(
+                  stream: _service.approvedStories(),
+                  builder: (context, snap) {
+                    if (snap.hasError) {
+                      return _EmptyState(
+                        title: l10n.storiesLoadError,
+                        subtitle: '',
                       );
-                    },
-                  ),
-          ),
-        ],
-      );
+                    }
+                    if (!snap.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(color: _kGold),
+                      );
+                    }
+                    final all = snap.data!;
+                    final featured = _filter == null
+                        ? all.where((s) => s.featured).firstOrNull
+                        : null;
+                    final regular = all
+                        .where((s) =>
+                            (_filter == null || s.category == _filter) &&
+                            s.id != featured?.id)
+                        .toList();
+                    if (featured == null && regular.isEmpty) {
+                      return _EmptyState(
+                        title: l10n.storiesEmptyTitle,
+                        subtitle: l10n.storiesEmptySubtitle,
+                      );
+                    }
+                    return ListView(
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
+                      children: [
+                        if (featured != null) ...[
+                          _FeaturedStoryCard(
+                            story: featured,
+                            service: _service,
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                        for (final story in regular) ...[
+                          _StoryCard(story: story, service: _service),
+                          const SizedBox(height: 14),
+                        ],
+                      ],
+                    );
+                  },
+                ),
+        ),
+      ],
+    );
   }
 }
 
@@ -289,8 +289,7 @@ class _Header extends StatelessWidget {
           GestureDetector(
             onTap: onShareYours,
             child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
                 color: _kGold,
                 borderRadius: BorderRadius.circular(20),
@@ -352,8 +351,7 @@ class _FilterTabs extends StatelessWidget {
             onTap: () => onSelected(category),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
               decoration: BoxDecoration(
                 color: isActive ? _kGold : Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
@@ -674,8 +672,8 @@ class _StoryCardState extends State<_StoryCard> {
                       decoration: BoxDecoration(
                         color: _kGold.withValues(alpha: 0.14),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                            color: _kGold.withValues(alpha: 0.55)),
+                        border:
+                            Border.all(color: _kGold.withValues(alpha: 0.55)),
                       ),
                       child: Text(
                         storyCategoryLabel(l10n, story.category),
@@ -872,8 +870,7 @@ class _ReactionsRow extends StatelessWidget {
                   color: _kGold.withValues(alpha: 0.10),
                   border: Border.all(color: _kGold.withValues(alpha: 0.5)),
                 ),
-                child: const Icon(Icons.share_rounded,
-                    size: 14, color: _kGold),
+                child: const Icon(Icons.share_rounded, size: 14, color: _kGold),
               ),
             ),
           ],
@@ -1034,8 +1031,8 @@ class _CommentsSheetState extends State<_CommentsSheet> {
                   );
                 }
                 return ListView.separated(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                   itemCount: comments.length,
                   separatorBuilder: (_, __) => Divider(
                     color: _kGold.withValues(alpha: 0.10),
@@ -1050,9 +1047,7 @@ class _CommentsSheetState extends State<_CommentsSheet> {
                           children: [
                             Expanded(
                               child: Text(
-                                c.name.isEmpty
-                                    ? l10n.storiesAnonymous
-                                    : c.name,
+                                c.name.isEmpty ? l10n.storiesAnonymous : c.name,
                                 style: GoogleFonts.lato(
                                   fontSize: 12.5,
                                   fontWeight: FontWeight.w700,
@@ -1110,8 +1105,8 @@ class _CommentsSheetState extends State<_CommentsSheet> {
                           horizontal: 14, vertical: 10),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(22),
-                        borderSide: BorderSide(
-                            color: _kGold.withValues(alpha: 0.35)),
+                        borderSide:
+                            BorderSide(color: _kGold.withValues(alpha: 0.35)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(22),
@@ -1266,8 +1261,7 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
 
   InputDecoration _fieldDecoration(String hint) => InputDecoration(
         hintText: hint,
-        hintStyle:
-            GoogleFonts.lato(color: _kCream.withValues(alpha: 0.35)),
+        hintStyle: GoogleFonts.lato(color: _kCream.withValues(alpha: 0.35)),
         filled: true,
         fillColor: _kNavy,
         contentPadding:
@@ -1334,7 +1328,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 ),
               ),
               const SizedBox(height: 18),
-
               _label(l10n.storiesNameLabel.toUpperCase()),
               const SizedBox(height: 8),
               TextField(
@@ -1372,7 +1365,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 ],
               ),
               const SizedBox(height: 14),
-
               _label(l10n.storiesCountryLabel.toUpperCase()),
               const SizedBox(height: 8),
               DropdownButtonFormField<Country>(
@@ -1396,7 +1388,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 onChanged: (c) => setState(() => _country = c),
               ),
               const SizedBox(height: 14),
-
               _label(l10n.storiesCategoryLabel.toUpperCase()),
               const SizedBox(height: 8),
               Wrap(
@@ -1435,20 +1426,18 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 ],
               ),
               const SizedBox(height: 14),
-
               _label(l10n.storiesShahadaDateLabel.toUpperCase()),
               const SizedBox(height: 8),
               GestureDetector(
                 onTap: _pickDate,
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 14, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                   decoration: BoxDecoration(
                     color: _kNavy,
                     borderRadius: BorderRadius.circular(12),
-                    border:
-                        Border.all(color: _kGold.withValues(alpha: 0.35)),
+                    border: Border.all(color: _kGold.withValues(alpha: 0.35)),
                   ),
                   child: Row(
                     children: [
@@ -1471,7 +1460,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 ),
               ),
               const SizedBox(height: 14),
-
               _label(l10n.storiesYourStoryLabel.toUpperCase()),
               const SizedBox(height: 8),
               TextField(
@@ -1479,8 +1467,8 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 minLines: 5,
                 maxLines: 10,
                 maxLength: 3000,
-                style: GoogleFonts.lato(
-                    fontSize: 14, color: _kCream, height: 1.5),
+                style:
+                    GoogleFonts.lato(fontSize: 14, color: _kCream, height: 1.5),
                 decoration: _fieldDecoration(l10n.storiesStoryHint).copyWith(
                   counterStyle: GoogleFonts.lato(
                     fontSize: 10,
@@ -1489,66 +1477,61 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 ),
               ),
               const SizedBox(height: 14),
-
               _label(l10n.storiesChooseBackground.toUpperCase()),
               const SizedBox(height: 8),
-              SizedBox(
-                height: 148,
-                child: GridView.builder(
-                  scrollDirection: Axis.horizontal,
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                  ),
-                  itemCount: _storyBackgroundAssets.length + 1,
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return _BackgroundTile(
-                        selected: _background == null,
-                        onTap: () => setState(() => _background = null),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'بِسْمِ اللَّهِ',
-                              style: GoogleFonts.scheherazadeNew(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: _kGold,
-                              ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              l10n.storiesBackgroundNone,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.lato(
-                                fontSize: 9.5,
-                                color: _kCream.withValues(alpha: 0.6),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                    final asset = _storyBackgroundAssets[index - 1];
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                ),
+                itemCount: _storyBackgroundAssets.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
                     return _BackgroundTile(
-                      selected: _background == asset,
-                      onTap: () => setState(() => _background = asset),
-                      child: Image.asset(
-                        asset,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) =>
-                            const ColoredBox(color: _kNavy),
+                      selected: _background == null,
+                      onTap: () => setState(() => _background = null),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'بِسْمِ اللَّهِ',
+                            style: GoogleFonts.scheherazadeNew(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              color: _kGold,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            l10n.storiesBackgroundNone,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.lato(
+                              fontSize: 9.5,
+                              color: _kCream.withValues(alpha: 0.6),
+                            ),
+                          ),
+                        ],
                       ),
                     );
-                  },
-                ),
+                  }
+                  final asset = _storyBackgroundAssets[index - 1];
+                  return _BackgroundTile(
+                    selected: _background == asset,
+                    onTap: () => setState(() => _background = asset),
+                    child: Image.asset(
+                      asset,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) =>
+                          const ColoredBox(color: _kNavy),
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: 18),
-
               GestureDetector(
                 onTap: _submit,
                 child: Container(
