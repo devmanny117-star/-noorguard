@@ -3076,6 +3076,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get storiesBackgroundNone => 'Geen';
 
   @override
+  String get storiesEditTitle => 'Bewerk je verhaal';
+
+  @override
+  String get storiesSaveChanges => 'Wijzigingen opslaan';
+
+  @override
+  String get storiesUpdated => 'Je verhaal is bijgewerkt';
+
+  @override
   String get storiesUploadPhoto => 'Foto uploaden (optioneel)';
 
   @override
@@ -3096,15 +3105,6 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'Communityverhaal';
-
-  @override
-  String get storiesEditTitle => 'Bewerk je verhaal';
-
-  @override
-  String get storiesSaveChanges => 'Wijzigingen opslaan';
-
-  @override
-  String get storiesUpdated => 'Je verhaal is bijgewerkt';
 
   @override
   String get storiesLoadError =>

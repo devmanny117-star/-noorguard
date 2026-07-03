@@ -3078,6 +3078,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get storiesBackgroundNone => 'Tidak ada';
 
   @override
+  String get storiesEditTitle => 'Edit Kisah Anda';
+
+  @override
+  String get storiesSaveChanges => 'Simpan Perubahan';
+
+  @override
+  String get storiesUpdated => 'Kisah Anda telah diperbarui';
+
+  @override
   String get storiesUploadPhoto => 'Unggah Foto (opsional)';
 
   @override
@@ -3098,15 +3107,6 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'Kisah Komunitas';
-
-  @override
-  String get storiesEditTitle => 'Edit Kisah Anda';
-
-  @override
-  String get storiesSaveChanges => 'Simpan Perubahan';
-
-  @override
-  String get storiesUpdated => 'Kisah Anda telah diperbarui';
 
   @override
   String get storiesLoadError => 'Tidak dapat memuat kisah. Periksa koneksimu.';

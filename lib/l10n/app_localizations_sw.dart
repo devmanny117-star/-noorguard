@@ -3069,6 +3069,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get storiesBackgroundNone => 'Hakuna';
 
   @override
+  String get storiesEditTitle => 'Hariri Hadithi Yako';
+
+  @override
+  String get storiesSaveChanges => 'Hifadhi Mabadiliko';
+
+  @override
+  String get storiesUpdated => 'Hadithi yako imesasishwa';
+
+  @override
   String get storiesUploadPhoto => 'Pakia picha (hiari)';
 
   @override
@@ -3089,15 +3098,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'Hadithi ya Jumuiya';
-
-  @override
-  String get storiesEditTitle => 'Hariri Hadithi Yako';
-
-  @override
-  String get storiesSaveChanges => 'Hifadhi Mabadiliko';
-
-  @override
-  String get storiesUpdated => 'Hadithi yako imesasishwa';
 
   @override
   String get storiesLoadError =>

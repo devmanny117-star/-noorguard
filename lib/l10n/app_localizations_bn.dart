@@ -3069,6 +3069,15 @@ class AppLocalizationsBn extends AppLocalizations {
   String get storiesBackgroundNone => 'কোনোটি নয়';
 
   @override
+  String get storiesEditTitle => 'আপনার গল্প সম্পাদনা করুন';
+
+  @override
+  String get storiesSaveChanges => 'পরিবর্তন সংরক্ষণ করুন';
+
+  @override
+  String get storiesUpdated => 'আপনার গল্প আপডেট করা হয়েছে';
+
+  @override
   String get storiesUploadPhoto => 'ছবি আপলোড করুন (ঐচ্ছিক)';
 
   @override
@@ -3089,15 +3098,6 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'কমিউনিটির গল্প';
-
-  @override
-  String get storiesEditTitle => 'আপনার গল্প সম্পাদনা করুন';
-
-  @override
-  String get storiesSaveChanges => 'পরিবর্তন সংরক্ষণ করুন';
-
-  @override
-  String get storiesUpdated => 'আপনার গল্প আপডেট করা হয়েছে';
 
   @override
   String get storiesLoadError =>

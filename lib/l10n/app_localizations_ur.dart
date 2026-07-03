@@ -3050,6 +3050,15 @@ class AppLocalizationsUr extends AppLocalizations {
   String get storiesBackgroundNone => 'کوئی نہیں';
 
   @override
+  String get storiesEditTitle => 'اپنی کہانی میں ترمیم کریں';
+
+  @override
+  String get storiesSaveChanges => 'تبدیلیاں محفوظ کریں';
+
+  @override
+  String get storiesUpdated => 'آپ کی کہانی اپ ڈیٹ ہو گئی ہے';
+
+  @override
   String get storiesUploadPhoto => 'تصویر اپ لوڈ کریں (اختیاری)';
 
   @override
@@ -3070,15 +3079,6 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'کمیونٹی کی کہانی';
-
-  @override
-  String get storiesEditTitle => 'اپنی کہانی میں ترمیم کریں';
-
-  @override
-  String get storiesSaveChanges => 'تبدیلیاں محفوظ کریں';
-
-  @override
-  String get storiesUpdated => 'آپ کی کہانی اپ ڈیٹ ہو گئی ہے';
 
   @override
   String get storiesLoadError =>

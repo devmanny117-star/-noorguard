@@ -3059,6 +3059,15 @@ class AppLocalizationsTr extends AppLocalizations {
   String get storiesBackgroundNone => 'Yok';
 
   @override
+  String get storiesEditTitle => 'Hikayeni Düzenle';
+
+  @override
+  String get storiesSaveChanges => 'Değişiklikleri Kaydet';
+
+  @override
+  String get storiesUpdated => 'Hikayen güncellendi';
+
+  @override
   String get storiesUploadPhoto => 'Fotoğraf yükle (isteğe bağlı)';
 
   @override
@@ -3079,15 +3088,6 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'Topluluk Hikayesi';
-
-  @override
-  String get storiesEditTitle => 'Hikayeni Düzenle';
-
-  @override
-  String get storiesSaveChanges => 'Değişiklikleri Kaydet';
-
-  @override
-  String get storiesUpdated => 'Hikayen güncellendi';
 
   @override
   String get storiesLoadError =>

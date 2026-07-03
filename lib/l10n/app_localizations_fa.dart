@@ -3055,6 +3055,15 @@ class AppLocalizationsFa extends AppLocalizations {
   String get storiesBackgroundNone => 'هیچ‌کدام';
 
   @override
+  String get storiesEditTitle => 'ویرایش داستان شما';
+
+  @override
+  String get storiesSaveChanges => 'ذخیره تغییرات';
+
+  @override
+  String get storiesUpdated => 'داستان شما به‌روزرسانی شد';
+
+  @override
   String get storiesUploadPhoto => 'بارگذاری عکس (اختیاری)';
 
   @override
@@ -3075,15 +3084,6 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'داستان انجمن';
-
-  @override
-  String get storiesEditTitle => 'ویرایش داستان شما';
-
-  @override
-  String get storiesSaveChanges => 'ذخیره تغییرات';
-
-  @override
-  String get storiesUpdated => 'داستان شما به‌روزرسانی شد';
 
   @override
   String get storiesLoadError =>

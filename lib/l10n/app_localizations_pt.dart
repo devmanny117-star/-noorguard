@@ -3075,6 +3075,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storiesBackgroundNone => 'Nenhum';
 
   @override
+  String get storiesEditTitle => 'Editar sua história';
+
+  @override
+  String get storiesSaveChanges => 'Salvar alterações';
+
+  @override
+  String get storiesUpdated => 'Sua história foi atualizada';
+
+  @override
   String get storiesUploadPhoto => 'Enviar foto (opcional)';
 
   @override
@@ -3095,15 +3104,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get storiesShareCardLabel => 'História da comunidade';
-
-  @override
-  String get storiesEditTitle => 'Editar sua história';
-
-  @override
-  String get storiesSaveChanges => 'Salvar alterações';
-
-  @override
-  String get storiesUpdated => 'Sua história foi atualizada';
 
   @override
   String get storiesLoadError =>

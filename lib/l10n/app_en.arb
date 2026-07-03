@@ -3801,6 +3801,18 @@
   "@storiesBackgroundNone": {
     "description": "Submit form: no-background option in the image picker"
   },
+  "storiesEditTitle": "Edit Your Story",
+  "@storiesEditTitle": {
+    "description": "Submit sheet title when editing an existing story"
+  },
+  "storiesSaveChanges": "Save Changes",
+  "@storiesSaveChanges": {
+    "description": "Submit button label when editing an existing story"
+  },
+  "storiesUpdated": "Your story has been updated",
+  "@storiesUpdated": {
+    "description": "Snackbar shown after an existing story is updated"
+  },
   "storiesUploadPhoto": "Upload Photo (optional)",
   "@storiesUploadPhoto": {
     "description": "Submit form: photo upload button"
