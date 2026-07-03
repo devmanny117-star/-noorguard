@@ -1,9 +1,7 @@
 import 'dart:math' as math;
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart' hide TextDirection;
 
 import '../data/countries.dart';
@@ -1005,7 +1003,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
   Country? _country;
   StoryCategory _category = StoryCategory.revert;
   DateTime? _shahadaDate;
-  Uint8List? _photoBytes;
   bool _submitting = false;
 
   @override
@@ -1045,17 +1042,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
     if (picked != null) setState(() => _shahadaDate = picked);
   }
 
-  Future<void> _pickPhoto() async {
-    final picked = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-      maxWidth: 1200,
-      imageQuality: 80,
-    );
-    if (picked == null) return;
-    final bytes = await picked.readAsBytes();
-    if (mounted) setState(() => _photoBytes = bytes);
-  }
-
   Future<void> _submit() async {
     final l10n = AppLocalizations.of(context)!;
     if (_submitting) return;
@@ -1080,7 +1066,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
         category: _category,
         shahadaDate: _shahadaDate,
         story: _storyController.text,
-        photoBytes: _photoBytes,
         language: Localizations.localeOf(context).languageCode,
       );
       if (!mounted) return;
@@ -1330,38 +1315,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                   ),
                 ),
               ),
-              const SizedBox(height: 6),
-
-              OutlinedButton.icon(
-                onPressed: _pickPhoto,
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: _kGold,
-                  side: BorderSide(color: _kGold.withValues(alpha: 0.5)),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                icon: const Icon(Icons.photo_library_rounded, size: 16),
-                label: Text(
-                  _photoBytes == null
-                      ? l10n.storiesUploadPhoto
-                      : l10n.storiesChangePhoto,
-                  style: GoogleFonts.lato(
-                      fontSize: 12.5, fontWeight: FontWeight.w700),
-                ),
-              ),
-              if (_photoBytes != null) ...[
-                const SizedBox(height: 10),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.memory(
-                    _photoBytes!,
-                    height: 120,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
               const SizedBox(height: 18),
 
               GestureDetector(

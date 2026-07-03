@@ -1,8 +1,6 @@
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/community_story.dart';
@@ -161,8 +159,9 @@ class CommunityStoriesService {
 
   // ── Submit ────────────────────────────────────────────────────────────────
 
-  /// Uploads an optional photo, then writes the story with status "pending"
-  /// for moderation in the Firebase console.
+  /// Writes the story with status "pending" for moderation in the Firebase
+  /// console. Photo upload is deferred to v1.1 — cards fall back to the
+  /// Bismillah placeholder unless a photoUrl is set manually in the console.
   Future<void> submitStory({
     required String name,
     required bool anonymous,
@@ -171,18 +170,8 @@ class CommunityStoriesService {
     required StoryCategory category,
     DateTime? shahadaDate,
     required String story,
-    Uint8List? photoBytes,
     required String language,
   }) async {
-    String? photoUrl;
-    if (photoBytes != null) {
-      final ref = FirebaseStorage.instance.ref(
-          'stories/${DateTime.now().millisecondsSinceEpoch}_${await userId()}.jpg');
-      await ref.putData(
-          photoBytes, SettableMetadata(contentType: 'image/jpeg'));
-      photoUrl = await ref.getDownloadURL();
-    }
-
     await _stories.add({
       'name': name.trim(),
       'anonymous': anonymous,
@@ -191,7 +180,6 @@ class CommunityStoriesService {
       'category': category.id,
       if (shahadaDate != null) 'shahadaDate': Timestamp.fromDate(shahadaDate),
       'story': story.trim(),
-      if (photoUrl != null) 'photoUrl': photoUrl,
       'status': 'pending',
       'featured': false,
       'reactions': {'dua': 0, 'heart': 0},
