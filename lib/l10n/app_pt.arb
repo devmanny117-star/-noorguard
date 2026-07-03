@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Algo deu errado. Tente novamente.",
   "storiesFillRequired": "Adicione sua história e seu país.",
   "storiesShareCardLabel": "História da comunidade",
+  "storiesEditTitle": "Editar sua história",
+  "storiesSaveChanges": "Salvar alterações",
+  "storiesUpdated": "Sua história foi atualizada",
   "storiesLoadError": "Não foi possível carregar as histórias. Verifique sua conexão."
 }

@@ -5688,6 +5688,24 @@ abstract class AppLocalizations {
   /// **'Community Story'**
   String get storiesShareCardLabel;
 
+  /// Title of the sheet when editing an existing story
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Your Story'**
+  String get storiesEditTitle;
+
+  /// Save button when editing an existing story
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get storiesSaveChanges;
+
+  /// Confirmation snackbar after editing own story
+  ///
+  /// In en, this message translates to:
+  /// **'Your story has been updated'**
+  String get storiesUpdated;
+
   /// Error state when stories fail to load
   ///
   /// In en, this message translates to:

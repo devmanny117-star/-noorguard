@@ -2966,5 +2966,14 @@ class AppLocalizationsJa extends AppLocalizations {
   String get storiesShareCardLabel => 'コミュニティストーリー';
 
   @override
+  String get storiesEditTitle => 'ストーリーを編集';
+
+  @override
+  String get storiesSaveChanges => '変更を保存';
+
+  @override
+  String get storiesUpdated => 'ストーリーが更新されました';
+
+  @override
   String get storiesLoadError => 'ストーリーを読み込めませんでした。接続を確認してください。';
 }

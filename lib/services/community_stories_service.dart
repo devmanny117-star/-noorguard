@@ -174,6 +174,7 @@ class CommunityStoriesService {
     String? backgroundImage,
   }) async {
     await _stories.add({
+      'userId': await userId(),
       'name': name.trim(),
       'anonymous': anonymous,
       'country': country,
@@ -187,6 +188,36 @@ class CommunityStoriesService {
       'reactions': {'dua': 0, 'heart': 0},
       'commentCount': 0,
       'dateSubmitted': FieldValue.serverTimestamp(),
+      'language': language,
+    });
+  }
+
+  /// Direct edit of the user's own already-approved story. Deliberately does
+  /// NOT touch status/featured/reactions/dateSubmitted — first submission
+  /// goes through moderation once; edits after approval stay approved.
+  Future<void> updateStory({
+    required String id,
+    required String name,
+    required bool anonymous,
+    required String country,
+    required String countryFlag,
+    required StoryCategory category,
+    DateTime? shahadaDate,
+    required String story,
+    required String language,
+    String? backgroundImage,
+  }) async {
+    await _stories.doc(id).update({
+      'name': name.trim(),
+      'anonymous': anonymous,
+      'country': country,
+      'countryFlag': countryFlag,
+      'category': category.id,
+      'shahadaDate': shahadaDate != null
+          ? Timestamp.fromDate(shahadaDate)
+          : FieldValue.delete(),
+      'story': story.trim(),
+      'backgroundImage': backgroundImage ?? FieldValue.delete(),
       'language': language,
     });
   }

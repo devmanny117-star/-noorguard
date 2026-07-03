@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Algo salió mal. Inténtalo de nuevo.",
   "storiesFillRequired": "Por favor, añade tu historia y tu país.",
   "storiesShareCardLabel": "Historia de la comunidad",
+  "storiesEditTitle": "Edita tu historia",
+  "storiesSaveChanges": "Guardar cambios",
+  "storiesUpdated": "Tu historia ha sido actualizada",
   "storiesLoadError": "No se pudieron cargar las historias. Revisa tu conexión."
 }

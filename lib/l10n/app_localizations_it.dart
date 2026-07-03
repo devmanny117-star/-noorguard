@@ -3105,6 +3105,15 @@ class AppLocalizationsIt extends AppLocalizations {
   String get storiesShareCardLabel => 'Storia della comunità';
 
   @override
+  String get storiesEditTitle => 'Modifica la tua storia';
+
+  @override
+  String get storiesSaveChanges => 'Salva modifiche';
+
+  @override
+  String get storiesUpdated => 'La tua storia è stata aggiornata';
+
+  @override
   String get storiesLoadError =>
       'Impossibile caricare le storie. Controlla la connessione.';
 }

@@ -3077,6 +3077,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storiesShareCardLabel => 'Community Story';
 
   @override
+  String get storiesEditTitle => 'Edit Your Story';
+
+  @override
+  String get storiesSaveChanges => 'Save Changes';
+
+  @override
+  String get storiesUpdated => 'Your story has been updated';
+
+  @override
   String get storiesLoadError =>
       'Couldn\'t load stories. Check your connection.';
 }

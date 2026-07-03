@@ -3098,6 +3098,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get storiesShareCardLabel => 'Historia de la comunidad';
 
   @override
+  String get storiesEditTitle => 'Edita tu historia';
+
+  @override
+  String get storiesSaveChanges => 'Guardar cambios';
+
+  @override
+  String get storiesUpdated => 'Tu historia ha sido actualizada';
+
+  @override
   String get storiesLoadError =>
       'No se pudieron cargar las historias. Revisa tu conexión.';
 }

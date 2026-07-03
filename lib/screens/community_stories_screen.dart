@@ -21,7 +21,7 @@ const _kCream = Color(0xFFF5EFE6);
 /// then the general stories set.
 final List<String> _storyBackgroundAssets = List.unmodifiable([
   for (var i = 1; i <= 8; i++) 'assets/images/mosques/mosque_$i.jpg',
-  for (var i = 1; i <= 17; i++) 'assets/images/stories/story_$i.jpg',
+  for (var i = 1; i <= 16; i++) 'assets/images/stories/story_$i.jpg',
 ]);
 
 /// Classic serif ("Georgia") used for the featured story quote. Georgia is
@@ -105,6 +105,18 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
 
   /// null = All
   StoryCategory? _filter;
+
+  /// This install's anonymous user id — the edit button shows only on
+  /// stories whose `userId` matches it.
+  String? _uid;
+
+  @override
+  void initState() {
+    super.initState();
+    CommunityStoriesService.userId().then((id) {
+      if (mounted) setState(() => _uid = id);
+    });
+  }
 
   void _openSubmitSheet() {
     final l10n = AppLocalizations.of(context)!;
@@ -221,11 +233,16 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
                           _FeaturedStoryCard(
                             story: featured,
                             service: _service,
+                            currentUserId: _uid,
                           ),
                           const SizedBox(height: 16),
                         ],
                         for (final story in regular) ...[
-                          _StoryCard(story: story, service: _service),
+                          _StoryCard(
+                            story: story,
+                            service: _service,
+                            currentUserId: _uid,
+                          ),
                           const SizedBox(height: 14),
                         ],
                       ],
@@ -382,13 +399,19 @@ class _FilterTabs extends StatelessWidget {
 class _FeaturedStoryCard extends StatelessWidget {
   final CommunityStory story;
   final CommunityStoriesService service;
+  final String? currentUserId;
 
-  const _FeaturedStoryCard({required this.story, required this.service});
+  const _FeaturedStoryCard({
+    required this.story,
+    required this.service,
+    this.currentUserId,
+  });
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final name = storyDisplayName(l10n, story);
+    final isMine = currentUserId != null && story.userId == currentUserId;
 
     return Container(
       clipBehavior: Clip.antiAlias,
@@ -497,6 +520,12 @@ class _FeaturedStoryCard extends StatelessWidget {
                         ),
                       ),
                     ),
+                    if (isMine) ...[
+                      const SizedBox(width: 8),
+                      _EditButton(
+                        onTap: () => _openEditSheet(context, service, story),
+                      ),
+                    ],
                   ],
                 ),
                 const SizedBox(height: 6),
@@ -613,8 +642,13 @@ class _FeaturedStoryCard extends StatelessWidget {
 class _StoryCard extends StatefulWidget {
   final CommunityStory story;
   final CommunityStoriesService service;
+  final String? currentUserId;
 
-  const _StoryCard({required this.story, required this.service});
+  const _StoryCard({
+    required this.story,
+    required this.service,
+    this.currentUserId,
+  });
 
   @override
   State<_StoryCard> createState() => _StoryCardState();
@@ -693,6 +727,14 @@ class _StoryCardState extends State<_StoryCard> {
                           color: _kCream.withValues(alpha: 0.5),
                         ),
                       ),
+                    if (widget.currentUserId != null &&
+                        story.userId == widget.currentUserId) ...[
+                      const SizedBox(width: 8),
+                      _EditButton(
+                        onTap: () =>
+                            _openEditSheet(context, widget.service, story),
+                      ),
+                    ],
                   ],
                 ),
                 const SizedBox(height: 12),
@@ -766,6 +808,44 @@ class _StoryCardState extends State<_StoryCard> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Opens the submission sheet pre-filled with an existing story for editing.
+void _openEditSheet(
+  BuildContext context,
+  CommunityStoriesService service,
+  CommunityStory story,
+) {
+  showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (_) => _SubmitStorySheet(service: service, editing: story),
+  );
+}
+
+/// Small gold pencil button shown on the user's own stories.
+class _EditButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _EditButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 28,
+        height: 28,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _kGold.withValues(alpha: 0.12),
+          border: Border.all(color: _kGold.withValues(alpha: 0.55)),
+        ),
+        child: const Icon(Icons.edit_rounded, size: 13, color: _kGold),
       ),
     );
   }
@@ -1154,7 +1234,11 @@ class _CommentsSheetState extends State<_CommentsSheet> {
 
 class _SubmitStorySheet extends StatefulWidget {
   final CommunityStoriesService service;
-  const _SubmitStorySheet({required this.service});
+
+  /// Non-null = editing an existing story: fields are pre-filled and saving
+  /// updates the document in place (status untouched, no re-moderation).
+  final CommunityStory? editing;
+  const _SubmitStorySheet({required this.service, this.editing});
 
   @override
   State<_SubmitStorySheet> createState() => _SubmitStorySheetState();
@@ -1175,9 +1259,21 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
   @override
   void initState() {
     super.initState();
-    CommunityStoriesService.savedAuthorName().then((name) {
-      if (mounted && name.isNotEmpty) _nameController.text = name;
-    });
+    final editing = widget.editing;
+    if (editing != null) {
+      _nameController.text = editing.name;
+      _storyController.text = editing.story;
+      _anonymous = editing.anonymous;
+      _country =
+          storyCountries.where((c) => c.name == editing.country).firstOrNull;
+      _category = editing.category;
+      _shahadaDate = editing.shahadaDate;
+      _background = editing.backgroundImage;
+    } else {
+      CommunityStoriesService.savedAuthorName().then((name) {
+        if (mounted && name.isNotEmpty) _nameController.text = name;
+      });
+    }
   }
 
   @override
@@ -1225,22 +1321,39 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
         await CommunityStoriesService.rememberAuthorName(name);
       }
       if (!mounted) return;
-      await widget.service.submitStory(
-        name: _anonymous ? '' : name,
-        anonymous: _anonymous || name.isEmpty,
-        country: _country!.name,
-        countryFlag: _country!.flag,
-        category: _category,
-        shahadaDate: _shahadaDate,
-        story: _storyController.text,
-        language: Localizations.localeOf(context).languageCode,
-        backgroundImage: _background,
-      );
+      final editing = widget.editing;
+      if (editing != null) {
+        await widget.service.updateStory(
+          id: editing.id,
+          name: _anonymous ? '' : name,
+          anonymous: _anonymous || name.isEmpty,
+          country: _country!.name,
+          countryFlag: _country!.flag,
+          category: _category,
+          shahadaDate: _shahadaDate,
+          story: _storyController.text,
+          language: Localizations.localeOf(context).languageCode,
+          backgroundImage: _background,
+        );
+      } else {
+        await widget.service.submitStory(
+          name: _anonymous ? '' : name,
+          anonymous: _anonymous || name.isEmpty,
+          country: _country!.name,
+          countryFlag: _country!.flag,
+          category: _category,
+          shahadaDate: _shahadaDate,
+          story: _storyController.text,
+          language: Localizations.localeOf(context).languageCode,
+          backgroundImage: _background,
+        );
+      }
       if (!mounted) return;
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(l10n.storiesSubmitted),
+          content: Text(
+              editing != null ? l10n.storiesUpdated : l10n.storiesSubmitted),
           backgroundColor: _kCard,
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
@@ -1319,7 +1432,9 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
               const SizedBox(height: 14),
               Center(
                 child: Text(
-                  l10n.communityStoriesShareBtn,
+                  widget.editing != null
+                      ? l10n.storiesEditTitle
+                      : l10n.communityStoriesShareBtn,
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 19,
                     fontWeight: FontWeight.w700,
@@ -1559,7 +1674,9 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                           ),
                         )
                       : Text(
-                          l10n.storiesSubmitButton,
+                          widget.editing != null
+                              ? l10n.storiesSaveChanges
+                              : l10n.storiesSubmitButton,
                           style: GoogleFonts.lato(
                             fontSize: 15,
                             fontWeight: FontWeight.w800,

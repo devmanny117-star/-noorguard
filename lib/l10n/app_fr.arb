@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Une erreur s'est produite. Veuillez réessayer.",
   "storiesFillRequired": "Veuillez ajouter votre histoire et votre pays.",
   "storiesShareCardLabel": "Histoire de la communauté",
+  "storiesEditTitle": "Modifier votre histoire",
+  "storiesSaveChanges": "Enregistrer les modifications",
+  "storiesUpdated": "Votre histoire a été mise à jour",
   "storiesLoadError": "Impossible de charger les histoires. Vérifiez votre connexion."
 }

@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Qualcosa è andato storto. Riprova.",
   "storiesFillRequired": "Aggiungi la tua storia e il tuo paese.",
   "storiesShareCardLabel": "Storia della comunità",
+  "storiesEditTitle": "Modifica la tua storia",
+  "storiesSaveChanges": "Salva modifiche",
+  "storiesUpdated": "La tua storia è stata aggiornata",
   "storiesLoadError": "Impossibile caricare le storie. Controlla la connessione."
 }

@@ -3091,6 +3091,15 @@ class AppLocalizationsSw extends AppLocalizations {
   String get storiesShareCardLabel => 'Hadithi ya Jumuiya';
 
   @override
+  String get storiesEditTitle => 'Hariri Hadithi Yako';
+
+  @override
+  String get storiesSaveChanges => 'Hifadhi Mabadiliko';
+
+  @override
+  String get storiesUpdated => 'Hadithi yako imesasishwa';
+
+  @override
   String get storiesLoadError =>
       'Imeshindikana kupakia hadithi. Angalia muunganisho wako.';
 }

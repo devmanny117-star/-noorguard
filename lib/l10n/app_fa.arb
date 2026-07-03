@@ -1709,5 +1709,8 @@
   "storiesSubmitError": "مشکلی پیش آمد. دوباره تلاش کنید.",
   "storiesFillRequired": "لطفاً داستان و کشور خود را وارد کنید.",
   "storiesShareCardLabel": "داستان انجمن",
+  "storiesEditTitle": "ویرایش داستان شما",
+  "storiesSaveChanges": "ذخیره تغییرات",
+  "storiesUpdated": "داستان شما به‌روزرسانی شد",
   "storiesLoadError": "بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید."
 }

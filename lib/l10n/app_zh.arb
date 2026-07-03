@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "出错了，请重试。",
   "storiesFillRequired": "请填写你的故事和国家。",
   "storiesShareCardLabel": "社区故事",
+  "storiesEditTitle": "编辑您的故事",
+  "storiesSaveChanges": "保存更改",
+  "storiesUpdated": "您的故事已更新",
   "storiesLoadError": "无法加载故事，请检查网络连接。"
 }

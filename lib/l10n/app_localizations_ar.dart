@@ -3043,5 +3043,14 @@ class AppLocalizationsAr extends AppLocalizations {
   String get storiesShareCardLabel => 'قصة من المجتمع';
 
   @override
+  String get storiesEditTitle => 'تعديل قصتك';
+
+  @override
+  String get storiesSaveChanges => 'حفظ التغييرات';
+
+  @override
+  String get storiesUpdated => 'تم تحديث قصتك';
+
+  @override
   String get storiesLoadError => 'تعذر تحميل القصص. تحقق من اتصالك.';
 }

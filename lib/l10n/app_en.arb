@@ -3829,6 +3829,18 @@
   "@storiesShareCardLabel": {
     "description": "Type label on the story share card"
   },
+  "storiesEditTitle": "Edit Your Story",
+  "@storiesEditTitle": {
+    "description": "Title of the sheet when editing an existing story"
+  },
+  "storiesSaveChanges": "Save Changes",
+  "@storiesSaveChanges": {
+    "description": "Save button when editing an existing story"
+  },
+  "storiesUpdated": "Your story has been updated",
+  "@storiesUpdated": {
+    "description": "Confirmation snackbar after editing own story"
+  },
   "storiesLoadError": "Couldn't load stories. Check your connection.",
   "@storiesLoadError": {
     "description": "Error state when stories fail to load"

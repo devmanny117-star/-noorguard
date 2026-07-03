@@ -3098,6 +3098,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get storiesShareCardLabel => 'Communityverhaal';
 
   @override
+  String get storiesEditTitle => 'Bewerk je verhaal';
+
+  @override
+  String get storiesSaveChanges => 'Wijzigingen opslaan';
+
+  @override
+  String get storiesUpdated => 'Je verhaal is bijgewerkt';
+
+  @override
   String get storiesLoadError =>
       'Verhalen konden niet worden geladen. Controleer je verbinding.';
 }

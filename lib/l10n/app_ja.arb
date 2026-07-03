@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "エラーが発生しました。もう一度お試しください。",
   "storiesFillRequired": "ストーリーと国を入力してください。",
   "storiesShareCardLabel": "コミュニティストーリー",
+  "storiesEditTitle": "ストーリーを編集",
+  "storiesSaveChanges": "変更を保存",
+  "storiesUpdated": "ストーリーが更新されました",
   "storiesLoadError": "ストーリーを読み込めませんでした。接続を確認してください。"
 }

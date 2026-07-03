@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
   "storiesFillRequired": "Bitte füge deine Geschichte und dein Land hinzu.",
   "storiesShareCardLabel": "Community-Geschichte",
+  "storiesEditTitle": "Deine Geschichte bearbeiten",
+  "storiesSaveChanges": "Änderungen speichern",
+  "storiesUpdated": "Deine Geschichte wurde aktualisiert",
   "storiesLoadError": "Geschichten konnten nicht geladen werden. Prüfe deine Verbindung."
 }

@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Er ging iets mis. Probeer het opnieuw.",
   "storiesFillRequired": "Voeg je verhaal en land toe.",
   "storiesShareCardLabel": "Communityverhaal",
+  "storiesEditTitle": "Bewerk je verhaal",
+  "storiesSaveChanges": "Wijzigingen opslaan",
+  "storiesUpdated": "Je verhaal is bijgewerkt",
   "storiesLoadError": "Verhalen konden niet worden geladen. Controleer je verbinding."
 }

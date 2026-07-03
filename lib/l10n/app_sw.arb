@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Hitilafu imetokea. Tafadhali jaribu tena.",
   "storiesFillRequired": "Tafadhali ongeza hadithi yako na nchi.",
   "storiesShareCardLabel": "Hadithi ya Jumuiya",
+  "storiesEditTitle": "Hariri Hadithi Yako",
+  "storiesSaveChanges": "Hifadhi Mabadiliko",
+  "storiesUpdated": "Hadithi yako imesasishwa",
   "storiesLoadError": "Imeshindikana kupakia hadithi. Angalia muunganisho wako."
 }

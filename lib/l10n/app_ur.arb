@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔",
   "storiesFillRequired": "براہ کرم اپنی کہانی اور ملک شامل کریں۔",
   "storiesShareCardLabel": "کمیونٹی کی کہانی",
+  "storiesEditTitle": "اپنی کہانی میں ترمیم کریں",
+  "storiesSaveChanges": "تبدیلیاں محفوظ کریں",
+  "storiesUpdated": "آپ کی کہانی اپ ڈیٹ ہو گئی ہے",
   "storiesLoadError": "کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔"
 }

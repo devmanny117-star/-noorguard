@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "Bir şeyler ters gitti. Lütfen tekrar dene.",
   "storiesFillRequired": "Lütfen hikayeni ve ülkeni ekle.",
   "storiesShareCardLabel": "Topluluk Hikayesi",
+  "storiesEditTitle": "Hikayeni Düzenle",
+  "storiesSaveChanges": "Değişiklikleri Kaydet",
+  "storiesUpdated": "Hikayen güncellendi",
   "storiesLoadError": "Hikayeler yüklenemedi. Bağlantını kontrol et."
 }

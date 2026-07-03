@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "কিছু ভুল হয়েছে। আবার চেষ্টা করুন।",
   "storiesFillRequired": "অনুগ্রহ করে আপনার গল্প ও দেশ যোগ করুন।",
   "storiesShareCardLabel": "কমিউনিটির গল্প",
+  "storiesEditTitle": "আপনার গল্প সম্পাদনা করুন",
+  "storiesSaveChanges": "পরিবর্তন সংরক্ষণ করুন",
+  "storiesUpdated": "আপনার গল্প আপডেট করা হয়েছে",
   "storiesLoadError": "গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।"
 }

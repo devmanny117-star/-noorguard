@@ -1549,5 +1549,8 @@
   "storiesSubmitError": "حدث خطأ ما. حاول مرة أخرى.",
   "storiesFillRequired": "يرجى إضافة قصتك وبلدك.",
   "storiesShareCardLabel": "قصة من المجتمع",
+  "storiesEditTitle": "تعديل قصتك",
+  "storiesSaveChanges": "حفظ التغييرات",
+  "storiesUpdated": "تم تحديث قصتك",
   "storiesLoadError": "تعذر تحميل القصص. تحقق من اتصالك."
 }
