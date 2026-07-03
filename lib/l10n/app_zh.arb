@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "已保存",
   "storiesSavedEmpty": "还没有保存的故事",
   "storiesSearchCountryHint": "搜索国家…",
+  "storiesChooseAvatar": "选择头像",
+  "storiesAvatarInitials": "首字母",
+  "storiesAvatarIcon": "图标",
+  "storiesAvatarPattern": "图案",
   "storiesLoadError": "无法加载故事，请检查网络连接。"
 }

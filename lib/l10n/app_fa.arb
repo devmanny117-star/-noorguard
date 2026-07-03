@@ -1720,5 +1720,9 @@
   "storiesFilterSaved": "ذخیره‌شده",
   "storiesSavedEmpty": "هنوز داستانی ذخیره نشده است",
   "storiesSearchCountryHint": "جستجوی کشور…",
+  "storiesChooseAvatar": "انتخاب آواتار",
+  "storiesAvatarInitials": "حروف اول",
+  "storiesAvatarIcon": "آیکون",
+  "storiesAvatarPattern": "الگو",
   "storiesLoadError": "بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید."
 }

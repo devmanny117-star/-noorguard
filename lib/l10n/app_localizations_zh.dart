@@ -2959,5 +2959,17 @@ class AppLocalizationsZh extends AppLocalizations {
   String get storiesSearchCountryHint => '搜索国家…';
 
   @override
+  String get storiesChooseAvatar => '选择头像';
+
+  @override
+  String get storiesAvatarInitials => '首字母';
+
+  @override
+  String get storiesAvatarIcon => '图标';
+
+  @override
+  String get storiesAvatarPattern => '图案';
+
+  @override
   String get storiesLoadError => '无法加载故事，请检查网络连接。';
 }

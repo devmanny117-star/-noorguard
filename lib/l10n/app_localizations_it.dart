@@ -3129,6 +3129,18 @@ class AppLocalizationsIt extends AppLocalizations {
   String get storiesSearchCountryHint => 'Cerca il paese…';
 
   @override
+  String get storiesChooseAvatar => 'Scegli un avatar';
+
+  @override
+  String get storiesAvatarInitials => 'Iniziali';
+
+  @override
+  String get storiesAvatarIcon => 'Icona';
+
+  @override
+  String get storiesAvatarPattern => 'Motivo';
+
+  @override
   String get storiesLoadError =>
       'Impossibile caricare le storie. Controlla la connessione.';
 }

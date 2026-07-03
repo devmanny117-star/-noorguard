@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "সংরক্ষিত",
   "storiesSavedEmpty": "এখনও কোনো সংরক্ষিত গল্প নেই",
   "storiesSearchCountryHint": "দেশ খুঁজুন…",
+  "storiesChooseAvatar": "একটি অবতার বেছে নিন",
+  "storiesAvatarInitials": "আদ্যক্ষর",
+  "storiesAvatarIcon": "আইকন",
+  "storiesAvatarPattern": "নকশা",
   "storiesLoadError": "গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।"
 }

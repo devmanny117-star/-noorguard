@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "المحفوظة",
   "storiesSavedEmpty": "لا توجد قصص محفوظة بعد",
   "storiesSearchCountryHint": "ابحث عن بلدك…",
+  "storiesChooseAvatar": "اختر صورة رمزية",
+  "storiesAvatarInitials": "الأحرف الأولى",
+  "storiesAvatarIcon": "أيقونة",
+  "storiesAvatarPattern": "نقش",
   "storiesLoadError": "تعذر تحميل القصص. تحقق من اتصالك."
 }

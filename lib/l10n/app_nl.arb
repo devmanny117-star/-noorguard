@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "Opgeslagen",
   "storiesSavedEmpty": "Nog geen opgeslagen verhalen",
   "storiesSearchCountryHint": "Zoek je land…",
+  "storiesChooseAvatar": "Kies een avatar",
+  "storiesAvatarInitials": "Initialen",
+  "storiesAvatarIcon": "Icoon",
+  "storiesAvatarPattern": "Patroon",
   "storiesLoadError": "Verhalen konden niet worden geladen. Controleer je verbinding."
 }

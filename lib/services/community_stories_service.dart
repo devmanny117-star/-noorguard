@@ -212,9 +212,13 @@ class CommunityStoriesService {
     required String story,
     required String language,
     String? backgroundImage,
+    String avatarType = 'initials',
+    String? avatarData,
   }) async {
     await _stories.add({
       'userId': await userId(),
+      'avatarType': avatarType,
+      if (avatarData != null) 'avatarData': avatarData,
       'name': name.trim(),
       'anonymous': anonymous,
       'country': country,
@@ -246,8 +250,12 @@ class CommunityStoriesService {
     required String story,
     required String language,
     String? backgroundImage,
+    String avatarType = 'initials',
+    String? avatarData,
   }) async {
     await _stories.doc(id).update({
+      'avatarType': avatarType,
+      'avatarData': avatarData ?? FieldValue.delete(),
       'name': name.trim(),
       'anonymous': anonymous,
       'country': country,

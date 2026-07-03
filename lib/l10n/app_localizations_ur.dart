@@ -3096,6 +3096,18 @@ class AppLocalizationsUr extends AppLocalizations {
   String get storiesSearchCountryHint => 'ملک تلاش کریں…';
 
   @override
+  String get storiesChooseAvatar => 'اوتار منتخب کریں';
+
+  @override
+  String get storiesAvatarInitials => 'ابتدائی حروف';
+
+  @override
+  String get storiesAvatarIcon => 'آئیکن';
+
+  @override
+  String get storiesAvatarPattern => 'نقش';
+
+  @override
   String get storiesLoadError =>
       'کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔';
 }

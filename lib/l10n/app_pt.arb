@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "Salvas",
   "storiesSavedEmpty": "Ainda não há histórias salvas",
   "storiesSearchCountryHint": "Buscar país…",
+  "storiesChooseAvatar": "Escolha um avatar",
+  "storiesAvatarInitials": "Iniciais",
+  "storiesAvatarIcon": "Ícone",
+  "storiesAvatarPattern": "Padrão",
   "storiesLoadError": "Não foi possível carregar as histórias. Verifique sua conexão."
 }

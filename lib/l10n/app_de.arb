@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "Gespeichert",
   "storiesSavedEmpty": "Noch keine gespeicherten Geschichten",
   "storiesSearchCountryHint": "Land suchen…",
+  "storiesChooseAvatar": "Avatar auswählen",
+  "storiesAvatarInitials": "Initialen",
+  "storiesAvatarIcon": "Symbol",
+  "storiesAvatarPattern": "Muster",
   "storiesLoadError": "Geschichten konnten nicht geladen werden. Prüfe deine Verbindung."
 }

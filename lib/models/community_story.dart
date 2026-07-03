@@ -34,6 +34,12 @@ class CommunityStory {
   /// Anonymous per-install id of the submitter — lets the author edit their
   /// own story. Null on stories submitted before this field existed.
   final String? userId;
+
+  /// Avatar style: 'initials' (default), 'icon' or 'pattern'.
+  final String? avatarType;
+
+  /// Icon id for 'icon' avatars, seed string for 'pattern' avatars.
+  final String? avatarData;
   final bool featured;
   final int duaCount;
   final int heartCount;
@@ -52,6 +58,8 @@ class CommunityStory {
     this.photoUrl,
     this.backgroundImage,
     this.userId,
+    this.avatarType,
+    this.avatarData,
     required this.featured,
     required this.duaCount,
     required this.heartCount,
@@ -84,6 +92,8 @@ class CommunityStory {
       photoUrl: data['photoUrl'] as String?,
       backgroundImage: data['backgroundImage'] as String?,
       userId: data['userId'] as String?,
+      avatarType: data['avatarType'] as String?,
+      avatarData: data['avatarData'] as String?,
       featured: data['featured'] as bool? ?? false,
       duaCount: (reactions['dua'] as num?)?.toInt() ?? 0,
       heartCount: (reactions['heart'] as num?)?.toInt() ?? 0,

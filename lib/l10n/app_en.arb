@@ -3873,6 +3873,22 @@
   "@storiesSearchCountryHint": {
     "description": "Hint in the searchable country field"
   },
+  "storiesChooseAvatar": "Choose an Avatar",
+  "@storiesChooseAvatar": {
+    "description": "Label above the avatar picker in the submit form"
+  },
+  "storiesAvatarInitials": "Initials",
+  "@storiesAvatarInitials": {
+    "description": "Avatar style tab: gold initials circle"
+  },
+  "storiesAvatarIcon": "Icon",
+  "@storiesAvatarIcon": {
+    "description": "Avatar style tab: illustrated Islamic icon"
+  },
+  "storiesAvatarPattern": "Pattern",
+  "@storiesAvatarPattern": {
+    "description": "Avatar style tab: generated geometric pattern"
+  },
   "storiesLoadError": "Couldn't load stories. Check your connection.",
   "@storiesLoadError": {
     "description": "Error state when stories fail to load"

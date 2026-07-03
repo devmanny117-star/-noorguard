@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "Kaydedilenler",
   "storiesSavedEmpty": "Henüz kaydedilmiş hikaye yok",
   "storiesSearchCountryHint": "Ülke ara…",
+  "storiesChooseAvatar": "Avatar Seç",
+  "storiesAvatarInitials": "Baş Harfler",
+  "storiesAvatarIcon": "Simge",
+  "storiesAvatarPattern": "Desen",
   "storiesLoadError": "Hikayeler yüklenemedi. Bağlantını kontrol et."
 }

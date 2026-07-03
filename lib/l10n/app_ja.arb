@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "保存済み",
   "storiesSavedEmpty": "保存されたストーリーはまだありません",
   "storiesSearchCountryHint": "国を検索…",
+  "storiesChooseAvatar": "アバターを選択",
+  "storiesAvatarInitials": "イニシャル",
+  "storiesAvatarIcon": "アイコン",
+  "storiesAvatarPattern": "パターン",
   "storiesLoadError": "ストーリーを読み込めませんでした。接続を確認してください。"
 }

@@ -3115,6 +3115,18 @@ class AppLocalizationsSw extends AppLocalizations {
   String get storiesSearchCountryHint => 'Tafuta nchi…';
 
   @override
+  String get storiesChooseAvatar => 'Chagua Avatari';
+
+  @override
+  String get storiesAvatarInitials => 'Herufi za Kwanza';
+
+  @override
+  String get storiesAvatarIcon => 'Ikoni';
+
+  @override
+  String get storiesAvatarPattern => 'Muundo';
+
+  @override
   String get storiesLoadError =>
       'Imeshindikana kupakia hadithi. Angalia muunganisho wako.';
 }

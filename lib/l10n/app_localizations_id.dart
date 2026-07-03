@@ -3124,5 +3124,17 @@ class AppLocalizationsId extends AppLocalizations {
   String get storiesSearchCountryHint => 'Cari negara…';
 
   @override
+  String get storiesChooseAvatar => 'Pilih Avatar';
+
+  @override
+  String get storiesAvatarInitials => 'Inisial';
+
+  @override
+  String get storiesAvatarIcon => 'Ikon';
+
+  @override
+  String get storiesAvatarPattern => 'Pola';
+
+  @override
   String get storiesLoadError => 'Tidak dapat memuat kisah. Periksa koneksimu.';
 }

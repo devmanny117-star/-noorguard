@@ -3122,6 +3122,18 @@ class AppLocalizationsNl extends AppLocalizations {
   String get storiesSearchCountryHint => 'Zoek je land…';
 
   @override
+  String get storiesChooseAvatar => 'Kies een avatar';
+
+  @override
+  String get storiesAvatarInitials => 'Initialen';
+
+  @override
+  String get storiesAvatarIcon => 'Icoon';
+
+  @override
+  String get storiesAvatarPattern => 'Patroon';
+
+  @override
   String get storiesLoadError =>
       'Verhalen konden niet worden geladen. Controleer je verbinding.';
 }

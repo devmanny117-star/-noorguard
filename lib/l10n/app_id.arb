@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "Tersimpan",
   "storiesSavedEmpty": "Belum ada kisah tersimpan",
   "storiesSearchCountryHint": "Cari negara…",
+  "storiesChooseAvatar": "Pilih Avatar",
+  "storiesAvatarInitials": "Inisial",
+  "storiesAvatarIcon": "Ikon",
+  "storiesAvatarPattern": "Pola",
   "storiesLoadError": "Tidak dapat memuat kisah. Periksa koneksimu."
 }

@@ -3105,6 +3105,18 @@ class AppLocalizationsTr extends AppLocalizations {
   String get storiesSearchCountryHint => 'Ülke ara…';
 
   @override
+  String get storiesChooseAvatar => 'Avatar Seç';
+
+  @override
+  String get storiesAvatarInitials => 'Baş Harfler';
+
+  @override
+  String get storiesAvatarIcon => 'Simge';
+
+  @override
+  String get storiesAvatarPattern => 'Desen';
+
+  @override
   String get storiesLoadError =>
       'Hikayeler yüklenemedi. Bağlantını kontrol et.';
 }

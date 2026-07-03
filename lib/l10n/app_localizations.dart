@@ -5736,6 +5736,30 @@ abstract class AppLocalizations {
   /// **'Search country…'**
   String get storiesSearchCountryHint;
 
+  /// Label above the avatar picker in the submit form
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an Avatar'**
+  String get storiesChooseAvatar;
+
+  /// Avatar style tab: gold initials circle
+  ///
+  /// In en, this message translates to:
+  /// **'Initials'**
+  String get storiesAvatarInitials;
+
+  /// Avatar style tab: illustrated Islamic icon
+  ///
+  /// In en, this message translates to:
+  /// **'Icon'**
+  String get storiesAvatarIcon;
+
+  /// Avatar style tab: generated geometric pattern
+  ///
+  /// In en, this message translates to:
+  /// **'Pattern'**
+  String get storiesAvatarPattern;
+
   /// Error state when stories fail to load
   ///
   /// In en, this message translates to:

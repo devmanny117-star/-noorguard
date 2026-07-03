@@ -10,6 +10,7 @@ import '../models/community_story.dart';
 import '../services/community_stories_service.dart';
 import '../services/share_helper.dart';
 import '../widgets/geometric_pattern_painter.dart';
+import '../widgets/story_avatar.dart';
 
 const _kBg = Color(0xFF0A1628);
 const _kNavy = Color(0xFF0D1B2A);
@@ -973,16 +974,15 @@ class _AuthorAvatar extends StatelessWidget {
     final initials = (story.anonymous || story.name.isEmpty)
         ? l10n.storiesAnonymous.substring(0, 1).toUpperCase()
         : story.initials;
-    final fallback = Center(
-      child: Text(
-        initials,
-        style: GoogleFonts.playfairDisplay(
-          fontSize: size * 0.35,
-          fontWeight: FontWeight.w800,
-          color: _kGold,
-        ),
-      ),
-    );
+    if (story.photoUrl == null) {
+      return StoryAvatar(
+        avatarType: story.avatarType ?? 'initials',
+        avatarData: story.avatarData,
+        initials: initials,
+        size: size,
+        borderWidth: borderWidth,
+      );
+    }
     return Container(
       width: size,
       height: size,
@@ -995,13 +995,20 @@ class _AuthorAvatar extends StatelessWidget {
           width: borderWidth,
         ),
       ),
-      child: story.photoUrl == null
-          ? fallback
-          : Image.network(
-              story.photoUrl!,
-              fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => fallback,
+      child: Image.network(
+        story.photoUrl!,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => Center(
+          child: Text(
+            initials,
+            style: GoogleFonts.playfairDisplay(
+              fontSize: size * 0.35,
+              fontWeight: FontWeight.w800,
+              color: _kGold,
             ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -1399,14 +1406,28 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
 
   /// Selected background asset path; null = none (Bismillah placeholder).
   String? _background;
+
+  /// Avatar style: 'initials' | 'icon' | 'pattern'.
+  String _avatarType = 'initials';
+
+  /// Icon id ('icon') or pattern seed ('pattern'); null for 'initials'.
+  String? _avatarData;
+
+  /// This install's user id — seeds the generated pattern avatars.
+  String? _sheetUid;
   bool _submitting = false;
 
   @override
   void initState() {
     super.initState();
     _storyFocus.addListener(_onStoryFocusChange);
+    CommunityStoriesService.userId().then((id) {
+      if (mounted) setState(() => _sheetUid = id);
+    });
     final editing = widget.editing;
     if (editing != null) {
+      _avatarType = editing.avatarType ?? 'initials';
+      _avatarData = editing.avatarData;
       _nameController.text = editing.name;
       _storyController.text = editing.story;
       _anonymous = editing.anonymous;
@@ -1496,6 +1517,8 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
           story: _storyController.text,
           language: Localizations.localeOf(context).languageCode,
           backgroundImage: _background,
+          avatarType: _avatarType,
+          avatarData: _avatarData,
         );
       } else {
         await widget.service.submitStory(
@@ -1508,6 +1531,8 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
           story: _storyController.text,
           language: Localizations.localeOf(context).languageCode,
           backgroundImage: _background,
+          avatarType: _avatarType,
+          avatarData: _avatarData,
         );
       }
       if (!mounted) return;
@@ -1560,6 +1585,141 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
           color: _kGold,
         ),
       );
+
+  String _previewInitials(AppLocalizations l10n) {
+    final name = _nameController.text.trim();
+    if (_anonymous || name.isEmpty) {
+      return l10n.storiesAnonymous.substring(0, 1).toUpperCase();
+    }
+    final parts =
+        name.split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
+    if (parts.isEmpty) return '؟';
+    if (parts.length == 1) return parts.first.substring(0, 1).toUpperCase();
+    return (parts.first.substring(0, 1) + parts.last.substring(0, 1))
+        .toUpperCase();
+  }
+
+  /// Style pills (Initials | Icon | Pattern) plus the matching sub-picker
+  /// row of icons or generated pattern variants.
+  List<Widget> _avatarPicker(AppLocalizations l10n) {
+    final styles = <(String, String)>[
+      ('initials', l10n.storiesAvatarInitials),
+      ('icon', l10n.storiesAvatarIcon),
+      ('pattern', l10n.storiesAvatarPattern),
+    ];
+    final patternSeeds = _sheetUid == null
+        ? const <String>[]
+        : [for (var i = 0; i < 6; i++) '$_sheetUid#$i'];
+
+    return [
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          for (final (type, label) in styles)
+            GestureDetector(
+              onTap: () => setState(() {
+                _avatarType = type;
+                switch (type) {
+                  case 'icon':
+                    if (!kStoryAvatarIcons.contains(_avatarData)) {
+                      _avatarData = kStoryAvatarIcons.first;
+                    }
+                  case 'pattern':
+                    if (!(_avatarData?.contains('#') ?? false)) {
+                      _avatarData =
+                          patternSeeds.isEmpty ? null : patternSeeds.first;
+                    }
+                  default:
+                    _avatarData = null;
+                }
+              }),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                decoration: BoxDecoration(
+                  color: _avatarType == type ? _kGold : Colors.transparent,
+                  borderRadius: BorderRadius.circular(18),
+                  border: Border.all(
+                    color: _avatarType == type
+                        ? _kGold
+                        : _kGold.withValues(alpha: 0.35),
+                  ),
+                ),
+                child: Text(
+                  label,
+                  style: GoogleFonts.lato(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: _avatarType == type
+                        ? _kNavy
+                        : _kCream.withValues(alpha: 0.75),
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+      if (_avatarType == 'icon')
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: _avatarOptionRow(
+            options: kStoryAvatarIcons,
+            type: 'icon',
+          ),
+        )
+      else if (_avatarType == 'pattern' && patternSeeds.isNotEmpty)
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: _avatarOptionRow(
+            options: patternSeeds,
+            type: 'pattern',
+          ),
+        ),
+    ];
+  }
+
+  Widget _avatarOptionRow({
+    required List<String> options,
+    required String type,
+  }) {
+    return SizedBox(
+      height: 54,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: options.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        itemBuilder: (context, i) {
+          final data = options[i];
+          final selected = _avatarData == data;
+          return GestureDetector(
+            onTap: () => setState(() => _avatarData = data),
+            child: Container(
+              padding: const EdgeInsets.all(2),
+              decoration: selected
+                  ? BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: _kGold.withValues(alpha: 0.4),
+                          blurRadius: 8,
+                        ),
+                      ],
+                    )
+                  : null,
+              child: StoryAvatar(
+                avatarType: type,
+                avatarData: data,
+                initials: '',
+                size: 48,
+                borderWidth: selected ? 2.5 : 1,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   /// The card editor: the user types their story directly onto a live
   /// preview of the finished card (background, overlay, author footer).
@@ -1659,6 +1819,13 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
                     const SizedBox(height: 8),
                     Row(
                       children: [
+                        StoryAvatar(
+                          avatarType: _avatarType,
+                          avatarData: _avatarData,
+                          initials: _previewInitials(l10n),
+                          size: 26,
+                        ),
+                        const SizedBox(width: 8),
                         Flexible(
                           child: Text(
                             name,
@@ -1924,6 +2091,10 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
               _label(l10n.storiesYourStoryLabel.toUpperCase()),
               const SizedBox(height: 8),
               _cardEditor(l10n),
+              const SizedBox(height: 14),
+              _label(l10n.storiesChooseAvatar.toUpperCase()),
+              const SizedBox(height: 8),
+              ..._avatarPicker(l10n),
               const SizedBox(height: 14),
               _label(l10n.storiesChooseBackground.toUpperCase()),
               const SizedBox(height: 8),

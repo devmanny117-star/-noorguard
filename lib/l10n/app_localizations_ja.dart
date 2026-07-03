@@ -2990,5 +2990,17 @@ class AppLocalizationsJa extends AppLocalizations {
   String get storiesSearchCountryHint => '国を検索…';
 
   @override
+  String get storiesChooseAvatar => 'アバターを選択';
+
+  @override
+  String get storiesAvatarInitials => 'イニシャル';
+
+  @override
+  String get storiesAvatarIcon => 'アイコン';
+
+  @override
+  String get storiesAvatarPattern => 'パターン';
+
+  @override
   String get storiesLoadError => 'ストーリーを読み込めませんでした。接続を確認してください。';
 }

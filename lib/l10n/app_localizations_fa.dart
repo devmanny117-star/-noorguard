@@ -3101,6 +3101,18 @@ class AppLocalizationsFa extends AppLocalizations {
   String get storiesSearchCountryHint => 'جستجوی کشور…';
 
   @override
+  String get storiesChooseAvatar => 'انتخاب آواتار';
+
+  @override
+  String get storiesAvatarInitials => 'حروف اول';
+
+  @override
+  String get storiesAvatarIcon => 'آیکون';
+
+  @override
+  String get storiesAvatarPattern => 'الگو';
+
+  @override
   String get storiesLoadError =>
       'بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید.';
 }

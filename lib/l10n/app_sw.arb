@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "Zilizohifadhiwa",
   "storiesSavedEmpty": "Bado hakuna hadithi zilizohifadhiwa",
   "storiesSearchCountryHint": "Tafuta nchi…",
+  "storiesChooseAvatar": "Chagua Avatari",
+  "storiesAvatarInitials": "Herufi za Kwanza",
+  "storiesAvatarIcon": "Ikoni",
+  "storiesAvatarPattern": "Muundo",
   "storiesLoadError": "Imeshindikana kupakia hadithi. Angalia muunganisho wako."
 }

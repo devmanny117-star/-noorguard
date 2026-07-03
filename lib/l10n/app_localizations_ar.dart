@@ -3067,5 +3067,17 @@ class AppLocalizationsAr extends AppLocalizations {
   String get storiesSearchCountryHint => 'ابحث عن بلدك…';
 
   @override
+  String get storiesChooseAvatar => 'اختر صورة رمزية';
+
+  @override
+  String get storiesAvatarInitials => 'الأحرف الأولى';
+
+  @override
+  String get storiesAvatarIcon => 'أيقونة';
+
+  @override
+  String get storiesAvatarPattern => 'نقش';
+
+  @override
   String get storiesLoadError => 'تعذر تحميل القصص. تحقق من اتصالك.';
 }

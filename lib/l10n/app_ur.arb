@@ -1560,5 +1560,9 @@
   "storiesFilterSaved": "محفوظ شدہ",
   "storiesSavedEmpty": "ابھی کوئی محفوظ کہانی نہیں",
   "storiesSearchCountryHint": "ملک تلاش کریں…",
+  "storiesChooseAvatar": "اوتار منتخب کریں",
+  "storiesAvatarInitials": "ابتدائی حروف",
+  "storiesAvatarIcon": "آئیکن",
+  "storiesAvatarPattern": "نقش",
   "storiesLoadError": "کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔"
 }

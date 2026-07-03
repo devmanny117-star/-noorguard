@@ -3115,6 +3115,18 @@ class AppLocalizationsBn extends AppLocalizations {
   String get storiesSearchCountryHint => 'দেশ খুঁজুন…';
 
   @override
+  String get storiesChooseAvatar => 'একটি অবতার বেছে নিন';
+
+  @override
+  String get storiesAvatarInitials => 'আদ্যক্ষর';
+
+  @override
+  String get storiesAvatarIcon => 'আইকন';
+
+  @override
+  String get storiesAvatarPattern => 'নকশা';
+
+  @override
   String get storiesLoadError =>
       'গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।';
 }
