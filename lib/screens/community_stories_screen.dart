@@ -1607,9 +1607,11 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
       ('icon', l10n.storiesAvatarIcon),
       ('pattern', l10n.storiesAvatarPattern),
     ];
+    // Variants 1 and 5 dropped by design; keeping the original seed indices
+    // so previously picked patterns keep rendering identically.
     final patternSeeds = _sheetUid == null
         ? const <String>[]
-        : [for (var i = 0; i < 6; i++) '$_sheetUid#$i'];
+        : [for (final i in [0, 2, 3, 4]) '$_sheetUid#$i'];
 
     return [
       Wrap(
