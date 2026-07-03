@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "ストーリーを編集",
   "storiesSaveChanges": "変更を保存",
   "storiesUpdated": "ストーリーが更新されました",
+  "storiesPreviewLabel": "プレビュー",
+  "storiesPendingReview": "審査中",
+  "storiesFilterSaved": "保存済み",
+  "storiesSavedEmpty": "保存されたストーリーはまだありません",
+  "storiesSearchCountryHint": "国を検索…",
   "storiesLoadError": "ストーリーを読み込めませんでした。接続を確認してください。"
 }

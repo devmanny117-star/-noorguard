@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "اپنی کہانی میں ترمیم کریں",
   "storiesSaveChanges": "تبدیلیاں محفوظ کریں",
   "storiesUpdated": "آپ کی کہانی اپ ڈیٹ ہو گئی ہے",
+  "storiesPreviewLabel": "پیش منظر",
+  "storiesPendingReview": "زیر جائزہ",
+  "storiesFilterSaved": "محفوظ شدہ",
+  "storiesSavedEmpty": "ابھی کوئی محفوظ کہانی نہیں",
+  "storiesSearchCountryHint": "ملک تلاش کریں…",
   "storiesLoadError": "کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔"
 }

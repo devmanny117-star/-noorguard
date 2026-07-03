@@ -3052,5 +3052,20 @@ class AppLocalizationsAr extends AppLocalizations {
   String get storiesShareCardLabel => 'قصة من المجتمع';
 
   @override
+  String get storiesPreviewLabel => 'معاينة';
+
+  @override
+  String get storiesPendingReview => 'قيد المراجعة';
+
+  @override
+  String get storiesFilterSaved => 'المحفوظة';
+
+  @override
+  String get storiesSavedEmpty => 'لا توجد قصص محفوظة بعد';
+
+  @override
+  String get storiesSearchCountryHint => 'ابحث عن بلدك…';
+
+  @override
   String get storiesLoadError => 'تعذر تحميل القصص. تحقق من اتصالك.';
 }

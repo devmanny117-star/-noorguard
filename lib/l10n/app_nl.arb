@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "Bewerk je verhaal",
   "storiesSaveChanges": "Wijzigingen opslaan",
   "storiesUpdated": "Je verhaal is bijgewerkt",
+  "storiesPreviewLabel": "Voorbeeld",
+  "storiesPendingReview": "In behandeling",
+  "storiesFilterSaved": "Opgeslagen",
+  "storiesSavedEmpty": "Nog geen opgeslagen verhalen",
+  "storiesSearchCountryHint": "Zoek je land…",
   "storiesLoadError": "Verhalen konden niet worden geladen. Controleer je verbinding."
 }

@@ -18,6 +18,7 @@ class CommunityStoriesService {
 
   static const _userIdKey = 'community_user_id';
   static const _authorNameKey = 'community_author_name';
+  static const _savedStoriesKey = 'saved_story_ids';
   static const int maxStories = 100;
 
   static String? _cachedUserId;
@@ -90,6 +91,45 @@ class CommunityStoriesService {
       });
       return stories.first;
     });
+  }
+
+  /// The current user's own pending submissions, newest first — shown only
+  /// to them (matched by userId) so a new story doesn't just disappear
+  /// into moderation. Equality-only filters: no composite index needed.
+  Stream<List<CommunityStory>> myPendingStories() async* {
+    final uid = await userId();
+    yield* _stories
+        .where('status', isEqualTo: 'pending')
+        .where('userId', isEqualTo: uid)
+        .limit(10)
+        .snapshots()
+        .map((snap) {
+      final stories = snap.docs.map(CommunityStory.fromDoc).toList();
+      stories.sort((a, b) {
+        final da = a.dateSubmitted, db = b.dateSubmitted;
+        if (da == null && db == null) return 0;
+        if (da == null) return 1;
+        if (db == null) return -1;
+        return db.compareTo(da);
+      });
+      return stories;
+    });
+  }
+
+  // ── Saved stories (local bookmarks) ───────────────────────────────────────
+
+  static Future<Set<String>> savedStoryIds() async {
+    final prefs = await SharedPreferences.getInstance();
+    return (prefs.getStringList(_savedStoriesKey) ?? const []).toSet();
+  }
+
+  /// Adds the id if absent, removes it if present; returns the new set.
+  static Future<Set<String>> toggleSavedStory(String id) async {
+    final prefs = await SharedPreferences.getInstance();
+    final ids = (prefs.getStringList(_savedStoriesKey) ?? const []).toSet();
+    if (!ids.add(id)) ids.remove(id);
+    await prefs.setStringList(_savedStoriesKey, ids.toList());
+    return ids;
   }
 
   // ── Reactions ─────────────────────────────────────────────────────────────

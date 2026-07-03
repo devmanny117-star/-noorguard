@@ -106,9 +106,18 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
   /// null = All
   StoryCategory? _filter;
 
+  /// True when the "Saved" filter tab is active.
+  bool _savedOnly = false;
+
+  /// Locally bookmarked story ids (SharedPreferences).
+  Set<String> _saved = {};
+
   /// This install's anonymous user id — the edit button shows only on
   /// stories whose `userId` matches it.
   String? _uid;
+
+  /// The user's own pending submissions (created once, not per build).
+  Stream<List<CommunityStory>>? _pendingStream;
 
   @override
   void initState() {
@@ -116,6 +125,17 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
     CommunityStoriesService.userId().then((id) {
       if (mounted) setState(() => _uid = id);
     });
+    CommunityStoriesService.savedStoryIds().then((ids) {
+      if (mounted) setState(() => _saved = ids);
+    });
+    if (CommunityStoriesService.firebaseAvailable) {
+      _pendingStream = _service.myPendingStories();
+    }
+  }
+
+  Future<void> _toggleSaved(String id) async {
+    final ids = await CommunityStoriesService.toggleSavedStory(id);
+    if (mounted) setState(() => _saved = ids);
   }
 
   void _openSubmitSheet() {
@@ -186,8 +206,12 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
         _Header(onShareYours: _openSubmitSheet),
         const SizedBox(height: 14),
         _FilterTabs(
-          selected: _filter,
-          onSelected: (f) => setState(() => _filter = f),
+          selectedCategory: _filter,
+          savedOnly: _savedOnly,
+          onSelected: (f, saved) => setState(() {
+            _filter = f;
+            _savedOnly = saved;
+          }),
         ),
         const SizedBox(height: 4),
         Expanded(
@@ -211,41 +235,73 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
                       );
                     }
                     final all = snap.data!;
-                    final featured = _filter == null
+                    final featured = (_filter == null && !_savedOnly)
                         ? all.where((s) => s.featured).firstOrNull
                         : null;
                     final regular = all
                         .where((s) =>
-                            (_filter == null || s.category == _filter) &&
+                            (_savedOnly
+                                ? _saved.contains(s.id)
+                                : (_filter == null ||
+                                    s.category == _filter)) &&
                             s.id != featured?.id)
                         .toList();
-                    if (featured == null && regular.isEmpty) {
-                      return _EmptyState(
-                        title: l10n.storiesEmptyTitle,
-                        subtitle: l10n.storiesEmptySubtitle,
-                      );
-                    }
-                    return ListView(
-                      physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
-                      children: [
-                        if (featured != null) ...[
-                          _FeaturedStoryCard(
-                            story: featured,
-                            service: _service,
-                            currentUserId: _uid,
-                          ),
-                          const SizedBox(height: 16),
-                        ],
-                        for (final story in regular) ...[
-                          _StoryCard(
-                            story: story,
-                            service: _service,
-                            currentUserId: _uid,
-                          ),
-                          const SizedBox(height: 14),
-                        ],
-                      ],
+                    return StreamBuilder<List<CommunityStory>>(
+                      stream: _pendingStream,
+                      builder: (context, pendingSnap) {
+                        // Own pending stories show only on the "All" tab.
+                        final pending = (_filter == null && !_savedOnly)
+                            ? (pendingSnap.data ?? const <CommunityStory>[])
+                            : const <CommunityStory>[];
+                        if (featured == null &&
+                            regular.isEmpty &&
+                            pending.isEmpty) {
+                          return _EmptyState(
+                            title: _savedOnly
+                                ? l10n.storiesSavedEmpty
+                                : l10n.storiesEmptyTitle,
+                            subtitle:
+                                _savedOnly ? '' : l10n.storiesEmptySubtitle,
+                          );
+                        }
+                        return ListView(
+                          physics: const BouncingScrollPhysics(),
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
+                          children: [
+                            for (final story in pending) ...[
+                              _StoryCard(
+                                story: story,
+                                service: _service,
+                                currentUserId: _uid,
+                                pending: true,
+                                saved: _saved.contains(story.id),
+                                onToggleSave: () => _toggleSaved(story.id),
+                              ),
+                              const SizedBox(height: 14),
+                            ],
+                            if (featured != null) ...[
+                              _FeaturedStoryCard(
+                                story: featured,
+                                service: _service,
+                                currentUserId: _uid,
+                                saved: _saved.contains(featured.id),
+                                onToggleSave: () => _toggleSaved(featured.id),
+                              ),
+                              const SizedBox(height: 16),
+                            ],
+                            for (final story in regular) ...[
+                              _StoryCard(
+                                story: story,
+                                service: _service,
+                                currentUserId: _uid,
+                                saved: _saved.contains(story.id),
+                                onToggleSave: () => _toggleSaved(story.id),
+                              ),
+                              const SizedBox(height: 14),
+                            ],
+                          ],
+                        );
+                      },
                     );
                   },
                 ),
@@ -339,19 +395,26 @@ class _Header extends StatelessWidget {
 // ─────────────────────────────────────────────────────────────────────────────
 
 class _FilterTabs extends StatelessWidget {
-  final StoryCategory? selected;
-  final ValueChanged<StoryCategory?> onSelected;
+  final StoryCategory? selectedCategory;
+  final bool savedOnly;
+  final void Function(StoryCategory? category, bool saved) onSelected;
 
-  const _FilterTabs({required this.selected, required this.onSelected});
+  const _FilterTabs({
+    required this.selectedCategory,
+    required this.savedOnly,
+    required this.onSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final tabs = <(StoryCategory?, String)>[
-      (null, l10n.all),
-      (StoryCategory.revert, l10n.storiesFilterReverts),
-      (StoryCategory.bornMuslim, l10n.storyCategoryBornMuslim),
-      (StoryCategory.returning, l10n.storyCategoryReturning),
+    // (category, savedTab, label)
+    final tabs = <(StoryCategory?, bool, String)>[
+      (null, false, l10n.all),
+      (StoryCategory.revert, false, l10n.storiesFilterReverts),
+      (StoryCategory.bornMuslim, false, l10n.storyCategoryBornMuslim),
+      (StoryCategory.returning, false, l10n.storyCategoryReturning),
+      (null, true, l10n.storiesFilterSaved),
     ];
 
     return SizedBox(
@@ -362,10 +425,12 @@ class _FilterTabs extends StatelessWidget {
         itemCount: tabs.length,
         separatorBuilder: (_, __) => const SizedBox(width: 8),
         itemBuilder: (context, i) {
-          final (category, label) = tabs[i];
-          final isActive = selected == category;
+          final (category, savedTab, label) = tabs[i];
+          final isActive = savedTab
+              ? savedOnly
+              : (!savedOnly && selectedCategory == category);
           return GestureDetector(
-            onTap: () => onSelected(category),
+            onTap: () => onSelected(category, savedTab),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
@@ -400,10 +465,14 @@ class _FeaturedStoryCard extends StatelessWidget {
   final CommunityStory story;
   final CommunityStoriesService service;
   final String? currentUserId;
+  final bool saved;
+  final VoidCallback onToggleSave;
 
   const _FeaturedStoryCard({
     required this.story,
     required this.service,
+    required this.saved,
+    required this.onToggleSave,
     this.currentUserId,
   });
 
@@ -625,7 +694,12 @@ class _FeaturedStoryCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
-                _ReactionsRow(story: story, service: service),
+                _ReactionsRow(
+                  story: story,
+                  service: service,
+                  saved: saved,
+                  onToggleSave: onToggleSave,
+                ),
               ],
             ),
           ),
@@ -644,10 +718,18 @@ class _StoryCard extends StatefulWidget {
   final CommunityStoriesService service;
   final String? currentUserId;
 
+  /// True for the user's own not-yet-approved submission.
+  final bool pending;
+  final bool saved;
+  final VoidCallback onToggleSave;
+
   const _StoryCard({
     required this.story,
     required this.service,
+    required this.saved,
+    required this.onToggleSave,
     this.currentUserId,
+    this.pending = false,
   });
 
   @override
@@ -718,6 +800,25 @@ class _StoryCardState extends State<_StoryCard> {
                         ),
                       ),
                     ),
+                    if (widget.pending) ...[
+                      const SizedBox(width: 6),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: _kGold,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          l10n.storiesPendingReview,
+                          style: GoogleFonts.lato(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w800,
+                            color: _kBg,
+                          ),
+                        ),
+                      ),
+                    ],
                     const Spacer(),
                     if (story.dateSubmitted != null)
                       Text(
@@ -803,7 +904,12 @@ class _StoryCardState extends State<_StoryCard> {
                   ),
                 ],
                 const SizedBox(height: 12),
-                _ReactionsRow(story: story, service: widget.service),
+                _ReactionsRow(
+                  story: story,
+                  service: widget.service,
+                  saved: widget.saved,
+                  onToggleSave: widget.onToggleSave,
+                ),
               ],
             ),
           ),
@@ -907,8 +1013,15 @@ class _AuthorAvatar extends StatelessWidget {
 class _ReactionsRow extends StatelessWidget {
   final CommunityStory story;
   final CommunityStoriesService service;
+  final bool saved;
+  final VoidCallback onToggleSave;
 
-  const _ReactionsRow({required this.story, required this.service});
+  const _ReactionsRow({
+    required this.story,
+    required this.service,
+    required this.saved,
+    required this.onToggleSave,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -939,6 +1052,29 @@ class _ReactionsRow extends StatelessWidget {
               onTap: () => _openComments(context),
             ),
             const Spacer(),
+            GestureDetector(
+              onTap: onToggleSave,
+              child: Container(
+                width: 30,
+                height: 30,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: _kGold.withValues(alpha: saved ? 0.25 : 0.10),
+                  border: Border.all(
+                    color: _kGold.withValues(alpha: saved ? 0.9 : 0.5),
+                  ),
+                ),
+                child: Icon(
+                  saved
+                      ? Icons.bookmark_rounded
+                      : Icons.bookmark_border_rounded,
+                  size: 14,
+                  color: _kGold,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
             GestureDetector(
               onTap: () => shareStory(context, story),
               child: Container(
@@ -1247,6 +1383,7 @@ class _SubmitStorySheet extends StatefulWidget {
 class _SubmitStorySheetState extends State<_SubmitStorySheet> {
   final _nameController = TextEditingController();
   final _storyController = TextEditingController();
+  final _countryController = TextEditingController();
   bool _anonymous = false;
   Country? _country;
   StoryCategory _category = StoryCategory.revert;
@@ -1266,6 +1403,9 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
       _anonymous = editing.anonymous;
       _country =
           storyCountries.where((c) => c.name == editing.country).firstOrNull;
+      if (_country != null) {
+        _countryController.text = '${_country!.flag}  ${_country!.name}';
+      }
       _category = editing.category;
       _shahadaDate = editing.shahadaDate;
       _background = editing.backgroundImage;
@@ -1280,6 +1420,7 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
   void dispose() {
     _nameController.dispose();
     _storyController.dispose();
+    _countryController.dispose();
     super.dispose();
   }
 
@@ -1399,6 +1540,50 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
         ),
       );
 
+  /// Instant type-ahead results under the country field; hidden once a
+  /// country is picked (typing again clears the pick and re-opens them).
+  List<Widget> _countrySuggestions() {
+    final query = _countryController.text.trim().toLowerCase();
+    if (_country != null || query.isEmpty) return const [];
+    final matches = storyCountries
+        .where((c) => c.name.toLowerCase().contains(query))
+        .toList();
+    if (matches.isEmpty) return const [];
+    return [
+      Container(
+        margin: const EdgeInsets.only(top: 6),
+        constraints: const BoxConstraints(maxHeight: 180),
+        decoration: BoxDecoration(
+          color: _kNavy,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: _kGold.withValues(alpha: 0.35)),
+        ),
+        child: ListView.builder(
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          itemCount: matches.length,
+          itemBuilder: (context, i) {
+            final c = matches[i];
+            return InkWell(
+              onTap: () => setState(() {
+                _country = c;
+                _countryController.text = '${c.flag}  ${c.name}';
+              }),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+                child: Text(
+                  '${c.flag}  ${c.name}',
+                  style: GoogleFonts.lato(fontSize: 13.5, color: _kCream),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -1449,6 +1634,7 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 controller: _nameController,
                 enabled: !_anonymous,
                 style: GoogleFonts.lato(fontSize: 14, color: _kCream),
+                onChanged: (_) => setState(() {}),
                 decoration: _fieldDecoration(l10n.storiesNameLabel),
               ),
               const SizedBox(height: 6),
@@ -1482,26 +1668,21 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
               const SizedBox(height: 14),
               _label(l10n.storiesCountryLabel.toUpperCase()),
               const SizedBox(height: 8),
-              DropdownButtonFormField<Country>(
-                initialValue: _country,
-                isExpanded: true,
-                dropdownColor: _kCard,
-                icon: const Icon(Icons.keyboard_arrow_down_rounded,
-                    color: _kGold),
+              TextField(
+                controller: _countryController,
                 style: GoogleFonts.lato(fontSize: 14, color: _kCream),
-                decoration: _fieldDecoration(l10n.storiesCountryLabel),
-                items: [
-                  for (final c in storyCountries)
-                    DropdownMenuItem(
-                      value: c,
-                      child: Text(
-                        '${c.flag}  ${c.name}',
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                ],
-                onChanged: (c) => setState(() => _country = c),
+                onChanged: (_) => setState(() => _country = null),
+                decoration:
+                    _fieldDecoration(l10n.storiesSearchCountryHint).copyWith(
+                  prefixIcon: const Icon(Icons.search_rounded,
+                      size: 18, color: _kGold),
+                  suffixIcon: _country != null
+                      ? const Icon(Icons.check_circle_rounded,
+                          size: 18, color: _kGold)
+                      : null,
+                ),
               ),
+              ..._countrySuggestions(),
               const SizedBox(height: 14),
               _label(l10n.storiesCategoryLabel.toUpperCase()),
               const SizedBox(height: 8),
@@ -1584,6 +1765,7 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                 maxLength: 3000,
                 style:
                     GoogleFonts.lato(fontSize: 14, color: _kCream, height: 1.5),
+                onChanged: (_) => setState(() {}),
                 decoration: _fieldDecoration(l10n.storiesStoryHint).copyWith(
                   counterStyle: GoogleFonts.lato(
                     fontSize: 10,
@@ -1646,6 +1828,18 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                   );
                 },
               ),
+              const SizedBox(height: 14),
+              _label(l10n.storiesPreviewLabel.toUpperCase()),
+              const SizedBox(height: 8),
+              _StoryPreviewCard(
+                name: (_anonymous || _nameController.text.trim().isEmpty)
+                    ? l10n.storiesAnonymous
+                    : _nameController.text.trim(),
+                story: _storyController.text.trim(),
+                storyHint: l10n.storiesStoryHint,
+                background: _background,
+                country: _country,
+              ),
               const SizedBox(height: 18),
               GestureDetector(
                 onTap: _submit,
@@ -1688,6 +1882,105 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Live preview of how the story card will look — updates as the user
+/// types or changes the background selection.
+class _StoryPreviewCard extends StatelessWidget {
+  final String name;
+  final String story;
+  final String storyHint;
+  final String? background;
+  final Country? country;
+
+  const _StoryPreviewCard({
+    required this.name,
+    required this.story,
+    required this.storyHint,
+    required this.background,
+    required this.country,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: _kCard,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: _kGold.withValues(alpha: 0.35)),
+      ),
+      child: Stack(
+        children: [
+          if (background != null) ...[
+            Positioned.fill(
+              child: Image.asset(
+                background!,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+              ),
+            ),
+            Positioned.fill(
+              child: Container(color: Colors.black.withValues(alpha: 0.45)),
+            ),
+          ],
+          PositionedDirectional(
+            start: 0,
+            top: 0,
+            bottom: 0,
+            child: Container(width: 3, color: _kGold),
+          ),
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(15, 12, 12, 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: _kGold,
+                    ),
+                  ),
+                  if (country != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      '${country!.flag} ${country!.name}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.lato(
+                        fontSize: 10.5,
+                        color: _kCream.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 6),
+                  Expanded(
+                    child: Text(
+                      story.isEmpty ? storyHint : story,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.lato(
+                        fontSize: 12,
+                        height: 1.5,
+                        color: _kCream.withValues(
+                            alpha: story.isEmpty ? 0.4 : 0.88),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

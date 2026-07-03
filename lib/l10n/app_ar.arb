@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "تعديل قصتك",
   "storiesSaveChanges": "حفظ التغييرات",
   "storiesUpdated": "تم تحديث قصتك",
+  "storiesPreviewLabel": "معاينة",
+  "storiesPendingReview": "قيد المراجعة",
+  "storiesFilterSaved": "المحفوظة",
+  "storiesSavedEmpty": "لا توجد قصص محفوظة بعد",
+  "storiesSearchCountryHint": "ابحث عن بلدك…",
   "storiesLoadError": "تعذر تحميل القصص. تحقق من اتصالك."
 }

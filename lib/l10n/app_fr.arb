@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "Modifier votre histoire",
   "storiesSaveChanges": "Enregistrer les modifications",
   "storiesUpdated": "Votre histoire a été mise à jour",
+  "storiesPreviewLabel": "Aperçu",
+  "storiesPendingReview": "En cours de révision",
+  "storiesFilterSaved": "Enregistrées",
+  "storiesSavedEmpty": "Aucune histoire enregistrée",
+  "storiesSearchCountryHint": "Rechercher un pays…",
   "storiesLoadError": "Impossible de charger les histoires. Vérifiez votre connexion."
 }

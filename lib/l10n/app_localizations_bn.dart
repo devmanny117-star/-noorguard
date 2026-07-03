@@ -3100,6 +3100,21 @@ class AppLocalizationsBn extends AppLocalizations {
   String get storiesShareCardLabel => 'কমিউনিটির গল্প';
 
   @override
+  String get storiesPreviewLabel => 'প্রিভিউ';
+
+  @override
+  String get storiesPendingReview => 'পর্যালোচনার অপেক্ষায়';
+
+  @override
+  String get storiesFilterSaved => 'সংরক্ষিত';
+
+  @override
+  String get storiesSavedEmpty => 'এখনও কোনো সংরক্ষিত গল্প নেই';
+
+  @override
+  String get storiesSearchCountryHint => 'দেশ খুঁজুন…';
+
+  @override
   String get storiesLoadError =>
       'গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।';
 }

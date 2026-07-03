@@ -3107,6 +3107,21 @@ class AppLocalizationsNl extends AppLocalizations {
   String get storiesShareCardLabel => 'Communityverhaal';
 
   @override
+  String get storiesPreviewLabel => 'Voorbeeld';
+
+  @override
+  String get storiesPendingReview => 'In behandeling';
+
+  @override
+  String get storiesFilterSaved => 'Opgeslagen';
+
+  @override
+  String get storiesSavedEmpty => 'Nog geen opgeslagen verhalen';
+
+  @override
+  String get storiesSearchCountryHint => 'Zoek je land…';
+
+  @override
   String get storiesLoadError =>
       'Verhalen konden niet worden geladen. Controleer je verbinding.';
 }

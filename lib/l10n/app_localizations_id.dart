@@ -3109,5 +3109,20 @@ class AppLocalizationsId extends AppLocalizations {
   String get storiesShareCardLabel => 'Kisah Komunitas';
 
   @override
+  String get storiesPreviewLabel => 'Pratinjau';
+
+  @override
+  String get storiesPendingReview => 'Menunggu Peninjauan';
+
+  @override
+  String get storiesFilterSaved => 'Tersimpan';
+
+  @override
+  String get storiesSavedEmpty => 'Belum ada kisah tersimpan';
+
+  @override
+  String get storiesSearchCountryHint => 'Cari negara…';
+
+  @override
   String get storiesLoadError => 'Tidak dapat memuat kisah. Periksa koneksimu.';
 }

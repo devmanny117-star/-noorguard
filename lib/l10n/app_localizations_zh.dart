@@ -2944,5 +2944,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get storiesShareCardLabel => '社区故事';
 
   @override
+  String get storiesPreviewLabel => '预览';
+
+  @override
+  String get storiesPendingReview => '审核中';
+
+  @override
+  String get storiesFilterSaved => '已保存';
+
+  @override
+  String get storiesSavedEmpty => '还没有保存的故事';
+
+  @override
+  String get storiesSearchCountryHint => '搜索国家…';
+
+  @override
   String get storiesLoadError => '无法加载故事，请检查网络连接。';
 }

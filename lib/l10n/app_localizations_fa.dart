@@ -3086,6 +3086,21 @@ class AppLocalizationsFa extends AppLocalizations {
   String get storiesShareCardLabel => 'داستان انجمن';
 
   @override
+  String get storiesPreviewLabel => 'پیش‌نمایش';
+
+  @override
+  String get storiesPendingReview => 'در انتظار بررسی';
+
+  @override
+  String get storiesFilterSaved => 'ذخیره‌شده';
+
+  @override
+  String get storiesSavedEmpty => 'هنوز داستانی ذخیره نشده است';
+
+  @override
+  String get storiesSearchCountryHint => 'جستجوی کشور…';
+
+  @override
   String get storiesLoadError =>
       'بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید.';
 }

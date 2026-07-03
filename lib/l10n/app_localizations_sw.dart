@@ -3100,6 +3100,21 @@ class AppLocalizationsSw extends AppLocalizations {
   String get storiesShareCardLabel => 'Hadithi ya Jumuiya';
 
   @override
+  String get storiesPreviewLabel => 'Onyesho la awali';
+
+  @override
+  String get storiesPendingReview => 'Inasubiri ukaguzi';
+
+  @override
+  String get storiesFilterSaved => 'Zilizohifadhiwa';
+
+  @override
+  String get storiesSavedEmpty => 'Bado hakuna hadithi zilizohifadhiwa';
+
+  @override
+  String get storiesSearchCountryHint => 'Tafuta nchi…';
+
+  @override
   String get storiesLoadError =>
       'Imeshindikana kupakia hadithi. Angalia muunganisho wako.';
 }

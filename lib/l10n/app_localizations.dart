@@ -5706,6 +5706,36 @@ abstract class AppLocalizations {
   /// **'Community Story'**
   String get storiesShareCardLabel;
 
+  /// Label above the live story card preview in the submit form
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get storiesPreviewLabel;
+
+  /// Badge on the user's own story awaiting moderation
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Review'**
+  String get storiesPendingReview;
+
+  /// Filter tab showing locally bookmarked stories
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get storiesFilterSaved;
+
+  /// Empty state when the Saved tab has no stories
+  ///
+  /// In en, this message translates to:
+  /// **'No saved stories yet'**
+  String get storiesSavedEmpty;
+
+  /// Hint in the searchable country field
+  ///
+  /// In en, this message translates to:
+  /// **'Search country…'**
+  String get storiesSearchCountryHint;
+
   /// Error state when stories fail to load
   ///
   /// In en, this message translates to:

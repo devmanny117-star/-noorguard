@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "编辑您的故事",
   "storiesSaveChanges": "保存更改",
   "storiesUpdated": "您的故事已更新",
+  "storiesPreviewLabel": "预览",
+  "storiesPendingReview": "审核中",
+  "storiesFilterSaved": "已保存",
+  "storiesSavedEmpty": "还没有保存的故事",
+  "storiesSearchCountryHint": "搜索国家…",
   "storiesLoadError": "无法加载故事，请检查网络连接。"
 }

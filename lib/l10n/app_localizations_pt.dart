@@ -3106,6 +3106,21 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storiesShareCardLabel => 'História da comunidade';
 
   @override
+  String get storiesPreviewLabel => 'Pré-visualização';
+
+  @override
+  String get storiesPendingReview => 'Em análise';
+
+  @override
+  String get storiesFilterSaved => 'Salvas';
+
+  @override
+  String get storiesSavedEmpty => 'Ainda não há histórias salvas';
+
+  @override
+  String get storiesSearchCountryHint => 'Buscar país…';
+
+  @override
   String get storiesLoadError =>
       'Não foi possível carregar as histórias. Verifique sua conexão.';
 }

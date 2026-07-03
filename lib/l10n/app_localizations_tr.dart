@@ -3090,6 +3090,21 @@ class AppLocalizationsTr extends AppLocalizations {
   String get storiesShareCardLabel => 'Topluluk Hikayesi';
 
   @override
+  String get storiesPreviewLabel => 'Önizleme';
+
+  @override
+  String get storiesPendingReview => 'İnceleniyor';
+
+  @override
+  String get storiesFilterSaved => 'Kaydedilenler';
+
+  @override
+  String get storiesSavedEmpty => 'Henüz kaydedilmiş hikaye yok';
+
+  @override
+  String get storiesSearchCountryHint => 'Ülke ara…';
+
+  @override
   String get storiesLoadError =>
       'Hikayeler yüklenemedi. Bağlantını kontrol et.';
 }

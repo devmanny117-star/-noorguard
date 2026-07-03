@@ -3081,6 +3081,21 @@ class AppLocalizationsUr extends AppLocalizations {
   String get storiesShareCardLabel => 'کمیونٹی کی کہانی';
 
   @override
+  String get storiesPreviewLabel => 'پیش منظر';
+
+  @override
+  String get storiesPendingReview => 'زیر جائزہ';
+
+  @override
+  String get storiesFilterSaved => 'محفوظ شدہ';
+
+  @override
+  String get storiesSavedEmpty => 'ابھی کوئی محفوظ کہانی نہیں';
+
+  @override
+  String get storiesSearchCountryHint => 'ملک تلاش کریں…';
+
+  @override
   String get storiesLoadError =>
       'کہانیاں لوڈ نہیں ہو سکیں۔ اپنا کنکشن چیک کریں۔';
 }

@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "আপনার গল্প সম্পাদনা করুন",
   "storiesSaveChanges": "পরিবর্তন সংরক্ষণ করুন",
   "storiesUpdated": "আপনার গল্প আপডেট করা হয়েছে",
+  "storiesPreviewLabel": "প্রিভিউ",
+  "storiesPendingReview": "পর্যালোচনার অপেক্ষায়",
+  "storiesFilterSaved": "সংরক্ষিত",
+  "storiesSavedEmpty": "এখনও কোনো সংরক্ষিত গল্প নেই",
+  "storiesSearchCountryHint": "দেশ খুঁজুন…",
   "storiesLoadError": "গল্প লোড করা যায়নি। আপনার সংযোগ পরীক্ষা করুন।"
 }

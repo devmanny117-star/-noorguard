@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "Hikayeni Düzenle",
   "storiesSaveChanges": "Değişiklikleri Kaydet",
   "storiesUpdated": "Hikayen güncellendi",
+  "storiesPreviewLabel": "Önizleme",
+  "storiesPendingReview": "İnceleniyor",
+  "storiesFilterSaved": "Kaydedilenler",
+  "storiesSavedEmpty": "Henüz kaydedilmiş hikaye yok",
+  "storiesSearchCountryHint": "Ülke ara…",
   "storiesLoadError": "Hikayeler yüklenemedi. Bağlantını kontrol et."
 }

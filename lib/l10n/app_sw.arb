@@ -1555,5 +1555,10 @@
   "storiesEditTitle": "Hariri Hadithi Yako",
   "storiesSaveChanges": "Hifadhi Mabadiliko",
   "storiesUpdated": "Hadithi yako imesasishwa",
+  "storiesPreviewLabel": "Onyesho la awali",
+  "storiesPendingReview": "Inasubiri ukaguzi",
+  "storiesFilterSaved": "Zilizohifadhiwa",
+  "storiesSavedEmpty": "Bado hakuna hadithi zilizohifadhiwa",
+  "storiesSearchCountryHint": "Tafuta nchi…",
   "storiesLoadError": "Imeshindikana kupakia hadithi. Angalia muunganisho wako."
 }

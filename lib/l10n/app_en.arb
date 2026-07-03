@@ -3853,6 +3853,26 @@
   "@storiesUpdated": {
     "description": "Confirmation snackbar after editing own story"
   },
+  "storiesPreviewLabel": "Preview",
+  "@storiesPreviewLabel": {
+    "description": "Label above the live story card preview in the submit form"
+  },
+  "storiesPendingReview": "Pending Review",
+  "@storiesPendingReview": {
+    "description": "Badge on the user's own story awaiting moderation"
+  },
+  "storiesFilterSaved": "Saved",
+  "@storiesFilterSaved": {
+    "description": "Filter tab showing locally bookmarked stories"
+  },
+  "storiesSavedEmpty": "No saved stories yet",
+  "@storiesSavedEmpty": {
+    "description": "Empty state when the Saved tab has no stories"
+  },
+  "storiesSearchCountryHint": "Search country…",
+  "@storiesSearchCountryHint": {
+    "description": "Hint in the searchable country field"
+  },
   "storiesLoadError": "Couldn't load stories. Check your connection.",
   "@storiesLoadError": {
     "description": "Error state when stories fail to load"

@@ -3086,6 +3086,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storiesShareCardLabel => 'Community Story';
 
   @override
+  String get storiesPreviewLabel => 'Preview';
+
+  @override
+  String get storiesPendingReview => 'Pending Review';
+
+  @override
+  String get storiesFilterSaved => 'Saved';
+
+  @override
+  String get storiesSavedEmpty => 'No saved stories yet';
+
+  @override
+  String get storiesSearchCountryHint => 'Search country…';
+
+  @override
   String get storiesLoadError =>
       'Couldn\'t load stories. Check your connection.';
 }

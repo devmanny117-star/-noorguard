@@ -1715,5 +1715,10 @@
   "storiesEditTitle": "ویرایش داستان شما",
   "storiesSaveChanges": "ذخیره تغییرات",
   "storiesUpdated": "داستان شما به‌روزرسانی شد",
+  "storiesPreviewLabel": "پیش‌نمایش",
+  "storiesPendingReview": "در انتظار بررسی",
+  "storiesFilterSaved": "ذخیره‌شده",
+  "storiesSavedEmpty": "هنوز داستانی ذخیره نشده است",
+  "storiesSearchCountryHint": "جستجوی کشور…",
   "storiesLoadError": "بارگیری داستان‌ها ممکن نشد. اتصال خود را بررسی کنید."
 }
