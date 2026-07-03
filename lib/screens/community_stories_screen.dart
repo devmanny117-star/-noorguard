@@ -10,7 +10,6 @@ import '../models/community_story.dart';
 import '../services/community_stories_service.dart';
 import '../services/share_helper.dart';
 import '../widgets/geometric_pattern_painter.dart';
-import '../widgets/tasbih/tasbih_mosque_silhouette.dart';
 
 const _kBg = Color(0xFF0A1628);
 const _kNavy = Color(0xFF0D1B2A);
@@ -26,8 +25,18 @@ TextStyle _storySerif({required Color color, double fontSize = 14.5}) =>
       fontFamilyFallback: const ['Times New Roman', 'serif'],
       fontStyle: FontStyle.italic,
       fontSize: fontSize,
-      height: 1.6,
+      height: 1.7,
       color: color,
+    );
+
+/// Oversized decorative quote mark for the featured card.
+TextStyle _quoteMarkStyle() => TextStyle(
+      fontFamily: 'Georgia',
+      fontFamilyFallback: const ['Times New Roman', 'serif'],
+      fontSize: 64,
+      height: 0.7,
+      fontWeight: FontWeight.w700,
+      color: _kGold.withValues(alpha: 0.35),
     );
 
 String storyCategoryLabel(AppLocalizations l10n, StoryCategory category) {
@@ -379,180 +388,201 @@ class _FeaturedStoryCard extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: _kCard,
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0xFF0D2235),
+            Color(0xFF0A1628),
+            Color(0xFF0D1E30),
+          ],
+        ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _kGold.withValues(alpha: 0.75), width: 1.3),
+        border: Border.all(color: _kGold.withValues(alpha: 0.40)),
         boxShadow: [
           BoxShadow(
-            color: _kGold.withValues(alpha: 0.12),
-            blurRadius: 22,
-            offset: const Offset(0, 6),
+            color: _kGold.withValues(alpha: 0.13),
+            blurRadius: 24,
+          ),
+          BoxShadow(
+            color: _kGold.withValues(alpha: 0.27),
+            blurRadius: 2,
           ),
         ],
       ),
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // ── Mosque silhouette panel (start side) ────────────────────
-            SizedBox(
-              width: 92,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  const DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xFF0A1628), Color(0xFF2A3450)],
-                      ),
+      child: Stack(
+        children: [
+          // ── Background watermarks ───────────────────────────────────
+          const Positioned.fill(
+            child: IgnorePointer(
+              child: Center(
+                child: Opacity(
+                  opacity: 0.04,
+                  child: SizedBox(
+                    width: 220,
+                    height: 220,
+                    child: CustomPaint(
+                      painter: _HexagonWatermarkPainter(color: _kGold),
                     ),
                   ),
-                  const PositionedDirectional(
-                    top: 12,
-                    end: 14,
-                    child: Opacity(
-                      opacity: 0.55,
-                      child: SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CustomPaint(
-                          painter: CrescentStarPainter(color: _kGold),
-                        ),
-                      ),
-                    ),
-                  ),
-                  TasbihMosqueSilhouette(
-                    color: _kGold.withValues(alpha: 0.5),
-                  ),
-                  PositionedDirectional(
-                    end: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: Container(
-                      width: 1,
-                      color: _kGold.withValues(alpha: 0.3),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-            // ── Quote + author (end side) ───────────────────────────────
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 14),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+          ),
+          const PositionedDirectional(
+            bottom: -18,
+            end: -14,
+            child: IgnorePointer(
+              child: Opacity(
+                opacity: 0.06,
+                child: SizedBox(
+                  width: 110,
+                  height: 110,
+                  child: CustomPaint(
+                    painter: _CrescentPainter(color: _kGold),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          // ── Content ─────────────────────────────────────────────────
+          Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(18, 16, 18, 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
                   children: [
                     Text(
                       '✦ ${l10n.storiesFeaturedLabel.toUpperCase()}',
                       style: GoogleFonts.lato(
-                        fontSize: 10,
+                        fontSize: 9,
                         fontWeight: FontWeight.w800,
-                        letterSpacing: 1.4,
+                        letterSpacing: 2,
                         color: _kGold,
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: Text(
-                        '“',
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 42,
-                          height: 0.8,
-                          fontWeight: FontWeight.w700,
-                          color: _kGold.withValues(alpha: 0.4),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      story.story,
-                      maxLines: 5,
-                      overflow: TextOverflow.ellipsis,
-                      style: _storySerif(color: _kCream),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: Text(
-                        '”',
-                        style: GoogleFonts.playfairDisplay(
-                          fontSize: 42,
-                          height: 0.9,
-                          fontWeight: FontWeight.w700,
-                          color: _kGold.withValues(alpha: 0.4),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Container(
-                      height: 1,
-                      color: _kGold.withValues(alpha: 0.35),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        _AuthorAvatar(story: story, size: 40),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                name,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.playfairDisplay(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                  color: _kGold,
-                                ),
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                '${story.countryFlag} ${story.country}',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.lato(
-                                  fontSize: 11.5,
-                                  color: _kCream.withValues(alpha: 0.6),
-                                ),
-                              ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Container(
+                        height: 1,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: AlignmentDirectional.centerStart,
+                            end: AlignmentDirectional.centerEnd,
+                            colors: [
+                              _kGold.withValues(alpha: 0.53),
+                              _kGold.withValues(alpha: 0.0),
                             ],
                           ),
                         ),
-                        if (story.shahadaDate != null) ...[
-                          const SizedBox(width: 8),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            decoration: BoxDecoration(
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 6),
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Text('“', style: _quoteMarkStyle()),
+                ),
+                Text(
+                  story.story,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
+                  style: _storySerif(color: _kCream, fontSize: 15),
+                ),
+                Align(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: Text('”', style: _quoteMarkStyle()),
+                ),
+                const SizedBox(height: 6),
+                Container(
+                  height: 1,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        _kGold.withValues(alpha: 0.0),
+                        _kGold.withValues(alpha: 0.33),
+                        _kGold.withValues(alpha: 0.0),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: _kGold.withValues(alpha: 0.35),
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: _AuthorAvatar(
+                        story: story,
+                        size: 38,
+                        borderWidth: 2,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.playfairDisplay(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
                               color: _kGold,
-                              borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Text(
-                              l10n.storyShahadaDate(
-                                  '${story.shahadaDate!.year}'),
-                              style: GoogleFonts.lato(
-                                fontSize: 10.5,
-                                fontWeight: FontWeight.w800,
-                                color: _kBg,
-                              ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            '${story.countryFlag} ${story.country}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.lato(
+                              fontSize: 11.5,
+                              color: _kCream.withValues(alpha: 0.6),
                             ),
                           ),
                         ],
-                      ],
+                      ),
                     ),
-                    const SizedBox(height: 12),
-                    _ReactionsRow(story: story, service: service),
+                    if (story.shahadaDate != null) ...[
+                      const SizedBox(width: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        decoration: BoxDecoration(
+                          color: _kGold,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          l10n.storyShahadaDate('${story.shahadaDate!.year}'),
+                          style: GoogleFonts.lato(
+                            fontSize: 10.5,
+                            fontWeight: FontWeight.w800,
+                            color: _kBg,
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
-              ),
+                const SizedBox(height: 12),
+                _ReactionsRow(story: story, service: service),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -712,7 +742,12 @@ class _StoryCardState extends State<_StoryCard> {
 class _AuthorAvatar extends StatelessWidget {
   final CommunityStory story;
   final double size;
-  const _AuthorAvatar({required this.story, this.size = 40});
+  final double borderWidth;
+  const _AuthorAvatar({
+    required this.story,
+    this.size = 40,
+    this.borderWidth = 1,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -737,7 +772,10 @@ class _AuthorAvatar extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: _kGold.withValues(alpha: 0.12),
-        border: Border.all(color: _kGold.withValues(alpha: 0.7)),
+        border: Border.all(
+          color: _kGold.withValues(alpha: 0.7),
+          width: borderWidth,
+        ),
       ),
       child: story.photoUrl == null
           ? fallback
@@ -841,7 +879,7 @@ class _ReactionChip extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          color: active ? _kGold.withValues(alpha: 0.18) : Colors.transparent,
+          color: _kGold.withValues(alpha: active ? 0.18 : 0.09),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: _kGold.withValues(alpha: active ? 0.7 : 0.3),
@@ -1561,4 +1599,71 @@ class CrescentStarPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CrescentStarPainter old) => old.color != color;
+}
+
+/// Concentric hexagons with connecting spokes — the featured card's
+/// centered geometric watermark.
+class _HexagonWatermarkPainter extends CustomPainter {
+  final Color color;
+  const _HexagonWatermarkPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1;
+    final center = Offset(size.width / 2, size.height / 2);
+    final maxR = size.shortestSide / 2;
+
+    Offset vertex(double r, int i) {
+      final angle = -math.pi / 2 + i * math.pi / 3;
+      return center + Offset(r * math.cos(angle), r * math.sin(angle));
+    }
+
+    for (final r in [maxR, maxR * 0.72, maxR * 0.44, maxR * 0.16]) {
+      final path = Path();
+      for (int i = 0; i < 6; i++) {
+        final p = vertex(r, i);
+        if (i == 0) {
+          path.moveTo(p.dx, p.dy);
+        } else {
+          path.lineTo(p.dx, p.dy);
+        }
+      }
+      path.close();
+      canvas.drawPath(path, paint);
+    }
+    for (int i = 0; i < 6; i++) {
+      canvas.drawLine(vertex(maxR, i), center, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_HexagonWatermarkPainter old) => old.color != color;
+}
+
+/// Plain crescent (no star) — the featured card's corner watermark.
+class _CrescentPainter extends CustomPainter {
+  final Color color;
+  const _CrescentPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final r = size.shortestSide * 0.42;
+    final center = Offset(size.width * 0.5, size.height * 0.5);
+    final crescent = Path.combine(
+      PathOperation.difference,
+      Path()..addOval(Rect.fromCircle(center: center, radius: r)),
+      Path()
+        ..addOval(Rect.fromCircle(
+          center: center.translate(r * 0.45, -r * 0.2),
+          radius: r * 0.85,
+        )),
+    );
+    canvas.drawPath(crescent, Paint()..color = color);
+  }
+
+  @override
+  bool shouldRepaint(_CrescentPainter old) => old.color != color;
 }
