@@ -17,6 +17,7 @@ import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
 import 'notification_setup_screen.dart';
 import 'settings_app_blocking_screen.dart';
+import 'community_stories_screen.dart';
 import 'settings_prayer_notifications_screen.dart';
 import 'settings_privacy_screen.dart';
 import 'settings_shared.dart';
@@ -444,7 +445,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
         const SliverToBoxAdapter(child: SizedBox(height: 28)),
 
         // ══════════════════════════════════════════════════════════════
-        // SECTION 5 — ABOUT
+        // SECTION 5 — OUR STORIES (community)
+        // ══════════════════════════════════════════════════════════════
+        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.ourStories)),
+
+        SliverToBoxAdapter(
+          child: SettingsCard(
+            colors: cardColors,
+            children: [
+              SettingsActionRow(
+                label: l10n.communityStories,
+                icon: Icons.people_alt_outlined,
+                colors: cardColors,
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const CommunityStoriesScreen(),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        const SliverToBoxAdapter(child: SizedBox(height: 28)),
+
+        // ══════════════════════════════════════════════════════════════
+        // SECTION 6 — ABOUT
         // ══════════════════════════════════════════════════════════════
         SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.aboutNoorGuard)),
 
