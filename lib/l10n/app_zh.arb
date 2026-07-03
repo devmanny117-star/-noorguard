@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "今日圣训",
   "liveNotifCountdownHoursMinutes": "{hours}小时{minutes}分钟后",
   "liveNotifCountdownMinutes": "{minutes}分钟后",
-  "liveNotifCountdownNow": "礼拜时间到了"
+  "liveNotifCountdownNow": "礼拜时间到了",
+  "savedDuas": "已保存的杜阿",
+  "savedVerses": "已保存的经文",
+  "savedNames": "已保存的尊名",
+  "noSavedDuas": "暂无已保存的杜阿",
+  "noSavedVerses": "暂无已保存的经文",
+  "noSavedNames": "暂无已保存的尊名"
 }

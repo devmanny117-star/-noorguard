@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "HADITHI YA LEO",
   "liveNotifCountdownHoursMinutes": "baada ya saa {hours} na dakika {minutes}",
   "liveNotifCountdownMinutes": "baada ya dakika {minutes}",
-  "liveNotifCountdownNow": "Ni wakati wa kusali"
+  "liveNotifCountdownNow": "Ni wakati wa kusali",
+  "savedDuas": "Dua Zilizohifadhiwa",
+  "savedVerses": "Aya Zilizohifadhiwa",
+  "savedNames": "Majina Yaliyohifadhiwa",
+  "noSavedDuas": "Bado hakuna dua zilizohifadhiwa",
+  "noSavedVerses": "Bado hakuna aya zilizohifadhiwa",
+  "noSavedNames": "Bado hakuna majina yaliyohifadhiwa"
 }

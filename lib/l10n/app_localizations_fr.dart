@@ -2939,4 +2939,22 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'C\'est l\'heure de prier';
+
+  @override
+  String get savedDuas => 'Douas enregistrées';
+
+  @override
+  String get savedVerses => 'Versets enregistrés';
+
+  @override
+  String get savedNames => 'Noms enregistrés';
+
+  @override
+  String get noSavedDuas => 'Aucune doua enregistrée pour l\'instant';
+
+  @override
+  String get noSavedVerses => 'Aucun verset enregistré pour l\'instant';
+
+  @override
+  String get noSavedNames => 'Aucun nom enregistré pour l\'instant';
 }

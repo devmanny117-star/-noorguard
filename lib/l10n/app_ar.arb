@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "حديث اليوم",
   "liveNotifCountdownHoursMinutes": "بعد {hours} س {minutes} د",
   "liveNotifCountdownMinutes": "بعد {minutes} د",
-  "liveNotifCountdownNow": "حان وقت الصلاة"
+  "liveNotifCountdownNow": "حان وقت الصلاة",
+  "savedDuas": "الأدعية المحفوظة",
+  "savedVerses": "الآيات المحفوظة",
+  "savedNames": "الأسماء المحفوظة",
+  "noSavedDuas": "لا توجد أدعية محفوظة بعد",
+  "noSavedVerses": "لا توجد آيات محفوظة بعد",
+  "noSavedNames": "لا توجد أسماء محفوظة بعد"
 }

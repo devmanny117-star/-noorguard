@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
 import '../models/asma_ul_husna_model.dart';
+import '../services/bookmark_service.dart';
 import '../services/share_helper.dart';
 import '../widgets/font_size_slider.dart';
+import 'saved_names_screen.dart';
 
 class AsmaUlHusnaScreen extends StatefulWidget {
   const AsmaUlHusnaScreen({super.key});
@@ -21,11 +23,23 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
   String _query = '';
 
   int _fontScaleIndex = kDefaultFontScaleIndex;
+  Set<int> _bookmarked = {};
 
   @override
   void initState() {
     super.initState();
     _loadFontScale();
+    _loadBookmarks();
+  }
+
+  Future<void> _loadBookmarks() async {
+    final saved = await BookmarkService.loadNameBookmarks();
+    if (mounted) setState(() => _bookmarked = saved);
+  }
+
+  Future<void> _toggleBookmark(int number) async {
+    final saved = await BookmarkService.toggleNameBookmark(number);
+    if (mounted) setState(() => _bookmarked = saved);
   }
 
   Future<void> _loadFontScale() async {
@@ -99,6 +113,19 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
           ),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark_rounded, color: _gold),
+            tooltip: l10n.savedNames,
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SavedNamesScreen()),
+              );
+              _loadBookmarks();
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -161,6 +188,8 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
                             locale: locale,
                             significanceLabel: l10n.asmaSignificance,
                             onShareTap: () => _shareName(name),
+                            isBookmarked: _bookmarked.contains(name.number),
+                            onBookmarkTap: () => _toggleBookmark(name.number),
                           ),
                         );
                       },
@@ -277,12 +306,16 @@ class _AsmaCard extends StatefulWidget {
   final String locale;
   final String significanceLabel;
   final VoidCallback onShareTap;
+  final bool isBookmarked;
+  final VoidCallback onBookmarkTap;
 
   const _AsmaCard({
     required this.name,
     required this.locale,
     required this.significanceLabel,
     required this.onShareTap,
+    required this.isBookmarked,
+    required this.onBookmarkTap,
   });
 
   @override
@@ -387,6 +420,23 @@ class _AsmaCardState extends State<_AsmaCard> {
                     child: const Icon(
                       Icons.share_rounded,
                       size: 15,
+                      color: _gold,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 6),
+                GestureDetector(
+                  onTap: widget.onBookmarkTap,
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 200),
+                    transitionBuilder: (child, anim) =>
+                        ScaleTransition(scale: anim, child: child),
+                    child: Icon(
+                      widget.isBookmarked
+                          ? Icons.bookmark_rounded
+                          : Icons.bookmark_border_rounded,
+                      key: ValueKey(widget.isBookmarked),
+                      size: 20,
                       color: _gold,
                     ),
                   ),

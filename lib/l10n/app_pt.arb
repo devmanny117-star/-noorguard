@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "HADITH DO DIA",
   "liveNotifCountdownHoursMinutes": "em {hours}h {minutes}min",
   "liveNotifCountdownMinutes": "em {minutes}min",
-  "liveNotifCountdownNow": "É hora de rezar"
+  "liveNotifCountdownNow": "É hora de rezar",
+  "savedDuas": "Duas salvas",
+  "savedVerses": "Versículos salvos",
+  "savedNames": "Nomes salvos",
+  "noSavedDuas": "Ainda não há duas salvas",
+  "noSavedVerses": "Ainda não há versículos salvos",
+  "noSavedNames": "Ainda não há nomes salvos"
 }

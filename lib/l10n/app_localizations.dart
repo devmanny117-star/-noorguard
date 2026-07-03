@@ -5369,6 +5369,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'It\'s time to pray'**
   String get liveNotifCountdownNow;
+
+  /// Title of the Saved Duas bookmarks screen
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Duas'**
+  String get savedDuas;
+
+  /// Title of the Saved Verses (Quran bookmarks) screen
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Verses'**
+  String get savedVerses;
+
+  /// Title of the Saved Names (Asma ul Husna bookmarks) screen
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Names'**
+  String get savedNames;
+
+  /// Empty state on the Saved Duas screen
+  ///
+  /// In en, this message translates to:
+  /// **'No saved duas yet'**
+  String get noSavedDuas;
+
+  /// Empty state on the Saved Verses screen
+  ///
+  /// In en, this message translates to:
+  /// **'No saved verses yet'**
+  String get noSavedVerses;
+
+  /// Empty state on the Saved Names screen
+  ///
+  /// In en, this message translates to:
+  /// **'No saved names yet'**
+  String get noSavedNames;
 }
 
 class _AppLocalizationsDelegate

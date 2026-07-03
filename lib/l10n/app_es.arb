@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "HADIZ DEL DÍA",
   "liveNotifCountdownHoursMinutes": "en {hours}h {minutes}min",
   "liveNotifCountdownMinutes": "en {minutes}min",
-  "liveNotifCountdownNow": "Es hora de rezar"
+  "liveNotifCountdownNow": "Es hora de rezar",
+  "savedDuas": "Duas guardadas",
+  "savedVerses": "Versos guardados",
+  "savedNames": "Nombres guardados",
+  "noSavedDuas": "Aún no hay duas guardadas",
+  "noSavedVerses": "Aún no hay versos guardados",
+  "noSavedNames": "Aún no hay nombres guardados"
 }

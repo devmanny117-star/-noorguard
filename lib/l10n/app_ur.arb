@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "آج کی حدیث",
   "liveNotifCountdownHoursMinutes": "{hours} گھنٹے {minutes} منٹ میں",
   "liveNotifCountdownMinutes": "{minutes} منٹ میں",
-  "liveNotifCountdownNow": "نماز کا وقت ہو گیا"
+  "liveNotifCountdownNow": "نماز کا وقت ہو گیا",
+  "savedDuas": "محفوظ دعائیں",
+  "savedVerses": "محفوظ آیات",
+  "savedNames": "محفوظ نام",
+  "noSavedDuas": "ابھی کوئی محفوظ دعا نہیں",
+  "noSavedVerses": "ابھی کوئی محفوظ آیت نہیں",
+  "noSavedNames": "ابھی کوئی محفوظ نام نہیں"
 }

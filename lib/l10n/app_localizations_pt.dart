@@ -2920,4 +2920,22 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'É hora de rezar';
+
+  @override
+  String get savedDuas => 'Duas salvas';
+
+  @override
+  String get savedVerses => 'Versículos salvos';
+
+  @override
+  String get savedNames => 'Nomes salvos';
+
+  @override
+  String get noSavedDuas => 'Ainda não há duas salvas';
+
+  @override
+  String get noSavedVerses => 'Ainda não há versículos salvos';
+
+  @override
+  String get noSavedNames => 'Ainda não há nomes salvos';
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../data/duas_data.dart';
 import '../l10n/app_localizations.dart';
+import '../services/bookmark_service.dart';
 import '../services/share_helper.dart';
+import 'saved_duas_screen.dart';
 import '../widgets/font_size_slider.dart';
 import '../widgets/geometric_pattern_painter.dart';
 
@@ -23,7 +25,7 @@ class _DuasScreenState extends State<DuasScreen>
   String _selectedCategoryId = 'all';
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
-  final Set<int> _bookmarked = {};
+  Set<String> _bookmarked = {};
 
   late final AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
@@ -46,6 +48,12 @@ class _DuasScreenState extends State<DuasScreen>
       setState(() => _searchQuery = _searchController.text.trim().toLowerCase());
     });
     _loadFontScale();
+    _loadBookmarks();
+  }
+
+  Future<void> _loadBookmarks() async {
+    final saved = await BookmarkService.loadDuaBookmarks();
+    if (mounted) setState(() => _bookmarked = saved);
   }
 
   Future<void> _loadFontScale() async {
@@ -91,14 +99,9 @@ class _DuasScreenState extends State<DuasScreen>
     _fadeController.forward();
   }
 
-  void _toggleBookmark(int index) {
-    setState(() {
-      if (_bookmarked.contains(index)) {
-        _bookmarked.remove(index);
-      } else {
-        _bookmarked.add(index);
-      }
-    });
+  Future<void> _toggleBookmark(String arabic) async {
+    final saved = await BookmarkService.toggleDuaBookmark(arabic);
+    if (mounted) setState(() => _bookmarked = saved);
   }
 
   Future<void> _shareDua(CategorizedDua dua) async {
@@ -149,6 +152,13 @@ class _DuasScreenState extends State<DuasScreen>
                 searchController: _searchController,
                 selectedCategoryId: _selectedCategoryId,
                 onCategorySelected: _selectCategory,
+                onSavedTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const SavedDuasScreen()),
+                  );
+                  _loadBookmarks();
+                },
               ),
               SliverToBoxAdapter(
                 child: _PremiumFontSizeSlider(
@@ -186,11 +196,12 @@ class _DuasScreenState extends State<DuasScreen>
                                 padding: const EdgeInsets.fromLTRB(16, 6, 16, 40),
                                 itemCount: duas.length,
                                 itemBuilder: (context, i) {
-                                  final globalIndex = allDuas.indexOf(duas[i]);
                                   return _DuaCard(
                                     dua: duas[i],
-                                    isBookmarked: _bookmarked.contains(globalIndex),
-                                    onBookmarkTap: () => _toggleBookmark(globalIndex),
+                                    isBookmarked:
+                                        _bookmarked.contains(duas[i].arabic),
+                                    onBookmarkTap: () =>
+                                        _toggleBookmark(duas[i].arabic),
                                     onShareTap: () => _shareDua(duas[i]),
                                   );
                                 },
@@ -214,11 +225,13 @@ class _DuasSliverAppBar extends StatelessWidget {
   final TextEditingController searchController;
   final String selectedCategoryId;
   final ValueChanged<String> onCategorySelected;
+  final VoidCallback onSavedTap;
 
   const _DuasSliverAppBar({
     required this.searchController,
     required this.selectedCategoryId,
     required this.onCategorySelected,
+    required this.onSavedTap,
   });
 
   @override
@@ -251,6 +264,13 @@ class _DuasSliverAppBar extends StatelessWidget {
           color: _kGold,
         ),
       ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.bookmark_rounded, color: _kGold),
+          tooltip: l10n.savedDuas,
+          onPressed: onSavedTap,
+        ),
+      ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(112),
         child: Container(

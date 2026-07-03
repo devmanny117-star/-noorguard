@@ -3613,5 +3613,29 @@
   "liveNotifCountdownNow": "It's time to pray",
   "@liveNotifCountdownNow": {
     "description": "Shown in the live notification when the next prayer's time has arrived"
+  },
+  "savedDuas": "Saved Duas",
+  "@savedDuas": {
+    "description": "Title of the Saved Duas bookmarks screen"
+  },
+  "savedVerses": "Saved Verses",
+  "@savedVerses": {
+    "description": "Title of the Saved Verses (Quran bookmarks) screen"
+  },
+  "savedNames": "Saved Names",
+  "@savedNames": {
+    "description": "Title of the Saved Names (Asma ul Husna bookmarks) screen"
+  },
+  "noSavedDuas": "No saved duas yet",
+  "@noSavedDuas": {
+    "description": "Empty state on the Saved Duas screen"
+  },
+  "noSavedVerses": "No saved verses yet",
+  "@noSavedVerses": {
+    "description": "Empty state on the Saved Verses screen"
+  },
+  "noSavedNames": "No saved names yet",
+  "@noSavedNames": {
+    "description": "Empty state on the Saved Names screen"
   }
 }

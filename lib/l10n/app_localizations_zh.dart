@@ -2772,4 +2772,22 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => '礼拜时间到了';
+
+  @override
+  String get savedDuas => '已保存的杜阿';
+
+  @override
+  String get savedVerses => '已保存的经文';
+
+  @override
+  String get savedNames => '已保存的尊名';
+
+  @override
+  String get noSavedDuas => '暂无已保存的杜阿';
+
+  @override
+  String get noSavedVerses => '暂无已保存的经文';
+
+  @override
+  String get noSavedNames => '暂无已保存的尊名';
 }

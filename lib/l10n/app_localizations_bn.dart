@@ -2913,4 +2913,22 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'নামাজের সময় হয়েছে';
+
+  @override
+  String get savedDuas => 'সংরক্ষিত দোয়া';
+
+  @override
+  String get savedVerses => 'সংরক্ষিত আয়াত';
+
+  @override
+  String get savedNames => 'সংরক্ষিত নাম';
+
+  @override
+  String get noSavedDuas => 'এখনও কোনো সংরক্ষিত দোয়া নেই';
+
+  @override
+  String get noSavedVerses => 'এখনও কোনো সংরক্ষিত আয়াত নেই';
+
+  @override
+  String get noSavedNames => 'এখনও কোনো সংরক্ষিত নাম নেই';
 }

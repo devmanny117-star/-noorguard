@@ -2915,4 +2915,22 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'Ni wakati wa kusali';
+
+  @override
+  String get savedDuas => 'Dua Zilizohifadhiwa';
+
+  @override
+  String get savedVerses => 'Aya Zilizohifadhiwa';
+
+  @override
+  String get savedNames => 'Majina Yaliyohifadhiwa';
+
+  @override
+  String get noSavedDuas => 'Bado hakuna dua zilizohifadhiwa';
+
+  @override
+  String get noSavedVerses => 'Bado hakuna aya zilizohifadhiwa';
+
+  @override
+  String get noSavedNames => 'Bado hakuna majina yaliyohifadhiwa';
 }

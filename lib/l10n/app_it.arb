@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "HADITH DEL GIORNO",
   "liveNotifCountdownHoursMinutes": "tra {hours}h {minutes}min",
   "liveNotifCountdownMinutes": "tra {minutes}min",
-  "liveNotifCountdownNow": "È ora di pregare"
+  "liveNotifCountdownNow": "È ora di pregare",
+  "savedDuas": "Dua salvate",
+  "savedVerses": "Versetti salvati",
+  "savedNames": "Nomi salvati",
+  "noSavedDuas": "Nessuna dua salvata",
+  "noSavedVerses": "Nessun versetto salvato",
+  "noSavedNames": "Nessun nome salvato"
 }

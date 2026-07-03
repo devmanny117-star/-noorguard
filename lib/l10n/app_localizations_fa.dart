@@ -2902,4 +2902,22 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'وقت نماز است';
+
+  @override
+  String get savedDuas => 'دعاهای ذخیره‌شده';
+
+  @override
+  String get savedVerses => 'آیات ذخیره‌شده';
+
+  @override
+  String get savedNames => 'نام‌های ذخیره‌شده';
+
+  @override
+  String get noSavedDuas => 'هنوز دعایی ذخیره نشده است';
+
+  @override
+  String get noSavedVerses => 'هنوز آیه‌ای ذخیره نشده است';
+
+  @override
+  String get noSavedNames => 'هنوز نامی ذخیره نشده است';
 }

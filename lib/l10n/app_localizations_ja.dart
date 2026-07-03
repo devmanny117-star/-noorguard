@@ -2803,4 +2803,22 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => '礼拝の時間です';
+
+  @override
+  String get savedDuas => '保存したドゥアー';
+
+  @override
+  String get savedVerses => '保存した節';
+
+  @override
+  String get savedNames => '保存した御名';
+
+  @override
+  String get noSavedDuas => '保存したドゥアーはまだありません';
+
+  @override
+  String get noSavedVerses => '保存した節はまだありません';
+
+  @override
+  String get noSavedNames => '保存した御名はまだありません';
 }

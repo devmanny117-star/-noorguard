@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "GÜNÜN HADİSİ",
   "liveNotifCountdownHoursMinutes": "{hours} sa {minutes} dk sonra",
   "liveNotifCountdownMinutes": "{minutes} dk sonra",
-  "liveNotifCountdownNow": "Namaz vakti geldi"
+  "liveNotifCountdownNow": "Namaz vakti geldi",
+  "savedDuas": "Kaydedilen Dualar",
+  "savedVerses": "Kaydedilen Ayetler",
+  "savedNames": "Kaydedilen İsimler",
+  "noSavedDuas": "Henüz kaydedilmiş dua yok",
+  "noSavedVerses": "Henüz kaydedilmiş ayet yok",
+  "noSavedNames": "Henüz kaydedilmiş isim yok"
 }

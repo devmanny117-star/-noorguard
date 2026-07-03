@@ -2899,4 +2899,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'It\'s time to pray';
+
+  @override
+  String get savedDuas => 'Saved Duas';
+
+  @override
+  String get savedVerses => 'Saved Verses';
+
+  @override
+  String get savedNames => 'Saved Names';
+
+  @override
+  String get noSavedDuas => 'No saved duas yet';
+
+  @override
+  String get noSavedVerses => 'No saved verses yet';
+
+  @override
+  String get noSavedNames => 'No saved names yet';
 }

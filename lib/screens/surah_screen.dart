@@ -16,8 +16,10 @@ import '../models/surah_model.dart';
 import '../services/app_blocking_service.dart';
 import '../services/quran_service.dart';
 import '../services/share_helper.dart';
+import '../services/bookmark_service.dart';
 import '../services/tafsir_api_service.dart';
 import '../widgets/font_size_slider.dart';
+import 'saved_verses_screen.dart';
 import 'tafsir_screen.dart';
 
 const _textScaleKey = 'quran_text_scale';
@@ -262,6 +264,41 @@ class _SurahScreenState extends State<SurahScreen> {
     _loadFontScale();
     _loadTextScale();
     _loadFavoriteReciter();
+    _loadVerseBookmarks();
+  }
+
+  // ── Verse bookmarks ──────────────────────────────────────────────────────
+
+  /// Verse numbers of this surah that are bookmarked.
+  Set<int> _bookmarkedVerses = {};
+
+  Future<void> _loadVerseBookmarks() async {
+    final saved = await BookmarkService.loadVerseBookmarks();
+    if (!mounted) return;
+    setState(() {
+      _bookmarkedVerses = saved
+          .where((v) => v.surahNumber == widget.surah.number)
+          .map((v) => v.verseNumber)
+          .toSet();
+    });
+  }
+
+  Future<void> _toggleVerseBookmark(Verse verse) async {
+    final keys = await BookmarkService.toggleVerseBookmark(SavedVerse(
+      surahNumber: widget.surah.number,
+      surahEnglishName: widget.surah.englishName,
+      surahArabicName: widget.surah.name,
+      verseNumber: verse.number,
+      arabic: verse.arabic,
+      translation: verse.translation,
+    ));
+    if (!mounted) return;
+    setState(() {
+      _bookmarkedVerses = keys
+          .where((k) => k.startsWith('${widget.surah.number}:'))
+          .map((k) => int.parse(k.split(':').last))
+          .toSet();
+    });
   }
 
   // ── Favourite reciter ────────────────────────────────────────────────────
@@ -790,6 +827,17 @@ class _SurahScreenState extends State<SurahScreen> {
                   builder: (_) => TafsirScreen(surah: widget.surah)),
             ),
           ),
+          IconButton(
+            icon: const Icon(Icons.bookmark_rounded, color: _gold),
+            tooltip: l10n.savedVerses,
+            onPressed: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SavedVersesScreen()),
+              );
+              _loadVerseBookmarks();
+            },
+          ),
         ],
       ),
       body: _loading
@@ -888,6 +936,10 @@ class _SurahScreenState extends State<SurahScreen> {
                                       onTafsirTap: () =>
                                           _showVerseTafsir(verse),
                                       onShareTap: () => _shareVerse(verse),
+                                      isBookmarked: _bookmarkedVerses
+                                          .contains(verse.number),
+                                      onBookmarkTap: () =>
+                                          _toggleVerseBookmark(verse),
                                       challengeActive: challengeActive,
                                       challengeSeen:
                                           _seenVerses.contains(verse.number),
@@ -1908,6 +1960,8 @@ class _VerseTile extends StatelessWidget {
   final VoidCallback onPlayTap;
   final VoidCallback onTafsirTap;
   final VoidCallback? onShareTap;
+  final bool isBookmarked;
+  final VoidCallback? onBookmarkTap;
 
   /// True while an ayah-reading challenge is in progress — shows the
   /// read/unread indicator dot next to the verse number.
@@ -1928,6 +1982,8 @@ class _VerseTile extends StatelessWidget {
     required this.onPlayTap,
     required this.onTafsirTap,
     this.onShareTap,
+    this.isBookmarked = false,
+    this.onBookmarkTap,
     this.challengeActive = false,
     this.challengeSeen = false,
     this.justConfirmed = false,
@@ -2056,6 +2112,25 @@ class _VerseTile extends StatelessWidget {
                   children: [
                     _TafsirButton(onTap: onTafsirTap),
                     const Spacer(),
+                    if (onBookmarkTap != null) ...[
+                      GestureDetector(
+                        onTap: onBookmarkTap,
+                        child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 200),
+                          transitionBuilder: (child, anim) =>
+                              ScaleTransition(scale: anim, child: child),
+                          child: Icon(
+                            isBookmarked
+                                ? Icons.bookmark_rounded
+                                : Icons.bookmark_border_rounded,
+                            key: ValueKey(isBookmarked),
+                            size: 22,
+                            color: _gold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                    ],
                     if (onShareTap != null) ...[
                       GestureDetector(
                         onTap: onShareTap,

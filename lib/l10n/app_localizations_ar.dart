@@ -2868,4 +2868,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'حان وقت الصلاة';
+
+  @override
+  String get savedDuas => 'الأدعية المحفوظة';
+
+  @override
+  String get savedVerses => 'الآيات المحفوظة';
+
+  @override
+  String get savedNames => 'الأسماء المحفوظة';
+
+  @override
+  String get noSavedDuas => 'لا توجد أدعية محفوظة بعد';
+
+  @override
+  String get noSavedVerses => 'لا توجد آيات محفوظة بعد';
+
+  @override
+  String get noSavedNames => 'لا توجد أسماء محفوظة بعد';
 }

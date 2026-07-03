@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "HADIS HARI INI",
   "liveNotifCountdownHoursMinutes": "dalam {hours}j {minutes}mnt",
   "liveNotifCountdownMinutes": "dalam {minutes}mnt",
-  "liveNotifCountdownNow": "Waktunya salat"
+  "liveNotifCountdownNow": "Waktunya salat",
+  "savedDuas": "Doa Tersimpan",
+  "savedVerses": "Ayat Tersimpan",
+  "savedNames": "Nama Tersimpan",
+  "noSavedDuas": "Belum ada doa tersimpan",
+  "noSavedVerses": "Belum ada ayat tersimpan",
+  "noSavedNames": "Belum ada nama tersimpan"
 }

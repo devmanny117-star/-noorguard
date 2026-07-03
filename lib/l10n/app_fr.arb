@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "HADITH DU JOUR",
   "liveNotifCountdownHoursMinutes": "dans {hours}h {minutes}min",
   "liveNotifCountdownMinutes": "dans {minutes}min",
-  "liveNotifCountdownNow": "C'est l'heure de prier"
+  "liveNotifCountdownNow": "C'est l'heure de prier",
+  "savedDuas": "Douas enregistrées",
+  "savedVerses": "Versets enregistrés",
+  "savedNames": "Noms enregistrés",
+  "noSavedDuas": "Aucune doua enregistrée pour l'instant",
+  "noSavedVerses": "Aucun verset enregistré pour l'instant",
+  "noSavedNames": "Aucun nom enregistré pour l'instant"
 }

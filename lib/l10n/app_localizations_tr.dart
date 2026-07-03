@@ -2907,4 +2907,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'Namaz vakti geldi';
+
+  @override
+  String get savedDuas => 'Kaydedilen Dualar';
+
+  @override
+  String get savedVerses => 'Kaydedilen Ayetler';
+
+  @override
+  String get savedNames => 'Kaydedilen İsimler';
+
+  @override
+  String get noSavedDuas => 'Henüz kaydedilmiş dua yok';
+
+  @override
+  String get noSavedVerses => 'Henüz kaydedilmiş ayet yok';
+
+  @override
+  String get noSavedNames => 'Henüz kaydedilmiş isim yok';
 }

@@ -1655,5 +1655,11 @@
   "liveNotifHeaderHadith": "حدیث روز",
   "liveNotifCountdownHoursMinutes": "{hours} ساعت و {minutes} دقیقه دیگر",
   "liveNotifCountdownMinutes": "{minutes} دقیقه دیگر",
-  "liveNotifCountdownNow": "وقت نماز است"
+  "liveNotifCountdownNow": "وقت نماز است",
+  "savedDuas": "دعاهای ذخیره‌شده",
+  "savedVerses": "آیات ذخیره‌شده",
+  "savedNames": "نام‌های ذخیره‌شده",
+  "noSavedDuas": "هنوز دعایی ذخیره نشده است",
+  "noSavedVerses": "هنوز آیه‌ای ذخیره نشده است",
+  "noSavedNames": "هنوز نامی ذخیره نشده است"
 }

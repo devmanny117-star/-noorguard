@@ -2923,4 +2923,22 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'Es hora de rezar';
+
+  @override
+  String get savedDuas => 'Duas guardadas';
+
+  @override
+  String get savedVerses => 'Versos guardados';
+
+  @override
+  String get savedNames => 'Nombres guardados';
+
+  @override
+  String get noSavedDuas => 'Aún no hay duas guardadas';
+
+  @override
+  String get noSavedVerses => 'Aún no hay versos guardados';
+
+  @override
+  String get noSavedNames => 'Aún no hay nombres guardados';
 }

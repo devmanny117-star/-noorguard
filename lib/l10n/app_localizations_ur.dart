@@ -2897,4 +2897,22 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'نماز کا وقت ہو گیا';
+
+  @override
+  String get savedDuas => 'محفوظ دعائیں';
+
+  @override
+  String get savedVerses => 'محفوظ آیات';
+
+  @override
+  String get savedNames => 'محفوظ نام';
+
+  @override
+  String get noSavedDuas => 'ابھی کوئی محفوظ دعا نہیں';
+
+  @override
+  String get noSavedVerses => 'ابھی کوئی محفوظ آیت نہیں';
+
+  @override
+  String get noSavedNames => 'ابھی کوئی محفوظ نام نہیں';
 }

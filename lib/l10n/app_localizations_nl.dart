@@ -2919,4 +2919,22 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'Tijd om te bidden';
+
+  @override
+  String get savedDuas => 'Opgeslagen doe\'a\'s';
+
+  @override
+  String get savedVerses => 'Opgeslagen verzen';
+
+  @override
+  String get savedNames => 'Opgeslagen namen';
+
+  @override
+  String get noSavedDuas => 'Nog geen opgeslagen doe\'a\'s';
+
+  @override
+  String get noSavedVerses => 'Nog geen opgeslagen verzen';
+
+  @override
+  String get noSavedNames => 'Nog geen opgeslagen namen';
 }

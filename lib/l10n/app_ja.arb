@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "今日のハディース",
   "liveNotifCountdownHoursMinutes": "あと{hours}時間{minutes}分",
   "liveNotifCountdownMinutes": "あと{minutes}分",
-  "liveNotifCountdownNow": "礼拝の時間です"
+  "liveNotifCountdownNow": "礼拝の時間です",
+  "savedDuas": "保存したドゥアー",
+  "savedVerses": "保存した節",
+  "savedNames": "保存した御名",
+  "noSavedDuas": "保存したドゥアーはまだありません",
+  "noSavedVerses": "保存した節はまだありません",
+  "noSavedNames": "保存した御名はまだありません"
 }

@@ -2921,4 +2921,22 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get liveNotifCountdownNow => 'Waktunya salat';
+
+  @override
+  String get savedDuas => 'Doa Tersimpan';
+
+  @override
+  String get savedVerses => 'Ayat Tersimpan';
+
+  @override
+  String get savedNames => 'Nama Tersimpan';
+
+  @override
+  String get noSavedDuas => 'Belum ada doa tersimpan';
+
+  @override
+  String get noSavedVerses => 'Belum ada ayat tersimpan';
+
+  @override
+  String get noSavedNames => 'Belum ada nama tersimpan';
 }

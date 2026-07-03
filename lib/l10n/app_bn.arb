@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "আজকের হাদিস",
   "liveNotifCountdownHoursMinutes": "{hours} ঘণ্টা {minutes} মিনিট পরে",
   "liveNotifCountdownMinutes": "{minutes} মিনিট পরে",
-  "liveNotifCountdownNow": "নামাজের সময় হয়েছে"
+  "liveNotifCountdownNow": "নামাজের সময় হয়েছে",
+  "savedDuas": "সংরক্ষিত দোয়া",
+  "savedVerses": "সংরক্ষিত আয়াত",
+  "savedNames": "সংরক্ষিত নাম",
+  "noSavedDuas": "এখনও কোনো সংরক্ষিত দোয়া নেই",
+  "noSavedVerses": "এখনও কোনো সংরক্ষিত আয়াত নেই",
+  "noSavedNames": "এখনও কোনো সংরক্ষিত নাম নেই"
 }

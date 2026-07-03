@@ -1495,5 +1495,11 @@
   "liveNotifHeaderHadith": "HADITH VAN DE DAG",
   "liveNotifCountdownHoursMinutes": "over {hours}u {minutes}m",
   "liveNotifCountdownMinutes": "over {minutes}m",
-  "liveNotifCountdownNow": "Tijd om te bidden"
+  "liveNotifCountdownNow": "Tijd om te bidden",
+  "savedDuas": "Opgeslagen doe'a's",
+  "savedVerses": "Opgeslagen verzen",
+  "savedNames": "Opgeslagen namen",
+  "noSavedDuas": "Nog geen opgeslagen doe'a's",
+  "noSavedVerses": "Nog geen opgeslagen verzen",
+  "noSavedNames": "Nog geen opgeslagen namen"
 }
