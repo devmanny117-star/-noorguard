@@ -21,7 +21,7 @@ const _kCream = Color(0xFFF5EFE6);
 /// then the general stories set.
 final List<String> _storyBackgroundAssets = List.unmodifiable([
   for (var i = 1; i <= 8; i++) 'assets/images/mosques/mosque_$i.jpg',
-  for (var i = 1; i <= 15; i++) 'assets/images/stories/story_$i.jpg',
+  for (var i = 1; i <= 16; i++) 'assets/images/stories/story_$i.jpg',
 ]);
 
 /// Classic serif ("Georgia") used for the featured story quote. Georgia is
