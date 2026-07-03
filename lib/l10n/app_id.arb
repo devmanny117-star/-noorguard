@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "Tanggal Syahadat (opsional)",
   "storiesYourStoryLabel": "Kisahmu",
   "storiesStoryHint": "Ceritakan perjalananmu…",
+  "storiesChooseBackground": "Pilih Latar Belakang",
+  "storiesBackgroundNone": "Tidak ada",
   "storiesUploadPhoto": "Unggah Foto (opsional)",
   "storiesChangePhoto": "Ganti Foto",
   "storiesSubmitButton": "Kirim",

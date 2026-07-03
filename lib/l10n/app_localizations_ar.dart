@@ -3016,6 +3016,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get storiesStoryHint => 'حدثنا عن رحلتك…';
 
   @override
+  String get storiesChooseBackground => 'اختر خلفية';
+
+  @override
+  String get storiesBackgroundNone => 'بدون';
+
+  @override
   String get storiesUploadPhoto => 'تحميل صورة (اختياري)';
 
   @override

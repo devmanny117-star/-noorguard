@@ -3069,6 +3069,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storiesStoryHint => 'Conte-nos sobre sua jornada…';
 
   @override
+  String get storiesChooseBackground => 'Escolha um fundo';
+
+  @override
+  String get storiesBackgroundNone => 'Nenhum';
+
+  @override
   String get storiesUploadPhoto => 'Enviar foto (opcional)';
 
   @override

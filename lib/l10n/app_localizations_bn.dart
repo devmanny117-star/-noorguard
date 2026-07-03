@@ -3063,6 +3063,12 @@ class AppLocalizationsBn extends AppLocalizations {
   String get storiesStoryHint => 'আপনার যাত্রা সম্পর্কে বলুন…';
 
   @override
+  String get storiesChooseBackground => 'একটি পটভূমি বেছে নিন';
+
+  @override
+  String get storiesBackgroundNone => 'কোনোটি নয়';
+
+  @override
   String get storiesUploadPhoto => 'ছবি আপলোড করুন (ঐচ্ছিক)';
 
   @override

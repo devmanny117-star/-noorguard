@@ -1700,6 +1700,8 @@
   "storiesShahadaDateLabel": "تاریخ شهادتین (اختیاری)",
   "storiesYourStoryLabel": "داستان شما",
   "storiesStoryHint": "از سفر خود برایمان بگویید…",
+  "storiesChooseBackground": "انتخاب پس‌زمینه",
+  "storiesBackgroundNone": "هیچ‌کدام",
   "storiesUploadPhoto": "بارگذاری عکس (اختیاری)",
   "storiesChangePhoto": "تغییر عکس",
   "storiesSubmitButton": "ارسال",

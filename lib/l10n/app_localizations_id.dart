@@ -3072,6 +3072,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get storiesStoryHint => 'Ceritakan perjalananmu…';
 
   @override
+  String get storiesChooseBackground => 'Pilih Latar Belakang';
+
+  @override
+  String get storiesBackgroundNone => 'Tidak ada';
+
+  @override
   String get storiesUploadPhoto => 'Unggah Foto (opsional)';
 
   @override

@@ -26,6 +26,10 @@ class CommunityStory {
   final DateTime? shahadaDate;
   final String story;
   final String? photoUrl;
+
+  /// Bundled asset path chosen at submission time (e.g.
+  /// "assets/images/mosques/mosque_3.jpg"); null = no background.
+  final String? backgroundImage;
   final bool featured;
   final int duaCount;
   final int heartCount;
@@ -42,6 +46,7 @@ class CommunityStory {
     this.shahadaDate,
     required this.story,
     this.photoUrl,
+    this.backgroundImage,
     required this.featured,
     required this.duaCount,
     required this.heartCount,
@@ -72,6 +77,7 @@ class CommunityStory {
       shahadaDate: (data['shahadaDate'] as Timestamp?)?.toDate(),
       story: data['story'] as String? ?? '',
       photoUrl: data['photoUrl'] as String?,
+      backgroundImage: data['backgroundImage'] as String?,
       featured: data['featured'] as bool? ?? false,
       duaCount: (reactions['dua'] as num?)?.toInt() ?? 0,
       heartCount: (reactions['heart'] as num?)?.toInt() ?? 0,

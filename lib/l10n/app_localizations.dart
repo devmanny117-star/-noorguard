@@ -5634,6 +5634,18 @@ abstract class AppLocalizations {
   /// **'Tell us about your journey…'**
   String get storiesStoryHint;
 
+  /// Submit form: background image picker section label
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a Background'**
+  String get storiesChooseBackground;
+
+  /// Submit form: no-background option in the image picker
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get storiesBackgroundNone;
+
   /// Submit form: photo upload button
   ///
   /// In en, this message translates to:

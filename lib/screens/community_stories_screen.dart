@@ -17,6 +17,13 @@ const _kCard = Color(0xFF0D1F35);
 const _kGold = Color(0xFFC9A84C);
 const _kCream = Color(0xFFF5EFE6);
 
+/// Bundled backgrounds selectable in the submit form: mosque set first,
+/// then the general stories set.
+final List<String> _storyBackgroundAssets = List.unmodifiable([
+  for (var i = 1; i <= 8; i++) 'assets/images/mosques/mosque_$i.jpg',
+  for (var i = 1; i <= 18; i++) 'assets/images/stories/story_$i.jpg',
+]);
+
 /// Classic serif ("Georgia") used for the featured story quote. Georgia is
 /// bundled on iOS/macOS/web; Android falls back to its system serif.
 TextStyle _storySerif({required Color color, double fontSize = 14.5}) =>
@@ -412,39 +419,52 @@ class _FeaturedStoryCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // ── Background watermarks ───────────────────────────────────
-          const Positioned.fill(
-            child: IgnorePointer(
-              child: Center(
-                child: Opacity(
-                  opacity: 0.04,
-                  child: SizedBox(
-                    width: 220,
-                    height: 220,
-                    child: CustomPaint(
-                      painter: _HexagonWatermarkPainter(color: _kGold),
+          // ── Background: chosen image, else geometric watermarks ─────
+          if (story.backgroundImage != null) ...[
+            Positioned.fill(
+              child: Image.asset(
+                story.backgroundImage!,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+              ),
+            ),
+            Positioned.fill(
+              child: Container(color: Colors.black.withValues(alpha: 0.45)),
+            ),
+          ] else ...[
+            const Positioned.fill(
+              child: IgnorePointer(
+                child: Center(
+                  child: Opacity(
+                    opacity: 0.04,
+                    child: SizedBox(
+                      width: 220,
+                      height: 220,
+                      child: CustomPaint(
+                        painter: _HexagonWatermarkPainter(color: _kGold),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-          const PositionedDirectional(
-            bottom: -18,
-            end: -14,
-            child: IgnorePointer(
-              child: Opacity(
-                opacity: 0.06,
-                child: SizedBox(
-                  width: 110,
-                  height: 110,
-                  child: CustomPaint(
-                    painter: _CrescentPainter(color: _kGold),
+            const PositionedDirectional(
+              bottom: -18,
+              end: -14,
+              child: IgnorePointer(
+                child: Opacity(
+                  opacity: 0.06,
+                  child: SizedBox(
+                    width: 110,
+                    height: 110,
+                    child: CustomPaint(
+                      painter: _CrescentPainter(color: _kGold),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+          ],
           // ── Content ─────────────────────────────────────────────────
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(18, 16, 18, 16),
@@ -619,6 +639,20 @@ class _StoryCardState extends State<_StoryCard> {
       ),
       child: Stack(
         children: [
+          // Chosen background image with a dark overlay for readability;
+          // no image = plain card color (Bismillah placeholder look).
+          if (story.backgroundImage != null) ...[
+            Positioned.fill(
+              child: Image.asset(
+                story.backgroundImage!,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+              ),
+            ),
+            Positioned.fill(
+              child: Container(color: Colors.black.withValues(alpha: 0.45)),
+            ),
+          ],
           // Gold accent strip on the start edge.
           PositionedDirectional(
             start: 0,
@@ -1138,6 +1172,9 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
   Country? _country;
   StoryCategory _category = StoryCategory.revert;
   DateTime? _shahadaDate;
+
+  /// Selected background asset path; null = none (Bismillah placeholder).
+  String? _background;
   bool _submitting = false;
 
   @override
@@ -1202,6 +1239,7 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
         shahadaDate: _shahadaDate,
         story: _storyController.text,
         language: Localizations.localeOf(context).languageCode,
+        backgroundImage: _background,
       );
       if (!mounted) return;
       Navigator.pop(context);
@@ -1450,6 +1488,65 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
                   ),
                 ),
               ),
+              const SizedBox(height: 14),
+
+              _label(l10n.storiesChooseBackground.toUpperCase()),
+              const SizedBox(height: 8),
+              SizedBox(
+                height: 148,
+                child: GridView.builder(
+                  scrollDirection: Axis.horizontal,
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                  ),
+                  itemCount: _storyBackgroundAssets.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return _BackgroundTile(
+                        selected: _background == null,
+                        onTap: () => setState(() => _background = null),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'بِسْمِ اللَّهِ',
+                              style: GoogleFonts.scheherazadeNew(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: _kGold,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              l10n.storiesBackgroundNone,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.lato(
+                                fontSize: 9.5,
+                                color: _kCream.withValues(alpha: 0.6),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                    final asset = _storyBackgroundAssets[index - 1];
+                    return _BackgroundTile(
+                      selected: _background == asset,
+                      onTap: () => setState(() => _background = asset),
+                      child: Image.asset(
+                        asset,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) =>
+                            const ColoredBox(color: _kNavy),
+                      ),
+                    );
+                  },
+                ),
+              ),
               const SizedBox(height: 18),
 
               GestureDetector(
@@ -1491,6 +1588,50 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// One ~70px rounded-square thumbnail in the background picker; the selected
+/// tile gets a gold border and glow.
+class _BackgroundTile extends StatelessWidget {
+  final bool selected;
+  final VoidCallback onTap;
+  final Widget child;
+
+  const _BackgroundTile({
+    required this.selected,
+    required this.onTap,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        width: 70,
+        height: 70,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: _kNavy,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: selected ? _kGold : _kGold.withValues(alpha: 0.25),
+            width: selected ? 2.5 : 1,
+          ),
+          boxShadow: selected
+              ? [
+                  BoxShadow(
+                    color: _kGold.withValues(alpha: 0.35),
+                    blurRadius: 8,
+                  ),
+                ]
+              : null,
+        ),
+        child: child,
       ),
     );
   }

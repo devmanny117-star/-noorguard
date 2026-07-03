@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "清真言日期（可选）",
   "storiesYourStoryLabel": "你的故事",
   "storiesStoryHint": "讲述你的心路历程…",
+  "storiesChooseBackground": "选择背景",
+  "storiesBackgroundNone": "无",
   "storiesUploadPhoto": "上传照片（可选）",
   "storiesChangePhoto": "更换照片",
   "storiesSubmitButton": "提交",

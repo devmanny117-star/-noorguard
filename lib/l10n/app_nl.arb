@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "Datum van de sjahada (optioneel)",
   "storiesYourStoryLabel": "Jouw verhaal",
   "storiesStoryHint": "Vertel ons over je reis…",
+  "storiesChooseBackground": "Kies een achtergrond",
+  "storiesBackgroundNone": "Geen",
   "storiesUploadPhoto": "Foto uploaden (optioneel)",
   "storiesChangePhoto": "Foto wijzigen",
   "storiesSubmitButton": "Versturen",

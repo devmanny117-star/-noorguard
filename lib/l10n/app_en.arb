@@ -3793,6 +3793,14 @@
   "@storiesStoryHint": {
     "description": "Submit form: story field hint"
   },
+  "storiesChooseBackground": "Choose a Background",
+  "@storiesChooseBackground": {
+    "description": "Submit form: background image picker section label"
+  },
+  "storiesBackgroundNone": "None",
+  "@storiesBackgroundNone": {
+    "description": "Submit form: no-background option in the image picker"
+  },
   "storiesUploadPhoto": "Upload Photo (optional)",
   "@storiesUploadPhoto": {
     "description": "Submit form: photo upload button"

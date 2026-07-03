@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "شہادت کی تاریخ (اختیاری)",
   "storiesYourStoryLabel": "آپ کی کہانی",
   "storiesStoryHint": "اپنے سفر کے بارے میں بتائیں…",
+  "storiesChooseBackground": "پس منظر منتخب کریں",
+  "storiesBackgroundNone": "کوئی نہیں",
   "storiesUploadPhoto": "تصویر اپ لوڈ کریں (اختیاری)",
   "storiesChangePhoto": "تصویر تبدیل کریں",
   "storiesSubmitButton": "جمع کروائیں",

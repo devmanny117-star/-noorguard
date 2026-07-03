@@ -3063,6 +3063,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get storiesStoryHint => 'Tueleze safari yako…';
 
   @override
+  String get storiesChooseBackground => 'Chagua Mandhari';
+
+  @override
+  String get storiesBackgroundNone => 'Hakuna';
+
+  @override
   String get storiesUploadPhoto => 'Pakia picha (hiari)';
 
   @override

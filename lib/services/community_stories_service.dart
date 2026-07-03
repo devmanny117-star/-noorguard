@@ -171,6 +171,7 @@ class CommunityStoriesService {
     DateTime? shahadaDate,
     required String story,
     required String language,
+    String? backgroundImage,
   }) async {
     await _stories.add({
       'name': name.trim(),
@@ -180,6 +181,7 @@ class CommunityStoriesService {
       'category': category.id,
       if (shahadaDate != null) 'shahadaDate': Timestamp.fromDate(shahadaDate),
       'story': story.trim(),
+      if (backgroundImage != null) 'backgroundImage': backgroundImage,
       'status': 'pending',
       'featured': false,
       'reactions': {'dua': 0, 'heart': 0},

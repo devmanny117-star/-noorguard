@@ -3053,6 +3053,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get storiesStoryHint => 'Yolculuğunu bize anlat…';
 
   @override
+  String get storiesChooseBackground => 'Arka Plan Seç';
+
+  @override
+  String get storiesBackgroundNone => 'Yok';
+
+  @override
   String get storiesUploadPhoto => 'Fotoğraf yükle (isteğe bağlı)';
 
   @override

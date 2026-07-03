@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "Datum der Schahada (optional)",
   "storiesYourStoryLabel": "Deine Geschichte",
   "storiesStoryHint": "Erzähl uns von deiner Reise…",
+  "storiesChooseBackground": "Hintergrund auswählen",
+  "storiesBackgroundNone": "Keiner",
   "storiesUploadPhoto": "Foto hochladen (optional)",
   "storiesChangePhoto": "Foto ändern",
   "storiesSubmitButton": "Absenden",

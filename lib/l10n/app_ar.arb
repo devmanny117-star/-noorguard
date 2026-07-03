@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "تاريخ الشهادة (اختياري)",
   "storiesYourStoryLabel": "قصتك",
   "storiesStoryHint": "حدثنا عن رحلتك…",
+  "storiesChooseBackground": "اختر خلفية",
+  "storiesBackgroundNone": "بدون",
   "storiesUploadPhoto": "تحميل صورة (اختياري)",
   "storiesChangePhoto": "تغيير الصورة",
   "storiesSubmitButton": "إرسال",

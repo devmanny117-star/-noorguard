@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "Şehadet tarihi (isteğe bağlı)",
   "storiesYourStoryLabel": "Hikayen",
   "storiesStoryHint": "Yolculuğunu bize anlat…",
+  "storiesChooseBackground": "Arka Plan Seç",
+  "storiesBackgroundNone": "Yok",
   "storiesUploadPhoto": "Fotoğraf yükle (isteğe bağlı)",
   "storiesChangePhoto": "Fotoğrafı değiştir",
   "storiesSubmitButton": "Gönder",

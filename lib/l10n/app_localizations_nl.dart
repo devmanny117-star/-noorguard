@@ -3070,6 +3070,12 @@ class AppLocalizationsNl extends AppLocalizations {
   String get storiesStoryHint => 'Vertel ons over je reis…';
 
   @override
+  String get storiesChooseBackground => 'Kies een achtergrond';
+
+  @override
+  String get storiesBackgroundNone => 'Geen';
+
+  @override
   String get storiesUploadPhoto => 'Foto uploaden (optioneel)';
 
   @override

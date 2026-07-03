@@ -3049,6 +3049,12 @@ class AppLocalizationsFa extends AppLocalizations {
   String get storiesStoryHint => 'از سفر خود برایمان بگویید…';
 
   @override
+  String get storiesChooseBackground => 'انتخاب پس‌زمینه';
+
+  @override
+  String get storiesBackgroundNone => 'هیچ‌کدام';
+
+  @override
   String get storiesUploadPhoto => 'بارگذاری عکس (اختیاری)';
 
   @override

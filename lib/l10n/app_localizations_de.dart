@@ -3073,6 +3073,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get storiesStoryHint => 'Erzähl uns von deiner Reise…';
 
   @override
+  String get storiesChooseBackground => 'Hintergrund auswählen';
+
+  @override
+  String get storiesBackgroundNone => 'Keiner';
+
+  @override
   String get storiesUploadPhoto => 'Foto hochladen (optional)';
 
   @override

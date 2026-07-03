@@ -2939,6 +2939,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get storiesStoryHint => 'あなたの歩みを聞かせてください…';
 
   @override
+  String get storiesChooseBackground => '背景を選ぶ';
+
+  @override
+  String get storiesBackgroundNone => 'なし';
+
+  @override
   String get storiesUploadPhoto => '写真をアップロード（任意）';
 
   @override

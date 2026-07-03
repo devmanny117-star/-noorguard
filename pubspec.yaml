@@ -51,6 +51,7 @@ flutter:
   assets:
     - assets/arch.svg
     - assets/images/mosques/
+    - assets/images/stories/
     - assets/data/block_screen_verses.json
     - assets/sounds/
 

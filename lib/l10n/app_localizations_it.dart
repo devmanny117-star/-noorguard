@@ -3077,6 +3077,12 @@ class AppLocalizationsIt extends AppLocalizations {
   String get storiesStoryHint => 'Raccontaci il tuo cammino…';
 
   @override
+  String get storiesChooseBackground => 'Scegli uno sfondo';
+
+  @override
+  String get storiesBackgroundNone => 'Nessuno';
+
+  @override
   String get storiesUploadPhoto => 'Carica foto (facoltativa)';
 
   @override

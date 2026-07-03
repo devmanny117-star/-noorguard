@@ -1540,6 +1540,8 @@
   "storiesShahadaDateLabel": "シャハーダの日付（任意）",
   "storiesYourStoryLabel": "あなたのストーリー",
   "storiesStoryHint": "あなたの歩みを聞かせてください…",
+  "storiesChooseBackground": "背景を選ぶ",
+  "storiesBackgroundNone": "なし",
   "storiesUploadPhoto": "写真をアップロード（任意）",
   "storiesChangePhoto": "写真を変更",
   "storiesSubmitButton": "送信",

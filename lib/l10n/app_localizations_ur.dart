@@ -3044,6 +3044,12 @@ class AppLocalizationsUr extends AppLocalizations {
   String get storiesStoryHint => 'اپنے سفر کے بارے میں بتائیں…';
 
   @override
+  String get storiesChooseBackground => 'پس منظر منتخب کریں';
+
+  @override
+  String get storiesBackgroundNone => 'کوئی نہیں';
+
+  @override
   String get storiesUploadPhoto => 'تصویر اپ لوڈ کریں (اختیاری)';
 
   @override

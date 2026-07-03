@@ -2908,6 +2908,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get storiesStoryHint => '讲述你的心路历程…';
 
   @override
+  String get storiesChooseBackground => '选择背景';
+
+  @override
+  String get storiesBackgroundNone => '无';
+
+  @override
   String get storiesUploadPhoto => '上传照片（可选）';
 
   @override
