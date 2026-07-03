@@ -396,7 +396,7 @@ class _SectionCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: context.appColors.cardBg,
+        color: const Color(0xFF0D1B2A),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: _kGold.withValues(alpha: 0.45), width: 1),
       ),
@@ -467,7 +467,7 @@ class _JourneyCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 6),
       decoration: BoxDecoration(
-        color: context.appColors.cardBg,
+        color: const Color(0xFF0D1B2A),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: _kGold.withValues(alpha: 0.50), width: 1),
         boxShadow: [
@@ -539,7 +539,7 @@ class _JourneyCard extends StatelessWidget {
                             'Shahada: ${_formatDate(shahadaDate!)}',
                             style: GoogleFonts.lato(
                               fontSize: 12,
-                              color: context.appColors.secondaryText,
+                              color: const Color(0xB3F5EFE6),
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -1132,22 +1132,14 @@ class _ToolboxFeatureCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
         decoration: BoxDecoration(
-          color: isDark ? null : context.appColors.secondaryBg,
-          gradient: isDark
-              ? const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFF101E31), Color(0xFF081321)],
-                )
-              : null,
+          color: const Color(0xFF0D1B2A),
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: _kGold.withValues(alpha: 0.55), width: 1),
+          border: Border.all(color: const Color(0x33C9A84C), width: 1),
           boxShadow: const [
             BoxShadow(
               color: Colors.black38,
@@ -1180,7 +1172,7 @@ class _ToolboxFeatureCard extends StatelessWidget {
                 Text(
                   label,
                   style: GoogleFonts.lato(
-                    color: context.appColors.primaryText,
+                    color: const Color(0xFFF5EFE6),
                     fontWeight: FontWeight.w700,
                     fontSize: 12,
                     letterSpacing: 0.2,
@@ -1195,7 +1187,7 @@ class _ToolboxFeatureCard extends StatelessWidget {
                 Text(
                   subtitle,
                   style: GoogleFonts.lato(
-                    color: _kGold.withValues(alpha: 0.75),
+                    color: const Color(0xB3F5EFE6),
                     fontWeight: FontWeight.w400,
                     fontSize: 10,
                     letterSpacing: 0.1,
@@ -1464,14 +1456,7 @@ class _ExploreAllCard extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                _kGold.withValues(alpha: 0.18),
-                _kGold.withValues(alpha: 0.08),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+            color: const Color(0xFF0D1B2A),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: _kGold.withValues(alpha: 0.55), width: 1),
           ),
@@ -1486,7 +1471,7 @@ class _ExploreAllCard extends StatelessWidget {
                       style: GoogleFonts.lato(
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
-                        color: context.appColors.primaryText,
+                        color: _kGold,
                       ),
                     ),
                     const SizedBox(height: 3),
@@ -1494,7 +1479,7 @@ class _ExploreAllCard extends StatelessWidget {
                       l10n.beginnerExploreSubtitle,
                       style: GoogleFonts.lato(
                         fontSize: 12,
-                        color: context.appColors.secondaryText,
+                        color: _kGold.withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -1508,9 +1493,9 @@ class _ExploreAllCard extends StatelessWidget {
                   color: _kGold,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.chevron_right_rounded,
-                  color: context.appColors.background,
+                  color: Color(0xFF0D1B2A),
                   size: 22,
                 ),
               ),
