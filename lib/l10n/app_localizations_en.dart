@@ -2917,4 +2917,63 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noSavedNames => 'No saved names yet';
+
+  @override
+  String get heroVerse16 =>
+      'Our Lord, do not impose blame upon us if we forget or err.';
+
+  @override
+  String get heroVerse17 =>
+      'Sufficient for us is Allah, and He is the best Disposer of affairs.';
+
+  @override
+  String get heroVerse18 =>
+      'O you who believe, believe in Allah and His Messenger.';
+
+  @override
+  String get heroVerse19 =>
+      'O you who believe, be mindful of Allah and seek the means of nearness to Him.';
+
+  @override
+  String get heroVerse20 =>
+      'Indeed, my prayer, my sacrifice, my living and my dying are for Allah, Lord of the worlds.';
+
+  @override
+  String get heroVerse21 =>
+      'Decree for us good in this world and in the Hereafter; we have turned back to You.';
+
+  @override
+  String get heroVerse22 =>
+      'Remember Allah often, so that you may be successful.';
+
+  @override
+  String get heroVerse23 =>
+      'Nothing will befall us except what Allah has decreed for us; He is our Protector.';
+
+  @override
+  String get heroVerse24 =>
+      'Indeed, the friends of Allah — no fear will there be concerning them, nor will they grieve.';
+
+  @override
+  String get heroVerse25 =>
+      'My success is only through Allah; upon Him I rely, and to Him I turn.';
+
+  @override
+  String get heroVerse26 => 'Do not despair of the mercy of Allah.';
+
+  @override
+  String get heroVerse27 =>
+      'Those who believe and whose hearts find rest in the remembrance of Allah.';
+
+  @override
+  String get heroVerse28 =>
+      'And when your Lord proclaimed: If you give thanks, I will surely give you more.';
+
+  @override
+  String get heroVerse29 =>
+      'And worship your Lord until there comes to you the certainty.';
+
+  @override
+  String get heroVerse30 =>
+      'Indeed, Allah is with those who fear Him and those who do good.';
 }

@@ -2942,4 +2942,62 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noSavedNames => 'Noch keine gespeicherten Namen';
+
+  @override
+  String get heroVerse16 =>
+      'Unser Herr, belange uns nicht, wenn wir vergessen oder uns irren.';
+
+  @override
+  String get heroVerse17 =>
+      'Allah genügt uns, und Er ist der beste Sachwalter.';
+
+  @override
+  String get heroVerse18 =>
+      'O ihr, die ihr glaubt, glaubt an Allah und Seinen Gesandten.';
+
+  @override
+  String get heroVerse19 =>
+      'O ihr, die ihr glaubt, fürchtet Allah und sucht die Nähe zu Ihm.';
+
+  @override
+  String get heroVerse20 =>
+      'Wahrlich, mein Gebet, meine Opfergabe, mein Leben und mein Sterben gehören Allah, dem Herrn der Welten.';
+
+  @override
+  String get heroVerse21 =>
+      'Bestimme für uns Gutes in dieser Welt und im Jenseits; zu Dir sind wir zurückgekehrt.';
+
+  @override
+  String get heroVerse22 => 'Gedenkt Allahs oft, damit ihr erfolgreich seid.';
+
+  @override
+  String get heroVerse23 =>
+      'Uns trifft nur, was Allah für uns bestimmt hat; Er ist unser Beschützer.';
+
+  @override
+  String get heroVerse24 =>
+      'Wahrlich, die Freunde Allahs — keine Furcht soll über sie kommen, noch sollen sie trauern.';
+
+  @override
+  String get heroVerse25 =>
+      'Mein Gelingen kommt allein von Allah; auf Ihn vertraue ich, und zu Ihm wende ich mich.';
+
+  @override
+  String get heroVerse26 => 'Verzweifelt nicht an der Barmherzigkeit Allahs.';
+
+  @override
+  String get heroVerse27 =>
+      'Diejenigen, die glauben und deren Herzen im Gedenken an Allah Ruhe finden.';
+
+  @override
+  String get heroVerse28 =>
+      'Und als euer Herr verkündete: Wenn ihr dankbar seid, werde Ich euch gewiss noch mehr geben.';
+
+  @override
+  String get heroVerse29 =>
+      'Und diene deinem Herrn, bis die Gewissheit zu dir kommt.';
+
+  @override
+  String get heroVerse30 =>
+      'Wahrlich, Allah ist mit denen, die Ihn fürchten, und denen, die Gutes tun.';
 }

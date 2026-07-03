@@ -2886,4 +2886,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noSavedNames => 'لا توجد أسماء محفوظة بعد';
+
+  @override
+  String get heroVerse16 =>
+      'رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا';
+
+  @override
+  String get heroVerse17 => 'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ';
+
+  @override
+  String get heroVerse18 =>
+      'يَا أَيُّهَا الَّذِينَ آمَنُوا آمِنُوا بِاللَّهِ وَرَسُولِهِ';
+
+  @override
+  String get heroVerse19 =>
+      'يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَابْتَغُوا إِلَيْهِ الْوَسِيلَةَ';
+
+  @override
+  String get heroVerse20 =>
+      'إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ';
+
+  @override
+  String get heroVerse21 =>
+      'وَاكْتُبْ لَنَا فِي هَٰذِهِ الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ إِنَّا هُدْنَا إِلَيْكَ';
+
+  @override
+  String get heroVerse22 =>
+      'وَاذْكُرُوا اللَّهَ كَثِيرًا لَّعَلَّكُمْ تُفْلِحُونَ';
+
+  @override
+  String get heroVerse23 =>
+      'قُل لَّن يُصِيبَنَا إِلَّا مَا كَتَبَ اللَّهُ لَنَا هُوَ مَوْلَانَا';
+
+  @override
+  String get heroVerse24 =>
+      'أَلَا إِنَّ أَوْلِيَاءَ اللَّهِ لَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ';
+
+  @override
+  String get heroVerse25 =>
+      'وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ أُنِيبُ';
+
+  @override
+  String get heroVerse26 => 'وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ';
+
+  @override
+  String get heroVerse27 =>
+      'الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ';
+
+  @override
+  String get heroVerse28 =>
+      'وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ';
+
+  @override
+  String get heroVerse29 => 'وَاعْبُدْ رَبَّكَ حَتَّىٰ يَأْتِيَكَ الْيَقِينُ';
+
+  @override
+  String get heroVerse30 =>
+      'إِنَّ اللَّهَ مَعَ الَّذِينَ اتَّقَوا وَّالَّذِينَ هُم مُّحْسِنُونَ';
 }

@@ -2945,4 +2945,62 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get noSavedNames => 'Nessun nome salvato';
+
+  @override
+  String get heroVerse16 =>
+      'Signore nostro, non punirci se dimentichiamo o sbagliamo.';
+
+  @override
+  String get heroVerse17 => 'Allah ci basta, ed Egli è il miglior Garante.';
+
+  @override
+  String get heroVerse18 =>
+      'O voi che credete, credete in Allah e nel Suo Messaggero.';
+
+  @override
+  String get heroVerse19 =>
+      'O voi che credete, temete Allah e cercate il mezzo per avvicinarvi a Lui.';
+
+  @override
+  String get heroVerse20 =>
+      'In verità la mia preghiera, il mio sacrificio, la mia vita e la mia morte appartengono ad Allah, Signore dei mondi.';
+
+  @override
+  String get heroVerse21 =>
+      'Decreta per noi il bene in questa vita e nell\'altra; a Te siamo tornati.';
+
+  @override
+  String get heroVerse22 =>
+      'Ricordate Allah spesso, affinché possiate prosperare.';
+
+  @override
+  String get heroVerse23 =>
+      'Nulla ci colpirà se non ciò che Allah ha decretato per noi; Egli è il nostro Protettore.';
+
+  @override
+  String get heroVerse24 =>
+      'In verità, gli amici di Allah non avranno timore e non saranno afflitti.';
+
+  @override
+  String get heroVerse25 =>
+      'Il mio successo viene solo da Allah; in Lui confido e a Lui mi rivolgo.';
+
+  @override
+  String get heroVerse26 => 'Non disperate della misericordia di Allah.';
+
+  @override
+  String get heroVerse27 =>
+      'Coloro che credono e i cui cuori si acquietano nel ricordo di Allah.';
+
+  @override
+  String get heroVerse28 =>
+      'E quando il vostro Signore proclamò: Se sarete riconoscenti, vi darò certamente di più.';
+
+  @override
+  String get heroVerse29 =>
+      'E adora il tuo Signore finché non ti giunga la certezza.';
+
+  @override
+  String get heroVerse30 =>
+      'In verità Allah è con coloro che Lo temono e con coloro che fanno il bene.';
 }

@@ -2933,4 +2933,61 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get noSavedNames => 'Bado hakuna majina yaliyohifadhiwa';
+
+  @override
+  String get heroVerse16 =>
+      'Mola wetu Mlezi, usituchukulie tukisahau au tukikosea.';
+
+  @override
+  String get heroVerse17 => 'Mwenyezi Mungu anatutosha, naye ni Mlinzi bora.';
+
+  @override
+  String get heroVerse18 =>
+      'Enyi mlioamini, mwaminini Mwenyezi Mungu na Mtume wake.';
+
+  @override
+  String get heroVerse19 =>
+      'Enyi mlioamini, mcheni Mwenyezi Mungu na tafuteni njia ya kumkaribia.';
+
+  @override
+  String get heroVerse20 =>
+      'Hakika sala yangu, ibada yangu, uhai wangu na kifo changu ni kwa ajili ya Mwenyezi Mungu, Mola wa walimwengu.';
+
+  @override
+  String get heroVerse21 =>
+      'Tuandikie wema katika dunia hii na akhera; hakika tumerejea Kwako.';
+
+  @override
+  String get heroVerse22 =>
+      'Mkumbukeni Mwenyezi Mungu kwa wingi ili mpate kufaulu.';
+
+  @override
+  String get heroVerse23 =>
+      'Halitatupata ila alilotuandikia Mwenyezi Mungu; Yeye ndiye Mlinzi wetu.';
+
+  @override
+  String get heroVerse24 =>
+      'Fahamuni, marafiki wa Mwenyezi Mungu hawatakuwa na hofu wala hawatahuzunika.';
+
+  @override
+  String get heroVerse25 =>
+      'Mafanikio yangu ni kwa Mwenyezi Mungu tu; Kwake nimetegemea na Kwake ninarejea.';
+
+  @override
+  String get heroVerse26 => 'Msikate tamaa na rehema ya Mwenyezi Mungu.';
+
+  @override
+  String get heroVerse27 =>
+      'Wale walioamini na nyoyo zao zikatulia kwa kumkumbuka Mwenyezi Mungu.';
+
+  @override
+  String get heroVerse28 =>
+      'Na Mola wenu Mlezi alipotangaza: Mkishukuru, hakika nitawazidishia.';
+
+  @override
+  String get heroVerse29 => 'Na muabudu Mola wako Mlezi mpaka ikufikie yakini.';
+
+  @override
+  String get heroVerse30 =>
+      'Hakika Mwenyezi Mungu yu pamoja na wamchao na wale watendao mema.';
 }

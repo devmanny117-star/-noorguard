@@ -2920,4 +2920,59 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get noSavedNames => 'هنوز نامی ذخیره نشده است';
+
+  @override
+  String get heroVerse16 =>
+      'پروردگارا، اگر فراموش کردیم یا خطا کردیم، ما را بازخواست مکن.';
+
+  @override
+  String get heroVerse17 => 'خدا ما را بس است و او بهترین کارساز است.';
+
+  @override
+  String get heroVerse18 =>
+      'ای کسانی که ایمان آورده‌اید، به خدا و پیامبرش ایمان بیاورید.';
+
+  @override
+  String get heroVerse19 =>
+      'ای کسانی که ایمان آورده‌اید، از خدا پروا کنید و وسیله‌ای برای نزدیکی به او بجویید.';
+
+  @override
+  String get heroVerse20 =>
+      'همانا نماز من، عبادت من، زندگی و مرگ من برای خداوند، پروردگار جهانیان است.';
+
+  @override
+  String get heroVerse21 =>
+      'برای ما در این دنیا و در آخرت نیکی مقرر فرما؛ ما به سوی تو بازگشته‌ایم.';
+
+  @override
+  String get heroVerse22 => 'خدا را بسیار یاد کنید تا رستگار شوید.';
+
+  @override
+  String get heroVerse23 =>
+      'جز آنچه خدا برای ما مقرر کرده به ما نمی‌رسد؛ او مولای ماست.';
+
+  @override
+  String get heroVerse24 =>
+      'آگاه باشید که دوستان خدا نه ترسی دارند و نه اندوهگین می‌شوند.';
+
+  @override
+  String get heroVerse25 =>
+      'توفیق من جز به خدا نیست؛ بر او توکل کردم و به سوی او بازمی‌گردم.';
+
+  @override
+  String get heroVerse26 => 'از رحمت خدا ناامید نشوید.';
+
+  @override
+  String get heroVerse27 =>
+      'آنان که ایمان آوردند و دل‌هایشان با یاد خدا آرام می‌گیرد.';
+
+  @override
+  String get heroVerse28 =>
+      'و آنگاه که پروردگارتان اعلام کرد: اگر سپاس گزارید، بی‌گمان بر شما می‌افزایم.';
+
+  @override
+  String get heroVerse29 => 'و پروردگارت را عبادت کن تا یقین به سراغت آید.';
+
+  @override
+  String get heroVerse30 => 'همانا خداوند با پرهیزگاران و نیکوکاران است.';
 }

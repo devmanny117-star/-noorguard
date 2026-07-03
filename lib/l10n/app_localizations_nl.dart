@@ -2937,4 +2937,63 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get noSavedNames => 'Nog geen opgeslagen namen';
+
+  @override
+  String get heroVerse16 =>
+      'Onze Heer, reken het ons niet aan als wij vergeten of fouten maken.';
+
+  @override
+  String get heroVerse17 =>
+      'Allah is ons genoeg, en Hij is de beste Beschermer.';
+
+  @override
+  String get heroVerse18 =>
+      'O jullie die geloven, geloof in Allah en Zijn Boodschapper.';
+
+  @override
+  String get heroVerse19 =>
+      'O jullie die geloven, vrees Allah en zoek het middel om Hem nabij te komen.';
+
+  @override
+  String get heroVerse20 =>
+      'Voorwaar, mijn gebed, mijn offer, mijn leven en mijn sterven behoren aan Allah, Heer der werelden.';
+
+  @override
+  String get heroVerse21 =>
+      'Schrijf voor ons het goede voor in deze wereld en in het hiernamaals; tot U zijn wij teruggekeerd.';
+
+  @override
+  String get heroVerse22 =>
+      'Gedenk Allah veelvuldig, opdat jullie zullen slagen.';
+
+  @override
+  String get heroVerse23 =>
+      'Ons overkomt slechts wat Allah voor ons heeft beschikt; Hij is onze Beschermer.';
+
+  @override
+  String get heroVerse24 =>
+      'Voorwaar, de vrienden van Allah — geen vrees zal over hen komen, noch zullen zij treuren.';
+
+  @override
+  String get heroVerse25 =>
+      'Mijn welslagen komt alleen van Allah; op Hem vertrouw ik en tot Hem keer ik terug.';
+
+  @override
+  String get heroVerse26 => 'Wanhoop niet aan de genade van Allah.';
+
+  @override
+  String get heroVerse27 =>
+      'Degenen die geloven en wier harten rust vinden in het gedenken van Allah.';
+
+  @override
+  String get heroVerse28 =>
+      'En toen jullie Heer verkondigde: Als jullie dankbaar zijn, zal Ik jullie zeker meer geven.';
+
+  @override
+  String get heroVerse29 =>
+      'En aanbid jouw Heer totdat de zekerheid tot jou komt.';
+
+  @override
+  String get heroVerse30 =>
+      'Voorwaar, Allah is met degenen die Hem vrezen en degenen die goed doen.';
 }

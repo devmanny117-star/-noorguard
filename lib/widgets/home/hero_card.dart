@@ -9,7 +9,7 @@ import '../../theme/app_theme.dart';
 // Each slide pairs one image with one Quran verse so both rotate together.
 typedef _Slide = ({String image, String verse, String ref});
 
-const int _kSlideCount = 15;
+const int _kSlideCount = 30;
 
 List<_Slide> _buildSlides(AppLocalizations l10n) => [
   (image: 'assets/images/mosques/mosque_1.jpg', verse: l10n.heroVerse1,  ref: 'Al-Baqarah 2:238'),
@@ -27,6 +27,24 @@ List<_Slide> _buildSlides(AppLocalizations l10n) => [
   (image: 'assets/images/mosques/mosque_5.jpg', verse: l10n.heroVerse13, ref: 'Al-Aʻraf 7:156'),
   (image: 'assets/images/mosques/mosque_6.jpg', verse: l10n.heroVerse14, ref: 'Al-Baqarah 2:195'),
   (image: 'assets/images/mosques/mosque_7.jpg', verse: l10n.heroVerse15, ref: 'Al-Baqarah 2:2'),
+  // Verses 16, 21, 27, and 28 revisit refs already in the deck (2:286,
+  // 7:156, 13:28, 14:7) but quote a different excerpt of each verse, so no
+  // slide text ever repeats within the rotation.
+  (image: 'assets/images/mosques/mosque_8.jpg', verse: l10n.heroVerse16, ref: 'Al-Baqarah 2:286'),
+  (image: 'assets/images/mosques/mosque_1.jpg', verse: l10n.heroVerse17, ref: 'Ali ʼImran 3:173'),
+  (image: 'assets/images/mosques/mosque_2.jpg', verse: l10n.heroVerse18, ref: 'An-Nisaʼ 4:136'),
+  (image: 'assets/images/mosques/mosque_3.jpg', verse: l10n.heroVerse19, ref: 'Al-Maʼidah 5:35'),
+  (image: 'assets/images/mosques/mosque_4.jpg', verse: l10n.heroVerse20, ref: 'Al-Anʻam 6:162'),
+  (image: 'assets/images/mosques/mosque_5.jpg', verse: l10n.heroVerse21, ref: 'Al-Aʻraf 7:156'),
+  (image: 'assets/images/mosques/mosque_6.jpg', verse: l10n.heroVerse22, ref: 'Al-Anfal 8:45'),
+  (image: 'assets/images/mosques/mosque_7.jpg', verse: l10n.heroVerse23, ref: 'At-Tawbah 9:51'),
+  (image: 'assets/images/mosques/mosque_8.jpg', verse: l10n.heroVerse24, ref: 'Yunus 10:62'),
+  (image: 'assets/images/mosques/mosque_1.jpg', verse: l10n.heroVerse25, ref: 'Hud 11:88'),
+  (image: 'assets/images/mosques/mosque_2.jpg', verse: l10n.heroVerse26, ref: 'Yusuf 12:87'),
+  (image: 'assets/images/mosques/mosque_3.jpg', verse: l10n.heroVerse27, ref: 'Ar-Raʻd 13:28'),
+  (image: 'assets/images/mosques/mosque_4.jpg', verse: l10n.heroVerse28, ref: 'Ibrahim 14:7'),
+  (image: 'assets/images/mosques/mosque_5.jpg', verse: l10n.heroVerse29, ref: 'Al-Hijr 15:99'),
+  (image: 'assets/images/mosques/mosque_6.jpg', verse: l10n.heroVerse30, ref: 'An-Nahl 16:128'),
 ];
 
 class HeroCard extends StatefulWidget {
@@ -112,20 +130,23 @@ class _HeroCardState extends State<HeroCard> {
                 ),
               ),
 
-              // Bottom gradient for text legibility
+              // Bottom gradient for text legibility — covers the bottom 60%
+              // of the 230px card, transparent at its top fading to black
+              // 0.75 at the bottom edge, so the verse stays readable over
+              // even the brightest photos.
               Positioned(
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: 110,
+                height: 138,
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
                       colors: [
-                        Colors.black.withValues(alpha: 0.68),
                         Colors.transparent,
+                        Colors.black.withValues(alpha: 0.75),
                       ],
                     ),
                   ),

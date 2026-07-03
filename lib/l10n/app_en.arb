@@ -3637,5 +3637,65 @@
   "noSavedNames": "No saved names yet",
   "@noSavedNames": {
     "description": "Empty state on the Saved Names screen"
+  },
+  "heroVerse16": "Our Lord, do not impose blame upon us if we forget or err.",
+  "@heroVerse16": {
+    "description": "Hero card rotating Quran verse (Al-Baqarah 2:286)"
+  },
+  "heroVerse17": "Sufficient for us is Allah, and He is the best Disposer of affairs.",
+  "@heroVerse17": {
+    "description": "Hero card rotating Quran verse (Ali 'Imran 3:173)"
+  },
+  "heroVerse18": "O you who believe, believe in Allah and His Messenger.",
+  "@heroVerse18": {
+    "description": "Hero card rotating Quran verse (An-Nisa 4:136)"
+  },
+  "heroVerse19": "O you who believe, be mindful of Allah and seek the means of nearness to Him.",
+  "@heroVerse19": {
+    "description": "Hero card rotating Quran verse (Al-Ma'idah 5:35)"
+  },
+  "heroVerse20": "Indeed, my prayer, my sacrifice, my living and my dying are for Allah, Lord of the worlds.",
+  "@heroVerse20": {
+    "description": "Hero card rotating Quran verse (Al-An'am 6:162)"
+  },
+  "heroVerse21": "Decree for us good in this world and in the Hereafter; we have turned back to You.",
+  "@heroVerse21": {
+    "description": "Hero card rotating Quran verse (Al-A'raf 7:156)"
+  },
+  "heroVerse22": "Remember Allah often, so that you may be successful.",
+  "@heroVerse22": {
+    "description": "Hero card rotating Quran verse (Al-Anfal 8:45)"
+  },
+  "heroVerse23": "Nothing will befall us except what Allah has decreed for us; He is our Protector.",
+  "@heroVerse23": {
+    "description": "Hero card rotating Quran verse (At-Tawbah 9:51)"
+  },
+  "heroVerse24": "Indeed, the friends of Allah — no fear will there be concerning them, nor will they grieve.",
+  "@heroVerse24": {
+    "description": "Hero card rotating Quran verse (Yunus 10:62)"
+  },
+  "heroVerse25": "My success is only through Allah; upon Him I rely, and to Him I turn.",
+  "@heroVerse25": {
+    "description": "Hero card rotating Quran verse (Hud 11:88)"
+  },
+  "heroVerse26": "Do not despair of the mercy of Allah.",
+  "@heroVerse26": {
+    "description": "Hero card rotating Quran verse (Yusuf 12:87)"
+  },
+  "heroVerse27": "Those who believe and whose hearts find rest in the remembrance of Allah.",
+  "@heroVerse27": {
+    "description": "Hero card rotating Quran verse (Ar-Ra'd 13:28)"
+  },
+  "heroVerse28": "And when your Lord proclaimed: If you give thanks, I will surely give you more.",
+  "@heroVerse28": {
+    "description": "Hero card rotating Quran verse (Ibrahim 14:7)"
+  },
+  "heroVerse29": "And worship your Lord until there comes to you the certainty.",
+  "@heroVerse29": {
+    "description": "Hero card rotating Quran verse (Al-Hijr 15:99)"
+  },
+  "heroVerse30": "Indeed, Allah is with those who fear Him and those who do good.",
+  "@heroVerse30": {
+    "description": "Hero card rotating Quran verse (An-Nahl 16:128)"
   }
 }

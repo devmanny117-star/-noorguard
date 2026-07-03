@@ -2915,4 +2915,60 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get noSavedNames => 'ابھی کوئی محفوظ نام نہیں';
+
+  @override
+  String get heroVerse16 =>
+      'اے ہمارے رب! اگر ہم بھول جائیں یا خطا کریں تو ہماری گرفت نہ فرما۔';
+
+  @override
+  String get heroVerse17 => 'ہمیں اللہ کافی ہے اور وہ بہترین کارساز ہے۔';
+
+  @override
+  String get heroVerse18 => 'اے ایمان والو! اللہ اور اس کے رسول پر ایمان لاؤ۔';
+
+  @override
+  String get heroVerse19 =>
+      'اے ایمان والو! اللہ سے ڈرو اور اس کا قرب تلاش کرو۔';
+
+  @override
+  String get heroVerse20 =>
+      'بیشک میری نماز، میری قربانی، میرا جینا اور میرا مرنا سب اللہ رب العالمین کے لیے ہے۔';
+
+  @override
+  String get heroVerse21 =>
+      'ہمارے لیے اس دنیا میں بھی بھلائی لکھ دے اور آخرت میں بھی، ہم تیری طرف رجوع کرتے ہیں۔';
+
+  @override
+  String get heroVerse22 => 'اللہ کو کثرت سے یاد کرو تاکہ تم کامیاب ہو جاؤ۔';
+
+  @override
+  String get heroVerse23 =>
+      'ہمیں ہرگز کچھ نہیں پہنچے گا مگر وہی جو اللہ نے ہمارے لیے لکھ دیا ہے، وہی ہمارا مولیٰ ہے۔';
+
+  @override
+  String get heroVerse24 =>
+      'سن لو! اللہ کے دوستوں کو نہ کوئی خوف ہوگا اور نہ وہ غمگین ہوں گے۔';
+
+  @override
+  String get heroVerse25 =>
+      'میری توفیق صرف اللہ ہی سے ہے، اسی پر میں نے بھروسا کیا اور اسی کی طرف رجوع کرتا ہوں۔';
+
+  @override
+  String get heroVerse26 => 'اللہ کی رحمت سے مایوس نہ ہو۔';
+
+  @override
+  String get heroVerse27 =>
+      'وہ لوگ جو ایمان لائے اور ان کے دل اللہ کے ذکر سے مطمئن ہوتے ہیں۔';
+
+  @override
+  String get heroVerse28 =>
+      'اور جب تمہارے رب نے اعلان فرمایا: اگر تم شکر کرو گے تو میں تمہیں اور زیادہ دوں گا۔';
+
+  @override
+  String get heroVerse29 =>
+      'اور اپنے رب کی عبادت کرتے رہو یہاں تک کہ تمہیں یقین آ جائے۔';
+
+  @override
+  String get heroVerse30 =>
+      'بیشک اللہ ان کے ساتھ ہے جو تقویٰ اختیار کرتے ہیں اور جو نیکی کرتے ہیں۔';
 }

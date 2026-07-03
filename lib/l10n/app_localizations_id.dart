@@ -2939,4 +2939,63 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get noSavedNames => 'Belum ada nama tersimpan';
+
+  @override
+  String get heroVerse16 =>
+      'Ya Tuhan kami, janganlah Engkau hukum kami jika kami lupa atau bersalah.';
+
+  @override
+  String get heroVerse17 =>
+      'Cukuplah Allah bagi kami, dan Dialah sebaik-baik Pelindung.';
+
+  @override
+  String get heroVerse18 =>
+      'Wahai orang-orang yang beriman, berimanlah kepada Allah dan Rasul-Nya.';
+
+  @override
+  String get heroVerse19 =>
+      'Wahai orang-orang yang beriman, bertakwalah kepada Allah dan carilah jalan mendekatkan diri kepada-Nya.';
+
+  @override
+  String get heroVerse20 =>
+      'Sesungguhnya salatku, ibadahku, hidupku dan matiku hanyalah untuk Allah, Tuhan seluruh alam.';
+
+  @override
+  String get heroVerse21 =>
+      'Tetapkanlah untuk kami kebaikan di dunia ini dan di akhirat; sesungguhnya kami kembali kepada-Mu.';
+
+  @override
+  String get heroVerse22 =>
+      'Ingatlah Allah sebanyak-banyaknya agar kamu beruntung.';
+
+  @override
+  String get heroVerse23 =>
+      'Tidak akan menimpa kami kecuali apa yang telah Allah tetapkan bagi kami; Dialah Pelindung kami.';
+
+  @override
+  String get heroVerse24 =>
+      'Ingatlah, sesungguhnya para wali Allah itu tidak ada rasa takut pada mereka dan mereka tidak bersedih hati.';
+
+  @override
+  String get heroVerse25 =>
+      'Keberhasilanku hanyalah dengan pertolongan Allah; kepada-Nya aku bertawakal dan kepada-Nya aku kembali.';
+
+  @override
+  String get heroVerse26 => 'Janganlah kamu berputus asa dari rahmat Allah.';
+
+  @override
+  String get heroVerse27 =>
+      'Orang-orang yang beriman dan hati mereka menjadi tenteram dengan mengingat Allah.';
+
+  @override
+  String get heroVerse28 =>
+      'Dan ingatlah ketika Tuhanmu memaklumkan: Jika kamu bersyukur, pasti Aku akan menambah nikmat kepadamu.';
+
+  @override
+  String get heroVerse29 =>
+      'Dan sembahlah Tuhanmu sampai datang kepadamu yang diyakini.';
+
+  @override
+  String get heroVerse30 =>
+      'Sesungguhnya Allah beserta orang-orang yang bertakwa dan orang-orang yang berbuat kebaikan.';
 }

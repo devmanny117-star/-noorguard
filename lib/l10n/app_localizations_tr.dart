@@ -2925,4 +2925,59 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get noSavedNames => 'Henüz kaydedilmiş isim yok';
+
+  @override
+  String get heroVerse16 =>
+      'Rabbimiz! Unutur veya hata edersek bizi sorumlu tutma.';
+
+  @override
+  String get heroVerse17 => 'Allah bize yeter, O ne güzel vekildir.';
+
+  @override
+  String get heroVerse18 => 'Ey iman edenler! Allah\'a ve Resûlüne iman edin.';
+
+  @override
+  String get heroVerse19 =>
+      'Ey iman edenler! Allah\'tan korkun ve O\'na yaklaşmaya vesile arayın.';
+
+  @override
+  String get heroVerse20 =>
+      'Şüphesiz namazım, ibadetim, hayatım ve ölümüm âlemlerin Rabbi Allah içindir.';
+
+  @override
+  String get heroVerse21 =>
+      'Bize bu dünyada da ahirette de iyilik yaz; şüphesiz biz Sana yöneldik.';
+
+  @override
+  String get heroVerse22 => 'Allah\'ı çokça anın ki kurtuluşa eresiniz.';
+
+  @override
+  String get heroVerse23 =>
+      'Bize ancak Allah\'ın bizim için yazdığı isabet eder; O bizim Mevlâmızdır.';
+
+  @override
+  String get heroVerse24 =>
+      'Bilesiniz ki Allah\'ın dostlarına korku yoktur; onlar üzülmeyeceklerdir.';
+
+  @override
+  String get heroVerse25 =>
+      'Başarım ancak Allah iledir; yalnız O\'na tevekkül ettim ve yalnız O\'na yönelirim.';
+
+  @override
+  String get heroVerse26 => 'Allah\'ın rahmetinden ümit kesmeyin.';
+
+  @override
+  String get heroVerse27 =>
+      'Onlar iman etmiş ve kalpleri Allah\'ın zikriyle huzura kavuşmuş olanlardır.';
+
+  @override
+  String get heroVerse28 =>
+      'Hani Rabbiniz şöyle bildirmişti: Şükrederseniz elbette size daha fazlasını veririm.';
+
+  @override
+  String get heroVerse29 => 'Sana yakîn gelinceye kadar Rabbine ibadet et.';
+
+  @override
+  String get heroVerse30 =>
+      'Şüphesiz Allah, takva sahipleriyle ve iyilik edenlerle beraberdir.';
 }

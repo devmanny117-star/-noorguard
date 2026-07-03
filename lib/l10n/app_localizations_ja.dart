@@ -2821,4 +2821,49 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noSavedNames => '保存した御名はまだありません';
+
+  @override
+  String get heroVerse16 => '我らの主よ、私たちが忘れたり過ちを犯したりしても、咎めないでください。';
+
+  @override
+  String get heroVerse17 => 'アッラーは私たちに十分な方。何と優れた守護者であろう。';
+
+  @override
+  String get heroVerse18 => '信仰する者たちよ、アッラーとその使徒を信じなさい。';
+
+  @override
+  String get heroVerse19 => '信仰する者たちよ、アッラーを畏れ、彼に近づく道を求めなさい。';
+
+  @override
+  String get heroVerse20 => 'まことに私の礼拝も犠牲も、生も死も、万有の主アッラーのためのもの。';
+
+  @override
+  String get heroVerse21 => '現世と来世において私たちに善を定めてください。私たちはあなたに立ち返りました。';
+
+  @override
+  String get heroVerse22 => 'アッラーを多く念じなさい。そうすればあなたたちは成功するであろう。';
+
+  @override
+  String get heroVerse23 => 'アッラーが私たちに定められたこと以外、何も私たちに降りかからない。彼こそ私たちの守護者。';
+
+  @override
+  String get heroVerse24 => 'まことに、アッラーの友には恐れもなく、悲しむこともない。';
+
+  @override
+  String get heroVerse25 => '私の成功はただアッラーによるもの。彼に頼り、彼にこそ立ち返る。';
+
+  @override
+  String get heroVerse26 => 'アッラーの慈悲に絶望してはならない。';
+
+  @override
+  String get heroVerse27 => '信仰し、アッラーを念じることで心の安らぎを得る者たち。';
+
+  @override
+  String get heroVerse28 => 'あなたたちの主が宣言されたとき：感謝するなら、必ずもっと多くを与えよう。';
+
+  @override
+  String get heroVerse29 => '確実なものが訪れるまで、あなたの主を崇拝しなさい。';
+
+  @override
+  String get heroVerse30 => 'まことにアッラーは、主を畏れる者と善を行う者と共におられる。';
 }

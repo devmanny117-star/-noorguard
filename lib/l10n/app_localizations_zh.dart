@@ -2790,4 +2790,49 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noSavedNames => '暂无已保存的尊名';
+
+  @override
+  String get heroVerse16 => '我们的主啊，如果我们遗忘或错误，求你不要责备我们。';
+
+  @override
+  String get heroVerse17 => '真主对我们已足够，他是最好的监护者。';
+
+  @override
+  String get heroVerse18 => '信道的人们啊！你们当确信真主和他的使者。';
+
+  @override
+  String get heroVerse19 => '信道的人们啊！你们当敬畏真主，当寻求亲近他的途径。';
+
+  @override
+  String get heroVerse20 => '我的礼拜、我的牺牲、我的生活与我的死亡，的确都是为了真主——众世界的主。';
+
+  @override
+  String get heroVerse21 => '求你在今世和后世为我们注定幸福，我们确已归依你了。';
+
+  @override
+  String get heroVerse22 => '你们当多多记念真主，以便你们成功。';
+
+  @override
+  String get heroVerse23 => '我们只遭遇真主为我们注定的事，他是我们的保护者。';
+
+  @override
+  String get heroVerse24 => '真的，真主的朋友们将来没有恐惧，也不忧愁。';
+
+  @override
+  String get heroVerse25 => '我的成功全凭真主的援助，我只信托他，只归依他。';
+
+  @override
+  String get heroVerse26 => '你们不要绝望于真主的慈悯。';
+
+  @override
+  String get heroVerse27 => '他们信道，他们的心因记念真主而安宁。';
+
+  @override
+  String get heroVerse28 => '当时你们的主宣布说：如果你们感谢，我誓必对你们恩上加恩。';
+
+  @override
+  String get heroVerse29 => '你当崇拜你的主，直到那确定的时刻来临。';
+
+  @override
+  String get heroVerse30 => '真主确实与敬畏他的人和行善的人同在。';
 }

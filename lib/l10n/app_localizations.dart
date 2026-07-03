@@ -5405,6 +5405,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No saved names yet'**
   String get noSavedNames;
+
+  /// Hero card rotating Quran verse (Al-Baqarah 2:286)
+  ///
+  /// In en, this message translates to:
+  /// **'Our Lord, do not impose blame upon us if we forget or err.'**
+  String get heroVerse16;
+
+  /// Hero card rotating Quran verse (Ali 'Imran 3:173)
+  ///
+  /// In en, this message translates to:
+  /// **'Sufficient for us is Allah, and He is the best Disposer of affairs.'**
+  String get heroVerse17;
+
+  /// Hero card rotating Quran verse (An-Nisa 4:136)
+  ///
+  /// In en, this message translates to:
+  /// **'O you who believe, believe in Allah and His Messenger.'**
+  String get heroVerse18;
+
+  /// Hero card rotating Quran verse (Al-Ma'idah 5:35)
+  ///
+  /// In en, this message translates to:
+  /// **'O you who believe, be mindful of Allah and seek the means of nearness to Him.'**
+  String get heroVerse19;
+
+  /// Hero card rotating Quran verse (Al-An'am 6:162)
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, my prayer, my sacrifice, my living and my dying are for Allah, Lord of the worlds.'**
+  String get heroVerse20;
+
+  /// Hero card rotating Quran verse (Al-A'raf 7:156)
+  ///
+  /// In en, this message translates to:
+  /// **'Decree for us good in this world and in the Hereafter; we have turned back to You.'**
+  String get heroVerse21;
+
+  /// Hero card rotating Quran verse (Al-Anfal 8:45)
+  ///
+  /// In en, this message translates to:
+  /// **'Remember Allah often, so that you may be successful.'**
+  String get heroVerse22;
+
+  /// Hero card rotating Quran verse (At-Tawbah 9:51)
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing will befall us except what Allah has decreed for us; He is our Protector.'**
+  String get heroVerse23;
+
+  /// Hero card rotating Quran verse (Yunus 10:62)
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, the friends of Allah — no fear will there be concerning them, nor will they grieve.'**
+  String get heroVerse24;
+
+  /// Hero card rotating Quran verse (Hud 11:88)
+  ///
+  /// In en, this message translates to:
+  /// **'My success is only through Allah; upon Him I rely, and to Him I turn.'**
+  String get heroVerse25;
+
+  /// Hero card rotating Quran verse (Yusuf 12:87)
+  ///
+  /// In en, this message translates to:
+  /// **'Do not despair of the mercy of Allah.'**
+  String get heroVerse26;
+
+  /// Hero card rotating Quran verse (Ar-Ra'd 13:28)
+  ///
+  /// In en, this message translates to:
+  /// **'Those who believe and whose hearts find rest in the remembrance of Allah.'**
+  String get heroVerse27;
+
+  /// Hero card rotating Quran verse (Ibrahim 14:7)
+  ///
+  /// In en, this message translates to:
+  /// **'And when your Lord proclaimed: If you give thanks, I will surely give you more.'**
+  String get heroVerse28;
+
+  /// Hero card rotating Quran verse (Al-Hijr 15:99)
+  ///
+  /// In en, this message translates to:
+  /// **'And worship your Lord until there comes to you the certainty.'**
+  String get heroVerse29;
+
+  /// Hero card rotating Quran verse (An-Nahl 16:128)
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, Allah is with those who fear Him and those who do good.'**
+  String get heroVerse30;
 }
 
 class _AppLocalizationsDelegate

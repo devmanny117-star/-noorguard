@@ -2957,4 +2957,62 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get noSavedNames => 'Aucun nom enregistré pour l\'instant';
+
+  @override
+  String get heroVerse16 =>
+      'Notre Seigneur, ne nous blâme pas si nous oublions ou si nous nous trompons.';
+
+  @override
+  String get heroVerse17 => 'Allah nous suffit ; quel excellent Garant !';
+
+  @override
+  String get heroVerse18 =>
+      'Ô vous qui croyez, croyez en Allah et en Son Messager.';
+
+  @override
+  String get heroVerse19 =>
+      'Ô vous qui croyez, craignez Allah et cherchez le moyen de vous rapprocher de Lui.';
+
+  @override
+  String get heroVerse20 =>
+      'En vérité, ma prière, mon sacrifice, ma vie et ma mort appartiennent à Allah, Seigneur des mondes.';
+
+  @override
+  String get heroVerse21 =>
+      'Prescris pour nous le bien ici-bas et dans l\'au-delà ; vers Toi nous sommes revenus.';
+
+  @override
+  String get heroVerse22 =>
+      'Invoquez beaucoup Allah afin que vous réussissiez.';
+
+  @override
+  String get heroVerse23 =>
+      'Rien ne nous atteindra, hormis ce qu\'Allah a décrété pour nous ; Il est notre Protecteur.';
+
+  @override
+  String get heroVerse24 =>
+      'En vérité, les alliés d\'Allah n\'éprouveront aucune crainte et ne seront point affligés.';
+
+  @override
+  String get heroVerse25 =>
+      'Ma réussite ne vient que d\'Allah ; en Lui je place ma confiance et vers Lui je reviens.';
+
+  @override
+  String get heroVerse26 => 'Ne désespérez pas de la miséricorde d\'Allah.';
+
+  @override
+  String get heroVerse27 =>
+      'Ceux qui croient et dont les cœurs s\'apaisent au souvenir d\'Allah.';
+
+  @override
+  String get heroVerse28 =>
+      'Et lorsque votre Seigneur proclama : Si vous êtes reconnaissants, Je vous accorderai davantage.';
+
+  @override
+  String get heroVerse29 =>
+      'Et adore ton Seigneur jusqu\'à ce que te vienne la certitude.';
+
+  @override
+  String get heroVerse30 =>
+      'En vérité, Allah est avec ceux qui Le craignent et ceux qui font le bien.';
 }
