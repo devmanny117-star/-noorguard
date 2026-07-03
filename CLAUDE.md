@@ -244,6 +244,7 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 - **Notification toggle:** must gate ALL layers — Dart + native Android + foreground service
 - **iOS HomeWidget:** all calls guarded with `Platform.isAndroid`
 - **Quran search:** uses `QuranFullIndex` with 6,236 ayahs, synonym expansion, 16 languages
+- **Revert Corner banner subtitle:** wraps to 2 lines at 12px (was 1-line ellipsis) in `feature_grid.dart`; card's fixed 140px height fits worst case (2-line title + 2-line subtitle)
 
 ---
 
@@ -259,16 +260,20 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 - **99 Names descriptions** — all 16 languages in `data/asma_explanations.dart`
 - **Share buttons** on Duas, Quran reader, and 99 Names screens
 - **Gold borders** on all Android home screen widgets
+- **Noor Guard Live notification** (July 2, 2026) — the keep-alive foreground notification (`PrayerForegroundService.kt`) upgraded into a rich persistent lock-screen notification: title "next prayer • time", countdown subtitle, expanded BigTextStyle with gold divider + rotating daily content (5-day cycle: Ayah → Dua → Glossary Word → Name of Allah → Hadith, Sunni sources). Channel `noor_guard_live` (LOW, silent, public lock-screen visibility; old `prayer_keep_alive` channel deleted). Dart side `services/live_notification_service.dart` writes a 7-day localized payload to SharedPreferences (`live_notif_payload`); native self-refreshes every 30 min and at prayer-time boundaries, rolls to tomorrow's Fajr overnight. New monochrome status-bar icon `drawable/ic_notif_crescent.xml`. Also added the missing Persian ('fa') translations to all 9 duas in `models/dua_model.dart`, and exposed glossary terms read-only via `glossaryTermAt()` in `islamic_glossary_screen.dart`
+- **Hero card upgrades** (July 2, 2026) — bottom gradient now covers bottom 60% (transparent → black 0.75) for verse legibility; verse deck doubled from 15 to 30 slides (`heroVerse16`–`heroVerse30` in all 16 ARB files; 4 refs that already existed use different excerpts of the same verse so no text repeats)
+- **Islamic Calendar premium redesign** (July 2, 2026) — `screens/islamic_calendar_screen.dart` rebuilt as a fixed dark-navy/gold surface in both themes: live Hijri date hero (computed via `HijriDate.fromGregorian`, no longer hardcoded) with Arabic date + geometric star pattern, horizontal Hijri month strip with today gold-highlighted and auto-centered (tabular 29/30-day month lengths), gold-accent event cards with "NEXT" badge, diamond ornament (◆) section headers. Upcoming section now before Past. Fully RTL-safe (directional edges/borders); no new l10n keys needed
+- **Kotlin string localization** (July 2, 2026) — `PrayerForegroundService.kt` fallback strings moved to Android resources (`keep_alive_title`, `keep_alive_text`, `live_channel_name`) in `res/values/strings.xml` + all 15 language folders (`values-fa/` newly created), reusing the exact ARB translations. Caveat: Android resources follow the device language, not the in-app language — acceptable since these show only before Dart pushes its localized strings
 
 ---
 
 ## Remaining Launch Items
 
-- [ ] Islamic Calendar premium redesign (in progress C2)
+- [x] Islamic Calendar premium redesign (done July 2, 2026 — deployed to Z Fold 7)
 - [ ] Focus Mode premium redesign
-- [ ] Full language spot check
+- [ ] Full language spot check (automated scan July 2, 2026 passed: no hardcoded English in Dart UI or Kotlin service strings; visual per-language pass still to do)
 - [ ] Learn Salah icon
-- [ ] Community Stories redesign
+- [ ] Community Stories redesign (WIP in working tree: `community_stories_screen.dart`, `our_stories_card.dart`, Firebase setup — uncommitted)
 - [ ] Full iPhone testing
 - [ ] Full Z Fold 7 testing
 - [ ] Store submission
