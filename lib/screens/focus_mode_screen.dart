@@ -9,6 +9,7 @@ import '../services/app_blocking_service.dart';
 import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
 import '../widgets/geometric_pattern_painter.dart';
+import '../widgets/hours_minutes_picker_dialog.dart';
 import '../l10n/app_localizations.dart';
 import 'installed_apps_picker_screen.dart';
 
@@ -286,60 +287,7 @@ class _FocusModeScreenState extends State<FocusModeScreen>
 
   Future<void> _selectCustomDuration() async {
     if (_isRunning) return;
-    final l10n = AppLocalizations.of(context)!;
-    final controller = TextEditingController();
-    final minutes = await showDialog<int>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: _kCard,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-          side: BorderSide(color: _kGold.withValues(alpha: 0.3)),
-        ),
-        title: Text(
-          l10n.customTimerMinutesTitle,
-          style: GoogleFonts.lato(
-            color: _kCream,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        content: TextField(
-          controller: controller,
-          keyboardType: TextInputType.number,
-          autofocus: true,
-          style: const TextStyle(color: _kCream),
-          decoration: InputDecoration(
-            hintText: l10n.customTimerHint,
-            hintStyle: TextStyle(color: _kCream.withValues(alpha: 0.4)),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: _kGold.withValues(alpha: 0.5)),
-            ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: _kGold),
-            ),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(l10n.cancel,
-                style:
-                    GoogleFonts.lato(color: _kCream.withValues(alpha: 0.6))),
-          ),
-          TextButton(
-            onPressed: () {
-              final value = int.tryParse(controller.text.trim());
-              if (value != null && value > 0) Navigator.pop(ctx, value);
-            },
-            child: Text(
-              l10n.start,
-              style:
-                  GoogleFonts.lato(color: _kGold, fontWeight: FontWeight.w700),
-            ),
-          ),
-        ],
-      ),
-    );
+    final minutes = await showHoursMinutesPickerDialog(context);
     if (minutes != null && mounted) {
       setState(() {
         _selectedMinutes = minutes;

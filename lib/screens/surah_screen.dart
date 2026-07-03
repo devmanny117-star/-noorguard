@@ -19,6 +19,7 @@ import '../services/share_helper.dart';
 import '../services/bookmark_service.dart';
 import '../services/tafsir_api_service.dart';
 import '../widgets/font_size_slider.dart';
+import '../widgets/hours_minutes_picker_dialog.dart';
 import 'saved_verses_screen.dart';
 import 'tafsir_screen.dart';
 
@@ -722,57 +723,11 @@ class _SurahScreenState extends State<SurahScreen> {
     );
   }
 
-  void _showCustomSleepDialog() {
-    final l10n = AppLocalizations.of(context)!;
-    final controller = TextEditingController();
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: _cardColor,
-        title: Text(
-          l10n.customTimerMinutesTitle,
-          style: GoogleFonts.lato(
-              color: Colors.white, fontWeight: FontWeight.w700),
-        ),
-        content: TextField(
-          controller: controller,
-          keyboardType: TextInputType.number,
-          autofocus: true,
-          style: const TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-            hintText: l10n.customTimerHint,
-            hintStyle: const TextStyle(color: Colors.white38),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: _gold.withValues(alpha: 0.5)),
-            ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: _gold),
-            ),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(l10n.cancel,
-                style: GoogleFonts.lato(color: Colors.white54)),
-          ),
-          TextButton(
-            onPressed: () {
-              final minutes = int.tryParse(controller.text.trim());
-              if (minutes != null && minutes > 0) {
-                _startSleepTimer(Duration(minutes: minutes));
-                Navigator.pop(ctx);
-              }
-            },
-            child: Text(
-              l10n.start,
-              style:
-                  GoogleFonts.lato(color: _gold, fontWeight: FontWeight.w700),
-            ),
-          ),
-        ],
-      ),
-    );
+  Future<void> _showCustomSleepDialog() async {
+    final minutes = await showHoursMinutesPickerDialog(context);
+    if (minutes != null && minutes > 0 && mounted) {
+      _startSleepTimer(Duration(minutes: minutes));
+    }
   }
 
   // ── Build ────────────────────────────────────────────────────────────────
