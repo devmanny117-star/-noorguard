@@ -221,6 +221,9 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 - No motivational filler phrases
 - **Build order is mandatory:** After every change, always run `flutter run -d chrome` first for visual inspection. Only run `flutter run -d RFCY71SEQZJ` (Z Fold 7) or `flutter run -d 00008150-00093840119B401C` (iPhone 17e) after Chrome review is approved by Manny.
 - Never deploy to a physical device without Chrome approval first.
+- Chrome first always before deploying to device
+- Never stack multiple `flutter run` commands — kill the existing one first, only one active at a time
+- Commit after every completed feature
 
 ---
 
@@ -241,6 +244,34 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 - **Notification toggle:** must gate ALL layers — Dart + native Android + foreground service
 - **iOS HomeWidget:** all calls guarded with `Platform.isAndroid`
 - **Quran search:** uses `QuranFullIndex` with 6,236 ayahs, synonym expansion, 16 languages
+
+---
+
+## New Features Built (June–July 2026)
+
+- **Share feature** (`widgets/share_card.dart`, `widgets/share_sheet.dart`, `services/share_helper.dart`) — share Ayah/Dua/Name/Hadith with branded card
+- **Bookmarks** (`services/bookmark_service.dart` + `screens/saved_duas_screen.dart`, `saved_verses_screen.dart`, `saved_names_screen.dart`) — saved duas, saved Quran verses, saved 99 Names; persists in SharedPreferences; gold bookmark header icons on Duas, Quran reader, and 99 Names screens
+- **Back to Basics screen** (`screens/new_muslim_hub_screen.dart`, `NewMuslimHubScreen`) — renamed from Revert Corner, 5 Pillars expandable
+- **Persistent notification** (`services/live_notification_service.dart`) — lock screen notification with rotating content
+- **Mode toggle button** — crescent moon icon switches between Regular and Beginner Mode
+- **Explore All Features modal** — premium bottom sheet on BeginnerHomeScreen
+- **BeginnerHomeScreen color fixes** — dark navy `#0D1B2A` cards hardcoded in both light and dark mode (Journey card, Beginner Toolbox, Explore All button); never use theme-dependent colors on these
+- **99 Names descriptions** — all 16 languages in `data/asma_explanations.dart`
+- **Share buttons** on Duas, Quran reader, and 99 Names screens
+- **Gold borders** on all Android home screen widgets
+
+---
+
+## Remaining Launch Items
+
+- [ ] Islamic Calendar premium redesign (in progress C2)
+- [ ] Focus Mode premium redesign
+- [ ] Full language spot check
+- [ ] Learn Salah icon
+- [ ] Community Stories redesign
+- [ ] Full iPhone testing
+- [ ] Full Z Fold 7 testing
+- [ ] Store submission
 
 ---
 
