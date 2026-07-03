@@ -1685,20 +1685,18 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
     required List<String> options,
     required String type,
   }) {
-    return SizedBox(
-      height: 54,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: options.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 8),
-        itemBuilder: (context, i) {
-          final data = options[i];
-          final selected = _avatarData == data;
-          return GestureDetector(
+    // Wrap instead of a horizontal ListView so every option is fully
+    // visible (no edge clipping, no hidden icons behind a scroll).
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: [
+        for (final data in options)
+          GestureDetector(
             onTap: () => setState(() => _avatarData = data),
             child: Container(
               padding: const EdgeInsets.all(2),
-              decoration: selected
+              decoration: _avatarData == data
                   ? BoxDecoration(
                       shape: BoxShape.circle,
                       boxShadow: [
@@ -1714,12 +1712,11 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
                 avatarData: data,
                 initials: '',
                 size: 48,
-                borderWidth: selected ? 2.5 : 1,
+                borderWidth: _avatarData == data ? 2.5 : 1,
               ),
             ),
-          );
-        },
-      ),
+          ),
+      ],
     );
   }
 
