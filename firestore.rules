@@ -1,0 +1,53 @@
+rules_version = '2';
+
+// Community Stories rules (no auth in v1 — the app uses a per-install
+// anonymous id). Manny moderates by editing `status` in the console; the
+// console (admin) bypasses these rules.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /stories/{storyId} {
+      // Anyone can read approved stories only.
+      allow read: if resource.data.status == 'approved';
+
+      // Anyone can submit a story, but it must arrive as a pending,
+      // non-featured document with sane field types and sizes.
+      allow create: if request.resource.data.status == 'pending'
+        && request.resource.data.featured == false
+        && request.resource.data.story is string
+        && request.resource.data.story.size() > 0
+        && request.resource.data.story.size() <= 5000
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 100
+        && request.resource.data.country is string
+        && request.resource.data.category in ['revert', 'born_muslim', 'returning'];
+
+      // Client updates may only touch the aggregate reaction/comment
+      // counters (the reaction transaction and comment counter).
+      allow update: if request.resource.data.diff(resource.data)
+          .affectedKeys().hasOnly(['reactions', 'commentCount']);
+
+      allow delete: if false;
+
+      match /userReactions/{userId} {
+        allow read: if true;
+        allow write: if request.resource.data.keys().hasOnly(['dua', 'heart']);
+      }
+
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if request.resource.data.comment is string
+          && request.resource.data.comment.size() > 0
+          && request.resource.data.comment.size() <= 500
+          && request.resource.data.name is string
+          && request.resource.data.name.size() <= 100;
+        allow update, delete: if false;
+      }
+    }
+
+    // Everything else: locked down.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

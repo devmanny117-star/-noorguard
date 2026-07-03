@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0594A3E69AC49914215B9B35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 118C968AFB24819DC712645D /* GoogleService-Info.plist */; };
 		08DEB93285DB831B0A3A9D26 /* adhan_indonesian.caf in Resources */ = {isa = PBXBuildFile; fileRef = E0201356AC406A89411704F2 /* adhan_indonesian.caf */; };
 		1389B38D1F6439579A76DCC3 /* adhan_turkish.caf in Resources */ = {isa = PBXBuildFile; fileRef = 716F05DADB240E7546B90FCD /* adhan_turkish.caf */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		118C968AFB24819DC712645D /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		2EF5D69340C9646AE7812245 /* adhan_pakistani.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_pakistani.caf; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				2B0CF585FD15C708104FAD87 /* Pods */,
 				1BC9BF842EC1A30A0DEC69A9 /* Frameworks */,
+				118C968AFB24819DC712645D /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -314,6 +317,7 @@
 				1389B38D1F6439579A76DCC3 /* adhan_turkish.caf in Resources */,
 				1AF65BE8B4C1597CBC119933 /* adhan_pakistani.caf in Resources */,
 				08DEB93285DB831B0A3A9D26 /* adhan_indonesian.caf in Resources */,
+				0594A3E69AC49914215B9B35 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
