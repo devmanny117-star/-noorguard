@@ -95,6 +95,15 @@ class CommunityStoriesService {
     });
   }
 
+  /// Live view of one story document — the full-screen detail view keeps
+  /// its reaction/comment counts current through this. Null once deleted.
+  Stream<CommunityStory?> storyById(String id) {
+    return _stories
+        .doc(id)
+        .snapshots()
+        .map((doc) => doc.exists ? CommunityStory.fromDoc(doc) : null);
+  }
+
   /// The current user's own pending submissions, newest first — shown only
   /// to them (matched by userId) so a new story doesn't just disappear
   /// into moderation. Equality-only filters: no composite index needed.

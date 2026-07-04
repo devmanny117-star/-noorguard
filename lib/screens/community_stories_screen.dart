@@ -13,6 +13,7 @@ import '../services/community_stories_service.dart';
 import '../services/share_helper.dart';
 import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/story_avatar.dart';
+import '../widgets/tasbih/tasbih_mosque_silhouette.dart';
 
 const _kBg = Color(0xFF0A1628);
 const _kNavy = Color(0xFF0D1B2A);
@@ -484,228 +485,235 @@ class _FeaturedStoryCard extends StatelessWidget {
     final name = storyDisplayName(l10n, story);
     final isMine = currentUserId != null && story.userId == currentUserId;
 
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFF0D2235),
-            Color(0xFF0A1628),
-            Color(0xFF0D1E30),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () => _openStoryDetail(context, service, story),
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF0D2235),
+              Color(0xFF0A1628),
+              Color(0xFF0D1E30),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: _kGold.withValues(alpha: 0.40)),
+          boxShadow: [
+            BoxShadow(
+              color: _kGold.withValues(alpha: 0.13),
+              blurRadius: 24,
+            ),
+            BoxShadow(
+              color: _kGold.withValues(alpha: 0.27),
+              blurRadius: 2,
+            ),
           ],
         ),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _kGold.withValues(alpha: 0.40)),
-        boxShadow: [
-          BoxShadow(
-            color: _kGold.withValues(alpha: 0.13),
-            blurRadius: 24,
-          ),
-          BoxShadow(
-            color: _kGold.withValues(alpha: 0.27),
-            blurRadius: 2,
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          // ── Background: chosen image, else geometric watermarks ─────
-          if (story.backgroundImage != null) ...[
-            Positioned.fill(
-              child: Image.asset(
-                story.backgroundImage!,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+        child: Stack(
+          children: [
+            // ── Background: chosen image, else geometric watermarks ─────
+            if (story.backgroundImage != null) ...[
+              Positioned.fill(
+                child: Image.asset(
+                  story.backgroundImage!,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                ),
               ),
-            ),
-            Positioned.fill(
-              child: Container(color: Colors.black.withValues(alpha: 0.45)),
-            ),
-          ] else ...[
-            const Positioned.fill(
-              child: IgnorePointer(
-                child: Center(
-                  child: Opacity(
-                    opacity: 0.04,
-                    child: SizedBox(
-                      width: 220,
-                      height: 220,
-                      child: CustomPaint(
-                        painter: _HexagonWatermarkPainter(color: _kGold),
+              Positioned.fill(
+                child: Container(color: Colors.black.withValues(alpha: 0.45)),
+              ),
+            ] else ...[
+              const Positioned.fill(
+                child: IgnorePointer(
+                  child: Center(
+                    child: Opacity(
+                      opacity: 0.04,
+                      child: SizedBox(
+                        width: 220,
+                        height: 220,
+                        child: CustomPaint(
+                          painter: _HexagonWatermarkPainter(color: _kGold),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const PositionedDirectional(
-              bottom: -18,
-              end: -14,
-              child: IgnorePointer(
-                child: Opacity(
-                  opacity: 0.06,
-                  child: SizedBox(
-                    width: 110,
-                    height: 110,
-                    child: CustomPaint(
-                      painter: _CrescentPainter(color: _kGold),
+              const PositionedDirectional(
+                bottom: -18,
+                end: -14,
+                child: IgnorePointer(
+                  child: Opacity(
+                    opacity: 0.06,
+                    child: SizedBox(
+                      width: 110,
+                      height: 110,
+                      child: CustomPaint(
+                        painter: _CrescentPainter(color: _kGold),
+                      ),
                     ),
                   ),
                 ),
+              ),
+            ],
+            // ── Content ─────────────────────────────────────────────────
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(18, 16, 18, 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        '✦ ${l10n.storiesFeaturedLabel.toUpperCase()}',
+                        style: GoogleFonts.lato(
+                          fontSize: 9,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 2,
+                          color: _kGold,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: AlignmentDirectional.centerStart,
+                              end: AlignmentDirectional.centerEnd,
+                              colors: [
+                                _kGold.withValues(alpha: 0.53),
+                                _kGold.withValues(alpha: 0.0),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      if (isMine) ...[
+                        const SizedBox(width: 8),
+                        _EditButton(
+                          onTap: () => _openEditSheet(context, service, story),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text('“', style: _quoteMarkStyle()),
+                  ),
+                  Text(
+                    story.story,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                    style: _storySerif(color: _kCream, fontSize: 15),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: Text('”', style: _quoteMarkStyle()),
+                  ),
+                  const SizedBox(height: 6),
+                  Container(
+                    height: 1,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          _kGold.withValues(alpha: 0.0),
+                          _kGold.withValues(alpha: 0.33),
+                          _kGold.withValues(alpha: 0.0),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: _kGold.withValues(alpha: 0.35),
+                              blurRadius: 10,
+                            ),
+                          ],
+                        ),
+                        child: Hero(
+                          tag: 'story-avatar-${story.id}',
+                          child: _AuthorAvatar(
+                            story: story,
+                            size: 38,
+                            borderWidth: 2,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.playfairDisplay(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: _kGold,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              '${story.countryFlag} ${story.country}',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.lato(
+                                fontSize: 11.5,
+                                color: _kCream.withValues(alpha: 0.6),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (story.shahadaDate != null) ...[
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: _kGold,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            l10n.storyShahadaDate('${story.shahadaDate!.year}'),
+                            style: GoogleFonts.lato(
+                              fontSize: 10.5,
+                              fontWeight: FontWeight.w800,
+                              color: _kBg,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  _ReactionsRow(
+                    story: story,
+                    service: service,
+                    saved: saved,
+                    onToggleSave: onToggleSave,
+                  ),
+                ],
               ),
             ),
           ],
-          // ── Content ─────────────────────────────────────────────────
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(18, 16, 18, 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      '✦ ${l10n.storiesFeaturedLabel.toUpperCase()}',
-                      style: GoogleFonts.lato(
-                        fontSize: 9,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 2,
-                        color: _kGold,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: AlignmentDirectional.centerStart,
-                            end: AlignmentDirectional.centerEnd,
-                            colors: [
-                              _kGold.withValues(alpha: 0.53),
-                              _kGold.withValues(alpha: 0.0),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    if (isMine) ...[
-                      const SizedBox(width: 8),
-                      _EditButton(
-                        onTap: () => _openEditSheet(context, service, story),
-                      ),
-                    ],
-                  ],
-                ),
-                const SizedBox(height: 6),
-                Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('“', style: _quoteMarkStyle()),
-                ),
-                Text(
-                  story.story,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                  style: _storySerif(color: _kCream, fontSize: 15),
-                ),
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Text('”', style: _quoteMarkStyle()),
-                ),
-                const SizedBox(height: 6),
-                Container(
-                  height: 1,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        _kGold.withValues(alpha: 0.0),
-                        _kGold.withValues(alpha: 0.33),
-                        _kGold.withValues(alpha: 0.0),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: _kGold.withValues(alpha: 0.35),
-                            blurRadius: 10,
-                          ),
-                        ],
-                      ),
-                      child: _AuthorAvatar(
-                        story: story,
-                        size: 38,
-                        borderWidth: 2,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.playfairDisplay(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w700,
-                              color: _kGold,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            '${story.countryFlag} ${story.country}',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.lato(
-                              fontSize: 11.5,
-                              color: _kCream.withValues(alpha: 0.6),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (story.shahadaDate != null) ...[
-                      const SizedBox(width: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
-                        decoration: BoxDecoration(
-                          color: _kGold,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          l10n.storyShahadaDate('${story.shahadaDate!.year}'),
-                          style: GoogleFonts.lato(
-                            fontSize: 10.5,
-                            fontWeight: FontWeight.w800,
-                            color: _kBg,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-                const SizedBox(height: 12),
-                _ReactionsRow(
-                  story: story,
-                  service: service,
-                  saved: saved,
-                  onToggleSave: onToggleSave,
-                ),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -746,176 +754,183 @@ class _StoryCardState extends State<_StoryCard> {
     final l10n = AppLocalizations.of(context)!;
     final story = widget.story;
 
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: _kCard,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: _kGold.withValues(alpha: 0.15)),
-      ),
-      child: Stack(
-        children: [
-          // Chosen background image with a dark overlay for readability;
-          // no image = plain card color (Bismillah placeholder look).
-          if (story.backgroundImage != null) ...[
-            Positioned.fill(
-              child: Image.asset(
-                story.backgroundImage!,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () => _openStoryDetail(context, widget.service, story),
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: _kCard,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: _kGold.withValues(alpha: 0.15)),
+        ),
+        child: Stack(
+          children: [
+            // Chosen background image with a dark overlay for readability;
+            // no image = plain card color (Bismillah placeholder look).
+            if (story.backgroundImage != null) ...[
+              Positioned.fill(
+                child: Image.asset(
+                  story.backgroundImage!,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                ),
               ),
+              Positioned.fill(
+                child: Container(color: Colors.black.withValues(alpha: 0.45)),
+              ),
+            ],
+            // Gold accent strip on the start edge.
+            PositionedDirectional(
+              start: 0,
+              top: 0,
+              bottom: 0,
+              child: Container(width: 3, color: _kGold),
             ),
-            Positioned.fill(
-              child: Container(color: Colors.black.withValues(alpha: 0.45)),
-            ),
-          ],
-          // Gold accent strip on the start edge.
-          PositionedDirectional(
-            start: 0,
-            top: 0,
-            bottom: 0,
-            child: Container(width: 3, color: _kGold),
-          ),
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(19, 14, 16, 14),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // ── Category badge + timestamp ──────────────────────────
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: _kGold.withValues(alpha: 0.14),
-                        borderRadius: BorderRadius.circular(20),
-                        border:
-                            Border.all(color: _kGold.withValues(alpha: 0.55)),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(19, 14, 16, 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // ── Category badge + timestamp ──────────────────────────
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: _kGold.withValues(alpha: 0.14),
+                          borderRadius: BorderRadius.circular(20),
+                          border:
+                              Border.all(color: _kGold.withValues(alpha: 0.55)),
+                        ),
+                        child: Text(
+                          storyCategoryLabel(l10n, story.category),
+                          style: GoogleFonts.lato(
+                            fontSize: 10.5,
+                            fontWeight: FontWeight.w700,
+                            color: _kGold,
+                          ),
+                        ),
                       ),
+                      if (widget.pending) ...[
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: _kGold,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            l10n.storiesPendingReview,
+                            style: GoogleFonts.lato(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w800,
+                              color: _kBg,
+                            ),
+                          ),
+                        ),
+                      ],
+                      const Spacer(),
+                      if (story.dateSubmitted != null)
+                        Text(
+                          _formatMonthYear(context, story.dateSubmitted!),
+                          style: GoogleFonts.lato(
+                            fontSize: 11,
+                            color: _kCream.withValues(alpha: 0.5),
+                          ),
+                        ),
+                      if (widget.currentUserId != null &&
+                          story.userId == widget.currentUserId) ...[
+                        const SizedBox(width: 8),
+                        _EditButton(
+                          onTap: () =>
+                              _openEditSheet(context, widget.service, story),
+                        ),
+                      ],
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  // ── Author row ──────────────────────────────────────────
+                  Row(
+                    children: [
+                      Hero(
+                        tag: 'story-avatar-${story.id}',
+                        child: _AuthorAvatar(story: story, size: 40),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              storyDisplayName(l10n, story),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.playfairDisplay(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: _kGold,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              [
+                                '${story.countryFlag} ${story.country}',
+                                if (story.shahadaDate != null)
+                                  l10n.storyShahadaDate(
+                                      '${story.shahadaDate!.year}'),
+                              ].join(' · '),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.lato(
+                                fontSize: 11.5,
+                                color: _kCream.withValues(alpha: 0.6),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    story.story,
+                    maxLines: _expanded ? null : 3,
+                    overflow: _expanded ? null : TextOverflow.ellipsis,
+                    style: GoogleFonts.lato(
+                      fontSize: 13.5,
+                      color: _kCream.withValues(alpha: 0.88),
+                      height: 1.55,
+                    ),
+                  ),
+                  if (!_expanded && story.story.length > 140) ...[
+                    const SizedBox(height: 6),
+                    GestureDetector(
+                      onTap: () => setState(() => _expanded = true),
                       child: Text(
-                        storyCategoryLabel(l10n, story.category),
+                        l10n.storiesReadMore,
                         style: GoogleFonts.lato(
-                          fontSize: 10.5,
+                          fontSize: 12.5,
                           fontWeight: FontWeight.w700,
                           color: _kGold,
                         ),
                       ),
                     ),
-                    if (widget.pending) ...[
-                      const SizedBox(width: 6),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: _kGold,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          l10n.storiesPendingReview,
-                          style: GoogleFonts.lato(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w800,
-                            color: _kBg,
-                          ),
-                        ),
-                      ),
-                    ],
-                    const Spacer(),
-                    if (story.dateSubmitted != null)
-                      Text(
-                        _formatMonthYear(context, story.dateSubmitted!),
-                        style: GoogleFonts.lato(
-                          fontSize: 11,
-                          color: _kCream.withValues(alpha: 0.5),
-                        ),
-                      ),
-                    if (widget.currentUserId != null &&
-                        story.userId == widget.currentUserId) ...[
-                      const SizedBox(width: 8),
-                      _EditButton(
-                        onTap: () =>
-                            _openEditSheet(context, widget.service, story),
-                      ),
-                    ],
                   ],
-                ),
-                const SizedBox(height: 12),
-                // ── Author row ──────────────────────────────────────────
-                Row(
-                  children: [
-                    _AuthorAvatar(story: story, size: 40),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            storyDisplayName(l10n, story),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.playfairDisplay(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: _kGold,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            [
-                              '${story.countryFlag} ${story.country}',
-                              if (story.shahadaDate != null)
-                                l10n.storyShahadaDate(
-                                    '${story.shahadaDate!.year}'),
-                            ].join(' · '),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.lato(
-                              fontSize: 11.5,
-                              color: _kCream.withValues(alpha: 0.6),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  story.story,
-                  maxLines: _expanded ? null : 3,
-                  overflow: _expanded ? null : TextOverflow.ellipsis,
-                  style: GoogleFonts.lato(
-                    fontSize: 13.5,
-                    color: _kCream.withValues(alpha: 0.88),
-                    height: 1.55,
-                  ),
-                ),
-                if (!_expanded && story.story.length > 140) ...[
-                  const SizedBox(height: 6),
-                  GestureDetector(
-                    onTap: () => setState(() => _expanded = true),
-                    child: Text(
-                      l10n.storiesReadMore,
-                      style: GoogleFonts.lato(
-                        fontSize: 12.5,
-                        fontWeight: FontWeight.w700,
-                        color: _kGold,
-                      ),
-                    ),
+                  const SizedBox(height: 12),
+                  _ReactionsRow(
+                    story: story,
+                    service: widget.service,
+                    saved: widget.saved,
+                    onToggleSave: widget.onToggleSave,
                   ),
                 ],
-                const SizedBox(height: 12),
-                _ReactionsRow(
-                  story: story,
-                  service: widget.service,
-                  saved: widget.saved,
-                  onToggleSave: widget.onToggleSave,
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -2790,4 +2805,564 @@ class _CrescentPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_CrescentPainter old) => old.color != color;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FULL-SCREEN STORY DETAIL
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Pushes the full-screen reading view for one story (tap on any card).
+void _openStoryDetail(
+  BuildContext context,
+  CommunityStoriesService service,
+  CommunityStory story,
+) {
+  Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      builder: (_) =>
+          CommunityStoryDetailScreen(story: story, service: service),
+    ),
+  );
+}
+
+/// Full-screen story view: hero header (background image or mosque
+/// silhouette), author row, the complete story text with no truncation,
+/// reactions, and inline comments with a fixed input bar at the bottom.
+class CommunityStoryDetailScreen extends StatefulWidget {
+  final CommunityStory story;
+  final CommunityStoriesService service;
+
+  const CommunityStoryDetailScreen({
+    super.key,
+    required this.story,
+    required this.service,
+  });
+
+  @override
+  State<CommunityStoryDetailScreen> createState() =>
+      _CommunityStoryDetailScreenState();
+}
+
+class _CommunityStoryDetailScreenState
+    extends State<CommunityStoryDetailScreen> {
+  final _commentController = TextEditingController();
+  bool _sending = false;
+
+  @override
+  void dispose() {
+    _commentController.dispose();
+    super.dispose();
+  }
+
+  /// Same behavior as the comments bottom sheet: remembered author name
+  /// with Anonymous fallback, error snackbar on failure.
+  Future<void> _sendComment() async {
+    final l10n = AppLocalizations.of(context)!;
+    final text = _commentController.text.trim();
+    if (text.isEmpty || _sending) return;
+    setState(() => _sending = true);
+    try {
+      final savedName = await CommunityStoriesService.savedAuthorName();
+      await widget.service.addComment(
+        storyId: widget.story.id,
+        name: savedName.isEmpty ? l10n.storiesAnonymous : savedName,
+        comment: text,
+      );
+      _commentController.clear();
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.storiesSubmitError)),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _sending = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Scaffold(
+      backgroundColor: _kBg,
+      body: StreamBuilder<CommunityStory?>(
+        // Live story document so reaction/comment counts stay current;
+        // the passed-in story renders instantly while it connects.
+        stream: CommunityStoriesService.firebaseAvailable
+            ? widget.service.storyById(widget.story.id)
+            : null,
+        initialData: widget.story,
+        builder: (context, snap) {
+          final story = snap.data ?? widget.story;
+          return Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  physics: const BouncingScrollPhysics(),
+                  children: [
+                    _DetailHeroHeader(story: story),
+                    _DetailAuthorSection(story: story),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 14, 20, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('“', style: _quoteMarkStyle()),
+                          Text(
+                            story.story,
+                            style: _storySerif(color: _kCream, fontSize: 14)
+                                .copyWith(height: 1.85),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 18, 20, 0),
+                      child: StreamBuilder<UserReactions>(
+                        stream: CommunityStoriesService.firebaseAvailable
+                            ? widget.service.userReactions(story.id)
+                            : null,
+                        builder: (context, reactionSnap) {
+                          final mine =
+                              reactionSnap.data ?? const UserReactions();
+                          return Row(
+                            children: [
+                              _ReactionChip(
+                                emoji: '🤲',
+                                count: story.duaCount,
+                                active: mine.dua,
+                                onTap: () => widget.service
+                                    .toggleReaction(story.id, 'dua'),
+                              ),
+                              const SizedBox(width: 10),
+                              _ReactionChip(
+                                emoji: '❤️',
+                                count: story.heartCount,
+                                active: mine.heart,
+                                onTap: () => widget.service
+                                    .toggleReaction(story.id, 'heart'),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                    _DetailComments(story: story, service: widget.service),
+                    const SizedBox(height: 24),
+                  ],
+                ),
+              ),
+              _commentInputBar(l10n),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _commentInputBar(AppLocalizations l10n) {
+    return Container(
+      decoration: BoxDecoration(
+        color: _kCard,
+        border: Border(
+          top: BorderSide(color: _kGold.withValues(alpha: 0.25)),
+        ),
+      ),
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(16, 10, 16, 10),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _commentController,
+                  style: GoogleFonts.lato(fontSize: 13.5, color: _kCream),
+                  maxLength: 500,
+                  decoration: InputDecoration(
+                    counterText: '',
+                    hintText: l10n.storiesAddComment,
+                    hintStyle: GoogleFonts.lato(
+                      fontSize: 13,
+                      color: _kCream.withValues(alpha: 0.35),
+                    ),
+                    filled: true,
+                    fillColor: _kNavy,
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 14, vertical: 10),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(22),
+                      borderSide:
+                          BorderSide(color: _kGold.withValues(alpha: 0.35)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(22),
+                      borderSide: const BorderSide(color: _kGold),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              GestureDetector(
+                onTap: _sendComment,
+                child: Container(
+                  width: 42,
+                  height: 42,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _kGold,
+                  ),
+                  child: _sending
+                      ? const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(
+                            color: _kNavy,
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : const Icon(Icons.send_rounded, size: 18, color: _kNavy),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// ~260px hero header: chosen background image with a dark overlay, or the
+/// navy + geometric pattern + mosque silhouette fallback. Back and share
+/// buttons on top, category badge and timestamp along the bottom edge.
+class _DetailHeroHeader extends StatelessWidget {
+  final CommunityStory story;
+  const _DetailHeroHeader({required this.story});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final topInset = MediaQuery.of(context).padding.top;
+
+    return SizedBox(
+      height: 260 + topInset,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          if (story.backgroundImage != null) ...[
+            Image.asset(
+              story.backgroundImage!,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => const ColoredBox(color: _kNavy),
+            ),
+            ColoredBox(color: Colors.black.withValues(alpha: 0.40)),
+          ] else ...[
+            const ColoredBox(color: _kNavy),
+            const CustomPaint(
+              painter: GeometricPatternPainter(color: _kGold, alpha: 0.06),
+            ),
+            TasbihMosqueSilhouette(color: _kGold.withValues(alpha: 0.10)),
+          ],
+          // Bottom scrim so the badge and timestamp stay readable on any
+          // background image.
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: const [0.45, 1.0],
+                colors: [
+                  Colors.transparent,
+                  Colors.black.withValues(alpha: 0.55),
+                ],
+              ),
+            ),
+          ),
+          PositionedDirectional(
+            top: topInset + 8,
+            start: 12,
+            child: _HeroCircleButton(
+              icon: Icons.arrow_back_ios_new_rounded,
+              onTap: () => Navigator.of(context).maybePop(),
+            ),
+          ),
+          PositionedDirectional(
+            top: topInset + 8,
+            end: 12,
+            child: _HeroCircleButton(
+              icon: Icons.share_rounded,
+              onTap: () => shareStory(context, story),
+            ),
+          ),
+          PositionedDirectional(
+            bottom: 14,
+            start: 16,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              decoration: BoxDecoration(
+                color: _kGold.withValues(alpha: 0.16),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: _kGold.withValues(alpha: 0.6)),
+              ),
+              child: Text(
+                storyCategoryLabel(l10n, story.category),
+                style: GoogleFonts.lato(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: _kGold,
+                ),
+              ),
+            ),
+          ),
+          if (story.dateSubmitted != null)
+            PositionedDirectional(
+              bottom: 19,
+              end: 16,
+              child: Text(
+                _formatMonthYear(context, story.dateSubmitted!),
+                style: GoogleFonts.lato(
+                  fontSize: 11.5,
+                  color: _kCream.withValues(alpha: 0.75),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _HeroCircleButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onTap;
+  const _HeroCircleButton({required this.icon, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 38,
+        height: 38,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _kBg.withValues(alpha: 0.55),
+          border: Border.all(color: _kGold.withValues(alpha: 0.5)),
+        ),
+        child: Icon(icon, size: 16, color: _kGold),
+      ),
+    );
+  }
+}
+
+/// Author row: 48px avatar with gold border + glow (hero-animated from the
+/// tapped card), name in gold Playfair, flag + country, Shahada year badge.
+class _DetailAuthorSection extends StatelessWidget {
+  final CommunityStory story;
+  const _DetailAuthorSection({required this.story});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Padding(
+      padding: const EdgeInsetsDirectional.fromSTEB(20, 18, 20, 0),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: _kGold.withValues(alpha: 0.35),
+                  blurRadius: 12,
+                ),
+              ],
+            ),
+            child: Hero(
+              tag: 'story-avatar-${story.id}',
+              child: _AuthorAvatar(story: story, size: 48, borderWidth: 2),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  storyDisplayName(l10n, story),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: _kGold,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  '${story.countryFlag} ${story.country}',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.lato(
+                    fontSize: 12.5,
+                    color: _kCream.withValues(alpha: 0.65),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (story.shahadaDate != null) ...[
+            const SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: BoxDecoration(
+                color: _kGold,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                l10n.storyShahadaDate('${story.shahadaDate!.year}'),
+                style: GoogleFonts.lato(
+                  fontSize: 10.5,
+                  fontWeight: FontWeight.w800,
+                  color: _kBg,
+                ),
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// "✦ Comments (N)" header plus the live list of comment bubbles.
+class _DetailComments extends StatelessWidget {
+  final CommunityStory story;
+  final CommunityStoriesService service;
+  const _DetailComments({required this.story, required this.service});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Padding(
+      padding: const EdgeInsetsDirectional.fromSTEB(20, 26, 20, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '✦ ${l10n.storiesComments} (${story.commentCount})',
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: _kGold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          if (CommunityStoriesService.firebaseAvailable)
+            StreamBuilder<List<StoryComment>>(
+              stream: service.comments(story.id),
+              builder: (context, snap) {
+                if (!snap.hasData) {
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Center(
+                      child: CircularProgressIndicator(color: _kGold),
+                    ),
+                  );
+                }
+                final comments = snap.data!;
+                if (comments.isEmpty) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Text(
+                      l10n.storiesAddComment,
+                      style: GoogleFonts.lato(
+                        fontSize: 13,
+                        color: _kCream.withValues(alpha: 0.4),
+                      ),
+                    ),
+                  );
+                }
+                return Column(
+                  children: [
+                    for (final c in comments) ...[
+                      _CommentBubble(comment: c),
+                      const SizedBox(height: 10),
+                    ],
+                  ],
+                );
+              },
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CommentBubble extends StatelessWidget {
+  final StoryComment comment;
+  const _CommentBubble({required this.comment});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsetsDirectional.fromSTEB(14, 10, 14, 12),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [_kCard, _kNavy],
+        ),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: _kGold.withValues(alpha: 0.15)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  comment.name.isEmpty ? l10n.storiesAnonymous : comment.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.lato(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w700,
+                    color: _kGold,
+                  ),
+                ),
+              ),
+              if (comment.timestamp != null)
+                Text(
+                  DateFormat.yMMMd(
+                    Localizations.localeOf(context).toString(),
+                  ).format(comment.timestamp!),
+                  style: GoogleFonts.lato(
+                    fontSize: 10.5,
+                    color: _kCream.withValues(alpha: 0.4),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 5),
+          Text(
+            comment.comment,
+            style: GoogleFonts.lato(
+              fontSize: 13,
+              color: _kCream.withValues(alpha: 0.85),
+              height: 1.45,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
