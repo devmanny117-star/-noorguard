@@ -21,6 +21,7 @@ import 'app_blocking_screen.dart';
 import 'asma_ul_husna_screen.dart';
 import 'duas_screen.dart';
 import 'focus_mode_screen.dart';
+import 'home_screen.dart';
 import 'how_to_pray_screen.dart';
 import 'islamic_calendar_screen.dart';
 import 'islamic_glossary_screen.dart';
@@ -210,11 +211,12 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
       margin: const EdgeInsets.all(16),
       duration: const Duration(seconds: 2),
     ));
+    // Fall back to the regular HomeScreen when no callback was provided —
+    // otherwise the toggle saves the pref but never leaves this screen.
     final builder = widget.switchToHome;
-    if (builder == null) return;
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) => builder(),
+        pageBuilder: (_, __, ___) => builder?.call() ?? const HomeScreen(),
         transitionsBuilder: (_, animation, __, child) =>
             FadeTransition(opacity: animation, child: child),
         transitionDuration: const Duration(milliseconds: 400),

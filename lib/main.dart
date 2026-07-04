@@ -227,11 +227,7 @@ class _SplashScreenState extends State<SplashScreen>
       // most likely to be missing the Samsung-specific lock screen toggle.
       final beginnerMode = prefs.getBool('beginner_mode') ?? false;
       Widget next;
-      // Read a preview key that doesn't exist → defaults to true, forcing
-      // onboarding every launch on web while reviewing the new screens.
-      // Remove this line and the `||` below once preview is done.
-      final previewForceOnboarding = prefs.getBool('_preview') ?? true;
-      if (previewForceOnboarding || !onboardingComplete) {
+      if (!onboardingComplete) {
         next = const OnboardingScreen();
       } else if (!kIsWeb && Platform.isAndroid && !notificationSetupComplete) {
         next = const NotificationSetupScreen(isFirstLaunch: true);

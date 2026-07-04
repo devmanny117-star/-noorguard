@@ -54,13 +54,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     // handles the basic notification prompt inline, so users skip that screen.
     await prefs.setBool('notification_setup_complete', true);
     if (_userName.isNotEmpty) await prefs.setString('user_name', _userName);
-    await prefs.setBool('beginner_mode', _beginnerMode ?? false);
+    // Only overwrite the saved mode when the user actually picked one here;
+    // a re-run of onboarding must not silently reset an existing choice.
+    final isBeginner =
+        _beginnerMode ?? (prefs.getBool('beginner_mode') ?? false);
+    await prefs.setBool('beginner_mode', isBeginner);
     if (!mounted) return;
-    final isBeginner = _beginnerMode ?? false;
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, __, ___) =>
-            isBeginner ? const BeginnerHomeScreen() : const HomeScreen(),
+        pageBuilder: (_, __, ___) => isBeginner
+            ? BeginnerHomeScreen(switchToHome: () => const HomeScreen())
+            : const HomeScreen(),
         transitionsBuilder: (_, anim, __, child) =>
             FadeTransition(opacity: anim, child: child),
         transitionDuration: const Duration(milliseconds: 700),
