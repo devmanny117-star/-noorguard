@@ -243,8 +243,7 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
                         .where((s) =>
                             (_savedOnly
                                 ? _saved.contains(s.id)
-                                : (_filter == null ||
-                                    s.category == _filter)) &&
+                                : (_filter == null || s.category == _filter)) &&
                             s.id != featured?.id)
                         .toList();
                     return StreamBuilder<List<CommunityStory>>(
@@ -1787,7 +1786,9 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
     // so previously picked patterns keep rendering identically.
     final patternSeeds = _sheetUid == null
         ? const <String>[]
-        : [for (final i in [0, 2, 3, 4]) '$_sheetUid#$i'];
+        : [
+            for (final i in [0, 2, 3, 4]) '$_sheetUid#$i'
+          ];
 
     return [
       Wrap(
@@ -1917,8 +1918,8 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
               color: _kNavy,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: _kGold.withValues(
-                    alpha: focused ? 0.45 + 0.5 * t : 0.35),
+                color:
+                    _kGold.withValues(alpha: focused ? 0.45 + 0.5 * t : 0.35),
                 width: focused ? 1.6 : 1,
               ),
               boxShadow: focused
@@ -2095,403 +2096,413 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
-    return Container(
-      decoration: const BoxDecoration(
-        color: _kCard,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
-      ),
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom,
-      ),
-      child: SafeArea(
-        top: false,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  width: 36,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: _kGold.withValues(alpha: 0.35),
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 14),
-              Row(
-                children: [
-                  // iOS-style back chevron — confirms first if the form has
-                  // unsaved changes.
-                  GestureDetector(
-                    onTap: _onBackPressed,
-                    child: Container(
-                      width: 36,
-                      height: 36,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _kNavy,
-                        border:
-                            Border.all(color: _kGold.withValues(alpha: 0.35)),
-                      ),
-                      child: const Icon(Icons.arrow_back_ios_new_rounded,
-                          size: 16, color: _kGold),
+    // System back (Android button/gesture) goes through the same Save
+    // Draft / Discard / Keep Writing dialog as the header back button.
+    // _onBackPressed closes the sheet with Navigator.pop, which is
+    // imperative and ignores canPop.
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        _onBackPressed();
+      },
+      child: Container(
+        decoration: const BoxDecoration(
+          color: _kCard,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
+        ),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: SafeArea(
+          top: false,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Container(
+                    width: 36,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: _kGold.withValues(alpha: 0.35),
+                      borderRadius: BorderRadius.circular(2),
                     ),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Text(
-                          widget.editing != null
-                              ? l10n.storiesEditTitle
-                              : l10n.communityStoriesShareBtn,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: 19,
-                            fontWeight: FontWeight.w700,
-                            color: _kGold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  if (widget.editing == null) ...[
-                    if (_hasDraft) ...[
-                      Tooltip(
-                        message: l10n.storiesDeleteDraft,
-                        child: GestureDetector(
-                          onTap: _deleteDraft,
-                          child: Container(
-                            width: 36,
-                            height: 36,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: _kNavy,
-                              border: Border.all(
-                                color: const Color(0xFFE57373)
-                                    .withValues(alpha: 0.45),
-                              ),
-                            ),
-                            child: const Icon(Icons.delete_outline_rounded,
-                                size: 18, color: Color(0xFFE57373)),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                    ],
-                    GestureDetector(
-                      onTap: _saveDraft,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: _kGold,
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: Text(
-                          l10n.storiesSaveDraft,
-                          style: GoogleFonts.lato(
-                            fontSize: 11.5,
-                            fontWeight: FontWeight.w800,
-                            color: _kNavy,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ] else
-                    // Keeps the title centered when there are no end buttons.
-                    const SizedBox(width: 36),
-                ],
-              ),
-              const SizedBox(height: 18),
-              if (_showDraftBanner) ...[
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 6, 8),
-                  decoration: BoxDecoration(
-                    color: _kGold.withValues(alpha: 0.10),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: _kGold.withValues(alpha: 0.35)),
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.edit_note_rounded,
-                          size: 20, color: _kGold),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          l10n.storiesContinueDraft,
-                          style: GoogleFonts.lato(
-                            fontSize: 12.5,
-                            fontWeight: FontWeight.w700,
-                            color: _kCream,
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: _deleteDraft,
-                        style: TextButton.styleFrom(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 10),
-                          minimumSize: const Size(0, 32),
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        ),
-                        child: Text(
-                          l10n.storiesStartFresh,
-                          style: GoogleFonts.lato(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w800,
-                            color: _kGold,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
                 const SizedBox(height: 14),
-              ],
-              _label(l10n.storiesNameLabel.toUpperCase()),
-              const SizedBox(height: 8),
-              TextField(
-                controller: _nameController,
-                enabled: !_anonymous,
-                style: GoogleFonts.lato(fontSize: 14, color: _kCream),
-                onChanged: (_) => setState(() {}),
-                decoration: _fieldDecoration(l10n.storiesNameLabel),
-              ),
-              const SizedBox(height: 6),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 38,
-                    height: 30,
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Switch(
-                        value: _anonymous,
-                        activeThumbColor: _kGold,
-                        activeTrackColor: _kGold.withValues(alpha: 0.35),
-                        inactiveThumbColor: _kCream.withValues(alpha: 0.5),
-                        inactiveTrackColor: _kNavy,
-                        onChanged: (v) => setState(() => _anonymous = v),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  Text(
-                    l10n.storiesPostAnonymously,
-                    style: GoogleFonts.lato(
-                      fontSize: 12.5,
-                      color: _kCream.withValues(alpha: 0.75),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 14),
-              _label(l10n.storiesCountryLabel.toUpperCase()),
-              const SizedBox(height: 8),
-              TextField(
-                controller: _countryController,
-                style: GoogleFonts.lato(fontSize: 14, color: _kCream),
-                onChanged: (_) => setState(() => _country = null),
-                decoration:
-                    _fieldDecoration(l10n.storiesSearchCountryHint).copyWith(
-                  prefixIcon: const Icon(Icons.search_rounded,
-                      size: 18, color: _kGold),
-                  suffixIcon: _country != null
-                      ? const Icon(Icons.check_circle_rounded,
-                          size: 18, color: _kGold)
-                      : null,
-                ),
-              ),
-              ..._countrySuggestions(),
-              const SizedBox(height: 14),
-              _label(l10n.storiesCategoryLabel.toUpperCase()),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  for (final category in StoryCategory.values)
+                Row(
+                  children: [
+                    // iOS-style back chevron — confirms first if the form has
+                    // unsaved changes.
                     GestureDetector(
-                      onTap: () => setState(() => _category = category),
+                      onTap: _onBackPressed,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 7),
+                        width: 36,
+                        height: 36,
+                        alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: _category == category
-                              ? _kGold
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(
-                            color: _category == category
-                                ? _kGold
-                                : _kGold.withValues(alpha: 0.35),
-                          ),
+                          shape: BoxShape.circle,
+                          color: _kNavy,
+                          border:
+                              Border.all(color: _kGold.withValues(alpha: 0.35)),
                         ),
-                        child: Text(
-                          storyCategoryLabel(l10n, category),
-                          style: GoogleFonts.lato(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: _category == category
-                                ? _kNavy
-                                : _kCream.withValues(alpha: 0.75),
-                          ),
-                        ),
+                        child: const Icon(Icons.arrow_back_ios_new_rounded,
+                            size: 16, color: _kGold),
                       ),
                     ),
-                ],
-              ),
-              const SizedBox(height: 14),
-              _label(l10n.storiesShahadaDateLabel.toUpperCase()),
-              const SizedBox(height: 8),
-              GestureDetector(
-                onTap: _pickDate,
-                child: Container(
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                  decoration: BoxDecoration(
-                    color: _kNavy,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: _kGold.withValues(alpha: 0.35)),
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.calendar_month_rounded,
-                          size: 16, color: _kGold),
-                      const SizedBox(width: 8),
-                      Text(
-                        _shahadaDate == null
-                            ? l10n.storiesShahadaDateLabel
-                            : _formatMonthYear(context, _shahadaDate!),
-                        style: GoogleFonts.lato(
-                          fontSize: 13.5,
-                          color: _shahadaDate == null
-                              ? _kCream.withValues(alpha: 0.35)
-                              : _kCream,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 14),
-              _label(l10n.storiesYourStoryLabel.toUpperCase()),
-              const SizedBox(height: 8),
-              _cardEditor(l10n),
-              const SizedBox(height: 14),
-              _label(l10n.storiesChooseAvatar.toUpperCase()),
-              const SizedBox(height: 8),
-              ..._avatarPicker(l10n),
-              const SizedBox(height: 14),
-              _label(l10n.storiesChooseBackground.toUpperCase()),
-              const SizedBox(height: 8),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                // Explicit padding + no clip: without these the grid crops
-                // the last row (and the selected tile's glow) against the
-                // Submit button.
-                padding: const EdgeInsets.only(top: 2, bottom: 14),
-                clipBehavior: Clip.none,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 8,
-                  crossAxisSpacing: 8,
-                ),
-                itemCount: _storyBackgroundAssets.length + 1,
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return _BackgroundTile(
-                      selected: _background == null,
-                      onTap: () => setState(() => _background = null),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'بِسْمِ اللَّهِ',
-                            style: GoogleFonts.scheherazadeNew(
-                              fontSize: 13,
+                    Expanded(
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(
+                            widget.editing != null
+                                ? l10n.storiesEditTitle
+                                : l10n.communityStoriesShareBtn,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.playfairDisplay(
+                              fontSize: 19,
                               fontWeight: FontWeight.w700,
                               color: _kGold,
                             ),
                           ),
-                          const SizedBox(height: 2),
-                          Text(
-                            l10n.storiesBackgroundNone,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.lato(
-                              fontSize: 9.5,
-                              color: _kCream.withValues(alpha: 0.6),
+                        ),
+                      ),
+                    ),
+                    if (widget.editing == null) ...[
+                      if (_hasDraft) ...[
+                        Tooltip(
+                          message: l10n.storiesDeleteDraft,
+                          child: GestureDetector(
+                            onTap: _deleteDraft,
+                            child: Container(
+                              width: 36,
+                              height: 36,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: _kNavy,
+                                border: Border.all(
+                                  color: const Color(0xFFE57373)
+                                      .withValues(alpha: 0.45),
+                                ),
+                              ),
+                              child: const Icon(Icons.delete_outline_rounded,
+                                  size: 18, color: Color(0xFFE57373)),
                             ),
                           ),
-                        ],
-                      ),
-                    );
-                  }
-                  final asset = _storyBackgroundAssets[index - 1];
-                  return _BackgroundTile(
-                    selected: _background == asset,
-                    onTap: () => setState(() => _background = asset),
-                    child: Image.asset(
-                      asset,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) =>
-                          const ColoredBox(color: _kNavy),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(height: 18),
-              GestureDetector(
-                onTap: _submit,
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        _kGold.withValues(alpha: 0.9),
-                        _kGold.withValues(alpha: 0.7),
+                        ),
+                        const SizedBox(width: 8),
                       ],
-                    ),
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: _submitting
-                      ? const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(
-                            color: _kNavy,
-                            strokeWidth: 2,
+                      GestureDetector(
+                        onTap: _saveDraft,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: _kGold,
+                            borderRadius: BorderRadius.circular(18),
                           ),
-                        )
-                      : Text(
-                          widget.editing != null
-                              ? l10n.storiesSaveChanges
-                              : l10n.storiesSubmitButton,
-                          style: GoogleFonts.lato(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w800,
-                            color: _kNavy,
+                          child: Text(
+                            l10n.storiesSaveDraft,
+                            style: GoogleFonts.lato(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w800,
+                              color: _kNavy,
+                            ),
                           ),
                         ),
+                      ),
+                    ] else
+                      // Keeps the title centered when there are no end buttons.
+                      const SizedBox(width: 36),
+                  ],
                 ),
-              ),
-            ],
+                const SizedBox(height: 18),
+                if (_showDraftBanner) ...[
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsetsDirectional.fromSTEB(12, 8, 6, 8),
+                    decoration: BoxDecoration(
+                      color: _kGold.withValues(alpha: 0.10),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: _kGold.withValues(alpha: 0.35)),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.edit_note_rounded,
+                            size: 20, color: _kGold),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            l10n.storiesContinueDraft,
+                            style: GoogleFonts.lato(
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w700,
+                              color: _kCream,
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: _deleteDraft,
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            minimumSize: const Size(0, 32),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          child: Text(
+                            l10n.storiesStartFresh,
+                            style: GoogleFonts.lato(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w800,
+                              color: _kGold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                ],
+                _label(l10n.storiesNameLabel.toUpperCase()),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _nameController,
+                  enabled: !_anonymous,
+                  style: GoogleFonts.lato(fontSize: 14, color: _kCream),
+                  onChanged: (_) => setState(() {}),
+                  decoration: _fieldDecoration(l10n.storiesNameLabel),
+                ),
+                const SizedBox(height: 6),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 38,
+                      height: 30,
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: Switch(
+                          value: _anonymous,
+                          activeThumbColor: _kGold,
+                          activeTrackColor: _kGold.withValues(alpha: 0.35),
+                          inactiveThumbColor: _kCream.withValues(alpha: 0.5),
+                          inactiveTrackColor: _kNavy,
+                          onChanged: (v) => setState(() => _anonymous = v),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      l10n.storiesPostAnonymously,
+                      style: GoogleFonts.lato(
+                        fontSize: 12.5,
+                        color: _kCream.withValues(alpha: 0.75),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 14),
+                _label(l10n.storiesCountryLabel.toUpperCase()),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _countryController,
+                  style: GoogleFonts.lato(fontSize: 14, color: _kCream),
+                  onChanged: (_) => setState(() => _country = null),
+                  decoration:
+                      _fieldDecoration(l10n.storiesSearchCountryHint).copyWith(
+                    prefixIcon: const Icon(Icons.search_rounded,
+                        size: 18, color: _kGold),
+                    suffixIcon: _country != null
+                        ? const Icon(Icons.check_circle_rounded,
+                            size: 18, color: _kGold)
+                        : null,
+                  ),
+                ),
+                ..._countrySuggestions(),
+                const SizedBox(height: 14),
+                _label(l10n.storiesCategoryLabel.toUpperCase()),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    for (final category in StoryCategory.values)
+                      GestureDetector(
+                        onTap: () => setState(() => _category = category),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 7),
+                          decoration: BoxDecoration(
+                            color: _category == category
+                                ? _kGold
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(
+                              color: _category == category
+                                  ? _kGold
+                                  : _kGold.withValues(alpha: 0.35),
+                            ),
+                          ),
+                          child: Text(
+                            storyCategoryLabel(l10n, category),
+                            style: GoogleFonts.lato(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: _category == category
+                                  ? _kNavy
+                                  : _kCream.withValues(alpha: 0.75),
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 14),
+                _label(l10n.storiesShahadaDateLabel.toUpperCase()),
+                const SizedBox(height: 8),
+                GestureDetector(
+                  onTap: _pickDate,
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 14, vertical: 12),
+                    decoration: BoxDecoration(
+                      color: _kNavy,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: _kGold.withValues(alpha: 0.35)),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.calendar_month_rounded,
+                            size: 16, color: _kGold),
+                        const SizedBox(width: 8),
+                        Text(
+                          _shahadaDate == null
+                              ? l10n.storiesShahadaDateLabel
+                              : _formatMonthYear(context, _shahadaDate!),
+                          style: GoogleFonts.lato(
+                            fontSize: 13.5,
+                            color: _shahadaDate == null
+                                ? _kCream.withValues(alpha: 0.35)
+                                : _kCream,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 14),
+                _label(l10n.storiesYourStoryLabel.toUpperCase()),
+                const SizedBox(height: 8),
+                _cardEditor(l10n),
+                const SizedBox(height: 14),
+                _label(l10n.storiesChooseAvatar.toUpperCase()),
+                const SizedBox(height: 8),
+                ..._avatarPicker(l10n),
+                const SizedBox(height: 14),
+                _label(l10n.storiesChooseBackground.toUpperCase()),
+                const SizedBox(height: 8),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  // Explicit padding + no clip: without these the grid crops
+                  // the last row (and the selected tile's glow) against the
+                  // Submit button.
+                  padding: const EdgeInsets.only(top: 2, bottom: 14),
+                  clipBehavior: Clip.none,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                  ),
+                  itemCount: _storyBackgroundAssets.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      return _BackgroundTile(
+                        selected: _background == null,
+                        onTap: () => setState(() => _background = null),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'بِسْمِ اللَّهِ',
+                              style: GoogleFonts.scheherazadeNew(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: _kGold,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              l10n.storiesBackgroundNone,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.lato(
+                                fontSize: 9.5,
+                                color: _kCream.withValues(alpha: 0.6),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                    final asset = _storyBackgroundAssets[index - 1];
+                    return _BackgroundTile(
+                      selected: _background == asset,
+                      onTap: () => setState(() => _background = asset),
+                      child: Image.asset(
+                        asset,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) =>
+                            const ColoredBox(color: _kNavy),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 18),
+                GestureDetector(
+                  onTap: _submit,
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          _kGold.withValues(alpha: 0.9),
+                          _kGold.withValues(alpha: 0.7),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: _submitting
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: _kNavy,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text(
+                            widget.editing != null
+                                ? l10n.storiesSaveChanges
+                                : l10n.storiesSubmitButton,
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: _kNavy,
+                            ),
+                          ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
