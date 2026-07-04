@@ -2097,32 +2097,53 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
   /// iOS only: modal bottom sheets never get the native edge-swipe-back
   /// (and PopScope(canPop: false) would suppress it anyway), so the edge
   /// swipe is recreated by hand and routed into the same back dialog.
+  ///
+  /// Uses raw pointer events (Listener), NOT a GestureDetector — the
+  /// sheet's own drag-to-dismiss and the scroll view win the gesture
+  /// arena for most drags, so a horizontal-drag recognizer here almost
+  /// never fired. Pointer events are delivered regardless of who wins.
   bool get _useEdgeSwipeBack => !kIsWeb && Platform.isIOS;
 
-  /// True while a horizontal drag that started at the screen's start edge
-  /// is in progress; accumulated distance decides when to fire.
-  bool _edgeSwipeArmed = false;
-  double _edgeSwipeDistance = 0;
+  /// Pointer currently tracked as a potential edge swipe (null = none).
+  int? _edgePointer;
+  Offset _edgeStart = Offset.zero;
+  bool _edgeFired = false;
 
   static const _kEdgeWidth = 36.0;
   static const _kSwipeTriggerDistance = 64.0;
 
-  void _handleEdgeSwipeStart(DragStartDetails details) {
+  void _handleEdgePointerDown(PointerDownEvent event) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     final width = MediaQuery.of(context).size.width;
-    final dx = details.globalPosition.dx;
-    _edgeSwipeArmed = isRtl ? dx >= width - _kEdgeWidth : dx <= _kEdgeWidth;
-    _edgeSwipeDistance = 0;
+    final dx = event.position.dx;
+    final atEdge = isRtl ? dx >= width - _kEdgeWidth : dx <= _kEdgeWidth;
+    if (!atEdge) return;
+    _edgePointer = event.pointer;
+    _edgeStart = event.position;
+    _edgeFired = false;
   }
 
-  void _handleEdgeSwipeUpdate(DragUpdateDetails details) {
-    if (!_edgeSwipeArmed) return;
+  void _handleEdgePointerMove(PointerMoveEvent event) {
+    if (_edgeFired || event.pointer != _edgePointer) return;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
-    _edgeSwipeDistance += isRtl ? -details.delta.dx : details.delta.dx;
-    if (_edgeSwipeDistance >= _kSwipeTriggerDistance) {
-      _edgeSwipeArmed = false;
+    final travel = isRtl
+        ? _edgeStart.dx - event.position.dx
+        : event.position.dx - _edgeStart.dx;
+    final drift = (event.position.dy - _edgeStart.dy).abs();
+    // Mostly-vertical movement is a scroll or sheet drag, not a back swipe.
+    if (drift > _kSwipeTriggerDistance && drift > travel) {
+      _edgePointer = null;
+      return;
+    }
+    if (travel >= _kSwipeTriggerDistance && travel > drift) {
+      _edgeFired = true;
+      _edgePointer = null;
       _onBackPressed();
     }
+  }
+
+  void _handleEdgePointerEnd(PointerEvent event) {
+    if (event.pointer == _edgePointer) _edgePointer = null;
   }
 
   @override
@@ -2139,10 +2160,12 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
         if (didPop) return;
         _onBackPressed();
       },
-      child: GestureDetector(
-        onHorizontalDragStart: _useEdgeSwipeBack ? _handleEdgeSwipeStart : null,
-        onHorizontalDragUpdate:
-            _useEdgeSwipeBack ? _handleEdgeSwipeUpdate : null,
+      child: Listener(
+        behavior: HitTestBehavior.translucent,
+        onPointerDown: _useEdgeSwipeBack ? _handleEdgePointerDown : null,
+        onPointerMove: _useEdgeSwipeBack ? _handleEdgePointerMove : null,
+        onPointerUp: _useEdgeSwipeBack ? _handleEdgePointerEnd : null,
+        onPointerCancel: _useEdgeSwipeBack ? _handleEdgePointerEnd : null,
         child: Container(
           decoration: const BoxDecoration(
             color: _kCard,
