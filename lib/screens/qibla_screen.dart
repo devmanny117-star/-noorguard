@@ -23,11 +23,16 @@ const _kCard = Color(0xFF1A2A3A);
 const _kDefaultLat = 38.5816;
 const _kDefaultLng = -121.4944;
 
+/// Preferred compass diameter; shrinks on short screens (see _buildBody)
+/// so the spirit level below it stays fully visible.
 const _kCompassSize = 284.0;
-const _kNeedleFrac  = 0.58;
-const _kNeedleTipY  = _kCompassSize / 2 * (1 - _kNeedleFrac);
-const _kEmojiSize   = 22.0;
-const _kEmojiTop    = _kNeedleTipY - _kEmojiSize / 2;
+const _kCompassSizeMin = 210.0;
+
+/// Everything in the body column except the compass (paddings, chips,
+/// labels, spirit level) — used to decide how much room the compass gets.
+const _kNonCompassContentHeight = 410.0;
+const _kNeedleFrac = 0.58;
+const _kEmojiSize = 22.0;
 
 // Smoothing factor for the compass low-pass filter (sin/cos domain).
 // Lower = more smoothing but slower response; 0.12 balances both well.
@@ -41,7 +46,7 @@ const _kAlignThresholdDeg = 8.0;
 enum _HapticZone { veryFar, far, medium, near, close, aligned }
 
 _HapticZone _hapticZoneFor(double degreesOff) {
-  if (degreesOff <=  8) return _HapticZone.aligned;
+  if (degreesOff <= 8) return _HapticZone.aligned;
   if (degreesOff <= 15) return _HapticZone.close;
   if (degreesOff <= 30) return _HapticZone.near;
   if (degreesOff <= 60) return _HapticZone.medium;
@@ -50,13 +55,13 @@ _HapticZone _hapticZoneFor(double degreesOff) {
 }
 
 Duration _hapticIntervalFor(_HapticZone zone) => switch (zone) {
-  _HapticZone.veryFar => const Duration(milliseconds: 1200),
-  _HapticZone.far     => const Duration(milliseconds: 900),
-  _HapticZone.medium  => const Duration(milliseconds: 700),
-  _HapticZone.near    => const Duration(milliseconds: 500),
-  _HapticZone.close   => const Duration(milliseconds: 350),
-  _HapticZone.aligned => const Duration(milliseconds: 200),
-};
+      _HapticZone.veryFar => const Duration(milliseconds: 1200),
+      _HapticZone.far => const Duration(milliseconds: 900),
+      _HapticZone.medium => const Duration(milliseconds: 700),
+      _HapticZone.near => const Duration(milliseconds: 500),
+      _HapticZone.close => const Duration(milliseconds: 350),
+      _HapticZone.aligned => const Duration(milliseconds: 200),
+    };
 
 // ── Accuracy helpers ───────────────────────────────────────────────────────────
 
@@ -71,24 +76,24 @@ enum _Accuracy { unknown, low, medium, high }
 
 _Accuracy _classify(double? acc) {
   if (acc == null) return _Accuracy.unknown;
-  if (acc <= 15)   return _Accuracy.high;
-  if (acc <= 30)   return _Accuracy.medium;
-  return            _Accuracy.low;
+  if (acc <= 15) return _Accuracy.high;
+  if (acc <= 30) return _Accuracy.medium;
+  return _Accuracy.low;
 }
 
 Color _accuracyColor(_Accuracy a) => switch (a) {
-  _Accuracy.high    => const Color(0xFF4CAF50),
-  _Accuracy.medium  => const Color(0xFFFFB300),
-  _Accuracy.low     => const Color(0xFFEF5350),
-  _Accuracy.unknown => const Color(0xFFEF5350),
-};
+      _Accuracy.high => const Color(0xFF4CAF50),
+      _Accuracy.medium => const Color(0xFFFFB300),
+      _Accuracy.low => const Color(0xFFEF5350),
+      _Accuracy.unknown => const Color(0xFFEF5350),
+    };
 
 String _accuracyLabel(_Accuracy a, AppLocalizations l10n) => switch (a) {
-  _Accuracy.high    => l10n.accuracyHigh,
-  _Accuracy.medium  => l10n.accuracyMedium,
-  _Accuracy.low     => l10n.accuracyLow,
-  _Accuracy.unknown => l10n.accuracyCalibrating,
-};
+      _Accuracy.high => l10n.accuracyHigh,
+      _Accuracy.medium => l10n.accuracyMedium,
+      _Accuracy.low => l10n.accuracyLow,
+      _Accuracy.unknown => l10n.accuracyCalibrating,
+    };
 
 // ── Screen ────────────────────────────────────────────────────────────────────
 
@@ -106,9 +111,9 @@ class QiblaScreen extends StatefulWidget {
 
 class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   // Location & qibla
-  double _qiblaBearing  = 0;
-  bool   _isLoading     = true;
-  bool   _usingDefault  = false;
+  double _qiblaBearing = 0;
+  bool _isLoading = true;
+  bool _usingDefault = false;
   String _locationLabel = '';
 
   final _locationService = LocationService();
@@ -118,19 +123,19 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   String? _selectedLocationId;
 
   // Needle state (unbounded accumulator for shortest-path interpolation)
-  double _needleAngle     = 0;
+  double _needleAngle = 0;
   double _prevNeedleAngle = 0;
 
   // Compass heading (filtered) for the readout chip
   double _compassHeading = 0;
 
   // Low-pass filter state — maintained in sin/cos space to avoid 0°/360° jumps
-  double _lpfSin  = 0.0;
-  double _lpfCos  = 1.0;
-  bool   _lpfInit = false;
+  double _lpfSin = 0.0;
+  double _lpfCos = 1.0;
+  bool _lpfInit = false;
 
   // Accuracy
-  double?  _compassAccuracy;
+  double? _compassAccuracy;
   _Accuracy get _accuracyLevel => _classify(_compassAccuracy);
 
   // Calibration prompt visibility
@@ -144,7 +149,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   double _lpfAccelX = 0.0;
   double _lpfAccelY = 0.0;
 
-  StreamSubscription<CompassEvent>?       _compassSub;
+  StreamSubscription<CompassEvent>? _compassSub;
   StreamSubscription<AccelerometerEvent>? _accelSub;
 
   // Haptic feedback as the needle approaches Qibla
@@ -248,8 +253,8 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     if (!mounted) return;
     final l10n = AppLocalizations.of(context)!;
     setState(() {
-      _qiblaBearing  = QiblaService.calculateQiblaDirection(lat, lng);
-      _usingDefault  = isDefault;
+      _qiblaBearing = QiblaService.calculateQiblaDirection(lat, lng);
+      _usingDefault = isDefault;
       _locationLabel = isDefault
           ? l10n.defaultLocation
           : '${lat.toStringAsFixed(2)}°, ${lng.toStringAsFixed(2)}°';
@@ -268,8 +273,9 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   void _applySavedLocation(SavedLocation loc) {
     if (!mounted) return;
     setState(() {
-      _qiblaBearing  = QiblaService.calculateQiblaDirection(loc.latitude, loc.longitude);
-      _usingDefault  = false;
+      _qiblaBearing =
+          QiblaService.calculateQiblaDirection(loc.latitude, loc.longitude);
+      _usingDefault = false;
       _locationLabel = loc.name;
       _isLoading = false;
     });
@@ -327,15 +333,15 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
 
       // Shortest-path delta keeps the needle from spinning the long way round
       final rawAngle = (_qiblaBearing - filteredHeading + 360) % 360;
-      final delta    = ((rawAngle - _needleAngle) + 180) % 360 - 180;
+      final delta = ((rawAngle - _needleAngle) + 180) % 360 - 180;
 
       final newLevel = _classify(event.accuracy);
 
       setState(() {
-        _compassHeading  = filteredHeading;
+        _compassHeading = filteredHeading;
         _compassAccuracy = event.accuracy;
         _prevNeedleAngle = _needleAngle;
-        _needleAngle    += delta;
+        _needleAngle += delta;
 
         // Reset manual dismiss when the sensor reaches full accuracy so that if
         // accuracy later drops again the calibration prompt can reappear.
@@ -452,9 +458,9 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     final l10n = AppLocalizations.of(context)!;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(
-        statusBarColor:            Colors.transparent,
-        statusBarIconBrightness:   Brightness.light,
-        statusBarBrightness:       Brightness.dark,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
       ),
       child: Scaffold(
         backgroundColor: _kNavy,
@@ -482,138 +488,159 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   }
 
   Widget _buildLoading() => const Center(
-    child: CircularProgressIndicator(
-      valueColor: AlwaysStoppedAnimation<Color>(_kGold),
-      strokeWidth: 2,
-    ),
-  );
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(_kGold),
+          strokeWidth: 2,
+        ),
+      );
 
   Widget _buildBody(AppLocalizations l10n) {
+    // Bottom clearance for the iPhone home indicator (and any bottom inset
+    // an outer SafeArea hasn't already consumed) — viewPadding survives
+    // ancestor SafeAreas, plain padding doesn't, so take the larger.
+    final mq = MediaQuery.of(context);
+    final bottomClearance = math.max(mq.padding.bottom, mq.viewPadding.bottom);
     return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 16),
-            _LocationChip(
-              label: _locationLabel,
-              isDefault: _usingDefault,
-              onTap: _openLocationSheet,
-            ),
-            const SizedBox(height: 6),
-            Text(
-              l10n.directionToSacredHouse,
-              style: GoogleFonts.lato(
-                fontSize: 13,
-                color: Colors.white.withValues(alpha: 0.4),
-                letterSpacing: 0.4,
-              ),
-            ),
-            if (!kIsWeb) ...[
-              const SizedBox(height: 16),
-              _AccuracyBadge(level: _accuracyLevel),
-            ],
-            const SizedBox(height: 16),
-            // 1. Compass dial
-            _buildCompass(l10n),
-            // 2.
-            const SizedBox(height: 16),
-            // 3. Degree label
-            Text(
-              l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
-              style: GoogleFonts.playfairDisplay(
-                fontSize: 22,
-                fontWeight: FontWeight.w700,
-                color: _kGold,
-              ),
-            ),
-            // 4.
-            const SizedBox(height: 12),
-            // 5. Heading badge
-            if (!kIsWeb)
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  color: _kCard,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: _kGold.withValues(alpha: 0.15), width: 1),
+      bottom: false,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          // On short screens (iPhones) the full-size compass pushes the
+          // spirit level off the bottom; shrink it until the whole column
+          // fits, down to a floor that keeps the dial readable.
+          final compassSize = (constraints.maxHeight -
+                  bottomClearance -
+                  _kNonCompassContentHeight)
+              .clamp(_kCompassSizeMin, _kCompassSize);
+          return SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(24, 0, 24, 16 + bottomClearance),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 16),
+                _LocationChip(
+                  label: _locationLabel,
+                  isDefault: _usingDefault,
+                  onTap: _openLocationSheet,
                 ),
-                child: Text(
-                  l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
+                const SizedBox(height: 6),
+                Text(
+                  l10n.directionToSacredHouse,
                   style: GoogleFonts.lato(
                     fontSize: 13,
-                    color: Colors.white.withValues(alpha: 0.5),
-                    letterSpacing: 1.0,
+                    color: Colors.white.withValues(alpha: 0.4),
+                    letterSpacing: 0.4,
                   ),
                 ),
-              ),
-            // 6.
-            const SizedBox(height: 20),
-            // 7 & 8. Spirit level label + circle + "Tilt to level" text
-            if (!kIsWeb) _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
-            // Calibration prompt — slides in/out automatically
-            AnimatedSwitcher(
-              duration: const Duration(milliseconds: 350),
-              transitionBuilder: (child, anim) => FadeTransition(
-                opacity: anim,
-                child: SizeTransition(sizeFactor: anim, child: child),
-              ),
-              child: _showCalibration
-                  ? Padding(
-                      key: const ValueKey('cal'),
-                      padding: const EdgeInsets.only(top: 12),
-                      child: _CalibrationPrompt(
-                        onDismiss: () =>
-                            setState(() => _calibrationDismissed = true),
+                if (!kIsWeb) ...[
+                  const SizedBox(height: 16),
+                  _AccuracyBadge(level: _accuracyLevel),
+                ],
+                const SizedBox(height: 16),
+                // 1. Compass dial
+                _buildCompass(l10n, compassSize),
+                // 2.
+                const SizedBox(height: 16),
+                // 3. Degree label
+                Text(
+                  l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: _kGold,
+                  ),
+                ),
+                // 4.
+                const SizedBox(height: 12),
+                // 5. Heading badge
+                if (!kIsWeb)
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: _kCard,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                          color: _kGold.withValues(alpha: 0.15), width: 1),
+                    ),
+                    child: Text(
+                      l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
+                      style: GoogleFonts.lato(
+                        fontSize: 13,
+                        color: Colors.white.withValues(alpha: 0.5),
+                        letterSpacing: 1.0,
                       ),
-                    )
-                  : const SizedBox.shrink(key: ValueKey('no-cal')),
+                    ),
+                  ),
+                // 6.
+                const SizedBox(height: 20),
+                // 7 & 8. Spirit level label + circle + "Tilt to level" text
+                if (!kIsWeb) _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
+                // Calibration prompt — slides in/out automatically
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 350),
+                  transitionBuilder: (child, anim) => FadeTransition(
+                    opacity: anim,
+                    child: SizeTransition(sizeFactor: anim, child: child),
+                  ),
+                  child: _showCalibration
+                      ? Padding(
+                          key: const ValueKey('cal'),
+                          padding: const EdgeInsets.only(top: 12),
+                          child: _CalibrationPrompt(
+                            onDismiss: () =>
+                                setState(() => _calibrationDismissed = true),
+                          ),
+                        )
+                      : const SizedBox.shrink(key: ValueKey('no-cal')),
+                ),
+                if (kIsWeb) ...[
+                  const SizedBox(height: 24),
+                  _WebNote(label: l10n.compassRequiresDevice),
+                ],
+              ],
             ),
-            if (kIsWeb) ...[
-              const SizedBox(height: 24),
-              _WebNote(label: l10n.compassRequiresDevice),
-            ],
-            const SizedBox(height: 32),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 
   // ── Compass widget ────────────────────────────────────────────────────────────
 
-  Widget _buildCompass(AppLocalizations l10n) {
+  Widget _buildCompass(AppLocalizations l10n, double size) {
+    // Kaaba emoji sits at the needle tip — derived from the actual dial
+    // size, which shrinks on short screens.
+    final emojiTop = size / 2 * (1 - _kNeedleFrac) - _kEmojiSize / 2;
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: _prevNeedleAngle, end: _needleAngle),
       duration: const Duration(milliseconds: 320),
       curve: Curves.easeOut,
       builder: (_, angle, __) {
         // Glow strength ramps from 0→1 as the needle approaches ±5° of Mecca
-        final dist   = ((angle % 360 + 180) % 360 - 180).abs();
-        final glow   = (1.0 - dist / _kAlignThresholdDeg).clamp(0.0, 1.0);
+        final dist = ((angle % 360 + 180) % 360 - 180).abs();
+        final glow = (1.0 - dist / _kAlignThresholdDeg).clamp(0.0, 1.0);
 
         return SizedBox(
-          width: _kCompassSize,
-          height: _kCompassSize,
+          width: size,
+          height: size,
           child: Stack(
             alignment: Alignment.center,
             children: [
               // Outer gold glow rings — appear when needle nears Mecca
               if (glow > 0)
                 CustomPaint(
-                  size: const Size(_kCompassSize, _kCompassSize),
+                  size: Size(size, size),
                   painter: _AlignmentGlowPainter(strength: glow),
                 ),
 
               // Fixed compass dial (repaints only when locale changes)
               CustomPaint(
-                size: const Size(_kCompassSize, _kCompassSize),
+                size: Size(size, size),
                 painter: _CompassDialPainter(
                   north: l10n.compassNorth,
-                  east:  l10n.compassEast,
+                  east: l10n.compassEast,
                   south: l10n.compassSouth,
-                  west:  l10n.compassWest,
+                  west: l10n.compassWest,
                 ),
               ),
 
@@ -621,18 +648,18 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
               Transform.rotate(
                 angle: angle * math.pi / 180,
                 child: SizedBox(
-                  width: _kCompassSize,
-                  height: _kCompassSize,
+                  width: size,
+                  height: size,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       CustomPaint(
-                        size: const Size(_kCompassSize, _kCompassSize),
+                        size: Size(size, size),
                         painter: _NeedlePainter(glowStrength: glow),
                       ),
-                      const Positioned(
-                        top: _kEmojiTop,
-                        child: Text(
+                      Positioned(
+                        top: emojiTop,
+                        child: const Text(
                           '🕋',
                           style: TextStyle(fontSize: _kEmojiSize),
                         ),
@@ -664,7 +691,6 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
       },
     );
   }
-
 }
 
 // ── Accuracy badge ────────────────────────────────────────────────────────────
@@ -739,7 +765,8 @@ class _CalibrationPrompt extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Text('∞', style: TextStyle(fontSize: 22, color: Color(0xFFEF5350))),
+          const Text('∞',
+              style: TextStyle(fontSize: 22, color: Color(0xFFEF5350))),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
@@ -796,9 +823,11 @@ class _SpiritLevel extends StatelessWidget {
   Widget build(BuildContext context) {
     final tiltMag = math.sqrt(x * x + y * y);
     final isLevel = tiltMag < 1.5;
-    final color   = tiltMag < 1.5 ? const Color(0xFF4CAF50)
-                  : tiltMag < 3.5 ? const Color(0xFFFFB300)
-                  :                  const Color(0xFFEF5350);
+    final color = tiltMag < 1.5
+        ? const Color(0xFF4CAF50)
+        : tiltMag < 3.5
+            ? const Color(0xFFFFB300)
+            : const Color(0xFFEF5350);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -847,7 +876,7 @@ class _SpiritLevel extends StatelessWidget {
 class _SpiritLevelPainter extends CustomPainter {
   final double x;
   final double y;
-  final Color  bubbleColor;
+  final Color bubbleColor;
   const _SpiritLevelPainter({
     required this.x,
     required this.y,
@@ -856,11 +885,11 @@ class _SpiritLevelPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final cx      = size.width  / 2;
-    final cy      = size.height / 2;
-    final outerR  = size.width  / 2 - 1;
+    final cx = size.width / 2;
+    final cy = size.height / 2;
+    final outerR = size.width / 2 - 1;
     const bubbleR = 9.0;
-    final maxOff  = outerR - bubbleR - 3;
+    final maxOff = outerR - bubbleR - 3;
 
     // ── Background circle ───────────────────────────────────────────────────
     canvas.drawCircle(Offset(cx, cy), outerR, Paint()..color = _kCard);
@@ -870,27 +899,27 @@ class _SpiritLevelPainter extends CustomPainter {
       Offset(cx, cy),
       outerR,
       Paint()
-        ..color      = _kGold.withValues(alpha: 0.28)
-        ..style      = PaintingStyle.stroke
+        ..color = _kGold.withValues(alpha: 0.28)
+        ..style = PaintingStyle.stroke
         ..strokeWidth = 1.5,
     );
 
     // ── Crosshairs ──────────────────────────────────────────────────────────
     final cross = Paint()
-      ..color      = Colors.white.withValues(alpha: 0.07)
+      ..color = Colors.white.withValues(alpha: 0.07)
       ..strokeWidth = 1.0;
     canvas.drawLine(
-      Offset(cx - outerR + 8, cy), Offset(cx + outerR - 8, cy), cross);
+        Offset(cx - outerR + 8, cy), Offset(cx + outerR - 8, cy), cross);
     canvas.drawLine(
-      Offset(cx, cy - outerR + 8), Offset(cx, cy + outerR - 8), cross);
+        Offset(cx, cy - outerR + 8), Offset(cx, cy + outerR - 8), cross);
 
     // Centre target ring
     canvas.drawCircle(
       Offset(cx, cy),
       bubbleR + 4,
       Paint()
-        ..color      = Colors.white.withValues(alpha: 0.07)
-        ..style      = PaintingStyle.stroke
+        ..color = Colors.white.withValues(alpha: 0.07)
+        ..style = PaintingStyle.stroke
         ..strokeWidth = 1.0,
     );
 
@@ -901,19 +930,20 @@ class _SpiritLevelPainter extends CustomPainter {
     // bubble goes toward bottom of screen (+y). We negate both axes so the bubble
     // moves to the high side.
     final rawDx = -(x / 4.0) * maxOff;
-    final rawDy =  (y / 4.0) * maxOff; // screen Y is already inverted vs. device Y
+    final rawDy =
+        (y / 4.0) * maxOff; // screen Y is already inverted vs. device Y
     // Clamp bubble to stay inside the circle
-    final dist  = math.sqrt(rawDx * rawDx + rawDy * rawDy);
+    final dist = math.sqrt(rawDx * rawDx + rawDy * rawDy);
     final scale = dist > maxOff ? maxOff / dist : 1.0;
-    final bx    = cx + rawDx * scale;
-    final by    = cy + rawDy * scale;
+    final bx = cx + rawDx * scale;
+    final by = cy + rawDy * scale;
 
     // Bubble glow
     canvas.drawCircle(
       Offset(bx, by),
       bubbleR + 5,
       Paint()
-        ..color      = bubbleColor.withValues(alpha: 0.20)
+        ..color = bubbleColor.withValues(alpha: 0.20)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6),
     );
 
@@ -949,7 +979,7 @@ class _AlignmentGlowPainter extends CustomPainter {
       c,
       r + 18,
       Paint()
-        ..color      = _kGold.withValues(alpha: 0.13 * strength)
+        ..color = _kGold.withValues(alpha: 0.13 * strength)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 22),
     );
 
@@ -958,7 +988,7 @@ class _AlignmentGlowPainter extends CustomPainter {
       c,
       r + 6,
       Paint()
-        ..color      = _kGold.withValues(alpha: 0.22 * strength)
+        ..color = _kGold.withValues(alpha: 0.22 * strength)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10),
     );
 
@@ -968,8 +998,8 @@ class _AlignmentGlowPainter extends CustomPainter {
         c,
         r,
         Paint()
-          ..color      = _kGold.withValues(alpha: 0.45 * ((strength - 0.7) / 0.3))
-          ..style      = PaintingStyle.stroke
+          ..color = _kGold.withValues(alpha: 0.45 * ((strength - 0.7) / 0.3))
+          ..style = PaintingStyle.stroke
           ..strokeWidth = 2.0,
       );
     }
@@ -996,9 +1026,9 @@ class _CompassDialPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final cx = size.width  / 2;
+    final cx = size.width / 2;
     final cy = size.height / 2;
-    final r  = size.width  / 2;
+    final r = size.width / 2;
 
     // Background
     canvas.drawCircle(Offset(cx, cy), r, Paint()..color = _kNavy);
@@ -1017,8 +1047,8 @@ class _CompassDialPainter extends CustomPainter {
       Offset(cx, cy),
       r - 1.5,
       Paint()
-        ..color      = _kGold.withValues(alpha: 0.88)
-        ..style      = PaintingStyle.stroke
+        ..color = _kGold.withValues(alpha: 0.88)
+        ..style = PaintingStyle.stroke
         ..strokeWidth = 1.5,
     );
 
@@ -1027,8 +1057,8 @@ class _CompassDialPainter extends CustomPainter {
       Offset(cx, cy),
       r * 0.78,
       Paint()
-        ..color      = _kGold.withValues(alpha: 0.10)
-        ..style      = PaintingStyle.stroke
+        ..color = _kGold.withValues(alpha: 0.10)
+        ..style = PaintingStyle.stroke
         ..strokeWidth = 1.0,
     );
 
@@ -1039,13 +1069,13 @@ class _CompassDialPainter extends CustomPainter {
       final cosA = math.cos(rad);
 
       final (len, width, opacity) = switch (deg % 90) {
-        0       => (20.0, 2.2, 1.00),
-        45      => (13.0, 1.6, 0.80),
-        _       => switch (deg % 30) {
-            0   => (10.0, 1.4, 0.65),
-            _   => switch (deg % 10) {
-                0 => ( 6.0, 1.0, 0.40),
-                _ => ( 3.5, 0.8, 0.22),
+        0 => (20.0, 2.2, 1.00),
+        45 => (13.0, 1.6, 0.80),
+        _ => switch (deg % 30) {
+            0 => (10.0, 1.4, 0.65),
+            _ => switch (deg % 10) {
+                0 => (6.0, 1.0, 0.40),
+                _ => (3.5, 0.8, 0.22),
               },
           },
       };
@@ -1056,33 +1086,34 @@ class _CompassDialPainter extends CustomPainter {
         Offset(cx + outerR * sinA, cy - outerR * cosA),
         Offset(cx + innerR * sinA, cy - innerR * cosA),
         Paint()
-          ..color      = _kGold.withValues(alpha: opacity)
+          ..color = _kGold.withValues(alpha: opacity)
           ..strokeWidth = width
-          ..strokeCap  = StrokeCap.round,
+          ..strokeCap = StrokeCap.round,
       );
     }
 
     // Cardinal letters
-    _paintCardinal(canvas, cx, cy, r, north,   0, large: true);
-    _paintCardinal(canvas, cx, cy, r, east,   90);
+    _paintCardinal(canvas, cx, cy, r, north, 0, large: true);
+    _paintCardinal(canvas, cx, cy, r, east, 90);
     _paintCardinal(canvas, cx, cy, r, south, 180);
-    _paintCardinal(canvas, cx, cy, r, west,  270);
+    _paintCardinal(canvas, cx, cy, r, west, 270);
   }
 
-  void _paintCardinal(Canvas canvas, double cx, double cy, double r,
-      String letter, int deg, {bool large = false}) {
-    final rad    = deg * math.pi / 180;
+  void _paintCardinal(
+      Canvas canvas, double cx, double cy, double r, String letter, int deg,
+      {bool large = false}) {
+    final rad = deg * math.pi / 180;
     final labelR = r * 0.60;
-    final x      = cx + labelR * math.sin(rad);
-    final y      = cy - labelR * math.cos(rad);
+    final x = cx + labelR * math.sin(rad);
+    final y = cy - labelR * math.cos(rad);
 
     final tp = TextPainter(
       text: TextSpan(
         text: letter,
         style: TextStyle(
-          fontSize:   large ? 17 : 13,
+          fontSize: large ? 17 : 13,
           fontWeight: FontWeight.w800,
-          color:      _kGold.withValues(alpha: large ? 1.0 : 0.60),
+          color: _kGold.withValues(alpha: large ? 1.0 : 0.60),
         ),
       ),
       textDirection: TextDirection.ltr,
@@ -1093,8 +1124,10 @@ class _CompassDialPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_CompassDialPainter old) =>
-      old.north != north || old.east != east ||
-      old.south != south || old.west != west;
+      old.north != north ||
+      old.east != east ||
+      old.south != south ||
+      old.west != west;
 }
 
 // ── Needle painter ────────────────────────────────────────────────────────────
@@ -1105,13 +1138,13 @@ class _NeedlePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final cx = size.width  / 2;
+    final cx = size.width / 2;
     final cy = size.height / 2;
-    final r  = size.width  / 2;
+    final r = size.width / 2;
 
-    final tipY      = cy - r * _kNeedleFrac;
+    final tipY = cy - r * _kNeedleFrac;
     const baseWidth = 8.0;
-    final indentY   = cy + r * 0.06;
+    final indentY = cy + r * 0.06;
 
     final goldPath = Path()
       ..moveTo(cx, tipY)
@@ -1121,25 +1154,29 @@ class _NeedlePainter extends CustomPainter {
       ..close();
 
     // Enhanced glow when aligned with Mecca
-    final glowAlpha  = 0.28 + 0.35 * glowStrength;
-    final glowRadius = 7.0  + 10.0 * glowStrength;
+    final glowAlpha = 0.28 + 0.35 * glowStrength;
+    final glowRadius = 7.0 + 10.0 * glowStrength;
     canvas.drawPath(
       goldPath,
       Paint()
-        ..color      = _kGold.withValues(alpha: glowAlpha)
+        ..color = _kGold.withValues(alpha: glowAlpha)
         ..maskFilter = MaskFilter.blur(BlurStyle.normal, glowRadius)
-        ..style      = PaintingStyle.fill,
+        ..style = PaintingStyle.fill,
     );
 
     // Solid gold fill
-    canvas.drawPath(goldPath, Paint()..color = _kGold..style = PaintingStyle.fill);
+    canvas.drawPath(
+        goldPath,
+        Paint()
+          ..color = _kGold
+          ..style = PaintingStyle.fill);
 
     // Thin border for definition
     canvas.drawPath(
       goldPath,
       Paint()
-        ..color      = _kGold.withValues(alpha: 0.6)
-        ..style      = PaintingStyle.stroke
+        ..color = _kGold.withValues(alpha: 0.6)
+        ..style = PaintingStyle.stroke
         ..strokeWidth = 0.8,
     );
 
@@ -1165,7 +1202,7 @@ class _NeedlePainter extends CustomPainter {
 
 class _LocationChip extends StatelessWidget {
   final String label;
-  final bool   isDefault;
+  final bool isDefault;
   final VoidCallback onTap;
   const _LocationChip({
     required this.label,
@@ -1194,7 +1231,9 @@ class _LocationChip extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(
-                isDefault ? Icons.location_off_outlined : Icons.my_location_rounded,
+                isDefault
+                    ? Icons.location_off_outlined
+                    : Icons.my_location_rounded,
                 color: isDefault ? Colors.white30 : _kGold,
                 size: 14,
               ),
@@ -1213,9 +1252,8 @@ class _LocationChip extends StatelessWidget {
               Icon(
                 Icons.keyboard_arrow_down_rounded,
                 size: 16,
-                color: isDefault
-                    ? Colors.white30
-                    : _kGold.withValues(alpha: 0.7),
+                color:
+                    isDefault ? Colors.white30 : _kGold.withValues(alpha: 0.7),
               ),
             ],
           ),
@@ -1254,7 +1292,7 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
   @override
   void initState() {
     super.initState();
-    _locations  = List.of(widget.initialLocations);
+    _locations = List.of(widget.initialLocations);
     _selectedId = widget.selectedId;
   }
 
@@ -1313,7 +1351,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
     final atMax = _locations.length >= LocationService.maxSavedLocations;
 
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: Container(
@@ -1351,10 +1390,12 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                 InkWell(
                   onTap: () => _select(null),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 14),
                     child: Row(
                       children: [
-                        const Icon(Icons.my_location_rounded, size: 18, color: _kGold),
+                        const Icon(Icons.my_location_rounded,
+                            size: 18, color: _kGold),
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
@@ -1364,12 +1405,14 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                               fontWeight: _selectedId == null
                                   ? FontWeight.w700
                                   : FontWeight.w400,
-                              color: _selectedId == null ? _kGold : Colors.white,
+                              color:
+                                  _selectedId == null ? _kGold : Colors.white,
                             ),
                           ),
                         ),
                         if (_selectedId == null)
-                          const Icon(Icons.check_rounded, size: 18, color: _kGold),
+                          const Icon(Icons.check_rounded,
+                              size: 18, color: _kGold),
                       ],
                     ),
                   ),
@@ -1405,7 +1448,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                     return InkWell(
                       onTap: () => _select(loc.id),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 10),
                         child: Row(
                           children: [
                             Icon(
@@ -1429,7 +1473,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                             if (isSelected)
                               const Padding(
                                 padding: EdgeInsets.only(right: 4),
-                                child: Icon(Icons.check_rounded, size: 18, color: _kGold),
+                                child: Icon(Icons.check_rounded,
+                                    size: 18, color: _kGold),
                               ),
                             IconButton(
                               icon: const Icon(
@@ -1450,7 +1495,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                   padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
                   child: atMax
                       ? Text(
-                          l10n.maxLocationsReachedMessage(LocationService.maxSavedLocations),
+                          l10n.maxLocationsReachedMessage(
+                              LocationService.maxSavedLocations),
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
                             fontSize: 12,
@@ -1462,7 +1508,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                             Expanded(
                               child: TextField(
                                 controller: _searchController,
-                                style: GoogleFonts.lato(color: Colors.white, fontSize: 14),
+                                style: GoogleFonts.lato(
+                                    color: Colors.white, fontSize: 14),
                                 textInputAction: TextInputAction.search,
                                 onSubmitted: (_) => _addLocation(),
                                 decoration: InputDecoration(
@@ -1521,7 +1568,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                     padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
                     child: Text(
                       _error!,
-                      style: GoogleFonts.lato(fontSize: 12, color: const Color(0xFFEF5350)),
+                      style: GoogleFonts.lato(
+                          fontSize: 12, color: const Color(0xFFEF5350)),
                     ),
                   ),
                 SizedBox(height: MediaQuery.of(context).padding.bottom + 16),
