@@ -1423,10 +1423,6 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
   /// True after a draft was restored into the form ("Continue your draft").
   bool _showDraftBanner = false;
 
-  /// Snapshot of the form right after prefill/restore — the back button
-  /// only asks to discard when the current snapshot differs from this.
-  String _cleanSnapshot = '';
-
   @override
   void initState() {
     super.initState();
@@ -1457,33 +1453,15 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
             _applyDraft(draft);
             _hasDraft = true;
             _showDraftBanner = true;
-            _cleanSnapshot = _formSnapshot();
           });
         } else {
           CommunityStoriesService.savedAuthorName().then((name) {
-            if (mounted && name.isNotEmpty) {
-              _nameController.text = name;
-              _cleanSnapshot = _formSnapshot();
-            }
+            if (mounted && name.isNotEmpty) _nameController.text = name;
           });
         }
       });
     }
-    _cleanSnapshot = _formSnapshot();
   }
-
-  /// One string covering every field the user can change — cheap dirty check.
-  String _formSnapshot() => [
-        _nameController.text.trim(),
-        _anonymous.toString(),
-        _country?.name ?? '',
-        _category.name,
-        _shahadaDate?.toIso8601String() ?? '',
-        _storyController.text,
-        _background ?? '',
-        _avatarType,
-        _avatarData ?? '',
-      ].join(' ');
 
   void _applyDraft(Map<String, dynamic> draft) {
     _nameController.text = (draft['name'] as String?) ?? '';
@@ -1507,26 +1485,20 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
     _avatarData = draft['avatarData'] as String?;
   }
 
-  Future<void> _saveDraft() async {
-    final l10n = AppLocalizations.of(context)!;
-    await CommunityStoriesService.saveStoryDraft({
-      'name': _nameController.text.trim(),
-      'anonymous': _anonymous,
-      'country': _country?.name,
-      'category': _category.name,
-      'shahadaDate': _shahadaDate?.millisecondsSinceEpoch,
-      'story': _storyController.text,
-      'background': _background,
-      'avatarType': _avatarType,
-      'avatarData': _avatarData,
-    });
-    if (!mounted) return;
-    setState(() {
-      _hasDraft = true;
-      _cleanSnapshot = _formSnapshot();
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+  /// Writes the current form state to SharedPreferences.
+  Future<void> _persistDraft() => CommunityStoriesService.saveStoryDraft({
+        'name': _nameController.text.trim(),
+        'anonymous': _anonymous,
+        'country': _country?.name,
+        'category': _category.name,
+        'shahadaDate': _shahadaDate?.millisecondsSinceEpoch,
+        'story': _storyController.text,
+        'background': _background,
+        'avatarType': _avatarType,
+        'avatarData': _avatarData,
+      });
+
+  SnackBar _draftSavedSnackBar(AppLocalizations l10n) => SnackBar(
         content: Text(l10n.storiesDraftSaved),
         backgroundColor: _kCard,
         behavior: SnackBarBehavior.floating,
@@ -1534,8 +1506,15 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(color: _kGold.withValues(alpha: 0.5)),
         ),
-      ),
-    );
+      );
+
+  /// Header pill: save the draft and stay on the form.
+  Future<void> _saveDraft() async {
+    final l10n = AppLocalizations.of(context)!;
+    await _persistDraft();
+    if (!mounted) return;
+    setState(() => _hasDraft = true);
+    ScaffoldMessenger.of(context).showSnackBar(_draftSavedSnackBar(l10n));
   }
 
   /// Delete Draft button and the banner's "Start fresh": clears the stored
@@ -1556,17 +1535,28 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
       _background = null;
       _avatarType = 'initials';
       _avatarData = null;
-      _cleanSnapshot = _formSnapshot();
     });
   }
 
+  /// Back always asks: Save Draft (new stories only) / Discard / Keep
+  /// Writing — even when nothing has been typed yet.
   Future<void> _onBackPressed() async {
-    if (_formSnapshot() == _cleanSnapshot) {
-      Navigator.pop(context);
-      return;
-    }
     final l10n = AppLocalizations.of(context)!;
-    final discard = await showDialog<bool>(
+    Widget option({
+      required String label,
+      required Color color,
+      required String result,
+      required BuildContext dialogContext,
+    }) =>
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext, result),
+          child: Text(
+            label,
+            style: GoogleFonts.lato(fontWeight: FontWeight.w700, color: color),
+          ),
+        );
+
+    final choice = await showDialog<String>(
       context: context,
       builder: (dialogContext) => AlertDialog(
         backgroundColor: _kCard,
@@ -1583,30 +1573,51 @@ class _SubmitStorySheetState extends State<_SubmitStorySheet>
           ),
         ),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext, false),
-            child: Text(
-              l10n.storiesKeepWriting,
-              style: GoogleFonts.lato(
-                fontWeight: FontWeight.w700,
-                color: _kGold,
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext, true),
-            child: Text(
-              l10n.storiesDiscard,
-              style: GoogleFonts.lato(
-                fontWeight: FontWeight.w700,
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (widget.editing == null)
+                option(
+                  label: l10n.storiesSaveDraft,
+                  color: _kGold,
+                  result: 'save',
+                  dialogContext: dialogContext,
+                ),
+              option(
+                label: l10n.storiesDiscard,
                 color: const Color(0xFFE57373),
+                result: 'discard',
+                dialogContext: dialogContext,
               ),
-            ),
+              option(
+                label: l10n.storiesKeepWriting,
+                color: _kCream.withValues(alpha: 0.8),
+                result: 'keep',
+                dialogContext: dialogContext,
+              ),
+            ],
           ),
         ],
       ),
     );
-    if (discard == true && mounted) Navigator.pop(context);
+    if (!mounted) return;
+    switch (choice) {
+      case 'save':
+        final messenger = ScaffoldMessenger.of(context);
+        await _persistDraft();
+        if (!mounted) return;
+        Navigator.pop(context);
+        messenger.showSnackBar(_draftSavedSnackBar(l10n));
+      case 'discard':
+        if (widget.editing == null) {
+          await CommunityStoriesService.clearStoryDraft();
+        }
+        if (!mounted) return;
+        Navigator.pop(context);
+      default:
+      // Keep Writing (or dialog dismissed) — stay on the form.
+    }
   }
 
   @override
