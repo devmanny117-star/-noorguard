@@ -45,17 +45,34 @@ class HeaderSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Option 2 layout: small salām line above a large bold name
+                // line. The mockup's cream/white only works on the dark
+                // theme; light mode falls back to the theme text colors so
+                // the greeting stays visible on the white background.
                 Text(
-                  userName.isNotEmpty
-                      ? l10n.greetingWithName(userName)
-                      : l10n.assalamualaikum,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: userName.isNotEmpty ? 26 : 32,
-                    fontWeight: FontWeight.w800,
-                    color: colors.primaryText,
-                    height: 1.15,
+                  l10n.assalamualaikum,
+                  style: GoogleFonts.lato(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: isDark
+                        ? const Color(0xFFF5EFE6)
+                        : colors.secondaryText,
+                    letterSpacing: 0.3,
+                    height: 1.2,
                   ),
                 ),
+                if (userName.isNotEmpty) ...[
+                  const SizedBox(height: 2),
+                  Text(
+                    '$userName 🤲',
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w800,
+                      color: isDark ? Colors.white : colors.primaryText,
+                      height: 1.15,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 6),
                 Text(
                   l10n.mayAllahBlessYourDay,
