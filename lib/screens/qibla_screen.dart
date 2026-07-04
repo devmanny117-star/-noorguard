@@ -25,12 +25,13 @@ const _kDefaultLng = -121.4944;
 
 /// Preferred compass diameter; shrinks on short screens (see _buildBody)
 /// so the spirit level below it stays fully visible.
-const _kCompassSize = 284.0;
-const _kCompassSizeMin = 210.0;
+const _kCompassSize = 330.0;
+const _kCompassSizeMin = 240.0;
 
 /// Everything in the body column except the compass (paddings, chips,
 /// labels, spirit level) — used to decide how much room the compass gets.
-const _kNonCompassContentHeight = 410.0;
+/// Kept tight so the compass gets as much of the leftover as possible.
+const _kNonCompassContentHeight = 360.0;
 const _kNeedleFrac = 0.58;
 const _kEmojiSize = 22.0;
 
@@ -495,34 +496,39 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
       );
 
   Widget _buildBody(AppLocalizations l10n) {
-    // Bottom clearance for the iPhone home indicator (and any bottom inset
-    // an outer SafeArea hasn't already consumed) — viewPadding survives
-    // ancestor SafeAreas, plain padding doesn't, so take the larger.
-    final mq = MediaQuery.of(context);
-    final bottomClearance = math.max(mq.padding.bottom, mq.viewPadding.bottom);
+    // Bottom clearance: only what no ancestor SafeArea has consumed yet.
+    // The home shell's SafeArea already insets the tab above the nav pill
+    // and home indicator, so adding viewPadding here would double-count it
+    // and steal height from the compass.
+    final bottomClearance = MediaQuery.of(context).padding.bottom;
     return SafeArea(
       bottom: false,
       child: LayoutBuilder(
         builder: (context, constraints) {
           // On short screens (iPhones) the full-size compass pushes the
           // spirit level off the bottom; shrink it until the whole column
-          // fits, down to a floor that keeps the dial readable.
+          // fits, down to a floor that keeps the dial readable. Never wider
+          // than the screen minus the 24px side paddings either.
+          final maxCompass = math.max(
+            _kCompassSizeMin,
+            math.min(_kCompassSize, constraints.maxWidth - 48),
+          );
           final compassSize = (constraints.maxHeight -
                   bottomClearance -
                   _kNonCompassContentHeight)
-              .clamp(_kCompassSizeMin, _kCompassSize);
+              .clamp(_kCompassSizeMin, maxCompass);
           return SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(24, 0, 24, 16 + bottomClearance),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 _LocationChip(
                   label: _locationLabel,
                   isDefault: _usingDefault,
                   onTap: _openLocationSheet,
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 Text(
                   l10n.directionToSacredHouse,
                   style: GoogleFonts.lato(
@@ -532,14 +538,14 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                   ),
                 ),
                 if (!kIsWeb) ...[
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 12),
                   _AccuracyBadge(level: _accuracyLevel),
                 ],
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 // 1. Compass dial
                 _buildCompass(l10n, compassSize),
                 // 2.
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 // 3. Degree label
                 Text(
                   l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
@@ -550,7 +556,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                   ),
                 ),
                 // 4.
-                const SizedBox(height: 12),
+                const SizedBox(height: 8),
                 // 5. Heading badge
                 if (!kIsWeb)
                   Container(
@@ -572,7 +578,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                     ),
                   ),
                 // 6.
-                const SizedBox(height: 20),
+                const SizedBox(height: 14),
                 // 7 & 8. Spirit level label + circle + "Tilt to level" text
                 if (!kIsWeb) _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
                 // Calibration prompt — slides in/out automatically
