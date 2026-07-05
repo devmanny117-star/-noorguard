@@ -371,47 +371,59 @@ class StoryShareCardWidget extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      // Author row — avatar + name + country flag
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          StoryAvatar(
-                            avatarType: avatarType,
-                            avatarData: avatarData,
-                            initials: initials,
-                            size: 36,
-                            borderWidth: 1.5,
-                          ),
-                          const SizedBox(width: 10),
-                          Flexible(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  authorName,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.playfairDisplay(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    color: _kGold,
-                                  ),
-                                ),
-                                if (countryLine.isNotEmpty)
+                      // Author capsule — avatar + name + country flag on a
+                      // dark pill, matching the in-app story cards.
+                      Container(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(5, 5, 14, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withValues(alpha: 0.5),
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            StoryAvatar(
+                              avatarType: avatarType,
+                              avatarData: avatarData,
+                              initials: initials,
+                              size: 36,
+                              borderWidth: 1.5,
+                            ),
+                            const SizedBox(width: 10),
+                            Flexible(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                                   Text(
-                                    countryLine,
+                                    authorName,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.lato(
-                                      fontSize: 11.5,
-                                      color: _kCream.withValues(alpha: 0.75),
+                                    style: GoogleFonts.playfairDisplay(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      color: _kGold,
                                     ),
                                   ),
-                              ],
+                                  if (countryLine.isNotEmpty) ...[
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      countryLine,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: GoogleFonts.lato(
+                                        fontSize: 11.5,
+                                        color:
+                                            _kCream.withValues(alpha: 0.75),
+                                      ),
+                                    ),
+                                  ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 18),
                       Container(

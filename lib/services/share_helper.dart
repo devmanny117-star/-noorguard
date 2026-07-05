@@ -93,7 +93,21 @@ Future<void> shareCardWidget({
 
   final bytes = await completer.future;
   final dir = await getTemporaryDirectory();
-  final file = File('${dir.path}/noor_guard_share.png');
+  // Unique filename per share: the system share sheet caches its preview
+  // thumbnail by content URI, so reusing one path shows the previous share's
+  // image (e.g. a Dua card when sharing a story). Old files are cleaned up
+  // first so they don't pile up in the temp directory.
+  try {
+    await for (final f in dir.list()) {
+      if (f is File && f.uri.pathSegments.last.startsWith('noor_guard_share')) {
+        await f.delete();
+      }
+    }
+  } catch (_) {
+    // Best-effort cleanup; sharing still works if a stale file lingers.
+  }
+  final file = File(
+      '${dir.path}/noor_guard_share_${DateTime.now().millisecondsSinceEpoch}.png');
   await file.writeAsBytes(bytes);
 
   await SharePlus.instance.share(ShareParams(
