@@ -22,20 +22,39 @@ Future<void> shareContent({
   required String translation,
   required String source,
   required String brandingLabel,
+}) =>
+    shareCardWidget(
+      context: context,
+      card: ShareCardWidget(
+        typeLabel: typeLabel,
+        arabic: arabic,
+        transliteration: transliteration,
+        translation: translation,
+        source: source,
+        brandingLabel: brandingLabel,
+      ),
+      shareText: brandingLabel,
+    );
+
+/// Renders any pre-built share card off-screen, captures it as a PNG and
+/// opens the system share sheet. [precacheAssets] must list every asset image
+/// the card displays — the capture happens one frame after insertion, so an
+/// undecoded image would come out blank.
+Future<void> shareCardWidget({
+  required BuildContext context,
+  required Widget card,
+  required String shareText,
+  List<String> precacheAssets = const [],
 }) async {
+  for (final asset in precacheAssets) {
+    await precacheImage(AssetImage(asset), context);
+  }
+  if (!context.mounted) return;
+
   final repaintKey = GlobalKey();
   final completer = Completer<Uint8List>();
   const cardWidth = 400.0;
   const pixelRatio = 3.0;
-
-  final card = ShareCardWidget(
-    typeLabel: typeLabel,
-    arabic: arabic,
-    transliteration: transliteration,
-    translation: translation,
-    source: source,
-    brandingLabel: brandingLabel,
-  );
 
   late OverlayEntry entry;
   entry = OverlayEntry(
@@ -79,6 +98,6 @@ Future<void> shareContent({
 
   await SharePlus.instance.share(ShareParams(
     files: [XFile(file.path)],
-    text: brandingLabel,
+    text: shareText,
   ));
 }

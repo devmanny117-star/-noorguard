@@ -12,6 +12,7 @@ import '../models/community_story.dart';
 import '../services/community_stories_service.dart';
 import '../services/share_helper.dart';
 import '../widgets/geometric_pattern_painter.dart';
+import '../widgets/share_card.dart';
 import '../widgets/story_avatar.dart';
 import '../widgets/tasbih/tasbih_mosque_silhouette.dart';
 
@@ -74,16 +75,27 @@ Future<void> shareStory(BuildContext context, CommunityStory story) async {
   final excerpt = story.story.length > 220
       ? '${story.story.substring(0, 220)}…'
       : story.story;
+  final initials = (story.anonymous || story.name.isEmpty)
+      ? l10n.storiesAnonymous.substring(0, 1).toUpperCase()
+      : story.initials;
   try {
-    await shareContent(
+    await shareCardWidget(
       context: context,
-      typeLabel: '✦ ${l10n.storiesShareCardLabel}',
-      arabic: 'بِسْمِ اللَّهِ',
-      transliteration: '',
-      translation: '"$excerpt"',
-      source:
-          '${storyDisplayName(l10n, story)} · ${story.countryFlag} ${story.country}',
-      brandingLabel: l10n.shareViaLabel,
+      card: StoryShareCardWidget(
+        categoryLabel: storyCategoryLabel(l10n, story.category),
+        storyText: excerpt,
+        authorName: storyDisplayName(l10n, story),
+        countryLine: '${story.countryFlag} ${story.country}'.trim(),
+        brandingLabel: l10n.shareViaLabel,
+        backgroundImage: story.backgroundImage,
+        avatarType: story.avatarType ?? 'initials',
+        avatarData: story.avatarData,
+        initials: initials,
+      ),
+      shareText: l10n.shareViaLabel,
+      precacheAssets: [
+        if (story.backgroundImage != null) story.backgroundImage!,
+      ],
     );
   } catch (_) {
     if (!context.mounted) return;
