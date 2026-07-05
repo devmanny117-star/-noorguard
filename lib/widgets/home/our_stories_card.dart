@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,12 +14,17 @@ const _kGold = Color(0xFFC9A84C);
 const _kCream = Color(0xFFF5EFE6);
 
 /// Home screen preview of one approved community story, pulled from
-/// Firestore in real time. The story revolves daily: a date-based seed
-/// picks from all approved stories, so everyone sees a different story
-/// each day instead of the same featured one forever. Renders nothing at
-/// all until Firebase is configured and at least one story is approved.
+/// Firestore in real time. The story revolves per app launch: a random
+/// seed generated once per session picks from all approved stories, so a
+/// different story shows each time the app opens but stays stable across
+/// rebuilds within the session. Renders nothing at all until Firebase is
+/// configured and at least one story is approved.
 class OurStoriesCard extends StatelessWidget {
   const OurStoriesCard({super.key});
+
+  /// Rolled once per app session (static initializers run lazily, on first
+  /// use) — NOT per rebuild, so scrolling or setState never swaps the story.
+  static final int _sessionSeed = Random().nextInt(1 << 31);
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +38,7 @@ class OurStoriesCard extends StatelessWidget {
         if (stories == null || stories.isEmpty) {
           return const SizedBox.shrink();
         }
-        // Daily seed: stable across rebuilds within one day, advances to
-        // the next story at midnight (list order is newest-first, so this
-        // just cycles through whatever is approved).
-        final today = DateTime.now();
-        final seed = today.year * 10000 + today.month * 100 + today.day;
-        final story = stories[seed % stories.length];
+        final story = stories[_sessionSeed % stories.length];
         return _CardBody(story: story);
       },
     );
@@ -90,6 +92,22 @@ class _CardBody extends StatelessWidget {
           borderRadius: BorderRadius.circular(22),
           child: Stack(
             children: [
+              // Story's chosen background image (bundled asset path from
+              // Firestore) with a dark overlay so the quote stays readable;
+              // no image = the gradient card look.
+              if (story.backgroundImage != null) ...[
+                Positioned.fill(
+                  child: Image.asset(
+                    story.backgroundImage!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                  ),
+                ),
+                Positioned.fill(
+                  child:
+                      Container(color: Colors.black.withValues(alpha: 0.55)),
+                ),
+              ],
               const Positioned.fill(
                 child: CustomPaint(
                   painter: GeometricPatternPainter(color: _kGold, alpha: 0.05),
