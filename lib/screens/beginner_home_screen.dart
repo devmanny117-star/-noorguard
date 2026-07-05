@@ -14,6 +14,7 @@ import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/share_sheet.dart';
 import '../widgets/home/hero_card.dart';
+import '../widgets/home/our_stories_card.dart';
 import '../widgets/home/prayer_times_card.dart';
 import '../widgets/home/premium_bottom_nav.dart';
 import 'adhan_screen.dart';
@@ -368,6 +369,7 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
                     builder: (_) => const JourneyTimelineScreen()),
               ).then((_) => _reloadTasks()),
             ),
+            const OurStoriesCard(),
             const _ToolboxCard(),
           ]),
         ),

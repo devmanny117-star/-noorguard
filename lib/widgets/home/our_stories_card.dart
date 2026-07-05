@@ -11,9 +11,11 @@ const _kNavy = Color(0xFF0D1B2A);
 const _kGold = Color(0xFFC9A84C);
 const _kCream = Color(0xFFF5EFE6);
 
-/// Home screen preview of the latest featured community story, pulled from
-/// Firestore in real time. Renders nothing at all until Firebase is
-/// configured and at least one approved story is marked featured.
+/// Home screen preview of one approved community story, pulled from
+/// Firestore in real time. The story revolves daily: a date-based seed
+/// picks from all approved stories, so everyone sees a different story
+/// each day instead of the same featured one forever. Renders nothing at
+/// all until Firebase is configured and at least one story is approved.
 class OurStoriesCard extends StatelessWidget {
   const OurStoriesCard({super.key});
 
@@ -22,11 +24,19 @@ class OurStoriesCard extends StatelessWidget {
     if (!CommunityStoriesService.firebaseAvailable) {
       return const SizedBox.shrink();
     }
-    return StreamBuilder<CommunityStory?>(
-      stream: CommunityStoriesService().featuredStory(),
+    return StreamBuilder<List<CommunityStory>>(
+      stream: CommunityStoriesService().approvedStories(),
       builder: (context, snap) {
-        final story = snap.data;
-        if (story == null) return const SizedBox.shrink();
+        final stories = snap.data;
+        if (stories == null || stories.isEmpty) {
+          return const SizedBox.shrink();
+        }
+        // Daily seed: stable across rebuilds within one day, advances to
+        // the next story at midnight (list order is newest-first, so this
+        // just cycles through whatever is approved).
+        final today = DateTime.now();
+        final seed = today.year * 10000 + today.month * 100 + today.day;
+        final story = stories[seed % stories.length];
         return _CardBody(story: story);
       },
     );
