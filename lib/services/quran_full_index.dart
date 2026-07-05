@@ -56,7 +56,7 @@ const _localeEditions = <String, String>{
   // 'en' and 'ar' handled separately — no extra edition needed
 };
 
-const _cacheVersion = 3;
+const _cacheVersion = 4; // v4: English switched to Saheeh International (en.sahih)
 
 // ── QuranFullIndex ─────────────────────────────────────────────────────────────
 
@@ -289,7 +289,7 @@ class QuranFullIndex {
   static Future<void> _fetchCore() async {
     final results = await Future.wait([
       _fetchEdition('quran-simple'), // Arabic
-      _fetchEdition('en.asad'),       // English
+      _fetchEdition('en.sahih'),      // English — Saheeh International
     ]);
 
     final arSurahs = results[0];

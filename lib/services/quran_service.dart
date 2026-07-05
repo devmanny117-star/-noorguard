@@ -27,7 +27,7 @@ String _localizeTranslation(String translation, String locale) {
 }
 
 const _translationEditions = {
-  'en': 'en.asad',
+  'en': 'en.sahih',    // Saheeh International — modern, clear, uses "Allah"
   'ur': 'ur.jalandhry',   // Fateh Muhammad Jalandhry — standard Urdu
   'es': 'es.garcia',      // García — Latin American Spanish (ustedes form)
   'fr': 'fr.hamidullah',  // Hamidullah — only French option
