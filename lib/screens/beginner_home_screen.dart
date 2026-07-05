@@ -1065,11 +1065,16 @@ class _ToolboxCard extends StatelessWidget {
                       subtitle: items[0].subtitle,
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (_) => items[0].screen)),
-                      customIcon: const SizedBox(
-                        width: 52,
-                        height: 52,
-                        child: CustomPaint(
-                          painter: _SujoodPainter(color: _kGold),
+                      // Premium sujood illustration (already gold-toned to
+                      // match #C9A84C — no tint needed).
+                      customIcon: Image.asset(
+                        'assets/images/icons/salah_icon.png',
+                        height: 64,
+                        fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => const Icon(
+                          Icons.airline_seat_flat,
+                          color: _kGold,
+                          size: 42,
                         ),
                       ),
                     ),
@@ -1771,89 +1776,3 @@ class _ModeChip extends StatelessWidget {
   }
 }
 
-// ── Sujood (Prostration) Silhouette ───────────────────────────────────────────
-//
-// Side-view silhouette of a person in full sujood (prostration).
-// Viewed from the person's left side, facing left (head at bottom-left).
-//
-//   • Large rounded back hump  — dominant feature, peaks ~¼ from the top
-//   • Head near the ground     — small circle, forehead almost touching floor
-//   • Kufi/cap                 — small oval protruding from back-top of head
-//   • Arms flat on the ground  — thin filled shape extending toward the head
-//   • Legs folded under        — thighs drop from hips, shins fold right/back
-//
-// All shapes are filled in the same color to form a single clean silhouette.
-
-class _SujoodPainter extends CustomPainter {
-  final Color color;
-  const _SujoodPainter({required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final p = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
-    final w = size.width;
-    final h = size.height;
-
-    // ── BODY ──────────────────────────────────────────────────────────────────
-    // Single path: outer (back/spine) edge → inner (belly) edge → close.
-    final body = Path();
-
-    // Neck junction — where head meets torso
-    body.moveTo(w * 0.21, h * 0.69);
-
-    // OUTER BACK — rises steeply from neck, arches into a large hump, descends to hips
-    body.cubicTo(w * 0.30, h * 0.51, w * 0.42, h * 0.32, w * 0.56, h * 0.25); // → hump peak
-    body.cubicTo(w * 0.67, h * 0.28, w * 0.75, h * 0.41, w * 0.77, h * 0.56); // → upper buttock
-
-    // BUTTOCKS — full rounded curve
-    body.cubicTo(w * 0.81, h * 0.62, w * 0.81, h * 0.70, w * 0.77, h * 0.77);
-
-    // OUTER THIGH → outer knee on the ground
-    body.cubicTo(w * 0.75, h * 0.82, w * 0.72, h * 0.86, w * 0.68, h * 0.88);
-
-    // OUTER SHIN + foot extending to the right
-    body.quadraticBezierTo(w * 0.76, h * 0.90, w * 0.85, h * 0.89);
-    body.lineTo(w * 0.88, h * 0.89); // toe tip
-
-    // INNER BELLY EDGE — back left to neck
-    body.lineTo(w * 0.88, h * 0.93);                                            // underfoot
-    body.lineTo(w * 0.70, h * 0.93);                                            // inner heel
-    body.quadraticBezierTo(w * 0.65, h * 0.90, w * 0.63, h * 0.86);           // inner knee
-    body.cubicTo(w * 0.61, h * 0.79, w * 0.61, h * 0.71, w * 0.62, h * 0.65); // inner thigh → hip
-    body.cubicTo(w * 0.52, h * 0.67, w * 0.37, h * 0.73, w * 0.24, h * 0.78); // belly → chest
-
-    body.close(); // chest → neck
-    canvas.drawPath(body, p);
-
-    // ── ARMS ──────────────────────────────────────────────────────────────────
-    // Thin flat shape from the chest area extending forward along the ground.
-    final arms = Path();
-    arms.moveTo(w * 0.27, h * 0.75);
-    arms.cubicTo(w * 0.18, h * 0.78, w * 0.09, h * 0.81, w * 0.02, h * 0.84); // upper arm edge
-    arms.lineTo(w * 0.03, h * 0.91);
-    arms.cubicTo(w * 0.11, h * 0.88, w * 0.20, h * 0.85, w * 0.29, h * 0.82); // lower arm edge
-    arms.close();
-    canvas.drawPath(arms, p);
-
-    // ── HEAD ──────────────────────────────────────────────────────────────────
-    // Small circle; forehead nears the ground at lower-left.
-    canvas.drawCircle(Offset(w * 0.13, h * 0.79), w * 0.084, p);
-
-    // ── KUFI / CAP ────────────────────────────────────────────────────────────
-    // Small oval sitting on the back-top of the tilted head, protruding above
-    // the head circle so it reads as a cap in the filled silhouette.
-    canvas.drawOval(
-      Rect.fromCenter(
-        center: Offset(w * 0.18, h * 0.70),
-        width: w * 0.15,
-        height: h * 0.08,
-      ),
-      p,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant _SujoodPainter old) => old.color != color;
-}
