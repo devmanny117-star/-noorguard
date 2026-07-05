@@ -634,51 +634,34 @@ class _FeaturedStoryCard extends StatelessWidget {
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: _kGold.withValues(alpha: 0.35),
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
-                        child: Hero(
-                          tag: 'story-avatar-${story.id}',
-                          child: _AuthorAvatar(
-                            story: story,
-                            size: 38,
-                            borderWidth: 2,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              name,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.playfairDisplay(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: _kGold,
+                        child: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: _AuthorPill(
+                            avatar: Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: _kGold.withValues(alpha: 0.35),
+                                    blurRadius: 10,
+                                  ),
+                                ],
+                              ),
+                              child: Hero(
+                                tag: 'story-avatar-${story.id}',
+                                child: _AuthorAvatar(
+                                  story: story,
+                                  size: 38,
+                                  borderWidth: 2,
+                                ),
                               ),
                             ),
-                            const SizedBox(height: 2),
-                            Text(
-                              '${story.countryFlag} ${story.country}',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.lato(
-                                fontSize: 11.5,
-                                color: _kCream.withValues(alpha: 0.6),
-                              ),
-                            ),
-                          ],
+                            name: name,
+                            nameFontSize: 13,
+                            subtitle: '${story.countryFlag} ${story.country}',
+                            subtitleFontSize: 11.5,
+                          ),
                         ),
                       ),
                       if (story.shahadaDate != null) ...[
@@ -853,46 +836,22 @@ class _StoryCardState extends State<_StoryCard> {
                   ),
                   const SizedBox(height: 12),
                   // ── Author row ──────────────────────────────────────────
-                  Row(
-                    children: [
-                      Hero(
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: _AuthorPill(
+                      avatar: Hero(
                         tag: 'story-avatar-${story.id}',
                         child: _AuthorAvatar(story: story, size: 40),
                       ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              storyDisplayName(l10n, story),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.playfairDisplay(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: _kGold,
-                              ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              [
-                                '${story.countryFlag} ${story.country}',
-                                if (story.shahadaDate != null)
-                                  l10n.storyShahadaDate(
-                                      '${story.shahadaDate!.year}'),
-                              ].join(' · '),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.lato(
-                                fontSize: 11.5,
-                                color: _kCream.withValues(alpha: 0.6),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      name: storyDisplayName(l10n, story),
+                      nameFontSize: 16,
+                      subtitle: [
+                        '${story.countryFlag} ${story.country}',
+                        if (story.shahadaDate != null)
+                          l10n.storyShahadaDate('${story.shahadaDate!.year}'),
+                      ].join(' · '),
+                      subtitleFontSize: 11.5,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -969,6 +928,71 @@ class _EditButton extends StatelessWidget {
           border: Border.all(color: _kGold.withValues(alpha: 0.55)),
         ),
         child: const Icon(Icons.edit_rounded, size: 13, color: _kGold),
+      ),
+    );
+  }
+}
+
+/// Dark rounded pill behind the author identity (avatar + gold name +
+/// flag/country) so it stays readable over any card background. Sized to
+/// its content — wrap in an Align/Expanded so it doesn't stretch full width.
+class _AuthorPill extends StatelessWidget {
+  final Widget avatar;
+  final String name;
+  final String subtitle;
+  final double nameFontSize;
+  final double subtitleFontSize;
+
+  const _AuthorPill({
+    required this.avatar,
+    required this.name,
+    required this.subtitle,
+    required this.nameFontSize,
+    required this.subtitleFontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsetsDirectional.fromSTEB(5, 5, 10, 5),
+      decoration: BoxDecoration(
+        color: Colors.black.withValues(alpha: 0.4),
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          avatar,
+          const SizedBox(width: 10),
+          Flexible(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: nameFontSize,
+                    fontWeight: FontWeight.w700,
+                    color: _kGold,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  subtitle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.lato(
+                    fontSize: subtitleFontSize,
+                    color: _kCream.withValues(alpha: 0.6),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -3173,47 +3197,31 @@ class _DetailAuthorSection extends StatelessWidget {
       padding: const EdgeInsetsDirectional.fromSTEB(20, 18, 20, 0),
       child: Row(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: _kGold.withValues(alpha: 0.35),
-                  blurRadius: 12,
-                ),
-              ],
-            ),
-            child: Hero(
-              tag: 'story-avatar-${story.id}',
-              child: _AuthorAvatar(story: story, size: 48, borderWidth: 2),
-            ),
-          ),
-          const SizedBox(width: 12),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  storyDisplayName(l10n, story),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: _kGold,
+            child: Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: _AuthorPill(
+                avatar: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: _kGold.withValues(alpha: 0.35),
+                        blurRadius: 12,
+                      ),
+                    ],
+                  ),
+                  child: Hero(
+                    tag: 'story-avatar-${story.id}',
+                    child:
+                        _AuthorAvatar(story: story, size: 48, borderWidth: 2),
                   ),
                 ),
-                const SizedBox(height: 3),
-                Text(
-                  '${story.countryFlag} ${story.country}',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.lato(
-                    fontSize: 12.5,
-                    color: _kCream.withValues(alpha: 0.65),
-                  ),
-                ),
-              ],
+                name: storyDisplayName(l10n, story),
+                nameFontSize: 18,
+                subtitle: '${story.countryFlag} ${story.country}',
+                subtitleFontSize: 12.5,
+              ),
             ),
           ),
           if (story.shahadaDate != null) ...[
