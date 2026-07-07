@@ -241,21 +241,26 @@ class PrayerForegroundService : Service() {
 
         // Tap → open the app at the content being shown (ayah, dua, glossary
         // term, ...). MainActivity's getPendingNotificationNav consumes these
-        // extras and Dart navigates to the matching screen; without them the
-        // tap just opens the home screen.
-        val openAppIntent = packageManager.getLaunchIntentForPackage(packageName)?.apply {
+        // extras and Dart navigates to the matching screen.
+        //
+        // Deliberately an EXPLICIT intent, not getLaunchIntentForPackage():
+        // a MAIN/LAUNCHER intent aimed at an already-running task only brings
+        // the task forward — Android drops the intent (onNewIntent never
+        // fires) and the extras with it, so warm taps landed on the home
+        // screen. SINGLE_TOP + launchMode="singleTop" delivers the intent to
+        // the live MainActivity via onNewIntent instead.
+        val openAppIntent = Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP
             val navType = content?.optString(CONTENT_NAV_TYPE) ?: ""
             if (navType.isNotEmpty()) {
                 putExtra(EXTRA_NAV_TYPE, navType)
                 putExtra(EXTRA_NAV_DATA, content?.optString(CONTENT_NAV_DATA) ?: "")
             }
         }
-        val contentPi = openAppIntent?.let {
-            PendingIntent.getActivity(
-                this, 0, it,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-            )
-        }
+        val contentPi = PendingIntent.getActivity(
+            this, 0, openAppIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notif_crescent)

@@ -42,6 +42,11 @@ class NotificationNavService with WidgetsBindingObserver {
   bool _homeReady = false;
   bool _checking = false;
 
+  /// Payload from a flutter_local_notifications tap (prayer reminder /
+  /// silent banner) that arrived before a home screen was up — e.g. the tap
+  /// that cold-started the app. Consumed by [onHomeReady].
+  String? _pendingLocalPayload;
+
   void init() {
     if (kIsWeb || !Platform.isAndroid) return;
     WidgetsBinding.instance.addObserver(this);
@@ -50,9 +55,33 @@ class NotificationNavService with WidgetsBindingObserver {
   /// Called by the splash screen after it has replaced itself with a home
   /// screen — the earliest moment a content screen can be pushed on top.
   void onHomeReady() {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (kIsWeb) return;
     _homeReady = true;
-    _checkPending();
+    // Live-notification extras are Android-only; plugin payloads (below)
+    // exist on both platforms.
+    if (Platform.isAndroid) _checkPending();
+    final payload = _pendingLocalPayload;
+    _pendingLocalPayload = null;
+    if (payload != null) _handleLocalPayload(payload);
+  }
+
+  /// Entry point for taps on plugin-shown notifications (the 15-minute
+  /// prayer reminder and the silent banner, on Android AND iOS). Payload
+  /// format: `verse:<surah>:<ayah>` deep-links into the Quran reader;
+  /// anything else is ignored (the app just opens normally).
+  void handleNotificationPayload(String? payload) {
+    if (kIsWeb || payload == null || payload.isEmpty) return;
+    if (_homeReady) {
+      _handleLocalPayload(payload);
+    } else {
+      _pendingLocalPayload = payload;
+    }
+  }
+
+  Future<void> _handleLocalPayload(String payload) async {
+    if (payload.startsWith('verse:')) {
+      await _openAyah(payload.substring('verse:'.length));
+    }
   }
 
   @override

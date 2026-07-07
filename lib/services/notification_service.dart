@@ -10,6 +10,7 @@ import 'package:timezone/data/latest.dart' as tz_data;
 import '../l10n/app_localizations.dart';
 import '../models/adhan_model.dart';
 import '../models/prayer_model.dart' show todaysPrayers;
+import 'notification_nav_service.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -82,6 +83,22 @@ class NotificationService {
     };
   }
 
+  /// Quran references quoted inside the prayer reminder messages, keyed by
+  /// prayer name — kept structural (not parsed out of the localized text,
+  /// whose numerals vary by language) so a tap can deep-link to the exact
+  /// ayah in the reader. Only Asr's message quotes a verse today; prayers
+  /// without an entry get no deep link (tap opens the app normally).
+  static const Map<String, String> _reminderVerseRefs = {
+    'Asr': '2:238', // Al-Baqarah 2:238, quoted in the Asr reminder/alarm
+  };
+
+  /// `verse:<surah>:<ayah>` payload for [name]'s reminder notifications, or
+  /// null when its message quotes no verse.
+  String? _payloadFor(String name) {
+    final ref = _reminderVerseRefs[name];
+    return ref == null ? null : 'verse:$ref';
+  }
+
   String _alarmMessageFor(AppLocalizations l10n, String name) {
     return switch (name) {
       'Fajr' => l10n.prayerAlarmMessageFajr,
@@ -142,6 +159,19 @@ class NotificationService {
       settings: initSettings,
       onDidReceiveNotificationResponse: _onNotificationResponse,
     );
+
+    // A tap that cold-started the app never reaches _onNotificationResponse;
+    // its payload arrives here instead. NotificationNavService parks it until
+    // the splash lands on a home screen, then deep-links.
+    try {
+      final launch = await _plugin.getNotificationAppLaunchDetails();
+      if (launch?.didNotificationLaunchApp ?? false) {
+        NotificationNavService.instance
+            .handleNotificationPayload(launch!.notificationResponse?.payload);
+      }
+    } catch (e) {
+      debugPrint('NotificationService: launch details unavailable: $e');
+    }
 
     final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
@@ -448,6 +478,7 @@ class NotificationService {
           scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
           notificationDetails: details,
           androidScheduleMode: scheduleMode,
+          payload: _payloadFor(name),
         );
       } catch (e) {
         debugPrint('NotificationService: failed to schedule $name reminder: $e');
@@ -479,6 +510,7 @@ class NotificationService {
         scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
         notificationDetails: _detailsFor(adhanId),
         androidScheduleMode: await _scheduleMode(),
+        payload: _payloadFor(name),
       );
     } catch (e) {
       debugPrint('NotificationService: failed to schedule $name reminder: $e');
@@ -532,6 +564,7 @@ class NotificationService {
             categoryIdentifier: 'PRAYER_ADHAN',
           ),
         ),
+        payload: _payloadFor(name),
       );
     } catch (e) {
       debugPrint('NotificationService: failed to show $name banner: $e');
@@ -648,6 +681,10 @@ class NotificationService {
     if (id != null && id >= 0 && id <= 4) {
       onPrayerBannerTapped?.call();
     }
+    // A `verse:<surah>:<ayah>` payload (attached when the reminder message
+    // quotes a Quran verse, e.g. Asr's Al-Baqarah 2:238) deep-links into the
+    // Quran reader at that exact ayah.
+    NotificationNavService.instance.handleNotificationPayload(response.payload);
   }
 
   Future<void> cancelAll() async {

@@ -83,3 +83,30 @@ Future<List<Verse>> fetchVerses(int surahNumber, {String locale = 'en'}) async {
     return [];
   }
 }
+
+/// Translation of a single ayah in the SAME edition the Quran reader shows
+/// for [locale] (the [_translationEditions] table above), so text quoted
+/// elsewhere (e.g. the Noor Guard Live notification) matches the reader
+/// word-for-word. Returns null for Arabic (the reader shows no translation
+/// line) and on any network failure — callers fall back to their bundled
+/// translation.
+Future<String?> fetchAyahTranslation(
+    int surahNumber, int ayahNumber, String locale) async {
+  final edition = _translationEditions[locale];
+  if (edition == null) return null;
+  try {
+    final response = await http.get(
+      Uri.parse(
+        'https://api.alquran.cloud/v1/ayah/$surahNumber:$ayahNumber/$edition',
+      ),
+    ).timeout(_requestTimeout);
+    if (response.statusCode != 200) return null;
+    final text =
+        (jsonDecode(response.body)['data'] as Map<String, dynamic>?)?['text']
+            as String?;
+    if (text == null || text.trim().isEmpty) return null;
+    return _localizeTranslation(text.trim(), locale);
+  } catch (_) {
+    return null;
+  }
+}

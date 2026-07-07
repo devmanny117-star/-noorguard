@@ -10,6 +10,7 @@ import '../l10n/app_localizations.dart';
 import '../models/asma_ul_husna_model.dart';
 import '../models/dua_model.dart';
 import '../screens/islamic_glossary_screen.dart' show glossaryTermAt;
+import 'quran_service.dart' show fetchAyahTranslation;
 
 /// Assembles the fully localized payload behind the persistent "Noor Guard
 /// Live" notification (next-prayer countdown + rotating daily Islamic
@@ -64,7 +65,7 @@ class LiveNotificationService {
     final days = <Map<String, String>>[];
     for (int i = 0; i < _daysOfContent; i++) {
       final date = DateTime(today.year, today.month, today.day + i);
-      days.add(_contentForDate(date, l10n, locale));
+      days.add(await _contentForDate(date, l10n, locale));
     }
 
     final payload = <String, dynamic>{
@@ -86,8 +87,8 @@ class LiveNotificationService {
   /// One day's rotating content block, cycling ayah → dua → glossary word →
   /// Name of Allah → hadith by day of year, and stepping through each pool
   /// on every 5-day pass so consecutive weeks never repeat.
-  static Map<String, String> _contentForDate(
-      DateTime date, AppLocalizations l10n, String locale) {
+  static Future<Map<String, String>> _contentForDate(
+      DateTime date, AppLocalizations l10n, String locale) async {
     final dayOfYear = date.difference(DateTime(date.year, 1, 1)).inDays;
     final step = dayOfYear ~/ 5;
     final dateKey = '${date.year.toString().padLeft(4, '0')}-'
@@ -97,14 +98,25 @@ class LiveNotificationService {
     switch (dayOfYear % 5) {
       case 0:
         final ayah = shareAyahs[step % shareAyahs.length];
+        final navData = _ayahNavData(ayah.source);
+        // Prefer the exact translation the Quran reader shows (same edition,
+        // same language) so notification text and reader text match
+        // word-for-word; the bundled translation is the offline fallback.
+        String body = _translationOrEmpty(locale, ayah.translationFor);
+        if (body.isNotEmpty && navData.isNotEmpty) {
+          final parts = navData.split(':');
+          final synced = await fetchAyahTranslation(
+              int.parse(parts[0]), int.parse(parts[1]), locale);
+          if (synced != null) body = synced;
+        }
         return {
           'date': dateKey,
           'header': l10n.liveNotifHeaderAyah,
           'arabic': ayah.arabic,
-          'body': _translationOrEmpty(locale, ayah.translationFor),
+          'body': body,
           'source': ayah.source,
           'navType': 'ayah',
-          'navData': _ayahNavData(ayah.source),
+          'navData': navData,
         };
       case 1:
         final dua = lockScreenDuas[step % lockScreenDuas.length];
