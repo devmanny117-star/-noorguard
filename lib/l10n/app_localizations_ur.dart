@@ -3145,4 +3145,80 @@ class AppLocalizationsUr extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'آیت $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 فجر کا وقت ہو گیا';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ ظہر کا وقت ہو گیا';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ عصر کا وقت ہو گیا';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 مغرب کا وقت ہو گیا';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 عشاء کا وقت ہو گیا';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'اٹھیں اور نماز پڑھیں۔ اللہ انہیں اجر دیتا ہے جو اس کے لیے جاگتے ہیں۔';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'اللہ کے لیے ایک لمحہ نکالیں۔ آپ کی ظہر کی نماز منتظر ہے۔';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'درمیانی نماز۔ اس کی حفاظت کریں۔ — البقرہ ٢:٢٣٨';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'سورج غروب ہو گیا۔ اللہ کی پکار کا جواب دیں۔';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'اپنے دن کا اختتام اللہ کے ساتھ کریں۔ آپ کی رات کی نماز منتظر ہے۔';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'اٹھیں اور نماز پڑھیں۔ اللہ انہیں اجر دیتا ہے جو اس کے لیے جاگتے ہیں۔';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'اللہ کے لیے ایک لمحہ نکالیں۔ آپ کی ظہر کی نماز منتظر ہے۔';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'درمیانی نماز کی حفاظت کریں۔ — البقرہ ٢:٢٣٨';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'سورج غروب ہو گیا۔ اللہ کی پکار کا جواب دیں۔';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'اپنے دن کا اختتام اللہ کے ساتھ کریں۔ آپ کی رات کی نماز منتظر ہے۔';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer ١٥ منٹ میں';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return '$prayer کی نماز کی تیاری کا وقت ہے';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return '$prayer کی نماز کا وقت ہو گیا';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 آزمائشی اطلاع';
+
+  @override
+  String get testNotificationBody => 'اطلاعات درست کام کر رہی ہیں!';
 }

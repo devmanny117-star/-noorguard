@@ -2557,7 +2557,12 @@ const List<_Term> _allTerms = [
 // ── Screen ────────────────────────────────────────────────────────────────────
 
 class IslamicGlossaryScreen extends StatefulWidget {
-  const IslamicGlossaryScreen({super.key});
+  /// Transliteration of the term to scroll to and highlight (e.g. from a
+  /// Noor Guard Live notification tap). Unknown terms open the screen at the
+  /// top as usual.
+  final String? initialTerm;
+
+  const IslamicGlossaryScreen({super.key, this.initialTerm});
 
   @override
   State<IslamicGlossaryScreen> createState() => _IslamicGlossaryScreenState();
@@ -2570,6 +2575,18 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
 
   int _fontScaleIndex = kDefaultFontScaleIndex;
 
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _highlightKey = GlobalKey();
+
+  /// Estimated collapsed term-card height (content + margin) used for the
+  /// first, coarse jump toward [IslamicGlossaryScreen.initialTerm]; a
+  /// follow-up ensureVisible pass corrects the remaining error once the
+  /// card is actually built.
+  static const _estimatedCardExtent = 112.0;
+
+  /// The term a notification tap asked this screen to open at, or null.
+  _Term? _highlightTerm;
+
   @override
   void initState() {
     super.initState();
@@ -2578,6 +2595,37 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
           setState(() => _query = _searchController.text.trim().toLowerCase()),
     );
     _loadFontScale();
+    _scrollToInitialTerm();
+  }
+
+  /// Two-phase scroll to the requested term: (1) jump near it by estimated
+  /// card extent so the lazy ListView builds it, (2) ensureVisible on the
+  /// now-built card to land precisely. The card itself is highlighted and
+  /// starts expanded (see [_TermCard.highlighted]).
+  void _scrollToInitialTerm() {
+    final wanted = widget.initialTerm;
+    if (wanted == null || wanted.isEmpty) return;
+    final index = _allTerms.indexWhere(
+      (t) => t.transliteration.toLowerCase() == wanted.toLowerCase(),
+    );
+    if (index < 0) return;
+    _highlightTerm = _allTerms[index];
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scrollController.hasClients) return;
+      final target = (index * _estimatedCardExtent)
+          .clamp(0.0, _scrollController.position.maxScrollExtent);
+      _scrollController.jumpTo(target);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final ctx = _highlightKey.currentContext;
+        if (ctx == null || !mounted) return;
+        Scrollable.ensureVisible(
+          ctx,
+          alignment: 0.1,
+          duration: const Duration(milliseconds: 350),
+          curve: Curves.easeOutCubic,
+        );
+      });
+    });
   }
 
   Future<void> _loadFontScale() async {
@@ -2593,6 +2641,7 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
   @override
   void dispose() {
     _searchController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -2648,10 +2697,19 @@ class _IslamicGlossaryScreenState extends State<IslamicGlossaryScreen> {
                 child: results.isEmpty
                     ? _EmptyState(l10n: l10n, query: _query)
                     : ListView.builder(
+                        controller: _scrollController,
                         padding: const EdgeInsets.fromLTRB(20, 4, 20, 32),
                         itemCount: results.length,
-                        itemBuilder: (context, i) =>
-                            _TermCard(term: results[i], lang: lang, l10n: l10n),
+                        itemBuilder: (context, i) {
+                          final isHighlighted = results[i] == _highlightTerm;
+                          return _TermCard(
+                            key: isHighlighted ? _highlightKey : null,
+                            term: results[i],
+                            lang: lang,
+                            l10n: l10n,
+                            highlighted: isHighlighted,
+                          );
+                        },
                       ),
               ),
             ),
@@ -2827,14 +2885,25 @@ class _TermCard extends StatefulWidget {
   final _Term term;
   final String lang;
   final AppLocalizations l10n;
-  const _TermCard({required this.term, required this.lang, required this.l10n});
+
+  /// True for the term a notification tap navigated to: the card starts
+  /// expanded and carries a gold border so it stands out after scrolling.
+  final bool highlighted;
+
+  const _TermCard({
+    super.key,
+    required this.term,
+    required this.lang,
+    required this.l10n,
+    this.highlighted = false,
+  });
 
   @override
   State<_TermCard> createState() => _TermCardState();
 }
 
 class _TermCardState extends State<_TermCard> {
-  bool _expanded = false;
+  late bool _expanded = widget.highlighted;
 
   Future<void> _shareTerm() async {
     final l10n = widget.l10n;
@@ -2874,7 +2943,19 @@ class _TermCardState extends State<_TermCard> {
         decoration: BoxDecoration(
           color: _cardNavy,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: _gold.withValues(alpha: 0.12)),
+          border: Border.all(
+            color: _gold.withValues(alpha: widget.highlighted ? 0.75 : 0.12),
+            width: widget.highlighted ? 1.5 : 1,
+          ),
+          boxShadow: widget.highlighted
+              ? [
+                  BoxShadow(
+                    color: _gold.withValues(alpha: 0.25),
+                    blurRadius: 16,
+                    spreadRadius: 1,
+                  ),
+                ]
+              : null,
         ),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),

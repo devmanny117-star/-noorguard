@@ -8,7 +8,12 @@ import '../widgets/font_size_slider.dart';
 import 'saved_names_screen.dart';
 
 class AsmaUlHusnaScreen extends StatefulWidget {
-  const AsmaUlHusnaScreen({super.key});
+  /// Number (1–99) of the Name to scroll to and highlight (e.g. from a Noor
+  /// Guard Live notification tap). Unknown numbers open the screen at the
+  /// top as usual.
+  final int? initialNameNumber;
+
+  const AsmaUlHusnaScreen({super.key, this.initialNameNumber});
 
   @override
   State<AsmaUlHusnaScreen> createState() => _AsmaUlHusnaScreenState();
@@ -25,11 +30,48 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
   int _fontScaleIndex = kDefaultFontScaleIndex;
   Set<int> _bookmarked = {};
 
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _highlightKey = GlobalKey();
+
+  /// Estimated collapsed name-card height (content + bottom padding) for the
+  /// first, coarse jump toward [AsmaUlHusnaScreen.initialNameNumber]; a
+  /// follow-up ensureVisible pass corrects the remaining error once the card
+  /// is actually built.
+  static const _estimatedCardExtent = 150.0;
+
+  /// The Name a notification tap asked this screen to open at, or null.
+  int? _highlightNumber;
+
   @override
   void initState() {
     super.initState();
     _loadFontScale();
     _loadBookmarks();
+    _scrollToInitialName();
+  }
+
+  void _scrollToInitialName() {
+    final wanted = widget.initialNameNumber;
+    if (wanted == null) return;
+    final index = asmaUlHusnaNames.indexWhere((n) => n.number == wanted);
+    if (index < 0) return;
+    _highlightNumber = wanted;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_scrollController.hasClients) return;
+      final target = (index * _estimatedCardExtent)
+          .clamp(0.0, _scrollController.position.maxScrollExtent);
+      _scrollController.jumpTo(target);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final ctx = _highlightKey.currentContext;
+        if (ctx == null || !mounted) return;
+        Scrollable.ensureVisible(
+          ctx,
+          alignment: 0.1,
+          duration: const Duration(milliseconds: 350),
+          curve: Curves.easeOutCubic,
+        );
+      });
+    });
   }
 
   Future<void> _loadBookmarks() async {
@@ -76,6 +118,7 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
   @override
   void dispose() {
     _searchController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -176,17 +219,22 @@ class _AsmaUlHusnaScreenState extends State<AsmaUlHusnaScreen> {
                       ),
                     )
                   : ListView.builder(
+                      controller: _scrollController,
                       physics: const BouncingScrollPhysics(),
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
                       itemCount: names.length,
                       itemBuilder: (context, index) {
                         final name = names[index];
+                        final isHighlighted =
+                            name.number == _highlightNumber;
                         return Padding(
+                          key: isHighlighted ? _highlightKey : null,
                           padding: const EdgeInsets.only(bottom: 12),
                           child: _AsmaCard(
                             name: name,
                             locale: locale,
                             significanceLabel: l10n.asmaSignificance,
+                            isHighlighted: isHighlighted,
                             onShareTap: () => _shareName(name),
                             isBookmarked: _bookmarked.contains(name.number),
                             onBookmarkTap: () => _toggleBookmark(name.number),
@@ -305,6 +353,7 @@ class _AsmaCard extends StatefulWidget {
   final AsmaName name;
   final String locale;
   final String significanceLabel;
+  final bool isHighlighted;
   final VoidCallback onShareTap;
   final bool isBookmarked;
   final VoidCallback onBookmarkTap;
@@ -313,6 +362,7 @@ class _AsmaCard extends StatefulWidget {
     required this.name,
     required this.locale,
     required this.significanceLabel,
+    this.isHighlighted = false,
     required this.onShareTap,
     required this.isBookmarked,
     required this.onBookmarkTap,
@@ -341,7 +391,21 @@ class _AsmaCardState extends State<_AsmaCard> {
         decoration: BoxDecoration(
           color: _cardColor,
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: _gold.withValues(alpha: 0.15)),
+          // Highlighted = the Name a notification tap navigated to.
+          border: Border.all(
+            color: _gold.withValues(
+                alpha: widget.isHighlighted ? 0.75 : 0.15),
+            width: widget.isHighlighted ? 1.5 : 1,
+          ),
+          boxShadow: widget.isHighlighted
+              ? [
+                  BoxShadow(
+                    color: _gold.withValues(alpha: 0.25),
+                    blurRadius: 16,
+                    spreadRadius: 1,
+                  ),
+                ]
+              : null,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

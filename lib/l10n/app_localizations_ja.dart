@@ -3038,4 +3038,70 @@ class AppLocalizationsJa extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return '第$number節';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 ファジュルの時間です';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ ズフルの時間です';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ アスルの時間です';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 マグリブの時間です';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 イシャーの時間です';
+
+  @override
+  String get prayerReminderBodyFajr => '起きて礼拝しましょう。アッラーのために目覚める者には報奨があります。';
+
+  @override
+  String get prayerReminderBodyDhuhr => 'アッラーのためにひとときを。ズフルの礼拝が待っています。';
+
+  @override
+  String get prayerReminderBodyAsr => '中間の礼拝です。大切に守りましょう。— 雌牛章 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib => '日が沈みました。アッラーの呼びかけに応えましょう。';
+
+  @override
+  String get prayerReminderBodyIsha => '一日をアッラーとともに締めくくりましょう。夜の礼拝が待っています。';
+
+  @override
+  String get prayerAlarmMessageFajr => '起きて礼拝しましょう。アッラーのために目覚める者には報奨があります。';
+
+  @override
+  String get prayerAlarmMessageDhuhr => 'アッラーのためにひとときを。ズフルの礼拝が待っています。';
+
+  @override
+  String get prayerAlarmMessageAsr => '中間の礼拝を大切に守りましょう。— 雌牛章 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib => '日が沈みました。アッラーの呼びかけに応えましょう。';
+
+  @override
+  String get prayerAlarmMessageIsha => '一日をアッラーとともに締めくくりましょう。夜の礼拝が待っています。';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayerまであと15分';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return '$prayerの礼拝に備えましょう';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return '$prayerの礼拝の時間です';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 テスト通知';
+
+  @override
+  String get testNotificationBody => '通知は正常に動作しています！';
 }

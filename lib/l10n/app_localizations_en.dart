@@ -3150,4 +3150,80 @@ class AppLocalizationsEn extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'Ayah $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 Time for Fajr';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ Time for Dhuhr';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ Time for Asr';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 Time for Maghrib';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 Time for Isha';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'Rise and pray. Allah rewards those who wake for Him.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'Take a moment for Allah. Your Dhuhr prayer awaits.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'The middle prayer. Guard it closely. — Al-Baqarah 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'The sun has set. Answer the call of Allah.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'End your day with Allah. Your night prayer awaits.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'Rise and pray. Allah rewards those who wake for Him.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'Take a moment for Allah. Your Dhuhr prayer awaits.';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'Guard the middle prayer closely. — Al-Baqarah 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'The sun has set. Answer the call of Allah.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'End your day with Allah. Your night prayer awaits.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer in 15 minutes';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'Time to prepare for $prayer prayer';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'Time for $prayer prayer';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 Test Notification';
+
+  @override
+  String get testNotificationBody => 'Notifications are working correctly!';
 }

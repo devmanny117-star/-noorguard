@@ -103,6 +103,8 @@ class LiveNotificationService {
           'arabic': ayah.arabic,
           'body': _translationOrEmpty(locale, ayah.translationFor),
           'source': ayah.source,
+          'navType': 'ayah',
+          'navData': _ayahNavData(ayah.source),
         };
       case 1:
         final dua = lockScreenDuas[step % lockScreenDuas.length];
@@ -113,6 +115,8 @@ class LiveNotificationService {
           'body': _translationOrEmpty(
               locale, (l) => dua.translationFor(l).replaceAll('\n', ' ')),
           'source': dua.source,
+          'navType': 'dua',
+          'navData': dua.arabic,
         };
       case 2:
         final term = glossaryTermAt(step, locale);
@@ -122,6 +126,8 @@ class LiveNotificationService {
           'arabic': term.arabic,
           'body': '${term.transliteration} — ${term.definition}',
           'source': '',
+          'navType': 'glossary',
+          'navData': term.transliteration,
         };
       case 3:
         final name = asmaUlHusnaNames[step % asmaUlHusnaNames.length];
@@ -132,6 +138,8 @@ class LiveNotificationService {
           'body': '${name.transliteration} — ${name.meaningText(locale)}\n'
               '${name.explanationText(locale)}',
           'source': '',
+          'navType': 'asma',
+          'navData': '${name.number}',
         };
       default:
         final hadith = shareHadiths[step % shareHadiths.length];
@@ -141,8 +149,21 @@ class LiveNotificationService {
           'arabic': hadith.arabic,
           'body': _translationOrEmpty(locale, hadith.translationFor),
           'source': hadith.source,
+          // There is no dedicated hadith reading screen in the app, so a tap
+          // on hadith content opens the home screen (the nav handler treats
+          // 'hadith' as home).
+          'navType': 'hadith',
+          'navData': '',
         };
     }
+  }
+
+  /// "surah:ayah" parsed from an ayah source label like "Al-Baqarah 2:238";
+  /// empty when the label carries no reference (tap then falls back to home).
+  static String _ayahNavData(String source) {
+    final match = RegExp(r'(\d+):(\d+)').firstMatch(source);
+    if (match == null) return '';
+    return '${match.group(1)}:${match.group(2)}';
   }
 
   /// Ayahs, duas, and hadiths deliberately have no 'ar' translation entry —

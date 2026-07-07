@@ -19,6 +19,7 @@ import 'screens/onboarding_screen.dart';
 import 'theme/app_theme.dart';
 import 'theme/theme_controller.dart';
 import 'package:provider/provider.dart';
+import 'services/notification_nav_service.dart';
 import 'services/notification_service.dart';
 import 'services/prayer_state.dart';
 import 'services/adhan_foreground_controller.dart';
@@ -81,6 +82,9 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
     // Plays the full adhan in-app when a prayer reminder fires while the app
     // is open (the closed-app case is handled by scheduled notifications).
     AdhanForegroundController().start();
+    // Watches for taps on the Noor Guard Live notification and opens the
+    // specific content (ayah/dua/glossary term/name) it was showing.
+    NotificationNavService.instance.init();
   }
 
   Future<void> _loadLocale() async {
@@ -105,6 +109,7 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
         child: ListenableBuilder(
           listenable: _themeController,
           builder: (_, __) => MaterialApp(
+            navigatorKey: NotificationNavService.navigatorKey,
             locale: _locale,
             title: 'Noor Guard',
             debugShowCheckedModeBanner: false,
@@ -244,6 +249,13 @@ class _SplashScreenState extends State<SplashScreen>
           transitionDuration: const Duration(milliseconds: 600),
         ),
       );
+      // A cold start from a Noor Guard Live notification tap can now
+      // navigate to the tapped content — but only once a home screen is
+      // actually up; from onboarding/setup the pending extras stay parked
+      // natively until the next resume after home is reached.
+      if (next is HomeScreen || next is BeginnerHomeScreen) {
+        NotificationNavService.instance.onHomeReady();
+      }
     });
   }
 

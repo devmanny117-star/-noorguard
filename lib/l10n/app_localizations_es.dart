@@ -3171,4 +3171,81 @@ class AppLocalizationsEs extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'Aleya $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 Hora de Fajr';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ Hora de Dhuhr';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ Hora de Asr';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 Hora de Maghrib';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 Hora de Isha';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'Levántate y reza. Allah recompensa a quienes despiertan por Él.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'Toma un momento para Allah. Tu oración de Dhuhr te espera.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'La oración intermedia. Cuídala de cerca. — Al-Báqarah 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'El sol se ha puesto. Responde al llamado de Allah.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'Termina tu día con Allah. Tu oración de la noche te espera.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'Levántate y reza. Allah recompensa a quienes despiertan por Él.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'Toma un momento para Allah. Tu oración de Dhuhr te espera.';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'Cuida de cerca la oración intermedia. — Al-Báqarah 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'El sol se ha puesto. Responde al llamado de Allah.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'Termina tu día con Allah. Tu oración de la noche te espera.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer en 15 minutos';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'Es hora de prepararte para la oración de $prayer';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'Es hora de la oración de $prayer';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 Notificación de prueba';
+
+  @override
+  String get testNotificationBody =>
+      '¡Las notificaciones funcionan correctamente!';
 }

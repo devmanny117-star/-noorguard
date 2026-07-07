@@ -3172,4 +3172,80 @@ class AppLocalizationsId extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'Ayat $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 Waktunya Salat Subuh';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ Waktunya Salat Dzuhur';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ Waktunya Salat Ashar';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 Waktunya Salat Maghrib';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 Waktunya Salat Isya';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'Bangun dan salatlah. Allah memberi pahala bagi yang bangun untuk-Nya.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'Luangkan waktu sejenak untuk Allah. Salat Dzuhur menantimu.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'Salat pertengahan. Jagalah baik-baik. — Al-Baqarah 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'Matahari telah terbenam. Sambutlah panggilan Allah.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'Akhiri harimu bersama Allah. Salat Isya menantimu.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'Bangun dan salatlah. Allah memberi pahala bagi yang bangun untuk-Nya.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'Luangkan waktu sejenak untuk Allah. Salat Dzuhur menantimu.';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'Jagalah salat pertengahan baik-baik. — Al-Baqarah 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'Matahari telah terbenam. Sambutlah panggilan Allah.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'Akhiri harimu bersama Allah. Salat Isya menantimu.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer dalam 15 menit';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'Saatnya bersiap untuk salat $prayer';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'Waktunya salat $prayer';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 Notifikasi Uji Coba';
+
+  @override
+  String get testNotificationBody => 'Notifikasi berfungsi dengan baik!';
 }

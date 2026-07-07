@@ -3164,4 +3164,80 @@ class AppLocalizationsBn extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'আয়াত $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 ফজরের সময় হয়েছে';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ যোহরের সময় হয়েছে';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ আসরের সময় হয়েছে';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 মাগরিবের সময় হয়েছে';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 এশার সময় হয়েছে';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'উঠুন এবং নামাজ পড়ুন। যারা আল্লাহর জন্য জাগে, তিনি তাদের পুরস্কৃত করেন।';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'আল্লাহর জন্য একটু সময় দিন। আপনার যোহরের নামাজ অপেক্ষা করছে।';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'মধ্যবর্তী নামাজ। এর যত্ন নিন। — আল-বাকারা ২:২৩৮';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'সূর্য অস্ত গেছে। আল্লাহর ডাকে সাড়া দিন।';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'আল্লাহর সাথে দিন শেষ করুন। আপনার রাতের নামাজ অপেক্ষা করছে।';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'উঠুন এবং নামাজ পড়ুন। যারা আল্লাহর জন্য জাগে, তিনি তাদের পুরস্কৃত করেন।';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'আল্লাহর জন্য একটু সময় দিন। আপনার যোহরের নামাজ অপেক্ষা করছে।';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'মধ্যবর্তী নামাজের যত্ন নিন। — আল-বাকারা ২:২৩৮';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'সূর্য অস্ত গেছে। আল্লাহর ডাকে সাড়া দিন।';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'আল্লাহর সাথে দিন শেষ করুন। আপনার রাতের নামাজ অপেক্ষা করছে।';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer ১৫ মিনিট পরে';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return '$prayer নামাজের প্রস্তুতির সময় হয়েছে';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return '$prayer নামাজের সময় হয়েছে';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 পরীক্ষামূলক বিজ্ঞপ্তি';
+
+  @override
+  String get testNotificationBody => 'বিজ্ঞপ্তি সঠিকভাবে কাজ করছে!';
 }

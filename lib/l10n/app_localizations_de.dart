@@ -3176,4 +3176,81 @@ class AppLocalizationsDe extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'Aya $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 Zeit für Fajr';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ Zeit für Dhuhr';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ Zeit für Asr';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 Zeit für Maghrib';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 Zeit für Isha';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'Steh auf und bete. Allah belohnt jene, die für Ihn aufwachen.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'Nimm dir einen Moment für Allah. Dein Dhuhr-Gebet wartet.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'Das mittlere Gebet. Wache sorgsam darüber. — Al-Baqara 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'Die Sonne ist untergegangen. Folge dem Ruf Allahs.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'Beende deinen Tag mit Allah. Dein Nachtgebet wartet.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'Steh auf und bete. Allah belohnt jene, die für Ihn aufwachen.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'Nimm dir einen Moment für Allah. Dein Dhuhr-Gebet wartet.';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'Wache sorgsam über das mittlere Gebet. — Al-Baqara 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'Die Sonne ist untergegangen. Folge dem Ruf Allahs.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'Beende deinen Tag mit Allah. Dein Nachtgebet wartet.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer in 15 Minuten';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'Zeit, dich auf das $prayer-Gebet vorzubereiten';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'Zeit für das $prayer-Gebet';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 Testbenachrichtigung';
+
+  @override
+  String get testNotificationBody =>
+      'Benachrichtigungen funktionieren einwandfrei!';
 }

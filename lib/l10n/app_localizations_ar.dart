@@ -3115,4 +3115,71 @@ class AppLocalizationsAr extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'الآية $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 حان وقت الفجر';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ حان وقت الظهر';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ حان وقت العصر';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 حان وقت المغرب';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 حان وقت العشاء';
+
+  @override
+  String get prayerReminderBodyFajr => 'قُم وصلِّ. الله يجزي من استيقظ لأجله.';
+
+  @override
+  String get prayerReminderBodyDhuhr => 'خذ لحظة لله. صلاة الظهر تنتظرك.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'الصلاة الوسطى، حافظ عليها. — البقرة ٢:٢٣٨';
+
+  @override
+  String get prayerReminderBodyMaghrib => 'غربت الشمس. لبِّ نداء الله.';
+
+  @override
+  String get prayerReminderBodyIsha => 'اختم يومك مع الله. صلاة العشاء تنتظرك.';
+
+  @override
+  String get prayerAlarmMessageFajr => 'قُم وصلِّ. الله يجزي من استيقظ لأجله.';
+
+  @override
+  String get prayerAlarmMessageDhuhr => 'خذ لحظة لله. صلاة الظهر تنتظرك.';
+
+  @override
+  String get prayerAlarmMessageAsr => 'حافظ على الصلاة الوسطى. — البقرة ٢:٢٣٨';
+
+  @override
+  String get prayerAlarmMessageMaghrib => 'غربت الشمس. لبِّ نداء الله.';
+
+  @override
+  String get prayerAlarmMessageIsha => 'اختم يومك مع الله. صلاة العشاء تنتظرك.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer بعد ١٥ دقيقة';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'حان وقت الاستعداد لصلاة $prayer';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'حان وقت صلاة $prayer';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 إشعار تجريبي';
+
+  @override
+  String get testNotificationBody => 'الإشعارات تعمل بشكل صحيح!';
 }

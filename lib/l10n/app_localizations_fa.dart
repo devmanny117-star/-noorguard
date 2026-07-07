@@ -3150,4 +3150,79 @@ class AppLocalizationsFa extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'آیه $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 وقت نماز فجر';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ وقت نماز ظهر';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ وقت نماز عصر';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 وقت نماز مغرب';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 وقت نماز عشاء';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'برخیز و نماز بخوان. خداوند به کسانی که برای او بیدار می‌شوند پاداش می‌دهد.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'لحظه‌ای برای خدا وقت بگذار. نماز ظهر در انتظار توست.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'نماز میانه؛ آن را نگاه دار. — بقره ۲:۲۳۸';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'خورشید غروب کرد. به ندای خدا پاسخ بده.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'روزت را با خدا به پایان برسان. نماز عشاء در انتظار توست.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'برخیز و نماز بخوان. خداوند به کسانی که برای او بیدار می‌شوند پاداش می‌دهد.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'لحظه‌ای برای خدا وقت بگذار. نماز ظهر در انتظار توست.';
+
+  @override
+  String get prayerAlarmMessageAsr => 'نماز میانه را نگاه دار. — بقره ۲:۲۳۸';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'خورشید غروب کرد. به ندای خدا پاسخ بده.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'روزت را با خدا به پایان برسان. نماز عشاء در انتظار توست.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer تا ۱۵ دقیقه دیگر';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'وقت آماده شدن برای نماز $prayer است';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'وقت نماز $prayer است';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 اعلان آزمایشی';
+
+  @override
+  String get testNotificationBody => 'اعلان‌ها به‌درستی کار می‌کنند!';
 }

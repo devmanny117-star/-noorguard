@@ -3154,4 +3154,80 @@ class AppLocalizationsTr extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return '$number. Ayet';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 Sabah namazı vakti';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ Öğle namazı vakti';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ İkindi namazı vakti';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 Akşam namazı vakti';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 Yatsı namazı vakti';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'Kalk ve namaz kıl. Allah, O\'nun için uyananları ödüllendirir.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'Allah için bir an ayır. Öğle namazın seni bekliyor.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'Orta namaz. Onu titizlikle koru. — Bakara 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'Güneş battı. Allah\'ın çağrısına icabet et.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'Gününü Allah ile bitir. Yatsı namazın seni bekliyor.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'Kalk ve namaz kıl. Allah, O\'nun için uyananları ödüllendirir.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'Allah için bir an ayır. Öğle namazın seni bekliyor.';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'Orta namazı titizlikle koru. — Bakara 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'Güneş battı. Allah\'ın çağrısına icabet et.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'Gününü Allah ile bitir. Yatsı namazın seni bekliyor.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer namazına 15 dakika';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return '$prayer namazına hazırlanma vakti';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return '$prayer namazı vakti';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 Test Bildirimi';
+
+  @override
+  String get testNotificationBody => 'Bildirimler doğru çalışıyor!';
 }

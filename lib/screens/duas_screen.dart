@@ -14,11 +14,25 @@ const _kGold  = Color(0xFFC9A84C);
 const _kCream = Color(0xFFF5EFE6);
 
 class DuasScreen extends StatefulWidget {
-  const DuasScreen({super.key});
+  /// When set (e.g. from a Noor Guard Live notification tap), the screen
+  /// scrolls to and highlights the dua whose Arabic text matches. Matching
+  /// ignores harakat and whitespace; when no dua matches, the screen simply
+  /// opens at the top.
+  final String? initialDuaArabic;
+
+  const DuasScreen({super.key, this.initialDuaArabic});
 
   @override
   State<DuasScreen> createState() => _DuasScreenState();
 }
+
+/// Strips harakat (tashkeel), dagger alif, and tatweel, and collapses
+/// whitespace, so duas can be matched across sources that vocalize the same
+/// text differently.
+String _normalizeArabic(String s) => s
+    .replaceAll(RegExp(r'[ً-ْٰـ]'), '')
+    .replaceAll(RegExp(r'\s+'), ' ')
+    .trim();
 
 class _DuasScreenState extends State<DuasScreen>
     with SingleTickerProviderStateMixin {
@@ -26,6 +40,11 @@ class _DuasScreenState extends State<DuasScreen>
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
   Set<String> _bookmarked = {};
+
+  /// Exact arabic (as stored in [allDuas]) of the dua to scroll to and
+  /// highlight, resolved from [DuasScreen.initialDuaArabic].
+  String? _highlightArabic;
+  final GlobalKey _highlightKey = GlobalKey();
 
   late final AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
@@ -49,6 +68,38 @@ class _DuasScreenState extends State<DuasScreen>
     });
     _loadFontScale();
     _loadBookmarks();
+    _resolveInitialDua();
+  }
+
+  /// Finds the dua requested by [DuasScreen.initialDuaArabic] (notification
+  /// tap) and scrolls to it once the list has laid out. The dua list is
+  /// non-lazy (shrinkWrap), so every card exists in the tree and
+  /// [Scrollable.ensureVisible] can always find the highlighted one.
+  void _resolveInitialDua() {
+    final wanted = widget.initialDuaArabic;
+    if (wanted == null || wanted.isEmpty) return;
+    final norm = _normalizeArabic(wanted);
+    for (final dua in allDuas) {
+      final duaNorm = _normalizeArabic(dua.arabic);
+      if (duaNorm == norm || duaNorm.contains(norm) || norm.contains(duaNorm)) {
+        _highlightArabic = dua.arabic;
+        break;
+      }
+    }
+    if (_highlightArabic == null) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Second frame: the sliver app bar and font-scale prefs have settled.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final ctx = _highlightKey.currentContext;
+        if (ctx == null || !mounted) return;
+        Scrollable.ensureVisible(
+          ctx,
+          alignment: 0.15,
+          duration: const Duration(milliseconds: 450),
+          curve: Curves.easeOutCubic,
+        );
+      });
+    });
   }
 
   Future<void> _loadBookmarks() async {
@@ -196,10 +247,14 @@ class _DuasScreenState extends State<DuasScreen>
                                 padding: const EdgeInsets.fromLTRB(16, 6, 16, 40),
                                 itemCount: duas.length,
                                 itemBuilder: (context, i) {
+                                  final isHighlighted =
+                                      duas[i].arabic == _highlightArabic;
                                   return _DuaCard(
+                                    key: isHighlighted ? _highlightKey : null,
                                     dua: duas[i],
                                     isBookmarked:
                                         _bookmarked.contains(duas[i].arabic),
+                                    isHighlighted: isHighlighted,
                                     onBookmarkTap: () =>
                                         _toggleBookmark(duas[i].arabic),
                                     onShareTap: () => _shareDua(duas[i]),
@@ -494,12 +549,15 @@ class _PremiumFontSizeSlider extends StatelessWidget {
 class _DuaCard extends StatelessWidget {
   final CategorizedDua dua;
   final bool isBookmarked;
+  final bool isHighlighted;
   final VoidCallback onBookmarkTap;
   final VoidCallback onShareTap;
 
   const _DuaCard({
+    super.key,
     required this.dua,
     required this.isBookmarked,
+    this.isHighlighted = false,
     required this.onBookmarkTap,
     required this.onShareTap,
   });
@@ -519,13 +577,25 @@ class _DuaCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: _kCard,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: _kGold.withValues(alpha: 0.35), width: 1),
+        // Highlighted = the dua a notification tap navigated to: solid gold
+        // border + glow so it stands out from its neighbors after scrolling.
+        border: Border.all(
+          color: isHighlighted ? _kGold : _kGold.withValues(alpha: 0.35),
+          width: isHighlighted ? 1.5 : 1,
+        ),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.25),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
+          if (isHighlighted)
+            BoxShadow(
+              color: _kGold.withValues(alpha: 0.30),
+              blurRadius: 18,
+              spreadRadius: 1,
+            )
+          else
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.25),
+              blurRadius: 16,
+              offset: const Offset(0, 6),
+            ),
         ],
       ),
       child: Column(

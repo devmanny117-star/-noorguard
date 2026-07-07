@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui' show Locale;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
+import '../l10n/app_localizations.dart';
 import '../models/adhan_model.dart';
 import '../models/prayer_model.dart' show todaysPrayers;
 
@@ -35,35 +37,61 @@ class NotificationService {
 
   String _channelIdFor(String soundResource) => 'prayer_reminders_$soundResource';
 
-  static const Map<String, _PrayerMessage> _prayerMessages = {
-    'Fajr': _PrayerMessage(
-      title: '🕌 Time for Fajr',
-      body: 'Rise and pray. Allah rewards those who wake for Him.',
-    ),
-    'Dhuhr': _PrayerMessage(
-      title: '☀️ Time for Dhuhr',
-      body: 'Take a moment for Allah. Your Dhuhr prayer awaits.',
-    ),
-    'Asr': _PrayerMessage(
-      title: '🌤️ Time for Asr',
-      body: 'The middle prayer. Guard it closely. — Al-Baqarah 2:238',
-    ),
-    'Maghrib': _PrayerMessage(
-      title: '🌅 Time for Maghrib',
-      body: 'The sun has set. Answer the call of Allah.',
-    ),
-    'Isha': _PrayerMessage(
-      title: '🌙 Time for Isha',
-      body: 'End your day with Allah. Your night prayer awaits.',
-    ),
-  };
+  /// Localizations resolved from the user's in-app language (SharedPreferences
+  /// `app_locale`, the same key main.dart reads), NOT the device language —
+  /// these methods run without a BuildContext (e.g. from PrayerState), so
+  /// they can't use AppLocalizations.of. Note: scheduled notification text is
+  /// baked in at scheduling time; after a language change it updates on the
+  /// next reschedule (every app open re-schedules from the home screen).
+  Future<AppLocalizations> _l10n() async {
+    final prefs = await SharedPreferences.getInstance();
+    final code = prefs.getString('app_locale') ?? 'en';
+    try {
+      return lookupAppLocalizations(Locale(code));
+    } catch (_) {
+      return lookupAppLocalizations(const Locale('en'));
+    }
+  }
 
-  _PrayerMessage _messageFor(String name) =>
-      _prayerMessages[name] ??
-      _PrayerMessage(
-        title: '🕌 $name in 15 minutes',
-        body: 'Time to prepare for $name prayer',
-      );
+  _PrayerMessage _messageFor(AppLocalizations l10n, String name) {
+    return switch (name) {
+      'Fajr' => _PrayerMessage(
+          title: l10n.prayerReminderTitleFajr,
+          body: l10n.prayerReminderBodyFajr,
+        ),
+      'Dhuhr' => _PrayerMessage(
+          title: l10n.prayerReminderTitleDhuhr,
+          body: l10n.prayerReminderBodyDhuhr,
+        ),
+      'Asr' => _PrayerMessage(
+          title: l10n.prayerReminderTitleAsr,
+          body: l10n.prayerReminderBodyAsr,
+        ),
+      'Maghrib' => _PrayerMessage(
+          title: l10n.prayerReminderTitleMaghrib,
+          body: l10n.prayerReminderBodyMaghrib,
+        ),
+      'Isha' => _PrayerMessage(
+          title: l10n.prayerReminderTitleIsha,
+          body: l10n.prayerReminderBodyIsha,
+        ),
+      _ => _PrayerMessage(
+          title: l10n.prayerReminderTitleGeneric(name),
+          body: l10n.prayerReminderBodyGeneric(name),
+        ),
+    };
+  }
+
+  String _alarmMessageFor(AppLocalizations l10n, String name) {
+    return switch (name) {
+      'Fajr' => l10n.prayerAlarmMessageFajr,
+      'Dhuhr' => l10n.prayerAlarmMessageDhuhr,
+      'Asr' => l10n.prayerAlarmMessageAsr,
+      'Maghrib' => l10n.prayerAlarmMessageMaghrib,
+      'Isha' => l10n.prayerAlarmMessageIsha,
+      _ => l10n.prayerAlarmMessageGeneric(name),
+    };
+  }
 
   static const _alarmChannel = MethodChannel('adhan_control');
 
@@ -401,6 +429,7 @@ class NotificationService {
     await _ensureAndroidChannel(adhanSoundResource(adhanId));
     final details = _detailsFor(adhanId);
     final scheduleMode = await _scheduleMode();
+    final l10n = await _l10n();
 
     for (int i = 0; i < prayers.length; i++) {
       final name = prayers[i]['name'] as String;
@@ -409,7 +438,7 @@ class NotificationService {
 
       if (notifyAt.isBefore(DateTime.now())) continue;
 
-      final message = _messageFor(name);
+      final message = _messageFor(l10n, name);
 
       try {
         await _plugin.zonedSchedule(
@@ -440,7 +469,7 @@ class NotificationService {
     if (notifyAt.isBefore(DateTime.now())) return;
 
     await _ensureAndroidChannel(adhanSoundResource(adhanId));
-    final message = _messageFor(name);
+    final message = _messageFor(await _l10n(), name);
 
     try {
       await _plugin.zonedSchedule(
@@ -470,7 +499,7 @@ class NotificationService {
   Future<void> showSilentPrayerBanner(int id, String name) async {
     if (kIsWeb) return;
     if (!await _masterNotificationsEnabled()) return;
-    final message = _messageFor(name);
+    final message = _messageFor(await _l10n(), name);
 
     if (!kIsWeb && Platform.isAndroid) {
       // Native Android notification: both contentIntent and deleteIntent point
@@ -515,14 +544,6 @@ class NotificationService {
     'Asr': 'العصر',
     'Maghrib': 'المغرب',
     'Isha': 'العشاء',
-  };
-
-  static const Map<String, String> _prayerAlarmMessages = {
-    'Fajr': 'Rise and pray. Allah rewards those who wake for Him.',
-    'Dhuhr': 'Take a moment for Allah. Your Dhuhr prayer awaits.',
-    'Asr': 'Guard the middle prayer closely. — Al-Baqarah 2:238',
-    'Maghrib': 'The sun has set. Answer the call of Allah.',
-    'Isha': 'End your day with Allah. Your night prayer awaits.',
   };
 
   static const Map<String, int> _alarmNotifIds = {
@@ -576,6 +597,7 @@ class NotificationService {
       };
     }).toList();
 
+    final l10n = await _l10n();
     for (final entry in prayers) {
       final name = entry['name'] as String;
       final time = entry['time'] as DateTime;
@@ -589,8 +611,7 @@ class NotificationService {
           'prayerName': name,
           'arabicName': _arabicPrayerNames[name] ?? '',
           'prayerTime': _formatPrayerTime(time),
-          'message':
-              _prayerAlarmMessages[name] ?? 'Time for $name prayer',
+          'message': _alarmMessageFor(l10n, name),
           'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
           'triggerAtMillis': time.millisecondsSinceEpoch,
           'notificationId': notifId,
@@ -689,12 +710,13 @@ class NotificationService {
 
     await _ensureAndroidChannel(adhanSoundResource(adhanId));
     final notifyAt = DateTime.now().add(const Duration(seconds: 10));
+    final l10n = await _l10n();
 
     try {
       await _plugin.zonedSchedule(
         id: 999,
-        title: '🔔 Test Notification',
-        body: 'Notifications are working correctly!',
+        title: l10n.testNotificationTitle,
+        body: l10n.testNotificationBody,
         scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
         notificationDetails: _detailsFor(adhanId),
         androidScheduleMode: await _scheduleMode(),
@@ -756,7 +778,7 @@ class NotificationService {
         'prayerName': name,
         'arabicName': _arabicPrayerNames[name] ?? '',
         'prayerTime': _formatPrayerTime(time),
-        'message': _prayerAlarmMessages[name] ?? 'Time for $name prayer',
+        'message': _alarmMessageFor(await _l10n(), name),
         'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
         'triggerAtMillis':
             now.add(const Duration(seconds: 10)).millisecondsSinceEpoch,

@@ -3171,4 +3171,80 @@ class AppLocalizationsNl extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'Aya $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 Tijd voor Fajr';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ Tijd voor Dhuhr';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ Tijd voor Asr';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 Tijd voor Maghrib';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 Tijd voor Isha';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'Sta op en bid. Allah beloont wie voor Hem wakker wordt.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'Neem een moment voor Allah. Je Dhuhr-gebed wacht op je.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'Het middelste gebed. Waak er zorgvuldig over. — Al-Baqarah 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'De zon is ondergegaan. Beantwoord de oproep van Allah.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'Sluit je dag af met Allah. Je nachtgebed wacht op je.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'Sta op en bid. Allah beloont wie voor Hem wakker wordt.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'Neem een moment voor Allah. Je Dhuhr-gebed wacht op je.';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'Waak zorgvuldig over het middelste gebed. — Al-Baqarah 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'De zon is ondergegaan. Beantwoord de oproep van Allah.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'Sluit je dag af met Allah. Je nachtgebed wacht op je.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer over 15 minuten';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'Tijd om je voor te bereiden op het $prayer-gebed';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'Tijd voor het $prayer-gebed';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 Testmelding';
+
+  @override
+  String get testNotificationBody => 'Meldingen werken correct!';
 }

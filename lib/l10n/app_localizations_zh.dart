@@ -3007,4 +3007,70 @@ class AppLocalizationsZh extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return '第$number节';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 晨礼时间到了';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ 晌礼时间到了';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ 晡礼时间到了';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 昏礼时间到了';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 宵礼时间到了';
+
+  @override
+  String get prayerReminderBodyFajr => '起身礼拜吧。安拉回赐为祂而早起的人。';
+
+  @override
+  String get prayerReminderBodyDhuhr => '为安拉留出片刻。你的晌礼在等着你。';
+
+  @override
+  String get prayerReminderBodyAsr => '中间的拜功，当谨守之。——《黄牛章》2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib => '太阳已落。回应安拉的召唤吧。';
+
+  @override
+  String get prayerReminderBodyIsha => '以安拉结束你的一天。你的宵礼在等着你。';
+
+  @override
+  String get prayerAlarmMessageFajr => '起身礼拜吧。安拉回赐为祂而早起的人。';
+
+  @override
+  String get prayerAlarmMessageDhuhr => '为安拉留出片刻。你的晌礼在等着你。';
+
+  @override
+  String get prayerAlarmMessageAsr => '当谨守中间的拜功。——《黄牛章》2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib => '太阳已落。回应安拉的召唤吧。';
+
+  @override
+  String get prayerAlarmMessageIsha => '以安拉结束你的一天。你的宵礼在等着你。';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer将于15分钟后开始';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return '该为$prayer做准备了';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return '$prayer时间到了';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 测试通知';
+
+  @override
+  String get testNotificationBody => '通知功能正常！';
 }

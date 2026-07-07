@@ -3941,5 +3941,49 @@
         "type": "String"
       }
     }
+  },
+  "prayerReminderTitleFajr": "🕌 Time for Fajr",
+  "prayerReminderTitleDhuhr": "☀️ Time for Dhuhr",
+  "prayerReminderTitleAsr": "🌤️ Time for Asr",
+  "prayerReminderTitleMaghrib": "🌅 Time for Maghrib",
+  "prayerReminderTitleIsha": "🌙 Time for Isha",
+  "prayerReminderBodyFajr": "Rise and pray. Allah rewards those who wake for Him.",
+  "prayerReminderBodyDhuhr": "Take a moment for Allah. Your Dhuhr prayer awaits.",
+  "prayerReminderBodyAsr": "The middle prayer. Guard it closely. — Al-Baqarah 2:238",
+  "prayerReminderBodyMaghrib": "The sun has set. Answer the call of Allah.",
+  "prayerReminderBodyIsha": "End your day with Allah. Your night prayer awaits.",
+  "prayerAlarmMessageFajr": "Rise and pray. Allah rewards those who wake for Him.",
+  "prayerAlarmMessageDhuhr": "Take a moment for Allah. Your Dhuhr prayer awaits.",
+  "prayerAlarmMessageAsr": "Guard the middle prayer closely. — Al-Baqarah 2:238",
+  "prayerAlarmMessageMaghrib": "The sun has set. Answer the call of Allah.",
+  "prayerAlarmMessageIsha": "End your day with Allah. Your night prayer awaits.",
+  "prayerReminderTitleGeneric": "🕌 {prayer} in 15 minutes",
+  "prayerReminderBodyGeneric": "Time to prepare for {prayer} prayer",
+  "prayerAlarmMessageGeneric": "Time for {prayer} prayer",
+  "testNotificationTitle": "🔔 Test Notification",
+  "testNotificationBody": "Notifications are working correctly!",
+  "@prayerReminderTitleGeneric": {
+    "description": "Reminder title for an unknown prayer name",
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "@prayerReminderBodyGeneric": {
+    "description": "Reminder body for an unknown prayer name",
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "@prayerAlarmMessageGeneric": {
+    "description": "Full-screen alarm message for an unknown prayer name",
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
   }
 }

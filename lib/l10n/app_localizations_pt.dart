@@ -3170,4 +3170,81 @@ class AppLocalizationsPt extends AppLocalizations {
   String shareCardAyahRef(String number) {
     return 'Versículo $number';
   }
+
+  @override
+  String get prayerReminderTitleFajr => '🕌 Hora do Fajr';
+
+  @override
+  String get prayerReminderTitleDhuhr => '☀️ Hora do Dhuhr';
+
+  @override
+  String get prayerReminderTitleAsr => '🌤️ Hora do Asr';
+
+  @override
+  String get prayerReminderTitleMaghrib => '🌅 Hora do Maghrib';
+
+  @override
+  String get prayerReminderTitleIsha => '🌙 Hora do Isha';
+
+  @override
+  String get prayerReminderBodyFajr =>
+      'Levante-se e ore. Allah recompensa quem desperta por Ele.';
+
+  @override
+  String get prayerReminderBodyDhuhr =>
+      'Reserve um momento para Allah. Sua oração de Dhuhr aguarda.';
+
+  @override
+  String get prayerReminderBodyAsr =>
+      'A oração intermediária. Guarde-a com zelo. — Al-Báqara 2:238';
+
+  @override
+  String get prayerReminderBodyMaghrib =>
+      'O sol se pôs. Responda ao chamado de Allah.';
+
+  @override
+  String get prayerReminderBodyIsha =>
+      'Termine seu dia com Allah. Sua oração da noite aguarda.';
+
+  @override
+  String get prayerAlarmMessageFajr =>
+      'Levante-se e ore. Allah recompensa quem desperta por Ele.';
+
+  @override
+  String get prayerAlarmMessageDhuhr =>
+      'Reserve um momento para Allah. Sua oração de Dhuhr aguarda.';
+
+  @override
+  String get prayerAlarmMessageAsr =>
+      'Guarde com zelo a oração intermediária. — Al-Báqara 2:238';
+
+  @override
+  String get prayerAlarmMessageMaghrib =>
+      'O sol se pôs. Responda ao chamado de Allah.';
+
+  @override
+  String get prayerAlarmMessageIsha =>
+      'Termine seu dia com Allah. Sua oração da noite aguarda.';
+
+  @override
+  String prayerReminderTitleGeneric(String prayer) {
+    return '🕌 $prayer em 15 minutos';
+  }
+
+  @override
+  String prayerReminderBodyGeneric(String prayer) {
+    return 'É hora de se preparar para a oração de $prayer';
+  }
+
+  @override
+  String prayerAlarmMessageGeneric(String prayer) {
+    return 'É hora da oração de $prayer';
+  }
+
+  @override
+  String get testNotificationTitle => '🔔 Notificação de teste';
+
+  @override
+  String get testNotificationBody =>
+      'As notificações estão funcionando corretamente!';
 }

@@ -135,6 +135,9 @@ class MainActivity : AudioServiceActivity() {
                     PrayerForegroundService.stop(this)
                     result.success(null)
                 }
+                "getPendingNotificationNav" -> {
+                    result.success(getPendingNotificationNav())
+                }
                 else -> result.notImplemented()
             }
         }
@@ -682,6 +685,23 @@ class MainActivity : AudioServiceActivity() {
             contentResolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
         ) ?: return false
         return enabledServices.split(":").any { it.equals(expected, ignoreCase = true) }
+    }
+
+    /**
+     * Reads (and consumes) the navigation extras the Noor Guard Live
+     * notification attaches to its tap intent (see
+     * PrayerForegroundService.buildNotification), so Dart can open the
+     * specific ayah/dua/glossary term the notification was showing.
+     * Consuming (removing the extras from the live Intent) prevents a
+     * Dart-side hot restart or a later lifecycle resume from replaying the
+     * same navigation.
+     */
+    private fun getPendingNotificationNav(): Map<String, String>? {
+        val type = intent.getStringExtra(PrayerForegroundService.EXTRA_NAV_TYPE) ?: return null
+        val data = intent.getStringExtra(PrayerForegroundService.EXTRA_NAV_DATA) ?: ""
+        intent.removeExtra(PrayerForegroundService.EXTRA_NAV_TYPE)
+        intent.removeExtra(PrayerForegroundService.EXTRA_NAV_DATA)
+        return mapOf("type" to type, "data" to data)
     }
 
     /**

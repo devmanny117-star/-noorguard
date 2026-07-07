@@ -5831,6 +5831,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ayah {number}'**
   String shareCardAyahRef(String number);
+
+  /// No description provided for @prayerReminderTitleFajr.
+  ///
+  /// In en, this message translates to:
+  /// **'🕌 Time for Fajr'**
+  String get prayerReminderTitleFajr;
+
+  /// No description provided for @prayerReminderTitleDhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'☀️ Time for Dhuhr'**
+  String get prayerReminderTitleDhuhr;
+
+  /// No description provided for @prayerReminderTitleAsr.
+  ///
+  /// In en, this message translates to:
+  /// **'🌤️ Time for Asr'**
+  String get prayerReminderTitleAsr;
+
+  /// No description provided for @prayerReminderTitleMaghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'🌅 Time for Maghrib'**
+  String get prayerReminderTitleMaghrib;
+
+  /// No description provided for @prayerReminderTitleIsha.
+  ///
+  /// In en, this message translates to:
+  /// **'🌙 Time for Isha'**
+  String get prayerReminderTitleIsha;
+
+  /// No description provided for @prayerReminderBodyFajr.
+  ///
+  /// In en, this message translates to:
+  /// **'Rise and pray. Allah rewards those who wake for Him.'**
+  String get prayerReminderBodyFajr;
+
+  /// No description provided for @prayerReminderBodyDhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a moment for Allah. Your Dhuhr prayer awaits.'**
+  String get prayerReminderBodyDhuhr;
+
+  /// No description provided for @prayerReminderBodyAsr.
+  ///
+  /// In en, this message translates to:
+  /// **'The middle prayer. Guard it closely. — Al-Baqarah 2:238'**
+  String get prayerReminderBodyAsr;
+
+  /// No description provided for @prayerReminderBodyMaghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'The sun has set. Answer the call of Allah.'**
+  String get prayerReminderBodyMaghrib;
+
+  /// No description provided for @prayerReminderBodyIsha.
+  ///
+  /// In en, this message translates to:
+  /// **'End your day with Allah. Your night prayer awaits.'**
+  String get prayerReminderBodyIsha;
+
+  /// No description provided for @prayerAlarmMessageFajr.
+  ///
+  /// In en, this message translates to:
+  /// **'Rise and pray. Allah rewards those who wake for Him.'**
+  String get prayerAlarmMessageFajr;
+
+  /// No description provided for @prayerAlarmMessageDhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a moment for Allah. Your Dhuhr prayer awaits.'**
+  String get prayerAlarmMessageDhuhr;
+
+  /// No description provided for @prayerAlarmMessageAsr.
+  ///
+  /// In en, this message translates to:
+  /// **'Guard the middle prayer closely. — Al-Baqarah 2:238'**
+  String get prayerAlarmMessageAsr;
+
+  /// No description provided for @prayerAlarmMessageMaghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'The sun has set. Answer the call of Allah.'**
+  String get prayerAlarmMessageMaghrib;
+
+  /// No description provided for @prayerAlarmMessageIsha.
+  ///
+  /// In en, this message translates to:
+  /// **'End your day with Allah. Your night prayer awaits.'**
+  String get prayerAlarmMessageIsha;
+
+  /// Reminder title for an unknown prayer name
+  ///
+  /// In en, this message translates to:
+  /// **'🕌 {prayer} in 15 minutes'**
+  String prayerReminderTitleGeneric(String prayer);
+
+  /// Reminder body for an unknown prayer name
+  ///
+  /// In en, this message translates to:
+  /// **'Time to prepare for {prayer} prayer'**
+  String prayerReminderBodyGeneric(String prayer);
+
+  /// Full-screen alarm message for an unknown prayer name
+  ///
+  /// In en, this message translates to:
+  /// **'Time for {prayer} prayer'**
+  String prayerAlarmMessageGeneric(String prayer);
+
+  /// No description provided for @testNotificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'🔔 Test Notification'**
+  String get testNotificationTitle;
+
+  /// No description provided for @testNotificationBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are working correctly!'**
+  String get testNotificationBody;
 }
 
 class _AppLocalizationsDelegate

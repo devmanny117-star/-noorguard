@@ -68,6 +68,14 @@ class PrayerForegroundService : Service() {
 
         private const val PAYLOAD_PREFS_KEY = "flutter.live_notif_payload"
 
+        // Per-day payload fields carrying where a tap on that day's content
+        // should navigate, and the launch-intent extras they're forwarded on
+        // (read back by MainActivity.getPendingNotificationNav).
+        private const val CONTENT_NAV_TYPE = "navType"
+        private const val CONTENT_NAV_DATA = "navData"
+        const val EXTRA_NAV_TYPE = "noor_nav_type"
+        const val EXTRA_NAV_DATA = "noor_nav_data"
+
         private const val GOLD = 0xFFC9A84C.toInt()
         private const val DIVIDER = "━━━━━━━━━━━━"
 
@@ -228,7 +236,20 @@ class PrayerForegroundService : Service() {
     }
 
     private fun buildNotification(): Notification {
-        val openAppIntent = packageManager.getLaunchIntentForPackage(packageName)
+        val payload = readPayload()
+        val content = payload?.let { contentForToday(it) }
+
+        // Tap → open the app at the content being shown (ayah, dua, glossary
+        // term, ...). MainActivity's getPendingNotificationNav consumes these
+        // extras and Dart navigates to the matching screen; without them the
+        // tap just opens the home screen.
+        val openAppIntent = packageManager.getLaunchIntentForPackage(packageName)?.apply {
+            val navType = content?.optString(CONTENT_NAV_TYPE) ?: ""
+            if (navType.isNotEmpty()) {
+                putExtra(EXTRA_NAV_TYPE, navType)
+                putExtra(EXTRA_NAV_DATA, content?.optString(CONTENT_NAV_DATA) ?: "")
+            }
+        }
         val contentPi = openAppIntent?.let {
             PendingIntent.getActivity(
                 this, 0, it,
@@ -246,7 +267,6 @@ class PrayerForegroundService : Service() {
             .setShowWhen(false)
             .setContentIntent(contentPi)
 
-        val payload = readPayload()
         val now = System.currentTimeMillis()
         val next = payload?.let { nextPrayer(it, now) }
         if (payload == null || next == null) {
@@ -263,21 +283,21 @@ class PrayerForegroundService : Service() {
             .setContentTitle("${next.displayName} • ${next.timeLabel}")
             .setContentText(countdown)
 
-        contentForToday(payload)?.let { content ->
+        content?.let { c ->
             val big = SpannableStringBuilder()
             big.append(countdown).append('\n')
             appendSpanned(big, DIVIDER, ForegroundColorSpan(GOLD))
             big.append('\n')
-            val header = content.optString("header")
+            val header = c.optString("header")
             if (header.isNotEmpty()) {
                 appendSpanned(big, header, ForegroundColorSpan(GOLD), StyleSpan(Typeface.BOLD))
                 big.append('\n')
             }
-            val arabic = content.optString("arabic")
+            val arabic = c.optString("arabic")
             if (arabic.isNotEmpty()) big.append(arabic).append('\n')
-            val body = content.optString("body")
+            val body = c.optString("body")
             if (body.isNotEmpty()) big.append(body).append('\n')
-            val source = content.optString("source")
+            val source = c.optString("source")
             if (source.isNotEmpty()) big.append(source)
             builder.setStyle(NotificationCompat.BigTextStyle().bigText(big.trimEnd()))
         }
