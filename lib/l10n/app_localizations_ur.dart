@@ -3134,4 +3134,15 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'نئے سرے سے شروع کریں';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ اسلامی لغت';
+
+  @override
+  String get shareCardTafsirLabel => '✦ تفسیر';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'آیت $number';
+  }
 }

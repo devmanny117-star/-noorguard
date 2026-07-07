@@ -3027,4 +3027,15 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get storiesStartFresh => '最初からやり直す';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ イスラム用語集';
+
+  @override
+  String get shareCardTafsirLabel => '✦ タフスィール';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return '第$number節';
+  }
 }

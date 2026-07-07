@@ -5813,6 +5813,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start fresh'**
   String get storiesStartFresh;
+
+  /// Type label on the glossary share card
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Islamic Glossary'**
+  String get shareCardGlossaryLabel;
+
+  /// Type label on the tafsir share card
+  ///
+  /// In en, this message translates to:
+  /// **'✦ Tafsir'**
+  String get shareCardTafsirLabel;
+
+  /// Ayah reference line on the tafsir share card
+  ///
+  /// In en, this message translates to:
+  /// **'Ayah {number}'**
+  String shareCardAyahRef(String number);
 }
 
 class _AppLocalizationsDelegate

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
+import '../services/share_helper.dart';
 import '../utils/islamic_synonyms.dart';
 import '../widgets/font_size_slider.dart';
+import '../widgets/share_card.dart';
 
 const _navy = Color(0xFF0D1B2A);
 const _cardNavy = Color(0xFF152840);
@@ -2834,6 +2836,33 @@ class _TermCard extends StatefulWidget {
 class _TermCardState extends State<_TermCard> {
   bool _expanded = false;
 
+  Future<void> _shareTerm() async {
+    final l10n = widget.l10n;
+    try {
+      await shareCardWidget(
+        context: context,
+        card: GlossaryShareCardWidget(
+          typeLabel: l10n.shareCardGlossaryLabel,
+          term: widget.term.transliteration,
+          arabic: widget.term.arabic,
+          definition: widget.term.definition(widget.lang),
+          brandingLabel: l10n.shareViaLabel,
+        ),
+        shareText: l10n.shareViaLabel,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(widget.l10n.shareError,
+            style: GoogleFonts.lato(color: Colors.white)),
+        backgroundColor: const Color(0xFF2C2C2A),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(16),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final cat = widget.term.category;
@@ -2933,14 +2962,42 @@ class _TermCardState extends State<_TermCard> {
                       textDirection: TextDirection.rtl,
                     ),
                     const SizedBox(height: 8),
-                    AnimatedRotation(
-                      turns: _expanded ? 0.5 : 0,
-                      duration: const Duration(milliseconds: 200),
-                      child: Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        size: 18,
-                        color: Colors.white.withValues(alpha: 0.35),
-                      ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // Inner GestureDetector wins the arena, so tapping
+                        // share does NOT expand the card.
+                        GestureDetector(
+                          onTap: _shareTerm,
+                          child: Container(
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _gold.withValues(alpha: 0.10),
+                              border: Border.all(
+                                  color: _gold.withValues(alpha: 0.50),
+                                  width: 1),
+                            ),
+                            alignment: Alignment.center,
+                            child: const Icon(
+                              Icons.share_rounded,
+                              size: 15,
+                              color: _gold,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        AnimatedRotation(
+                          turns: _expanded ? 0.5 : 0,
+                          duration: const Duration(milliseconds: 200),
+                          child: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            size: 18,
+                            color: Colors.white.withValues(alpha: 0.35),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

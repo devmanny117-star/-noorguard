@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Concept opgeslagen",
   "storiesDeleteDraft": "Concept verwijderen",
   "storiesContinueDraft": "Ga verder met je concept",
-  "storiesStartFresh": "Opnieuw beginnen"
+  "storiesStartFresh": "Opnieuw beginnen",
+  "shareCardGlossaryLabel": "✦ Islamitische Begrippenlijst",
+  "shareCardTafsirLabel": "✦ Tafsir",
+  "shareCardAyahRef": "Aya {number}"
 }

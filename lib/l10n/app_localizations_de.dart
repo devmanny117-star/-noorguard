@@ -3165,4 +3165,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'Neu beginnen';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ Islamisches Glossar';
+
+  @override
+  String get shareCardTafsirLabel => '✦ Tafsir';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'Aya $number';
+  }
 }

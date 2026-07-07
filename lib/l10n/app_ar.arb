@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "تم حفظ المسودة",
   "storiesDeleteDraft": "حذف المسودة",
   "storiesContinueDraft": "أكمل مسودتك",
-  "storiesStartFresh": "ابدأ من جديد"
+  "storiesStartFresh": "ابدأ من جديد",
+  "shareCardGlossaryLabel": "✦ المصطلحات الإسلامية",
+  "shareCardTafsirLabel": "✦ التفسير",
+  "shareCardAyahRef": "الآية {number}"
 }

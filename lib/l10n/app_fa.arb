@@ -1732,5 +1732,8 @@
   "storiesDraftSaved": "پیش‌نویس ذخیره شد",
   "storiesDeleteDraft": "حذف پیش‌نویس",
   "storiesContinueDraft": "پیش‌نویس خود را ادامه دهید",
-  "storiesStartFresh": "شروع دوباره"
+  "storiesStartFresh": "شروع دوباره",
+  "shareCardGlossaryLabel": "✦ واژه‌نامه اسلامی",
+  "shareCardTafsirLabel": "✦ تفسیر",
+  "shareCardAyahRef": "آیه {number}"
 }

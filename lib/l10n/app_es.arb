@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Borrador guardado",
   "storiesDeleteDraft": "Eliminar borrador",
   "storiesContinueDraft": "Continúa tu borrador",
-  "storiesStartFresh": "Empezar de nuevo"
+  "storiesStartFresh": "Empezar de nuevo",
+  "shareCardGlossaryLabel": "✦ Glosario Islámico",
+  "shareCardTafsirLabel": "✦ Tafsir",
+  "shareCardAyahRef": "Aleya {number}"
 }

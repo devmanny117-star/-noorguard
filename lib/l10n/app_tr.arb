@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Taslak kaydedildi",
   "storiesDeleteDraft": "Taslağı Sil",
   "storiesContinueDraft": "Taslağınıza devam edin",
-  "storiesStartFresh": "Yeniden başla"
+  "storiesStartFresh": "Yeniden başla",
+  "shareCardGlossaryLabel": "✦ İslami Terimler Sözlüğü",
+  "shareCardTafsirLabel": "✦ Tefsir",
+  "shareCardAyahRef": "{number}. Ayet"
 }

@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Entwurf gespeichert",
   "storiesDeleteDraft": "Entwurf löschen",
   "storiesContinueDraft": "Entwurf fortsetzen",
-  "storiesStartFresh": "Neu beginnen"
+  "storiesStartFresh": "Neu beginnen",
+  "shareCardGlossaryLabel": "✦ Islamisches Glossar",
+  "shareCardTafsirLabel": "✦ Tafsir",
+  "shareCardAyahRef": "Aya {number}"
 }

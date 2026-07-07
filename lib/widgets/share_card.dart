@@ -212,6 +212,299 @@ class ShareCardWidget extends StatelessWidget {
   }
 }
 
+/// Shared navy frame with gold border + geometric watermark used by the
+/// smaller share cards (glossary, tafsir, hadith).
+class _ShareCardFrame extends StatelessWidget {
+  final List<Widget> children;
+  const _ShareCardFrame({required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 400,
+      child: Container(
+        decoration: BoxDecoration(
+          color: _kNavy,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: _kGold.withValues(alpha: 0.55), width: 1.5),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(19),
+          child: Stack(
+            children: [
+              const Positioned.fill(
+                child: CustomPaint(
+                  painter: GeometricPatternPainter(color: _kGold, alpha: 0.09),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(28, 28, 28, 24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: children,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Widget _typeLabelText(String typeLabel) => Text(
+      typeLabel,
+      style: GoogleFonts.lato(
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        color: _kGold,
+        letterSpacing: 1.6,
+      ),
+      textAlign: TextAlign.center,
+    );
+
+Widget _goldDivider() => Row(
+      children: [
+        Expanded(
+          child: Container(height: 0.8, color: _kGold.withValues(alpha: 0.45)),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Container(
+            width: 4,
+            height: 4,
+            decoration:
+                const BoxDecoration(color: _kGold, shape: BoxShape.circle),
+          ),
+        ),
+        Expanded(
+          child: Container(height: 0.8, color: _kGold.withValues(alpha: 0.45)),
+        ),
+      ],
+    );
+
+/// Thin divider + crescent logo + "NOOR GUARD" + branding label, identical to
+/// the footer of [ShareCardWidget].
+List<Widget> _brandingFooter(String brandingLabel) => [
+      const SizedBox(height: 24),
+      Container(height: 0.5, color: _kGold.withValues(alpha: 0.25)),
+      const SizedBox(height: 16),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            width: 22,
+            height: 22,
+            child: CustomPaint(painter: CrescentStarPainter()),
+          ),
+          const SizedBox(width: 7),
+          Text(
+            'NOOR GUARD',
+            style: GoogleFonts.playfairDisplay(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: _kGold,
+              letterSpacing: 1.2,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Text(
+            brandingLabel,
+            style: GoogleFonts.lato(
+              fontSize: 10,
+              color: _kCream.withValues(alpha: 0.50),
+            ),
+          ),
+        ],
+      ),
+    ];
+
+/// Share card for an Islamic Glossary term: term in gold, Arabic script,
+/// definition in cream. Rendered off-screen and captured, like
+/// [ShareCardWidget].
+class GlossaryShareCardWidget extends StatelessWidget {
+  final String typeLabel;      // e.g. "✦ Islamic Glossary" — already localised
+  final String term;           // transliterated term, e.g. "Taqwa"
+  final String arabic;
+  final String definition;     // localised definition
+  final String brandingLabel;  // e.g. "Shared via Noor Guard"
+
+  const GlossaryShareCardWidget({
+    super.key,
+    required this.typeLabel,
+    required this.term,
+    required this.arabic,
+    required this.definition,
+    required this.brandingLabel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _ShareCardFrame(
+      children: [
+        _typeLabelText(typeLabel),
+        const SizedBox(height: 20),
+        Text(
+          term,
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 26,
+            fontWeight: FontWeight.w700,
+            color: _kGold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 10),
+        Directionality(
+          textDirection: TextDirection.rtl,
+          child: Text(
+            arabic,
+            style: GoogleFonts.scheherazadeNew(
+              fontSize: 30,
+              color: _kGold,
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        const SizedBox(height: 18),
+        _goldDivider(),
+        const SizedBox(height: 16),
+        Text(
+          definition,
+          style: GoogleFonts.lato(
+            fontSize: 14,
+            color: _kCream,
+            height: 1.55,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        ..._brandingFooter(brandingLabel),
+      ],
+    );
+  }
+}
+
+/// Share card for a Tafsir entry: surah name, ayah reference and a tafsir
+/// excerpt. Rendered off-screen and captured, like [ShareCardWidget].
+class TafsirShareCardWidget extends StatelessWidget {
+  final String typeLabel;      // e.g. "✦ Tafsir" — already localised
+  final String surahName;
+  final String ayahRef;        // e.g. "Ayah 5" — already localised
+  final String excerpt;        // tafsir text, truncated by the caller
+  final String brandingLabel;
+
+  const TafsirShareCardWidget({
+    super.key,
+    required this.typeLabel,
+    required this.surahName,
+    required this.ayahRef,
+    required this.excerpt,
+    required this.brandingLabel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _ShareCardFrame(
+      children: [
+        _typeLabelText(typeLabel),
+        const SizedBox(height: 20),
+        Text(
+          surahName,
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+            color: _kGold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          decoration: BoxDecoration(
+            color: _kGold.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: _kGold.withValues(alpha: 0.45)),
+          ),
+          child: Text(
+            ayahRef,
+            style: GoogleFonts.lato(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              color: _kGold,
+              letterSpacing: 0.4,
+            ),
+          ),
+        ),
+        const SizedBox(height: 18),
+        _goldDivider(),
+        const SizedBox(height: 16),
+        Text(
+          excerpt,
+          style: GoogleFonts.lato(
+            fontSize: 14,
+            color: _kCream,
+            height: 1.55,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        ..._brandingFooter(brandingLabel),
+      ],
+    );
+  }
+}
+
+/// Share card for a hadith: hadith text in cream with its source/reference in
+/// gold. Rendered off-screen and captured, like [ShareCardWidget].
+class HadithShareCardWidget extends StatelessWidget {
+  final String typeLabel;      // e.g. "✦ Hadith" — already localised
+  final String hadithText;     // localised hadith text
+  final String source;         // reference line, e.g. "Fajr • الفجر"
+  final String brandingLabel;
+
+  const HadithShareCardWidget({
+    super.key,
+    required this.typeLabel,
+    required this.hadithText,
+    required this.source,
+    required this.brandingLabel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _ShareCardFrame(
+      children: [
+        _typeLabelText(typeLabel),
+        const SizedBox(height: 20),
+        Text(
+          '"$hadithText"',
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 16,
+            fontStyle: FontStyle.italic,
+            color: _kCream,
+            height: 1.6,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 18),
+        _goldDivider(),
+        const SizedBox(height: 14),
+        Text(
+          source,
+          style: GoogleFonts.lato(
+            fontSize: 11,
+            fontStyle: FontStyle.italic,
+            color: _kGold.withValues(alpha: 0.80),
+            letterSpacing: 0.3,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        ..._brandingFooter(brandingLabel),
+      ],
+    );
+  }
+}
+
 /// Premium share card for Community Stories — mirrors the in-app story card:
 /// background image with dark overlay (or navy + geometric pattern), gold
 /// category pill, serif quote with decorative quote marks, author avatar.

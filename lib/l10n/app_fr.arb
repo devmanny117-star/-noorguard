@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Brouillon enregistré",
   "storiesDeleteDraft": "Supprimer le brouillon",
   "storiesContinueDraft": "Reprendre votre brouillon",
-  "storiesStartFresh": "Recommencer"
+  "storiesStartFresh": "Recommencer",
+  "shareCardGlossaryLabel": "✦ Glossaire Islamique",
+  "shareCardTafsirLabel": "✦ Tafsir",
+  "shareCardAyahRef": "Verset {number}"
 }

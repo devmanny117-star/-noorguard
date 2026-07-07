@@ -3153,4 +3153,15 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'Anza upya';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ Kamusi ya Kiislamu';
+
+  @override
+  String get shareCardTafsirLabel => '✦ Tafsiri';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'Aya ya $number';
+  }
 }

@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "খসড়া সংরক্ষিত হয়েছে",
   "storiesDeleteDraft": "খসড়া মুছুন",
   "storiesContinueDraft": "আপনার খসড়া চালিয়ে যান",
-  "storiesStartFresh": "নতুন করে শুরু করুন"
+  "storiesStartFresh": "নতুন করে শুরু করুন",
+  "shareCardGlossaryLabel": "✦ ইসলামিক পরিভাষা অভিধান",
+  "shareCardTafsirLabel": "✦ তাফসীর",
+  "shareCardAyahRef": "আয়াত {number}"
 }

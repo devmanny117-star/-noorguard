@@ -3104,4 +3104,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'ابدأ من جديد';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ المصطلحات الإسلامية';
+
+  @override
+  String get shareCardTafsirLabel => '✦ التفسير';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'الآية $number';
+  }
 }

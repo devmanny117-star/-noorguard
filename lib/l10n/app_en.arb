@@ -3924,5 +3924,22 @@
   "storiesStartFresh": "Start fresh",
   "@storiesStartFresh": {
     "description": "Banner action that clears the draft and resets the form"
+  },
+  "shareCardGlossaryLabel": "✦ Islamic Glossary",
+  "shareCardTafsirLabel": "✦ Tafsir",
+  "shareCardAyahRef": "Ayah {number}",
+  "@shareCardGlossaryLabel": {
+    "description": "Type label on the glossary share card"
+  },
+  "@shareCardTafsirLabel": {
+    "description": "Type label on the tafsir share card"
+  },
+  "@shareCardAyahRef": {
+    "description": "Ayah reference line on the tafsir share card",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
   }
 }

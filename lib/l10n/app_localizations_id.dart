@@ -3161,4 +3161,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'Mulai dari awal';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ Glosarium Islam';
+
+  @override
+  String get shareCardTafsirLabel => '✦ Tafsir';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'Ayat $number';
+  }
 }

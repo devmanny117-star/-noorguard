@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Rasimu imehifadhiwa",
   "storiesDeleteDraft": "Futa Rasimu",
   "storiesContinueDraft": "Endelea na rasimu yako",
-  "storiesStartFresh": "Anza upya"
+  "storiesStartFresh": "Anza upya",
+  "shareCardGlossaryLabel": "✦ Kamusi ya Kiislamu",
+  "shareCardTafsirLabel": "✦ Tafsiri",
+  "shareCardAyahRef": "Aya ya {number}"
 }

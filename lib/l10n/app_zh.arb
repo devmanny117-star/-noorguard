@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "草稿已保存",
   "storiesDeleteDraft": "删除草稿",
   "storiesContinueDraft": "继续您的草稿",
-  "storiesStartFresh": "重新开始"
+  "storiesStartFresh": "重新开始",
+  "shareCardGlossaryLabel": "✦ 伊斯兰术语词典",
+  "shareCardTafsirLabel": "✦ 经注（塔夫西尔）",
+  "shareCardAyahRef": "第{number}节"
 }

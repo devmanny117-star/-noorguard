@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Draf tersimpan",
   "storiesDeleteDraft": "Hapus Draf",
   "storiesContinueDraft": "Lanjutkan draf Anda",
-  "storiesStartFresh": "Mulai dari awal"
+  "storiesStartFresh": "Mulai dari awal",
+  "shareCardGlossaryLabel": "✦ Glosarium Islam",
+  "shareCardTafsirLabel": "✦ Tafsir",
+  "shareCardAyahRef": "Ayat {number}"
 }

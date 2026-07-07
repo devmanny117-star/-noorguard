@@ -3139,4 +3139,15 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'شروع دوباره';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ واژه‌نامه اسلامی';
+
+  @override
+  String get shareCardTafsirLabel => '✦ تفسیر';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'آیه $number';
+  }
 }

@@ -3143,4 +3143,15 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'Yeniden başla';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ İslami Terimler Sözlüğü';
+
+  @override
+  String get shareCardTafsirLabel => '✦ Tefsir';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return '$number. Ayet';
+  }
 }

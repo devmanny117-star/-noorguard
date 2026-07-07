@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "Rascunho salvo",
   "storiesDeleteDraft": "Excluir rascunho",
   "storiesContinueDraft": "Continue seu rascunho",
-  "storiesStartFresh": "Começar de novo"
+  "storiesStartFresh": "Começar de novo",
+  "shareCardGlossaryLabel": "✦ Glossário Islâmico",
+  "shareCardTafsirLabel": "✦ Tafsir",
+  "shareCardAyahRef": "Versículo {number}"
 }

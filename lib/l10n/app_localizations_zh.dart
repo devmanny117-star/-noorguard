@@ -2996,4 +2996,15 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get storiesStartFresh => '重新开始';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ 伊斯兰术语词典';
+
+  @override
+  String get shareCardTafsirLabel => '✦ 经注（塔夫西尔）';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return '第$number节';
+  }
 }

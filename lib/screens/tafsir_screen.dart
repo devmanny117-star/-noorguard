@@ -5,10 +5,49 @@ import '../l10n/app_localizations.dart';
 import '../models/surah_model.dart';
 import '../models/tafsir_model.dart';
 import '../services/quran_service.dart';
+import '../services/share_helper.dart';
 import '../services/tafsir_api_service.dart';
 import '../widgets/font_size_slider.dart';
+import '../widgets/share_card.dart';
 
 const _gold = Color(0xFFD4AF37);
+
+/// Captures a branded tafsir share card (surah name, ayah reference, tafsir
+/// excerpt) and opens the system share sheet.
+Future<void> _shareTafsir(
+  BuildContext context, {
+  required String surahName,
+  required String verseLabel,
+  required String tafsirText,
+}) async {
+  final l10n = AppLocalizations.of(context)!;
+  final excerpt = tafsirText.length > 200
+      ? '${tafsirText.substring(0, 200).trimRight()}...'
+      : tafsirText;
+  try {
+    await shareCardWidget(
+      context: context,
+      card: TafsirShareCardWidget(
+        typeLabel: l10n.shareCardTafsirLabel,
+        surahName: surahName,
+        ayahRef: l10n.shareCardAyahRef(verseLabel),
+        excerpt: excerpt,
+        brandingLabel: l10n.shareViaLabel,
+      ),
+      shareText: l10n.shareViaLabel,
+    );
+  } catch (_) {
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(l10n.shareError,
+          style: GoogleFonts.lato(color: Colors.white)),
+      backgroundColor: const Color(0xFF2C2C2A),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.all(16),
+    ));
+  }
+}
 
 class TafsirScreen extends StatefulWidget {
   final Surah surah;
@@ -106,6 +145,7 @@ class _TafsirScreenState extends State<TafsirScreen> {
               entry: entry,
               arabic: arabic,
               translation: translation,
+              surahName: widget.surah.englishName,
             ),
           );
         },
@@ -127,6 +167,7 @@ class _TafsirScreenState extends State<TafsirScreen> {
               translation: verse.translation,
               tafsirText: tafsir.text,
               source: tafsir.source,
+              surahName: widget.surah.englishName,
             ),
           );
         },
@@ -234,12 +275,14 @@ class _TafsirCardShell extends StatefulWidget {
   final String arabic;
   final String translation;
   final Widget tafsirBody;
+  final VoidCallback? onShare;
 
   const _TafsirCardShell({
     required this.verseLabel,
     required this.arabic,
     required this.translation,
     required this.tafsirBody,
+    this.onShare,
   });
 
   @override
@@ -340,6 +383,30 @@ class _TafsirCardShellState extends State<_TafsirCardShell> {
                     ),
                   ),
                 ),
+                if (widget.onShare != null) ...[
+                  // Inner GestureDetector wins the arena, so tapping share
+                  // does NOT collapse the tafsir section.
+                  GestureDetector(
+                    onTap: widget.onShare,
+                    child: Container(
+                      width: 32,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _gold.withValues(alpha: 0.10),
+                        border: Border.all(
+                            color: _gold.withValues(alpha: 0.50), width: 1),
+                      ),
+                      alignment: Alignment.center,
+                      child: const Icon(
+                        Icons.share_rounded,
+                        size: 15,
+                        color: _gold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                ],
                 AnimatedRotation(
                   turns: _expanded ? 0.5 : 0,
                   duration: const Duration(milliseconds: 200),
@@ -372,11 +439,13 @@ class _TafsirCard extends StatelessWidget {
   final TafsirEntry entry;
   final String arabic;
   final String translation;
+  final String surahName;
 
   const _TafsirCard({
     required this.entry,
     required this.arabic,
     required this.translation,
+    required this.surahName,
   });
 
   @override
@@ -390,6 +459,14 @@ class _TafsirCard extends StatelessWidget {
       verseLabel: entry.verseLabel,
       arabic: arabic,
       translation: translation,
+      onShare: tafsirText != null
+          ? () => _shareTafsir(
+                context,
+                surahName: surahName,
+                verseLabel: entry.verseLabel,
+                tafsirText: tafsirText,
+              )
+          : null,
       tafsirBody: tafsirText != null
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -443,6 +520,7 @@ class _ApiTafsirCard extends StatelessWidget {
   final String translation;
   final String tafsirText;
   final String source;
+  final String surahName;
 
   const _ApiTafsirCard({
     required this.verseLabel,
@@ -450,6 +528,7 @@ class _ApiTafsirCard extends StatelessWidget {
     required this.translation,
     required this.tafsirText,
     required this.source,
+    required this.surahName,
   });
 
   @override
@@ -460,6 +539,12 @@ class _ApiTafsirCard extends StatelessWidget {
       verseLabel: verseLabel,
       arabic: arabic,
       translation: translation,
+      onShare: () => _shareTafsir(
+        context,
+        surahName: surahName,
+        verseLabel: verseLabel,
+        tafsirText: tafsirText,
+      ),
       tafsirBody: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

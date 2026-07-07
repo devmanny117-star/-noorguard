@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 import '../models/prayer_model.dart';
 import '../data/prayer_times_data.dart';
 import '../services/prayer_state.dart';
+import '../services/share_helper.dart';
 import '../services/streak_service.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/share_card.dart';
 import 'prayer_stats_screen.dart';
 
 // ─── Prayer detail data ───────────────────────────────────────────────────────
@@ -579,6 +581,32 @@ class _PrayerCardState extends State<_PrayerCard> {
     );
   }
 
+  Future<void> _shareHadith(_PrayerDetail detail) async {
+    final l10n = AppLocalizations.of(context)!;
+    try {
+      await shareCardWidget(
+        context: context,
+        card: HadithShareCardWidget(
+          typeLabel: l10n.shareCardHadithLabel,
+          hadithText: detail.hadith,
+          source: '${widget.prayer.name} • ${widget.prayer.arabicName}',
+          brandingLabel: l10n.shareViaLabel,
+        ),
+        shareText: l10n.shareViaLabel,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(l10n.shareError,
+            style: GoogleFonts.lato(color: Colors.white)),
+        backgroundColor: const Color(0xFF2C2C2A),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(16),
+      ));
+    }
+  }
+
   Widget _buildDetail(_PrayerDetail detail, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -623,14 +651,43 @@ class _PrayerCardState extends State<_PrayerCard> {
               left: BorderSide(color: _gold, width: 3),
             ),
           ),
-          child: Text(
-            '"${detail.hadith}"',
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 13,
-              fontStyle: FontStyle.italic,
-              color: Colors.white.withValues(alpha: 0.85),
-              height: 1.6,
-            ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(
+                  '"${detail.hadith}"',
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 13,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.white.withValues(alpha: 0.85),
+                    height: 1.6,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              // Inner GestureDetector wins the arena, so tapping share does
+              // NOT collapse the prayer card.
+              GestureDetector(
+                onTap: () => _shareHadith(detail),
+                child: Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _gold.withValues(alpha: 0.10),
+                    border: Border.all(
+                        color: _gold.withValues(alpha: 0.50), width: 1),
+                  ),
+                  alignment: Alignment.center,
+                  child: const Icon(
+                    Icons.share_rounded,
+                    size: 15,
+                    color: _gold,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 14),

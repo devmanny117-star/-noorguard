@@ -3153,4 +3153,15 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'নতুন করে শুরু করুন';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ ইসলামিক পরিভাষা অভিধান';
+
+  @override
+  String get shareCardTafsirLabel => '✦ তাফসীর';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'আয়াত $number';
+  }
 }

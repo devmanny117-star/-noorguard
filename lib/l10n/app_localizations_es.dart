@@ -3160,4 +3160,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get storiesStartFresh => 'Empezar de nuevo';
+
+  @override
+  String get shareCardGlossaryLabel => '✦ Glosario Islámico';
+
+  @override
+  String get shareCardTafsirLabel => '✦ Tafsir';
+
+  @override
+  String shareCardAyahRef(String number) {
+    return 'Aleya $number';
+  }
 }

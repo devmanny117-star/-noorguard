@@ -1572,5 +1572,8 @@
   "storiesDraftSaved": "مسودہ محفوظ ہو گیا",
   "storiesDeleteDraft": "مسودہ حذف کریں",
   "storiesContinueDraft": "اپنا مسودہ جاری رکھیں",
-  "storiesStartFresh": "نئے سرے سے شروع کریں"
+  "storiesStartFresh": "نئے سرے سے شروع کریں",
+  "shareCardGlossaryLabel": "✦ اسلامی لغت",
+  "shareCardTafsirLabel": "✦ تفسیر",
+  "shareCardAyahRef": "آیت {number}"
 }
