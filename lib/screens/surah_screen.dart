@@ -79,7 +79,23 @@ class SurahScreen extends StatefulWidget {
   State<SurahScreen> createState() => _SurahScreenState();
 }
 
-class _SurahScreenState extends State<SurahScreen> {
+class _SurahScreenState extends State<SurahScreen>
+    with SingleTickerProviderStateMixin {
+  /// Gold pulse played on the verse that a notification deep link, saved
+  /// verse, or search result landed on (see [_settleOnVerse]). Single
+  /// forward play: gold at 30% opacity fading to transparent over 2 s.
+  late final AnimationController _highlightController = AnimationController(
+    vsync: this,
+    duration: const Duration(seconds: 2),
+  );
+  late final Animation<double> _highlightFade = CurvedAnimation(
+    parent: _highlightController,
+    curve: Curves.easeOut,
+  );
+  int? _highlightVerseNumber;
+
+  static const _pulseGold = Color(0xFFC9A84C);
+
   List<Verse> _verses = [];
   bool _loading = true;
   bool _requested = false;
@@ -212,6 +228,13 @@ class _SurahScreenState extends State<SurahScreen> {
   @override
   void initState() {
     super.initState();
+    // Once the pulse fades out, drop the overlay wrapper entirely so the
+    // tile renders identically to every other verse again.
+    _highlightController.addStatusListener((status) {
+      if (status == AnimationStatus.completed && mounted) {
+        setState(() => _highlightVerseNumber = null);
+      }
+    });
     _playerStateSub = _audioPlayer.playerStateStream.listen((state) {
       if (!mounted) return;
       // The last verse in the playlist has no next item to auto-advance to
@@ -423,6 +446,7 @@ class _SurahScreenState extends State<SurahScreen> {
     _audioPlayer.dispose();
     _sleepCountdownTimer?.cancel();
     _scrollController.dispose();
+    _highlightController.dispose();
     super.dispose();
   }
 
@@ -481,6 +505,10 @@ class _SurahScreenState extends State<SurahScreen> {
           curve: Curves.easeInOutCubic,
           alignment: 0.3,
         );
+        // Landed — pulse the target verse gold so the eye finds it.
+        if (!mounted) return;
+        setState(() => _highlightVerseNumber = target);
+        _highlightController.forward(from: 0);
         return;
       }
       // Keys persist after their tile unbuilds, so "built" = has a context.
@@ -915,39 +943,73 @@ class _SurahScreenState extends State<SurahScreen> {
                                   final challengeActive =
                                       widget.ayahChallenge != null &&
                                           !_challengeComplete;
+                                  final isLast = index ==
+                                      _verses.length + headerCount - 1;
+                                  Widget tile = _VerseTile(
+                                    verse: verse,
+                                    textScale: _textScale,
+                                    isLast: isLast,
+                                    isActive:
+                                        _playingVerseNumber == verse.number,
+                                    isPlaying:
+                                        _playingVerseNumber == verse.number &&
+                                            _isPlaying,
+                                    playTooltip: l10n.playVerse,
+                                    onPlayTap: () =>
+                                        _playVerseAudio(verse.number),
+                                    onTafsirTap: () =>
+                                        _showVerseTafsir(verse),
+                                    onShareTap: () => _shareVerse(verse),
+                                    isBookmarked: _bookmarkedVerses
+                                        .contains(verse.number),
+                                    onBookmarkTap: () =>
+                                        _toggleVerseBookmark(verse),
+                                    challengeActive: challengeActive,
+                                    challengeSeen:
+                                        _seenVerses.contains(verse.number),
+                                    justConfirmed:
+                                        _justConfirmedVerse == verse.number,
+                                    onAyahTap: challengeActive
+                                        ? () => _onAyahRead(verse.number)
+                                        : null,
+                                  );
+                                  // Gold pulse over the verse a deep link /
+                                  // saved verse / search result landed on.
+                                  // Overlaid ON TOP of the tile (its card is
+                                  // opaque); the bottom inset keeps the pulse
+                                  // off the 10px gap _VerseTile adds below
+                                  // every card but the last.
+                                  if (_highlightVerseNumber == verse.number) {
+                                    tile = Stack(
+                                      children: [
+                                        tile,
+                                        Positioned.fill(
+                                          bottom: isLast ? 0 : 10,
+                                          child: IgnorePointer(
+                                            child: AnimatedBuilder(
+                                              animation: _highlightFade,
+                                              builder: (_, __) => DecoratedBox(
+                                                decoration: BoxDecoration(
+                                                  color: _pulseGold.withValues(
+                                                    alpha: 0.3 *
+                                                        (1 -
+                                                            _highlightFade
+                                                                .value),
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }
                                   return KeyedSubtree(
                                     key: _verseKey(verse.number),
-                                    child: _VerseTile(
-                                      verse: verse,
-                                      textScale: _textScale,
-                                      isLast: index ==
-                                          _verses.length +
-                                              headerCount -
-                                              1,
-                                      isActive:
-                                          _playingVerseNumber == verse.number,
-                                      isPlaying:
-                                          _playingVerseNumber == verse.number &&
-                                              _isPlaying,
-                                      playTooltip: l10n.playVerse,
-                                      onPlayTap: () =>
-                                          _playVerseAudio(verse.number),
-                                      onTafsirTap: () =>
-                                          _showVerseTafsir(verse),
-                                      onShareTap: () => _shareVerse(verse),
-                                      isBookmarked: _bookmarkedVerses
-                                          .contains(verse.number),
-                                      onBookmarkTap: () =>
-                                          _toggleVerseBookmark(verse),
-                                      challengeActive: challengeActive,
-                                      challengeSeen:
-                                          _seenVerses.contains(verse.number),
-                                      justConfirmed:
-                                          _justConfirmedVerse == verse.number,
-                                      onAyahTap: challengeActive
-                                          ? () => _onAyahRead(verse.number)
-                                          : null,
-                                    ),
+                                    child: tile,
                                   );
                                 },
                               ),
