@@ -84,6 +84,12 @@ const List<Reciter> reciters = [
     folder: 'Salaah_AbdulRahman_Bukhatir_128kbps',
   ),
   Reciter(
+    id: 'budair',
+    name: 'Salah Al-Budair',
+    shortName: 'Al-Budair',
+    folder: 'Salah_Al_Budair_128kbps',
+  ),
+  Reciter(
     id: 'abdul_basit',
     name: 'Abdul Basit Abd us-Samad',
     shortName: 'Abdul Basit',
