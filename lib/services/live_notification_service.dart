@@ -98,34 +98,34 @@ class LiveNotificationService {
     switch (dayOfYear % 5) {
       case 0:
         final ayah = shareAyahs[step % shareAyahs.length];
-        final navData = _ayahNavData(ayah.source);
-        // Prefer the exact translation the Quran reader shows (same edition,
-        // same language) so notification text and reader text match
-        // word-for-word; the bundled translation is the offline fallback.
-        String body = _translationOrEmpty(locale, ayah.translationFor);
-        if (body.isNotEmpty && navData.isNotEmpty) {
-          final parts = navData.split(':');
-          final synced = await fetchAyahTranslation(
-              int.parse(parts[0]), int.parse(parts[1]), locale);
-          if (synced != null) body = synced;
-        }
         return {
           'date': dateKey,
           'header': l10n.liveNotifHeaderAyah,
           'arabic': ayah.arabic,
-          'body': body,
+          'body': await _readerSyncedTranslation(
+            source: ayah.source,
+            fallback: _translationOrEmpty(locale, ayah.translationFor),
+            locale: locale,
+          ),
           'source': ayah.source,
           'navType': 'ayah',
-          'navData': navData,
+          'navData': _ayahNavData(ayah.source),
         };
       case 1:
         final dua = lockScreenDuas[step % lockScreenDuas.length];
+        // Several rotating duas ARE Quran verses (their source cites e.g.
+        // "Al-Baqarah 2:201") — those must match the reader word-for-word
+        // too, not just the dedicated ayah days.
         return {
           'date': dateKey,
           'header': l10n.liveNotifHeaderDua,
           'arabic': dua.arabic.replaceAll('\n', ' '),
-          'body': _translationOrEmpty(
-              locale, (l) => dua.translationFor(l).replaceAll('\n', ' ')),
+          'body': await _readerSyncedTranslation(
+            source: dua.source,
+            fallback: _translationOrEmpty(
+                locale, (l) => dua.translationFor(l).replaceAll('\n', ' ')),
+            locale: locale,
+          ),
           'source': dua.source,
           'navType': 'dua',
           'navData': dua.arabic,
@@ -176,6 +176,41 @@ class LiveNotificationService {
     final match = RegExp(r'(\d+):(\d+)').firstMatch(source);
     if (match == null) return '';
     return '${match.group(1)}:${match.group(2)}';
+  }
+
+  /// The reference [source] cites, e.g. "Al-Baqarah 2:201" or the range
+  /// "Ta-Ha 20:25–26", translated in the SAME edition the Quran reader shows
+  /// for [locale] — so notification text and reader text match word-for-word.
+  ///
+  /// Every successful fetch is cached in SharedPreferences, so once synced
+  /// the reader's wording keeps being used even when a later payload refresh
+  /// happens offline. Returns [fallback] (the bundled translation) when the
+  /// source cites no Quran reference, for the Arabic locale (no translation
+  /// line), and when fetching fails with nothing cached yet.
+  static Future<String> _readerSyncedTranslation({
+    required String source,
+    required String fallback,
+    required String locale,
+  }) async {
+    if (fallback.isEmpty) return fallback;
+    final match = RegExp(r'(\d+):(\d+)(?:[–-](\d+))?').firstMatch(source);
+    if (match == null) return fallback;
+    final surah = int.parse(match.group(1)!);
+    final first = int.parse(match.group(2)!);
+    final last = int.tryParse(match.group(3) ?? '') ?? first;
+    if (last < first || last - first > 2) return fallback;
+
+    final prefs = await SharedPreferences.getInstance();
+    final cacheKey = 'reader_synced_tr_${locale}_${surah}_${first}_$last';
+    final parts = <String>[];
+    for (int ayah = first; ayah <= last; ayah++) {
+      final text = await fetchAyahTranslation(surah, ayah, locale);
+      if (text == null) return prefs.getString(cacheKey) ?? fallback;
+      parts.add(text);
+    }
+    final joined = parts.join(' ');
+    await prefs.setString(cacheKey, joined);
+    return joined;
   }
 
   /// Ayahs, duas, and hadiths deliberately have no 'ar' translation entry —
