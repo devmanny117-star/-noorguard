@@ -437,21 +437,13 @@ class _SurahScreenState extends State<SurahScreen> {
       _loading = false;
     });
     // Scroll to the requested verse if the screen was opened from a search
-    // result. Uses a two-step approach: first jump to an approximate offset so
-    // the ListView.builder builds the target item, then ensureVisible for
-    // precision.
+    // result, saved verse, or notification deep link.
     final target = widget.initialVerseNumber;
     if (target != null) {
       final index = verses.indexWhere((v) => v.number == target);
-      if (index > 0) {
+      if (index >= 0) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (!mounted || !_scrollController.hasClients) return;
-          final max = _scrollController.position.maxScrollExtent;
-          final approx = (index / verses.length) * max;
-          _scrollController.jumpTo(approx.clamp(0.0, max));
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            _scrollToVerse(target);
-          });
+          _settleOnVerse(target, index);
         });
       }
     }
@@ -459,6 +451,58 @@ class _SurahScreenState extends State<SurahScreen> {
     // here — setAudioSources() resets the player's current index to 0 as
     // soon as it's called, which would mark verse 1 "active" (showing the
     // player bar and its highlight) before the user has tapped play at all.
+  }
+
+  /// Lands the list EXACTLY on [target]. A single proportional jump +
+  /// ensureVisible isn't enough: verse tiles have very different heights, so
+  /// the estimate can miss by several ayahs, the target tile is then never
+  /// built, ensureVisible finds no context and silently gives up — leaving
+  /// the list a few verses short (a notification deep link to 13:28 used to
+  /// land on ~13:23 this way). Instead, after the head-start jump this walks
+  /// a viewport at a time toward the target — the direction read off the
+  /// tiles that ARE built — until the target tile exists, then ensureVisible
+  /// lands precisely on it.
+  Future<void> _settleOnVerse(int target, int index) async {
+    if (!mounted || !_scrollController.hasClients) return;
+    final position = _scrollController.position;
+    final approx = (index / math.max(_verses.length, 1)) *
+        position.maxScrollExtent;
+    _scrollController.jumpTo(approx.clamp(0.0, position.maxScrollExtent));
+    await WidgetsBinding.instance.endOfFrame;
+
+    // Enough steps to cross even Al-Baqarah end-to-end one viewport at a time.
+    for (int attempt = 0; attempt < 60; attempt++) {
+      if (!mounted || !_scrollController.hasClients) return;
+      final ctx = _verseKeys[target]?.currentContext;
+      if (ctx != null && ctx.mounted) {
+        await Scrollable.ensureVisible(
+          ctx,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOutCubic,
+          alignment: 0.3,
+        );
+        return;
+      }
+      // Keys persist after their tile unbuilds, so "built" = has a context.
+      final built = _verseKeys.entries
+          .where((e) => e.value.currentContext != null)
+          .map((e) => e.key)
+          .toList();
+      if (built.isEmpty) return;
+      final pos = _scrollController.position;
+      final double delta;
+      if (target > built.reduce(math.max)) {
+        delta = pos.viewportDimension * 0.9;
+      } else if (target < built.reduce(math.min)) {
+        delta = -pos.viewportDimension * 0.9;
+      } else {
+        return; // target sits between built tiles — cannot happen in practice
+      }
+      final next = (pos.pixels + delta).clamp(0.0, pos.maxScrollExtent);
+      if (next == pos.pixels) return; // hit the list edge; nothing more to do
+      _scrollController.jumpTo(next);
+      await WidgetsBinding.instance.endOfFrame;
+    }
   }
 
   // ── Audio playback ───────────────────────────────────────────────────────
