@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "Tijd om je voor te bereiden op het {prayer}-gebed",
   "prayerAlarmMessageGeneric": "Tijd voor het {prayer}-gebed",
   "testNotificationTitle": "🔔 Testmelding",
-  "testNotificationBody": "Meldingen werken correct!"
+  "testNotificationBody": "Meldingen werken correct!",
+  "favoriteRecitersSection": "Favorieten",
+  "favoriteRecitersLimit": "Je kunt maximaal 3 favoriete recitators hebben. Verwijder er een om een andere toe te voegen."
 }

@@ -1755,5 +1755,7 @@
   "prayerReminderBodyGeneric": "وقت آماده شدن برای نماز {prayer} است",
   "prayerAlarmMessageGeneric": "وقت نماز {prayer} است",
   "testNotificationTitle": "🔔 اعلان آزمایشی",
-  "testNotificationBody": "اعلان‌ها به‌درستی کار می‌کنند!"
+  "testNotificationBody": "اعلان‌ها به‌درستی کار می‌کنند!",
+  "favoriteRecitersSection": "برگزیده‌ها",
+  "favoriteRecitersLimit": "فقط می‌توانید ۳ قاری برگزیده داشته باشید. برای افزودن قاری جدید، یکی را حذف کنید."
 }

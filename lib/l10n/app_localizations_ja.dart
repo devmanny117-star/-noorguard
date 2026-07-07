@@ -3104,4 +3104,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get testNotificationBody => '通知は正常に動作しています！';
+
+  @override
+  String get favoriteRecitersSection => 'お気に入り';
+
+  @override
+  String get favoriteRecitersLimit => 'お気に入りの朗誦者は3人までです。追加するには1人削除してください。';
 }

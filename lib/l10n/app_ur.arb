@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "{prayer} کی نماز کی تیاری کا وقت ہے",
   "prayerAlarmMessageGeneric": "{prayer} کی نماز کا وقت ہو گیا",
   "testNotificationTitle": "🔔 آزمائشی اطلاع",
-  "testNotificationBody": "اطلاعات درست کام کر رہی ہیں!"
+  "testNotificationBody": "اطلاعات درست کام کر رہی ہیں!",
+  "favoriteRecitersSection": "پسندیدہ",
+  "favoriteRecitersLimit": "آپ صرف ۳ پسندیدہ قاری رکھ سکتے ہیں۔ نیا شامل کرنے کے لیے ایک ہٹائیں۔"
 }

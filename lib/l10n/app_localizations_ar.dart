@@ -3182,4 +3182,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'الإشعارات تعمل بشكل صحيح!';
+
+  @override
+  String get favoriteRecitersSection => 'المفضلة';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'يمكنك اختيار ٣ قرّاء مفضلين فقط. أزل واحدًا لإضافة آخر.';
 }

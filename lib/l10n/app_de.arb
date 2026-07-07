@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "Zeit, dich auf das {prayer}-Gebet vorzubereiten",
   "prayerAlarmMessageGeneric": "Zeit für das {prayer}-Gebet",
   "testNotificationTitle": "🔔 Testbenachrichtigung",
-  "testNotificationBody": "Benachrichtigungen funktionieren einwandfrei!"
+  "testNotificationBody": "Benachrichtigungen funktionieren einwandfrei!",
+  "favoriteRecitersSection": "Favoriten",
+  "favoriteRecitersLimit": "Du kannst nur 3 Lieblingsrezitatoren haben. Entferne einen, um einen anderen hinzuzufügen."
 }

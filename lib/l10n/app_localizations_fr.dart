@@ -3269,4 +3269,11 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get testNotificationBody =>
       'Les notifications fonctionnent correctement !';
+
+  @override
+  String get favoriteRecitersSection => 'Favoris';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'Vous ne pouvez avoir que 3 récitateurs favoris. Retirez-en un pour en ajouter un autre.';
 }

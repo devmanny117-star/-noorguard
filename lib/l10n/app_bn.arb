@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "{prayer} নামাজের প্রস্তুতির সময় হয়েছে",
   "prayerAlarmMessageGeneric": "{prayer} নামাজের সময় হয়েছে",
   "testNotificationTitle": "🔔 পরীক্ষামূলক বিজ্ঞপ্তি",
-  "testNotificationBody": "বিজ্ঞপ্তি সঠিকভাবে কাজ করছে!"
+  "testNotificationBody": "বিজ্ঞপ্তি সঠিকভাবে কাজ করছে!",
+  "favoriteRecitersSection": "প্রিয়",
+  "favoriteRecitersLimit": "আপনি সর্বোচ্চ ৩ জন প্রিয় ক্বারী রাখতে পারেন। নতুন যোগ করতে একজনকে সরান।"
 }

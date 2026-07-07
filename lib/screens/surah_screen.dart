@@ -24,7 +24,12 @@ import 'saved_verses_screen.dart';
 import 'tafsir_screen.dart';
 
 const _textScaleKey = 'quran_text_scale';
+// Legacy single-favorite pref, migrated into _favReciterIdsKey on first load.
 const _favReciterKey = 'favorite_reciter_id';
+const _favReciterIdsKey = 'favorite_reciter_ids';
+
+/// Maximum number of reciters a user can favorite at once.
+const _maxFavoriteReciters = 3;
 const double _minTextScale = 0.8;
 const double _maxTextScale = 4.0;
 
@@ -172,7 +177,7 @@ class _SurahScreenState extends State<SurahScreen>
   }
 
   Reciter _selectedReciter = reciters.first;
-  String? _favoriteReciterId;
+  List<String> _favoriteReciterIds = [];
   final AudioPlayer _audioPlayer = AudioPlayer();
   List<AudioSource>? _playlist;
   Uri? _artworkUri;
@@ -325,27 +330,38 @@ class _SurahScreenState extends State<SurahScreen>
     });
   }
 
-  // ── Favourite reciter ────────────────────────────────────────────────────
+  // ── Favourite reciters (up to 3) ─────────────────────────────────────────
 
   Future<void> _loadFavoriteReciter() async {
     final prefs = await SharedPreferences.getInstance();
-    final id = prefs.getString(_favReciterKey);
+    var ids = prefs.getStringList(_favReciterIdsKey);
+    // One-time migration from the old single-favorite pref.
+    if (ids == null) {
+      final legacy = prefs.getString(_favReciterKey);
+      ids = [if (legacy != null) legacy];
+      await prefs.setStringList(_favReciterIdsKey, ids);
+      await prefs.remove(_favReciterKey);
+    }
+    final valid =
+        ids.where((id) => reciters.any((r) => r.id == id)).toList();
     if (!mounted) return;
     setState(() {
-      _favoriteReciterId = id;
-      if (id != null) {
-        final match = reciters.where((r) => r.id == id).firstOrNull;
+      _favoriteReciterIds = valid;
+      // The first favorite is the default reciter, as the single favorite
+      // was before.
+      if (valid.isNotEmpty) {
+        final match =
+            reciters.where((r) => r.id == valid.first).firstOrNull;
         if (match != null) _selectedReciter = match;
       }
     });
   }
 
-  Future<void> _setFavoriteReciter(Reciter reciter) async {
-    HapticFeedback.lightImpact();
+  Future<void> _saveFavoriteReciters(List<String> ids) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_favReciterKey, reciter.id);
+    await prefs.setStringList(_favReciterIdsKey, ids);
     if (!mounted) return;
-    setState(() => _favoriteReciterId = reciter.id);
+    setState(() => _favoriteReciterIds = List.of(ids));
   }
 
   void _showReciterSheet() {
@@ -358,12 +374,12 @@ class _SurahScreenState extends State<SurahScreen>
       ),
       builder: (ctx) => _ReciterSheet(
         selected: _selectedReciter,
-        initialFavoriteId: _favoriteReciterId,
+        initialFavoriteIds: _favoriteReciterIds,
         onSelect: (reciter) {
           _onSelectReciter(reciter);
           Navigator.pop(ctx);
         },
-        onToggleFavorite: _setFavoriteReciter,
+        onFavoritesChanged: _saveFavoriteReciters,
       ),
     );
   }
@@ -1194,15 +1210,15 @@ class _ChallengeCompleteOverlay extends StatelessWidget {
 
 class _ReciterSheet extends StatefulWidget {
   final Reciter selected;
-  final String? initialFavoriteId;
+  final List<String> initialFavoriteIds;
   final ValueChanged<Reciter> onSelect;
-  final ValueChanged<Reciter> onToggleFavorite;
+  final ValueChanged<List<String>> onFavoritesChanged;
 
   const _ReciterSheet({
     required this.selected,
-    required this.initialFavoriteId,
+    required this.initialFavoriteIds,
     required this.onSelect,
-    required this.onToggleFavorite,
+    required this.onFavoritesChanged,
   });
 
   @override
@@ -1210,33 +1226,79 @@ class _ReciterSheet extends StatefulWidget {
 }
 
 class _ReciterSheetState extends State<_ReciterSheet> {
-  late String? _favoriteId;
+  late List<String> _favoriteIds = List.of(widget.initialFavoriteIds);
+
+  /// Shows the "max 3 favorites" message inline in the sheet — a SnackBar
+  /// would be hidden behind this modal bottom sheet.
+  bool _limitMessageVisible = false;
+  Timer? _limitTimer;
 
   @override
-  void initState() {
-    super.initState();
-    _favoriteId = widget.initialFavoriteId;
-  }
-
-  List<Reciter> get _sortedReciters {
-    final sorted = List<Reciter>.from(reciters);
-    if (_favoriteId != null) {
-      final idx = sorted.indexWhere((r) => r.id == _favoriteId);
-      if (idx > 0) sorted.insert(0, sorted.removeAt(idx));
-    }
-    return sorted;
+  void dispose() {
+    _limitTimer?.cancel();
+    super.dispose();
   }
 
   void _toggleFavorite(Reciter reciter) {
     HapticFeedback.lightImpact();
-    final newId = _favoriteId == reciter.id ? null : reciter.id;
-    setState(() => _favoriteId = newId);
-    if (newId != null) widget.onToggleFavorite(reciter);
+    final ids = List.of(_favoriteIds);
+    if (ids.contains(reciter.id)) {
+      ids.remove(reciter.id);
+    } else if (ids.length >= _maxFavoriteReciters) {
+      _limitTimer?.cancel();
+      setState(() => _limitMessageVisible = true);
+      _limitTimer = Timer(const Duration(seconds: 3), () {
+        if (mounted) setState(() => _limitMessageVisible = false);
+      });
+      return;
+    } else {
+      ids.add(reciter.id);
+    }
+    setState(() {
+      _favoriteIds = ids;
+      _limitMessageVisible = false;
+    });
+    widget.onFavoritesChanged(ids);
   }
+
+  Widget _sectionHeader(String label) => Padding(
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 6),
+        child: Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: Text(
+            label,
+            style: GoogleFonts.lato(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              color: _gold,
+              letterSpacing: 1.2,
+            ),
+          ),
+        ),
+      );
+
+  Widget _tile(Reciter r) => _ReciterTile(
+        reciter: r,
+        isSelected: r.id == widget.selected.id,
+        isFavorite: _favoriteIds.contains(r.id),
+        onTap: () => widget.onSelect(r),
+        onToggleFavorite: () => _toggleFavorite(r),
+      );
+
+  static const _rowDivider = Divider(
+      color: Colors.white12, height: 1, indent: 20, endIndent: 20);
 
   @override
   Widget build(BuildContext context) {
-    final sorted = _sortedReciters;
+    final l10n = AppLocalizations.of(context)!;
+    // Favorites keep the order they were added in; the rest keep list order.
+    final favorites = [
+      for (final id in _favoriteIds)
+        ...reciters.where((r) => r.id == id),
+    ];
+    final others =
+        reciters.where((r) => !_favoriteIds.contains(r.id)).toList();
+
     return ConstrainedBox(
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height * 0.72,
@@ -1267,7 +1329,7 @@ class _ReciterSheetState extends State<_ReciterSheet> {
                   const Icon(Icons.mic_rounded, color: _gold, size: 20),
                   const SizedBox(width: 8),
                   Text(
-                    'Reciter',
+                    l10n.selectReciter,
                     style: GoogleFonts.playfairDisplay(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -1277,31 +1339,54 @@ class _ReciterSheetState extends State<_ReciterSheet> {
                 ],
               ),
             ),
+            // ── Limit message (inline, auto-hides) ───────────────────────
+            AnimatedSize(
+              duration: const Duration(milliseconds: 220),
+              curve: Curves.easeOut,
+              child: _limitMessageVisible
+                  ? Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.info_outline_rounded,
+                              color: _gold, size: 16),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              l10n.favoriteRecitersLimit,
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                                color: _gold,
+                                height: 1.4,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : const SizedBox(width: double.infinity),
+            ),
             const SizedBox(height: 12),
             const Divider(color: Colors.white12, height: 1),
-            // ── Reciter list ─────────────────────────────────────────────
+            // ── Reciter list: favorites pinned on top ────────────────────
             Flexible(
-              child: ListView.separated(
+              child: ListView(
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
-                itemCount: sorted.length,
-                separatorBuilder: (_, __) => const Divider(
-                    color: Colors.white12,
-                    height: 1,
-                    indent: 20,
-                    endIndent: 20),
-                itemBuilder: (ctx, i) {
-                  final r = sorted[i];
-                  final isSelected = r.id == widget.selected.id;
-                  final isFavorite = r.id == _favoriteId;
-                  return _ReciterTile(
-                    reciter: r,
-                    isSelected: isSelected,
-                    isFavorite: isFavorite,
-                    onTap: () => widget.onSelect(r),
-                    onToggleFavorite: () => _toggleFavorite(r),
-                  );
-                },
+                children: [
+                  if (favorites.isNotEmpty) ...[
+                    _sectionHeader(l10n.favoriteRecitersSection),
+                    for (int i = 0; i < favorites.length; i++) ...[
+                      if (i > 0) _rowDivider,
+                      _tile(favorites[i]),
+                    ],
+                    const Divider(color: Colors.white24, height: 1),
+                  ],
+                  for (int i = 0; i < others.length; i++) ...[
+                    if (i > 0) _rowDivider,
+                    _tile(others[i]),
+                  ],
+                ],
               ),
             ),
             const SizedBox(height: 8),

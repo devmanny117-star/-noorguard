@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "Ni wakati wa kujiandaa kwa swala ya {prayer}",
   "prayerAlarmMessageGeneric": "Ni wakati wa swala ya {prayer}",
   "testNotificationTitle": "🔔 Arifa ya Majaribio",
-  "testNotificationBody": "Arifa zinafanya kazi vizuri!"
+  "testNotificationBody": "Arifa zinafanya kazi vizuri!",
+  "favoriteRecitersSection": "Vipendwa",
+  "favoriteRecitersLimit": "Unaweza kuwa na wasomaji 3 tu wa kupenda. Ondoa mmoja ili kuongeza mwingine."
 }

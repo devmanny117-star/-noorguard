@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "{prayer} namazına hazırlanma vakti",
   "prayerAlarmMessageGeneric": "{prayer} namazı vakti",
   "testNotificationTitle": "🔔 Test Bildirimi",
-  "testNotificationBody": "Bildirimler doğru çalışıyor!"
+  "testNotificationBody": "Bildirimler doğru çalışıyor!",
+  "favoriteRecitersSection": "Favoriler",
+  "favoriteRecitersLimit": "En fazla 3 favori kâri seçebilirsiniz. Yenisini eklemek için birini kaldırın."
 }

@@ -5951,6 +5951,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notifications are working correctly!'**
   String get testNotificationBody;
+
+  /// Section header above favorited reciters in the reciter picker
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favoriteRecitersSection;
+
+  /// Message when trying to favorite more than 3 reciters
+  ///
+  /// In en, this message translates to:
+  /// **'You can only have 3 favorite reciters. Remove one to add another.'**
+  String get favoriteRecitersLimit;
 }
 
 class _AppLocalizationsDelegate

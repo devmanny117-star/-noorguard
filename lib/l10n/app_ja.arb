@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "{prayer}の礼拝に備えましょう",
   "prayerAlarmMessageGeneric": "{prayer}の礼拝の時間です",
   "testNotificationTitle": "🔔 テスト通知",
-  "testNotificationBody": "通知は正常に動作しています！"
+  "testNotificationBody": "通知は正常に動作しています！",
+  "favoriteRecitersSection": "お気に入り",
+  "favoriteRecitersLimit": "お気に入りの朗誦者は3人までです。追加するには1人削除してください。"
 }

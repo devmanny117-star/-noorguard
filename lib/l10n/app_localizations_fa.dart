@@ -3225,4 +3225,11 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'اعلان‌ها به‌درستی کار می‌کنند!';
+
+  @override
+  String get favoriteRecitersSection => 'برگزیده‌ها';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'فقط می‌توانید ۳ قاری برگزیده داشته باشید. برای افزودن قاری جدید، یکی را حذف کنید.';
 }

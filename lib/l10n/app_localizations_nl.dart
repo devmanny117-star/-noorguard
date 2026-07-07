@@ -3247,4 +3247,11 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'Meldingen werken correct!';
+
+  @override
+  String get favoriteRecitersSection => 'Favorieten';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'Je kunt maximaal 3 favoriete recitators hebben. Verwijder er een om een andere toe te voegen.';
 }

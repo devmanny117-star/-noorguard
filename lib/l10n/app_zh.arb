@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "该为{prayer}做准备了",
   "prayerAlarmMessageGeneric": "{prayer}时间到了",
   "testNotificationTitle": "🔔 测试通知",
-  "testNotificationBody": "通知功能正常！"
+  "testNotificationBody": "通知功能正常！",
+  "favoriteRecitersSection": "收藏",
+  "favoriteRecitersLimit": "最多只能收藏3位诵读者。请先移除一位再添加。"
 }

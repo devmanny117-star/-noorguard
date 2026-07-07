@@ -3247,4 +3247,11 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get testNotificationBody =>
       'As notificações estão funcionando corretamente!';
+
+  @override
+  String get favoriteRecitersSection => 'Favoritos';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'Você só pode ter 3 recitadores favoritos. Remova um para adicionar outro.';
 }

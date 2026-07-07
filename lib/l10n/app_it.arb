@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "È ora di prepararti per la preghiera di {prayer}",
   "prayerAlarmMessageGeneric": "È l'ora della preghiera di {prayer}",
   "testNotificationTitle": "🔔 Notifica di prova",
-  "testNotificationBody": "Le notifiche funzionano correttamente!"
+  "testNotificationBody": "Le notifiche funzionano correttamente!",
+  "favoriteRecitersSection": "Preferiti",
+  "favoriteRecitersLimit": "Puoi avere solo 3 recitatori preferiti. Rimuovine uno per aggiungerne un altro."
 }

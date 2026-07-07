@@ -3240,4 +3240,11 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'বিজ্ঞপ্তি সঠিকভাবে কাজ করছে!';
+
+  @override
+  String get favoriteRecitersSection => 'প্রিয়';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'আপনি সর্বোচ্চ ৩ জন প্রিয় ক্বারী রাখতে পারেন। নতুন যোগ করতে একজনকে সরান।';
 }

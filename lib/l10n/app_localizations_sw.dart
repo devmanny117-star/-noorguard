@@ -3240,4 +3240,11 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'Arifa zinafanya kazi vizuri!';
+
+  @override
+  String get favoriteRecitersSection => 'Vipendwa';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'Unaweza kuwa na wasomaji 3 tu wa kupenda. Ondoa mmoja ili kuongeza mwingine.';
 }

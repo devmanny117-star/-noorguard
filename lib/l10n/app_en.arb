@@ -3985,5 +3985,13 @@
         "type": "String"
       }
     }
+  },
+  "favoriteRecitersSection": "Favorites",
+  "favoriteRecitersLimit": "You can only have 3 favorite reciters. Remove one to add another.",
+  "@favoriteRecitersSection": {
+    "description": "Section header above favorited reciters in the reciter picker"
+  },
+  "@favoriteRecitersLimit": {
+    "description": "Message when trying to favorite more than 3 reciters"
   }
 }

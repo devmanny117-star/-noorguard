@@ -3221,4 +3221,11 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'اطلاعات درست کام کر رہی ہیں!';
+
+  @override
+  String get favoriteRecitersSection => 'پسندیدہ';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'آپ صرف ۳ پسندیدہ قاری رکھ سکتے ہیں۔ نیا شامل کرنے کے لیے ایک ہٹائیں۔';
 }

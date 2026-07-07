@@ -3073,4 +3073,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get testNotificationBody => '通知功能正常！';
+
+  @override
+  String get favoriteRecitersSection => '收藏';
+
+  @override
+  String get favoriteRecitersLimit => '最多只能收藏3位诵读者。请先移除一位再添加。';
 }

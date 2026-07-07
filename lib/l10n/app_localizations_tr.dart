@@ -3230,4 +3230,11 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'Bildirimler doğru çalışıyor!';
+
+  @override
+  String get favoriteRecitersSection => 'Favoriler';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'En fazla 3 favori kâri seçebilirsiniz. Yenisini eklemek için birini kaldırın.';
 }

@@ -3248,4 +3248,11 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get testNotificationBody => 'Notifikasi berfungsi dengan baik!';
+
+  @override
+  String get favoriteRecitersSection => 'Favorit';
+
+  @override
+  String get favoriteRecitersLimit =>
+      'Anda hanya dapat memiliki 3 qari favorit. Hapus satu untuk menambahkan yang lain.';
 }

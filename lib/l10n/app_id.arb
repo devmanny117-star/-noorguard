@@ -1595,5 +1595,7 @@
   "prayerReminderBodyGeneric": "Saatnya bersiap untuk salat {prayer}",
   "prayerAlarmMessageGeneric": "Waktunya salat {prayer}",
   "testNotificationTitle": "🔔 Notifikasi Uji Coba",
-  "testNotificationBody": "Notifikasi berfungsi dengan baik!"
+  "testNotificationBody": "Notifikasi berfungsi dengan baik!",
+  "favoriteRecitersSection": "Favorit",
+  "favoriteRecitersLimit": "Anda hanya dapat memiliki 3 qari favorit. Hapus satu untuk menambahkan yang lain."
 }
