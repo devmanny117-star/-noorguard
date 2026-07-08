@@ -1065,10 +1065,10 @@ class _ToolboxCard extends StatelessWidget {
                       subtitle: items[0].subtitle,
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (_) => items[0].screen)),
-                      // Premium sujood illustration (already gold-toned to
-                      // match #C9A84C — no tint needed).
+                      // Premium sujood illustration on its own cream tile —
+                      // rendered as-is, no tint needed.
                       customIcon: Image.asset(
-                        'assets/images/icons/salah_icon.png',
+                        'assets/images/icons/learn_salah_icon.png',
                         height: 64,
                         fit: BoxFit.contain,
                         errorBuilder: (_, __, ___) => const Icon(
