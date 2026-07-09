@@ -291,7 +291,8 @@ class MainActivity : AudioServiceActivity() {
         val stopPi = PendingIntent.getBroadcast(this, id, stopIntent, flags)
 
         val notification = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_notif_crescent)
+            .setColor(0xFFC9A84C.toInt())
             .setContentTitle(title)
             .setContentText(body)
             .setPriority(NotificationCompat.PRIORITY_HIGH)

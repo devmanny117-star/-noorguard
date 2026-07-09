@@ -173,7 +173,8 @@ class PrayerAlarmReceiver : BroadcastReceiver() {
         )
 
         val notification = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_notif_crescent)
+            .setColor(0xFFC9A84C.toInt())
             .setContentTitle("$prayerName  $arabicName")
             .setContentText(message)
             .setSubText(prayerTime)

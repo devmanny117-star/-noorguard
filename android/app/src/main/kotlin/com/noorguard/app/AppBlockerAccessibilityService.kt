@@ -116,7 +116,8 @@ class AppBlockerAccessibilityService : AccessibilityService() {
         }
         val strings = store.strings
         val notification = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.drawable.ic_notif_crescent)
+            .setColor(0xFFC9A84C.toInt())
             .setContentTitle(strings["softReminderTitle"])
             .setContentText(strings["softReminderBody"])
             .setAutoCancel(true)
