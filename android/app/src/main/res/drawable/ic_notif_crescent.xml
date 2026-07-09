@@ -2,8 +2,13 @@
 <!-- Status-bar / notification small icon: Noor Guard crescent + star.
      Must be a flat white silhouette — Android tints notification small icons
      to a single color, so any internal color or alpha detail would be lost.
-     Crescent is drawn as outer circle minus an offset inner circle via
-     evenOdd fill; the 5-point star sits top-right, matching the app icon. -->
+     The crescent is a single path of two arcs whose horn tips meet at
+     (15.5, 4.21) and (15.5, 19.79): a 300° outer arc (r=9 around 11,12) for
+     the moon's back, and a shallower inner arc (r=8.5 around 18.9,12) for
+     the bite. The horns are genuinely open toward the right — an earlier
+     version subtracted a contained inner circle, which produces a closed
+     ring that reads as a plain circle at status-bar size. The 5-point star
+     sits top-right, matching the app icon. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
@@ -12,8 +17,7 @@
 
     <!-- Crescent (opens right) -->
     <path
-        android:pathData="M11,3 A9,9 0 1,0 11,21 A9,9 0 1,0 11,3 Z M14.5,4.8 A7.5,7.5 0 1,0 14.5,19.2 A7.5,7.5 0 1,0 14.5,4.8 Z"
-        android:fillType="evenOdd"
+        android:pathData="M15.5,4.21 A9,9 0 1,0 15.5,19.79 A8.5,8.5 0 0,1 15.5,4.21 Z"
         android:fillColor="#FFFFFFFF" />
 
     <!-- Star (top-right) -->
