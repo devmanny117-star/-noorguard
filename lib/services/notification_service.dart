@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'dart:ui' show Locale;
+import 'dart:ui' show Color, Locale;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -135,8 +135,10 @@ class NotificationService {
       debugPrint('NotificationService: could not resolve local timezone: $e');
     }
 
+    // Monochrome status-bar crescent — the launcher mipmap renders as a plain
+    // grey circle when Android flattens it for the status bar.
     const androidSettings = AndroidInitializationSettings(
-      '@mipmap/ic_launcher',
+      '@drawable/ic_notif_crescent',
     );
 
     const iosSettings = DarwinInitializationSettings(
@@ -416,6 +418,7 @@ class NotificationService {
         _channelIdFor(soundResource),
         _channelName,
         channelDescription: _channelDescription,
+        color: const Color(0xFFC9A84C),
         importance: Importance.defaultImportance,
         priority: Priority.defaultPriority,
         playSound: true,
