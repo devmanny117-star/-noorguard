@@ -1101,6 +1101,18 @@ class _ToolboxCard extends StatelessWidget {
                       subtitle: items[2].subtitle,
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (_) => items[2].screen)),
+                      // Gold book extracted from the glossary art — label
+                      // stays as text so all 16 languages localize it.
+                      customIcon: Image.asset(
+                        'assets/images/icons/glossary_icon.png',
+                        height: 64,
+                        fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => const Icon(
+                          Icons.menu_book_rounded,
+                          color: _kGold,
+                          size: 42,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10),
