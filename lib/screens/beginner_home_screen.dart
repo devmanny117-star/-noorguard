@@ -1212,7 +1212,14 @@ class _ToolboxFeatureCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                customIcon ?? Icon(icon, color: _kGold, size: 42),
+                // Fixed-height slot with the icon centered inside — equal
+                // space above and below regardless of each icon's height.
+                SizedBox(
+                  height: 56,
+                  child: Center(
+                    child: customIcon ?? Icon(icon, color: _kGold, size: 42),
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Text(
                   label,
