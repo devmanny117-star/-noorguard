@@ -1087,6 +1087,18 @@ class _ToolboxCard extends StatelessWidget {
                       subtitle: items[1].subtitle,
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (_) => items[1].screen)),
+                      // Gold wudu illustration extracted from the art —
+                      // label stays as text so all 16 languages localize it.
+                      customIcon: Image.asset(
+                        'assets/images/icons/wudu_icon.png',
+                        height: 64,
+                        fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => const Icon(
+                          Icons.water_drop_rounded,
+                          color: _kGold,
+                          size: 42,
+                        ),
+                      ),
                     ),
                   ),
                 ],
