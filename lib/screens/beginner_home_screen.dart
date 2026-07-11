@@ -1135,6 +1135,18 @@ class _ToolboxCard extends StatelessWidget {
                       subtitle: items[3].subtitle,
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (_) => items[3].screen)),
+                      // Gold mosque/book illustration from the art — label
+                      // stays as text so all 16 languages localize it.
+                      customIcon: Image.asset(
+                        'assets/images/icons/back_to_basics_icon.png',
+                        height: 64,
+                        fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => const Icon(
+                          Icons.favorite_rounded,
+                          color: _kGold,
+                          size: 42,
+                        ),
+                      ),
                     ),
                   ),
                 ],
