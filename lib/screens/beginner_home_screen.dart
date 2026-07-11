@@ -1069,7 +1069,7 @@ class _ToolboxCard extends StatelessWidget {
                       // as-is, already matches the gold design system.
                       customIcon: Image.asset(
                         'assets/images/icons/salah_icon.png',
-                        height: 48,
+                        height: 42,
                         fit: BoxFit.contain,
                         errorBuilder: (_, __, ___) => const Icon(
                           Icons.airline_seat_flat,
@@ -1091,7 +1091,7 @@ class _ToolboxCard extends StatelessWidget {
                       // label stays as text so all 16 languages localize it.
                       customIcon: Image.asset(
                         'assets/images/icons/wudu_icon.png',
-                        height: 48,
+                        height: 56,
                         fit: BoxFit.contain,
                         errorBuilder: (_, __, ___) => const Icon(
                           Icons.water_drop_rounded,
@@ -1139,7 +1139,7 @@ class _ToolboxCard extends StatelessWidget {
                       // stays as text so all 16 languages localize it.
                       customIcon: Image.asset(
                         'assets/images/icons/back_to_basics_icon.png',
-                        height: 48,
+                        height: 56,
                         fit: BoxFit.contain,
                         errorBuilder: (_, __, ___) => const Icon(
                           Icons.favorite_rounded,
