@@ -1,3 +1,4 @@
+import AVFoundation
 import Flutter
 import UIKit
 import UserNotifications
@@ -21,6 +22,17 @@ import UserNotifications
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     let result = super.application(application, didFinishLaunchingWithOptions: launchOptions)
+
+    // Configure the audio session for playback before any audio starts so
+    // the in-app adhan is audible in the foreground (and not muted by the
+    // ringer switch, which the default session category respects).
+    do {
+      let session = AVAudioSession.sharedInstance()
+      try session.setCategory(.playback, mode: .default)
+      try session.setActive(true)
+    } catch {
+      NSLog("AppDelegate: failed to configure AVAudioSession: \(error)")
+    }
 
     // Own the notification delegate directly. Under FlutterImplicitEngineDelegate
     // the plugin's delegate-forwarding chain is broken, so unless we claim it

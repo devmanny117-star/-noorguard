@@ -64,11 +64,13 @@ class AdhanPlaybackService {
     await preload(prefs.getString('selected_adhan') ?? 'makkah');
   }
 
+  AdhanStyle _styleFor(String adhanId) => adhanStyles.firstWhere(
+        (s) => s.id == adhanId,
+        orElse: () => adhanStyles.first,
+      );
+
   Future<Uint8List> _loadBytes(String adhanId) async {
-    final style = adhanStyles.firstWhere(
-      (s) => s.id == adhanId,
-      orElse: () => adhanStyles.first,
-    );
+    final style = _styleFor(adhanId);
     final cacheFile = await _cacheFileFor(style.id);
     if (await cacheFile.exists()) {
       return cacheFile.readAsBytes();
@@ -112,15 +114,23 @@ class AdhanPlaybackService {
       if (_preloadedId != adhanId) {
         await preload(adhanId);
       }
+      Source source;
       if (_preloadedId == adhanId && _preloadedBytes != null) {
-        await _player.play(BytesSource(_preloadedBytes!));
+        if (Platform.isIOS) {
+          // BytesSource is not supported by audioplayers on iOS — it throws
+          // and the adhan plays silently. Play the disk-cached file that
+          // preload already wrote instead.
+          final cacheFile = await _cacheFileFor(adhanId);
+          source = await cacheFile.exists()
+              ? DeviceFileSource(cacheFile.path)
+              : UrlSource(_styleFor(adhanId).audioUrl);
+        } else {
+          source = BytesSource(_preloadedBytes!);
+        }
       } else {
-        final style = adhanStyles.firstWhere(
-          (s) => s.id == adhanId,
-          orElse: () => adhanStyles.first,
-        );
-        await _player.play(UrlSource(style.audioUrl));
+        source = UrlSource(_styleFor(adhanId).audioUrl);
       }
+      await _player.play(source);
       onPlayStateChanged?.call(true);
     } catch (e) {
       debugPrint('AdhanPlaybackService: failed to play $adhanId: $e');
