@@ -82,12 +82,17 @@ class HeaderSection extends StatelessWidget {
                   ),
                 ],
                 const SizedBox(height: 6),
-                Text(
-                  l10n.mayAllahBlessYourDay,
-                  style: GoogleFonts.lato(
-                    fontSize: 13,
-                    color: colors.secondaryText,
-                    letterSpacing: 0.2,
+                // Right-aligned within the greeting column (RTL-safe).
+                Align(
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: Text(
+                    l10n.mayAllahBlessYourDay,
+                    textAlign: TextAlign.end,
+                    style: GoogleFonts.lato(
+                      fontSize: 13,
+                      color: colors.secondaryText,
+                      letterSpacing: 0.2,
+                    ),
                   ),
                 ),
               ],
