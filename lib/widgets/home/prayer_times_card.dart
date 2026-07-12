@@ -302,8 +302,8 @@ class _NextPrayerHeader extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 150,
-            height: 156,
+            width: 128,
+            height: 133,
             // Prayer-specific gold mosque art (sunrise for Fajr, crescent
             // for Isha, ...). Falls back to the outline drawing for any
             // prayer without a matching asset.
