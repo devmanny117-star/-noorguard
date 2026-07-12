@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/geometric_pattern_painter.dart';
+import '../widgets/prayer_stance_image.dart';
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const _kNavy  = Color(0xFF0D1B2A);
@@ -113,6 +114,22 @@ class _Step {
     _T.tashahhudFull  => l.howToPrayStep11Instruction,
     _T.salawat        => l.howToPraySalawatInstruction,
     _T.tasleem        => l.howToPrayTasleemInstruction,
+  };
+
+  /// Which stance illustration to show in the expanded card, or null for
+  /// steps with no physical stance of their own (wudu, niyyah, itidal,
+  /// salawat, tasleem).
+  PrayerStance? get stance => switch (type) {
+    _T.qibla ||
+    _T.takbir ||
+    _T.openingDua ||
+    _T.fatiha ||
+    _T.surah =>
+      PrayerStance.standing,
+    _T.ruku => PrayerStance.bowing,
+    _T.sujood => PrayerStance.prostrating,
+    _T.jalsa || _T.tashahhudShort || _T.tashahhudFull => PrayerStance.sitting,
+    _ => null,
   };
 
   String badge(AppLocalizations l) => switch (type) {
@@ -769,6 +786,12 @@ class _StepCard extends StatelessWidget {
                             ],
                           ),
                         ),
+                      ],
+
+                      // Stance illustration — below the description text.
+                      if (step.stance != null) ...[
+                        const SizedBox(height: 12),
+                        PrayerStanceImage(stance: step.stance!),
                       ],
                     ],
                   ),

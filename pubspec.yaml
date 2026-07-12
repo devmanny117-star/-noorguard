@@ -52,6 +52,7 @@ flutter:
     - assets/arch.svg
     - assets/images/icons/
     - assets/images/mosques/
+    - assets/images/prayer/
     - assets/images/stories/
     - assets/data/block_screen_verses.json
     - assets/sounds/
