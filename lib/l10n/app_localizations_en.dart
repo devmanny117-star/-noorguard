@@ -3236,4 +3236,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Find Qibla Direction';
+
+  @override
+  String get storyMenuShare => 'Share';
+
+  @override
+  String get storyMenuBookmark => 'Bookmark';
+
+  @override
+  String get storyMenuReport => 'Report';
+
+  @override
+  String get reportSheetTitle => 'Report this story';
+
+  @override
+  String get reportSheetSubtitle => 'Help us keep Noor Guard safe';
+
+  @override
+  String get reportReasonInappropriate => 'Inappropriate content';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHateSpeech => 'Hate speech';
+
+  @override
+  String get reportReasonOther => 'Other';
+
+  @override
+  String get reportSubmit => 'Submit Report';
+
+  @override
+  String get reportThankYou => 'JazakAllah Khair — thank you for reporting';
+
+  @override
+  String get adminMode => 'Admin Mode';
+
+  @override
+  String get adminTitle => 'Admin';
+
+  @override
+  String get adminTabPending => 'Pending Stories';
+
+  @override
+  String get adminTabReported => 'Reported Stories';
+
+  @override
+  String get adminApprove => 'Approve';
+
+  @override
+  String get adminReject => 'Reject';
+
+  @override
+  String get adminDeleteStory => 'Delete Story';
+
+  @override
+  String get adminDismiss => 'Dismiss';
+
+  @override
+  String get adminEmptyPending => 'No pending stories';
+
+  @override
+  String get adminEmptyReports => 'No pending reports';
 }

@@ -3113,4 +3113,67 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'キブラの方角を調べる';
+
+  @override
+  String get storyMenuShare => 'シェア';
+
+  @override
+  String get storyMenuBookmark => 'ブックマーク';
+
+  @override
+  String get storyMenuReport => '報告';
+
+  @override
+  String get reportSheetTitle => 'このストーリーを報告';
+
+  @override
+  String get reportSheetSubtitle => 'Noor Guard の安全を守るためにご協力ください';
+
+  @override
+  String get reportReasonInappropriate => '不適切なコンテンツ';
+
+  @override
+  String get reportReasonSpam => 'スパム';
+
+  @override
+  String get reportReasonHateSpeech => 'ヘイトスピーチ';
+
+  @override
+  String get reportReasonOther => 'その他';
+
+  @override
+  String get reportSubmit => '報告を送信';
+
+  @override
+  String get reportThankYou => 'ジャザーカッラー・ハイル — ご報告ありがとうございます';
+
+  @override
+  String get adminMode => '管理者モード';
+
+  @override
+  String get adminTitle => '管理者';
+
+  @override
+  String get adminTabPending => '審査待ちのストーリー';
+
+  @override
+  String get adminTabReported => '報告されたストーリー';
+
+  @override
+  String get adminApprove => '承認';
+
+  @override
+  String get adminReject => '却下';
+
+  @override
+  String get adminDeleteStory => 'ストーリーを削除';
+
+  @override
+  String get adminDismiss => '対応済みにする';
+
+  @override
+  String get adminEmptyPending => '審査待ちのストーリーはありません';
+
+  @override
+  String get adminEmptyReports => '未対応の報告はありません';
 }

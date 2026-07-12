@@ -3235,4 +3235,67 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'یافتن جهت قبله';
+
+  @override
+  String get storyMenuShare => 'اشتراک‌گذاری';
+
+  @override
+  String get storyMenuBookmark => 'نشان کردن';
+
+  @override
+  String get storyMenuReport => 'گزارش';
+
+  @override
+  String get reportSheetTitle => 'گزارش این داستان';
+
+  @override
+  String get reportSheetSubtitle => 'به ما کمک کنید نور گارد امن بماند';
+
+  @override
+  String get reportReasonInappropriate => 'محتوای نامناسب';
+
+  @override
+  String get reportReasonSpam => 'هرزنامه (اسپم)';
+
+  @override
+  String get reportReasonHateSpeech => 'گفتار نفرت‌آمیز';
+
+  @override
+  String get reportReasonOther => 'سایر';
+
+  @override
+  String get reportSubmit => 'ارسال گزارش';
+
+  @override
+  String get reportThankYou => 'جزاک‌الله خیر — از گزارش شما سپاسگزاریم';
+
+  @override
+  String get adminMode => 'حالت مدیر';
+
+  @override
+  String get adminTitle => 'مدیر';
+
+  @override
+  String get adminTabPending => 'داستان‌های در انتظار';
+
+  @override
+  String get adminTabReported => 'داستان‌های گزارش‌شده';
+
+  @override
+  String get adminApprove => 'تأیید';
+
+  @override
+  String get adminReject => 'رد';
+
+  @override
+  String get adminDeleteStory => 'حذف داستان';
+
+  @override
+  String get adminDismiss => 'نادیده گرفتن';
+
+  @override
+  String get adminEmptyPending => 'داستان در انتظاری وجود ندارد';
+
+  @override
+  String get adminEmptyReports => 'گزارش در انتظاری وجود ندارد';
 }

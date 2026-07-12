@@ -3250,4 +3250,67 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Tafuta Mwelekeo wa Qibla';
+
+  @override
+  String get storyMenuShare => 'Shiriki';
+
+  @override
+  String get storyMenuBookmark => 'Hifadhi';
+
+  @override
+  String get storyMenuReport => 'Ripoti';
+
+  @override
+  String get reportSheetTitle => 'Ripoti hadithi hii';
+
+  @override
+  String get reportSheetSubtitle => 'Tusaidie kuweka Noor Guard salama';
+
+  @override
+  String get reportReasonInappropriate => 'Maudhui yasiyofaa';
+
+  @override
+  String get reportReasonSpam => 'Spamu';
+
+  @override
+  String get reportReasonHateSpeech => 'Matamshi ya chuki';
+
+  @override
+  String get reportReasonOther => 'Nyingine';
+
+  @override
+  String get reportSubmit => 'Tuma Ripoti';
+
+  @override
+  String get reportThankYou => 'JazakAllah khair — asante kwa kuripoti';
+
+  @override
+  String get adminMode => 'Hali ya Msimamizi';
+
+  @override
+  String get adminTitle => 'Msimamizi';
+
+  @override
+  String get adminTabPending => 'Hadithi Zinazosubiri';
+
+  @override
+  String get adminTabReported => 'Hadithi Zilizoripotiwa';
+
+  @override
+  String get adminApprove => 'Idhinisha';
+
+  @override
+  String get adminReject => 'Kataa';
+
+  @override
+  String get adminDeleteStory => 'Futa Hadithi';
+
+  @override
+  String get adminDismiss => 'Puuza';
+
+  @override
+  String get adminEmptyPending => 'Hakuna hadithi zinazosubiri';
+
+  @override
+  String get adminEmptyReports => 'Hakuna ripoti zinazosubiri';
 }

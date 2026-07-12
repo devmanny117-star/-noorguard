@@ -3985,5 +3985,89 @@
   "findQiblaDirection": "Find Qibla Direction",
   "@findQiblaDirection": {
     "description": "Button in the How to Pray Qibla step that opens the Qibla compass screen"
+  },
+  "storyMenuShare": "Share",
+  "@storyMenuShare": {
+    "description": "Story 3-dot menu: share option"
+  },
+  "storyMenuBookmark": "Bookmark",
+  "@storyMenuBookmark": {
+    "description": "Story 3-dot menu: bookmark option"
+  },
+  "storyMenuReport": "Report",
+  "@storyMenuReport": {
+    "description": "Story 3-dot menu: report option"
+  },
+  "reportSheetTitle": "Report this story",
+  "@reportSheetTitle": {
+    "description": "Title of the report-a-story sheet"
+  },
+  "reportSheetSubtitle": "Help us keep Noor Guard safe",
+  "@reportSheetSubtitle": {
+    "description": "Subtitle of the report-a-story sheet"
+  },
+  "reportReasonInappropriate": "Inappropriate content",
+  "@reportReasonInappropriate": {
+    "description": "Report reason option"
+  },
+  "reportReasonSpam": "Spam",
+  "@reportReasonSpam": {
+    "description": "Report reason option"
+  },
+  "reportReasonHateSpeech": "Hate speech",
+  "@reportReasonHateSpeech": {
+    "description": "Report reason option"
+  },
+  "reportReasonOther": "Other",
+  "@reportReasonOther": {
+    "description": "Report reason option"
+  },
+  "reportSubmit": "Submit Report",
+  "@reportSubmit": {
+    "description": "Submit button on the report sheet"
+  },
+  "reportThankYou": "JazakAllah Khair — thank you for reporting",
+  "@reportThankYou": {
+    "description": "Snackbar shown after a report is submitted"
+  },
+  "adminMode": "Admin Mode",
+  "@adminMode": {
+    "description": "Settings button that opens the admin panel"
+  },
+  "adminTitle": "Admin",
+  "@adminTitle": {
+    "description": "Admin screen title"
+  },
+  "adminTabPending": "Pending Stories",
+  "@adminTabPending": {
+    "description": "Admin tab: stories awaiting moderation"
+  },
+  "adminTabReported": "Reported Stories",
+  "@adminTabReported": {
+    "description": "Admin tab: reported stories"
+  },
+  "adminApprove": "Approve",
+  "@adminApprove": {
+    "description": "Admin button: approve a pending story"
+  },
+  "adminReject": "Reject",
+  "@adminReject": {
+    "description": "Admin button: reject a pending story"
+  },
+  "adminDeleteStory": "Delete Story",
+  "@adminDeleteStory": {
+    "description": "Admin button: delete a reported story"
+  },
+  "adminDismiss": "Dismiss",
+  "@adminDismiss": {
+    "description": "Admin button: dismiss a report"
+  },
+  "adminEmptyPending": "No pending stories",
+  "@adminEmptyPending": {
+    "description": "Admin empty state: no pending stories"
+  },
+  "adminEmptyReports": "No pending reports",
+  "@adminEmptyReports": {
+    "description": "Admin empty state: no pending reports"
   }
 }

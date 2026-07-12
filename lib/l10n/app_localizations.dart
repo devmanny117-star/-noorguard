@@ -5969,6 +5969,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Find Qibla Direction'**
   String get findQiblaDirection;
+
+  /// Story 3-dot menu: share option
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get storyMenuShare;
+
+  /// Story 3-dot menu: bookmark option
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark'**
+  String get storyMenuBookmark;
+
+  /// Story 3-dot menu: report option
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
+  String get storyMenuReport;
+
+  /// Title of the report-a-story sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Report this story'**
+  String get reportSheetTitle;
+
+  /// Subtitle of the report-a-story sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Help us keep Noor Guard safe'**
+  String get reportSheetSubtitle;
+
+  /// Report reason option
+  ///
+  /// In en, this message translates to:
+  /// **'Inappropriate content'**
+  String get reportReasonInappropriate;
+
+  /// Report reason option
+  ///
+  /// In en, this message translates to:
+  /// **'Spam'**
+  String get reportReasonSpam;
+
+  /// Report reason option
+  ///
+  /// In en, this message translates to:
+  /// **'Hate speech'**
+  String get reportReasonHateSpeech;
+
+  /// Report reason option
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get reportReasonOther;
+
+  /// Submit button on the report sheet
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Report'**
+  String get reportSubmit;
+
+  /// Snackbar shown after a report is submitted
+  ///
+  /// In en, this message translates to:
+  /// **'JazakAllah Khair — thank you for reporting'**
+  String get reportThankYou;
+
+  /// Settings button that opens the admin panel
+  ///
+  /// In en, this message translates to:
+  /// **'Admin Mode'**
+  String get adminMode;
+
+  /// Admin screen title
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get adminTitle;
+
+  /// Admin tab: stories awaiting moderation
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Stories'**
+  String get adminTabPending;
+
+  /// Admin tab: reported stories
+  ///
+  /// In en, this message translates to:
+  /// **'Reported Stories'**
+  String get adminTabReported;
+
+  /// Admin button: approve a pending story
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get adminApprove;
+
+  /// Admin button: reject a pending story
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get adminReject;
+
+  /// Admin button: delete a reported story
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Story'**
+  String get adminDeleteStory;
+
+  /// Admin button: dismiss a report
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get adminDismiss;
+
+  /// Admin empty state: no pending stories
+  ///
+  /// In en, this message translates to:
+  /// **'No pending stories'**
+  String get adminEmptyPending;
+
+  /// Admin empty state: no pending reports
+  ///
+  /// In en, this message translates to:
+  /// **'No pending reports'**
+  String get adminEmptyReports;
 }
 
 class _AppLocalizationsDelegate

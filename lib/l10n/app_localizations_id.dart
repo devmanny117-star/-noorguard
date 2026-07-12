@@ -3258,4 +3258,68 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Temukan Arah Kiblat';
+
+  @override
+  String get storyMenuShare => 'Bagikan';
+
+  @override
+  String get storyMenuBookmark => 'Simpan';
+
+  @override
+  String get storyMenuReport => 'Laporkan';
+
+  @override
+  String get reportSheetTitle => 'Laporkan kisah ini';
+
+  @override
+  String get reportSheetSubtitle => 'Bantu kami menjaga Noor Guard tetap aman';
+
+  @override
+  String get reportReasonInappropriate => 'Konten tidak pantas';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHateSpeech => 'Ujaran kebencian';
+
+  @override
+  String get reportReasonOther => 'Lainnya';
+
+  @override
+  String get reportSubmit => 'Kirim Laporan';
+
+  @override
+  String get reportThankYou =>
+      'JazakAllah khair — terima kasih telah melaporkan';
+
+  @override
+  String get adminMode => 'Mode Admin';
+
+  @override
+  String get adminTitle => 'Admin';
+
+  @override
+  String get adminTabPending => 'Kisah Menunggu';
+
+  @override
+  String get adminTabReported => 'Kisah Dilaporkan';
+
+  @override
+  String get adminApprove => 'Setujui';
+
+  @override
+  String get adminReject => 'Tolak';
+
+  @override
+  String get adminDeleteStory => 'Hapus Kisah';
+
+  @override
+  String get adminDismiss => 'Abaikan';
+
+  @override
+  String get adminEmptyPending => 'Tidak ada kisah yang menunggu';
+
+  @override
+  String get adminEmptyReports => 'Tidak ada laporan yang menunggu';
 }

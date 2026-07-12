@@ -3257,4 +3257,67 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Encontrar a direção da Qibla';
+
+  @override
+  String get storyMenuShare => 'Compartilhar';
+
+  @override
+  String get storyMenuBookmark => 'Salvar';
+
+  @override
+  String get storyMenuReport => 'Denunciar';
+
+  @override
+  String get reportSheetTitle => 'Denunciar esta história';
+
+  @override
+  String get reportSheetSubtitle => 'Ajude-nos a manter o Noor Guard seguro';
+
+  @override
+  String get reportReasonInappropriate => 'Conteúdo impróprio';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHateSpeech => 'Discurso de ódio';
+
+  @override
+  String get reportReasonOther => 'Outro';
+
+  @override
+  String get reportSubmit => 'Enviar denúncia';
+
+  @override
+  String get reportThankYou => 'JazakAllah khair — obrigado por denunciar';
+
+  @override
+  String get adminMode => 'Modo administrador';
+
+  @override
+  String get adminTitle => 'Administrador';
+
+  @override
+  String get adminTabPending => 'Histórias pendentes';
+
+  @override
+  String get adminTabReported => 'Histórias denunciadas';
+
+  @override
+  String get adminApprove => 'Aprovar';
+
+  @override
+  String get adminReject => 'Rejeitar';
+
+  @override
+  String get adminDeleteStory => 'Excluir história';
+
+  @override
+  String get adminDismiss => 'Dispensar';
+
+  @override
+  String get adminEmptyPending => 'Nenhuma história pendente';
+
+  @override
+  String get adminEmptyReports => 'Nenhuma denúncia pendente';
 }

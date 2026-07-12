@@ -3231,4 +3231,68 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'قبلہ کی سمت معلوم کریں';
+
+  @override
+  String get storyMenuShare => 'شیئر کریں';
+
+  @override
+  String get storyMenuBookmark => 'محفوظ کریں';
+
+  @override
+  String get storyMenuReport => 'رپورٹ کریں';
+
+  @override
+  String get reportSheetTitle => 'اس کہانی کی رپورٹ کریں';
+
+  @override
+  String get reportSheetSubtitle =>
+      'نور گارڈ کو محفوظ رکھنے میں ہماری مدد کریں';
+
+  @override
+  String get reportReasonInappropriate => 'نامناسب مواد';
+
+  @override
+  String get reportReasonSpam => 'سپام';
+
+  @override
+  String get reportReasonHateSpeech => 'نفرت انگیز کلام';
+
+  @override
+  String get reportReasonOther => 'دیگر';
+
+  @override
+  String get reportSubmit => 'رپورٹ بھیجیں';
+
+  @override
+  String get reportThankYou => 'جزاک اللہ خیر — رپورٹ کرنے کا شکریہ';
+
+  @override
+  String get adminMode => 'ایڈمن موڈ';
+
+  @override
+  String get adminTitle => 'ایڈمن';
+
+  @override
+  String get adminTabPending => 'زیرِ التوا کہانیاں';
+
+  @override
+  String get adminTabReported => 'رپورٹ شدہ کہانیاں';
+
+  @override
+  String get adminApprove => 'منظور کریں';
+
+  @override
+  String get adminReject => 'مسترد کریں';
+
+  @override
+  String get adminDeleteStory => 'کہانی حذف کریں';
+
+  @override
+  String get adminDismiss => 'نظرانداز کریں';
+
+  @override
+  String get adminEmptyPending => 'کوئی زیرِ التوا کہانی نہیں';
+
+  @override
+  String get adminEmptyReports => 'کوئی زیرِ التوا رپورٹ نہیں';
 }

@@ -3257,4 +3257,67 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Qibla-richting vinden';
+
+  @override
+  String get storyMenuShare => 'Delen';
+
+  @override
+  String get storyMenuBookmark => 'Opslaan';
+
+  @override
+  String get storyMenuReport => 'Melden';
+
+  @override
+  String get reportSheetTitle => 'Dit verhaal melden';
+
+  @override
+  String get reportSheetSubtitle => 'Help ons Noor Guard veilig te houden';
+
+  @override
+  String get reportReasonInappropriate => 'Ongepaste inhoud';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHateSpeech => 'Haatzaaiende taal';
+
+  @override
+  String get reportReasonOther => 'Anders';
+
+  @override
+  String get reportSubmit => 'Melding versturen';
+
+  @override
+  String get reportThankYou => 'JazakAllah khair — bedankt voor je melding';
+
+  @override
+  String get adminMode => 'Beheerdersmodus';
+
+  @override
+  String get adminTitle => 'Beheerder';
+
+  @override
+  String get adminTabPending => 'Verhalen in afwachting';
+
+  @override
+  String get adminTabReported => 'Gemelde verhalen';
+
+  @override
+  String get adminApprove => 'Goedkeuren';
+
+  @override
+  String get adminReject => 'Afwijzen';
+
+  @override
+  String get adminDeleteStory => 'Verhaal verwijderen';
+
+  @override
+  String get adminDismiss => 'Negeren';
+
+  @override
+  String get adminEmptyPending => 'Geen verhalen in afwachting';
+
+  @override
+  String get adminEmptyReports => 'Geen openstaande meldingen';
 }

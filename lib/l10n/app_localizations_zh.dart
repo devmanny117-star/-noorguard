@@ -3082,4 +3082,67 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get findQiblaDirection => '查找朝拜方向';
+
+  @override
+  String get storyMenuShare => '分享';
+
+  @override
+  String get storyMenuBookmark => '收藏';
+
+  @override
+  String get storyMenuReport => '举报';
+
+  @override
+  String get reportSheetTitle => '举报此故事';
+
+  @override
+  String get reportSheetSubtitle => '帮助我们维护 Noor Guard 的安全';
+
+  @override
+  String get reportReasonInappropriate => '不当内容';
+
+  @override
+  String get reportReasonSpam => '垃圾信息';
+
+  @override
+  String get reportReasonHateSpeech => '仇恨言论';
+
+  @override
+  String get reportReasonOther => '其他';
+
+  @override
+  String get reportSubmit => '提交举报';
+
+  @override
+  String get reportThankYou => '愿真主回赐你 — 感谢你的举报';
+
+  @override
+  String get adminMode => '管理员模式';
+
+  @override
+  String get adminTitle => '管理员';
+
+  @override
+  String get adminTabPending => '待审核故事';
+
+  @override
+  String get adminTabReported => '被举报故事';
+
+  @override
+  String get adminApprove => '批准';
+
+  @override
+  String get adminReject => '拒绝';
+
+  @override
+  String get adminDeleteStory => '删除故事';
+
+  @override
+  String get adminDismiss => '忽略';
+
+  @override
+  String get adminEmptyPending => '没有待审核的故事';
+
+  @override
+  String get adminEmptyReports => '没有待处理的举报';
 }

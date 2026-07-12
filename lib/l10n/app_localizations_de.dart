@@ -3263,4 +3263,67 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Qibla-Richtung finden';
+
+  @override
+  String get storyMenuShare => 'Teilen';
+
+  @override
+  String get storyMenuBookmark => 'Lesezeichen';
+
+  @override
+  String get storyMenuReport => 'Melden';
+
+  @override
+  String get reportSheetTitle => 'Diese Geschichte melden';
+
+  @override
+  String get reportSheetSubtitle => 'Hilf uns, Noor Guard sicher zu halten';
+
+  @override
+  String get reportReasonInappropriate => 'Unangemessener Inhalt';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHateSpeech => 'Hassrede';
+
+  @override
+  String get reportReasonOther => 'Sonstiges';
+
+  @override
+  String get reportSubmit => 'Meldung senden';
+
+  @override
+  String get reportThankYou => 'JazakAllah khair — danke für deine Meldung';
+
+  @override
+  String get adminMode => 'Admin-Modus';
+
+  @override
+  String get adminTitle => 'Admin';
+
+  @override
+  String get adminTabPending => 'Ausstehende Geschichten';
+
+  @override
+  String get adminTabReported => 'Gemeldete Geschichten';
+
+  @override
+  String get adminApprove => 'Genehmigen';
+
+  @override
+  String get adminReject => 'Ablehnen';
+
+  @override
+  String get adminDeleteStory => 'Geschichte löschen';
+
+  @override
+  String get adminDismiss => 'Verwerfen';
+
+  @override
+  String get adminEmptyPending => 'Keine ausstehenden Geschichten';
+
+  @override
+  String get adminEmptyReports => 'Keine ausstehenden Meldungen';
 }

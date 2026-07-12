@@ -128,6 +128,39 @@ class StoryComment {
   }
 }
 
+/// One report filed against a story (collection: `reports`). `reason` is a
+/// canonical id ('inappropriate' | 'spam' | 'hate_speech' | 'other') so the
+/// admin panel can show it localized.
+class StoryReport {
+  final String id;
+  final String storyId;
+  final String reason;
+  final String storyAuthorId;
+  final String status;
+  final DateTime? reportedAt;
+
+  const StoryReport({
+    required this.id,
+    required this.storyId,
+    required this.reason,
+    required this.storyAuthorId,
+    required this.status,
+    this.reportedAt,
+  });
+
+  factory StoryReport.fromDoc(DocumentSnapshot<Map<String, dynamic>> doc) {
+    final data = doc.data() ?? const {};
+    return StoryReport(
+      id: doc.id,
+      storyId: data['storyId'] as String? ?? '',
+      reason: data['reason'] as String? ?? 'other',
+      storyAuthorId: data['storyAuthorId'] as String? ?? '',
+      status: data['status'] as String? ?? 'pending',
+      reportedAt: (data['reportedAt'] as Timestamp?)?.toDate(),
+    );
+  }
+}
+
 /// The current user's reactions on one story.
 class UserReactions {
   final bool dua;

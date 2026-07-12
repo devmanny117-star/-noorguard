@@ -28,6 +28,9 @@ class CommunityStoriesService {
   CollectionReference<Map<String, dynamic>> get _stories =>
       FirebaseFirestore.instance.collection('stories');
 
+  CollectionReference<Map<String, dynamic>> get _reports =>
+      FirebaseFirestore.instance.collection('reports');
+
   /// Stable anonymous per-install user id for reactions/comments.
   static Future<String> userId() async {
     final cached = _cachedUserId;
@@ -304,4 +307,74 @@ class CommunityStoriesService {
       'language': language,
     });
   }
+
+  // ── Reports & moderation ──────────────────────────────────────────────────
+
+  /// Files a report against a story with status "pending"; reviewed in the
+  /// in-app admin panel (Settings → Admin Mode).
+  Future<void> reportStory({
+    required String storyId,
+    required String reason,
+    required String storyAuthorId,
+  }) async {
+    await _reports.add({
+      'storyId': storyId,
+      'reportedAt': FieldValue.serverTimestamp(),
+      'reason': reason,
+      'storyAuthorId': storyAuthorId,
+      'status': 'pending',
+    });
+  }
+
+  /// EVERY user's pending submissions, newest first — the admin moderation
+  /// queue (unlike [myPendingStories], which is filtered to this install).
+  Stream<List<CommunityStory>> allPendingStories() {
+    return _stories
+        .where('status', isEqualTo: 'pending')
+        .limit(maxStories)
+        .snapshots()
+        .map((snap) {
+      final stories = snap.docs.map(CommunityStory.fromDoc).toList();
+      stories.sort((a, b) {
+        final da = a.dateSubmitted, db = b.dateSubmitted;
+        if (da == null && db == null) return 0;
+        if (da == null) return 1;
+        if (db == null) return -1;
+        return db.compareTo(da);
+      });
+      return stories;
+    });
+  }
+
+  /// Unresolved reports, newest first (client-side sort — equality-only
+  /// filter, so no composite index needed).
+  Stream<List<StoryReport>> pendingReports() {
+    return _reports
+        .where('status', isEqualTo: 'pending')
+        .limit(100)
+        .snapshots()
+        .map((snap) {
+      final reports = snap.docs.map(StoryReport.fromDoc).toList();
+      reports.sort((a, b) {
+        final da = a.reportedAt, db = b.reportedAt;
+        if (da == null && db == null) return 0;
+        if (da == null) return 1;
+        if (db == null) return -1;
+        return db.compareTo(da);
+      });
+      return reports;
+    });
+  }
+
+  /// Admin approve/reject: 'approved' shows the story in the public feed,
+  /// 'rejected' removes it (the feed queries status == 'approved' only).
+  Future<void> setStoryStatus(String storyId, String status) =>
+      _stories.doc(storyId).update({'status': status});
+
+  /// Admin "Delete Story": removes the story document entirely.
+  Future<void> deleteStory(String storyId) => _stories.doc(storyId).delete();
+
+  /// Admin "Dismiss": marks one report handled without touching the story.
+  Future<void> resolveReport(String reportId) =>
+      _reports.doc(reportId).update({'status': 'resolved'});
 }

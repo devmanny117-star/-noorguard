@@ -70,6 +70,27 @@ String storyDisplayName(AppLocalizations l10n, CommunityStory story) =>
 String _formatMonthYear(BuildContext context, DateTime date) =>
     DateFormat.yMMM(Localizations.localeOf(context).toString()).format(date);
 
+/// Canonical report-reason ids stored in the `reason` field of `reports`.
+const List<String> kReportReasons = [
+  'inappropriate',
+  'spam',
+  'hate_speech',
+  'other',
+];
+
+String reportReasonLabel(AppLocalizations l10n, String reason) {
+  switch (reason) {
+    case 'inappropriate':
+      return l10n.reportReasonInappropriate;
+    case 'spam':
+      return l10n.reportReasonSpam;
+    case 'hate_speech':
+      return l10n.reportReasonHateSpeech;
+    default:
+      return l10n.reportReasonOther;
+  }
+}
+
 Future<void> shareStory(BuildContext context, CommunityStory story) async {
   final l10n = AppLocalizations.of(context)!;
   final excerpt = story.story.length > 220
@@ -613,6 +634,16 @@ class _FeaturedStoryCard extends StatelessWidget {
                           onTap: () => _openEditSheet(context, service, story),
                         ),
                       ],
+                      const SizedBox(width: 8),
+                      _MoreButton(
+                        onTap: () => _openStoryMenu(
+                          context,
+                          service: service,
+                          story: story,
+                          saved: saved,
+                          onToggleSave: onToggleSave,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 6),
@@ -844,6 +875,16 @@ class _StoryCardState extends State<_StoryCard> {
                               _openEditSheet(context, widget.service, story),
                         ),
                       ],
+                      const SizedBox(width: 8),
+                      _MoreButton(
+                        onTap: () => _openStoryMenu(
+                          context,
+                          service: widget.service,
+                          story: story,
+                          saved: widget.saved,
+                          onToggleSave: widget.onToggleSave,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 12),
@@ -1197,6 +1238,380 @@ class _ReactionChip extends StatelessWidget {
             fontSize: 12,
             fontWeight: FontWeight.w700,
             color: active ? _kGold : _kGold.withValues(alpha: 0.8),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STORY 3-DOT MENU + REPORT SHEET
+// ─────────────────────────────────────────────────────────────────────────────
+
+/// Small gold 3-dot button shown on every story card and the detail view.
+class _MoreButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _MoreButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 28,
+        height: 28,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _kGold.withValues(alpha: 0.12),
+          border: Border.all(color: _kGold.withValues(alpha: 0.55)),
+        ),
+        child: const Icon(Icons.more_vert, size: 15, color: _kGold),
+      ),
+    );
+  }
+}
+
+/// Opens the Share / Bookmark / Report menu for one story. Callbacks run
+/// against [context] (the card / detail screen), which outlives the sheet.
+void _openStoryMenu(
+  BuildContext context, {
+  required CommunityStoriesService service,
+  required CommunityStory story,
+  required bool saved,
+  required VoidCallback onToggleSave,
+}) {
+  showModalBottomSheet<void>(
+    context: context,
+    backgroundColor: Colors.transparent,
+    builder: (_) => _StoryOptionsSheet(
+      saved: saved,
+      onShare: () => shareStory(context, story),
+      onBookmark: onToggleSave,
+      onReport: () => _openReportSheet(context, service: service, story: story),
+    ),
+  );
+}
+
+class _StoryOptionsSheet extends StatelessWidget {
+  final bool saved;
+  final VoidCallback onShare;
+  final VoidCallback onBookmark;
+  final VoidCallback onReport;
+
+  const _StoryOptionsSheet({
+    required this.saved,
+    required this.onShare,
+    required this.onBookmark,
+    required this.onReport,
+  });
+
+  Widget _option({
+    required BuildContext context,
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+        onTap();
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 13),
+        child: Row(
+          children: [
+            Container(
+              width: 36,
+              height: 36,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: _kGold.withValues(alpha: 0.12),
+                border: Border.all(color: _kGold.withValues(alpha: 0.45)),
+              ),
+              child: Icon(icon, size: 17, color: _kGold),
+            ),
+            const SizedBox(width: 14),
+            Text(
+              label,
+              style: GoogleFonts.lato(
+                fontSize: 14.5,
+                fontWeight: FontWeight.w700,
+                color: _kCream,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Container(
+      decoration: const BoxDecoration(
+        color: _kCard,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
+      ),
+      child: SafeArea(
+        top: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 36,
+              height: 4,
+              margin: const EdgeInsets.only(top: 10, bottom: 8),
+              decoration: BoxDecoration(
+                color: _kGold.withValues(alpha: 0.35),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            _option(
+              context: context,
+              icon: Icons.share_rounded,
+              label: l10n.storyMenuShare,
+              onTap: onShare,
+            ),
+            _option(
+              context: context,
+              icon: saved
+                  ? Icons.bookmark_rounded
+                  : Icons.bookmark_border_rounded,
+              label: l10n.storyMenuBookmark,
+              onTap: onBookmark,
+            ),
+            _option(
+              context: context,
+              icon: Icons.flag_outlined,
+              label: l10n.storyMenuReport,
+              onTap: onReport,
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+void _openReportSheet(
+  BuildContext context, {
+  required CommunityStoriesService service,
+  required CommunityStory story,
+}) {
+  if (!CommunityStoriesService.firebaseAvailable) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocalizations.of(context)!.storiesSubmitError)),
+    );
+    return;
+  }
+  showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (_) => _ReportStorySheet(service: service, story: story),
+  );
+}
+
+class _ReportStorySheet extends StatefulWidget {
+  final CommunityStoriesService service;
+  final CommunityStory story;
+
+  const _ReportStorySheet({required this.service, required this.story});
+
+  @override
+  State<_ReportStorySheet> createState() => _ReportStorySheetState();
+}
+
+class _ReportStorySheetState extends State<_ReportStorySheet> {
+  /// Selected canonical reason id; null until the user picks one.
+  String? _reason;
+  bool _submitting = false;
+
+  Future<void> _submit() async {
+    final l10n = AppLocalizations.of(context)!;
+    final reason = _reason;
+    if (reason == null || _submitting) return;
+    setState(() => _submitting = true);
+    try {
+      await widget.service.reportStory(
+        storyId: widget.story.id,
+        reason: reason,
+        storyAuthorId: widget.story.userId ?? '',
+      );
+      if (!mounted) return;
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.reportThankYou),
+          backgroundColor: _kCard,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color: _kGold.withValues(alpha: 0.5)),
+          ),
+        ),
+      );
+    } catch (_) {
+      if (mounted) {
+        setState(() => _submitting = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.storiesSubmitError)),
+        );
+      }
+    }
+  }
+
+  Widget _reasonRow(AppLocalizations l10n, String reason) {
+    final selected = _reason == reason;
+    return GestureDetector(
+      onTap: () => setState(() => _reason = reason),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        decoration: BoxDecoration(
+          color: _kGold.withValues(alpha: selected ? 0.12 : 0.0),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: _kGold.withValues(alpha: selected ? 0.9 : 0.3),
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 20,
+              height: 20,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: _kGold.withValues(alpha: selected ? 1.0 : 0.5),
+                  width: 1.5,
+                ),
+              ),
+              child: selected
+                  ? Container(
+                      width: 10,
+                      height: 10,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _kGold,
+                      ),
+                    )
+                  : null,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                reportReasonLabel(l10n, reason),
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
+                  color: selected ? _kGold : _kCream.withValues(alpha: 0.85),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Container(
+      decoration: const BoxDecoration(
+        color: _kCard,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
+      ),
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 36,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: _kGold.withValues(alpha: 0.35),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                l10n.reportSheetTitle,
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w700,
+                  color: _kGold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                l10n.reportSheetSubtitle,
+                style: GoogleFonts.lato(
+                  fontSize: 12.5,
+                  color: _kCream.withValues(alpha: 0.6),
+                ),
+              ),
+              const SizedBox(height: 16),
+              for (final reason in kReportReasons) _reasonRow(l10n, reason),
+              const SizedBox(height: 8),
+              GestureDetector(
+                onTap: _submit,
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 150),
+                  opacity: _reason == null ? 0.45 : 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          _kGold.withValues(alpha: 0.9),
+                          _kGold.withValues(alpha: 0.7),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: _submitting
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              color: _kNavy,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text(
+                            l10n.reportSubmit,
+                            style: GoogleFonts.lato(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: _kNavy,
+                            ),
+                          ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -2884,6 +3299,22 @@ class _CommunityStoryDetailScreenState
   final _commentController = TextEditingController();
   bool _sending = false;
 
+  /// Locally bookmarked story ids — the 3-dot menu's Bookmark option.
+  Set<String> _savedIds = {};
+
+  @override
+  void initState() {
+    super.initState();
+    CommunityStoriesService.savedStoryIds().then((ids) {
+      if (mounted) setState(() => _savedIds = ids);
+    });
+  }
+
+  Future<void> _toggleSaved() async {
+    final ids = await CommunityStoriesService.toggleSavedStory(widget.story.id);
+    if (mounted) setState(() => _savedIds = ids);
+  }
+
   @override
   void dispose() {
     _commentController.dispose();
@@ -2937,7 +3368,16 @@ class _CommunityStoryDetailScreenState
                   padding: EdgeInsets.zero,
                   physics: const BouncingScrollPhysics(),
                   children: [
-                    _DetailHeroHeader(story: story),
+                    _DetailHeroHeader(
+                      story: story,
+                      onMore: () => _openStoryMenu(
+                        context,
+                        service: widget.service,
+                        story: story,
+                        saved: _savedIds.contains(story.id),
+                        onToggleSave: _toggleSaved,
+                      ),
+                    ),
                     _DetailAuthorSection(story: story),
                     Padding(
                       padding:
@@ -3077,7 +3517,8 @@ class _CommunityStoryDetailScreenState
 /// buttons on top, category badge and timestamp along the bottom edge.
 class _DetailHeroHeader extends StatelessWidget {
   final CommunityStory story;
-  const _DetailHeroHeader({required this.story});
+  final VoidCallback onMore;
+  const _DetailHeroHeader({required this.story, required this.onMore});
 
   @override
   Widget build(BuildContext context) {
@@ -3129,9 +3570,19 @@ class _DetailHeroHeader extends StatelessWidget {
           PositionedDirectional(
             top: topInset + 8,
             end: 12,
-            child: _HeroCircleButton(
-              icon: Icons.share_rounded,
-              onTap: () => shareStory(context, story),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _HeroCircleButton(
+                  icon: Icons.share_rounded,
+                  onTap: () => shareStory(context, story),
+                ),
+                const SizedBox(width: 8),
+                _HeroCircleButton(
+                  icon: Icons.more_vert,
+                  onTap: onMore,
+                ),
+              ],
             ),
           ),
           PositionedDirectional(

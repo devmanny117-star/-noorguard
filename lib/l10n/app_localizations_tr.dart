@@ -3240,4 +3240,69 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Kıble Yönünü Bul';
+
+  @override
+  String get storyMenuShare => 'Paylaş';
+
+  @override
+  String get storyMenuBookmark => 'Kaydet';
+
+  @override
+  String get storyMenuReport => 'Bildir';
+
+  @override
+  String get reportSheetTitle => 'Bu hikayeyi bildir';
+
+  @override
+  String get reportSheetSubtitle =>
+      'Noor Guard\'ı güvenli tutmamıza yardımcı ol';
+
+  @override
+  String get reportReasonInappropriate => 'Uygunsuz içerik';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHateSpeech => 'Nefret söylemi';
+
+  @override
+  String get reportReasonOther => 'Diğer';
+
+  @override
+  String get reportSubmit => 'Raporu Gönder';
+
+  @override
+  String get reportThankYou =>
+      'Allah razı olsun — bildirdiğin için teşekkürler';
+
+  @override
+  String get adminMode => 'Yönetici Modu';
+
+  @override
+  String get adminTitle => 'Yönetici';
+
+  @override
+  String get adminTabPending => 'Bekleyen Hikayeler';
+
+  @override
+  String get adminTabReported => 'Bildirilen Hikayeler';
+
+  @override
+  String get adminApprove => 'Onayla';
+
+  @override
+  String get adminReject => 'Reddet';
+
+  @override
+  String get adminDeleteStory => 'Hikayeyi Sil';
+
+  @override
+  String get adminDismiss => 'Yok say';
+
+  @override
+  String get adminEmptyPending => 'Bekleyen hikaye yok';
+
+  @override
+  String get adminEmptyReports => 'Bekleyen rapor yok';
 }

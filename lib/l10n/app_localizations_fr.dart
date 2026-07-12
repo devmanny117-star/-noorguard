@@ -3279,4 +3279,68 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'Trouver la direction de la Qibla';
+
+  @override
+  String get storyMenuShare => 'Partager';
+
+  @override
+  String get storyMenuBookmark => 'Enregistrer';
+
+  @override
+  String get storyMenuReport => 'Signaler';
+
+  @override
+  String get reportSheetTitle => 'Signaler cette histoire';
+
+  @override
+  String get reportSheetSubtitle => 'Aidez-nous à garder Noor Guard sûr';
+
+  @override
+  String get reportReasonInappropriate => 'Contenu inapproprié';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonHateSpeech => 'Discours haineux';
+
+  @override
+  String get reportReasonOther => 'Autre';
+
+  @override
+  String get reportSubmit => 'Envoyer le signalement';
+
+  @override
+  String get reportThankYou =>
+      'JazakAllah khair — merci pour votre signalement';
+
+  @override
+  String get adminMode => 'Mode administrateur';
+
+  @override
+  String get adminTitle => 'Administrateur';
+
+  @override
+  String get adminTabPending => 'Histoires en attente';
+
+  @override
+  String get adminTabReported => 'Histoires signalées';
+
+  @override
+  String get adminApprove => 'Approuver';
+
+  @override
+  String get adminReject => 'Rejeter';
+
+  @override
+  String get adminDeleteStory => 'Supprimer l\'histoire';
+
+  @override
+  String get adminDismiss => 'Ignorer';
+
+  @override
+  String get adminEmptyPending => 'Aucune histoire en attente';
+
+  @override
+  String get adminEmptyReports => 'Aucun signalement en attente';
 }

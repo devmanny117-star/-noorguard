@@ -3192,4 +3192,67 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'تحديد اتجاه القبلة';
+
+  @override
+  String get storyMenuShare => 'مشاركة';
+
+  @override
+  String get storyMenuBookmark => 'حفظ';
+
+  @override
+  String get storyMenuReport => 'إبلاغ';
+
+  @override
+  String get reportSheetTitle => 'الإبلاغ عن هذه القصة';
+
+  @override
+  String get reportSheetSubtitle => 'ساعدنا في الحفاظ على أمان نور غارد';
+
+  @override
+  String get reportReasonInappropriate => 'محتوى غير لائق';
+
+  @override
+  String get reportReasonSpam => 'محتوى مزعج (سبام)';
+
+  @override
+  String get reportReasonHateSpeech => 'خطاب كراهية';
+
+  @override
+  String get reportReasonOther => 'أخرى';
+
+  @override
+  String get reportSubmit => 'إرسال البلاغ';
+
+  @override
+  String get reportThankYou => 'جزاك الله خيرًا — شكرًا لإبلاغك';
+
+  @override
+  String get adminMode => 'وضع المشرف';
+
+  @override
+  String get adminTitle => 'المشرف';
+
+  @override
+  String get adminTabPending => 'القصص المعلّقة';
+
+  @override
+  String get adminTabReported => 'القصص المُبلَغ عنها';
+
+  @override
+  String get adminApprove => 'قبول';
+
+  @override
+  String get adminReject => 'رفض';
+
+  @override
+  String get adminDeleteStory => 'حذف القصة';
+
+  @override
+  String get adminDismiss => 'تجاهل';
+
+  @override
+  String get adminEmptyPending => 'لا توجد قصص معلّقة';
+
+  @override
+  String get adminEmptyReports => 'لا توجد بلاغات معلّقة';
 }

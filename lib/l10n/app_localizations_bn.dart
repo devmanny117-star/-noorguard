@@ -3250,4 +3250,68 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get findQiblaDirection => 'কিবলার দিক খুঁজুন';
+
+  @override
+  String get storyMenuShare => 'শেয়ার করুন';
+
+  @override
+  String get storyMenuBookmark => 'বুকমার্ক';
+
+  @override
+  String get storyMenuReport => 'রিপোর্ট করুন';
+
+  @override
+  String get reportSheetTitle => 'এই গল্পটি রিপোর্ট করুন';
+
+  @override
+  String get reportSheetSubtitle =>
+      'নূর গার্ডকে নিরাপদ রাখতে আমাদের সাহায্য করুন';
+
+  @override
+  String get reportReasonInappropriate => 'অনুপযুক্ত কনটেন্ট';
+
+  @override
+  String get reportReasonSpam => 'স্প্যাম';
+
+  @override
+  String get reportReasonHateSpeech => 'ঘৃণামূলক বক্তব্য';
+
+  @override
+  String get reportReasonOther => 'অন্যান্য';
+
+  @override
+  String get reportSubmit => 'রিপোর্ট পাঠান';
+
+  @override
+  String get reportThankYou => 'জাযাকাল্লাহ খাইর — রিপোর্ট করার জন্য ধন্যবাদ';
+
+  @override
+  String get adminMode => 'অ্যাডমিন মোড';
+
+  @override
+  String get adminTitle => 'অ্যাডমিন';
+
+  @override
+  String get adminTabPending => 'অপেক্ষমাণ গল্প';
+
+  @override
+  String get adminTabReported => 'রিপোর্ট করা গল্প';
+
+  @override
+  String get adminApprove => 'অনুমোদন';
+
+  @override
+  String get adminReject => 'প্রত্যাখ্যান';
+
+  @override
+  String get adminDeleteStory => 'গল্প মুছুন';
+
+  @override
+  String get adminDismiss => 'খারিজ করুন';
+
+  @override
+  String get adminEmptyPending => 'কোনো অপেক্ষমাণ গল্প নেই';
+
+  @override
+  String get adminEmptyReports => 'কোনো অপেক্ষমাণ রিপোর্ট নেই';
 }
