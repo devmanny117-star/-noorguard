@@ -38,148 +38,121 @@ class HeaderSection extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(22, 18, 18, 8),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Row 1 — salām line inline with the icon buttons.
-          // The mockup's cream/white only works on the dark theme; light
-          // mode falls back to the theme text colors so the greeting stays
-          // visible on the white background.
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Text(
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Option 2 layout: small salām line above a large bold name
+                // line. The mockup's cream/white only works on the dark
+                // theme; light mode falls back to the theme text colors so
+                // the greeting stays visible on the white background.
+                Text(
                   l10n.assalamualaikum,
                   style: GoogleFonts.lato(
                     fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color:
-                        isDark ? const Color(0xFFF5EFE6) : colors.secondaryText,
+                    fontWeight: FontWeight.w400,
+                    color: isDark
+                        ? const Color(0xFFF5EFE6)
+                        : colors.secondaryText,
                     letterSpacing: 0.3,
                     height: 1.2,
                   ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              _buildButtons(context, l10n, controller, prayerState, isDark),
-            ],
-          ),
-          const SizedBox(height: 6),
-          // Row 2 — big name on the left, blessing subtitle right-aligned
-          // on the same line. Name scales down instead of wrapping; the
-          // subtitle stays on a single line and ellipsizes if squeezed.
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              if (userName.isNotEmpty) ...[
-                Expanded(
-                  flex: 3,
-                  child: FittedBox(
+                if (userName.isNotEmpty) ...[
+                  const SizedBox(height: 2),
+                  // Scale down instead of wrapping so the name + emoji stay
+                  // on one line on narrow screens (iPhone) — the greeting
+                  // never exceeds two lines total.
+                  FittedBox(
                     fit: BoxFit.scaleDown,
                     alignment: AlignmentDirectional.centerStart,
                     child: Text(
                       '$userName 🤲',
                       maxLines: 1,
                       style: GoogleFonts.playfairDisplay(
-                        fontSize: 28,
+                        fontSize: 32,
                         fontWeight: FontWeight.w800,
                         color: isDark ? Colors.white : colors.primaryText,
-                        height: 1.1,
+                        height: 1.15,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 8),
-              ],
-              Expanded(
-                flex: 2,
-                child: Text(
+                ],
+                const SizedBox(height: 6),
+                Text(
                   l10n.mayAllahBlessYourDay,
-                  textAlign: TextAlign.end,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.lato(
-                    fontSize: 10,
-                    color:
-                        isDark ? const Color(0x88F5EFE6) : colors.secondaryText,
+                    fontSize: 13,
+                    color: colors.secondaryText,
                     letterSpacing: 0.2,
                   ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Row(
+            children: [
+              if (onModeToggle != null) ...[
+                _CircleButton(
+                  onTap: onModeToggle!,
+                  child: isBeginnerMode
+                      ? const Icon(Icons.person_rounded,
+                          size: 20, color: AppColors.gold)
+                      : const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CustomPaint(painter: CrescentStarPainter()),
+                        ),
+                ),
+                const SizedBox(width: 6),
+              ],
+              // Dark/light mode toggle
+              _CircleButton(
+                onTap: () => controller.toggle(isDark),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (child, anim) => RotationTransition(
+                    turns: Tween(begin: 0.75, end: 1.0).animate(anim),
+                    child: FadeTransition(opacity: anim, child: child),
+                  ),
+                  child: Icon(
+                    isDark ? Icons.wb_sunny_rounded : Icons.nightlight_round,
+                    key: ValueKey(isDark),
+                    size: 20,
+                    color: isDark ? AppColors.gold : colors.primaryText,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 6),
+              _CircleButton(
+                onTap: () => _toggleNotifications(context, l10n, prayerState),
+                child: Icon(
+                  prayerState.masterNotifications
+                      ? Icons.notifications
+                      : Icons.notifications_off,
+                  color: prayerState.masterNotifications
+                      ? AppColors.gold
+                      : _kNotificationsOffRed,
+                  size: 21,
+                ),
+              ),
+              const SizedBox(width: 6),
+              _CircleButton(
+                onTap: onShare,
+                child: const Icon(
+                  Icons.share_rounded,
+                  color: Color(0xFFC9A84C),
+                  size: 21,
                 ),
               ),
             ],
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildButtons(
-    BuildContext context,
-    AppLocalizations l10n,
-    ThemeController controller,
-    PrayerState prayerState,
-    bool isDark,
-  ) {
-    final colors = context.appColors;
-
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (onModeToggle != null) ...[
-          _CircleButton(
-            onTap: onModeToggle!,
-            child: isBeginnerMode
-                ? const Icon(Icons.person_rounded,
-                    size: 20, color: AppColors.gold)
-                : const SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CustomPaint(painter: CrescentStarPainter()),
-                  ),
-          ),
-          const SizedBox(width: 6),
-        ],
-        // Dark/light mode toggle
-        _CircleButton(
-          onTap: () => controller.toggle(isDark),
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            transitionBuilder: (child, anim) => RotationTransition(
-              turns: Tween(begin: 0.75, end: 1.0).animate(anim),
-              child: FadeTransition(opacity: anim, child: child),
-            ),
-            child: Icon(
-              isDark ? Icons.wb_sunny_rounded : Icons.nightlight_round,
-              key: ValueKey(isDark),
-              size: 20,
-              color: isDark ? AppColors.gold : colors.primaryText,
-            ),
-          ),
-        ),
-        const SizedBox(width: 6),
-        _CircleButton(
-          onTap: () => _toggleNotifications(context, l10n, prayerState),
-          child: Icon(
-            prayerState.masterNotifications
-                ? Icons.notifications
-                : Icons.notifications_off,
-            color: prayerState.masterNotifications
-                ? AppColors.gold
-                : _kNotificationsOffRed,
-            size: 21,
-          ),
-        ),
-        const SizedBox(width: 6),
-        _CircleButton(
-          onTap: onShare,
-          child: const Icon(
-            Icons.share_rounded,
-            color: Color(0xFFC9A84C),
-            size: 21,
-          ),
-        ),
-      ],
     );
   }
 
@@ -206,8 +179,7 @@ class HeaderSection extends StatelessWidget {
       // countdown instead of the last session's.
       final scheduled = PrayerState().scheduledPrayerTimes;
       if (scheduled != null && context.mounted) {
-        await LiveNotificationService.push(
-            context: context, prayers: scheduled);
+        await LiveNotificationService.push(context: context, prayers: scheduled);
       }
       if (!context.mounted) return;
       await NotificationService().startKeepAliveService(
