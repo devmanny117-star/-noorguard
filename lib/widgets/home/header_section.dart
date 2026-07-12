@@ -63,13 +63,21 @@ class HeaderSection extends StatelessWidget {
                 ),
                 if (userName.isNotEmpty) ...[
                   const SizedBox(height: 2),
-                  Text(
-                    '$userName 🤲',
-                    style: GoogleFonts.playfairDisplay(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w800,
-                      color: isDark ? Colors.white : colors.primaryText,
-                      height: 1.15,
+                  // Scale down instead of wrapping so the name + emoji stay
+                  // on one line on narrow screens (iPhone) — the greeting
+                  // never exceeds two lines total.
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: AlignmentDirectional.centerStart,
+                    child: Text(
+                      '$userName 🤲',
+                      maxLines: 1,
+                      style: GoogleFonts.playfairDisplay(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : colors.primaryText,
+                        height: 1.15,
+                      ),
                     ),
                   ),
                 ],
@@ -85,7 +93,7 @@ class HeaderSection extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 8),
           Row(
             children: [
               if (onModeToggle != null) ...[
@@ -100,7 +108,7 @@ class HeaderSection extends StatelessWidget {
                           child: CustomPaint(painter: CrescentStarPainter()),
                         ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
               ],
               // Dark/light mode toggle
               _CircleButton(
@@ -119,7 +127,7 @@ class HeaderSection extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               _CircleButton(
                 onTap: () => _toggleNotifications(context, l10n, prayerState),
                 child: Icon(
@@ -132,7 +140,7 @@ class HeaderSection extends StatelessWidget {
                   size: 21,
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 6),
               _CircleButton(
                 onTap: onShare,
                 child: const Icon(
