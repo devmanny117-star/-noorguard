@@ -117,14 +117,15 @@ class _Step {
   };
 
   /// Which stance illustration to show in the expanded card, or null for
-  /// steps with no physical stance of their own (wudu, niyyah, itidal,
-  /// salawat, tasleem).
+  /// steps with no physical stance of their own (wudu, niyyah, salawat,
+  /// tasleem).
   PrayerStance? get stance => switch (type) {
     _T.qibla ||
     _T.takbir ||
     _T.openingDua ||
     _T.fatiha ||
-    _T.surah =>
+    _T.surah ||
+    _T.itidal =>
       PrayerStance.standing,
     _T.ruku => PrayerStance.bowing,
     _T.sujood => PrayerStance.prostrating,
