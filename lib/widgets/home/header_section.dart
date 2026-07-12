@@ -54,9 +54,8 @@ class HeaderSection extends StatelessWidget {
                   style: GoogleFonts.lato(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
-                    color: isDark
-                        ? const Color(0xFFF5EFE6)
-                        : colors.secondaryText,
+                    color:
+                        isDark ? const Color(0xFFF5EFE6) : colors.secondaryText,
                     letterSpacing: 0.3,
                     height: 1.2,
                   ),
@@ -81,77 +80,82 @@ class HeaderSection extends StatelessWidget {
                     ),
                   ),
                 ],
-                const SizedBox(height: 6),
-                // Right-aligned within the greeting column (RTL-safe).
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Text(
-                    l10n.mayAllahBlessYourDay,
-                    textAlign: TextAlign.end,
-                    style: GoogleFonts.lato(
-                      fontSize: 13,
-                      color: colors.secondaryText,
-                      letterSpacing: 0.2,
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
           const SizedBox(width: 8),
-          Row(
+          // Buttons with the blessing subtitle sitting directly beneath.
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              if (onModeToggle != null) ...[
-                _CircleButton(
-                  onTap: onModeToggle!,
-                  child: isBeginnerMode
-                      ? const Icon(Icons.person_rounded,
-                          size: 20, color: AppColors.gold)
-                      : const SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: CustomPaint(painter: CrescentStarPainter()),
-                        ),
-                ),
-                const SizedBox(width: 6),
-              ],
-              // Dark/light mode toggle
-              _CircleButton(
-                onTap: () => controller.toggle(isDark),
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  transitionBuilder: (child, anim) => RotationTransition(
-                    turns: Tween(begin: 0.75, end: 1.0).animate(anim),
-                    child: FadeTransition(opacity: anim, child: child),
+              Row(
+                children: [
+                  if (onModeToggle != null) ...[
+                    _CircleButton(
+                      onTap: onModeToggle!,
+                      child: isBeginnerMode
+                          ? const Icon(Icons.person_rounded,
+                              size: 20, color: AppColors.gold)
+                          : const SizedBox(
+                              width: 24,
+                              height: 24,
+                              child:
+                                  CustomPaint(painter: CrescentStarPainter()),
+                            ),
+                    ),
+                    const SizedBox(width: 6),
+                  ],
+                  // Dark/light mode toggle
+                  _CircleButton(
+                    onTap: () => controller.toggle(isDark),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      transitionBuilder: (child, anim) => RotationTransition(
+                        turns: Tween(begin: 0.75, end: 1.0).animate(anim),
+                        child: FadeTransition(opacity: anim, child: child),
+                      ),
+                      child: Icon(
+                        isDark
+                            ? Icons.wb_sunny_rounded
+                            : Icons.nightlight_round,
+                        key: ValueKey(isDark),
+                        size: 20,
+                        color: isDark ? AppColors.gold : colors.primaryText,
+                      ),
+                    ),
                   ),
-                  child: Icon(
-                    isDark ? Icons.wb_sunny_rounded : Icons.nightlight_round,
-                    key: ValueKey(isDark),
-                    size: 20,
-                    color: isDark ? AppColors.gold : colors.primaryText,
+                  const SizedBox(width: 6),
+                  _CircleButton(
+                    onTap: () =>
+                        _toggleNotifications(context, l10n, prayerState),
+                    child: Icon(
+                      prayerState.masterNotifications
+                          ? Icons.notifications
+                          : Icons.notifications_off,
+                      color: prayerState.masterNotifications
+                          ? AppColors.gold
+                          : _kNotificationsOffRed,
+                      size: 21,
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 6),
+                  _CircleButton(
+                    onTap: onShare,
+                    child: const Icon(
+                      Icons.share_rounded,
+                      color: Color(0xFFC9A84C),
+                      size: 21,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 6),
-              _CircleButton(
-                onTap: () => _toggleNotifications(context, l10n, prayerState),
-                child: Icon(
-                  prayerState.masterNotifications
-                      ? Icons.notifications
-                      : Icons.notifications_off,
-                  color: prayerState.masterNotifications
-                      ? AppColors.gold
-                      : _kNotificationsOffRed,
-                  size: 21,
-                ),
-              ),
-              const SizedBox(width: 6),
-              _CircleButton(
-                onTap: onShare,
-                child: const Icon(
-                  Icons.share_rounded,
-                  color: Color(0xFFC9A84C),
-                  size: 21,
+              const SizedBox(height: 6),
+              Text(
+                l10n.mayAllahBlessYourDay,
+                style: GoogleFonts.lato(
+                  fontSize: 13,
+                  color: colors.secondaryText,
+                  letterSpacing: 0.2,
                 ),
               ),
             ],
@@ -184,7 +188,8 @@ class HeaderSection extends StatelessWidget {
       // countdown instead of the last session's.
       final scheduled = PrayerState().scheduledPrayerTimes;
       if (scheduled != null && context.mounted) {
-        await LiveNotificationService.push(context: context, prayers: scheduled);
+        await LiveNotificationService.push(
+            context: context, prayers: scheduled);
       }
       if (!context.mounted) return;
       await NotificationService().startKeepAliveService(
