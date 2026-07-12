@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "Er ging iets mis. Probeer het opnieuw.",
   "storiesFillRequired": "Voeg je verhaal en land toe.",
   "storiesShareCardLabel": "Communityverhaal",
-  "storiesEditTitle": "Bewerk je verhaal",
-  "storiesSaveChanges": "Wijzigingen opslaan",
-  "storiesUpdated": "Je verhaal is bijgewerkt",
   "storiesPreviewLabel": "Voorbeeld",
   "storiesPendingReview": "In behandeling",
   "storiesFilterSaved": "Opgeslagen",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 Testmelding",
   "testNotificationBody": "Meldingen werken correct!",
   "favoriteRecitersSection": "Favorieten",
-  "favoriteRecitersLimit": "Je kunt maximaal 3 favoriete recitators hebben. Verwijder er een om een andere toe te voegen."
+  "favoriteRecitersLimit": "Je kunt maximaal 3 favoriete recitators hebben. Verwijder er een om een andere toe te voegen.",
+  "findQiblaDirection": "Qibla-richting vinden"
 }

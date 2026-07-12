@@ -3110,4 +3110,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get favoriteRecitersLimit => 'お気に入りの朗誦者は3人までです。追加するには1人削除してください。';
+
+  @override
+  String get findQiblaDirection => 'キブラの方角を調べる';
 }

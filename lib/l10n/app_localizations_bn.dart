@@ -3247,4 +3247,7 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'আপনি সর্বোচ্চ ৩ জন প্রিয় ক্বারী রাখতে পারেন। নতুন যোগ করতে একজনকে সরান।';
+
+  @override
+  String get findQiblaDirection => 'কিবলার দিক খুঁজুন';
 }

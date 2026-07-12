@@ -1544,7 +1544,7 @@
   "storiesBackgroundNone": "কোনোটি নয়",
   "storiesEditTitle": "আপনার গল্প সম্পাদনা করুন",
   "storiesSaveChanges": "পরিবর্তন সংরক্ষণ করুন",
-  "storiesUpdated": "আপনার গল্প হালনাগাদ হয়েছে",
+  "storiesUpdated": "আপনার গল্প আপডেট করা হয়েছে",
   "storiesUploadPhoto": "ছবি আপলোড করুন (ঐচ্ছিক)",
   "storiesChangePhoto": "ছবি পরিবর্তন করুন",
   "storiesSubmitButton": "জমা দিন",
@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "কিছু ভুল হয়েছে। আবার চেষ্টা করুন।",
   "storiesFillRequired": "অনুগ্রহ করে আপনার গল্প ও দেশ যোগ করুন।",
   "storiesShareCardLabel": "কমিউনিটির গল্প",
-  "storiesEditTitle": "আপনার গল্প সম্পাদনা করুন",
-  "storiesSaveChanges": "পরিবর্তন সংরক্ষণ করুন",
-  "storiesUpdated": "আপনার গল্প আপডেট করা হয়েছে",
   "storiesPreviewLabel": "প্রিভিউ",
   "storiesPendingReview": "পর্যালোচনার অপেক্ষায়",
   "storiesFilterSaved": "সংরক্ষিত",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 পরীক্ষামূলক বিজ্ঞপ্তি",
   "testNotificationBody": "বিজ্ঞপ্তি সঠিকভাবে কাজ করছে!",
   "favoriteRecitersSection": "প্রিয়",
-  "favoriteRecitersLimit": "আপনি সর্বোচ্চ ৩ জন প্রিয় ক্বারী রাখতে পারেন। নতুন যোগ করতে একজনকে সরান।"
+  "favoriteRecitersLimit": "আপনি সর্বোচ্চ ৩ জন প্রিয় ক্বারী রাখতে পারেন। নতুন যোগ করতে একজনকে সরান।",
+  "findQiblaDirection": "কিবলার দিক খুঁজুন"
 }

@@ -3228,4 +3228,7 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'آپ صرف ۳ پسندیدہ قاری رکھ سکتے ہیں۔ نیا شامل کرنے کے لیے ایک ہٹائیں۔';
+
+  @override
+  String get findQiblaDirection => 'قبلہ کی سمت معلوم کریں';
 }

@@ -3803,15 +3803,15 @@
   },
   "storiesEditTitle": "Edit Your Story",
   "@storiesEditTitle": {
-    "description": "Submit sheet title when editing an existing story"
+    "description": "Title of the sheet when editing an existing story"
   },
   "storiesSaveChanges": "Save Changes",
   "@storiesSaveChanges": {
-    "description": "Submit button label when editing an existing story"
+    "description": "Save button when editing an existing story"
   },
   "storiesUpdated": "Your story has been updated",
   "@storiesUpdated": {
-    "description": "Snackbar shown after an existing story is updated"
+    "description": "Confirmation snackbar after editing own story"
   },
   "storiesUploadPhoto": "Upload Photo (optional)",
   "@storiesUploadPhoto": {
@@ -3840,18 +3840,6 @@
   "storiesShareCardLabel": "Community Story",
   "@storiesShareCardLabel": {
     "description": "Type label on the story share card"
-  },
-  "storiesEditTitle": "Edit Your Story",
-  "@storiesEditTitle": {
-    "description": "Title of the sheet when editing an existing story"
-  },
-  "storiesSaveChanges": "Save Changes",
-  "@storiesSaveChanges": {
-    "description": "Save button when editing an existing story"
-  },
-  "storiesUpdated": "Your story has been updated",
-  "@storiesUpdated": {
-    "description": "Confirmation snackbar after editing own story"
   },
   "storiesPreviewLabel": "Preview",
   "@storiesPreviewLabel": {
@@ -3993,5 +3981,9 @@
   },
   "@favoriteRecitersLimit": {
     "description": "Message when trying to favorite more than 3 reciters"
+  },
+  "findQiblaDirection": "Find Qibla Direction",
+  "@findQiblaDirection": {
+    "description": "Button in the How to Pray Qibla step that opens the Qibla compass screen"
   }
 }

@@ -3079,4 +3079,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get favoriteRecitersLimit => '最多只能收藏3位诵读者。请先移除一位再添加。';
+
+  @override
+  String get findQiblaDirection => '查找朝拜方向';
 }

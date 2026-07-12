@@ -1712,9 +1712,6 @@
   "storiesSubmitError": "مشکلی پیش آمد. دوباره تلاش کنید.",
   "storiesFillRequired": "لطفاً داستان و کشور خود را وارد کنید.",
   "storiesShareCardLabel": "داستان انجمن",
-  "storiesEditTitle": "ویرایش داستان شما",
-  "storiesSaveChanges": "ذخیره تغییرات",
-  "storiesUpdated": "داستان شما به‌روزرسانی شد",
   "storiesPreviewLabel": "پیش‌نمایش",
   "storiesPendingReview": "در انتظار بررسی",
   "storiesFilterSaved": "ذخیره‌شده",
@@ -1757,5 +1754,6 @@
   "testNotificationTitle": "🔔 اعلان آزمایشی",
   "testNotificationBody": "اعلان‌ها به‌درستی کار می‌کنند!",
   "favoriteRecitersSection": "برگزیده‌ها",
-  "favoriteRecitersLimit": "فقط می‌توانید ۳ قاری برگزیده داشته باشید. برای افزودن قاری جدید، یکی را حذف کنید."
+  "favoriteRecitersLimit": "فقط می‌توانید ۳ قاری برگزیده داشته باشید. برای افزودن قاری جدید، یکی را حذف کنید.",
+  "findQiblaDirection": "یافتن جهت قبله"
 }

@@ -3247,4 +3247,7 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'Unaweza kuwa na wasomaji 3 tu wa kupenda. Ondoa mmoja ili kuongeza mwingine.';
+
+  @override
+  String get findQiblaDirection => 'Tafuta Mwelekeo wa Qibla';
 }

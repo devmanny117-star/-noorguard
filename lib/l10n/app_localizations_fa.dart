@@ -3232,4 +3232,7 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'فقط می‌توانید ۳ قاری برگزیده داشته باشید. برای افزودن قاری جدید، یکی را حذف کنید.';
+
+  @override
+  String get findQiblaDirection => 'یافتن جهت قبله';
 }

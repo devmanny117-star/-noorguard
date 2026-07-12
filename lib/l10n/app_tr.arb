@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "Bir şeyler ters gitti. Lütfen tekrar dene.",
   "storiesFillRequired": "Lütfen hikayeni ve ülkeni ekle.",
   "storiesShareCardLabel": "Topluluk Hikayesi",
-  "storiesEditTitle": "Hikayeni Düzenle",
-  "storiesSaveChanges": "Değişiklikleri Kaydet",
-  "storiesUpdated": "Hikayen güncellendi",
   "storiesPreviewLabel": "Önizleme",
   "storiesPendingReview": "İnceleniyor",
   "storiesFilterSaved": "Kaydedilenler",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 Test Bildirimi",
   "testNotificationBody": "Bildirimler doğru çalışıyor!",
   "favoriteRecitersSection": "Favoriler",
-  "favoriteRecitersLimit": "En fazla 3 favori kâri seçebilirsiniz. Yenisini eklemek için birini kaldırın."
+  "favoriteRecitersLimit": "En fazla 3 favori kâri seçebilirsiniz. Yenisini eklemek için birini kaldırın.",
+  "findQiblaDirection": "Kıble Yönünü Bul"
 }

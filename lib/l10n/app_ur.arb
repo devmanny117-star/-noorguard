@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔",
   "storiesFillRequired": "براہ کرم اپنی کہانی اور ملک شامل کریں۔",
   "storiesShareCardLabel": "کمیونٹی کی کہانی",
-  "storiesEditTitle": "اپنی کہانی میں ترمیم کریں",
-  "storiesSaveChanges": "تبدیلیاں محفوظ کریں",
-  "storiesUpdated": "آپ کی کہانی اپ ڈیٹ ہو گئی ہے",
   "storiesPreviewLabel": "پیش منظر",
   "storiesPendingReview": "زیر جائزہ",
   "storiesFilterSaved": "محفوظ شدہ",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 آزمائشی اطلاع",
   "testNotificationBody": "اطلاعات درست کام کر رہی ہیں!",
   "favoriteRecitersSection": "پسندیدہ",
-  "favoriteRecitersLimit": "آپ صرف ۳ پسندیدہ قاری رکھ سکتے ہیں۔ نیا شامل کرنے کے لیے ایک ہٹائیں۔"
+  "favoriteRecitersLimit": "آپ صرف ۳ پسندیدہ قاری رکھ سکتے ہیں۔ نیا شامل کرنے کے لیے ایک ہٹائیں۔",
+  "findQiblaDirection": "قبلہ کی سمت معلوم کریں"
 }

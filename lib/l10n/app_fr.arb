@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "Une erreur s'est produite. Veuillez réessayer.",
   "storiesFillRequired": "Veuillez ajouter votre histoire et votre pays.",
   "storiesShareCardLabel": "Histoire de la communauté",
-  "storiesEditTitle": "Modifier votre histoire",
-  "storiesSaveChanges": "Enregistrer les modifications",
-  "storiesUpdated": "Votre histoire a été mise à jour",
   "storiesPreviewLabel": "Aperçu",
   "storiesPendingReview": "En cours de révision",
   "storiesFilterSaved": "Enregistrées",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 Notification de test",
   "testNotificationBody": "Les notifications fonctionnent correctement !",
   "favoriteRecitersSection": "Favoris",
-  "favoriteRecitersLimit": "Vous ne pouvez avoir que 3 récitateurs favoris. Retirez-en un pour en ajouter un autre."
+  "favoriteRecitersLimit": "Vous ne pouvez avoir que 3 récitateurs favoris. Retirez-en un pour en ajouter un autre.",
+  "findQiblaDirection": "Trouver la direction de la Qibla"
 }

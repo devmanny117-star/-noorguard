@@ -3189,4 +3189,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'يمكنك اختيار ٣ قرّاء مفضلين فقط. أزل واحدًا لإضافة آخر.';
+
+  @override
+  String get findQiblaDirection => 'تحديد اتجاه القبلة';
 }

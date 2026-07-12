@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "Terjadi kesalahan. Silakan coba lagi.",
   "storiesFillRequired": "Harap isi kisah dan negaramu.",
   "storiesShareCardLabel": "Kisah Komunitas",
-  "storiesEditTitle": "Edit Kisah Anda",
-  "storiesSaveChanges": "Simpan Perubahan",
-  "storiesUpdated": "Kisah Anda telah diperbarui",
   "storiesPreviewLabel": "Pratinjau",
   "storiesPendingReview": "Menunggu Peninjauan",
   "storiesFilterSaved": "Tersimpan",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 Notifikasi Uji Coba",
   "testNotificationBody": "Notifikasi berfungsi dengan baik!",
   "favoriteRecitersSection": "Favorit",
-  "favoriteRecitersLimit": "Anda hanya dapat memiliki 3 qari favorit. Hapus satu untuk menambahkan yang lain."
+  "favoriteRecitersLimit": "Anda hanya dapat memiliki 3 qari favorit. Hapus satu untuk menambahkan yang lain.",
+  "findQiblaDirection": "Temukan Arah Kiblat"
 }

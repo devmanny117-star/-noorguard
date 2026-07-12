@@ -5963,6 +5963,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can only have 3 favorite reciters. Remove one to add another.'**
   String get favoriteRecitersLimit;
+
+  /// Button in the How to Pray Qibla step that opens the Qibla compass screen
+  ///
+  /// In en, this message translates to:
+  /// **'Find Qibla Direction'**
+  String get findQiblaDirection;
 }
 
 class _AppLocalizationsDelegate

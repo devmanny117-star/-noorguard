@@ -3260,4 +3260,7 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'Du kannst nur 3 Lieblingsrezitatoren haben. Entferne einen, um einen anderen hinzuzufügen.';
+
+  @override
+  String get findQiblaDirection => 'Qibla-Richtung finden';
 }

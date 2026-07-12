@@ -3276,4 +3276,7 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'Vous ne pouvez avoir que 3 récitateurs favoris. Retirez-en un pour en ajouter un autre.';
+
+  @override
+  String get findQiblaDirection => 'Trouver la direction de la Qibla';
 }

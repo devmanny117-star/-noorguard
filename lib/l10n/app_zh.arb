@@ -1542,9 +1542,9 @@
   "storiesStoryHint": "讲述你的心路历程…",
   "storiesChooseBackground": "选择背景",
   "storiesBackgroundNone": "无",
-  "storiesEditTitle": "编辑你的故事",
+  "storiesEditTitle": "编辑您的故事",
   "storiesSaveChanges": "保存更改",
-  "storiesUpdated": "你的故事已更新",
+  "storiesUpdated": "您的故事已更新",
   "storiesUploadPhoto": "上传照片（可选）",
   "storiesChangePhoto": "更换照片",
   "storiesSubmitButton": "提交",
@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "出错了，请重试。",
   "storiesFillRequired": "请填写你的故事和国家。",
   "storiesShareCardLabel": "社区故事",
-  "storiesEditTitle": "编辑您的故事",
-  "storiesSaveChanges": "保存更改",
-  "storiesUpdated": "您的故事已更新",
   "storiesPreviewLabel": "预览",
   "storiesPendingReview": "审核中",
   "storiesFilterSaved": "已保存",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 测试通知",
   "testNotificationBody": "通知功能正常！",
   "favoriteRecitersSection": "收藏",
-  "favoriteRecitersLimit": "最多只能收藏3位诵读者。请先移除一位再添加。"
+  "favoriteRecitersLimit": "最多只能收藏3位诵读者。请先移除一位再添加。",
+  "findQiblaDirection": "查找朝拜方向"
 }

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/prayer_stance_image.dart';
+import 'qibla_screen.dart';
 
 // ── Brand tokens ──────────────────────────────────────────────────────────────
 const _kNavy  = Color(0xFF0D1B2A);
@@ -793,6 +794,36 @@ class _StepCard extends StatelessWidget {
                       if (step.stance != null) ...[
                         const SizedBox(height: 12),
                         PrayerStanceImage(stance: step.stance!),
+                      ],
+
+                      // Shortcut to the Qibla compass on the Qibla step.
+                      if (step.type == _T.qibla) ...[
+                        const SizedBox(height: 12),
+                        OutlinedButton.icon(
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    const QiblaScreen(isActive: true)),
+                          ),
+                          icon: const Icon(Icons.explore,
+                              color: Color(0xFFC9A84C), size: 20),
+                          label: Text(
+                            l.findQiblaDirection,
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFFC9A84C),
+                            ),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(color: Color(0xFFC9A84C)),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
                       ],
                     ],
                   ),

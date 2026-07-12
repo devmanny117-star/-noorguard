@@ -1552,9 +1552,6 @@
   "storiesSubmitError": "Algo salió mal. Inténtalo de nuevo.",
   "storiesFillRequired": "Por favor, añade tu historia y tu país.",
   "storiesShareCardLabel": "Historia de la comunidad",
-  "storiesEditTitle": "Edita tu historia",
-  "storiesSaveChanges": "Guardar cambios",
-  "storiesUpdated": "Tu historia ha sido actualizada",
   "storiesPreviewLabel": "Vista previa",
   "storiesPendingReview": "En revisión",
   "storiesFilterSaved": "Guardadas",
@@ -1597,5 +1594,6 @@
   "testNotificationTitle": "🔔 Notificación de prueba",
   "testNotificationBody": "¡Las notificaciones funcionan correctamente!",
   "favoriteRecitersSection": "Favoritos",
-  "favoriteRecitersLimit": "Solo puedes tener 3 recitadores favoritos. Elimina uno para añadir otro."
+  "favoriteRecitersLimit": "Solo puedes tener 3 recitadores favoritos. Elimina uno para añadir otro.",
+  "findQiblaDirection": "Encontrar la dirección de la Qibla"
 }

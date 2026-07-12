@@ -3255,4 +3255,7 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'Anda hanya dapat memiliki 3 qari favorit. Hapus satu untuk menambahkan yang lain.';
+
+  @override
+  String get findQiblaDirection => 'Temukan Arah Kiblat';
 }

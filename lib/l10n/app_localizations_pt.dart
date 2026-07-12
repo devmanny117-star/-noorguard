@@ -3254,4 +3254,7 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get favoriteRecitersLimit =>
       'Você só pode ter 3 recitadores favoritos. Remova um para adicionar outro.';
+
+  @override
+  String get findQiblaDirection => 'Encontrar a direção da Qibla';
 }
