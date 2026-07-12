@@ -304,7 +304,15 @@ class _NextPrayerHeader extends StatelessWidget {
           SizedBox(
             width: 104,
             height: 108,
-            child: CustomPaint(painter: _MosqueOutlinePainter()),
+            // Prayer-specific gold mosque art (sunrise for Fajr, crescent
+            // for Isha, ...). Falls back to the outline drawing for any
+            // prayer without a matching asset.
+            child: Image.asset(
+              'assets/images/mosques/${prayer.iconPath}_mosque.png',
+              fit: BoxFit.contain,
+              errorBuilder: (_, __, ___) =>
+                  CustomPaint(painter: _MosqueOutlinePainter()),
+            ),
           ),
         ],
       ),
