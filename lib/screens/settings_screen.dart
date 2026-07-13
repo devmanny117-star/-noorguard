@@ -15,7 +15,6 @@ import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
-import 'admin_screen.dart';
 import 'notification_setup_screen.dart';
 import 'settings_app_blocking_screen.dart';
 import 'community_stories_screen.dart';
@@ -532,42 +531,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: _TranslationDisclaimerCard(
             l10n: l10n,
             onEmailTap: _sendFeedbackEmail,
-          ),
-        ),
-
-        const SliverToBoxAdapter(child: SizedBox(height: 20)),
-
-        // ══════════════════════════════════════════════════════════════
-        // ADMIN MODE
-        // ══════════════════════════════════════════════════════════════
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: OutlinedButton.icon(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const AdminScreen()),
-              ),
-              icon: const Icon(
-                Icons.admin_panel_settings_outlined,
-                size: 20,
-                color: AppColors.gold,
-              ),
-              label: Text(
-                l10n.adminMode,
-                style: GoogleFonts.lato(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.gold,
-                ),
-              ),
-              style: OutlinedButton.styleFrom(
-                minimumSize: const Size.fromHeight(52),
-                side: BorderSide(color: AppColors.gold.withValues(alpha: 0.6)),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-            ),
           ),
         ),
 
