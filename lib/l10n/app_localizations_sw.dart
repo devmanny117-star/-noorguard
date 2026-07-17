@@ -2547,6 +2547,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get howToPrayOnceOpens => 'Mara moja — inaanza sala';
 
   @override
+  String get howToPraySayAllahuAkbar => 'Sema: Allāhu Akbar';
+
+  @override
   String get howToPrayFirstRakahOnly => 'Rakaa ya 1 tu';
 
   @override

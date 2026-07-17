@@ -2560,6 +2560,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get howToPrayOnceOpens => 'Una volta — apre la preghiera';
 
   @override
+  String get howToPraySayAllahuAkbar => 'Di\': Allāhu Akbar';
+
+  @override
   String get howToPrayFirstRakahOnly => 'Solo 1ª rak\'ah';
 
   @override

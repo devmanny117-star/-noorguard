@@ -1058,6 +1058,10 @@
   "@howToPrayOnceOpens": {
     "description": "howToPrayOnceOpens"
   },
+  "howToPraySayAllahuAkbar": "Ucapkan: Allāhu Akbar",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
   "howToPrayFirstRakahOnly": "Rakaat 1 saja",
   "@howToPrayFirstRakahOnly": {
     "description": "howToPrayFirstRakahOnly"

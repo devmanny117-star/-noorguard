@@ -1058,6 +1058,10 @@
   "@howToPrayOnceOpens": {
     "description": "howToPrayOnceOpens"
   },
+  "howToPraySayAllahuAkbar": "Sprich: Allāhu Akbar",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
   "howToPrayFirstRakahOnly": "Nur 1. Rak'ah",
   "@howToPrayFirstRakahOnly": {
     "description": "howToPrayFirstRakahOnly"

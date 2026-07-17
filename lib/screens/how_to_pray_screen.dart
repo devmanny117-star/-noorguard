@@ -58,12 +58,14 @@ class _Step {
   final String arabicText;
   final String translit;
   final int reps;
+  final bool takbirCue;
 
   const _Step(this.type, {
     required this.arabicName,
     this.arabicText = '',
     this.translit   = '',
     this.reps       = 1,
+    this.takbirCue  = false,
   });
 
   String name(AppLocalizations l) => switch (type) {
@@ -216,6 +218,7 @@ const _sRuku = _Step(_T.ruku,
   arabicText: 'سُبْحَانَ رَبِّيَ الْعَظِيمِ',
   translit:   'Subḥāna Rabbiya l-ʿAẓīm',
   reps: 3,
+  takbirCue: true,
 );
 
 const _sItidal = _Step(_T.itidal,
@@ -233,15 +236,18 @@ const _sSujood = _Step(_T.sujood,
   arabicText: 'سُبْحَانَ رَبِّيَ الْأَعْلَى',
   translit:   'Subḥāna Rabbiya l-Aʿlā',
   reps: 3,
+  takbirCue: true,
 );
 
 const _sJalsa = _Step(_T.jalsa,
   arabicName: 'الْجَلْسَة',
   arabicText: 'رَبِّ اغْفِرْ لِي',
   translit:   'Rabbighfirlī',
+  takbirCue: true,
 );
 
 const _sTashahhudShort = _Step(_T.tashahhudShort,
+  takbirCue: true,
   arabicName: 'التَّشَهُّد',
   arabicText:
     'التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ\n'
@@ -528,6 +534,50 @@ class _Badge extends StatelessWidget {
       );
 }
 
+// ── Takbir cue pill ───────────────────────────────────────────────────────────
+
+class _TakbirCuePill extends StatelessWidget {
+  const _TakbirCuePill();
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
+    return Container(
+      padding:
+          const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+        color: _kGold.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: _kGold),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Text(
+              l.howToPraySayAllahuAkbar,
+              style: GoogleFonts.lato(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: _kGold,
+              ),
+            ),
+          ),
+          const SizedBox(width: 6),
+          Text(
+            'اللَّهُ أَكْبَرُ',
+            textDirection: TextDirection.rtl,
+            style: GoogleFonts.scheherazadeNew(
+              fontSize: 13,
+              color: _kGold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 // ── Thin gold divider ─────────────────────────────────────────────────────────
 
 class _GoldDivider extends StatelessWidget {
@@ -642,6 +692,12 @@ class _StepCard extends StatelessWidget {
               if (badge.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 _Badge(badge),
+              ],
+
+              // ── Takbir cue ────────────────────────────────────────────
+              if (step.takbirCue) ...[
+                const SizedBox(height: 6),
+                const _TakbirCuePill(),
               ],
 
               // ── Expanded body ──────────────────────────────────────────

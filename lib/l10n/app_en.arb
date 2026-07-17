@@ -3133,6 +3133,10 @@
   "@howToPrayOnceOpens": {
     "description": "howToPrayOnceOpens"
   },
+  "howToPraySayAllahuAkbar": "Say: Allāhu Akbar",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
   "howToPrayFirstRakahOnly": "Rak'ah 1 only",
   "@howToPrayFirstRakahOnly": {
     "description": "howToPrayFirstRakahOnly"

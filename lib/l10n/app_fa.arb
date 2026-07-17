@@ -1218,6 +1218,10 @@
   "@howToPrayOnceOpens": {
     "description": "howToPrayOnceOpens"
   },
+  "howToPraySayAllahuAkbar": "بگویید: الله اکبر",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
   "howToPrayFirstRakahOnly": "فقط رکعت اول",
   "@howToPrayFirstRakahOnly": {
     "description": "howToPrayFirstRakahOnly"

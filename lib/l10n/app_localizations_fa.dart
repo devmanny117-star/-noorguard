@@ -2535,6 +2535,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get howToPrayOnceOpens => 'یک بار — نماز را آغاز می‌کند';
 
   @override
+  String get howToPraySayAllahuAkbar => 'بگویید: الله اکبر';
+
+  @override
   String get howToPrayFirstRakahOnly => 'فقط رکعت اول';
 
   @override

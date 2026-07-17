@@ -2554,6 +2554,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get howToPrayOnceOpens => 'Sekali — membuka shalat';
 
   @override
+  String get howToPraySayAllahuAkbar => 'Ucapkan: Allāhu Akbar';
+
+  @override
   String get howToPrayFirstRakahOnly => 'Rakaat 1 saja';
 
   @override

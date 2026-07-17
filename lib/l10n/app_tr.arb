@@ -1058,6 +1058,10 @@
   "@howToPrayOnceOpens": {
     "description": "howToPrayOnceOpens"
   },
+  "howToPraySayAllahuAkbar": "Deyin: Allahu Ekber",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
   "howToPrayFirstRakahOnly": "Yalnızca 1. rekat",
   "@howToPrayFirstRakahOnly": {
     "description": "howToPrayFirstRakahOnly"

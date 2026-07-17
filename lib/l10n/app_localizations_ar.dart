@@ -2501,6 +2501,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get howToPrayOnceOpens => 'مرة واحدة — تفتتح الصلاة';
 
   @override
+  String get howToPraySayAllahuAkbar => 'قُلْ: اللَّهُ أَكْبَرُ';
+
+  @override
   String get howToPrayFirstRakahOnly => 'الركعة الأولى فقط';
 
   @override

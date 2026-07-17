@@ -1058,6 +1058,10 @@
   "@howToPrayOnceOpens": {
     "description": "howToPrayOnceOpens"
   },
+  "howToPraySayAllahuAkbar": "唱える：アッラーフ・アクバル",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
   "howToPrayFirstRakahOnly": "第1ラクアのみ",
   "@howToPrayFirstRakahOnly": {
     "description": "howToPrayFirstRakahOnly"

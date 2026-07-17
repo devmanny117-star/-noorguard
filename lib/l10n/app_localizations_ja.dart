@@ -2437,6 +2437,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get howToPrayOnceOpens => '一度だけ — 礼拝を開始する';
 
   @override
+  String get howToPraySayAllahuAkbar => '唱える：アッラーフ・アクバル';
+
+  @override
   String get howToPrayFirstRakahOnly => '第1ラクアのみ';
 
   @override

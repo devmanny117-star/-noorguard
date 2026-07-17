@@ -2546,6 +2546,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get howToPrayOnceOpens => 'একবার — নামাজ শুরু হয়';
 
   @override
+  String get howToPraySayAllahuAkbar => 'বলুন: আল্লাহু আকবার';
+
+  @override
   String get howToPrayFirstRakahOnly => 'শুধু ১ম রাকাত';
 
   @override

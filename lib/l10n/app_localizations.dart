@@ -4668,6 +4668,12 @@ abstract class AppLocalizations {
   /// **'Once — opens the prayer'**
   String get howToPrayOnceOpens;
 
+  /// howToPraySayAllahuAkbar
+  ///
+  /// In en, this message translates to:
+  /// **'Say: Allāhu Akbar'**
+  String get howToPraySayAllahuAkbar;
+
   /// howToPrayFirstRakahOnly
   ///
   /// In en, this message translates to:

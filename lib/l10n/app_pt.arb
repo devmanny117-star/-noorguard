@@ -1058,6 +1058,10 @@
   "@howToPrayOnceOpens": {
     "description": "howToPrayOnceOpens"
   },
+  "howToPraySayAllahuAkbar": "Diga: Allāhu Akbar",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
   "howToPrayFirstRakahOnly": "Apenas 1ª rak'ah",
   "@howToPrayFirstRakahOnly": {
     "description": "howToPrayFirstRakahOnly"

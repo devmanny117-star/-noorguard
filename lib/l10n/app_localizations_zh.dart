@@ -2410,6 +2410,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get howToPrayOnceOpens => '一次——开始礼拜';
 
   @override
+  String get howToPraySayAllahuAkbar => '念：真主至大 (Allāhu Akbar)';
+
+  @override
   String get howToPrayFirstRakahOnly => '仅第一拜';
 
   @override

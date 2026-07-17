@@ -2530,6 +2530,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get howToPrayOnceOpens => 'ایک بار — نماز شروع کرتی ہے';
 
   @override
+  String get howToPraySayAllahuAkbar => 'کہیں: اللہ اکبر';
+
+  @override
   String get howToPrayFirstRakahOnly => 'صرف پہلی رکعت';
 
   @override
