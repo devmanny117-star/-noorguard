@@ -587,7 +587,7 @@ class _StanceFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         width: double.infinity,
-        height: 220,
+        height: 260,
         decoration: BoxDecoration(
           color: const Color(0xFF080C14),
           borderRadius: BorderRadius.circular(12),
