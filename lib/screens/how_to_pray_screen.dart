@@ -587,7 +587,7 @@ class _StanceFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         width: double.infinity,
-        height: 260,
+        height: 300,
         decoration: BoxDecoration(
           color: const Color(0xFF080C14),
           borderRadius: BorderRadius.circular(12),
@@ -604,7 +604,7 @@ class _StanceFrame extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(8),
             child: child,
           ),
         ),
