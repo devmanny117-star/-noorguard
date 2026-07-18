@@ -605,7 +605,10 @@ class _StanceFrame extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: Padding(
             padding: const EdgeInsets.all(8),
-            child: child,
+            child: Transform.scale(
+              scale: 1.2,
+              child: child,
+            ),
           ),
         ),
       );
