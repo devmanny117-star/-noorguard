@@ -847,7 +847,18 @@ class _StepCard extends StatelessWidget {
                       ],
 
                       // Stance illustration — below the description text.
-                      if (step.stance != null) ...[
+                      // Takbir uses its own dedicated artwork.
+                      if (step.type == _T.takbir) ...[
+                        const SizedBox(height: 12),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(
+                            'assets/images/prayer/takbir.png',
+                            height: 180,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ] else if (step.stance != null) ...[
                         const SizedBox(height: 12),
                         PrayerStanceImage(stance: step.stance!),
                       ],
