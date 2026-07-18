@@ -607,7 +607,7 @@ class _StanceFrame extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8),
             child: scaled
-                ? Transform.scale(scale: 1.2, child: child)
+                ? Transform.scale(scale: 1.35, child: child)
                 : child,
           ),
         ),
