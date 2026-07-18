@@ -854,13 +854,13 @@ class _StepCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                           child: Image.asset(
                             'assets/images/prayer/takbir.png',
-                            height: 180,
+                            height: 220,
                             fit: BoxFit.contain,
                           ),
                         ),
                       ] else if (step.stance != null) ...[
                         const SizedBox(height: 12),
-                        PrayerStanceImage(stance: step.stance!),
+                        PrayerStanceImage(stance: step.stance!, height: 220),
                       ],
 
                       // Shortcut to the Qibla compass on the Qibla step.
