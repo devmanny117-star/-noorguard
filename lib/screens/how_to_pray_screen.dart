@@ -582,7 +582,8 @@ class _TakbirCuePill extends StatelessWidget {
 
 class _StanceFrame extends StatelessWidget {
   final Widget child;
-  const _StanceFrame({required this.child});
+  final bool scaled;
+  const _StanceFrame({required this.child, this.scaled = true});
 
   @override
   Widget build(BuildContext context) => Container(
@@ -605,10 +606,9 @@ class _StanceFrame extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           child: Padding(
             padding: const EdgeInsets.all(8),
-            child: Transform.scale(
-              scale: 1.2,
-              child: child,
-            ),
+            child: scaled
+                ? Transform.scale(scale: 1.2, child: child)
+                : child,
           ),
         ),
       );
@@ -887,6 +887,7 @@ class _StepCard extends StatelessWidget {
                       if (step.type == _T.takbir) ...[
                         const SizedBox(height: 12),
                         _StanceFrame(
+                          scaled: false,
                           child: Image.asset(
                             'assets/images/prayer/takbir.png',
                             height: 220,
