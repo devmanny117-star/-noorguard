@@ -578,6 +578,39 @@ class _TakbirCuePill extends StatelessWidget {
   }
 }
 
+// ── Stance image frame ────────────────────────────────────────────────────────
+
+class _StanceFrame extends StatelessWidget {
+  final Widget child;
+  const _StanceFrame({required this.child});
+
+  @override
+  Widget build(BuildContext context) => Container(
+        width: double.infinity,
+        height: 220,
+        decoration: BoxDecoration(
+          color: const Color(0xFF080C14),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+              color: _kGold.withValues(alpha: 0.3), width: 1),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.4),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: child,
+          ),
+        ),
+      );
+}
+
 // ── Thin gold divider ─────────────────────────────────────────────────────────
 
 class _GoldDivider extends StatelessWidget {
@@ -850,8 +883,7 @@ class _StepCard extends StatelessWidget {
                       // Takbir uses its own dedicated artwork.
                       if (step.type == _T.takbir) ...[
                         const SizedBox(height: 12),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
+                        _StanceFrame(
                           child: Image.asset(
                             'assets/images/prayer/takbir.png',
                             height: 220,
@@ -860,7 +892,10 @@ class _StepCard extends StatelessWidget {
                         ),
                       ] else if (step.stance != null) ...[
                         const SizedBox(height: 12),
-                        PrayerStanceImage(stance: step.stance!, height: 220),
+                        _StanceFrame(
+                          child: PrayerStanceImage(
+                              stance: step.stance!, height: 220),
+                        ),
                       ],
 
                       // Shortcut to the Qibla compass on the Qibla step.
