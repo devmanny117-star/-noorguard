@@ -229,9 +229,9 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 
 ## Languages
 
-- App supports **16 languages** (Persian/Farsi added June 2026)
-- Every feature must work in ALL 16 languages from day one — never ship English-only
-- Languages: English, Arabic, Urdu, Mexican Spanish, French, Indonesian, Chinese, Japanese, Bengali, Turkish, Swahili, German, Dutch, Portuguese, Italian, Persian/Farsi
+- App supports **17 languages** (Persian/Farsi added June 2026, Russian added July 2026)
+- Every feature must work in ALL 17 languages from day one — never ship English-only
+- Languages: English, Arabic, Urdu, Mexican Spanish, French, Indonesian, Chinese, Japanese, Bengali, Turkish, Swahili, German, Dutch, Portuguese, Italian, Persian/Farsi, Russian
 
 ---
 

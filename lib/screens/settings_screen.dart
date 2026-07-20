@@ -68,6 +68,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'বাংলা',
     'Türkçe',
     'Kiswahili',
+    'Русский',
   ];
 
   static const _localeCodeMap = {
@@ -87,6 +88,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'বাংলা': 'bn',
     'Türkçe': 'tr',
     'Kiswahili': 'sw',
+    'Русский': 'ru',
   };
 
   static const _localeNameMap = {
@@ -106,6 +108,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     'bn': 'বাংলা',
     'tr': 'Türkçe',
     'sw': 'Kiswahili',
+    'ru': 'Русский',
   };
 
   @override

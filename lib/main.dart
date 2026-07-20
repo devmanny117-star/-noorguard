@@ -136,6 +136,7 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
               Locale('bn'),
               Locale('tr'),
               Locale('sw'),
+              Locale('ru'),
             ],
             theme: AppTheme.light,
             darkTheme: AppTheme.dark,

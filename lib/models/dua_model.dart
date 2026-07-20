@@ -4,8 +4,8 @@ class Dua {
   final String source;
 
   /// Translations keyed by locale code (en, es, ur, fr, id, zh, ja, bn, tr,
-  /// sw, de, nl, pt, it, fa). No 'ar' entry — Arabic-locale readers are served
-  /// directly by [arabic] above, the same convention used in duas_screen.dart.
+  /// sw, de, nl, pt, it, fa, ru). No 'ar' entry — Arabic-locale readers are
+  /// served directly by [arabic] above, same convention as duas_screen.dart.
   final Map<String, String> translations;
 
   const Dua({
@@ -40,6 +40,7 @@ const List<Dua> lockScreenDuas = [
       'pt': 'Ó Allah, peço-Te perdão e bem-estar\nnesta vida e na próxima.',
       'it': 'O Allah, Ti chiedo perdono e benessere\nin questa vita e nell\'altra.',
       'fa': 'خدایا، از تو گذشت و عافیت را\nدر دنیا و آخرت می‌خواهم.',
+      'ru': 'О Аллах, я прошу у Тебя прощения и благополучия\nв этом мире и в будущем.',
     },
   ),
   Dua(
@@ -62,6 +63,7 @@ const List<Dua> lockScreenDuas = [
       'pt': 'Glorificado seja Allah e Seu é o louvor.\nGlorificado seja Allah, o Magnífico.',
       'it': 'Gloria ad Allah e a Lui appartiene la lode.\nGloria ad Allah, il Magnifico.',
       'fa': 'پاک و منزه است خدا و ستایش از آن اوست.\nپاک و منزه است خدای بزرگ.',
+      'ru': 'Пречист Аллах, и Ему хвала.\nПречист Аллах Великий.',
     },
   ),
   Dua(
@@ -84,6 +86,7 @@ const List<Dua> lockScreenDuas = [
       'pt': 'Senhor nosso, dá-nos o bem nesta vida e o bem\nna próxima, e protege-nos do castigo do Fogo.',
       'it': 'Signore nostro, dacci il bene in questa vita e il bene\nnell\'altra, e proteggici dal castigo del Fuoco.',
       'fa': 'پروردگارا، در دنیا به ما نیکی عطا کن و در آخرت\nنیز نیکی، و ما را از عذاب آتش نگاه دار.',
+      'ru': 'Господь наш! Даруй нам добро в этом мире и добро\nв будущем, и защити нас от мучений Огня.',
     },
   ),
   Dua(
@@ -106,6 +109,7 @@ const List<Dua> lockScreenDuas = [
       'pt': 'Allah nos basta, e Ele é o melhor\nadministrador, o melhor Protetor.',
       'it': 'Allah ci basta, ed Egli è il miglior\namministratore, il miglior Protettore.',
       'fa': 'خدا ما را بس است و او بهترین\nکارساز و بهترین یاور است.',
+      'ru': 'Достаточно нам Аллаха — Он наилучший\nПопечитель, наилучший Защитник.',
     },
   ),
   Dua(
@@ -128,6 +132,7 @@ const List<Dua> lockScreenDuas = [
       'pt': 'Senhor meu, expande o meu peito\ne facilita a minha tarefa.',
       'it': 'Signore mio, allarga il mio petto\ne facilita il mio compito.',
       'fa': 'پروردگارا، سینه‌ام را برایم بگشا\nو کارم را برایم آسان گردان.',
+      'ru': 'Господи! Раскрой для меня грудь мою\nи облегчи мне дело моё.',
     },
   ),
 ];
@@ -153,6 +158,7 @@ const List<Dua> focusDuas = [
       'pt': 'Glorificado seja Allah e Seu é o louvor.',
       'it': 'Gloria ad Allah e a Lui appartiene la lode.',
       'fa': 'پاک و منزه است خدا و ستایش از آن اوست.',
+      'ru': 'Пречист Аллах, и Ему хвала.',
     },
   ),
   Dua(
@@ -175,6 +181,7 @@ const List<Dua> focusDuas = [
       'pt': 'Allah é o maior, o Imenso.\nTodo louvor abundante pertence a Allah.',
       'it': 'Allah è il più grande, il Sommamente Grande.\nOgni abbondante lode appartiene ad Allah.',
       'fa': 'خدا بزرگ‌تر است، بسیار بزرگ.\nو ستایش فراوان از آن خداست.',
+      'ru': 'Аллах превелик, превелик.\nОбильная хвала принадлежит Аллаху.',
     },
   ),
   Dua(
@@ -197,6 +204,7 @@ const List<Dua> focusDuas = [
       'pt': 'Não há divindade senão Allah,\núnico, sem qualquer parceiro.',
       'it': 'Non c\'è divinità se non Allah,\nLui solo, senza alcun socio.',
       'fa': 'معبودی جز خدا نیست،\nیگانه است و شریکی ندارد.',
+      'ru': 'Нет божества, кроме Аллаха,\nЕдинственного, у Которого нет сотоварища.',
     },
   ),
   Dua(
@@ -219,6 +227,7 @@ const List<Dua> focusDuas = [
       'pt': 'Peço perdão a Allah, o Magnífico,\nalém de Quem ninguém tem o direito de ser adorado.',
       'it': 'Chiedo perdono ad Allah, il Magnifico,\noltre il Quale nessuno ha il diritto di essere adorato.',
       'fa': 'از خدای بزرگ آمرزش می‌خواهم،\nکه جز او هیچ معبود برحقی نیست.',
+      'ru': 'Прошу прощения у Аллаха Великого,\nкроме Которого никто не достоин поклонения.',
     },
   ),
 ];

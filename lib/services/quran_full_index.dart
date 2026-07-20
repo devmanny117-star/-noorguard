@@ -53,6 +53,7 @@ const _localeEditions = <String, String>{
   'pt': 'pt.elhayek',     // only Portuguese option
   'it': 'it.piccardo',    // only Italian option
   'sw': 'sw.barwani',     // only Swahili option
+  'ru': 'ru.kuliev',      // Kuliev — standard modern Russian
   // 'en' and 'ar' handled separately — no extra edition needed
 };
 

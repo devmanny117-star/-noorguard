@@ -1,5 +1,5 @@
 /// Extended explanation translations for Asma ul Husna.
-/// Covers the 12 locales not in the model's built-in explanation map
+/// Covers the 13 locales not in the model's built-in explanation map
 /// (en/ar/ur/es are handled by the model directly).
 String asmaNameExplanation(int number, String locale) {
   final m = _explanations[number];
@@ -21,6 +21,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Sua misericórdia abrange toda a criação neste mundo',
     'it': 'La Sua misericordia abbraccia tutta la creazione in questo mondo',
     'fa': 'رحمتش همه آفریدگان را در این دنیا در بر می‌گیرد',
+    'ru': 'Милость Аллаха объемлет всё творение — и верующих, и неверующих, — поддерживая каждое живое существо Его безграничным состраданием.',
   },
   2: {
     'fr': 'Sa miséricorde spéciale est réservée aux croyants dans l\'au-delà',
@@ -35,6 +36,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Sua misericórdia especial é reservada aos crentes na vida futura',
     'it': 'La Sua misericordia speciale è riservata ai credenti nell\'aldilà',
     'fa': 'رحمت ویژه‌اش در آخرت برای مؤمنان ذخیره شده است',
+    'ru': 'Эта милость уготована особо для верующих — как в этой жизни, так и вечно в жизни будущей.',
   },
   3: {
     'fr': 'Le Souverain absolu sur toute la création sans associé',
@@ -49,6 +51,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Soberano absoluto sobre toda a criação sem parceiro',
     'it': 'Il Sovrano assoluto su tutta la creazione senza alcun socio',
     'fa': 'فرمانروای مطلق بر همه آفریدگان بدون هیچ شریکی',
+    'ru': 'Аллах — истинный и абсолютный Властелин всего творения, владеющий всем и управляющий всем без нужды в сотоварище или помощнике.',
   },
   4: {
     'fr': 'Absolument pur, exempt de tout défaut et de toute imperfection',
@@ -63,6 +66,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Absolutamente puro, livre de todo defeito e imperfeição',
     'it': 'Assolutamente puro, privo di ogni difetto e imperfezione',
     'fa': 'کاملاً منزه از هر عیب و نقص است',
+    'ru': 'Аллах совершенно свободен от любого несовершенства, изъяна или сходства со Своим творением, абсолютно чист в Своей сущности и атрибутах.',
   },
   5: {
     'fr': 'La source de toute paix et sécurité pour Sa création',
@@ -77,6 +81,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'A fonte de toda paz e segurança para Sua criação',
     'it': 'La fonte di ogni pace e sicurezza per la Sua creazione',
     'fa': 'سرچشمه همه آرامش و امنیت برای آفریدگانش',
+    'ru': 'Сам Аллах свободен от всякого недостатка, и Он — источник, из которого исходят безопасность, мир и благополучие для Его творения.',
   },
   6: {
     'fr': 'Celui qui accorde la sécurité et la protection à Sa création',
@@ -91,6 +96,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que concede segurança e proteção à Sua criação',
     'it': 'Colui che concede sicurezza e protezione alla Sua creazione',
     'fa': 'کسی که به آفریدگانش امنیت و حفاظت می‌بخشد',
+    'ru': 'Аллах дарует безопасность тем, кто боится Его, и вселяет веру в сердца верующих, защищая их от несправедливости.',
   },
   7: {
     'fr': 'Le Gardien vigilant qui surveille toutes les affaires',
@@ -105,6 +111,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Guardião vigilante que supervisiona todos os assuntos',
     'it': 'Il Guardiano vigile che sorveglia tutte le faccende',
     'fa': 'نگهبان هشیاری که بر همه امور نظارت دارد',
+    'ru': 'Аллах наблюдает за всем творением и оберегает его, будучи свидетелем каждого деяния и направляя все дела согласно Своей воле.',
   },
   8: {
     'fr': 'Le Tout-Puissant dont l\'honneur nul ne peut défier',
@@ -119,6 +126,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Todo-Poderoso cuja honra ninguém pode desafiar',
     'it': 'L\'Onnipotente il cui onore nessuno può sfidare',
     'fa': 'قادر مطلقی که هیچ‌کس نمی‌تواند عزتش را به چالش بکشد',
+    'ru': 'Аллах обладает абсолютным могуществом и честью; никто не может одолеть Его, и Он дарует честь или унижение кому пожелает.',
   },
   9: {
     'fr': 'Celui qui répare tout ce qui est brisé par Sa puissance',
@@ -133,6 +141,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que restaura tudo que está quebrado com Seu poder',
     'it': 'Colui che ripara tutto ciò che è rotto con la Sua potenza',
     'fa': 'کسی که با قدرتش همه شکستگی‌ها را ترمیم می‌کند',
+    'ru': 'Воля Аллаха преодолевает любое сопротивление; Он исправляет сломанное, исцеляя сердца сокрушённых и приводя дела в порядок.',
   },
   10: {
     'fr': 'Le Suprêmement Grand auquel appartient toute grandeur',
@@ -147,6 +156,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Supremamente Grande a quem toda grandeza verdadeiramente pertence',
     'it': 'Il Supremamente Grande cui appartiene tutta la grandezza',
     'fa': 'عظیم‌ترین که همه بزرگی به راستی از آن اوست',
+    'ru': 'Только Аллах достоин величия и славы во всех смыслах; гордость принадлежит Ему одному, превыше высокомерия любого создания.',
   },
   11: {
     'fr': 'Le Créateur qui fait exister toutes choses à partir du néant',
@@ -161,6 +171,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Criador que traz todas as coisas à existência do nada',
     'it': 'Il Creatore che porta all\'esistenza tutte le cose dal nulla',
     'fa': 'آفریننده‌ای که همه چیز را از عدم به وجود می‌آورد',
+    'ru': 'Аллах сотворил всё сущее из ничего, замыслив и создав каждое творение по точному замыслу.',
   },
   12: {
     'fr': 'Celui qui façonne chaque création selon un dessin unique',
@@ -175,6 +186,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que molda cada criação com um design único',
     'it': 'Colui che plasma ogni creatura con un disegno unico',
     'fa': 'کسی که هر آفریده را با طرحی منحصربه‌فرد شکل می‌دهد',
+    'ru': 'Аллах созидает каждое творение по неповторимому замыслу, без какого-либо изъяна, придавая каждой душе и каждому виду особую форму.',
   },
   13: {
     'fr': 'Le Modeleur qui donne à chaque créature sa forme distincte',
@@ -189,6 +201,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Modelador que dá a cada criatura sua forma distinta',
     'it': 'Il Modellatore che dà ad ogni creatura la sua forma distinta',
     'fa': 'صورتگری که به هر آفریده شکل و ظاهر منحصربه‌فردش را می‌دهد',
+    'ru': 'Аллах придаёт облик каждому созданию в утробе и после неё, наделяя каждое неповторимой внешностью, чертами и особенностями.',
   },
   14: {
     'fr': 'Celui qui pardonne les péchés de Ses serviteurs à répétition',
@@ -203,6 +216,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que perdoa os pecados de Seus servos repetidamente',
     'it': 'Colui che perdona i peccati dei Suoi servi ripetutamente',
     'fa': 'کسی که گناهان بندگانش را بارها و بدون خستگی می‌آمرزد',
+    'ru': 'Аллах вновь и вновь прощает грехи Своим рабам, сколько бы раз они ни оступались, — тем, кто возвращается к Нему.',
   },
   15: {
     'fr': 'Le Dominateur qui soumet toutes choses par Sa puissance irrésistible',
@@ -217,6 +231,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Dominador que subjuga tudo com Seu poder irresistível',
     'it': 'Il Dominatore che sottomette tutto con la Sua potenza irresistibile',
     'fa': 'قاهری که همه چیز را با قدرت شکست‌ناپذیرش مطیع می‌کند',
+    'ru': 'Могущество Аллаха господствует над всем сущим; все создания полностью покорны и бессильны перед Его волей.',
   },
   16: {
     'fr': 'Celui qui offre Ses dons librement sans attente de retour',
@@ -231,6 +246,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que oferece Seus dons livremente sem expectativa de retorno',
     'it': 'Colui che concede i Suoi doni liberamente senza aspettarsi nulla in cambio',
     'fa': 'کسی که هدایایش را آزادانه و بدون انتظار هیچ چیزی می‌بخشد',
+    'ru': 'Аллах дарует щедро и непрестанно, не ожидая ничего взамен, ниспосылая блага по чистой милости.',
   },
   17: {
     'fr': 'Le Pourvoyeur qui sustente toute la création selon son destin',
@@ -245,6 +261,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Provedor que sustenta toda a criação conforme seu destino',
     'it': 'Il Provveditore che sostiene tutta la creazione secondo il suo decreto',
     'fa': 'روزی‌رسانی که همه آفریدگان را طبق مقدراتشان حفظ می‌کند',
+    'ru': 'Аллах даёт пропитание каждому живому существу на земле, и ни одна душа не остаётся без предопределённого ей удела.',
   },
   18: {
     'fr': 'Celui qui ouvre toutes les portes de la miséricorde et de la guidance',
@@ -259,6 +276,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que abre todas as portas da misericórdia e orientação',
     'it': 'Colui che apre tutte le porte della misericordia e della guida',
     'fa': 'کسی که همه درهای رحمت، هدایت و روزی را می‌گشاید',
+    'ru': 'Аллах открывает Своим рабам врата милости, руководства и пропитания и судит между людьми с совершенной справедливостью.',
   },
   19: {
     'fr': 'L\'Omniscient dont la connaissance englobe tout le visible et le caché',
@@ -273,6 +291,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Onisciente cujo conhecimento abrange tudo que é visível e oculto',
     'it': 'L\'Onnisciente la cui conoscenza abbraccia tutto il visibile e l\'invisibile',
     'fa': 'دانای مطلقی که علمش همه آشکار و پنهان را در بر می‌گیرد',
+    'ru': 'Знание Аллаха объемлет всё — явное и сокровенное, прошлое, настоящее и будущее, вплоть до мельчайшей детали.',
   },
   20: {
     'fr': 'Celui qui retient la subsistance ou l\'âme selon Sa parfaite sagesse',
@@ -287,6 +306,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que retém a provisão ou a alma por Sua perfeita sabedoria',
     'it': 'Colui che trattiene la provvidenza o l\'anima per la Sua saggezza perfetta',
     'fa': 'کسی که روزی یا جان را طبق حکمت کاملش نگه می‌دارد',
+    'ru': 'Аллах ограничивает удел, пропитание или душу по Своей воле, с совершенной мудростью, часто как испытание или милость.',
   },
   21: {
     'fr': 'Celui qui élargit la subsistance et ouvre les portes de la facilité',
@@ -301,6 +321,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que expande a provisão e abre portas de facilidade após a dificuldade',
     'it': 'Colui che espande la provvidenza e apre le porte della facilità dopo la difficoltà',
     'fa': 'کسی که روزی را گسترش می‌دهد و درهای آسایش را پس از سختی می‌گشاید',
+    'ru': 'Аллах расширяет удел, милость и душу кому пожелает, открывая врата облегчения после трудностей.',
   },
   22: {
     'fr': 'Celui qui abaisse les arrogants à leur juste place',
@@ -315,6 +336,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que rebaixa os arrogantes ao seu devido lugar',
     'it': 'Colui che abbassa i superbi al loro giusto posto',
     'fa': 'کسی که متکبران را به جایگاه شایسته‌شان فرو می‌آورد',
+    'ru': 'Аллах принижает высокомерных и тиранов, низвергая тех, кто несправедливо возвышает себя над другими.',
   },
   23: {
     'fr': 'Celui qui élève les sincères et les humbles aux rangs d\'honneur',
@@ -329,6 +351,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que eleva os sinceros e humildes a postos de honra',
     'it': 'Colui che eleva i sinceri e gli umili a ranghi d\'onore',
     'fa': 'کسی که مخلصان و فروتنان را به مراتب افتخار می‌رساند',
+    'ru': 'Аллах возвышает степени праведных и смиренных, поднимая тех, кто искренне покоряется Ему.',
   },
   24: {
     'fr': 'Celui qui accorde honneur et dignité à qui Il veut',
@@ -343,6 +366,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que concede honra e dignidade a quem Ele quiser',
     'it': 'Colui che concede onore e dignità a chi vuole',
     'fa': 'کسی که به هر که بخواهد عزت و کرامت می‌بخشد',
+    'ru': 'Аллах дарует честь и достоинство кому пожелает, независимо от мирского положения или происхождения.',
   },
   25: {
     'fr': 'Celui qui humilie les orgueilleux et les oppresseurs par Sa justice',
@@ -357,6 +381,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que humilha os orgulhosos e opressores por Sua justiça',
     'it': 'Colui che umilia i superbi e gli oppressori con la Sua giustizia',
     'fa': 'کسی که متکبران و ستمگران را با عدالتش خوار می‌کند',
+    'ru': 'Аллах унижает тех, кто в высокомерии отворачивается от Него, по Своей совершенной справедливости и мудрости.',
   },
   26: {
     'fr': 'Celui qui entend chaque son, chuchotement et prière secrète',
@@ -371,6 +396,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que ouve cada som, sussurro e oração secreta',
     'it': 'Colui che ascolta ogni suono, sussurro e preghiera segreta',
     'fa': 'کسی که هر صدا، زمزمه و دعای پنهانی را می‌شنود',
+    'ru': 'Аллах слышит каждый звук, произнесённый или безмолвный, включая тихий шёпот сердца и молитвы каждой души.',
   },
   27: {
     'fr': 'Celui qui voit tout ce qui est apparent et tout ce qui est caché',
@@ -385,6 +411,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que vê tudo que é aparente e tudo que está oculto',
     'it': 'Colui che vede tutto ciò che è manifesto e tutto ciò che è nascosto',
     'fa': 'کسی که هر آنچه آشکار و پنهان است را می‌بیند',
+    'ru': 'Аллах видит всё, даже малейшее движение муравья тёмной ночью, совершенным и полным зрением.',
   },
   28: {
     'fr': 'Le Juge suprême dont les décisions sont définitives et parfaitement justes',
@@ -399,6 +426,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Juiz supremo cujas decisões são definitivas e perfeitamente justas',
     'it': 'Il Giudice supremo le cui decisioni sono definitive e perfettamente giuste',
     'fa': 'حاکم اعلایی که حکمش قطعی و کاملاً عادلانه است',
+    'ru': 'Аллах — Верховный Судья, чьи решения между Его созданиями окончательны, совершенно справедливы и не подлежат обжалованию.',
   },
   29: {
     'fr': 'L\'incarnation de la justice parfaite et absolue en toutes choses',
@@ -413,6 +441,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'A encarnação da justiça perfeita e absoluta em todas as coisas',
     'it': 'L\'incarnazione della giustizia perfetta e assoluta in tutte le cose',
     'fa': 'تجسم عدالت کامل و مطلق در همه چیز',
+    'ru': 'Справедливость Аллаха абсолютна и совершенна; Он никого не обижает даже на вес пылинки.',
   },
   30: {
     'fr': 'Le Subtil et Doux qui prend soin de Ses serviteurs de manière invisible',
@@ -427,6 +456,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Sutil e Gentil que cuida de Seus servos de maneiras invisíveis',
     'it': 'Il Sottile e Gentile che si prende cura dei Suoi servi in modi invisibili',
     'fa': 'لطیف و مهربانی که به شیوه‌ای نامرئی از بندگانش مراقبت می‌کند',
+    'ru': 'Аллах ведает тончайшими подробностями каждого дела и добр и мягок к Своим рабам незаметными, часто скрытыми путями.',
   },
   31: {
     'fr': 'Celui qui connaît parfaitement la réalité intérieure et cachée de toutes choses',
@@ -441,6 +471,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que conhece perfeitamente a realidade interior e natureza oculta de todas as coisas',
     'it': 'Colui che conosce perfettamente la realtà interiore e la natura nascosta di tutte le cose',
     'fa': 'کسی که از واقعیت درونی و ماهیت پنهان همه چیز کاملاً آگاه است',
+    'ru': 'Аллах в полной мере ведает о скрытых сущностях и внутренней сути всех вещей; ничто не ускользает от Его знания.',
   },
   32: {
     'fr': 'Le Clément qui diffère le châtiment pour laisser le temps au repentir',
@@ -455,6 +486,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Indulgente que adia o castigo para dar tempo ao arrependimento',
     'it': 'Il Clemente che rimanda la punizione per dare tempo al pentimento',
     'fa': 'بردباری که مجازات را به تأخیر می‌اندازد تا فرصت توبه بدهد',
+    'ru': 'Аллах терпелив к непокорности Своих созданий, откладывая наказание, чтобы дать людям время покаяться.',
   },
   33: {
     'fr': 'Le Suprêmement Grand dont la majesté dépasse toute limite et imagination',
@@ -469,6 +501,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Supremamente Grande cuja majestade transcende todos os limites e a imaginação',
     'it': 'Il Supremamente Grande la cui maestà supera ogni limite e immaginazione',
     'fa': 'عظیم‌ترین که جلالش از همه حدود و تصورات فراتر است',
+    'ru': 'Величие Аллаха превосходит всякое понимание; ничто в сущем не сравнится с Его славой и безмерной мощью.',
   },
   34: {
     'fr': 'Le Très Pardonneur qui voile les péchés et accorde Son pardon abondamment',
@@ -483,6 +516,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Muito Perdoador que encobre pecados e perdoa abundantemente',
     'it': 'Il Molto Perdonatore che copre i peccati e perdona abbondantemente',
     'fa': 'آمرزنده‌ای که گناهان را می‌پوشاند و فراوان می‌بخشاید',
+    'ru': 'Аллах покрывает и скрывает грехи Своих рабов, прощая их и оберегая от позора.',
   },
   35: {
     'fr': 'Celui qui récompense même les plus petites bonnes actions avec grande générosité',
@@ -497,6 +531,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que recompensa até as menores boas ações com grande generosidade',
     'it': 'Colui che ricompensa anche le più piccole buone azioni con grande generosità',
     'fa': 'کسی که حتی کوچک‌ترین اعمال نیک را با کرم بزرگ پاداش می‌دهد',
+    'ru': 'Аллах щедро вознаграждает даже за малые добрые дела и умножает награду за искреннее поклонение.',
   },
   36: {
     'fr': 'Le Très-Haut, élevé au-dessus de toute la création en essence et en majesté',
@@ -511,6 +546,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Altíssimo, elevado acima de toda a criação em essência e majestade',
     'it': 'L\'Altissimo, elevato al di sopra di tutta la creazione in essenza e maestà',
     'fa': 'بلندمرتبه‌ترین، که در ذات و جلال از همه آفریدگان فراتر است',
+    'ru': 'Аллах превознесён над всем творением в Своей сущности, могуществе и величии, и нет ничего, подобного Ему.',
   },
   37: {
     'fr': 'Le Très Grand devant qui toute la création est petite et insignifiante',
@@ -525,6 +561,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Muito Grande diante de quem toda a criação é pequena e insignificante',
     'it': 'Il Molto Grande dinanzi al quale tutta la creazione è piccola e insignificante',
     'fa': 'بزرگ‌ترین که در برابرش همه آفریدگان کوچک و ناچیزند',
+    'ru': 'Аллах превыше всего сущего; всё творение мало и ничтожно перед Его величием.',
   },
   38: {
     'fr': 'Le Gardien qui protège toutes choses de la perte et de la destruction',
@@ -539,6 +576,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Preservador que protege todas as coisas de perdas ou destruição',
     'it': 'Il Preservatore che protegge tutte le cose dalla perdita e dalla distruzione',
     'fa': 'حافظی که همه چیز را از گم‌شدن و نابودی محافظت می‌کند',
+    'ru': 'Аллах хранит и оберегает Своё творение — небеса, землю и деяния каждой души — от утраты и вреда.',
   },
   39: {
     'fr': 'Le Nourricier qui sustente les besoins de chaque être créé',
@@ -553,6 +591,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Nutrido que supre as necessidades de cada ser criado',
     'it': 'Il Nutritore che soddisfa i bisogni di ogni essere creato',
     'fa': 'قوت‌بخشی که نیازهای هر آفریده‌ای را تأمین می‌کند',
+    'ru': 'Аллах дарует пропитание и всё необходимое, чтобы каждое создание могло жить и процветать в этом мире.',
   },
   40: {
     'fr': 'Le Calculateur qui tiendra compte de chaque acte avec une précision parfaite',
@@ -567,6 +606,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Calculador que prestará contas de cada ato com perfeita precisão',
     'it': 'Il Computista che renderà conto di ogni atto con perfetta precisione',
     'fa': 'حسابرسی که هر عملی را با دقت کامل به حساب می‌آورد',
+    'ru': 'Аллаха достаточно для Его рабов, и Он спросит с каждой души за её деяния с совершенной точностью.',
   },
   41: {
     'fr': 'Le Majestueux dont la grandeur mérite la plus profonde révérence',
@@ -581,6 +621,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Majestoso cuja grandeza merece a mais profunda reverência',
     'it': 'Il Maestoso la cui grandezza merita la più profonda riverenza',
     'fa': 'جلیلی که عظمتش شایسته‌ی عمیق‌ترین احترام است',
+    'ru': 'Аллах обладает абсолютным величием и славой, заслуживая глубочайшего почтения и трепета от всего Своего творения.',
   },
   42: {
     'fr': 'Le Généreux qui donne librement et pardonne les fautes de Ses serviteurs',
@@ -595,6 +636,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Generoso que dá livremente e perdoa as faltas de Seus servos',
     'it': 'Il Generoso che dà liberamente e perdona i difetti dei Suoi servi',
     'fa': 'کریمی که آزادانه می‌بخشد و از خطاهای بندگانش چشم می‌پوشد',
+    'ru': 'Аллах даёт щедро и великодушно, не взирая на недостатки и даруя блага, превосходящие заслуги Его рабов.',
   },
   43: {
     'fr': 'Le Tout-Vigilant qui observe chaque acte et intention à tout moment',
@@ -609,6 +651,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Sempre Vigilante que observa cada ato e intenção em todo momento',
     'it': 'Il Sempre Vigile che osserva ogni atto e intenzione in ogni momento',
     'fa': 'همیشه‌ناظری که هر عمل و نیتی را در هر لحظه مراقبت می‌کند',
+    'ru': 'Аллах непрестанно наблюдает за каждой душой, её намерениями и делами, ни на мгновение не упуская происходящего.',
   },
   44: {
     'fr': 'Celui qui répond à chaque supplication sincère selon Sa sagesse',
@@ -623,6 +666,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que responde a cada súplica sincera conforme Sua sabedoria',
     'it': 'Colui che risponde ad ogni supplica sincera secondo la Sua saggezza',
     'fa': 'کسی که هر دعای صادقانه‌ای را طبق حکمتش اجابت می‌کند',
+    'ru': 'Аллах отвечает на молитвы и мольбы Своих рабов, откликаясь на их зов наилучшим образом и в наилучшее время.',
   },
   45: {
     'fr': 'Celui dont la miséricorde et la connaissance s\'étendent à toutes choses',
@@ -637,6 +681,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele cuja misericórdia e conhecimento se estendem a todas as coisas',
     'it': 'Colui la cui misericordia e conoscenza si estendono a tutte le cose',
     'fa': 'کسی که رحمت و علمش به همه چیز می‌رسد',
+    'ru': 'Знание, милость и щедрость Аллаха безграничны, объемлют все нужды и достигают каждого уголка творения.',
   },
   46: {
     'fr': 'Le Parfaitement Sage dans Ses décrets dont rien n\'est sans but',
@@ -651,6 +696,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Perfeitamente Sábio em Seus decretos dos quais nada é sem propósito',
     'it': 'Il Perfettamente Saggio nei Suoi decreti di cui niente è privo di scopo',
     'fa': 'در تمام مقدراتش کاملاً حکیم است و هیچ چیزش بی‌هدف نیست',
+    'ru': 'Аллах помещает всё на своё место с совершенной мудростью; ничто из того, что Он делает или предопределяет, не лишено смысла.',
   },
   47: {
     'fr': 'Le Bienveillant qui témoigne d\'une affection profonde envers Ses serviteurs croyants',
@@ -665,6 +711,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Amoroso que demonstra profunda afeição por Seus servos crentes',
     'it': 'L\'Amorevole che mostra profondo affetto verso i Suoi servi credenti',
     'fa': 'مهربانی که محبت عمیقی نسبت به بندگان مؤمنش نشان می‌دهد',
+    'ru': 'Аллах любит Своих праведных рабов, и Его глубоко любят те, чьи сердца обращены к Нему с преданностью.',
   },
   48: {
     'fr': 'Le Glorieux qui unit une majesté parfaite à une générosité sans bornes',
@@ -679,6 +726,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Glorioso que une majestade perfeita com generosidade ilimitada',
     'it': 'Il Glorioso che unisce perfetta maestà con generosità illimitata',
     'fa': 'مجیدی که جلال کامل را با سخاوت بی‌حد درهم می‌آمیزد',
+    'ru': 'Аллах славен в Своей сущности, атрибутах и деяниях, сочетая совершенное величие с безграничной щедростью.',
   },
   49: {
     'fr': 'Celui qui ressuscitera toute la création le Jour du Jugement',
@@ -693,6 +741,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que ressuscitará toda a criação no Dia do Julgamento',
     'it': 'Colui che risusciterà tutta la creazione nel Giorno del Giudizio',
     'fa': 'کسی که همه آفریدگان را در روز قیامت زنده خواهد کرد',
+    'ru': 'Аллах воскресит всё творение в День Суда, чтобы каждый ответил за свои деяния.',
   },
   50: {
     'fr': 'Le Témoin présent et conscient de tout ce qui se passe à tout moment',
@@ -707,6 +756,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'A Testemunha presente e ciente de tudo que ocorre a todo momento',
     'it': 'Il Testimone presente e consapevole di tutto ciò che avviene in ogni momento',
     'fa': 'شاهدی که در هر لحظه از هر آنچه اتفاق می‌افتد آگاه و حاضر است',
+    'ru': 'Аллах — свидетель всего, что происходит в творении в каждый миг, присутствующий и знающий обо всём сказанном и содеянном.',
   },
   51: {
     'fr': 'La Vérité Absolue dont l\'existence est la seule réalité indéniable',
@@ -721,6 +771,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'A Verdade Absoluta cuja existência é a única realidade inegável',
     'it': 'La Verità Assoluta la cui esistenza è l\'unica realtà indiscutibile',
     'fa': 'حق مطلقی که وجودش تنها واقعیت انکارناپذیر است',
+    'ru': 'Существование Аллаха, Его обещания и слова — абсолютная истина и реальность, тогда как всё остальное преходяще.',
   },
   52: {
     'fr': 'Le Gardien de confiance qui gère tous les affaires de ceux qui s\'en remettent à Lui',
@@ -735,6 +786,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Guardião de confiança que administra todos os assuntos para quem nEle confia',
     'it': 'Il Tutore fidato che gestisce tutti gli affari per coloro che si affidano a Lui',
     'fa': 'وکیل امینی که همه امور توکل‌کنندگان به خودش را اداره می‌کند',
+    'ru': 'Аллаха достаточно как Покровителя и Распорядителя дел для тех, кто полностью уповает на Него.',
   },
   53: {
     'fr': 'Le Tout-Fort dont la puissance ne s\'affaiblit ni ne diminue jamais',
@@ -749,6 +801,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Todo-Forte cuja força nunca enfraquece ou diminui',
     'it': 'Il Tutto-Forte la cui forza non si indebolisce né diminuisce mai',
     'fa': 'قوی مطلقی که قدرتش هرگز کاهش نمی‌یابد یا ضعیف نمی‌شود',
+    'ru': 'Аллах обладает абсолютной силой, которая никогда не слабеет и не истощается, и ею Он поддерживает всё сущее и управляет им.',
   },
   54: {
     'fr': 'Le Solide dont la force et la détermination ne vacillent jamais',
@@ -763,6 +816,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Firme cuja força e resolução nunca vacilam',
     'it': 'Il Solido la cui forza e risolutezza non vacillano mai',
     'fa': 'متین و استواری که قدرت و عزمش هرگز تزلزل نمی‌یابد',
+    'ru': 'Могущество и решимость Аллаха незыблемы и непоколебимы; исполнение Его воли не требует никакого усилия.',
   },
   55: {
     'fr': 'L\'Ami Protecteur qui soutient et garde les croyants dans la difficulté',
@@ -777,6 +831,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Amigo Protetor que apoia e guarda os crentes na dificuldade',
     'it': 'L\'Amico Protettore che sostiene e custodisce i credenti nella difficoltà',
     'fa': 'دوست محافظی که مؤمنان را در سختی حمایت و حفاظت می‌کند',
+    'ru': 'Аллах — близкий Друг и Защитник верующих, берущий на Себя их дела и поддерживающий их в трудностях.',
   },
   56: {
     'fr': 'Le Digne de louange qui mérite toute louange en toute circonstance',
@@ -791,6 +846,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Digno de Louvor que merece todo elogio em qualquer circunstância',
     'it': 'Il Degno di Lode che merita ogni lode in ogni circostanza',
     'fa': 'ستوده‌ای که در هر حال شایسته همه ستایش‌هاست',
+    'ru': 'Аллах достоин всякой хвалы при любых обстоятельствах — за Его совершенные атрибуты и бесчисленные блага, дарованные творению.',
   },
   57: {
     'fr': 'Celui qui a compté et enregistré chaque chose unique qui existe',
@@ -805,6 +861,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que contou e registrou cada coisa singular que existe',
     'it': 'Colui che ha contato e registrato ogni singola cosa che esiste',
     'fa': 'کسی که هر چیزی را که در وجود هست شمرده و ثبت کرده است',
+    'ru': 'Знание Аллаха охватывает точное число и каждую подробность всего сотворённого, не оставляя ничего неисчисленным.',
   },
   58: {
     'fr': 'Celui qui commence la création ex nihilo sans précédent',
@@ -819,6 +876,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que começa a criação do nada sem precedente',
     'it': 'Colui che inizia la creazione dal nulla senza precedenti',
     'fa': 'کسی که آفرینش را از هیچ و بدون هیچ پیشینه‌ای آغاز کرد',
+    'ru': 'Аллах начал творение из ничего, без какого-либо прежнего образца, являя Своё безграничное созидательное могущество.',
   },
   59: {
     'fr': 'Celui qui rétablira toute la création après la mort',
@@ -833,6 +891,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que restaurará toda a criação após a morte',
     'it': 'Colui che ripristinerà tutta la creazione dopo la morte',
     'fa': 'کسی که همه آفریدگان را پس از مرگ باز خواهد گرداند',
+    'ru': 'Аллах восстановит и воссоздаст всё творение после смерти так же, как сотворил его в первый раз.',
   },
   60: {
     'fr': 'Le Donneur de Vie qui accorde la vie à tout ce qui existe',
@@ -847,6 +906,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Doador de Vida que concede a vida a tudo que existe',
     'it': 'Il Donatore di Vita che concede la vita a tutto ciò che esiste',
     'fa': 'حیات‌بخشی که به هر چیزی که وجود دارد زندگی می‌بخشد',
+    'ru': 'Аллах дарует жизнь безжизненному, воскрешает мёртвых и оживляет сердца верой и руководством.',
   },
   61: {
     'fr': 'Celui qui cause la mort de chaque âme au moment désigné',
@@ -861,6 +921,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que causa a morte de cada alma no momento designado',
     'it': 'Colui che causa la morte di ogni anima al momento designato',
     'fa': 'کسی که هر جانی را در لحظه مقرر می‌میراند',
+    'ru': 'Аллах определяет смерть каждой души в назначенный ей срок, возвращая всё творение к Себе.',
   },
   62: {
     'fr': 'Le Vivant éternel qui ne meurt jamais et ne cesse pas d\'exister',
@@ -875,6 +936,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Eternamente Vivo que jamais morre nem cessa de existir',
     'it': 'Il Vivente Eterno che non muore mai e non cessa mai di esistere',
     'fa': 'زنده‌ی ابدی که هرگز نمی‌میرد و از وجود باز نمی‌ایستد',
+    'ru': 'Жизнь Аллаха вечна, без начала и конца, и она — источник жизни для всего живого.',
   },
   63: {
     'fr': 'Le Subsistant par Lui-même dont toute la création dépend entièrement',
@@ -889,6 +951,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Autossustentável de quem toda a criação depende completamente',
     'it': 'Il Sussistente per Sé stesso da cui tutta la creazione dipende completamente',
     'fa': 'قائم به ذاتی که همه آفریدگان کاملاً به او وابسته‌اند',
+    'ru': 'Аллах ни в чём не нуждается для Своего существования, тогда как всё творение полностью зависит от Него в своём бытии и продолжении.',
   },
   64: {
     'fr': 'Celui à qui rien ne manque et qui n\'a besoin de rien',
@@ -903,6 +966,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele a quem nada falta e que nunca precisa de nada',
     'it': 'Colui a cui niente manca e che non ha mai bisogno di nulla',
     'fa': 'کسی که به هیچ چیز نیاز ندارد و هیچ‌گاه چیزی کم ندارد',
+    'ru': 'Аллах не испытывает ни в чём недостатка и мгновенно обретает всё, что пожелает, обладая всем желаемым без какого-либо изъяна.',
   },
   65: {
     'fr': 'Le Tout-Glorieux et noble au plus haut degré possible',
@@ -917,6 +981,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Completamente Glorioso e nobre no mais alto grau possível',
     'it': 'Il Tutto-Glorioso e nobile al massimo grado possibile',
     'fa': 'کاملاً مجید و شریف در بالاترین درجه ممکن',
+    'ru': 'Благородство и щедрость Аллаха обширны и обильны, превосходя все пределы в чести и великолепии.',
   },
   66: {
     'fr': 'L\'Unique sans associé, égal ni rival dans aucun de Ses attributs',
@@ -931,6 +996,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Único sem parceiro, igual ou rival em nenhum de Seus atributos',
     'it': 'L\'Unico senza socio, pari o rivale in alcuno dei Suoi attributi',
     'fa': 'یگانه‌ای که در هیچ صفتی شریک، همتا یا رقیب ندارد',
+    'ru': 'Аллах един в Своей сущности, атрибутах и деяниях; нет у Него ни сотоварища, ни равного, ни соперника в Его божественности.',
   },
   67: {
     'fr': 'L\'Unique et indivisible avec une unité absolue et parfaite',
@@ -945,6 +1011,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Único e Indivisível com unidade absoluta e perfeita',
     'it': 'L\'Unico e Indivisibile con unità assoluta e perfetta',
     'fa': 'یگانه و تقسیم‌ناپذیری که دارای توحید مطلق و کامل است',
+    'ru': 'Аллах единственен и неповторим; Его сущность и природа не могут быть разделены, переданы или сравнимы с чем-либо ещё.',
   },
   68: {
     'fr': 'Le Refuge Éternel dont toute la création dépend complètement',
@@ -959,6 +1026,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Refúgio Eterno de quem toda a criação depende completamente',
     'it': 'Il Rifugio Eterno da cui tutta la creazione dipende completamente',
     'fa': 'پناهگاه ابدی که همه آفریدگان کاملاً به او وابسته‌اند',
+    'ru': 'Аллах — вечное Прибежище, от которого зависит всё творение, тогда как Сам Он не зависит ни от кого и ни от чего.',
   },
   69: {
     'fr': 'Le Tout-Capable qui a plein pouvoir sur toutes choses sans exception',
@@ -973,6 +1041,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Todo-Capaz que tem poder pleno sobre todas as coisas sem exceção',
     'it': 'L\'Onnipotente che ha pieno potere su tutte le cose senza eccezione',
     'fa': 'قادر مطلقی که بر همه چیز بدون استثنا قدرت کامل دارد',
+    'ru': 'Аллах всевластен над всякой вещью; ничто не выходит за пределы Его могущества, и Он может мгновенно совершить всё, что пожелает.',
   },
   70: {
     'fr': 'L\'Omnipotent avec une autorité suprême et absolue sur tout',
@@ -987,6 +1056,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Onipotente com autoridade suprema e absoluta sobre tudo',
     'it': 'L\'Onnipotente con autorità suprema e assoluta su tutto',
     'fa': 'قادر مطلقی که بر همه چیز اقتدار عالی و مطلق دارد',
+    'ru': 'Могущество Аллаха полно и решающе; Он определяет и вершит исход каждого дела с полной властью.',
   },
   71: {
     'fr': 'Celui qui accorde la préséance et fait avancer selon Sa sagesse',
@@ -1001,6 +1071,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que concede precedência e faz avançar conforme Sua sabedoria',
     'it': 'Colui che concede precedenza e fa avanzare secondo la Sua saggezza',
     'fa': 'کسی که طبق حکمتش به هر که بخواهد تقدم می‌بخشد و پیش می‌اندازد',
+    'ru': 'Аллах выдвигает вперёд и даёт первенство кому и чему пожелает — в степени, времени или милости — по Своей мудрости.',
   },
   72: {
     'fr': 'Celui qui retarde et fait attendre celui qu\'Il veut selon Sa sagesse',
@@ -1015,6 +1086,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que atrasa e retém quem Ele quer conforme Sua perfeita sabedoria',
     'it': 'Colui che ritarda e trattiene chi vuole secondo la Sua perfetta saggezza',
     'fa': 'کسی که طبق حکمت کاملش هر که را بخواهد به تأخیر می‌اندازد و باز می‌دارد',
+    'ru': 'Аллах отсрочивает и откладывает кого и что пожелает, с совершенной мудростью и своевременностью в каждом деле.',
   },
   73: {
     'fr': 'Le Premier qui existait avant toutes choses sans cause antérieure',
@@ -1029,6 +1101,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Primeiro que existia antes de todas as coisas sem causa anterior',
     'it': 'Il Primo che esisteva prima di tutte le cose senza causa precedente',
     'fa': 'اولی که پیش از همه چیز و بدون هیچ علت قبلی وجود داشت',
+    'ru': 'Аллах существовал прежде всех вещей, и ничто не предшествовало Ему; Он — Начало без какой-либо предшествующей причины.',
   },
   74: {
     'fr': 'Le Dernier qui demeurera après la cessation de toute la création',
@@ -1043,6 +1116,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Último que permanecerá após a cessação de toda a criação',
     'it': 'L\'Ultimo che rimarrà dopo la cessazione di tutta la creazione',
     'fa': 'آخری که پس از پایان یافتن همه آفریدگان باقی می‌ماند',
+    'ru': 'Аллах пребудет после того, как всё творение исчезнет; Он — Конец, после которого нет ничего.',
   },
   75: {
     'fr': 'Le Manifeste et évident à travers Ses signes et prodiges dans la création',
@@ -1057,6 +1131,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Manifesto e evidente através de Seus sinais e maravilhas na criação',
     'it': 'Il Manifesto ed evidente attraverso i Suoi segni e meraviglie nella creazione',
     'fa': 'آشکار و هویدایی که از طریق نشانه‌ها و شگفتی‌هایش در آفرینش پیداست',
+    'ru': 'Существование Аллаха явно через ясные знамения Его творения, очевидные каждому, кто размышляет о вселенной.',
   },
   76: {
     'fr': 'Le Caché dont l\'essence est au-delà de toute compréhension humaine',
@@ -1071,6 +1146,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Oculto cuja essência transcende toda a compreensão humana',
     'it': 'Il Nascosto la cui essenza trascende tutta la comprensione umana',
     'fa': 'پنهانی که ذاتش از همه درک بشری فراتر است',
+    'ru': 'Истинная сущность Аллаха скрыта от человеческого восприятия, недосягаема для зрения, воображения и полного постижения.',
   },
   77: {
     'fr': 'Le Gouverneur et autorité suprême qui dirige toute la création',
@@ -1085,6 +1161,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Governador e suprema autoridade que dirige toda a criação',
     'it': 'Il Governatore e suprema autorità che dirige tutta la creazione',
     'fa': 'حاکم و اقتدار اعلایی که همه آفریدگان را اداره می‌کند',
+    'ru': 'Аллах правит делами всего творения и управляет ими, направляя каждое дело с полной властью и заботой.',
   },
   78: {
     'fr': 'Le Plus Élevé, bien au-dessus de tout en Ses attributs parfaits et suprêmes',
@@ -1099,6 +1176,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Mais Elevado, bem acima de tudo em Seus atributos perfeitos e supremos',
     'it': 'Il Più Elevato, ben al di sopra di tutto nei Suoi attributi perfetti e supremi',
     'fa': 'متعال‌ترین، که در صفات کامل و برترش بسیار بالاتر از همه چیز است',
+    'ru': 'Аллах превознесён высоко над любым несовершенством и любым свойством Его творения, полностью превосходя все ограничения.',
   },
   79: {
     'fr': 'La Source de tout bien qui traite Ses serviteurs avec une bonté sans fin',
@@ -1113,6 +1191,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'A Fonte de toda bondade que trata Seus servos com bondade sem fim',
     'it': 'La Fonte di ogni bene che tratta i Suoi servi con bontà senza fine',
     'fa': 'سرچشمه همه خوبی که با بندگانش با مهربانی بی‌پایان رفتار می‌کند',
+    'ru': 'Аллах добр и благ к Своему творению бесчисленными путями, обращаясь со Своими рабами с мягкостью, далеко превосходящей их заслуги.',
   },
   80: {
     'fr': 'Celui qui accepte le repentir en se tournant vers Ses serviteurs encore et encore',
@@ -1127,6 +1206,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que aceita o arrependimento voltando-se para Seus servos repetidamente',
     'it': 'Colui che accetta il pentimento voltandosi verso i Suoi servi ancora e ancora',
     'fa': 'کسی که توبه را با روی آوردن بارها به بندگانش می‌پذیرد',
+    'ru': 'Аллах постоянно обращается к Своим рабам с прощением, принимая их покаяние, сколько бы раз они ни возвращались к Нему.',
   },
   81: {
     'fr': 'Le Vengeur qui punit justement ceux qui persistent dans l\'oppression',
@@ -1141,6 +1221,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Vingador que pune com justiça aqueles que persistem na opressão',
     'it': 'Il Vendicatore che punisce con giustizia coloro che persistono nell\'oppressione',
     'fa': 'انتقام‌گیری که به عدالت کسانی را که بر ستمگری پافشاری می‌کنند مجازات می‌کند',
+    'ru': 'Аллах справедливо наказывает злодеев и тиранов, упорствующих в притеснении и отвергающих Его руководство, после того как дал им достаточно возможностей.',
   },
   82: {
     'fr': 'Celui qui efface les péchés complètement comme s\'ils n\'avaient jamais eu lieu',
@@ -1155,6 +1236,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que apaga os pecados completamente como se nunca tivessem ocorrido',
     'it': 'Colui che cancella i peccati completamente come se non fossero mai accaduti',
     'fa': 'کسی که گناهان را کاملاً پاک می‌کند گویی هرگز اتفاق نیفتاده‌اند',
+    'ru': 'Аллах полностью стирает грехи Своих рабов, словно их никогда не было, по Своей милости и щедрости.',
   },
   83: {
     'fr': 'Le Compatissant dont la bonté est tendre, douce et profondément attentionnée',
@@ -1169,6 +1251,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Compassivo cuja bondade é terna, suave e profundamente cuidadosa',
     'it': 'Il Compassionevole la cui bontà è tenera, mite e profondamente premurosa',
     'fa': 'رئوفی که مهربانی‌اش لطیف، ملایم و عمیقاً دلسوزانه است',
+    'ru': 'Аллах проявляет нежное сострадание и мягкость к Своим рабам, оберегая их от тягот по Своей глубокой заботе.',
   },
   84: {
     'fr': 'Le Propriétaire de toute souveraineté qui accorde et retire le pouvoir selon Sa volonté',
@@ -1183,6 +1266,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Possuidor de toda a soberania que concede e retira o poder conforme Sua vontade',
     'it': 'Il Possessore di tutta la sovranità che concede e ritira il potere secondo la Sua volontà',
     'fa': 'صاحب همه حاکمیت که قدرت را طبق اراده‌اش می‌بخشد و می‌گیرد',
+    'ru': 'Аллаху принадлежит вся власть и всё владычество; Он дарует власть и царства кому пожелает и отнимает их по Своей воле.',
   },
   85: {
     'fr': 'Le Possesseur de la majesté suprême et de l\'honneur tout-englobant',
@@ -1197,6 +1281,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Possuidor de suprema majestade e honra abrangente',
     'it': 'Il Possessore della maestà suprema e dell\'onore all\'inclusivo',
     'fa': 'صاحب جلال اعلا و اکرام فراگیر',
+    'ru': 'Аллах сочетает высочайшее величие с обильной щедростью, заслуживая прославления и осыпая Своё творение почётом.',
   },
   86: {
     'fr': 'Le Juste qui établit une parfaite équité dans tous Ses rapports',
@@ -1211,6 +1296,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Justo que estabelece perfeita equidade em todos os Seus tratos',
     'it': 'Il Giusto che stabilisce perfetta equità in tutti i Suoi rapporti',
     'fa': 'عادلی که در همه امورش برابری کامل برقرار می‌کند',
+    'ru': 'Аллах устанавливает совершенную справедливость и беспристрастность среди Своих созданий, и в День Суда каждое право будет восстановлено.',
   },
   87: {
     'fr': 'Celui qui rassemblera toute la création au Jour du Jugement',
@@ -1225,6 +1311,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que reunirá toda a criação no Dia do Julgamento',
     'it': 'Colui che riunirà tutta la creazione nel Giorno del Giudizio',
     'fa': 'کسی که همه آفریدگان را در روز قیامت گرد خواهد آورد',
+    'ru': 'Аллах соберёт всё творение вместе в День Суда, и Он соединяет что и кого пожелает в этой жизни.',
   },
   88: {
     'fr': 'Le Suffisant à Lui-même, complètement libéré de tout besoin',
@@ -1239,6 +1326,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Autossuficiente, completamente livre de qualquer necessidade',
     'it': 'Il Bastante a Sé stesso, completamente libero da ogni bisogno',
     'fa': 'غنی مطلقی که کاملاً از هر نیازی آزاد است',
+    'ru': 'Аллах совершенно не нуждается ни в ком и ни в чём, тогда как всё творение постоянно нуждается в Нём.',
   },
   89: {
     'fr': 'Celui qui enrichit et accorde suffisance et contentement à Ses serviteurs',
@@ -1253,6 +1341,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que enriquece e concede suficiência e contentamento a Seus servos',
     'it': 'Colui che arricchisce e concede sufficienza e contentezza ai Suoi servi',
     'fa': 'کسی که بندگانش را بی‌نیاز می‌کند و به آنها کفایت و رضایت می‌بخشد',
+    'ru': 'Аллах обогащает кого пожелает из Своих созданий, даруя достаток имущества, довольство или богатство души.',
   },
   90: {
     'fr': 'Celui qui prévient ce qui est nuisible et retient ce qui est harmful',
@@ -1267,6 +1356,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que previne o que é prejudicial e retém o que causa dano',
     'it': 'Colui che previene ciò che è dannoso e trattiene ciò che nuoce ai Suoi servi',
     'fa': 'کسی که مضرها را دفع می‌کند و از آسیب رساندن به بندگانش جلوگیری می‌کند',
+    'ru': 'Аллах удерживает вред и нежеланное от Своих рабов и предотвращает то, что не приносит им пользы, по Своей мудрости.',
   },
   91: {
     'fr': 'Celui qui permet le mal comme une épreuve ou un moyen de rapprocher Ses serviteurs de Lui',
@@ -1281,6 +1371,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'Aquele que permite o dano como teste ou meio de aproximar Seus servos a Ele',
     'it': 'Colui che permette il danno come prova o mezzo per avvicinare i Suoi servi a Lui',
     'fa': 'کسی که ضرر را به عنوان آزمایش یا وسیله‌ای برای نزدیک کردن بندگانش مجاز می‌دارد',
+    'ru': 'Аллах властен предопределить вред или тяготы как испытание, воздаяние или средство приблизить Своих рабов к Себе.',
   },
   92: {
     'fr': 'Le Bienfaiteur qui est la source de tout bien et avantage dans la création',
@@ -1295,6 +1386,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Benfeitor que é a fonte de todo bem e benefício na criação',
     'it': 'Il Benefattore che è la fonte di tutto il bene e beneficio nella creazione',
     'fa': 'نافعی که سرچشمه همه خیر و سود در آفرینش است',
+    'ru': 'Аллах — источник всякого блага, направляющий добро и пользу кому пожелает из Своих созданий.',
   },
   93: {
     'fr': 'La Lumière qui illumine les cieux, la terre et guide les cœurs des ténèbres',
@@ -1309,6 +1401,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'A Luz que ilumina os céus, a terra e guia os corações das trevas',
     'it': 'La Luce che illumina i cieli, la terra e guida i cuori dalle tenebre',
     'fa': 'نوری که آسمان‌ها و زمین را روشن می‌کند و دل‌ها را از تاریکی هدایت می‌کند',
+    'ru': 'Аллах — Свет небес и земли, озаряющий материальный мир и выводящий сердца из мрака невежества.',
   },
   94: {
     'fr': 'Le Guide qui conduit ceux qu\'Il veut vers le droit chemin de la vérité',
@@ -1323,6 +1416,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Guia que conduz quem Ele quer pelo caminho reto da verdade',
     'it': 'La Guida che conduce chi vuole sulla retta via della verità',
     'fa': 'هادی که هر که را بخواهد به راه راست حق هدایت می‌کند',
+    'ru': 'Аллах ведёт кого пожелает прямым путём истины, направляя сердца к вере и праведным делам.',
   },
   95: {
     'fr': 'L\'Incomparable Créateur de toutes choses sans exemple préalable',
@@ -1337,6 +1431,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Incomparável Criador de todas as coisas sem exemplo anterior',
     'it': 'L\'Incomparabile Creatore di tutte le cose senza esempio precedente',
     'fa': 'آفریننده بی‌مانندی که همه چیز را بدون هیچ نمونه قبلی خلق کرد',
+    'ru': 'Аллах сотворил небеса, землю и всё сущее с несравненной самобытностью и красотой, без какого-либо прежнего образца.',
   },
   96: {
     'fr': 'L\'Éternel qui ne prend jamais fin alors que tout le reste périt',
@@ -1351,6 +1446,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Eterno que nunca termina enquanto tudo o mais perece',
     'it': 'L\'Eterno che non finisce mai mentre tutto il resto perisce',
     'fa': 'باقی که هرگز پایان نمی‌یابد در حالی که همه چیز دیگر نابود می‌شود',
+    'ru': 'Существование Аллаха продолжается вечно, без конца, тогда как всё остальное в творении рано или поздно исчезнет.',
   },
   97: {
     'fr': 'L\'Héritier auquel toutes choses retournent après la fin de la création',
@@ -1365,6 +1461,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Herdeiro ao qual todas as coisas retornam após o fim da criação',
     'it': 'L\'Erede a cui tutte le cose ritornano dopo la fine della creazione',
     'fa': 'وارثی که پس از پایان آفرینش همه چیز به او باز می‌گردد',
+    'ru': 'Аллах останется единственным Владыкой всего после того, как всё творение исчезнет, наследуя всё сущее.',
   },
   98: {
     'fr': 'Le Guide vers ce qui est juste qui dirige les affaires vers leurs meilleures issues',
@@ -1379,6 +1476,7 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Guia para o correto que direciona os assuntos para seus melhores resultados',
     'it': 'La Guida verso il giusto che dirige le faccende verso i loro migliori esiti',
     'fa': 'راهنمای درست که امور را به بهترین نتایجشان هدایت می‌کند',
+    'ru': 'Аллах направляет Своё творение к тому, что приносит ему пользу, приводя дела к их правильному и наилучшему исходу с совершенной мудростью.',
   },
   99: {
     'fr': 'Le Patient qui retient la punition avec miséricorde en accordant du temps au repentir',
@@ -1393,5 +1491,6 @@ const Map<int, Map<String, String>> _explanations = {
     'pt': 'O Paciente que retém o castigo com misericórdia dando tempo ao arrependimento',
     'it': 'Il Paziente che trattiene la punizione con misericordia dando tempo al pentimento',
     'fa': 'صبوری که مجازات را با رحمت نگه می‌دارد و برای توبه فرصت می‌دهد',
+    'ru': 'Аллах терпелив к непокорности Своих рабов, удерживая наказание и давая достаточно времени для покаяния и возвращения.',
   },
 };

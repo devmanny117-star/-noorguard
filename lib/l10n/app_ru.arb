@@ -1,0 +1,4078 @@
+{
+  "@@locale": "ru",
+  "appName": "Noor Guard",
+  "@appName": {
+    "description": "The application name"
+  },
+  "assalamualaikum": "As-Salāmu 'Alaikum",
+  "@assalamualaikum": {
+    "description": "Islamic greeting shown on the home screen header"
+  },
+  "mayAllahBlessYourDay": "Да благословит Аллах ваш день",
+  "@mayAllahBlessYourDay": {
+    "description": "Subtitle beneath the greeting"
+  },
+  "nextPrayer": "Следующий намаз",
+  "@nextPrayer": {
+    "description": "Label for the upcoming prayer section"
+  },
+  "iPrayedButton": "Намаз совершён",
+  "@iPrayedButton": {
+    "description": "Button text on the home/lock screen widget to mark the current prayer as completed"
+  },
+  "todaysPrayers": "Намазы на сегодня",
+  "@todaysPrayers": {
+    "description": "Heading for the daily prayer check-in widget"
+  },
+  "qibla": "Кибла",
+  "@qibla": {
+    "description": "Label for the Qibla compass feature"
+  },
+  "focusMode": "Режим фокусировки",
+  "@focusMode": {
+    "description": "Label for the focus/distraction-blocking feature"
+  },
+  "appBlocking": "Блокировка приложений",
+  "@appBlocking": {
+    "description": "Label for the prayer-time app blocking feature"
+  },
+  "islamicCalendar": "Исламский календарь",
+  "@islamicCalendar": {
+    "description": "Label for the Hijri calendar feature"
+  },
+  "islamicCalendarSubtitle": "Даты и события по Хиджре",
+  "@islamicCalendarSubtitle": {
+    "description": "Subtitle for the Islamic Calendar feature tile"
+  },
+  "duas": "Дуа",
+  "@duas": {
+    "description": "Label for the supplication library feature"
+  },
+  "quran": "Коран",
+  "@quran": {
+    "description": "Label for the Quran reader feature"
+  },
+  "settings": "Настройки",
+  "@settings": {
+    "description": "Label for the settings screen"
+  },
+  "complete": "Выполнено",
+  "@complete": {
+    "description": "Action label to mark a prayer as done"
+  },
+  "streak": "Серия",
+  "@streak": {
+    "description": "Label for the prayer-completion streak counter"
+  },
+  "dayStreak": "дней подряд",
+  "@dayStreak": {
+    "description": "Suffix shown after the streak number, e.g. '7 day streak'"
+  },
+  "compassRequiresDevice": "Для компаса требуется реальное устройство",
+  "@compassRequiresDevice": {
+    "description": "Message shown on web where the compass sensor is unavailable"
+  },
+  "streakDays": "{count, plural, one {{count} день} few {{count} дня} many {{count} дней} other {{count} дня}}",
+  "@streakDays": {
+    "description": "Streak counter shown as '<n> day' or '<n> days'",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "allPrayersCompleted": "Все намазы совершены! 🎉",
+  "@allPrayersCompleted": {
+    "description": "Message shown when the user has completed all 5 prayers for the day"
+  },
+  "prayersCompleted": "Совершено намазов: {completed}/5",
+  "@prayersCompleted": {
+    "description": "Progress label showing how many of the 5 daily prayers are completed",
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      }
+    }
+  },
+  "fajr": "Фаджр",
+  "@fajr": {
+    "description": "Name of the dawn prayer"
+  },
+  "dhuhr": "Зухр",
+  "@dhuhr": {
+    "description": "Name of the midday prayer"
+  },
+  "asr": "Аср",
+  "@asr": {
+    "description": "Name of the afternoon prayer"
+  },
+  "maghrib": "Магриб",
+  "@maghrib": {
+    "description": "Name of the sunset prayer"
+  },
+  "isha": "Иша",
+  "@isha": {
+    "description": "Name of the night prayer"
+  },
+  "fardRakats": "{count} ракаата фард",
+  "@fardRakats": {
+    "description": "Pill label showing the number of obligatory rakats for a prayer",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sunnahBefore": "{count} сунны до",
+  "@sunnahBefore": {
+    "description": "Pill label showing the number of optional sunnah rakats prayed before the obligatory prayer",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sunnahAfter": "{count} сунны после",
+  "@sunnahAfter": {
+    "description": "Pill label showing the number of optional sunnah rakats prayed after the obligatory prayer",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prayedAt": "Совершён в {time}",
+  "@prayedAt": {
+    "description": "Description of when a prayer is performed, e.g. 'Prayed at dawn before sunrise'",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "timePeriodDawnBeforeSunrise": "на рассвете до восхода солнца",
+  "@timePeriodDawnBeforeSunrise": {
+    "description": "Time-of-day phrase describing when Fajr is prayed, used inside prayedAt"
+  },
+  "timePeriodAfterSunPassesHighestPoint": "после прохождения солнцем зенита",
+  "@timePeriodAfterSunPassesHighestPoint": {
+    "description": "Time-of-day phrase describing when Dhuhr is prayed, used inside prayedAt"
+  },
+  "timePeriodLateAfternoon": "во второй половине дня",
+  "@timePeriodLateAfternoon": {
+    "description": "Time-of-day phrase describing when Asr is prayed, used inside prayedAt"
+  },
+  "timePeriodJustAfterSunset": "сразу после заката",
+  "@timePeriodJustAfterSunset": {
+    "description": "Time-of-day phrase describing when Maghrib is prayed, used inside prayedAt"
+  },
+  "timePeriodNightBeforeMidnight": "ночью до полуночи",
+  "@timePeriodNightBeforeMidnight": {
+    "description": "Time-of-day phrase describing when Isha is prayed, used inside prayedAt"
+  },
+  "fajrHadith": "Два ракаата Фаджра лучше, чем этот мир и всё, что в нём. — Пророк Мухаммад ﷺ",
+  "@fajrHadith": {
+    "description": "Hadith quote shown in the expanded Fajr prayer card"
+  },
+  "fajrTip": "Фаджр — первый намаз дня. Он напоминает нам начинать день с поминания Аллаха.",
+  "@fajrTip": {
+    "description": "Beginner tip shown in the expanded Fajr prayer card"
+  },
+  "dhuhrHadith": "Тому, кто совершает двенадцать ракаатов сунны, Аллах построит дом в Раю.",
+  "@dhuhrHadith": {
+    "description": "Hadith quote shown in the expanded Dhuhr prayer card"
+  },
+  "dhuhrTip": "Зухр — полуденный намаз. Прекрасный момент, чтобы сделать паузу и вновь обратиться к Аллаху.",
+  "@dhuhrTip": {
+    "description": "Beginner tip shown in the expanded Dhuhr prayer card"
+  },
+  "asrHadith": "Кто пропустил намаз Аср, тот словно потерял свою семью и имущество. — Пророк Мухаммад ﷺ",
+  "@asrHadith": {
+    "description": "Hadith quote shown in the expanded Asr prayer card"
+  },
+  "asrTip": "Аср часто называют средним намазом. Аллах особо упоминает его в Коране (2:238).",
+  "@asrTip": {
+    "description": "Beginner tip shown in the expanded Asr prayer card"
+  },
+  "maghribHadith": "Намаз Магриб — это витр дня.",
+  "@maghribHadith": {
+    "description": "Hadith quote shown in the expanded Maghrib prayer card"
+  },
+  "maghribTip": "Магриб знаменует окончание дня поста в Рамадан. Он совершается сразу после захода солнца.",
+  "@maghribTip": {
+    "description": "Beginner tip shown in the expanded Maghrib prayer card"
+  },
+  "ishaHadith": "Кто совершил Иша в джамаате, тот словно молился половину ночи.",
+  "@ishaHadith": {
+    "description": "Hadith quote shown in the expanded Isha prayer card"
+  },
+  "ishaTip": "Иша — последний намаз дня. Завершение дня молитвой приносит покой и умиротворение.",
+  "@ishaTip": {
+    "description": "Beginner tip shown in the expanded Isha prayer card"
+  },
+  "newMuslimTip": "Совет новому мусульманину",
+  "@newMuslimTip": {
+    "description": "Heading for the beginner-friendly tip shown in an expanded prayer card"
+  },
+  "notificationsOn": "Уведомления включены",
+  "@notificationsOn": {
+    "description": "State label/tooltip for an enabled prayer notification bell"
+  },
+  "notificationsOff": "Уведомления выключены",
+  "@notificationsOff": {
+    "description": "State label/tooltip for a disabled prayer notification bell"
+  },
+  "preview": "Предпросмотр",
+  "@preview": {
+    "description": "Back-button label on the lock screen preview, indicating this is a sample of the lock screen"
+  },
+  "lockPreviewCountdown": "Через 1 ч 23 мин  ·  16:47",
+  "@lockPreviewCountdown": {
+    "description": "Sample countdown-and-time text shown in the next-prayer pill on the lock screen preview (illustrative placeholder, not live data)"
+  },
+  "swipeUpToUnlock": "Проведите вверх, чтобы разблокировать",
+  "@swipeUpToUnlock": {
+    "description": "Hint text at the bottom of the lock screen preview"
+  },
+  "searchSurahs": "Поиск сур…",
+  "@searchSurahs": {
+    "description": "Hint text for the Quran surah search field"
+  },
+  "noSurahsFound": "Суры не найдены",
+  "@noSurahsFound": {
+    "description": "Message shown when a surah search returns no results"
+  },
+  "tryAgain": "Повторить",
+  "@tryAgain": {
+    "description": "Button label to retry loading data after a failure"
+  },
+  "ayahs": "Аятов: {count}",
+  "@ayahs": {
+    "description": "Number of verses in a surah",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchDuas": "Поиск дуа…",
+  "@searchDuas": {
+    "description": "Hint text for the Duas search field"
+  },
+  "supplications": "Дуа: {count}",
+  "@supplications": {
+    "description": "Count of duas shown in the Duas list",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "prayerSettings": "Настройки намаза",
+  "@prayerSettings": {
+    "description": "Section header for prayer-related settings"
+  },
+  "calculationMethod": "Метод расчёта",
+  "@calculationMethod": {
+    "description": "Settings row label for choosing the prayer time calculation method"
+  },
+  "adhanSound": "Звук азана",
+  "@adhanSound": {
+    "description": "Settings row label for choosing the call-to-prayer sound"
+  },
+  "prayerNotifications": "Уведомления о намазах",
+  "@prayerNotifications": {
+    "description": "Settings toggle label for the master prayer notification switch"
+  },
+  "statusOn": "Вкл.",
+  "@statusOn": {
+    "description": "Generic short label shown next to a settings row when its toggle is currently enabled"
+  },
+  "statusOff": "Выкл.",
+  "@statusOff": {
+    "description": "Generic short label shown next to a settings row when its toggle is currently disabled"
+  },
+  "enableAllNotifications": "Включить все уведомления",
+  "@enableAllNotifications": {
+    "description": "Master toggle label inside the Prayer Notifications sub-screen that turns all prayer notifications on/off"
+  },
+  "individualPrayers": "Отдельные намазы",
+  "@individualPrayers": {
+    "description": "Section caption above the five per-prayer notification toggles in the Prayer Notifications sub-screen"
+  },
+  "appearance": "Внешний вид",
+  "@appearance": {
+    "description": "Section header for appearance-related settings"
+  },
+  "darkMode": "Тёмная тема",
+  "@darkMode": {
+    "description": "Settings toggle label for switching between light and dark themes"
+  },
+  "language": "Язык",
+  "@language": {
+    "description": "Settings row label for choosing the app language"
+  },
+  "aboutNoorGuard": "О приложении",
+  "@aboutNoorGuard": {
+    "description": "Section header for the About section in Settings"
+  },
+  "version": "Версия приложения",
+  "@version": {
+    "description": "Settings row label showing the installed app version"
+  },
+  "rateApp": "Оценить Noor Guard",
+  "@rateApp": {
+    "description": "Settings row action label to rate the app on the store"
+  },
+  "shareApp": "Поделиться Noor Guard",
+  "@shareApp": {
+    "description": "Settings row action label to share the app with others"
+  },
+  "contactSupport": "Связаться с поддержкой",
+  "@contactSupport": {
+    "description": "Settings row action label to contact app support"
+  },
+  "privacyPolicy": "Политика конфиденциальности",
+  "@privacyPolicy": {
+    "description": "Settings row action label to view the privacy policy"
+  },
+  "termsOfService": "Условия использования",
+  "@termsOfService": {
+    "description": "Settings row action label to view the terms of service"
+  },
+  "helpUsImprove": "Помогите нам стать лучше",
+  "@helpUsImprove": {
+    "description": "Title of the translation feedback banner at the bottom of Settings"
+  },
+  "translationDisclaimer": "Наши переводы выполнены с помощью ИИ. Если вы заметили ошибки на вашем языке, мы будем рады вашему отзыву!",
+  "@translationDisclaimer": {
+    "description": "Body text of the translation feedback banner explaining translations are AI-assisted and inviting feedback"
+  },
+  "privacyPromiseTitle": "Обещание конфиденциальности Noor Guard",
+  "@privacyPromiseTitle": {
+    "description": "Title of the privacy promise card in Settings"
+  },
+  "privacyPromiseBody": "Ваша вера — это личное. Ваши данные остаются личными. Мы никогда не продаём, не передаём и не монетизируем ваши данные. Ни ваше местоположение. Ни ваши молитвенные привычки. Ни ваше имя.",
+  "@privacyPromiseBody": {
+    "description": "Body text of the privacy promise card in Settings"
+  },
+  "directionToSacredHouse": "Направление к Заповедному Дому",
+  "@directionToSacredHouse": {
+    "description": "Subtitle on the Qibla screen describing what the compass points to"
+  },
+  "towardMecca": "{degrees}° в сторону Мекки",
+  "@towardMecca": {
+    "description": "Readout showing the bearing in degrees toward the Kaaba in Mecca",
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "defaultLocation": "Сакраменто, Калифорния (по умолчанию)",
+  "@defaultLocation": {
+    "description": "Fallback location label shown when the device location is unavailable"
+  },
+  "prayerHistory": "История намазов",
+  "@prayerHistory": {
+    "description": "Title of the streak/prayer history calendar screen"
+  },
+  "currentStreak": "Текущая серия",
+  "@currentStreak": {
+    "description": "Stat card label for the user's current consecutive-day streak"
+  },
+  "longestStreak": "Рекордная серия",
+  "@longestStreak": {
+    "description": "Stat card label for the user's longest consecutive-day streak"
+  },
+  "legend": "Обозначения",
+  "@legend": {
+    "description": "Heading for the calendar color legend"
+  },
+  "allFivePrayers": "Все 5 намазов",
+  "@allFivePrayers": {
+    "description": "Legend item describing a fully-completed prayer day"
+  },
+  "partialPrayers": "Частично (1–4)",
+  "@partialPrayers": {
+    "description": "Legend item describing a partially-completed prayer day"
+  },
+  "none": "Нет",
+  "@none": {
+    "description": "Legend item describing a day with no prayers completed"
+  },
+  "sun": "Вс",
+  "@sun": {
+    "description": "Abbreviated weekday label for Sunday"
+  },
+  "mon": "Пн",
+  "@mon": {
+    "description": "Abbreviated weekday label for Monday"
+  },
+  "tue": "Вт",
+  "@tue": {
+    "description": "Abbreviated weekday label for Tuesday"
+  },
+  "wed": "Ср",
+  "@wed": {
+    "description": "Abbreviated weekday label for Wednesday"
+  },
+  "thu": "Чт",
+  "@thu": {
+    "description": "Abbreviated weekday label for Thursday"
+  },
+  "fri": "Пт",
+  "@fri": {
+    "description": "Abbreviated weekday label for Friday"
+  },
+  "sat": "Сб",
+  "@sat": {
+    "description": "Abbreviated weekday label for Saturday"
+  },
+  "headingDegrees": "Курс {degrees}°",
+  "@headingDegrees": {
+    "description": "Compass heading readout in degrees",
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "couldNotLoadSurahs": "Не удалось загрузить суры",
+  "@couldNotLoadSurahs": {
+    "description": "Error heading shown when the Quran surah list fails to load"
+  },
+  "connectionError": "Проверьте подключение к интернету и повторите попытку",
+  "@connectionError": {
+    "description": "Error subtitle shown when the Quran surah list fails to load"
+  },
+  "alQuran": "Аль-Коран",
+  "@alQuran": {
+    "description": "Title shown on the Quran screen header"
+  },
+  "dailySupplications": "Ежедневные дуа",
+  "@dailySupplications": {
+    "description": "Subtitle shown on the Duas screen header"
+  },
+  "all": "Все",
+  "@all": {
+    "description": "Label for the 'all categories' filter chip on the Duas screen"
+  },
+  "noDuasFound": "Дуа не найдены",
+  "@noDuasFound": {
+    "description": "Message shown when no duas match the search or selected category"
+  },
+  "january": "Январь",
+  "@january": {
+    "description": "Full name of the month January"
+  },
+  "february": "Февраль",
+  "@february": {
+    "description": "Full name of the month February"
+  },
+  "march": "Март",
+  "@march": {
+    "description": "Full name of the month March"
+  },
+  "april": "Апрель",
+  "@april": {
+    "description": "Full name of the month April"
+  },
+  "may": "Май",
+  "@may": {
+    "description": "Full name of the month May"
+  },
+  "june": "Июнь",
+  "@june": {
+    "description": "Full name of the month June"
+  },
+  "july": "Июль",
+  "@july": {
+    "description": "Full name of the month July"
+  },
+  "august": "Август",
+  "@august": {
+    "description": "Full name of the month August"
+  },
+  "september": "Сентябрь",
+  "@september": {
+    "description": "Full name of the month September"
+  },
+  "october": "Октябрь",
+  "@october": {
+    "description": "Full name of the month October"
+  },
+  "november": "Ноябрь",
+  "@november": {
+    "description": "Full name of the month November"
+  },
+  "december": "Декабрь",
+  "@december": {
+    "description": "Full name of the month December"
+  },
+  "home": "Главная",
+  "@home": {
+    "description": "Bottom navigation label for the home tab"
+  },
+  "prayers": "Намазы",
+  "@prayers": {
+    "description": "Bottom navigation label for the prayers tab"
+  },
+  "more": "Ещё",
+  "@more": {
+    "description": "Bottom navigation label for the more/settings tab"
+  },
+  "tafsir": "Тафсир",
+  "@tafsir": {
+    "description": "Label for the Quran commentary feature"
+  },
+  "lockScreen": "Экран блокировки",
+  "@lockScreen": {
+    "description": "Label for the Islamic lock screen feature"
+  },
+  "readAndListen": "Читайте и слушайте",
+  "@readAndListen": {
+    "description": "Subtitle for the Quran feature tile"
+  },
+  "commentary": "Толкование",
+  "@commentary": {
+    "description": "Subtitle for the Tafsir feature tile"
+  },
+  "findDirection": "Найти направление",
+  "@findDirection": {
+    "description": "Subtitle for the Qibla feature tile"
+  },
+  "reminders": "Напоминания",
+  "@reminders": {
+    "description": "Subtitle for the Lock Screen feature tile"
+  },
+  "blockDistractions": "Блокировка отвлечений",
+  "@blockDistractions": {
+    "description": "Subtitle for the Focus Mode feature tile"
+  },
+  "prayerGuard": "Защита намаза",
+  "@prayerGuard": {
+    "description": "Subtitle for the App Blocking feature tile"
+  },
+  "importantDates": "Важные даты",
+  "@importantDates": {
+    "description": "Subtitle for the Islamic Calendar feature tile"
+  },
+  "comingSoon": "Скоро",
+  "@comingSoon": {
+    "description": "Placeholder text shown for features that are not yet built"
+  },
+  "morningAndEvening": "Утро и вечер",
+  "@morningAndEvening": {
+    "description": "Dua category label for morning and evening supplications"
+  },
+  "prayer": "Намаз",
+  "@prayer": {
+    "description": "Dua category label for prayer-related supplications"
+  },
+  "foodAndDrink": "Еда и питьё",
+  "@foodAndDrink": {
+    "description": "Dua category label for food and drink supplications"
+  },
+  "verityWithHardship": "Воистину, за тягостью наступает облегчение.",
+  "@verityWithHardship": {
+    "description": "Quran quote shown in the home screen quote banner"
+  },
+  "ashSharh946": "Аш-Шарх 94:6",
+  "@ashSharh946": {
+    "description": "Quran reference (surah and ayah) for the home screen quote banner"
+  },
+  "guardStrictlyYourPrayers": "Оберегайте намазы, и особенно средний намаз.",
+  "@guardStrictlyYourPrayers": {
+    "description": "Quran verse shown as an overlay on the home screen hero card"
+  },
+  "alBaqarah2238": "Аль-Бакара 2:238",
+  "@alBaqarah2238": {
+    "description": "Quran reference (surah and ayah) for the home screen hero card verse"
+  },
+  "pastEvents": "Прошедшие события",
+  "@pastEvents": {
+    "description": "Section heading for past Islamic calendar events"
+  },
+  "upcomingEvents": "Предстоящие события",
+  "@upcomingEvents": {
+    "description": "Section heading for upcoming Islamic calendar events"
+  },
+  "today": "Сегодня",
+  "@today": {
+    "description": "Label on the Islamic calendar's current-date card; displayed in uppercase via the UI"
+  },
+  "next": "Следующее",
+  "@next": {
+    "description": "Badge label marking the soonest upcoming Islamic calendar event"
+  },
+  "hijriYearLabel": "{year} г. хиджры",
+  "@hijriYearLabel": {
+    "description": "Hijri year with its era abbreviation (Anno Hegirae), e.g. '1447 AH'",
+    "placeholders": {
+      "year": {
+        "type": "int"
+      }
+    }
+  },
+  "islamicMonthMuharram": "Мухаррам",
+  "@islamicMonthMuharram": {
+    "description": "Name of the 1st month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthSafar": "Сафар",
+  "@islamicMonthSafar": {
+    "description": "Name of the 2nd month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRabiAlAwwal": "Раби аль-авваль",
+  "@islamicMonthRabiAlAwwal": {
+    "description": "Name of the 3rd month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRabiAlThani": "Раби ас-сани",
+  "@islamicMonthRabiAlThani": {
+    "description": "Name of the 4th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthJumadaAlAwwal": "Джумада аль-уля",
+  "@islamicMonthJumadaAlAwwal": {
+    "description": "Name of the 5th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthJumadaAlThani": "Джумада ас-сани",
+  "@islamicMonthJumadaAlThani": {
+    "description": "Name of the 6th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRajab": "Раджаб",
+  "@islamicMonthRajab": {
+    "description": "Name of the 7th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthShaban": "Шаабан",
+  "@islamicMonthShaban": {
+    "description": "Name of the 8th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthRamadan": "Рамадан",
+  "@islamicMonthRamadan": {
+    "description": "Name of the 9th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthShawwal": "Шавваль",
+  "@islamicMonthShawwal": {
+    "description": "Name of the 10th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthDhulQadah": "Зуль-каада",
+  "@islamicMonthDhulQadah": {
+    "description": "Name of the 11th month of the Islamic (Hijri) calendar"
+  },
+  "islamicMonthDhulHijjah": "Зуль-хиджа",
+  "@islamicMonthDhulHijjah": {
+    "description": "Name of the 12th month of the Islamic (Hijri) calendar"
+  },
+  "islamicNewYear": "Исламский Новый год",
+  "@islamicNewYear": {
+    "description": "Name of the Islamic New Year holiday (1 Muharram), shown in the calendar event list"
+  },
+  "ashura": "Ашура",
+  "@ashura": {
+    "description": "Name of the Day of Ashura (10 Muharram), shown in the calendar event list"
+  },
+  "mawlidAlNabi": "Мавлид ан-Наби",
+  "@mawlidAlNabi": {
+    "description": "Name of the Prophet's birthday observance, shown in the calendar event list"
+  },
+  "ramadanBegins": "Начало Рамадана",
+  "@ramadanBegins": {
+    "description": "Label marking the start of the month of Ramadan, shown in the calendar event list"
+  },
+  "laylatAlQadr": "Ляйлят аль-Кадр",
+  "@laylatAlQadr": {
+    "description": "Name of the Night of Decree (27 Ramadan), shown in the calendar event list"
+  },
+  "eidAlFitr": "Ид аль-Фитр",
+  "@eidAlFitr": {
+    "description": "Name of the holiday marking the end of Ramadan, shown in the calendar event list"
+  },
+  "dayOfArafah": "День Арафа",
+  "@dayOfArafah": {
+    "description": "Name of the Day of Arafah (9 Dhul Hijjah), shown in the calendar event list"
+  },
+  "eidAlAdha": "Ид аль-Адха",
+  "@eidAlAdha": {
+    "description": "Name of the Festival of Sacrifice, shown in the calendar event list"
+  },
+  "active": "Активен",
+  "@active": {
+    "description": "Badge label shown in the Focus Mode header while a session is running"
+  },
+  "focusModeSubtitle": "Защитите свою сосредоточенность. Ваши приложения заблокированы, пока вы не остановите сессию.",
+  "@focusModeSubtitle": {
+    "description": "Explanatory subtitle card shown on the Focus Mode screen"
+  },
+  "remaining": "осталось",
+  "@remaining": {
+    "description": "Label under the countdown timer while a focus session is running"
+  },
+  "ready": "готово",
+  "@ready": {
+    "description": "Label under the countdown timer when no focus session is running yet"
+  },
+  "duration": "Длительность",
+  "@duration": {
+    "description": "Heading for the focus session duration preset selector; displayed in uppercase via the UI"
+  },
+  "minutesAbbreviation": "мин",
+  "@minutesAbbreviation": {
+    "description": "Abbreviated unit label shown under each duration preset number, e.g. '25 min'"
+  },
+  "blockedDuringFocus": "Заблокировано во время фокусировки",
+  "@blockedDuringFocus": {
+    "description": "Heading for the card listing apps blocked during a focus session"
+  },
+  "appsBlockedCount": "{count, plural, one {{count} приложение} few {{count} приложения} many {{count} приложений} other {{count} приложения}}",
+  "@appsBlockedCount": {
+    "description": "Count badge showing how many apps are blocked during focus mode",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "startFocus": "Начать фокусировку",
+  "@startFocus": {
+    "description": "Button label to begin a focus session"
+  },
+  "stopFocus": "Остановить фокусировку",
+  "@stopFocus": {
+    "description": "Button label to end an active focus session"
+  },
+  "alhamdulillah": "Альхамдулиллях!",
+  "@alhamdulillah": {
+    "description": "Exclamation of gratitude to Allah, shown as the heading of the focus session completion dialog"
+  },
+  "sessionComplete": "Сессия завершена",
+  "@sessionComplete": {
+    "description": "Subheading in the focus session completion dialog"
+  },
+  "stayedFocusedFor": "Вы сохраняли сосредоточенность в течение {duration}.",
+  "@stayedFocusedFor": {
+    "description": "Message in the completion dialog reporting how long the user focused, e.g. 'You stayed focused for 25 minutes.'",
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "focusSessionMinutes": "{count, plural, one {{count} минута} few {{count} минуты} many {{count} минут} other {{count} минуты}}",
+  "@focusSessionMinutes": {
+    "description": "Duration phrase used inside stayedFocusedFor, e.g. '25 minutes' or '1 minute'",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "focusCompletionQuote": "«Обратитесь за помощью к терпению и намазу.»\n— Аль-Бакара 2:45",
+  "@focusCompletionQuote": {
+    "description": "Quran verse and reference shown in the focus session completion dialog"
+  },
+  "done": "Готово",
+  "@done": {
+    "description": "Button label to dismiss the focus session completion dialog"
+  },
+  "socialMedia": "Соцсети",
+  "@socialMedia": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "entertainment": "Развлечения",
+  "@entertainment": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "games": "Игры",
+  "@games": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "messaging": "Мессенджеры",
+  "@messaging": {
+    "description": "App category name shown as a section heading in the App Blocking list"
+  },
+  "blockDuringPrayerTimes": "Блокировать во время намазов",
+  "@blockDuringPrayerTimes": {
+    "description": "Heading on the App Blocking screen's stats card"
+  },
+  "blockDuringPrayerTimesSubtitle": "Выбранные приложения будут автоматически блокироваться\nво время всех 5 ежедневных намазов.",
+  "@blockDuringPrayerTimesSubtitle": {
+    "description": "Explanatory subtitle on the App Blocking screen's stats card"
+  },
+  "blockedLabel": "заблокировано",
+  "@blockedLabel": {
+    "description": "Label under the count of currently blocked apps on the App Blocking screen"
+  },
+  "blockAllApps": "Блокировать все приложения",
+  "@blockAllApps": {
+    "description": "Label for the master toggle that blocks every app on the App Blocking screen"
+  },
+  "blockingTimingInfo": "Блокировка включается за 5 минут до каждого намаза и снимается через 15 минут после него.",
+  "@blockingTimingInfo": {
+    "description": "Info banner on the App Blocking screen explaining when blocking turns on and off"
+  },
+  "blockedDuringPrayers": "Заблокировано во время намазов",
+  "@blockedDuringPrayers": {
+    "description": "Status text shown under an app's name when it is set to be blocked"
+  },
+  "notBlocked": "Не заблокировано",
+  "@notBlocked": {
+    "description": "Status text shown under an app's name when it is not set to be blocked"
+  },
+  "wuduStep1": "Намерение",
+  "@wuduStep1": {
+    "description": "Name of wudu step 1"
+  },
+  "wuduStep2": "Бисмиллях",
+  "@wuduStep2": {
+    "description": "Name of wudu step 2"
+  },
+  "wuduStep3": "Мытьё кистей",
+  "@wuduStep3": {
+    "description": "Name of wudu step 3"
+  },
+  "wuduStep4": "Полоскание рта",
+  "@wuduStep4": {
+    "description": "Name of wudu step 4"
+  },
+  "wuduStep5": "Промывание носа",
+  "@wuduStep5": {
+    "description": "Name of wudu step 5"
+  },
+  "wuduStep6": "Мытьё лица",
+  "@wuduStep6": {
+    "description": "Name of wudu step 6"
+  },
+  "wuduStep7": "Мытьё рук до локтей",
+  "@wuduStep7": {
+    "description": "Name of wudu step 7"
+  },
+  "wuduStep8": "Протирание головы",
+  "@wuduStep8": {
+    "description": "Name of wudu step 8"
+  },
+  "wuduStep9": "Мытьё ног",
+  "@wuduStep9": {
+    "description": "Name of wudu step 9"
+  },
+  "revertCorner": "Уголок нового мусульманина",
+  "@revertCorner": {
+    "description": "Title for the new Muslim hub screen / home tile"
+  },
+  "revertCornerSubtitle": "Руководства и поддержка для новых мусульман",
+  "@revertCornerSubtitle": {
+    "description": "Subtitle for the Revert Corner card"
+  },
+  "wuduGuide": "Руководство по Вуду",
+  "@wuduGuide": {
+    "description": "Title for the Wudu Guide screen and hub card"
+  },
+  "howToPray": "Как совершать намаз",
+  "@howToPray": {
+    "description": "Title for the How to Pray screen and hub card"
+  },
+  "newMuslimChecklist": "Чек-лист нового мусульманина",
+  "@newMuslimChecklist": {
+    "description": "Title for the New Muslim Checklist screen and hub card"
+  },
+  "islamicGlossary": "Исламский глоссарий",
+  "@islamicGlossary": {
+    "description": "Title for the Islamic Glossary hub card"
+  },
+  "whyDoWe": "Почему мы...",
+  "@whyDoWe": {
+    "description": "Title for the Why Do We hub card"
+  },
+  "communityStories": "Истории общины",
+  "@communityStories": {
+    "description": "Title for the Community Stories hub card"
+  },
+  "wuduGuideSubtitle": "Очищение перед намазом",
+  "@wuduGuideSubtitle": {
+    "description": "Subtitle for the Wudu Guide hub card"
+  },
+  "howToPraySubtitle": "Пошаговое руководство по саляху",
+  "@howToPraySubtitle": {
+    "description": "Subtitle for the How to Pray hub card"
+  },
+  "newMuslimChecklistSubtitle": "Ваш 30-дневный путь",
+  "@newMuslimChecklistSubtitle": {
+    "description": "Subtitle for the New Muslim Checklist hub card"
+  },
+  "howToPrayStep1Name": "Сначала Вуду",
+  "@howToPrayStep1Name": {
+    "description": "Name of how-to-pray step 1"
+  },
+  "howToPrayStep1Instruction": "Совершите вуду (омовение), чтобы находиться в состоянии чистоты перед началом намаза.",
+  "@howToPrayStep1Instruction": {
+    "description": "Instruction text for how-to-pray step 1"
+  },
+  "howToPrayStep1Tip": "Если вы не уверены, как это делать, сначала откройте Руководство по Вуду в разделе для новых мусульман.",
+  "@howToPrayStep1Tip": {
+    "description": "Beginner tip for how-to-pray step 1"
+  },
+  "howToPrayStep2Name": "Встаньте лицом к Кибле",
+  "@howToPrayStep2Name": {
+    "description": "Name of how-to-pray step 2"
+  },
+  "howToPrayStep2Instruction": "Встаньте на молитвенный коврик лицом к Кибле — в направлении Каабы в Мекке. Используйте компас Киблы в приложении, чтобы найти точное направление.",
+  "@howToPrayStep2Instruction": {
+    "description": "Instruction text for how-to-pray step 2"
+  },
+  "howToPrayStep2Tip": "Ничего страшного, если вы немного отклонились — Аллах знает ваше намерение. Старайтесь как можете.",
+  "@howToPrayStep2Tip": {
+    "description": "Beginner tip for how-to-pray step 2"
+  },
+  "howToPrayStep3Name": "Ният (намерение)",
+  "@howToPrayStep3Name": {
+    "description": "Name of how-to-pray step 3"
+  },
+  "howToPrayStep3Instruction": "Сделайте в сердце намерение о намазе, который собираетесь совершить. Произносить его вслух не обязательно.",
+  "@howToPrayStep3Instruction": {
+    "description": "Instruction text for how-to-pray step 3"
+  },
+  "howToPrayStep3Tip": "Ваше намерение — между вами и Аллахом. Достаточно простой мысли: «Я совершаю Фаджр ради Аллаха».",
+  "@howToPrayStep3Tip": {
+    "description": "Beginner tip for how-to-pray step 3"
+  },
+  "howToPrayStep4Name": "Такбир (начало)",
+  "@howToPrayStep4Name": {
+    "description": "Name of how-to-pray step 4"
+  },
+  "howToPrayStep4Instruction": "Поднимите обе руки к мочкам ушей и произнесите «Аллаху Акбар» (Аллах Велик). С этого официально начинается ваш намаз.",
+  "@howToPrayStep4Instruction": {
+    "description": "Instruction text for how-to-pray step 4"
+  },
+  "howToPrayStep4Tip": "На протяжении всего намаза держите взгляд опущенным к месту земного поклона.",
+  "@howToPrayStep4Tip": {
+    "description": "Beginner tip for how-to-pray step 4"
+  },
+  "howToPrayStep5Name": "Кыям (стояние)",
+  "@howToPrayStep5Name": {
+    "description": "Name of how-to-pray step 5"
+  },
+  "howToPrayStep5Instruction": "Положите правую руку поверх левой на груди. Прочитайте суру Аль-Фатиха, а затем любую другую короткую суру или аяты, которые вы знаете.",
+  "@howToPrayStep5Instruction": {
+    "description": "Instruction text for how-to-pray step 5"
+  },
+  "howToPrayStep5Tip": "Если вы пока не знаете других сур, во время обучения достаточно читать только Аль-Фатиху.",
+  "@howToPrayStep5Tip": {
+    "description": "Beginner tip for how-to-pray step 5"
+  },
+  "howToPrayStep6Name": "Руку (поясной поклон)",
+  "@howToPrayStep6Name": {
+    "description": "Name of how-to-pray step 6"
+  },
+  "howToPrayStep6Instruction": "Совершите поклон, согнувшись в поясе так, чтобы спина была параллельна земле. Положите руки на колени и произнесите «Субхана Раббияль Азым» три раза.",
+  "@howToPrayStep6Instruction": {
+    "description": "Instruction text for how-to-pray step 6"
+  },
+  "howToPrayStep6Tip": "Держите спину прямой и горизонтальной — не выгнутой и не округлённой.",
+  "@howToPrayStep6Tip": {
+    "description": "Beginner tip for how-to-pray step 6"
+  },
+  "howToPrayStep7Name": "Итидаль (выпрямление после поклона)",
+  "@howToPrayStep7Name": {
+    "description": "Name of how-to-pray step 7"
+  },
+  "howToPrayStep7Instruction": "Поднимитесь из поклона и выпрямитесь. Поднимаясь, произнесите «Сами Аллаху лиман хамидах» (Аллах слышит тех, кто восхваляет Его), затем скажите «Раббана лакаль хамд».",
+  "@howToPrayStep7Instruction": {
+    "description": "Instruction text for how-to-pray step 7"
+  },
+  "howToPrayStep7Tip": "Полностью выпрямитесь и на мгновение замрите, прежде чем перейти к следующему положению.",
+  "@howToPrayStep7Tip": {
+    "description": "Beginner tip for how-to-pray step 7"
+  },
+  "howToPrayStep8Name": "Суджуд (земной поклон)",
+  "@howToPrayStep8Name": {
+    "description": "Name of how-to-pray step 8"
+  },
+  "howToPrayStep8Instruction": "Опуститесь на землю, коснувшись пола лбом, носом, обеими ладонями, коленями и пальцами ног. Произнесите «Субхана Раббияль А'ля» три раза.",
+  "@howToPrayStep8Instruction": {
+    "description": "Instruction text for how-to-pray step 8"
+  },
+  "howToPrayStep8Tip": "Земли должны касаться семь частей тела: лоб (вместе с носом), две руки, два колена и две стопы.",
+  "@howToPrayStep8Tip": {
+    "description": "Beginner tip for how-to-pray step 8"
+  },
+  "howToPrayStep9Name": "Джальса (сидение между поклонами)",
+  "@howToPrayStep9Name": {
+    "description": "Name of how-to-pray step 9"
+  },
+  "howToPrayStep9Instruction": "Поднимитесь из земного поклона и сядьте: левая стопа лежит плашмя, правая стоит вертикально. Садясь, произнесите «Аллаху Акбар». Сделайте короткую паузу, затем снова опуститесь для второго земного поклона.",
+  "@howToPrayStep9Instruction": {
+    "description": "Instruction text for how-to-pray step 9"
+  },
+  "howToPrayStep9Tip": "Это короткое сидение между двумя земными поклонами называется джальса. Это обязательная часть намаза.",
+  "@howToPrayStep9Tip": {
+    "description": "Beginner tip for how-to-pray step 9"
+  },
+  "howToPrayStep10Name": "Завершите ракааты",
+  "@howToPrayStep10Name": {
+    "description": "Name of how-to-pray step 10"
+  },
+  "howToPrayStep10Instruction": "Завершив первый ракаат, встаньте и повторите те же действия для второго ракаата. Количество ракаатов зависит от того, какой намаз вы совершаете.",
+  "@howToPrayStep10Instruction": {
+    "description": "Instruction text for how-to-pray step 10"
+  },
+  "howToPrayStep10Tip": "В Фаджре 2 ракаата, в Зухре 4, в Асре 4, в Магрибе 3, в Ише 4. Двигайтесь шаг за шагом, по одному ракаату.",
+  "@howToPrayStep10Tip": {
+    "description": "Beginner tip for how-to-pray step 10"
+  },
+  "howToPrayStep11Name": "Ташаххуд (последнее сидение)",
+  "@howToPrayStep11Name": {
+    "description": "Name of how-to-pray step 11"
+  },
+  "howToPrayStep11Instruction": "В последнем сидячем положении прочитайте ташаххуд. Это свидетельство веры, которое произносится сидя после последнего ракаата.",
+  "@howToPrayStep11Instruction": {
+    "description": "Instruction text for how-to-pray step 11"
+  },
+  "howToPrayStep11Tip": "Во время ташаххуда поднимите правый указательный палец при словах «Ашхаду алля иляха илляллах» в знак единственности Аллаха.",
+  "@howToPrayStep11Tip": {
+    "description": "Beginner tip for how-to-pray step 11"
+  },
+  "howToPrayStep12Name": "Таслим (завершение)",
+  "@howToPrayStep12Name": {
+    "description": "Name of how-to-pray step 12"
+  },
+  "howToPrayStep12Instruction": "Поверните голову направо и произнесите «Assalamu Alaikum wa Rahmatullah», затем повернитесь налево и повторите. На этом ваш намаз завершается.",
+  "@howToPrayStep12Instruction": {
+    "description": "Instruction text for how-to-pray step 12"
+  },
+  "howToPrayStep12Tip": "После намаза уделите время дуа (мольбе) и попросите Аллаха о том, в чём нуждаетесь. Это прекрасное время для связи с Аллахом.",
+  "@howToPrayStep12Tip": {
+    "description": "Beginner tip for how-to-pray step 12"
+  },
+  "checklistWeek1Title": "Неделя 1",
+  "@checklistWeek1Title": {
+    "description": "Heading for checklist week 1"
+  },
+  "checklistWeek2Title": "Неделя 2",
+  "@checklistWeek2Title": {
+    "description": "Heading for checklist week 2"
+  },
+  "checklistWeek3Title": "Неделя 3",
+  "@checklistWeek3Title": {
+    "description": "Heading for checklist week 3"
+  },
+  "checklistWeek4Title": "Неделя 4",
+  "@checklistWeek4Title": {
+    "description": "Heading for checklist week 4"
+  },
+  "checklistWeek1Item1": "Произнести Шахаду",
+  "@checklistWeek1Item1": {
+    "description": "Checklist item 1 for week 1"
+  },
+  "checklistWeek1Item2": "Изучить Вуду",
+  "@checklistWeek1Item2": {
+    "description": "Checklist item 2 for week 1"
+  },
+  "checklistWeek1Item3": "Выучить Аль-Фатиху",
+  "@checklistWeek1Item3": {
+    "description": "Checklist item 3 for week 1"
+  },
+  "checklistWeek1Item4": "Совершить первый Фаджр",
+  "@checklistWeek1Item4": {
+    "description": "Checklist item 4 for week 1"
+  },
+  "checklistWeek1Item5": "Приобрести молитвенный коврик",
+  "@checklistWeek1Item5": {
+    "description": "Checklist item 5 for week 1"
+  },
+  "checklistWeek1Item6": "Найти ближайшую мечеть",
+  "@checklistWeek1Item6": {
+    "description": "Checklist item 6 for week 1"
+  },
+  "checklistWeek2Item1": "Выучить все 5 времён молитв",
+  "@checklistWeek2Item1": {
+    "description": "Checklist item 1 for week 2"
+  },
+  "checklistWeek2Item2": "Выучить основные дуа",
+  "@checklistWeek2Item2": {
+    "description": "Checklist item 2 for week 2"
+  },
+  "checklistWeek2Item3": "Почитать о Пророке Мухаммаде",
+  "@checklistWeek2Item3": {
+    "description": "Checklist item 3 for week 2"
+  },
+  "checklistWeek2Item4": "Познакомиться с мусульманской общиной",
+  "@checklistWeek2Item4": {
+    "description": "Checklist item 4 for week 2"
+  },
+  "checklistWeek3Item1": "Узнать о халяльной пище",
+  "@checklistWeek3Item1": {
+    "description": "Checklist item 1 for week 3"
+  },
+  "checklistWeek3Item2": "Прочитать суру Аль-Ихлас",
+  "@checklistWeek3Item2": {
+    "description": "Checklist item 2 for week 3"
+  },
+  "checklistWeek3Item3": "Узнать о Рамадане",
+  "@checklistWeek3Item3": {
+    "description": "Checklist item 3 for week 3"
+  },
+  "checklistWeek3Item4": "Начать ежедневный зикр",
+  "@checklistWeek3Item4": {
+    "description": "Checklist item 4 for week 3"
+  },
+  "checklistWeek4Item1": "Узнать о Закяте",
+  "@checklistWeek4Item1": {
+    "description": "Checklist item 1 for week 4"
+  },
+  "checklistWeek4Item2": "Почитать о 5 столпах",
+  "@checklistWeek4Item2": {
+    "description": "Checklist item 2 for week 4"
+  },
+  "checklistWeek4Item3": "Настроить напоминания о молитвах",
+  "@checklistWeek4Item3": {
+    "description": "Checklist item 3 for week 4"
+  },
+  "checklistWeek4Item4": "Поразмышлять о своём пути",
+  "@checklistWeek4Item4": {
+    "description": "Checklist item 4 for week 4"
+  },
+  "wuduStep1Instruction": "Сделайте в сердце намерение совершить вуду ради Аллаха.",
+  "@wuduStep1Instruction": {
+    "description": "Wudu step 1 instruction"
+  },
+  "wuduStep1Tip": "Не обязательно произносить намерение вслух — достаточно искреннего намерения в сердце.",
+  "@wuduStep1Tip": {
+    "description": "Wudu step 1 tip"
+  },
+  "wuduStep2Instruction": "Скажите «Бисмиллях» (Во имя Аллаха), прежде чем начать.",
+  "@wuduStep2Instruction": {
+    "description": "Wudu step 2 instruction"
+  },
+  "wuduStep2Tip": "Произнесение «Бисмиллях» — это сунна, и так вы начинаете вуду с поминания Аллаха.",
+  "@wuduStep2Tip": {
+    "description": "Wudu step 2 tip"
+  },
+  "wuduStep3Instruction": "Вымойте обе руки до запястий три раза, следя, чтобы вода прошла между пальцами.",
+  "@wuduStep3Instruction": {
+    "description": "Wudu step 3 instruction"
+  },
+  "wuduStep3Tip": "Начните с правой руки, затем левая. Такой порядок рекомендован в Исламе.",
+  "@wuduStep3Tip": {
+    "description": "Wudu step 3 tip"
+  },
+  "wuduStep4Instruction": "Наберите воду в рот, прополощите его и выплюньте воду. Сделайте так три раза.",
+  "@wuduStep4Instruction": {
+    "description": "Wudu step 4 instruction"
+  },
+  "wuduStep4Tip": "Это очищает рот и является частью очищения.",
+  "@wuduStep4Tip": {
+    "description": "Wudu step 4 tip"
+  },
+  "wuduStep5Instruction": "Втяните воду в ноздри и осторожно высморкайтесь. Сделайте так три раза.",
+  "@wuduStep5Instruction": {
+    "description": "Wudu step 5 instruction"
+  },
+  "wuduStep5Tip": "Втягивайте воду правой рукой, а высмаркивайтесь с помощью левой.",
+  "@wuduStep5Tip": {
+    "description": "Wudu step 5 tip"
+  },
+  "wuduStep6Instruction": "Вымойте всё лицо три раза — от линии роста волос до подбородка и от уха до уха.",
+  "@wuduStep6Instruction": {
+    "description": "Wudu step 6 instruction"
+  },
+  "wuduStep6Tip": "Следите, чтобы ни один участок лица не остался сухим.",
+  "@wuduStep6Tip": {
+    "description": "Wudu step 6 tip"
+  },
+  "wuduStep7Instruction": "Вымойте правую руку от кончиков пальцев до локтя три раза, затем то же самое с левой рукой.",
+  "@wuduStep7Instruction": {
+    "description": "Wudu step 7 instruction"
+  },
+  "wuduStep7Tip": "В вуду всегда начинайте с правой стороны, затем переходите к левой.",
+  "@wuduStep7Tip": {
+    "description": "Wudu step 7 tip"
+  },
+  "wuduStep8Instruction": "Смочите руки и один раз протрите всю голову — спереди назад и обратно.",
+  "@wuduStep8Instruction": {
+    "description": "Wudu step 8 instruction"
+  },
+  "wuduStep8Tip": "В отличие от омовения водой, протирание головы совершается только один раз.",
+  "@wuduStep8Tip": {
+    "description": "Wudu step 8 tip"
+  },
+  "wuduStep9Instruction": "Вымойте правую ступню вместе с щиколоткой три раза, затем то же самое с левой ступнёй.",
+  "@wuduStep9Instruction": {
+    "description": "Wudu step 9 instruction"
+  },
+  "wuduStep9Tip": "Следите, чтобы вода прошла между пальцами ног. Прочищайте между ними пальцем руки.",
+  "@wuduStep9Tip": {
+    "description": "Wudu step 9 tip"
+  },
+  "islamicGlossaryTitle": "Исламский словарь",
+  "@islamicGlossaryTitle": {
+    "description": "Title for Islamic Glossary screen"
+  },
+  "islamicGlossarySubtitle": "51 термин из Корана, Сунны и классических трудов учёных",
+  "@islamicGlossarySubtitle": {
+    "description": "Subtitle for Islamic Glossary screen"
+  },
+  "searchTermsHint": "Поиск терминов, арабских слов, определений...",
+  "@searchTermsHint": {
+    "description": "Hint text in glossary search bar"
+  },
+  "categoryAll": "Все",
+  "@categoryAll": {
+    "description": "Filter chip label for all categories"
+  },
+  "categoryPillar": "Столп",
+  "@categoryPillar": {
+    "description": "Filter chip label for pillar category"
+  },
+  "categoryAqeedah": "Акыда",
+  "@categoryAqeedah": {
+    "description": "Filter chip label for aqeedah category"
+  },
+  "categoryPractice": "Практика",
+  "@categoryPractice": {
+    "description": "Filter chip label for practice category"
+  },
+  "categoryDhikr": "Зикр",
+  "@categoryDhikr": {
+    "description": "Filter chip label for dhikr category"
+  },
+  "categoryQuran": "Коран",
+  "@categoryQuran": {
+    "description": "Filter chip label for quran category"
+  },
+  "categoryHadith": "Хадис",
+  "@categoryHadith": {
+    "description": "Filter chip label for hadith category"
+  },
+  "categoryFiqh": "Фикх",
+  "@categoryFiqh": {
+    "description": "Filter chip label for fiqh category"
+  },
+  "categoryHistory": "История",
+  "@categoryHistory": {
+    "description": "Filter chip label for Islamic history category"
+  },
+  "noTermsFound": "Термины не найдены",
+  "@noTermsFound": {
+    "description": "Empty state message when no glossary terms match"
+  },
+  "sourceLabel": "Источник",
+  "@sourceLabel": {
+    "description": "Label for source citations in glossary"
+  },
+  "revertCornerHubSubtitle": "Тёплый уголок, который поможет вам сделать первые шаги в Исламе",
+  "@revertCornerHubSubtitle": {
+    "description": "Subtitle for Revert Corner hub screen"
+  },
+  "islamicGlossaryHubSubtitle": "Распространённые термины простыми словами",
+  "@islamicGlossaryHubSubtitle": {
+    "description": "Hub card subtitle for Islamic Glossary"
+  },
+  "whyDoWeHubSubtitle": "Мудрость, стоящая за повседневными практиками",
+  "@whyDoWeHubSubtitle": {
+    "description": "Hub card subtitle for Why Do We screen"
+  },
+  "communityStoriesHubSubtitle": "Принявшие Ислам делятся своими историями",
+  "@communityStoriesHubSubtitle": {
+    "description": "Hub card subtitle for Community Stories"
+  },
+  "whyDoWeScreenSubtitle": "Мудрость 12 повседневных исламских практик",
+  "@whyDoWeScreenSubtitle": {
+    "description": "Subtitle for Why Do We screen"
+  },
+  "whyDoWeSourceBadge": "Суннитский источник",
+  "@whyDoWeSourceBadge": {
+    "description": "Badge label for Quran/hadith source citations on Why Do We cards"
+  },
+  "whyDoWeQ1": "Почему мы молимся 5 раз в день?",
+  "@whyDoWeQ1": {
+    "description": "Why Do We question 1"
+  },
+  "whyDoWeA1": "Аллах предписал пять ежедневных молитв в Коране (2:238), и они были установлены во время Ночного путешествия (Исра валь-Мирадж). Пророк сказал: «Первое, за что раб будет спрошен в Судный день, — это молитва» (Ибн Маджа). Молитва поддерживает нашу связь с Аллахом в течение всего дня.",
+  "@whyDoWeA1": {
+    "description": "Why Do We answer 1"
+  },
+  "whyDoWeQ2": "Почему во время молитвы мы обращаемся в сторону Мекки?",
+  "@whyDoWeQ2": {
+    "description": "Why Do We question 2"
+  },
+  "whyDoWeA2": "Аллах повелел в Коране (2:144): «Обрати же своё лицо в сторону Заповедной мечети». Кааба в Мекке — первый дом, воздвигнутый для поклонения Аллаху (3:96). Обращаясь в одну сторону, все мусульмане мира объединяются в молитве.",
+  "@whyDoWeA2": {
+    "description": "Why Do We answer 2"
+  },
+  "whyDoWeQ3": "Почему мы постимся в Рамадан?",
+  "@whyDoWeQ3": {
+    "description": "Why Do We question 3"
+  },
+  "whyDoWeA3": "Аллах предписал пост в Коране (2:183): «О те, которые уверовали! Вам предписан пост, подобно тому, как он был предписан вашим предшественникам, — быть может, вы обретёте таква (богобоязненность)». Рамадан — месяц, в который был ниспослан Коран (2:185).",
+  "@whyDoWeA3": {
+    "description": "Why Do We answer 3"
+  },
+  "whyDoWeQ4": "Почему перед едой мы говорим «Бисмиллях»?",
+  "@whyDoWeQ4": {
+    "description": "Why Do We question 4"
+  },
+  "whyDoWeA4": "Пророк сказал: «Когда кто-либо из вас ест, пусть помянет имя Аллаха. Если он забыл в начале, пусть скажет: „Бисмилляхи аввалюху ва ахираху“» (Абу Дауд). Это напоминает нам, что все блага исходят от Аллаха.",
+  "@whyDoWeA4": {
+    "description": "Why Do We answer 4"
+  },
+  "whyDoWeQ5": "Почему перед входом в мечеть мы снимаем обувь?",
+  "@whyDoWeQ5": {
+    "description": "Why Do We question 5"
+  },
+  "whyDoWeA5": "Аллах повелел Мусе (Моисею): «Сними же свою обувь, ибо ты находишься в священной долине Тува» (Коран 20:12). Снятие обуви выражает почтение к дому Аллаха и сохраняет место молитвы в чистоте.",
+  "@whyDoWeA5": {
+    "description": "Why Do We answer 5"
+  },
+  "whyDoWeQ6": "Почему мы приветствуем друг друга словами «Ассаляму алейкум»?",
+  "@whyDoWeQ6": {
+    "description": "Why Do We question 6"
+  },
+  "whyDoWeA6": "Пророк сказал: «Вы не войдёте в Рай, пока не уверуете, и не уверуете, пока не полюбите друг друга. Не указать ли вам на то, что заставит вас полюбить друг друга? Распространяйте мир (салям) между собой» (Муслим). Это ещё и дуа — вы просите мира для этого человека.",
+  "@whyDoWeA6": {
+    "description": "Why Do We answer 6"
+  },
+  "whyDoWeQ7": "Почему мы совершаем Хадж?",
+  "@whyDoWeQ7": {
+    "description": "Why Do We question 7"
+  },
+  "whyDoWeA7": "Хадж предписан Аллахом (3:97): «Паломничество к этому Дому — обязанность перед Аллахом для тех, кто способен его совершить». Он напоминает об испытаниях Пророка Ибрахима и его семьи и объединяет в поклонении мусульман всех народов.",
+  "@whyDoWeA7": {
+    "description": "Why Do We answer 7"
+  },
+  "whyDoWeQ8": "Почему мы выплачиваем Закят?",
+  "@whyDoWeQ8": {
+    "description": "Why Do We question 8"
+  },
+  "whyDoWeA8": "Закят — третий столп Ислама, упомянутый в Коране более 30 раз рядом с молитвой. Пророк сказал, что он очищает имущество. Закят уменьшает неравенство и напоминает верующим, что богатство принадлежит Аллаху.",
+  "@whyDoWeA8": {
+    "description": "Why Do We answer 8"
+  },
+  "whyDoWeQ9": "Почему после чихания мы говорим «Альхамдулиллях»?",
+  "@whyDoWeQ9": {
+    "description": "Why Do We question 9"
+  },
+  "whyDoWeA9": "Пророк сказал: «Когда кто-либо из вас чихнёт, пусть скажет: „Альхамдулиллях“, а его брат или спутник пусть скажет: „Ярхамукаллах“» (Бухари). Это момент благодарности Аллаху за дар здоровья.",
+  "@whyDoWeA9": {
+    "description": "Why Do We answer 9"
+  },
+  "whyDoWeQ10": "Почему мусульманки носят хиджаб?",
+  "@whyDoWeQ10": {
+    "description": "Why Do We question 10"
+  },
+  "whyDoWeA10": "Аллах повелел в Коране (24:31), чтобы верующие женщины хранили своё целомудрие. Хиджаб — это акт поклонения и покорности Аллаху. Для многих мусульманок он является источником идентичности, достоинства и духовной связи.",
+  "@whyDoWeA10": {
+    "description": "Why Do We answer 10"
+  },
+  "whyDoWeQ11": "Почему мы избегаем свинины и алкоголя?",
+  "@whyDoWeQ11": {
+    "description": "Why Do We question 11"
+  },
+  "whyDoWeA11": "Аллах запретил свинину в Коране (2:173) и алкоголь в (5:90), назвав его «скверной из деяний сатаны». Эти запреты оберегают здоровье, разум и семью. Нормы халяля помогают верующим сохранять телесную и духовную чистоту.",
+  "@whyDoWeA11": {
+    "description": "Why Do We answer 11"
+  },
+  "whyDoWeQ12": "Почему мы говорим «Иншаллах»?",
+  "@whyDoWeQ12": {
+    "description": "Why Do We question 12"
+  },
+  "whyDoWeA12": "Аллах повелевает в Коране (18:23-24): «Никогда не говори о чём-либо: „Я сделаю это завтра“, — не добавив: „Если пожелает Аллах“». Говоря «Иншаллах», мы признаём, что будущее подвластно только Аллаху, и это учит нас смирению.",
+  "@whyDoWeA12": {
+    "description": "Why Do We answer 12"
+  },
+  "communityStoriesScreenSubtitle": "Настоящие истории прихода к Исламу со всего мира",
+  "@communityStoriesScreenSubtitle": {
+    "description": "Subtitle for Community Stories screen"
+  },
+  "communityStoriesTimeLabel": "В Исламе",
+  "@communityStoriesTimeLabel": {
+    "description": "Label for time-as-Muslim badge on story cards"
+  },
+  "communityStoriesShareBtn": "Поделиться своей историей",
+  "@communityStoriesShareBtn": {
+    "description": "Button label to share a revert story"
+  },
+  "communityStoriesShareSoon": "Скоро — эта функция уже на подходе!",
+  "@communityStoriesShareSoon": {
+    "description": "Snackbar message when share button is tapped"
+  },
+  "communityStory1Name": "Аиша (ранее Сара)",
+  "@communityStory1Name": {
+    "description": "Name for community story 1"
+  },
+  "communityStory1Location": "Техас, США",
+  "@communityStory1Location": {
+    "description": "Location for community story 1"
+  },
+  "communityStory1Time": "2 года",
+  "@communityStory1Time": {
+    "description": "Time as Muslim for community story 1"
+  },
+  "communityStory1Text": "Я узнала об Исламе, собирая материал для курсовой работы. Я ожидала найти то, о чём рассказывали в СМИ. Вместо этого я нашла покой, логику и Бога, в Котором всё обрело смысл. Через полгода я произнесла шахаду. Труднее всего было не научиться молиться, а рассказать семье. Но, альхамдулиллях, спустя два года моя мама сама задаёт мне вопросы об Исламе.",
+  "@communityStory1Text": {
+    "description": "Story text for community story 1"
+  },
+  "communityStory2Name": "Юсуф (ранее Джеймс)",
+  "@communityStory2Name": {
+    "description": "Name for community story 2"
+  },
+  "communityStory2Location": "Лондон, Великобритания",
+  "@communityStory2Location": {
+    "description": "Location for community story 2"
+  },
+  "communityStory2Time": "4 года",
+  "@communityStory2Time": {
+    "description": "Time as Muslim for community story 2"
+  },
+  "communityStory2Text": "Я пришёл к Исламу после долгих лет поисков. Христианство, буддизм, атеизм — ничто не заполняло пустоту. Коллега-мусульманин пригласил меня на пятничную молитву. Я сидел в заднем ряду и плакал всё время. Я даже не понимал почему. На следующей неделе я произнёс шахаду. Община окружила меня заботой, словно семья, о которой я и не знал, что она мне нужна.",
+  "@communityStory2Text": {
+    "description": "Story text for community story 2"
+  },
+  "communityStory3Name": "Марьям (ранее Мария)",
+  "@communityStory3Name": {
+    "description": "Name for community story 3"
+  },
+  "communityStory3Location": "Мехико, Мексика",
+  "@communityStory3Location": {
+    "description": "Location for community story 3"
+  },
+  "communityStory3Time": "1 год",
+  "@communityStory3Time": {
+    "description": "Time as Muslim for community story 3"
+  },
+  "communityStory3Text": "Быть латиноамериканкой и мусульманкой — это как суперсила. Я нашла Ислам через видео на YouTube в два часа ночи. Я смотрела часами. Понятие таухида — что Бог один, у Него нет сотоварищей и нет изображений — отозвалось во мне очень глубоко. Испаноязычные сёстры в мечети сразу приняли меня как родную.",
+  "@communityStory3Text": {
+    "description": "Story text for community story 3"
+  },
+  "communityStory4Name": "Ибрахим (ранее Дэвид)",
+  "@communityStory4Name": {
+    "description": "Name for community story 4"
+  },
+  "communityStory4Location": "Торонто, Канада",
+  "@communityStory4Location": {
+    "description": "Location for community story 4"
+  },
+  "communityStory4Time": "6 лет",
+  "@communityStory4Time": {
+    "description": "Time as Muslim for community story 4"
+  },
+  "communityStory4Text": "Я сын пастора. У меня были вопросы о Троице, на которые никто не мог ответить. Когда я впервые прочитал Коран, мне показалось, что я читаю то, во что уже верю. Я произнёс шахаду тихо, наедине с собой, а потом ещё раз — в мечети. Лучшее решение в моей жизни.",
+  "@communityStory4Text": {
+    "description": "Story text for community story 4"
+  },
+  "communityStory5Name": "Фатима (ранее Дженнифер)",
+  "@communityStory5Name": {
+    "description": "Name for community story 5"
+  },
+  "communityStory5Location": "Сидней, Австралия",
+  "@communityStory5Location": {
+    "description": "Location for community story 5"
+  },
+  "communityStory5Time": "3 года",
+  "@communityStory5Time": {
+    "description": "Time as Muslim for community story 5"
+  },
+  "communityStory5Text": "Мой путь начался с хиджаба. Я надела его на спор и почувствовала себя... защищённой. Я начала читать об Исламе и не могла остановиться. Через три месяца я произнесла шахаду. Люди спрашивают, от чего я отказалась. Я отвечаю: я отказалась от пустоты.",
+  "@communityStory5Text": {
+    "description": "Story text for community story 5"
+  },
+  "communityStory6Name": "Омар (ранее Кевин)",
+  "@communityStory6Name": {
+    "description": "Name for community story 6"
+  },
+  "communityStory6Location": "Йоханнесбург, ЮАР",
+  "@communityStory6Location": {
+    "description": "Location for community story 6"
+  },
+  "communityStory6Time": "5 лет",
+  "@communityStory6Time": {
+    "description": "Time as Muslim for community story 6"
+  },
+  "communityStory6Text": "Я вырос в неблагополучном районе. Ислам дал мне дисциплину, цель и братство. Когда я впервые совершил суджуд, что-то во мне раскрылось — в самом лучшем смысле. Я плакал и не мог объяснить почему. Теперь я наставляю других молодых ребят, которые ищут свой путь к дину.",
+  "@communityStory6Text": {
+    "description": "Story text for community story 6"
+  },
+  "inspiredByRealStories": "По мотивам реальных историй принявших Ислам",
+  "@inspiredByRealStories": {
+    "description": "Secondary tagline on Community Stories screen header"
+  },
+  "storyFormTitle": "Поделитесь своей историей",
+  "@storyFormTitle": {
+    "description": "Title of the story submission bottom sheet"
+  },
+  "storyFormNameLabel": "Ваше имя",
+  "@storyFormNameLabel": {
+    "description": "Label for the name field in the story submission form"
+  },
+  "storyFormNameHint": "Имя или напишите «Анонимно»",
+  "@storyFormNameHint": {
+    "description": "Hint text for the name field in the story submission form"
+  },
+  "storyFormCountryLabel": "Страна",
+  "@storyFormCountryLabel": {
+    "description": "Label for the country field in the story submission form"
+  },
+  "storyFormCountryHint": "Откуда вы?",
+  "@storyFormCountryHint": {
+    "description": "Hint text for the country field in the story submission form"
+  },
+  "storyFormTimeLabel": "В Исламе",
+  "@storyFormTimeLabel": {
+    "description": "Label for the time-as-Muslim field in the story submission form"
+  },
+  "storyFormTimeHint": "напр. 2 года, 6 месяцев",
+  "@storyFormTimeHint": {
+    "description": "Hint text for the time-as-Muslim field in the story submission form"
+  },
+  "storyFormStoryLabel": "Ваша история",
+  "@storyFormStoryLabel": {
+    "description": "Label for the story text field in the story submission form"
+  },
+  "storyFormStoryHint": "Расскажите о своём пути к Исламу...",
+  "@storyFormStoryHint": {
+    "description": "Hint text for the story text field in the story submission form"
+  },
+  "storyFormSubmitBtn": "Отправить историю",
+  "@storyFormSubmitBtn": {
+    "description": "Button label to submit the story form"
+  },
+  "storyFormThankYouTitle": "ДжазакАллаху хайран!",
+  "@storyFormThankYouTitle": {
+    "description": "Thank you heading shown after successful story submission"
+  },
+  "storyFormThankYouBody": "Ваша история получена. Перед публикацией мы просматриваем все присланные истории.",
+  "@storyFormThankYouBody": {
+    "description": "Thank you body text shown after successful story submission"
+  },
+  "storyFormRequiredError": "Пожалуйста, заполните все поля",
+  "@storyFormRequiredError": {
+    "description": "Validation error snackbar when story form fields are empty"
+  },
+  "subtitleYourGuideToIslam": "Ваш путеводитель по Исламу",
+  "@subtitleYourGuideToIslam": {
+    "description": "Subtitle tagline on the Revert Corner premium banner card"
+  },
+  "beginnerMode": "Режим новичка",
+  "@beginnerMode": {
+    "description": "Toggle label for Beginner Mode in Settings"
+  },
+  "beginnerModeSubtitle": "Дополнительные подсказки и советы для новых мусульман",
+  "@beginnerModeSubtitle": {
+    "description": "Subtitle for the Beginner Mode toggle in Settings"
+  },
+  "beginnerModeOn": "Режим новичка включён — по всему приложению показываются дополнительные подсказки",
+  "@beginnerModeOn": {
+    "description": "SnackBar message shown when Beginner Mode is turned on"
+  },
+  "beginnerModePrayersTip": "Совет: нажмите на каждую молитву, чтобы узнать о ней больше и увидеть молитвы-сунна",
+  "@beginnerModePrayersTip": {
+    "description": "Beginner tip banner shown at the top of the Prayers screen when Beginner Mode is on"
+  },
+  "tafsirSubtitle": "Толкование Корана",
+  "@tafsirSubtitle": {
+    "description": "Subtitle on the Tafsir screen header"
+  },
+  "tafsirComingSoon": "Тафсир этой суры скоро появится",
+  "@tafsirComingSoon": {
+    "description": "Message shown when no tafsir content is available for a surah"
+  },
+  "tafsirNotAvailable": "Тафсир недоступен",
+  "@tafsirNotAvailable": {
+    "description": "Message shown when neither hardcoded nor online tafsir content is available for a surah"
+  },
+  "scholarSource": "Источник",
+  "@scholarSource": {
+    "description": "Label for the scholar source badge on a tafsir verse card"
+  },
+  "asbabAlNuzul": "Причина ниспослания",
+  "@asbabAlNuzul": {
+    "description": "Heading for the Asbab al-Nuzul (reason for revelation) section on a tafsir verse card"
+  },
+  "transliteration": "Транслитерация",
+  "@transliteration": {
+    "description": "Label for the Latin-script transliteration of an Arabic verse"
+  },
+  "selectReciter": "Выберите чтеца",
+  "@selectReciter": {
+    "description": "Heading for the reciter selector on the Quran surah screen"
+  },
+  "playVerse": "Воспроизвести аят",
+  "@playVerse": {
+    "description": "Tooltip/label for the button that plays audio recitation of a verse"
+  },
+  "asmaUlHusna": "Асма уль-Хусна",
+  "@asmaUlHusna": {
+    "description": "Title of the 99 Names of Allah screen"
+  },
+  "asmaUlHusnaSubtitle": "99 прекрасных имён Аллаха",
+  "@asmaUlHusnaSubtitle": {
+    "description": "Subtitle on the Asma ul Husna screen"
+  },
+  "asmaHadith": "У Аллаха 99 имён. Тот, кто запомнит их, войдёт в Рай.",
+  "@asmaHadith": {
+    "description": "Hadith quoted on the Asma ul Husna screen"
+  },
+  "asmaHadithSource": "Сахих аль-Бухари, 2736",
+  "@asmaHadithSource": {
+    "description": "Citation source for the Asma ul Husna hadith"
+  },
+  "asmaSearchHint": "Поиск имён...",
+  "@asmaSearchHint": {
+    "description": "Placeholder text for the search field on the Asma ul Husna screen"
+  },
+  "asmaNoResults": "Имена не найдены",
+  "@asmaNoResults": {
+    "description": "Message shown when a search on the Asma ul Husna screen returns no results"
+  },
+  "asmaSignificance": "Значение",
+  "@asmaSignificance": {
+    "description": "Heading for the expanded explanation of a name on the Asma ul Husna screen"
+  },
+  "asmaUlHusnaTile": "99 имён",
+  "@asmaUlHusnaTile": {
+    "description": "Label for the 99 Names feature tile on the home screen"
+  },
+  "asmaUlHusnaTileSubtitle": "Имена Аллаха",
+  "@asmaUlHusnaTileSubtitle": {
+    "description": "Subtitle for the 99 Names feature tile on the home screen"
+  },
+  "onboardingTagline": "Берегите своё время. Почитайте свои молитвы.",
+  "@onboardingTagline": {
+    "description": "App tagline shown on the onboarding welcome page"
+  },
+  "onboardingChooseLanguage": "Выберите язык",
+  "@onboardingChooseLanguage": {
+    "description": "Divider label above the language picker on the onboarding welcome page"
+  },
+  "onboardingGetStarted": "Начать",
+  "@onboardingGetStarted": {
+    "description": "Button label to continue from the onboarding welcome page"
+  },
+  "onboardingLocationTitle": "Точное время молитв",
+  "@onboardingLocationTitle": {
+    "description": "Title on the onboarding location-permission page"
+  },
+  "onboardingLocationDesc": "Noor Guard нужно ваше местоположение, чтобы рассчитать точное время молитв для вашего города. Ваше местоположение никогда не сохраняется и не передаётся.",
+  "@onboardingLocationDesc": {
+    "description": "Description on the onboarding location-permission page"
+  },
+  "onboardingPrivacyBanner": "Ваша вера — личное. Ваши данные тоже остаются личными.",
+  "@onboardingPrivacyBanner": {
+    "description": "Privacy reassurance banner on the onboarding location-permission page"
+  },
+  "onboardingAllowLocation": "Разрешить геолокацию",
+  "@onboardingAllowLocation": {
+    "description": "Button label to grant location permission during onboarding"
+  },
+  "onboardingSkipForNow": "Пропустить пока",
+  "@onboardingSkipForNow": {
+    "description": "Link to skip the location-permission step during onboarding"
+  },
+  "onboardingNotificationTitle": "Не пропускайте ни одной молитвы",
+  "@onboardingNotificationTitle": {
+    "description": "Title on the onboarding notification-permission page"
+  },
+  "onboardingNotificationDesc": "Получайте уведомления с прекрасным азаном к каждой молитве. Настройте звуки и время в настройках.",
+  "@onboardingNotificationDesc": {
+    "description": "Description on the onboarding notification-permission page"
+  },
+  "onboardingAdhanAlerts": "Оповещения с азаном",
+  "@onboardingAdhanAlerts": {
+    "description": "Feature chip label on the onboarding notification-permission page"
+  },
+  "onboardingCustomTiming": "Своё время",
+  "@onboardingCustomTiming": {
+    "description": "Feature chip label on the onboarding notification-permission page"
+  },
+  "onboardingAdjustable": "Настраивается",
+  "@onboardingAdjustable": {
+    "description": "Feature chip label on the onboarding notification-permission page"
+  },
+  "onboardingEnableNotifications": "Включить уведомления",
+  "@onboardingEnableNotifications": {
+    "description": "Button label to grant notification permission during onboarding"
+  },
+  "onboardingMaybeLater": "Может, позже",
+  "@onboardingMaybeLater": {
+    "description": "Link to skip the notification-permission step during onboarding"
+  },
+  "onboardingAllSetTitle": "Всё готово!",
+  "@onboardingAllSetTitle": {
+    "description": "Title on the final onboarding completion page"
+  },
+  "onboardingAllSetDesc": "Noor Guard готов беречь ваше время\nи наполнять ваш день осознанностью.",
+  "@onboardingAllSetDesc": {
+    "description": "Description on the final onboarding completion page"
+  },
+  "onboardingPrayerTimesLabel": "Время молитв",
+  "@onboardingPrayerTimesLabel": {
+    "description": "Feature summary label on the final onboarding completion page"
+  },
+  "onboardingPrayerTimesDesc": "Точное время для вашего города",
+  "@onboardingPrayerTimesDesc": {
+    "description": "Feature summary description on the final onboarding completion page"
+  },
+  "onboardingLockScreenLabel": "Исламский экран блокировки",
+  "@onboardingLockScreenLabel": {
+    "description": "Feature summary label on the final onboarding completion page"
+  },
+  "onboardingLockScreenDesc": "Коран и дуа при каждой разблокировке",
+  "@onboardingLockScreenDesc": {
+    "description": "Feature summary description on the final onboarding completion page"
+  },
+  "onboardingPrayerGuardLabel": "Страж молитвы",
+  "@onboardingPrayerGuardLabel": {
+    "description": "Feature summary label on the final onboarding completion page"
+  },
+  "onboardingPrayerGuardDesc": "Приложения автоматически блокируются во время саляха",
+  "@onboardingPrayerGuardDesc": {
+    "description": "Feature summary description on the final onboarding completion page"
+  },
+  "onboardingEnterApp": "Войти в Noor Guard",
+  "@onboardingEnterApp": {
+    "description": "Button label to finish onboarding and enter the app"
+  },
+  "adhan": "Азан",
+  "@adhan": {
+    "description": "Title of the Adhan (call to prayer) audio player screen, and label for its feature tile on the home screen"
+  },
+  "adhanSubtitle": "Призыв к молитве",
+  "@adhanSubtitle": {
+    "description": "Subtitle for the Adhan screen and its feature tile on the home screen"
+  },
+  "adhanDescription": "Азан — это исламский призыв к молитве, который звучит 5 раз в день, приглашая верующих к поклонению.",
+  "@adhanDescription": {
+    "description": "Brief description of what the Adhan is, shown at the top of the Adhan screen"
+  },
+  "makkahStyle": "Мекка",
+  "@makkahStyle": {
+    "description": "Name of the Makkah adhan style"
+  },
+  "madinahStyle": "Медина",
+  "@madinahStyle": {
+    "description": "Name of the Madinah adhan style"
+  },
+  "egyptianStyle": "Египетский",
+  "@egyptianStyle": {
+    "description": "Name of the Egyptian adhan style"
+  },
+  "adhanPlaying": "Сейчас звучит",
+  "@adhanPlaying": {
+    "description": "Label shown in the mini player when an adhan is playing"
+  },
+  "makkahDescription": "Традиционный призыв к молитве из Заповедной мечети в Мекке.",
+  "@makkahDescription": {
+    "description": "Description of the Makkah adhan style"
+  },
+  "madinahDescription": "Умиротворяющее исполнение в стиле Мечети Пророка в Медине.",
+  "@madinahDescription": {
+    "description": "Description of the Madinah adhan style"
+  },
+  "egyptianDescription": "Мелодичный азан в египетском стиле, известный богатством чтения.",
+  "@egyptianDescription": {
+    "description": "Description of the Egyptian adhan style"
+  },
+  "adhanCallToWorship": "Призыв к молитве",
+  "@adhanCallToWorship": {
+    "description": "Subtitle shown above the Adhan description on the Adhan screen"
+  },
+  "adhanDescriptionFull": "Азан — это исламский призыв к молитве, который звучит 5 раз в день, приглашая верующих к поклонению.",
+  "@adhanDescriptionFull": {
+    "description": "Full description of what the Adhan is, shown at the top of the Adhan screen"
+  },
+  "alafasyStyle": "Мишари Аль-Афаси",
+  "@alafasyStyle": {
+    "description": "Name of the Mishary Alafasy adhan style"
+  },
+  "alaqsaStyle": "Аль-Акса",
+  "@alaqsaStyle": {
+    "description": "Name of the Al-Aqsa adhan style"
+  },
+  "turkishStyle": "Турецкий",
+  "@turkishStyle": {
+    "description": "Name of the Turkish adhan style"
+  },
+  "pakistaniStyle": "Пакистанский",
+  "@pakistaniStyle": {
+    "description": "Name of the Pakistani adhan style"
+  },
+  "indonesianStyle": "Индонезийский",
+  "@indonesianStyle": {
+    "description": "Name of the Indonesian adhan style"
+  },
+  "alafasyDescription": "Проникновенное исполнение знаменитого чтеца Мишари Рашида Аль-Афаси.",
+  "@alafasyDescription": {
+    "description": "Description of the Mishary Alafasy adhan style"
+  },
+  "alaqsaDescription": "Призыв к молитве, звучащий из мечети Аль-Акса в Иерусалиме — третьей святыни Ислама.",
+  "@alaqsaDescription": {
+    "description": "Description of the Al-Aqsa adhan style"
+  },
+  "turkishDescription": "Традиционный турецкий эзан с его особым мелодичным макамом.",
+  "@turkishDescription": {
+    "description": "Description of the Turkish adhan style"
+  },
+  "pakistaniDescription": "Проникновенный азан в южноазиатской традиции, звучащий по всему Пакистану.",
+  "@pakistaniDescription": {
+    "description": "Description of the Pakistani adhan style"
+  },
+  "indonesianDescription": "Мелодичный азан в индонезийском стиле, любимый по всему архипелагу.",
+  "@indonesianDescription": {
+    "description": "Description of the Indonesian adhan style"
+  },
+  "thisWeek": "Эта неделя",
+  "@thisWeek": {
+    "description": "Header for the weekly prayer summary card"
+  },
+  "weeklyProgress": "{count} из 35 молитв на этой неделе",
+  "@weeklyProgress": {
+    "description": "Shows how many of the 35 weekly prayers (7 days x 5 prayers) have been completed",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "bestDay": "Лучший день",
+  "@bestDay": {
+    "description": "Label preceding the best day of the week for prayer completion"
+  },
+  "prayerStats": "Статистика молитв",
+  "@prayerStats": {
+    "description": "Title of the Prayer Statistics screen and tooltip for its app bar button"
+  },
+  "completionRate": "Доля совершённых",
+  "@completionRate": {
+    "description": "Label for the overall prayer completion percentage"
+  },
+  "bestPrayer": "Самая стабильная молитва",
+  "@bestPrayer": {
+    "description": "Label for the prayer the user completes most often"
+  },
+  "hardestPrayer": "Чаще всего пропускается",
+  "@hardestPrayer": {
+    "description": "Label for the prayer the user misses most often"
+  },
+  "totalPrayersCompleted": "Совершено молитв: {count}",
+  "@totalPrayersCompleted": {
+    "description": "Total number of prayers completed since the user started using the app",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "last7Days": "Последние 7 дней",
+  "@last7Days": {
+    "description": "Header for the weekly bar chart on the Prayer Statistics screen"
+  },
+  "thisMonth": "Этот месяц",
+  "@thisMonth": {
+    "description": "Header for the monthly breakdown on the Prayer Statistics screen"
+  },
+  "fullDays": "Полные дни",
+  "@fullDays": {
+    "description": "Label for days this month where all 5 prayers were completed"
+  },
+  "partialDays": "Неполные дни",
+  "@partialDays": {
+    "description": "Label for days this month where some but not all prayers were completed"
+  },
+  "missedDays": "Пропущенные дни",
+  "@missedDays": {
+    "description": "Label for days this month where no prayers were completed"
+  },
+  "missedPrayerBadge": "Пропущена",
+  "@missedPrayerBadge": {
+    "description": "Small badge shown on a prayer card when its prayer time has passed without being marked complete"
+  },
+  "makeItUp": "Восполнить",
+  "@makeItUp": {
+    "description": "Button label to mark a missed prayer as completed as a Qada (makeup) prayer"
+  },
+  "qadaExplanation": "Если вы пропустили молитву, вы всё ещё можете совершить её как када (восполняемую) молитву.",
+  "@qadaExplanation": {
+    "description": "Brief explanation for new Muslims about making up a missed prayer"
+  },
+  "noStatsYet": "Продолжайте отмечать свои молитвы, и здесь появится статистика.",
+  "@noStatsYet": {
+    "description": "Message shown on the Prayer Statistics screen when there is no prayer history yet"
+  },
+  "notEnoughData": "Пока недостаточно данных",
+  "@notEnoughData": {
+    "description": "Placeholder shown for best/hardest prayer when there isn't enough history to determine them"
+  },
+  "continuousPlay": "Непрерывно",
+  "sleepTimer": "Таймер сна",
+  "verseCount": "Аят {verse} из {total}",
+  "verseTafsir": "Тафсир аята",
+  "tafsirOfTheDay": "Тафсир дня",
+  "dailyInsight": "Мысль дня",
+  "keyThemes": "Ключевые темы и уроки",
+  "readFullSurah": "Читать суру полностью",
+  "surahIntroduction": "Введение к суре",
+  "verses": "аятов",
+  "loadingTafsir": "Загрузка тафсира...",
+  "keepAliveNotificationText": "Уведомления о молитвах активны",
+  "@keepAliveNotificationText": {
+    "description": "Body text of the persistent foreground-service notification that keeps prayer alarms reliable"
+  },
+  "keepAliveChannelName": "Уведомления о молитвах",
+  "@keepAliveChannelName": {
+    "description": "Android notification channel name for the persistent keep-alive notification"
+  },
+  "keepAliveChannelDescription": "Поддерживает работу Noor Guard в фоновом режиме, чтобы напоминания о молитвах никогда не пропадали.",
+  "@keepAliveChannelDescription": {
+    "description": "Android notification channel description for the persistent keep-alive notification"
+  },
+  "notifSetupTitle": "Включите оповещения на экране блокировки",
+  "@notifSetupTitle": {
+    "description": "Title of the notification/permission setup guide screen"
+  },
+  "notifSetupSubtitle": "Чтобы вы никогда не пропустили азан — даже когда телефон заблокирован. Займёт около минуты.",
+  "@notifSetupSubtitle": {
+    "description": "Subtitle of the notification/permission setup guide screen"
+  },
+  "notifSetupSamsungBanner": "У вас Samsung Galaxy (включая Fold/Flip)? Samsung добавляет дополнительные переключатели помимо стандартного Android — шаги 4 и 6 ниже покажут, где именно их найти.",
+  "@notifSetupSamsungBanner": {
+    "description": "Banner inviting Samsung users to pay attention to the Samsung-specific steps"
+  },
+  "notifSetupStep1Title": "Разрешить уведомления",
+  "@notifSetupStep1Title": {
+    "description": "Title of setup guide step 1"
+  },
+  "notifSetupStep1Description": "Базовое разрешение, без которого Noor Guard вообще не сможет вас оповещать.",
+  "@notifSetupStep1Description": {
+    "description": "Description of setup guide step 1"
+  },
+  "notifSetupStep1Action": "Разрешить уведомления",
+  "@notifSetupStep1Action": {
+    "description": "Action button label for setup guide step 1"
+  },
+  "notifSetupStep2Title": "Будильники и напоминания",
+  "@notifSetupStep2Title": {
+    "description": "Title of setup guide step 2"
+  },
+  "notifSetupStep2Description": "Позволяет сигналам о молитве срабатывать точно в назначенное время, даже когда телефон бездействует или в режиме энергосбережения.",
+  "@notifSetupStep2Description": {
+    "description": "Description of setup guide step 2"
+  },
+  "notifSetupStep2Action": "Открыть настройки будильников",
+  "@notifSetupStep2Action": {
+    "description": "Action button label for setup guide step 2"
+  },
+  "notifSetupStep3Title": "Поверх других приложений",
+  "@notifSetupStep3Title": {
+    "description": "Title of setup guide step 3"
+  },
+  "notifSetupStep3Description": "Позволяет полноэкранному окну молитвы отображаться поверх экрана блокировки и любых открытых приложений.",
+  "@notifSetupStep3Description": {
+    "description": "Description of setup guide step 3"
+  },
+  "notifSetupStep3Action": "Открыть настройки",
+  "@notifSetupStep3Action": {
+    "description": "Action button label for setup guide step 3"
+  },
+  "notifSetupStep4Title": "Всплывающие / полноэкранные оповещения",
+  "@notifSetupStep4Title": {
+    "description": "Title of setup guide step 4"
+  },
+  "notifSetupStep4Description": "Позволяет экрану азана появляться поверх экрана блокировки, а не оставаться беззвучным баннером.",
+  "@notifSetupStep4Description": {
+    "description": "Description of setup guide step 4"
+  },
+  "notifSetupStep4SamsungNote": "На телефонах Samsung Galaxy (включая Fold/Flip): откройте «Настройки» → нажмите «Сигнал времени молитвы», затем включите «Всплывающее уведомление» (на Fold/Flip — «Всплывающее окно внешнего экрана»). Это переключатель только для Samsung — именно он выводит экран азана поверх экрана блокировки.",
+  "@notifSetupStep4SamsungNote": {
+    "description": "Samsung-specific instructions shown under setup guide step 4"
+  },
+  "notifSetupStep4Action": "Открыть настройки уведомлений",
+  "@notifSetupStep4Action": {
+    "description": "Action button label for setup guide step 4"
+  },
+  "notifSetupStep5Title": "Надёжная доставка уведомлений",
+  "@notifSetupStep5Title": {
+    "description": "Title of setup guide step 5 (battery optimization)"
+  },
+  "notifSetupStep5Description": "Не даёт Android замедлять или задерживать Noor Guard в фоне, чтобы сигналы и напоминания о молитвах всегда приходили вовремя.",
+  "@notifSetupStep5Description": {
+    "description": "Description of setup guide step 5 (battery optimization)"
+  },
+  "notifSetupStep5Action": "Отключить оптимизацию батареи",
+  "@notifSetupStep5Action": {
+    "description": "Action button label for setup guide step 5 (battery optimization)"
+  },
+  "notifSetupStep6Title": "Приложения без перевода в сон",
+  "@notifSetupStep6Title": {
+    "description": "Title of setup guide step 6 (Samsung-only background usage limits)"
+  },
+  "notifSetupStep6Description": "Диспетчер батареи Samsung может «усыпить» Noor Guard и незаметно блокировать сигналы о молитвах. Добавление в список «Неусыпляемые приложения» решает эту проблему.",
+  "@notifSetupStep6Description": {
+    "description": "Description of setup guide step 6 (Samsung-only background usage limits)"
+  },
+  "notifSetupStep6SamsungNote": "Настройки → Обслуживание устройства → Ограничения в фоновом режиме → Неусыпляемые приложения → нажмите «+» → выберите Noor Guard.",
+  "@notifSetupStep6SamsungNote": {
+    "description": "Manual navigation instructions shown under setup guide step 6"
+  },
+  "notifSetupStep6Action": "Открыть настройки батареи",
+  "@notifSetupStep6Action": {
+    "description": "Action button label for setup guide step 6"
+  },
+  "notifSetupStatusChecking": "Проверка…",
+  "@notifSetupStatusChecking": {
+    "description": "Status chip label while a setup guide step's status is being checked"
+  },
+  "notifSetupStatusEnabled": "Включено",
+  "@notifSetupStatusEnabled": {
+    "description": "Status chip label when a setup guide step is already satisfied"
+  },
+  "notifSetupStatusNeeded": "Требуется",
+  "@notifSetupStatusNeeded": {
+    "description": "Status chip label when a setup guide step still needs action"
+  },
+  "notifSetupStatusManual": "Вручную",
+  "@notifSetupStatusManual": {
+    "description": "Status chip label for a setup guide step whose completion can't be checked automatically"
+  },
+  "notifSetupContinueButton": "Перейти в Noor Guard",
+  "@notifSetupContinueButton": {
+    "description": "Footer button label once every setup guide step is satisfied"
+  },
+  "notifSetupLaterButton": "Закончу позже",
+  "@notifSetupLaterButton": {
+    "description": "Footer button label on first launch before every step is satisfied"
+  },
+  "notifSetupDoneButton": "Готово",
+  "@notifSetupDoneButton": {
+    "description": "Footer button label on a re-visit of the setup guide before every step is satisfied"
+  },
+  "testNotificationButton": "Отправить тестовое уведомление (10 с)",
+  "@testNotificationButton": {
+    "description": "Settings row: sends a 10-second test notification"
+  },
+  "testNotificationSnack": "Тестовое уведомление придёт через 10 секунд",
+  "@testNotificationSnack": {
+    "description": "Snackbar shown after tapping the test notification button"
+  },
+  "testLockAlarmButton": "Тест полноэкранного будильника (10 с)",
+  "@testLockAlarmButton": {
+    "description": "Settings row: triggers a 10-second test of the Android full-screen lock alarm"
+  },
+  "testLockAlarmSnack": "Будильник сработает через 10 секунд — заблокируйте телефон сейчас",
+  "@testLockAlarmSnack": {
+    "description": "Snackbar shown after tapping the test lock alarm button"
+  },
+  "testAdhanForegroundButton": "Тест Азана в приложении (на переднем плане)",
+  "@testAdhanForegroundButton": {
+    "description": "Settings row: plays the full adhan in-app while the app is open"
+  },
+  "testAdhanForegroundSnack": "Воспроизводится полный азан с беззвучным баннером",
+  "@testAdhanForegroundSnack": {
+    "description": "Snackbar shown after tapping the in-app adhan test button"
+  },
+  "testRequiresNotificationsOn": "Сначала включите уведомления о намазе, чтобы проверить это",
+  "@testRequiresNotificationsOn": {
+    "description": "Snackbar shown when tapping any Settings test button (test notification, test lock alarm, test in-app adhan) while the master Prayer Notifications toggle is off"
+  },
+  "lockScreenSetupGuideButton": "Инструкция по настройке оповещений на экране блокировки",
+  "@lockScreenSetupGuideButton": {
+    "description": "Settings row: opens the Android lock screen alert setup guide"
+  },
+  "couldNotOpenPrivacyPolicy": "Не удалось открыть Политику конфиденциальности",
+  "@couldNotOpenPrivacyPolicy": {
+    "description": "Snackbar shown when the privacy policy link fails to open"
+  },
+  "couldNotOpenEmailApp": "Не удалось открыть почтовое приложение",
+  "@couldNotOpenEmailApp": {
+    "description": "Snackbar shown when no email app is available to send feedback"
+  },
+  "blockDurationLabel": "Длительность блокировки",
+  "@blockDurationLabel": {
+    "description": "Label above the block-duration preset pills"
+  },
+  "privacyAndTrust": "Конфиденциальность и доверие",
+  "@privacyAndTrust": {
+    "description": "Settings section header"
+  },
+  "noorGuardMotto": "«Если этому не место в мечети,\nэтому не место в Noor Guard».",
+  "@noorGuardMotto": {
+    "description": "Italic motto quote in the Privacy & Trust card"
+  },
+  "openingAppStore": "Открываем App Store…",
+  "@openingAppStore": {
+    "description": "Snackbar shown when the rate-app row is tapped (placeholder action)"
+  },
+  "openingShareSheet": "Открываем меню «Поделиться»…",
+  "@openingShareSheet": {
+    "description": "Snackbar shown when the share-app row is tapped (placeholder action)"
+  },
+  "openingSupportEmail": "Открываем письмо в поддержку…",
+  "@openingSupportEmail": {
+    "description": "Snackbar shown when the contact-support row is tapped (placeholder action)"
+  },
+  "openingTermsOfService": "Открываем Условия использования…",
+  "@openingTermsOfService": {
+    "description": "Snackbar shown when the terms-of-service row is tapped (placeholder action)"
+  },
+  "duration30Min": "30 мин",
+  "@duration30Min": {
+    "description": "App blocking duration preset pill"
+  },
+  "duration1Hour": "1 час",
+  "@duration1Hour": {
+    "description": "App blocking duration preset pill"
+  },
+  "durationPrayerWindowOnly": "Только время намаза",
+  "@durationPrayerWindowOnly": {
+    "description": "App blocking duration preset pill — blocks only for the prayer window"
+  },
+  "hoursAbbreviation": "ч",
+  "@hoursAbbreviation": {
+    "description": "Abbreviation for 'hours', used after a number (e.g. '1.5 hr')"
+  },
+  "cancelTimerButton": "Отменить таймер",
+  "@cancelTimerButton": {
+    "description": "Button to cancel an active sleep timer"
+  },
+  "custom": "Свой вариант",
+  "@custom": {
+    "description": "Generic 'Custom' option label (e.g. custom sleep timer duration)"
+  },
+  "customTimerMinutesTitle": "Свой таймер (минуты)",
+  "@customTimerMinutesTitle": {
+    "description": "Dialog title for entering a custom sleep timer duration in minutes"
+  },
+  "customTimerHint": "напр. 20",
+  "@customTimerHint": {
+    "description": "Text field hint for the custom sleep timer minutes input"
+  },
+  "cancel": "Отмена",
+  "@cancel": {
+    "description": "Generic Cancel button label"
+  },
+  "start": "Начать",
+  "@start": {
+    "description": "Generic Start button label (e.g. starting a custom sleep timer)"
+  },
+  "travel": "Путешествие",
+  "@travel": {
+    "description": "Dua category label"
+  },
+  "anxietyAndStress": "Тревога и стресс",
+  "@anxietyAndStress": {
+    "description": "Dua category label"
+  },
+  "gratitude": "Благодарность",
+  "@gratitude": {
+    "description": "Dua category label"
+  },
+  "protection": "Защита",
+  "@protection": {
+    "description": "Dua category label"
+  },
+  "family": "Семья",
+  "@family": {
+    "description": "Dua category label"
+  },
+  "forgiveness": "Прощение",
+  "@forgiveness": {
+    "description": "Dua category label"
+  },
+  "appBlockingSetupHeadline": "Береги своё время — береги свой намаз",
+  "@appBlockingSetupHeadline": {
+    "description": "Headline on the App Blocking accessibility permission setup screen"
+  },
+  "appBlockingSetupBody": "Noor Guard использует службу специальных возможностей Android только для того, чтобы замечать, когда заблокированное приложение открывается во время намаза. Он никогда не читает ваши сообщения, фотографии или другие личные данные.",
+  "@appBlockingSetupBody": {
+    "description": "Explanation of why Accessibility permission is needed, shown on the setup screen"
+  },
+  "appBlockingAccessibilityStatusOn": "Доступ к специальным возможностям предоставлен",
+  "@appBlockingAccessibilityStatusOn": {
+    "description": "Status line shown when the Accessibility permission has been granted"
+  },
+  "appBlockingAccessibilityStatusOff": "Доступ к специальным возможностям не предоставлен",
+  "@appBlockingAccessibilityStatusOff": {
+    "description": "Status line shown when the Accessibility permission has not been granted"
+  },
+  "appBlockingOpenSettings": "Открыть настройки специальных возможностей",
+  "@appBlockingOpenSettings": {
+    "description": "Button that opens the system Accessibility settings page"
+  },
+  "appBlockingSetupNotNow": "Не сейчас",
+  "@appBlockingSetupNotNow": {
+    "description": "Button to dismiss the App Blocking setup screen without granting permission"
+  },
+  "appBlockingEnableToggle": "Включить блокировку приложений",
+  "@appBlockingEnableToggle": {
+    "description": "Master on/off toggle label on the App Blocking settings screen"
+  },
+  "appBlockingModeLabel": "Режим блокировки",
+  "@appBlockingModeLabel": {
+    "description": "Section label for the Soft/Firm/Hard blocking mode picker"
+  },
+  "appBlockingModeSoft": "Мягкий",
+  "@appBlockingModeSoft": {
+    "description": "Name of the gentle blocking mode (reminder notification only)"
+  },
+  "appBlockingModeSoftDesc": "Только деликатное напоминание — приложения остаются открытыми",
+  "@appBlockingModeSoftDesc": {
+    "description": "Description of Soft blocking mode"
+  },
+  "appBlockingModeFirm": "Строгий",
+  "@appBlockingModeFirm": {
+    "description": "Name of the Firm blocking mode (blocks with an easy bypass)"
+  },
+  "appBlockingModeFirmDesc": "Блокирует приложение, но с быстрым обходом",
+  "@appBlockingModeFirmDesc": {
+    "description": "Description of Firm blocking mode"
+  },
+  "appBlockingModeHard": "Жёсткий",
+  "@appBlockingModeHard": {
+    "description": "Name of the Hard blocking mode (full block)"
+  },
+  "appBlockingModeHardDesc": "Полная блокировка — разблокирует только «Я совершил намаз»",
+  "@appBlockingModeHardDesc": {
+    "description": "Description of Hard blocking mode"
+  },
+  "appBlockingSelectPrayersLabel": "Блокировать во время этих намазов",
+  "@appBlockingSelectPrayersLabel": {
+    "description": "Section label for the per-prayer toggle list"
+  },
+  "appBlockingBufferBeforeLabel": "Начинать до намаза",
+  "@appBlockingBufferBeforeLabel": {
+    "description": "Label for the pre-prayer buffer-minutes picker"
+  },
+  "appBlockingBufferAfterLabel": "Снимать после намаза",
+  "@appBlockingBufferAfterLabel": {
+    "description": "Label for the post-prayer buffer-minutes picker"
+  },
+  "appBlockingMinutesShort": "{count} мин",
+  "@appBlockingMinutesShort": {
+    "description": "Short minute duration label shown on the buffer pickers, e.g. '5 min'",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appBlockingAppsTitle": "Заблокированные приложения",
+  "@appBlockingAppsTitle": {
+    "description": "Section title for the list of apps the user has chosen to block"
+  },
+  "appBlockingSelectAppsButton": "Выбрать приложения для блокировки",
+  "@appBlockingSelectAppsButton": {
+    "description": "Button that opens the installed-apps picker"
+  },
+  "appBlockingSearchHint": "Поиск установленных приложений",
+  "@appBlockingSearchHint": {
+    "description": "Search field placeholder in the installed-apps picker"
+  },
+  "appBlockingNoAppsSelected": "Приложения ещё не выбраны",
+  "@appBlockingNoAppsSelected": {
+    "description": "Empty state shown when no apps have been chosen to block"
+  },
+  "appBlockingAppsSelectedCount": "{count, plural, =0{Нет заблокированных приложений} one{{count} приложение заблокировано} few{{count} приложения заблокировано} many{{count} приложений заблокировано} other{{count} приложения заблокировано}}",
+  "@appBlockingAppsSelectedCount": {
+    "description": "Summary count of how many apps are currently blocked",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appBlockingTestSectionLabel": "Проверка",
+  "@appBlockingTestSectionLabel": {
+    "description": "Section label for the on-device App Blocking test button"
+  },
+  "appBlockingTestDescription": "Активируйте блокировку приложений на 2 минуты, чтобы убедиться, что она работает на этом устройстве.",
+  "@appBlockingTestDescription": {
+    "description": "Explains what the 2-minute test block window button does"
+  },
+  "appBlockingTestButton": "Проверить блокировку приложений (2 минуты)",
+  "@appBlockingTestButton": {
+    "description": "Button that activates a 2-minute test App Blocking window"
+  },
+  "appBlockingTestActiveSnackbar": "Блокировка приложений активна 2 минуты — попробуйте открыть заблокированное приложение",
+  "@appBlockingTestActiveSnackbar": {
+    "description": "Snackbar shown after the test block window is activated"
+  },
+  "appBlockingPermissionNeeded": "Включите доступ к специальным возможностям, чтобы начать блокировку",
+  "@appBlockingPermissionNeeded": {
+    "description": "Prompt shown when blocking is enabled but Accessibility permission is missing"
+  },
+  "appBlockingIosComingSoonTitle": "Доступ к Экранному времени — скоро",
+  "@appBlockingIosComingSoonTitle": {
+    "description": "Title of the iOS placeholder card shown instead of the live app picker"
+  },
+  "appBlockingIosComingSoonBody": "Для блокировки приложений на iOS нужно разрешение Apple «Экранное время», которое мы ещё настраиваем. Мы сообщим вам, как только всё будет готово.",
+  "@appBlockingIosComingSoonBody": {
+    "description": "Body text of the iOS placeholder card"
+  },
+  "appBlockingHeadline1": "Время намаза",
+  "@appBlockingHeadline1": {
+    "description": "First of two alternating headlines shown on the full-screen block screen"
+  },
+  "appBlockingHeadline2": "Береги своё время",
+  "@appBlockingHeadline2": {
+    "description": "Second of two alternating headlines shown on the full-screen block screen"
+  },
+  "appBlockingDefaultTitle": "Время намаза",
+  "@appBlockingDefaultTitle": {
+    "description": "Big title fallback on the block screen when no specific prayer name is available (e.g. a manual on-device test window)"
+  },
+  "appBlockingIPrayedButton": "Я совершил намаз",
+  "@appBlockingIPrayedButton": {
+    "description": "Primary button on the block screen that immediately dismisses the block"
+  },
+  "appBlockingReadAyahsButton": "Прочитать 3 аята",
+  "@appBlockingReadAyahsButton": {
+    "description": "Secondary button on the block screen that opens the Quran reader as an alternative way to dismiss the block"
+  },
+  "appBlockingEmergencyBypass": "Экстренный обход",
+  "@appBlockingEmergencyBypass": {
+    "description": "Small dimmed button at the bottom of the block screen for emergencies"
+  },
+  "appBlockingSkipForNow": "Пропустить пока",
+  "@appBlockingSkipForNow": {
+    "description": "Clearly visible button shown only in Firm mode's block screen that dismisses it immediately, with no prayer confirmation or ayah reading required"
+  },
+  "appBlockingBypassConfirmTitle": "Прервать вашу серию?",
+  "@appBlockingBypassConfirmTitle": {
+    "description": "Title of the confirmation dialog shown before an emergency bypass in Hard mode"
+  },
+  "appBlockingBypassConfirmBody": "Обход сейчас сбросит вашу серию намазов. Если это действительно чрезвычайная ситуация, вы можете продолжить.",
+  "@appBlockingBypassConfirmBody": {
+    "description": "Body text of the emergency bypass confirmation dialog"
+  },
+  "appBlockingBypassConfirmContinue": "Всё равно обойти",
+  "@appBlockingBypassConfirmContinue": {
+    "description": "Confirm button on the emergency bypass dialog"
+  },
+  "appBlockingBypassConfirmCancel": "Назад",
+  "@appBlockingBypassConfirmCancel": {
+    "description": "Cancel button on the emergency bypass dialog"
+  },
+  "appBlockingSoftReminderTitle": "Деликатное напоминание",
+  "@appBlockingSoftReminderTitle": {
+    "description": "Notification title used in Soft blocking mode"
+  },
+  "appBlockingSoftReminderBody": "Наступило время намаза — подумайте о том, чтобы отвлечься на минуту.",
+  "@appBlockingSoftReminderBody": {
+    "description": "Notification body used in Soft blocking mode"
+  },
+  "quranChallengeBannerTitle": "Прочитайте 3 аята, чтобы разблокировать",
+  "@quranChallengeBannerTitle": {
+    "description": "Banner title shown in the Quran reader when opened from the block screen's ayah challenge"
+  },
+  "quranChallengeBannerProgress": "Прочитано аятов: {count} из {total}",
+  "@quranChallengeBannerProgress": {
+    "description": "Progress text in the ayah-challenge banner",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "quranChallengeComplete": "Отлично — приложения разблокированы",
+  "@quranChallengeComplete": {
+    "description": "Message shown when the ayah-challenge is completed and the block is lifted"
+  },
+  "focusBlockHeadline1": "Сохраняйте сосредоточенность",
+  "@focusBlockHeadline1": {
+    "description": "First of two alternating headlines shown on the block screen during an active Focus Mode session"
+  },
+  "focusBlockHeadline2": "Продолжайте",
+  "@focusBlockHeadline2": {
+    "description": "Second of two alternating headlines shown on the block screen during an active Focus Mode session"
+  },
+  "endFocusSessionButton": "Завершить сеанс фокусировки",
+  "@endFocusSessionButton": {
+    "description": "Primary button on the block screen when it was triggered by an active Focus Mode session (in place of \"I Prayed\")"
+  },
+  "focusPaused": "Приостановлено на время намаза",
+  "@focusPaused": {
+    "description": "Status label shown on the Focus Mode timer when it's automatically paused during an active prayer block window"
+  },
+  "selectLocationTitle": "Выберите местоположение",
+  "@selectLocationTitle": {
+    "description": "Title of the location-management bottom sheet opened from the Qibla screen"
+  },
+  "useCurrentLocation": "Использовать текущее местоположение",
+  "@useCurrentLocation": {
+    "description": "Row label in the location sheet for switching back to the device's live GPS position"
+  },
+  "savedLocationsHeader": "Сохранённые местоположения",
+  "@savedLocationsHeader": {
+    "description": "Section heading above the list of saved locations in the location sheet"
+  },
+  "noSavedLocationsYet": "Пока нет сохранённых местоположений. Найдите город ниже, чтобы добавить.",
+  "@noSavedLocationsYet": {
+    "description": "Empty-state message shown in the location sheet when no locations have been saved"
+  },
+  "searchCityHint": "Введите название города…",
+  "@searchCityHint": {
+    "description": "Hint text for the city-name search field in the location sheet"
+  },
+  "addLocationTooltip": "Добавить местоположение",
+  "@addLocationTooltip": {
+    "description": "Tooltip for the button that adds the searched city as a saved location"
+  },
+  "deleteLocationTooltip": "Удалить местоположение",
+  "@deleteLocationTooltip": {
+    "description": "Tooltip for the button that deletes a saved location"
+  },
+  "locationNotFound": "Местоположение не найдено. Попробуйте другой запрос.",
+  "@locationNotFound": {
+    "description": "Error message shown when a searched city name can't be geocoded"
+  },
+  "maxLocationsReachedMessage": "Можно сохранить не более {max} местоположений",
+  "@maxLocationsReachedMessage": {
+    "description": "Message shown in place of the search field once the saved-location limit is reached",
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsToggleUnconfirmed": "Не удалось подтвердить изменение — попробуйте ещё раз",
+  "@notificationsToggleUnconfirmed": {
+    "description": "Snackbar shown when toggling the notification bell couldn't be verified against the system alarm scheduler"
+  },
+  "tasbihCounter": "Счётчик Тасбих",
+  "@tasbihCounter": {
+    "description": "Label for the tasbih/dhikr counter home-screen tile, and the title of the tasbih counter screen"
+  },
+  "tasbihCounterSubtitle": "Считайте свой зикр",
+  "@tasbihCounterSubtitle": {
+    "description": "Subtitle for the tasbih counter home-screen tile"
+  },
+  "tasbihResetButton": "Сброс",
+  "@tasbihResetButton": {
+    "description": "Button on the tasbih counter screen that resets the count back to zero"
+  },
+  "tasbihTotalLabel": "Всего",
+  "@tasbihTotalLabel": {
+    "description": "Label before the running session total on the tasbih counter screen, e.g. 'Total: 47 / 99'"
+  },
+  "tasbihCelebrationTitle": "Тасбих завершён!",
+  "@tasbihCelebrationTitle": {
+    "description": "Title shown in the celebration overlay once all 99 dhikr are completed"
+  },
+  "tasbihCelebrationBody": "Вы завершили все 99 зикров. Пусть Аллах примет ваше поминание.",
+  "@tasbihCelebrationBody": {
+    "description": "Body text shown in the celebration overlay once all 99 dhikr are completed"
+  },
+  "tasbihStartNewSession": "Начать новую сессию",
+  "@tasbihStartNewSession": {
+    "description": "Button in the celebration overlay that resets the tasbih counter to begin a new session"
+  },
+  "tasbihUndoButton": "Отменить",
+  "@tasbihUndoButton": {
+    "description": "Button on the tasbih counter screen that undoes the last tap"
+  },
+  "tasbihTapAnywhereHint": "Нажмите в любом месте экрана, чтобы считать",
+  "@tasbihTapAnywhereHint": {
+    "description": "One-time hint shown on the tasbih counter screen telling the user they can tap anywhere on screen to count"
+  },
+  "tasbihSoundToggleTooltip": "Звук нажатия",
+  "@tasbihSoundToggleTooltip": {
+    "description": "Tooltip for the icon button that toggles the optional tap sound on the tasbih counter screen"
+  },
+  "tasbihManageDhikrTooltip": "Управление зикрами",
+  "@tasbihManageDhikrTooltip": {
+    "description": "Tooltip for the icon button that opens the manage-dhikr sheet on the tasbih counter screen"
+  },
+  "tasbihStatsTooltip": "Посмотреть статистику",
+  "@tasbihStatsTooltip": {
+    "description": "Tooltip for the icon button that opens the tasbih stats screen"
+  },
+  "tasbihDailyTotalLabel": "Итог за сегодня",
+  "@tasbihDailyTotalLabel": {
+    "description": "Label for the running total of dhikr tapped today, shown on the tasbih counter screen and stats screen"
+  },
+  "tasbihRoundsTodayLabel": "Кругов сегодня",
+  "@tasbihRoundsTodayLabel": {
+    "description": "Label for how many full 99-dhikr rounds were completed today"
+  },
+  "tasbihManageDhikrTitle": "Управление зикрами",
+  "@tasbihManageDhikrTitle": {
+    "description": "Title of the bottom sheet that lists built-in and custom dhikr, allowing the user to add or delete custom ones"
+  },
+  "tasbihAddCustomDhikrButton": "Добавить свой зикр",
+  "@tasbihAddCustomDhikrButton": {
+    "description": "Button label and dialog title for adding a custom dhikr beyond the built-in three"
+  },
+  "tasbihDeleteDhikrTooltip": "Удалить",
+  "@tasbihDeleteDhikrTooltip": {
+    "description": "Tooltip for the delete icon next to a custom dhikr in the manage-dhikr sheet"
+  },
+  "tasbihBuiltInDhikrBadge": "Встроенный",
+  "@tasbihBuiltInDhikrBadge": {
+    "description": "Small badge label shown next to the three built-in dhikr in the manage-dhikr sheet, indicating they can't be deleted"
+  },
+  "tasbihCannotDeleteLastDhikr": "Нужен хотя бы один зикр",
+  "@tasbihCannotDeleteLastDhikr": {
+    "description": "Snackbar shown if the user tries to delete the only remaining dhikr in their list"
+  },
+  "tasbihDhikrNameLabel": "Название",
+  "@tasbihDhikrNameLabel": {
+    "description": "Text field label for the name of a custom dhikr being added"
+  },
+  "tasbihDhikrNameHint": "напр. Астагфируллах",
+  "@tasbihDhikrNameHint": {
+    "description": "Placeholder hint text shown in the empty custom dhikr name field"
+  },
+  "tasbihDhikrArabicLabel": "На арабском (необязательно)",
+  "@tasbihDhikrArabicLabel": {
+    "description": "Text field label for the optional Arabic text of a custom dhikr being added"
+  },
+  "tasbihDhikrArabicHint": "أَسْتَغْفِرُ اللَّهَ",
+  "@tasbihDhikrArabicHint": {
+    "description": "Placeholder hint shown in the empty custom dhikr Arabic field — an example dhikr in Arabic script, same in every language"
+  },
+  "tasbihDhikrNameRequiredError": "Пожалуйста, введите название",
+  "@tasbihDhikrNameRequiredError": {
+    "description": "Validation error shown when the user tries to save a custom dhikr without entering a name"
+  },
+  "tasbihSaveDhikrButton": "Сохранить",
+  "@tasbihSaveDhikrButton": {
+    "description": "Button that saves a newly added custom dhikr"
+  },
+  "tasbihStatsTitle": "Статистика Тасбиха",
+  "@tasbihStatsTitle": {
+    "description": "Title of the tasbih stats screen"
+  },
+  "tasbihAllTimeTotalLabel": "Итог за всё время",
+  "@tasbihAllTimeTotalLabel": {
+    "description": "Label for the lifetime total dhikr count across all sessions, shown on the tasbih stats screen"
+  },
+  "tasbihNoActivityYetMessage": "Начните считать, и здесь появится ваша статистика.",
+  "@tasbihNoActivityYetMessage": {
+    "description": "Banner shown on the tasbih stats screen when the user has no recorded tasbih activity yet"
+  },
+  "tasbihSoundPickerTitle": "Звук нажатия",
+  "@tasbihSoundPickerTitle": {
+    "description": "Title of the bottom sheet where the user previews and picks which tap sound the tasbih counter plays"
+  },
+  "tasbihSoundClassicClick": "Классический щелчок",
+  "@tasbihSoundClassicClick": {
+    "description": "Name of the 'classic click' tap sound option — a soft wooden-bead click"
+  },
+  "tasbihSoundSoftChime": "Мягкий перезвон",
+  "@tasbihSoundSoftChime": {
+    "description": "Name of the 'soft chime' tap sound option — a gentle bell/chime"
+  },
+  "tasbihSoundStoneTap": "Стук камня",
+  "@tasbihSoundStoneTap": {
+    "description": "Name of the 'stone tap' tap sound option — a subtle stone/pebble tap"
+  },
+  "tasbihCurrentlyReciting": "Сейчас читается",
+  "@tasbihCurrentlyReciting": {
+    "description": "Tiny all-caps status label above the dhikr name on the tasbih counter screen"
+  },
+  "tasbihOfTarget": "из {target}",
+  "@tasbihOfTarget": {
+    "description": "Small dimmed text below the big count number, e.g. 'of 33'",
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "tasbihSoundRainDrop": "Капля дождя",
+  "@tasbihSoundRainDrop": {
+    "description": "Name of the 'rain drop' tap sound option — a single gentle, calming raindrop sound"
+  },
+  "tasbihSoundSoftFeather": "Мягкое перо",
+  "@tasbihSoundSoftFeather": {
+    "description": "Name of the 'soft feather' tap sound option — an extremely subtle, barely audible brush/feather touch"
+  },
+  "noAyahsFound": "Аяты по запросу «{query}» не найдены",
+  "@noAyahsFound": {
+    "description": "Empty state heading on Quran search when no results match",
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "trySearchingQuran": "Попробуйте искать на русском или арабском либо используйте исламский термин:",
+  "@trySearchingQuran": {
+    "description": "Subtitle suggesting alternative search approaches when no Quran results are found"
+  },
+  "loadingQuranIndex": "Загружаем полный индекс Корана…",
+  "@loadingQuranIndex": {
+    "description": "Progress banner shown while the Quran full-text index is being fetched"
+  },
+  "quranSearchSuggestions": "терпение, сабр, милость, намаз, салях, прощение, тауба, рай, джанна, знание",
+  "@quranSearchSuggestions": {
+    "description": "Comma-separated list of suggested Quran search terms shown as chips in the empty state"
+  },
+  "heroVerse1": "Оберегайте намазы, и особенно средний намаз.",
+  "@heroVerse1": {
+    "description": "Quran verse on hero card slide 1 — Al-Baqarah 2:238"
+  },
+  "heroVerse2": "Воистину, намаз предписан верующим в определённое время.",
+  "@heroVerse2": {
+    "description": "Quran verse on hero card slide 2 — An-Nisa 4:103"
+  },
+  "heroVerse3": "Обратитесь за помощью к терпению и намазу.",
+  "@heroVerse3": {
+    "description": "Quran verse on hero card slide 3 — Al-Baqarah 2:45"
+  },
+  "heroVerse4": "Поминайте Меня, и Я буду помнить о вас. Благодарите Меня и не будьте неблагодарны Мне.",
+  "@heroVerse4": {
+    "description": "Quran verse on hero card slide 4 — Al-Baqarah 2:152"
+  },
+  "heroVerse5": "Кто уповает на Аллаха — тому Его достаточно.",
+  "@heroVerse5": {
+    "description": "Quran verse on hero card slide 5 — At-Talaq 65:3"
+  },
+  "heroVerse6": "Воистину, первым домом, воздвигнутым для людей, был тот, что в Мекке, — благословенный и руководство для миров.",
+  "@heroVerse6": {
+    "description": "Quran verse on hero card slide 6 — Ali Imran 3:96"
+  },
+  "heroVerse7": "Воистину, намаз удерживает от мерзости и предосудительного, а поминание Аллаха — превыше всего.",
+  "@heroVerse7": {
+    "description": "Quran verse on hero card slide 7 — Al-Ankabut 29:45"
+  },
+  "heroVerse8": "Воистину, в поминании Аллаха обретают покой сердца.",
+  "@heroVerse8": {
+    "description": "Quran verse on hero card slide 8 — Ar-Ra'd 13:28"
+  },
+  "heroVerse9": "Взывайте ко Мне — и Я отвечу вам.",
+  "@heroVerse9": {
+    "description": "Quran verse on hero card slide 9 — Ghafir 40:60"
+  },
+  "heroVerse10": "Если вы будете благодарны, Я непременно одарю вас ещё большим.",
+  "@heroVerse10": {
+    "description": "Quran verse on hero card slide 10 — Ibrahim 14:7"
+  },
+  "heroVerse11": "Аллах не возлагает на душу сверх её возможностей.",
+  "@heroVerse11": {
+    "description": "Quran verse on hero card slide 11 — Al-Baqarah 2:286"
+  },
+  "heroVerse12": "Воистину, Аллах — с терпеливыми.",
+  "@heroVerse12": {
+    "description": "Quran verse on hero card slide 12 — Al-Baqarah 2:153"
+  },
+  "heroVerse13": "Моя милость объемлет всякую вещь.",
+  "@heroVerse13": {
+    "description": "Quran verse on hero card slide 13 — Al-A'raf 7:156"
+  },
+  "heroVerse14": "Творите добро — воистину, Аллах любит творящих добро.",
+  "@heroVerse14": {
+    "description": "Quran verse on hero card slide 14 — Al-Baqarah 2:195"
+  },
+  "heroVerse15": "Это Писание, в котором нет сомнения, — руководство для богобоязненных.",
+  "@heroVerse15": {
+    "description": "Quran verse on hero card slide 15 — Al-Baqarah 2:2"
+  },
+  "accuracyHigh": "Высокая точность",
+  "@accuracyHigh": {
+    "description": "Qibla accuracy badge label — high sensor accuracy"
+  },
+  "accuracyMedium": "Средняя точность",
+  "@accuracyMedium": {
+    "description": "Qibla accuracy badge label — medium sensor accuracy"
+  },
+  "accuracyLow": "Низкая точность",
+  "@accuracyLow": {
+    "description": "Qibla accuracy badge label — low sensor accuracy"
+  },
+  "accuracyCalibrating": "Калибровка…",
+  "@accuracyCalibrating": {
+    "description": "Qibla accuracy badge label — compass is being calibrated"
+  },
+  "compassNeedsCalibration": "Компасу нужна калибровка",
+  "@compassNeedsCalibration": {
+    "description": "Heading of the calibration prompt shown when compass accuracy is low"
+  },
+  "compassCalibrationHint": "Медленно перемещайте телефон восьмёркой, чтобы повысить точность.",
+  "@compassCalibrationHint": {
+    "description": "Body of the calibration prompt — instructions for figure-8 motion"
+  },
+  "spiritLevelLabel": "Уровень",
+  "@spiritLevelLabel": {
+    "description": "Label above the spirit-level bubble widget on the Qibla screen"
+  },
+  "spiritLevelLevelText": "✓  Ровно",
+  "@spiritLevelLevelText": {
+    "description": "Spirit level status when the phone is flat — checkmark + \"Level\""
+  },
+  "spiritLevelTiltText": "Наклоните до ровного положения",
+  "@spiritLevelTiltText": {
+    "description": "Spirit level status when the phone is tilted and needs leveling"
+  },
+  "compassNorth": "С",
+  "@compassNorth": {
+    "description": "Cardinal direction North on the compass dial"
+  },
+  "compassEast": "В",
+  "@compassEast": {
+    "description": "Cardinal direction East on the compass dial"
+  },
+  "compassSouth": "Ю",
+  "@compassSouth": {
+    "description": "Cardinal direction South on the compass dial"
+  },
+  "compassWest": "З",
+  "@compassWest": {
+    "description": "Cardinal direction West on the compass dial"
+  },
+  "splashAppName": "Noor Guard",
+  "@splashAppName": {
+    "description": "App name shown on the splash screen (brand name, same in all languages)"
+  },
+  "splashTagline": "Береги своё время. Чти свой намаз.",
+  "@splashTagline": {
+    "description": "Tagline shown below the app name on the splash screen"
+  },
+  "stopAdhan": "Остановить Азан",
+  "@stopAdhan": {
+    "description": "Label on the floating button that stops a playing adhan"
+  },
+  "duasSearchEmpty": "Попробуйте другую категорию или запрос.",
+  "@duasSearchEmpty": {
+    "description": "Secondary line of the empty state on the Duas screen when search returns no results"
+  },
+  "onboardingSkip": "Пропустить",
+  "@onboardingSkip": {
+    "description": "Skip button on the onboarding welcome screen"
+  },
+  "onboardingWelcomeTo": "Добро пожаловать в",
+  "@onboardingWelcomeTo": {
+    "description": "First part of the welcome heading on the onboarding screen"
+  },
+  "onboardingSubtitle": "Ваш спутник на прекрасном пути Ислама.",
+  "@onboardingSubtitle": {
+    "description": "Subtitle below the app name on the onboarding welcome screen"
+  },
+  "onboardingLetsGetStarted": "Начнём",
+  "@onboardingLetsGetStarted": {
+    "description": "Primary CTA button on the onboarding welcome screen"
+  },
+  "onboardingStepOf": "{step} из {total}",
+  "@onboardingStepOf": {
+    "description": "Step counter shown top-right on onboarding pages 2 to 4",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "onboardingWhatsYourName": "Как вас зовут?",
+  "@onboardingWhatsYourName": {
+    "description": "Title on the name-entry onboarding screen"
+  },
+  "onboardingNameSubtitle": "Нам хотелось бы знать, как к вам обращаться.",
+  "@onboardingNameSubtitle": {
+    "description": "Subtitle on the name-entry onboarding screen"
+  },
+  "onboardingNameHint": "Введите ваше имя",
+  "@onboardingNameHint": {
+    "description": "Hint text inside the name text field on the onboarding screen"
+  },
+  "onboardingContinue": "Продолжить",
+  "@onboardingContinue": {
+    "description": "Continue button label on onboarding screens 2 and 3"
+  },
+  "onboardingAreYouNewToIslam": "Вы недавно в Исламе?",
+  "@onboardingAreYouNewToIslam": {
+    "description": "Title on the Islam-mode selection onboarding screen"
+  },
+  "onboardingModeSubtitle": "Мы настроим приложение под ваш путь.",
+  "@onboardingModeSubtitle": {
+    "description": "Subtitle on the Islam-mode selection onboarding screen"
+  },
+  "onboardingNewToIslam": "Я недавно принял Ислам",
+  "@onboardingNewToIslam": {
+    "description": "Label on the beginner-mode card on the onboarding screen"
+  },
+  "onboardingNewToIslamDesc": "Режим для начинающих с пошаговым руководством",
+  "@onboardingNewToIslamDesc": {
+    "description": "Description on the beginner-mode card on the onboarding screen"
+  },
+  "onboardingFamiliarWithIslam": "Я знаком с Исламом",
+  "@onboardingFamiliarWithIslam": {
+    "description": "Label on the regular-mode card on the onboarding screen"
+  },
+  "onboardingFamiliarWithIslamDesc": "Обычный режим со всеми возможностями",
+  "@onboardingFamiliarWithIslamDesc": {
+    "description": "Description on the regular-mode card on the onboarding screen"
+  },
+  "greetingWithName": "As-Salāmu 'Alaikum, {name} 🤲",
+  "@greetingWithName": {
+    "description": "Personalized greeting shown on the home screen header when user has set their name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "beginnerDaySinceShahada": "День {days} в Исламе",
+  "@beginnerDaySinceShahada": {
+    "description": "Day counter shown on beginner home screen journey card, e.g. 'Day 12 as a Muslim'",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "beginnerEssential1": "Мой путеводитель нового мусульманина",
+  "@beginnerEssential1": {
+    "description": "Beginner checklist item 1 — New Muslim guide"
+  },
+  "beginnerEssential2": "Учимся Вуду (ритуальное омовение)",
+  "@beginnerEssential2": {
+    "description": "Beginner checklist item 2 — Wudu guide"
+  },
+  "beginnerEssential3": "Как совершать намаз (шаг за шагом)",
+  "@beginnerEssential3": {
+    "description": "Beginner checklist item 3 — How to pray"
+  },
+  "beginnerEssential4": "Сура Аль-Фатиха (Открывающая)",
+  "@beginnerEssential4": {
+    "description": "Beginner checklist item 4 — Surah Al-Fatiha"
+  },
+  "beginnerEssential5": "Ежедневные Дуа (мольбы)",
+  "@beginnerEssential5": {
+    "description": "Beginner checklist item 5 — Daily duas"
+  },
+  "beginnerEssential6": "Понимание Шахады",
+  "@beginnerEssential6": {
+    "description": "Beginner checklist item 6 — Shahada understanding"
+  },
+  "beginnerEssential7": "Исламские термины и глоссарий",
+  "@beginnerEssential7": {
+    "description": "Beginner checklist item 7 — Islamic glossary"
+  },
+  "beginnerExploreAll": "Открыть все возможности",
+  "@beginnerExploreAll": {
+    "description": "Label for button that unlocks all Noor Guard features"
+  },
+  "beginnerExploreSubtitle": "Перейти к полной версии Noor Guard",
+  "@beginnerExploreSubtitle": {
+    "description": "Subtitle under Explore All Features button"
+  },
+  "beginnerExploreFeaturesSubtitle": "Всё, что предлагает Noor Guard",
+  "@beginnerExploreFeaturesSubtitle": {
+    "description": "Subtitle inside the Explore All Features modal sheet"
+  },
+  "beginnerLearnSalah": "Учимся Саляху",
+  "@beginnerLearnSalah": {
+    "description": "Beginner toolbox card label — learn how to pray"
+  },
+  "beginnerMayAllahGuide": "Пусть Аллах направит ваши шаги и благословит ваш путь.",
+  "@beginnerMayAllahGuide": {
+    "description": "Subtitle blessing shown on beginner journey card"
+  },
+  "beginnerMuslimEssentials": "ОСНОВЫ ДЛЯ МУСУЛЬМАНИНА",
+  "@beginnerMuslimEssentials": {
+    "description": "Section header for the Muslim essentials checklist"
+  },
+  "beginnerQuote1": "Воистину, за тягостью наступает облегчение. — Коран 94:6",
+  "@beginnerQuote1": {
+    "description": "Rotating inspirational quote 1 — Quran 94:6"
+  },
+  "beginnerQuote2": "Храни повеления Аллаха — и Он позаботится о тебе.",
+  "@beginnerQuote2": {
+    "description": "Rotating inspirational quote 2 — prophetic hadith"
+  },
+  "beginnerQuote3": "Аллах смотрит на ваши сердца и дела, а не на вашу внешность.",
+  "@beginnerQuote3": {
+    "description": "Rotating inspirational quote 3 — Allah sees deeds"
+  },
+  "beginnerQuote4": "Каждый шаг к намазу — это шаг к покою.",
+  "@beginnerQuote4": {
+    "description": "Rotating inspirational quote 4 — prayer and peace"
+  },
+  "beginnerQuote5": "Лучший из вас тот, кто изучает Коран и обучает ему других.",
+  "@beginnerQuote5": {
+    "description": "Rotating inspirational quote 5 — learn and teach Quran"
+  },
+  "beginnerTapToSetShahadaDate": "Нажмите, чтобы указать дату вашей Шахады",
+  "@beginnerTapToSetShahadaDate": {
+    "description": "Prompt to set Shahada date when not yet set"
+  },
+  "beginnerToolboxSection": "ИНСТРУМЕНТЫ ДЛЯ НАЧИНАЮЩИХ",
+  "@beginnerToolboxSection": {
+    "description": "Section header for beginner toolbox cards"
+  },
+  "beginnerYourJourney": "ВАШ ПУТЬ",
+  "@beginnerYourJourney": {
+    "description": "Section header for the journey / Shahada tracker"
+  },
+  "journeyMonth1Name": "Месяц 1: Основа",
+  "@journeyMonth1Name": {
+    "description": "journeyMonth1Name"
+  },
+  "journeyMonth2Name": "Месяц 2: Формирование привычек",
+  "@journeyMonth2Name": {
+    "description": "journeyMonth2Name"
+  },
+  "journeyMonth3Name": "Месяц 3: Углубление веры",
+  "@journeyMonth3Name": {
+    "description": "journeyMonth3Name"
+  },
+  "journeyTasksCompleted": "Выполнено: {done}/{total}",
+  "@journeyTasksCompleted": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "journeyViewFull": "Посмотреть весь путь →",
+  "@journeyViewFull": {
+    "description": "journeyViewFull"
+  },
+  "journeyTask2_1": "Совершать все 5 намазов в течение 7 дней",
+  "@journeyTask2_1": {
+    "description": "journeyTask2_1"
+  },
+  "journeyTask2_2": "Выучить ещё 10 Дуа",
+  "@journeyTask2_2": {
+    "description": "journeyTask2_2"
+  },
+  "journeyTask2_3": "Прочитать первый джуз Корана",
+  "@journeyTask2_3": {
+    "description": "journeyTask2_3"
+  },
+  "journeyTask2_4": "Выучить 99 имён Аллаха",
+  "@journeyTask2_4": {
+    "description": "journeyTask2_4"
+  },
+  "journeyTask2_5": "Пользоваться счётчиком Тасбих каждый день в течение 7 дней",
+  "@journeyTask2_5": {
+    "description": "journeyTask2_5"
+  },
+  "journeyTask2_6": "Изучить намазы-сунну",
+  "@journeyTask2_6": {
+    "description": "journeyTask2_6"
+  },
+  "journeyTask2_7": "Найти ближайшую мечеть",
+  "@journeyTask2_7": {
+    "description": "journeyTask2_7"
+  },
+  "journeyTask3_1": "Прочитать суру Аль-Бакара",
+  "@journeyTask3_1": {
+    "description": "journeyTask3_1"
+  },
+  "journeyTask3_2": "Узнать о Закяте",
+  "@journeyTask3_2": {
+    "description": "journeyTask3_2"
+  },
+  "journeyTask3_3": "Узнать о посте (Саум)",
+  "@journeyTask3_3": {
+    "description": "journeyTask3_3"
+  },
+  "journeyTask3_4": "Выучить наизусть 3 новые суры",
+  "@journeyTask3_4": {
+    "description": "journeyTask3_4"
+  },
+  "journeyTask3_5": "Узнать о Хадже",
+  "@journeyTask3_5": {
+    "description": "journeyTask3_5"
+  },
+  "journeyTask3_6": "Рассказать кому-нибудь об Исламе",
+  "@journeyTask3_6": {
+    "description": "journeyTask3_6"
+  },
+  "journeyTask3_7": "Пройти исламский глоссарий до конца",
+  "@journeyTask3_7": {
+    "description": "journeyTask3_7"
+  },
+  "journeyTimelineTitle": "Мой путь",
+  "@journeyTimelineTitle": {
+    "description": "journeyTimelineTitle"
+  },
+  "journeyCompleted": "Завершено",
+  "@journeyCompleted": {
+    "description": "journeyCompleted"
+  },
+  "journeyInProgress": "В процессе",
+  "@journeyInProgress": {
+    "description": "journeyInProgress"
+  },
+  "journeyLocked": "Заблокировано",
+  "@journeyLocked": {
+    "description": "journeyLocked"
+  },
+  "wuduThreeTimes": "3 раза",
+  "@wuduThreeTimes": {
+    "description": "wuduThreeTimes"
+  },
+  "wuduDuaBefore": "Дуа перед Вуду",
+  "@wuduDuaBefore": {
+    "description": "wuduDuaBefore"
+  },
+  "wuduDuaAfter": "Дуа после Вуду",
+  "@wuduDuaAfter": {
+    "description": "wuduDuaAfter"
+  },
+  "wuduDuaBeforeArabic": "بِسْمِ اللَّهِ",
+  "@wuduDuaBeforeArabic": {
+    "description": "wuduDuaBeforeArabic"
+  },
+  "wuduDuaBeforeTranslit": "Бисмилляh",
+  "@wuduDuaBeforeTranslit": {
+    "description": "wuduDuaBeforeTranslit"
+  },
+  "wuduDuaBeforeTranslation": "С именем Аллаха",
+  "@wuduDuaBeforeTranslation": {
+    "description": "wuduDuaBeforeTranslation"
+  },
+  "wuduDuaAfterArabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+  "@wuduDuaAfterArabic": {
+    "description": "wuduDuaAfterArabic"
+  },
+  "wuduDuaAfterTranslit": "Ашhаду ан ля иляhа илляЛлаh, вахдаhу ля шарика ляh, ва ашhаду анна Мухаммадан 'абдуhу ва расулюh. Аллаhумма-дж'альни мин ат-таввабин, ва-дж'альни мин аль-мутатаhhирин.",
+  "@wuduDuaAfterTranslit": {
+    "description": "wuduDuaAfterTranslit"
+  },
+  "wuduDuaAfterTranslation": "Свидетельствую, что нет божества, достойного поклонения, кроме одного лишь Аллаха, у Которого нет сотоварища. Свидетельствую, что Мухаммад — Его раб и посланник. О Аллах, сделай меня из числа кающихся и сделай меня из числа очищающихся.",
+  "@wuduDuaAfterTranslation": {
+    "description": "wuduDuaAfterTranslation"
+  },
+  "wuduCompleteButton": "Я завершил Вуду",
+  "@wuduCompleteButton": {
+    "description": "wuduCompleteButton"
+  },
+  "howToPrayStepOpeningDua": "Дуа открытия (Сана)",
+  "@howToPrayStepOpeningDua": {
+    "description": "howToPrayStepOpeningDua"
+  },
+  "howToPrayStepAlFatiha": "Сура Аль-Фатиха",
+  "@howToPrayStepAlFatiha": {
+    "description": "howToPrayStepAlFatiha"
+  },
+  "howToPrayStepSurah": "Короткая сура",
+  "@howToPrayStepSurah": {
+    "description": "howToPrayStepSurah"
+  },
+  "howToPrayStepTashahhudShort": "Ташаххуд (средний)",
+  "@howToPrayStepTashahhudShort": {
+    "description": "howToPrayStepTashahhudShort"
+  },
+  "howToPrayStepSalawat": "Салават Пророку ﷺ",
+  "@howToPrayStepSalawat": {
+    "description": "howToPrayStepSalawat"
+  },
+  "howToPrayTransTakbir": "Аллах Превелик",
+  "@howToPrayTransTakbir": {
+    "description": "howToPrayTransTakbir"
+  },
+  "howToPrayTransOpeningDua": "Пречист Ты, о Аллах, и хвала Тебе; благословенно имя Твоё, превыше всего величие Твоё, и нет бога, кроме Тебя.",
+  "@howToPrayTransOpeningDua": {
+    "description": "howToPrayTransOpeningDua"
+  },
+  "howToPrayTransFatiha": "С именем Аллаха, Милостивого, Милосердного. Хвала Аллаху, Господу миров, Милостивому, Милосердному, Властелину Дня воздаяния. Тебе одному мы поклоняемся и Тебя одного молим о помощи. Веди нас прямым путём — путём тех, кого Ты облагодетельствовал, не тех, на кого пал гнев, и не заблудших.",
+  "@howToPrayTransFatiha": {
+    "description": "howToPrayTransFatiha"
+  },
+  "howToPrayTransRuku": "Пречист мой Господь Великий",
+  "@howToPrayTransRuku": {
+    "description": "howToPrayTransRuku"
+  },
+  "howToPrayTransItidal": "Аллах слышит того, кто восхваляет Его. Господь наш, Тебе хвала.",
+  "@howToPrayTransItidal": {
+    "description": "howToPrayTransItidal"
+  },
+  "howToPrayTransSujood": "Пречист мой Господь Высочайший",
+  "@howToPrayTransSujood": {
+    "description": "howToPrayTransSujood"
+  },
+  "howToPrayTransJalsa": "Господь мой, прости меня",
+  "@howToPrayTransJalsa": {
+    "description": "howToPrayTransJalsa"
+  },
+  "howToPrayTransTashahhud": "Все приветствия, молитвы и благие слова принадлежат Аллаху. Мир тебе, о Пророк, милость Аллаха и Его благословения. Мир нам и праведным рабам Аллаха. Свидетельствую, что нет бога, кроме Аллаха, и свидетельствую, что Мухаммад — Его раб и посланник.",
+  "@howToPrayTransTashahhud": {
+    "description": "howToPrayTransTashahhud"
+  },
+  "howToPrayTransSalawat": "О Аллах, благослови Мухаммада и семейство Мухаммада, как Ты благословил Ибрахима и семейство Ибрахима — поистине, Ты Достохвальный, Славный. О Аллах, ниспошли благодать Мухаммаду и семейству Мухаммада, как Ты ниспослал благодать Ибрахиму и семейству Ибрахима — поистине, Ты Достохвальный, Славный.",
+  "@howToPrayTransSalawat": {
+    "description": "howToPrayTransSalawat"
+  },
+  "howToPrayTransTasleem": "Мир вам и милость Аллаха",
+  "@howToPrayTransTasleem": {
+    "description": "howToPrayTransTasleem"
+  },
+  "howToPrayOpeningDuaInstruction": "Прочитайте это тихо сразу после вступительного такбира. Произносится только один раз, в самом начале молитвы.",
+  "@howToPrayOpeningDuaInstruction": {
+    "description": "howToPrayOpeningDuaInstruction"
+  },
+  "howToPraySurahInstruction": "После «Аль-Фатихи» прочитайте любую суру, которую знаете. Сура «Аль-Ихлас» (показана выше) идеально подходит для начинающих — читается только в первых двух ракаатах.",
+  "@howToPraySurahInstruction": {
+    "description": "howToPraySurahInstruction"
+  },
+  "howToPrayItidalInstruction": "Произнесите «Сами‘ Аллаху лиман хамидах», выпрямляясь, затем встаньте полностью прямо, прежде чем сказать «Раббана ва лакаль-хамд».",
+  "@howToPrayItidalInstruction": {
+    "description": "howToPrayItidalInstruction"
+  },
+  "howToPrayMiddleTashahhudInstruction": "Сядьте после 2-го ракаата. Поднимите указательный палец правой руки при произнесении Шахады. В молитвах из 3 и 4 ракаатов после этого сидения снова встаньте.",
+  "@howToPrayMiddleTashahhudInstruction": {
+    "description": "howToPrayMiddleTashahhudInstruction"
+  },
+  "howToPraySalawatInstruction": "Прочитайте салават сразу после полного ташаххуда, только в последнем сидении, перед завершением таслимом.",
+  "@howToPraySalawatInstruction": {
+    "description": "howToPraySalawatInstruction"
+  },
+  "howToPrayTasleemInstruction": "Поверните голову направо и произнесите таслим, затем повернитесь налево и повторите. Ваша молитва завершена.",
+  "@howToPrayTasleemInstruction": {
+    "description": "howToPrayTasleemInstruction"
+  },
+  "howToPrayOnceOpens": "Один раз — открывает молитву",
+  "@howToPrayOnceOpens": {
+    "description": "howToPrayOnceOpens"
+  },
+  "howToPraySayAllahuAkbar": "Скажите: Аллаху Акбар",
+  "@howToPraySayAllahuAkbar": {
+    "description": "howToPraySayAllahuAkbar"
+  },
+  "howToPrayFirstRakahOnly": "Только 1-й ракаат",
+  "@howToPrayFirstRakahOnly": {
+    "description": "howToPrayFirstRakahOnly"
+  },
+  "howToPrayFirst2RakahsOnly": "Только первые 2 ракаата",
+  "@howToPrayFirst2RakahsOnly": {
+    "description": "howToPrayFirst2RakahsOnly"
+  },
+  "howToPrayEveryRakah": "Каждый ракаат",
+  "@howToPrayEveryRakah": {
+    "description": "howToPrayEveryRakah"
+  },
+  "howToPrayAfter2ndRakah": "После 2-го ракаата",
+  "@howToPrayAfter2ndRakah": {
+    "description": "howToPrayAfter2ndRakah"
+  },
+  "howToPrayFinalSittingOnly": "Только последнее сидение",
+  "@howToPrayFinalSittingOnly": {
+    "description": "howToPrayFinalSittingOnly"
+  },
+  "howToPrayClosesThePrayer": "Завершает молитву",
+  "@howToPrayClosesThePrayer": {
+    "description": "howToPrayClosesThePrayer"
+  },
+  "howToPraySectionBefore": "Перед молитвой",
+  "@howToPraySectionBefore": {
+    "description": "howToPraySectionBefore"
+  },
+  "howToPraySectionRakah": "Ракаат",
+  "@howToPraySectionRakah": {
+    "description": "howToPraySectionRakah"
+  },
+  "howToPraySectionMiddleSitting": "Среднее сидение",
+  "@howToPraySectionMiddleSitting": {
+    "description": "howToPraySectionMiddleSitting"
+  },
+  "howToPraySectionFinalSitting": "Последнее сидение",
+  "@howToPraySectionFinalSitting": {
+    "description": "howToPraySectionFinalSitting"
+  },
+  "howToPrayRakahLabel": "Ракааты",
+  "@howToPrayRakahLabel": {
+    "description": "howToPrayRakahLabel"
+  },
+  "howToPrayCompleteButton": "Я совершил молитву",
+  "@howToPrayCompleteButton": {
+    "description": "howToPrayCompleteButton"
+  },
+  "howToPrayMashaallah": "МашаАллах!",
+  "@howToPrayMashaallah": {
+    "description": "howToPrayMashaallah"
+  },
+  "howToPrayAccepted": "Пусть Аллах примет вашу молитву.",
+  "@howToPrayAccepted": {
+    "description": "howToPrayAccepted"
+  },
+  "fatihaIntroTitle": "Мать Корана",
+  "@fatihaIntroTitle": {
+    "description": "fatihaIntroTitle"
+  },
+  "fatihaIntroBody": "Сура «Аль-Фатиха» — величайшая сура Корана. Она читается в каждом ракаате молитвы — не менее 17 раз в день. Это полноценный разговор между рабом и Аллахом и врата к каждой молитве.",
+  "@fatihaIntroBody": {
+    "description": "fatihaIntroBody"
+  },
+  "fatihaIntroIbnKathir": "Ибн Касир пишет: «Аль-Фатиха содержит суть всего Корана — это молитва, провозглашение служения и просьба о наставлении на Прямой Путь». — Тафсир Ибн Касира",
+  "@fatihaIntroIbnKathir": {
+    "description": "fatihaIntroIbnKathir"
+  },
+  "shahadaScreenTitle": "Шахада",
+  "@shahadaScreenTitle": {
+    "description": "shahadaScreenTitle"
+  },
+  "shahadaArabicText": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ",
+  "@shahadaArabicText": {
+    "description": "shahadaArabicText"
+  },
+  "shahadaTransliteration": "Ашхаду ан ля иляха илля-Ллах, ва ашхаду анна Мухаммадан расулю-Ллах",
+  "@shahadaTransliteration": {
+    "description": "shahadaTransliteration"
+  },
+  "shahadaTranslation": "Свидетельствую, что нет божества, кроме Аллаха, и свидетельствую, что Мухаммад — посланник Аллаха",
+  "@shahadaTranslation": {
+    "description": "shahadaTranslation"
+  },
+  "shahadaWordBreakdownTitle": "Слово за словом",
+  "@shahadaWordBreakdownTitle": {
+    "description": "shahadaWordBreakdownTitle"
+  },
+  "shahadaWord1Arabic": "لَا",
+  "@shahadaWord1Arabic": {
+    "description": "shahadaWord1Arabic"
+  },
+  "shahadaWord1Trans": "Ля",
+  "@shahadaWord1Trans": {
+    "description": "shahadaWord1Trans"
+  },
+  "shahadaWord1Meaning": "Нет",
+  "@shahadaWord1Meaning": {
+    "description": "shahadaWord1Meaning"
+  },
+  "shahadaWord2Arabic": "إِلَٰهَ",
+  "@shahadaWord2Arabic": {
+    "description": "shahadaWord2Arabic"
+  },
+  "shahadaWord2Trans": "иляха",
+  "@shahadaWord2Trans": {
+    "description": "shahadaWord2Trans"
+  },
+  "shahadaWord2Meaning": "божества / бога",
+  "@shahadaWord2Meaning": {
+    "description": "shahadaWord2Meaning"
+  },
+  "shahadaWord3Arabic": "إِلَّا",
+  "@shahadaWord3Arabic": {
+    "description": "shahadaWord3Arabic"
+  },
+  "shahadaWord3Trans": "илля",
+  "@shahadaWord3Trans": {
+    "description": "shahadaWord3Trans"
+  },
+  "shahadaWord3Meaning": "кроме",
+  "@shahadaWord3Meaning": {
+    "description": "shahadaWord3Meaning"
+  },
+  "shahadaWord4Arabic": "اللَّهُ",
+  "@shahadaWord4Arabic": {
+    "description": "shahadaWord4Arabic"
+  },
+  "shahadaWord4Trans": "Аллаху",
+  "@shahadaWord4Trans": {
+    "description": "shahadaWord4Trans"
+  },
+  "shahadaWord4Meaning": "Аллаха (Единого Бога)",
+  "@shahadaWord4Meaning": {
+    "description": "shahadaWord4Meaning"
+  },
+  "shahadaWord5Arabic": "مُحَمَّدٌ",
+  "@shahadaWord5Arabic": {
+    "description": "shahadaWord5Arabic"
+  },
+  "shahadaWord5Trans": "Мухаммадун",
+  "@shahadaWord5Trans": {
+    "description": "shahadaWord5Trans"
+  },
+  "shahadaWord5Meaning": "Мухаммад",
+  "@shahadaWord5Meaning": {
+    "description": "shahadaWord5Meaning"
+  },
+  "shahadaWord6Arabic": "رَّسُولُ",
+  "@shahadaWord6Arabic": {
+    "description": "shahadaWord6Arabic"
+  },
+  "shahadaWord6Trans": "Расулю",
+  "@shahadaWord6Trans": {
+    "description": "shahadaWord6Trans"
+  },
+  "shahadaWord6Meaning": "Посланник / Пророк",
+  "@shahadaWord6Meaning": {
+    "description": "shahadaWord6Meaning"
+  },
+  "shahadaWord7Arabic": "اللَّهِ",
+  "@shahadaWord7Arabic": {
+    "description": "shahadaWord7Arabic"
+  },
+  "shahadaWord7Trans": "Аллахи",
+  "@shahadaWord7Trans": {
+    "description": "shahadaWord7Trans"
+  },
+  "shahadaWord7Meaning": "Аллаха",
+  "@shahadaWord7Meaning": {
+    "description": "shahadaWord7Meaning"
+  },
+  "shahadaMeaningTitle": "Смысл и значение",
+  "@shahadaMeaningTitle": {
+    "description": "shahadaMeaningTitle"
+  },
+  "shahadaMeaningBody": "Шахада — это свидетельство веры, лежащее в основе Ислама. Это первый из Пяти столпов. Произнеся эти слова с искренним убеждением, человек входит в лоно Ислама. Ибн Касир объясняет, что первая часть — «Нет божества, кроме Аллаха» — отрицает всех ложных божеств и утверждает абсолютное единство Аллаха. Вторая часть — «Мухаммад — Посланник Аллаха» — признаёт, что мы получаем наставление через Пророка ﷺ.",
+  "@shahadaMeaningBody": {
+    "description": "shahadaMeaningBody"
+  },
+  "shahadaMomentTitle": "Момент Шахады",
+  "@shahadaMomentTitle": {
+    "description": "shahadaMomentTitle"
+  },
+  "shahadaMomentBody": "Когда человек впервые произносит Шахаду с истинной верой в сердце, происходит нечто глубокое — он начинает новую жизнь. Пророк ﷺ сказал: «Кто скажет, что нет божества, кроме Аллаха, и отвергнет всё, чему поклоняются помимо Него, того имущество и кровь неприкосновенны». (Сахих Муслим). Все прошлые грехи прощаются. Начинается новая глава. Это свидетельство — не просто слова, это завет между вами и вашим Творцом, поворотный момент, который ангелы видят и записывают. Добро пожаловать в лоно Ислама.",
+  "@shahadaMomentBody": {
+    "description": "shahadaMomentBody"
+  },
+  "shahadaPronunciationTitle": "Руководство по произношению",
+  "@shahadaPronunciationTitle": {
+    "description": "shahadaPronunciationTitle"
+  },
+  "shahadaPronunciationPart1": "Ля · и · ЛЯ · ха · иль · ЛЯЛ · ЛАХ",
+  "@shahadaPronunciationPart1": {
+    "description": "shahadaPronunciationPart1"
+  },
+  "shahadaPronunciationPart2": "Му · ХАМ · ма · дун · ра · СУ · люл · ЛАХ",
+  "@shahadaPronunciationPart2": {
+    "description": "shahadaPronunciationPart2"
+  },
+  "toolboxLearnSalahSubtitle": "Пошаговое руководство",
+  "@toolboxLearnSalahSubtitle": {
+    "description": "toolboxLearnSalahSubtitle"
+  },
+  "toolboxWuduSubtitle": "Очищение перед молитвой",
+  "@toolboxWuduSubtitle": {
+    "description": "toolboxWuduSubtitle"
+  },
+  "toolboxGlossarySubtitle": "114 исламских терминов с объяснениями",
+  "@toolboxGlossarySubtitle": {
+    "description": "toolboxGlossarySubtitle"
+  },
+  "shareSheetTitle": "Поделиться",
+  "@shareSheetTitle": {
+    "description": "shareSheetTitle"
+  },
+  "shareAnAyah": "Поделиться аятом",
+  "@shareAnAyah": {
+    "description": "shareAnAyah"
+  },
+  "shareADua": "Поделиться дуа",
+  "@shareADua": {
+    "description": "shareADua"
+  },
+  "shareANameOfAllah": "Поделиться именем Аллаха",
+  "@shareANameOfAllah": {
+    "description": "shareANameOfAllah"
+  },
+  "shareAHadith": "Поделиться хадисом",
+  "@shareAHadith": {
+    "description": "shareAHadith"
+  },
+  "shareViaLabel": "Отправлено через Noor Guard",
+  "@shareViaLabel": {
+    "description": "shareViaLabel"
+  },
+  "shareCardAyahLabel": "✦ Аят дня",
+  "@shareCardAyahLabel": {
+    "description": "shareCardAyahLabel"
+  },
+  "shareCardDuaLabel": "✦ Дуа",
+  "@shareCardDuaLabel": {
+    "description": "shareCardDuaLabel"
+  },
+  "shareCardNameLabel": "✦ Имя Аллаха",
+  "@shareCardNameLabel": {
+    "description": "shareCardNameLabel"
+  },
+  "shareCardHadithLabel": "✦ Хадис",
+  "@shareCardHadithLabel": {
+    "description": "shareCardHadithLabel"
+  },
+  "sharePickDuaTitle": "Выберите дуа, чтобы поделиться",
+  "@sharePickDuaTitle": {
+    "description": "sharePickDuaTitle"
+  },
+  "shareError": "Не удалось создать изображение",
+  "@shareError": {
+    "description": "shareError"
+  },
+  "shareCardVerseLabel": "✦ Аят Корана",
+  "@shareCardVerseLabel": {
+    "description": "shareCardVerseLabel"
+  },
+  "shareCardAsmaLabel": "✦ Асма уль-Хусна",
+  "@shareCardAsmaLabel": {
+    "description": "shareCardAsmaLabel"
+  },
+  "shareAyahSubtitle": "Выберите из 30 аятов Корана",
+  "@shareAyahSubtitle": {
+    "description": "shareAyahSubtitle"
+  },
+  "shareDuaSubtitle": "Выберите из библиотеки",
+  "@shareDuaSubtitle": {
+    "description": "shareDuaSubtitle"
+  },
+  "shareNameSubtitle": "Выберите из всех 99 Прекрасных Имён",
+  "@shareNameSubtitle": {
+    "description": "shareNameSubtitle"
+  },
+  "shareHadithSubtitle": "Выберите из 20 достоверных хадисов",
+  "@shareHadithSubtitle": {
+    "description": "shareHadithSubtitle"
+  },
+  "shareThisDua": "Поделиться этим дуа",
+  "@shareThisDua": {
+    "description": "shareThisDua"
+  },
+  "sharePickAyahTitle": "Выберите аят, чтобы поделиться",
+  "@sharePickAyahTitle": {
+    "description": "sharePickAyahTitle"
+  },
+  "searchAyahs": "Поиск аятов…",
+  "@searchAyahs": {
+    "description": "searchAyahs"
+  },
+  "noAyahsFoundShort": "Аяты не найдены",
+  "@noAyahsFoundShort": {
+    "description": "noAyahsFoundShort"
+  },
+  "shareThisAyah": "Поделиться этим аятом",
+  "@shareThisAyah": {
+    "description": "shareThisAyah"
+  },
+  "sharePickNameTitle": "Выберите имя, чтобы поделиться",
+  "@sharePickNameTitle": {
+    "description": "sharePickNameTitle"
+  },
+  "shareThisName": "Поделиться этим именем",
+  "@shareThisName": {
+    "description": "shareThisName"
+  },
+  "sharePickHadithTitle": "Выберите хадис, чтобы поделиться",
+  "@sharePickHadithTitle": {
+    "description": "sharePickHadithTitle"
+  },
+  "searchHadiths": "Поиск хадисов…",
+  "@searchHadiths": {
+    "description": "searchHadiths"
+  },
+  "noHadithsFound": "Хадисы не найдены",
+  "@noHadithsFound": {
+    "description": "noHadithsFound"
+  },
+  "shareThisHadith": "Поделиться этим хадисом",
+  "@shareThisHadith": {
+    "description": "shareThisHadith"
+  },
+  "backToBasics": "Возвращение к основам",
+  "@backToBasics": {
+    "description": "Title for the Back to Basics screen"
+  },
+  "backToBasicsSubtitle": "Ваш путеводитель по основам Ислама",
+  "@backToBasicsSubtitle": {
+    "description": "Subtitle for the Back to Basics screen"
+  },
+  "fivePillarsOfIslam": "5 столпов Ислама",
+  "fivePillarsShort": "5 столпов",
+  "@fivePillarsOfIslam": {
+    "description": "Section header for the five pillars"
+  },
+  "fivePillarsSubtitle": "Основы исламской веры",
+  "@fivePillarsSubtitle": {
+    "description": "Subtitle for the 5 Pillars card"
+  },
+  "pillarLearnMore": "Подробнее",
+  "@pillarLearnMore": {
+    "description": "Expand a pillar detail"
+  },
+  "pillarShowLess": "Свернуть",
+  "@pillarShowLess": {
+    "description": "Collapse a pillar detail"
+  },
+  "pillarsShowDetails": "Показать подробности",
+  "@pillarsShowDetails": {
+    "description": "Button to expand all 5 pillar detail texts"
+  },
+  "pillarsHideDetails": "Скрыть подробности",
+  "@pillarsHideDetails": {
+    "description": "Button to collapse all 5 pillar detail texts"
+  },
+  "pillar1Name": "Шахада",
+  "@pillar1Name": {
+    "description": "Name of the first pillar"
+  },
+  "pillar1Desc": "Свидетельство веры",
+  "@pillar1Desc": {
+    "description": "Short description of Shahada"
+  },
+  "pillar1Detail": "Свидетельство веры — основа Ислама. Искренне произнеся «Нет божества, кроме Аллаха, и Мухаммад — Его посланник», человек входит в лоно Ислама.",
+  "@pillar1Detail": {
+    "description": "Expanded detail of Shahada"
+  },
+  "pillar2Name": "Салях",
+  "@pillar2Name": {
+    "description": "Name of the second pillar"
+  },
+  "pillar2Desc": "Пять ежедневных молитв",
+  "@pillar2Desc": {
+    "description": "Short description of Salah"
+  },
+  "pillar2Detail": "Пять ежедневных молитв — это прямая связь между мусульманином и Аллахом. Совершаемые на рассвете, в полдень, после полудня, на закате и ночью, они выстраивают весь день мусульманина вокруг поминания Аллаха.",
+  "@pillar2Detail": {
+    "description": "Expanded detail of Salah"
+  },
+  "pillar3Name": "Закят",
+  "@pillar3Name": {
+    "description": "Name of the third pillar"
+  },
+  "pillar3Desc": "Обязательная милостыня",
+  "@pillar3Desc": {
+    "description": "Short description of Zakat"
+  },
+  "pillar3Detail": "Закят — обязательная ежегодная милостыня в размере 2,5% от сбережений, отдаваемая нуждающимся. Он очищает имущество и укрепляет узы мусульманской общины.",
+  "@pillar3Detail": {
+    "description": "Expanded detail of Zakat"
+  },
+  "pillar4Name": "Саум",
+  "@pillar4Name": {
+    "description": "Name of the fourth pillar"
+  },
+  "pillar4Desc": "Пост в Рамадан",
+  "@pillar4Desc": {
+    "description": "Short description of Sawm"
+  },
+  "pillar4Detail": "Пост в благословенный месяц Рамадан от рассвета до заката. Мусульмане воздерживаются от еды, питья и грехов, чтобы обрести таква (богобоязненность) и благодарность.",
+  "@pillar4Detail": {
+    "description": "Expanded detail of Sawm"
+  },
+  "pillar5Name": "Хадж",
+  "@pillar5Name": {
+    "description": "Name of the fifth pillar"
+  },
+  "pillar5Desc": "Паломничество в Мекку",
+  "@pillar5Desc": {
+    "description": "Short description of Hajj"
+  },
+  "pillar5Detail": "Паломничество в Мекку обязательно один раз в жизни для каждого мусульманина, у которого есть физическая и финансовая возможность. Это крупнейшее ежегодное собрание людей на земле.",
+  "@pillar5Detail": {
+    "description": "Expanded detail of Hajj"
+  },
+  "switchedToNewMuslimMode": "Включён режим нового мусульманина",
+  "@switchedToNewMuslimMode": {
+    "description": "Snackbar shown when switching to New Muslim Mode"
+  },
+  "switchedToRegularMode": "Включён обычный режим",
+  "@switchedToRegularMode": {
+    "description": "Snackbar shown when switching back to Regular Mode"
+  },
+  "liveNotifChannelName": "Noor Guard Live",
+  "@liveNotifChannelName": {
+    "description": "Android notification channel name for the persistent live lock-screen notification"
+  },
+  "liveNotifChannelDescription": "Обратный отсчёт до молитвы и ежедневный исламский контент на экране блокировки",
+  "@liveNotifChannelDescription": {
+    "description": "Android notification channel description for the persistent live lock-screen notification"
+  },
+  "liveNotifHeaderAyah": "АЯТ ДНЯ",
+  "@liveNotifHeaderAyah": {
+    "description": "Header above the rotating daily ayah in the live notification (uppercase where the script has case)"
+  },
+  "liveNotifHeaderDua": "ДУА ДНЯ",
+  "@liveNotifHeaderDua": {
+    "description": "Header above the rotating daily dua in the live notification"
+  },
+  "liveNotifHeaderWord": "СЛОВО ДНЯ",
+  "@liveNotifHeaderWord": {
+    "description": "Header above the rotating daily glossary word in the live notification"
+  },
+  "liveNotifHeaderName": "ИМЯ АЛЛАХА",
+  "@liveNotifHeaderName": {
+    "description": "Header above the rotating daily Name of Allah in the live notification"
+  },
+  "liveNotifHeaderHadith": "ХАДИС ДНЯ",
+  "@liveNotifHeaderHadith": {
+    "description": "Header above the rotating daily hadith in the live notification"
+  },
+  "liveNotifCountdownHoursMinutes": "через {hours} ч {minutes} мин",
+  "@liveNotifCountdownHoursMinutes": {
+    "description": "Countdown to the next prayer, hours + minutes. Passed to native code as a template with literal {hours}/{minutes} placeholders.",
+    "placeholders": {
+      "hours": {
+        "type": "Object"
+      },
+      "minutes": {
+        "type": "Object"
+      }
+    }
+  },
+  "liveNotifCountdownMinutes": "через {minutes} мин",
+  "@liveNotifCountdownMinutes": {
+    "description": "Countdown to the next prayer, under one hour. Passed to native code as a template with a literal {minutes} placeholder.",
+    "placeholders": {
+      "minutes": {
+        "type": "Object"
+      }
+    }
+  },
+  "liveNotifCountdownNow": "Время молитвы",
+  "@liveNotifCountdownNow": {
+    "description": "Shown in the live notification when the next prayer's time has arrived"
+  },
+  "savedDuas": "Сохранённые дуа",
+  "@savedDuas": {
+    "description": "Title of the Saved Duas bookmarks screen"
+  },
+  "savedVerses": "Сохранённые аяты",
+  "@savedVerses": {
+    "description": "Title of the Saved Verses (Quran bookmarks) screen"
+  },
+  "savedNames": "Сохранённые имена",
+  "@savedNames": {
+    "description": "Title of the Saved Names (Asma ul Husna bookmarks) screen"
+  },
+  "noSavedDuas": "Пока нет сохранённых дуа",
+  "@noSavedDuas": {
+    "description": "Empty state on the Saved Duas screen"
+  },
+  "noSavedVerses": "Пока нет сохранённых аятов",
+  "@noSavedVerses": {
+    "description": "Empty state on the Saved Verses screen"
+  },
+  "noSavedNames": "Пока нет сохранённых имён",
+  "@noSavedNames": {
+    "description": "Empty state on the Saved Names screen"
+  },
+  "heroVerse16": "Господь наш! Не взыщи с нас, если мы забыли или ошиблись.",
+  "@heroVerse16": {
+    "description": "Hero card rotating Quran verse (Al-Baqarah 2:286)"
+  },
+  "heroVerse17": "Достаточно нам Аллаха, и Он — наилучший Попечитель.",
+  "@heroVerse17": {
+    "description": "Hero card rotating Quran verse (Ali 'Imran 3:173)"
+  },
+  "heroVerse18": "О вы, которые уверовали, веруйте в Аллаха и Его Посланника.",
+  "@heroVerse18": {
+    "description": "Hero card rotating Quran verse (An-Nisa 4:136)"
+  },
+  "heroVerse19": "О вы, которые уверовали, бойтесь Аллаха и ищите пути приближения к Нему.",
+  "@heroVerse19": {
+    "description": "Hero card rotating Quran verse (Al-Ma'idah 5:35)"
+  },
+  "heroVerse20": "Поистине, моя молитва, моё жертвоприношение, моя жизнь и моя смерть — ради Аллаха, Господа миров.",
+  "@heroVerse20": {
+    "description": "Hero card rotating Quran verse (Al-An'am 6:162)"
+  },
+  "heroVerse21": "Предпиши нам добро в этом мире и в Последней жизни; мы вернулись к Тебе.",
+  "@heroVerse21": {
+    "description": "Hero card rotating Quran verse (Al-A'raf 7:156)"
+  },
+  "heroVerse22": "Поминайте Аллаха часто, чтобы вы преуспели.",
+  "@heroVerse22": {
+    "description": "Hero card rotating Quran verse (Al-Anfal 8:45)"
+  },
+  "heroVerse23": "Нас постигнет только то, что предписал нам Аллах; Он — наш Покровитель.",
+  "@heroVerse23": {
+    "description": "Hero card rotating Quran verse (At-Tawbah 9:51)"
+  },
+  "heroVerse24": "Поистине, приближённые Аллаха — не будет над ними страха, и не будут они опечалены.",
+  "@heroVerse24": {
+    "description": "Hero card rotating Quran verse (Yunus 10:62)"
+  },
+  "heroVerse25": "Мой успех — только от Аллаха; на Него я уповаю и к Нему обращаюсь.",
+  "@heroVerse25": {
+    "description": "Hero card rotating Quran verse (Hud 11:88)"
+  },
+  "heroVerse26": "Не отчаивайтесь в милости Аллаха.",
+  "@heroVerse26": {
+    "description": "Hero card rotating Quran verse (Yusuf 12:87)"
+  },
+  "heroVerse27": "Те, которые уверовали и чьи сердца находят покой в поминании Аллаха.",
+  "@heroVerse27": {
+    "description": "Hero card rotating Quran verse (Ar-Ra'd 13:28)"
+  },
+  "heroVerse28": "И вот возвестил ваш Господь: если вы будете благодарны, Я непременно дам вам больше.",
+  "@heroVerse28": {
+    "description": "Hero card rotating Quran verse (Ibrahim 14:7)"
+  },
+  "heroVerse29": "И поклоняйся Господу твоему, пока не придёт к тебе убеждённость.",
+  "@heroVerse29": {
+    "description": "Hero card rotating Quran verse (Al-Hijr 15:99)"
+  },
+  "heroVerse30": "Поистине, Аллах — с теми, кто богобоязнен, и с теми, кто творит добро.",
+  "@heroVerse30": {
+    "description": "Hero card rotating Quran verse (An-Nahl 16:128)"
+  },
+  "focusButtonSubtitle": "Берегите время для главного",
+  "@focusButtonSubtitle": {
+    "description": "Subtitle under the Begin Focus button on the Focus Mode screen"
+  },
+  "ourStories": "Наши истории",
+  "@ourStories": {
+    "description": "Community stories: home card + screen title"
+  },
+  "storiesSeeAll": "Все",
+  "@storiesSeeAll": {
+    "description": "Home card link to open all stories"
+  },
+  "storiesReadMore": "Читать далее",
+  "@storiesReadMore": {
+    "description": "Expand a truncated story"
+  },
+  "storiesFeaturedLabel": "Избранная история",
+  "@storiesFeaturedLabel": {
+    "description": "Badge on the featured story card"
+  },
+  "storiesFilterReverts": "Принявшие Ислам",
+  "@storiesFilterReverts": {
+    "description": "Filter tab: revert stories"
+  },
+  "storyCategoryRevert": "Принявший Ислам",
+  "@storyCategoryRevert": {
+    "description": "Story category badge: revert"
+  },
+  "storyCategoryBornMuslim": "Мусульманин от рождения",
+  "@storyCategoryBornMuslim": {
+    "description": "Story category badge + filter: born Muslim"
+  },
+  "storyCategoryReturning": "Вернувшийся",
+  "@storyCategoryReturning": {
+    "description": "Story category badge + filter: returning to Islam"
+  },
+  "storiesShareYours": "Поделитесь своей",
+  "@storiesShareYours": {
+    "description": "Header button opening the submit-story form"
+  },
+  "storiesEmptyTitle": "Историй пока нет",
+  "@storiesEmptyTitle": {
+    "description": "Empty state title when no stories are approved yet"
+  },
+  "storiesEmptySubtitle": "Станьте первым, кто поделится своим путём",
+  "@storiesEmptySubtitle": {
+    "description": "Empty state subtitle"
+  },
+  "storyShahadaDate": "Шахада: {date}",
+  "@storyShahadaDate": {
+    "description": "Shahada date line on a story card",
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "storiesComments": "Комментарии",
+  "@storiesComments": {
+    "description": "Comments sheet title"
+  },
+  "storiesAddComment": "Добавить комментарий…",
+  "@storiesAddComment": {
+    "description": "Comment input hint"
+  },
+  "storiesAnonymous": "Аноним",
+  "@storiesAnonymous": {
+    "description": "Fallback author name for anonymous stories/comments"
+  },
+  "storiesNameLabel": "Ваше имя",
+  "@storiesNameLabel": {
+    "description": "Submit form: name field label"
+  },
+  "storiesPostAnonymously": "Опубликовать анонимно",
+  "@storiesPostAnonymously": {
+    "description": "Submit form: anonymous toggle"
+  },
+  "storiesCountryLabel": "Страна",
+  "@storiesCountryLabel": {
+    "description": "Submit form: country dropdown label"
+  },
+  "storiesCategoryLabel": "Категория",
+  "@storiesCategoryLabel": {
+    "description": "Submit form: category selector label"
+  },
+  "storiesShahadaDateLabel": "Дата Шахады (необязательно)",
+  "@storiesShahadaDateLabel": {
+    "description": "Submit form: optional shahada date picker label"
+  },
+  "storiesYourStoryLabel": "Ваша история",
+  "@storiesYourStoryLabel": {
+    "description": "Submit form: story field label"
+  },
+  "storiesStoryHint": "Расскажите о своём пути…",
+  "@storiesStoryHint": {
+    "description": "Submit form: story field hint"
+  },
+  "storiesChooseBackground": "Выберите фон",
+  "@storiesChooseBackground": {
+    "description": "Submit form: background image picker section label"
+  },
+  "storiesBackgroundNone": "Без фона",
+  "@storiesBackgroundNone": {
+    "description": "Submit form: no-background option in the image picker"
+  },
+  "storiesEditTitle": "Редактировать историю",
+  "@storiesEditTitle": {
+    "description": "Title of the sheet when editing an existing story"
+  },
+  "storiesSaveChanges": "Сохранить изменения",
+  "@storiesSaveChanges": {
+    "description": "Save button when editing an existing story"
+  },
+  "storiesUpdated": "Ваша история обновлена",
+  "@storiesUpdated": {
+    "description": "Confirmation snackbar after editing own story"
+  },
+  "storiesUploadPhoto": "Загрузить фото (необязательно)",
+  "@storiesUploadPhoto": {
+    "description": "Submit form: photo upload button"
+  },
+  "storiesChangePhoto": "Изменить фото",
+  "@storiesChangePhoto": {
+    "description": "Submit form: photo replace button"
+  },
+  "storiesSubmitButton": "Отправить",
+  "@storiesSubmitButton": {
+    "description": "Submit form: submit button"
+  },
+  "storiesSubmitted": "ДжазакАллаху хайран! Ваша история отправлена на проверку.",
+  "@storiesSubmitted": {
+    "description": "Confirmation after story submission"
+  },
+  "storiesSubmitError": "Что-то пошло не так. Попробуйте ещё раз.",
+  "@storiesSubmitError": {
+    "description": "Generic submission error"
+  },
+  "storiesFillRequired": "Пожалуйста, добавьте вашу историю и страну.",
+  "@storiesFillRequired": {
+    "description": "Validation when story/country missing"
+  },
+  "storiesShareCardLabel": "История сообщества",
+  "@storiesShareCardLabel": {
+    "description": "Type label on the story share card"
+  },
+  "storiesPreviewLabel": "Предпросмотр",
+  "@storiesPreviewLabel": {
+    "description": "Label above the live story card preview in the submit form"
+  },
+  "storiesPendingReview": "На проверке",
+  "@storiesPendingReview": {
+    "description": "Badge on the user's own story awaiting moderation"
+  },
+  "storiesFilterSaved": "Сохранённые",
+  "@storiesFilterSaved": {
+    "description": "Filter tab showing locally bookmarked stories"
+  },
+  "storiesSavedEmpty": "Пока нет сохранённых историй",
+  "@storiesSavedEmpty": {
+    "description": "Empty state when the Saved tab has no stories"
+  },
+  "storiesSearchCountryHint": "Поиск страны…",
+  "@storiesSearchCountryHint": {
+    "description": "Hint in the searchable country field"
+  },
+  "storiesChooseAvatar": "Выберите аватар",
+  "@storiesChooseAvatar": {
+    "description": "Label above the avatar picker in the submit form"
+  },
+  "storiesAvatarInitials": "Инициалы",
+  "@storiesAvatarInitials": {
+    "description": "Avatar style tab: gold initials circle"
+  },
+  "storiesAvatarIcon": "Иконка",
+  "@storiesAvatarIcon": {
+    "description": "Avatar style tab: illustrated Islamic icon"
+  },
+  "storiesAvatarPattern": "Узор",
+  "@storiesAvatarPattern": {
+    "description": "Avatar style tab: generated geometric pattern"
+  },
+  "storiesLoadError": "Не удалось загрузить истории. Проверьте подключение.",
+  "@storiesLoadError": {
+    "description": "Error state when stories fail to load"
+  },
+  "storiesDiscardTitle": "Удалить вашу историю?",
+  "@storiesDiscardTitle": {
+    "description": "Confirm dialog title when leaving the submit form with unsaved changes"
+  },
+  "storiesDiscard": "Удалить",
+  "@storiesDiscard": {
+    "description": "Destructive option in the discard-story dialog"
+  },
+  "storiesKeepWriting": "Продолжить писать",
+  "@storiesKeepWriting": {
+    "description": "Safe option in the discard-story dialog (stay in the form)"
+  },
+  "storiesSaveDraft": "Сохранить черновик",
+  "@storiesSaveDraft": {
+    "description": "Header pill button that saves the form as a local draft"
+  },
+  "storiesDraftSaved": "Черновик сохранён",
+  "@storiesDraftSaved": {
+    "description": "Snackbar after the draft is saved"
+  },
+  "storiesDeleteDraft": "Удалить черновик",
+  "@storiesDeleteDraft": {
+    "description": "Header button that deletes the saved draft and resets the form"
+  },
+  "storiesContinueDraft": "Продолжить черновик",
+  "@storiesContinueDraft": {
+    "description": "Banner shown when a saved draft was restored into the form"
+  },
+  "storiesStartFresh": "Начать заново",
+  "@storiesStartFresh": {
+    "description": "Banner action that clears the draft and resets the form"
+  },
+  "shareCardGlossaryLabel": "✦ Исламский глоссарий",
+  "shareCardTafsirLabel": "✦ Тафсир",
+  "shareCardAyahRef": "Аят {number}",
+  "@shareCardGlossaryLabel": {
+    "description": "Type label on the glossary share card"
+  },
+  "@shareCardTafsirLabel": {
+    "description": "Type label on the tafsir share card"
+  },
+  "@shareCardAyahRef": {
+    "description": "Ayah reference line on the tafsir share card",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "prayerReminderTitleFajr": "🕌 Время Фаджра",
+  "prayerReminderTitleDhuhr": "☀️ Время Зухра",
+  "prayerReminderTitleAsr": "🌤️ Время Асра",
+  "prayerReminderTitleMaghrib": "🌅 Время Магриба",
+  "prayerReminderTitleIsha": "🌙 Время Иша",
+  "prayerReminderBodyFajr": "Вставайте и молитесь. Аллах вознаграждает тех, кто просыпается ради Него.",
+  "prayerReminderBodyDhuhr": "Уделите время Аллаху. Вас ждёт молитва Зухр.",
+  "prayerReminderBodyAsr": "Средняя молитва. Оберегайте её. — Аль-Бакара 2:238",
+  "prayerReminderBodyMaghrib": "Солнце зашло. Ответьте на призыв Аллаха.",
+  "prayerReminderBodyIsha": "Завершите день с Аллахом. Вас ждёт ночная молитва.",
+  "prayerAlarmMessageFajr": "Вставайте и молитесь. Аллах вознаграждает тех, кто просыпается ради Него.",
+  "prayerAlarmMessageDhuhr": "Уделите время Аллаху. Вас ждёт молитва Зухр.",
+  "prayerAlarmMessageAsr": "Оберегайте среднюю молитву. — Аль-Бакара 2:238",
+  "prayerAlarmMessageMaghrib": "Солнце зашло. Ответьте на призыв Аллаха.",
+  "prayerAlarmMessageIsha": "Завершите день с Аллахом. Вас ждёт ночная молитва.",
+  "prayerReminderTitleGeneric": "🕌 {prayer} через 15 минут",
+  "prayerReminderBodyGeneric": "Время подготовиться к молитве {prayer}",
+  "prayerAlarmMessageGeneric": "Время молитвы {prayer}",
+  "testNotificationTitle": "🔔 Тестовое уведомление",
+  "testNotificationBody": "Уведомления работают правильно!",
+  "@prayerReminderTitleGeneric": {
+    "description": "Reminder title for an unknown prayer name",
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "@prayerReminderBodyGeneric": {
+    "description": "Reminder body for an unknown prayer name",
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "@prayerAlarmMessageGeneric": {
+    "description": "Full-screen alarm message for an unknown prayer name",
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "favoriteRecitersSection": "Избранные",
+  "favoriteRecitersLimit": "Можно добавить только 3 избранных чтецов. Удалите одного, чтобы добавить другого.",
+  "@favoriteRecitersSection": {
+    "description": "Section header above favorited reciters in the reciter picker"
+  },
+  "@favoriteRecitersLimit": {
+    "description": "Message when trying to favorite more than 3 reciters"
+  },
+  "findQiblaDirection": "Найти направление Киблы",
+  "@findQiblaDirection": {
+    "description": "Button in the How to Pray Qibla step that opens the Qibla compass screen"
+  },
+  "storyMenuShare": "Поделиться",
+  "@storyMenuShare": {
+    "description": "Story 3-dot menu: share option"
+  },
+  "storyMenuBookmark": "В закладки",
+  "@storyMenuBookmark": {
+    "description": "Story 3-dot menu: bookmark option"
+  },
+  "storyMenuReport": "Пожаловаться",
+  "@storyMenuReport": {
+    "description": "Story 3-dot menu: report option"
+  },
+  "reportSheetTitle": "Пожаловаться на эту историю",
+  "@reportSheetTitle": {
+    "description": "Title of the report-a-story sheet"
+  },
+  "reportSheetSubtitle": "Помогите нам сохранить Noor Guard безопасным",
+  "@reportSheetSubtitle": {
+    "description": "Subtitle of the report-a-story sheet"
+  },
+  "reportReasonInappropriate": "Неприемлемый контент",
+  "@reportReasonInappropriate": {
+    "description": "Report reason option"
+  },
+  "reportReasonSpam": "Спам",
+  "@reportReasonSpam": {
+    "description": "Report reason option"
+  },
+  "reportReasonHateSpeech": "Разжигание ненависти",
+  "@reportReasonHateSpeech": {
+    "description": "Report reason option"
+  },
+  "reportReasonOther": "Другое",
+  "@reportReasonOther": {
+    "description": "Report reason option"
+  },
+  "reportSubmit": "Отправить жалобу",
+  "@reportSubmit": {
+    "description": "Submit button on the report sheet"
+  },
+  "reportThankYou": "ДжазакАллаху хайран — спасибо за сообщение",
+  "@reportThankYou": {
+    "description": "Snackbar shown after a report is submitted"
+  },
+  "adminMode": "Режим администратора",
+  "@adminMode": {
+    "description": "Settings button that opens the admin panel"
+  },
+  "adminTitle": "Администратор",
+  "@adminTitle": {
+    "description": "Admin screen title"
+  },
+  "adminTabPending": "Истории на проверке",
+  "@adminTabPending": {
+    "description": "Admin tab: stories awaiting moderation"
+  },
+  "adminTabReported": "Истории с жалобами",
+  "@adminTabReported": {
+    "description": "Admin tab: reported stories"
+  },
+  "adminApprove": "Одобрить",
+  "@adminApprove": {
+    "description": "Admin button: approve a pending story"
+  },
+  "adminReject": "Отклонить",
+  "@adminReject": {
+    "description": "Admin button: reject a pending story"
+  },
+  "adminDeleteStory": "Удалить историю",
+  "@adminDeleteStory": {
+    "description": "Admin button: delete a reported story"
+  },
+  "adminDismiss": "Отклонить жалобу",
+  "@adminDismiss": {
+    "description": "Admin button: dismiss a report"
+  },
+  "adminEmptyPending": "Нет историй на проверке",
+  "@adminEmptyPending": {
+    "description": "Admin empty state: no pending stories"
+  },
+  "adminEmptyReports": "Нет жалоб на рассмотрении",
+  "@adminEmptyReports": {
+    "description": "Admin empty state: no pending reports"
+  }
+}

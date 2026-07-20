@@ -42,6 +42,7 @@ const _translationEditions = {
   'it': 'it.piccardo',    // only Italian option
   'sw': 'sw.barwani',     // only Swahili option
   'fa': 'fa.fooladvand',  // Fooladvand — modern, widely-respected Persian
+  'ru': 'ru.kuliev',      // Kuliev — standard modern Russian
   // 'ar' omitted: Arabic text is already the primary display language
 };
 
