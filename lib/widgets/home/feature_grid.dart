@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../crescent_star_painter.dart';
@@ -8,6 +9,7 @@ import '../../screens/asma_ul_husna_screen.dart';
 import '../../screens/duas_screen.dart';
 import '../../screens/focus_mode_screen.dart';
 import '../../screens/islamic_calendar_screen.dart';
+import '../../screens/islamic_glossary_screen.dart';
 import '../../screens/new_muslim_hub_screen.dart';
 import '../../screens/tafsir_of_the_day_screen.dart';
 import '../../screens/tasbih_screen.dart';
@@ -38,6 +40,8 @@ class FeatureGrid extends StatelessWidget {
     if (id == 'Islamic Calendar') screen = const IslamicCalendarScreen();
     if (id == 'Asma Ul Husna')   screen = const AsmaUlHusnaScreen();
     if (id == 'Adhan')            screen = const AdhanScreen();
+    if (id == 'Islamic Glossary') screen = const IslamicGlossaryScreen();
+    if (id == '5 Pillars')        screen = const NewMuslimHubScreen();
 
     if (screen != null) {
       Navigator.push(context, MaterialPageRoute(builder: (_) => screen!));
@@ -58,20 +62,31 @@ class FeatureGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final isIOS = defaultTargetPlatform == TargetPlatform.iOS;
 
-    final row1 = [
-      (id: 'Tafsir',         icon: Icons.auto_stories_rounded,    label: l10n.tafsirOfTheDay),
-      (id: 'Duas',           icon: Icons.volunteer_activism_rounded, label: l10n.duas),
-      (id: 'Tasbih Counter', icon: Icons.touch_app_rounded,        label: l10n.tasbihCounter),
-      (id: 'Focus Mode',     icon: Icons.hourglass_empty_rounded,  label: l10n.focusMode),
-    ];
+    // Shared tiles (PNG artwork with Material fallback while art is missing).
+    final tafsir   = (id: 'Tafsir',           icon: Icons.auto_stories_rounded,       asset: 'assets/images/icons/tafsir_icon.png',   label: l10n.tafsirOfTheDay);
+    final duas     = (id: 'Duas',             icon: Icons.volunteer_activism_rounded, asset: 'assets/images/icons/duas_icon.png',     label: l10n.duas);
+    final tasbih   = (id: 'Tasbih Counter',   icon: Icons.touch_app_rounded,          asset: 'assets/images/icons/tasbih_icon.png',   label: l10n.tasbihCounter);
+    final calendar = (id: 'Islamic Calendar', icon: Icons.calendar_month_rounded,     asset: 'assets/images/icons/calendar_icon.png', label: l10n.islamicCalendar);
+    final names    = (id: 'Asma Ul Husna',   icon: Icons.star_rounded,               asset: 'assets/images/icons/names_icon.png',    label: l10n.asmaUlHusnaTile);
+    final adhan    = (id: 'Adhan',            icon: Icons.mosque_rounded,             asset: 'assets/images/icons/adhan_icon.png',    label: l10n.adhan);
 
-    final row2 = [
-      (id: 'App Blocking',     icon: Icons.security_rounded,       label: l10n.appBlocking),
-      (id: 'Islamic Calendar', icon: Icons.calendar_month_rounded, label: l10n.islamicCalendar),
-      (id: 'Asma Ul Husna',   icon: Icons.star_rounded,           label: l10n.asmaUlHusnaTile),
-      (id: 'Adhan',            icon: Icons.mosque_rounded,         label: l10n.adhan),
-    ];
+    // Android-only tiles. App Blocking keeps its Material icon by design.
+    final focus    = (id: 'Focus Mode',   icon: Icons.hourglass_empty_rounded, asset: 'assets/images/icons/focus_icon.png', label: l10n.focusMode);
+    final blocking = (id: 'App Blocking', icon: Icons.shield,                  asset: null,                                 label: l10n.appBlocking);
+
+    // iOS-only tiles (App Blocking / Focus Mode unavailable on iOS).
+    final glossary = (id: 'Islamic Glossary', icon: Icons.menu_book_rounded, asset: 'assets/images/icons/glossary_icon.png', label: l10n.islamicGlossary);
+    final pillars  = (id: '5 Pillars',        icon: Icons.mosque_rounded,    asset: 'assets/images/icons/pillars_icon.png',  label: l10n.fivePillarsOfIslam);
+
+    final row1 = isIOS
+        ? [tafsir, duas, tasbih, calendar]
+        : [tafsir, duas, tasbih, focus];
+
+    final row2 = isIOS
+        ? [names, adhan, glossary, pillars]
+        : [blocking, calendar, names, adhan];
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 3),
@@ -122,25 +137,46 @@ class FeatureGrid extends StatelessWidget {
   }
 }
 
-/// Single premium feature card — square, dark gradient, gold icon + label.
+/// Single premium feature card — dark gradient, gold PNG artwork (or
+/// Material icon fallback) + label. Fixed height so the 52px artwork and a
+/// 2-line label always fit regardless of device width.
 class FeatureCard extends StatelessWidget {
   final IconData icon;
+  final String? asset;
   final String label;
   final VoidCallback onTap;
 
   const FeatureCard({
     super.key,
     required this.icon,
+    this.asset,
     required this.label,
     required this.onTap,
   });
+
+  Widget _buildIcon() {
+    // Same 52x52 box for both variants so tiles align across the row.
+    return SizedBox(
+      height: 52,
+      width: 52,
+      child: asset == null
+          ? Icon(icon, color: _kBorderGold, size: 36)
+          : Image.asset(
+              asset!,
+              height: 52,
+              fit: BoxFit.contain,
+              errorBuilder: (_, __, ___) =>
+                  Icon(icon, color: _kBorderGold, size: 36),
+            ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: AspectRatio(
-        aspectRatio: 1.15,
+      child: SizedBox(
+        height: 96,
         child: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -164,7 +200,7 @@ class FeatureCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, color: _kGold, size: 26),
+              _buildIcon(),
               const SizedBox(height: 4),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -194,7 +230,7 @@ class FeatureCard extends StatelessWidget {
 // ── Private helpers ───────────────────────────────────────────────────────────
 
 class _CardRow extends StatelessWidget {
-  final List<({String id, IconData icon, String label})> items;
+  final List<({String id, IconData icon, String? asset, String label})> items;
   final void Function(String id, String label) onTap;
 
   const _CardRow({required this.items, required this.onTap});
@@ -208,6 +244,7 @@ class _CardRow extends StatelessWidget {
           Expanded(
             child: FeatureCard(
               icon: items[i].icon,
+              asset: items[i].asset,
               label: items[i].label,
               onTap: () => onTap(items[i].id, items[i].label),
             ),
