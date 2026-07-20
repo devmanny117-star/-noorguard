@@ -2703,6 +2703,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get fivePillarsOfIslam => 'イスラムの五行';
 
   @override
+  String get fivePillarsShort => '五行';
+
+  @override
   String get fivePillarsSubtitle => 'イスラム信仰の基盤';
 
   @override

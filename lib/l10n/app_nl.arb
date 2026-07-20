@@ -1399,6 +1399,7 @@
     "description": "backToBasicsSubtitle"
   },
   "fivePillarsOfIslam": "De 5 Zuilen van de Islam",
+  "fivePillarsShort": "5 Zuilen",
   "@fivePillarsOfIslam": {
     "description": "fivePillarsOfIslam"
   },

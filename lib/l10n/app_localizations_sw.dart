@@ -2813,6 +2813,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get fivePillarsOfIslam => 'Nguzo 5 za Uislamu';
 
   @override
+  String get fivePillarsShort => 'Nguzo 5';
+
+  @override
   String get fivePillarsSubtitle => 'Misingi ya imani ya Kiislamu';
 
   @override

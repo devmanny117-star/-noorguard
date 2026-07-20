@@ -5184,6 +5184,12 @@ abstract class AppLocalizations {
   /// **'The 5 Pillars of Islam'**
   String get fivePillarsOfIslam;
 
+  /// No description provided for @fivePillarsShort.
+  ///
+  /// In en, this message translates to:
+  /// **'5 Pillars'**
+  String get fivePillarsShort;
+
   /// Subtitle for the 5 Pillars card
   ///
   /// In en, this message translates to:

@@ -2812,6 +2812,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get fivePillarsOfIslam => 'ইসলামের পাঁচ স্তম্ভ';
 
   @override
+  String get fivePillarsShort => 'পাঁচ স্তম্ভ';
+
+  @override
   String get fivePillarsSubtitle => 'ইসলামিক বিশ্বাসের ভিত্তি';
 
   @override

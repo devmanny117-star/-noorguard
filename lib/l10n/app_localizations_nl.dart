@@ -2816,6 +2816,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get fivePillarsOfIslam => 'De 5 Zuilen van de Islam';
 
   @override
+  String get fivePillarsShort => '5 Zuilen';
+
+  @override
   String get fivePillarsSubtitle =>
       'De grondslagen van het islamitische geloof';
 

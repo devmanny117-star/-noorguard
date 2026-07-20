@@ -1399,6 +1399,7 @@
     "description": "backToBasicsSubtitle"
   },
   "fivePillarsOfIslam": "イスラムの五行",
+  "fivePillarsShort": "五行",
   "@fivePillarsOfIslam": {
     "description": "fivePillarsOfIslam"
   },

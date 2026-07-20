@@ -2796,6 +2796,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get fivePillarsOfIslam => 'اسلام کے پانچ ارکان';
 
   @override
+  String get fivePillarsShort => 'پانچ ارکان';
+
+  @override
   String get fivePillarsSubtitle => 'اسلامی ایمان کی بنیادیں';
 
   @override

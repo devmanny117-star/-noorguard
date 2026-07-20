@@ -3474,6 +3474,7 @@
     "description": "Subtitle for the Back to Basics screen"
   },
   "fivePillarsOfIslam": "The 5 Pillars of Islam",
+  "fivePillarsShort": "5 Pillars",
   "@fivePillarsOfIslam": {
     "description": "Section header for the five pillars"
   },

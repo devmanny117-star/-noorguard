@@ -2820,6 +2820,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get fivePillarsOfIslam => '5 Rukun Islam';
 
   @override
+  String get fivePillarsShort => '5 Rukun';
+
+  @override
   String get fivePillarsSubtitle => 'Fondasi keyakinan Islam';
 
   @override

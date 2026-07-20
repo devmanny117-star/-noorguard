@@ -2838,6 +2838,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get fivePillarsOfIslam => 'Les 5 Piliers de l\'Islam';
 
   @override
+  String get fivePillarsShort => '5 Piliers';
+
+  @override
   String get fivePillarsSubtitle => 'Les fondements de la foi islamique';
 
   @override

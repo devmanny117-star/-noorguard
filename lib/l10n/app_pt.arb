@@ -1399,6 +1399,7 @@
     "description": "backToBasicsSubtitle"
   },
   "fivePillarsOfIslam": "Os 5 Pilares do Islã",
+  "fivePillarsShort": "5 Pilares",
   "@fivePillarsOfIslam": {
     "description": "fivePillarsOfIslam"
   },

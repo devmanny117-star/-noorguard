@@ -1559,6 +1559,7 @@
     "description": "backToBasicsSubtitle"
   },
   "fivePillarsOfIslam": "پنج رکن اسلام",
+  "fivePillarsShort": "پنج رکن",
   "@fivePillarsOfIslam": {
     "description": "fivePillarsOfIslam"
   },

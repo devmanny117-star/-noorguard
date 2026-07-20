@@ -2801,6 +2801,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get fivePillarsOfIslam => 'پنج رکن اسلام';
 
   @override
+  String get fivePillarsShort => 'پنج رکن';
+
+  @override
   String get fivePillarsSubtitle => 'پایه‌های ایمان اسلامی';
 
   @override

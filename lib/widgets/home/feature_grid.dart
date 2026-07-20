@@ -78,7 +78,7 @@ class FeatureGrid extends StatelessWidget {
 
     // iOS-only tiles (App Blocking / Focus Mode unavailable on iOS).
     final glossary = (id: 'Islamic Glossary', icon: Icons.menu_book_rounded, asset: 'assets/images/icons/glossary_icon.png', label: l10n.islamicGlossary);
-    final pillars  = (id: '5 Pillars',        icon: Icons.mosque_rounded,    asset: 'assets/images/icons/pillars_icon.png',  label: l10n.fivePillarsOfIslam);
+    final pillars  = (id: '5 Pillars',        icon: Icons.mosque_rounded,    asset: 'assets/images/icons/pillars_icon.png',  label: l10n.fivePillarsShort);
 
     final row1 = isIOS
         ? [tafsir, duas, tasbih, calendar]

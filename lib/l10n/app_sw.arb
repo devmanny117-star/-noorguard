@@ -1399,6 +1399,7 @@
     "description": "backToBasicsSubtitle"
   },
   "fivePillarsOfIslam": "Nguzo 5 za Uislamu",
+  "fivePillarsShort": "Nguzo 5",
   "@fivePillarsOfIslam": {
     "description": "fivePillarsOfIslam"
   },

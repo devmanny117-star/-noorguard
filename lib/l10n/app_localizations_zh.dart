@@ -2675,6 +2675,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get fivePillarsOfIslam => '伊斯兰五功';
 
   @override
+  String get fivePillarsShort => '五功';
+
+  @override
   String get fivePillarsSubtitle => '伊斯兰信仰的基础';
 
   @override
