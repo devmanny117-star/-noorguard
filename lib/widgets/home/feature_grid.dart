@@ -138,7 +138,7 @@ class FeatureGrid extends StatelessWidget {
 }
 
 /// Single premium feature card — dark gradient, gold PNG artwork (or
-/// Material icon fallback) + label. Fixed height so the 52px artwork and a
+/// Material icon fallback) + label. Fixed height so the 64px artwork and a
 /// 2-line label always fit regardless of device width.
 class FeatureCard extends StatelessWidget {
   final IconData icon;
@@ -155,15 +155,15 @@ class FeatureCard extends StatelessWidget {
   });
 
   Widget _buildIcon() {
-    // Same 52x52 box for both variants so tiles align across the row.
+    // Same 64x64 box for both variants so tiles align across the row.
     return SizedBox(
-      height: 52,
-      width: 52,
+      height: 64,
+      width: 64,
       child: asset == null
           ? Icon(icon, color: _kBorderGold, size: 36)
           : Image.asset(
               asset!,
-              height: 52,
+              height: 64,
               fit: BoxFit.contain,
               errorBuilder: (_, __, ___) =>
                   Icon(icon, color: _kBorderGold, size: 36),
@@ -176,7 +176,7 @@ class FeatureCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: 96,
+        height: 104,
         child: Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
