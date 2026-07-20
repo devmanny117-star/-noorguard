@@ -37,6 +37,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Fatiha is de grootste surah in de Koran, zoals de Profeet (vrede zij met hem) verklaarde. Ibn Kathir legt uit dat het "De Opening" wordt genoemd omdat de Koran ermee begint en gebeden ermee worden geopend. Het wordt ook Umm Al-Kitab (Moeder van het Boek) en As-Sab\' Al-Mathani (de Zeven Vaak Herhaalde Verzen) genoemd. Het omvat lof aan Allah, bevestiging van Zijn Heerschappij, en een smeekbede om leiding naar het rechte pad.',
       'pt': 'Al-Fatiha é a maior surah do Alcorão, conforme afirmado pelo Profeta (a paz esteja com ele). Ibn Kathir explica que é chamada de "A Abertura" porque o Alcorão começa com ela, e as orações são abertas com sua recitação. Também é chamada de Umm Al-Kitab (Mãe do Livro) e As-Sab\' Al-Mathani (os Sete Versículos Repetidos). Ela abrange o louvor a Allah, a afirmação de Seu Senhorio, e uma súplica por orientação ao caminho recto.',
       'it': 'Al-Fatiha è la sura più grande del Corano, come affermato dal Profeta (pace su di lui). Ibn Kathir spiega che è chiamata "L\'Apertura" perché il Corano inizia con essa e le preghiere si aprono con la sua recitazione. È anche chiamata Umm Al-Kitab (Madre del Libro) e As-Sab\' Al-Mathani (i Sette Versetti Ripetuti). Comprende la lode ad Allah, l\'affermazione della Sua Signoria, e una supplica per la guida sulla retta via.',
+      'fa': 'سوره فاتحه بزرگ‌ترین سوره قرآن است، چنان‌که پیامبر (ص) فرموده‌اند. ابن کثیر توضیح می‌دهد که این سوره «فاتحه» نامیده شده زیرا قرآن با آن آغاز می‌شود و نماز با تلاوت آن گشوده می‌گردد. این سوره همچنین ام‌الکتاب (مادر کتاب) و سبع‌المثانی (هفت آیه تکرارشونده) نامیده می‌شود. این سوره دربردارنده ستایش الله، اثبات ربوبیت او و دعا برای هدایت به راه راست است.',
+      'ru': 'Аль-Фатиха — величайшая сура Корана, как сказал Пророк (мир ему и благословение). Ибн Касир поясняет, что она названа «Открывающей», потому что с неё начинается Коран и с её чтения открывается молитва. Её также называют Умм аль-Китаб (Мать Книги) и ас-Саб аль-Масани (Семь часто повторяемых аятов). Она заключает в себе восхваление Аллаха, утверждение Его Господства и мольбу о наставлении на прямой путь.',
 },
     themes: {
       'en': ['Praise and gratitude to Allah', 'Seeking guidance to the straight path', 'The distinction between those blessed and those astray', 'Foundation of the relationship between servant and Lord'],
@@ -54,6 +56,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Lof en dankbaarheid aan Allah', 'Het zoeken naar leiding op het rechte pad', 'Het onderscheid tussen de gezegenden en de dwalenden', 'Grondslag van de relatie tussen dienaar en Heer'],
       'pt': ['Louvor e gratidão a Allah', 'Buscar orientação para o caminho recto', 'A distinção entre os bem-aventurados e os desviados', 'Fundamento da relação entre o servo e o Senhor'],
       'it': ['Lode e gratitudine ad Allah', 'Cercare la guida sulla retta via', 'La distinzione tra i benedetti e gli smarriti', 'Fondamento della relazione tra servo e Signore'],
+      'fa': ['حمد و سپاس الله', 'درخواست هدایت به راه راست', 'تمایز میان نعمت‌یافتگان و گمراهان', 'بنیان رابطه میان بنده و پروردگار'],
+      'ru': ['Хвала и благодарность Аллаху', 'Мольба о наставлении на прямой путь', 'Различие между облагодетельствованными и заблудшими', 'Основа отношений между рабом и Господом'],
 },
   ),
   DailyTafsirEntry(
@@ -74,6 +78,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Baqara is de langste surah in de Koran. Ibn Kathir merkt op dat het in Medina werd geopenbaard en de grondslagen van de islamitische wetgeving behandelt. Het richt zich op de gelovigen, de huichelaars en de mensen van het Boek. Het bevat Ayat Al-Kursi (het Troonvers), het langste vers in de Koran over financiële transacties, en het verhaal van Ibrahim die de Kaaba herbouwde. De Profeet zei dat Satan vlucht uit het huis waarin Al-Baqara wordt voorgedragen.',
       'pt': 'Al-Baqara é a surah mais longa do Alcorão. Ibn Kathir observa que foi revelada em Medina e abrange os fundamentos da legislação islâmica. Dirige-se aos crentes, aos hipócritas e à Gente do Livro. Contém Ayat Al-Kursi (o Versículo do Trono), o versículo mais longo do Alcorão sobre transações financeiras, e a história de Ibrahim reconstruindo a Kaaba. O Profeta disse que Satanás fugiu da casa na qual Al-Baqara é recitada.',
       'it': 'Al-Baqara è la sura più lunga del Corano. Ibn Kathir nota che fu rivelata a Medina e tratta i fondamenti della legislazione islamica. Si rivolge ai credenti, agli ipocriti e alla Gente del Libro. Contiene Ayat Al-Kursi (il Versetto del Trono), il versetto più lungo del Corano sulle transazioni finanziarie, e la storia di Ibrahim che ricostruisce la Kaaba. Il Profeta disse che Satana fugge dalla casa in cui viene recitata Al-Baqara.',
+      'fa': 'بقره طولانی‌ترین سوره قرآن است. ابن کثیر یادآور می‌شود که این سوره در مدینه نازل شده و بنیان‌های تشریع اسلامی را در بر می‌گیرد. این سوره مؤمنان، منافقان و اهل کتاب را مخاطب قرار می‌دهد. آیةالکرسی، طولانی‌ترین آیه قرآن درباره معاملات مالی و داستان بازسازی کعبه به دست ابراهیم در آن آمده است. پیامبر (ص) فرمودند که شیطان از خانه‌ای که در آن سوره بقره تلاوت شود می‌گریزد.',
+      'ru': 'Аль-Бакара — самая длинная сура Корана. Ибн Касир отмечает, что она была ниспослана в Медине и охватывает основы исламского законодательства. Она обращена к верующим, лицемерам и людям Писания. В ней содержатся аят аль-Курси (аят Трона), самый длинный аят Корана о финансовых сделках и история Ибрахима, восстановившего Каабу. Пророк сказал, что шайтан бежит из дома, в котором читают суру Аль-Бакара.',
 },
     themes: {
       'en': ['Foundations of Islamic law and guidance', 'The story of creation and Adam', 'Ayat Al-Kursi — the greatest verse', 'Patience, prayer, and trust in Allah\'s plan'],
@@ -91,6 +97,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Grondslagen van de islamitische wet en leiding', 'Het verhaal van de schepping en Adam', 'Ayat Al-Kursi — het grootste vers', 'Geduld, gebed en vertrouwen in Allahs plan'],
       'pt': ['Fundamentos da lei e orientação islâmica', 'A história da criação e de Adão', 'Ayat Al-Kursi — o maior versículo', 'Paciência, oração e confiança no plano de Allah'],
       'it': ['Fondamenti della legge islamica e della guida', 'La storia della creazione e di Adamo', 'Ayat Al-Kursi — il versetto più grande', 'Pazienza, preghiera e fiducia nel piano di Allah'],
+      'fa': ['بنیان‌های شریعت و هدایت اسلامی', 'داستان آفرینش و آدم', 'آیةالکرسی — بزرگ‌ترین آیه', 'صبر، نماز و توکل بر تدبیر الله'],
+      'ru': ['Основы исламского закона и руководства', 'История сотворения и Адама', 'Аят аль-Курси — величайший аят', 'Терпение, молитва и упование на замысел Аллаха'],
 },
   ),
   DailyTafsirEntry(
@@ -111,6 +119,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Aal-i-Imran werd geopenbaard in Medina en richt zich op de familie van Imran, waaronder Maryam (Maria) en Isa (Jezus). Ibn Kathir legt uit dat het christelijke theologische beweringen weerlegt terwijl het Isa eert als profeet. Het behandelt ook de Slag bij Uhud, geduld in tegenspoed, en het belang van eenheid onder moslims. De Profeet koppelde het aan Al-Baqara en noemde ze "Az-Zahrawain" (de twee schitterende).',
       'pt': 'Aal-i-Imran foi revelada em Medina e centra-se na família de Imran, incluindo Maryam (Maria) e Isa (Jesus). Ibn Kathir explica que ela refuta afirmações teológicas cristãs enquanto honra Isa como profeta. Também aborda a Batalha de Uhud, a paciência na adversidade, e a importância da unidade entre os muçulmanos. O Profeta a associou a Al-Baqara, chamando-as de "Az-Zahrawain" (as duas brilhantes).',
       'it': 'Aal-i-Imran fu rivelata a Medina e si concentra sulla famiglia di Imran, inclusi Maryam (Maria) e Isa (Gesù). Ibn Kathir spiega che essa rifiuta le affermazioni teologiche cristiane onorando al contempo Isa come profeta. Tratta anche la Battaglia di Uhud, la pazienza nelle avversità e l\'importanza dell\'unità tra i musulmani. Il Profeta l\'ha associata ad Al-Baqara, chiamandole "Az-Zahrawain" (le due splendenti).',
+      'fa': 'سوره آل‌عمران در مدینه نازل شد و محور آن خاندان عمران است، از جمله مریم و عیسی (ع). ابن کثیر توضیح می‌دهد که این سوره ادعاهای اعتقادی مسیحیان را رد می‌کند و در عین حال عیسی را به عنوان پیامبر گرامی می‌دارد. همچنین به غزوه احد، صبر در سختی‌ها و اهمیت وحدت مسلمانان می‌پردازد. پیامبر (ص) آن را با سوره بقره همراه کرد و آن دو را «زهراوین» (دو سوره درخشان) نامید.',
+      'ru': 'Сура Али Имран была ниспослана в Медине и посвящена семейству Имрана, включая Марьям и Ису (Иисуса). Ибн Касир поясняет, что она опровергает христианские богословские утверждения, почитая при этом Ису как пророка. В ней также говорится о битве при Ухуде, терпении в невзгодах и важности единства мусульман. Пророк объединял её с сурой Аль-Бакара, называя их «аз-Захравайн» (двумя сияющими).',
 },
     themes: {
       'en': ['The true nature of Prophet Isa (Jesus)', 'Lessons from the Battle of Uhud', 'Patience and steadfastness in trials', 'Unity of the Muslim Ummah'],
@@ -128,6 +138,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De ware aard van Profeet Isa', 'Lessen uit de Slag bij Uhud', 'Geduld en standvastigheid in beproevingen', 'Eenheid van de moslimgemeenschap'],
       'pt': ['A verdadeira natureza do Profeta Isa', 'Lições da Batalha de Uhud', 'Paciência e firmeza nas provações', 'Unidade da Ummah muçulmana'],
       'it': ['La vera natura del Profeta Isa', 'Lezioni dalla Battaglia di Uhud', 'Pazienza e fermezza nelle prove', 'Unità della Ummah musulmana'],
+      'fa': ['حقیقت پیامبر خدا عیسی (ع)', 'درس‌های غزوه احد', 'صبر و پایداری در آزمایش‌ها', 'وحدت امت اسلامی'],
+      'ru': ['Истинная природа пророка Исы (Иисуса)', 'Уроки битвы при Ухуде', 'Терпение и стойкость в испытаниях', 'Единство мусульманской уммы'],
 },
   ),
   DailyTafsirEntry(
@@ -148,6 +160,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Surah Yusuf vertelt het mooiste verhaal in de Koran — het leven van Profeet Yusuf (Jozef). Ibn Kathir legt in detail uit hoe deze surah werd geopenbaard om Profeet Mohammed te troosten tijdens een periode van groot verdriet. Het behandelt Yusufs reis vanaf het in een put gegooid worden door zijn broers, verkocht worden als slaaf in Egypte, het weerstaan van verleiding, gevangenschap, en uiteindelijk het worden van minister van Egypte. Het is een verhaal van geduld, vertrouwen in Allah en uiteindelijke triomf.',
       'pt': 'A Surah Yusuf narra a mais bela história do Alcorão — a vida do Profeta Yusuf (José). Ibn Kathir detalha como esta surah foi revelada para consolar o Profeta Muhammad durante um período de grande tristeza. Abrange a jornada de Yusuf, desde ser lançado em um poço por seus irmãos, vendido como escravo no Egito, resistindo à tentação, preso, e finalmente se tornando ministro do Egito. É uma história de paciência, confiança em Allah, e triunfo final.',
       'it': 'La Sura Yusuf racconta la storia più bella del Corano — la vita del Profeta Yusuf (Giuseppe). Ibn Kathir descrive in dettaglio come questa sura sia stata rivelata per consolare il Profeta Muhammad durante un periodo di grande tristezza. Copre il viaggio di Yusuf, dall\'essere gettato in un pozzo dai suoi fratelli, venduto come schiavo in Egitto, resistere alla tentazione, essere imprigionato, e infine diventare ministro d\'Egitto. È una storia di pazienza, fiducia in Allah, e trionfo finale.',
+      'fa': 'سوره یوسف زیباترین داستان قرآن را بازگو می‌کند — زندگی یوسف پیامبر (ع). ابن کثیر شرح می‌دهد که این سوره برای دلداری پیامبر اکرم (ص) در دوران اندوهی بزرگ نازل شد. این سوره سفر یوسف را در بر می‌گیرد: از افکنده شدن به چاه به دست برادران، فروخته شدن به بردگی در مصر، ایستادگی در برابر وسوسه، زندان، و سرانجام رسیدن به مقام وزارت مصر. این داستانِ صبر، توکل بر الله و پیروزی نهایی است.',
+      'ru': 'Сура Юсуф рассказывает прекраснейшую историю Корана — жизнь пророка Юсуфа (Иосифа). Ибн Касир подробно описывает, что эта сура была ниспослана, чтобы утешить пророка Мухаммада во время великой печали. Она повествует о пути Юсуфа: от колодца, в который его бросили братья, через рабство в Египте, стойкость перед искушением и темницу — к посту министра Египта. Это история терпения, упования на Аллаха и окончательного торжества.',
 },
     themes: {
       'en': ['The beauty of patience (sabr) through hardship', 'Trust in Allah\'s plan even when things seem hopeless', 'Resisting temptation and maintaining righteousness', 'Forgiveness and family reconciliation'],
@@ -165,6 +179,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De schoonheid van geduld (sabr) in tegenspoed', 'Vertrouwen op Allahs plan, ook als alles hopeloos lijkt', 'Verleiding weerstaan en rechtschapenheid behouden', 'Vergeving en gezinsverzoening'],
       'pt': ['A beleza da paciência (sabr) através da dificuldade', 'Confiar no plano de Allah mesmo quando tudo parece sem esperança', 'Resistir à tentação e manter a rectidão', 'Perdão e reconciliação familiar'],
       'it': ['La bellezza della pazienza (sabr) nelle difficoltà', 'Fidarsi del piano di Allah anche quando tutto sembra senza speranza', 'Resistere alla tentazione e mantenere la rettitudine', 'Perdono e riconciliazione familiare'],
+      'fa': ['زیبایی صبر در سختی‌ها', 'توکل بر تدبیر الله حتی در ناامیدی', 'ایستادگی در برابر وسوسه و حفظ پاکدامنی', 'بخشش و آشتی خانوادگی'],
+      'ru': ['Красота терпения (сабр) в невзгодах', 'Упование на замысел Аллаха, даже когда всё кажется безнадёжным', 'Стойкость перед искушением и сохранение праведности', 'Прощение и примирение в семье'],
 },
   ),
   DailyTafsirEntry(
@@ -185,6 +201,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Kahf bevat vier belangrijke verhalen die dienen als bescherming tegen beproevingen. Ibn Kathir legt het verhaal uit van de Lieden van de Grot (bescherming tegen beproevingen van geloof), het verhaal van de man met twee tuinen (beproevingen van rijkdom), het verhaal van Musa en Al-Khidr (beproevingen van kennis), en het verhaal van Dhul-Qarnayn (beproevingen van macht). De Profeet beval aan om het elke vrijdag te lezen als een licht tussen twee vrijdagen.',
       'pt': 'Al-Kahf contém quatro histórias principais que servem como proteção contra as provações. Ibn Kathir explica a história dos Companheiros da Caverna (proteção contra provações de fé), a história do homem com dois jardins (provações de riqueza), a história de Musa e Al-Khidr (provações de conhecimento), e a história de Dhul-Qarnayn (provações de poder). O Profeta recomendou lê-la toda sexta-feira como uma luz entre duas sextas-feiras.',
       'it': 'Al-Kahf contiene quattro storie principali che servono come protezione dalle prove. Ibn Kathir spiega la storia dei Compagni della Caverna (protezione dalle prove della fede), la storia dell\'uomo con due giardini (prove della ricchezza), la storia di Musa e Al-Khidr (prove della conoscenza), e la storia di Dhul-Qarnayn (prove del potere). Il Profeta consigliò di leggerla ogni venerdì come una luce tra due venerdì.',
+      'fa': 'سوره کهف چهار داستان بزرگ دارد که مایه محافظت از فتنه‌ها هستند. ابن کثیر داستان اصحاب کهف (فتنه دین)، داستان مرد صاحب دو باغ (فتنه ثروت)، داستان موسی و خضر (فتنه دانش) و داستان ذوالقرنین (فتنه قدرت) را شرح می‌دهد. پیامبر (ص) سفارش کردند که هر جمعه خوانده شود تا نوری میان دو جمعه باشد.',
+      'ru': 'Аль-Кахф содержит четыре великие истории, служащие защитой от испытаний. Ибн Касир поясняет: история обитателей пещеры (испытание веры), история владельца двух садов (испытание богатством), история Мусы и аль-Хидра (испытание знанием) и история Зуль-Карнайна (испытание властью). Пророк советовал читать её каждую пятницу как свет между двумя пятницами.',
 },
     themes: {
       'en': ['Protection from the four great trials of life', 'The power of faith in the face of persecution', 'Humility in seeking knowledge', 'Reading Al-Kahf every Friday as a Sunnah'],
@@ -202,6 +220,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Bescherming tegen de vier grote beproevingen van het leven', 'De kracht van geloof tegenover vervolging', 'Bescheidenheid bij het zoeken naar kennis', 'Het lezen van Al-Kahf elke vrijdag als Sunnah'],
       'pt': ['Proteção contra as quatro grandes provações da vida', 'O poder da fé frente à perseguição', 'Humildade na busca pelo conhecimento', 'Ler Al-Kahf toda sexta-feira como uma Sunnah'],
       'it': ['Protezione dalle quattro grandi prove della vita', 'La forza della fede di fronte alla persecuzione', 'Umiltà nella ricerca della conoscenza', 'Leggere Al-Kahf ogni venerdì come Sunnah'],
+      'fa': ['محافظت از چهار فتنه بزرگ زندگی', 'قدرت ایمان در برابر آزار و ستم', 'فروتنی در طلب دانش', 'خواندن سوره کهف در هر جمعه به عنوان سنت'],
+      'ru': ['Защита от четырёх великих испытаний жизни', 'Сила веры перед лицом гонений', 'Смирение в поиске знаний', 'Чтение суры Аль-Кахф каждую пятницу — Сунна'],
 },
   ),
   DailyTafsirEntry(
@@ -222,6 +242,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Surah Maryam is genoemd naar de gezegende moeder van Profeet Isa (Jezus). Ibn Kathir legt uit dat het begint met het wonderbaarlijke verhaal van Zakariyya, aan wie op hoge leeftijd een zoon (Yahya/Johannes) werd geschonken, en vervolgens met het nog grotere wonder van Maryam die Isa baarde zonder vader. De surah weerlegt krachtig de bewering dat Allah een zoon heeft, en verklaart Zijn absolute eenheid. Het vertelt ook de verhalen van Ibrahim, Musa, Ismail en Idris.',
       'pt': 'A Surah Maryam é nomeada em homenagem à bendita mãe do Profeta Isa (Jesus). Ibn Kathir explica que começa com a história milagrosa de Zakariyya, a quem foi concedido um filho (Yahya/João) na velhice, depois com o milagre ainda maior de Maryam dando à luz a Isa sem um pai. A surah refuta poderosamente a afirmação de que Allah tem um filho, declarando Sua unicidade absoluta. Também narra as histórias de Ibrahim, Musa, Ismail e Idris.',
       'it': 'La Sura Maryam prende il nome dalla benedetta madre del Profeta Isa (Gesù). Ibn Kathir spiega che inizia con la storia miracolosa di Zakariyya, a cui fu concesso un figlio (Yahya/Giovanni) in tarda età, e poi con il miracolo ancora più grande di Maryam che dà alla luce Isa senza un padre. La sura rifiuta con forza l\'affermazione che Allah abbia un figlio, dichiarando la Sua assoluta unicità. Racconta anche le storie di Ibrahim, Musa, Ismail e Idris.',
+      'fa': 'سوره مریم به نام مادر بزرگوار عیسی پیامبر (ع) نام‌گذاری شده است. ابن کثیر توضیح می‌دهد که این سوره با داستان شگفت‌انگیز زکریا آغاز می‌شود که در پیری صاحب پسری (یحیی) شد، و سپس معجزه بزرگ‌تر یعنی تولد عیسی از مریم بدون پدر را بیان می‌کند. این سوره ادعای فرزند داشتن الله را قاطعانه رد می‌کند و یگانگی مطلق او را اعلام می‌دارد. همچنین داستان‌های ابراهیم، موسی، اسماعیل و ادریس را بازگو می‌کند.',
+      'ru': 'Сура Марьям названа в честь благословенной матери пророка Исы (Иисуса). Ибн Касир поясняет, что она начинается с чудесной истории Закарии, которому в старости был дарован сын (Яхья), а затем повествует о ещё большем чуде — рождении Исы у Марьям без отца. Сура решительно опровергает утверждение, будто у Аллаха есть сын, провозглашая Его абсолютное единство. В ней также рассказывается об Ибрахиме, Мусе, Исмаиле и Идрисе.',
 },
     themes: {
       'en': ['The miraculous birth of Isa (Jesus)', 'Allah\'s mercy to His righteous servants', 'The absolute oneness of Allah (Tawhid)', 'The virtue of Maryam as the best of women'],
@@ -239,6 +261,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De wonderbaarlijke geboorte van Isa', 'Allahs genade voor Zijn rechtschapen dienaren', 'De absolute eenheid van Allah (Tawhid)', 'De deugd van Maryam als de beste van de vrouwen'],
       'pt': ['O nascimento milagroso de Isa', 'A misericórdia de Allah para com Seus servos justos', 'A unicidade absoluta de Allah (Tawhid)', 'A virtude de Maryam como a melhor das mulheres'],
       'it': ['La nascita miracolosa di Isa', 'La misericordia di Allah verso i Suoi servi devoti', 'L\'assoluta unicità di Allah (Tawhid)', 'La virtù di Maryam come la migliore delle donne'],
+      'fa': ['تولد معجزه‌آسای عیسی (ع)', 'رحمت الله بر بندگان صالحش', 'یگانگی مطلق الله (توحید)', 'فضیلت مریم به عنوان برترین زنان'],
+      'ru': ['Чудесное рождение Исы (Иисуса)', 'Милость Аллаха к Его праведным рабам', 'Абсолютное единобожие (таухид)', 'Достоинство Марьям как лучшей из женщин'],
 },
   ),
   DailyTafsirEntry(
@@ -259,6 +283,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'An-Noor (Het Licht) bevat essentiële sociale wetgeving voor de moslimgemeenschap. Ibn Kathir legt uit dat het bescheidenheid, het neerslaan van de blik, de hijab, en de straf voor laster behandelt. Het bevat het beroemde "Lichtvers" (Ayat An-Nur) dat Allahs leiding vergelijkt met een lamp in een nis. De surah stelt de principes vast van een moreel rechtschapen samenleving.',
       'pt': 'An-Noor (A Luz) contém legislação social vital para a comunidade muçulmana. Ibn Kathir explica que aborda a modéstia, baixar o olhar, o hijab, e a punição pela calúnia. Contém o famoso "Versículo da Luz" (Ayat An-Nur) que compara a orientação de Allah a uma lâmpada num nicho. A surah estabelece os princípios de uma sociedade moralmente correcta.',
       'it': 'An-Noor (La Luce) contiene una legislazione sociale vitale per la comunità musulmana. Ibn Kathir spiega che essa tratta la modestia, l\'abbassare lo sguardo, il hijab e la punizione per la calunnia. Contiene il famoso "Versetto della Luce" (Ayat An-Nur) che paragona la guida di Allah a una lampada in una nicchia. La sura stabilisce i principi di una società moralmente retta.',
+      'fa': 'سوره نور دربردارنده احکام اجتماعی حیاتی برای جامعه اسلامی است. ابن کثیر توضیح می‌دهد که این سوره به حیا، فروبستن نگاه، حجاب و مجازات تهمت می‌پردازد. «آیه نور» مشهور در آن است که هدایت الله را به چراغی در چراغدان تشبیه می‌کند. این سوره اصول جامعه‌ای پاک و اخلاق‌مدار را بنیان می‌نهد.',
+      'ru': 'Ан-Нур (Свет) содержит важнейшие общественные установления для мусульманской общины. Ибн Касир поясняет, что она говорит о скромности, потуплении взора, хиджабе и наказании за клевету. В ней содержится знаменитый «аят Света» (аят ан-Нур), в котором руководство Аллаха сравнивается со светильником в нише. Сура утверждает принципы нравственно чистого общества.',
 },
     themes: {
       'en': ['Modesty and lowering the gaze', 'The Light of Allah — Ayat An-Nur', 'Protection of honor and punishment for slander', 'Building a morally upright community'],
@@ -276,6 +302,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Bescheidenheid en het neerslaan van de blik', 'Het Licht van Allah — Ayat An-Nur', 'Bescherming van eer en straf voor laster', 'Het opbouwen van een moreel rechtschapen gemeenschap'],
       'pt': ['Modéstia e baixar o olhar', 'A Luz de Allah — Ayat An-Nur', 'Proteção da honra e punição pela calúnia', 'Construir uma comunidade moralmente correcta'],
       'it': ['Modestia e abbassare lo sguardo', 'La Luce di Allah — Ayat An-Nur', 'Protezione dell\'onore e punizione per la calunnia', 'Costruire una comunità moralmente retta'],
+      'fa': ['حیا و فروبستن نگاه', 'نور الله — آیه نور', 'پاسداری از آبرو و مجازات تهمت', 'ساختن جامعه‌ای پاک و اخلاق‌مدار'],
+      'ru': ['Скромность и потупление взора', 'Свет Аллаха — аят ан-Нур', 'Защита чести и наказание за клевету', 'Построение нравственно чистого общества'],
 },
   ),
   DailyTafsirEntry(
@@ -296,6 +324,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Ar-Room begint met een profetie dat de Romeinen, na verslagen te zijn door de Perzen, binnen enkele jaren zegevierend zouden zijn — een profetie die precies werd vervuld zoals voorspeld. Ibn Kathir benadrukt dit als een van de wonderen van de Koran. De surah reflecteert vervolgens op de tekenen van Allah in de schepping: de hemelen, de aarde, de diversiteit van talen en kleuren, en de cyclus van leven en dood.',
       'pt': 'Ar-Room abre com uma profecia de que os romanos, após serem derrotados pelos persas, seriam vitoriosos dentro de poucos anos — uma profecia que se cumpriu exatamente como dito. Ibn Kathir destaca isso como um dos milagres do Alcorão. A surah então reflete sobre os sinais de Allah na criação: os céus, a terra, a diversidade de línguas e cores, e o ciclo de vida e morte.',
       'it': 'Ar-Room si apre con una profezia secondo cui i Romani, dopo essere stati sconfitti dai Persiani, sarebbero stati vittoriosi entro pochi anni — una profezia che si è realizzata esattamente come affermato. Ibn Kathir sottolinea questo come uno dei miracoli del Corano. La sura riflette poi sui segni di Allah nella creazione: i cieli, la terra, la diversità di lingue e colori, e il ciclo di vita e morte.',
+      'fa': 'سوره روم با پیشگویی‌ای آغاز می‌شود که رومیان پس از شکست از ایرانیان، در چند سال پیروز خواهند شد — پیشگویی‌ای که دقیقاً همان‌گونه تحقق یافت. ابن کثیر این را یکی از معجزات قرآن می‌داند. سپس سوره در نشانه‌های الله در آفرینش تأمل می‌کند: آسمان‌ها، زمین، گوناگونی زبان‌ها و رنگ‌ها، و چرخه زندگی و مرگ.',
+      'ru': 'Сура Ар-Рум открывается пророчеством о том, что римляне, потерпев поражение от персов, одержат победу в течение нескольких лет — и это пророчество исполнилось в точности. Ибн Касир указывает на это как на одно из чудес Корана. Затем сура размышляет о знамениях Аллаха в творении: небесах, земле, разнообразии языков и цветов кожи, круговороте жизни и смерти.',
 },
     themes: {
       'en': ['A fulfilled Quranic prophecy — proof of divine origin', 'Signs of Allah in the natural world', 'The cycle of rise and fall of civilizations', 'Reflection on creation as worship'],
@@ -313,6 +343,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Een vervulde koranische profetie — bewijs van goddelijke oorsprong', 'Tekenen van Allah in de natuurlijke wereld', 'De cyclus van opkomst en ondergang van beschavingen', 'Reflectie op de schepping als aanbidding'],
       'pt': ['Uma profecia corânica cumprida — prova de origem divina', 'Sinais de Allah no mundo natural', 'O ciclo de ascensão e queda das civilizações', 'Reflexão sobre a criação como adoração'],
       'it': ['Una profezia coranica realizzata — prova di origine divina', 'Segni di Allah nel mondo naturale', 'Il ciclo di ascesa e caduta delle civiltà', 'La riflessione sulla creazione come atto di adorazione'],
+      'fa': ['پیشگویی تحقق‌یافته قرآن — دلیل الهی بودن آن', 'نشانه‌های الله در جهان طبیعت', 'چرخه فراز و فرود تمدن‌ها', 'تأمل در آفرینش به عنوان عبادت'],
+      'ru': ['Исполнившееся пророчество Корана — доказательство божественного происхождения', 'Знамения Аллаха в природе', 'Круговорот взлёта и падения цивилизаций', 'Размышление о творении как поклонение'],
 },
   ),
   DailyTafsirEntry(
@@ -333,6 +365,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Surah Luqman is genoemd naar de wijze man Luqman, aan wie Allah wijsheid verleende. Ibn Kathir legt uit dat de kern van deze surah het advies van Luqman aan zijn zoon is — een tijdloze gids voor ouderschap. Hij waarschuwt tegen shirk (Allah partners toeschrijven), gebiedt het gebed, vermaant tot goed gedrag, waarschuwt tegen arrogantie, en leert matigheid in spraak. Deze verzen worden beschouwd als enkele van de mooiste ouderlijke adviezen in alle geschriften.',
       'pt': 'A Surah Luqman é nomeada em homenagem ao sábio Luqman, a quem Allah concedeu sabedoria. Ibn Kathir explica que o cerne desta surah é o conselho de Luqman ao seu filho — um guia de educação parental atemporal. Ele adverte contra o shirk (associar parceiros a Allah), ordena a oração, exorta à boa conduta, adverte contra a arrogância, e ensina moderação na fala. Estes versículos são considerados alguns dos mais belos conselhos parentais em toda a escritura.',
       'it': 'La Sura Luqman prende il nome dal saggio Luqman, a cui Allah concesse la saggezza. Ibn Kathir spiega che il cuore di questa sura è il consiglio di Luqman a suo figlio — una guida genitoriale atemporale. Egli ammonisce contro lo shirk (associare consoci ad Allah), comanda la preghiera, esorta alla buona condotta, ammonisce contro l\'arroganza, e insegna la moderazione nel parlare. Questi versetti sono considerati tra i più bei consigli genitoriali di tutta la scrittura.',
+      'fa': 'سوره لقمان به نام لقمان حکیم نام‌گذاری شده که الله به او حکمت بخشید. ابن کثیر توضیح می‌دهد که قلب این سوره اندرزهای لقمان به فرزندش است — راهنمای تربیتی جاودانه. او از شرک نهی می‌کند، به نماز فرمان می‌دهد، به نیک‌رفتاری فرا می‌خواند، از تکبر برحذر می‌دارد و میانه‌روی در گفتار را می‌آموزد. این آیات از زیباترین اندرزهای پدرانه در همه کتاب‌های آسمانی شمرده می‌شوند.',
+      'ru': 'Сура Лукман названа в честь мудреца Лукмана, которому Аллах даровал мудрость. Ибн Касир поясняет, что сердцевина этой суры — наставления Лукмана своему сыну, вечное руководство по воспитанию. Он предостерегает от ширка (придания Аллаху сотоварищей), велит совершать молитву, призывает к благонравию, предостерегает от высокомерия и учит умеренности в речи. Эти аяты считаются одними из прекраснейших родительских наставлений во всех писаниях.',
 },
     themes: {
       'en': ['Luqman\'s timeless parenting wisdom', 'The gravity of shirk (polytheism)', 'Gratitude to parents and to Allah', 'Modesty, humility, and good character'],
@@ -350,6 +384,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Luqmans tijdloze ouderlijke wijsheid', 'De ernst van shirk (polytheïsme)', 'Dankbaarheid aan ouders en aan Allah', 'Bescheidenheid, ootmoed en goed karakter'],
       'pt': ['A sabedoria parental atemporal de Luqman', 'A gravidade do shirk (politeísmo)', 'Gratidão aos pais e a Allah', 'Modéstia, humildade e bom carácter'],
       'it': ['La saggezza genitoriale atemporale di Luqman', 'La gravità dello shirk (politeismo)', 'Gratitudine verso i genitori e verso Allah', 'Modestia, umiltà e buon carattere'],
+      'fa': ['حکمت جاودانه لقمان در تربیت فرزند', 'سنگینی گناه شرک', 'سپاسگزاری از والدین و از الله', 'حیا، فروتنی و اخلاق نیکو'],
+      'ru': ['Вечная мудрость Лукмана в воспитании детей', 'Тяжесть ширка (многобожия)', 'Благодарность родителям и Аллаху', 'Скромность, смирение и благой нрав'],
 },
   ),
   DailyTafsirEntry(
@@ -370,6 +406,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Ya-Sin wordt door de Profeet (vrede zij met hem) "het hart van de Koran" genoemd. Ibn Kathir legt uit dat het de drie fundamenten van het geloof behandelt: Tawhid (eenheid van Allah), Risalah (profeetschap), en het Hiernamaals. Het vertelt het verhaal van de boodschappers die naar een stad werden gezonden en de gelovige man die hen steunde. De surah bevat krachtige argumenten voor de opstanding en tekenen van Allah in de schepping.',
       'pt': 'Ya-Sin é chamada de "o coração do Alcorão" pelo Profeta (a paz esteja com ele). Ibn Kathir explica que aborda os três fundamentos da fé: Tawhid (unicidade de Allah), Risalah (profecia), e o Além. Conta a história dos mensageiros enviados a uma cidade e do homem crente que os apoiou. A surah contém argumentos poderosos para a ressurreição e sinais de Allah na criação.',
       'it': 'Ya-Sin è chiamata "il cuore del Corano" dal Profeta (pace su di lui). Ibn Kathir spiega che essa tratta i tre fondamenti della fede: Tawhid (unicità di Allah), Risalah (profezia), e l\'Aldilà. Racconta la storia dei messaggeri inviati a una città e dell\'uomo credente che li sostenne. La sura contiene potenti argomenti a favore della resurrezione e segni di Allah nella creazione.',
+      'fa': 'پیامبر (ص) سوره یس را «قلب قرآن» نامیده‌اند. ابن کثیر توضیح می‌دهد که این سوره به سه اصل ایمان می‌پردازد: توحید، رسالت و آخرت. داستان فرستادگانی که به شهری روانه شدند و مرد مؤمنی که از آنان پشتیبانی کرد در آن آمده است. این سوره دلایل نیرومندی درباره رستاخیز و نشانه‌های الله در آفرینش دارد.',
+      'ru': 'Ясин назван Пророком (мир ему и благословение) «сердцем Корана». Ибн Касир поясняет, что сура обращается к трём основам веры: таухиду (единобожию), пророчеству и будущей жизни. В ней рассказывается история посланников, отправленных в селение, и верующего мужа, который их поддержал. Сура содержит убедительные доводы о воскрешении и знамения Аллаха в творении.',
 },
     themes: {
       'en': ['The three pillars of faith: Tawhid, Prophethood, Hereafter', 'Courage in standing for truth', 'Signs of Allah in the natural world', 'The reality of resurrection'],
@@ -387,6 +425,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De drie pijlers van het geloof: Tawhid, Profeetschap, Hiernamaals', 'Moed om voor de waarheid te staan', 'Tekenen van Allah in de natuurlijke wereld', 'De realiteit van de opstanding'],
       'pt': ['Os três pilares da fé: Tawhid, Profecia, Além', 'Coragem para defender a verdade', 'Sinais de Allah no mundo natural', 'A realidade da ressurreição'],
       'it': ['I tre pilastri della fede: Tawhid, Profezia, Aldilà', 'Coraggio nel sostenere la verità', 'Segni di Allah nel mondo naturale', 'La realtà della resurrezione'],
+      'fa': ['سه رکن ایمان: توحید، نبوت، آخرت', 'شجاعت در ایستادن برای حق', 'نشانه‌های الله در جهان طبیعت', 'حقیقت رستاخیز'],
+      'ru': ['Три столпа веры: таухид, пророчество, будущая жизнь', 'Мужество в отстаивании истины', 'Знамения Аллаха в природе', 'Реальность воскрешения'],
 },
   ),
   DailyTafsirEntry(
@@ -407,6 +447,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Hujurat stelt de etiquette van de moslimgemeenschap vast. Ibn Kathir legt uit dat het respect voor de Profeet leert, het verifiëren van nieuws voordat men erop handelt, verzoening tussen twistende partijen, en het verbod op spot, verdenking, spionage en achterklap. Het verklaart dat degene die het meest geëerd is bij Allah de meest rechtschapen is, ongeacht ras of status.',
       'pt': 'Al-Hujurat estabelece a etiqueta da comunidade muçulmana. Ibn Kathir explica que ela ensina respeito pelo Profeta, verificação de notícias antes de agir com base nelas, reconciliação entre partes em disputa, e a proibição de zombaria, suspeita, espionagem e maledicência. Declara que o mais honrado diante de Allah é o mais piedoso, independentemente de raça ou status.',
       'it': 'Al-Hujurat stabilisce l\'etichetta della comunità musulmana. Ibn Kathir spiega che essa insegna il rispetto per il Profeta, la verifica delle notizie prima di agire su di esse, la riconciliazione tra le parti in conflitto, e il divieto di derisione, sospetto, spionaggio e maldicenza. Dichiara che il più onorato presso Allah è il più devoto, indipendentemente dalla razza o dallo status.',
+      'fa': 'سوره حجرات آداب جامعه اسلامی را بنیان می‌نهد. ابن کثیر توضیح می‌دهد که این سوره احترام به پیامبر (ص)، راستی‌آزمایی خبر پیش از عمل به آن، آشتی دادن میان طرف‌های اختلاف و حرام بودن تمسخر، بدگمانی، تجسس و غیبت را می‌آموزد. این سوره اعلام می‌کند گرامی‌ترین مردم نزد الله پرهیزگارترین آنان است، بی‌توجه به نژاد و جایگاه.',
+      'ru': 'Аль-Худжурат устанавливает этикет мусульманской общины. Ибн Касир поясняет, что она учит уважению к Пророку, проверке известий прежде, чем действовать по ним, примирению спорящих сторон и запрету насмешек, подозрений, слежки и злословия. Она провозглашает, что самый почитаемый перед Аллахом — самый богобоязненный, независимо от происхождения и положения.',
 },
     themes: {
       'en': ['Verify news before acting — don\'t spread rumors', 'The prohibition of mockery and backbiting', 'All humans are equal — only taqwa distinguishes', 'Etiquette of a healthy Muslim community'],
@@ -424,6 +466,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Nieuws verifiëren voordat je handelt — geen geruchten verspreiden', 'Het verbod op spot en achterklap', 'Alle mensen zijn gelijk — alleen taqwa onderscheidt', 'Etiquette van een gezonde moslimgemeenschap'],
       'pt': ['Verificar notícias antes de agir — não espalhar rumores', 'A proibição de zombaria e maledicência', 'Todos os humanos são iguais — apenas a piedade distingue', 'Etiqueta de uma comunidade muçulmana saudável'],
       'it': ['Verificare le notizie prima di agire — non diffondere voci', 'Il divieto di derisione e maldicenza', 'Tutti gli esseri umani sono uguali — solo la devozione distingue', 'Etichetta di una sana comunità musulmana'],
+      'fa': ['راستی‌آزمایی خبر پیش از عمل — شایعه پخش نکن', 'حرام بودن تمسخر و غیبت', 'همه انسان‌ها برابرند — تنها تقوا معیار است', 'آداب جامعه اسلامی سالم'],
+      'ru': ['Проверяй известия, прежде чем действовать — не распространяй слухи', 'Запрет насмешек и злословия', 'Все люди равны — различает лишь богобоязненность', 'Этикет здоровой мусульманской общины'],
 },
   ),
   DailyTafsirEntry(
@@ -444,6 +488,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Ar-Rahman wordt vanwege haar schoonheid "de Bruid van de Koran" genoemd. Ibn Kathir legt uit dat het de talloze zegeningen van Allah voor mensen en djinn opsomt, herhaaldelijk vragend: "Welke van de gunsten van jullie Heer zullen jullie ontkennen?" Het beschrijft de schepping van mensen uit klei, djinn uit vuur, het evenwicht in de natuur, en de beloningen van het Paradijs voor wie Allah vrezen.',
       'pt': 'Ar-Rahman é chamada de "a Noiva do Alcorão" por sua beleza. Ibn Kathir explica que ela enumera as inúmeras bênçãos de Allah sobre humanos e djinns, perguntando repetidamente: "Qual das bênçãos do vosso Senhor negareis?" Descreve a criação dos humanos a partir do barro, dos djinns a partir do fogo, o equilíbrio na natureza, e as recompensas do Paraíso para aqueles que temem Allah.',
       'it': 'Ar-Rahman è chiamata "la Sposa del Corano" per la sua bellezza. Ibn Kathir spiega che essa enumera le innumerevoli benedizioni di Allah verso gli uomini e i jinn, chiedendo ripetutamente: "Quale dei favori del vostro Signore negherete?". Descrive la creazione dell\'uomo dall\'argilla, dei jinn dal fuoco, l\'equilibrio nella natura, e le ricompense del Paradiso per coloro che temono Allah.',
+      'fa': 'سوره الرحمن به سبب زیبایی‌اش «عروس قرآن» نامیده شده است. ابن کثیر توضیح می‌دهد که این سوره نعمت‌های بی‌شمار الله بر انس و جن را برمی‌شمارد و بارها می‌پرسد: «پس کدام‌یک از نعمت‌های پروردگارتان را انکار می‌کنید؟» آفرینش انسان از گِل، جن از آتش، توازن در طبیعت و پاداش‌های بهشت برای خداترسان در آن توصیف شده است.',
+      'ru': 'Ар-Рахман называют «невестой Корана» за её красоту. Ибн Касир поясняет, что она перечисляет бесчисленные блага Аллаха, дарованные людям и джиннам, вновь и вновь вопрошая: «Какую же из милостей вашего Господа вы отвергаете?» Она описывает сотворение человека из глины, джиннов из огня, равновесие в природе и награды Рая для боящихся Аллаха.',
 },
     themes: {
       'en': ['Gratitude for Allah\'s countless blessings', 'The beauty and balance in creation', 'Accountability for humans and jinn', 'The rewards of Paradise for the righteous'],
@@ -461,6 +507,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Dankbaarheid voor Allahs talloze zegeningen', 'De schoonheid en het evenwicht in de schepping', 'De verantwoordelijkheid van mensen en djinn', 'De beloningen van het Paradijs voor de rechtschapenen'],
       'pt': ['Gratidão pelas inúmeras bênçãos de Allah', 'A beleza e o equilíbrio na criação', 'A responsabilidade dos humanos e dos djinns', 'As recompensas do Paraíso para os piedosos'],
       'it': ['Gratitudine per le innumerevoli benedizioni di Allah', 'La bellezza e l\'equilibrio nella creazione', 'La responsabilità di uomini e jinn', 'Le ricompense del Paradiso per i devoti'],
+      'fa': ['سپاسگزاری برای نعمت‌های بی‌شمار الله', 'زیبایی و توازن در آفرینش', 'حسابرسی انس و جن', 'پاداش‌های بهشت برای نیکوکاران'],
+      'ru': ['Благодарность за бесчисленные блага Аллаха', 'Красота и равновесие в творении', 'Ответственность людей и джиннов', 'Награды Рая для праведных'],
 },
   ),
   DailyTafsirEntry(
@@ -481,6 +529,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Waqi\'a beschrijft de Dag van het Oordeel en verdeelt de mensheid in drie groepen: de voorlopers (As-Sabiqun), de gezellen van de rechterhand, en de gezellen van de linkerhand. Ibn Kathir legt uit dat het de beloningen van het Paradijs en de straf van de Hel levendig beschrijft. De Profeet zei: "Wie elke nacht Surah Al-Waqi\'a voordraagt, zal nooit door armoede getroffen worden." Het bevat krachtige herinneringen aan de dood en de oorsprong van de schepping.',
       'pt': 'Al-Waqi\'a descreve o Dia do Juízo e divide a humanidade em três grupos: os precursores (As-Sabiqun), os companheiros da direita, e os companheiros da esquerda. Ibn Kathir explica que ela descreve vividamente as recompensas do Paraíso e o castigo do Inferno. O Profeta disse: "Quem recitar a Surah Al-Waqi\'a todas as noites nunca será afligido pela pobreza." Contém poderosos lembretes sobre a morte e a origem da criação.',
       'it': 'Al-Waqi\'a descrive il Giorno del Giudizio e divide l\'umanità in tre gruppi: i precursori (As-Sabiqun), i compagni della destra, e i compagni della sinistra. Ibn Kathir spiega che essa descrive vividamente le ricompense del Paradiso e il castigo dell\'Inferno. Il Profeta disse: "Chi recita la Sura Al-Waqi\'a ogni notte non sarà mai colpito dalla povertà." Contiene potenti promemoria sulla morte e sull\'origine della creazione.',
+      'fa': 'سوره واقعه روز قیامت را توصیف می‌کند و مردم را به سه گروه تقسیم می‌کند: پیشتازان (سابقون)، اصحاب دست راست و اصحاب دست چپ. ابن کثیر توضیح می‌دهد که این سوره پاداش‌های بهشت و عذاب دوزخ را به‌روشنی به تصویر می‌کشد. پیامبر (ص) فرمودند: «هر کس هر شب سوره واقعه را بخواند، هرگز فقر به او نمی‌رسد.» یادآوری‌های نیرومندی درباره مرگ و آغاز آفرینش در آن است.',
+      'ru': 'Аль-Вакиа описывает Судный день и разделяет человечество на три группы: опередивших (ас-сабикун), спутников правой стороны и спутников левой стороны. Ибн Касир поясняет, что сура ярко описывает награды Рая и наказание Ада. Пророк сказал: «Кто читает суру Аль-Вакиа каждую ночь, того никогда не постигнет бедность». Она содержит сильные напоминания о смерти и о начале творения.',
 },
     themes: {
       'en': ['The three groups of humanity on Judgment Day', 'Vivid descriptions of Paradise and Hellfire', 'Protection from poverty through regular recitation', 'Reflecting on death and our ultimate return to Allah'],
@@ -498,6 +548,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De drie groepen van de mensheid op de Dag van het Oordeel', 'Levendige beschrijvingen van het Paradijs en de Hel', 'Bescherming tegen armoede door regelmatige voordracht', 'Reflecteren op de dood en onze uiteindelijke terugkeer naar Allah'],
       'pt': ['Os três grupos da humanidade no Dia do Juízo', 'Descrições vívidas do Paraíso e do Inferno', 'Proteção contra a pobreza através da recitação regular', 'Reflectir sobre a morte e o nosso retorno final a Allah'],
       'it': ['I tre gruppi dell\'umanità nel Giorno del Giudizio', 'Descrizioni vivide del Paradiso e dell\'Inferno', 'Protezione dalla povertà attraverso la recitazione regolare', 'Riflettere sulla morte e sul nostro ritorno finale ad Allah'],
+      'fa': ['سه گروه مردم در روز قیامت', 'توصیف‌های زنده بهشت و دوزخ', 'محافظت از فقر با تلاوت پیوسته', 'اندیشیدن به مرگ و بازگشت نهایی به سوی الله'],
+      'ru': ['Три группы людей в Судный день', 'Яркие описания Рая и Ада', 'Защита от бедности через постоянное чтение', 'Размышление о смерти и нашем возвращении к Аллаху'],
 },
   ),
   DailyTafsirEntry(
@@ -518,6 +570,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Mulk is de surah die voor zijn voordrager in het graf bemiddelt. Ibn Kathir legt uit dat de Profeet zei dat het beschermt tegen de bestraffing van het graf, en beval aan om het elke nacht voor het slapen voor te dragen. Het begint met het verklaren van Allahs soevereiniteit over de hele schepping en het doel van leven en dood als een test. Het daagt ongelovigen uit om te reflecteren op de perfectie van de hemelen en Allahs voorziening.',
       'pt': 'Al-Mulk é a surah que intercede por quem a recita no túmulo. Ibn Kathir explica que o Profeta disse que ela protege do castigo do túmulo e recomendou recitá-la todas as noites antes de dormir. Ela começa declarando a soberania de Allah sobre toda a criação e o propósito da vida e da morte como uma prova. Desafia os incrédulos a reflectirem sobre a perfeição dos céus e o sustento de Allah.',
       'it': 'Al-Mulk è la sura che intercede per chi la recita nella tomba. Ibn Kathir spiega che il Profeta disse che essa protegge dal castigo della tomba e raccomandò di recitarla ogni notte prima di dormire. Inizia dichiarando la sovranità di Allah su tutta la creazione e lo scopo della vita e della morte come prova. Sfida i miscredenti a riflettere sulla perfezione dei cieli e sul sostentamento di Allah.',
+      'fa': 'سوره ملک سوره‌ای است که در قبر برای خواننده‌اش شفاعت می‌کند. ابن کثیر توضیح می‌دهد که پیامبر (ص) فرمودند این سوره از عذاب قبر محافظت می‌کند و سفارش کردند هر شب پیش از خواب خوانده شود. سوره با اعلام فرمانروایی الله بر همه آفرینش و اینکه زندگی و مرگ برای آزمایش آفریده شده‌اند آغاز می‌شود. کافران را به تأمل در کمال آسمان‌ها و روزی‌رسانی الله فرا می‌خواند.',
+      'ru': 'Аль-Мульк — сура, которая заступается за читающего её в могиле. Ибн Касир поясняет, что Пророк сказал: она защищает от наказания могилы, — и советовал читать её каждую ночь перед сном. Сура открывается провозглашением владычества Аллаха над всем творением и того, что жизнь и смерть созданы как испытание. Она призывает неверующих задуматься о совершенстве небес и о наделе от Аллаха.',
 },
     themes: {
       'en': ['Protection from the punishment of the grave', 'Life and death as a test from Allah', 'The perfection of Allah\'s creation', 'Nightly recitation as a Sunnah practice'],
@@ -535,6 +589,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Bescherming tegen de bestraffing van het graf', 'Leven en dood als een test van Allah', 'De perfectie van Allahs schepping', 'Nachtelijke voordracht als Sunnah-praktijk'],
       'pt': ['Proteção contra o castigo do túmulo', 'Vida e morte como uma prova de Allah', 'A perfeição da criação de Allah', 'A recitação noturna como prática da Sunnah'],
       'it': ['Protezione dal castigo della tomba', 'Vita e morte come prova da parte di Allah', 'La perfezione della creazione di Allah', 'La recitazione notturna come pratica della Sunnah'],
+      'fa': ['محافظت از عذاب قبر', 'زندگی و مرگ به عنوان آزمایش الهی', 'کمال آفرینش الله', 'تلاوت هر شب به عنوان سنت'],
+      'ru': ['Защита от наказания могилы', 'Жизнь и смерть как испытание от Аллаха', 'Совершенство творения Аллаха', 'Чтение каждую ночь — практика Сунны'],
 },
   ),
   DailyTafsirEntry(
@@ -555,6 +611,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'An-Naba opent het 30e Juz van de Koran. Ibn Kathir legt uit dat het zich richt op degenen die twijfelden aan de Dag van de Opstanding, vragend: "Waarover bevragen zij elkaar?" Het antwoordt door de tekenen van Allahs macht op te sommen: de aarde gemaakt als een bed, de bergen als pinnen, de schepping van paren, de nacht voor rust en de dag voor levensonderhoud. Vervolgens geeft het een levendige beschrijving van de Dag van het Oordeel en de gevolgen voor ontkenners en gelovigen.',
       'pt': 'An-Naba abre o 30º Juz do Alcorão. Ibn Kathir explica que se dirige àqueles que duvidavam do Dia da Ressurreição, perguntando "Sobre que se interrogam mutuamente?". Responde enumerando os sinais do poder de Allah: a terra feita como um leito, as montanhas como estacas, a criação de pares, a noite para o descanso e o dia para o sustento. Depois oferece uma descrição vívida do Dia do Juízo e as consequências para os que negam e os que creem.',
       'it': 'An-Naba apre il 30° Giuz del Corano. Ibn Kathir spiega che si rivolge a coloro che dubitavano del Giorno della Resurrezione, chiedendo "Su cosa si interrogano a vicenda?". Risponde elencando i segni del potere di Allah: la terra fatta come un letto, le montagne come picchetti, la creazione delle coppie, la notte per il riposo e il giorno per il sostentamento. Poi offre una descrizione vivida del Giorno del Giudizio e delle conseguenze per i negatori e i credenti.',
+      'fa': 'سوره نبأ جزء سی‌ام قرآن را می‌گشاید. ابن کثیر توضیح می‌دهد که این سوره خطاب به کسانی است که در روز رستاخیز تردید داشتند: «از چه چیز از یکدیگر می‌پرسند؟» پاسخ با برشمردن نشانه‌های قدرت الله می‌آید: زمین چون بستری گسترده، کوه‌ها چون میخ‌ها، آفرینش جفت‌ها، شب برای آرامش و روز برای معیشت. سپس توصیفی زنده از روز قیامت و سرانجام منکران و مؤمنان ارائه می‌دهد.',
+      'ru': 'Ан-Наба открывает тридцатый джуз Корана. Ибн Касир поясняет, что она обращена к сомневавшимся в Дне воскресения: «О чём они расспрашивают друг друга?» Ответ — перечисление знамений могущества Аллаха: земля, разостланная как ложе, горы как колья, сотворение парами, ночь для покоя и день для пропитания. Затем даётся яркое описание Судного дня и участи отрицающих и верующих.',
 },
     themes: {
       'en': ['The certainty of the Day of Resurrection', 'Signs of Allah\'s power in everyday creation', 'The consequences of denial vs. belief', 'The reward of gardens and companionship in Paradise'],
@@ -572,6 +630,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De zekerheid van de Dag van de Opstanding', 'Tekenen van Allahs macht in de dagelijkse schepping', 'De gevolgen van ontkenning versus geloof', 'De beloning van tuinen en gezelschap in het Paradijs'],
       'pt': ['A certeza do Dia da Ressurreição', 'Sinais do poder de Allah na criação cotidiana', 'As consequências da negação versus a fé', 'A recompensa de jardins e companhia no Paraíso'],
       'it': ['La certezza del Giorno della Resurrezione', 'Segni del potere di Allah nella creazione quotidiana', 'Le conseguenze della negazione contro la fede', 'La ricompensa dei giardini e della compagnia in Paradiso'],
+      'fa': ['قطعیت روز رستاخیز', 'نشانه‌های قدرت الله در آفرینش روزمره', 'سرانجام انکار در برابر ایمان', 'پاداش باغ‌ها و همنشینی در بهشت'],
+      'ru': ['Несомненность Дня воскресения', 'Знамения могущества Аллаха в повседневном творении', 'Последствия отрицания и последствия веры', 'Награда — сады и близкие спутники в Раю'],
 },
   ),
   DailyTafsirEntry(
@@ -592,6 +652,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-A\'la was een van de favoriete surahs van de Profeet. Ibn Kathir legt uit dat de Profeet het voordroeg tijdens de Eid- en vrijdaggebeden. Het gebiedt Allah te prijzen met Zijn hoogste naam, herinnert eraan dat Allah alles schept en leidt, en belooft dat de Profeet de openbaring niet zal vergeten. Het besluit met de herinnering dat succes toekomt aan wie zijn ziel zuivert en zijn Heer gedenkt.',
       'pt': 'Al-A\'la era uma das surahs favoritas do Profeta. Ibn Kathir explica que o Profeta costumava recitá-la nas orações do Eid e da sexta-feira. Ela ordena glorificar Allah pelo Seu nome mais elevado, recorda que Allah cria e guia todas as coisas, e promete que o Profeta não esquecerá a revelação. Conclui recordando que o sucesso pertence a quem purifica a sua alma e recorda o seu Senhor.',
       'it': 'Al-A\'la era una delle sure preferite dal Profeta. Ibn Kathir spiega che il Profeta era abituato a recitarla nelle preghiere dell\'Eid e del venerdì. Comanda di glorificare Allah con il Suo nome più alto, ricorda che Allah crea e guida ogni cosa, e promette che il Profeta non dimenticherà la rivelazione. Si conclude ricordando che il successo arriva a chi purifica la propria anima e ricorda il proprio Signore.',
+      'fa': 'سوره اعلی از سوره‌های محبوب پیامبر (ص) بود. ابن کثیر توضیح می‌دهد که پیامبر آن را در نمازهای عید و نماز جمعه می‌خواندند. این سوره به تسبیح الله با برترین نامش فرمان می‌دهد، یادآور می‌شود که الله همه چیز را می‌آفریند و هدایت می‌کند، و وعده می‌دهد که پیامبر وحی را فراموش نخواهد کرد. در پایان یادآور می‌شود که رستگاری از آنِ کسی است که جان خود را پاک کند و پروردگارش را یاد نماید.',
+      'ru': 'Аль-Аля была одной из любимых сур Пророка. Ибн Касир поясняет, что Пророк читал её в праздничных молитвах и в пятничной молитве. Она велит славить Аллаха Его высочайшим именем, напоминает, что Аллах творит всё и всё направляет, и обещает Пророку, что он не забудет откровение. Она завершается напоминанием: преуспеет тот, кто очищает душу и поминает своего Господа.',
 },
     themes: {
       'en': ['Glorifying Allah Most High', 'The ease of the Quran — Allah makes it easy to remember', 'Purification of the soul leads to success', 'The superiority of the Hereafter over worldly life'],
@@ -609,6 +671,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Allah de Allerhoogste prijzen', 'Het gemak van de Koran — Allah maakt het gemakkelijk te onthouden', 'Zuivering van de ziel leidt tot succes', 'De superioriteit van het Hiernamaals over het wereldse leven'],
       'pt': ['Glorificar Allah, o Altíssimo', 'A facilidade do Alcorão — Allah torna-o fácil de lembrar', 'A purificação da alma conduz ao sucesso', 'A superioridade do Além sobre a vida mundana'],
       'it': ['Glorificare Allah l\'Altissimo', 'La facilità del Corano — Allah lo rende facile da ricordare', 'La purificazione dell\'anima porta al successo', 'La superiorità dell\'Aldilà sulla vita terrena'],
+      'fa': ['تسبیح الله والامقام', 'آسانی قرآن — الله حفظ آن را آسان می‌کند', 'پاک‌سازی جان مایه رستگاری است', 'برتری آخرت بر زندگی دنیا'],
+      'ru': ['Прославление Аллаха Всевышнего', 'Лёгкость Корана — Аллах облегчает его запоминание', 'Очищение души ведёт к успеху', 'Превосходство будущей жизни над мирской'],
 },
   ),
   DailyTafsirEntry(
@@ -629,6 +693,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Ad-Duhaa werd geopenbaard tijdens een periode waarin de openbaring was gepauzeerd en de Profeet diep bedroefd was. Ibn Kathir legt uit dat Allah Zijn Boodschapper troostte, zwerend bij het ochtendlicht en de stilte van de nacht dat Hij hem niet had verlaten. Het herinnert de Profeet aan Allahs eerdere zegeningen voor hem: Hij vond hem als wees en bood hem onderdak, vond hem verdwaald en leidde hem, vond hem arm en verrijkte hem. Deze surah is een krachtige troost voor iedereen die moeilijkheden doormaakt.',
       'pt': 'Ad-Duhaa foi revelada durante um período em que a revelação havia parado e o Profeta estava profundamente angustiado. Ibn Kathir explica que Allah consolou Seu Mensageiro, jurando pela luz da manhã e pela quietude da noite que não o havia abandonado. Recorda ao Profeta as bênçãos passadas de Allah sobre ele: encontrou-o órfão e o abrigou, encontrou-o perdido e o guiou, encontrou-o pobre e o enriqueceu. Esta surah é um poderoso consolo para qualquer pessoa que esteja passando por dificuldades.',
       'it': 'Ad-Duhaa fu rivelata durante un periodo in cui la rivelazione si era interrotta e il Profeta era profondamente angosciato. Ibn Kathir spiega che Allah consolò il Suo Messaggero, giurando sulla luce del mattino e sulla quiete della notte di non averlo abbandonato. Ricorda al Profeta le precedenti benedizioni di Allah su di lui: lo trovò orfano e gli diede rifugio, lo trovò smarrito e lo guidò, lo trovò povero e lo arricchì. Questa sura è un potente conforto per chiunque stia attraversando una difficoltà.',
+      'fa': 'سوره ضحی در دورانی نازل شد که وحی مدتی قطع شده بود و پیامبر (ص) سخت اندوهگین بودند. ابن کثیر توضیح می‌دهد که الله فرستاده‌اش را دلداری داد و به روشنایی صبح و آرامش شب سوگند خورد که او را رها نکرده است. سوره نعمت‌های پیشین الله را به پیامبر یادآور می‌شود: او را یتیم یافت و پناه داد، سرگشته یافت و هدایت کرد، تهیدست یافت و بی‌نیاز ساخت. این سوره دلداری نیرومندی برای هر کسی است که سختی می‌کشد.',
+      'ru': 'Ад-Духа была ниспослана в период, когда откровение приостановилось и Пророк был глубоко опечален. Ибн Касир поясняет, что Аллах утешил Своего Посланника, поклявшись утренним светом и ночной тишиной, что не покинул его. Сура напоминает Пророку о прежних благах Аллаха: Он нашёл его сиротой — и приютил, нашёл заблудшим — и наставил, нашёл бедным — и обогатил. Эта сура — сильное утешение для каждого, кто переживает трудности.',
 },
     themes: {
       'en': ['Allah never abandons those who turn to Him', 'Comfort during dark times — relief always comes', 'Gratitude for past blessings as proof of future care', 'Kindness to orphans, seekers, and the needy'],
@@ -646,6 +712,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Allah verlaat nooit degenen die zich tot Hem wenden', 'Troost in donkere tijden — verlichting komt altijd', 'Dankbaarheid voor eerdere zegeningen als bewijs van toekomstige zorg', 'Vriendelijkheid voor wezen, zoekers en behoeftigen'],
       'pt': ['Allah nunca abandona aqueles que se voltam para Ele', 'Consolo em tempos sombrios — o alívio sempre chega', 'Gratidão pelas bênçãos passadas como prova do cuidado futuro', 'Bondade para com órfãos, necessitados e os que buscam ajuda'],
       'it': ['Allah non abbandona mai chi si rivolge a Lui', 'Conforto nei momenti bui — il sollievo arriva sempre', 'Gratitudine per le benedizioni passate come prova della cura futura', 'Gentilezza verso orfani, bisognosi e chi chiede aiuto'],
+      'fa': ['الله هرگز روی‌آورندگان به خود را رها نمی‌کند', 'دلداری در روزهای تاریک — گشایش همیشه می‌آید', 'سپاس نعمت‌های گذشته، نشانه لطف آینده', 'مهربانی با یتیمان، نیازمندان و درخواست‌کنندگان'],
+      'ru': ['Аллах никогда не оставляет тех, кто обращается к Нему', 'Утешение в тёмные времена — облегчение всегда приходит', 'Благодарность за прошлые блага как залог будущей заботы', 'Доброта к сиротам, просящим и нуждающимся'],
 },
   ),
   DailyTafsirEntry(
@@ -666,6 +734,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Ash-Sharh is een voortzetting van de troost die begon in Ad-Duhaa. Ibn Kathir legt uit dat Allah de borst van de Profeet verruimde (haar vullend met licht en wijsheid), zijn last verwijderde, en zijn vermelding verhief — zodat telkens wanneer Allah wordt genoemd, Mohammed naast Hem wordt genoemd. De surah bevat de beroemde belofte: "Voorwaar, met de moeilijkheid komt de verlichting" — twee keer herhaald voor de nadruk. Het leert dat elke moeilijkheid het zaad van verlichting in zich draagt.',
       'pt': 'Ash-Sharh é uma continuação do consolo iniciado em Ad-Duhaa. Ibn Kathir explica que Allah expandiu o peito do Profeta (enchendo-o de luz e sabedoria), removeu o seu fardo, e elevou a sua menção — de modo que sempre que Allah é mencionado, Muhammad é mencionado junto a Ele. A surah contém a famosa promessa: "Em verdade, com a dificuldade vem a facilidade" — repetida duas vezes para ênfase. Ensina que cada dificuldade carrega dentro de si a semente do alívio.',
       'it': 'Ash-Sharh è una continuazione del conforto iniziato in Ad-Duhaa. Ibn Kathir spiega che Allah ampliò il petto del Profeta (riempiendolo di luce e saggezza), rimosse il suo fardello, e elevò la sua menzione — così che ogni volta che Allah viene menzionato, Muhammad viene menzionato insieme a Lui. La sura contiene la famosa promessa: "In verità, con la difficoltà viene la facilità" — ripetuta due volte per enfasi. Insegna che ogni difficoltà porta dentro di sé il seme del sollievo.',
+      'fa': 'سوره شرح ادامه دلداری آغازشده در سوره ضحی است. ابن کثیر توضیح می‌دهد که الله سینه پیامبر (ص) را گشاده ساخت (و از نور و حکمت آکند)، بار سنگین را از دوشش برداشت و یادش را بلند گردانید — چنان‌که هر جا الله یاد شود، محمد نیز در کنارش یاد می‌شود. وعده مشهور در این سوره است: «به‌راستی با هر سختی آسانی است» — که برای تأکید دو بار تکرار شده. می‌آموزد که هر دشواری، بذر گشایش را در خود دارد.',
+      'ru': 'Аш-Шарх продолжает утешение, начатое в суре Ад-Духа. Ибн Касир поясняет, что Аллах раскрыл грудь Пророка (наполнив её светом и мудростью), снял с него ношу и возвысил его поминание — так что где поминается Аллах, там поминается и Мухаммад. Сура содержит знаменитое обещание: «Воистину, с тягостью — облегчение», повторённое дважды для усиления. Она учит, что каждая трудность несёт в себе зерно облегчения.',
 },
     themes: {
       'en': ['With every hardship comes ease — a divine promise', 'Allah elevates those who carry His message', 'Turning to Allah in devotion after completing tasks', 'The expansion of the heart through faith'],
@@ -683,6 +753,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Met elke moeilijkheid komt verlichting — een goddelijke belofte', 'Allah verheft degenen die Zijn boodschap dragen', 'Zich met devotie tot Allah wenden na het voltooien van taken', 'De verruiming van het hart door geloof'],
       'pt': ['Com cada dificuldade vem a facilidade — uma promessa divina', 'Allah eleva aqueles que carregam Sua mensagem', 'Voltar-se para Allah com devoção após completar tarefas', 'A expansão do coração através da fé'],
       'it': ['Con ogni difficoltà viene la facilità — una promessa divina', 'Allah eleva coloro che portano il Suo messaggio', 'Volgersi ad Allah con devozione dopo aver completato i compiti', 'L\'espansione del cuore attraverso la fede'],
+      'fa': ['با هر سختی آسانی است — وعده الهی', 'الله حاملان پیامش را بلندمرتبه می‌کند', 'روی آوردن به عبادت پس از پایان کارها', 'گشایش دل با ایمان'],
+      'ru': ['С каждой тягостью приходит облегчение — божественное обещание', 'Аллах возвышает несущих Его послание', 'Обращение к Аллаху в поклонении по завершении дел', 'Раскрытие сердца через веру'],
 },
   ),
   DailyTafsirEntry(
@@ -703,6 +775,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Asr is een van de kortste maar diepzinnigste surahs. Imam Ash-Shafi\'i zei: "Als mensen alleen over deze surah zouden nadenken, zou het voor hen voldoende zijn." Ibn Kathir legt uit dat Allah bij de tijd zweert dat de hele mensheid in verlies is — behalve degenen die vier eigenschappen hebben: geloof, rechtschapen daden, elkaar aanmoedigen tot waarheid, en elkaar aanmoedigen tot geduld. Deze vier eigenschappen vormen de volledige routekaart naar verlossing.',
       'pt': 'Al-Asr é uma das surahs mais curtas, mas mais profundas. O Imam Ash-Shafi\'i disse: "Se as pessoas reflectissem apenas sobre esta surah, seria suficiente para elas." Ibn Kathir explica que Allah jura pelo tempo que toda a humanidade está em perda — exceto aqueles que têm quatro qualidades: fé, boas obras, encorajar-se mutuamente para a verdade, e encorajar-se mutuamente para a paciência. Estas quatro qualidades formam o roteiro completo para a salvação.',
       'it': 'Al-Asr è una delle sure più brevi ma più profonde. L\'Imam Ash-Shafi\'i disse: "Se le persone riflettessero solo su questa sura, sarebbe sufficiente per loro." Ibn Kathir spiega che Allah giura sul tempo che tutta l\'umanità è in perdita — eccetto coloro che possiedono quattro qualità: fede, opere giuste, incoraggiarsi reciprocamente verso la verità, e incoraggiarsi reciprocamente verso la pazienza. Queste quattro qualità formano la mappa completa verso la salvezza.',
+      'fa': 'سوره عصر از کوتاه‌ترین و در عین حال ژرف‌ترین سوره‌هاست. امام شافعی گفت: «اگر مردم تنها در همین سوره می‌اندیشیدند، برایشان کافی بود.» ابن کثیر توضیح می‌دهد که الله به زمان سوگند می‌خورد که همه انسان‌ها در زیان‌اند — مگر دارندگان چهار ویژگی: ایمان، کردار شایسته، سفارش یکدیگر به حق و سفارش یکدیگر به صبر. این چهار ویژگی نقشه کامل رستگاری است.',
+      'ru': 'Аль-Аср — одна из самых коротких, но глубочайших сур. Имам аш-Шафии сказал: «Если бы люди размышляли лишь над этой сурой, её было бы им достаточно». Ибн Касир поясняет: Аллах клянётся временем, что всё человечество — в убытке, кроме обладающих четырьмя качествами: верой, праведными делами, взаимным призывом к истине и взаимным призывом к терпению. Эти четыре качества — полный путь к спасению.',
 },
     themes: {
       'en': ['The four conditions for salvation', 'The preciousness of time', 'Mutual encouragement toward truth and patience', 'A complete life philosophy in three verses'],
@@ -720,6 +794,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De vier voorwaarden voor verlossing', 'De kostbare waarde van tijd', 'Wederzijdse aanmoediging tot waarheid en geduld', 'Een complete levensfilosofie in drie verzen'],
       'pt': ['As quatro condições para a salvação', 'O valor precioso do tempo', 'Encorajamento mútuo para a verdade e a paciência', 'Uma filosofia de vida completa em três versículos'],
       'it': ['Le quattro condizioni per la salvezza', 'Il valore prezioso del tempo', 'Incoraggiamento reciproco verso verità e pazienza', 'Una filosofia di vita completa in tre versetti'],
+      'fa': ['چهار شرط رستگاری', 'گران‌بهایی زمان', 'سفارش یکدیگر به حق و صبر', 'یک فلسفه کامل زندگی در سه آیه'],
+      'ru': ['Четыре условия спасения', 'Драгоценность времени', 'Взаимный призыв к истине и терпению', 'Целая жизненная философия в трёх аятах'],
 },
   ),
   DailyTafsirEntry(
@@ -740,6 +816,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Fil vertelt het wonderbaarlijke gebeurtenis van het Jaar van de Olifant — het jaar waarin de Profeet werd geboren. Ibn Kathir legt uit dat Abraha, de Abessijnse heerser van Jemen, met een groot leger en olifanten marcheerde om de Kaaba te vernietigen. Allah zond zwermen vogels (Ababil) die stenen van gebakken klei droegen en het hele leger vernietigden. Deze gebeurtenis toonde Allahs bescherming van Zijn Heilige Huis en bereidde het podium voor de geboorte van de laatste Profeet.',
       'pt': 'Al-Fil narra o evento milagroso do Ano do Elefante — o ano em que o Profeta nasceu. Ibn Kathir explica que Abraha, o governante abissínio do Iêmen, marchou com um grande exército e elefantes para destruir a Kaaba. Allah enviou bandos de pássaros (Ababil) carregando pedras de argila cozida que destruíram todo o exército. Este evento demonstrou a proteção de Allah à Sua Casa Sagrada e preparou o cenário para o nascimento do último Profeta.',
       'it': 'Al-Fil racconta l\'evento miracoloso dell\'Anno dell\'Elefante — l\'anno in cui nacque il Profeta. Ibn Kathir spiega che Abraha, il sovrano abissino dello Yemen, marciò con un grande esercito e elefanti per distruggere la Kaaba. Allah inviò stormi di uccelli (Ababil) che portavano pietre di argilla cotta che distrussero l\'intero esercito. Questo evento dimostrò la protezione di Allah per la Sua Casa Sacra e preparò il terreno per la nascita dell\'ultimo Profeta.',
+      'fa': 'سوره فیل رویداد شگفت عام‌الفیل را بازگو می‌کند — سالی که پیامبر (ص) در آن زاده شد. ابن کثیر توضیح می‌دهد که ابرهه، فرمانروای حبشی یمن، با سپاهی بزرگ و فیل‌ها برای ویران کردن کعبه لشکر کشید. الله دسته‌هایی از پرندگان (ابابیل) را فرستاد که با سنگ‌هایی از گِل پخته کل آن سپاه را نابود کردند. این رویداد پاسداری الله از خانه مقدسش را نشان داد و زمینه‌ساز تولد آخرین پیامبر شد.',
+      'ru': 'Аль-Филь повествует о чудесном событии Года слона — года, в который родился Пророк. Ибн Касир поясняет, что Абраха, абиссинский правитель Йемена, выступил с огромным войском и слонами, чтобы разрушить Каабу. Аллах послал стаи птиц (абабиль) с камнями из обожжённой глины, уничтожившими всё войско. Это событие явило защиту Аллахом Его Священного Дома и предварило рождение последнего Пророка.',
 },
     themes: {
       'en': ['Allah\'s miraculous protection of the Ka\'bah', 'The insignificance of worldly power before Allah', 'Divine intervention in defense of sacred places', 'A sign preceding the birth of the Prophet'],
@@ -757,6 +835,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Allahs wonderbaarlijke bescherming van de Kaaba', 'De onbeduidendheid van wereldse macht voor Allah', 'Goddelijke interventie ter verdediging van heilige plaatsen', 'Een teken voorafgaand aan de geboorte van de Profeet'],
       'pt': ['A proteção milagrosa de Allah à Kaaba', 'A insignificância do poder mundano diante de Allah', 'Intervenção divina em defesa de lugares sagrados', 'Um sinal que precede o nascimento do Profeta'],
       'it': ['La protezione miracolosa di Allah per la Kaaba', 'L\'insignificanza del potere mondano davanti ad Allah', 'L\'intervento divino in difesa dei luoghi sacri', 'Un segno che precede la nascita del Profeta'],
+      'fa': ['حفاظت معجزه‌آسای الله از کعبه', 'ناچیزی قدرت دنیوی در برابر الله', 'مداخله الهی در دفاع از مکان‌های مقدس', 'نشانه‌ای پیش از تولد پیامبر'],
+      'ru': ['Чудесная защита Каабы Аллахом', 'Ничтожность мирской силы перед Аллахом', 'Божественное вмешательство в защиту святынь', 'Знамение, предварившее рождение Пророка'],
 },
   ),
   DailyTafsirEntry(
@@ -777,6 +857,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Kawthar is de kortste surah in de Koran. Ibn Kathir legt uit dat Al-Kawthar een rivier in het Paradijs is die exclusief aan de Profeet is geschonken. Het werd geopenbaard om hem te troosten toen zijn vijanden hem bespotten omdat hij geen overlevende zonen had. Allah verklaart dat het de vijand van de Profeet is die "afgesneden" is — zonder nalatenschap — terwijl Mohammeds nalatenschap eeuwig is. Het leert dat bidden en offeren voor Allah het antwoord is op degenen die kwaad wensen.',
       'pt': 'Al-Kawthar é a surah mais curta do Alcorão. Ibn Kathir explica que Al-Kawthar é um rio no Paraíso concedido exclusivamente ao Profeta. Foi revelada para consolá-lo quando seus inimigos o ridicularizaram por não ter filhos varões sobreviventes. Allah declara que é o inimigo do Profeta quem está "cortado" — sem legado — enquanto o legado de Muhammad é eterno. Ensina que rezar e sacrificar por Allah é a resposta para aqueles que desejam o mal.',
       'it': 'Al-Kawthar è la sura più breve del Corano. Ibn Kathir spiega che Al-Kawthar è un fiume del Paradiso concesso esclusivamente al Profeta. Fu rivelata per consolarlo quando i suoi nemici lo schernivano per non avere figli maschi sopravvissuti. Allah dichiara che è il nemico del Profeta a essere "tagliato fuori" — senza eredità — mentre l\'eredità di Muhammad è eterna. Insegna che pregare e sacrificare per Allah è la risposta a chi desidera il male.',
+      'fa': 'سوره کوثر کوتاه‌ترین سوره قرآن است. ابن کثیر توضیح می‌دهد که کوثر رودی در بهشت است که تنها به پیامبر (ص) عطا شده است. این سوره برای دلداری او نازل شد، آن‌گاه که دشمنان به سبب نماندن پسرانش او را ریشخند می‌کردند. الله اعلام می‌کند که دشمن پیامبر است که «ابتر» و بی‌نسل است، در حالی که میراث محمد جاودانه است. می‌آموزد که نماز و قربانی برای الله، پاسخ به بدخواهان است.',
+      'ru': 'Аль-Каусар — самая короткая сура Корана. Ибн Касир поясняет, что аль-Каусар — это река в Раю, дарованная исключительно Пророку. Сура была ниспослана, чтобы утешить его, когда враги насмехались над ним из-за того, что его сыновья не выжили. Аллах провозглашает, что именно враг Пророка «отсечён» — лишён наследия, тогда как наследие Мухаммада вечно. Сура учит: молитва и жертвоприношение ради Аллаха — ответ желающим зла.',
 },
     themes: {
       'en': ['Al-Kawthar — a river of Paradise for the Prophet', 'Allah\'s comfort in the face of mockery', 'Prayer and sacrifice as the believer\'s response', 'The eternal legacy of the Prophet Muhammad'],
@@ -794,6 +876,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Al-Kawthar — een rivier van het Paradijs voor de Profeet', 'Allahs troost tegenover spot', 'Gebed en offer als antwoord van de gelovige', 'De eeuwige nalatenschap van Profeet Mohammed'],
       'pt': ['Al-Kawthar — um rio do Paraíso para o Profeta', 'O consolo de Allah perante a zombaria', 'A oração e o sacrifício como resposta do crente', 'O legado eterno do Profeta Muhammad'],
       'it': ['Al-Kawthar — un fiume del Paradiso per il Profeta', 'Il conforto di Allah di fronte allo scherno', 'Preghiera e sacrificio come risposta del credente', 'L\'eredità eterna del Profeta Muhammad'],
+      'fa': ['کوثر — رودی بهشتی برای پیامبر', 'دلداری الله در برابر ریشخند', 'نماز و قربانی، پاسخ مؤمن', 'میراث جاودانه پیامبر اکرم محمد (ص)'],
+      'ru': ['Аль-Каусар — райская река, дарованная Пророку', 'Утешение от Аллаха перед лицом насмешек', 'Молитва и жертвоприношение — ответ верующего', 'Вечное наследие пророка Мухаммада'],
 },
   ),
   DailyTafsirEntry(
@@ -814,6 +898,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Kafirun stelt het principe van religieuze duidelijkheid vast. Ibn Kathir legt uit dat het werd geopenbaard toen de Quraysh voorstelden dat de Profeet hun goden een jaar zou aanbidden en zij Allah een jaar zouden aanbidden. Allah gebood een definitieve afwijzing: "Ik aanbid niet wat jullie aanbidden, en jullie aanbidden niet wat ik aanbid." De surah trekt een duidelijke lijn van Tawhid terwijl het verklaart "voor jullie jullie religie, en voor mij de mijne" — een verklaring van samenleven zonder compromis in geloof.',
       'pt': 'Al-Kafirun estabelece o princípio da clareza religiosa. Ibn Kathir explica que foi revelada quando os Quraysh propuseram que o Profeta adorasse os seus deuses durante um ano e eles adorariam Allah durante um ano. Allah ordenou uma rejeição definitiva: "Não adoro o que adorais, nem vós adorais o que eu adoro." A surah traça uma linha clara do Tawhid enquanto declara "para vós a vossa religião, e para mim a minha" — uma declaração de coexistência sem compromisso na fé.',
       'it': 'Al-Kafirun stabilisce il principio della chiarezza religiosa. Ibn Kathir spiega che fu rivelata quando i Quraysh proposero che il Profeta adorasse i loro dèi per un anno e loro avrebbero adorato Allah per un anno. Allah comandò un rifiuto definitivo: "Io non adoro ciò che voi adorate, né voi adorate ciò che io adoro." La sura traccia una linea chiara del Tawhid dichiarando al contempo "a voi la vostra religione, e a me la mia" — una dichiarazione di coesistenza senza compromessi nella fede.',
+      'fa': 'سوره کافرون اصل شفافیت دینی را بنیان می‌نهد. ابن کثیر توضیح می‌دهد که این سوره هنگامی نازل شد که قریش پیشنهاد دادند پیامبر (ص) یک سال خدایان آنان را بپرستد و آنان یک سال الله را بپرستند. الله به ردی قاطع فرمان داد: «من نمی‌پرستم آنچه شما می‌پرستید، و شما نمی‌پرستید آنچه من می‌پرستم.» این سوره مرز روشن توحید را ترسیم می‌کند و اعلام می‌دارد «دین شما برای شما و دین من برای من» — همزیستی بدون سازش در ایمان.',
+      'ru': 'Аль-Кафирун утверждает принцип религиозной ясности. Ибн Касир поясняет, что она была ниспослана, когда курайшиты предложили Пророку год поклоняться их богам, а затем год поклоняться Аллаху. Аллах повелел дать решительный отказ: «Я не поклоняюсь тому, чему поклоняетесь вы, и вы не поклоняетесь Тому, Кому поклоняюсь я». Сура проводит ясную черту таухида, провозглашая: «У вас — ваша религия, у меня — моя» — сосуществование без компромисса в вере.',
 },
     themes: {
       'en': ['Absolute clarity in matters of faith (Tawhid)', 'No compromise on worship of Allah alone', 'Coexistence without religious syncretism', 'Recommended to recite before sleep — a Sunnah'],
@@ -831,6 +917,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Absolute duidelijkheid in geloofszaken (Tawhid)', 'Geen compromis in de aanbidding van alleen Allah', 'Samenleven zonder religieuze syncretisme', 'Aanbevolen om voor het slapen te reciteren — een Sunnah'],
       'pt': ['Clareza absoluta em questões de fé (Tawhid)', 'Nenhum compromisso na adoração apenas a Allah', 'Coexistência sem sincretismo religioso', 'Recomendado recitar antes de dormir — uma Sunnah'],
       'it': ['Chiarezza assoluta nelle questioni di fede (Tawhid)', 'Nessun compromesso nell\'adorazione del solo Allah', 'Coesistenza senza sincretismo religioso', 'Consigliato recitarla prima di dormire — una Sunnah'],
+      'fa': ['شفافیت مطلق در امور ایمان (توحید)', 'هیچ سازشی در پرستش الله یگانه نیست', 'همزیستی بدون آمیختن دین‌ها', 'سفارش به تلاوت پیش از خواب — سنت'],
+      'ru': ['Абсолютная ясность в вопросах веры (таухид)', 'Никакого компромисса в поклонении одному Аллаху', 'Сосуществование без смешения религий', 'Рекомендуется читать перед сном — Сунна'],
 },
   ),
   DailyTafsirEntry(
@@ -851,6 +939,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'An-Nasr was de laatste complete surah die aan de Profeet werd geopenbaard. Ibn Kathir legt uit dat het de naderende voltooiing van zijn missie aankondigde en zijn vertrek suggereerde. Toen de verovering van Mekka kwam en mensen massaal de Islam binnentraden, werd de Profeet geboden Allah te prijzen en Zijn vergeving te zoeken. Umar en Ibn Abbas begrepen dit als een signaal van het naderende vertrek van de Profeet uit deze wereld.',
       'pt': 'An-Nasr foi a última surah completa revelada ao Profeta. Ibn Kathir explica que anunciava a conclusão próxima de sua missão e insinuava sua partida. Quando chegou a conquista de Meca e as pessoas entraram no Islã em multidões, o Profeta foi ordenado a glorificar Allah e buscar Seu perdão. Umar e Ibn Abbas entenderam isso como um sinal da partida próxima do Profeta deste mundo.',
       'it': 'An-Nasr fu l\'ultima sura completa rivelata al Profeta. Ibn Kathir spiega che essa annunciava il completamento imminente della sua missione e accennava alla sua partenza. Quando giunse la conquista della Mecca e le persone entrarono nell\'Islam in massa, al Profeta fu ordinato di glorificare Allah e cercare il Suo perdono. Umar e Ibn Abbas compresero questo come un segnale della prossima partenza del Profeta da questo mondo.',
+      'fa': 'سوره نصر آخرین سوره‌ای بود که بر پیامبر (ص) نازل شد. ابن کثیر توضیح می‌دهد که این سوره نزدیک شدن پایان رسالت او را اعلام کرد و به رحلتش اشاره داشت. هنگامی که فتح مکه فرا رسید و مردم گروه‌گروه به اسلام درآمدند، پیامبر فرمان یافت الله را تسبیح گوید و از او آمرزش بخواهد. عمر و ابن‌عباس این را نشانه نزدیک شدن رحلت پیامبر از این جهان دانستند.',
+      'ru': 'Ан-Наср — последняя сура, ниспосланная Пророку. Ибн Касир поясняет, что она возвестила о близком завершении его миссии и указала на его скорый уход. Когда пришла победа над Меккой и люди толпами стали принимать ислам, Пророку было велено славить Аллаха и просить у Него прощения. Умар и Ибн Аббас поняли это как знак приближающегося ухода Пророка из этого мира.',
 },
     themes: {
       'en': ['The completion of the Prophet\'s mission', 'Victory belongs to Allah — glorify Him upon success', 'Seeking forgiveness at the height of achievement', 'The impermanence of life and the permanence of faith'],
@@ -868,6 +958,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['De voltooiing van de missie van de Profeet', 'Overwinning behoort aan Allah — prijs Hem bij succes', 'Vergeving zoeken op het hoogtepunt van prestatie', 'De vergankelijkheid van het leven en de blijvendheid van geloof'],
       'pt': ['A conclusão da missão do Profeta', 'A vitória pertence a Allah — glorifica-O no sucesso', 'Buscar perdão no auge da realização', 'A impermanência da vida e a permanência da fé'],
       'it': ['Il completamento della missione del Profeta', 'La vittoria appartiene ad Allah — glorificaLo nel successo', 'Cercare perdono al culmine del successo', 'L\'impermanenza della vita e la permanenza della fede'],
+      'fa': ['کامل شدن رسالت پیامبر', 'پیروزی از آنِ الله است — به هنگام کامیابی او را تسبیح گوی', 'آمرزش‌خواهی در اوج موفقیت', 'ناپایداری زندگی و ماندگاری ایمان'],
+      'ru': ['Завершение миссии Пророка', 'Победа принадлежит Аллаху — славь Его при успехе', 'Просьба о прощении на вершине достижений', 'Бренность жизни и вечность веры'],
 },
   ),
   DailyTafsirEntry(
@@ -888,6 +980,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Ikhlas staat qua betekenis gelijk aan een derde van de Koran. Ibn Kathir legt uit dat het werd geopenbaard toen de polytheïsten de Profeet vroegen zijn Heer te beschrijven. Allah antwoordde met vier verzen die het zuivere monotheïsme (Tawhid) definiëren: Allah is Één, Allah is de Eeuwige Toevlucht (As-Samad), Hij verwekt niet en is niet verwekt, en niets is met Hem te vergelijken. De Profeet zei dat het liefhebben van deze surah iemand het Paradijs zal doen binnengaan.',
       'pt': 'Al-Ikhlas equivale a um terço do Alcorão em significado. Ibn Kathir explica que foi revelada quando os politeístas pediram ao Profeta que descrevesse o seu Senhor. Allah respondeu com quatro versículos que definem o monoteísmo puro (Tawhid): Allah é Único, Allah é o Refúgio Eterno (As-Samad), Ele não gera nem foi gerado, e nada se compara a Ele. O Profeta disse que amar esta surah fará uma pessoa entrar no Paraíso.',
       'it': 'Al-Ikhlas equivale a un terzo del Corano nel significato. Ibn Kathir spiega che fu rivelata quando i politeisti chiesero al Profeta di descrivere il suo Signore. Allah rispose con quattro versetti che definiscono il monoteismo puro (Tawhid): Allah è Uno, Allah è il Rifugio Eterno (As-Samad), Egli non genera né è stato generato, e nulla è paragonabile a Lui. Il Profeta disse che amare questa sura farà entrare una persona in Paradiso.',
+      'fa': 'سوره اخلاص در معنا برابر با یک‌سوم قرآن است. ابن کثیر توضیح می‌دهد که این سوره هنگامی نازل شد که مشرکان از پیامبر (ص) خواستند پروردگارش را توصیف کند. الله با چهار آیه پاسخ داد که توحید ناب را تعریف می‌کنند: الله یگانه است، الله صمد (بی‌نیاز پاینده) است، نه زاده و نه زاده شده، و هیچ چیز همتای او نیست. پیامبر فرمودند دوست داشتن این سوره، آدمی را به بهشت می‌رساند.',
+      'ru': 'Аль-Ихлас по смыслу равна трети Корана. Ибн Касир поясняет, что она была ниспослана, когда многобожники попросили Пророка описать его Господа. Аллах ответил четырьмя аятами, определяющими чистое единобожие (таухид): Аллах Един, Аллах — ас-Самад (Вечное Прибежище), не родил и не был рождён, и нет никого, равного Ему. Пророк сказал, что любовь к этой суре вводит человека в Рай.',
 },
     themes: {
       'en': ['Pure monotheism (Tawhid) in its simplest form', 'Allah is As-Samad — the Eternal Refuge', 'Equal to one-third of the Quran', 'A surah that guarantees Paradise for those who love it'],
@@ -905,6 +999,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Zuiver monotheïsme (Tawhid) in zijn eenvoudigste vorm', 'Allah is As-Samad — de Eeuwige Toevlucht', 'Gelijk aan een derde van de Koran', 'Een surah die het Paradijs garandeert voor wie het liefheeft'],
       'pt': ['Monoteísmo puro (Tawhid) na sua forma mais simples', 'Allah é As-Samad — o Refúgio Eterno', 'Igual a um terço do Alcorão', 'Uma surah que garante o Paraíso a quem a ama'],
       'it': ['Monoteismo puro (Tawhid) nella sua forma più semplice', 'Allah è As-Samad — il Rifugio Eterno', 'Equivalente a un terzo del Corano', 'Una sura che garantisce il Paradiso a chi la ama'],
+      'fa': ['توحید ناب در ساده‌ترین شکل آن', 'الله صمد است — پناهگاه جاودان', 'برابر با یک‌سوم قرآن', 'سوره‌ای که دوست داشتنش بهشت را نوید می‌دهد'],
+      'ru': ['Чистое единобожие (таухид) в простейшей форме', 'Аллах — ас-Самад, Вечное Прибежище', 'Равна трети Корана', 'Сура, любовь к которой ведёт в Рай'],
 },
   ),
   DailyTafsirEntry(
@@ -925,6 +1021,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'Al-Falaq is een van de twee beschermingssurahs (Al-Mu\'awwidhatayn). Ibn Kathir legt uit dat het de gelovige leert bescherming bij Allah te zoeken tegen vier kwaden: het kwaad van wat Hij geschapen heeft, het kwaad van de duisternis wanneer deze invalt, het kwaad van degenen die op knopen blazen (toverij), en het kwaad van de benijder. De Profeet droeg het samen met An-Nas elke nacht voor het slapen voor, blazend in zijn handen en deze over zijn lichaam wrijvend.',
       'pt': 'Al-Falaq é uma das duas surahs de proteção (Al-Mu\'awwidhatayn). Ibn Kathir explica que ela ensina ao crente a buscar refúgio em Allah de quatro males: o mal daquilo que Ele criou, o mal da escuridão quando se instala, o mal dos que sopram em nós (feitiçaria), e o mal do invejoso. O Profeta costumava recitá-la junto com An-Nas todas as noites antes de dormir, soprando nas mãos e passando-as pelo corpo.',
       'it': 'Al-Falaq è una delle due sure di protezione (Al-Mu\'awwidhatayn). Ibn Kathir spiega che essa insegna al credente a cercare rifugio in Allah da quattro mali: il male di ciò che Egli ha creato, il male dell\'oscurità quando si stabilisce, il male di coloro che soffiano sui nodi (stregoneria), e il male dell\'invidioso. Il Profeta era abituato a recitarla insieme ad An-Nas ogni notte prima di dormire, soffiando nelle sue mani e passandole sul suo corpo.',
+      'fa': 'سوره فلق یکی از دو سوره پناه‌جویی (معوذتین) است. ابن کثیر توضیح می‌دهد که این سوره به مؤمن می‌آموزد از چهار شر به الله پناه ببرد: شر آنچه آفریده، شر تاریکی آن‌گاه که فرا می‌گیرد، شر دمندگان در گره‌ها (جادوگری) و شر حسود. پیامبر (ص) هر شب پیش از خواب آن را همراه با سوره ناس می‌خواندند، در دستان خود می‌دمیدند و بر بدن می‌کشیدند.',
+      'ru': 'Аль-Фаляк — одна из двух охранных сур (аль-Муаввизатайн). Ибн Касир поясняет, что она учит верующего искать у Аллаха защиты от четырёх зол: зла того, что Он сотворил, зла наступающего мрака, зла дующих на узлы (колдовства) и зла завистника. Пророк читал её вместе с сурой Ан-Нас каждую ночь перед сном, дуя на ладони и обтирая ими тело.',
 },
     themes: {
       'en': ['Seeking protection from evil through Allah', 'The reality of envy and witchcraft in Islam', 'Nightly recitation for protection — a Sunnah', 'Complete reliance on Allah as the ultimate protector'],
@@ -942,6 +1040,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Bescherming tegen het kwaad zoeken via Allah', 'De realiteit van afgunst en toverij in de Islam', 'Nachtelijke voordracht voor bescherming — een Sunnah', 'Volledig vertrouwen op Allah als ultieme beschermer'],
       'pt': ['Buscar proteção contra o mal através de Allah', 'A realidade da invveja e da feitiçaria no Islão', 'A recitação noturna para proteção — uma Sunnah', 'Confiança total em Allah como o protetor supremo'],
       'it': ['Cercare protezione dal male attraverso Allah', 'La realtà dell\'invidia e della stregoneria nell\'Islam', 'La recitazione notturna per la protezione — una Sunnah', 'Completa fiducia in Allah come protettore supremo'],
+      'fa': ['پناه بردن به الله از شر', 'واقعیت حسادت و جادو در اسلام', 'تلاوت شبانه برای محافظت — سنت', 'اتکای کامل به الله به عنوان نگهدارنده نهایی'],
+      'ru': ['Поиск защиты от зла у Аллаха', 'Реальность зависти и колдовства в исламе', 'Ночное чтение ради защиты — Сунна', 'Полное упование на Аллаха как высшего защитника'],
 },
   ),
   DailyTafsirEntry(
@@ -962,6 +1062,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': 'An-Nas is de laatste surah van de Koran en de tweede van de twee beschermingssurahs. Ibn Kathir legt uit dat het leert bescherming te zoeken bij Allah — als de Heer van de mensheid, de Koning van de mensheid, en de God van de mensheid — tegen de influisteraar die zich terugtrekt (Satan). De influisteraar fluistert in de harten van mensen, en komt zowel van djinn als van mensen. Deze surah is het ultieme spirituele schild tegen de onzichtbare vijand.',
       'pt': 'An-Nas é a última surah do Alcorão e a segunda das duas surahs de proteção. Ibn Kathir explica que ela ensina a buscar refúgio em Allah — como Senhor da humanidade, Rei da humanidade, e Deus da humanidade — do sussurrador que recua (Satanás). O sussurrador sussurra nos corações das pessoas, e vem tanto dos djinns quanto dos humanos. Esta surah é o escudo espiritual definitivo contra o inimigo invisível.',
       'it': 'An-Nas è l\'ultima sura del Corano e la seconda delle due sure di protezione. Ibn Kathir spiega che essa insegna a cercare rifugio in Allah — come Signore dell\'umanità, Re dell\'umanità, e Dio dell\'umanità — dal sussurratore che si ritira (Satana). Il sussurratore sussurra nei cuori delle persone, e proviene sia dai jinn che dagli uomini. Questa sura è lo scudo spirituale definitivo contro il nemico invisibile.',
+      'fa': 'سوره ناس آخرین سوره قرآن و دومین سوره از دو سوره پناه‌جویی است. ابن کثیر توضیح می‌دهد که این سوره پناه بردن به الله را می‌آموزد — به عنوان پروردگار مردم، فرمانروای مردم و معبود مردم — از وسوسه‌گر پنهان‌شونده (شیطان). او در دل‌های مردم وسوسه می‌کند و هم از جنیان است و هم از آدمیان. این سوره سپر معنوی نهایی در برابر دشمن نادیدنی است.',
+      'ru': 'Ан-Нас — заключительная сура Корана и вторая из двух охранных сур. Ибн Касир поясняет, что она учит искать защиты у Аллаха — Господа людей, Царя людей и Бога людей — от искусителя отступающего (шайтана). Он нашёптывает в сердца людей и бывает как из джиннов, так и из людей. Эта сура — совершенный духовный щит от невидимого врага.',
 },
     themes: {
       'en': ['Protection from the whispers of Shaytan', 'Allah as Lord, King, and God of all mankind', 'The nature of Shaytan\'s deception — he retreats when Allah is remembered', 'The Quran begins and ends with seeking Allah'],
@@ -979,6 +1081,8 @@ final List<DailyTafsirEntry> dailyTafsirEntries = [
       'nl': ['Bescherming tegen de influisteringen van Satan', 'Allah als Heer, Koning en God van de hele mensheid', 'De aard van Satans bedrog — hij trekt zich terug wanneer Allah wordt herdacht', 'De Koran begint en eindigt met het zoeken van bescherming bij Allah'],
       'pt': ['Proteção contra os sussurros de Satanás', 'Allah como Senhor, Rei e Deus de toda a humanidade', 'A natureza do engano de Satanás — ele recua quando Allah é lembrado', 'O Alcorão começa e termina buscando refúgio em Allah'],
       'it': ['Protezione dai sussurri di Satana', 'Allah come Signore, Re e Dio di tutta l\'umanità', 'La natura dell\'inganno di Satana — si ritira quando Allah viene ricordato', 'Il Corano inizia e termina cercando rifugio in Allah'],
+      'fa': ['محافظت از وسوسه‌های شیطان', 'الله، پروردگار، فرمانروا و معبود همه مردم', 'ماهیت فریب شیطان — با یاد الله عقب می‌نشیند', 'قرآن با پناه جستن به الله آغاز و پایان می‌یابد'],
+      'ru': ['Защита от наущений шайтана', 'Аллах — Господь, Царь и Бог всех людей', 'Природа обольщения шайтана — он отступает при поминании Аллаха', 'Коран начинается и завершается обращением к Аллаху'],
 },
   ),
 ];

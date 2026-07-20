@@ -1,5 +1,5 @@
 /// Extended meaning translations for Asma ul Husna.
-/// Covers the 12 locales not in the model's built-in meaning map
+/// Covers the 13 locales not in the model's built-in meaning map
 /// (en/ar/ur/es are handled by the model directly).
 String asmaNameMeaning(int number, String locale) {
   final m = _meanings[number];
@@ -22,6 +22,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Mais Clemente',
     'it': 'Il Clementissimo',
     'fa': 'بسیار بخشنده',
+    'ru': 'Милостивый',
   },
   2: {
     'en': 'The Most Merciful',
@@ -37,6 +38,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Mais Misericordioso',
     'it': 'Il Misericordiosissimo',
     'fa': 'بسیار مهربان',
+    'ru': 'Милосердный',
   },
   3: {
     'en': 'The King',
@@ -52,6 +54,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Rei',
     'it': 'Il Re',
     'fa': 'پادشاه',
+    'ru': 'Владыка',
   },
   4: {
     'en': 'The Holy',
@@ -67,6 +70,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Santo',
     'it': 'Il Santo',
     'fa': 'مقدس',
+    'ru': 'Пресвятой',
   },
   5: {
     'en': 'The Source of Peace',
@@ -82,6 +86,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'A Fonte de Paz',
     'it': 'La Fonte di Pace',
     'fa': 'منبع آرامش',
+    'ru': 'Дарующий мир',
   },
   6: {
     'en': 'The Guardian of Faith',
@@ -97,6 +102,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Guardião da Fé',
     'it': 'Il Custode della Fede',
     'fa': 'نگهبان ایمان',
+    'ru': 'Дарующий безопасность',
   },
   7: {
     'en': 'The Protector',
@@ -112,6 +118,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Protetor',
     'it': 'Il Protettore',
     'fa': 'ناظر',
+    'ru': 'Хранитель',
   },
   8: {
     'en': 'The Almighty',
@@ -127,6 +134,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Todo-Poderoso',
     'it': "L'Onnipotente",
     'fa': 'توانا',
+    'ru': 'Могущественный',
   },
   9: {
     'en': 'The Compeller',
@@ -142,6 +150,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Compulsório',
     'it': 'Il Costrittore',
     'fa': 'جبران‌کننده',
+    'ru': 'Подчиняющий',
   },
   10: {
     'en': 'The Supreme',
@@ -157,6 +166,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Supremo',
     'it': 'Il Supremamente Grande',
     'fa': 'بزرگ‌ترین',
+    'ru': 'Превосходящий',
   },
   11: {
     'en': 'The Creator',
@@ -172,6 +182,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Criador',
     'it': 'Il Creatore',
     'fa': 'آفریننده',
+    'ru': 'Творец',
   },
   12: {
     'en': 'The Originator',
@@ -187,6 +198,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Originador',
     'it': "L'Originatore",
     'fa': 'پدیدآورنده',
+    'ru': 'Создатель',
   },
   13: {
     'en': 'The Fashioner',
@@ -202,6 +214,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Formador',
     'it': 'Il Formatore',
     'fa': 'شکل‌دهنده',
+    'ru': 'Дарующий облик',
   },
   14: {
     'en': 'The Forgiving',
@@ -217,6 +230,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Grande Perdoador',
     'it': 'Il Grande Perdonatore',
     'fa': 'بسیار آمرزنده',
+    'ru': 'Прощающий',
   },
   15: {
     'en': 'The Subduer',
@@ -232,6 +246,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Subjugador',
     'it': 'Il Dominatore',
     'fa': 'چیره',
+    'ru': 'Господствующий',
   },
   16: {
     'en': 'The Bestower',
@@ -247,6 +262,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Generoso Doador',
     'it': 'Il Donatore Generoso',
     'fa': 'بخشنده',
+    'ru': 'Дарующий',
   },
   17: {
     'en': 'The Provider',
@@ -262,6 +278,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Provedor',
     'it': 'Il Provveditore',
     'fa': 'روزی‌رسان',
+    'ru': 'Наделяющий уделом',
   },
   18: {
     'en': 'The Opener',
@@ -277,6 +294,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Abridor',
     'it': "L'Apritore",
     'fa': 'گشاینده',
+    'ru': 'Открывающий',
   },
   19: {
     'en': 'The All-Knowing',
@@ -292,6 +310,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Onisciente',
     'it': "L'Onnisciente",
     'fa': 'دانای کل',
+    'ru': 'Всезнающий',
   },
   20: {
     'en': 'The Constrictor',
@@ -307,6 +326,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Constritor',
     'it': 'Il Restringitore',
     'fa': 'تنگ‌کننده',
+    'ru': 'Сжимающий',
   },
   21: {
     'en': 'The Expander',
@@ -322,6 +342,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Expansor',
     'it': "L'Espansore",
     'fa': 'گشایش‌دهنده',
+    'ru': 'Расширяющий',
   },
   22: {
     'en': 'The Abaser',
@@ -337,6 +358,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Abaixador',
     'it': "L'Abbassatore",
     'fa': 'پایین‌آورنده',
+    'ru': 'Принижающий',
   },
   23: {
     'en': 'The Exalter',
@@ -352,6 +374,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Elevador',
     'it': "L'Elevatore",
     'fa': 'بالابرنده',
+    'ru': 'Возвышающий',
   },
   24: {
     'en': 'The Honorer',
@@ -367,6 +390,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Honrador',
     'it': "L'Onoratore",
     'fa': 'گرامی‌کننده',
+    'ru': 'Возвеличивающий',
   },
   25: {
     'en': 'The Disgracer',
@@ -382,6 +406,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Humilhador',
     'it': "L'Umiliatore",
     'fa': 'خوارکننده',
+    'ru': 'Унижающий',
   },
   26: {
     'en': 'The All-Hearing',
@@ -397,6 +422,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Oniouvinte',
     'it': "L'Onnudiente",
     'fa': 'شنوای کل',
+    'ru': 'Всеслышащий',
   },
   27: {
     'en': 'The All-Seeing',
@@ -412,6 +438,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Onividente',
     'it': "L'Onniveggente",
     'fa': 'بینای کل',
+    'ru': 'Всевидящий',
   },
   28: {
     'en': 'The Judge',
@@ -427,6 +454,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Árbitro',
     'it': "L'Arbitro",
     'fa': 'داور',
+    'ru': 'Судья',
   },
   29: {
     'en': 'The Just',
@@ -442,6 +470,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Justo',
     'it': 'Il Giusto',
     'fa': 'عادل',
+    'ru': 'Справедливый',
   },
   30: {
     'en': 'The Subtle',
@@ -457,6 +486,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Sutil',
     'it': 'Il Sottile',
     'fa': 'لطیف',
+    'ru': 'Проницательный',
   },
   31: {
     'en': 'The All-Aware',
@@ -472,6 +502,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Plenamente Consciente',
     'it': 'Il Pienamente Consapevole',
     'fa': 'آگاه',
+    'ru': 'Сведущий',
   },
   32: {
     'en': 'The Forbearing',
@@ -487,6 +518,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Indulgente',
     'it': 'Il Clemente',
     'fa': 'بردبار',
+    'ru': 'Кроткий',
   },
   33: {
     'en': 'The Magnificent',
@@ -502,6 +534,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Magnífico',
     'it': 'Il Magnifico',
     'fa': 'عظیم',
+    'ru': 'Великий',
   },
   34: {
     'en': 'The Most Forgiving',
@@ -517,6 +550,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Muito Perdoador',
     'it': 'Il Massimo Perdonatore',
     'fa': 'آمرزگار',
+    'ru': 'Всепрощающий',
   },
   35: {
     'en': 'The Appreciative',
@@ -532,6 +566,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Grato',
     'it': 'Il Grato',
     'fa': 'سپاسگزار',
+    'ru': 'Благодарный',
   },
   36: {
     'en': 'The Most High',
@@ -547,6 +582,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Altíssimo',
     'it': "L'Altissimo",
     'fa': 'والا',
+    'ru': 'Всевышний',
   },
   37: {
     'en': 'The Greatest',
@@ -562,6 +598,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Mais Grandioso',
     'it': 'Il Più Grande',
     'fa': 'بزرگ',
+    'ru': 'Величайший',
   },
   38: {
     'en': 'The Preserver',
@@ -577,6 +614,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Guardião',
     'it': 'Il Custode',
     'fa': 'نگهبان',
+    'ru': 'Охраняющий',
   },
   39: {
     'en': 'The Nourisher',
@@ -592,6 +630,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Sustentador',
     'it': 'Il Sostenitore',
     'fa': 'پرورنده',
+    'ru': 'Питающий',
   },
   40: {
     'en': 'The Reckoner',
@@ -607,6 +646,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Suficiente',
     'it': 'Il Sufficiente',
     'fa': 'کافی',
+    'ru': 'Ведущий счёт',
   },
   41: {
     'en': 'The Majestic',
@@ -622,6 +662,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Majestoso',
     'it': 'Il Maestoso',
     'fa': 'جلیل',
+    'ru': 'Величественный',
   },
   42: {
     'en': 'The Most Generous',
@@ -637,6 +678,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Generoso',
     'it': 'Il Generoso',
     'fa': 'کریم',
+    'ru': 'Щедрейший',
   },
   43: {
     'en': 'The Watchful',
@@ -652,6 +694,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Vigilante',
     'it': 'Il Vigilante',
     'fa': 'مراقب',
+    'ru': 'Наблюдающий',
   },
   44: {
     'en': 'The Responder',
@@ -667,6 +710,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Respondedor',
     'it': 'Il Rispondente',
     'fa': 'اجابت‌کننده',
+    'ru': 'Отвечающий',
   },
   45: {
     'en': 'The All-Encompassing',
@@ -682,6 +726,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Onipresente',
     'it': "L'Onnipervadente",
     'fa': 'فراگیر',
+    'ru': 'Всеобъемлющий',
   },
   46: {
     'en': 'The All-Wise',
@@ -697,6 +742,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Sábio',
     'it': 'Il Saggio',
     'fa': 'حکیم',
+    'ru': 'Мудрый',
   },
   47: {
     'en': 'The Loving',
@@ -712,6 +758,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Amoroso',
     'it': "L'Amorevole",
     'fa': 'مهرورز',
+    'ru': 'Любящий',
   },
   48: {
     'en': 'The Glorious',
@@ -727,6 +774,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Glorioso',
     'it': 'Il Glorioso',
     'fa': 'باشکوه',
+    'ru': 'Славный',
   },
   49: {
     'en': 'The Resurrector',
@@ -742,6 +790,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Ressurreto',
     'it': 'Il Resurrettore',
     'fa': 'برانگیزنده',
+    'ru': 'Воскрешающий',
   },
   50: {
     'en': 'The Witness',
@@ -757,6 +806,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'A Testemunha',
     'it': 'Il Testimone',
     'fa': 'شاهد',
+    'ru': 'Свидетель',
   },
   51: {
     'en': 'The Truth',
@@ -772,6 +822,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'A Verdade',
     'it': 'La Verità',
     'fa': 'حق',
+    'ru': 'Истина',
   },
   52: {
     'en': 'The Trustee',
@@ -787,6 +838,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Guardião Confiável',
     'it': 'Il Fiduciario',
     'fa': 'وکیل',
+    'ru': 'Попечитель',
   },
   53: {
     'en': 'The Strong',
@@ -802,6 +854,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Forte',
     'it': 'Il Forte',
     'fa': 'قوی',
+    'ru': 'Сильный',
   },
   54: {
     'en': 'The Firm',
@@ -817,6 +870,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Firme',
     'it': 'Il Saldo',
     'fa': 'محکم',
+    'ru': 'Крепкий',
   },
   55: {
     'en': 'The Protecting Friend',
@@ -832,6 +886,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Amigo Protetor',
     'it': "L'Amico Protettore",
     'fa': 'دوست‌ناصر',
+    'ru': 'Покровитель',
   },
   56: {
     'en': 'The Praiseworthy',
@@ -847,6 +902,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Digno de Louvor',
     'it': 'Il Degno di Lode',
     'fa': 'شایسته ستایش',
+    'ru': 'Достохвальный',
   },
   57: {
     'en': 'The Counter',
@@ -862,6 +918,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Contador',
     'it': 'Il Contatore',
     'fa': 'شمارنده',
+    'ru': 'Учитывающий',
   },
   58: {
     'en': 'The Initiator',
@@ -877,6 +934,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Iniciador',
     'it': "L'Iniziatore",
     'fa': 'آغازگر',
+    'ru': 'Начинающий',
   },
   59: {
     'en': 'The Restorer',
@@ -892,6 +950,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Restaurador',
     'it': 'Il Restauratore',
     'fa': 'بازگرداننده',
+    'ru': 'Возвращающий',
   },
   60: {
     'en': 'The Giver of Life',
@@ -907,6 +966,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Dador de Vida',
     'it': 'Il Datore di Vita',
     'fa': 'زنده‌کننده',
+    'ru': 'Оживляющий',
   },
   61: {
     'en': 'The Bringer of Death',
@@ -922,6 +982,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Causador de Morte',
     'it': 'Il Portatore di Morte',
     'fa': 'میراننده',
+    'ru': 'Умерщвляющий',
   },
   62: {
     'en': 'The Ever-Living',
@@ -937,6 +998,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Sempre Vivo',
     'it': 'Il Semprevivente',
     'fa': 'زنده جاودان',
+    'ru': 'Вечно Живой',
   },
   63: {
     'en': 'The Self-Sustaining',
@@ -952,6 +1014,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Auto-Sustentado',
     'it': "L'Autosufficiente",
     'fa': 'پایدار به ذات',
+    'ru': 'Самосущий',
   },
   64: {
     'en': 'The Finder',
@@ -967,6 +1030,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Descobridor',
     'it': 'Il Trovatore',
     'fa': 'یابنده',
+    'ru': 'Находящий',
   },
   65: {
     'en': 'The Noble',
@@ -982,6 +1046,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Nobre',
     'it': 'Il Nobile',
     'fa': 'مجید',
+    'ru': 'Благородный',
   },
   66: {
     'en': 'The One',
@@ -997,6 +1062,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Único',
     'it': "L'Unico",
     'fa': 'یگانه',
+    'ru': 'Единый',
   },
   67: {
     'en': 'The Unique',
@@ -1012,6 +1078,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Singular',
     'it': "L'Unico Singolare",
     'fa': 'احد',
+    'ru': 'Единственный',
   },
   68: {
     'en': 'The Eternal',
@@ -1027,6 +1094,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Eterno Absoluto',
     'it': "L'Eterno Assoluto",
     'fa': 'صمد',
+    'ru': 'Вечный',
   },
   69: {
     'en': 'The All-Powerful',
@@ -1042,6 +1110,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Poderoso',
     'it': 'Il Capace',
     'fa': 'توانا',
+    'ru': 'Всемогущий',
   },
   70: {
     'en': 'The Powerful',
@@ -1057,6 +1126,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Todo-Poderoso Determinador',
     'it': "L'Onnipotente Determinatore",
     'fa': 'مقتدر',
+    'ru': 'Могучий',
   },
   71: {
     'en': 'The Expediter',
@@ -1072,6 +1142,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Antecipador',
     'it': "L'Anticipatore",
     'fa': 'پیش‌اندازنده',
+    'ru': 'Приближающий',
   },
   72: {
     'en': 'The Delayer',
@@ -1087,6 +1158,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Adiador',
     'it': 'Il Ritardatore',
     'fa': 'تأخیراندازنده',
+    'ru': 'Отдаляющий',
   },
   73: {
     'en': 'The First',
@@ -1102,6 +1174,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Primeiro',
     'it': 'Il Primo',
     'fa': 'اول',
+    'ru': 'Первый',
   },
   74: {
     'en': 'The Last',
@@ -1117,6 +1190,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Último',
     'it': "L'Ultimo",
     'fa': 'آخر',
+    'ru': 'Последний',
   },
   75: {
     'en': 'The Manifest',
@@ -1132,6 +1206,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Manifesto',
     'it': 'Il Manifesto',
     'fa': 'آشکار',
+    'ru': 'Явный',
   },
   76: {
     'en': 'The Hidden',
@@ -1147,6 +1222,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Oculto',
     'it': 'Il Nascosto',
     'fa': 'پنهان',
+    'ru': 'Скрытый',
   },
   77: {
     'en': 'The Governor',
@@ -1162,6 +1238,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Governador',
     'it': 'Il Governatore',
     'fa': 'ولی',
+    'ru': 'Правитель',
   },
   78: {
     'en': 'The Self-Exalted',
@@ -1177,6 +1254,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Supremamente Elevado',
     'it': 'Il Supremamente Elevato',
     'fa': 'متعال',
+    'ru': 'Превознесённый',
   },
   79: {
     'en': 'The Source of Goodness',
@@ -1192,6 +1270,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'A Fonte de Bondade',
     'it': 'La Fonte di Bontà',
     'fa': 'منبع نیکی',
+    'ru': 'Благостный',
   },
   80: {
     'en': 'The Accepter of Repentance',
@@ -1207,6 +1286,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Aceitador do Arrependimento',
     'it': "L'Accettatore del Pentimento",
     'fa': 'پذیرنده توبه',
+    'ru': 'Принимающий покаяние',
   },
   81: {
     'en': 'The Avenger',
@@ -1222,6 +1302,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Vingador',
     'it': 'Il Vendicatore',
     'fa': 'انتقام‌گیرنده',
+    'ru': 'Карающий',
   },
   82: {
     'en': 'The Pardoner',
@@ -1237,6 +1318,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Perdoador',
     'it': 'Il Perdonatore',
     'fa': 'عفوکننده',
+    'ru': 'Извиняющий',
   },
   83: {
     'en': 'The Compassionate',
@@ -1252,6 +1334,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Compassivo',
     'it': 'Il Compassionevole',
     'fa': 'رئوف',
+    'ru': 'Сострадательный',
   },
   84: {
     'en': 'Owner of Sovereignty',
@@ -1267,6 +1350,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Soberano de Toda Soberania',
     'it': 'Il Sovrano di Ogni Sovranità',
     'fa': 'مالک الملک',
+    'ru': 'Владыка царства',
   },
   85: {
     'en': 'Lord of Majesty and Honor',
@@ -1282,6 +1366,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Senhor da Majestade e Generosidade',
     'it': 'Il Signore della Maestà e dell\'Onore',
     'fa': 'صاحب جلال و اکرام',
+    'ru': 'Обладатель величия и почёта',
   },
   86: {
     'en': 'The Equitable',
@@ -1297,6 +1382,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Equitativo',
     'it': "L'Equo",
     'fa': 'عادل',
+    'ru': 'Беспристрастный',
   },
   87: {
     'en': 'The Gatherer',
@@ -1312,6 +1398,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Reunidor',
     'it': 'Il Raccoglitore',
     'fa': 'جمع‌آورنده',
+    'ru': 'Собирающий',
   },
   88: {
     'en': 'The Self-Sufficient',
@@ -1327,6 +1414,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Rico',
     'it': 'Il Ricco',
     'fa': 'بی‌نیاز',
+    'ru': 'Самодостаточный',
   },
   89: {
     'en': 'The Enricher',
@@ -1342,6 +1430,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Enriquecedor',
     'it': "L'Arricchitore",
     'fa': 'غنی‌کننده',
+    'ru': 'Обогащающий',
   },
   90: {
     'en': 'The Withholder',
@@ -1357,6 +1446,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Obstante',
     'it': 'Il Trattenitore',
     'fa': 'بازدارنده',
+    'ru': 'Удерживающий',
   },
   91: {
     'en': 'The Distresser',
@@ -1372,6 +1462,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Testador',
     'it': 'Il Testatore',
     'fa': 'آزمایش‌کننده',
+    'ru': 'Причиняющий вред',
   },
   92: {
     'en': 'The Benefactor',
@@ -1387,6 +1478,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Benfeitor',
     'it': 'Il Benefattore',
     'fa': 'نفع‌رسان',
+    'ru': 'Приносящий пользу',
   },
   93: {
     'en': 'The Light',
@@ -1402,6 +1494,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'A Luz',
     'it': 'La Luce',
     'fa': 'نور',
+    'ru': 'Свет',
   },
   94: {
     'en': 'The Guide',
@@ -1417,6 +1510,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Guia',
     'it': 'La Guida',
     'fa': 'هدایت‌کننده',
+    'ru': 'Ведущий',
   },
   95: {
     'en': 'The Originator of All',
@@ -1432,6 +1526,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Originador de Tudo',
     'it': "L'Originatore di Tutto",
     'fa': 'پدیدآورنده بی‌نظیر',
+    'ru': 'Несравненный',
   },
   96: {
     'en': 'The Ever-Lasting',
@@ -1447,6 +1542,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Eterno',
     'it': "L'Eterno",
     'fa': 'باقی',
+    'ru': 'Вечносущий',
   },
   97: {
     'en': 'The Inheritor',
@@ -1462,6 +1558,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Herdeiro',
     'it': "L'Erede",
     'fa': 'وارث',
+    'ru': 'Наследующий',
   },
   98: {
     'en': 'The Guide to Right Path',
@@ -1477,6 +1574,7 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Guia ao Caminho Reto',
     'it': 'La Guida sul Retto Sentiero',
     'fa': 'هدایت‌کننده به راه راست',
+    'ru': 'Направляющий на верный путь',
   },
   99: {
     'en': 'The Patient',
@@ -1492,5 +1590,6 @@ const Map<int, Map<String, String>> _meanings = {
     'pt': 'O Paciente',
     'it': 'Il Paziente',
     'fa': 'صبور',
+    'ru': 'Терпеливый',
   },
 };

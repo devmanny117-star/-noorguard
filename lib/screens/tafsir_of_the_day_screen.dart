@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../data/surah_translations.dart';
 import '../data/tafsir_of_the_day_data.dart';
 import '../l10n/app_localizations.dart';
 import 'surah_screen.dart';
@@ -137,7 +138,8 @@ class TafsirOfTheDayScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          surah.englishNameTranslation,
+                          surahNameTranslations[surah.number]?[locale] ??
+                              surah.englishNameTranslation,
                           style: GoogleFonts.lato(
                             fontSize: 13,
                             color: _gold.withValues(alpha: 0.8),

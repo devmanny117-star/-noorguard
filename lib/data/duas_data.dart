@@ -52,6 +52,8 @@ const _morningEvening = [
       'nl': 'O Allah, door U bereiken wij de ochtend en door U bereiken wij de avond, door U leven wij en door U sterven wij, en tot U is de opstanding.',
       'pt': 'Ó Allah, por Ti entramos na manhã e por Ti entramos na noite; por Ti vivemos e por Ti morremos, e a Ti é o retorno.',
       'it': 'O Allah, per Te entriamo nel mattino e per Te entriamo nella sera, per Te viviamo e per Te moriamo, e a Te è la resurrezione.',
+      'fa': 'خدایا، به تو صبح کردیم و به تو شام کردیم، به تو زنده‌ایم و به تو می‌میریم، و برانگیخته شدن به سوی توست.',
+      'ru': 'О Аллах, благодаря Тебе мы встречаем утро и благодаря Тебе встречаем вечер, благодаря Тебе мы живём и благодаря Тебе умираем, и к Тебе воскрешение.',
 },
   ),
   CategorizedDua(
@@ -75,6 +77,8 @@ const _morningEvening = [
       'nl': 'Wij hebben de ochtend bereikt en het hele koninkrijk behoort aan Allah; alle lof aan Allah, Hij heeft geen partner.',
       'pt': 'Entramos na manhã e todo o reino pertence a Allah; todo o louvor é para Allah, Ele não tem parceiro.',
       'it': 'Siamo entrati nel mattino e tutto il regno appartiene ad Allah; ogni lode appartiene ad Allah, Egli non ha alcun socio.',
+      'fa': 'صبح کردیم و همهٔ فرمانروایی از آنِ خداست؛ ستایش از آنِ خداست، او را شریکی نیست.',
+      'ru': 'Мы встретили утро, и всё владычество принадлежит Аллаху; хвала Аллаху, нет у Него сотоварища.',
 },
   ),
   CategorizedDua(
@@ -98,6 +102,8 @@ const _morningEvening = [
       'nl': 'O Allah, U bent mijn Heer, niemand heeft het recht aanbeden te worden behalve U. U hebt mij geschapen en ik ben Uw dienaar.',
       'pt': 'Ó Allah, Tu és meu Senhor, ninguém tem o direito de ser adorado senão Tu. Tu me criaste e eu sou Teu servo.',
       'it': 'O Allah, Tu sei il mio Signore, nessuno ha il diritto di essere adorato se non Te. Tu mi hai creato e io sono Tuo servo.',
+      'fa': 'خدایا، تو پروردگار منی، معبودی جز تو نیست. مرا آفریدی و من بندهٔ توام.',
+      'ru': 'О Аллах, Ты — мой Господь, нет божества, достойного поклонения, кроме Тебя. Ты сотворил меня, и я — Твой раб.',
 },
   ),
   CategorizedDua(
@@ -121,6 +127,8 @@ const _morningEvening = [
       'nl': 'In de naam van Allah, door wiens naam niets op aarde of in de hemel kan schaden, en Hij is de Alhorende, de Alwetende.',
       'pt': 'Em nome de Allah, com cujo nome nada pode causar dano na terra nem no céu, e Ele é o Oniouvinte, o Onisciente.',
       'it': 'Nel nome di Allah, con il cui nome nulla può nuocere sulla terra o nel cielo, ed Egli è l\'Audiente, il Sapiente.',
+      'fa': 'به نام خدا که با نام او هیچ چیز در زمین و آسمان زیان نمی‌رساند، و او شنوای داناست.',
+      'ru': 'Во имя Аллаха, с именем Которого ничто не причинит вреда ни на земле, ни на небе, и Он — Всеслышащий, Всезнающий.',
 },
   ),
   CategorizedDua(
@@ -144,6 +152,8 @@ const _morningEvening = [
       'nl': 'Ik zoek bescherming in de volmaakte woorden van Allah tegen het kwaad van wat Hij heeft geschapen.',
       'pt': 'Busco refúgio nas palavras perfeitas de Allah do mal daquilo que Ele criou.',
       'it': 'Cerco rifugio nelle parole perfette di Allah dal male di ciò che Egli ha creato.',
+      'fa': 'به کلمات کامل خدا از شرّ آنچه آفریده است پناه می‌برم.',
+      'ru': 'Прибегаю к совершенным словам Аллаха от зла того, что Он сотворил.',
 },
   ),
   CategorizedDua(
@@ -167,6 +177,8 @@ const _morningEvening = [
       'nl': 'O Allah, schenk mij gezondheid in mijn lichaam. O Allah, schenk mij gezondheid in mijn gehoor. O Allah, schenk mij gezondheid in mijn gezichtsvermogen.',
       'pt': 'Ó Allah, concede-me saúde no meu corpo. Ó Allah, concede-me saúde na minha audição. Ó Allah, concede-me saúde na minha visão.',
       'it': 'O Allah, concedimi salute nel mio corpo. O Allah, concedimi salute nel mio udito. O Allah, concedimi salute nella mia vista.',
+      'fa': 'خدایا، به بدنم عافیت ده. خدایا، به شنوایی‌ام عافیت ده. خدایا، به بینایی‌ام عافیت ده.',
+      'ru': 'О Аллах, даруй здоровье моему телу. О Аллах, даруй здоровье моему слуху. О Аллах, даруй здоровье моему зрению.',
 },
   ),
   CategorizedDua(
@@ -190,6 +202,8 @@ const _morningEvening = [
       'nl': 'Allah is mij genoeg; niemand heeft het recht aanbeden te worden behalve Hem. Op Hem stel ik mijn vertrouwen, en Hij is de Heer van de Geweldige Troon.',
       'pt': 'Allah me basta; ninguém tem o direito de ser adorado senão Ele. Em Ele confio, e Ele é o Senhor do Trono Imenso.',
       'it': 'Allah mi basta; nessuno ha il diritto di essere adorato se non Lui. In Lui pongo la mia fiducia, ed Egli è il Signore del Trono Immenso.',
+      'fa': 'خدا مرا بس است؛ معبودی جز او نیست. بر او توکل کردم و او پروردگار عرش بزرگ است.',
+      'ru': 'Достаточно мне Аллаха; нет божества, достойного поклонения, кроме Него. На Него я уповаю, и Он — Господь великого Трона.',
 },
   ),
   CategorizedDua(
@@ -213,6 +227,8 @@ const _morningEvening = [
       'nl': 'Glorie en lof aan Allah, zo vaak als het aantal van Zijn schepselen, naar Zijn welbehagen, gelijk aan het gewicht van Zijn Troon en gelijk aan de inkt van Zijn woorden.',
       'pt': 'Glória e louvor a Allah, tantas vezes quanto o número de Suas criaturas, conforme Seu agrado, igual ao peso de Seu Trono e igual à tinta usada para registrar Suas palavras.',
       'it': 'Gloria e lode ad Allah, tante volte quante sono le Sue creature, secondo il Suo compiacimento, pari al peso del Suo Trono e pari all\'inchiostro delle Sue parole.',
+      'fa': 'پاک و منزه است خدا و ستایش از آن اوست، به شمار آفریدگانش، به اندازهٔ خشنودی‌اش، هم‌وزن عرشش و به اندازهٔ مرکبِ نوشتن کلماتش.',
+      'ru': 'Пречист Аллах и хвала Ему — столько раз, сколько Его творений, сколько угодно Ему, сколько весит Его Трон и сколько чернил нужно для записи Его слов.',
 },
   ),
 ];
@@ -239,6 +255,8 @@ const _prayerRelated = [
       'nl': 'O Allah, maak mij tot iemand die het gebed onderhoudt, en ook uit mijn nageslacht. Onze Heer, aanvaard mijn smeekbede.',
       'pt': 'Ó Allah, faze de mim alguém que estabelece a oração, e também da minha descendência. Senhor nosso, aceita minha súplica.',
       'it': 'O Allah, fammi essere uno che osserva la preghiera, e anche dalla mia progenie. Signore nostro, accetta la mia supplica.',
+      'fa': 'خدایا، مرا برپادارندهٔ نماز قرار ده و از فرزندانم نیز. پروردگارا، دعای مرا بپذیر.',
+      'ru': 'О Аллах, сделай меня совершающим молитву, и потомство моё также. Господь наш, прими мою мольбу.',
 },
   ),
   CategorizedDua(
@@ -262,6 +280,8 @@ const _prayerRelated = [
       'nl': 'Mijn Heer, maak mij tot iemand die het gebed onderhoudt, en plaats mij niet onder de onachtzamen.',
       'pt': 'Senhor meu, faze de mim alguém que estabelece a oração, e não me ponhas entre os negligentes.',
       'it': 'Signore mio, fammi essere uno che osserva la preghiera, e non mettermi tra gli incuranti.',
+      'fa': 'پروردگارا، مرا برپادارندهٔ نماز قرار ده و مرا از غافلان مگردان.',
+      'ru': 'Господь мой, сделай меня совершающим молитву и не помещай меня среди беспечных.',
 },
   ),
   CategorizedDua(
@@ -285,6 +305,8 @@ const _prayerRelated = [
       'nl': 'O Allah, help mij U te gedenken, U te bedanken en U op de beste manier te aanbidden.',
       'pt': 'Ó Allah, ajuda-me a Te recordar, a Te agradecer e a Te adorar da melhor maneira.',
       'it': 'O Allah, aiutami a ricordarTi, a ringraziarTi e ad adorarTi nel modo migliore.',
+      'fa': 'خدایا، مرا بر یاد خود، شکر خود و نیکو عبادت کردنت یاری فرما.',
+      'ru': 'О Аллах, помоги мне поминать Тебя, благодарить Тебя и поклоняться Тебе наилучшим образом.',
 },
   ),
   CategorizedDua(
@@ -308,6 +330,8 @@ const _prayerRelated = [
       'nl': 'O Allah, ik zoek bescherming bij U tegen luiheid, ouderdom, schulden en zonde.',
       'pt': 'Ó Allah, busco refúgio em Ti da preguiça, da velhice, da dívida e do pecado.',
       'it': 'O Allah, cerco rifugio in Te dalla pigrizia, dalla vecchiaia, dal debito e dal peccato.',
+      'fa': 'خدایا، از تنبلی، پیری، بدهی و گناه به تو پناه می‌برم.',
+      'ru': 'О Аллах, прибегаю к Тебе от лени, дряхлой старости, долга и греха.',
 },
   ),
   CategorizedDua(
@@ -331,6 +355,8 @@ const _prayerRelated = [
       'nl': 'Onze Heer, aanvaard van ons. Voorwaar, U bent de Alhorende, de Alwetende.',
       'pt': 'Senhor nosso, aceita de nós. Em verdade, Tu és o Oniouvinte, o Onisciente.',
       'it': 'Signore nostro, accetta da noi. In verità, Tu sei l\'Audiente, il Sapiente.',
+      'fa': 'پروردگارا، از ما بپذیر. همانا تویی شنوای دانا.',
+      'ru': 'Господь наш, прими от нас. Поистине, Ты — Слышащий, Знающий.',
 },
   ),
   CategorizedDua(
@@ -354,6 +380,8 @@ const _prayerRelated = [
       'nl': 'O Allah, maak mijn graf niet tot een afgod die aanbeden wordt. Allah heeft de mensen vervloekt die de graven van hun profeten tot gebedsplaatsen maakten.',
       'pt': 'Ó Allah, não faças do meu túmulo um ídolo a ser adorado. Allah maldisse aqueles que fizeram dos túmulos de seus profetas locais de adoração.',
       'it': 'O Allah, non fare della mia tomba un idolo da adorare. Allah ha maledetto coloro che hanno preso le tombe dei loro profeti come luoghi di culto.',
+      'fa': 'خدایا، قبر مرا بتی که پرستیده شود قرار مده. خدا لعنت کرد قومی را که قبرهای پیامبرانشان را عبادتگاه گرفتند.',
+      'ru': 'О Аллах, не делай мою могилу идолом, которому поклоняются. Аллах проклял людей, которые превратили могилы своих пророков в места поклонения.',
 },
   ),
 ];
@@ -380,6 +408,8 @@ const _foodDrink = [
       'nl': 'In de naam van Allah.',
       'pt': 'Em nome de Allah.',
       'it': 'Nel nome di Allah.',
+      'fa': 'به نام خدا.',
+      'ru': 'Во имя Аллаха.',
 },
   ),
   CategorizedDua(
@@ -403,6 +433,8 @@ const _foodDrink = [
       'nl': 'O Allah, zegen ons hierin en voed ons met iets beters.',
       'pt': 'Ó Allah, bendiz-nos nisto e alimenta-nos com algo melhor.',
       'it': 'O Allah, benedicilo per noi e nutrici con qualcosa di meglio.',
+      'fa': 'خدایا، در آن برای ما برکت ده و بهتر از آن را روزی ما گردان.',
+      'ru': 'О Аллах, благослови нас в этом и накорми нас тем, что лучше этого.',
 },
   ),
   CategorizedDua(
@@ -426,6 +458,8 @@ const _foodDrink = [
       'nl': 'Alle lof aan Allah die ons voedde en ons drinken gaf en ons moslims maakte.',
       'pt': 'Todo louvor é para Allah, que nos alimentou, nos deu de beber e nos fez muçulmanos.',
       'it': 'Ogni lode appartiene ad Allah che ci ha nutrito, ci ha dato da bere e ci ha fatto musulmani.',
+      'fa': 'ستایش از آنِ خدایی است که ما را خوراک داد و نوشانید و مسلمان گردانید.',
+      'ru': 'Вся хвала Аллаху, Который накормил нас, напоил нас и сделал нас мусульманами.',
 },
   ),
   CategorizedDua(
@@ -449,6 +483,8 @@ const _foodDrink = [
       'nl': 'Alle lof aan Allah die dit voedsel heeft gegeven en mij heeft voorzien zonder enige macht of kracht van mijzelf.',
       'pt': 'Todo louvor é para Allah, que proveu este alimento e me sustentou sem qualquer poder ou força de minha parte.',
       'it': 'Ogni lode appartiene ad Allah che ha fornito questo cibo e mi ha sostenuto senza alcun potere né forza da parte mia.',
+      'fa': 'ستایش از آنِ خدایی است که این خوراک را به من داد و بی‌هیچ توان و نیرویی از جانب من، آن را روزی‌ام ساخت.',
+      'ru': 'Вся хвала Аллаху, Который даровал эту пищу и наделил меня ею без всякой силы и мощи с моей стороны.',
 },
   ),
   CategorizedDua(
@@ -472,6 +508,8 @@ const _foodDrink = [
       'nl': 'O Allah, voed degene die mij voedde, en geef te drinken aan degene die mij te drinken gaf.',
       'pt': 'Ó Allah, alimenta quem me alimentou, e dá de beber a quem me deu de beber.',
       'it': 'O Allah, nutri chi mi ha nutrito, e da\' da bere a chi mi ha dato da bere.',
+      'fa': 'خدایا، خوراک ده به آن که مرا خوراک داد و بنوشان به آن که مرا نوشانید.',
+      'ru': 'О Аллах, накорми того, кто накормил меня, и напои того, кто напоил меня.',
 },
   ),
 ];
@@ -498,6 +536,8 @@ const _travel = [
       'nl': 'Geprezen zij Degene die dit aan ons dienstbaar heeft gemaakt, want wij waren daar zelf niet toe in staat. En voorwaar, tot onze Heer zullen wij terugkeren.',
       'pt': 'Glorificado seja Aquele que nos sujeitou isto, e nós não éramos capazes de fazê-lo por nós mesmos. E, em verdade, ao nosso Senhor haveremos de retornar.',
       'it': 'Gloria a Colui che ci ha messo questo a disposizione, mentre noi non ne eravamo capaci da soli. E in verità, al nostro Signore ritorneremo.',
+      'fa': 'پاک و منزه است آن که این را برای ما رام کرد و ما را توان آن نبود. و همانا به سوی پروردگارمان بازمی‌گردیم.',
+      'ru': 'Пречист Тот, Кто подчинил нам это, ведь сами мы не могли этого достичь. И поистине, к Господу нашему мы возвращаемся.',
 },
   ),
   CategorizedDua(
@@ -521,6 +561,8 @@ const _travel = [
       'nl': 'O Allah, wij vragen U op deze reis om rechtschapenheid en vroomheid, en daden die U behagen.',
       'pt': 'Ó Allah, pedimos-Te nesta viagem rectidão e piedade, e obras que Te agradem.',
       'it': 'O Allah, Ti chiediamo in questo viaggio rettitudine e devozione, e opere che Ti compiacciano.',
+      'fa': 'خدایا، در این سفر از تو نیکی و پرهیزگاری می‌خواهیم و کرداری که تو را خشنود سازد.',
+      'ru': 'О Аллах, мы просим Тебя в этом путешествии о благочестии и богобоязненности, и о делах, угодных Тебе.',
 },
   ),
   CategorizedDua(
@@ -544,6 +586,8 @@ const _travel = [
       'nl': 'O Allah, U bent de Begeleider op reis en de Bewaker van het gezin.',
       'pt': 'Ó Allah, Tu és o Companheiro na viagem e o Guardião da família.',
       'it': 'O Allah, Tu sei il Compagno nel viaggio e il Custode della famiglia.',
+      'fa': 'خدایا، تویی همراه در سفر و نگهبان خانواده.',
+      'ru': 'О Аллах, Ты — Спутник в пути и Хранитель семьи.',
 },
   ),
   CategorizedDua(
@@ -567,6 +611,8 @@ const _travel = [
       'nl': 'O Allah, ik zoek bescherming bij U tegen de ontberingen van het reizen, het verdriet bij terugkomst, en het aantreffen van geliefden in slechte toestand.',
       'pt': 'Ó Allah, busco refúgio em Ti das dificuldades da viagem, da angústia do retorno, e de encontrar os entes queridos em má condição.',
       'it': 'O Allah, cerco rifugio in Te dalle difficoltà del viaggio, dall\'angoscia del ritorno, e dal trovare i propri cari in cattive condizioni.',
+      'fa': 'خدایا، از سختی‌های سفر، از اندوه بازگشت و از دیدن عزیزان در حال بد به تو پناه می‌برم.',
+      'ru': 'О Аллах, прибегаю к Тебе от тягот пути, от печали по возвращении и от того, чтобы застать близких в беде.',
 },
   ),
   CategorizedDua(
@@ -590,6 +636,8 @@ const _travel = [
       'nl': 'Wij keren berouwvol terug, aanbiddend en onze Heer lovend.',
       'pt': 'Retornamos arrependidos, adorando e louvando nosso Senhor.',
       'it': 'Ritorniamo pentiti, adorando e lodando il nostro Signore.',
+      'fa': 'بازمی‌گردیم توبه‌کنان، عبادت‌کنان و ستایشگرِ پروردگارمان.',
+      'ru': 'Мы возвращаемся кающимися, поклоняющимися и восхваляющими Господа нашего.',
 },
   ),
 ];
@@ -616,6 +664,8 @@ const _home = [
       'nl': 'O Allah, ik vraag U om een goede ingang en een goede uitgang.',
       'pt': 'Ó Allah, peço-Te uma boa entrada e uma boa saída.',
       'it': 'O Allah, Ti chiedo un buon ingresso e una buona uscita.',
+      'fa': 'خدایا، از تو ورودی نیک و خروجی نیک می‌خواهم.',
+      'ru': 'О Аллах, прошу у Тебя благого входа и благого выхода.',
 },
   ),
   CategorizedDua(
@@ -639,6 +689,8 @@ const _home = [
       'nl': 'In de naam van Allah gaan wij naar binnen, in de naam van Allah gaan wij naar buiten, en op Allah, onze Heer, stellen wij ons vertrouwen.',
       'pt': 'Em nome de Allah entramos, em nome de Allah saímos, e em Allah, nosso Senhor, confiamos.',
       'it': 'Nel nome di Allah entriamo, nel nome di Allah usciamo, e in Allah, nostro Signore, confidiamo.',
+      'fa': 'به نام خدا وارد می‌شویم و به نام خدا بیرون می‌رویم، و بر خدا، پروردگارمان، توکل می‌کنیم.',
+      'ru': 'Во имя Аллаха мы входим, во имя Аллаха выходим, и на Аллаха, Господа нашего, уповаем.',
 },
   ),
   CategorizedDua(
@@ -662,6 +714,8 @@ const _home = [
       'nl': 'Mijn Heer, laat mij op een oprechte manier binnengaan en op een oprechte manier naar buiten gaan, en schenk mij van Uzelf een ondersteunende kracht.',
       'pt': 'Senhor meu, faze-me entrar com uma entrada sincera e saia com uma saída sincera, e concede-me de Ti uma autoridade que me auxilie.',
       'it': 'Signore mio, fammi entrare con un ingresso sincero e uscire con un\'uscita sincera, e concedimi da parte Tua un\'autorità che mi soccorra.',
+      'fa': 'پروردگارا، مرا به ورودی راستین درآور و به خروجی راستین بیرون بر، و از جانب خود برایم قدرتی یاری‌بخش قرار ده.',
+      'ru': 'Господь мой, введи меня благим входом и выведи благим выходом, и даруй мне от Себя власть в помощь.',
 },
   ),
   CategorizedDua(
@@ -685,6 +739,8 @@ const _home = [
       'nl': 'O Allah, plaats licht in mijn hart, licht op mijn tong, en plaats licht in mijzelf.',
       'pt': 'Ó Allah, coloca luz no meu coração, luz na minha língua, e coloca luz dentro de mim.',
       'it': 'O Allah, metti luce nel mio cuore, luce sulla mia lingua, e metti luce dentro di me.',
+      'fa': 'خدایا، در دلم نور قرار ده، و بر زبانم نور، و در جانم نور.',
+      'ru': 'О Аллах, помести свет в моё сердце, и на язык мой — свет, и в душу мою — свет.',
 },
   ),
 ];
@@ -711,6 +767,8 @@ const _anxietyStress = [
       'nl': 'O Allah, ik zoek bescherming bij U tegen verdriet en angst, tegen onmacht en luiheid.',
       'pt': 'Ó Allah, busco refúgio em Ti da tristeza e da ansiedade, da incapacidade e da preguiça.',
       'it': 'O Allah, cerco rifugio in Te dal dolore e dall\'ansia, dall\'incapacità e dalla pigrizia.',
+      'fa': 'خدایا، از اندوه و نگرانی، و از ناتوانی و تنبلی به تو پناه می‌برم.',
+      'ru': 'О Аллах, прибегаю к Тебе от печали и тревоги, от бессилия и лени.',
 },
   ),
   CategorizedDua(
@@ -734,6 +792,8 @@ const _anxietyStress = [
       'nl': 'Niemand heeft het recht aanbeden te worden behalve Allah, de Verhevene, de Zachtmoedige. Niemand heeft het recht aanbeden te worden behalve Allah, de Heer van de Geweldige Troon.',
       'pt': 'Ninguém tem o direito de ser adorado senão Allah, o Magnífico, o Tolerante. Ninguém tem o direito de ser adorado senão Allah, Senhor do Trono Imenso.',
       'it': 'Nessuno ha il diritto di essere adorato se non Allah, il Magnifico, l\'Indulgente. Nessuno ha il diritto di essere adorato se non Allah, Signore del Trono Immenso.',
+      'fa': 'معبودی جز خدای بزرگِ بردبار نیست. معبودی جز خدا، پروردگار عرش بزرگ، نیست.',
+      'ru': 'Нет божества, достойного поклонения, кроме Аллаха, Великого, Кроткого. Нет божества, достойного поклонения, кроме Аллаха, Господа великого Трона.',
 },
   ),
   CategorizedDua(
@@ -757,6 +817,8 @@ const _anxietyStress = [
       'nl': 'Allah is ons genoeg, en Hij is de beste Beheerder.',
       'pt': 'Allah nos basta, e Ele é o melhor administrador.',
       'it': 'Allah ci basta, ed Egli è il miglior amministratore.',
+      'fa': 'خدا ما را بس است و او بهترین کارساز است.',
+      'ru': 'Достаточно нам Аллаха, и Он — наилучший Попечитель.',
 },
   ),
   CategorizedDua(
@@ -780,6 +842,8 @@ const _anxietyStress = [
       'nl': 'Mijn Heer, tegenspoed heeft mij getroffen, en U bent de Meest Genadevolle der genadigen.',
       'pt': 'Senhor meu, a adversidade me tocou, e Tu és o mais Misericordioso dos misericordiosos.',
       'it': 'Signore mio, l\'avversità mi ha toccato, e Tu sei il più Misericordioso dei misericordiosi.',
+      'fa': 'پروردگارا، به من رنج رسیده است و تو مهربان‌ترینِ مهربانانی.',
+      'ru': 'Господь мой, меня коснулась беда, а Ты — Милостивейший из милостивых.',
 },
   ),
   CategorizedDua(
@@ -803,6 +867,8 @@ const _anxietyStress = [
       'nl': 'O Allah, het is Uw genade waarop ik hoop, laat mij dus niet aan mijzelf over, ook niet voor een ogenblik.',
       'pt': 'Ó Allah, é a Tua misericórdia que espero, então não me deixes entregue a mim mesmo nem por um piscar de olhos.',
       'it': 'O Allah, è la Tua misericordia che spero, quindi non lasciarmi affidato a me stesso nemmeno per un batter d\'occhio.',
+      'fa': 'خدایا، به رحمت تو امید دارم، پس مرا حتی به اندازهٔ چشم بر هم زدنی به خودم وامگذار.',
+      'ru': 'О Аллах, на Твою милость я надеюсь, так не оставляй меня наедине с моими делами даже на мгновение ока.',
 },
   ),
   CategorizedDua(
@@ -826,6 +892,8 @@ const _anxietyStress = [
       'nl': 'O Levende, o Onderhoudende, door Uw genade zoek ik hulp.',
       'pt': 'Ó Vivente, ó Subsistente, pela Tua misericórdia busco ajuda.',
       'it': 'O Vivente, o Sussistente, per la Tua misericordia chiedo aiuto.',
+      'fa': 'ای زنده، ای پاینده، به رحمت تو یاری می‌جویم.',
+      'ru': 'О Живой, о Вечносущий, к Твоей милости взываю о помощи.',
 },
   ),
 ];
@@ -852,6 +920,8 @@ const _gratitude = [
       'nl': 'Lof aan Allah door wiens genade en gunst goede daden worden volbracht.',
       'pt': 'Louvado seja Allah, por cuja graça e generosidade as boas obras se realizam.',
       'it': 'Lode ad Allah, per la cui grazia e generosità le buone opere si compiono.',
+      'fa': 'ستایش از آنِ خدایی است که به فضل و نعمت او کارهای نیک به انجام می‌رسد.',
+      'ru': 'Хвала Аллаху, по милости и щедрости Которого совершаются благие дела.',
 },
   ),
   CategorizedDua(
@@ -875,6 +945,8 @@ const _gratitude = [
       'nl': 'Mijn Heer, stel mij in staat dankbaar te zijn voor Uw gunst die U mij en mijn ouders hebt geschonken, en goed te doen dat U behaagt.',
       'pt': 'Senhor meu, capacita-me a ser grato pelo Teu favor que concedeste a mim e aos meus pais, e a fazer o bem que Te agrade.',
       'it': 'Signore mio, permettimi di essere grato per il Tuo favore che hai concesso a me e ai miei genitori, e di compiere il bene di cui Ti compiaci.',
+      'fa': 'پروردگارا، مرا توفیق ده تا نعمتی را که به من و به پدر و مادرم ارزانی داشتی سپاس گویم و کار شایسته‌ای کنم که آن را می‌پسندی.',
+      'ru': 'Господь мой, дай мне возможность быть благодарным за Твою милость, которую Ты оказал мне и моим родителям, и совершать праведные дела, которыми Ты доволен.',
 },
   ),
   CategorizedDua(
@@ -898,6 +970,8 @@ const _gratitude = [
       'nl': 'O Allah, alle lof behoort aan U, en alle dank behoort aan U.',
       'pt': 'Ó Allah, todo o louvor é Teu, e todo o agradecimento é Teu.',
       'it': 'O Allah, a Te appartiene ogni lode, e a Te appartiene ogni ringraziamento.',
+      'fa': 'خدایا، همهٔ ستایش‌ها از آنِ توست و همهٔ سپاس‌ها از آنِ توست.',
+      'ru': 'О Аллах, Тебе принадлежит вся хвала, и Тебе принадлежит вся благодарность.',
 },
   ),
   CategorizedDua(
@@ -921,6 +995,8 @@ const _gratitude = [
       'nl': 'Lof aan Allah onder alle omstandigheden.',
       'pt': 'Louvado seja Allah em todas as circunstâncias.',
       'it': 'Lode ad Allah in ogni circostanza.',
+      'fa': 'ستایش از آنِ خداست در هر حال.',
+      'ru': 'Хвала Аллаху при любых обстоятельствах.',
 },
   ),
 ];
@@ -947,6 +1023,8 @@ const _protection = [
       'nl': 'Ik zoek bescherming bij Allah, de Alhorende, de Alwetende, tegen de vervloekte Satan.',
       'pt': 'Busco refúgio em Allah, o Oniouvinte, o Onisciente, do maldito Satanás.',
       'it': 'Cerco rifugio in Allah, l\'Audiente, il Sapiente, dal maledetto Satana.',
+      'fa': 'به خدای شنوای دانا از شیطان رانده‌شده پناه می‌برم.',
+      'ru': 'Прибегаю к Аллаху, Всеслышащему, Всезнающему, от проклятого шайтана.',
 },
   ),
   CategorizedDua(
@@ -970,6 +1048,8 @@ const _protection = [
       'nl': 'O Allah, behoed mij van voren en van achteren, van mijn rechterkant en mijn linkerkant, en van boven mij.',
       'pt': 'Ó Allah, guarda-me da minha frente e de detrás de mim, da minha direita e da minha esquerda, e de cima de mim.',
       'it': 'O Allah, proteggimi davanti a me e dietro di me, dalla mia destra e dalla mia sinistra, e dall\'alto su di me.',
+      'fa': 'خدایا، مرا از پیش رو و از پشت سر، از راست و از چپ، و از بالای سرم نگاه دار.',
+      'ru': 'О Аллах, охрани меня спереди и сзади, справа и слева, и сверху.',
 },
   ),
   CategorizedDua(
@@ -993,6 +1073,8 @@ const _protection = [
       'nl': 'In de naam van Allah, door wiens naam niets op aarde of in de hemel kan schaden.',
       'pt': 'Em nome de Allah, com cujo nome nada na terra ou no céu pode causar dano.',
       'it': 'Nel nome di Allah, con il cui nome nulla sulla terra o nel cielo può nuocere.',
+      'fa': 'به نام خدا که با نام او هیچ چیز در زمین و آسمان زیان نمی‌رساند.',
+      'ru': 'Во имя Аллаха, с именем Которого ничто на земле и на небе не причинит вреда.',
 },
   ),
   CategorizedDua(
@@ -1016,6 +1098,8 @@ const _protection = [
       'nl': 'O Allah, ik zoek bescherming bij U tegen het kwaad van wat ik heb gedaan en het kwaad van wat ik niet heb gedaan.',
       'pt': 'Ó Allah, busco refúgio em Ti do mal que fiz e do mal que não fiz.',
       'it': 'O Allah, cerco rifugio in Te dal male di ciò che ho fatto e dal male di ciò che non ho fatto.',
+      'fa': 'خدایا، از شرّ آنچه کرده‌ام و شرّ آنچه نکرده‌ام به تو پناه می‌برم.',
+      'ru': 'О Аллах, прибегаю к Тебе от зла того, что я совершил, и от зла того, чего я не совершил.',
 },
   ),
   CategorizedDua(
@@ -1039,6 +1123,8 @@ const _protection = [
       'nl': 'O Allah, ik vraag U om vergeving en welzijn in dit leven en het volgende.',
       'pt': 'Ó Allah, peço-Te perdão e bem-estar nesta vida e na próxima.',
       'it': 'O Allah, Ti chiedo perdono e benessere in questa vita e nell\'altra.',
+      'fa': 'خدایا، از تو گذشت و عافیت را در دنیا و آخرت می‌خواهم.',
+      'ru': 'О Аллах, прошу у Тебя прощения и благополучия в этом мире и в мире вечном.',
 },
   ),
 ];
@@ -1065,6 +1151,8 @@ const _family = [
       'nl': 'Onze Heer, schenk ons uit onze echtgenotes en kinderen een verkoeling voor de ogen, en maak ons tot een voorbeeld voor de godvrezenden.',
       'pt': 'Senhor nosso, concede-nos de nossas esposas e descendência um conforto para os olhos, e faze de nós um líder para os piedosos.',
       'it': 'Signore nostro, concedici dalle nostre spose e dalla nostra progenie una gioia per gli occhi, e facci essere una guida per i timorati.',
+      'fa': 'پروردگارا، از همسران و فرزندانمان روشنی چشم به ما عطا کن و ما را پیشوای پرهیزگاران گردان.',
+      'ru': 'Господь наш, даруй нам в наших супругах и потомстве отраду глаз и сделай нас образцом для богобоязненных.',
 },
   ),
   CategorizedDua(
@@ -1088,6 +1176,8 @@ const _family = [
       'nl': 'Mijn Heer, maak mij tot iemand die het gebed onderhoudt, en ook mijn nageslacht. Onze Heer, aanvaard mijn smeekbede.',
       'pt': 'Senhor meu, faze de mim alguém que estabelece a oração, e também a minha descendência. Senhor nosso, aceita minha súplica.',
       'it': 'Signore mio, fammi essere uno che osserva la preghiera, e anche la mia progenie. Signore nostro, accetta la mia supplica.',
+      'fa': 'پروردگارا، مرا برپادارندهٔ نماز قرار ده و فرزندانم را نیز. پروردگارا، دعای مرا بپذیر.',
+      'ru': 'Господь мой, сделай меня совершающим молитву, и потомков моих также. Господь наш, прими мою мольбу.',
 },
   ),
   CategorizedDua(
@@ -1111,6 +1201,8 @@ const _family = [
       'nl': 'Mijn Heer, ontferm U over hen zoals zij mij hebben opgevoed toen ik klein was.',
       'pt': 'Senhor meu, tem misericórdia deles como eles me criaram quando eu era pequeno.',
       'it': 'Signore mio, abbi misericordia di loro come essi mi hanno cresciuto quando ero piccolo.',
+      'fa': 'پروردگارا، بر آن دو رحمت آور، همان‌گونه که مرا در خردسالی پروردند.',
+      'ru': 'Господь мой, помилуй их, как они растили меня, когда я был мал.',
 },
   ),
   CategorizedDua(
@@ -1134,6 +1226,8 @@ const _family = [
       'nl': 'Onze Heer, vergeef mij en mijn ouders en de gelovigen op de Dag waarop de afrekening plaatsvindt.',
       'pt': 'Senhor nosso, perdoa-me a mim, aos meus pais e aos crentes no Dia em que se estabelecer a prestação de contas.',
       'it': 'Signore nostro, perdona me, i miei genitori e i credenti nel Giorno in cui si terrà il rendiconto.',
+      'fa': 'پروردگارا، مرا و پدر و مادرم و مؤمنان را در روزی که حساب برپا می‌شود بیامرز.',
+      'ru': 'Господь наш, прости меня, моих родителей и верующих в День, когда настанет расчёт.',
 },
   ),
 ];
@@ -1160,6 +1254,8 @@ const _forgiveness = [
       'nl': 'O Allah, vergeef mij al mijn zonden, de kleine en de grote, de eerste en de laatste.',
       'pt': 'Ó Allah, perdoa todos os meus pecados, os pequenos e os grandes, os primeiros e os últimos.',
       'it': 'O Allah, perdona tutti i miei peccati, i piccoli e i grandi, i primi e gli ultimi.',
+      'fa': 'خدایا، همهٔ گناهانم را بیامرز، کوچک و بزرگ، اول و آخر آن را.',
+      'ru': 'О Аллах, прости мне все мои грехи — малые и великие, первые и последние.',
 },
   ),
   CategorizedDua(
@@ -1183,6 +1279,8 @@ const _forgiveness = [
       'nl': 'Ik vraag Allah, de Verhevene, om vergeving, naast Wie niemand het recht heeft aanbeden te worden, de Levende, de Onderhoudende, en ik keer berouwvol tot Hem terug.',
       'pt': 'Peço perdão a Allah, o Magnífico, além de Quem ninguém tem o direito de ser adorado, o Vivente, o Subsistente, e a Ele me arrependo.',
       'it': 'Chiedo perdono ad Allah, il Magnifico, oltre il Quale nessuno ha il diritto di essere adorato, il Vivente, il Sussistente, e a Lui mi pento.',
+      'fa': 'از خدای بزرگ که معبودی جز او نیست، زندهٔ پاینده، آمرزش می‌خواهم و به سوی او توبه می‌کنم.',
+      'ru': 'Прошу прощения у Аллаха Великого, кроме Которого нет божества, достойного поклонения, Живого, Вечносущего, и приношу Ему покаяние.',
 },
   ),
   CategorizedDua(
@@ -1206,6 +1304,8 @@ const _forgiveness = [
       'nl': 'Onze Heer, wij hebben onszelf onrecht aangedaan, en als U ons niet vergeeft en Zich niet over ons ontfermt, zullen wij zeker tot de verliezers behoren.',
       'pt': 'Senhor nosso, nós nos prejudicamos a nós mesmos, e se Tu não nos perdoares e tiveres misericórdia de nós, certamente seremos dos perdedores.',
       'it': 'Signore nostro, abbiamo fatto torto a noi stessi, e se non ci perdoni e non hai misericordia di noi, saremo certamente tra i perdenti.',
+      'fa': 'پروردگارا، ما بر خود ستم کردیم و اگر ما را نیامرزی و بر ما رحم نکنی، بی‌گمان از زیانکاران خواهیم بود.',
+      'ru': 'Господь наш, мы поступили несправедливо с самими собой, и если Ты не простишь нас и не помилуешь, мы непременно окажемся среди потерпевших убыток.',
 },
   ),
   CategorizedDua(
@@ -1229,6 +1329,8 @@ const _forgiveness = [
       'nl': 'Mijn Heer, ik heb mijzelf inderdaad onrecht aangedaan, vergeef mij dus.',
       'pt': 'Senhor meu, eu de fato me prejudiquei, então perdoa-me.',
       'it': 'Signore mio, ho davvero fatto torto a me stesso, perciò perdonami.',
+      'fa': 'پروردگارا، من به خود ستم کردم، پس مرا بیامرز.',
+      'ru': 'Господь мой, поистине, я поступил несправедливо с самим собой, так прости же меня.',
 },
   ),
   CategorizedDua(
@@ -1252,6 +1354,8 @@ const _forgiveness = [
       'nl': 'O Allah, U bent de Vergevende en U houdt van vergeving, vergeef mij dus.',
       'pt': 'Ó Allah, Tu és o Perdoador e amas o perdão, então perdoa-me.',
       'it': 'O Allah, Tu sei il Perdonatore e ami il perdono, perciò perdonami.',
+      'fa': 'خدایا، تو بخشاینده‌ای و بخشش را دوست داری، پس از من درگذر.',
+      'ru': 'О Аллах, Ты — Прощающий и любишь прощать, так прости же меня.',
 },
   ),
 ];
