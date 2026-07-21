@@ -72,9 +72,9 @@ class FeatureGrid extends StatelessWidget {
     final names    = (id: 'Asma Ul Husna',   icon: Icons.star_rounded,               asset: 'assets/images/icons/names_icon.png',    label: l10n.asmaUlHusnaTile);
     final adhan    = (id: 'Adhan',            icon: Icons.mosque_rounded,             asset: 'assets/images/icons/adhan_icon.png',    label: l10n.adhan);
 
-    // Android-only tiles. App Blocking keeps its Material icon by design.
-    final focus    = (id: 'Focus Mode',   icon: Icons.hourglass_empty_rounded, asset: 'assets/images/icons/focus_icon.png', label: l10n.focusMode);
-    final blocking = (id: 'App Blocking', icon: Icons.shield,                  asset: null,                                 label: l10n.appBlocking);
+    // Android-only tiles.
+    final focus    = (id: 'Focus Mode',   icon: Icons.hourglass_empty_rounded, asset: 'assets/images/icons/focus_icon.png',        label: l10n.focusMode);
+    final blocking = (id: 'App Blocking', icon: Icons.shield,                  asset: 'assets/images/icons/app_blocking_icon.png', label: l10n.appBlocking);
 
     // iOS-only tiles (App Blocking / Focus Mode unavailable on iOS).
     final glossary = (id: 'Islamic Glossary', icon: Icons.menu_book_rounded, asset: 'assets/images/icons/glossary_icon.png', label: l10n.islamicGlossary);
@@ -86,7 +86,7 @@ class FeatureGrid extends StatelessWidget {
 
     final row2 = isIOS
         ? [names, adhan, glossary, pillars]
-        : [blocking, calendar, names, adhan];
+        : [calendar, blocking, names, adhan];
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 3),
