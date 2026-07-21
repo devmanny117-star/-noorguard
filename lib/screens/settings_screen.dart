@@ -10,7 +10,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_controller.dart';
 import '../models/adhan_model.dart';
-import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
@@ -275,25 +274,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
-              if (kDebugMode && !kIsWeb && Platform.isAndroid) ...[
-                const SettingsDivider(colors: cardColors),
-                SettingsActionRow(
-                  label: l10n.testLockAlarmButton,
-                  icon: Icons.fullscreen_rounded,
-                  colors: cardColors,
-                  onTap: () {
-                    if (!prayerState.masterNotifications) {
-                      _snack(l10n.testRequiresNotificationsOn);
-                      return;
-                    }
-                    NotificationService().scheduleTestFullScreenAlarm(
-                      adhanId: prayerState.selectedAdhanId,
-                      prayers: prayerState.scheduledPrayerTimes ?? [],
-                    );
-                    _snack(l10n.testLockAlarmSnack);
-                  },
-                ),
-              ],
               if (!kIsWeb && Platform.isAndroid) ...[
                 const SettingsDivider(colors: cardColors),
                 SettingsActionRow(
