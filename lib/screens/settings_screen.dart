@@ -195,7 +195,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _sendFeedbackEmail() async {
-    final uri = Uri(scheme: 'mailto', path: 'devmanny117@gmail.com');
+    final uri = Uri(scheme: 'mailto', path: 'noorguard.support@gmail.com');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     } else if (mounted) {
@@ -590,15 +590,6 @@ class _TranslationDisclaimerCard extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Text(
-                    l10n.translationDisclaimer,
-                    style: GoogleFonts.lato(
-                      fontSize: 12.5,
-                      height: 1.4,
-                      color: Colors.white.withValues(alpha: 0.7),
-                    ),
-                  ),
                   const SizedBox(height: 10),
                   InkWell(
                     onTap: onEmailTap,
@@ -615,7 +606,7 @@ class _TranslationDisclaimerCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 6),
                           Text(
-                            'devmanny117@gmail.com',
+                            'noorguard.support@gmail.com',
                             style: GoogleFonts.lato(
                               fontSize: 12.5,
                               fontWeight: FontWeight.w600,
