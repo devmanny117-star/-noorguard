@@ -1691,6 +1691,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'تعذّر فتح سياسة الخصوصية';
 
   @override
+  String get couldNotOpenTermsOfService => 'تعذّر فتح شروط الخدمة';
+
+  @override
   String get couldNotOpenEmailApp => 'تعذّر فتح تطبيق البريد الإلكتروني';
 
   @override

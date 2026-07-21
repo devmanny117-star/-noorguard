@@ -1715,6 +1715,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'Imeshindwa kufungua Sera ya Faragha';
 
   @override
+  String get couldNotOpenTermsOfService =>
+      'Imeshindwa kufungua Masharti ya Huduma';
+
+  @override
   String get couldNotOpenEmailApp =>
       'Imeshindwa kufungua programu ya barua pepe';
 

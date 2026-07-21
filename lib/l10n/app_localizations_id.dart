@@ -1716,6 +1716,10 @@ class AppLocalizationsId extends AppLocalizations {
       'Tidak dapat membuka Kebijakan Privasi';
 
   @override
+  String get couldNotOpenTermsOfService =>
+      'Tidak dapat membuka Ketentuan Layanan';
+
+  @override
   String get couldNotOpenEmailApp => 'Tidak dapat membuka aplikasi email';
 
   @override

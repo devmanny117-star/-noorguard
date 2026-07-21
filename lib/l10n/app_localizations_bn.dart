@@ -1712,6 +1712,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'গোপনীয়তা নীতি খোলা যায়নি';
 
   @override
+  String get couldNotOpenTermsOfService => 'ব্যবহারের শর্তাবলী খোলা যায়নি';
+
+  @override
   String get couldNotOpenEmailApp => 'ইমেইল অ্যাপ খোলা যায়নি';
 
   @override

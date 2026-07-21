@@ -174,6 +174,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  Future<void> _openTermsOfService() async {
+    final uri = Uri.parse(
+        'https://devmanny117-star.github.io/-noorguard/terms-of-service');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else if (mounted) {
+      _snack(AppLocalizations.of(context)!.couldNotOpenTermsOfService);
+    }
+  }
+
+  Future<void> _contactSupport() async {
+    final uri = Uri.parse(
+        'mailto:noorguard.support@gmail.com'
+        '?subject=${Uri.encodeComponent('Noor Guard Support')}');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else if (mounted) {
+      _snack(AppLocalizations.of(context)!.couldNotOpenEmailApp);
+    }
+  }
+
   Future<void> _sendFeedbackEmail() async {
     final uri = Uri(scheme: 'mailto', path: 'devmanny117@gmail.com');
     if (await canLaunchUrl(uri)) {
@@ -505,7 +526,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 label: l10n.contactSupport,
                 icon: Icons.mail_outline_rounded,
                 colors: cardColors,
-                onTap: () => _snack(l10n.openingSupportEmail),
+                onTap: _contactSupport,
               ),
               const SettingsDivider(colors: cardColors),
               SettingsActionRow(
@@ -519,7 +540,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 label: l10n.termsOfService,
                 icon: Icons.description_outlined,
                 colors: cardColors,
-                onTap: () => _snack(l10n.openingTermsOfService),
+                onTap: _openTermsOfService,
               ),
             ],
           ),

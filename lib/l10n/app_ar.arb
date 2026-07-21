@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "فعّل إشعارات الصلاة أولاً لتجربة هذا",
   "lockScreenSetupGuideButton": "دليل إعداد تنبيهات شاشة القفل",
   "couldNotOpenPrivacyPolicy": "تعذّر فتح سياسة الخصوصية",
+  "couldNotOpenTermsOfService": "تعذّر فتح شروط الخدمة",
   "couldNotOpenEmailApp": "تعذّر فتح تطبيق البريد الإلكتروني",
   "blockDurationLabel": "مدة الحظر",
   "privacyAndTrust": "الخصوصية والثقة",

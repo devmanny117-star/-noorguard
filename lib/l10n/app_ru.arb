@@ -2079,6 +2079,7 @@
   "@couldNotOpenPrivacyPolicy": {
     "description": "Snackbar shown when the privacy policy link fails to open"
   },
+  "couldNotOpenTermsOfService": "Не удалось открыть Условия использования",
   "couldNotOpenEmailApp": "Не удалось открыть почтовое приложение",
   "@couldNotOpenEmailApp": {
     "description": "Snackbar shown when no email app is available to send feedback"

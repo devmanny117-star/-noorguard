@@ -2079,6 +2079,10 @@
   "@couldNotOpenPrivacyPolicy": {
     "description": "Snackbar shown when the privacy policy link fails to open"
   },
+  "couldNotOpenTermsOfService": "Could not open Terms of Service",
+  "@couldNotOpenTermsOfService": {
+    "description": "Snackbar shown when the terms of service link fails to open"
+  },
   "couldNotOpenEmailApp": "Could not open email app",
   "@couldNotOpenEmailApp": {
     "description": "Snackbar shown when no email app is available to send feedback"

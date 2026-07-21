@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Ative as Notificações de Oração primeiro para testar isso",
   "lockScreenSetupGuideButton": "Guia de configuração de alertas na tela de bloqueio",
   "couldNotOpenPrivacyPolicy": "Não foi possível abrir a Política de Privacidade",
+  "couldNotOpenTermsOfService": "Não foi possível abrir os Termos de Serviço",
   "couldNotOpenEmailApp": "Não foi possível abrir o app de e-mail",
   "blockDurationLabel": "Duração do bloqueio",
   "privacyAndTrust": "Privacidade e Confiança",

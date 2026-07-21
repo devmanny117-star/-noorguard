@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "これをテストするには、まず礼拝通知を有効にしてください",
   "lockScreenSetupGuideButton": "ロック画面アラート設定ガイド",
   "couldNotOpenPrivacyPolicy": "プライバシーポリシーを開けませんでした",
+  "couldNotOpenTermsOfService": "利用規約を開けませんでした",
   "couldNotOpenEmailApp": "メールアプリを開けませんでした",
   "blockDurationLabel": "ブロックの長さ",
   "privacyAndTrust": "プライバシーと信頼",

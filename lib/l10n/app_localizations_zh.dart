@@ -1625,6 +1625,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => '无法打开隐私政策';
 
   @override
+  String get couldNotOpenTermsOfService => '无法打开服务条款';
+
+  @override
   String get couldNotOpenEmailApp => '无法打开邮件应用';
 
   @override

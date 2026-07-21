@@ -629,6 +629,7 @@
   "testRequiresNotificationsOn": "ابتدا اعلان‌های نماز را روشن کنید تا این را آزمایش کنید",
   "lockScreenSetupGuideButton": "راهنمای تنظیم هشدار صفحه قفل",
   "couldNotOpenPrivacyPolicy": "سیاست حریم خصوصی باز نشد",
+  "couldNotOpenTermsOfService": "شرایط خدمات باز نشد",
   "couldNotOpenEmailApp": "برنامه ایمیل باز نشد",
   "blockDurationLabel": "مدت مسدودسازی",
   "privacyAndTrust": "حریم خصوصی و اعتماد",

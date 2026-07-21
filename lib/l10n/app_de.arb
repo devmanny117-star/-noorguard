@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Aktiviere zuerst die Gebetsbenachrichtigungen, um dies zu testen",
   "lockScreenSetupGuideButton": "Einrichtungsanleitung für Sperrbildschirm-Benachrichtigungen",
   "couldNotOpenPrivacyPolicy": "Datenschutzerklärung konnte nicht geöffnet werden",
+  "couldNotOpenTermsOfService": "Nutzungsbedingungen konnten nicht geöffnet werden",
   "couldNotOpenEmailApp": "E-Mail-App konnte nicht geöffnet werden",
   "blockDurationLabel": "Blockierdauer",
   "privacyAndTrust": "Datenschutz & Vertrauen",

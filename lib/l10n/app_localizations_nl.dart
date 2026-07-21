@@ -1714,6 +1714,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'Kan privacybeleid niet openen';
 
   @override
+  String get couldNotOpenTermsOfService =>
+      'Kan gebruiksvoorwaarden niet openen';
+
+  @override
   String get couldNotOpenEmailApp => 'Kan e-mailapp niet openen';
 
   @override

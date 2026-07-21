@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Active d'abord les Notifications de Prière pour tester ceci",
   "lockScreenSetupGuideButton": "Guide de configuration des alertes sur écran verrouillé",
   "couldNotOpenPrivacyPolicy": "Impossible d'ouvrir la politique de confidentialité",
+  "couldNotOpenTermsOfService": "Impossible d'ouvrir les conditions d'utilisation",
   "couldNotOpenEmailApp": "Impossible d'ouvrir l'application de messagerie",
   "blockDurationLabel": "Durée du blocage",
   "privacyAndTrust": "Confidentialité et confiance",

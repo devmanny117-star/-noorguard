@@ -1720,6 +1720,10 @@ class AppLocalizationsIt extends AppLocalizations {
       'Impossibile aprire l\'Informativa sulla Privacy';
 
   @override
+  String get couldNotOpenTermsOfService =>
+      'Impossibile aprire i Termini di Servizio';
+
+  @override
   String get couldNotOpenEmailApp => 'Impossibile aprire l\'app di posta';
 
   @override

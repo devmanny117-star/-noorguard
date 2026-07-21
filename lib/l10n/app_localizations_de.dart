@@ -1717,6 +1717,10 @@ class AppLocalizationsDe extends AppLocalizations {
       'Datenschutzerklärung konnte nicht geöffnet werden';
 
   @override
+  String get couldNotOpenTermsOfService =>
+      'Nutzungsbedingungen konnten nicht geöffnet werden';
+
+  @override
   String get couldNotOpenEmailApp => 'E-Mail-App konnte nicht geöffnet werden';
 
   @override

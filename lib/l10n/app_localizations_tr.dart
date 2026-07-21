@@ -1710,6 +1710,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'Gizlilik Politikası açılamadı';
 
   @override
+  String get couldNotOpenTermsOfService => 'Kullanım Koşulları açılamadı';
+
+  @override
   String get couldNotOpenEmailApp => 'E-posta uygulaması açılamadı';
 
   @override

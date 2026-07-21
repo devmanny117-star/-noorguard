@@ -1643,6 +1643,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'プライバシーポリシーを開けませんでした';
 
   @override
+  String get couldNotOpenTermsOfService => '利用規約を開けませんでした';
+
+  @override
   String get couldNotOpenEmailApp => 'メールアプリを開けませんでした';
 
   @override

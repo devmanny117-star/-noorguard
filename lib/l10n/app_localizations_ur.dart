@@ -1703,6 +1703,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'رازداری کی پالیسی نہیں کھل سکی';
 
   @override
+  String get couldNotOpenTermsOfService => 'شرائط خدمت نہیں کھل سکیں';
+
+  @override
   String get couldNotOpenEmailApp => 'ای میل ایپ نہیں کھل سکی';
 
   @override

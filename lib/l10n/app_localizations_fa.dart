@@ -1710,6 +1710,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get couldNotOpenPrivacyPolicy => 'سیاست حریم خصوصی باز نشد';
 
   @override
+  String get couldNotOpenTermsOfService => 'شرایط خدمات باز نشد';
+
+  @override
   String get couldNotOpenEmailApp => 'برنامه ایمیل باز نشد';
 
   @override

@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Schakel eerst Gebedsmeldingen in om dit te testen",
   "lockScreenSetupGuideButton": "Installatiehandleiding voor vergrendelscherm-meldingen",
   "couldNotOpenPrivacyPolicy": "Kan privacybeleid niet openen",
+  "couldNotOpenTermsOfService": "Kan gebruiksvoorwaarden niet openen",
   "couldNotOpenEmailApp": "Kan e-mailapp niet openen",
   "blockDurationLabel": "Blokkeerduur",
   "privacyAndTrust": "Privacy & Vertrouwen",

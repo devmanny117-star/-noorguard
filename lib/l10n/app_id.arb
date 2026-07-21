@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Aktifkan Notifikasi Sholat dahulu untuk mengujinya",
   "lockScreenSetupGuideButton": "Panduan Penyiapan Peringatan Layar Kunci",
   "couldNotOpenPrivacyPolicy": "Tidak dapat membuka Kebijakan Privasi",
+  "couldNotOpenTermsOfService": "Tidak dapat membuka Ketentuan Layanan",
   "couldNotOpenEmailApp": "Tidak dapat membuka aplikasi email",
   "blockDurationLabel": "Durasi blokir",
   "privacyAndTrust": "Privasi & Kepercayaan",

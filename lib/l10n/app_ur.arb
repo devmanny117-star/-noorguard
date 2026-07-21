@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "اسے آزمانے کے لیے پہلے نماز کی اطلاعات آن کریں",
   "lockScreenSetupGuideButton": "لاک اسکرین الرٹ سیٹ اپ گائیڈ",
   "couldNotOpenPrivacyPolicy": "رازداری کی پالیسی نہیں کھل سکی",
+  "couldNotOpenTermsOfService": "شرائط خدمت نہیں کھل سکیں",
   "couldNotOpenEmailApp": "ای میل ایپ نہیں کھل سکی",
   "blockDurationLabel": "بلاک کا دورانیہ",
   "privacyAndTrust": "رازداری اور اعتماد",

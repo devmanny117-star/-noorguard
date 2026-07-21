@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Attiva prima le Notifiche di Preghiera per provare questo",
   "lockScreenSetupGuideButton": "Guida alla configurazione degli avvisi sulla schermata di blocco",
   "couldNotOpenPrivacyPolicy": "Impossibile aprire l'Informativa sulla Privacy",
+  "couldNotOpenTermsOfService": "Impossibile aprire i Termini di Servizio",
   "couldNotOpenEmailApp": "Impossibile aprire l'app di posta",
   "blockDurationLabel": "Durata del blocco",
   "privacyAndTrust": "Privacy e Fiducia",

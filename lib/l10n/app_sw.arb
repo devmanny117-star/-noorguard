@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Wezesha Arifa za Swala kwanza ili kujaribu hili",
   "lockScreenSetupGuideButton": "Mwongozo wa Kuweka Tahadhari za Skrini Iliyofungwa",
   "couldNotOpenPrivacyPolicy": "Imeshindwa kufungua Sera ya Faragha",
+  "couldNotOpenTermsOfService": "Imeshindwa kufungua Masharti ya Huduma",
   "couldNotOpenEmailApp": "Imeshindwa kufungua programu ya barua pepe",
   "blockDurationLabel": "Muda wa kuzuia",
   "privacyAndTrust": "Faragha na Uaminifu",

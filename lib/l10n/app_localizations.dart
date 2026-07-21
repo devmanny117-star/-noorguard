@@ -3176,6 +3176,12 @@ abstract class AppLocalizations {
   /// **'Could not open Privacy Policy'**
   String get couldNotOpenPrivacyPolicy;
 
+  /// Snackbar shown when the terms of service link fails to open
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open Terms of Service'**
+  String get couldNotOpenTermsOfService;
+
   /// Snackbar shown when no email app is available to send feedback
   ///
   /// In en, this message translates to:

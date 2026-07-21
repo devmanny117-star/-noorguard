@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "Bunu test etmek için önce Namaz Bildirimlerini açın",
   "lockScreenSetupGuideButton": "Kilit Ekranı Uyarısı Kurulum Kılavuzu",
   "couldNotOpenPrivacyPolicy": "Gizlilik Politikası açılamadı",
+  "couldNotOpenTermsOfService": "Kullanım Koşulları açılamadı",
   "couldNotOpenEmailApp": "E-posta uygulaması açılamadı",
   "blockDurationLabel": "Engelleme süresi",
   "privacyAndTrust": "Gizlilik ve Güven",

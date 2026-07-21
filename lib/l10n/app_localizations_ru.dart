@@ -1722,6 +1722,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'Не удалось открыть Политику конфиденциальности';
 
   @override
+  String get couldNotOpenTermsOfService =>
+      'Не удалось открыть Условия использования';
+
+  @override
   String get couldNotOpenEmailApp => 'Не удалось открыть почтовое приложение';
 
   @override

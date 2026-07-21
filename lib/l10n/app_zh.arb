@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "请先启用礼拜提醒通知以测试此功能",
   "lockScreenSetupGuideButton": "锁屏提醒设置指南",
   "couldNotOpenPrivacyPolicy": "无法打开隐私政策",
+  "couldNotOpenTermsOfService": "无法打开服务条款",
   "couldNotOpenEmailApp": "无法打开邮件应用",
   "blockDurationLabel": "屏蔽时长",
   "privacyAndTrust": "隐私与信任",

@@ -1727,6 +1727,10 @@ class AppLocalizationsFr extends AppLocalizations {
       'Impossible d\'ouvrir la politique de confidentialité';
 
   @override
+  String get couldNotOpenTermsOfService =>
+      'Impossible d\'ouvrir les conditions d\'utilisation';
+
+  @override
   String get couldNotOpenEmailApp =>
       'Impossible d\'ouvrir l\'application de messagerie';
 

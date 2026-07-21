@@ -508,6 +508,7 @@
   "testRequiresNotificationsOn": "এটি পরীক্ষা করতে প্রথমে নামাজের নোটিফিকেশন চালু করুন",
   "lockScreenSetupGuideButton": "লক স্ক্রিন অ্যালার্ট সেটআপ গাইড",
   "couldNotOpenPrivacyPolicy": "গোপনীয়তা নীতি খোলা যায়নি",
+  "couldNotOpenTermsOfService": "ব্যবহারের শর্তাবলী খোলা যায়নি",
   "couldNotOpenEmailApp": "ইমেইল অ্যাপ খোলা যায়নি",
   "blockDurationLabel": "ব্লকের সময়কাল",
   "privacyAndTrust": "গোপনীয়তা ও বিশ্বাস",
