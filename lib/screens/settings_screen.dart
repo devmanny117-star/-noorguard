@@ -10,7 +10,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_controller.dart';
 import '../models/adhan_model.dart';
-import '../services/adhan_foreground_controller.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
@@ -276,22 +275,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
-              const SettingsDivider(colors: cardColors),
-              SettingsActionRow(
-                label: l10n.testNotificationButton,
-                icon: Icons.notifications_active_outlined,
-                colors: cardColors,
-                onTap: () {
-                  if (!prayerState.masterNotifications) {
-                    _snack(l10n.testRequiresNotificationsOn);
-                    return;
-                  }
-                  NotificationService().scheduleTestNotification(
-                    adhanId: prayerState.selectedAdhanId,
-                  );
-                  _snack(l10n.testNotificationSnack);
-                },
-              ),
               if (kDebugMode && !kIsWeb && Platform.isAndroid) ...[
                 const SettingsDivider(colors: cardColors),
                 SettingsActionRow(
@@ -311,20 +294,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   },
                 ),
               ],
-              const SettingsDivider(colors: cardColors),
-              SettingsActionRow(
-                label: l10n.testAdhanForegroundButton,
-                icon: Icons.volume_up_outlined,
-                colors: cardColors,
-                onTap: () {
-                  if (!prayerState.masterNotifications) {
-                    _snack(l10n.testRequiresNotificationsOn);
-                    return;
-                  }
-                  AdhanForegroundController().simulateForegroundPrayer();
-                  _snack(l10n.testAdhanForegroundSnack);
-                },
-              ),
               if (!kIsWeb && Platform.isAndroid) ...[
                 const SettingsDivider(colors: cardColors),
                 SettingsActionRow(
@@ -412,36 +381,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
         const SliverToBoxAdapter(child: SizedBox(height: 28)),
 
         // ══════════════════════════════════════════════════════════════
-        // SECTION 3 — APP BLOCKING
+        // SECTION 3 — APP BLOCKING (Android only — no iOS support yet)
         // ══════════════════════════════════════════════════════════════
-        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.appBlocking)),
+        if (kIsWeb || !Platform.isIOS) ...[
+          SliverToBoxAdapter(
+              child: SettingsSectionHeader(title: l10n.appBlocking)),
 
-        SliverToBoxAdapter(
-          child: SettingsCard(
-            colors: cardColors,
-            children: [
-              SettingsSelectRow(
-                label: l10n.appBlocking,
-                value: _blockDuringPrayer ? l10n.statusOn : l10n.statusOff,
-                colors: cardColors,
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => SettingsAppBlockingScreen(
-                      blockDuringPrayer: _blockDuringPrayer,
-                      blockDuration: _blockDuration,
-                      onBlockDuringPrayerChanged: (v) =>
-                          setState(() => _blockDuringPrayer = v),
-                      onBlockDurationChanged: (v) =>
-                          setState(() => _blockDuration = v),
+          SliverToBoxAdapter(
+            child: SettingsCard(
+              colors: cardColors,
+              children: [
+                SettingsSelectRow(
+                  label: l10n.appBlocking,
+                  value: _blockDuringPrayer ? l10n.statusOn : l10n.statusOff,
+                  colors: cardColors,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => SettingsAppBlockingScreen(
+                        blockDuringPrayer: _blockDuringPrayer,
+                        blockDuration: _blockDuration,
+                        onBlockDuringPrayerChanged: (v) =>
+                            setState(() => _blockDuringPrayer = v),
+                        onBlockDurationChanged: (v) =>
+                            setState(() => _blockDuration = v),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
 
-        const SliverToBoxAdapter(child: SizedBox(height: 28)),
+          const SliverToBoxAdapter(child: SizedBox(height: 28)),
+        ],
 
         // ══════════════════════════════════════════════════════════════
         // SECTION 4 — PRIVACY & TRUST
