@@ -10,8 +10,8 @@ import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
 import '../data/prayer_times_data.dart';
 import '../services/app_blocking_service.dart';
-import '../services/live_notification_service.dart';
 import '../services/notification_service.dart';
+import '../services/prayer_scheduler.dart';
 import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
 import '../widgets/home/header_section.dart';
@@ -281,68 +281,10 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     );
   }
 
-  void _scheduleNotifications(List<Prayer> prayers) {
-    final today = DateTime.now();
-    final data = prayers.map<Map<String, dynamic>>((p) {
-      return {'name': p.name, 'time': _parseTimeString(p.time, today)};
-    }).toList();
-    // Share the exact times we scheduled so the foreground adhan controller
-    // fires in sync with these notifications (these use the device location).
-    PrayerState().setScheduledPrayerTimes(data);
-
-    // Respect the user's notification preference on every load — without
-    // this check, simply reopening the app (which re-runs this on every
-    // cold start of the Home screen) would silently re-schedule every
-    // prayer notification and full-screen alarm even with the bell off.
-    if (!PrayerState().masterNotifications) {
-      debugPrint('HomeScreen._scheduleNotifications: masterNotifications is OFF, skipping schedule');
-      return;
-    }
-    debugPrint('HomeScreen._scheduleNotifications: masterNotifications is ON, scheduling ${data.length} prayer alarms');
-
-    final adhanId = PrayerState().selectedAdhanId;
-    NotificationService().schedulePrayerNotifications(
-      data,
-      adhanId: adhanId,
-    );
-    NotificationService().scheduleFullScreenPrayerAlarms(
-      data,
-      adhanId: adhanId,
-    );
-    _startKeepAliveServiceIfNeeded(data);
-  }
-
-  /// Keeps the app classified as foreground so prayer alarms and
-  /// notifications keep being delivered reliably in the background — only
-  /// while the user has prayer notifications turned on at all. The service's
-  /// persistent notification doubles as the "Noor Guard Live" lock-screen
-  /// notification, so its localized payload (next-prayer countdown + rotating
-  /// daily content) is refreshed first.
-  Future<void> _startKeepAliveServiceIfNeeded(
-      List<Map<String, dynamic>> data) async {
-    if (!PrayerState().masterNotifications) return;
-    if (!mounted) return;
-    await LiveNotificationService.push(context: context, prayers: data);
-    if (!mounted) return;
-    final l10n = AppLocalizations.of(context)!;
-    await NotificationService().startKeepAliveService(
-      title: l10n.appName,
-      text: l10n.keepAliveNotificationText,
-      channelName: l10n.liveNotifChannelName,
-      channelDescription: l10n.liveNotifChannelDescription,
-    );
-  }
-
-  DateTime _parseTimeString(String timeStr, DateTime date) {
-    final parts = timeStr.split(' ');
-    final timeParts = parts[0].split(':');
-    var hour = int.parse(timeParts[0]);
-    final minute = int.parse(timeParts[1]);
-    final isPm = parts[1].toUpperCase() == 'PM';
-    if (isPm && hour != 12) hour += 12;
-    if (!isPm && hour == 12) hour = 0;
-    return DateTime(date.year, date.month, date.day, hour, minute);
-  }
+  // Scheduling itself lives in PrayerScheduler so Beginner Mode's home
+  // screen arms notifications through the identical path.
+  void _scheduleNotifications(List<Prayer> prayers) =>
+      PrayerScheduler.scheduleFromPrayers(context, prayers);
 
   @override
   Widget build(BuildContext context) {

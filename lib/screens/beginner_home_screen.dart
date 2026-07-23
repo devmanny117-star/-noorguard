@@ -9,6 +9,8 @@ import '../data/prayer_times_data.dart';
 import '../l10n/app_localizations.dart';
 import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
+import '../services/prayer_scheduler.dart';
+import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/home/header_section.dart';
@@ -134,22 +136,52 @@ class _BeginnerBody extends StatefulWidget {
   State<_BeginnerBody> createState() => _BeginnerBodyState();
 }
 
-class _BeginnerBodyState extends State<_BeginnerBody> {
+class _BeginnerBodyState extends State<_BeginnerBody>
+    with WidgetsBindingObserver {
   List<Prayer>?        _prayers;
   String               _userName    = '';
   DateTime?            _shahadaDate;
   _ShahadaDisplayMode  _displayMode = _ShahadaDisplayMode.days;
   final List<bool> _tasks = List.filled(7, false);
+  late DateTime _lastKnownDate;
 
   @override
   void initState() {
     super.initState();
+    _lastKnownDate = DateTime.now();
+    WidgetsBinding.instance.addObserver(this);
     _loadData();
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // The capsules and scheduled notifications are only refreshed on a
+    // cold start, so a resume that crosses midnight would keep showing
+    // yesterday's completion state and leave no alarms queued for today.
+    // Mirrors the regular home screen's day-change handling.
+    if (state == AppLifecycleState.resumed) {
+      final now = DateTime.now();
+      final dayChanged = now.year != _lastKnownDate.year ||
+          now.month != _lastKnownDate.month ||
+          now.day != _lastKnownDate.day;
+      if (dayChanged) {
+        PrayerState().loadToday();
+        final prayers = _prayers;
+        // Only mark the day-change as handled once scheduling actually ran —
+        // if the prayer list isn't loaded yet, leave _lastKnownDate stale so
+        // the next resume retries instead of silently skipping today.
+        if (prayers != null) {
+          PrayerScheduler.scheduleFromPrayers(context, prayers);
+          _lastKnownDate = now;
+        }
+      }
+    }
   }
 
   Future<void> _loadData() async {
@@ -187,13 +219,22 @@ class _BeginnerBodyState extends State<_BeginnerBody> {
       final city   = marks.first.locality       ?? 'Sacramento';
       final country = marks.first.isoCountryCode ?? 'US';
       final prayers = await fetchPrayerTimes(city: city, country: country);
-      if (mounted) setState(() => _prayers = prayers);
+      if (mounted) {
+        setState(() => _prayers = prayers);
+        PrayerScheduler.scheduleFromPrayers(context, prayers);
+      }
     } catch (_) {
       try {
         final prayers = await fetchPrayerTimes(city: 'Sacramento', country: 'US');
-        if (mounted) setState(() => _prayers = prayers);
+        if (mounted) {
+          setState(() => _prayers = prayers);
+          PrayerScheduler.scheduleFromPrayers(context, prayers);
+        }
       } catch (_) {
-        if (mounted) setState(() => _prayers = todaysPrayers);
+        if (mounted) {
+          setState(() => _prayers = todaysPrayers);
+          PrayerScheduler.scheduleFromPrayers(context, todaysPrayers);
+        }
       }
     }
   }
