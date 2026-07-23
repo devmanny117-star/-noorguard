@@ -3,6 +3,16 @@ import 'package:geocoding/geocoding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/saved_location_model.dart';
 
+/// A city + ISO country code pair, the addressing scheme the AlAdhan by-city
+/// prayer times API uses.
+class PrayerCity {
+  final String city;
+  final String country;
+  const PrayerCity({required this.city, required this.country});
+
+  String get label => '$city, $country';
+}
+
 /// Persists the user's saved Qibla locations (home/work/travel, etc.) and
 /// the id of whichever one is currently selected. A `null` selected id means
 /// "use the device's live GPS position" — the original Qibla screen behavior.
@@ -50,6 +60,45 @@ class LocationService {
       latitude: loc.latitude,
       longitude: loc.longitude,
     );
+  }
+
+  /// The saved Qibla location to use for prayer times when live GPS isn't
+  /// available: the explicitly selected one, else the first saved one, else
+  /// null (the caller must ask the user to pick a city — never default
+  /// silently). The lat/lng is reverse-geocoded to the city + ISO country
+  /// code the AlAdhan by-city API needs; a location whose reverse-geocode
+  /// fails is skipped in favor of the next saved one.
+  Future<PrayerCity?> savedPrayerCity() async {
+    final locations = await loadSavedLocations();
+    if (locations.isEmpty) return null;
+    final selectedId = await loadSelectedLocationId();
+    final ordered = [
+      ...locations.where((l) => l.id == selectedId),
+      ...locations.where((l) => l.id != selectedId),
+    ];
+    for (final location in ordered) {
+      final city = await cityFromLatLng(location.latitude, location.longitude);
+      if (city != null) return city;
+    }
+    return null;
+  }
+
+  /// Reverse-geocodes coordinates to the city + ISO country code pair the
+  /// prayer-times API needs, or null if that can't be resolved.
+  Future<PrayerCity?> cityFromLatLng(double lat, double lng) async {
+    try {
+      final placemarks = await placemarkFromCoordinates(lat, lng);
+      if (placemarks.isEmpty) return null;
+      final p = placemarks.first;
+      final city = (p.locality?.isNotEmpty ?? false)
+          ? p.locality!
+          : (p.subAdministrativeArea ?? '');
+      final country = p.isoCountryCode ?? '';
+      if (city.isEmpty || country.isEmpty) return null;
+      return PrayerCity(city: city, country: country);
+    } catch (_) {
+      return null;
+    }
   }
 
   Future<String?> _reverseGeocodeLabel(double lat, double lng) async {

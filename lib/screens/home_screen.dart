@@ -10,10 +10,12 @@ import '../models/prayer_model.dart';
 import '../models/surah_model.dart';
 import '../data/prayer_times_data.dart';
 import '../services/app_blocking_service.dart';
+import '../services/location_service.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_scheduler.dart';
 import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
+import '../widgets/city_picker_dialog.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
 import '../widgets/home/prayer_times_card.dart';
@@ -225,6 +227,7 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   }
 
   Future<void> _loadPrayerTimes() async {
+    // 1) Live GPS.
     try {
       await Geolocator.requestPermission();
       final position = await Geolocator.getCurrentPosition();
@@ -233,8 +236,13 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
         position.longitude,
       );
       final placemark = placemarks.first;
-      final city = placemark.locality ?? 'Sacramento';
-      final country = placemark.isoCountryCode ?? 'US';
+      final city = (placemark.locality?.isNotEmpty ?? false)
+          ? placemark.locality!
+          : (placemark.subAdministrativeArea ?? '');
+      final country = placemark.isoCountryCode ?? '';
+      if (city.isEmpty || country.isEmpty) {
+        throw Exception('reverse geocode returned no city');
+      }
       final prayers = await fetchPrayerTimes(city: city, country: country);
       if (mounted) {
         setState(() => _prayers = prayers);
@@ -246,22 +254,55 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
           lng: position.longitude,
         );
       }
-    } catch (_) {
-      try {
-        final prayers = await fetchPrayerTimes(city: 'Sacramento', country: 'US');
+      return;
+    } catch (_) {}
+
+    // 2) The city saved on the Qibla screen.
+    try {
+      final saved = await LocationService().savedPrayerCity();
+      if (saved != null) {
+        final prayers =
+            await fetchPrayerTimes(city: saved.city, country: saved.country);
         if (mounted) {
           setState(() => _prayers = prayers);
           _scheduleNotifications(prayers);
-          _pushWidgetSnapshot(prayers, locationLabel: 'Sacramento, US');
+          _pushWidgetSnapshot(prayers, locationLabel: saved.label);
         }
-      } catch (_) {
-        if (mounted) {
-          setState(() => _prayers = todaysPrayers);
-          _scheduleNotifications(todaysPrayers);
-          _pushWidgetSnapshot(todaysPrayers, locationLabel: 'Sacramento, US');
-        }
+        return;
       }
+    } catch (_) {}
+
+    // 3) No location at all — ask the user instead of guessing. The picked
+    //    city is persisted as a saved Qibla location, so this only ever has
+    //    to be answered once.
+    if (!mounted) return;
+    final picked = await showCityPickerDialog(context);
+    if (picked != null) {
+      try {
+        final city = await LocationService()
+            .cityFromLatLng(picked.latitude, picked.longitude);
+        if (city != null) {
+          final prayers =
+              await fetchPrayerTimes(city: city.city, country: city.country);
+          if (mounted) {
+            setState(() => _prayers = prayers);
+            _scheduleNotifications(prayers);
+            _pushWidgetSnapshot(
+              prayers,
+              locationLabel: picked.name,
+              lat: picked.latitude,
+              lng: picked.longitude,
+            );
+          }
+          return;
+        }
+      } catch (_) {}
     }
+
+    // Dismissed or unresolvable: show sample times so the screen isn't
+    // empty, but deliberately schedule nothing — wrong-city notifications
+    // are worse than none. The picker asks again on the next load.
+    if (mounted) setState(() => _prayers = todaysPrayers);
   }
 
   void _pushWidgetSnapshot(

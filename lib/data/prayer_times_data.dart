@@ -2,16 +2,44 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/prayer_model.dart';
+import '../services/location_service.dart';
 
 // Last location a fetch succeeded with, so fetchPrayerTimesWindow can query
 // the same city without needing to re-resolve the device location.
 const _lastCityKey = 'prayer_loc_city';
 const _lastCountryKey = 'prayer_loc_country';
 
+/// Thrown when no city is known at all (no explicit argument, nothing
+/// remembered from a previous fetch, no saved Qibla location). Callers
+/// should surface the city picker — there is deliberately no default city.
+class NoPrayerLocationException implements Exception {
+  @override
+  String toString() => 'NoPrayerLocationException: no prayer city available';
+}
+
+/// Resolves the city/country to fetch for when the caller didn't pass one:
+/// the last city a fetch succeeded with, else the saved Qibla city.
+Future<PrayerCity> _resolveCity() async {
+  final prefs = await SharedPreferences.getInstance();
+  final lastCity = prefs.getString(_lastCityKey);
+  final lastCountry = prefs.getString(_lastCountryKey);
+  if (lastCity != null && lastCountry != null) {
+    return PrayerCity(city: lastCity, country: lastCountry);
+  }
+  final saved = await LocationService().savedPrayerCity();
+  if (saved != null) return saved;
+  throw NoPrayerLocationException();
+}
+
 Future<List<Prayer>> fetchPrayerTimes({
-  String city = 'Sacramento',
-  String country = 'US',
+  String? city,
+  String? country,
 }) async {
+  if (city == null || country == null) {
+    final resolved = await _resolveCity();
+    city = resolved.city;
+    country = resolved.country;
+  }
   final uri = Uri.parse(
     'https://api.aladhan.com/v1/timingsByCity?city=$city&country=$country&method=2',
   );
@@ -92,13 +120,13 @@ class DailyPrayerTimes {
 
 /// Prayer times for [days] consecutive days starting today, from AlAdhan's
 /// monthly calendar endpoint (one request per calendar month touched, so at
-/// most two). Queries the last city [fetchPrayerTimes] succeeded with,
-/// falling back to the same Sacramento default. Used by the iOS multi-day
-/// reminder window.
+/// most two). Queries the last city [fetchPrayerTimes] succeeded with, else
+/// the saved Qibla city; throws [NoPrayerLocationException] when neither
+/// exists. Used by the iOS multi-day reminder window.
 Future<List<DailyPrayerTimes>> fetchPrayerTimesWindow({int days = 12}) async {
-  final prefs = await SharedPreferences.getInstance();
-  final city = prefs.getString(_lastCityKey) ?? 'Sacramento';
-  final country = prefs.getString(_lastCountryKey) ?? 'US';
+  final resolved = await _resolveCity();
+  final city = resolved.city;
+  final country = resolved.country;
 
   final now = DateTime.now();
   final first = DateTime(now.year, now.month, now.day);

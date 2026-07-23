@@ -105,9 +105,14 @@ class _LockScreenPreviewState extends State<LockScreenPreview>
       final placemarks =
           await placemarkFromCoordinates(position.latitude, position.longitude);
       final placemark = placemarks.first;
+      // Null city/country falls through to fetchPrayerTimes's own
+      // resolution (last successful city, then saved Qibla city) instead of
+      // guessing a hardcoded one.
       final prayers = await fetchPrayerTimes(
-        city: placemark.locality ?? 'Sacramento',
-        country: placemark.isoCountryCode ?? 'US',
+        city: (placemark.locality?.isNotEmpty ?? false)
+            ? placemark.locality
+            : null,
+        country: placemark.isoCountryCode,
       );
       if (mounted) setState(() => _prayers = prayers);
     } catch (_) {

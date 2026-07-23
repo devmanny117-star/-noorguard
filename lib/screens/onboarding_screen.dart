@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
@@ -594,7 +595,18 @@ class _LocationPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 36),
-                _GoldButton(label: l10n.onboardingAllowLocation, onTap: onNext),
+                _GoldButton(
+                  label: l10n.onboardingAllowLocation,
+                  onTap: () async {
+                    // Actually surface the OS permission dialog; advance
+                    // regardless of the answer (denying just means the home
+                    // screen falls back to the saved city / city picker).
+                    try {
+                      await Geolocator.requestPermission();
+                    } catch (_) {}
+                    onNext();
+                  },
+                ),
                 const SizedBox(height: 10),
                 TextButton(
                   onPressed: onNext,

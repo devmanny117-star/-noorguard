@@ -33,6 +33,8 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Noor Guard uses your location to calculate accurate prayer times and Qibla direction.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
