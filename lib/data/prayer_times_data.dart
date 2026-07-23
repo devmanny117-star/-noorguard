@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/prayer_model.dart';
 import '../services/location_service.dart';
+import '../services/prayer_times_cache.dart';
 
 // Last location a fetch succeeded with, so fetchPrayerTimesWindow can query
 // the same city without needing to re-resolve the device location.
@@ -88,7 +89,7 @@ Future<List<Prayer>> fetchPrayerTimes({
     orElse: () => prayerKeys.first,
   );
 
-  return prayerKeys.map((key) {
+  final prayers = prayerKeys.map((key) {
     final raw = timings[key] as String;
     final parts = raw.split(':');
     final hour = int.parse(parts[0]);
@@ -103,6 +104,15 @@ Future<List<Prayer>> fetchPrayerTimes({
       isPassed: minuteMap[key]! <= nowMinutes && key != nextKey,
     );
   }).toList();
+
+  // Every successful fetch refreshes the cold-start cache, so the Next
+  // Prayer card can paint instantly on the next app open. Failure to write
+  // must never fail the fetch itself.
+  try {
+    await PrayerTimesCache.save(prayers, city: '$city, $country');
+  } catch (_) {}
+
+  return prayers;
 }
 
 String _formatTime(int hour, int minute) {

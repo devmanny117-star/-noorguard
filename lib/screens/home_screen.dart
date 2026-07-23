@@ -14,6 +14,7 @@ import '../services/location_service.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_scheduler.dart';
 import '../services/prayer_state.dart';
+import '../services/prayer_times_cache.dart';
 import '../services/widget_data_service.dart';
 import '../widgets/city_picker_dialog.dart';
 import '../widgets/home/header_section.dart';
@@ -227,6 +228,19 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   }
 
   Future<void> _loadPrayerTimes() async {
+    // 0) Last successful fetch, straight from disk — painted immediately so
+    //    the card never sits on a spinner. Yesterday's cache still shows
+    //    (clock times drift only a minute or two per day); the live chain
+    //    below runs regardless and silently replaces it when the fresh
+    //    fetch lands. Display only: notifications are never scheduled from
+    //    the cache.
+    try {
+      final cached = await PrayerTimesCache.load();
+      if (cached != null && mounted && _prayers == null) {
+        setState(() => _prayers = cached.prayers);
+      }
+    } catch (_) {}
+
     // 1) Live GPS.
     try {
       await Geolocator.requestPermission();
@@ -299,10 +313,11 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
       } catch (_) {}
     }
 
-    // Dismissed or unresolvable: show sample times so the screen isn't
-    // empty, but deliberately schedule nothing — wrong-city notifications
-    // are worse than none. The picker asks again on the next load.
-    if (mounted) setState(() => _prayers = todaysPrayers);
+    // Dismissed or unresolvable: keep the cached times if they're showing,
+    // else fall back to sample times so the screen isn't empty. Either way
+    // deliberately schedule nothing — wrong-city notifications are worse
+    // than none. The picker asks again on the next load.
+    if (mounted && _prayers == null) setState(() => _prayers = todaysPrayers);
   }
 
   void _pushWidgetSnapshot(
