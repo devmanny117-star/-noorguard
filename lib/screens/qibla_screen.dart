@@ -1621,79 +1621,6 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                     );
                   }),
                 Divider(color: _kGold.withValues(alpha: 0.12), height: 1),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
-                  child: atMax
-                      ? Text(
-                          l10n.maxLocationsReachedMessage(
-                              LocationService.maxSavedLocations),
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.lato(
-                            fontSize: 12,
-                            color: Colors.white.withValues(alpha: 0.4),
-                          ),
-                        )
-                      : Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                controller: _searchController,
-                                style: GoogleFonts.lato(
-                                    color: Colors.white, fontSize: 14),
-                                textInputAction: TextInputAction.search,
-                                onChanged: _onSearchChanged,
-                                onSubmitted: (_) => _addLocation(),
-                                decoration: InputDecoration(
-                                  hintText: l10n.searchCityHint,
-                                  hintStyle: GoogleFonts.lato(
-                                    color: Colors.white38,
-                                    fontSize: 14,
-                                  ),
-                                  filled: true,
-                                  fillColor: _kCard,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 14,
-                                    vertical: 12,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            SizedBox(
-                              height: 44,
-                              width: 44,
-                              child: ElevatedButton(
-                                onPressed: _isSearching ? null : _addLocation,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: _kGold,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  padding: EdgeInsets.zero,
-                                ),
-                                child: _isSearching
-                                    ? const SizedBox(
-                                        width: 18,
-                                        height: 18,
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 2,
-                                          color: _kNavy,
-                                        ),
-                                      )
-                                    : Icon(
-                                        Icons.add_rounded,
-                                        color: _kNavy,
-                                        semanticLabel: l10n.addLocationTooltip,
-                                      ),
-                              ),
-                            ),
-                          ],
-                        ),
-                ),
                 if (_suggestions.isNotEmpty || _noSuggestionResults)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
@@ -1774,6 +1701,79 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                             ),
                     ),
                   ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
+                  child: atMax
+                      ? Text(
+                          l10n.maxLocationsReachedMessage(
+                              LocationService.maxSavedLocations),
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 12,
+                            color: Colors.white.withValues(alpha: 0.4),
+                          ),
+                        )
+                      : Row(
+                          children: [
+                            Expanded(
+                              child: TextField(
+                                controller: _searchController,
+                                style: GoogleFonts.lato(
+                                    color: Colors.white, fontSize: 14),
+                                textInputAction: TextInputAction.search,
+                                onChanged: _onSearchChanged,
+                                onSubmitted: (_) => _addLocation(),
+                                decoration: InputDecoration(
+                                  hintText: l10n.searchCityHint,
+                                  hintStyle: GoogleFonts.lato(
+                                    color: Colors.white38,
+                                    fontSize: 14,
+                                  ),
+                                  filled: true,
+                                  fillColor: _kCard,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 14,
+                                    vertical: 12,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            SizedBox(
+                              height: 44,
+                              width: 44,
+                              child: ElevatedButton(
+                                onPressed: _isSearching ? null : _addLocation,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: _kGold,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  padding: EdgeInsets.zero,
+                                ),
+                                child: _isSearching
+                                    ? const SizedBox(
+                                        width: 18,
+                                        height: 18,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: _kNavy,
+                                        ),
+                                      )
+                                    : Icon(
+                                        Icons.add_rounded,
+                                        color: _kNavy,
+                                        semanticLabel: l10n.addLocationTooltip,
+                                      ),
+                              ),
+                            ),
+                          ],
+                        ),
+                ),
                 if (_error != null)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
