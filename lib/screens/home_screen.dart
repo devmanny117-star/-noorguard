@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/app_theme.dart';
 import '../models/prayer_model.dart';
@@ -104,10 +105,12 @@ class _HomeBody extends StatefulWidget {
 class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   List<Prayer>? _prayers;
   String _userName = '';
+  late DateTime _lastKnownDate;
 
   @override
   void initState() {
     super.initState();
+    _lastKnownDate = DateTime.now();
     WidgetsBinding.instance.addObserver(this);
     _loadAppBlockingThenPrayerTimes();
     _applyPendingPrayerMarks();
@@ -151,7 +154,28 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     // challenge from BlockActivity's "Read 3 Ayahs" — which relaunches
     // MainActivity rather than creating a fresh one — needs a re-check on
     // resume; initState() alone only ever sees it on a true cold start.
-    if (state == AppLifecycleState.resumed) _checkAyahChallenge();
+    if (state == AppLifecycleState.resumed) {
+      _checkAyahChallenge();
+
+      // The capsules and scheduled notifications are only refreshed on a
+      // cold start, so a resume that crosses midnight would keep showing
+      // yesterday's completion state and leave no alarms queued for today.
+      final now = DateTime.now();
+      final dayChanged = now.year != _lastKnownDate.year ||
+          now.month != _lastKnownDate.month ||
+          now.day != _lastKnownDate.day;
+      if (dayChanged) {
+        context.read<PrayerState>().loadToday();
+        final prayers = _prayers;
+        // Only mark the day-change as handled once scheduling actually ran —
+        // if the prayer list isn't loaded yet, leave _lastKnownDate stale so
+        // the next resume retries instead of silently skipping today.
+        if (prayers != null) {
+          _scheduleNotifications(prayers);
+          _lastKnownDate = now;
+        }
+      }
+    }
   }
 
   Future<void> _toggleMode() async {
