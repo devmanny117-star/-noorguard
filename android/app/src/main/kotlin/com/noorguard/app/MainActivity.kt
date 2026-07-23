@@ -63,7 +63,7 @@ class MainActivity : AudioServiceActivity() {
                 "queryPendingPrayerAlarms" -> {
                     @Suppress("UNCHECKED_CAST")
                     val ids = (call.arguments as? List<Any>)?.map { (it as Number).toInt() }
-                        ?: (100..104).toList()
+                        ?: PrayerAlarmScheduler.PRAYER_ALARM_IDS.toList()
                     result.success(arePrayerAlarmsPending(ids))
                 }
                 "getPendingPrayerMarks" -> {
@@ -351,19 +351,24 @@ class MainActivity : AudioServiceActivity() {
         ) != null
     }
 
-    // Cancels every full-screen prayer alarm (ids 100-104), verifying removal
-    // by re-querying with FLAG_NO_CREATE — AlarmManager.cancel() returns Unit,
-    // not a success flag, so this re-query is the only reliable confirmation.
-    // Retries once per id if the first cancel didn't stick. Returns true only
-    // if every id is confirmed clear afterward.
+    // Cancels every full-screen prayer alarm (ids 100-134, the 7-day window),
+    // verifying removal by re-querying with FLAG_NO_CREATE —
+    // AlarmManager.cancel() returns Unit, not a success flag, so this
+    // re-query is the only reliable confirmation. Retries once per id if the
+    // first cancel didn't stick. Returns true only if every id is confirmed
+    // clear afterward.
     private fun cancelPrayerAlarms(): Boolean {
         // "Off" must also silence the nightly 12:01am rescheduler — otherwise
         // it would linger as an alarm-clock icon in the status bar (its
         // receiver would no-op on the master check, but the icon misleads).
         PrayerAlarmScheduler.cancelMidnightAlarm(this)
+        // And wipe the persisted payloads, so a later midnight/boot firing
+        // can't re-arm alarms the user just turned off (or that a fresh
+        // Dart-side schedule — which always cancels first — is replacing).
+        PrayerAlarmScheduler.clearStore(this)
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var allClear = true
-        for (id in 100..104) {
+        for (id in PrayerAlarmScheduler.PRAYER_ALARM_IDS) {
             if (!isAlarmPending(id)) {
                 Log.d(TAG, "No pending alarm found for id=$id, nothing to cancel")
                 continue

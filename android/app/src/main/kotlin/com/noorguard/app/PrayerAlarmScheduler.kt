@@ -9,8 +9,10 @@ import org.json.JSONObject
 import java.util.Calendar
 
 /**
- * Shared native scheduling for the full-screen prayer alarms (ids 100–104),
- * so all three entry points arm alarms through the exact same code path:
+ * Shared native scheduling for the full-screen prayer alarms — a 7-day
+ * pre-scheduled window of 35 alarms (ids 100–134: `100 + day*5 + prayer`,
+ * day 0–6, prayer Fajr(0)–Isha(4)) — so all three entry points arm alarms
+ * through the exact same code path:
  *
  *   1. Dart → MainActivity's "schedulePrayerAlarm" MethodChannel call (the
  *      app is open; times come fresh from the device location).
@@ -22,20 +24,25 @@ import java.util.Calendar
  * Entry points 2 and 3 run without Flutter, so they can't recompute prayer
  * times. Instead, every Dart-side schedule persists its full alarm payload
  * (localized strings, adhan id, epoch time) into [STORE_NAME], and
- * [rescheduleStoredAlarms] replays it re-anchored to the current day's date
- * at the same clock time. Prayer times drift only a minute or two per day,
- * and the next app open replaces these with precisely computed ones.
+ * [rescheduleStoredAlarms] replays it: still-future alarms as-is, already
+ * past ones rolled forward in whole weeks to the same clock time — so the
+ * armed window keeps covering the next 7 days. Prayer times drift only a few
+ * minutes week to week, and the next app open replaces these with precisely
+ * computed ones.
  */
 object PrayerAlarmScheduler {
     private const val TAG = "PrayerAlarms"
 
     private const val STORE_NAME = "prayer_alarm_store"
 
-    // Outside both the prayer-alarm id range (100–104) and the action-button
-    // request-code ranges PrayerAlarmReceiver derives from them (+200/+300).
+    // Outside both the prayer-alarm id range (100–134) and the action-button
+    // request-code ranges PrayerAlarmReceiver derives from them
+    // (+200 → 300–334, +300 → 400–434).
     private const val MIDNIGHT_REQUEST_CODE = 190
 
-    private val PRAYER_ALARM_IDS = 100..104
+    // The full 7-day window: id = 100 + day*5 + prayer (day 0–6,
+    // Fajr(0)–Isha(4)). Day 0's ids are the original 100–104.
+    val PRAYER_ALARM_IDS = 100..134
 
     private const val KEY_PRAYER_NAME = "prayerName"
     private const val KEY_ARABIC_NAME = "arabicName"
@@ -136,9 +143,12 @@ object PrayerAlarmScheduler {
     }
 
     /**
-     * Re-arms every stored prayer alarm at the same clock time on the current
-     * day, skipping ones already in the past (a boot at 3pm only restores the
-     * remaining prayers). Does nothing when the master toggle is off.
+     * Re-arms the stored 7-day alarm window. Alarms whose stored moment is
+     * still in the future (the normal case) are re-armed exactly as computed;
+     * ones already past are rolled forward in whole weeks to the same clock
+     * time on the same weekday, so the armed window always covers the next 7
+     * days no matter how long the app goes unopened. Does nothing when the
+     * master toggle is off.
      */
     fun rescheduleStoredAlarms(context: Context) {
         if (!notificationsMasterEnabled(context)) {
@@ -152,7 +162,8 @@ object PrayerAlarmScheduler {
             val raw = store.getString("alarm_$id", null) ?: continue
             try {
                 val o = JSONObject(raw)
-                val trigger = todayAtSameClockTime(o.getLong(KEY_EPOCH_MILLIS), now)
+                val weeks = weeksUntilFuture(o.getLong(KEY_EPOCH_MILLIS), now)
+                val trigger = plusWeeks(o.getLong(KEY_EPOCH_MILLIS), weeks)
                 if (trigger <= now) continue
                 scheduleAlarm(
                     context,
@@ -162,7 +173,7 @@ object PrayerAlarmScheduler {
                     message = o.optString(KEY_MESSAGE),
                     adhanId = o.optString(KEY_ADHAN_ID, "makkah"),
                     notifId = id,
-                    allPrayersSerialized = reanchorAllPrayers(o.optString(KEY_ALL_PRAYERS), now),
+                    allPrayersSerialized = shiftAllPrayers(o.optString(KEY_ALL_PRAYERS), weeks),
                     triggerAtMillis = trigger,
                 )
                 scheduled++
@@ -171,6 +182,14 @@ object PrayerAlarmScheduler {
             }
         }
         Log.d(TAG, "rescheduleStoredAlarms: re-armed $scheduled prayer alarm(s)")
+    }
+
+    /** Wipes every persisted alarm payload, so the midnight/boot receivers
+     *  can't resurrect a schedule that was just cancelled (master toggle off)
+     *  or is about to be replaced by a fresh Dart-side schedule. */
+    fun clearStore(context: Context) {
+        context.getSharedPreferences(STORE_NAME, Context.MODE_PRIVATE)
+            .edit().clear().apply()
     }
 
     /**
@@ -217,35 +236,45 @@ object PrayerAlarmScheduler {
     }
 
     /**
-     * The stored moment's clock time (hour/minute/second) transplanted onto
-     * the current day. Calendar-based rather than adding whole days of
-     * milliseconds so a DST shift between the stored day and today can't
-     * skew every alarm by an hour.
+     * Whole weeks to add to [epochMillis] so it lands in the future — 0 when
+     * it already is. Calendar-based rather than adding weeks of milliseconds
+     * so a DST shift between the stored day and the target day can't skew
+     * the alarm's clock time by an hour.
      */
-    private fun todayAtSameClockTime(epochMillis: Long, now: Long): Long {
-        val src = Calendar.getInstance().apply { timeInMillis = epochMillis }
+    private fun weeksUntilFuture(epochMillis: Long, now: Long): Int {
+        var weeks = 0
+        val cal = Calendar.getInstance().apply { timeInMillis = epochMillis }
+        while (cal.timeInMillis <= now) {
+            cal.add(Calendar.DAY_OF_YEAR, 7)
+            weeks++
+        }
+        return weeks
+    }
+
+    /** [epochMillis] moved forward by [weeks] whole weeks, keeping the same
+     *  local clock time across any DST change. */
+    private fun plusWeeks(epochMillis: Long, weeks: Int): Long {
+        if (weeks == 0) return epochMillis
         return Calendar.getInstance().apply {
-            timeInMillis = now
-            set(Calendar.HOUR_OF_DAY, src.get(Calendar.HOUR_OF_DAY))
-            set(Calendar.MINUTE, src.get(Calendar.MINUTE))
-            set(Calendar.SECOND, src.get(Calendar.SECOND))
-            set(Calendar.MILLISECOND, 0)
+            timeInMillis = epochMillis
+            add(Calendar.DAY_OF_YEAR, 7 * weeks)
         }.timeInMillis
     }
 
     /**
-     * Re-anchors every epoch in the "name,timeStr,millis;..." serialization
-     * (see PrayerAlarmReceiver.EXTRA_ALL_PRAYERS) to the current day, so the
-     * lock-screen pills row a replayed alarm shows carries today's times.
-     * Entries that don't parse pass through unchanged.
+     * Shifts every epoch in the "name,timeStr,millis;..." serialization
+     * (see PrayerAlarmReceiver.EXTRA_ALL_PRAYERS) forward by [weeks] whole
+     * weeks, so the lock-screen pills row a rolled-forward alarm shows
+     * carries that day's times. Entries that don't parse pass through
+     * unchanged.
      */
-    private fun reanchorAllPrayers(serialized: String, now: Long): String {
-        if (serialized.isEmpty()) return serialized
+    private fun shiftAllPrayers(serialized: String, weeks: Int): String {
+        if (serialized.isEmpty() || weeks == 0) return serialized
         return serialized.split(";").joinToString(";") { entry ->
             val parts = entry.split(",")
             val millis = if (parts.size >= 3) parts[2].toLongOrNull() else null
             if (millis == null) entry
-            else "${parts[0]},${parts[1]},${todayAtSameClockTime(millis, now)}"
+            else "${parts[0]},${parts[1]},${plusWeeks(millis, weeks)}"
         }
     }
 }

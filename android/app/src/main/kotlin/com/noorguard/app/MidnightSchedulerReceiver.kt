@@ -8,9 +8,10 @@ import android.util.Log
 /**
  * Layer 2 of prayer-alarm reliability: fires at 12:01am every night (armed
  * with setAlarmClock, so Doze and Battery Saver can't defer it) and re-arms
- * the day's full-screen prayer alarms from the natively persisted payload —
- * covering users who never open the app, where the Dart-side day-change
- * rescheduling in the home screen never gets a chance to run.
+ * the 7-day full-screen prayer-alarm window from the natively persisted
+ * payloads (rolling any already-past day forward a week) — covering users
+ * who never open the app, where the Dart-side day-change rescheduling in
+ * the home screen never gets a chance to run.
  *
  * Re-arms itself for the next midnight after each firing so the chain
  * repeats nightly. When the master toggle is off it does nothing — including

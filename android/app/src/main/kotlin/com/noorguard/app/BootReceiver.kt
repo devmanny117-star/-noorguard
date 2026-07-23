@@ -8,8 +8,8 @@ import android.util.Log
 /**
  * After a reboot: restarts the prayer keep-alive foreground service (if it
  * was running before), and — Layer 3 of prayer-alarm reliability — re-arms
- * the day's remaining full-screen prayer alarms plus the nightly 12:01am
- * rescheduler, since a restart wipes every AlarmManager entry. Alarm
+ * the remaining 7-day full-screen prayer-alarm window plus the nightly
+ * 12:01am rescheduler, since a restart wipes every AlarmManager entry. Alarm
  * restoration is skipped entirely when the master notification toggle is
  * off (restartIfEnabled performs its own equivalent check internally).
  */

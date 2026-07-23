@@ -717,6 +717,8 @@ class NotificationService {
     'Isha': 'العشاء',
   };
 
+  /// Day-0 (today) alarm ids. Day N of the pre-scheduled window uses
+  /// `base + N * 5`, so the full 7-day range is 100–134.
   static const Map<String, int> _alarmNotifIds = {
     'Fajr': 100,
     'Dhuhr': 101,
@@ -724,6 +726,12 @@ class NotificationService {
     'Maghrib': 103,
     'Isha': 104,
   };
+
+  /// Days of native full-screen prayer alarms kept armed in AlarmManager
+  /// (today + the next 6). 35 alarms total — far under Android's 500
+  /// pending-alarms-per-app cap — so prayers keep firing on days the app is
+  /// never opened, mirroring the iOS pre-scheduled reminder window.
+  static const int _androidWindowDays = 7;
 
   static String _formatPrayerTime(DateTime time) {
     final hour = time.hour > 12
@@ -747,6 +755,13 @@ class NotificationService {
     return DateTime(now.year, now.month, now.day, hour, minute);
   }
 
+  /// Schedules the full-screen prayer alarms for today plus the next
+  /// [_androidWindowDays]-1 days (ids 100–134, `base + day*5`). Falls back to
+  /// the caller's today-only [prayers] if the calendar fetch fails, so one bad
+  /// network moment degrades to the old single-day behavior rather than
+  /// leaving nothing scheduled. [prayers] also acts as the enabled-prayer
+  /// filter: only names present in it get alarms (the adhan-change reschedule
+  /// passes enabled prayers only).
   Future<void> scheduleFullScreenPrayerAlarms(
       List<Map<String, dynamic>> prayers,
       {required String adhanId}) async {
@@ -757,42 +772,68 @@ class NotificationService {
       await _alarmChannel.invokeMethod('cancelPrayerAlarms');
     } catch (_) {}
 
-    // Sent with every alarm so the lock screen Activity can show all 5
-    // prayers and compute "next prayer" itself, regardless of which one fired.
-    final allPrayers = prayers.map((entry) {
-      final time = entry['time'] as DateTime;
-      return {
-        'name': entry['name'] as String,
-        'time': _formatPrayerTime(time),
-        'epochMillis': time.millisecondsSinceEpoch,
-      };
-    }).toList();
+    List<DailyPrayerTimes> window;
+    try {
+      window = await fetchPrayerTimesWindow(days: _androidWindowDays);
+    } catch (e) {
+      debugPrint(
+          'NotificationService: 7-day alarm window fetch failed ($e), falling back to today only');
+      window = [];
+    }
+    if (window.isEmpty) {
+      window = [
+        DailyPrayerTimes(DateTime.now(), {
+          for (final p in prayers) p['name'] as String: p['time'] as DateTime,
+        }),
+      ];
+    }
+
+    final enabledNames = prayers.map((p) => p['name'] as String).toSet();
 
     final l10n = await _l10n();
-    for (final entry in prayers) {
-      final name = entry['name'] as String;
-      final time = entry['time'] as DateTime;
-      if (time.isBefore(DateTime.now())) continue;
+    var scheduled = 0;
+    for (var day = 0; day < window.length && day < _androidWindowDays; day++) {
+      final times = window[day].times;
 
-      final notifId = _alarmNotifIds[name];
-      if (notifId == null) continue;
+      // Sent with every alarm so the lock screen Activity can show all 5 of
+      // that day's prayers and compute "next prayer" itself, regardless of
+      // which one fired.
+      final allPrayers = [
+        for (final e in times.entries)
+          {
+            'name': e.key,
+            'time': _formatPrayerTime(e.value),
+            'epochMillis': e.value.millisecondsSinceEpoch,
+          },
+      ];
 
-      try {
-        await _alarmChannel.invokeMethod('schedulePrayerAlarm', {
-          'prayerName': name,
-          'arabicName': _arabicPrayerNames[name] ?? '',
-          'prayerTime': _formatPrayerTime(time),
-          'message': _alarmMessageFor(l10n, name),
-          'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
-          'triggerAtMillis': time.millisecondsSinceEpoch,
-          'notificationId': notifId,
-          'allPrayers': allPrayers,
-        });
-      } catch (e) {
-        debugPrint(
-            'NotificationService: failed to schedule alarm for $name: $e');
+      for (final entry in _alarmNotifIds.entries) {
+        final name = entry.key;
+        if (!enabledNames.contains(name)) continue;
+        final time = times[name];
+        if (time == null || time.isBefore(DateTime.now())) continue;
+
+        final notifId = entry.value + day * 5;
+        try {
+          await _alarmChannel.invokeMethod('schedulePrayerAlarm', {
+            'prayerName': name,
+            'arabicName': _arabicPrayerNames[name] ?? '',
+            'prayerTime': _formatPrayerTime(time),
+            'message': _alarmMessageFor(l10n, name),
+            'adhanId': adhanSoundResource(adhanId).replaceFirst('adhan_', ''),
+            'triggerAtMillis': time.millisecondsSinceEpoch,
+            'notificationId': notifId,
+            'allPrayers': allPrayers,
+          });
+          scheduled++;
+        } catch (e) {
+          debugPrint(
+              'NotificationService: failed to schedule alarm for $name day $day: $e');
+        }
       }
     }
+    debugPrint(
+        'NotificationService: scheduled $scheduled full-screen alarms over ${window.length} day(s)');
   }
 
   Future<List<String>> getPendingPrayerMarks() async {
@@ -830,7 +871,7 @@ class NotificationService {
     await _plugin.cancelAll();
   }
 
-  /// Cancels every scheduled full-screen prayer alarm (ids 100–104) — the
+  /// Cancels every scheduled full-screen prayer alarm (ids 100–134) — the
   /// native AlarmManager alarms that fire at the exact prayer time. These
   /// live entirely outside flutter_local_notifications, so [cancelAll] alone
   /// (which only clears the 15-minutes-early reminders) never touches them.
@@ -849,7 +890,8 @@ class NotificationService {
     }
   }
 
-  /// Reports, for each of [ids] (default 100–104), whether a full-screen
+  /// Reports, for each of [ids] (default: today's ids, 100–104), whether a
+  /// full-screen
   /// prayer alarm is currently pending in AlarmManager. Used to verify a
   /// schedule/cancel actually took effect, since apps can't run `dumpsys
   /// alarm` on themselves. Returns every id mapped to false on iOS/web.
@@ -958,7 +1000,7 @@ class NotificationService {
         'triggerAtMillis':
             now.add(const Duration(seconds: 10)).millisecondsSinceEpoch,
         // Deliberately Dhuhr's real id (101), not a dedicated test-only id —
-        // this puts the test alarm inside cancelPrayerAlarms()'s 100-104
+        // this puts the test alarm inside cancelPrayerAlarms()'s 100-134
         // range so it can be used to verify the bell OFF toggle actually
         // cancels a pending alarm. Trade-off: if a real Dhuhr alarm is
         // already scheduled today, tapping this button overwrites it with
