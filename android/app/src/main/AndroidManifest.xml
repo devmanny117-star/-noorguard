@@ -141,7 +141,15 @@
                 android:value="Keeps the app alive in the background so scheduled prayer-time alarms and notifications are delivered reliably."/>
         </service>
 
-        <!-- Restarts the prayer keep-alive service after a reboot, if it was running before. -->
+        <!-- Fires at 12:01am nightly (armed via setAlarmClock, so Doze can't
+             defer it) to re-arm the day's full-screen prayer alarms from the
+             natively persisted payload, without the app being opened. Explicit
+             PendingIntent target — no intent-filter needed. -->
+        <receiver android:name=".MidnightSchedulerReceiver" android:exported="false" />
+
+        <!-- Restarts the prayer keep-alive service after a reboot (if it was
+             running before), and restores the day's remaining prayer alarms
+             plus the nightly rescheduler wiped by the restart. -->
         <receiver android:name=".BootReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

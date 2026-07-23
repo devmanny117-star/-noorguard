@@ -328,37 +328,20 @@ class MainActivity : AudioServiceActivity() {
             "$name,$time,$millis"
         } ?: ""
 
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(this, PrayerAlarmReceiver::class.java).apply {
-            putExtra(PrayerAlarmReceiver.EXTRA_PRAYER_NAME, prayerName)
-            putExtra(PrayerAlarmReceiver.EXTRA_PRAYER_ARABIC, arabicName)
-            putExtra(PrayerAlarmReceiver.EXTRA_PRAYER_TIME, prayerTime)
-            putExtra(PrayerAlarmReceiver.EXTRA_PRAYER_MESSAGE, message)
-            putExtra(PrayerAlarmReceiver.EXTRA_ADHAN_ID, adhanId)
-            putExtra(PrayerAlarmReceiver.EXTRA_NOTIFICATION_ID, notifId)
-            putExtra(PrayerAlarmReceiver.EXTRA_ALL_PRAYERS, allPrayersSerialized)
-        }
-        val pi = PendingIntent.getBroadcast(
-            this, notifId, intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        // Scheduling itself lives in PrayerAlarmScheduler so the midnight and
+        // boot receivers arm alarms through the identical code path. Each
+        // schedule is also persisted natively — that stored payload is what
+        // lets those receivers re-arm alarms without Flutter running — and
+        // (re-)arms the nightly 12:01am rescheduler chain.
+        PrayerAlarmScheduler.scheduleAlarm(
+            this, prayerName, arabicName, prayerTime, message, adhanId,
+            notifId, allPrayersSerialized, triggerAtMillis,
         )
-
-        // setAlarmClock() — not setExactAndAllowWhileIdle() — is what keeps this
-        // firing on time under Doze AND under Battery Saver, without asking the
-        // user to turn Battery Saver off or grant anything: Android exempts
-        // "alarm clock" alarms from both unconditionally (the same mechanism
-        // alarm-clock apps rely on), and unlike setExact/setExactAndAllowWhileIdle
-        // it needs no SCHEDULE_EXACT_ALARM permission at all — the status bar's
-        // alarm icon is considered sufficient transparency to the user. Tapping
-        // that icon opens the app via showIntent.
-        val showIntent = PendingIntent.getActivity(
-            this, notifId, Intent(this, MainActivity::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        PrayerAlarmScheduler.persistAlarm(
+            this, prayerName, arabicName, prayerTime, message, adhanId,
+            notifId, allPrayersSerialized, triggerAtMillis,
         )
-        alarmManager.setAlarmClock(
-            AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent), pi
-        )
-        Log.d(TAG, "Scheduled alarm id=$notifId ($prayerName) triggerAtMillis=$triggerAtMillis")
+        PrayerAlarmScheduler.scheduleMidnightAlarm(this)
     }
 
     private fun isAlarmPending(id: Int): Boolean {
@@ -374,6 +357,10 @@ class MainActivity : AudioServiceActivity() {
     // Retries once per id if the first cancel didn't stick. Returns true only
     // if every id is confirmed clear afterward.
     private fun cancelPrayerAlarms(): Boolean {
+        // "Off" must also silence the nightly 12:01am rescheduler — otherwise
+        // it would linger as an alarm-clock icon in the status bar (its
+        // receiver would no-op on the master check, but the icon misleads).
+        PrayerAlarmScheduler.cancelMidnightAlarm(this)
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         var allClear = true
         for (id in 100..104) {
