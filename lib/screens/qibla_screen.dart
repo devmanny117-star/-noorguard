@@ -1621,8 +1621,16 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                     );
                   }),
                 Divider(color: _kGold.withValues(alpha: 0.12), height: 1),
+                // Both this dropdown and the search bar below are Padding
+                // widgets, so without explicit keys the dropdown appearing or
+                // disappearing makes Flutter re-match the column's children
+                // by position — the search bar's TextField subtree is then
+                // treated as a brand-new widget, losing focus and dismissing
+                // the keyboard mid-typing. Stable keys keep each element's
+                // identity across those layout changes.
                 if (_suggestions.isNotEmpty || _noSuggestionResults)
                   Padding(
+                    key: const ValueKey('qibla_city_suggestions'),
                     padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
                     child: Container(
                       decoration: BoxDecoration(
@@ -1702,6 +1710,7 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                     ),
                   ),
                 Padding(
+                  key: const ValueKey('qibla_city_search_bar'),
                   padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
                   child: atMax
                       ? Text(
