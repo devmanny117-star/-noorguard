@@ -3341,4 +3341,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get locating => 'Определение местоположения...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 Наступило время Фаджра';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ Наступило время Зухра';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ Наступило время Асра';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 Наступило время Магриба';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 Наступило время Иши';
 }

@@ -3335,4 +3335,19 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get locating => 'Mencari lokasi...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 Waktu Salat Subuh telah tiba';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ Waktu Salat Zuhur telah tiba';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ Waktu Salat Asar telah tiba';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 Waktu Salat Maghrib telah tiba';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 Waktu Salat Isya telah tiba';
 }

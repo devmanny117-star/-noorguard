@@ -3311,4 +3311,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get locating => 'Locating...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 It\'s time for Fajr';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ It\'s time for Dhuhr';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ It\'s time for Asr';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 It\'s time for Maghrib';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 It\'s time for Isha';
 }

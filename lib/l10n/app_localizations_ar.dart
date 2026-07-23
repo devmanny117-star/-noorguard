@@ -3267,4 +3267,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get locating => 'جارٍ تحديد الموقع...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 حان الآن وقت الفجر';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ حان الآن وقت الظهر';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ حان الآن وقت العصر';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 حان الآن وقت المغرب';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 حان الآن وقت العشاء';
 }

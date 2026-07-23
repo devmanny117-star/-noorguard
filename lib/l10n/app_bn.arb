@@ -1623,5 +1623,10 @@
   "adminDismiss": "খারিজ করুন",
   "adminEmptyPending": "কোনো অপেক্ষমাণ গল্প নেই",
   "adminEmptyReports": "কোনো অপেক্ষমাণ রিপোর্ট নেই",
-  "locating": "অবস্থান নির্ণয় করা হচ্ছে..."
+  "locating": "অবস্থান নির্ণয় করা হচ্ছে...",
+  "prayerBegunTitleFajr": "🕌 ফজরের সময় শুরু হয়েছে",
+  "prayerBegunTitleDhuhr": "☀️ যোহরের সময় শুরু হয়েছে",
+  "prayerBegunTitleAsr": "🌤️ আসরের সময় শুরু হয়েছে",
+  "prayerBegunTitleMaghrib": "🌅 মাগরিবের সময় শুরু হয়েছে",
+  "prayerBegunTitleIsha": "🌙 এশার সময় শুরু হয়েছে"
 }

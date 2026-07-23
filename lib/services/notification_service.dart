@@ -100,6 +100,19 @@ class NotificationService {
     return ref == null ? null : 'verse:$ref';
   }
 
+  /// Title of the at-prayer-time notification ("It's time for Fajr"),
+  /// phrased distinctly from the 15-minutes-early reminder titles.
+  String _begunTitleFor(AppLocalizations l10n, String name) {
+    return switch (name) {
+      'Fajr' => l10n.prayerBegunTitleFajr,
+      'Dhuhr' => l10n.prayerBegunTitleDhuhr,
+      'Asr' => l10n.prayerBegunTitleAsr,
+      'Maghrib' => l10n.prayerBegunTitleMaghrib,
+      'Isha' => l10n.prayerBegunTitleIsha,
+      _ => l10n.prayerAlarmMessageGeneric(name),
+    };
+  }
+
   String _alarmMessageFor(AppLocalizations l10n, String name) {
     return switch (name) {
       'Fajr' => l10n.prayerAlarmMessageFajr,
@@ -454,12 +467,18 @@ class NotificationService {
         : AndroidScheduleMode.inexactAllowWhileIdle;
   }
 
-  // iOS pre-schedules a rolling window of reminders so they keep firing when
-  // the app isn't opened for days (there's no iOS equivalent of the Android
-  // midnight/boot receivers). 12 days × 5 prayers = 60 one-shots, under
-  // iOS's 64-pending-notification cap. Notification ids are day*5 + prayer
-  // index, so ids 0–4 stay today's five prayers exactly as on Android.
-  static const _iosWindowDays = 12;
+  // iOS pre-schedules a rolling window of notifications so they keep firing
+  // when the app isn't opened for days (there's no iOS equivalent of the
+  // Android midnight/boot receivers). Each prayer gets TWO one-shots: the
+  // 15-minutes-early reminder and an at-prayer-time notification. 6 days ×
+  // 5 prayers × 2 = 60, under iOS's hard 64-pending-notification cap —
+  // which is exactly why the window is 6 days and not more.
+  //
+  // Ids: reminders are day*5 + prayer index (0–29, so ids 0–4 stay today's
+  // five reminders exactly as on Android); at-time notifications add
+  // [_iosAtTimeIdOffset] on top (50–79), far clear of the reminder range.
+  static const _iosWindowDays = 6;
+  static const _iosAtTimeIdOffset = 50;
   static const _iosPrayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
   Future<void> schedulePrayerNotifications(
@@ -545,29 +564,53 @@ class NotificationService {
         if (time == null) continue;
         if (!(prefs.getBool('notif_${name.toLowerCase()}') ?? true)) continue;
 
-        final notifyAt = time.subtract(const Duration(minutes: 15));
-        if (notifyAt.isBefore(DateTime.now())) continue;
+        final now = DateTime.now();
 
-        final message = _messageFor(l10n, name);
-        try {
-          await _plugin.zonedSchedule(
-            id: day * 5 + i,
-            title: message.title,
-            body: message.body,
-            scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
-            notificationDetails: details,
-            androidScheduleMode: scheduleMode,
-            payload: _payloadFor(name),
-          );
-          scheduled++;
-        } catch (e) {
-          debugPrint(
-              'NotificationService: failed to schedule $name day-$day reminder: $e');
+        // 15-minutes-early reminder. Checked independently of the at-time
+        // notification below: between reminder time and prayer time only
+        // the reminder is in the past.
+        final notifyAt = time.subtract(const Duration(minutes: 15));
+        if (notifyAt.isAfter(now)) {
+          final message = _messageFor(l10n, name);
+          try {
+            await _plugin.zonedSchedule(
+              id: day * 5 + i,
+              title: message.title,
+              body: message.body,
+              scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
+              notificationDetails: details,
+              androidScheduleMode: scheduleMode,
+              payload: _payloadFor(name),
+            );
+            scheduled++;
+          } catch (e) {
+            debugPrint(
+                'NotificationService: failed to schedule $name day-$day reminder: $e');
+          }
+        }
+
+        // At-prayer-time notification ("It's time for Fajr").
+        if (time.isAfter(now)) {
+          try {
+            await _plugin.zonedSchedule(
+              id: _iosAtTimeIdOffset + day * 5 + i,
+              title: _begunTitleFor(l10n, name),
+              body: _alarmMessageFor(l10n, name),
+              scheduledDate: tz.TZDateTime.from(time, tz.local),
+              notificationDetails: details,
+              androidScheduleMode: scheduleMode,
+              payload: _payloadFor(name),
+            );
+            scheduled++;
+          } catch (e) {
+            debugPrint(
+                'NotificationService: failed to schedule $name day-$day at-time notification: $e');
+          }
         }
       }
     }
     debugPrint(
-        'NotificationService: iOS window scheduled $scheduled reminders over ${window.length} day(s)');
+        'NotificationService: iOS window scheduled $scheduled notifications over ${window.length} day(s)');
   }
 
   /// [allDays] extends the cancel across the whole iOS pre-scheduled window
@@ -582,6 +625,7 @@ class NotificationService {
     if (allDays && Platform.isIOS) {
       for (var day = 0; day < _iosWindowDays; day++) {
         await _plugin.cancel(id: day * 5 + id);
+        await _plugin.cancel(id: _iosAtTimeIdOffset + day * 5 + id);
       }
       return;
     }
@@ -609,21 +653,39 @@ class NotificationService {
           for (var day = 0; day < window.length; day++) {
             final dayTime = window[day].times[name];
             if (dayTime == null) continue;
+            final now = DateTime.now();
             final notifyAt = dayTime.subtract(const Duration(minutes: 15));
-            if (notifyAt.isBefore(DateTime.now())) continue;
-            try {
-              await _plugin.zonedSchedule(
-                id: day * 5 + id,
-                title: message.title,
-                body: message.body,
-                scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
-                notificationDetails: details,
-                androidScheduleMode: scheduleMode,
-                payload: _payloadFor(name),
-              );
-            } catch (e) {
-              debugPrint(
-                  'NotificationService: failed to schedule $name day-$day reminder: $e');
+            if (notifyAt.isAfter(now)) {
+              try {
+                await _plugin.zonedSchedule(
+                  id: day * 5 + id,
+                  title: message.title,
+                  body: message.body,
+                  scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
+                  notificationDetails: details,
+                  androidScheduleMode: scheduleMode,
+                  payload: _payloadFor(name),
+                );
+              } catch (e) {
+                debugPrint(
+                    'NotificationService: failed to schedule $name day-$day reminder: $e');
+              }
+            }
+            if (dayTime.isAfter(now)) {
+              try {
+                await _plugin.zonedSchedule(
+                  id: _iosAtTimeIdOffset + day * 5 + id,
+                  title: _begunTitleFor(l10n, name),
+                  body: _alarmMessageFor(l10n, name),
+                  scheduledDate: tz.TZDateTime.from(dayTime, tz.local),
+                  notificationDetails: details,
+                  androidScheduleMode: scheduleMode,
+                  payload: _payloadFor(name),
+                );
+              } catch (e) {
+                debugPrint(
+                    'NotificationService: failed to schedule $name day-$day at-time notification: $e');
+              }
             }
           }
           return;

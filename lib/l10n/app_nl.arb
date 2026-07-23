@@ -1623,5 +1623,10 @@
   "adminDismiss": "Negeren",
   "adminEmptyPending": "Geen verhalen in afwachting",
   "adminEmptyReports": "Geen openstaande meldingen",
-  "locating": "Locatie bepalen..."
+  "locating": "Locatie bepalen...",
+  "prayerBegunTitleFajr": "🕌 Het is nu tijd voor Fajr",
+  "prayerBegunTitleDhuhr": "☀️ Het is nu tijd voor Dhuhr",
+  "prayerBegunTitleAsr": "🌤️ Het is nu tijd voor Asr",
+  "prayerBegunTitleMaghrib": "🌅 Het is nu tijd voor Maghrib",
+  "prayerBegunTitleIsha": "🌙 Het is nu tijd voor Isha"
 }

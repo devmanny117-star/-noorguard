@@ -3188,4 +3188,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get locating => '位置情報を取得中...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 ファジュルの時間になりました';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ ズフルの時間になりました';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ アスルの時間になりました';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 マグリブの時間になりました';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 イシャーの時間になりました';
 }

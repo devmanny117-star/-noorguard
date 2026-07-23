@@ -1623,5 +1623,10 @@
   "adminDismiss": "Descartar",
   "adminEmptyPending": "No hay historias pendientes",
   "adminEmptyReports": "No hay reportes pendientes",
-  "locating": "Obteniendo ubicación..."
+  "locating": "Obteniendo ubicación...",
+  "prayerBegunTitleFajr": "🕌 Ha llegado la hora de Fajr",
+  "prayerBegunTitleDhuhr": "☀️ Ha llegado la hora de Dhuhr",
+  "prayerBegunTitleAsr": "🌤️ Ha llegado la hora de Asr",
+  "prayerBegunTitleMaghrib": "🌅 Ha llegado la hora de Maghrib",
+  "prayerBegunTitleIsha": "🌙 Ha llegado la hora de Isha"
 }

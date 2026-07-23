@@ -3333,4 +3333,19 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get locating => 'Locatie bepalen...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 Het is nu tijd voor Fajr';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ Het is nu tijd voor Dhuhr';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ Het is nu tijd voor Asr';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 Het is nu tijd voor Maghrib';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 Het is nu tijd voor Isha';
 }

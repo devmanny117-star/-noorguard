@@ -6121,6 +6121,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Locating...'**
   String get locating;
+
+  /// Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)
+  ///
+  /// In en, this message translates to:
+  /// **'🕌 It\'s time for Fajr'**
+  String get prayerBegunTitleFajr;
+
+  /// Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)
+  ///
+  /// In en, this message translates to:
+  /// **'☀️ It\'s time for Dhuhr'**
+  String get prayerBegunTitleDhuhr;
+
+  /// Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)
+  ///
+  /// In en, this message translates to:
+  /// **'🌤️ It\'s time for Asr'**
+  String get prayerBegunTitleAsr;
+
+  /// Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)
+  ///
+  /// In en, this message translates to:
+  /// **'🌅 It\'s time for Maghrib'**
+  String get prayerBegunTitleMaghrib;
+
+  /// Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)
+  ///
+  /// In en, this message translates to:
+  /// **'🌙 It\'s time for Isha'**
+  String get prayerBegunTitleIsha;
 }
 
 class _AppLocalizationsDelegate

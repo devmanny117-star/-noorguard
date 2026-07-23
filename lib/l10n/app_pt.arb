@@ -1623,5 +1623,10 @@
   "adminDismiss": "Dispensar",
   "adminEmptyPending": "Nenhuma história pendente",
   "adminEmptyReports": "Nenhuma denúncia pendente",
-  "locating": "Localizando..."
+  "locating": "Localizando...",
+  "prayerBegunTitleFajr": "🕌 Chegou a hora do Fajr",
+  "prayerBegunTitleDhuhr": "☀️ Chegou a hora do Dhuhr",
+  "prayerBegunTitleAsr": "🌤️ Chegou a hora do Asr",
+  "prayerBegunTitleMaghrib": "🌅 Chegou a hora do Maghrib",
+  "prayerBegunTitleIsha": "🌙 Chegou a hora do Isha"
 }

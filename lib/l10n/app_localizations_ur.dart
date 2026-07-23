@@ -3307,4 +3307,19 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get locating => 'مقام معلوم کیا جا رہا ہے...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 فجر کا وقت شروع ہو گیا';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ ظہر کا وقت شروع ہو گیا';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ عصر کا وقت شروع ہو گیا';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 مغرب کا وقت شروع ہو گیا';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 عشاء کا وقت شروع ہو گیا';
 }

@@ -1623,5 +1623,10 @@
   "adminDismiss": "Puuza",
   "adminEmptyPending": "Hakuna hadithi zinazosubiri",
   "adminEmptyReports": "Hakuna ripoti zinazosubiri",
-  "locating": "Inatafuta mahali..."
+  "locating": "Inatafuta mahali...",
+  "prayerBegunTitleFajr": "🕌 Wakati wa Fajr umefika",
+  "prayerBegunTitleDhuhr": "☀️ Wakati wa Dhuhr umefika",
+  "prayerBegunTitleAsr": "🌤️ Wakati wa Asr umefika",
+  "prayerBegunTitleMaghrib": "🌅 Wakati wa Maghrib umefika",
+  "prayerBegunTitleIsha": "🌙 Wakati wa Isha umefika"
 }

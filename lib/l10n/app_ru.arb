@@ -4076,5 +4076,10 @@
   "@adminEmptyReports": {
     "description": "Admin empty state: no pending reports"
   },
-  "locating": "Определение местоположения..."
+  "locating": "Определение местоположения...",
+  "prayerBegunTitleFajr": "🕌 Наступило время Фаджра",
+  "prayerBegunTitleDhuhr": "☀️ Наступило время Зухра",
+  "prayerBegunTitleAsr": "🌤️ Наступило время Асра",
+  "prayerBegunTitleMaghrib": "🌅 Наступило время Магриба",
+  "prayerBegunTitleIsha": "🌙 Наступило время Иши"
 }

@@ -1623,5 +1623,10 @@
   "adminDismiss": "تجاهل",
   "adminEmptyPending": "لا توجد قصص معلّقة",
   "adminEmptyReports": "لا توجد بلاغات معلّقة",
-  "locating": "جارٍ تحديد الموقع..."
+  "locating": "جارٍ تحديد الموقع...",
+  "prayerBegunTitleFajr": "🕌 حان الآن وقت الفجر",
+  "prayerBegunTitleDhuhr": "☀️ حان الآن وقت الظهر",
+  "prayerBegunTitleAsr": "🌤️ حان الآن وقت العصر",
+  "prayerBegunTitleMaghrib": "🌅 حان الآن وقت المغرب",
+  "prayerBegunTitleIsha": "🌙 حان الآن وقت العشاء"
 }

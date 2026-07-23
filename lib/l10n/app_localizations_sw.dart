@@ -3326,4 +3326,19 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get locating => 'Inatafuta mahali...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 Wakati wa Fajr umefika';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ Wakati wa Dhuhr umefika';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ Wakati wa Asr umefika';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 Wakati wa Maghrib umefika';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 Wakati wa Isha umefika';
 }

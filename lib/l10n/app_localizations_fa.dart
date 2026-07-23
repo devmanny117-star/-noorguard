@@ -3310,4 +3310,19 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get locating => 'در حال مکان‌یابی...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 وقت نماز فجر فرا رسید';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ وقت نماز ظهر فرا رسید';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ وقت نماز عصر فرا رسید';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 وقت نماز مغرب فرا رسید';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 وقت نماز عشاء فرا رسید';
 }

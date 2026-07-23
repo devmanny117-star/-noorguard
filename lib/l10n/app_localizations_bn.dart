@@ -3326,4 +3326,19 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get locating => 'অবস্থান নির্ণয় করা হচ্ছে...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 ফজরের সময় শুরু হয়েছে';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ যোহরের সময় শুরু হয়েছে';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ আসরের সময় শুরু হয়েছে';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 মাগরিবের সময় শুরু হয়েছে';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 এশার সময় শুরু হয়েছে';
 }

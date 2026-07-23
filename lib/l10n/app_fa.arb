@@ -1783,5 +1783,10 @@
   "adminDismiss": "نادیده گرفتن",
   "adminEmptyPending": "داستان در انتظاری وجود ندارد",
   "adminEmptyReports": "گزارش در انتظاری وجود ندارد",
-  "locating": "در حال مکان‌یابی..."
+  "locating": "در حال مکان‌یابی...",
+  "prayerBegunTitleFajr": "🕌 وقت نماز فجر فرا رسید",
+  "prayerBegunTitleDhuhr": "☀️ وقت نماز ظهر فرا رسید",
+  "prayerBegunTitleAsr": "🌤️ وقت نماز عصر فرا رسید",
+  "prayerBegunTitleMaghrib": "🌅 وقت نماز مغرب فرا رسید",
+  "prayerBegunTitleIsha": "🌙 وقت نماز عشاء فرا رسید"
 }

@@ -1623,5 +1623,10 @@
   "adminDismiss": "Abaikan",
   "adminEmptyPending": "Tidak ada kisah yang menunggu",
   "adminEmptyReports": "Tidak ada laporan yang menunggu",
-  "locating": "Mencari lokasi..."
+  "locating": "Mencari lokasi...",
+  "prayerBegunTitleFajr": "🕌 Waktu Salat Subuh telah tiba",
+  "prayerBegunTitleDhuhr": "☀️ Waktu Salat Zuhur telah tiba",
+  "prayerBegunTitleAsr": "🌤️ Waktu Salat Asar telah tiba",
+  "prayerBegunTitleMaghrib": "🌅 Waktu Salat Maghrib telah tiba",
+  "prayerBegunTitleIsha": "🌙 Waktu Salat Isya telah tiba"
 }

@@ -1623,5 +1623,10 @@
   "adminDismiss": "Yok say",
   "adminEmptyPending": "Bekleyen hikaye yok",
   "adminEmptyReports": "Bekleyen rapor yok",
-  "locating": "Konum belirleniyor..."
+  "locating": "Konum belirleniyor...",
+  "prayerBegunTitleFajr": "🕌 Sabah namazı vakti girdi",
+  "prayerBegunTitleDhuhr": "☀️ Öğle namazı vakti girdi",
+  "prayerBegunTitleAsr": "🌤️ İkindi namazı vakti girdi",
+  "prayerBegunTitleMaghrib": "🌅 Akşam namazı vakti girdi",
+  "prayerBegunTitleIsha": "🌙 Yatsı namazı vakti girdi"
 }

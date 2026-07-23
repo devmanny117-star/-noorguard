@@ -1623,5 +1623,10 @@
   "adminDismiss": "نظرانداز کریں",
   "adminEmptyPending": "کوئی زیرِ التوا کہانی نہیں",
   "adminEmptyReports": "کوئی زیرِ التوا رپورٹ نہیں",
-  "locating": "مقام معلوم کیا جا رہا ہے..."
+  "locating": "مقام معلوم کیا جا رہا ہے...",
+  "prayerBegunTitleFajr": "🕌 فجر کا وقت شروع ہو گیا",
+  "prayerBegunTitleDhuhr": "☀️ ظہر کا وقت شروع ہو گیا",
+  "prayerBegunTitleAsr": "🌤️ عصر کا وقت شروع ہو گیا",
+  "prayerBegunTitleMaghrib": "🌅 مغرب کا وقت شروع ہو گیا",
+  "prayerBegunTitleIsha": "🌙 عشاء کا وقت شروع ہو گیا"
 }

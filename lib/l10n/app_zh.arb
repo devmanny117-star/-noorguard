@@ -1623,5 +1623,10 @@
   "adminDismiss": "忽略",
   "adminEmptyPending": "没有待审核的故事",
   "adminEmptyReports": "没有待处理的举报",
-  "locating": "正在定位..."
+  "locating": "正在定位...",
+  "prayerBegunTitleFajr": "🕌 现在是晨礼时间",
+  "prayerBegunTitleDhuhr": "☀️ 现在是晌礼时间",
+  "prayerBegunTitleAsr": "🌤️ 现在是晡礼时间",
+  "prayerBegunTitleMaghrib": "🌅 现在是昏礼时间",
+  "prayerBegunTitleIsha": "🌙 现在是宵礼时间"
 }

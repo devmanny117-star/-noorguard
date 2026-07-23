@@ -3157,4 +3157,19 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get locating => '正在定位...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 现在是晨礼时间';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ 现在是晌礼时间';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ 现在是晡礼时间';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 现在是昏礼时间';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 现在是宵礼时间';
 }

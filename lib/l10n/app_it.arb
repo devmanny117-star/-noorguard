@@ -1623,5 +1623,10 @@
   "adminDismiss": "Ignora",
   "adminEmptyPending": "Nessuna storia in attesa",
   "adminEmptyReports": "Nessuna segnalazione in attesa",
-  "locating": "Localizzazione..."
+  "locating": "Localizzazione...",
+  "prayerBegunTitleFajr": "🕌 È giunta l'ora del Fajr",
+  "prayerBegunTitleDhuhr": "☀️ È giunta l'ora del Dhuhr",
+  "prayerBegunTitleAsr": "🌤️ È giunta l'ora dell'Asr",
+  "prayerBegunTitleMaghrib": "🌅 È giunta l'ora del Maghrib",
+  "prayerBegunTitleIsha": "🌙 È giunta l'ora dell'Isha"
 }

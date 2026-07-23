@@ -4082,5 +4082,25 @@
   "locating": "Locating...",
   "@locating": {
     "description": "Placeholder shown on the Qibla screen location chip while the city name is being resolved"
+  },
+  "prayerBegunTitleFajr": "🕌 It's time for Fajr",
+  "@prayerBegunTitleFajr": {
+    "description": "Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)"
+  },
+  "prayerBegunTitleDhuhr": "☀️ It's time for Dhuhr",
+  "@prayerBegunTitleDhuhr": {
+    "description": "Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)"
+  },
+  "prayerBegunTitleAsr": "🌤️ It's time for Asr",
+  "@prayerBegunTitleAsr": {
+    "description": "Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)"
+  },
+  "prayerBegunTitleMaghrib": "🌅 It's time for Maghrib",
+  "@prayerBegunTitleMaghrib": {
+    "description": "Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)"
+  },
+  "prayerBegunTitleIsha": "🌙 It's time for Isha",
+  "@prayerBegunTitleIsha": {
+    "description": "Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)"
   }
 }

@@ -1623,5 +1623,10 @@
   "adminDismiss": "Verwerfen",
   "adminEmptyPending": "Keine ausstehenden Geschichten",
   "adminEmptyReports": "Keine ausstehenden Meldungen",
-  "locating": "Standort wird ermittelt..."
+  "locating": "Standort wird ermittelt...",
+  "prayerBegunTitleFajr": "🕌 Es ist jetzt Zeit für Fajr",
+  "prayerBegunTitleDhuhr": "☀️ Es ist jetzt Zeit für Dhuhr",
+  "prayerBegunTitleAsr": "🌤️ Es ist jetzt Zeit für Asr",
+  "prayerBegunTitleMaghrib": "🌅 Es ist jetzt Zeit für Maghrib",
+  "prayerBegunTitleIsha": "🌙 Es ist jetzt Zeit für Isha"
 }

@@ -3317,4 +3317,19 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get locating => 'Konum belirleniyor...';
+
+  @override
+  String get prayerBegunTitleFajr => '🕌 Sabah namazı vakti girdi';
+
+  @override
+  String get prayerBegunTitleDhuhr => '☀️ Öğle namazı vakti girdi';
+
+  @override
+  String get prayerBegunTitleAsr => '🌤️ İkindi namazı vakti girdi';
+
+  @override
+  String get prayerBegunTitleMaghrib => '🌅 Akşam namazı vakti girdi';
+
+  @override
+  String get prayerBegunTitleIsha => '🌙 Yatsı namazı vakti girdi';
 }
