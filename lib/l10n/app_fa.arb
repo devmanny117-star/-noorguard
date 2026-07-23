@@ -1782,5 +1782,6 @@
   "adminDeleteStory": "حذف داستان",
   "adminDismiss": "نادیده گرفتن",
   "adminEmptyPending": "داستان در انتظاری وجود ندارد",
-  "adminEmptyReports": "گزارش در انتظاری وجود ندارد"
+  "adminEmptyReports": "گزارش در انتظاری وجود ندارد",
+  "locating": "در حال مکان‌یابی..."
 }

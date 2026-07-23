@@ -3154,4 +3154,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get adminEmptyReports => '没有待处理的举报';
+
+  @override
+  String get locating => '正在定位...';
 }

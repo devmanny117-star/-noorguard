@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "Eliminar historia",
   "adminDismiss": "Descartar",
   "adminEmptyPending": "No hay historias pendientes",
-  "adminEmptyReports": "No hay reportes pendientes"
+  "adminEmptyReports": "No hay reportes pendientes",
+  "locating": "Obteniendo ubicación..."
 }

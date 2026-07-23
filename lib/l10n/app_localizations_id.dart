@@ -3332,4 +3332,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Tidak ada laporan yang menunggu';
+
+  @override
+  String get locating => 'Mencari lokasi...';
 }

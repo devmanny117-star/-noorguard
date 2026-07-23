@@ -3338,4 +3338,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Нет жалоб на рассмотрении';
+
+  @override
+  String get locating => 'Определение местоположения...';
 }

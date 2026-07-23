@@ -3353,4 +3353,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Aucun signalement en attente';
+
+  @override
+  String get locating => 'Localisation...';
 }

@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "Excluir história",
   "adminDismiss": "Dispensar",
   "adminEmptyPending": "Nenhuma história pendente",
-  "adminEmptyReports": "Nenhuma denúncia pendente"
+  "adminEmptyReports": "Nenhuma denúncia pendente",
+  "locating": "Localizando..."
 }

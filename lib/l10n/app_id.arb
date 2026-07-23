@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "Hapus Kisah",
   "adminDismiss": "Abaikan",
   "adminEmptyPending": "Tidak ada kisah yang menunggu",
-  "adminEmptyReports": "Tidak ada laporan yang menunggu"
+  "adminEmptyReports": "Tidak ada laporan yang menunggu",
+  "locating": "Mencari lokasi..."
 }

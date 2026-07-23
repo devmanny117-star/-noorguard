@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "গল্প মুছুন",
   "adminDismiss": "খারিজ করুন",
   "adminEmptyPending": "কোনো অপেক্ষমাণ গল্প নেই",
-  "adminEmptyReports": "কোনো অপেক্ষমাণ রিপোর্ট নেই"
+  "adminEmptyReports": "কোনো অপেক্ষমাণ রিপোর্ট নেই",
+  "locating": "অবস্থান নির্ণয় করা হচ্ছে..."
 }

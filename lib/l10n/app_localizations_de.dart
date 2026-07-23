@@ -3336,4 +3336,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Keine ausstehenden Meldungen';
+
+  @override
+  String get locating => 'Standort wird ermittelt...';
 }

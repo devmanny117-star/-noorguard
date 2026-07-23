@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "Verhaal verwijderen",
   "adminDismiss": "Negeren",
   "adminEmptyPending": "Geen verhalen in afwachting",
-  "adminEmptyReports": "Geen openstaande meldingen"
+  "adminEmptyReports": "Geen openstaande meldingen",
+  "locating": "Locatie bepalen..."
 }

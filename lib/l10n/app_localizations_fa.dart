@@ -3307,4 +3307,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'گزارش در انتظاری وجود ندارد';
+
+  @override
+  String get locating => 'در حال مکان‌یابی...';
 }

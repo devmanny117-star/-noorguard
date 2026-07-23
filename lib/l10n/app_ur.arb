@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "کہانی حذف کریں",
   "adminDismiss": "نظرانداز کریں",
   "adminEmptyPending": "کوئی زیرِ التوا کہانی نہیں",
-  "adminEmptyReports": "کوئی زیرِ التوا رپورٹ نہیں"
+  "adminEmptyReports": "کوئی زیرِ التوا رپورٹ نہیں",
+  "locating": "مقام معلوم کیا جا رہا ہے..."
 }

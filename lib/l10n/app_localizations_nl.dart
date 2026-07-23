@@ -3330,4 +3330,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Geen openstaande meldingen';
+
+  @override
+  String get locating => 'Locatie bepalen...';
 }

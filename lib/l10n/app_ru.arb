@@ -4075,5 +4075,6 @@
   "adminEmptyReports": "Нет жалоб на рассмотрении",
   "@adminEmptyReports": {
     "description": "Admin empty state: no pending reports"
-  }
+  },
+  "locating": "Определение местоположения..."
 }

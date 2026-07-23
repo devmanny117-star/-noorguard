@@ -3314,4 +3314,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Bekleyen rapor yok';
+
+  @override
+  String get locating => 'Konum belirleniyor...';
 }

@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "Supprimer l'histoire",
   "adminDismiss": "Ignorer",
   "adminEmptyPending": "Aucune histoire en attente",
-  "adminEmptyReports": "Aucun signalement en attente"
+  "adminEmptyReports": "Aucun signalement en attente",
+  "locating": "Localisation..."
 }

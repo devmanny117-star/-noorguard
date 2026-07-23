@@ -6115,6 +6115,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No pending reports'**
   String get adminEmptyReports;
+
+  /// Placeholder shown on the Qibla screen location chip while the city name is being resolved
+  ///
+  /// In en, this message translates to:
+  /// **'Locating...'**
+  String get locating;
 }
 
 class _AppLocalizationsDelegate

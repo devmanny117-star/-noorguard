@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "Geschichte löschen",
   "adminDismiss": "Verwerfen",
   "adminEmptyPending": "Keine ausstehenden Geschichten",
-  "adminEmptyReports": "Keine ausstehenden Meldungen"
+  "adminEmptyReports": "Keine ausstehenden Meldungen",
+  "locating": "Standort wird ermittelt..."
 }

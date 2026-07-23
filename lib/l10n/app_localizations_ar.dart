@@ -3264,4 +3264,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'لا توجد بلاغات معلّقة';
+
+  @override
+  String get locating => 'جارٍ تحديد الموقع...';
 }

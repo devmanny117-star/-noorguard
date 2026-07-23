@@ -3323,4 +3323,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Hakuna ripoti zinazosubiri';
+
+  @override
+  String get locating => 'Inatafuta mahali...';
 }

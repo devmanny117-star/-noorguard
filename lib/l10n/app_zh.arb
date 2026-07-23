@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "删除故事",
   "adminDismiss": "忽略",
   "adminEmptyPending": "没有待审核的故事",
-  "adminEmptyReports": "没有待处理的举报"
+  "adminEmptyReports": "没有待处理的举报",
+  "locating": "正在定位..."
 }

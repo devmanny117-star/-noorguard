@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "Hikayeyi Sil",
   "adminDismiss": "Yok say",
   "adminEmptyPending": "Bekleyen hikaye yok",
-  "adminEmptyReports": "Bekleyen rapor yok"
+  "adminEmptyReports": "Bekleyen rapor yok",
+  "locating": "Konum belirleniyor..."
 }

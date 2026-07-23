@@ -3331,4 +3331,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'No hay reportes pendientes';
+
+  @override
+  String get locating => 'Obteniendo ubicación...';
 }

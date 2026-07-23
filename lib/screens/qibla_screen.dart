@@ -256,11 +256,22 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     setState(() {
       _qiblaBearing = QiblaService.calculateQiblaDirection(lat, lng);
       _usingDefault = isDefault;
-      _locationLabel = isDefault
-          ? l10n.defaultLocation
-          : '${lat.toStringAsFixed(2)}°, ${lng.toStringAsFixed(2)}°';
+      // City name instead of raw coordinates. Reverse geocoding is async, so
+      // show "Locating…" until it resolves (kept if it never does).
+      _locationLabel = isDefault ? l10n.defaultLocation : l10n.locating;
       _isLoading = false;
     });
+    if (!isDefault) _resolveCityLabel(lat, lng);
+  }
+
+  /// Replaces the "Locating…" placeholder with the reverse-geocoded city
+  /// name once it arrives. Bearing math never waits on this — it's purely
+  /// the label.
+  Future<void> _resolveCityLabel(double lat, double lng) async {
+    final city = await _locationService.cityFromLatLng(lat, lng);
+    if (city != null && mounted) {
+      setState(() => _locationLabel = city.label);
+    }
   }
 
   SavedLocation? _findSavedLocation(String? id) {

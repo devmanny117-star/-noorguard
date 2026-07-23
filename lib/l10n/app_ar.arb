@@ -1622,5 +1622,6 @@
   "adminDeleteStory": "حذف القصة",
   "adminDismiss": "تجاهل",
   "adminEmptyPending": "لا توجد قصص معلّقة",
-  "adminEmptyReports": "لا توجد بلاغات معلّقة"
+  "adminEmptyReports": "لا توجد بلاغات معلّقة",
+  "locating": "جارٍ تحديد الموقع..."
 }

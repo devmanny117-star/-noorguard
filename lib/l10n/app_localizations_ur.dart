@@ -3304,4 +3304,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'کوئی زیرِ التوا رپورٹ نہیں';
+
+  @override
+  String get locating => 'مقام معلوم کیا جا رہا ہے...';
 }

@@ -3185,4 +3185,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get adminEmptyReports => '未対応の報告はありません';
+
+  @override
+  String get locating => '位置情報を取得中...';
 }

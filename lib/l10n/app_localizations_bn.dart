@@ -3323,4 +3323,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'কোনো অপেক্ষমাণ রিপোর্ট নেই';
+
+  @override
+  String get locating => 'অবস্থান নির্ণয় করা হচ্ছে...';
 }

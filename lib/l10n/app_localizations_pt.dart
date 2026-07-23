@@ -3330,4 +3330,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get adminEmptyReports => 'Nenhuma denúncia pendente';
+
+  @override
+  String get locating => 'Localizando...';
 }
