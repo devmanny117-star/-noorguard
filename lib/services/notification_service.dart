@@ -7,6 +7,7 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
+import '../data/prayer_times_data.dart';
 import '../l10n/app_localizations.dart';
 import '../models/adhan_model.dart';
 import '../models/prayer_model.dart' show todaysPrayers;
@@ -453,11 +454,24 @@ class NotificationService {
         : AndroidScheduleMode.inexactAllowWhileIdle;
   }
 
+  // iOS pre-schedules a rolling window of reminders so they keep firing when
+  // the app isn't opened for days (there's no iOS equivalent of the Android
+  // midnight/boot receivers). 12 days × 5 prayers = 60 one-shots, under
+  // iOS's 64-pending-notification cap. Notification ids are day*5 + prayer
+  // index, so ids 0–4 stay today's five prayers exactly as on Android.
+  static const _iosWindowDays = 12;
+  static const _iosPrayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+
   Future<void> schedulePrayerNotifications(
       List<Map<String, dynamic>> prayers,
       {required String adhanId}) async {
     if (kIsWeb) return;
     if (!await _masterNotificationsEnabled()) return;
+
+    if (Platform.isIOS) {
+      await _scheduleIosWindow(prayers, adhanId: adhanId);
+      return;
+    }
 
     await _ensureAndroidChannel(adhanSoundResource(adhanId));
     final details = _detailsFor(adhanId);
@@ -489,8 +503,88 @@ class NotificationService {
     }
   }
 
-  Future<void> cancelPrayerNotification(int id) async {
+  /// Schedules the full iOS reminder window: every enabled prayer, 15
+  /// minutes early, for today plus the next [_iosWindowDays]-1 days. Always
+  /// starts by cancelling everything pending so each (re)schedule — cold
+  /// start, day-change resume, master toggle on, adhan change — atomically
+  /// replaces the previous window instead of piling on top of it. Falls back
+  /// to the caller's today-only [todayPrayers] if the calendar fetch fails,
+  /// so one bad network moment degrades to the old behavior rather than
+  /// leaving nothing scheduled.
+  Future<void> _scheduleIosWindow(List<Map<String, dynamic>> todayPrayers,
+      {required String adhanId}) async {
+    await _plugin.cancelAll();
+
+    final prefs = await SharedPreferences.getInstance();
+    final l10n = await _l10n();
+    final details = _detailsFor(adhanId);
+    final scheduleMode = await _scheduleMode();
+
+    List<DailyPrayerTimes> window;
+    try {
+      window = await fetchPrayerTimesWindow(days: _iosWindowDays);
+    } catch (e) {
+      debugPrint(
+          'NotificationService: 12-day window fetch failed ($e), falling back to today only');
+      window = [];
+    }
+    if (window.isEmpty) {
+      window = [
+        DailyPrayerTimes(DateTime.now(), {
+          for (final p in todayPrayers)
+            p['name'] as String: p['time'] as DateTime,
+        }),
+      ];
+    }
+
+    var scheduled = 0;
+    for (var day = 0; day < window.length; day++) {
+      for (var i = 0; i < _iosPrayerOrder.length; i++) {
+        final name = _iosPrayerOrder[i];
+        final time = window[day].times[name];
+        if (time == null) continue;
+        if (!(prefs.getBool('notif_${name.toLowerCase()}') ?? true)) continue;
+
+        final notifyAt = time.subtract(const Duration(minutes: 15));
+        if (notifyAt.isBefore(DateTime.now())) continue;
+
+        final message = _messageFor(l10n, name);
+        try {
+          await _plugin.zonedSchedule(
+            id: day * 5 + i,
+            title: message.title,
+            body: message.body,
+            scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
+            notificationDetails: details,
+            androidScheduleMode: scheduleMode,
+            payload: _payloadFor(name),
+          );
+          scheduled++;
+        } catch (e) {
+          debugPrint(
+              'NotificationService: failed to schedule $name day-$day reminder: $e');
+        }
+      }
+    }
+    debugPrint(
+        'NotificationService: iOS window scheduled $scheduled reminders over ${window.length} day(s)');
+  }
+
+  /// [allDays] extends the cancel across the whole iOS pre-scheduled window
+  /// (this prayer's slot on every day) — used when a per-prayer toggle turns
+  /// off, where today-only would leave 11 future days still firing. The
+  /// default cancels just [id]: today's occurrence, which is what the
+  /// foreground adhan controller means when it swaps the OS reminder for the
+  /// in-app one. On Android the window doesn't exist and both forms cancel
+  /// only [id].
+  Future<void> cancelPrayerNotification(int id, {bool allDays = false}) async {
     if (kIsWeb) return;
+    if (allDays && Platform.isIOS) {
+      for (var day = 0; day < _iosWindowDays; day++) {
+        await _plugin.cancel(id: day * 5 + id);
+      }
+      return;
+    }
     await _plugin.cancel(id: id);
   }
 
@@ -499,6 +593,47 @@ class NotificationService {
       {required String adhanId}) async {
     if (kIsWeb) return;
     if (!await _masterNotificationsEnabled()) return;
+
+    // On iOS this prayer occupies one slot per day of the pre-scheduled
+    // window, so re-enabling it (or changing the adhan) must fill all of
+    // them — today-only would leave the other 11 days empty. Falls back to
+    // the today-only path below if the calendar fetch fails.
+    if (Platform.isIOS) {
+      try {
+        final window = await fetchPrayerTimesWindow(days: _iosWindowDays);
+        if (window.isNotEmpty) {
+          final l10n = await _l10n();
+          final details = _detailsFor(adhanId);
+          final scheduleMode = await _scheduleMode();
+          final message = _messageFor(l10n, name);
+          for (var day = 0; day < window.length; day++) {
+            final dayTime = window[day].times[name];
+            if (dayTime == null) continue;
+            final notifyAt = dayTime.subtract(const Duration(minutes: 15));
+            if (notifyAt.isBefore(DateTime.now())) continue;
+            try {
+              await _plugin.zonedSchedule(
+                id: day * 5 + id,
+                title: message.title,
+                body: message.body,
+                scheduledDate: tz.TZDateTime.from(notifyAt, tz.local),
+                notificationDetails: details,
+                androidScheduleMode: scheduleMode,
+                payload: _payloadFor(name),
+              );
+            } catch (e) {
+              debugPrint(
+                  'NotificationService: failed to schedule $name day-$day reminder: $e');
+            }
+          }
+          return;
+        }
+      } catch (e) {
+        debugPrint(
+            'NotificationService: single-prayer window fetch failed ($e), falling back to today only');
+      }
+    }
+
     final notifyAt = time.subtract(const Duration(minutes: 15));
     if (notifyAt.isBefore(DateTime.now())) return;
 

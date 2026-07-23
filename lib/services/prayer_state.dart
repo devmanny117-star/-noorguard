@@ -112,7 +112,8 @@ class PrayerState extends ChangeNotifier {
         final notifId = entry.value;
         final name = _displayNames[key]!;
         if (notifications[key] != true) {
-          await NotificationService().cancelPrayerNotification(notifId);
+          await NotificationService()
+              .cancelPrayerNotification(notifId, allDays: true);
           continue;
         }
         final p = prayerTimes.firstWhere((pr) => pr.name == name);
@@ -270,7 +271,8 @@ class PrayerState extends ChangeNotifier {
     final name = _displayNames[prayer]!;
 
     if (!value) {
-      await NotificationService().cancelPrayerNotification(notifId);
+      await NotificationService()
+          .cancelPrayerNotification(notifId, allDays: true);
     } else {
       try {
         final prayerTimes = await fetchPrayerTimes();
