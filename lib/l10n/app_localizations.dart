@@ -6151,6 +6151,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'🌙 It\'s time for Isha'**
   String get prayerBegunTitleIsha;
+
+  /// Shown in the Qibla city search dropdown when the autocomplete query matches no cities
+  ///
+  /// In en, this message translates to:
+  /// **'No cities found'**
+  String get noCitiesFound;
 }
 
 class _AppLocalizationsDelegate

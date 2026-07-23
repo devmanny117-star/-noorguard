@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ ズフルの時間になりました",
   "prayerBegunTitleAsr": "🌤️ アスルの時間になりました",
   "prayerBegunTitleMaghrib": "🌅 マグリブの時間になりました",
-  "prayerBegunTitleIsha": "🌙 イシャーの時間になりました"
+  "prayerBegunTitleIsha": "🌙 イシャーの時間になりました",
+  "noCitiesFound": "都市が見つかりません"
 }

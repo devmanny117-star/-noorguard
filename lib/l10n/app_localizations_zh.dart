@@ -3172,4 +3172,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 现在是宵礼时间';
+
+  @override
+  String get noCitiesFound => '未找到城市';
 }

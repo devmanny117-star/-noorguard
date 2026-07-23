@@ -1788,5 +1788,6 @@
   "prayerBegunTitleDhuhr": "☀️ وقت نماز ظهر فرا رسید",
   "prayerBegunTitleAsr": "🌤️ وقت نماز عصر فرا رسید",
   "prayerBegunTitleMaghrib": "🌅 وقت نماز مغرب فرا رسید",
-  "prayerBegunTitleIsha": "🌙 وقت نماز عشاء فرا رسید"
+  "prayerBegunTitleIsha": "🌙 وقت نماز عشاء فرا رسید",
+  "noCitiesFound": "شهری یافت نشد"
 }

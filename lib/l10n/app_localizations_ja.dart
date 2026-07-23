@@ -3203,4 +3203,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 イシャーの時間になりました';
+
+  @override
+  String get noCitiesFound => '都市が見つかりません';
 }

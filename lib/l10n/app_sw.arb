@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ Wakati wa Dhuhr umefika",
   "prayerBegunTitleAsr": "🌤️ Wakati wa Asr umefika",
   "prayerBegunTitleMaghrib": "🌅 Wakati wa Maghrib umefika",
-  "prayerBegunTitleIsha": "🌙 Wakati wa Isha umefika"
+  "prayerBegunTitleIsha": "🌙 Wakati wa Isha umefika",
+  "noCitiesFound": "Hakuna miji iliyopatikana"
 }

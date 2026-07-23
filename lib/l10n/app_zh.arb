@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ 现在是晌礼时间",
   "prayerBegunTitleAsr": "🌤️ 现在是晡礼时间",
   "prayerBegunTitleMaghrib": "🌅 现在是昏礼时间",
-  "prayerBegunTitleIsha": "🌙 现在是宵礼时间"
+  "prayerBegunTitleIsha": "🌙 现在是宵礼时间",
+  "noCitiesFound": "未找到城市"
 }

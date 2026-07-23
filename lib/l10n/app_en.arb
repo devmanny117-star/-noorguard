@@ -4102,5 +4102,9 @@
   "prayerBegunTitleIsha": "🌙 It's time for Isha",
   "@prayerBegunTitleIsha": {
     "description": "Title of the at-prayer-time notification (fires at the exact prayer time, after the 15-minute-early reminder)"
+  },
+  "noCitiesFound": "No cities found",
+  "@noCitiesFound": {
+    "description": "Shown in the Qibla city search dropdown when the autocomplete query matches no cities"
   }
 }

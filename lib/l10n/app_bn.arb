@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ যোহরের সময় শুরু হয়েছে",
   "prayerBegunTitleAsr": "🌤️ আসরের সময় শুরু হয়েছে",
   "prayerBegunTitleMaghrib": "🌅 মাগরিবের সময় শুরু হয়েছে",
-  "prayerBegunTitleIsha": "🌙 এশার সময় শুরু হয়েছে"
+  "prayerBegunTitleIsha": "🌙 এশার সময় শুরু হয়েছে",
+  "noCitiesFound": "কোনো শহর পাওয়া যায়নি"
 }

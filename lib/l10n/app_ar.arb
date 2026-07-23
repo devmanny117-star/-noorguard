@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ حان الآن وقت الظهر",
   "prayerBegunTitleAsr": "🌤️ حان الآن وقت العصر",
   "prayerBegunTitleMaghrib": "🌅 حان الآن وقت المغرب",
-  "prayerBegunTitleIsha": "🌙 حان الآن وقت العشاء"
+  "prayerBegunTitleIsha": "🌙 حان الآن وقت العشاء",
+  "noCitiesFound": "لم يتم العثور على مدن"
 }

@@ -3325,4 +3325,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 وقت نماز عشاء فرا رسید';
+
+  @override
+  String get noCitiesFound => 'شهری یافت نشد';
 }

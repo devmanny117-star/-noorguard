@@ -3326,4 +3326,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 It\'s time for Isha';
+
+  @override
+  String get noCitiesFound => 'No cities found';
 }

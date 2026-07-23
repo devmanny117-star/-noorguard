@@ -4081,5 +4081,6 @@
   "prayerBegunTitleDhuhr": "☀️ Наступило время Зухра",
   "prayerBegunTitleAsr": "🌤️ Наступило время Асра",
   "prayerBegunTitleMaghrib": "🌅 Наступило время Магриба",
-  "prayerBegunTitleIsha": "🌙 Наступило время Иши"
+  "prayerBegunTitleIsha": "🌙 Наступило время Иши",
+  "noCitiesFound": "Города не найдены"
 }

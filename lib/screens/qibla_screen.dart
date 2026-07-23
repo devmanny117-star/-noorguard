@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:vibration/vibration.dart';
@@ -1306,6 +1308,14 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
   bool _isSearching = false;
   String? _error;
 
+  // Live autocomplete state. Suggestions come from OpenStreetMap's free
+  // Nominatim API (no key needed); a failed request just leaves the list
+  // empty, silently falling back to the manual submit flow.
+  Timer? _suggestDebounce;
+  List<_CitySuggestion> _suggestions = const [];
+  bool _noSuggestionResults = false;
+  int _suggestRequestSeq = 0;
+
   @override
   void initState() {
     super.initState();
@@ -1315,8 +1325,108 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
 
   @override
   void dispose() {
+    _suggestDebounce?.cancel();
     _searchController.dispose();
     super.dispose();
+  }
+
+  void _onSearchChanged(String text) {
+    _suggestDebounce?.cancel();
+    final query = text.trim();
+    if (query.length < 2) {
+      if (_suggestions.isNotEmpty || _noSuggestionResults) {
+        setState(() {
+          _suggestions = const [];
+          _noSuggestionResults = false;
+        });
+      }
+      return;
+    }
+    _suggestDebounce =
+        Timer(const Duration(milliseconds: 400), () => _fetchSuggestions(query));
+  }
+
+  Future<void> _fetchSuggestions(String query) async {
+    final seq = ++_suggestRequestSeq;
+    try {
+      // featuretype=settlement restricts results to inhabited places
+      // (cities/towns/villages) — no streets, businesses, or countries.
+      final uri = Uri.https('nominatim.openstreetmap.org', '/search', {
+        'q': query,
+        'format': 'jsonv2',
+        'addressdetails': '1',
+        'limit': '6',
+        'featuretype': 'settlement',
+      });
+      // Nominatim's usage policy requires an identifying User-Agent.
+      final response = await http.get(uri, headers: {
+        'User-Agent': 'NoorGuard/1.0 (prayer times app)',
+      }).timeout(const Duration(seconds: 6));
+      if (response.statusCode != 200) throw Exception('HTTP ${response.statusCode}');
+
+      final results = (jsonDecode(response.body) as List<dynamic>)
+          .cast<Map<String, dynamic>>();
+      final suggestions = <_CitySuggestion>[];
+      final seen = <String>{};
+      for (final item in results) {
+        final name = item['name'] as String? ?? '';
+        final address = item['address'] as Map<String, dynamic>? ?? const {};
+        final country = address['country'] as String? ?? '';
+        final lat = double.tryParse(item['lat'] as String? ?? '');
+        final lon = double.tryParse(item['lon'] as String? ?? '');
+        if (name.isEmpty || lat == null || lon == null) continue;
+        if (!seen.add('$name|$country')) continue;
+        suggestions.add(_CitySuggestion(
+          name: name,
+          country: country,
+          latitude: lat,
+          longitude: lon,
+        ));
+      }
+
+      // A newer keystroke's request supersedes this one; likewise the user
+      // may have cleared the field while we were in flight.
+      if (!mounted ||
+          seq != _suggestRequestSeq ||
+          _searchController.text.trim() != query) {
+        return;
+      }
+      setState(() {
+        _suggestions = suggestions;
+        _noSuggestionResults = suggestions.isEmpty;
+      });
+    } catch (_) {
+      // No network / timeout: stay silent and keep the manual submit path.
+      if (!mounted || seq != _suggestRequestSeq) return;
+      setState(() {
+        _suggestions = const [];
+        _noSuggestionResults = false;
+      });
+    }
+  }
+
+  Future<void> _applySuggestion(_CitySuggestion suggestion) async {
+    _suggestDebounce?.cancel();
+    final location = SavedLocation(
+      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      name: suggestion.country.isEmpty
+          ? suggestion.name
+          : '${suggestion.name}, ${suggestion.country}',
+      latitude: suggestion.latitude,
+      longitude: suggestion.longitude,
+    );
+    try {
+      final updated = await _locationService.addLocation(location);
+      if (!mounted) return;
+      setState(() => _locations = updated);
+      _select(location.id);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _error = AppLocalizations.of(context)!.maxLocationsReachedMessage(
+            LocationService.maxSavedLocations);
+      });
+    }
   }
 
   void _select(String? id) {
@@ -1327,9 +1437,12 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
   Future<void> _addLocation() async {
     final query = _searchController.text.trim();
     if (query.isEmpty) return;
+    _suggestDebounce?.cancel();
     setState(() {
       _isSearching = true;
       _error = null;
+      _suggestions = const [];
+      _noSuggestionResults = false;
     });
     try {
       final newLocation = await _locationService.geocodeCityName(query);
@@ -1528,6 +1641,7 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                                 style: GoogleFonts.lato(
                                     color: Colors.white, fontSize: 14),
                                 textInputAction: TextInputAction.search,
+                                onChanged: _onSearchChanged,
                                 onSubmitted: (_) => _addLocation(),
                                 decoration: InputDecoration(
                                   hintText: l10n.searchCityHint,
@@ -1580,6 +1694,86 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                           ],
                         ),
                 ),
+                if (_suggestions.isNotEmpty || _noSuggestionResults)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: _kCard,
+                        borderRadius: BorderRadius.circular(12),
+                        border:
+                            Border.all(color: _kGold.withValues(alpha: 0.22)),
+                      ),
+                      child: _noSuggestionResults
+                          ? Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 14, vertical: 12),
+                              child: Text(
+                                l10n.noCitiesFound,
+                                style: GoogleFonts.lato(
+                                  fontSize: 13,
+                                  color: Colors.white38,
+                                ),
+                              ),
+                            )
+                          : Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                for (var i = 0; i < _suggestions.length; i++) ...[
+                                  if (i > 0)
+                                    Divider(
+                                      color: _kGold.withValues(alpha: 0.1),
+                                      height: 1,
+                                    ),
+                                  InkWell(
+                                    borderRadius: BorderRadius.circular(12),
+                                    onTap: () =>
+                                        _applySuggestion(_suggestions[i]),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 14, vertical: 10),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.location_on_outlined,
+                                            size: 16,
+                                            color: _kGold.withValues(alpha: 0.7),
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  _suggestions[i].name,
+                                                  style: GoogleFonts.lato(
+                                                    fontSize: 14,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                if (_suggestions[i]
+                                                    .country
+                                                    .isNotEmpty)
+                                                  Text(
+                                                    _suggestions[i].country,
+                                                    style: GoogleFonts.lato(
+                                                      fontSize: 12,
+                                                      color: Colors.white38,
+                                                    ),
+                                                  ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                    ),
+                  ),
                 if (_error != null)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(24, 0, 24, 4),
@@ -1628,4 +1822,19 @@ class _WebNote extends StatelessWidget {
       ),
     );
   }
+}
+
+/// One row in the live city-autocomplete dropdown, straight from Nominatim.
+class _CitySuggestion {
+  final String name;
+  final String country;
+  final double latitude;
+  final double longitude;
+
+  const _CitySuggestion({
+    required this.name,
+    required this.country,
+    required this.latitude,
+    required this.longitude,
+  });
 }

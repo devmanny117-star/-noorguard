@@ -3348,4 +3348,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 Chegou a hora do Isha';
+
+  @override
+  String get noCitiesFound => 'Nenhuma cidade encontrada';
 }

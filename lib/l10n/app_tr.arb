@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ Öğle namazı vakti girdi",
   "prayerBegunTitleAsr": "🌤️ İkindi namazı vakti girdi",
   "prayerBegunTitleMaghrib": "🌅 Akşam namazı vakti girdi",
-  "prayerBegunTitleIsha": "🌙 Yatsı namazı vakti girdi"
+  "prayerBegunTitleIsha": "🌙 Yatsı namazı vakti girdi",
+  "noCitiesFound": "Şehir bulunamadı"
 }

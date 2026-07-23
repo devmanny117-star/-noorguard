@@ -3356,4 +3356,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 Наступило время Иши';
+
+  @override
+  String get noCitiesFound => 'Города не найдены';
 }

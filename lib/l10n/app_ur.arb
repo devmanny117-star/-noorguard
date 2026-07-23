@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ ظہر کا وقت شروع ہو گیا",
   "prayerBegunTitleAsr": "🌤️ عصر کا وقت شروع ہو گیا",
   "prayerBegunTitleMaghrib": "🌅 مغرب کا وقت شروع ہو گیا",
-  "prayerBegunTitleIsha": "🌙 عشاء کا وقت شروع ہو گیا"
+  "prayerBegunTitleIsha": "🌙 عشاء کا وقت شروع ہو گیا",
+  "noCitiesFound": "کوئی شہر نہیں ملا"
 }

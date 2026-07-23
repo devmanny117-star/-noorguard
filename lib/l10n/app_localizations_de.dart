@@ -3354,4 +3354,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 Es ist jetzt Zeit für Isha';
+
+  @override
+  String get noCitiesFound => 'Keine Städte gefunden';
 }

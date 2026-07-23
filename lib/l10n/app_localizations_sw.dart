@@ -3341,4 +3341,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 Wakati wa Isha umefika';
+
+  @override
+  String get noCitiesFound => 'Hakuna miji iliyopatikana';
 }

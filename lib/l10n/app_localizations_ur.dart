@@ -3322,4 +3322,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 عشاء کا وقت شروع ہو گیا';
+
+  @override
+  String get noCitiesFound => 'کوئی شہر نہیں ملا';
 }

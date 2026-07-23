@@ -3341,4 +3341,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 এশার সময় শুরু হয়েছে';
+
+  @override
+  String get noCitiesFound => 'কোনো শহর পাওয়া যায়নি';
 }

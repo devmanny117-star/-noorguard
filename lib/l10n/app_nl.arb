@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ Het is nu tijd voor Dhuhr",
   "prayerBegunTitleAsr": "🌤️ Het is nu tijd voor Asr",
   "prayerBegunTitleMaghrib": "🌅 Het is nu tijd voor Maghrib",
-  "prayerBegunTitleIsha": "🌙 Het is nu tijd voor Isha"
+  "prayerBegunTitleIsha": "🌙 Het is nu tijd voor Isha",
+  "noCitiesFound": "Geen steden gevonden"
 }

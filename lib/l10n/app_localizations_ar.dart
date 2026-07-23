@@ -3282,4 +3282,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get prayerBegunTitleIsha => '🌙 حان الآن وقت العشاء';
+
+  @override
+  String get noCitiesFound => 'لم يتم العثور على مدن';
 }

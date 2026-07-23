@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ È giunta l'ora del Dhuhr",
   "prayerBegunTitleAsr": "🌤️ È giunta l'ora dell'Asr",
   "prayerBegunTitleMaghrib": "🌅 È giunta l'ora del Maghrib",
-  "prayerBegunTitleIsha": "🌙 È giunta l'ora dell'Isha"
+  "prayerBegunTitleIsha": "🌙 È giunta l'ora dell'Isha",
+  "noCitiesFound": "Nessuna città trovata"
 }

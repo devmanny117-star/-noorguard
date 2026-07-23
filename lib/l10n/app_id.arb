@@ -1628,5 +1628,6 @@
   "prayerBegunTitleDhuhr": "☀️ Waktu Salat Zuhur telah tiba",
   "prayerBegunTitleAsr": "🌤️ Waktu Salat Asar telah tiba",
   "prayerBegunTitleMaghrib": "🌅 Waktu Salat Maghrib telah tiba",
-  "prayerBegunTitleIsha": "🌙 Waktu Salat Isya telah tiba"
+  "prayerBegunTitleIsha": "🌙 Waktu Salat Isya telah tiba",
+  "noCitiesFound": "Tidak ada kota yang ditemukan"
 }
