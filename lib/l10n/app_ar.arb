@@ -1629,5 +1629,8 @@
   "prayerBegunTitleAsr": "🌤️ حان الآن وقت العصر",
   "prayerBegunTitleMaghrib": "🌅 حان الآن وقت المغرب",
   "prayerBegunTitleIsha": "🌙 حان الآن وقت العشاء",
-  "noCitiesFound": "لم يتم العثور على مدن"
+  "noCitiesFound": "لم يتم العثور على مدن",
+  "appBlockingAccessDialogTitle": "إذن إمكانية الوصول مطلوب",
+  "appBlockingAccessDialogBody": "يستخدم نور غارد خدمة إمكانية الوصول في أندرويد لحظر التطبيقات المشتِّتة أثناء أوقات الصلاة والتركيز. لا يتم جمع أي بيانات شخصية أو مشاركتها. اضغط على «متابعة» لفتح الإعدادات وتفعيلها.",
+  "appBlockingAccessDialogContinue": "متابعة"
 }

@@ -3353,4 +3353,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'Tidak ada kota yang ditemukan';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'Izin Aksesibilitas Diperlukan';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard menggunakan Layanan Aksesibilitas Android untuk memblokir aplikasi yang mengganggu selama waktu salat dan fokus. Tidak ada data pribadi yang dikumpulkan atau dibagikan. Ketuk Lanjutkan untuk membuka Pengaturan dan mengaktifkannya.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'Lanjutkan';
 }

@@ -3325,4 +3325,14 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'کوئی شہر نہیں ملا';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'رسائی کی اجازت درکار ہے';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'نور گارڈ نماز اور فوکس کے اوقات میں توجہ بھٹکانے والی ایپس کو بلاک کرنے کے لیے اینڈرائیڈ کی ایکسیسبیلیٹی سروس استعمال کرتا ہے۔ کوئی ذاتی ڈیٹا جمع یا شیئر نہیں کیا جاتا۔ سیٹنگز کھول کر اسے فعال کرنے کے لیے «جاری رکھیں» پر ٹیپ کریں۔';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'جاری رکھیں';
 }

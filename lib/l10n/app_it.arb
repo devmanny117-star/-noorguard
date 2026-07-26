@@ -1629,5 +1629,8 @@
   "prayerBegunTitleAsr": "🌤️ È giunta l'ora dell'Asr",
   "prayerBegunTitleMaghrib": "🌅 È giunta l'ora del Maghrib",
   "prayerBegunTitleIsha": "🌙 È giunta l'ora dell'Isha",
-  "noCitiesFound": "Nessuna città trovata"
+  "noCitiesFound": "Nessuna città trovata",
+  "appBlockingAccessDialogTitle": "Autorizzazione di accessibilità richiesta",
+  "appBlockingAccessDialogBody": "Noor Guard utilizza il Servizio di Accessibilità di Android per bloccare le app che distraggono durante la preghiera e i momenti di concentrazione. Nessun dato personale viene raccolto o condiviso. Tocca Continua per aprire le Impostazioni e attivarlo.",
+  "appBlockingAccessDialogContinue": "Continua"
 }

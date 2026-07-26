@@ -14,7 +14,8 @@ import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
 import 'notification_setup_screen.dart';
-import 'settings_app_blocking_screen.dart';
+import '../services/app_blocking_service.dart';
+import 'app_blocking_screen.dart';
 import 'community_stories_screen.dart';
 import 'settings_prayer_notifications_screen.dart';
 import 'settings_privacy_screen.dart';
@@ -33,9 +34,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   // Prayer Settings
   String _calculationMethod = 'Muslim World League';
 
-  // App Blocking
-  bool _blockDuringPrayer = false;
-  String _blockDuration = 'prayerWindow';
+  // App Blocking — real state from the shared service, not a local flag
+  bool _appBlockingEnabled = false;
 
   // Appearance
   String _language = 'English';
@@ -113,6 +113,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     super.initState();
     _loadSavedLocale();
+    _loadAppBlockingStatus();
+  }
+
+  Future<void> _loadAppBlockingStatus() async {
+    final service = AppBlockingService();
+    await service.loadSettings();
+    if (mounted) setState(() => _appBlockingEnabled = service.enabled);
   }
 
   Future<void> _loadSavedLocale() async {
@@ -373,20 +380,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 SettingsSelectRow(
                   label: l10n.appBlocking,
-                  value: _blockDuringPrayer ? l10n.statusOn : l10n.statusOff,
+                  value: _appBlockingEnabled ? l10n.statusOn : l10n.statusOff,
                   colors: cardColors,
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => SettingsAppBlockingScreen(
-                        blockDuringPrayer: _blockDuringPrayer,
-                        blockDuration: _blockDuration,
-                        onBlockDuringPrayerChanged: (v) =>
-                            setState(() => _blockDuringPrayer = v),
-                        onBlockDurationChanged: (v) =>
-                            setState(() => _blockDuration = v),
-                      ),
-                    ),
-                  ),
+                  onTap: () async {
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (_) => const AppBlockingScreen()),
+                    );
+                    await _loadAppBlockingStatus();
+                  },
                 ),
               ],
             ),

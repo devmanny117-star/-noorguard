@@ -289,6 +289,20 @@ class AppBlockingService extends ChangeNotifier {
   /// picker has been opened). Lets Focus Mode render its preview instantly
   /// on open instead of paying for a cold fetch+icon-decode of every
   /// installed app just to show a handful of icons.
+  /// Same as [getBlockedAppsWithIcons] but never triggers a native fetch —
+  /// returns null if the installed-apps cache hasn't been warmed yet this
+  /// session. Lets App Blocking's inline preview row render instantly from
+  /// the persisted icon snapshot instead of paying for a cold fetch.
+  List<InstalledApp>? getBlockedAppsWithIconsIfCached() {
+    final apps = _cachedApps;
+    if (apps == null) return null;
+    final byPackage = {for (final a in apps) a.packageName: a};
+    return blockedPackages
+        .map((pkg) => byPackage[pkg])
+        .whereType<InstalledApp>()
+        .toList();
+  }
+
   List<InstalledApp>? getFocusBlockedAppsWithIconsIfCached() {
     final apps = _cachedApps;
     if (apps == null) return null;

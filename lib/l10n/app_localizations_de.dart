@@ -3357,4 +3357,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'Keine Städte gefunden';
+
+  @override
+  String get appBlockingAccessDialogTitle =>
+      'Bedienungshilfen-Berechtigung erforderlich';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard nutzt den Bedienungshilfen-Dienst von Android, um ablenkende Apps während der Gebets- und Fokuszeiten zu blockieren. Es werden keine persönlichen Daten erfasst oder weitergegeben. Tippe auf „Weiter“, um die Einstellungen zu öffnen und ihn zu aktivieren.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'Weiter';
 }

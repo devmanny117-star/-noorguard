@@ -6157,6 +6157,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No cities found'**
   String get noCitiesFound;
+
+  /// Title of the disclosure dialog shown before opening Android Accessibility Settings from the App Blocking enable toggle
+  ///
+  /// In en, this message translates to:
+  /// **'Accessibility Permission Required'**
+  String get appBlockingAccessDialogTitle;
+
+  /// Body of the accessibility disclosure dialog (Play prominent-disclosure requirement)
+  ///
+  /// In en, this message translates to:
+  /// **'Noor Guard uses Android\'s Accessibility Service to block distracting apps during prayer and focus time. No personal data is collected or shared. Tap Continue to open Settings and enable it.'**
+  String get appBlockingAccessDialogBody;
+
+  /// Continue button of the accessibility disclosure dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get appBlockingAccessDialogContinue;
 }
 
 class _AppLocalizationsDelegate

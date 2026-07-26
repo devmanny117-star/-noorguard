@@ -3175,4 +3175,14 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noCitiesFound => '未找到城市';
+
+  @override
+  String get appBlockingAccessDialogTitle => '需要无障碍权限';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard 使用安卓的无障碍服务，在礼拜和专注时段屏蔽干扰应用。不会收集或分享任何个人数据。点按“继续”打开设置并启用该服务。';
+
+  @override
+  String get appBlockingAccessDialogContinue => '继续';
 }

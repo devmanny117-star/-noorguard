@@ -3335,4 +3335,14 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'Şehir bulunamadı';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'Erişilebilirlik İzni Gerekli';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard, namaz ve odaklanma zamanlarında dikkat dağıtan uygulamaları engellemek için Android\'in Erişilebilirlik Servisi\'ni kullanır. Hiçbir kişisel veri toplanmaz veya paylaşılmaz. Ayarları açıp etkinleştirmek için Devam\'a dokunun.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'Devam';
 }

@@ -20,4 +20,5 @@
     <color name="mode_soft">#FFE3B23C</color>
     <color name="mode_firm">#FFE08A3C</color>
     <color name="mode_hard">#FFD9534F</color>
+	<color name="ic_launcher_background">#0D1B2A</color>
 </resources>

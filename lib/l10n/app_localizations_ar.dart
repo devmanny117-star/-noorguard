@@ -3285,4 +3285,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'لم يتم العثور على مدن';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'إذن إمكانية الوصول مطلوب';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'يستخدم نور غارد خدمة إمكانية الوصول في أندرويد لحظر التطبيقات المشتِّتة أثناء أوقات الصلاة والتركيز. لا يتم جمع أي بيانات شخصية أو مشاركتها. اضغط على «متابعة» لفتح الإعدادات وتفعيلها.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'متابعة';
 }

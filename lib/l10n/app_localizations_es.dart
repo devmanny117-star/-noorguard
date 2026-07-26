@@ -3352,4 +3352,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'No se encontraron ciudades';
+
+  @override
+  String get appBlockingAccessDialogTitle =>
+      'Se requiere permiso de accesibilidad';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard usa el Servicio de Accesibilidad de Android para bloquear aplicaciones que distraen durante la oración y el tiempo de concentración. No se recopilan ni comparten datos personales. Toca Continuar para abrir la Configuración y activarlo.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'Continuar';
 }

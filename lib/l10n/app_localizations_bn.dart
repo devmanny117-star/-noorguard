@@ -3344,4 +3344,14 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'কোনো শহর পাওয়া যায়নি';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'অ্যাক্সেসিবিলিটি অনুমতি প্রয়োজন';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'নামাজ ও মনোযোগের সময়ে বিভ্রান্তিকর অ্যাপ ব্লক করতে Noor Guard অ্যান্ড্রয়েডের অ্যাক্সেসিবিলিটি সার্ভিস ব্যবহার করে। কোনো ব্যক্তিগত তথ্য সংগ্রহ বা শেয়ার করা হয় না। সেটিংস খুলে এটি চালু করতে «চালিয়ে যান»-এ ট্যাপ করুন।';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'চালিয়ে যান';
 }

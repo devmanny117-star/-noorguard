@@ -1629,5 +1629,8 @@
   "prayerBegunTitleAsr": "🌤️ Wakati wa Asr umefika",
   "prayerBegunTitleMaghrib": "🌅 Wakati wa Maghrib umefika",
   "prayerBegunTitleIsha": "🌙 Wakati wa Isha umefika",
-  "noCitiesFound": "Hakuna miji iliyopatikana"
+  "noCitiesFound": "Hakuna miji iliyopatikana",
+  "appBlockingAccessDialogTitle": "Ruhusa ya Ufikivu Inahitajika",
+  "appBlockingAccessDialogBody": "Noor Guard hutumia Huduma ya Ufikivu ya Android kuzuia programu zinazokengeusha wakati wa swala na wa kuzingatia. Hakuna data binafsi inayokusanywa wala kushirikiwa. Gusa Endelea kufungua Mipangilio na kuiwasha.",
+  "appBlockingAccessDialogContinue": "Endelea"
 }

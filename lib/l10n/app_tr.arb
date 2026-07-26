@@ -1629,5 +1629,8 @@
   "prayerBegunTitleAsr": "🌤️ İkindi namazı vakti girdi",
   "prayerBegunTitleMaghrib": "🌅 Akşam namazı vakti girdi",
   "prayerBegunTitleIsha": "🌙 Yatsı namazı vakti girdi",
-  "noCitiesFound": "Şehir bulunamadı"
+  "noCitiesFound": "Şehir bulunamadı",
+  "appBlockingAccessDialogTitle": "Erişilebilirlik İzni Gerekli",
+  "appBlockingAccessDialogBody": "Noor Guard, namaz ve odaklanma zamanlarında dikkat dağıtan uygulamaları engellemek için Android'in Erişilebilirlik Servisi'ni kullanır. Hiçbir kişisel veri toplanmaz veya paylaşılmaz. Ayarları açıp etkinleştirmek için Devam'a dokunun.",
+  "appBlockingAccessDialogContinue": "Devam"
 }

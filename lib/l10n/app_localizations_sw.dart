@@ -3344,4 +3344,14 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'Hakuna miji iliyopatikana';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'Ruhusa ya Ufikivu Inahitajika';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard hutumia Huduma ya Ufikivu ya Android kuzuia programu zinazokengeusha wakati wa swala na wa kuzingatia. Hakuna data binafsi inayokusanywa wala kushirikiwa. Gusa Endelea kufungua Mipangilio na kuiwasha.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'Endelea';
 }

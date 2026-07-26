@@ -1629,5 +1629,8 @@
   "prayerBegunTitleAsr": "🌤️ عصر کا وقت شروع ہو گیا",
   "prayerBegunTitleMaghrib": "🌅 مغرب کا وقت شروع ہو گیا",
   "prayerBegunTitleIsha": "🌙 عشاء کا وقت شروع ہو گیا",
-  "noCitiesFound": "کوئی شہر نہیں ملا"
+  "noCitiesFound": "کوئی شہر نہیں ملا",
+  "appBlockingAccessDialogTitle": "رسائی کی اجازت درکار ہے",
+  "appBlockingAccessDialogBody": "نور گارڈ نماز اور فوکس کے اوقات میں توجہ بھٹکانے والی ایپس کو بلاک کرنے کے لیے اینڈرائیڈ کی ایکسیسبیلیٹی سروس استعمال کرتا ہے۔ کوئی ذاتی ڈیٹا جمع یا شیئر نہیں کیا جاتا۔ سیٹنگز کھول کر اسے فعال کرنے کے لیے «جاری رکھیں» پر ٹیپ کریں۔",
+  "appBlockingAccessDialogContinue": "جاری رکھیں"
 }

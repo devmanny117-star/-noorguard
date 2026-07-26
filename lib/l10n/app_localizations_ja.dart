@@ -3206,4 +3206,14 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noCitiesFound => '都市が見つかりません';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'ユーザー補助の権限が必要です';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard は、礼拝や集中の時間に気が散るアプリをブロックするために Android のユーザー補助サービスを使用します。個人データの収集や共有は一切行いません。「続ける」をタップして設定を開き、有効にしてください。';
+
+  @override
+  String get appBlockingAccessDialogContinue => '続ける';
 }

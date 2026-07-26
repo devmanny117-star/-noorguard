@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../l10n/app_localizations.dart';
+import '../models/installed_app.dart';
 import '../services/app_blocking_service.dart';
 import '../services/prayer_state.dart';
 import '../services/streak_service.dart';
@@ -30,6 +31,9 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
   bool _loading = true;
   bool _accessibilityEnabled = false;
   int _streak = 0;
+  // null = icon cache not warm yet this session; the card then shows just the
+  // count text, same trade-off Focus Mode makes for its preview.
+  List<InstalledApp>? _blockedAppsPreview;
 
   @override
   void initState() {
@@ -57,6 +61,7 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
     setState(() {
       _streak = streak;
       _accessibilityEnabled = accessibility;
+      _blockedAppsPreview = _service.getBlockedAppsWithIconsIfCached();
       _loading = false;
     });
   }
@@ -74,13 +79,60 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
     }
   }
 
+  /// Play's prominent-disclosure requirement: explain why the accessibility
+  /// permission is needed before sending the user to system settings.
+  Future<bool> _showAccessibilityDisclosure() async {
+    final l10n = AppLocalizations.of(context)!;
+    final proceed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: _cardBg,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18),
+          side: BorderSide(color: _gold.withValues(alpha: 0.35)),
+        ),
+        title: Text(
+          l10n.appBlockingAccessDialogTitle,
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: _white,
+          ),
+        ),
+        content: Text(
+          l10n.appBlockingAccessDialogBody,
+          style: GoogleFonts.lato(fontSize: 14, height: 1.5, color: _grey),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: Text(
+              l10n.cancel,
+              style: GoogleFonts.lato(color: _grey),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, true),
+            child: Text(
+              l10n.appBlockingAccessDialogContinue,
+              style: GoogleFonts.lato(
+                color: _gold,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    return proceed ?? false;
+  }
+
   Future<void> _onToggleEnabled(bool value) async {
     if (value && isAndroidPlatform && !_accessibilityEnabled) {
-      await Navigator.push<bool>(
-        context,
-        MaterialPageRoute(builder: (_) => const AppBlockingSetupScreen()),
-      );
-      await _refreshAccessibility();
+      if (!await _showAccessibilityDisclosure()) return;
+      // Jump straight to Android's Accessibility Settings; _accessibilityEnabled
+      // re-syncs via didChangeAppLifecycleState when the user comes back.
+      await _service.openAccessibilitySettings();
     }
     await _service.setEnabled(value);
     if (!mounted) return;
@@ -152,7 +204,10 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
       ),
     );
     if (!mounted) return;
-    setState(() {});
+    // The picker's fetch warmed the full cache, so the preview resolves now.
+    setState(() {
+      _blockedAppsPreview = _service.getBlockedAppsWithIconsIfCached();
+    });
     await _syncNative();
   }
 
@@ -282,6 +337,11 @@ class _AppBlockingScreenState extends State<AppBlockingScreen>
                               color: _white,
                             ),
                           ),
+                          if (_blockedAppsPreview != null &&
+                              _blockedAppsPreview!.isNotEmpty) ...[
+                            const SizedBox(height: 12),
+                            _BlockedAppsPreviewRow(apps: _blockedAppsPreview!),
+                          ],
                           const SizedBox(height: 12),
                           SizedBox(
                             width: double.infinity,
@@ -711,6 +771,65 @@ class _BufferSelector extends StatelessWidget {
                       color: value == option ? _navy : _grey,
                     ),
                   ),
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────
+// BLOCKED APPS PREVIEW — icon row above "Select Apps"
+// ─────────────────────────────────────────────
+class _BlockedAppsPreviewRow extends StatelessWidget {
+  final List<InstalledApp> apps;
+
+  const _BlockedAppsPreviewRow({required this.apps});
+
+  static const _maxIcons = 5;
+
+  @override
+  Widget build(BuildContext context) {
+    final overflow = apps.length - _maxIcons;
+    final shown = overflow > 0 ? apps.take(_maxIcons).toList() : apps;
+
+    return Row(
+      children: [
+        for (final app in shown) ...[
+          Container(
+            width: 44,
+            height: 44,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              color: _navy,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: _gold.withValues(alpha: 0.15)),
+            ),
+            child: app.iconBytes != null
+                ? Image.memory(app.iconBytes!, fit: BoxFit.cover)
+                : Icon(Icons.apps_rounded,
+                    color: _white.withValues(alpha: 0.5), size: 24),
+          ),
+          const SizedBox(width: 8),
+        ],
+        if (overflow > 0)
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              color: _gold.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: _gold.withValues(alpha: 0.35)),
+            ),
+            child: Center(
+              child: Text(
+                '+$overflow',
+                style: GoogleFonts.lato(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: _gold,
                 ),
               ),
             ),

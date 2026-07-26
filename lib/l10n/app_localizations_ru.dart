@@ -3359,4 +3359,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'Города не найдены';
+
+  @override
+  String get appBlockingAccessDialogTitle =>
+      'Требуется разрешение специальных возможностей';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard использует службу специальных возможностей Android, чтобы блокировать отвлекающие приложения во время намаза и сосредоточенной работы. Никакие личные данные не собираются и не передаются. Нажмите «Продолжить», чтобы открыть настройки и включить её.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'Продолжить';
 }

@@ -4106,5 +4106,17 @@
   "noCitiesFound": "No cities found",
   "@noCitiesFound": {
     "description": "Shown in the Qibla city search dropdown when the autocomplete query matches no cities"
+  },
+  "appBlockingAccessDialogTitle": "Accessibility Permission Required",
+  "@appBlockingAccessDialogTitle": {
+    "description": "Title of the disclosure dialog shown before opening Android Accessibility Settings from the App Blocking enable toggle"
+  },
+  "appBlockingAccessDialogBody": "Noor Guard uses Android's Accessibility Service to block distracting apps during prayer and focus time. No personal data is collected or shared. Tap Continue to open Settings and enable it.",
+  "@appBlockingAccessDialogBody": {
+    "description": "Body of the accessibility disclosure dialog (Play prominent-disclosure requirement)"
+  },
+  "appBlockingAccessDialogContinue": "Continue",
+  "@appBlockingAccessDialogContinue": {
+    "description": "Continue button of the accessibility disclosure dialog"
   }
 }

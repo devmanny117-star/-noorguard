@@ -3,7 +3,7 @@ description: Noor Guard - Guard your time. Honor your prayers.
 
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -61,6 +61,8 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#0D1B2A"
+  adaptive_icon_foreground: "assets/icon/icon_foreground.png"
   min_sdk_android: 21
   web:
     generate: true

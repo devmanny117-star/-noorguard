@@ -3351,4 +3351,15 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'Geen steden gevonden';
+
+  @override
+  String get appBlockingAccessDialogTitle =>
+      'Toegankelijkheidsmachtiging vereist';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'Noor Guard gebruikt de toegankelijkheidsservice van Android om afleidende apps te blokkeren tijdens gebeds- en focustijd. Er worden geen persoonlijke gegevens verzameld of gedeeld. Tik op Doorgaan om Instellingen te openen en de service in te schakelen.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'Doorgaan';
 }

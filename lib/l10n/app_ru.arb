@@ -4082,5 +4082,8 @@
   "prayerBegunTitleAsr": "🌤️ Наступило время Асра",
   "prayerBegunTitleMaghrib": "🌅 Наступило время Магриба",
   "prayerBegunTitleIsha": "🌙 Наступило время Иши",
-  "noCitiesFound": "Города не найдены"
+  "noCitiesFound": "Города не найдены",
+  "appBlockingAccessDialogTitle": "Требуется разрешение специальных возможностей",
+  "appBlockingAccessDialogBody": "Noor Guard использует службу специальных возможностей Android, чтобы блокировать отвлекающие приложения во время намаза и сосредоточенной работы. Никакие личные данные не собираются и не передаются. Нажмите «Продолжить», чтобы открыть настройки и включить её.",
+  "appBlockingAccessDialogContinue": "Продолжить"
 }

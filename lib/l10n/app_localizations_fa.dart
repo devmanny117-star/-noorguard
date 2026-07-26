@@ -3328,4 +3328,14 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get noCitiesFound => 'شهری یافت نشد';
+
+  @override
+  String get appBlockingAccessDialogTitle => 'مجوز دسترس‌پذیری لازم است';
+
+  @override
+  String get appBlockingAccessDialogBody =>
+      'نور گارد از سرویس دسترس‌پذیری اندروید برای مسدود کردن برنامه‌های حواس‌پرت‌کن در زمان نماز و تمرکز استفاده می‌کند. هیچ داده شخصی جمع‌آوری یا به اشتراک گذاشته نمی‌شود. برای باز کردن تنظیمات و فعال‌سازی آن، روی «ادامه» بزنید.';
+
+  @override
+  String get appBlockingAccessDialogContinue => 'ادامه';
 }

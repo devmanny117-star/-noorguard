@@ -1629,5 +1629,8 @@
   "prayerBegunTitleAsr": "🌤️ Es ist jetzt Zeit für Asr",
   "prayerBegunTitleMaghrib": "🌅 Es ist jetzt Zeit für Maghrib",
   "prayerBegunTitleIsha": "🌙 Es ist jetzt Zeit für Isha",
-  "noCitiesFound": "Keine Städte gefunden"
+  "noCitiesFound": "Keine Städte gefunden",
+  "appBlockingAccessDialogTitle": "Bedienungshilfen-Berechtigung erforderlich",
+  "appBlockingAccessDialogBody": "Noor Guard nutzt den Bedienungshilfen-Dienst von Android, um ablenkende Apps während der Gebets- und Fokuszeiten zu blockieren. Es werden keine persönlichen Daten erfasst oder weitergegeben. Tippe auf „Weiter“, um die Einstellungen zu öffnen und ihn zu aktivieren.",
+  "appBlockingAccessDialogContinue": "Weiter"
 }
