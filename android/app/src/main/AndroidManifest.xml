@@ -26,6 +26,10 @@
          lock screen / status bar media controls when the app is backgrounded. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
 
+    <!-- Advertising ID, required by Play for apps targeting Android 13+ whose
+         declaration says the advertising identifier is used. -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
     <application
         android:label="noor_guard"
         android:name="${applicationName}"
