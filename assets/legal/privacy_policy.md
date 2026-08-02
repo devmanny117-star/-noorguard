@@ -1,6 +1,6 @@
 # Privacy Policy — Noor Guard: Islamic Prayer & Focus
 
-**Last updated:** June 7, 2026
+**Last updated:** August 2, 2026
 
 As-salamu alaykum, and welcome.
 
@@ -100,7 +100,7 @@ Even though Noor Guard does not collect personal data on remote servers, you rem
 - **Location permissions** — Grant, deny, or revoke location access at any time through your device's Settings app. If you deny access, you can still use Noor Guard by entering your city manually.
 - **Notification permissions** — Turn prayer and focus reminders on or off, or disable notifications entirely, through your device's notification settings.
 - **Local data deletion** — Because your streaks, history, and preferences are stored only on your device, you can erase them at any time by clearing the app's storage/data or uninstalling Noor Guard.
-- **Regional privacy rights (GDPR, UK GDPR, CCPA/CPRA, and similar laws)** — If you are located in the European Economic Area, the United Kingdom, California, or another region with data protection laws, you may have rights such as the right to access, correct, delete, or restrict the use of personal data, and the right to lodge a complaint with a supervisory authority. Because Noor Guard does not collect or store personal data on any server we control, there is generally no remote personal data for us to provide, correct, or erase — it lives on your device, under your control. If you ever believe we hold personal information about you, please contact us using the details in Section 12 and we will look into it promptly and at no cost to you.
+- **Regional privacy rights (GDPR, UK GDPR, CCPA/CPRA, and similar laws)** — If you are located in the European Economic Area, the United Kingdom, California, or another region with data protection laws, you may have rights such as the right to access, correct, delete, or restrict the use of personal data, and the right to lodge a complaint with a supervisory authority. Because Noor Guard does not collect or store personal data on any server we control, there is generally no remote personal data for us to provide, correct, or erase — it lives on your device, under your control. If you ever believe we hold personal information about you, please contact us using the details in Section 13 and we will look into it promptly and at no cost to you.
 
 ---
 
@@ -121,23 +121,29 @@ Noor Guard does not knowingly collect personal information from anyone, includin
 
 ---
 
-## 10. Governing Law
+## 10. Community Stories Moderation
+
+Noor Guard users can report inappropriate content in Community Stories using the in-app report button. All reported content is reviewed within 24 hours and removed if it violates our community guidelines. Content that promotes anything contrary to Islamic values, contains hate speech, harassment, or inappropriate material will be removed immediately. Users who repeatedly violate community guidelines will be blocked from posting. To report content outside the app, contact us at noorguard.support@gmail.com.
+
+---
+
+## 11. Governing Law
 
 This Privacy Policy is governed by the laws of **the State of California, USA**, without regard to conflict-of-law principles. If any provision of this Policy is found to be unenforceable, the remaining provisions will remain in full force and effect.
 
 ---
 
-## 11. Changes to This Policy
+## 12. Changes to This Policy
 
 If this Privacy Policy is ever updated — for example, if a new feature requires us to revisit how data is handled — we will revise the "Last updated" date at the top of this document and, where appropriate, notify you within the app. We encourage you to review this page occasionally to stay informed. Your continued use of Noor Guard after any changes take effect constitutes your acceptance of the revised Policy.
 
 ---
 
-## 12. Contact Us
+## 13. Contact Us
 
 If you have any questions, concerns, or feedback about this Privacy Policy or how Noor Guard works, please reach out:
 
-📧 **devmanny117@gmail.com**
+📧 **noorguard.support@gmail.com**
 
 We read every message and are happy to clarify anything that isn't clear.
 
