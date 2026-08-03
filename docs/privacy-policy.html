@@ -55,7 +55,7 @@
     <li>Calculate accurate prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha) for your area, and</li>
     <li>Determine the direction of the Qibla for the compass feature.</li>
   </ul>
-  <p>Your location is processed on your device. To calculate prayer times, your approximate coordinates are sent to the Aladhan API (see Section 4 for details on this and other third-party services); the Qibla direction, by contrast, is calculated entirely on your device using your phone's compass and GPS and is never transmitted anywhere. In either case, your location is not stored on our servers (we don't have any), not linked to your identity, and not used for advertising or analytics of any kind. You can deny or revoke location permissions at any time in your device settings — Noor Guard will simply ask you to enter a city manually instead.</p>
+  <p>Your location is processed on your device. To calculate prayer times, your approximate coordinates are sent to the Aladhan API (see Section 5 for details on this and other third-party services); the Qibla direction, by contrast, is calculated entirely on your device using your phone's compass and GPS and is never transmitted anywhere. In either case, your location is not stored on our servers (we don't have any), not linked to your identity, and not used for advertising or analytics of any kind. You can deny or revoke location permissions at any time in your device settings — Noor Guard will simply ask you to enter a city manually instead.</p>
 
   <h3>b) Notification Preferences</h3>
   <p>If you choose to enable prayer reminders or focus-session alerts, Noor Guard stores your notification settings (such as which prayers you'd like to be reminded about, and how far in advance) directly on your device using your operating system's notification framework. This information never leaves your phone.</p>
@@ -103,24 +103,29 @@
   <hr>
 
   <h2>6. Data Storage &amp; Security</h2>
-  <p>All personal app data — your streaks, completed prayers, focus history, language preference, and settings — is stored locally on your device using standard, secure on-device storage. Nothing is uploaded to a cloud server owned or operated by us, because no such server exists.</p>
+  <p>All personal app data — your streaks, completed prayers, focus history, language preference, and settings — is stored locally on your device only. The only exception is Community Stories content, which is stored on Firebase as described in Section 7 below.</p>
   <p>Because your data stays on your device, you remain in full control of it. Uninstalling the app, or clearing its data through your device settings, permanently removes this locally stored information.</p>
   <p>While we've designed Noor Guard to avoid handling sensitive data in the first place, please note that no method of electronic storage or transmission is ever 100% secure. We rely on the security protections built into your device's operating system (iOS and Android) to help safeguard locally stored app data, and we encourage you to keep your device's operating system up to date.</p>
 
   <hr>
 
-  <h2>7. Your Privacy Choices &amp; Rights</h2>
+  <h2>7. Community Stories</h2>
+  <p>If you choose to participate in Community Stories, certain information is uploaded to Firebase Firestore, a cloud database service operated by Google. This information includes: the text and any image content of your story, the display name you choose, your country, the story category you select, and a randomly generated device identifier (not linked to your name, email, or any personal account). This data is stored on Firebase servers and is necessary to display your story to other users. You can delete your own stories at any time directly from within the app. You can also request removal by contacting <a href="mailto:noorguard.support@gmail.com">noorguard.support@gmail.com</a>. Community Stories data is governed by Google Firebase's privacy policy, available at <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+
+  <hr>
+
+  <h2>8. Your Privacy Choices &amp; Rights</h2>
   <p>Even though Noor Guard does not collect personal data on remote servers, you remain in control of the limited information the app does use:</p>
   <ul>
     <li><strong>Location permissions</strong> — Grant, deny, or revoke location access at any time through your device's Settings app. If you deny access, you can still use Noor Guard by entering your city manually.</li>
     <li><strong>Notification permissions</strong> — Turn prayer and focus reminders on or off, or disable notifications entirely, through your device's notification settings.</li>
     <li><strong>Local data deletion</strong> — Because your streaks, history, and preferences are stored only on your device, you can erase them at any time by clearing the app's storage/data or uninstalling Noor Guard.</li>
-    <li><strong>Regional privacy rights (GDPR, UK GDPR, CCPA/CPRA, and similar laws)</strong> — If you are located in the European Economic Area, the United Kingdom, California, or another region with data protection laws, you may have rights such as the right to access, correct, delete, or restrict the use of personal data, and the right to lodge a complaint with a supervisory authority. Because Noor Guard does not collect or store personal data on any server we control, there is generally no remote personal data for us to provide, correct, or erase — it lives on your device, under your control. If you ever believe we hold personal information about you, please contact us using the details in Section 13 and we will look into it promptly and at no cost to you.</li>
+    <li><strong>Regional privacy rights (GDPR, UK GDPR, CCPA/CPRA, and similar laws)</strong> — If you are located in the European Economic Area, the United Kingdom, California, or another region with data protection laws, you may have rights such as the right to access, correct, delete, or restrict the use of personal data, and the right to lodge a complaint with a supervisory authority. Because Noor Guard does not collect or store personal data on any server we control, there is generally no remote personal data for us to provide, correct, or erase — it lives on your device, under your control. If you ever believe we hold personal information about you, please contact us using the details in Section 14 and we will look into it promptly and at no cost to you.</li>
   </ul>
 
   <hr>
 
-  <h2>8. App Store &amp; Platform Disclosures</h2>
+  <h2>9. App Store &amp; Platform Disclosures</h2>
   <p>Noor Guard is distributed through the Apple App Store and Google Play Store. These platforms may independently collect information about your device, downloads, purchases, and app usage in accordance with their own privacy policies — this collection happens at the platform level, outside of Noor Guard and outside of our control. We encourage you to review:</p>
   <ul>
     <li>Apple's Privacy Policy: <a href="https://apple.com/legal/privacy">apple.com/legal/privacy</a></li>
@@ -130,27 +135,27 @@
 
   <hr>
 
-  <h2>9. Children's Privacy</h2>
+  <h2>10. Children's Privacy</h2>
   <p>Noor Guard does not knowingly collect personal information from anyone, including children under the age of 13 (or the minimum age required by applicable local law, such as 16 in parts of the European Economic Area). Because the app does not collect personal data of any kind, from users of any age, there is no special remote-data concern for younger users — though, as with any app, we recommend parental guidance when children use mobile devices. If you believe a child has provided us with personal information, please contact us so we can look into it — though, given how Noor Guard is built, this should not be possible in the first place.</p>
 
   <hr>
 
-  <h2>10. Community Stories Moderation</h2>
+  <h2>11. Community Stories Moderation</h2>
   <p>Noor Guard users can report inappropriate content in Community Stories using the in-app report button. All reported content is reviewed within 24 hours and removed if it violates our community guidelines. Content that promotes anything contrary to Islamic values, contains hate speech, harassment, or inappropriate material will be removed immediately. Users who repeatedly violate community guidelines will be blocked from posting. To report content outside the app, contact us at noorguard.support@gmail.com.</p>
 
   <hr>
 
-  <h2>11. Governing Law</h2>
+  <h2>12. Governing Law</h2>
   <p>This Privacy Policy is governed by the laws of <strong>the State of California, USA</strong>, without regard to conflict-of-law principles. If any provision of this Policy is found to be unenforceable, the remaining provisions will remain in full force and effect.</p>
 
   <hr>
 
-  <h2>12. Changes to This Policy</h2>
+  <h2>13. Changes to This Policy</h2>
   <p>If this Privacy Policy is ever updated — for example, if a new feature requires us to revisit how data is handled — we will revise the "Last updated" date at the top of this document and, where appropriate, notify you within the app. We encourage you to review this page occasionally to stay informed. Your continued use of Noor Guard after any changes take effect constitutes your acceptance of the revised Policy.</p>
 
   <hr>
 
-  <h2>13. Contact Us</h2>
+  <h2>14. Contact Us</h2>
   <p>If you have any questions, concerns, or feedback about this Privacy Policy or how Noor Guard works, please reach out:</p>
   <p>📧 <a href="mailto:noorguard.support@gmail.com">noorguard.support@gmail.com</a></p>
   <p>We read every message and are happy to clarify anything that isn't clear.</p>

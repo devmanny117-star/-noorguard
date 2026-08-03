@@ -3212,6 +3212,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get storyMenuReport => 'إبلاغ';
 
   @override
+  String get storyMenuDelete => 'حذف';
+
+  @override
+  String get storyDeleteConfirmTitle => 'هل تريد حذف هذه القصة؟';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'سيؤدي هذا إلى حذف قصتك نهائيًا من قصص المجتمع. لا يمكن التراجع عن هذا الإجراء.';
+
+  @override
+  String get storyDeleted => 'تم حذف القصة';
+
+  @override
+  String get storyDeleteError => 'تعذر حذف قصتك — يرجى المحاولة مرة أخرى';
+
+  @override
   String get reportSheetTitle => 'الإبلاغ عن هذه القصة';
 
   @override

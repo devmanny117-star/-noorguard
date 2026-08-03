@@ -3102,6 +3102,21 @@ class AppLocalizationsZh extends AppLocalizations {
   String get storyMenuReport => '举报';
 
   @override
+  String get storyMenuDelete => '删除';
+
+  @override
+  String get storyDeleteConfirmTitle => '删除这个故事？';
+
+  @override
+  String get storyDeleteConfirmBody => '此操作将永久从社区见证故事中删除您的故事，且无法撤销。';
+
+  @override
+  String get storyDeleted => '故事已删除';
+
+  @override
+  String get storyDeleteError => '无法删除您的故事——请重试';
+
+  @override
   String get reportSheetTitle => '举报此故事';
 
   @override

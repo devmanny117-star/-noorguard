@@ -3256,6 +3256,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storyMenuReport => 'Report';
 
   @override
+  String get storyMenuDelete => 'Delete';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Delete this story?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'This will permanently remove your story from Community Stories. This can\'t be undone.';
+
+  @override
+  String get storyDeleted => 'Story deleted';
+
+  @override
+  String get storyDeleteError =>
+      'Couldn\'t delete your story — please try again';
+
+  @override
   String get reportSheetTitle => 'Report this story';
 
   @override

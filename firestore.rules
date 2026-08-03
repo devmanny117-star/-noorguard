@@ -33,7 +33,14 @@ service cloud.firestore {
       allow update: if request.resource.data.diff(resource.data)
           .affectedKeys().hasOnly(['reactions', 'commentCount']);
 
-      allow delete: if false;
+      // Lets a story's author delete their own submission from within the
+      // app. No auth in v1 (see top-of-file note), so this can't verify the
+      // caller is truly the device that set `userId` — it's the same trust
+      // tier already accepted for the reaction/comment-counter updates
+      // above. Revisit with anonymous Firebase Auth (request.auth.uid) for
+      // real per-owner enforcement.
+      allow delete: if resource.data.userId is string
+        && resource.data.userId.size() > 0;
 
       match /userReactions/{userId} {
         allow read: if true;

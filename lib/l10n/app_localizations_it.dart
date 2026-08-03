@@ -3285,6 +3285,23 @@ class AppLocalizationsIt extends AppLocalizations {
   String get storyMenuReport => 'Segnala';
 
   @override
+  String get storyMenuDelete => 'Elimina';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Eliminare questa storia?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Questa azione rimuoverà definitivamente la tua storia da Storie della Comunità. Non può essere annullata.';
+
+  @override
+  String get storyDeleted => 'Storia eliminata';
+
+  @override
+  String get storyDeleteError =>
+      'Impossibile eliminare la tua storia — riprova';
+
+  @override
   String get reportSheetTitle => 'Segnala questa storia';
 
   @override

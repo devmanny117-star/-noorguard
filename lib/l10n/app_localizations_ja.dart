@@ -3133,6 +3133,22 @@ class AppLocalizationsJa extends AppLocalizations {
   String get storyMenuReport => '報告';
 
   @override
+  String get storyMenuDelete => '削除';
+
+  @override
+  String get storyDeleteConfirmTitle => 'このストーリーを削除しますか？';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'これにより、あなたのストーリーがコミュニティのストーリーから完全に削除されます。この操作は取り消せません。';
+
+  @override
+  String get storyDeleted => 'ストーリーを削除しました';
+
+  @override
+  String get storyDeleteError => 'ストーリーを削除できませんでした — もう一度お試しください';
+
+  @override
   String get reportSheetTitle => 'このストーリーを報告';
 
   @override

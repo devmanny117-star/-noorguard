@@ -4007,6 +4007,26 @@
   "@storyMenuReport": {
     "description": "Story 3-dot menu: report option"
   },
+  "storyMenuDelete": "Delete",
+  "@storyMenuDelete": {
+    "description": "Story 3-dot menu: delete option, shown only to the story's own author"
+  },
+  "storyDeleteConfirmTitle": "Delete this story?",
+  "@storyDeleteConfirmTitle": {
+    "description": "Title of the confirmation dialog before permanently deleting the user's own story"
+  },
+  "storyDeleteConfirmBody": "This will permanently remove your story from Community Stories. This can't be undone.",
+  "@storyDeleteConfirmBody": {
+    "description": "Body text of the delete-story confirmation dialog"
+  },
+  "storyDeleted": "Story deleted",
+  "@storyDeleted": {
+    "description": "Snackbar shown after a story is successfully deleted"
+  },
+  "storyDeleteError": "Couldn't delete your story — please try again",
+  "@storyDeleteError": {
+    "description": "Snackbar shown when deleting a story fails"
+  },
   "reportSheetTitle": "Report this story",
   "@reportSheetTitle": {
     "description": "Title of the report-a-story sheet"

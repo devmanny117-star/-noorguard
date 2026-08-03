@@ -4001,6 +4001,11 @@
     "description": "Story 3-dot menu: bookmark option"
   },
   "storyMenuReport": "Пожаловаться",
+  "storyMenuDelete": "Удалить",
+  "storyDeleteConfirmTitle": "Удалить эту историю?",
+  "storyDeleteConfirmBody": "Это навсегда удалит вашу историю из раздела «Истории общины». Это действие нельзя отменить.",
+  "storyDeleted": "История удалена",
+  "storyDeleteError": "Не удалось удалить вашу историю — попробуйте ещё раз",
   "@storyMenuReport": {
     "description": "Story 3-dot menu: report option"
   },

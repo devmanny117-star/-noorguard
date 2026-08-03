@@ -3255,6 +3255,23 @@ class AppLocalizationsFa extends AppLocalizations {
   String get storyMenuReport => 'گزارش';
 
   @override
+  String get storyMenuDelete => 'حذف';
+
+  @override
+  String get storyDeleteConfirmTitle => 'این داستان حذف شود؟';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'این کار داستان شما را برای همیشه از داستان‌های جامعه حذف می‌کند. این کار قابل بازگشت نیست.';
+
+  @override
+  String get storyDeleted => 'داستان حذف شد';
+
+  @override
+  String get storyDeleteError =>
+      'حذف داستان شما ممکن نشد — لطفاً دوباره تلاش کنید';
+
+  @override
   String get reportSheetTitle => 'گزارش این داستان';
 
   @override

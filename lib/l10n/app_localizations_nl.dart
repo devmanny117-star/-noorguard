@@ -3278,6 +3278,23 @@ class AppLocalizationsNl extends AppLocalizations {
   String get storyMenuReport => 'Melden';
 
   @override
+  String get storyMenuDelete => 'Verwijderen';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Dit verhaal verwijderen?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Hiermee wordt je verhaal permanent verwijderd uit Verhalen uit de Gemeenschap. Dit kan niet ongedaan worden gemaakt.';
+
+  @override
+  String get storyDeleted => 'Verhaal verwijderd';
+
+  @override
+  String get storyDeleteError =>
+      'Je verhaal kon niet worden verwijderd — probeer het opnieuw';
+
+  @override
   String get reportSheetTitle => 'Dit verhaal melden';
 
   @override

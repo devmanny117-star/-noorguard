@@ -3251,6 +3251,23 @@ class AppLocalizationsUr extends AppLocalizations {
   String get storyMenuReport => 'رپورٹ کریں';
 
   @override
+  String get storyMenuDelete => 'حذف کریں';
+
+  @override
+  String get storyDeleteConfirmTitle => 'کیا یہ کہانی حذف کی جائے؟';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'اس سے آپ کی کہانی کمیونٹی کی کہانیاں سے مستقل طور پر حذف ہو جائے گی۔ اسے واپس نہیں لایا جا سکتا۔';
+
+  @override
+  String get storyDeleted => 'کہانی حذف کر دی گئی';
+
+  @override
+  String get storyDeleteError =>
+      'آپ کی کہانی حذف نہیں ہو سکی — براہ کرم دوبارہ کوشش کریں';
+
+  @override
   String get reportSheetTitle => 'اس کہانی کی رپورٹ کریں';
 
   @override

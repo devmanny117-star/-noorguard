@@ -3278,6 +3278,23 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storyMenuReport => 'Denunciar';
 
   @override
+  String get storyMenuDelete => 'Excluir';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Excluir esta história?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Isso removerá permanentemente a sua história das Histórias da Comunidade. Essa ação não pode ser desfeita.';
+
+  @override
+  String get storyDeleted => 'História excluída';
+
+  @override
+  String get storyDeleteError =>
+      'Não foi possível excluir a sua história — tente novamente';
+
+  @override
   String get reportSheetTitle => 'Denunciar esta história';
 
   @override

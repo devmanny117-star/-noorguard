@@ -3300,6 +3300,23 @@ class AppLocalizationsFr extends AppLocalizations {
   String get storyMenuReport => 'Signaler';
 
   @override
+  String get storyMenuDelete => 'Supprimer';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Supprimer ce témoignage ?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Cette action supprimera définitivement votre témoignage des Témoignages de la Communauté. Cette action est irréversible.';
+
+  @override
+  String get storyDeleted => 'Témoignage supprimé';
+
+  @override
+  String get storyDeleteError =>
+      'Impossible de supprimer votre témoignage — veuillez réessayer';
+
+  @override
   String get reportSheetTitle => 'Signaler cette histoire';
 
   @override

@@ -3279,6 +3279,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get storyMenuReport => 'Laporkan';
 
   @override
+  String get storyMenuDelete => 'Hapus';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Hapus kisah ini?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Tindakan ini akan menghapus kisah Anda secara permanen dari Kisah Komunitas. Tindakan ini tidak dapat dibatalkan.';
+
+  @override
+  String get storyDeleted => 'Kisah dihapus';
+
+  @override
+  String get storyDeleteError => 'Kisah Anda gagal dihapus — silakan coba lagi';
+
+  @override
   String get reportSheetTitle => 'Laporkan kisah ini';
 
   @override

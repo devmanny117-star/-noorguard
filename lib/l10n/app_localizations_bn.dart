@@ -3270,6 +3270,23 @@ class AppLocalizationsBn extends AppLocalizations {
   String get storyMenuReport => 'রিপোর্ট করুন';
 
   @override
+  String get storyMenuDelete => 'মুছুন';
+
+  @override
+  String get storyDeleteConfirmTitle => 'এই গল্পটি মুছবেন?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'এটি আপনার গল্পটি সম্প্রদায়ের গল্প থেকে স্থায়ীভাবে মুছে ফেলবে। এটি আর ফিরিয়ে আনা যাবে না।';
+
+  @override
+  String get storyDeleted => 'গল্প মুছে ফেলা হয়েছে';
+
+  @override
+  String get storyDeleteError =>
+      'আপনার গল্প মুছতে ব্যর্থ হয়েছে — অনুগ্রহ করে আবার চেষ্টা করুন';
+
+  @override
   String get reportSheetTitle => 'এই গল্পটি রিপোর্ট করুন';
 
   @override

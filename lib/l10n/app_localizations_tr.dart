@@ -3260,6 +3260,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get storyMenuReport => 'Bildir';
 
   @override
+  String get storyMenuDelete => 'Sil';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Bu hikaye silinsin mi?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Bu işlem hikayenizi Topluluk Hikayeleri\'nden kalıcı olarak kaldıracaktır. Bu işlem geri alınamaz.';
+
+  @override
+  String get storyDeleted => 'Hikaye silindi';
+
+  @override
+  String get storyDeleteError => 'Hikayeniz silinemedi — lütfen tekrar deneyin';
+
+  @override
   String get reportSheetTitle => 'Bu hikayeyi bildir';
 
   @override

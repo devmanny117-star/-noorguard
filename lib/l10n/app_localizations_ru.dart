@@ -3285,6 +3285,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storyMenuReport => 'Пожаловаться';
 
   @override
+  String get storyMenuDelete => 'Удалить';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Удалить эту историю?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Это навсегда удалит вашу историю из раздела «Истории общины». Это действие нельзя отменить.';
+
+  @override
+  String get storyDeleted => 'История удалена';
+
+  @override
+  String get storyDeleteError =>
+      'Не удалось удалить вашу историю — попробуйте ещё раз';
+
+  @override
   String get reportSheetTitle => 'Пожаловаться на эту историю';
 
   @override

@@ -3284,6 +3284,23 @@ class AppLocalizationsDe extends AppLocalizations {
   String get storyMenuReport => 'Melden';
 
   @override
+  String get storyMenuDelete => 'Löschen';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Diese Geschichte löschen?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Dadurch wird deine Geschichte dauerhaft aus den Community-Geschichten entfernt. Dies kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get storyDeleted => 'Geschichte gelöscht';
+
+  @override
+  String get storyDeleteError =>
+      'Deine Geschichte konnte nicht gelöscht werden — bitte versuche es erneut';
+
+  @override
   String get reportSheetTitle => 'Diese Geschichte melden';
 
   @override

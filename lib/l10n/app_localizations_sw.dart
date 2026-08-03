@@ -3271,6 +3271,23 @@ class AppLocalizationsSw extends AppLocalizations {
   String get storyMenuReport => 'Ripoti';
 
   @override
+  String get storyMenuDelete => 'Futa';
+
+  @override
+  String get storyDeleteConfirmTitle => 'Ufute hadithi hii?';
+
+  @override
+  String get storyDeleteConfirmBody =>
+      'Hatua hii itafuta hadithi yako kabisa kutoka Hadithi za Jamii. Hatua hii haiwezi kutenduliwa.';
+
+  @override
+  String get storyDeleted => 'Hadithi imefutwa';
+
+  @override
+  String get storyDeleteError =>
+      'Imeshindikana kufuta hadithi yako — tafadhali jaribu tena';
+
+  @override
   String get reportSheetTitle => 'Ripoti hadithi hii';
 
   @override

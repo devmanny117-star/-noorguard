@@ -642,6 +642,7 @@ class _FeaturedStoryCard extends StatelessWidget {
                           story: story,
                           saved: saved,
                           onToggleSave: onToggleSave,
+                          isMine: isMine,
                         ),
                       ),
                     ],
@@ -779,6 +780,8 @@ class _StoryCardState extends State<_StoryCard> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final story = widget.story;
+    final isMine =
+        widget.currentUserId != null && story.userId == widget.currentUserId;
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -867,8 +870,7 @@ class _StoryCardState extends State<_StoryCard> {
                             color: _kCream.withValues(alpha: 0.5),
                           ),
                         ),
-                      if (widget.currentUserId != null &&
-                          story.userId == widget.currentUserId) ...[
+                      if (isMine) ...[
                         const SizedBox(width: 8),
                         _EditButton(
                           onTap: () =>
@@ -883,6 +885,7 @@ class _StoryCardState extends State<_StoryCard> {
                           story: story,
                           saved: widget.saved,
                           onToggleSave: widget.onToggleSave,
+                          isMine: isMine,
                         ),
                       ),
                     ],
@@ -1281,30 +1284,115 @@ void _openStoryMenu(
   required CommunityStory story,
   required bool saved,
   required VoidCallback onToggleSave,
+  bool isMine = false,
+  VoidCallback? onDeleted,
 }) {
   showModalBottomSheet<void>(
     context: context,
     backgroundColor: Colors.transparent,
     builder: (_) => _StoryOptionsSheet(
       saved: saved,
+      isMine: isMine,
       onShare: () => shareStory(context, story),
       onBookmark: onToggleSave,
       onReport: () => _openReportSheet(context, service: service, story: story),
+      onDelete: () => _confirmAndDeleteStory(
+        context,
+        service: service,
+        story: story,
+        onDeleted: onDeleted,
+      ),
     ),
   );
 }
 
+/// Confirms with the user, then permanently deletes [story] from Firestore.
+/// [onDeleted] is called after a successful delete (e.g. to pop the detail
+/// screen back to the list) — not called on cancel or failure.
+Future<void> _confirmAndDeleteStory(
+  BuildContext context, {
+  required CommunityStoriesService service,
+  required CommunityStory story,
+  VoidCallback? onDeleted,
+}) async {
+  final l10n = AppLocalizations.of(context)!;
+  const kDestructive = Color(0xFFE57373);
+
+  final confirmed = await showDialog<bool>(
+    context: context,
+    builder: (dialogContext) => AlertDialog(
+      backgroundColor: _kCard,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+        side: BorderSide(color: _kGold.withValues(alpha: 0.35)),
+      ),
+      title: Text(
+        l10n.storyDeleteConfirmTitle,
+        style: GoogleFonts.playfairDisplay(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: _kCream,
+        ),
+      ),
+      content: Text(
+        l10n.storyDeleteConfirmBody,
+        style: GoogleFonts.lato(
+          fontSize: 13.5,
+          color: _kCream.withValues(alpha: 0.75),
+          height: 1.5,
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext, false),
+          child: Text(
+            l10n.cancel,
+            style: GoogleFonts.lato(fontWeight: FontWeight.w700, color: _kGold),
+          ),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext, true),
+          child: Text(
+            l10n.storyMenuDelete,
+            style:
+                GoogleFonts.lato(fontWeight: FontWeight.w700, color: kDestructive),
+          ),
+        ),
+      ],
+    ),
+  );
+  if (confirmed != true || !context.mounted) return;
+
+  try {
+    await service.deleteStory(story.id);
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(l10n.storyDeleted)),
+    );
+    onDeleted?.call();
+  } catch (_) {
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(l10n.storyDeleteError)),
+    );
+  }
+}
+
 class _StoryOptionsSheet extends StatelessWidget {
   final bool saved;
+  final bool isMine;
   final VoidCallback onShare;
   final VoidCallback onBookmark;
   final VoidCallback onReport;
+  final VoidCallback onDelete;
 
   const _StoryOptionsSheet({
     required this.saved,
+    required this.isMine,
     required this.onShare,
     required this.onBookmark,
     required this.onReport,
+    required this.onDelete,
   });
 
   Widget _option({
@@ -1312,6 +1400,7 @@ class _StoryOptionsSheet extends StatelessWidget {
     required IconData icon,
     required String label,
     required VoidCallback onTap,
+    Color color = _kGold,
   }) {
     return InkWell(
       onTap: () {
@@ -1328,10 +1417,10 @@ class _StoryOptionsSheet extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _kGold.withValues(alpha: 0.12),
-                border: Border.all(color: _kGold.withValues(alpha: 0.45)),
+                color: color.withValues(alpha: 0.12),
+                border: Border.all(color: color.withValues(alpha: 0.45)),
               ),
-              child: Icon(icon, size: 17, color: _kGold),
+              child: Icon(icon, size: 17, color: color),
             ),
             const SizedBox(width: 14),
             Text(
@@ -1384,12 +1473,21 @@ class _StoryOptionsSheet extends StatelessWidget {
               label: l10n.storyMenuBookmark,
               onTap: onBookmark,
             ),
-            _option(
-              context: context,
-              icon: Icons.flag_outlined,
-              label: l10n.storyMenuReport,
-              onTap: onReport,
-            ),
+            if (isMine)
+              _option(
+                context: context,
+                icon: Icons.delete_outline_rounded,
+                label: l10n.storyMenuDelete,
+                color: const Color(0xFFE57373),
+                onTap: onDelete,
+              )
+            else
+              _option(
+                context: context,
+                icon: Icons.flag_outlined,
+                label: l10n.storyMenuReport,
+                onTap: onReport,
+              ),
             const SizedBox(height: 8),
           ],
         ),
@@ -3302,11 +3400,18 @@ class _CommunityStoryDetailScreenState
   /// Locally bookmarked story ids — the 3-dot menu's Bookmark option.
   Set<String> _savedIds = {};
 
+  /// This device's per-install id — gates the 3-dot menu's Delete option to
+  /// the story's own author, same as the list/featured cards.
+  String? _currentUserId;
+
   @override
   void initState() {
     super.initState();
     CommunityStoriesService.savedStoryIds().then((ids) {
       if (mounted) setState(() => _savedIds = ids);
+    });
+    CommunityStoriesService.userId().then((id) {
+      if (mounted) setState(() => _currentUserId = id);
     });
   }
 
@@ -3361,6 +3466,8 @@ class _CommunityStoryDetailScreenState
         initialData: widget.story,
         builder: (context, snap) {
           final story = snap.data ?? widget.story;
+          final isMine = _currentUserId != null &&
+              story.userId == _currentUserId;
           return Column(
             children: [
               Expanded(
@@ -3376,6 +3483,8 @@ class _CommunityStoryDetailScreenState
                         story: story,
                         saved: _savedIds.contains(story.id),
                         onToggleSave: _toggleSaved,
+                        isMine: isMine,
+                        onDeleted: () => Navigator.of(context).pop(),
                       ),
                     ),
                     _DetailAuthorSection(story: story),

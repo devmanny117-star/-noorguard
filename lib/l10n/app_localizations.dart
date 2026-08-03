@@ -6008,6 +6008,36 @@ abstract class AppLocalizations {
   /// **'Report'**
   String get storyMenuReport;
 
+  /// Story 3-dot menu: delete option, shown only to the story's own author
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get storyMenuDelete;
+
+  /// Title of the confirmation dialog before permanently deleting the user's own story
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this story?'**
+  String get storyDeleteConfirmTitle;
+
+  /// Body text of the delete-story confirmation dialog
+  ///
+  /// In en, this message translates to:
+  /// **'This will permanently remove your story from Community Stories. This can\'t be undone.'**
+  String get storyDeleteConfirmBody;
+
+  /// Snackbar shown after a story is successfully deleted
+  ///
+  /// In en, this message translates to:
+  /// **'Story deleted'**
+  String get storyDeleted;
+
+  /// Snackbar shown when deleting a story fails
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t delete your story — please try again'**
+  String get storyDeleteError;
+
   /// Title of the report-a-story sheet
   ///
   /// In en, this message translates to:
