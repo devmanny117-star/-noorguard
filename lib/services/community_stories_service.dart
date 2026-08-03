@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/community_story.dart';
@@ -17,13 +17,10 @@ class CommunityStoriesService {
   /// all UI entry points hide themselves while this is false.
   static bool firebaseAvailable = false;
 
-  static const _userIdKey = 'community_user_id';
   static const _authorNameKey = 'community_author_name';
   static const _savedStoriesKey = 'saved_story_ids';
   static const _storyDraftKey = 'community_story_draft';
   static const int maxStories = 100;
-
-  static String? _cachedUserId;
 
   CollectionReference<Map<String, dynamic>> get _stories =>
       FirebaseFirestore.instance.collection('stories');
@@ -31,19 +28,20 @@ class CommunityStoriesService {
   CollectionReference<Map<String, dynamic>> get _reports =>
       FirebaseFirestore.instance.collection('reports');
 
-  /// Stable anonymous per-install user id for reactions/comments.
+  /// This device's Firebase Anonymous Auth uid — a real, server-verifiable
+  /// identity backing every Community Stories write, so Firestore security
+  /// rules can check request.auth.uid against a story's stored userId.
+  /// Replaces the old client-generated random id, which had no way to prove
+  /// itself server-side. Retries sign-in once if main.dart's startup attempt
+  /// didn't leave a signed-in user (e.g. a transient network failure, or
+  /// Anonymous Auth not yet enabled in the Firebase console).
   static Future<String> userId() async {
-    final cached = _cachedUserId;
-    if (cached != null) return cached;
-    final prefs = await SharedPreferences.getInstance();
-    var id = prefs.getString(_userIdKey);
-    if (id == null) {
-      final rand = Random();
-      id = List.generate(20, (_) => rand.nextInt(36).toRadixString(36)).join();
-      await prefs.setString(_userIdKey, id);
+    var user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      final credential = await FirebaseAuth.instance.signInAnonymously();
+      user = credential.user;
     }
-    _cachedUserId = id;
-    return id;
+    return user!.uid;
   }
 
   /// Remembered display name from the user's last submission/comment.

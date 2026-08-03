@@ -1,24 +1,28 @@
 rules_version = '2';
 
-// Community Stories rules (no auth in v1 — the app uses a per-install
-// anonymous id). Manny moderates by editing `status` in the console; the
-// console (admin) bypasses these rules.
+// Community Stories rules. Every install signs in with Firebase Anonymous
+// Auth (see main.dart), so request.auth.uid is a real, server-verifiable
+// per-device identity — writes that claim ownership of a story are checked
+// against it below, rather than trusted at face value. Manny moderates by
+// editing `status` in the console; the console (admin) bypasses these rules.
 service cloud.firestore {
   match /databases/{database}/documents {
 
     match /stories/{storyId} {
       // Approved stories are public. Pending stories are also readable so
       // the author's own submission can show up for them right away — the
-      // app only ever queries pending docs filtered to its own per-install
-      // userId. (No auth in v1, so this can't be enforced server-side;
-      // pending stories are unpublished-but-not-secret. Revisit if
-      // anonymous Firebase Auth is added.)
+      // app only ever queries pending docs filtered to its own userId.
+      // Not scoped to the requester server-side (any signed-in client can
+      // read any pending doc); pending stories are unpublished-but-not-secret.
       allow read: if resource.data.status == 'approved'
         || resource.data.status == 'pending';
 
-      // Anyone can submit a story, but it must arrive as a pending,
-      // non-featured document with sane field types and sizes.
-      allow create: if request.resource.data.status == 'pending'
+      // Anyone signed in can submit a story, but it must arrive as a
+      // pending, non-featured document with sane field types/sizes, and its
+      // userId must be the submitter's own auth uid — not a claimed id.
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.status == 'pending'
         && request.resource.data.featured == false
         && request.resource.data.story is string
         && request.resource.data.story.size() > 0
@@ -28,28 +32,44 @@ service cloud.firestore {
         && request.resource.data.country is string
         && request.resource.data.category in ['revert', 'born_muslim', 'returning'];
 
-      // Client updates may only touch the aggregate reaction/comment
-      // counters (the reaction transaction and comment counter).
-      allow update: if request.resource.data.diff(resource.data)
-          .affectedKeys().hasOnly(['reactions', 'commentCount']);
+      // Two distinct kinds of update, both requiring sign-in:
+      //  - Anyone signed in may bump the aggregate reaction/comment
+      //    counters (the reaction transaction and comment counter) on any
+      //    story — these aren't owner-restricted.
+      //  - Only the story's own author (request.auth.uid == its stored
+      //    userId) may edit their story's content, and only content fields
+      //    — status/featured/reactions/commentCount/dateSubmitted/userId
+      //    can't be touched this way.
+      allow update: if request.auth != null
+        && request.resource.data.diff(resource.data)
+            .affectedKeys().hasOnly(['reactions', 'commentCount']);
+      allow update: if request.auth != null
+        && request.auth.uid == resource.data.userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'avatarType', 'avatarData', 'name', 'anonymous', 'country',
+          'countryFlag', 'category', 'shahadaDate', 'story',
+          'backgroundImage', 'language'
+        ]);
 
-      // Lets a story's author delete their own submission from within the
-      // app. No auth in v1 (see top-of-file note), so this can't verify the
-      // caller is truly the device that set `userId` — it's the same trust
-      // tier already accepted for the reaction/comment-counter updates
-      // above. Revisit with anonymous Firebase Auth (request.auth.uid) for
-      // real per-owner enforcement.
-      allow delete: if resource.data.userId is string
-        && resource.data.userId.size() > 0;
+      // Lets a story's own author permanently delete it.
+      allow delete: if request.auth != null
+        && request.auth.uid == resource.data.userId;
 
       match /userReactions/{userId} {
         allow read: if true;
-        allow write: if request.resource.data.keys().hasOnly(['dua', 'heart']);
+        // A client can only write to its OWN reaction doc (the path's
+        // {userId} segment, which toggleReaction() always sets to the
+        // caller's own uid) — not spoof another user's reaction.
+        allow write: if request.auth != null
+          && request.auth.uid == userId
+          && request.resource.data.keys().hasOnly(['dua', 'heart']);
       }
 
       match /comments/{commentId} {
         allow read: if true;
-        allow create: if request.resource.data.comment is string
+        allow create: if request.auth != null
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.comment is string
           && request.resource.data.comment.size() > 0
           && request.resource.data.comment.size() <= 500
           && request.resource.data.name is string

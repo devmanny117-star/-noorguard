@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
@@ -37,6 +38,20 @@ Future<void> main() async {
     CommunityStoriesService.firebaseAvailable = true;
   } catch (_) {
     CommunityStoriesService.firebaseAvailable = false;
+  }
+  // Anonymous Firebase Auth gives each install a real, server-verifiable
+  // identity (request.auth.uid) so Firestore security rules can enforce
+  // "only a story's own author can edit/delete it" — the previous
+  // client-generated random id had no way to prove itself server-side.
+  // Kept in its own try/catch: if Anonymous sign-in isn't enabled yet in the
+  // Firebase console, or the network is briefly unavailable, Community
+  // Stories reads should keep working — only sign-in-dependent writes
+  // (submit/react/comment/delete) would fail until a uid exists.
+  if (CommunityStoriesService.firebaseAvailable &&
+      FirebaseAuth.instance.currentUser == null) {
+    try {
+      await FirebaseAuth.instance.signInAnonymously();
+    } catch (_) {}
   }
   if (!kIsWeb) tz_data.initializeTimeZones();
   await NotificationService().init();
