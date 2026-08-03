@@ -3370,4 +3370,32 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'Продолжить';
+
+  @override
+  String get adNoticeTitle => 'Немного о Noor Guard';
+
+  @override
+  String get adNoticeSubtitle =>
+      'Noor Guard бесплатен в использовании. Чтобы поддерживать его работу, мы показываем рекламу после первых 5 дней.';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'Мы стараемся показывать только халяльную рекламу';
+
+  @override
+  String get adNoticeBulletNoSellData => 'Мы никогда не продаём ваши данные';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'Для раздела «Истории общины» требуется Premium';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'Уберите рекламу и откройте все функции, перейдя на Premium';
+
+  @override
+  String get adNoticeThanks => 'Джазакаллаху хайран за вашу поддержку';
+
+  @override
+  String get adNoticeGotIt => 'Понятно';
 }

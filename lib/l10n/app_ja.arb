@@ -1632,5 +1632,13 @@
   "noCitiesFound": "都市が見つかりません",
   "appBlockingAccessDialogTitle": "ユーザー補助の権限が必要です",
   "appBlockingAccessDialogBody": "Noor Guard は、礼拝や集中の時間に気が散るアプリをブロックするために Android のユーザー補助サービスを使用します。個人データの収集や共有は一切行いません。「続ける」をタップして設定を開き、有効にしてください。",
-  "appBlockingAccessDialogContinue": "続ける"
+  "appBlockingAccessDialogContinue": "続ける",
+  "adNoticeTitle": "Noor Guardについてのお知らせ",
+  "adNoticeSubtitle": "Noor Guardは無料でご利用いただけます。運営を続けるため、最初の5日間が過ぎると広告を表示します。",
+  "adNoticeBulletHalalAds": "できる限りハラール広告のみを表示するよう努めています",
+  "adNoticeBulletNoSellData": "お客様のデータを販売することは一切ありません",
+  "adNoticeBulletCommunityPremium": "コミュニティのストーリーの利用にはPremiumが必要です",
+  "adNoticeBulletUpgradePremium": "Premiumにアップグレードすると広告が消え、すべての機能が使えます",
+  "adNoticeThanks": "ご支援にジャザーカッラーフ・ハイランを",
+  "adNoticeGotIt": "了解しました"
 }

@@ -16,6 +16,7 @@ import '../services/prayer_scheduler.dart';
 import '../services/prayer_state.dart';
 import '../services/prayer_times_cache.dart';
 import '../services/widget_data_service.dart';
+import '../widgets/ad_notice_dialog.dart';
 import '../widgets/city_picker_dialog.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
@@ -119,6 +120,9 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     _applyPendingPrayerMarks();
     _checkAyahChallenge();
     _loadUserName();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) AdNoticeDialog.maybeShow(context);
+    });
   }
 
   Future<void> _loadUserName() async {

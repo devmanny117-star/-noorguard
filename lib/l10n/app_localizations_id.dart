@@ -3363,4 +3363,32 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'Lanjutkan';
+
+  @override
+  String get adNoticeTitle => 'Catatan tentang Noor Guard';
+
+  @override
+  String get adNoticeSubtitle =>
+      'Noor Guard gratis digunakan. Agar tetap berjalan, kami menampilkan iklan setelah 5 hari pertama Anda.';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'Kami berusaha sebaik mungkin untuk hanya menampilkan iklan yang halal';
+
+  @override
+  String get adNoticeBulletNoSellData => 'Kami tidak pernah menjual data Anda';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'Kisah Komunitas memerlukan Premium';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'Hilangkan iklan dan buka semua fitur dengan upgrade ke Premium';
+
+  @override
+  String get adNoticeThanks => 'JazakAllahu Khayran atas dukungan Anda';
+
+  @override
+  String get adNoticeGotIt => 'Mengerti';
 }

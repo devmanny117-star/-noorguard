@@ -1632,5 +1632,13 @@
   "noCitiesFound": "কোনো শহর পাওয়া যায়নি",
   "appBlockingAccessDialogTitle": "অ্যাক্সেসিবিলিটি অনুমতি প্রয়োজন",
   "appBlockingAccessDialogBody": "নামাজ ও মনোযোগের সময়ে বিভ্রান্তিকর অ্যাপ ব্লক করতে Noor Guard অ্যান্ড্রয়েডের অ্যাক্সেসিবিলিটি সার্ভিস ব্যবহার করে। কোনো ব্যক্তিগত তথ্য সংগ্রহ বা শেয়ার করা হয় না। সেটিংস খুলে এটি চালু করতে «চালিয়ে যান»-এ ট্যাপ করুন।",
-  "appBlockingAccessDialogContinue": "চালিয়ে যান"
+  "appBlockingAccessDialogContinue": "চালিয়ে যান",
+  "adNoticeTitle": "Noor Guard সম্পর্কে একটি নোট",
+  "adNoticeSubtitle": "Noor Guard ব্যবহার করা বিনামূল্যে। এটি সচল রাখতে, আমরা আপনার প্রথম ৫ দিনের পর বিজ্ঞাপন দেখাই।",
+  "adNoticeBulletHalalAds": "আমরা কেবল হালাল বিজ্ঞাপন দেখানোর সর্বাত্মক চেষ্টা করি",
+  "adNoticeBulletNoSellData": "আমরা কখনোই আপনার ডেটা বিক্রি করি না",
+  "adNoticeBulletCommunityPremium": "সম্প্রদায়ের গল্প-এর জন্য প্রিমিয়াম প্রয়োজন",
+  "adNoticeBulletUpgradePremium": "প্রিমিয়ামে আপগ্রেড করে বিজ্ঞাপন সরিয়ে ফেলুন এবং সব ফিচার আনলক করুন",
+  "adNoticeThanks": "জাযাকাল্লাহু খাইরান আপনার সমর্থনের জন্য",
+  "adNoticeGotIt": "বুঝেছি"
 }

@@ -3369,4 +3369,32 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'Continua';
+
+  @override
+  String get adNoticeTitle => 'Una nota su Noor Guard';
+
+  @override
+  String get adNoticeSubtitle =>
+      'Noor Guard è gratuito. Per mantenerlo attivo, mostriamo annunci dopo i tuoi primi 5 giorni.';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'Facciamo del nostro meglio per mostrare solo annunci halal';
+
+  @override
+  String get adNoticeBulletNoSellData => 'Non vendiamo mai i tuoi dati';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'Storie della Comunità richiede Premium';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'Rimuovi gli annunci e sblocca tutte le funzionalità passando a Premium';
+
+  @override
+  String get adNoticeThanks => 'JazakAllahu Khayran per il tuo supporto';
+
+  @override
+  String get adNoticeGotIt => 'Capito';
 }

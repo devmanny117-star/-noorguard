@@ -14,6 +14,7 @@ import '../services/prayer_scheduler.dart';
 import '../services/prayer_state.dart';
 import '../services/prayer_times_cache.dart';
 import '../theme/app_theme.dart';
+import '../widgets/ad_notice_dialog.dart';
 import '../widgets/city_picker_dialog.dart';
 import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/home/header_section.dart';
@@ -154,6 +155,9 @@ class _BeginnerBodyState extends State<_BeginnerBody>
     _lastKnownDate = DateTime.now();
     WidgetsBinding.instance.addObserver(this);
     _loadData();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) AdNoticeDialog.maybeShow(context);
+    });
   }
 
   @override

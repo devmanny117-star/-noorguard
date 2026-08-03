@@ -6175,6 +6175,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue'**
   String get appBlockingAccessDialogContinue;
+
+  /// Title of the one-time ad notice popup shown on first launch after onboarding
+  ///
+  /// In en, this message translates to:
+  /// **'A note about Noor Guard'**
+  String get adNoticeTitle;
+
+  /// Subtitle of the one-time ad notice popup
+  ///
+  /// In en, this message translates to:
+  /// **'Noor Guard is free to use. To keep it running, we show ads after your first 5 days.'**
+  String get adNoticeSubtitle;
+
+  /// First bullet point in the ad notice popup
+  ///
+  /// In en, this message translates to:
+  /// **'We try our best to show halal-only ads'**
+  String get adNoticeBulletHalalAds;
+
+  /// Second bullet point in the ad notice popup
+  ///
+  /// In en, this message translates to:
+  /// **'We never sell your data'**
+  String get adNoticeBulletNoSellData;
+
+  /// Third bullet point in the ad notice popup
+  ///
+  /// In en, this message translates to:
+  /// **'Community Stories requires Premium'**
+  String get adNoticeBulletCommunityPremium;
+
+  /// Fourth bullet point in the ad notice popup
+  ///
+  /// In en, this message translates to:
+  /// **'Remove ads and unlock all features by upgrading to Premium'**
+  String get adNoticeBulletUpgradePremium;
+
+  /// Italic thank-you line shown below the bullet points in the ad notice popup
+  ///
+  /// In en, this message translates to:
+  /// **'JazakAllahu Khayran for your support'**
+  String get adNoticeThanks;
+
+  /// Dismiss button of the ad notice popup
+  ///
+  /// In en, this message translates to:
+  /// **'Got it'**
+  String get adNoticeGotIt;
 }
 
 class _AppLocalizationsDelegate

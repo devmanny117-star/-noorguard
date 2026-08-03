@@ -3295,4 +3295,30 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'متابعة';
+
+  @override
+  String get adNoticeTitle => 'ملاحظة حول نور غارد';
+
+  @override
+  String get adNoticeSubtitle =>
+      'نور غارد مجاني الاستخدام. للحفاظ على استمراره، نعرض إعلانات بعد أول 5 أيام.';
+
+  @override
+  String get adNoticeBulletHalalAds => 'نبذل قصارى جهدنا لعرض إعلانات حلال فقط';
+
+  @override
+  String get adNoticeBulletNoSellData => 'نحن لا نبيع بياناتك أبدًا';
+
+  @override
+  String get adNoticeBulletCommunityPremium => 'قصص المجتمع تتطلب Premium';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'أزل الإعلانات وافتح جميع الميزات بالترقية إلى Premium';
+
+  @override
+  String get adNoticeThanks => 'جزاك الله خيرًا على دعمك';
+
+  @override
+  String get adNoticeGotIt => 'فهمت';
 }

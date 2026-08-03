@@ -154,18 +154,16 @@ class LiveNotificationService {
           'navData': '${name.number}',
         };
       default:
-        final hadith = shareHadiths[step % shareHadiths.length];
+        final hadithIndex = step % shareHadiths.length;
+        final hadith = shareHadiths[hadithIndex];
         return {
           'date': dateKey,
           'header': l10n.liveNotifHeaderHadith,
           'arabic': hadith.arabic,
           'body': _translationOrEmpty(locale, hadith.translationFor),
           'source': hadith.source,
-          // There is no dedicated hadith reading screen in the app, so a tap
-          // on hadith content opens the home screen (the nav handler treats
-          // 'hadith' as home).
           'navType': 'hadith',
-          'navData': '',
+          'navData': '$hadithIndex',
         };
     }
   }

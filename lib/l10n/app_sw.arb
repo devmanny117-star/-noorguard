@@ -1632,5 +1632,13 @@
   "noCitiesFound": "Hakuna miji iliyopatikana",
   "appBlockingAccessDialogTitle": "Ruhusa ya Ufikivu Inahitajika",
   "appBlockingAccessDialogBody": "Noor Guard hutumia Huduma ya Ufikivu ya Android kuzuia programu zinazokengeusha wakati wa swala na wa kuzingatia. Hakuna data binafsi inayokusanywa wala kushirikiwa. Gusa Endelea kufungua Mipangilio na kuiwasha.",
-  "appBlockingAccessDialogContinue": "Endelea"
+  "appBlockingAccessDialogContinue": "Endelea",
+  "adNoticeTitle": "Ujumbe kuhusu Noor Guard",
+  "adNoticeSubtitle": "Noor Guard ni bure kutumia. Ili kuiendesha, tunaonyesha matangazo baada ya siku zako 5 za kwanza.",
+  "adNoticeBulletHalalAds": "Tunajitahidi kuonyesha matangazo ya halali pekee",
+  "adNoticeBulletNoSellData": "Hatuuzi data yako kamwe",
+  "adNoticeBulletCommunityPremium": "Hadithi za Jamii zinahitaji Premium",
+  "adNoticeBulletUpgradePremium": "Ondoa matangazo na ufungue vipengele vyote kwa kupandisha hadhi hadi Premium",
+  "adNoticeThanks": "JazakAllahu Khayran kwa msaada wako",
+  "adNoticeGotIt": "Nimeelewa"
 }

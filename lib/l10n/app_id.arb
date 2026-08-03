@@ -1632,5 +1632,13 @@
   "noCitiesFound": "Tidak ada kota yang ditemukan",
   "appBlockingAccessDialogTitle": "Izin Aksesibilitas Diperlukan",
   "appBlockingAccessDialogBody": "Noor Guard menggunakan Layanan Aksesibilitas Android untuk memblokir aplikasi yang mengganggu selama waktu salat dan fokus. Tidak ada data pribadi yang dikumpulkan atau dibagikan. Ketuk Lanjutkan untuk membuka Pengaturan dan mengaktifkannya.",
-  "appBlockingAccessDialogContinue": "Lanjutkan"
+  "appBlockingAccessDialogContinue": "Lanjutkan",
+  "adNoticeTitle": "Catatan tentang Noor Guard",
+  "adNoticeSubtitle": "Noor Guard gratis digunakan. Agar tetap berjalan, kami menampilkan iklan setelah 5 hari pertama Anda.",
+  "adNoticeBulletHalalAds": "Kami berusaha sebaik mungkin untuk hanya menampilkan iklan yang halal",
+  "adNoticeBulletNoSellData": "Kami tidak pernah menjual data Anda",
+  "adNoticeBulletCommunityPremium": "Kisah Komunitas memerlukan Premium",
+  "adNoticeBulletUpgradePremium": "Hilangkan iklan dan buka semua fitur dengan upgrade ke Premium",
+  "adNoticeThanks": "JazakAllahu Khayran atas dukungan Anda",
+  "adNoticeGotIt": "Mengerti"
 }

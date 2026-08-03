@@ -56,6 +56,7 @@ flutter:
     - assets/images/stories/
     - assets/data/block_screen_verses.json
     - assets/sounds/
+    - assets/legal/terms_of_service.html
 
 flutter_launcher_icons:
   android: true

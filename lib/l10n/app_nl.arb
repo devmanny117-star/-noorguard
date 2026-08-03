@@ -1632,5 +1632,13 @@
   "noCitiesFound": "Geen steden gevonden",
   "appBlockingAccessDialogTitle": "Toegankelijkheidsmachtiging vereist",
   "appBlockingAccessDialogBody": "Noor Guard gebruikt de toegankelijkheidsservice van Android om afleidende apps te blokkeren tijdens gebeds- en focustijd. Er worden geen persoonlijke gegevens verzameld of gedeeld. Tik op Doorgaan om Instellingen te openen en de service in te schakelen.",
-  "appBlockingAccessDialogContinue": "Doorgaan"
+  "appBlockingAccessDialogContinue": "Doorgaan",
+  "adNoticeTitle": "Een opmerking over Noor Guard",
+  "adNoticeSubtitle": "Noor Guard is gratis te gebruiken. Om de app draaiende te houden, tonen we advertenties na je eerste 5 dagen.",
+  "adNoticeBulletHalalAds": "We doen ons best om alleen halal advertenties te tonen",
+  "adNoticeBulletNoSellData": "We verkopen je gegevens nooit",
+  "adNoticeBulletCommunityPremium": "Verhalen uit de Gemeenschap vereist Premium",
+  "adNoticeBulletUpgradePremium": "Verwijder advertenties en ontgrendel alle functies door te upgraden naar Premium",
+  "adNoticeThanks": "JazakAllahu Khayran voor je steun",
+  "adNoticeGotIt": "Begrepen"
 }

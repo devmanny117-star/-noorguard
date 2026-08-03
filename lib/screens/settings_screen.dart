@@ -181,7 +181,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _openTermsOfService() async {
     final uri = Uri.parse(
-        'https://devmanny117-star.github.io/-noorguard/terms-of-service');
+        'https://devmanny117-star.github.io/-noorguard/terms-of-service.html');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else if (mounted) {

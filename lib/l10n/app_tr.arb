@@ -1632,5 +1632,13 @@
   "noCitiesFound": "Şehir bulunamadı",
   "appBlockingAccessDialogTitle": "Erişilebilirlik İzni Gerekli",
   "appBlockingAccessDialogBody": "Noor Guard, namaz ve odaklanma zamanlarında dikkat dağıtan uygulamaları engellemek için Android'in Erişilebilirlik Servisi'ni kullanır. Hiçbir kişisel veri toplanmaz veya paylaşılmaz. Ayarları açıp etkinleştirmek için Devam'a dokunun.",
-  "appBlockingAccessDialogContinue": "Devam"
+  "appBlockingAccessDialogContinue": "Devam",
+  "adNoticeTitle": "Noor Guard hakkında bir not",
+  "adNoticeSubtitle": "Noor Guard'ı kullanmak ücretsizdir. Çalışmaya devam edebilmesi için ilk 5 gününüzden sonra reklam gösteriyoruz.",
+  "adNoticeBulletHalalAds": "Yalnızca helal reklamlar göstermek için elimizden geleni yapıyoruz",
+  "adNoticeBulletNoSellData": "Verilerinizi asla satmıyoruz",
+  "adNoticeBulletCommunityPremium": "Topluluk Hikayeleri için Premium gerekir",
+  "adNoticeBulletUpgradePremium": "Premium'a yükselterek reklamları kaldırın ve tüm özelliklerin kilidini açın",
+  "adNoticeThanks": "Desteğiniz için JazakAllahu Khayran",
+  "adNoticeGotIt": "Anladım"
 }

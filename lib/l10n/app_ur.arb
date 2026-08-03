@@ -1632,5 +1632,13 @@
   "noCitiesFound": "کوئی شہر نہیں ملا",
   "appBlockingAccessDialogTitle": "رسائی کی اجازت درکار ہے",
   "appBlockingAccessDialogBody": "نور گارڈ نماز اور فوکس کے اوقات میں توجہ بھٹکانے والی ایپس کو بلاک کرنے کے لیے اینڈرائیڈ کی ایکسیسبیلیٹی سروس استعمال کرتا ہے۔ کوئی ذاتی ڈیٹا جمع یا شیئر نہیں کیا جاتا۔ سیٹنگز کھول کر اسے فعال کرنے کے لیے «جاری رکھیں» پر ٹیپ کریں۔",
-  "appBlockingAccessDialogContinue": "جاری رکھیں"
+  "appBlockingAccessDialogContinue": "جاری رکھیں",
+  "adNoticeTitle": "نور گارڈ کے بارے میں ایک نوٹ",
+  "adNoticeSubtitle": "نور گارڈ استعمال کرنا مفت ہے۔ اسے چلاتے رہنے کے لیے، ہم آپ کے پہلے 5 دنوں کے بعد اشتہارات دکھاتے ہیں۔",
+  "adNoticeBulletHalalAds": "ہم صرف حلال اشتہارات دکھانے کی پوری کوشش کرتے ہیں",
+  "adNoticeBulletNoSellData": "ہم آپ کا ڈیٹا کبھی نہیں بیچتے",
+  "adNoticeBulletCommunityPremium": "کمیونٹی کی کہانیاں کے لیے Premium درکار ہے",
+  "adNoticeBulletUpgradePremium": "Premium میں اپ گریڈ کر کے اشتہارات ہٹائیں اور تمام خصوصیات کھولیں",
+  "adNoticeThanks": "آپ کی حمایت کے لیے جزاک اللہ خیراً",
+  "adNoticeGotIt": "سمجھ گیا"
 }

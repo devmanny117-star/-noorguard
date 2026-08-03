@@ -3185,4 +3185,28 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => '继续';
+
+  @override
+  String get adNoticeTitle => '关于 Noor Guard 的说明';
+
+  @override
+  String get adNoticeSubtitle => 'Noor Guard 可免费使用。为了维持运营，我们会在您使用的前 5 天之后展示广告。';
+
+  @override
+  String get adNoticeBulletHalalAds => '我们尽最大努力只展示清真（halal）广告';
+
+  @override
+  String get adNoticeBulletNoSellData => '我们绝不出售您的数据';
+
+  @override
+  String get adNoticeBulletCommunityPremium => '社区见证故事需要 Premium 会员';
+
+  @override
+  String get adNoticeBulletUpgradePremium => '升级到 Premium 即可移除广告并解锁所有功能';
+
+  @override
+  String get adNoticeThanks => '感谢您的支持，愿真主赐福于您';
+
+  @override
+  String get adNoticeGotIt => '知道了';
 }

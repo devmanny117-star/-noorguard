@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../screens/asma_ul_husna_screen.dart';
 import '../screens/duas_screen.dart';
+import '../screens/hadith_detail_screen.dart';
 import '../screens/islamic_glossary_screen.dart';
 import '../screens/surah_screen.dart';
 import 'quran_service.dart';
@@ -13,9 +14,9 @@ import 'quran_service.dart';
 /// Routes a tap on the Noor Guard Live notification to the specific content
 /// it was showing: ayah → Quran reader at that verse, dua → Duas screen
 /// scrolled to that dua, glossary word → Islamic Glossary scrolled to that
-/// term, Name of Allah → 99 Names scrolled to that name. Hadith (which has
-/// no dedicated screen) and anything unrecognized simply open the app at the
-/// home screen.
+/// term, Name of Allah → 99 Names scrolled to that name, hadith → a
+/// lightweight single-hadith detail view. Anything unrecognized simply opens
+/// the app at the home screen.
 ///
 /// The native side attaches `noor_nav_type`/`noor_nav_data` extras to the
 /// notification's launch intent (PrayerForegroundService); MainActivity's
@@ -123,9 +124,14 @@ class NotificationNavService with WidgetsBindingObserver {
         if (number != null) {
           _push(AsmaUlHusnaScreen(initialNameNumber: number));
         }
+      case 'hadith':
+        final index = int.tryParse(data);
+        if (index != null) {
+          _push(HadithDetailScreen(hadithIndex: index));
+        }
       default:
-        // 'hadith' (no dedicated screen) or missing/unknown data — the app
-        // already opened at the home screen, which is the fallback.
+        // Missing/unknown data — the app already opened at the home screen,
+        // which is the fallback.
         break;
     }
   }

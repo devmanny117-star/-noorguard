@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "141090112561",
+    "project_id": "noor-guard-app-86a13",
+    "storage_bucket": "noor-guard-app-86a13.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141090112561:android:1a91772bafb281f4228110",
+        "android_client_info": {
+          "package_name": "com.noorguard.app.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaoVZwUhsE45ahOMt4RjVAmKYRMNrJ6sM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

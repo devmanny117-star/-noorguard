@@ -4118,5 +4118,37 @@
   "appBlockingAccessDialogContinue": "Continue",
   "@appBlockingAccessDialogContinue": {
     "description": "Continue button of the accessibility disclosure dialog"
+  },
+  "adNoticeTitle": "A note about Noor Guard",
+  "@adNoticeTitle": {
+    "description": "Title of the one-time ad notice popup shown on first launch after onboarding"
+  },
+  "adNoticeSubtitle": "Noor Guard is free to use. To keep it running, we show ads after your first 5 days.",
+  "@adNoticeSubtitle": {
+    "description": "Subtitle of the one-time ad notice popup"
+  },
+  "adNoticeBulletHalalAds": "We try our best to show halal-only ads",
+  "@adNoticeBulletHalalAds": {
+    "description": "First bullet point in the ad notice popup"
+  },
+  "adNoticeBulletNoSellData": "We never sell your data",
+  "@adNoticeBulletNoSellData": {
+    "description": "Second bullet point in the ad notice popup"
+  },
+  "adNoticeBulletCommunityPremium": "Community Stories requires Premium",
+  "@adNoticeBulletCommunityPremium": {
+    "description": "Third bullet point in the ad notice popup"
+  },
+  "adNoticeBulletUpgradePremium": "Remove ads and unlock all features by upgrading to Premium",
+  "@adNoticeBulletUpgradePremium": {
+    "description": "Fourth bullet point in the ad notice popup"
+  },
+  "adNoticeThanks": "JazakAllahu Khayran for your support",
+  "@adNoticeThanks": {
+    "description": "Italic thank-you line shown below the bullet points in the ad notice popup"
+  },
+  "adNoticeGotIt": "Got it",
+  "@adNoticeGotIt": {
+    "description": "Dismiss button of the ad notice popup"
   }
 }

@@ -1632,5 +1632,13 @@
   "noCitiesFound": "Nenhuma cidade encontrada",
   "appBlockingAccessDialogTitle": "Permissão de acessibilidade necessária",
   "appBlockingAccessDialogBody": "O Noor Guard usa o Serviço de Acessibilidade do Android para bloquear aplicativos que distraem durante a oração e o tempo de foco. Nenhum dado pessoal é coletado ou compartilhado. Toque em Continuar para abrir as Configurações e ativá-lo.",
-  "appBlockingAccessDialogContinue": "Continuar"
+  "appBlockingAccessDialogContinue": "Continuar",
+  "adNoticeTitle": "Uma nota sobre o Noor Guard",
+  "adNoticeSubtitle": "O Noor Guard é gratuito. Para mantê-lo funcionando, exibimos anúncios após os seus primeiros 5 dias.",
+  "adNoticeBulletHalalAds": "Fazemos o nosso melhor para exibir apenas anúncios halal",
+  "adNoticeBulletNoSellData": "Nunca vendemos os seus dados",
+  "adNoticeBulletCommunityPremium": "Histórias da Comunidade requer o Premium",
+  "adNoticeBulletUpgradePremium": "Remova os anúncios e desbloqueie todos os recursos ao atualizar para o Premium",
+  "adNoticeThanks": "JazakAllahu Khayran pelo seu apoio",
+  "adNoticeGotIt": "Entendi"
 }

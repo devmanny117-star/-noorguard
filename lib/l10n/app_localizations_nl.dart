@@ -3362,4 +3362,32 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'Doorgaan';
+
+  @override
+  String get adNoticeTitle => 'Een opmerking over Noor Guard';
+
+  @override
+  String get adNoticeSubtitle =>
+      'Noor Guard is gratis te gebruiken. Om de app draaiende te houden, tonen we advertenties na je eerste 5 dagen.';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'We doen ons best om alleen halal advertenties te tonen';
+
+  @override
+  String get adNoticeBulletNoSellData => 'We verkopen je gegevens nooit';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'Verhalen uit de Gemeenschap vereist Premium';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'Verwijder advertenties en ontgrendel alle functies door te upgraden naar Premium';
+
+  @override
+  String get adNoticeThanks => 'JazakAllahu Khayran voor je steun';
+
+  @override
+  String get adNoticeGotIt => 'Begrepen';
 }

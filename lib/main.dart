@@ -90,7 +90,34 @@ class _NoorGuardAppState extends State<NoorGuardApp> {
   Future<void> _loadLocale() async {
     final prefs = await SharedPreferences.getInstance();
     final code = prefs.getString('app_locale');
-    if (code != null && mounted) setState(() => _locale = Locale(code));
+    if (code != null) {
+      if (mounted) setState(() => _locale = Locale(code));
+      return;
+    }
+    // No language chosen yet (first launch, or an existing install that
+    // never touched the language setting): match the phone's locale to one
+    // of our 17 supported languages, or fall back to English. Saving the
+    // result to `app_locale` immediately means this only ever runs once —
+    // every later launch takes the branch above and respects whatever the
+    // user has set (auto-detected or manually chosen in Settings).
+    final detected = _detectSupportedLocale();
+    await prefs.setString('app_locale', detected);
+    if (mounted) setState(() => _locale = Locale(detected));
+  }
+
+  /// Walks the device's preferred languages in priority order and returns
+  /// the first one we support. RTL languages (Arabic, Urdu, Farsi) need no
+  /// special handling here — Flutter's Localizations widget derives text
+  /// direction from the language code automatically once it's set.
+  String _detectSupportedLocale() {
+    const supported = {
+      'en', 'ar', 'ur', 'fa', 'es', 'de', 'nl', 'pt', 'it', 'fr',
+      'id', 'zh', 'ja', 'bn', 'tr', 'sw', 'ru',
+    };
+    for (final locale in WidgetsBinding.instance.platformDispatcher.locales) {
+      if (supported.contains(locale.languageCode)) return locale.languageCode;
+    }
+    return 'en';
   }
 
   @override

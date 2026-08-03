@@ -227,6 +227,51 @@ If you want to see it in a simulator: open Xcode → Simulator first, then run `
 
 ---
 
+## Build Flavors (added July 31, 2026)
+
+Android has two product flavors. **Always pass `--flavor`** — see the warning below.
+
+| Flavor | applicationId          | Launcher name    | Icon                |
+|--------|------------------------|------------------|---------------------|
+| `prod` | `com.noorguard.app`    | Noor Guard       | normal              |
+| `dev`  | `com.noorguard.app.dev`| Noor Guard DEV   | red **DEV** badge   |
+
+Different applicationIds, so both install side by side on one device.
+
+```bash
+flutter run -d chrome --flavor dev          # Chrome review (flavor ignored on web, but harmless)
+flutter run -d RFCY71SEQZJ --flavor dev     # Z Fold 7
+flutter build appbundle --flavor prod       # Play Store upload
+```
+
+**Never omit `--flavor` on a build.** Gradle silently builds *both* flavors and
+Flutter then prints a success line pointing at the old unflavored path
+(`app-debug.apk` / `bundle/release/app-release.aab`) — a file the build did not
+write. That path may hold a stale artifact from weeks ago, so the reported
+output is not the build you just made. Real outputs are:
+
+- `build/app/outputs/flutter-apk/app-<flavor>-debug.apk`
+- `build/app/outputs/bundle/<flavor>Release/app-<flavor>-release.aab`
+
+### Where flavor-specific files live
+
+`android/app/src/dev/` overlays `src/main/` for dev builds only:
+- `res/mipmap-*/ic_launcher.png` + `res/drawable-*/ic_launcher_foreground.png` — DEV-badged icons
+- `google-services.json` — see `src/dev/README.md`
+
+App name comes from `resValue("string", "app_name", …)` per flavor in
+`android/app/build.gradle.kts`; the manifest just references `@string/app_name`.
+Do not add `app_name` to `res/values/strings.xml` — it would collide.
+
+### Known gaps
+
+- **iOS has no flavors yet.** Needs Xcode build configurations and a second
+  scheme; `--flavor` on iOS will fail until that is done.
+- **Dev shares production Firestore data.** The dev `google-services.json`
+  reuses the prod Firebase app. See `android/app/src/dev/README.md`.
+
+---
+
 ## Languages
 
 - App supports **17 languages** (Persian/Farsi added June 2026, Russian added July 2026)

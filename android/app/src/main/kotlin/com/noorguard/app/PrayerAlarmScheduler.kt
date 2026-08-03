@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import org.json.JSONObject
 import java.util.Calendar
@@ -69,13 +70,14 @@ object PrayerAlarmScheduler {
      * the midnight/boot receivers schedule through the identical mechanism.
      *
      * setAlarmClock() — not setExactAndAllowWhileIdle() — is what keeps this
-     * firing on time under Doze AND under Battery Saver, without asking the
-     * user to turn Battery Saver off or grant anything: Android exempts
+     * firing on time under Doze AND under Battery Saver: Android exempts
      * "alarm clock" alarms from both unconditionally (the same mechanism
-     * alarm-clock apps rely on), and unlike setExact/setExactAndAllowWhileIdle
-     * it needs no SCHEDULE_EXACT_ALARM permission at all — the status bar's
-     * alarm icon is considered sufficient transparency to the user. Tapping
-     * that icon opens the app via showIntent.
+     * alarm-clock apps rely on), and the status bar's alarm icon is
+     * considered sufficient transparency to the user. It still requires the
+     * exact-alarm permission on API 31+ though — [canScheduleExactAlarms]
+     * guards that, and the setAlarmClock call itself is wrapped in a
+     * try/catch, so a user who hasn't granted "Alarms & reminders" (or has
+     * since revoked it) gets a skipped alarm instead of a crash.
      */
     fun scheduleAlarm(
         context: Context,
@@ -106,10 +108,18 @@ object PrayerAlarmScheduler {
             context, notifId, Intent(context, MainActivity::class.java),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        alarmManager.setAlarmClock(
-            AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent), pi
-        )
-        Log.d(TAG, "Scheduled alarm id=$notifId ($prayerName) triggerAtMillis=$triggerAtMillis")
+        if (!canScheduleExactAlarms(alarmManager)) {
+            Log.w(TAG, "scheduleAlarm: exact-alarm permission not granted, skipping id=$notifId ($prayerName)")
+            return
+        }
+        try {
+            alarmManager.setAlarmClock(
+                AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent), pi
+            )
+            Log.d(TAG, "Scheduled alarm id=$notifId ($prayerName) triggerAtMillis=$triggerAtMillis")
+        } catch (e: SecurityException) {
+            Log.w(TAG, "scheduleAlarm: SecurityException scheduling id=$notifId ($prayerName): $e")
+        }
     }
 
     /**
@@ -217,8 +227,25 @@ object PrayerAlarmScheduler {
             context, MIDNIGHT_REQUEST_CODE, Intent(context, MainActivity::class.java),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        alarmManager.setAlarmClock(AlarmManager.AlarmClockInfo(trigger, showIntent), pi)
-        Log.d(TAG, "Scheduled midnight rescheduler for $trigger")
+        if (!canScheduleExactAlarms(alarmManager)) {
+            Log.w(TAG, "scheduleMidnightAlarm: exact-alarm permission not granted, skipping")
+            return
+        }
+        try {
+            alarmManager.setAlarmClock(AlarmManager.AlarmClockInfo(trigger, showIntent), pi)
+            Log.d(TAG, "Scheduled midnight rescheduler for $trigger")
+        } catch (e: SecurityException) {
+            Log.w(TAG, "scheduleMidnightAlarm: SecurityException scheduling: $e")
+        }
+    }
+
+    /**
+     * True when it's safe to call setAlarmClock(): always on pre-S (the
+     * permission didn't exist yet), otherwise only when the user has granted
+     * "Alarms & reminders" — canScheduleExactAlarms() itself requires API 31.
+     */
+    private fun canScheduleExactAlarms(alarmManager: AlarmManager): Boolean {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.S || alarmManager.canScheduleExactAlarms()
     }
 
     /** Cancels the nightly 12:01am rescheduler (used when the user turns the

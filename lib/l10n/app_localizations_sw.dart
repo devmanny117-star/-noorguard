@@ -3354,4 +3354,32 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'Endelea';
+
+  @override
+  String get adNoticeTitle => 'Ujumbe kuhusu Noor Guard';
+
+  @override
+  String get adNoticeSubtitle =>
+      'Noor Guard ni bure kutumia. Ili kuiendesha, tunaonyesha matangazo baada ya siku zako 5 za kwanza.';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'Tunajitahidi kuonyesha matangazo ya halali pekee';
+
+  @override
+  String get adNoticeBulletNoSellData => 'Hatuuzi data yako kamwe';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'Hadithi za Jamii zinahitaji Premium';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'Ondoa matangazo na ufungue vipengele vyote kwa kupandisha hadhi hadi Premium';
+
+  @override
+  String get adNoticeThanks => 'JazakAllahu Khayran kwa msaada wako';
+
+  @override
+  String get adNoticeGotIt => 'Nimeelewa';
 }

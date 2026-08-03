@@ -1632,5 +1632,13 @@
   "noCitiesFound": "Aucune ville trouvée",
   "appBlockingAccessDialogTitle": "Autorisation d'accessibilité requise",
   "appBlockingAccessDialogBody": "Noor Guard utilise le service d'accessibilité d'Android pour bloquer les applications distrayantes pendant la prière et les moments de concentration. Aucune donnée personnelle n'est collectée ni partagée. Appuyez sur Continuer pour ouvrir les paramètres et l'activer.",
-  "appBlockingAccessDialogContinue": "Continuer"
+  "appBlockingAccessDialogContinue": "Continuer",
+  "adNoticeTitle": "Un mot à propos de Noor Guard",
+  "adNoticeSubtitle": "Noor Guard est gratuit. Pour continuer à le faire fonctionner, nous affichons des publicités après vos 5 premiers jours.",
+  "adNoticeBulletHalalAds": "Nous faisons de notre mieux pour n'afficher que des publicités halal",
+  "adNoticeBulletNoSellData": "Nous ne vendons jamais vos données",
+  "adNoticeBulletCommunityPremium": "Témoignages de la Communauté nécessite Premium",
+  "adNoticeBulletUpgradePremium": "Supprimez les publicités et débloquez toutes les fonctionnalités en passant à Premium",
+  "adNoticeThanks": "JazakAllahu Khayran pour votre soutien",
+  "adNoticeGotIt": "Compris"
 }

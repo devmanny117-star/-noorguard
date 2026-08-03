@@ -3338,4 +3338,32 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'ادامه';
+
+  @override
+  String get adNoticeTitle => 'یادداشتی درباره نور گارد';
+
+  @override
+  String get adNoticeSubtitle =>
+      'استفاده از نور گارد رایگان است. برای اینکه اپلیکیشن فعال بماند، پس از ۵ روز اول تبلیغاتی نمایش می‌دهیم.';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'تمام تلاش خود را می‌کنیم که فقط تبلیغات حلال نمایش دهیم';
+
+  @override
+  String get adNoticeBulletNoSellData => 'ما هرگز اطلاعات شما را نمی‌فروشیم';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'داستان‌های جامعه به Premium نیاز دارد';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'با ارتقا به Premium تبلیغات را حذف کنید و همه امکانات را باز کنید';
+
+  @override
+  String get adNoticeThanks => 'جزاک الله خیراً بابت حمایت شما';
+
+  @override
+  String get adNoticeGotIt => 'متوجه شدم';
 }

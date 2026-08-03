@@ -3335,4 +3335,32 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'جاری رکھیں';
+
+  @override
+  String get adNoticeTitle => 'نور گارڈ کے بارے میں ایک نوٹ';
+
+  @override
+  String get adNoticeSubtitle =>
+      'نور گارڈ استعمال کرنا مفت ہے۔ اسے چلاتے رہنے کے لیے، ہم آپ کے پہلے 5 دنوں کے بعد اشتہارات دکھاتے ہیں۔';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'ہم صرف حلال اشتہارات دکھانے کی پوری کوشش کرتے ہیں';
+
+  @override
+  String get adNoticeBulletNoSellData => 'ہم آپ کا ڈیٹا کبھی نہیں بیچتے';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'کمیونٹی کی کہانیاں کے لیے Premium درکار ہے';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'Premium میں اپ گریڈ کر کے اشتہارات ہٹائیں اور تمام خصوصیات کھولیں';
+
+  @override
+  String get adNoticeThanks => 'آپ کی حمایت کے لیے جزاک اللہ خیراً';
+
+  @override
+  String get adNoticeGotIt => 'سمجھ گیا';
 }

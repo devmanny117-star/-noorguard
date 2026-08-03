@@ -4085,5 +4085,13 @@
   "noCitiesFound": "Города не найдены",
   "appBlockingAccessDialogTitle": "Требуется разрешение специальных возможностей",
   "appBlockingAccessDialogBody": "Noor Guard использует службу специальных возможностей Android, чтобы блокировать отвлекающие приложения во время намаза и сосредоточенной работы. Никакие личные данные не собираются и не передаются. Нажмите «Продолжить», чтобы открыть настройки и включить её.",
-  "appBlockingAccessDialogContinue": "Продолжить"
+  "appBlockingAccessDialogContinue": "Продолжить",
+  "adNoticeTitle": "Немного о Noor Guard",
+  "adNoticeSubtitle": "Noor Guard бесплатен в использовании. Чтобы поддерживать его работу, мы показываем рекламу после первых 5 дней.",
+  "adNoticeBulletHalalAds": "Мы стараемся показывать только халяльную рекламу",
+  "adNoticeBulletNoSellData": "Мы никогда не продаём ваши данные",
+  "adNoticeBulletCommunityPremium": "Для раздела «Истории общины» требуется Premium",
+  "adNoticeBulletUpgradePremium": "Уберите рекламу и откройте все функции, перейдя на Premium",
+  "adNoticeThanks": "Джазакаллаху хайран за вашу поддержку",
+  "adNoticeGotIt": "Понятно"
 }

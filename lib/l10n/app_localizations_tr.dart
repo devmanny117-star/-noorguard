@@ -3345,4 +3345,32 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get appBlockingAccessDialogContinue => 'Devam';
+
+  @override
+  String get adNoticeTitle => 'Noor Guard hakkında bir not';
+
+  @override
+  String get adNoticeSubtitle =>
+      'Noor Guard\'ı kullanmak ücretsizdir. Çalışmaya devam edebilmesi için ilk 5 gününüzden sonra reklam gösteriyoruz.';
+
+  @override
+  String get adNoticeBulletHalalAds =>
+      'Yalnızca helal reklamlar göstermek için elimizden geleni yapıyoruz';
+
+  @override
+  String get adNoticeBulletNoSellData => 'Verilerinizi asla satmıyoruz';
+
+  @override
+  String get adNoticeBulletCommunityPremium =>
+      'Topluluk Hikayeleri için Premium gerekir';
+
+  @override
+  String get adNoticeBulletUpgradePremium =>
+      'Premium\'a yükselterek reklamları kaldırın ve tüm özelliklerin kilidini açın';
+
+  @override
+  String get adNoticeThanks => 'Desteğiniz için JazakAllahu Khayran';
+
+  @override
+  String get adNoticeGotIt => 'Anladım';
 }

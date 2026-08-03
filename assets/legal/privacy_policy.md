@@ -46,9 +46,8 @@ To be completely transparent, here is what we deliberately do **not** do:
 
 - ❌ No user accounts or sign-ups
 - ❌ No collection of names, emails, phone numbers, or contacts
-- ❌ No third-party advertising currently — if ads are introduced in the future, this policy will be updated with full disclosure before any ad SDK is added
+- ❌ No selling of your data to advertisers or third parties — ever
 - ❌ No analytics or behavioral tracking
-- ❌ No selling, renting, or sharing of personal data with third parties
 - ❌ No cross-app or cross-site tracking
 
 Simply put: there is no profile of you to build, because we never start building one.
@@ -57,15 +56,13 @@ Simply put: there is no profile of you to build, because we never start building
 
 ## 4. Advertising
 
-Noor Guard is currently **ad-free**. We don't show ads, and we don't use any advertising SDKs or networks.
+Noor Guard is free to use. To keep it running, the free version displays ads after an initial 5-day ad-free grace period following installation.
 
-If advertising is ever introduced in the future:
-
-- It will be **halal-compliant only** — we will not display ads for alcohol, gambling, dating, or other haram content.
-- Users will be **notified via an updated Privacy Policy before any ads appear**, so you'll always know what to expect.
-- Any future ad network will be **disclosed right here**, by name, along with a link to that network's own privacy policy.
-
-Until then, this section will remain exactly as it reads today: Noor Guard shows you no ads.
+- We make every reasonable effort to show **halal-compliant ads only** — we do not intentionally display ads for alcohol, gambling, dating, or other haram content. However, we cannot guarantee that every ad served will meet this standard, as ad content is partially determined by third-party advertising networks.
+- We use **Google AdMob** to serve ads. AdMob's privacy policy is available at [policies.google.com/privacy](https://policies.google.com/privacy).
+- We **never sell your data** to advertisers.
+- **Premium subscribers never see ads.**
+- You will be shown a one-time notice when ads first appear explaining this.
 
 ---
 
