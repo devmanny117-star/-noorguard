@@ -57,6 +57,8 @@
   "ayahs": "{count} ayat",
   "searchDuas": "Cari doa…",
   "supplications": "{count} doa",
+  "profile": "Profil",
+  "displayName": "Nama Tampilan",
   "prayerSettings": "Pengaturan Sholat",
   "calculationMethod": "Metode Perhitungan",
   "adhanSound": "Suara Adzan",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "Imanmu adalah hal pribadi. Begitu pula datamu. Kami tidak pernah menjual, membagikan, atau memonetisasi datamu. Bukan lokasimu. Bukan kebiasaan ibadahmu. Bukan namamu.",
   "directionToSacredHouse": "Arah ke Rumah Suci",
   "towardMecca": "{degrees}° menuju Mekkah",
-  "defaultLocation": "Sacramento, CA (default)",
+  "qiblaLocationPermissionTitle": "Akses Lokasi Diperlukan",
+  "qiblaLocationPermissionMessage": "Noor Guard memerlukan lokasi Anda untuk menampilkan arah Kiblat yang akurat. Izinkan akses lokasi, atau masukkan kota Anda secara manual.",
+  "enterCityManually": "Masukkan Kota Secara Manual",
   "prayerHistory": "Riwayat Sholat",
   "currentStreak": "Rentetan Saat Ini",
   "longestStreak": "Rentetan Terpanjang",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Temukan Masjid lokal Anda",
+  "journeyTask2_7": "Baca Tafsir pertamamu",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "Kisah Komunitas memerlukan Premium",
   "adNoticeBulletUpgradePremium": "Hilangkan iklan dan buka semua fitur dengan upgrade ke Premium",
   "adNoticeThanks": "JazakAllahu Khayran atas dukungan Anda",
-  "adNoticeGotIt": "Mengerti"
+  "adNoticeGotIt": "Mengerti",
+  "premiumUnlock": "Buka Premium",
+  "premiumUpgradeButton": "Upgrade ke Premium",
+  "premiumMaybeLater": "Mungkin Nanti",
+  "premiumPricing": "$4.99/bulan atau $34.99/tahun",
+  "premiumAppBlockingName": "Pemblokiran Aplikasi",
+  "premiumAppBlockingDescription": "Blokir aplikasi yang mengganggu selama waktu salat dan sesi fokus untuk memperkuat hubunganmu dengan Allah.",
+  "premiumPostStoryName": "Posting Kisah",
+  "premiumPostStoryDescription": "Bagikan perjalananmu sebagai seorang Muslim dengan komunitas global Noor Guard.",
+  "premiumCommentStoriesName": "Berkomentar di Kisah",
+  "premiumCommentStoriesDescription": "Berinteraksi dan saling menyemangati sesama Muslim di komunitas.",
+  "premiumQuranRecitersName": "Qari Al-Qur'an",
+  "premiumQuranRecitersDescription": "Buka 10+ qari terkenal dunia, termasuk Syekh Maher Al-Muaiqly dan Syekh Saad Al-Ghamdi.",
+  "premiumAdhanRecitersName": "Qari Adzan",
+  "premiumAdhanRecitersDescription": "Bangun dengan panggilan salat dari muazin favoritmu.",
+  "premiumBackgroundPlaybackName": "Pemutaran Latar Belakang",
+  "premiumBackgroundPlaybackDescription": "Dengarkan Al-Qur'an saat bekerja, bepergian, atau beristirahat — bahkan saat layar mati.",
+  "tafsirFallbackNote": "Tafsir belum tersedia dalam bahasamu."
 }

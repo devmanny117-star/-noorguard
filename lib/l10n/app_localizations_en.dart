@@ -212,6 +212,12 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get profile => 'Profile';
+
+  @override
+  String get displayName => 'Display Name';
+
+  @override
   String get prayerSettings => 'Prayer Settings';
 
   @override
@@ -288,7 +294,14 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'Sacramento, CA (default)';
+  String get qiblaLocationPermissionTitle => 'Location Access Needed';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'Noor Guard needs your location to show an accurate Qibla direction. Allow location access, or enter your city manually.';
+
+  @override
+  String get enterCityManually => 'Enter City Manually';
 
   @override
   String get prayerHistory => 'Prayer History';
@@ -2388,7 +2401,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get journeyTask2_6 => 'Learn the Sunnah prayers';
 
   @override
-  String get journeyTask2_7 => 'Find your local Masjid';
+  String get journeyTask2_7 => 'Read your first Tafsir';
 
   @override
   String get journeyTask3_1 => 'Read Surah Al-Baqarah';
@@ -3384,4 +3397,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'Got it';
+
+  @override
+  String get premiumUnlock => 'Unlock Premium';
+
+  @override
+  String get premiumUpgradeButton => 'Upgrade to Premium';
+
+  @override
+  String get premiumMaybeLater => 'Maybe Later';
+
+  @override
+  String get premiumPricing => '\$4.99/month or \$34.99/year';
+
+  @override
+  String get premiumAppBlockingName => 'App Blocking';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'Block distracting apps during prayer time and focus sessions to strengthen your connection with Allah.';
+
+  @override
+  String get premiumPostStoryName => 'Post a Story';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'Share your journey as a Muslim with the global Noor Guard community.';
+
+  @override
+  String get premiumCommentStoriesName => 'Comment on Stories';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'Engage with and encourage fellow Muslims in the community.';
+
+  @override
+  String get premiumQuranRecitersName => 'Quran Reciters';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'Unlock 10+ world-renowned reciters including Sheikh Maher Al-Muaiqly and Sheikh Saad Al-Ghamdi.';
+
+  @override
+  String get premiumAdhanRecitersName => 'Adhan Reciters';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'Wake to the call of prayer from your favorite muezzin.';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'Background Playback';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'Listen to Quran while you work, commute, or rest — even with your screen off.';
+
+  @override
+  String get tafsirFallbackNote => 'Tafsir not available in your language yet.';
 }

@@ -114,6 +114,8 @@
       }
     }
   },
+  "profile": "پروفایل",
+  "displayName": "نام نمایشی",
   "prayerSettings": "تنظیمات نماز",
   "calculationMethod": "روش محاسبه",
   "adhanSound": "صدای اذان",
@@ -145,7 +147,9 @@
       }
     }
   },
-  "defaultLocation": "سکرامنتو، کالیفرنیا (پیش‌فرض)",
+  "qiblaLocationPermissionTitle": "دسترسی به مکان لازم است",
+  "qiblaLocationPermissionMessage": "Noor Guard برای نمایش دقیق جهت قبله به مکان شما نیاز دارد. دسترسی به مکان را مجاز کنید یا شهر خود را به‌صورت دستی وارد کنید.",
+  "enterCityManually": "وارد کردن دستی شهر",
   "prayerHistory": "تاریخچه نماز",
   "currentStreak": "روزهای متوالی فعلی",
   "longestStreak": "طولانی‌ترین روزهای متوالی",
@@ -1043,7 +1047,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "مسجد محلی خود را پیدا کنید",
+  "journeyTask2_7": "اولین تفسیر خود را بخوانید",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1805,5 +1809,22 @@
   "adNoticeBulletCommunityPremium": "داستان‌های جامعه به Premium نیاز دارد",
   "adNoticeBulletUpgradePremium": "با ارتقا به Premium تبلیغات را حذف کنید و همه امکانات را باز کنید",
   "adNoticeThanks": "جزاک الله خیراً بابت حمایت شما",
-  "adNoticeGotIt": "متوجه شدم"
+  "adNoticeGotIt": "متوجه شدم",
+  "premiumUnlock": "باز کردن Premium",
+  "premiumUpgradeButton": "ارتقا به Premium",
+  "premiumMaybeLater": "شاید بعداً",
+  "premiumPricing": "$4.99 در ماه یا $34.99 در سال",
+  "premiumAppBlockingName": "مسدودسازی برنامه",
+  "premiumAppBlockingDescription": "برنامه‌های حواس‌پرت‌کننده را در زمان نماز و جلسات تمرکز مسدود کنید تا پیوند خود را با خداوند تقویت کنید.",
+  "premiumPostStoryName": "انتشار داستان",
+  "premiumPostStoryDescription": "سفر خود را به‌عنوان یک مسلمان با جامعه جهانی Noor Guard به اشتراک بگذارید.",
+  "premiumCommentStoriesName": "نظر دادن روی داستان‌ها",
+  "premiumCommentStoriesDescription": "با دیگر مسلمانان جامعه تعامل کنید و آن‌ها را تشویق کنید.",
+  "premiumQuranRecitersName": "قاریان قرآن",
+  "premiumQuranRecitersDescription": "بیش از ۱۰ قاری مشهور جهانی از جمله شیخ ماهر المعیقلی و شیخ سعد الغامدی را باز کنید.",
+  "premiumAdhanRecitersName": "قاریان اذان",
+  "premiumAdhanRecitersDescription": "با ندای اذان مؤذن مورد علاقه‌تان بیدار شوید.",
+  "premiumBackgroundPlaybackName": "پخش در پس‌زمینه",
+  "premiumBackgroundPlaybackDescription": "هنگام کار، رفت‌وآمد یا استراحت به قرآن گوش دهید — حتی وقتی صفحه خاموش است.",
+  "tafsirFallbackNote": "تفسیر هنوز به زبان شما در دسترس نیست."
 }

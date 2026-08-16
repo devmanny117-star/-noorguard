@@ -203,6 +203,12 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String get profile => 'プロフィール';
+
+  @override
+  String get displayName => '表示名';
+
+  @override
   String get prayerSettings => '礼拝設定';
 
   @override
@@ -279,7 +285,14 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'サクラメント、カリフォルニア州(デフォルト)';
+  String get qiblaLocationPermissionTitle => '位置情報へのアクセスが必要です';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      '正確なキブラの方向を表示するには、Noor Guardに位置情報が必要です。位置情報へのアクセスを許可するか、都市を手動で入力してください。';
+
+  @override
+  String get enterCityManually => '都市を手動で入力';
 
   @override
   String get prayerHistory => '礼拝の記録';
@@ -2295,7 +2308,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get journeyTask2_6 => 'スンナ礼拝を学ぶ';
 
   @override
-  String get journeyTask2_7 => '地元のマスジドを見つける';
+  String get journeyTask2_7 => '初めてのタフスィールを読む';
 
   @override
   String get journeyTask3_1 => 'スーラ・バカラを読む';
@@ -3258,4 +3271,61 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => '了解しました';
+
+  @override
+  String get premiumUnlock => 'Premiumを解除';
+
+  @override
+  String get premiumUpgradeButton => 'Premiumにアップグレード';
+
+  @override
+  String get premiumMaybeLater => 'また今度';
+
+  @override
+  String get premiumPricing => '月額\$4.99または年額\$34.99';
+
+  @override
+  String get premiumAppBlockingName => 'アプリブロック';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      '礼拝の時間と集中セッション中に気を散らすアプリをブロックして、アッラーとのつながりを深めましょう。';
+
+  @override
+  String get premiumPostStoryName => 'ストーリーを投稿';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'ムスリムとしてのあなたの歩みを、世界中のNoor Guardコミュニティと共有しましょう。';
+
+  @override
+  String get premiumCommentStoriesName => 'ストーリーにコメント';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'コミュニティの仲間のムスリムと交流し、励まし合いましょう。';
+
+  @override
+  String get premiumQuranRecitersName => 'クルアーン朗誦者';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'シェイク・マーヘル・アル・ムアイクリーやシェイク・サード・アル・ガムディを含む、世界的に有名な10人以上の朗誦者を解放しましょう。';
+
+  @override
+  String get premiumAdhanRecitersName => 'アザーンの朗誦者';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'お気に入りのムアッジンによる礼拝の呼びかけで目覚めましょう。';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'バックグラウンド再生';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      '仕事中、移動中、休憩中でも — 画面をオフにしたままクルアーンを聴けます。';
+
+  @override
+  String get tafsirFallbackNote => 'タフスィールはまだあなたの言語では利用できません。';
 }

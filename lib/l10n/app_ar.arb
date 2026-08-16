@@ -57,6 +57,8 @@
   "ayahs": "{count} آيات",
   "searchDuas": "ابحث عن أدعية…",
   "supplications": "{count} أدعية",
+  "profile": "الملف الشخصي",
+  "displayName": "الاسم المعروض",
   "prayerSettings": "إعدادات الصلاة",
   "calculationMethod": "طريقة الحساب",
   "adhanSound": "صوت الأذان",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "إيمانك أمر شخصي. وبياناتك تبقى كذلك. نحن لا نبيع أو نشارك أو نستثمر بياناتك أبدًا. لا موقعك. ولا عادات صلاتك. ولا اسمك.",
   "directionToSacredHouse": "الاتجاه إلى البيت الحرام",
   "towardMecca": "{degrees}° نحو مكة",
-  "defaultLocation": "ساكرامنتو، كاليفورنيا (افتراضي)",
+  "qiblaLocationPermissionTitle": "الوصول إلى الموقع مطلوب",
+  "qiblaLocationPermissionMessage": "يحتاج نور جارد إلى موقعك لعرض اتجاه القبلة بدقة. اسمح بالوصول إلى الموقع أو أدخل مدينتك يدويًا.",
+  "enterCityManually": "إدخال المدينة يدويًا",
   "prayerHistory": "سجل الصلوات",
   "currentStreak": "التتابع الحالي",
   "longestStreak": "أطول تتابع",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "إيجاد المسجد المحلي",
+  "journeyTask2_7": "قراءة أول تفسير لك",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "قصص المجتمع تتطلب Premium",
   "adNoticeBulletUpgradePremium": "أزل الإعلانات وافتح جميع الميزات بالترقية إلى Premium",
   "adNoticeThanks": "جزاك الله خيرًا على دعمك",
-  "adNoticeGotIt": "فهمت"
+  "adNoticeGotIt": "فهمت",
+  "premiumUnlock": "افتح Premium",
+  "premiumUpgradeButton": "الترقية إلى Premium",
+  "premiumMaybeLater": "ربما لاحقًا",
+  "premiumPricing": "4.99$ شهريًا أو 34.99$ سنويًا",
+  "premiumAppBlockingName": "حجب التطبيقات",
+  "premiumAppBlockingDescription": "احجب التطبيقات المشتِّتة خلال أوقات الصلاة وجلسات التركيز لتقوية صلتك بالله.",
+  "premiumPostStoryName": "نشر قصة",
+  "premiumPostStoryDescription": "شارك رحلتك كمسلم مع مجتمع نور غارد العالمي.",
+  "premiumCommentStoriesName": "التعليق على القصص",
+  "premiumCommentStoriesDescription": "تفاعل مع إخوانك المسلمين في المجتمع وشجّعهم.",
+  "premiumQuranRecitersName": "قرّاء القرآن",
+  "premiumQuranRecitersDescription": "افتح أكثر من 10 قرّاء عالميين بينهم الشيخ ماهر المعيقلي والشيخ سعد الغامدي.",
+  "premiumAdhanRecitersName": "قرّاء الأذان",
+  "premiumAdhanRecitersDescription": "استيقظ على نداء الصلاة بصوت مؤذنك المفضل.",
+  "premiumBackgroundPlaybackName": "التشغيل في الخلفية",
+  "premiumBackgroundPlaybackDescription": "استمع للقرآن أثناء العمل أو التنقل أو الراحة — حتى وشاشتك مطفأة.",
+  "tafsirFallbackNote": "التفسير غير متوفر بلغتك بعد."
 }

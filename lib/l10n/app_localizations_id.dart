@@ -213,6 +213,12 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
+  String get profile => 'Profil';
+
+  @override
+  String get displayName => 'Nama Tampilan';
+
+  @override
   String get prayerSettings => 'Pengaturan Sholat';
 
   @override
@@ -289,7 +295,14 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'Sacramento, CA (default)';
+  String get qiblaLocationPermissionTitle => 'Akses Lokasi Diperlukan';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'Noor Guard memerlukan lokasi Anda untuk menampilkan arah Kiblat yang akurat. Izinkan akses lokasi, atau masukkan kota Anda secara manual.';
+
+  @override
+  String get enterCityManually => 'Masukkan Kota Secara Manual';
 
   @override
   String get prayerHistory => 'Riwayat Sholat';
@@ -2411,7 +2424,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get journeyTask2_6 => 'Pelajari sholat Sunnah';
 
   @override
-  String get journeyTask2_7 => 'Temukan Masjid lokal Anda';
+  String get journeyTask2_7 => 'Baca Tafsir pertamamu';
 
   @override
   String get journeyTask3_1 => 'Baca Surah Al-Baqarah';
@@ -3407,4 +3420,61 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'Mengerti';
+
+  @override
+  String get premiumUnlock => 'Buka Premium';
+
+  @override
+  String get premiumUpgradeButton => 'Upgrade ke Premium';
+
+  @override
+  String get premiumMaybeLater => 'Mungkin Nanti';
+
+  @override
+  String get premiumPricing => '\$4.99/bulan atau \$34.99/tahun';
+
+  @override
+  String get premiumAppBlockingName => 'Pemblokiran Aplikasi';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'Blokir aplikasi yang mengganggu selama waktu salat dan sesi fokus untuk memperkuat hubunganmu dengan Allah.';
+
+  @override
+  String get premiumPostStoryName => 'Posting Kisah';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'Bagikan perjalananmu sebagai seorang Muslim dengan komunitas global Noor Guard.';
+
+  @override
+  String get premiumCommentStoriesName => 'Berkomentar di Kisah';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'Berinteraksi dan saling menyemangati sesama Muslim di komunitas.';
+
+  @override
+  String get premiumQuranRecitersName => 'Qari Al-Qur\'an';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'Buka 10+ qari terkenal dunia, termasuk Syekh Maher Al-Muaiqly dan Syekh Saad Al-Ghamdi.';
+
+  @override
+  String get premiumAdhanRecitersName => 'Qari Adzan';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'Bangun dengan panggilan salat dari muazin favoritmu.';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'Pemutaran Latar Belakang';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'Dengarkan Al-Qur\'an saat bekerja, bepergian, atau beristirahat — bahkan saat layar mati.';
+
+  @override
+  String get tafsirFallbackNote => 'Tafsir belum tersedia dalam bahasamu.';
 }

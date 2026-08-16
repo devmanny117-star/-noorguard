@@ -215,6 +215,12 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get profile => 'Профиль';
+
+  @override
+  String get displayName => 'Отображаемое имя';
+
+  @override
   String get prayerSettings => 'Настройки намаза';
 
   @override
@@ -291,7 +297,14 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'Сакраменто, Калифорния (по умолчанию)';
+  String get qiblaLocationPermissionTitle => 'Требуется доступ к геолокации';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'Noor Guard нужно ваше местоположение, чтобы точно показать направление киблы. Разрешите доступ к геолокации или введите свой город вручную.';
+
+  @override
+  String get enterCityManually => 'Ввести город вручную';
 
   @override
   String get prayerHistory => 'История намазов';
@@ -2417,7 +2430,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get journeyTask2_6 => 'Изучить намазы-сунну';
 
   @override
-  String get journeyTask2_7 => 'Найти ближайшую мечеть';
+  String get journeyTask2_7 => 'Прочитать свой первый тафсир';
 
   @override
   String get journeyTask3_1 => 'Прочитать суру Аль-Бакара';
@@ -3415,4 +3428,62 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'Понятно';
+
+  @override
+  String get premiumUnlock => 'Открыть Premium';
+
+  @override
+  String get premiumUpgradeButton => 'Перейти на Premium';
+
+  @override
+  String get premiumMaybeLater => 'Может быть позже';
+
+  @override
+  String get premiumPricing => '\$4.99/месяц или \$34.99/год';
+
+  @override
+  String get premiumAppBlockingName => 'Блокировка приложений';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'Блокируйте отвлекающие приложения во время намаза и сессий концентрации, чтобы укрепить связь с Аллахом.';
+
+  @override
+  String get premiumPostStoryName => 'Опубликовать историю';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'Поделитесь своим путём мусульманина с мировым сообществом Noor Guard.';
+
+  @override
+  String get premiumCommentStoriesName => 'Комментировать истории';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'Общайтесь с другими мусульманами сообщества и поддерживайте их.';
+
+  @override
+  String get premiumQuranRecitersName => 'Чтецы Корана';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'Откройте более 10 всемирно известных чтецов, включая шейха Махера аль-Муайкли и шейха Саада аль-Гамди.';
+
+  @override
+  String get premiumAdhanRecitersName => 'Чтецы азана';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'Просыпайтесь под призыв к молитве от любимого муэдзина.';
+
+  @override
+  String get premiumBackgroundPlaybackName =>
+      'Воспроизведение в фоновом режиме';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'Слушайте Коран во время работы, поездок или отдыха — даже при выключенном экране.';
+
+  @override
+  String get tafsirFallbackNote => 'Тафсир пока недоступен на вашем языке.';
 }

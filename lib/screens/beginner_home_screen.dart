@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
@@ -15,6 +16,7 @@ import '../services/prayer_state.dart';
 import '../services/prayer_times_cache.dart';
 import '../theme/app_theme.dart';
 import '../widgets/ad_notice_dialog.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../widgets/city_picker_dialog.dart';
 import '../widgets/geometric_pattern_painter.dart';
 import '../widgets/home/header_section.dart';
@@ -38,9 +40,11 @@ import 'prayers_screen.dart';
 import 'qibla_screen.dart';
 import 'quran_screen.dart';
 import 'settings_screen.dart';
+import 'streak_calendar_screen.dart';
 import 'surah_screen.dart';
 import 'shahada_screen.dart';
 import 'tafsir_of_the_day_screen.dart';
+import 'tafsir_screen.dart';
 import 'tasbih_screen.dart';
 import 'why_do_we_screen.dart';
 import 'wudu_guide_screen.dart';
@@ -70,6 +74,7 @@ class BeginnerHomeScreen extends StatefulWidget {
 
 class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
   int _selectedIndex = 0;
+  final _beginnerBodyKey = GlobalKey<_BeginnerBodyState>();
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +108,7 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
               index: _selectedIndex,
               children: [
                 _BeginnerBody(
+                  key: _beginnerBodyKey,
                   onOpenPrayers: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const PrayersScreen()),
@@ -111,7 +117,10 @@ class _BeginnerHomeScreenState extends State<BeginnerHomeScreen> {
                 ),
                 const QuranScreen(),
                 QiblaScreen(isActive: _selectedIndex == 2),
-                const SettingsScreen(),
+                SettingsScreen(
+                  onDisplayNameChanged: (name) =>
+                      _beginnerBodyKey.currentState?.refreshUserName(name),
+                ),
               ],
             ),
           ),
@@ -132,6 +141,7 @@ class _BeginnerBody extends StatefulWidget {
   final Widget Function()? switchToHome;
 
   const _BeginnerBody({
+    super.key,
     required this.onOpenPrayers,
     this.switchToHome,
   });
@@ -147,6 +157,8 @@ class _BeginnerBodyState extends State<_BeginnerBody>
   DateTime?            _shahadaDate;
   _ShahadaDisplayMode  _displayMode = _ShahadaDisplayMode.days;
   final List<bool> _tasks = List.filled(7, false);
+  final List<bool> _month2Tasks = List.filled(7, false);
+  bool _month1Complete = false;
   late DateTime _lastKnownDate;
 
   @override
@@ -203,9 +215,15 @@ class _BeginnerBodyState extends State<_BeginnerBody>
         (m) => m.name == modeStr, orElse: () => _ShahadaDisplayMode.days);
       for (int i = 0; i < 7; i++) {
         _tasks[i] = prefs.getBool('journey_task_month1_task$i') ?? false;
+        _month2Tasks[i] = prefs.getBool('journey_task_month2_task$i') ?? false;
       }
+      _month1Complete = prefs.getBool('month1_complete') ?? false;
     });
     _loadPrayerTimes();
+  }
+
+  void refreshUserName(String name) {
+    if (mounted) setState(() => _userName = name);
   }
 
   Future<void> _reloadTasks() async {
@@ -214,7 +232,9 @@ class _BeginnerBodyState extends State<_BeginnerBody>
     setState(() {
       for (int i = 0; i < 7; i++) {
         _tasks[i] = prefs.getBool('journey_task_month1_task$i') ?? false;
+        _month2Tasks[i] = prefs.getBool('journey_task_month2_task$i') ?? false;
       }
+      _month1Complete = prefs.getBool('month1_complete') ?? false;
     });
   }
 
@@ -326,7 +346,19 @@ class _BeginnerBodyState extends State<_BeginnerBody>
     final prefs    = await SharedPreferences.getInstance();
     final newValue = !_tasks[index];
     await prefs.setBool('journey_task_month1_task$index', newValue);
-    if (mounted) setState(() => _tasks[index] = newValue);
+    if (!mounted) return;
+    setState(() => _tasks[index] = newValue);
+    if (!_month1Complete && _tasks.every((t) => t)) {
+      await prefs.setBool('month1_complete', true);
+      if (mounted) setState(() => _month1Complete = true);
+    }
+  }
+
+  Future<void> _toggleMonth2Task(int index) async {
+    final prefs    = await SharedPreferences.getInstance();
+    final newValue = !_month2Tasks[index];
+    await prefs.setBool('journey_task_month2_task$index', newValue);
+    if (mounted) setState(() => _month2Tasks[index] = newValue);
   }
 
   Future<void> _pickShahadaDate() async {
@@ -414,6 +446,19 @@ class _BeginnerBodyState extends State<_BeginnerBody>
     }
   }
 
+  Widget _taskScreenMonth2(int index) {
+    switch (index) {
+      case 0: return const StreakCalendarScreen();
+      case 1: return const DuasScreen();
+      case 2: return const SurahScreen(surah: _kAlFatiha);
+      case 3: return const AsmaUlHusnaScreen();
+      case 4: return const TasbihScreen();
+      case 5: return const HowToPrayScreen();
+      case 6: return const TafsirScreen(surah: _kAlFatiha);
+      default: return const NewMuslimHubScreen();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -442,23 +487,37 @@ class _BeginnerBodyState extends State<_BeginnerBody>
               onBadgeTap:  _shahadaDate == null
                   ? _pickShahadaDate
                   : _showShahadaOptions,
-              tasks:       _tasks,
-              onToggle:   _toggleTask,
+              tasks:       _month1Complete ? _month2Tasks : _tasks,
+              onToggle:   _month1Complete ? _toggleMonth2Task : _toggleTask,
               progressLabel: l10n.journeyTasksCompleted(
-                _tasks.where((t) => t).length, 7),
-              taskLabels: [
-                l10n.beginnerEssential6,
-                l10n.beginnerEssential2,
-                l10n.beginnerEssential4,
-                l10n.beginnerEssential3,
-                l10n.beginnerEssential5,
-                l10n.beginnerEssential7,
-                l10n.whyDoWe,
-              ],
+                (_month1Complete ? _month2Tasks : _tasks)
+                    .where((t) => t).length, 7),
+              taskLabels: _month1Complete
+                  ? [
+                      l10n.journeyTask2_1,
+                      l10n.journeyTask2_2,
+                      l10n.journeyTask2_3,
+                      l10n.journeyTask2_4,
+                      l10n.journeyTask2_5,
+                      l10n.journeyTask2_6,
+                      l10n.journeyTask2_7,
+                    ]
+                  : [
+                      l10n.beginnerEssential6,
+                      l10n.beginnerEssential2,
+                      l10n.beginnerEssential4,
+                      l10n.beginnerEssential3,
+                      l10n.beginnerEssential5,
+                      l10n.beginnerEssential7,
+                      l10n.whyDoWe,
+                    ],
               viewFullLabel: l10n.journeyViewFull,
               onNavigate: (i) => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => _taskScreen(i)),
+                MaterialPageRoute(
+                    builder: (_) => _month1Complete
+                        ? _taskScreenMonth2(i)
+                        : _taskScreen(i)),
               ),
               onViewFull: () => Navigator.push(
                 context,
@@ -476,6 +535,8 @@ class _BeginnerBodyState extends State<_BeginnerBody>
             children: [
               const Spacer(),
               _ExploreAllCard(onTap: _showExploreFeaturesSheet),
+              const SizedBox(height: 16),
+              const BannerAdWidget(),
               const SizedBox(height: 16),
             ],
           ),
@@ -1369,15 +1430,19 @@ class _ExploreAllFeaturesSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
-    final features = <({IconData icon, String label, String subtitle, Widget screen})>[
-      (icon: Icons.auto_stories_rounded,     label: l10n.tafsirOfTheDay,    subtitle: l10n.tafsirSubtitle,              screen: const TafsirOfTheDayScreen()),
-      (icon: Icons.volunteer_activism_rounded, label: l10n.duas,            subtitle: l10n.dailySupplications,          screen: const DuasScreen()),
-      (icon: Icons.touch_app_rounded,         label: l10n.tasbihCounter,    subtitle: l10n.tasbihCounterSubtitle,       screen: const TasbihScreen()),
-      (icon: Icons.hourglass_empty_rounded,   label: l10n.focusMode,        subtitle: l10n.focusModeSubtitle,           screen: const FocusModeScreen()),
-      (icon: Icons.security_rounded,          label: l10n.appBlocking,      subtitle: l10n.blockDuringPrayerTimes,      screen: const AppBlockingScreen()),
-      (icon: Icons.calendar_month_rounded,    label: l10n.islamicCalendar,  subtitle: l10n.islamicCalendarSubtitle,     screen: const IslamicCalendarScreen()),
-      (icon: Icons.star_rounded,             label: l10n.asmaUlHusnaTile,  subtitle: l10n.asmaUlHusnaTileSubtitle,    screen: const AsmaUlHusnaScreen()),
-      (icon: Icons.mosque_rounded,            label: l10n.adhan,            subtitle: l10n.adhanSubtitle,               screen: const AdhanScreen()),
+    final isAndroid = defaultTargetPlatform == TargetPlatform.android;
+
+    final features = <({IconData icon, String asset, String label, String subtitle, Widget screen})>[
+      (icon: Icons.auto_stories_rounded,     asset: 'assets/images/icons/tafsir_icon.png',       label: l10n.tafsirOfTheDay,    subtitle: l10n.tafsirSubtitle,              screen: const TafsirOfTheDayScreen()),
+      (icon: Icons.volunteer_activism_rounded, asset: 'assets/images/icons/duas_icon.png',       label: l10n.duas,            subtitle: l10n.dailySupplications,          screen: const DuasScreen()),
+      (icon: Icons.touch_app_rounded,         asset: 'assets/images/icons/tasbih_icon.png',       label: l10n.tasbihCounter,    subtitle: l10n.tasbihCounterSubtitle,       screen: const TasbihScreen()),
+      if (isAndroid)
+        (icon: Icons.hourglass_empty_rounded, asset: 'assets/images/icons/focus_icon.png',        label: l10n.focusMode,        subtitle: l10n.focusModeSubtitle,           screen: const FocusModeScreen()),
+      if (isAndroid)
+        (icon: Icons.shield,                  asset: 'assets/images/icons/app_blocking_icon.png', label: l10n.appBlocking,      subtitle: l10n.blockDuringPrayerTimes,      screen: const AppBlockingScreen()),
+      (icon: Icons.calendar_month_rounded,    asset: 'assets/images/icons/calendar_icon.png',     label: l10n.islamicCalendar,  subtitle: l10n.islamicCalendarSubtitle,     screen: const IslamicCalendarScreen()),
+      (icon: Icons.star_rounded,             asset: 'assets/images/icons/names_icon.png',        label: l10n.asmaUlHusnaTile,  subtitle: l10n.asmaUlHusnaTileSubtitle,    screen: const AsmaUlHusnaScreen()),
+      (icon: Icons.mosque_rounded,            asset: 'assets/images/icons/adhan_icon.png',        label: l10n.adhan,            subtitle: l10n.adhanSubtitle,               screen: const AdhanScreen()),
     ];
 
     return DraggableScrollableSheet(
@@ -1454,13 +1519,14 @@ class _ExploreAllFeaturesSheet extends StatelessWidget {
                       controller: scrollController,
                       padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
                       children: [
-                        for (int row = 0; row < 4; row++) ...[
+                        for (int row = 0; row < features.length ~/ 2; row++) ...[
                           if (row > 0) const SizedBox(height: 12),
                           Row(
                             children: [
                               Expanded(
                                 child: _FeatureModalCard(
                                   icon: features[row * 2].icon,
+                                  asset: features[row * 2].asset,
                                   label: features[row * 2].label,
                                   subtitle: features[row * 2].subtitle,
                                   onTap: () => _navigate(context, features[row * 2].screen),
@@ -1470,6 +1536,7 @@ class _ExploreAllFeaturesSheet extends StatelessWidget {
                               Expanded(
                                 child: _FeatureModalCard(
                                   icon: features[row * 2 + 1].icon,
+                                  asset: features[row * 2 + 1].asset,
                                   label: features[row * 2 + 1].label,
                                   subtitle: features[row * 2 + 1].subtitle,
                                   onTap: () => _navigate(context, features[row * 2 + 1].screen),
@@ -1493,12 +1560,14 @@ class _ExploreAllFeaturesSheet extends StatelessWidget {
 
 class _FeatureModalCard extends StatelessWidget {
   final IconData icon;
+  final String asset;
   final String label;
   final String subtitle;
   final VoidCallback onTap;
 
   const _FeatureModalCard({
     required this.icon,
+    required this.asset,
     required this.label,
     required this.subtitle,
     required this.onTap,
@@ -1548,7 +1617,16 @@ class _FeatureModalCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(icon, color: _kGold, size: 32),
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: Image.asset(
+                    asset,
+                    height: 40,
+                    fit: BoxFit.contain,
+                    errorBuilder: (_, __, ___) => Icon(icon, color: _kGold, size: 32),
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Text(
                   label,

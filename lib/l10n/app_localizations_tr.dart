@@ -212,6 +212,12 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String get profile => 'Profil';
+
+  @override
+  String get displayName => 'Görünen Ad';
+
+  @override
   String get prayerSettings => 'Namaz Ayarları';
 
   @override
@@ -288,7 +294,14 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'Sacramento, CA (varsayılan)';
+  String get qiblaLocationPermissionTitle => 'Konum Erişimi Gerekli';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'Noor Guard, doğru Kıble yönünü gösterebilmek için konumunuza ihtiyaç duyar. Konum erişimine izin verin veya şehrinizi manuel olarak girin.';
+
+  @override
+  String get enterCityManually => 'Şehri Manuel Olarak Gir';
 
   @override
   String get prayerHistory => 'Namaz Geçmişi';
@@ -2396,7 +2409,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get journeyTask2_6 => 'Sünnet namazları öğrenmek';
 
   @override
-  String get journeyTask2_7 => 'Yerel Camii\'ni bulmak';
+  String get journeyTask2_7 => 'İlk Tefsirini okumak';
 
   @override
   String get journeyTask3_1 => 'Bakara Suresini okumak';
@@ -3389,4 +3402,61 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'Anladım';
+
+  @override
+  String get premiumUnlock => 'Premium\'u Aç';
+
+  @override
+  String get premiumUpgradeButton => 'Premium\'a Yükselt';
+
+  @override
+  String get premiumMaybeLater => 'Belki Sonra';
+
+  @override
+  String get premiumPricing => 'Aylık \$4.99 veya yıllık \$34.99';
+
+  @override
+  String get premiumAppBlockingName => 'Uygulama Engelleme';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'Allah ile bağını güçlendirmek için namaz vakitlerinde ve odaklanma seanslarında dikkat dağıtan uygulamaları engelle.';
+
+  @override
+  String get premiumPostStoryName => 'Hikaye Paylaş';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'Bir Müslüman olarak yolculuğunu küresel Noor Guard topluluğuyla paylaş.';
+
+  @override
+  String get premiumCommentStoriesName => 'Hikayelere Yorum Yap';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'Topluluktaki diğer Müslümanlarla etkileşime geç ve onları destekle.';
+
+  @override
+  String get premiumQuranRecitersName => 'Kur\'an Kârîleri';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'Şeyh Maher Al-Muaiqly ve Şeyh Saad Al-Ghamdi dahil 10\'dan fazla dünyaca ünlü kâriyi aç.';
+
+  @override
+  String get premiumAdhanRecitersName => 'Ezan Kârîleri';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'Sevdiğin müezzinin sesinden ezanla uyan.';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'Arka Planda Oynatma';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'Ekran kapalıyken bile çalışırken, yolda ya da dinlenirken Kur\'an dinle.';
+
+  @override
+  String get tafsirFallbackNote => 'Tefsir henüz dilinizde mevcut değil.';
 }

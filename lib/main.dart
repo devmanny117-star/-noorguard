@@ -6,8 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'firebase_options.dart';
@@ -54,6 +56,25 @@ Future<void> main() async {
     } catch (_) {}
   }
   if (!kIsWeb) tz_data.initializeTimeZones();
+  // ATT must be requested before ads load — iOS only, no Android/web equivalent.
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.iOS) {
+    await Future.delayed(const Duration(milliseconds: 200));
+    final status = await AppTrackingTransparency.requestTrackingAuthorization();
+    switch (status) {
+      case TrackingStatus.authorized:
+        break;
+      case TrackingStatus.denied:
+        break;
+      case TrackingStatus.restricted:
+        break;
+      case TrackingStatus.notDetermined:
+        break;
+      case TrackingStatus.notSupported:
+        break;
+    }
+  }
+  // google_mobile_ads has no web implementation — mobile only.
+  if (!kIsWeb) await MobileAds.instance.initialize();
   await NotificationService().init();
   if (!kIsWeb) {
     // Powers the lock screen / status bar media controls for the Quran

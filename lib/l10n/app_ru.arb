@@ -268,6 +268,8 @@
       }
     }
   },
+  "profile": "Профиль",
+  "displayName": "Отображаемое имя",
   "prayerSettings": "Настройки намаза",
   "@prayerSettings": {
     "description": "Section header for prayer-related settings"
@@ -369,7 +371,9 @@
       }
     }
   },
-  "defaultLocation": "Сакраменто, Калифорния (по умолчанию)",
+  "qiblaLocationPermissionTitle": "Требуется доступ к геолокации",
+  "qiblaLocationPermissionMessage": "Noor Guard нужно ваше местоположение, чтобы точно показать направление киблы. Разрешите доступ к геолокации или введите свой город вручную.",
+  "enterCityManually": "Ввести город вручную",
   "@defaultLocation": {
     "description": "Fallback location label shown when the device location is unavailable"
   },
@@ -2958,7 +2962,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Найти ближайшую мечеть",
+  "journeyTask2_7": "Прочитать свой первый тафсир",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -4098,5 +4102,22 @@
   "adNoticeBulletCommunityPremium": "Для раздела «Истории общины» требуется Premium",
   "adNoticeBulletUpgradePremium": "Уберите рекламу и откройте все функции, перейдя на Premium",
   "adNoticeThanks": "Джазакаллаху хайран за вашу поддержку",
-  "adNoticeGotIt": "Понятно"
+  "adNoticeGotIt": "Понятно",
+  "premiumUnlock": "Открыть Premium",
+  "premiumUpgradeButton": "Перейти на Premium",
+  "premiumMaybeLater": "Может быть позже",
+  "premiumPricing": "$4.99/месяц или $34.99/год",
+  "premiumAppBlockingName": "Блокировка приложений",
+  "premiumAppBlockingDescription": "Блокируйте отвлекающие приложения во время намаза и сессий концентрации, чтобы укрепить связь с Аллахом.",
+  "premiumPostStoryName": "Опубликовать историю",
+  "premiumPostStoryDescription": "Поделитесь своим путём мусульманина с мировым сообществом Noor Guard.",
+  "premiumCommentStoriesName": "Комментировать истории",
+  "premiumCommentStoriesDescription": "Общайтесь с другими мусульманами сообщества и поддерживайте их.",
+  "premiumQuranRecitersName": "Чтецы Корана",
+  "premiumQuranRecitersDescription": "Откройте более 10 всемирно известных чтецов, включая шейха Махера аль-Муайкли и шейха Саада аль-Гамди.",
+  "premiumAdhanRecitersName": "Чтецы азана",
+  "premiumAdhanRecitersDescription": "Просыпайтесь под призыв к молитве от любимого муэдзина.",
+  "premiumBackgroundPlaybackName": "Воспроизведение в фоновом режиме",
+  "premiumBackgroundPlaybackDescription": "Слушайте Коран во время работы, поездок или отдыха — даже при выключенном экране.",
+  "tafsirFallbackNote": "Тафсир пока недоступен на вашем языке."
 }

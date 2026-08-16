@@ -57,6 +57,8 @@
   "ayahs": "{count} 节经文",
   "searchDuas": "搜索祈祷文…",
   "supplications": "{count} 段祈祷文",
+  "profile": "个人资料",
+  "displayName": "显示名称",
   "prayerSettings": "礼拜设置",
   "calculationMethod": "计算方法",
   "adhanSound": "宣礼（邦克）声音",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "你的信仰是私人的，你的数据也是。我们绝不出售、共享或利用你的数据牟利。无论是你的位置、礼拜习惯，还是你的姓名，统统不会。",
   "directionToSacredHouse": "通往天房（克尔白）的方向",
   "towardMecca": "朝向麦加 {degrees}°",
-  "defaultLocation": "萨克拉门托，加州（默认位置）",
+  "qiblaLocationPermissionTitle": "需要位置访问权限",
+  "qiblaLocationPermissionMessage": "Noor Guard 需要获取您的位置才能准确显示朝拜方向。请允许位置访问，或手动输入您的城市。",
+  "enterCityManually": "手动输入城市",
   "prayerHistory": "礼拜记录",
   "currentStreak": "当前连续天数",
   "longestStreak": "最长连续天数",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "找到当地清真寺",
+  "journeyTask2_7": "阅读你的第一篇古兰经注释",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "社区见证故事需要 Premium 会员",
   "adNoticeBulletUpgradePremium": "升级到 Premium 即可移除广告并解锁所有功能",
   "adNoticeThanks": "感谢您的支持，愿真主赐福于您",
-  "adNoticeGotIt": "知道了"
+  "adNoticeGotIt": "知道了",
+  "premiumUnlock": "解锁 Premium",
+  "premiumUpgradeButton": "升级到 Premium",
+  "premiumMaybeLater": "以后再说",
+  "premiumPricing": "每月 $4.99 或每年 $34.99",
+  "premiumAppBlockingName": "应用屏蔽",
+  "premiumAppBlockingDescription": "在礼拜时间和专注时段屏蔽分散注意力的应用，以加强你与安拉的联系。",
+  "premiumPostStoryName": "发布见证故事",
+  "premiumPostStoryDescription": "与全球Noor Guard社区分享你作为穆斯林的心路历程。",
+  "premiumCommentStoriesName": "评论见证故事",
+  "premiumCommentStoriesDescription": "与社区中的穆斯林同胞互动并互相鼓励。",
+  "premiumQuranRecitersName": "古兰经诵读者",
+  "premiumQuranRecitersDescription": "解锁10位以上世界知名诵读者，包括谢赫马希尔·穆艾基利和谢赫萨阿德·加姆迪。",
+  "premiumAdhanRecitersName": "宣礼诵读者",
+  "premiumAdhanRecitersDescription": "在你喜爱的宣礼员的礼拜召唤声中醒来。",
+  "premiumBackgroundPlaybackName": "后台播放",
+  "premiumBackgroundPlaybackDescription": "无论工作、通勤还是休息时都能收听古兰经——即使屏幕关闭也不例外。",
+  "tafsirFallbackNote": "暂无你所用语言的经注内容。"
 }

@@ -212,6 +212,12 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get profile => 'Profiel';
+
+  @override
+  String get displayName => 'Weergavenaam';
+
+  @override
   String get prayerSettings => 'Gebedsinstellingen';
 
   @override
@@ -288,7 +294,14 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'Sacramento, CA (standaard)';
+  String get qiblaLocationPermissionTitle => 'Locatietoegang vereist';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'Noor Guard heeft je locatie nodig om de juiste qibla-richting te tonen. Sta locatietoegang toe of voer je stad handmatig in.';
+
+  @override
+  String get enterCityManually => 'Stad handmatig invoeren';
 
   @override
   String get prayerHistory => 'Gebedsgeschiedenis';
@@ -2406,7 +2419,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get journeyTask2_6 => 'Sunnah-gebeden leren';
 
   @override
-  String get journeyTask2_7 => 'Jouw lokale Masjid vinden';
+  String get journeyTask2_7 => 'Jouw eerste Tafsir lezen';
 
   @override
   String get journeyTask3_1 => 'Surah Al-Baqarah lezen';
@@ -3407,4 +3420,62 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'Begrepen';
+
+  @override
+  String get premiumUnlock => 'Premium ontgrendelen';
+
+  @override
+  String get premiumUpgradeButton => 'Upgraden naar Premium';
+
+  @override
+  String get premiumMaybeLater => 'Misschien later';
+
+  @override
+  String get premiumPricing => '\$4,99/maand of \$34,99/jaar';
+
+  @override
+  String get premiumAppBlockingName => 'App-blokkering';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'Blokkeer afleidende apps tijdens gebedstijden en focussessies om je band met Allah te versterken.';
+
+  @override
+  String get premiumPostStoryName => 'Verhaal plaatsen';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'Deel jouw reis als moslim met de wereldwijde Noor Guard-gemeenschap.';
+
+  @override
+  String get premiumCommentStoriesName => 'Reageren op verhalen';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'Ga in gesprek met medemoslims in de gemeenschap en moedig hen aan.';
+
+  @override
+  String get premiumQuranRecitersName => 'Koran-reciteurs';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'Ontgrendel 10+ wereldberoemde reciteurs, waaronder Sheikh Maher Al-Muaiqly en Sheikh Saad Al-Ghamdi.';
+
+  @override
+  String get premiumAdhanRecitersName => 'Adhan-reciteurs';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'Word wakker bij de gebedsoproep van jouw favoriete muezzin.';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'Afspelen op de achtergrond';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'Luister naar de Koran terwijl je werkt, reist of rust — zelfs met het scherm uit.';
+
+  @override
+  String get tafsirFallbackNote =>
+      'Tafsir is nog niet beschikbaar in jouw taal.';
 }

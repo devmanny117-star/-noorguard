@@ -17,6 +17,7 @@ import '../services/prayer_state.dart';
 import '../services/prayer_times_cache.dart';
 import '../services/widget_data_service.dart';
 import '../widgets/ad_notice_dialog.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../widgets/city_picker_dialog.dart';
 import '../widgets/home/header_section.dart';
 import '../widgets/home/hero_card.dart';
@@ -54,6 +55,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  final _homeBodyKey = GlobalKey<_HomeBodyState>();
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
             index: _selectedIndex,
             children: [
               _HomeBody(
+                key: _homeBodyKey,
                 onOpenPrayers: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const PrayersScreen()),
@@ -84,7 +87,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const QuranScreen(),
               QiblaScreen(isActive: _selectedIndex == 2),
-              const SettingsScreen(),
+              SettingsScreen(
+                onDisplayNameChanged: (name) =>
+                    _homeBodyKey.currentState?.refreshUserName(name),
+              ),
             ],
           ),
         ),
@@ -100,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
 class _HomeBody extends StatefulWidget {
   final VoidCallback onOpenPrayers;
 
-  const _HomeBody({required this.onOpenPrayers});
+  const _HomeBody({super.key, required this.onOpenPrayers});
 
   @override
   State<_HomeBody> createState() => _HomeBodyState();
@@ -128,6 +134,10 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
   Future<void> _loadUserName() async {
     final prefs = await SharedPreferences.getInstance();
     if (mounted) setState(() => _userName = prefs.getString('user_name') ?? '');
+  }
+
+  void refreshUserName(String name) {
+    if (mounted) setState(() => _userName = name);
   }
 
   /// loadSettings() must finish before _loadPrayerTimes() reaches
@@ -366,6 +376,8 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
           const RevertCornerCard(),
           const OurStoriesCard(),
           const FeatureGrid(),
+          const SizedBox(height: 16),
+          const BannerAdWidget(),
         ],
       ),
     );

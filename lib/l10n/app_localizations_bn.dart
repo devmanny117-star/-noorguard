@@ -213,6 +213,12 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
+  String get profile => 'প্রোফাইল';
+
+  @override
+  String get displayName => 'প্রদর্শনের নাম';
+
+  @override
   String get prayerSettings => 'নামাজের সেটিংস';
 
   @override
@@ -289,7 +295,14 @@ class AppLocalizationsBn extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'স্যাক্রামেন্টো, ক্যালিফোর্নিয়া (ডিফল্ট)';
+  String get qiblaLocationPermissionTitle => 'অবস্থান অ্যাক্সেস প্রয়োজন';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'সঠিক কিবলার দিক দেখাতে Noor Guard-এর আপনার অবস্থান প্রয়োজন। অবস্থান অ্যাক্সেসের অনুমতি দিন অথবা নিজে থেকে আপনার শহর লিখুন।';
+
+  @override
+  String get enterCityManually => 'নিজে শহর লিখুন';
 
   @override
   String get prayerHistory => 'নামাজের ইতিহাস';
@@ -2401,7 +2414,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get journeyTask2_6 => 'সুন্নাত নামাজ শিখুন';
 
   @override
-  String get journeyTask2_7 => 'আপনার স্থানীয় মসজিদ খুঁজুন';
+  String get journeyTask2_7 => 'আপনার প্রথম তাফসীর পড়ুন';
 
   @override
   String get journeyTask3_1 => 'সূরাহ আল-বাকারা পড়ুন';
@@ -3399,4 +3412,61 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'বুঝেছি';
+
+  @override
+  String get premiumUnlock => 'প্রিমিয়াম আনলক করুন';
+
+  @override
+  String get premiumUpgradeButton => 'প্রিমিয়ামে আপগ্রেড করুন';
+
+  @override
+  String get premiumMaybeLater => 'পরে হয়তো';
+
+  @override
+  String get premiumPricing => '\$4.99/মাস অথবা \$34.99/বছর';
+
+  @override
+  String get premiumAppBlockingName => 'অ্যাপ ব্লকিং';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'আল্লাহর সাথে আপনার সম্পর্ক দৃঢ় করতে নামাজের সময় ও ফোকাস সেশনে মনোযোগ বিঘ্নকারী অ্যাপগুলো ব্লক করুন।';
+
+  @override
+  String get premiumPostStoryName => 'গল্প প্রকাশ করুন';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'একজন মুসলিম হিসেবে আপনার যাত্রা বৈশ্বিক Noor Guard কমিউনিটির সাথে শেয়ার করুন।';
+
+  @override
+  String get premiumCommentStoriesName => 'গল্পে মন্তব্য করুন';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'কমিউনিটির সহ-মুসলিমদের সাথে যুক্ত হোন এবং তাদের উৎসাহ দিন।';
+
+  @override
+  String get premiumQuranRecitersName => 'কুরআন ক্বারীগণ';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'শায়খ মাহের আল-মুয়াইকলি ও শায়খ সাদ আল-গামদিসহ ১০+ বিশ্বখ্যাত ক্বারী আনলক করুন।';
+
+  @override
+  String get premiumAdhanRecitersName => 'আজানের ক্বারীগণ';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'আপনার পছন্দের মুয়াজ্জিনের কণ্ঠে আজান শুনে ঘুম থেকে জাগুন।';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'ব্যাকগ্রাউন্ড প্লেব্যাক';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'কাজ, যাতায়াত বা বিশ্রামের সময় — এমনকি স্ক্রিন বন্ধ থাকা অবস্থায়ও কুরআন শুনুন।';
+
+  @override
+  String get tafsirFallbackNote => 'আপনার ভাষায় তাফসীর এখনও উপলব্ধ নেই।';
 }

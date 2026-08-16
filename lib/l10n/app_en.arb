@@ -268,6 +268,14 @@
       }
     }
   },
+  "profile": "Profile",
+  "@profile": {
+    "description": "Section header for the user's profile settings (display name, etc.)"
+  },
+  "displayName": "Display Name",
+  "@displayName": {
+    "description": "Settings row label and dialog title for editing the user's saved display name"
+  },
   "prayerSettings": "Prayer Settings",
   "@prayerSettings": {
     "description": "Section header for prayer-related settings"
@@ -369,9 +377,17 @@
       }
     }
   },
-  "defaultLocation": "Sacramento, CA (default)",
-  "@defaultLocation": {
-    "description": "Fallback location label shown when the device location is unavailable"
+  "qiblaLocationPermissionTitle": "Location Access Needed",
+  "@qiblaLocationPermissionTitle": {
+    "description": "Title on the Qibla screen's location-setup state, shown when permission is denied or not yet granted"
+  },
+  "qiblaLocationPermissionMessage": "Noor Guard needs your location to show an accurate Qibla direction. Allow location access, or enter your city manually.",
+  "@qiblaLocationPermissionMessage": {
+    "description": "Message on the Qibla screen's location-setup state explaining the two options below it"
+  },
+  "enterCityManually": "Enter City Manually",
+  "@enterCityManually": {
+    "description": "Button on the Qibla screen's location-setup state that opens the manual city picker"
   },
   "prayerHistory": "Prayer History",
   "@prayerHistory": {
@@ -2961,7 +2977,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Find your local Masjid",
+  "journeyTask2_7": "Read your first Tafsir",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -4170,5 +4186,73 @@
   "adNoticeGotIt": "Got it",
   "@adNoticeGotIt": {
     "description": "Dismiss button of the ad notice popup"
+  },
+  "premiumUnlock": "Unlock Premium",
+  "@premiumUnlock": {
+    "description": "Title of the premium upgrade dialog"
+  },
+  "premiumUpgradeButton": "Upgrade to Premium",
+  "@premiumUpgradeButton": {
+    "description": "Primary button label on the premium upgrade dialog"
+  },
+  "premiumMaybeLater": "Maybe Later",
+  "@premiumMaybeLater": {
+    "description": "Secondary/dismiss button label on the premium upgrade dialog"
+  },
+  "premiumPricing": "$4.99/month or $34.99/year",
+  "@premiumPricing": {
+    "description": "Pricing line shown on the premium upgrade dialog"
+  },
+  "premiumAppBlockingName": "App Blocking",
+  "@premiumAppBlockingName": {
+    "description": "Feature name shown on the premium upgrade dialog when triggered from App Blocking"
+  },
+  "premiumAppBlockingDescription": "Block distracting apps during prayer time and focus sessions to strengthen your connection with Allah.",
+  "@premiumAppBlockingDescription": {
+    "description": "Feature description shown on the premium upgrade dialog when triggered from App Blocking"
+  },
+  "premiumPostStoryName": "Post a Story",
+  "@premiumPostStoryName": {
+    "description": "Feature name shown on the premium upgrade dialog when triggered from posting a story"
+  },
+  "premiumPostStoryDescription": "Share your journey as a Muslim with the global Noor Guard community.",
+  "@premiumPostStoryDescription": {
+    "description": "Feature description shown on the premium upgrade dialog when triggered from posting a story"
+  },
+  "premiumCommentStoriesName": "Comment on Stories",
+  "@premiumCommentStoriesName": {
+    "description": "Feature name shown on the premium upgrade dialog when triggered from commenting on a story"
+  },
+  "premiumCommentStoriesDescription": "Engage with and encourage fellow Muslims in the community.",
+  "@premiumCommentStoriesDescription": {
+    "description": "Feature description shown on the premium upgrade dialog when triggered from commenting on a story"
+  },
+  "premiumQuranRecitersName": "Quran Reciters",
+  "@premiumQuranRecitersName": {
+    "description": "Feature name shown on the premium upgrade dialog when triggered from a gated Quran reciter"
+  },
+  "premiumQuranRecitersDescription": "Unlock 10+ world-renowned reciters including Sheikh Maher Al-Muaiqly and Sheikh Saad Al-Ghamdi.",
+  "@premiumQuranRecitersDescription": {
+    "description": "Feature description shown on the premium upgrade dialog when triggered from a gated Quran reciter"
+  },
+  "premiumAdhanRecitersName": "Adhan Reciters",
+  "@premiumAdhanRecitersName": {
+    "description": "Feature name shown on the premium upgrade dialog when triggered from a gated Adhan reciter"
+  },
+  "premiumAdhanRecitersDescription": "Wake to the call of prayer from your favorite muezzin.",
+  "@premiumAdhanRecitersDescription": {
+    "description": "Feature description shown on the premium upgrade dialog when triggered from a gated Adhan reciter"
+  },
+  "premiumBackgroundPlaybackName": "Background Playback",
+  "@premiumBackgroundPlaybackName": {
+    "description": "Feature name shown on the premium upgrade dialog when triggered from background Quran playback"
+  },
+  "premiumBackgroundPlaybackDescription": "Listen to Quran while you work, commute, or rest — even with your screen off.",
+  "@premiumBackgroundPlaybackDescription": {
+    "description": "Feature description shown on the premium upgrade dialog when triggered from background Quran playback"
+  },
+  "tafsirFallbackNote": "Tafsir not available in your language yet.",
+  "@tafsirFallbackNote": {
+    "description": "Small note shown above the tafsir list when falling back to the English tafsir because the user's language has no tafsir source"
   }
 }

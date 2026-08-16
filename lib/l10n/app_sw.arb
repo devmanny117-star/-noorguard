@@ -57,6 +57,8 @@
   "ayahs": "aya {count}",
   "searchDuas": "Tafuta dua…",
   "supplications": "dua {count}",
+  "profile": "Wasifu",
+  "displayName": "Jina la Kuonyesha",
   "prayerSettings": "Mipangilio ya Swala",
   "calculationMethod": "Mbinu ya Kuhesabu",
   "adhanSound": "Sauti ya Adhana",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "Imani yako ni jambo lako binafsi. Data yako pia ni yako binafsi. Hatuuzi, hatushiriki, wala hatutumii data yako kwa biashara. Si mahali ulipo. Si tabia zako za swala. Si jina lako.",
   "directionToSacredHouse": "Mwelekeo wa Nyumba Tukufu",
   "towardMecca": "{degrees}° kuelekea Makka",
-  "defaultLocation": "Sacramento, CA (chaguo-msingi)",
+  "qiblaLocationPermissionTitle": "Ufikiaji wa Mahali Unahitajika",
+  "qiblaLocationPermissionMessage": "Noor Guard inahitaji mahali ulipo ili kuonyesha mwelekeo sahihi wa Kibla. Ruhusu ufikiaji wa mahali, au weka jiji lako mwenyewe.",
+  "enterCityManually": "Weka Jiji Mwenyewe",
   "prayerHistory": "Historia ya Swala",
   "currentStreak": "Mfululizo wa Sasa",
   "longestStreak": "Mfululizo Mrefu Zaidi",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Pata Msikiti wako wa karibu",
+  "journeyTask2_7": "Soma Tafsiri yako ya kwanza",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "Hadithi za Jamii zinahitaji Premium",
   "adNoticeBulletUpgradePremium": "Ondoa matangazo na ufungue vipengele vyote kwa kupandisha hadhi hadi Premium",
   "adNoticeThanks": "JazakAllahu Khayran kwa msaada wako",
-  "adNoticeGotIt": "Nimeelewa"
+  "adNoticeGotIt": "Nimeelewa",
+  "premiumUnlock": "Fungua Premium",
+  "premiumUpgradeButton": "Pandisha Hadhi hadi Premium",
+  "premiumMaybeLater": "Labda Baadaye",
+  "premiumPricing": "$4.99/mwezi au $34.99/mwaka",
+  "premiumAppBlockingName": "Kuzuia Programu",
+  "premiumAppBlockingDescription": "Zuia programu zinazovuruga wakati wa sala na vipindi vya umakini ili kuimarisha uhusiano wako na Allah.",
+  "premiumPostStoryName": "Chapisha Hadithi",
+  "premiumPostStoryDescription": "Shiriki safari yako kama Mwislamu na jamii ya kimataifa ya Noor Guard.",
+  "premiumCommentStoriesName": "Toa Maoni kwenye Hadithi",
+  "premiumCommentStoriesDescription": "Shirikiana na kuwatia moyo Waislamu wenzako katika jamii.",
+  "premiumQuranRecitersName": "Wasomaji wa Qur'an",
+  "premiumQuranRecitersDescription": "Fungua wasomaji zaidi ya 10 mashuhuri duniani, akiwemo Sheikh Maher Al-Muaiqly na Sheikh Saad Al-Ghamdi.",
+  "premiumAdhanRecitersName": "Wasomaji wa Adhana",
+  "premiumAdhanRecitersDescription": "Amka kwa mwito wa sala kutoka kwa muadhini unayempenda zaidi.",
+  "premiumBackgroundPlaybackName": "Uchezaji wa Nyuma",
+  "premiumBackgroundPlaybackDescription": "Sikiliza Qur'an ukiwa kazini, safarini, au ukipumzika — hata skrini ikiwa imezimwa.",
+  "tafsirFallbackNote": "Tafsiri bado haipatikani kwa lugha yako."
 }

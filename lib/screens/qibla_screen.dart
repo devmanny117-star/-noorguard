@@ -15,15 +15,13 @@ import '../models/saved_location_model.dart';
 import '../services/location_service.dart';
 import '../services/qibla_service.dart';
 import '../l10n/app_localizations.dart';
+import '../widgets/banner_ad_widget.dart';
 
 // ── Constants ──────────────────────────────────────────────────────────────────
 
 const _kGold = Color(0xFFD4AF37);
 const _kNavy = Color(0xFF0D1B2A);
 const _kCard = Color(0xFF1A2A3A);
-
-const _kDefaultLat = 38.5816;
-const _kDefaultLng = -121.4944;
 
 /// Preferred compass diameter; shrinks on short screens (see _buildBody)
 /// so the spirit level below it stays fully visible.
@@ -116,7 +114,12 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   // Location & qibla
   double _qiblaBearing = 0;
   bool _isLoading = true;
-  bool _usingDefault = false;
+  // True whenever we have no usable coordinate yet — permission denied
+  // (temporarily or permanently), GPS timed out, location services are off,
+  // or any other failure fetching a fix. There is no default coordinate to
+  // fall back to, so this state always offers the user a way forward:
+  // re-request permission, or pick a city manually.
+  bool _needsLocationSetup = false;
   String _locationLabel = '';
 
   final _locationService = LocationService();
@@ -173,7 +176,14 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _init();
+    // This screen is built eagerly inside the home tab's IndexedStack, so
+    // initState() can fire before the first frame is even painted — on iOS,
+    // requesting location permission that early can race the native view's
+    // attachment and the system prompt silently never appears. Waiting for
+    // the first frame ensures the native side is fully up before we ask.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _init();
+    });
   }
 
   Future<void> _init() async {
@@ -235,35 +245,85 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
       _applySavedLocation(saved);
       return;
     }
+
+    LocationPermission perm;
     try {
-      var perm = await Geolocator.checkPermission();
+      perm = await Geolocator.checkPermission();
       if (perm == LocationPermission.denied) {
+        // Fully awaited — the UI stays on the loading state (no compass)
+        // until the native prompt actually resolves, so we never act on a
+        // stale "denied" from before the user has answered.
         perm = await Geolocator.requestPermission();
       }
-      if (perm == LocationPermission.denied ||
-          perm == LocationPermission.deniedForever) {
-        throw Exception('permission denied');
-      }
+    } catch (_) {
+      _showLocationSetup();
+      return;
+    }
+
+    if (perm == LocationPermission.denied ||
+        perm == LocationPermission.deniedForever) {
+      // Denied (whether just now or previously) or not yet granted — there
+      // is no default coordinate to fall back to, so hand the user a choice
+      // instead: re-request permission, or pick a city manually.
+      _showLocationSetup();
+      return;
+    }
+
+    try {
       final pos = await Geolocator.getCurrentPosition()
           .timeout(const Duration(seconds: 10));
-      _applyLocation(pos.latitude, pos.longitude, isDefault: false);
+      _applyLocation(pos.latitude, pos.longitude);
     } catch (_) {
-      _applyLocation(_kDefaultLat, _kDefaultLng, isDefault: true);
+      // Permission is granted but the fix still failed — e.g. location
+      // services disabled system-wide, the 10s timeout, or another
+      // unexpected error. Same fallback screen; "Allow Location" there
+      // re-runs this whole flow and effectively retries.
+      _showLocationSetup();
     }
   }
 
-  void _applyLocation(double lat, double lng, {required bool isDefault}) {
+  void _applyLocation(double lat, double lng) {
     if (!mounted) return;
     final l10n = AppLocalizations.of(context)!;
     setState(() {
       _qiblaBearing = QiblaService.calculateQiblaDirection(lat, lng);
-      _usingDefault = isDefault;
+      _needsLocationSetup = false;
       // City name instead of raw coordinates. Reverse geocoding is async, so
       // show "Locating…" until it resolves (kept if it never does).
-      _locationLabel = isDefault ? l10n.defaultLocation : l10n.locating;
+      _locationLabel = l10n.locating;
       _isLoading = false;
     });
-    if (!isDefault) _resolveCityLabel(lat, lng);
+    _resolveCityLabel(lat, lng);
+  }
+
+  /// No usable coordinate and nothing left to try automatically — stop
+  /// loading and let the user either re-request permission or enter a city
+  /// manually. Never renders a compass bearing in this state.
+  void _showLocationSetup() {
+    if (!mounted) return;
+    setState(() {
+      _isLoading = false;
+      _needsLocationSetup = true;
+    });
+  }
+
+  /// "Allow Location" button on the setup screen. If permission was
+  /// permanently denied, the OS won't show the prompt again — the only way
+  /// forward is the app's Settings page. Otherwise, re-run the full resolve
+  /// flow, which re-requests permission (or just retries the GPS fix if
+  /// permission is already granted).
+  Future<void> _onAllowLocationTap() async {
+    final perm = await Geolocator.checkPermission();
+    if (perm == LocationPermission.deniedForever) {
+      await Geolocator.openAppSettings();
+      return;
+    }
+    if (!mounted) return;
+    setState(() {
+      _isLoading = true;
+      _needsLocationSetup = false;
+    });
+    await _resolveLocation();
   }
 
   /// Replaces the "Locating…" placeholder with the reverse-geocoded city
@@ -289,7 +349,7 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
     setState(() {
       _qiblaBearing =
           QiblaService.calculateQiblaDirection(loc.latitude, loc.longitude);
-      _usingDefault = false;
+      _needsLocationSetup = false;
       _locationLabel = loc.name;
       _isLoading = false;
     });
@@ -496,10 +556,83 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
             child: Container(height: 1, color: _kGold.withValues(alpha: 0.15)),
           ),
         ),
-        body: _isLoading ? _buildLoading() : _buildBody(l10n),
+        body: _isLoading
+            ? _buildLoading()
+            : (_needsLocationSetup
+                ? _buildLocationSetup(l10n)
+                : _buildBody(l10n)),
       ),
     );
   }
+
+  Widget _buildLocationSetup(AppLocalizations l10n) => Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.location_off_outlined,
+                  size: 40, color: Colors.white.withValues(alpha: 0.4)),
+              const SizedBox(height: 16),
+              Text(
+                l10n.qiblaLocationPermissionTitle,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.playfairDisplay(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                l10n.qiblaLocationPermissionMessage,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  color: Colors.white.withValues(alpha: 0.7),
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: _onAllowLocationTap,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: _kGold,
+                    foregroundColor: _kNavy,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                  ),
+                  child: Text(
+                    l10n.onboardingAllowLocation,
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: _openLocationSheet,
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: _kGold,
+                    side: BorderSide(color: _kGold.withValues(alpha: 0.5)),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                  ),
+                  child: Text(
+                    l10n.enterCityManually,
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
 
   Widget _buildLoading() => const Center(
         child: CircularProgressIndicator(
@@ -531,91 +664,102 @@ class _QiblaScreenState extends State<QiblaScreen> with WidgetsBindingObserver {
                   _kNonCompassContentHeight)
               .clamp(_kCompassSizeMin, maxCompass);
           return SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(24, 0, 24, 16 + bottomClearance),
+            padding: EdgeInsets.only(bottom: 16 + bottomClearance),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 12),
-                _LocationChip(
-                  label: _locationLabel,
-                  isDefault: _usingDefault,
-                  onTap: _openLocationSheet,
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  l10n.directionToSacredHouse,
-                  style: GoogleFonts.lato(
-                    fontSize: 13,
-                    color: Colors.white.withValues(alpha: 0.4),
-                    letterSpacing: 0.4,
-                  ),
-                ),
-                if (!kIsWeb) ...[
-                  const SizedBox(height: 12),
-                  _AccuracyBadge(level: _accuracyLevel),
-                ],
-                const SizedBox(height: 12),
-                // 1. Compass dial
-                _buildCompass(l10n, compassSize),
-                // 2.
-                const SizedBox(height: 12),
-                // 3. Degree label
-                Text(
-                  l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700,
-                    color: _kGold,
-                  ),
-                ),
-                // 4.
-                const SizedBox(height: 8),
-                // 5. Heading badge
-                if (!kIsWeb)
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: _kCard,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                          color: _kGold.withValues(alpha: 0.15), width: 1),
-                    ),
-                    child: Text(
-                      l10n.headingDegrees(_compassHeading.toStringAsFixed(0)),
-                      style: GoogleFonts.lato(
-                        fontSize: 13,
-                        color: Colors.white.withValues(alpha: 0.5),
-                        letterSpacing: 1.0,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 12),
+                      _LocationChip(
+                        label: _locationLabel,
+                        onTap: _openLocationSheet,
                       ),
-                    ),
-                  ),
-                // 6.
-                const SizedBox(height: 14),
-                // 7 & 8. Spirit level label + circle + "Tilt to level" text
-                if (!kIsWeb) _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
-                // Calibration prompt — slides in/out automatically
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 350),
-                  transitionBuilder: (child, anim) => FadeTransition(
-                    opacity: anim,
-                    child: SizeTransition(sizeFactor: anim, child: child),
-                  ),
-                  child: _showCalibration
-                      ? Padding(
-                          key: const ValueKey('cal'),
-                          padding: const EdgeInsets.only(top: 12),
-                          child: _CalibrationPrompt(
-                            onDismiss: () =>
-                                setState(() => _calibrationDismissed = true),
+                      const SizedBox(height: 4),
+                      Text(
+                        l10n.directionToSacredHouse,
+                        style: GoogleFonts.lato(
+                          fontSize: 13,
+                          color: Colors.white.withValues(alpha: 0.4),
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                      if (!kIsWeb) ...[
+                        const SizedBox(height: 12),
+                        _AccuracyBadge(level: _accuracyLevel),
+                      ],
+                      const SizedBox(height: 12),
+                      // 1. Compass dial
+                      _buildCompass(l10n, compassSize),
+                      // 2.
+                      const SizedBox(height: 12),
+                      // 3. Degree label
+                      Text(
+                        l10n.towardMecca(_qiblaBearing.toStringAsFixed(1)),
+                        style: GoogleFonts.playfairDisplay(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: _kGold,
+                        ),
+                      ),
+                      // 4.
+                      const SizedBox(height: 8),
+                      // 5. Heading badge
+                      if (!kIsWeb)
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: _kCard,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                                color: _kGold.withValues(alpha: 0.15),
+                                width: 1),
                           ),
-                        )
-                      : const SizedBox.shrink(key: ValueKey('no-cal')),
+                          child: Text(
+                            l10n.headingDegrees(
+                                _compassHeading.toStringAsFixed(0)),
+                            style: GoogleFonts.lato(
+                              fontSize: 13,
+                              color: Colors.white.withValues(alpha: 0.5),
+                              letterSpacing: 1.0,
+                            ),
+                          ),
+                        ),
+                      // 6.
+                      const SizedBox(height: 14),
+                      // 7 & 8. Spirit level label + circle + "Tilt to level" text
+                      if (!kIsWeb) _SpiritLevel(x: _lpfAccelX, y: _lpfAccelY),
+                      // Calibration prompt — slides in/out automatically
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 350),
+                        transitionBuilder: (child, anim) => FadeTransition(
+                          opacity: anim,
+                          child: SizeTransition(sizeFactor: anim, child: child),
+                        ),
+                        child: _showCalibration
+                            ? Padding(
+                                key: const ValueKey('cal'),
+                                padding: const EdgeInsets.only(top: 12),
+                                child: _CalibrationPrompt(
+                                  onDismiss: () => setState(
+                                      () => _calibrationDismissed = true),
+                                ),
+                              )
+                            : const SizedBox.shrink(key: ValueKey('no-cal')),
+                      ),
+                      if (kIsWeb) ...[
+                        const SizedBox(height: 24),
+                        _WebNote(label: l10n.compassRequiresDevice),
+                      ],
+                    ],
+                  ),
                 ),
-                if (kIsWeb) ...[
-                  const SizedBox(height: 24),
-                  _WebNote(label: l10n.compassRequiresDevice),
-                ],
+                const SizedBox(height: 16),
+                const BannerAdWidget(),
               ],
             ),
           );
@@ -1221,11 +1365,9 @@ class _NeedlePainter extends CustomPainter {
 
 class _LocationChip extends StatelessWidget {
   final String label;
-  final bool isDefault;
   final VoidCallback onTap;
   const _LocationChip({
     required this.label,
-    required this.isDefault,
     required this.onTap,
   });
 
@@ -1242,18 +1384,16 @@ class _LocationChip extends StatelessWidget {
             color: _kCard,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: _kGold.withValues(alpha: isDefault ? 0.18 : 0.40),
+              color: _kGold.withValues(alpha: 0.40),
               width: 1,
             ),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
-                isDefault
-                    ? Icons.location_off_outlined
-                    : Icons.my_location_rounded,
-                color: isDefault ? Colors.white30 : _kGold,
+              const Icon(
+                Icons.my_location_rounded,
+                color: _kGold,
                 size: 14,
               ),
               const SizedBox(width: 6),
@@ -1261,9 +1401,7 @@ class _LocationChip extends StatelessWidget {
                 label,
                 style: GoogleFonts.lato(
                   fontSize: 12,
-                  color: isDefault
-                      ? Colors.white.withValues(alpha: 0.35)
-                      : Colors.white.withValues(alpha: 0.70),
+                  color: Colors.white.withValues(alpha: 0.70),
                   letterSpacing: 0.3,
                 ),
               ),
@@ -1271,8 +1409,7 @@ class _LocationChip extends StatelessWidget {
               Icon(
                 Icons.keyboard_arrow_down_rounded,
                 size: 16,
-                color:
-                    isDefault ? Colors.white30 : _kGold.withValues(alpha: 0.7),
+                color: _kGold.withValues(alpha: 0.7),
               ),
             ],
           ),
@@ -1342,8 +1479,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
       }
       return;
     }
-    _suggestDebounce =
-        Timer(const Duration(milliseconds: 400), () => _fetchSuggestions(query));
+    _suggestDebounce = Timer(
+        const Duration(milliseconds: 400), () => _fetchSuggestions(query));
   }
 
   Future<void> _fetchSuggestions(String query) async {
@@ -1362,7 +1499,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
       final response = await http.get(uri, headers: {
         'User-Agent': 'NoorGuard/1.0 (prayer times app)',
       }).timeout(const Duration(seconds: 6));
-      if (response.statusCode != 200) throw Exception('HTTP ${response.statusCode}');
+      if (response.statusCode != 200)
+        throw Exception('HTTP ${response.statusCode}');
 
       final results = (jsonDecode(response.body) as List<dynamic>)
           .cast<Map<String, dynamic>>();
@@ -1423,8 +1561,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
     } catch (_) {
       if (!mounted) return;
       setState(() {
-        _error = AppLocalizations.of(context)!.maxLocationsReachedMessage(
-            LocationService.maxSavedLocations);
+        _error = AppLocalizations.of(context)!
+            .maxLocationsReachedMessage(LocationService.maxSavedLocations);
       });
     }
   }
@@ -1654,7 +1792,9 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                           : Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                for (var i = 0; i < _suggestions.length; i++) ...[
+                                for (var i = 0;
+                                    i < _suggestions.length;
+                                    i++) ...[
                                   if (i > 0)
                                     Divider(
                                       color: _kGold.withValues(alpha: 0.1),
@@ -1672,7 +1812,8 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
                                           Icon(
                                             Icons.location_on_outlined,
                                             size: 16,
-                                            color: _kGold.withValues(alpha: 0.7),
+                                            color:
+                                                _kGold.withValues(alpha: 0.7),
                                           ),
                                           const SizedBox(width: 10),
                                           Expanded(

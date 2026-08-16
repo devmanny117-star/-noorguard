@@ -213,6 +213,12 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get profile => 'Perfil';
+
+  @override
+  String get displayName => 'Nome de exibição';
+
+  @override
   String get prayerSettings => 'Configurações de Oração';
 
   @override
@@ -289,7 +295,14 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'Sacramento, CA (padrão)';
+  String get qiblaLocationPermissionTitle => 'Acesso à localização necessário';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'O Noor Guard precisa da sua localização para mostrar a direção exata da Qibla. Permita o acesso à localização ou insira sua cidade manualmente.';
+
+  @override
+  String get enterCityManually => 'Inserir cidade manualmente';
 
   @override
   String get prayerHistory => 'Histórico de Orações';
@@ -2410,7 +2423,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get journeyTask2_6 => 'Aprender as orações Sunnah';
 
   @override
-  String get journeyTask2_7 => 'Encontrar sua Masjid local';
+  String get journeyTask2_7 => 'Ler seu primeiro Tafsir';
 
   @override
   String get journeyTask3_1 => 'Ler a Surah Al-Baqarah';
@@ -3407,4 +3420,62 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'Entendi';
+
+  @override
+  String get premiumUnlock => 'Desbloquear Premium';
+
+  @override
+  String get premiumUpgradeButton => 'Atualizar para Premium';
+
+  @override
+  String get premiumMaybeLater => 'Talvez Depois';
+
+  @override
+  String get premiumPricing => '\$4,99/mês ou \$34,99/ano';
+
+  @override
+  String get premiumAppBlockingName => 'Bloqueio de Apps';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'Bloqueie aplicativos que distraem durante os horários de oração e sessões de foco para fortalecer sua conexão com Allah.';
+
+  @override
+  String get premiumPostStoryName => 'Publicar uma História';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'Compartilhe sua jornada como muçulmano com a comunidade global do Noor Guard.';
+
+  @override
+  String get premiumCommentStoriesName => 'Comentar nas Histórias';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'Interaja com outros muçulmanos da comunidade e incentive-os.';
+
+  @override
+  String get premiumQuranRecitersName => 'Recitadores do Alcorão';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'Desbloqueie mais de 10 recitadores de renome mundial, incluindo o Xeque Maher Al-Muaiqly e o Xeque Saad Al-Ghamdi.';
+
+  @override
+  String get premiumAdhanRecitersName => 'Recitadores do Adhan';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'Acorde com o chamado à oração do seu muezim favorito.';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'Reprodução em Segundo Plano';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'Ouça o Alcorão enquanto trabalha, se desloca ou descansa — mesmo com a tela desligada.';
+
+  @override
+  String get tafsirFallbackNote =>
+      'O Tafsir ainda não está disponível no seu idioma.';
 }

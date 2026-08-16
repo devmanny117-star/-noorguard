@@ -57,6 +57,8 @@
   "ayahs": "{count} آیات",
   "searchDuas": "دعائیں تلاش کریں…",
   "supplications": "{count} دعائیں",
+  "profile": "پروفائل",
+  "displayName": "ڈسپلے نام",
   "prayerSettings": "نماز کی ترتیبات",
   "calculationMethod": "حساب کا طریقہ",
   "adhanSound": "اذان کی آواز",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "آپ کا ایمان ذاتی ہے۔ آپ کا ڈیٹا بھی ایسا ہی رہے گا۔ ہم کبھی آپ کا ڈیٹا فروخت، شیئر یا کمائی کے لیے استعمال نہیں کرتے۔ نہ آپ کا مقام، نہ آپ کی نماز کی عادات، نہ آپ کا نام۔",
   "directionToSacredHouse": "خانہ کعبہ کی سمت",
   "towardMecca": "{degrees}° مکہ کی طرف",
-  "defaultLocation": "سیکرامینٹو، کیلیفورنیا (پہلے سے طے شدہ)",
+  "qiblaLocationPermissionTitle": "مقام تک رسائی درکار ہے",
+  "qiblaLocationPermissionMessage": "درست قبلہ کی سمت دکھانے کے لیے Noor Guard کو آپ کے مقام کی ضرورت ہے۔ مقام تک رسائی کی اجازت دیں یا اپنا شہر خود درج کریں۔",
+  "enterCityManually": "شہر خود درج کریں",
   "prayerHistory": "نماز کی تاریخ",
   "currentStreak": "موجودہ تسلسل",
   "longestStreak": "طویل ترین تسلسل",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "اپنی مقامی مسجد تلاش کریں",
+  "journeyTask2_7": "اپنی پہلی تفسیر پڑھیں",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "کمیونٹی کی کہانیاں کے لیے Premium درکار ہے",
   "adNoticeBulletUpgradePremium": "Premium میں اپ گریڈ کر کے اشتہارات ہٹائیں اور تمام خصوصیات کھولیں",
   "adNoticeThanks": "آپ کی حمایت کے لیے جزاک اللہ خیراً",
-  "adNoticeGotIt": "سمجھ گیا"
+  "adNoticeGotIt": "سمجھ گیا",
+  "premiumUnlock": "Premium کھولیں",
+  "premiumUpgradeButton": "Premium میں اپ گریڈ کریں",
+  "premiumMaybeLater": "شاید بعد میں",
+  "premiumPricing": "$4.99/ماہانہ یا $34.99/سالانہ",
+  "premiumAppBlockingName": "ایپ بلاکنگ",
+  "premiumAppBlockingDescription": "اللہ کے ساتھ اپنا تعلق مضبوط کرنے کے لیے نماز کے اوقات اور فوکس سیشنز کے دوران توجہ ہٹانے والی ایپس کو بلاک کریں۔",
+  "premiumPostStoryName": "کہانی پوسٹ کریں",
+  "premiumPostStoryDescription": "ایک مسلمان کی حیثیت سے اپنا سفر عالمی Noor Guard کمیونٹی کے ساتھ شیئر کریں۔",
+  "premiumCommentStoriesName": "کہانیوں پر تبصرہ کریں",
+  "premiumCommentStoriesDescription": "کمیونٹی کے ساتھی مسلمانوں سے جڑیں اور ان کی حوصلہ افزائی کریں۔",
+  "premiumQuranRecitersName": "قرآن کے قاری",
+  "premiumQuranRecitersDescription": "شیخ ماہر المعیقلی اور شیخ سعد الغامدی سمیت 10 سے زیادہ دنیا بھر میں مشہور قاری غیر مقفل کریں۔",
+  "premiumAdhanRecitersName": "اذان کے قاری",
+  "premiumAdhanRecitersDescription": "اپنے پسندیدہ مؤذن کی آواز میں اذان سے بیدار ہوں۔",
+  "premiumBackgroundPlaybackName": "بیک گراؤنڈ پلے بیک",
+  "premiumBackgroundPlaybackDescription": "کام، سفر یا آرام کے دوران قرآن سنیں — چاہے اسکرین بند ہو۔",
+  "tafsirFallbackNote": "تفسیر ابھی آپ کی زبان میں دستیاب نہیں ہے۔"
 }

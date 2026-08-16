@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show appFlavor;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,8 +14,10 @@ import '../models/adhan_model.dart';
 import '../services/prayer_state.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
+import '../widgets/premium_upgrade_dialog.dart';
 import 'notification_setup_screen.dart';
 import '../services/app_blocking_service.dart';
+import 'admin_screen.dart';
 import 'app_blocking_screen.dart';
 import 'community_stories_screen.dart';
 import 'settings_prayer_notifications_screen.dart';
@@ -24,13 +27,18 @@ import 'beginner_home_screen.dart';
 import 'home_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+  final ValueChanged<String>? onDisplayNameChanged;
+
+  const SettingsScreen({super.key, this.onDisplayNameChanged});
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  // Profile
+  String _displayName = '';
+
   // Prayer Settings
   String _calculationMethod = 'Muslim World League';
 
@@ -112,8 +120,71 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
+    _loadDisplayName();
     _loadSavedLocale();
     _loadAppBlockingStatus();
+  }
+
+  Future<void> _loadDisplayName() async {
+    final prefs = await SharedPreferences.getInstance();
+    final name = prefs.getString('user_name') ?? '';
+    if (mounted) setState(() => _displayName = name);
+  }
+
+  Future<void> _editDisplayName() async {
+    final l10n = AppLocalizations.of(context)!;
+    final controller = TextEditingController(text: _displayName);
+    final newName = await showDialog<String>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: settingsCardNavy,
+        title: Text(
+          l10n.displayName,
+          style: GoogleFonts.playfairDisplay(
+            color: settingsCream,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          style: GoogleFonts.lato(color: settingsCream),
+          decoration: InputDecoration(
+            hintText: l10n.onboardingNameHint,
+            hintStyle: GoogleFonts.lato(color: settingsCream.withValues(alpha: 0.4)),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.gold.withValues(alpha: 0.4)),
+            ),
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.gold),
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(
+              l10n.cancel,
+              style: GoogleFonts.lato(color: settingsCream.withValues(alpha: 0.7)),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, controller.text.trim()),
+            child: Text(
+              l10n.done,
+              style: GoogleFonts.lato(color: AppColors.gold, fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (newName == null || newName == _displayName) return;
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_name', newName);
+    if (!mounted) return;
+    setState(() => _displayName = newName);
+    widget.onDisplayNameChanged?.call(newName);
   }
 
   Future<void> _loadAppBlockingStatus() async {
@@ -239,6 +310,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
 
         const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+        // ══════════════════════════════════════════════════════════════
+        // SECTION 0 — PROFILE
+        // ══════════════════════════════════════════════════════════════
+        SliverToBoxAdapter(child: SettingsSectionHeader(title: l10n.profile)),
+
+        SliverToBoxAdapter(
+          child: SettingsCard(
+            colors: cardColors,
+            children: [
+              SettingsActionRow(
+                label: l10n.displayName,
+                value: _displayName.isNotEmpty ? _displayName : null,
+                icon: Icons.badge_outlined,
+                colors: cardColors,
+                onTap: _editDisplayName,
+              ),
+            ],
+          ),
+        ),
+
+        const SliverToBoxAdapter(child: SizedBox(height: 28)),
 
         // ══════════════════════════════════════════════════════════════
         // SECTION 1 — PRAYER SETTINGS
@@ -441,6 +534,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
               ),
+              // Dev-flavor-only moderation shortcut — absent from the
+              // com.noorguard.app prod build, where appFlavor != 'dev'.
+              if (appFlavor == 'dev') ...[
+                const SettingsDivider(colors: cardColors),
+                SettingsActionRow(
+                  label: 'Admin Panel',
+                  icon: Icons.admin_panel_settings_outlined,
+                  colors: cardColors,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const AdminScreen(),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         ),
@@ -752,6 +860,10 @@ class _PickerSheet extends StatelessWidget {
 // ADHAN PICKER BOTTOM SHEET — shares adhanStyles + PrayerState with AdhanScreen
 // ─────────────────────────────────────────────────────────────────────────────
 
+// First N styles in `adhanStyles` (models/adhan_model.dart) are free; the
+// rest require Premium to select as the active adhan.
+const _freeAdhanIds = {'makkah', 'madinah'};
+
 class _AdhanPickerSheet extends StatefulWidget {
   const _AdhanPickerSheet();
 
@@ -779,6 +891,21 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
   }
 
   Future<void> _selectAndPreview(AdhanStyle style) async {
+    if (!_freeAdhanIds.contains(style.id)) {
+      final prefs = await SharedPreferences.getInstance();
+      final isPremium = prefs.getBool('is_premium') ?? false;
+      if (!isPremium) {
+        if (!mounted) return;
+        final l10n = AppLocalizations.of(context)!;
+        PremiumUpgradeDialog.show(
+          context,
+          featureName: l10n.premiumAdhanRecitersName,
+          featureDescription: l10n.premiumAdhanRecitersDescription,
+        );
+        return;
+      }
+    }
+    if (!mounted) return;
     context.read<PrayerState>().setSelectedAdhan(style.id);
     await _audioPlayer.stop();
     setState(() => _playingId = style.id);
@@ -824,6 +951,10 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
               ...adhanStyles.map((style) {
                 final isSelected = style.id == selectedId;
                 final isPlaying = _playingId == style.id;
+                // Same faded treatment as past events on the Islamic
+                // Calendar screen.
+                final double dim =
+                    _freeAdhanIds.contains(style.id) ? 1.0 : 0.55;
                 return InkWell(
                   onTap: () => _selectAndPreview(style),
                   child: Container(
@@ -838,7 +969,7 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                               ? Icons.pause_circle_filled_rounded
                               : Icons.play_circle_fill_rounded,
                           size: 28,
-                          color: AppColors.gold,
+                          color: AppColors.gold.withValues(alpha: dim),
                         ),
                         const SizedBox(width: 14),
                         Expanded(
@@ -852,9 +983,10 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                                   fontWeight: isSelected
                                       ? FontWeight.w700
                                       : FontWeight.w400,
-                                  color: isSelected
-                                      ? AppColors.gold
-                                      : settingsCream,
+                                  color: (isSelected
+                                          ? AppColors.gold
+                                          : settingsCream)
+                                      .withValues(alpha: dim),
                                 ),
                               ),
                               Text(
@@ -862,7 +994,8 @@ class _AdhanPickerSheetState extends State<_AdhanPickerSheet> {
                                 textDirection: TextDirection.rtl,
                                 style: GoogleFonts.scheherazadeNew(
                                   fontSize: 14,
-                                  color: settingsCream.withValues(alpha: 0.5),
+                                  color: settingsCream
+                                      .withValues(alpha: 0.5 * dim),
                                 ),
                               ),
                             ],

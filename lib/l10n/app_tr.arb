@@ -57,6 +57,8 @@
   "ayahs": "{count} ayet",
   "searchDuas": "Dua ara…",
   "supplications": "{count} dua",
+  "profile": "Profil",
+  "displayName": "Görünen Ad",
   "prayerSettings": "Namaz Ayarları",
   "calculationMethod": "Hesaplama Yöntemi",
   "adhanSound": "Ezan Sesi",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "İnancınız kişiseldir. Verileriniz de öyle kalır. Verilerinizi asla satmıyor, paylaşmıyor veya paraya çevirmiyoruz. Ne konumunuzu, ne namaz alışkanlıklarınızı, ne de adınızı.",
   "directionToSacredHouse": "Mukaddes Eve Doğru Yön",
   "towardMecca": "Mekke'ye doğru {degrees}°",
-  "defaultLocation": "Sacramento, CA (varsayılan)",
+  "qiblaLocationPermissionTitle": "Konum Erişimi Gerekli",
+  "qiblaLocationPermissionMessage": "Noor Guard, doğru Kıble yönünü gösterebilmek için konumunuza ihtiyaç duyar. Konum erişimine izin verin veya şehrinizi manuel olarak girin.",
+  "enterCityManually": "Şehri Manuel Olarak Gir",
   "prayerHistory": "Namaz Geçmişi",
   "currentStreak": "Mevcut Seri",
   "longestStreak": "En Uzun Seri",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Yerel Camii'ni bulmak",
+  "journeyTask2_7": "İlk Tefsirini okumak",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "Topluluk Hikayeleri için Premium gerekir",
   "adNoticeBulletUpgradePremium": "Premium'a yükselterek reklamları kaldırın ve tüm özelliklerin kilidini açın",
   "adNoticeThanks": "Desteğiniz için JazakAllahu Khayran",
-  "adNoticeGotIt": "Anladım"
+  "adNoticeGotIt": "Anladım",
+  "premiumUnlock": "Premium'u Aç",
+  "premiumUpgradeButton": "Premium'a Yükselt",
+  "premiumMaybeLater": "Belki Sonra",
+  "premiumPricing": "Aylık $4.99 veya yıllık $34.99",
+  "premiumAppBlockingName": "Uygulama Engelleme",
+  "premiumAppBlockingDescription": "Allah ile bağını güçlendirmek için namaz vakitlerinde ve odaklanma seanslarında dikkat dağıtan uygulamaları engelle.",
+  "premiumPostStoryName": "Hikaye Paylaş",
+  "premiumPostStoryDescription": "Bir Müslüman olarak yolculuğunu küresel Noor Guard topluluğuyla paylaş.",
+  "premiumCommentStoriesName": "Hikayelere Yorum Yap",
+  "premiumCommentStoriesDescription": "Topluluktaki diğer Müslümanlarla etkileşime geç ve onları destekle.",
+  "premiumQuranRecitersName": "Kur'an Kârîleri",
+  "premiumQuranRecitersDescription": "Şeyh Maher Al-Muaiqly ve Şeyh Saad Al-Ghamdi dahil 10'dan fazla dünyaca ünlü kâriyi aç.",
+  "premiumAdhanRecitersName": "Ezan Kârîleri",
+  "premiumAdhanRecitersDescription": "Sevdiğin müezzinin sesinden ezanla uyan.",
+  "premiumBackgroundPlaybackName": "Arka Planda Oynatma",
+  "premiumBackgroundPlaybackDescription": "Ekran kapalıyken bile çalışırken, yolda ya da dinlenirken Kur'an dinle.",
+  "tafsirFallbackNote": "Tefsir henüz dilinizde mevcut değil."
 }

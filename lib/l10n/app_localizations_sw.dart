@@ -212,6 +212,12 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
+  String get profile => 'Wasifu';
+
+  @override
+  String get displayName => 'Jina la Kuonyesha';
+
+  @override
   String get prayerSettings => 'Mipangilio ya Swala';
 
   @override
@@ -288,7 +294,14 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'Sacramento, CA (chaguo-msingi)';
+  String get qiblaLocationPermissionTitle => 'Ufikiaji wa Mahali Unahitajika';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'Noor Guard inahitaji mahali ulipo ili kuonyesha mwelekeo sahihi wa Kibla. Ruhusu ufikiaji wa mahali, au weka jiji lako mwenyewe.';
+
+  @override
+  String get enterCityManually => 'Weka Jiji Mwenyewe';
 
   @override
   String get prayerHistory => 'Historia ya Swala';
@@ -2404,7 +2417,7 @@ class AppLocalizationsSw extends AppLocalizations {
   String get journeyTask2_6 => 'Jifunze sala za Sunnah';
 
   @override
-  String get journeyTask2_7 => 'Pata Msikiti wako wa karibu';
+  String get journeyTask2_7 => 'Soma Tafsiri yako ya kwanza';
 
   @override
   String get journeyTask3_1 => 'Soma Surah Al-Baqarah';
@@ -3399,4 +3412,61 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'Nimeelewa';
+
+  @override
+  String get premiumUnlock => 'Fungua Premium';
+
+  @override
+  String get premiumUpgradeButton => 'Pandisha Hadhi hadi Premium';
+
+  @override
+  String get premiumMaybeLater => 'Labda Baadaye';
+
+  @override
+  String get premiumPricing => '\$4.99/mwezi au \$34.99/mwaka';
+
+  @override
+  String get premiumAppBlockingName => 'Kuzuia Programu';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'Zuia programu zinazovuruga wakati wa sala na vipindi vya umakini ili kuimarisha uhusiano wako na Allah.';
+
+  @override
+  String get premiumPostStoryName => 'Chapisha Hadithi';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'Shiriki safari yako kama Mwislamu na jamii ya kimataifa ya Noor Guard.';
+
+  @override
+  String get premiumCommentStoriesName => 'Toa Maoni kwenye Hadithi';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'Shirikiana na kuwatia moyo Waislamu wenzako katika jamii.';
+
+  @override
+  String get premiumQuranRecitersName => 'Wasomaji wa Qur\'an';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'Fungua wasomaji zaidi ya 10 mashuhuri duniani, akiwemo Sheikh Maher Al-Muaiqly na Sheikh Saad Al-Ghamdi.';
+
+  @override
+  String get premiumAdhanRecitersName => 'Wasomaji wa Adhana';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'Amka kwa mwito wa sala kutoka kwa muadhini unayempenda zaidi.';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'Uchezaji wa Nyuma';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'Sikiliza Qur\'an ukiwa kazini, safarini, au ukipumzika — hata skrini ikiwa imezimwa.';
+
+  @override
+  String get tafsirFallbackNote => 'Tafsiri bado haipatikani kwa lugha yako.';
 }

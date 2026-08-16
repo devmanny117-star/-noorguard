@@ -361,6 +361,7 @@ class SettingsPrayerRow extends StatelessWidget {
 class SettingsActionRow extends StatelessWidget {
   final String label;
   final IconData icon;
+  final String? value;
   final AppColorScheme colors;
   final VoidCallback onTap;
 
@@ -368,6 +369,7 @@ class SettingsActionRow extends StatelessWidget {
     super.key,
     required this.label,
     required this.icon,
+    this.value,
     this.colors = settingsNavyCardColors,
     required this.onTap,
   });
@@ -392,6 +394,17 @@ class SettingsActionRow extends StatelessWidget {
                 ),
               ),
             ),
+            if (value != null) ...[
+              Text(
+                value!,
+                style: GoogleFonts.lato(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.gold,
+                ),
+              ),
+              const SizedBox(width: 4),
+            ],
             Icon(
               Icons.chevron_right_rounded,
               size: 18,

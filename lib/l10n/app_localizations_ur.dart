@@ -212,6 +212,12 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
+  String get profile => 'پروفائل';
+
+  @override
+  String get displayName => 'ڈسپلے نام';
+
+  @override
   String get prayerSettings => 'نماز کی ترتیبات';
 
   @override
@@ -288,7 +294,14 @@ class AppLocalizationsUr extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'سیکرامینٹو، کیلیفورنیا (پہلے سے طے شدہ)';
+  String get qiblaLocationPermissionTitle => 'مقام تک رسائی درکار ہے';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'درست قبلہ کی سمت دکھانے کے لیے Noor Guard کو آپ کے مقام کی ضرورت ہے۔ مقام تک رسائی کی اجازت دیں یا اپنا شہر خود درج کریں۔';
+
+  @override
+  String get enterCityManually => 'شہر خود درج کریں';
 
   @override
   String get prayerHistory => 'نماز کی تاریخ';
@@ -2387,7 +2400,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get journeyTask2_6 => 'سنت نمازیں سیکھیں';
 
   @override
-  String get journeyTask2_7 => 'اپنی مقامی مسجد تلاش کریں';
+  String get journeyTask2_7 => 'اپنی پہلی تفسیر پڑھیں';
 
   @override
   String get journeyTask3_1 => 'سورہ البقرہ پڑھیں';
@@ -3380,4 +3393,61 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'سمجھ گیا';
+
+  @override
+  String get premiumUnlock => 'Premium کھولیں';
+
+  @override
+  String get premiumUpgradeButton => 'Premium میں اپ گریڈ کریں';
+
+  @override
+  String get premiumMaybeLater => 'شاید بعد میں';
+
+  @override
+  String get premiumPricing => '\$4.99/ماہانہ یا \$34.99/سالانہ';
+
+  @override
+  String get premiumAppBlockingName => 'ایپ بلاکنگ';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'اللہ کے ساتھ اپنا تعلق مضبوط کرنے کے لیے نماز کے اوقات اور فوکس سیشنز کے دوران توجہ ہٹانے والی ایپس کو بلاک کریں۔';
+
+  @override
+  String get premiumPostStoryName => 'کہانی پوسٹ کریں';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'ایک مسلمان کی حیثیت سے اپنا سفر عالمی Noor Guard کمیونٹی کے ساتھ شیئر کریں۔';
+
+  @override
+  String get premiumCommentStoriesName => 'کہانیوں پر تبصرہ کریں';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'کمیونٹی کے ساتھی مسلمانوں سے جڑیں اور ان کی حوصلہ افزائی کریں۔';
+
+  @override
+  String get premiumQuranRecitersName => 'قرآن کے قاری';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'شیخ ماہر المعیقلی اور شیخ سعد الغامدی سمیت 10 سے زیادہ دنیا بھر میں مشہور قاری غیر مقفل کریں۔';
+
+  @override
+  String get premiumAdhanRecitersName => 'اذان کے قاری';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'اپنے پسندیدہ مؤذن کی آواز میں اذان سے بیدار ہوں۔';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'بیک گراؤنڈ پلے بیک';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'کام، سفر یا آرام کے دوران قرآن سنیں — چاہے اسکرین بند ہو۔';
+
+  @override
+  String get tafsirFallbackNote => 'تفسیر ابھی آپ کی زبان میں دستیاب نہیں ہے۔';
 }

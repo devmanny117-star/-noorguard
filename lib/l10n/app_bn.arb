@@ -57,6 +57,8 @@
   "ayahs": "{count} আয়াত",
   "searchDuas": "দোয়া খুঁজুন…",
   "supplications": "{count}টি দোয়া",
+  "profile": "প্রোফাইল",
+  "displayName": "প্রদর্শনের নাম",
   "prayerSettings": "নামাজের সেটিংস",
   "calculationMethod": "হিসাব পদ্ধতি",
   "adhanSound": "আজানের শব্দ",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "আপনার দ্বীন একান্ত ব্যক্তিগত। আপনার তথ্যও তাই। আমরা কখনো আপনার তথ্য বিক্রি, শেয়ার বা মুনাফার জন্য ব্যবহার করি না। না আপনার অবস্থান। না আপনার নামাজের অভ্যাস। না আপনার নাম।",
   "directionToSacredHouse": "পবিত্র ঘরের দিক",
   "towardMecca": "মক্কার দিকে {degrees}°",
-  "defaultLocation": "স্যাক্রামেন্টো, ক্যালিফোর্নিয়া (ডিফল্ট)",
+  "qiblaLocationPermissionTitle": "অবস্থান অ্যাক্সেস প্রয়োজন",
+  "qiblaLocationPermissionMessage": "সঠিক কিবলার দিক দেখাতে Noor Guard-এর আপনার অবস্থান প্রয়োজন। অবস্থান অ্যাক্সেসের অনুমতি দিন অথবা নিজে থেকে আপনার শহর লিখুন।",
+  "enterCityManually": "নিজে শহর লিখুন",
   "prayerHistory": "নামাজের ইতিহাস",
   "currentStreak": "বর্তমান ধারাবাহিকতা",
   "longestStreak": "দীর্ঘতম ধারাবাহিকতা",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "আপনার স্থানীয় মসজিদ খুঁজুন",
+  "journeyTask2_7": "আপনার প্রথম তাফসীর পড়ুন",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "সম্প্রদায়ের গল্প-এর জন্য প্রিমিয়াম প্রয়োজন",
   "adNoticeBulletUpgradePremium": "প্রিমিয়ামে আপগ্রেড করে বিজ্ঞাপন সরিয়ে ফেলুন এবং সব ফিচার আনলক করুন",
   "adNoticeThanks": "জাযাকাল্লাহু খাইরান আপনার সমর্থনের জন্য",
-  "adNoticeGotIt": "বুঝেছি"
+  "adNoticeGotIt": "বুঝেছি",
+  "premiumUnlock": "প্রিমিয়াম আনলক করুন",
+  "premiumUpgradeButton": "প্রিমিয়ামে আপগ্রেড করুন",
+  "premiumMaybeLater": "পরে হয়তো",
+  "premiumPricing": "$4.99/মাস অথবা $34.99/বছর",
+  "premiumAppBlockingName": "অ্যাপ ব্লকিং",
+  "premiumAppBlockingDescription": "আল্লাহর সাথে আপনার সম্পর্ক দৃঢ় করতে নামাজের সময় ও ফোকাস সেশনে মনোযোগ বিঘ্নকারী অ্যাপগুলো ব্লক করুন।",
+  "premiumPostStoryName": "গল্প প্রকাশ করুন",
+  "premiumPostStoryDescription": "একজন মুসলিম হিসেবে আপনার যাত্রা বৈশ্বিক Noor Guard কমিউনিটির সাথে শেয়ার করুন।",
+  "premiumCommentStoriesName": "গল্পে মন্তব্য করুন",
+  "premiumCommentStoriesDescription": "কমিউনিটির সহ-মুসলিমদের সাথে যুক্ত হোন এবং তাদের উৎসাহ দিন।",
+  "premiumQuranRecitersName": "কুরআন ক্বারীগণ",
+  "premiumQuranRecitersDescription": "শায়খ মাহের আল-মুয়াইকলি ও শায়খ সাদ আল-গামদিসহ ১০+ বিশ্বখ্যাত ক্বারী আনলক করুন।",
+  "premiumAdhanRecitersName": "আজানের ক্বারীগণ",
+  "premiumAdhanRecitersDescription": "আপনার পছন্দের মুয়াজ্জিনের কণ্ঠে আজান শুনে ঘুম থেকে জাগুন।",
+  "premiumBackgroundPlaybackName": "ব্যাকগ্রাউন্ড প্লেব্যাক",
+  "premiumBackgroundPlaybackDescription": "কাজ, যাতায়াত বা বিশ্রামের সময় — এমনকি স্ক্রিন বন্ধ থাকা অবস্থায়ও কুরআন শুনুন।",
+  "tafsirFallbackNote": "আপনার ভাষায় তাফসীর এখনও উপলব্ধ নেই।"
 }

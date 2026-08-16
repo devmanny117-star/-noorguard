@@ -57,6 +57,8 @@
   "ayahs": "{count} ayat",
   "searchDuas": "Smeekbeden zoeken…",
   "supplications": "{count} smeekbeden",
+  "profile": "Profiel",
+  "displayName": "Weergavenaam",
   "prayerSettings": "Gebedsinstellingen",
   "calculationMethod": "Berekeningsmethode",
   "adhanSound": "Adhan-geluid",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "Jouw geloof is persoonlijk. Jouw gegevens blijven dat ook. We verkopen, delen of verzilveren je gegevens nooit. Niet je locatie. Niet je gebedsgewoonten. Niet je naam.",
   "directionToSacredHouse": "Richting naar het Heilige Huis",
   "towardMecca": "{degrees}° richting Mekka",
-  "defaultLocation": "Sacramento, CA (standaard)",
+  "qiblaLocationPermissionTitle": "Locatietoegang vereist",
+  "qiblaLocationPermissionMessage": "Noor Guard heeft je locatie nodig om de juiste qibla-richting te tonen. Sta locatietoegang toe of voer je stad handmatig in.",
+  "enterCityManually": "Stad handmatig invoeren",
   "prayerHistory": "Gebedsgeschiedenis",
   "currentStreak": "Huidige Reeks",
   "longestStreak": "Langste Reeks",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Jouw lokale Masjid vinden",
+  "journeyTask2_7": "Jouw eerste Tafsir lezen",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "Verhalen uit de Gemeenschap vereist Premium",
   "adNoticeBulletUpgradePremium": "Verwijder advertenties en ontgrendel alle functies door te upgraden naar Premium",
   "adNoticeThanks": "JazakAllahu Khayran voor je steun",
-  "adNoticeGotIt": "Begrepen"
+  "adNoticeGotIt": "Begrepen",
+  "premiumUnlock": "Premium ontgrendelen",
+  "premiumUpgradeButton": "Upgraden naar Premium",
+  "premiumMaybeLater": "Misschien later",
+  "premiumPricing": "$4,99/maand of $34,99/jaar",
+  "premiumAppBlockingName": "App-blokkering",
+  "premiumAppBlockingDescription": "Blokkeer afleidende apps tijdens gebedstijden en focussessies om je band met Allah te versterken.",
+  "premiumPostStoryName": "Verhaal plaatsen",
+  "premiumPostStoryDescription": "Deel jouw reis als moslim met de wereldwijde Noor Guard-gemeenschap.",
+  "premiumCommentStoriesName": "Reageren op verhalen",
+  "premiumCommentStoriesDescription": "Ga in gesprek met medemoslims in de gemeenschap en moedig hen aan.",
+  "premiumQuranRecitersName": "Koran-reciteurs",
+  "premiumQuranRecitersDescription": "Ontgrendel 10+ wereldberoemde reciteurs, waaronder Sheikh Maher Al-Muaiqly en Sheikh Saad Al-Ghamdi.",
+  "premiumAdhanRecitersName": "Adhan-reciteurs",
+  "premiumAdhanRecitersDescription": "Word wakker bij de gebedsoproep van jouw favoriete muezzin.",
+  "premiumBackgroundPlaybackName": "Afspelen op de achtergrond",
+  "premiumBackgroundPlaybackDescription": "Luister naar de Koran terwijl je werkt, reist of rust — zelfs met het scherm uit.",
+  "tafsirFallbackNote": "Tafsir is nog niet beschikbaar in jouw taal."
 }

@@ -57,6 +57,8 @@
   "ayahs": "{count}節",
   "searchDuas": "ドゥアーを検索…",
   "supplications": "{count}件のドゥアー",
+  "profile": "プロフィール",
+  "displayName": "表示名",
   "prayerSettings": "礼拝設定",
   "calculationMethod": "計算方法",
   "adhanSound": "アザーンの音",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "あなたの信仰は、あなただけのものです。あなたのデータも同じです。私たちはあなたのデータを決して販売、共有、収益化しません。位置情報も、礼拝の習慣も、お名前も。",
   "directionToSacredHouse": "聖なる家(カアバ)への方角",
   "towardMecca": "メッカ方向 {degrees}°",
-  "defaultLocation": "サクラメント、カリフォルニア州(デフォルト)",
+  "qiblaLocationPermissionTitle": "位置情報へのアクセスが必要です",
+  "qiblaLocationPermissionMessage": "正確なキブラの方向を表示するには、Noor Guardに位置情報が必要です。位置情報へのアクセスを許可するか、都市を手動で入力してください。",
+  "enterCityManually": "都市を手動で入力",
   "prayerHistory": "礼拝の記録",
   "currentStreak": "現在の連続記録",
   "longestStreak": "最長の連続記録",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "地元のマスジドを見つける",
+  "journeyTask2_7": "初めてのタフスィールを読む",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "コミュニティのストーリーの利用にはPremiumが必要です",
   "adNoticeBulletUpgradePremium": "Premiumにアップグレードすると広告が消え、すべての機能が使えます",
   "adNoticeThanks": "ご支援にジャザーカッラーフ・ハイランを",
-  "adNoticeGotIt": "了解しました"
+  "adNoticeGotIt": "了解しました",
+  "premiumUnlock": "Premiumを解除",
+  "premiumUpgradeButton": "Premiumにアップグレード",
+  "premiumMaybeLater": "また今度",
+  "premiumPricing": "月額$4.99または年額$34.99",
+  "premiumAppBlockingName": "アプリブロック",
+  "premiumAppBlockingDescription": "礼拝の時間と集中セッション中に気を散らすアプリをブロックして、アッラーとのつながりを深めましょう。",
+  "premiumPostStoryName": "ストーリーを投稿",
+  "premiumPostStoryDescription": "ムスリムとしてのあなたの歩みを、世界中のNoor Guardコミュニティと共有しましょう。",
+  "premiumCommentStoriesName": "ストーリーにコメント",
+  "premiumCommentStoriesDescription": "コミュニティの仲間のムスリムと交流し、励まし合いましょう。",
+  "premiumQuranRecitersName": "クルアーン朗誦者",
+  "premiumQuranRecitersDescription": "シェイク・マーヘル・アル・ムアイクリーやシェイク・サード・アル・ガムディを含む、世界的に有名な10人以上の朗誦者を解放しましょう。",
+  "premiumAdhanRecitersName": "アザーンの朗誦者",
+  "premiumAdhanRecitersDescription": "お気に入りのムアッジンによる礼拝の呼びかけで目覚めましょう。",
+  "premiumBackgroundPlaybackName": "バックグラウンド再生",
+  "premiumBackgroundPlaybackDescription": "仕事中、移動中、休憩中でも — 画面をオフにしたままクルアーンを聴けます。",
+  "tafsirFallbackNote": "タフスィールはまだあなたの言語では利用できません。"
 }

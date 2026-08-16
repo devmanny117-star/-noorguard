@@ -202,6 +202,12 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get profile => '个人资料';
+
+  @override
+  String get displayName => '显示名称';
+
+  @override
   String get prayerSettings => '礼拜设置';
 
   @override
@@ -278,7 +284,14 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => '萨克拉门托，加州（默认位置）';
+  String get qiblaLocationPermissionTitle => '需要位置访问权限';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'Noor Guard 需要获取您的位置才能准确显示朝拜方向。请允许位置访问，或手动输入您的城市。';
+
+  @override
+  String get enterCityManually => '手动输入城市';
 
   @override
   String get prayerHistory => '礼拜记录';
@@ -2272,7 +2285,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get journeyTask2_6 => '学习圣行礼拜';
 
   @override
-  String get journeyTask2_7 => '找到当地清真寺';
+  String get journeyTask2_7 => '阅读你的第一篇古兰经注释';
 
   @override
   String get journeyTask3_1 => '阅读苏拉·巴卡拉';
@@ -3224,4 +3237,58 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => '知道了';
+
+  @override
+  String get premiumUnlock => '解锁 Premium';
+
+  @override
+  String get premiumUpgradeButton => '升级到 Premium';
+
+  @override
+  String get premiumMaybeLater => '以后再说';
+
+  @override
+  String get premiumPricing => '每月 \$4.99 或每年 \$34.99';
+
+  @override
+  String get premiumAppBlockingName => '应用屏蔽';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      '在礼拜时间和专注时段屏蔽分散注意力的应用，以加强你与安拉的联系。';
+
+  @override
+  String get premiumPostStoryName => '发布见证故事';
+
+  @override
+  String get premiumPostStoryDescription => '与全球Noor Guard社区分享你作为穆斯林的心路历程。';
+
+  @override
+  String get premiumCommentStoriesName => '评论见证故事';
+
+  @override
+  String get premiumCommentStoriesDescription => '与社区中的穆斯林同胞互动并互相鼓励。';
+
+  @override
+  String get premiumQuranRecitersName => '古兰经诵读者';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      '解锁10位以上世界知名诵读者，包括谢赫马希尔·穆艾基利和谢赫萨阿德·加姆迪。';
+
+  @override
+  String get premiumAdhanRecitersName => '宣礼诵读者';
+
+  @override
+  String get premiumAdhanRecitersDescription => '在你喜爱的宣礼员的礼拜召唤声中醒来。';
+
+  @override
+  String get premiumBackgroundPlaybackName => '后台播放';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      '无论工作、通勤还是休息时都能收听古兰经——即使屏幕关闭也不例外。';
+
+  @override
+  String get tafsirFallbackNote => '暂无你所用语言的经注内容。';
 }

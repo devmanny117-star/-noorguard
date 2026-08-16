@@ -470,6 +470,18 @@ abstract class AppLocalizations {
   /// **'{count} supplications'**
   String supplications(int count);
 
+  /// Section header for the user's profile settings (display name, etc.)
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// Settings row label and dialog title for editing the user's saved display name
+  ///
+  /// In en, this message translates to:
+  /// **'Display Name'**
+  String get displayName;
+
   /// Section header for prayer-related settings
   ///
   /// In en, this message translates to:
@@ -614,11 +626,23 @@ abstract class AppLocalizations {
   /// **'{degrees}° toward Mecca'**
   String towardMecca(String degrees);
 
-  /// Fallback location label shown when the device location is unavailable
+  /// Title on the Qibla screen's location-setup state, shown when permission is denied or not yet granted
   ///
   /// In en, this message translates to:
-  /// **'Sacramento, CA (default)'**
-  String get defaultLocation;
+  /// **'Location Access Needed'**
+  String get qiblaLocationPermissionTitle;
+
+  /// Message on the Qibla screen's location-setup state explaining the two options below it
+  ///
+  /// In en, this message translates to:
+  /// **'Noor Guard needs your location to show an accurate Qibla direction. Allow location access, or enter your city manually.'**
+  String get qiblaLocationPermissionMessage;
+
+  /// Button on the Qibla screen's location-setup state that opens the manual city picker
+  ///
+  /// In en, this message translates to:
+  /// **'Enter City Manually'**
+  String get enterCityManually;
 
   /// Title of the streak/prayer history calendar screen
   ///
@@ -4415,7 +4439,7 @@ abstract class AppLocalizations {
   /// journeyTask2_7
   ///
   /// In en, this message translates to:
-  /// **'Find your local Masjid'**
+  /// **'Read your first Tafsir'**
   String get journeyTask2_7;
 
   /// journeyTask3_1
@@ -6253,6 +6277,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Got it'**
   String get adNoticeGotIt;
+
+  /// Title of the premium upgrade dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Premium'**
+  String get premiumUnlock;
+
+  /// Primary button label on the premium upgrade dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade to Premium'**
+  String get premiumUpgradeButton;
+
+  /// Secondary/dismiss button label on the premium upgrade dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Maybe Later'**
+  String get premiumMaybeLater;
+
+  /// Pricing line shown on the premium upgrade dialog
+  ///
+  /// In en, this message translates to:
+  /// **'\$4.99/month or \$34.99/year'**
+  String get premiumPricing;
+
+  /// Feature name shown on the premium upgrade dialog when triggered from App Blocking
+  ///
+  /// In en, this message translates to:
+  /// **'App Blocking'**
+  String get premiumAppBlockingName;
+
+  /// Feature description shown on the premium upgrade dialog when triggered from App Blocking
+  ///
+  /// In en, this message translates to:
+  /// **'Block distracting apps during prayer time and focus sessions to strengthen your connection with Allah.'**
+  String get premiumAppBlockingDescription;
+
+  /// Feature name shown on the premium upgrade dialog when triggered from posting a story
+  ///
+  /// In en, this message translates to:
+  /// **'Post a Story'**
+  String get premiumPostStoryName;
+
+  /// Feature description shown on the premium upgrade dialog when triggered from posting a story
+  ///
+  /// In en, this message translates to:
+  /// **'Share your journey as a Muslim with the global Noor Guard community.'**
+  String get premiumPostStoryDescription;
+
+  /// Feature name shown on the premium upgrade dialog when triggered from commenting on a story
+  ///
+  /// In en, this message translates to:
+  /// **'Comment on Stories'**
+  String get premiumCommentStoriesName;
+
+  /// Feature description shown on the premium upgrade dialog when triggered from commenting on a story
+  ///
+  /// In en, this message translates to:
+  /// **'Engage with and encourage fellow Muslims in the community.'**
+  String get premiumCommentStoriesDescription;
+
+  /// Feature name shown on the premium upgrade dialog when triggered from a gated Quran reciter
+  ///
+  /// In en, this message translates to:
+  /// **'Quran Reciters'**
+  String get premiumQuranRecitersName;
+
+  /// Feature description shown on the premium upgrade dialog when triggered from a gated Quran reciter
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock 10+ world-renowned reciters including Sheikh Maher Al-Muaiqly and Sheikh Saad Al-Ghamdi.'**
+  String get premiumQuranRecitersDescription;
+
+  /// Feature name shown on the premium upgrade dialog when triggered from a gated Adhan reciter
+  ///
+  /// In en, this message translates to:
+  /// **'Adhan Reciters'**
+  String get premiumAdhanRecitersName;
+
+  /// Feature description shown on the premium upgrade dialog when triggered from a gated Adhan reciter
+  ///
+  /// In en, this message translates to:
+  /// **'Wake to the call of prayer from your favorite muezzin.'**
+  String get premiumAdhanRecitersDescription;
+
+  /// Feature name shown on the premium upgrade dialog when triggered from background Quran playback
+  ///
+  /// In en, this message translates to:
+  /// **'Background Playback'**
+  String get premiumBackgroundPlaybackName;
+
+  /// Feature description shown on the premium upgrade dialog when triggered from background Quran playback
+  ///
+  /// In en, this message translates to:
+  /// **'Listen to Quran while you work, commute, or rest — even with your screen off.'**
+  String get premiumBackgroundPlaybackDescription;
+
+  /// Small note shown above the tafsir list when falling back to the English tafsir because the user's language has no tafsir source
+  ///
+  /// In en, this message translates to:
+  /// **'Tafsir not available in your language yet.'**
+  String get tafsirFallbackNote;
 }
 
 class _AppLocalizationsDelegate

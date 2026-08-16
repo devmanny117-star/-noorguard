@@ -57,6 +57,8 @@
   "ayahs": "{count} versets",
   "searchDuas": "Rechercher des douas…",
   "supplications": "{count} invocations",
+  "profile": "Profil",
+  "displayName": "Nom d'affichage",
   "prayerSettings": "Paramètres des Prières",
   "calculationMethod": "Méthode de Calcul",
   "adhanSound": "Son de l'Adhan",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "Ta foi est personnelle. Tes données aussi. Nous ne vendons, ne partageons et ne monétisons jamais tes données. Ni ta localisation. Ni tes habitudes de prière. Ni ton nom.",
   "directionToSacredHouse": "Direction de la Maison Sacrée",
   "towardMecca": "{degrees}° vers La Mecque",
-  "defaultLocation": "Sacramento, CA (par défaut)",
+  "qiblaLocationPermissionTitle": "Accès à la localisation requis",
+  "qiblaLocationPermissionMessage": "Noor Guard a besoin de votre position pour afficher la direction exacte de la Qibla. Autorisez l'accès à la position ou saisissez votre ville manuellement.",
+  "enterCityManually": "Saisir la ville manuellement",
   "prayerHistory": "Historique des Prières",
   "currentStreak": "Série Actuelle",
   "longestStreak": "Meilleure Série",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Trouver votre Masjid local",
+  "journeyTask2_7": "Lire votre premier Tafsir",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "Témoignages de la Communauté nécessite Premium",
   "adNoticeBulletUpgradePremium": "Supprimez les publicités et débloquez toutes les fonctionnalités en passant à Premium",
   "adNoticeThanks": "JazakAllahu Khayran pour votre soutien",
-  "adNoticeGotIt": "Compris"
+  "adNoticeGotIt": "Compris",
+  "premiumUnlock": "Débloquer Premium",
+  "premiumUpgradeButton": "Passer à Premium",
+  "premiumMaybeLater": "Peut-être plus tard",
+  "premiumPricing": "4,99 $/mois ou 34,99 $/an",
+  "premiumAppBlockingName": "Blocage d'Applications",
+  "premiumAppBlockingDescription": "Bloquez les applications distrayantes pendant les horaires de prière et les sessions de concentration pour renforcer votre lien avec Allah.",
+  "premiumPostStoryName": "Publier un témoignage",
+  "premiumPostStoryDescription": "Partagez votre parcours en tant que musulman avec la communauté mondiale de Noor Guard.",
+  "premiumCommentStoriesName": "Commenter les témoignages",
+  "premiumCommentStoriesDescription": "Échangez avec d'autres musulmans de la communauté et encouragez-les.",
+  "premiumQuranRecitersName": "Récitateurs du Coran",
+  "premiumQuranRecitersDescription": "Débloquez plus de 10 récitateurs de renommée mondiale, dont Cheikh Maher Al-Muaiqly et Cheikh Saad Al-Ghamdi.",
+  "premiumAdhanRecitersName": "Récitateurs de l'Adhan",
+  "premiumAdhanRecitersDescription": "Réveillez-vous au son de l'appel à la prière de votre muezzin préféré.",
+  "premiumBackgroundPlaybackName": "Lecture en Arrière-plan",
+  "premiumBackgroundPlaybackDescription": "Écoutez le Coran en travaillant, en vous déplaçant ou en vous reposant — même écran éteint.",
+  "tafsirFallbackNote": "Le Tafsir n'est pas encore disponible dans votre langue."
 }

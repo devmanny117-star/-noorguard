@@ -35,6 +35,15 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Noor Guard uses your location to calculate accurate prayer times and Qibla direction.</string>
+	<!-- AdMob App ID, required by google_mobile_ads or the app crashes at
+	     launch on iOS. This is the TEST App ID — swap for the real one from
+	     the AdMob console before store release. -->
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<!-- iOS 14+ requires this usage string before the SDK can request the
+	     App Tracking Transparency prompt for personalized ads. -->
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Noor Guard uses this to show you more relevant ads and support the app.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

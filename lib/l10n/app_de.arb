@@ -57,6 +57,8 @@
   "ayahs": "{count} Ayat",
   "searchDuas": "Duas suchen…",
   "supplications": "{count} Bittgebete",
+  "profile": "Profil",
+  "displayName": "Anzeigename",
   "prayerSettings": "Gebetseinstellungen",
   "calculationMethod": "Berechnungsmethode",
   "adhanSound": "Adhan-Ton",
@@ -81,7 +83,9 @@
   "privacyPromiseBody": "Dein Glaube ist persönlich. Deine Daten bleiben es auch. Wir verkaufen, teilen oder vermarkten deine Daten niemals. Nicht deinen Standort. Nicht deine Gebetsgewohnheiten. Nicht deinen Namen.",
   "directionToSacredHouse": "Richtung zum Heiligen Haus",
   "towardMecca": "{degrees}° Richtung Mekka",
-  "defaultLocation": "Sacramento, CA (Standard)",
+  "qiblaLocationPermissionTitle": "Standortzugriff erforderlich",
+  "qiblaLocationPermissionMessage": "Noor Guard benötigt deinen Standort, um die genaue Qibla-Richtung anzuzeigen. Erlaube den Standortzugriff oder gib deine Stadt manuell ein.",
+  "enterCityManually": "Stadt manuell eingeben",
   "prayerHistory": "Gebetsverlauf",
   "currentStreak": "Aktuelle Serie",
   "longestStreak": "Längste Serie",
@@ -883,7 +887,7 @@
   "@journeyTask2_6": {
     "description": "journeyTask2_6"
   },
-  "journeyTask2_7": "Deine lokale Moschee finden",
+  "journeyTask2_7": "Deinen ersten Tafsir lesen",
   "@journeyTask2_7": {
     "description": "journeyTask2_7"
   },
@@ -1645,5 +1649,22 @@
   "adNoticeBulletCommunityPremium": "Geschichten aus der Community erfordert Premium",
   "adNoticeBulletUpgradePremium": "Entferne Werbung und schalte alle Funktionen frei mit einem Upgrade auf Premium",
   "adNoticeThanks": "JazakAllahu Khayran für deine Unterstützung",
-  "adNoticeGotIt": "Verstanden"
+  "adNoticeGotIt": "Verstanden",
+  "premiumUnlock": "Premium freischalten",
+  "premiumUpgradeButton": "Auf Premium upgraden",
+  "premiumMaybeLater": "Vielleicht später",
+  "premiumPricing": "4,99 $/Monat oder 34,99 $/Jahr",
+  "premiumAppBlockingName": "App-Sperre",
+  "premiumAppBlockingDescription": "Blockiere ablenkende Apps während der Gebetszeiten und Fokus-Sitzungen, um deine Verbindung zu Allah zu stärken.",
+  "premiumPostStoryName": "Story veröffentlichen",
+  "premiumPostStoryDescription": "Teile deine Reise als Muslim mit der weltweiten Noor-Guard-Community.",
+  "premiumCommentStoriesName": "Storys kommentieren",
+  "premiumCommentStoriesDescription": "Tausche dich mit anderen Muslimen in der Community aus und ermutige sie.",
+  "premiumQuranRecitersName": "Quran-Rezitatoren",
+  "premiumQuranRecitersDescription": "Schalte über 10 weltbekannte Rezitatoren frei, darunter Scheich Maher Al-Muaiqly und Scheich Saad Al-Ghamdi.",
+  "premiumAdhanRecitersName": "Adhan-Rezitatoren",
+  "premiumAdhanRecitersDescription": "Wache mit dem Gebetsruf deines Lieblings-Muezzins auf.",
+  "premiumBackgroundPlaybackName": "Wiedergabe im Hintergrund",
+  "premiumBackgroundPlaybackDescription": "Höre den Quran beim Arbeiten, Pendeln oder Ausruhen – auch bei ausgeschaltetem Bildschirm.",
+  "tafsirFallbackNote": "Tafsir ist in deiner Sprache noch nicht verfügbar."
 }

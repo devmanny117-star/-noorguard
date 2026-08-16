@@ -210,6 +210,12 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get displayName => 'الاسم المعروض';
+
+  @override
   String get prayerSettings => 'إعدادات الصلاة';
 
   @override
@@ -286,7 +292,14 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get defaultLocation => 'ساكرامنتو، كاليفورنيا (افتراضي)';
+  String get qiblaLocationPermissionTitle => 'الوصول إلى الموقع مطلوب';
+
+  @override
+  String get qiblaLocationPermissionMessage =>
+      'يحتاج نور جارد إلى موقعك لعرض اتجاه القبلة بدقة. اسمح بالوصول إلى الموقع أو أدخل مدينتك يدويًا.';
+
+  @override
+  String get enterCityManually => 'إدخال المدينة يدويًا';
 
   @override
   String get prayerHistory => 'سجل الصلوات';
@@ -2359,7 +2372,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get journeyTask2_6 => 'تعلّم صلوات السنة';
 
   @override
-  String get journeyTask2_7 => 'إيجاد المسجد المحلي';
+  String get journeyTask2_7 => 'قراءة أول تفسير لك';
 
   @override
   String get journeyTask3_1 => 'قراءة سورة البقرة';
@@ -3337,4 +3350,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get adNoticeGotIt => 'فهمت';
+
+  @override
+  String get premiumUnlock => 'افتح Premium';
+
+  @override
+  String get premiumUpgradeButton => 'الترقية إلى Premium';
+
+  @override
+  String get premiumMaybeLater => 'ربما لاحقًا';
+
+  @override
+  String get premiumPricing => '4.99\$ شهريًا أو 34.99\$ سنويًا';
+
+  @override
+  String get premiumAppBlockingName => 'حجب التطبيقات';
+
+  @override
+  String get premiumAppBlockingDescription =>
+      'احجب التطبيقات المشتِّتة خلال أوقات الصلاة وجلسات التركيز لتقوية صلتك بالله.';
+
+  @override
+  String get premiumPostStoryName => 'نشر قصة';
+
+  @override
+  String get premiumPostStoryDescription =>
+      'شارك رحلتك كمسلم مع مجتمع نور غارد العالمي.';
+
+  @override
+  String get premiumCommentStoriesName => 'التعليق على القصص';
+
+  @override
+  String get premiumCommentStoriesDescription =>
+      'تفاعل مع إخوانك المسلمين في المجتمع وشجّعهم.';
+
+  @override
+  String get premiumQuranRecitersName => 'قرّاء القرآن';
+
+  @override
+  String get premiumQuranRecitersDescription =>
+      'افتح أكثر من 10 قرّاء عالميين بينهم الشيخ ماهر المعيقلي والشيخ سعد الغامدي.';
+
+  @override
+  String get premiumAdhanRecitersName => 'قرّاء الأذان';
+
+  @override
+  String get premiumAdhanRecitersDescription =>
+      'استيقظ على نداء الصلاة بصوت مؤذنك المفضل.';
+
+  @override
+  String get premiumBackgroundPlaybackName => 'التشغيل في الخلفية';
+
+  @override
+  String get premiumBackgroundPlaybackDescription =>
+      'استمع للقرآن أثناء العمل أو التنقل أو الراحة — حتى وشاشتك مطفأة.';
+
+  @override
+  String get tafsirFallbackNote => 'التفسير غير متوفر بلغتك بعد.';
 }
