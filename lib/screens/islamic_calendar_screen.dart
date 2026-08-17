@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../l10n/app_localizations.dart';
 import '../services/hijri_date_service.dart';
 import '../theme/app_theme.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../widgets/geometric_pattern_painter.dart';
 
 // The calendar is deliberately a fixed dark-navy/gold design in BOTH app
@@ -20,39 +21,57 @@ class IslamicCalendarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final now = DateTime.now();
+    final upcomingEvents = _allEvents
+        .where((e) => !e.gregorianDate.isBefore(now))
+        .toList()
+      ..sort((a, b) => a.gregorianDate.compareTo(b.gregorianDate));
+    final pastEvents = _allEvents
+        .where((e) => e.gregorianDate.isBefore(now))
+        .toList()
+      ..sort((a, b) => b.gregorianDate.compareTo(a.gregorianDate));
 
     return Scaffold(
       backgroundColor: _navy,
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          _SliverHeader(),
-          SliverToBoxAdapter(child: _HeroSection()),
-          const SliverToBoxAdapter(child: SizedBox(height: 18)),
-          SliverToBoxAdapter(child: _MonthStrip()),
-          const SliverToBoxAdapter(child: SizedBox(height: 26)),
-          SliverToBoxAdapter(child: _SectionHeader(text: l10n.upcomingEvents)),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, i) => _EventCard(
-                event: _upcomingEvents[i],
-                isNext: i == 0,
-              ),
-              childCount: _upcomingEvents.length,
+      body: Column(
+        children: [
+          Expanded(
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                _SliverHeader(),
+                SliverToBoxAdapter(child: _HeroSection()),
+                const SliverToBoxAdapter(child: SizedBox(height: 18)),
+                SliverToBoxAdapter(child: _MonthStrip()),
+                const SliverToBoxAdapter(child: SizedBox(height: 26)),
+                SliverToBoxAdapter(
+                    child: _SectionHeader(text: l10n.upcomingEvents)),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, i) => _EventCard(
+                      event: upcomingEvents[i],
+                      isNext: i == 0,
+                    ),
+                    childCount: upcomingEvents.length,
+                  ),
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 26)),
+                SliverToBoxAdapter(
+                    child: _SectionHeader(text: l10n.pastEvents)),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, i) => _EventCard(
+                      event: pastEvents[i],
+                      isPast: true,
+                    ),
+                    childCount: pastEvents.length,
+                  ),
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 24)),
+              ],
             ),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: 26)),
-          SliverToBoxAdapter(child: _SectionHeader(text: l10n.pastEvents)),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, i) => _EventCard(
-                event: _pastEvents[i],
-                isPast: true,
-              ),
-              childCount: _pastEvents.length,
-            ),
-          ),
-          const SliverToBoxAdapter(child: SizedBox(height: 40)),
+          const SafeArea(top: false, child: BannerAdWidget()),
         ],
       ),
     );
@@ -139,26 +158,104 @@ class _EventData {
       DateFormat.yMMMMd(localeCode).format(gregorianDate);
 }
 
-final _pastEvents = [
-  _EventData(name: _EventName.islamicNewYear, hijriDay: 1, hijriMonth: _IslamicMonth.muharram, hijriYear: 1447, gregorianDate: DateTime(2025, 6, 26)),
-  _EventData(name: _EventName.ashura, hijriDay: 10, hijriMonth: _IslamicMonth.muharram, hijriYear: 1447, gregorianDate: DateTime(2025, 7, 5)),
-  _EventData(name: _EventName.mawlidAlNabi, hijriDay: 12, hijriMonth: _IslamicMonth.rabiAlAwwal, hijriYear: 1447, gregorianDate: DateTime(2025, 9, 4)),
-  _EventData(name: _EventName.ramadanBegins, hijriDay: 1, hijriMonth: _IslamicMonth.ramadan, hijriYear: 1447, gregorianDate: DateTime(2026, 2, 17)),
-  _EventData(name: _EventName.laylatAlQadr, hijriDay: 27, hijriMonth: _IslamicMonth.ramadan, hijriYear: 1447, gregorianDate: DateTime(2026, 3, 15)),
-  _EventData(name: _EventName.eidAlFitr, hijriDay: 1, hijriMonth: _IslamicMonth.shawwal, hijriYear: 1447, gregorianDate: DateTime(2026, 3, 19)),
-  _EventData(name: _EventName.dayOfArafah, hijriDay: 9, hijriMonth: _IslamicMonth.dhulHijjah, hijriYear: 1447, gregorianDate: DateTime(2026, 5, 25)),
-  _EventData(name: _EventName.eidAlAdha, hijriDay: 10, hijriMonth: _IslamicMonth.dhulHijjah, hijriYear: 1447, gregorianDate: DateTime(2026, 5, 26)),
-];
-
-final _upcomingEvents = [
-  _EventData(name: _EventName.islamicNewYear, yearSuffix: 1448, hijriDay: 1, hijriMonth: _IslamicMonth.muharram, hijriYear: 1448, gregorianDate: DateTime(2026, 6, 16)),
-  _EventData(name: _EventName.ashura, hijriDay: 10, hijriMonth: _IslamicMonth.muharram, hijriYear: 1448, gregorianDate: DateTime(2026, 6, 25)),
-  _EventData(name: _EventName.mawlidAlNabi, hijriDay: 12, hijriMonth: _IslamicMonth.rabiAlAwwal, hijriYear: 1448, gregorianDate: DateTime(2026, 8, 25)),
-  _EventData(name: _EventName.ramadanBegins, hijriDay: 1, hijriMonth: _IslamicMonth.ramadan, hijriYear: 1448, gregorianDate: DateTime(2027, 2, 7)),
-  _EventData(name: _EventName.laylatAlQadr, hijriDay: 27, hijriMonth: _IslamicMonth.ramadan, hijriYear: 1448, gregorianDate: DateTime(2027, 3, 5)),
-  _EventData(name: _EventName.eidAlFitr, hijriDay: 1, hijriMonth: _IslamicMonth.shawwal, hijriYear: 1448, gregorianDate: DateTime(2027, 3, 9)),
-  _EventData(name: _EventName.dayOfArafah, hijriDay: 9, hijriMonth: _IslamicMonth.dhulHijjah, hijriYear: 1448, gregorianDate: DateTime(2027, 5, 15)),
-  _EventData(name: _EventName.eidAlAdha, hijriDay: 10, hijriMonth: _IslamicMonth.dhulHijjah, hijriYear: 1448, gregorianDate: DateTime(2027, 5, 16)),
+final _allEvents = [
+  _EventData(
+      name: _EventName.islamicNewYear,
+      hijriDay: 1,
+      hijriMonth: _IslamicMonth.muharram,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2025, 6, 26)),
+  _EventData(
+      name: _EventName.ashura,
+      hijriDay: 10,
+      hijriMonth: _IslamicMonth.muharram,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2025, 7, 5)),
+  _EventData(
+      name: _EventName.mawlidAlNabi,
+      hijriDay: 12,
+      hijriMonth: _IslamicMonth.rabiAlAwwal,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2025, 9, 4)),
+  _EventData(
+      name: _EventName.ramadanBegins,
+      hijriDay: 1,
+      hijriMonth: _IslamicMonth.ramadan,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2026, 2, 17)),
+  _EventData(
+      name: _EventName.laylatAlQadr,
+      hijriDay: 27,
+      hijriMonth: _IslamicMonth.ramadan,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2026, 3, 15)),
+  _EventData(
+      name: _EventName.eidAlFitr,
+      hijriDay: 1,
+      hijriMonth: _IslamicMonth.shawwal,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2026, 3, 19)),
+  _EventData(
+      name: _EventName.dayOfArafah,
+      hijriDay: 9,
+      hijriMonth: _IslamicMonth.dhulHijjah,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2026, 5, 25)),
+  _EventData(
+      name: _EventName.eidAlAdha,
+      hijriDay: 10,
+      hijriMonth: _IslamicMonth.dhulHijjah,
+      hijriYear: 1447,
+      gregorianDate: DateTime(2026, 5, 26)),
+  _EventData(
+      name: _EventName.islamicNewYear,
+      yearSuffix: 1448,
+      hijriDay: 1,
+      hijriMonth: _IslamicMonth.muharram,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2026, 6, 16)),
+  _EventData(
+      name: _EventName.ashura,
+      hijriDay: 10,
+      hijriMonth: _IslamicMonth.muharram,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2026, 6, 25)),
+  _EventData(
+      name: _EventName.mawlidAlNabi,
+      hijriDay: 12,
+      hijriMonth: _IslamicMonth.rabiAlAwwal,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2026, 8, 25)),
+  _EventData(
+      name: _EventName.ramadanBegins,
+      hijriDay: 1,
+      hijriMonth: _IslamicMonth.ramadan,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2027, 2, 7)),
+  _EventData(
+      name: _EventName.laylatAlQadr,
+      hijriDay: 27,
+      hijriMonth: _IslamicMonth.ramadan,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2027, 3, 5)),
+  _EventData(
+      name: _EventName.eidAlFitr,
+      hijriDay: 1,
+      hijriMonth: _IslamicMonth.shawwal,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2027, 3, 9)),
+  _EventData(
+      name: _EventName.dayOfArafah,
+      hijriDay: 9,
+      hijriMonth: _IslamicMonth.dhulHijjah,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2027, 5, 15)),
+  _EventData(
+      name: _EventName.eidAlAdha,
+      hijriDay: 10,
+      hijriMonth: _IslamicMonth.dhulHijjah,
+      hijriYear: 1448,
+      gregorianDate: DateTime(2027, 5, 16)),
 ];
 
 // ─── Hijri helpers ───────────────────────────────────────────────────────────
@@ -424,8 +521,8 @@ class _MonthStripState extends State<_MonthStrip> {
           final day = i + 1;
           final isToday = day == _todayHijri.day;
           // The matching Gregorian date, for the weekday label.
-          final gregorian = _todayGregorian
-              .add(Duration(days: day - _todayHijri.day));
+          final gregorian =
+              _todayGregorian.add(Duration(days: day - _todayHijri.day));
           final weekday = DateFormat.E(localeCode).format(gregorian);
 
           return Container(
@@ -588,8 +685,7 @@ class _EventCard extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(18, 14, 16, 14),
+                  padding: const EdgeInsetsDirectional.fromSTEB(18, 14, 16, 14),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -611,12 +707,10 @@ class _EventCard extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
-                                color:
-                                    AppColors.gold.withValues(alpha: 0.14),
+                                color: AppColors.gold.withValues(alpha: 0.14),
                                 borderRadius: BorderRadius.circular(9),
                                 border: Border.all(
-                                  color: AppColors.gold
-                                      .withValues(alpha: 0.55),
+                                  color: AppColors.gold.withValues(alpha: 0.55),
                                 ),
                               ),
                               child: Text(

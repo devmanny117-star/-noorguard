@@ -2,9 +2,15 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../models/adhan_model.dart';
 import '../services/prayer_state.dart';
+import '../widgets/premium_upgrade_dialog.dart';
+
+// First N styles in `adhanStyles` (models/adhan_model.dart) are free; the
+// rest require Premium to select as the active adhan.
+const _freeAdhanIds = {'makkah', 'madinah'};
 
 class AdhanScreen extends StatefulWidget {
   const AdhanScreen({super.key});
@@ -74,6 +80,25 @@ class _AdhanScreenState extends State<AdhanScreen>
     await _audioPlayer.play(UrlSource(style.audioUrl));
   }
 
+  Future<void> _selectAdhan(AdhanStyle style) async {
+    if (!_freeAdhanIds.contains(style.id)) {
+      final prefs = await SharedPreferences.getInstance();
+      final isPremium = prefs.getBool('is_premium') ?? false;
+      if (!isPremium) {
+        if (!mounted) return;
+        final l10n = AppLocalizations.of(context)!;
+        PremiumUpgradeDialog.show(
+          context,
+          featureName: l10n.premiumAdhanRecitersName,
+          featureDescription: l10n.premiumAdhanRecitersDescription,
+        );
+        return;
+      }
+    }
+    if (!mounted) return;
+    context.read<PrayerState>().setSelectedAdhan(style.id);
+  }
+
   Future<void> _stop() async {
     await _audioPlayer.stop();
     if (mounted) {
@@ -137,10 +162,11 @@ class _AdhanScreenState extends State<AdhanScreen>
               isActive: _playingId == adhanStyles[i].id,
               isPlaying: _playingId == adhanStyles[i].id && _isPlaying,
               isSelected: selectedAdhanId == adhanStyles[i].id,
+              isLocked: !_freeAdhanIds.contains(adhanStyles[i].id),
               pulse: _pulse,
               onCardTap: () {
                 _playPreview(adhanStyles[i]);
-                context.read<PrayerState>().setSelectedAdhan(adhanStyles[i].id);
+                _selectAdhan(adhanStyles[i]);
               },
               onIconTap: () => _togglePlay(adhanStyles[i]),
             ),
@@ -218,6 +244,7 @@ class _AdhanCard extends StatelessWidget {
   final bool isActive;
   final bool isPlaying;
   final bool isSelected;
+  final bool isLocked;
   final Animation<double> pulse;
   final VoidCallback onCardTap;
   final VoidCallback onIconTap;
@@ -229,6 +256,7 @@ class _AdhanCard extends StatelessWidget {
     required this.isActive,
     required this.isPlaying,
     required this.isSelected,
+    required this.isLocked,
     required this.pulse,
     required this.onCardTap,
     required this.onIconTap,
@@ -241,6 +269,9 @@ class _AdhanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Same faded treatment as past events on the Islamic Calendar screen.
+    final double dim = isLocked ? 0.55 : 1.0;
+
     return Material(
       color: _cardColor,
       borderRadius: BorderRadius.circular(16),
@@ -270,7 +301,7 @@ class _AdhanCard extends StatelessWidget {
                             style: GoogleFonts.lato(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white,
+                              color: Colors.white.withValues(alpha: dim),
                             ),
                           ),
                         ),
@@ -291,7 +322,7 @@ class _AdhanCard extends StatelessWidget {
                       textDirection: TextDirection.rtl,
                       style: GoogleFonts.scheherazadeNew(
                         fontSize: 18,
-                        color: _gold,
+                        color: _gold.withValues(alpha: dim),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -299,7 +330,7 @@ class _AdhanCard extends StatelessWidget {
                       description,
                       style: GoogleFonts.lato(
                         fontSize: 12,
-                        color: _mutedText,
+                        color: _mutedText.withValues(alpha: dim),
                         height: 1.5,
                       ),
                     ),

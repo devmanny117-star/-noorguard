@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../crescent_star_painter.dart';
 import '../geometric_pattern_painter.dart';
+import '../premium_upgrade_dialog.dart';
 import '../../screens/adhan_screen.dart';
 import '../../screens/app_blocking_screen.dart';
 import '../../screens/asma_ul_husna_screen.dart';
@@ -30,13 +32,35 @@ const _kBg          = Color(0xFF0D1B2A);
 class FeatureGrid extends StatelessWidget {
   const FeatureGrid({super.key});
 
-  void _navigate(BuildContext context, String id, String label) {
+  Future<void> _navigate(BuildContext context, String id, String label) async {
+    if (id == 'App Blocking') {
+      final prefs = await SharedPreferences.getInstance();
+      final isPremium = prefs.getBool('is_premium') ?? false;
+      if (!isPremium) {
+        if (!context.mounted) return;
+        final l10n = AppLocalizations.of(context)!;
+        PremiumUpgradeDialog.show(
+          context,
+          featureName: l10n.premiumAppBlockingName,
+          featureDescription: l10n.premiumAppBlockingDescription,
+        );
+        return;
+      }
+    }
+    if (!context.mounted) return;
+
+    // Focus Mode / App Blocking are Android-only. The tiles that call this
+    // are already excluded on iOS (see `isIOS` in build() below), but guard
+    // here too — belt and suspenders — so a future call site can't bypass
+    // that exclusion and reach either screen on iOS.
+    final isAndroid = defaultTargetPlatform == TargetPlatform.android;
+
     Widget? screen;
     if (id == 'Tafsir')           screen = const TafsirOfTheDayScreen();
     if (id == 'Duas')             screen = const DuasScreen();
     if (id == 'Tasbih Counter')   screen = const TasbihScreen();
-    if (id == 'Focus Mode')       screen = const FocusModeScreen();
-    if (id == 'App Blocking')     screen = const AppBlockingScreen();
+    if (id == 'Focus Mode' && isAndroid)   screen = const FocusModeScreen();
+    if (id == 'App Blocking' && isAndroid) screen = const AppBlockingScreen();
     if (id == 'Islamic Calendar') screen = const IslamicCalendarScreen();
     if (id == 'Asma Ul Husna')   screen = const AsmaUlHusnaScreen();
     if (id == 'Adhan')            screen = const AdhanScreen();

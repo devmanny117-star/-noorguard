@@ -6,12 +6,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../models/surah_model.dart';
 import '../widgets/geometric_pattern_painter.dart';
+import 'asma_ul_husna_screen.dart';
 import 'duas_screen.dart';
 import 'how_to_pray_screen.dart';
 import 'islamic_glossary_screen.dart';
 import 'new_muslim_hub_screen.dart';
 import 'shahada_screen.dart';
+import 'streak_calendar_screen.dart';
 import 'surah_screen.dart';
+import 'tafsir_screen.dart';
+import 'tasbih_screen.dart';
 import 'why_do_we_screen.dart';
 import 'wudu_guide_screen.dart';
 
@@ -41,6 +45,8 @@ class JourneyTimelineScreen extends StatefulWidget {
 
 class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
   final List<bool> _month1Tasks = List.filled(7, false);
+  final List<bool> _month2Tasks = List.filled(7, false);
+  bool _month1Complete = false;
 
   @override
   void initState() {
@@ -54,7 +60,9 @@ class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
     setState(() {
       for (int i = 0; i < 7; i++) {
         _month1Tasks[i] = prefs.getBool('journey_task_month1_task$i') ?? false;
+        _month2Tasks[i] = prefs.getBool('journey_task_month2_task$i') ?? false;
       }
+      _month1Complete = prefs.getBool('month1_complete') ?? false;
     });
   }
 
@@ -62,7 +70,19 @@ class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
     final prefs = await SharedPreferences.getInstance();
     final v = !_month1Tasks[index];
     await prefs.setBool('journey_task_month1_task$index', v);
-    if (mounted) setState(() => _month1Tasks[index] = v);
+    if (!mounted) return;
+    setState(() => _month1Tasks[index] = v);
+    if (!_month1Complete && _month1Tasks.every((t) => t)) {
+      await prefs.setBool('month1_complete', true);
+      if (mounted) setState(() => _month1Complete = true);
+    }
+  }
+
+  Future<void> _toggleMonth2Task(int index) async {
+    final prefs = await SharedPreferences.getInstance();
+    final v = !_month2Tasks[index];
+    await prefs.setBool('journey_task_month2_task$index', v);
+    if (mounted) setState(() => _month2Tasks[index] = v);
   }
 
   Widget _taskScreen(int index) {
@@ -78,7 +98,21 @@ class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
     }
   }
 
+  Widget _taskScreenMonth2(int index) {
+    switch (index) {
+      case 0: return const StreakCalendarScreen();
+      case 1: return const DuasScreen();
+      case 2: return const SurahScreen(surah: _kAlFatiha);
+      case 3: return const AsmaUlHusnaScreen();
+      case 4: return const TasbihScreen();
+      case 5: return const HowToPrayScreen();
+      case 6: return const TafsirScreen(surah: _kAlFatiha);
+      default: return const NewMuslimHubScreen();
+    }
+  }
+
   int get _done => _month1Tasks.where((t) => t).length;
+  int get _done2 => _month2Tasks.where((t) => t).length;
 
   @override
   Widget build(BuildContext context) {
@@ -174,38 +208,31 @@ class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
 
                   const _TimelineDot(),
 
-                  // Month 2 — locked
+                  // Month 2 — unlocked once Month 1 is complete
                   _MonthBlock(
                     monthName: l10n.journeyMonth2Name,
                     badgeIcon: Icons.star_rounded,
-                    status: _MonthStatus.locked,
-                    statusLabel: l10n.journeyLocked,
-                    done: 0,
+                    status: !_month1Complete
+                        ? _MonthStatus.locked
+                        : _done2 == 7
+                            ? _MonthStatus.completed
+                            : _MonthStatus.inProgress,
+                    statusLabel: !_month1Complete
+                        ? l10n.journeyLocked
+                        : _done2 == 7
+                            ? l10n.journeyCompleted
+                            : l10n.journeyInProgress,
+                    done: _done2,
                     total: 7,
-                    progressLabel: l10n.journeyTasksCompleted(0, 7),
+                    progressLabel: l10n.journeyTasksCompleted(_done2, 7),
                     tasks: _buildMonth2Tasks(l10n),
-                    taskChecked: List.filled(7, false),
-                    onToggle: (_) {},
-                    onNavigate: (_) {},
-                    isLocked: true,
-                  ),
-
-                  const _TimelineDot(),
-
-                  // Month 3 — locked
-                  _MonthBlock(
-                    monthName: l10n.journeyMonth3Name,
-                    badgeIcon: Icons.mosque_rounded,
-                    status: _MonthStatus.locked,
-                    statusLabel: l10n.journeyLocked,
-                    done: 0,
-                    total: 7,
-                    progressLabel: l10n.journeyTasksCompleted(0, 7),
-                    tasks: _buildMonth3Tasks(l10n),
-                    taskChecked: List.filled(7, false),
-                    onToggle: (_) {},
-                    onNavigate: (_) {},
-                    isLocked: true,
+                    taskChecked: _month2Tasks,
+                    onToggle: _toggleMonth2Task,
+                    onNavigate: (i) => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => _taskScreenMonth2(i)),
+                    ),
+                    isLocked: !_month1Complete,
                   ),
                 ]),
               ),
@@ -230,12 +257,6 @@ class _JourneyTimelineScreenState extends State<JourneyTimelineScreen> {
     l10n.journeyTask2_1, l10n.journeyTask2_2, l10n.journeyTask2_3,
     l10n.journeyTask2_4, l10n.journeyTask2_5, l10n.journeyTask2_6,
     l10n.journeyTask2_7,
-  ];
-
-  List<String> _buildMonth3Tasks(AppLocalizations l10n) => [
-    l10n.journeyTask3_1, l10n.journeyTask3_2, l10n.journeyTask3_3,
-    l10n.journeyTask3_4, l10n.journeyTask3_5, l10n.journeyTask3_6,
-    l10n.journeyTask3_7,
   ];
 }
 

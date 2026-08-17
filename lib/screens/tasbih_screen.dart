@@ -9,6 +9,7 @@ import '../l10n/app_localizations.dart';
 import '../models/dhikr_model.dart';
 import '../models/tasbih_sound.dart';
 import '../services/tasbih_service.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../widgets/tasbih/manage_dhikr_sheet.dart';
 import '../widgets/tasbih/sound_picker_sheet.dart';
 import '../widgets/tasbih/tasbih_bead_ring.dart';
@@ -229,6 +230,7 @@ class _TasbihScreenState extends State<TasbihScreen>
                         ],
                       ),
                     ),
+                    const BannerAdWidget(),
                   ],
                 ),
               ),

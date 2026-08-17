@@ -6,7 +6,16 @@ class TafsirApiResult {
   final String text;
   final String source;
 
-  const TafsirApiResult({required this.text, required this.source});
+  /// True when [text] is the English tafsir shown in place of one for the
+  /// originally requested language, because that language has no source
+  /// coverage (see [TafsirApiService._sources]).
+  final bool isFallback;
+
+  const TafsirApiResult({
+    required this.text,
+    required this.source,
+    this.isFallback = false,
+  });
 }
 
 class _TafsirSource {
@@ -29,7 +38,8 @@ class TafsirApiService {
   static const _baseUrl = 'https://quranenc.com/api/v1/translation/sura';
 
   // TODO: Add quranenc.com source keys for the 12 languages currently missing
-  // tafsir API coverage — they return null and show "not available" to users:
+  // tafsir API coverage — they fall back to the English tafsir (see
+  // fetchTafsirVerse below) rather than showing nothing:
   //   fr (French), id (Indonesian), zh (Chinese), ja (Japanese), bn (Bengali),
   //   tr (Turkish), sw (Swahili), de (German), nl (Dutch), pt (Portuguese),
   //   it (Italian), fa (Persian)
@@ -59,15 +69,29 @@ class TafsirApiService {
   final Map<String, Map<int, TafsirApiResult>?> _surahCache = {};
   final Map<String, Future<Map<int, TafsirApiResult>?>> _inFlight = {};
 
-  /// Returns the tafsir for [surahNumber]/[verseNumber] in [language], or
-  /// `null` if no online tafsir is available for that language/surah.
+  /// Returns the tafsir for [surahNumber]/[verseNumber] in [language]. If
+  /// [language] has no source coverage (or the surah is missing for it),
+  /// falls back to the English tafsir — marked via [TafsirApiResult.isFallback]
+  /// — so a supported verse is shown instead of nothing. Returns `null` only
+  /// when no tafsir is available in English either.
   Future<TafsirApiResult?> fetchTafsirVerse(
     int surahNumber,
     int verseNumber,
     String language,
   ) async {
     final surah = await _fetchSurah(surahNumber, language);
-    return surah?[verseNumber];
+    final result = surah?[verseNumber];
+    if (result != null) return result;
+    if (language == 'en') return null;
+
+    final fallbackSurah = await _fetchSurah(surahNumber, 'en');
+    final fallbackResult = fallbackSurah?[verseNumber];
+    if (fallbackResult == null) return null;
+    return TafsirApiResult(
+      text: fallbackResult.text,
+      source: fallbackResult.source,
+      isFallback: true,
+    );
   }
 
   Future<Map<int, TafsirApiResult>?> _fetchSurah(

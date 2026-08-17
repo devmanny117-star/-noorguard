@@ -151,26 +151,38 @@ class _TafsirScreenState extends State<TafsirScreen> {
         },
       );
     } else if (apiTafsir != null && apiTafsir.isNotEmpty) {
-      body = ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
-        itemCount: _verses.length,
-        itemBuilder: (context, index) {
-          final verse = _verses[index];
-          final tafsir = apiTafsir[verse.number];
-          if (tafsir == null) return const SizedBox.shrink();
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: _ApiTafsirCard(
-              verseLabel: '${verse.number}',
-              arabic: verse.arabic,
-              translation: verse.translation,
-              tafsirText: tafsir.text,
-              source: tafsir.source,
-              surahName: widget.surah.englishName,
+      final usedFallback = apiTafsir.values.any((r) => r.isFallback);
+      body = Column(
+        children: [
+          if (usedFallback)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+              child: _FallbackNote(message: l10n.tafsirFallbackNote),
             ),
-          );
-        },
+          Expanded(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 40),
+              itemCount: _verses.length,
+              itemBuilder: (context, index) {
+                final verse = _verses[index];
+                final tafsir = apiTafsir[verse.number];
+                if (tafsir == null) return const SizedBox.shrink();
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: _ApiTafsirCard(
+                    verseLabel: '${verse.number}',
+                    arabic: verse.arabic,
+                    translation: verse.translation,
+                    tafsirText: tafsir.text,
+                    source: tafsir.source,
+                    surahName: widget.surah.englishName,
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       );
     } else {
       body = _ComingSoon(message: l10n.tafsirNotAvailable);
@@ -232,6 +244,44 @@ class _TafsirScreenState extends State<TafsirScreen> {
 
   List<Verse> _versesFor(TafsirEntry entry) {
     return _verses.where((v) => entry.verses.contains(v.number)).toList();
+  }
+}
+
+/// Small note shown above the tafsir list when the user's language has no
+/// tafsir source and the English tafsir is shown instead.
+class _FallbackNote extends StatelessWidget {
+  final String message;
+  const _FallbackNote({required this.message});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: _gold.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: _gold.withValues(alpha: 0.25)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.info_outline_rounded,
+              color: _gold.withValues(alpha: 0.85), size: 16),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              message,
+              style: GoogleFonts.lato(
+                fontSize: 12,
+                color: _gold.withValues(alpha: 0.85),
+                height: 1.4,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

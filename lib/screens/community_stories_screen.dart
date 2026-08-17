@@ -5,13 +5,16 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart' hide TextDirection;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/countries.dart';
 import '../l10n/app_localizations.dart';
 import '../models/community_story.dart';
 import '../services/community_stories_service.dart';
+import '../services/interstitial_ad_service.dart';
 import '../services/share_helper.dart';
 import '../widgets/geometric_pattern_painter.dart';
+import '../widgets/premium_upgrade_dialog.dart';
 import '../widgets/share_card.dart';
 import '../widgets/story_avatar.dart';
 import '../widgets/tasbih/tasbih_mosque_silhouette.dart';
@@ -168,6 +171,9 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
     if (CommunityStoriesService.firebaseAvailable) {
       _pendingStream = _service.myPendingStories();
     }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) InterstitialAdService().showAdIfReady('community_stories');
+    });
   }
 
   Future<void> _toggleSaved(String id) async {
@@ -175,7 +181,7 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
     if (mounted) setState(() => _saved = ids);
   }
 
-  void _openSubmitSheet() {
+  Future<void> _openSubmitSheet() async {
     final l10n = AppLocalizations.of(context)!;
     if (!CommunityStoriesService.firebaseAvailable) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -183,6 +189,18 @@ class _CommunityStoriesScreenState extends State<CommunityStoriesScreen> {
       );
       return;
     }
+    final prefs = await SharedPreferences.getInstance();
+    final isPremium = prefs.getBool('is_premium') ?? false;
+    if (!isPremium) {
+      if (!mounted) return;
+      PremiumUpgradeDialog.show(
+        context,
+        featureName: l10n.premiumPostStoryName,
+        featureDescription: l10n.premiumPostStoryDescription,
+      );
+      return;
+    }
+    if (!mounted) return;
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -1745,6 +1763,17 @@ class _CommentsSheetState extends State<_CommentsSheet> {
     final l10n = AppLocalizations.of(context)!;
     final text = _controller.text.trim();
     if (text.isEmpty || _sending) return;
+    final prefs = await SharedPreferences.getInstance();
+    final isPremium = prefs.getBool('is_premium') ?? false;
+    if (!isPremium) {
+      if (!mounted) return;
+      PremiumUpgradeDialog.show(
+        context,
+        featureName: l10n.premiumCommentStoriesName,
+        featureDescription: l10n.premiumCommentStoriesDescription,
+      );
+      return;
+    }
     setState(() => _sending = true);
     try {
       final savedName = await CommunityStoriesService.savedAuthorName();
@@ -3432,6 +3461,17 @@ class _CommunityStoryDetailScreenState
     final l10n = AppLocalizations.of(context)!;
     final text = _commentController.text.trim();
     if (text.isEmpty || _sending) return;
+    final prefs = await SharedPreferences.getInstance();
+    final isPremium = prefs.getBool('is_premium') ?? false;
+    if (!isPremium) {
+      if (!mounted) return;
+      PremiumUpgradeDialog.show(
+        context,
+        featureName: l10n.premiumCommentStoriesName,
+        featureDescription: l10n.premiumCommentStoriesDescription,
+      );
+      return;
+    }
     setState(() => _sending = true);
     try {
       final savedName = await CommunityStoriesService.savedAuthorName();

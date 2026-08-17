@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/dua_model.dart';
 import '../models/installed_app.dart';
 import '../services/app_blocking_service.dart';
+import '../services/interstitial_ad_service.dart';
 import '../services/prayer_state.dart';
 import '../services/widget_data_service.dart';
 import '../widgets/geometric_pattern_painter.dart';
@@ -69,6 +70,9 @@ class _FocusModeScreenState extends State<FocusModeScreen>
     WidgetsBinding.instance.addObserver(this);
     _totalSeconds = _selectedMinutes * 60;
     _remaining = _totalSeconds;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) InterstitialAdService().showAdIfReady('focus_mode');
+    });
 
     _pulseCtrl = AnimationController(
       vsync: this,

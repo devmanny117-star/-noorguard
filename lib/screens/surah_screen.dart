@@ -20,8 +20,13 @@ import '../services/bookmark_service.dart';
 import '../services/tafsir_api_service.dart';
 import '../widgets/font_size_slider.dart';
 import '../widgets/hours_minutes_picker_dialog.dart';
+import '../widgets/premium_upgrade_dialog.dart';
 import 'saved_verses_screen.dart';
 import 'tafsir_screen.dart';
+
+// First N reciters in `reciters` (models/reciter_model.dart) are free;
+// the rest require Premium.
+const _freeReciterIds = {'alafasy', 'sudais'};
 
 const _textScaleKey = 'quran_text_scale';
 // Legacy single-favorite pref, migrated into _favReciterIdsKey on first load.
@@ -623,6 +628,20 @@ class _SurahScreenState extends State<SurahScreen>
   }
 
   Future<void> _onSelectReciter(Reciter reciter) async {
+    if (!_freeReciterIds.contains(reciter.id)) {
+      final prefs = await SharedPreferences.getInstance();
+      final isPremium = prefs.getBool('is_premium') ?? false;
+      if (!isPremium) {
+        if (!mounted) return;
+        final l10n = AppLocalizations.of(context)!;
+        PremiumUpgradeDialog.show(
+          context,
+          featureName: l10n.premiumQuranRecitersName,
+          featureDescription: l10n.premiumQuranRecitersDescription,
+        );
+        return;
+      }
+    }
     final verseNumber = _playingVerseNumber;
     final wasPlaying = _isPlaying;
     setState(() => _selectedReciter = reciter);
@@ -1281,6 +1300,7 @@ class _ReciterSheetState extends State<_ReciterSheet> {
         reciter: r,
         isSelected: r.id == widget.selected.id,
         isFavorite: _favoriteIds.contains(r.id),
+        isLocked: !_freeReciterIds.contains(r.id),
         onTap: () => widget.onSelect(r),
         onToggleFavorite: () => _toggleFavorite(r),
       );
@@ -1401,6 +1421,7 @@ class _ReciterTile extends StatelessWidget {
   final Reciter reciter;
   final bool isSelected;
   final bool isFavorite;
+  final bool isLocked;
   final VoidCallback onTap;
   final VoidCallback onToggleFavorite;
 
@@ -1408,12 +1429,16 @@ class _ReciterTile extends StatelessWidget {
     required this.reciter,
     required this.isSelected,
     required this.isFavorite,
+    required this.isLocked,
     required this.onTap,
     required this.onToggleFavorite,
   });
 
   @override
   Widget build(BuildContext context) {
+    // Same faded treatment as past events on the Islamic Calendar screen.
+    final double dim = isLocked ? 0.55 : 1.0;
+
     return InkWell(
       onTap: onTap,
       splashColor: _gold.withValues(alpha: 0.08),
@@ -1430,7 +1455,8 @@ class _ReciterTile extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 14),
                 child: Icon(
                   isFavorite ? Icons.star_rounded : Icons.star_outline_rounded,
-                  color: isFavorite ? _gold : Colors.white30,
+                  color: (isFavorite ? _gold : Colors.white30)
+                      .withValues(alpha: dim),
                   size: 22,
                 ),
               ),
@@ -1442,7 +1468,8 @@ class _ReciterTile extends StatelessWidget {
                 style: GoogleFonts.lato(
                   fontSize: 15,
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
-                  color: isSelected ? _gold : Colors.white,
+                  color: (isSelected ? _gold : Colors.white)
+                      .withValues(alpha: dim),
                 ),
               ),
             ),

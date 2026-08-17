@@ -317,6 +317,7 @@ class CommunityStoriesService {
   }) async {
     await _reports.add({
       'storyId': storyId,
+      'reportedBy': FirebaseAuth.instance.currentUser?.uid ?? '',
       'reportedAt': FieldValue.serverTimestamp(),
       'reason': reason,
       'storyAuthorId': storyAuthorId,

@@ -5,12 +5,13 @@ import '../l10n/app_localizations.dart';
 import '../services/bookmark_service.dart';
 import '../services/share_helper.dart';
 import 'saved_duas_screen.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../widgets/font_size_slider.dart';
 import '../widgets/geometric_pattern_painter.dart';
 
-const _kNavy  = Color(0xFF0D1B2A);
-const _kCard  = Color(0xFF152840);
-const _kGold  = Color(0xFFC9A84C);
+const _kNavy = Color(0xFF0D1B2A);
+const _kCard = Color(0xFF152840);
+const _kGold = Color(0xFFC9A84C);
 const _kCream = Color(0xFFF5EFE6);
 
 class DuasScreen extends StatefulWidget {
@@ -29,10 +30,8 @@ class DuasScreen extends StatefulWidget {
 /// Strips harakat (tashkeel), dagger alif, and tatweel, and collapses
 /// whitespace, so duas can be matched across sources that vocalize the same
 /// text differently.
-String _normalizeArabic(String s) => s
-    .replaceAll(RegExp(r'[ً-ْٰـ]'), '')
-    .replaceAll(RegExp(r'\s+'), ' ')
-    .trim();
+String _normalizeArabic(String s) =>
+    s.replaceAll(RegExp(r'[ً-ْٰـ]'), '').replaceAll(RegExp(r'\s+'), ' ').trim();
 
 class _DuasScreenState extends State<DuasScreen>
     with SingleTickerProviderStateMixin {
@@ -64,7 +63,8 @@ class _DuasScreenState extends State<DuasScreen>
     );
     _fadeController.forward();
     _searchController.addListener(() {
-      setState(() => _searchQuery = _searchController.text.trim().toLowerCase());
+      setState(
+          () => _searchQuery = _searchController.text.trim().toLowerCase());
     });
     _loadFontScale();
     _loadBookmarks();
@@ -129,9 +129,8 @@ class _DuasScreenState extends State<DuasScreen>
     if (_selectedCategoryId == 'all') {
       base = allDuas;
     } else {
-      base = allDuaCategories
-          .firstWhere((c) => c.id == _selectedCategoryId)
-          .duas;
+      base =
+          allDuaCategories.firstWhere((c) => c.id == _selectedCategoryId).duas;
     }
     if (_searchQuery.isEmpty) return base;
     final locale = Localizations.localeOf(context).languageCode;
@@ -158,7 +157,8 @@ class _DuasScreenState extends State<DuasScreen>
   Future<void> _shareDua(CategorizedDua dua) async {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode;
-    final translation = locale == 'ar' ? dua.arabic : dua.translationFor(locale);
+    final translation =
+        locale == 'ar' ? dua.arabic : dua.translationFor(locale);
     try {
       await shareContent(
         context: context,
@@ -172,8 +172,8 @@ class _DuasScreenState extends State<DuasScreen>
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(l10n.shareError,
-            style: GoogleFonts.lato(color: Colors.white)),
+        content:
+            Text(l10n.shareError, style: GoogleFonts.lato(color: Colors.white)),
         backgroundColor: const Color(0xFF2C2C2A),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -196,76 +196,91 @@ class _DuasScreenState extends State<DuasScreen>
               painter: GeometricPatternPainter(color: _kGold, alpha: 0.04),
             ),
           ),
-          CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              _DuasSliverAppBar(
-                searchController: _searchController,
-                selectedCategoryId: _selectedCategoryId,
-                onCategorySelected: _selectCategory,
-                onSavedTap: () async {
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const SavedDuasScreen()),
-                  );
-                  _loadBookmarks();
-                },
-              ),
-              SliverToBoxAdapter(
-                child: _PremiumFontSizeSlider(
-                  index: _fontScaleIndex,
-                  onChanged: _onFontScaleChanged,
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: MediaQuery(
-                  data: MediaQuery.of(context).copyWith(
-                    textScaler: TextScaler.linear(kFontScaleSteps[_fontScaleIndex]),
-                  ),
-                  child: FadeTransition(
-                    opacity: _fadeAnimation,
-                    child: duas.isEmpty
-                        ? const _EmptyState()
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 16, 20, 4),
-                                child: Text(
-                                  l10n.supplications(duas.length),
-                                  style: GoogleFonts.lato(
-                                    fontSize: 12,
-                                    color: _kCream.withValues(alpha: 0.45),
-                                    fontWeight: FontWeight.w500,
-                                    letterSpacing: 0.5,
-                                  ),
+          Column(
+            children: [
+              Expanded(
+                child: CustomScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  slivers: [
+                    _DuasSliverAppBar(
+                      searchController: _searchController,
+                      selectedCategoryId: _selectedCategoryId,
+                      onCategorySelected: _selectCategory,
+                      onSavedTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const SavedDuasScreen()),
+                        );
+                        _loadBookmarks();
+                      },
+                    ),
+                    SliverToBoxAdapter(
+                      child: _PremiumFontSizeSlider(
+                        index: _fontScaleIndex,
+                        onChanged: _onFontScaleChanged,
+                      ),
+                    ),
+                    SliverToBoxAdapter(
+                      child: MediaQuery(
+                        data: MediaQuery.of(context).copyWith(
+                          textScaler: TextScaler.linear(
+                              kFontScaleSteps[_fontScaleIndex]),
+                        ),
+                        child: FadeTransition(
+                          opacity: _fadeAnimation,
+                          child: duas.isEmpty
+                              ? const _EmptyState()
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          20, 16, 20, 4),
+                                      child: Text(
+                                        l10n.supplications(duas.length),
+                                        style: GoogleFonts.lato(
+                                          fontSize: 12,
+                                          color:
+                                              _kCream.withValues(alpha: 0.45),
+                                          fontWeight: FontWeight.w500,
+                                          letterSpacing: 0.5,
+                                        ),
+                                      ),
+                                    ),
+                                    ListView.builder(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      padding: const EdgeInsets.fromLTRB(
+                                          16, 6, 16, 40),
+                                      itemCount: duas.length,
+                                      itemBuilder: (context, i) {
+                                        final isHighlighted =
+                                            duas[i].arabic == _highlightArabic;
+                                        return _DuaCard(
+                                          key: isHighlighted
+                                              ? _highlightKey
+                                              : null,
+                                          dua: duas[i],
+                                          isBookmarked: _bookmarked
+                                              .contains(duas[i].arabic),
+                                          isHighlighted: isHighlighted,
+                                          onBookmarkTap: () =>
+                                              _toggleBookmark(duas[i].arabic),
+                                          onShareTap: () => _shareDua(duas[i]),
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                padding: const EdgeInsets.fromLTRB(16, 6, 16, 40),
-                                itemCount: duas.length,
-                                itemBuilder: (context, i) {
-                                  final isHighlighted =
-                                      duas[i].arabic == _highlightArabic;
-                                  return _DuaCard(
-                                    key: isHighlighted ? _highlightKey : null,
-                                    dua: duas[i],
-                                    isBookmarked:
-                                        _bookmarked.contains(duas[i].arabic),
-                                    isHighlighted: isHighlighted,
-                                    onBookmarkTap: () =>
-                                        _toggleBookmark(duas[i].arabic),
-                                    onShareTap: () => _shareDua(duas[i]),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                  ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
+              const SafeArea(top: false, child: BannerAdWidget()),
             ],
           ),
         ],
@@ -409,17 +424,28 @@ class _SearchBar extends StatelessWidget {
 
 String _localizedCategoryLabel(AppLocalizations l10n, DuaCategory category) {
   switch (category.id) {
-    case 'morning_evening': return l10n.morningAndEvening;
-    case 'prayer':          return l10n.prayer;
-    case 'food':            return l10n.foodAndDrink;
-    case 'travel':          return l10n.travel;
-    case 'home':            return l10n.home;
-    case 'anxiety':         return l10n.anxietyAndStress;
-    case 'gratitude':       return l10n.gratitude;
-    case 'protection':      return l10n.protection;
-    case 'family':          return l10n.family;
-    case 'forgiveness':     return l10n.forgiveness;
-    default:                return category.label;
+    case 'morning_evening':
+      return l10n.morningAndEvening;
+    case 'prayer':
+      return l10n.prayer;
+    case 'food':
+      return l10n.foodAndDrink;
+    case 'travel':
+      return l10n.travel;
+    case 'home':
+      return l10n.home;
+    case 'anxiety':
+      return l10n.anxietyAndStress;
+    case 'gratitude':
+      return l10n.gratitude;
+    case 'protection':
+      return l10n.protection;
+    case 'family':
+      return l10n.family;
+    case 'forgiveness':
+      return l10n.forgiveness;
+    default:
+      return category.label;
   }
 }
 
@@ -436,7 +462,8 @@ class _CategoryRow extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final categories = [
       ('all', l10n.all, '📖'),
-      ...allDuaCategories.map((c) => (c.id, _localizedCategoryLabel(l10n, c), c.emoji)),
+      ...allDuaCategories
+          .map((c) => (c.id, _localizedCategoryLabel(l10n, c), c.emoji)),
     ];
 
     return SizedBox(
@@ -459,9 +486,7 @@ class _CategoryRow extends StatelessWidget {
                 color: isActive ? _kGold : Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: isActive
-                      ? _kGold
-                      : _kGold.withValues(alpha: 0.35),
+                  color: isActive ? _kGold : _kGold.withValues(alpha: 0.35),
                   width: 1,
                 ),
               ),

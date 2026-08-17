@@ -8,6 +8,14 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Manny's admin device (in-app Admin Panel, dev flavor only). Resets if
+    // that install's Firebase Anonymous Auth uid ever changes (reinstall,
+    // cleared app data) — update the uid below if admin actions start
+    // failing after that.
+    function isAdmin() {
+      return request.auth.uid == 'IVU3zw8P53XSJOZ1WXrDFKpv0Fl2';
+    }
+
     match /stories/{storyId} {
       // Approved stories are public. Pending stories are also readable so
       // the author's own submission can show up for them right away — the
@@ -51,6 +59,10 @@ service cloud.firestore {
           'backgroundImage', 'language'
         ]);
 
+      // Admin moderation (approve/reject) from the in-app Admin Panel.
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+
       // Lets a story's own author permanently delete it.
       allow delete: if request.auth != null
         && request.auth.uid == resource.data.userId;
@@ -76,6 +88,17 @@ service cloud.firestore {
           && request.resource.data.name.size() <= 100;
         allow update, delete: if false;
       }
+    }
+
+    match /reports/{reportId} {
+      allow create: if request.auth != null
+        && request.resource.data.reportedBy == request.auth.uid
+        && request.resource.data.storyId is string
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() > 0
+        && request.resource.data.reason.size() <= 500;
+      allow read: if isAdmin();
+      allow update, delete: if false;
     }
 
     // Everything else: locked down.
