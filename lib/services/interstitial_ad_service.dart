@@ -21,7 +21,7 @@ class InterstitialAdService {
   static const _adDelay = Duration(seconds: 10);
 
   static String get _adUnitId => Platform.isIOS
-      ? 'ca-app-pub-3940256099942544/4411468910' // Google test interstitial (iOS)
+      ? 'ca-app-pub-1882227858220460/7137362753' // Noor Guard interstitial (iOS)
       : 'ca-app-pub-3940256099942544/1033173712'; // Google test interstitial (Android)
 
   // In-memory only — resets on app restart, which is the point: each

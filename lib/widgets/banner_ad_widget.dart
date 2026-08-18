@@ -24,7 +24,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   static const _adDelay = Duration(seconds: 10);
 
   static String get _adUnitId => Platform.isIOS
-      ? 'ca-app-pub-3940256099942544/2934735716' // Google test banner (iOS)
+      ? 'ca-app-pub-1882227858220460/9909343247' // Noor Guard banner (iOS)
       : 'ca-app-pub-3940256099942544/6300978111'; // Google test banner (Android)
 
   BannerAd? _bannerAd;
