@@ -2,14 +2,18 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/reciter_model.dart';
 import '../models/surah_model.dart';
+import '../widgets/premium_upgrade_dialog.dart';
+import 'notification_nav_service.dart';
 import 'quran_service.dart';
 
 /// App-wide "now playing" state for Quran verse audio, shared between
@@ -22,7 +26,15 @@ import 'quran_service.dart';
 /// Also persists the last-played surah/ayah/reciter to SharedPreferences, so
 /// the mini player can show it — paused, nothing loaded yet — from the
 /// moment the app launches (see [restoreLastPlayed] and [resume]).
-class QuranPlayerController extends ChangeNotifier {
+///
+/// Also gates background/lock-screen playback behind Premium (see [init],
+/// [didChangeAppLifecycleState]). This used to live on SurahScreen, but that
+/// only fired while a SurahScreen was mounted — missing exactly the case
+/// the shared player exists for: playback continuing after navigating back
+/// to the Quran tab's mini player, with no SurahScreen around to observe
+/// app lifecycle changes. Living here instead means it fires regardless of
+/// which screen, if any, is currently showing.
+class QuranPlayerController extends ChangeNotifier with WidgetsBindingObserver {
   QuranPlayerController._() {
     // Backstops SurahScreen's own explicit setNowPlaying calls: keeps
     // [verseNumber] correct as playback naturally advances even while no
@@ -31,6 +43,18 @@ class QuranPlayerController extends ChangeNotifier {
     player.currentIndexStream.listen(_onIndexChanged);
   }
   static final QuranPlayerController instance = QuranPlayerController._();
+
+  bool _initialized = false;
+
+  /// Starts observing app lifecycle changes for the Premium background gate
+  /// (see [didChangeAppLifecycleState]). Call once, early at startup (see
+  /// main.dart) — idempotent, and a no-op on web (no lock screen / OS
+  /// backgrounding concept to gate there).
+  void init() {
+    if (_initialized || kIsWeb) return;
+    _initialized = true;
+    WidgetsBinding.instance.addObserver(this);
+  }
 
   static const _prefsKey = 'quran_last_played';
 
@@ -47,6 +71,15 @@ class QuranPlayerController extends ChangeNotifier {
   List<int>? _playlistVerseNumbers;
 
   Uri? _artworkUriCache;
+
+  // Background/lock-screen playback is Premium-only (see
+  // didChangeAppLifecycleState). _backgroundHandled guards against acting
+  // twice on the paused+inactive pair iOS fires in quick succession when
+  // truly backgrounding; _pausedForPremiumGate remembers whether THIS pause
+  // was the gate's doing, so the dialog only shows on the resume that
+  // follows an auto-pause — not every resume.
+  bool _backgroundHandled = false;
+  bool _pausedForPremiumGate = false;
 
   /// True once something has been loaded for playback — the mini player
   /// shows whenever this is true, mirroring how SurahScreen's own in-reader
@@ -144,6 +177,97 @@ class QuranPlayerController extends ChangeNotifier {
       preload: false,
     );
     await player.play();
+  }
+
+  /// Background and lock-screen Quran playback is a Premium feature — a
+  /// free user's audio is stopped the moment the app leaves the foreground,
+  /// and the paywall explains why the next time they return. `inactive` is
+  /// included alongside `paused` because iOS reports it first (and
+  /// momentarily, e.g. pulling down the notification shade) on the way to
+  /// actually backgrounding; either is treated as "left the foreground".
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
+      _pauseForBackgroundIfFree();
+    } else if (state == AppLifecycleState.resumed) {
+      _showPremiumGateIfPaused();
+    }
+  }
+
+  Future<void> _pauseForBackgroundIfFree() async {
+    if (_backgroundHandled) return;
+    if (surah == null) return; // nothing loaded — nothing to gate
+    final prefs = await SharedPreferences.getInstance();
+    final isPremium = prefs.getBool('is_premium') ?? false;
+    if (isPremium) return;
+    if (!player.playing) return;
+    _backgroundHandled = true;
+    _pausedForPremiumGate = true;
+    // stop() — not pause() — deliberately: pause() leaves
+    // just_audio_background's native media session/notification alive with
+    // a resumable play button, which is exactly the lock-screen loophole
+    // this gate exists to close. stop() deactivates the platform player,
+    // which tears the media session down entirely — so a free user has no
+    // lock-screen control left to tap. The player isn't disposed and this
+    // session isn't cleared, so foreground playback (a verse tap, the
+    // in-app player bar, or the Quran tab's mini player) still works
+    // normally afterwards, same as after the existing "close player" (X)
+    // button — this gate gets in the way of the lock screen only, never
+    // in-app use.
+    //
+    // On Android this alone is enough: audio_service's AudioService
+    // force-cancels the notification the instant playback state goes idle
+    // (deactivateMediaSession() -> NotificationManager.cancel()). iOS has no
+    // equivalent auto-teardown for an idle state — its Now Playing widget
+    // stays up with a working play button until a *different*, non-public
+    // "stopService" call clears it, so that needs an explicit nudge below.
+    await player.stop();
+    if (!kIsWeb && Platform.isIOS) await _hideIosLockScreenWidget();
+  }
+
+  /// audio_service's iOS plugin (used internally by just_audio_background)
+  /// only clears MPNowPlayingInfoCenter and disables the remote play/pause
+  /// commands in response to its own "stopService" method call — a plain
+  /// idle playback-state update (what AudioPlayer.stop() sends) just
+  /// refreshes the widget's metadata, leaving it visible and tappable. That
+  /// teardown has no public Dart wrapper in just_audio_background, so this
+  /// invokes the plugin's own internal platform channel directly (verified
+  /// against audio_service 0.18.18's AudioServicePlugin.m — re-check that
+  /// source if audio_service/just_audio_background is ever upgraded, since
+  /// the channel/method name aren't public API). Safe to call: resuming
+  /// playback afterwards re-populates the widget correctly, since the
+  /// plugin re-syncs Now Playing info whenever elapsed time/playback rate
+  /// changes from what it last cached.
+  static const _iosAudioServiceClientChannel =
+      MethodChannel('com.ryanheise.audio_service.client.methods');
+
+  Future<void> _hideIosLockScreenWidget() async {
+    try {
+      await _iosAudioServiceClientChannel.invokeMethod('stopService');
+    } catch (_) {
+      // Best-effort — worst case the widget stays visible even though
+      // playback is already stopped, not worth surfacing to the user.
+    }
+  }
+
+  /// Shows the paywall on the resume that follows an auto-pause. Uses
+  /// NotificationNavService's root navigatorKey rather than a screen's own
+  /// BuildContext — this fires regardless of which screen, if any, is
+  /// currently showing (that's the whole point of living here instead of
+  /// on SurahScreen).
+  void _showPremiumGateIfPaused() {
+    _backgroundHandled = false;
+    if (!_pausedForPremiumGate) return;
+    _pausedForPremiumGate = false;
+    final context = NotificationNavService.navigatorKey.currentContext;
+    if (context == null) return;
+    final l10n = AppLocalizations.of(context)!;
+    PremiumUpgradeDialog.show(
+      context,
+      featureName: l10n.premiumBackgroundPlaybackName,
+      featureDescription: l10n.premiumBackgroundPlaybackDescription,
+    );
   }
 
   /// MediaItem.artUri needs a real file:// URI — Flutter asset paths aren't

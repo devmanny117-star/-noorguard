@@ -101,6 +101,11 @@ Future<void> main() async {
     // any) so the Quran tab's mini player can show it — paused — as soon
     // as it's loaded, without blocking app startup on it.
     QuranPlayerController.instance.restoreLastPlayed();
+    // Starts the Premium background/lock-screen playback gate — lives on
+    // the controller itself (not a screen) so it fires regardless of
+    // whether a SurahScreen is mounted or the user's only sitting on the
+    // Quran tab's mini player.
+    QuranPlayerController.instance.init();
   }
   runApp(
     ChangeNotifierProvider(
