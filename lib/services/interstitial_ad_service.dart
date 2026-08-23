@@ -16,9 +16,7 @@ class InterstitialAdService {
   factory InterstitialAdService() => _instance;
   InterstitialAdService._internal();
 
-  // TODO: change to `Duration(days: 5)` once install-date gating is verified
-  // on device; 10 seconds is only for fast testing.
-  static const _adDelay = Duration(seconds: 10);
+  static const _adDelay = Duration(days: 3);
 
   static String get _adUnitId => Platform.isIOS
       ? 'ca-app-pub-1882227858220460/7137362753' // Noor Guard interstitial (iOS)

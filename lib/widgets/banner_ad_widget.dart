@@ -28,9 +28,7 @@ class BannerAdWidget extends StatefulWidget {
 }
 
 class _BannerAdWidgetState extends State<BannerAdWidget> {
-  // TODO: change to `Duration(days: 5)` once install-date gating is verified
-  // on device; 10 seconds is only for fast testing.
-  static const _adDelay = Duration(seconds: 10);
+  static const _adDelay = Duration(days: 3);
 
   static String get _adUnitId => Platform.isIOS
       ? 'ca-app-pub-1882227858220460/9909343247' // Noor Guard banner (iOS)
