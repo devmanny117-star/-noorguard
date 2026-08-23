@@ -3388,7 +3388,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'Noor Guard\'ı kullanmak ücretsizdir. Çalışmaya devam edebilmesi için ilk 5 gününüzden sonra reklam gösteriyoruz.';
+      'Noor Guard\'ı kullanmak ücretsizdir. Çalışmaya devam edebilmesi için ilk 3 gününüzden sonra reklam gösteriyoruz.';
 
   @override
   String get adNoticeBulletHalalAds =>

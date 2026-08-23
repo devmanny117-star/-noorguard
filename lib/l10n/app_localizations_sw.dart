@@ -3398,7 +3398,7 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'Noor Guard ni bure kutumia. Ili kuiendesha, tunaonyesha matangazo baada ya siku zako 5 za kwanza.';
+      'Noor Guard ni bure kutumia. Ili kuiendesha, tunaonyesha matangazo baada ya siku zako 3 za kwanza.';
 
   @override
   String get adNoticeBulletHalalAds =>

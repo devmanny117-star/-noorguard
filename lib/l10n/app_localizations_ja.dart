@@ -3259,7 +3259,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'Noor Guardは無料でご利用いただけます。運営を続けるため、最初の5日間が過ぎると広告を表示します。';
+      'Noor Guardは無料でご利用いただけます。運営を続けるため、最初の3日間が過ぎると広告を表示します。';
 
   @override
   String get adNoticeBulletHalalAds => 'できる限りハラール広告のみを表示するよう努めています';

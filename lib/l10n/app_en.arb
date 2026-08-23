@@ -4172,7 +4172,7 @@
   "@adNoticeTitle": {
     "description": "Title of the one-time ad notice popup shown on first launch after onboarding"
   },
-  "adNoticeSubtitle": "Noor Guard is free to use. To keep it running, we show ads after your first 5 days.",
+  "adNoticeSubtitle": "Noor Guard is free to use. To keep it running, we show ads after your first 3 days.",
   "@adNoticeSubtitle": {
     "description": "Subtitle of the one-time ad notice popup"
   },

@@ -6251,7 +6251,7 @@ abstract class AppLocalizations {
   /// Subtitle of the one-time ad notice popup
   ///
   /// In en, this message translates to:
-  /// **'Noor Guard is free to use. To keep it running, we show ads after your first 5 days.'**
+  /// **'Noor Guard is free to use. To keep it running, we show ads after your first 3 days.'**
   String get adNoticeSubtitle;
 
   /// First bullet point in the ad notice popup

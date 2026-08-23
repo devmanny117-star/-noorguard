@@ -3414,7 +3414,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'Noor Guard бесплатен в использовании. Чтобы поддерживать его работу, мы показываем рекламу после первых 5 дней.';
+      'Noor Guard бесплатен в использовании. Чтобы поддерживать его работу, мы показываем рекламу после первых 3 дней.';
 
   @override
   String get adNoticeBulletHalalAds =>

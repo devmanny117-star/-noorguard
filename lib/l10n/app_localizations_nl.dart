@@ -3406,7 +3406,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'Noor Guard is gratis te gebruiken. Om de app draaiende te houden, tonen we advertenties na je eerste 5 dagen.';
+      'Noor Guard is gratis te gebruiken. Om de app draaiende te houden, tonen we advertenties na je eerste 3 dagen.';
 
   @override
   String get adNoticeBulletHalalAds =>

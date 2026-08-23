@@ -3338,7 +3338,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'نور غارد مجاني الاستخدام. للحفاظ على استمراره، نعرض إعلانات بعد أول 5 أيام.';
+      'نور غارد مجاني الاستخدام. للحفاظ على استمراره، نعرض إعلانات بعد أول 3 أيام.';
 
   @override
   String get adNoticeBulletHalalAds => 'نبذل قصارى جهدنا لعرض إعلانات حلال فقط';

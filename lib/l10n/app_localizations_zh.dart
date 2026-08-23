@@ -3226,7 +3226,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get adNoticeTitle => '关于 Noor Guard 的说明';
 
   @override
-  String get adNoticeSubtitle => 'Noor Guard 可免费使用。为了维持运营，我们会在您使用的前 5 天之后展示广告。';
+  String get adNoticeSubtitle => 'Noor Guard 可免费使用。为了维持运营，我们会在您使用的前 3 天之后展示广告。';
 
   @override
   String get adNoticeBulletHalalAds => '我们尽最大努力只展示清真（halal）广告';

@@ -3414,7 +3414,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'Noor Guard è gratuito. Per mantenerlo attivo, mostriamo annunci dopo i tuoi primi 5 giorni.';
+      'Noor Guard è gratuito. Per mantenerlo attivo, mostriamo annunci dopo i tuoi primi 3 giorni.';
 
   @override
   String get adNoticeBulletHalalAds =>

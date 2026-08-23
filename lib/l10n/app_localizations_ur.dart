@@ -3379,7 +3379,7 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'نور گارڈ استعمال کرنا مفت ہے۔ اسے چلاتے رہنے کے لیے، ہم آپ کے پہلے 5 دنوں کے بعد اشتہارات دکھاتے ہیں۔';
+      'نور گارڈ استعمال کرنا مفت ہے۔ اسے چلاتے رہنے کے لیے، ہم آپ کے پہلے 3 دنوں کے بعد اشتہارات دکھاتے ہیں۔';
 
   @override
   String get adNoticeBulletHalalAds =>

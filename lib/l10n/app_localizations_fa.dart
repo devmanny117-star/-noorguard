@@ -3382,7 +3382,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get adNoticeSubtitle =>
-      'استفاده از نور گارد رایگان است. برای اینکه اپلیکیشن فعال بماند، پس از ۵ روز اول تبلیغاتی نمایش می‌دهیم.';
+      'استفاده از نور گارد رایگان است. برای اینکه اپلیکیشن فعال بماند، پس از ۳ روز اول تبلیغاتی نمایش می‌دهیم.';
 
   @override
   String get adNoticeBulletHalalAds =>
