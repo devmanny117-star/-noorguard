@@ -2932,6 +2932,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get savedVerses => 'آیات ذخیره‌شده';
 
   @override
+  String get savedButtonLabel => 'ذخیره‌شده';
+
+  @override
   String get savedNames => 'نام‌های ذخیره‌شده';
 
   @override
@@ -3450,6 +3453,44 @@ class AppLocalizationsFa extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'هنگام کار، رفت‌وآمد یا استراحت به قرآن گوش دهید — حتی وقتی صفحه خاموش است.';
+
+  @override
+  String get premiumMembership => 'پرمیوم';
+
+  @override
+  String get premiumStatusActive => 'عضو پرمیوم';
+
+  @override
+  String get premiumStatusFree => 'طرح رایگان';
+
+  @override
+  String get premiumRestorePurchases => 'بازیابی خریدها';
+
+  @override
+  String get premiumRestoreSuccess => 'خریدهای شما بازیابی شد.';
+
+  @override
+  String get premiumRestoreNone => 'هیچ خرید قبلی یافت نشد.';
+
+  @override
+  String get premiumRestoreError =>
+      'بازیابی خریدها ممکن نشد. دوباره تلاش کنید.';
+
+  @override
+  String get premiumPurchaseError => 'خرید ناموفق بود. دوباره تلاش کنید.';
+
+  @override
+  String get premiumMonthlyPlan => 'ماهانه';
+
+  @override
+  String get premiumAnnualPlan => 'سالانه';
+
+  @override
+  String get premiumBestValue => 'بهترین ارزش';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'قیمت‌ها در دسترس نیست. اتصال خود را بررسی کرده و دوباره تلاش کنید.';
 
   @override
   String get tafsirFallbackNote => 'تفسیر هنوز به زبان شما در دسترس نیست.';

@@ -90,7 +90,7 @@ class SurahScreen extends StatefulWidget {
 }
 
 class _SurahScreenState extends State<SurahScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   /// Gold pulse played on the verse that a notification deep link, saved
   /// verse, or search result landed on (see [_settleOnVerse]). Single
   /// forward play: gold at 30% opacity fading to transparent over 2 s.
@@ -189,6 +189,15 @@ class _SurahScreenState extends State<SurahScreen>
   int? _playingVerseNumber;
   bool _isPlaying = false;
 
+  // Background/lock-screen playback is Premium-only (see
+  // didChangeAppLifecycleState). _backgroundHandled guards against acting
+  // twice on the paused+inactive pair iOS fires in quick succession when
+  // truly backgrounding; _pausedForPremiumGate remembers whether THIS
+  // pause was the gate's doing, so the dialog only shows on the resume that
+  // follows an auto-pause — not every resume.
+  bool _backgroundHandled = false;
+  bool _pausedForPremiumGate = false;
+
   StreamSubscription<PlayerState>? _playerStateSub;
   StreamSubscription<int?>? _currentIndexSub;
   StreamSubscription<PositionDiscontinuity>? _discontinuitySub;
@@ -238,6 +247,7 @@ class _SurahScreenState extends State<SurahScreen>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     // Once the pulse fades out, drop the overlay wrapper entirely so the
     // tile renders identically to every other verse again.
     _highlightController.addStatusListener((status) {
@@ -459,6 +469,7 @@ class _SurahScreenState extends State<SurahScreen>
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _playerStateSub?.cancel();
     _currentIndexSub?.cancel();
     _discontinuitySub?.cancel();
@@ -469,6 +480,89 @@ class _SurahScreenState extends State<SurahScreen>
     _scrollController.dispose();
     _highlightController.dispose();
     super.dispose();
+  }
+
+  /// Background and lock-screen Quran playback is a Premium feature — a free
+  /// user's audio is stopped the moment the app leaves the foreground, and
+  /// the paywall explains why the next time they return. `inactive` is
+  /// included alongside `paused` because iOS reports it first (and
+  /// momentarily, e.g. pulling down the notification shade) on the way to
+  /// actually backgrounding; either is treated as "left the foreground".
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
+      _pauseForBackgroundIfFree();
+    } else if (state == AppLifecycleState.resumed) {
+      _showPremiumGateIfPaused();
+    }
+  }
+
+  Future<void> _pauseForBackgroundIfFree() async {
+    if (_backgroundHandled) return;
+    final prefs = await SharedPreferences.getInstance();
+    final isPremium = prefs.getBool('is_premium') ?? false;
+    if (isPremium) return;
+    if (!_audioPlayer.playing) return;
+    _backgroundHandled = true;
+    _pausedForPremiumGate = true;
+    // stop() — not pause() — deliberately: pause() leaves
+    // just_audio_background's native media session/notification alive with
+    // a resumable play button, which is exactly the lock-screen loophole
+    // this gate exists to close. stop() deactivates the platform player,
+    // which tears the media session down entirely (see dispose(), which
+    // relies on the same behavior) — so a free user has no lock-screen
+    // control left to tap. The Dart-side player isn't disposed, so
+    // foreground playback (a verse tap, or the in-app player bar) still
+    // works normally afterwards, same as after the existing "close player"
+    // (X) button.
+    //
+    // On Android this alone is enough: audio_service's AudioService
+    // force-cancels the notification the instant playback state goes idle
+    // (deactivateMediaSession() -> NotificationManager.cancel()). iOS has no
+    // equivalent auto-teardown for an idle state — its Now Playing widget
+    // stays up with a working play button until a *different*, non-public
+    // "stopService" call clears it, so that needs an explicit nudge below.
+    await _audioPlayer.stop();
+    if (!kIsWeb && Platform.isIOS) await _hideIosLockScreenWidget();
+  }
+
+  /// audio_service's iOS plugin (used internally by just_audio_background)
+  /// only clears MPNowPlayingInfoCenter and disables the remote play/pause
+  /// commands in response to its own "stopService" method call — a plain
+  /// idle playback-state update (what AudioPlayer.stop() sends) just
+  /// refreshes the widget's metadata, leaving it visible and tappable. That
+  /// teardown has no public Dart wrapper in just_audio_background, so this
+  /// invokes the plugin's own internal platform channel directly (verified
+  /// against audio_service 0.18.18's AudioServicePlugin.m — re-check that
+  /// source if audio_service/just_audio_background is ever upgraded, since
+  /// the channel/method name aren't public API). Safe to call: resuming
+  /// playback afterwards re-populates the widget correctly, since the
+  /// plugin re-syncs Now Playing info whenever elapsed time/playback rate
+  /// changes from what it last cached.
+  static const _iosAudioServiceClientChannel =
+      MethodChannel('com.ryanheise.audio_service.client.methods');
+
+  Future<void> _hideIosLockScreenWidget() async {
+    try {
+      await _iosAudioServiceClientChannel.invokeMethod('stopService');
+    } catch (_) {
+      // Best-effort — worst case the widget stays visible even though
+      // playback is already stopped, not worth surfacing to the user.
+    }
+  }
+
+  void _showPremiumGateIfPaused() {
+    _backgroundHandled = false;
+    if (!_pausedForPremiumGate) return;
+    _pausedForPremiumGate = false;
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context)!;
+    PremiumUpgradeDialog.show(
+      context,
+      featureName: l10n.premiumBackgroundPlaybackName,
+      featureDescription: l10n.premiumBackgroundPlaybackDescription,
+    );
   }
 
   Future<void> _load(String locale) async {

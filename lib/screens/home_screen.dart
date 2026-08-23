@@ -341,6 +341,9 @@ class _HomeBodyState extends State<_HomeBody> with WidgetsBindingObserver {
     double? lng,
   }) {
     PrayerState().lastKnownPrayers = prayers;
+    PrayerState().lastKnownLocationLabel = locationLabel;
+    PrayerState().lastKnownLat = lat;
+    PrayerState().lastKnownLng = lng;
     AppBlockingService().syncToNative(context, prayers);
     WidgetDataService.pushPrayerTimesSnapshot(
       context: context,

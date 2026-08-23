@@ -8,6 +8,7 @@ import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.Image
 import androidx.glance.ImageProvider
+import androidx.glance.action.actionParametersOf
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.action.actionRunCallback
@@ -101,9 +102,26 @@ class LargePrayerWidget : GlanceAppWidget() {
 
                 Box(modifier = GlanceModifier.defaultWeight()) {}
 
-                // Daily verse + Qibla bearing, side by side.
+                // Daily verse + Qibla bearing, side by side. The verse side is
+                // separately clickable (deep-links to that ayah in the Quran
+                // reader) when it has a resolved surah/ayah — this nested
+                // clickable region takes priority over the widget-wide
+                // "open app" click on the surrounding Box, same pattern as
+                // the "I Prayed" button below.
+                val verseModifier = if (data.dailyVerseSurah > 0 && data.dailyVerseAyah > 0) {
+                    GlanceModifier.defaultWeight().clickable(
+                        onClick = actionRunCallback<OpenAyahActionCallback>(
+                            actionParametersOf(
+                                OpenAyahActionCallback.SurahKey to data.dailyVerseSurah,
+                                OpenAyahActionCallback.AyahKey to data.dailyVerseAyah,
+                            )
+                        )
+                    )
+                } else {
+                    GlanceModifier.defaultWeight()
+                }
                 Row(modifier = GlanceModifier.fillMaxWidth()) {
-                    Column(modifier = GlanceModifier.defaultWeight()) {
+                    Column(modifier = verseModifier) {
                         if (data.dailyVerseArabic.isNotEmpty()) {
                             Text(
                                 data.dailyVerseArabic,

@@ -2929,6 +2929,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get savedVerses => 'Saved Verses';
 
   @override
+  String get savedButtonLabel => 'Saved';
+
+  @override
   String get savedNames => 'Saved Names';
 
   @override
@@ -3451,6 +3454,44 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'Listen to Quran while you work, commute, or rest — even with your screen off.';
+
+  @override
+  String get premiumMembership => 'Premium';
+
+  @override
+  String get premiumStatusActive => 'Premium Member';
+
+  @override
+  String get premiumStatusFree => 'Free Plan';
+
+  @override
+  String get premiumRestorePurchases => 'Restore Purchases';
+
+  @override
+  String get premiumRestoreSuccess => 'Your purchases have been restored.';
+
+  @override
+  String get premiumRestoreNone => 'No previous purchases were found.';
+
+  @override
+  String get premiumRestoreError =>
+      'Couldn\'t restore purchases. Please try again.';
+
+  @override
+  String get premiumPurchaseError => 'Purchase failed. Please try again.';
+
+  @override
+  String get premiumMonthlyPlan => 'Monthly';
+
+  @override
+  String get premiumAnnualPlan => 'Annual';
+
+  @override
+  String get premiumBestValue => 'Best Value';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'Pricing unavailable. Check your connection and try again.';
 
   @override
   String get tafsirFallbackNote => 'Tafsir not available in your language yet.';

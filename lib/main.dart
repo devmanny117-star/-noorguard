@@ -25,6 +25,7 @@ import 'package:provider/provider.dart';
 import 'services/notification_nav_service.dart';
 import 'services/notification_service.dart';
 import 'services/prayer_state.dart';
+import 'services/premium_service.dart';
 import 'services/adhan_foreground_controller.dart';
 import 'services/adhan_playback_service.dart';
 import 'services/community_stories_service.dart';
@@ -55,6 +56,10 @@ Future<void> main() async {
       await FirebaseAuth.instance.signInAnonymously();
     } catch (_) {}
   }
+  // Must subscribe before any purchase can happen — a purchase left
+  // unfinished from a previous session is only redelivered to a listener
+  // that was already attached when the app resumes.
+  PremiumService.instance.init();
   if (!kIsWeb) tz_data.initializeTimeZones();
   // ATT must be requested before ads load — iOS only, no Android/web equivalent.
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.iOS) {

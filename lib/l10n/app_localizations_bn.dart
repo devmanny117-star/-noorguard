@@ -2943,6 +2943,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get savedVerses => 'সংরক্ষিত আয়াত';
 
   @override
+  String get savedButtonLabel => 'সংরক্ষিত';
+
+  @override
   String get savedNames => 'সংরক্ষিত নাম';
 
   @override
@@ -3466,6 +3469,44 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'কাজ, যাতায়াত বা বিশ্রামের সময় — এমনকি স্ক্রিন বন্ধ থাকা অবস্থায়ও কুরআন শুনুন।';
+
+  @override
+  String get premiumMembership => 'প্রিমিয়াম';
+
+  @override
+  String get premiumStatusActive => 'প্রিমিয়াম সদস্য';
+
+  @override
+  String get premiumStatusFree => 'ফ্রি প্ল্যান';
+
+  @override
+  String get premiumRestorePurchases => 'ক্রয় পুনরুদ্ধার করুন';
+
+  @override
+  String get premiumRestoreSuccess => 'আপনার ক্রয়সমূহ পুনরুদ্ধার করা হয়েছে।';
+
+  @override
+  String get premiumRestoreNone => 'কোনো পূর্ববর্তী ক্রয় পাওয়া যায়নি।';
+
+  @override
+  String get premiumRestoreError =>
+      'ক্রয় পুনরুদ্ধার করা যায়নি। আবার চেষ্টা করুন।';
+
+  @override
+  String get premiumPurchaseError => 'ক্রয় ব্যর্থ হয়েছে। আবার চেষ্টা করুন।';
+
+  @override
+  String get premiumMonthlyPlan => 'মাসিক';
+
+  @override
+  String get premiumAnnualPlan => 'বার্ষিক';
+
+  @override
+  String get premiumBestValue => 'সেরা মূল্য';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'মূল্য দেখানো যাচ্ছে না। আপনার সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';
 
   @override
   String get tafsirFallbackNote => 'আপনার ভাষায় তাফসীর এখনও উপলব্ধ নেই।';

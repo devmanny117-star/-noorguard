@@ -67,9 +67,12 @@ class NotificationNavService with WidgetsBindingObserver {
   }
 
   /// Entry point for taps on plugin-shown notifications (the 15-minute
-  /// prayer reminder and the silent banner, on Android AND iOS). Payload
-  /// format: `verse:<surah>:<ayah>` deep-links into the Quran reader;
-  /// anything else is ignored (the app just opens normally).
+  /// prayer reminder, the silent banner, and — iOS only — the pre-scheduled
+  /// Fajr content notifications, on Android AND iOS). Payload format is
+  /// `<type>:<data>`, the same `type`/`data` pair the Android live
+  /// notification's extras carry (see [_navigate]) — `verse:<surah>:<ayah>`
+  /// is kept as a longstanding alias for `ayah:<surah>:<ayah>`. Anything
+  /// unrecognized is ignored (the app just opens normally).
   void handleNotificationPayload(String? payload) {
     if (kIsWeb || payload == null || payload.isEmpty) return;
     if (_homeReady) {
@@ -82,7 +85,14 @@ class NotificationNavService with WidgetsBindingObserver {
   Future<void> _handleLocalPayload(String payload) async {
     if (payload.startsWith('verse:')) {
       await _openAyah(payload.substring('verse:'.length));
+      return;
     }
+    final separator = payload.indexOf(':');
+    if (separator == -1) return;
+    await _navigate(
+      payload.substring(0, separator),
+      payload.substring(separator + 1),
+    );
   }
 
   @override

@@ -6,6 +6,7 @@ import '../services/quran_service.dart';
 import '../services/quran_full_index.dart';
 import '../utils/islamic_synonyms.dart';
 import 'surah_screen.dart';
+import 'saved_verses_screen.dart';
 import '../l10n/app_localizations.dart';
 
 class QuranScreen extends StatefulWidget {
@@ -68,7 +69,12 @@ class _QuranScreenState extends State<QuranScreen> {
   }
 
   Future<void> _load() async {
-    if (mounted) setState(() { _loading = true; _failed = false; });
+    if (mounted) {
+      setState(() {
+        _loading = true;
+        _failed = false;
+      });
+    }
     final surahs = await fetchSurahs();
     if (mounted) {
       setState(() {
@@ -98,9 +104,8 @@ class _QuranScreenState extends State<QuranScreen> {
     final raw = _searchController.text.trim();
     setState(() {
       _query = raw;
-      _searchResults = raw.isEmpty
-          ? []
-          : QuranFullIndex.search(raw, _currentLocale);
+      _searchResults =
+          raw.isEmpty ? [] : QuranFullIndex.search(raw, _currentLocale);
     });
   }
 
@@ -155,8 +160,8 @@ class _QuranScreenState extends State<QuranScreen> {
                               ? _NoResultsState(query: _query)
                               : ListView.builder(
                                   physics: const BouncingScrollPhysics(),
-                                  padding: const EdgeInsets.fromLTRB(
-                                      16, 4, 16, 24),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(16, 4, 16, 24),
                                   itemCount: _searchResults.length,
                                   itemBuilder: (context, i) => _AyahTile(
                                     result: _searchResults[i],
@@ -171,13 +176,12 @@ class _QuranScreenState extends State<QuranScreen> {
                               ? _FailedState(onRetry: _load)
                               : ListView.builder(
                                   physics: const BouncingScrollPhysics(),
-                                  padding: const EdgeInsets.fromLTRB(
-                                      16, 4, 16, 24),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(16, 4, 16, 24),
                                   itemCount: _surahs.length,
                                   itemBuilder: (context, i) => _SurahTile(
                                     surah: _surahs[i],
-                                    onTap: () =>
-                                        _openSurah(_surahs[i].number),
+                                    onTap: () => _openSurah(_surahs[i].number),
                                   ),
                                 ),
             ),
@@ -198,23 +202,77 @@ class _Header extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
       child: Row(
         children: [
-          Text(
-            l10n.alQuran,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 28,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
+          Expanded(
+            child: Row(
+              children: [
+                Flexible(
+                  child: Text(
+                    l10n.alQuran,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  'القرآن الكريم',
+                  style: GoogleFonts.scheherazadeNew(
+                    fontSize: 20,
+                    color: const Color(0xFFD4AF37),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(width: 10),
-          Text(
-            'القرآن الكريم',
-            style: GoogleFonts.scheherazadeNew(
-              fontSize: 20,
-              color: const Color(0xFFD4AF37),
-            ),
-          ),
+          const _SavedButton(),
         ],
+      ),
+    );
+  }
+}
+
+// ─── Saved verses button ────────────────────────────────────────────────────
+
+class _SavedButton extends StatelessWidget {
+  const _SavedButton();
+
+  static const _gold = Color(0xFFC9A84C);
+  static const _cardColor = Color(0xFF152030);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const SavedVersesScreen()),
+      ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: _cardColor,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: _gold, width: 1.2),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.bookmark_rounded, size: 15, color: _gold),
+            const SizedBox(width: 6),
+            Text(
+              l10n.savedButtonLabel,
+              style: GoogleFonts.lato(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: _gold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -411,8 +469,7 @@ class _FailedState extends StatelessWidget {
           GestureDetector(
             onTap: onRetry,
             child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 32, vertical: 13),
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 13),
               decoration: BoxDecoration(
                 color: _gold,
                 borderRadius: BorderRadius.circular(30),
@@ -555,8 +612,7 @@ class _AyahTile extends StatelessWidget {
           children: [
             // ── Header: surah pill + reference ───────────────────────────
             Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
               decoration: BoxDecoration(
                 color: _gold.withValues(alpha: 0.07),
                 borderRadius:
@@ -565,8 +621,8 @@ class _AyahTile extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 9, vertical: 3),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
                     decoration: BoxDecoration(
                       color: _gold.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(20),

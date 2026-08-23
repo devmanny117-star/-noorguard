@@ -2952,6 +2952,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get savedVerses => 'Ayat Tersimpan';
 
   @override
+  String get savedButtonLabel => 'Tersimpan';
+
+  @override
   String get savedNames => 'Nama Tersimpan';
 
   @override
@@ -3474,6 +3477,45 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'Dengarkan Al-Qur\'an saat bekerja, bepergian, atau beristirahat — bahkan saat layar mati.';
+
+  @override
+  String get premiumMembership => 'Premium';
+
+  @override
+  String get premiumStatusActive => 'Anggota Premium';
+
+  @override
+  String get premiumStatusFree => 'Paket Gratis';
+
+  @override
+  String get premiumRestorePurchases => 'Pulihkan Pembelian';
+
+  @override
+  String get premiumRestoreSuccess => 'Pembelian Anda telah dipulihkan.';
+
+  @override
+  String get premiumRestoreNone =>
+      'Tidak ada pembelian sebelumnya yang ditemukan.';
+
+  @override
+  String get premiumRestoreError =>
+      'Gagal memulihkan pembelian. Silakan coba lagi.';
+
+  @override
+  String get premiumPurchaseError => 'Pembelian gagal. Silakan coba lagi.';
+
+  @override
+  String get premiumMonthlyPlan => 'Bulanan';
+
+  @override
+  String get premiumAnnualPlan => 'Tahunan';
+
+  @override
+  String get premiumBestValue => 'Nilai Terbaik';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'Harga tidak tersedia. Periksa koneksi Anda dan coba lagi.';
 
   @override
   String get tafsirFallbackNote => 'Tafsir belum tersedia dalam bahasamu.';

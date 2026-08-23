@@ -2802,6 +2802,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get savedVerses => '已保存的经文';
 
   @override
+  String get savedButtonLabel => '已保存';
+
+  @override
   String get savedNames => '已保存的尊名';
 
   @override
@@ -3288,6 +3291,42 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       '无论工作、通勤还是休息时都能收听古兰经——即使屏幕关闭也不例外。';
+
+  @override
+  String get premiumMembership => '高级会员';
+
+  @override
+  String get premiumStatusActive => '高级会员';
+
+  @override
+  String get premiumStatusFree => '免费版';
+
+  @override
+  String get premiumRestorePurchases => '恢复购买';
+
+  @override
+  String get premiumRestoreSuccess => '您的购买已恢复。';
+
+  @override
+  String get premiumRestoreNone => '未找到以前的购买记录。';
+
+  @override
+  String get premiumRestoreError => '无法恢复购买，请重试。';
+
+  @override
+  String get premiumPurchaseError => '购买失败，请重试。';
+
+  @override
+  String get premiumMonthlyPlan => '包月';
+
+  @override
+  String get premiumAnnualPlan => '包年';
+
+  @override
+  String get premiumBestValue => '最划算';
+
+  @override
+  String get premiumProductsUnavailable => '价格暂不可用，请检查网络连接后重试。';
 
   @override
   String get tafsirFallbackNote => '暂无你所用语言的经注内容。';

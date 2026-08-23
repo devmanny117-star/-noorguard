@@ -2950,6 +2950,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get savedVerses => 'Opgeslagen verzen';
 
   @override
+  String get savedButtonLabel => 'Opgeslagen';
+
+  @override
   String get savedNames => 'Opgeslagen namen';
 
   @override
@@ -3474,6 +3477,44 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'Luister naar de Koran terwijl je werkt, reist of rust — zelfs met het scherm uit.';
+
+  @override
+  String get premiumMembership => 'Premium';
+
+  @override
+  String get premiumStatusActive => 'Premium-lid';
+
+  @override
+  String get premiumStatusFree => 'Gratis Abonnement';
+
+  @override
+  String get premiumRestorePurchases => 'Aankopen Herstellen';
+
+  @override
+  String get premiumRestoreSuccess => 'Je aankopen zijn hersteld.';
+
+  @override
+  String get premiumRestoreNone => 'Geen eerdere aankopen gevonden.';
+
+  @override
+  String get premiumRestoreError =>
+      'Aankopen konden niet worden hersteld. Probeer het opnieuw.';
+
+  @override
+  String get premiumPurchaseError => 'Aankoop mislukt. Probeer het opnieuw.';
+
+  @override
+  String get premiumMonthlyPlan => 'Maandelijks';
+
+  @override
+  String get premiumAnnualPlan => 'Jaarlijks';
+
+  @override
+  String get premiumBestValue => 'Beste Waarde';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'Prijzen niet beschikbaar. Controleer je verbinding en probeer het opnieuw.';
 
   @override
   String get tafsirFallbackNote =>

@@ -2937,6 +2937,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get savedVerses => 'Kaydedilen Ayetler';
 
   @override
+  String get savedButtonLabel => 'Kaydedilen';
+
+  @override
   String get savedNames => 'Kaydedilen İsimler';
 
   @override
@@ -3456,6 +3459,45 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'Ekran kapalıyken bile çalışırken, yolda ya da dinlenirken Kur\'an dinle.';
+
+  @override
+  String get premiumMembership => 'Premium';
+
+  @override
+  String get premiumStatusActive => 'Premium Üye';
+
+  @override
+  String get premiumStatusFree => 'Ücretsiz Plan';
+
+  @override
+  String get premiumRestorePurchases => 'Satın Alımları Geri Yükle';
+
+  @override
+  String get premiumRestoreSuccess => 'Satın alımların geri yüklendi.';
+
+  @override
+  String get premiumRestoreNone => 'Önceki bir satın alma bulunamadı.';
+
+  @override
+  String get premiumRestoreError =>
+      'Satın alımlar geri yüklenemedi. Lütfen tekrar dene.';
+
+  @override
+  String get premiumPurchaseError =>
+      'Satın alma başarısız oldu. Lütfen tekrar dene.';
+
+  @override
+  String get premiumMonthlyPlan => 'Aylık';
+
+  @override
+  String get premiumAnnualPlan => 'Yıllık';
+
+  @override
+  String get premiumBestValue => 'En Avantajlı';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'Fiyatlar alınamıyor. Bağlantını kontrol edip tekrar dene.';
 
   @override
   String get tafsirFallbackNote => 'Tefsir henüz dilinizde mevcut değil.';

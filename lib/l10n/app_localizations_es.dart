@@ -2955,6 +2955,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get savedVerses => 'Versos guardados';
 
   @override
+  String get savedButtonLabel => 'Guardado';
+
+  @override
   String get savedNames => 'Nombres guardados';
 
   @override
@@ -3476,6 +3479,44 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'Escucha el Corán mientras trabajas, viajas o descansas, incluso con la pantalla apagada.';
+
+  @override
+  String get premiumMembership => 'Premium';
+
+  @override
+  String get premiumStatusActive => 'Miembro Premium';
+
+  @override
+  String get premiumStatusFree => 'Plan Gratuito';
+
+  @override
+  String get premiumRestorePurchases => 'Restaurar Compras';
+
+  @override
+  String get premiumRestoreSuccess => 'Tus compras se han restaurado.';
+
+  @override
+  String get premiumRestoreNone => 'No se encontraron compras anteriores.';
+
+  @override
+  String get premiumRestoreError =>
+      'No se pudieron restaurar las compras. Inténtalo de nuevo.';
+
+  @override
+  String get premiumPurchaseError => 'La compra falló. Inténtalo de nuevo.';
+
+  @override
+  String get premiumMonthlyPlan => 'Mensual';
+
+  @override
+  String get premiumAnnualPlan => 'Anual';
+
+  @override
+  String get premiumBestValue => 'Mejor Valor';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'Precios no disponibles. Revisa tu conexión e inténtalo de nuevo.';
 
   @override
   String get tafsirFallbackNote =>

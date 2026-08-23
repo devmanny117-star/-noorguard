@@ -3647,6 +3647,10 @@
   "@savedVerses": {
     "description": "Title of the Saved Verses (Quran bookmarks) screen"
   },
+  "savedButtonLabel": "Saved",
+  "@savedButtonLabel": {
+    "description": "Short label on the Quran screen header button that opens Saved Verses"
+  },
   "savedNames": "Saved Names",
   "@savedNames": {
     "description": "Title of the Saved Names (Asma ul Husna bookmarks) screen"
@@ -4250,6 +4254,54 @@
   "premiumBackgroundPlaybackDescription": "Listen to Quran while you work, commute, or rest — even with your screen off.",
   "@premiumBackgroundPlaybackDescription": {
     "description": "Feature description shown on the premium upgrade dialog when triggered from background Quran playback"
+  },
+  "premiumMembership": "Premium",
+  "@premiumMembership": {
+    "description": "Section header in Settings for the Premium membership status and restore purchases"
+  },
+  "premiumStatusActive": "Premium Member",
+  "@premiumStatusActive": {
+    "description": "Shown in Settings when the user has an active Premium subscription"
+  },
+  "premiumStatusFree": "Free Plan",
+  "@premiumStatusFree": {
+    "description": "Shown in Settings when the user does not have Premium"
+  },
+  "premiumRestorePurchases": "Restore Purchases",
+  "@premiumRestorePurchases": {
+    "description": "Button/row label to restore previously purchased Premium subscriptions (required by Apple)"
+  },
+  "premiumRestoreSuccess": "Your purchases have been restored.",
+  "@premiumRestoreSuccess": {
+    "description": "Confirmation shown after successfully restoring a previous Premium purchase"
+  },
+  "premiumRestoreNone": "No previous purchases were found.",
+  "@premiumRestoreNone": {
+    "description": "Shown after Restore Purchases completes with nothing to restore"
+  },
+  "premiumRestoreError": "Couldn't restore purchases. Please try again.",
+  "@premiumRestoreError": {
+    "description": "Shown when the Restore Purchases flow fails"
+  },
+  "premiumPurchaseError": "Purchase failed. Please try again.",
+  "@premiumPurchaseError": {
+    "description": "Shown when an in-app purchase fails or returns an error"
+  },
+  "premiumMonthlyPlan": "Monthly",
+  "@premiumMonthlyPlan": {
+    "description": "Label for the monthly Premium subscription plan button on the upgrade dialog"
+  },
+  "premiumAnnualPlan": "Annual",
+  "@premiumAnnualPlan": {
+    "description": "Label for the annual Premium subscription plan button on the upgrade dialog"
+  },
+  "premiumBestValue": "Best Value",
+  "@premiumBestValue": {
+    "description": "Badge shown on the annual Premium plan to highlight it as the better deal"
+  },
+  "premiumProductsUnavailable": "Pricing unavailable. Check your connection and try again.",
+  "@premiumProductsUnavailable": {
+    "description": "Shown on the premium upgrade dialog when store product prices can't be loaded"
   },
   "tafsirFallbackNote": "Tafsir not available in your language yet.",
   "@tafsirFallbackNote": {

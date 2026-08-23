@@ -2898,6 +2898,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get savedVerses => 'الآيات المحفوظة';
 
   @override
+  String get savedButtonLabel => 'المحفوظات';
+
+  @override
   String get savedNames => 'الأسماء المحفوظة';
 
   @override
@@ -3404,6 +3407,45 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'استمع للقرآن أثناء العمل أو التنقل أو الراحة — حتى وشاشتك مطفأة.';
+
+  @override
+  String get premiumMembership => 'بريميوم';
+
+  @override
+  String get premiumStatusActive => 'عضو بريميوم';
+
+  @override
+  String get premiumStatusFree => 'الخطة المجانية';
+
+  @override
+  String get premiumRestorePurchases => 'استعادة المشتريات';
+
+  @override
+  String get premiumRestoreSuccess => 'تمت استعادة مشترياتك بنجاح.';
+
+  @override
+  String get premiumRestoreNone => 'لم يتم العثور على أي مشتريات سابقة.';
+
+  @override
+  String get premiumRestoreError =>
+      'تعذّرت استعادة المشتريات. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get premiumPurchaseError =>
+      'فشلت عملية الشراء. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get premiumMonthlyPlan => 'شهري';
+
+  @override
+  String get premiumAnnualPlan => 'سنوي';
+
+  @override
+  String get premiumBestValue => 'الأفضل قيمة';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'الأسعار غير متوفرة حالياً. تحقق من اتصالك وحاول مرة أخرى.';
 
   @override
   String get tafsirFallbackNote => 'التفسير غير متوفر بلغتك بعد.';

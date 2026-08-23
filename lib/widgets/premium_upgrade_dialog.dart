@@ -1,16 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 import '../l10n/app_localizations.dart';
+import '../services/premium_service.dart';
 import '../theme/app_theme.dart';
 import 'geometric_pattern_painter.dart';
 
 const _navy = Color(0xFF0D1B2A);
 const _cream = AppColors.cream;
 
-/// Reusable "Unlock Premium" dialog shown when a free user taps a
-/// Premium-gated feature. Purely presentational — both buttons just
-/// dismiss the dialog; the real purchase flow is wired in later.
-class PremiumUpgradeDialog extends StatelessWidget {
+/// "Unlock Premium" paywall shown when a free user taps a Premium-gated
+/// feature. Fetches live monthly/annual pricing from the App Store / Play
+/// Store and runs the real purchase (and Apple-required restore) flow via
+/// [PremiumService]; falls back to a plain "pricing unavailable" message if
+/// the store can't be reached or the products aren't configured yet.
+class PremiumUpgradeDialog extends StatefulWidget {
   final String featureName;
   final String featureDescription;
 
@@ -36,8 +42,103 @@ class PremiumUpgradeDialog extends StatelessWidget {
   }
 
   @override
+  State<PremiumUpgradeDialog> createState() => _PremiumUpgradeDialogState();
+}
+
+class _PremiumUpgradeDialogState extends State<PremiumUpgradeDialog> {
+  List<ProductDetails> _products = [];
+  bool _loadingProducts = true;
+
+  /// Which action is currently in flight — a specific product id being
+  /// purchased, or the literal 'restore' — so only that button spins and
+  /// every button is disabled for the duration.
+  String? _busyAction;
+  String? _inlineError;
+
+  StreamSubscription<PremiumPurchaseEvent>? _eventsSub;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProducts();
+    _eventsSub = PremiumService.instance.events.listen(_onPurchaseEvent);
+  }
+
+  @override
+  void dispose() {
+    _eventsSub?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _loadProducts() async {
+    final products = await PremiumService.instance.queryProducts();
+    if (!mounted) return;
+    setState(() {
+      _products = products;
+      _loadingProducts = false;
+    });
+  }
+
+  void _onPurchaseEvent(PremiumPurchaseEvent event) {
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context)!;
+    final wasRestore = _busyAction == 'restore';
+    switch (event) {
+      case PremiumPurchaseEvent.purchased:
+        final messenger = ScaffoldMessenger.maybeOf(context);
+        Navigator.of(context).pop();
+        messenger?.showSnackBar(SnackBar(
+          content: Text(l10n.premiumStatusActive,
+              style: GoogleFonts.lato(color: Colors.white)),
+          backgroundColor: const Color(0xFF2C2C2A),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          margin: const EdgeInsets.all(16),
+        ));
+      case PremiumPurchaseEvent.restoredNothing:
+        setState(() {
+          _busyAction = null;
+          _inlineError = l10n.premiumRestoreNone;
+        });
+      case PremiumPurchaseEvent.error:
+        setState(() {
+          _busyAction = null;
+          _inlineError = wasRestore ? l10n.premiumRestoreError : l10n.premiumPurchaseError;
+        });
+      case PremiumPurchaseEvent.canceled:
+        setState(() => _busyAction = null);
+    }
+  }
+
+  Future<void> _buy(ProductDetails product) async {
+    setState(() {
+      _busyAction = product.id;
+      _inlineError = null;
+    });
+    await PremiumService.instance.buy(product);
+  }
+
+  Future<void> _restore() async {
+    setState(() {
+      _busyAction = 'restore';
+      _inlineError = null;
+    });
+    await PremiumService.instance.restore();
+  }
+
+  ProductDetails? _findProduct(String id) {
+    for (final p in _products) {
+      if (p.id == id) return p;
+    }
+    return null;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final annual = _findProduct(PremiumService.annualProductId);
+    final monthly = _findProduct(PremiumService.monthlyProductId);
+    final busy = _busyAction != null;
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -115,7 +216,7 @@ class PremiumUpgradeDialog extends StatelessWidget {
                     const SizedBox(height: 10),
                     // Feature name.
                     Text(
-                      featureName,
+                      widget.featureName,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.playfairDisplay(
                         fontSize: 16,
@@ -126,7 +227,7 @@ class PremiumUpgradeDialog extends StatelessWidget {
                     const SizedBox(height: 10),
                     // Feature description.
                     Text(
-                      featureDescription,
+                      widget.featureDescription,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         fontSize: 14,
@@ -134,43 +235,97 @@ class PremiumUpgradeDialog extends StatelessWidget {
                         color: _cream.withValues(alpha: 0.85),
                       ),
                     ),
-                    const SizedBox(height: 18),
-                    // Pricing.
-                    Text(
-                      l10n.premiumPricing,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.lato(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: _cream,
-                      ),
-                    ),
-                    const SizedBox(height: 26),
-                    // Upgrade button.
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () => Navigator.of(context).pop(),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.gold,
-                          foregroundColor: _navy,
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
+                    const SizedBox(height: 22),
+                    // Plan buttons — live pricing from the store, or a
+                    // graceful fallback if it can't be reached.
+                    if (_loadingProducts)
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 18),
+                        child: Center(
+                          child: SizedBox(
+                            width: 26,
+                            height: 26,
+                            child: CircularProgressIndicator(
+                              color: AppColors.gold,
+                              strokeWidth: 2.5,
+                            ),
                           ),
-                          elevation: 0,
                         ),
+                      )
+                    else if (annual == null && monthly == null)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Text(
-                          l10n.premiumUpgradeButton,
+                          l10n.premiumProductsUnavailable,
+                          textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.3,
+                            fontSize: 13,
+                            color: _cream.withValues(alpha: 0.7),
+                          ),
+                        ),
+                      )
+                    else ...[
+                      if (annual != null)
+                        _PlanButton(
+                          label: l10n.premiumAnnualPlan,
+                          price: annual.price,
+                          badge: l10n.premiumBestValue,
+                          primary: true,
+                          busy: _busyAction == annual.id,
+                          disabled: busy,
+                          onPressed: () => _buy(annual),
+                        ),
+                      if (monthly != null)
+                        _PlanButton(
+                          label: l10n.premiumMonthlyPlan,
+                          price: monthly.price,
+                          primary: false,
+                          busy: _busyAction == monthly.id,
+                          disabled: busy,
+                          onPressed: () => _buy(monthly),
+                        ),
+                    ],
+                    if (_inlineError != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 6, bottom: 4),
+                        child: Text(
+                          _inlineError!,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.lato(
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.redAccent.shade100,
                           ),
                         ),
                       ),
+                    const SizedBox(height: 6),
+                    // Restore purchases — required by Apple, so it's always
+                    // reachable from the paywall regardless of whether live
+                    // pricing loaded.
+                    Center(
+                      child: TextButton(
+                        onPressed: busy ? null : _restore,
+                        child: _busyAction == 'restore'
+                            ? const SizedBox(
+                                width: 16,
+                                height: 16,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: AppColors.gold,
+                                ),
+                              )
+                            : Text(
+                                l10n.premiumRestorePurchases,
+                                style: GoogleFonts.lato(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.gold.withValues(alpha: 0.75),
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                      ),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 6),
                     // Maybe later button.
                     SizedBox(
                       width: double.infinity,
@@ -202,6 +357,115 @@ class PremiumUpgradeDialog extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// One purchasable plan row: label + live store price, an optional "Best
+/// Value" badge (annual), and a loading state while its purchase is in
+/// flight.
+class _PlanButton extends StatelessWidget {
+  final String label;
+  final String price;
+  final String? badge;
+  final bool primary;
+  final bool busy;
+  final bool disabled;
+  final VoidCallback onPressed;
+
+  const _PlanButton({
+    required this.label,
+    required this.price,
+    this.badge,
+    required this.primary,
+    required this.busy,
+    required this.disabled,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final child = busy
+        ? SizedBox(
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: primary ? _navy : AppColors.gold,
+            ),
+          )
+        : Text(
+            '$label • $price',
+            style: GoogleFonts.lato(
+              fontSize: 15,
+              fontWeight: primary ? FontWeight.w700 : FontWeight.w600,
+              letterSpacing: 0.3,
+            ),
+          );
+
+    final button = primary
+        ? ElevatedButton(
+            onPressed: disabled ? null : onPressed,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.gold,
+              foregroundColor: _navy,
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),
+              elevation: 0,
+            ),
+            child: child,
+          )
+        : OutlinedButton(
+            onPressed: disabled ? null : onPressed,
+            style: OutlinedButton.styleFrom(
+              foregroundColor: AppColors.gold,
+              side: BorderSide(color: AppColors.gold.withValues(alpha: 0.55)),
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),
+            ),
+            child: child,
+          );
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: SizedBox(
+        width: double.infinity,
+        child: badge == null
+            ? button
+            : Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  button,
+                  PositionedDirectional(
+                    top: -10,
+                    end: 12,
+                    child: Container(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: _navy,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: AppColors.gold.withValues(alpha: 0.6),
+                        ),
+                      ),
+                      child: Text(
+                        badge!,
+                        style: GoogleFonts.lato(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.gold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
   }

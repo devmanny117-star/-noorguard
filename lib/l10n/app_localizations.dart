@@ -5426,6 +5426,12 @@ abstract class AppLocalizations {
   /// **'Saved Verses'**
   String get savedVerses;
 
+  /// Short label on the Quran screen header button that opens Saved Verses
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get savedButtonLabel;
+
   /// Title of the Saved Names (Asma ul Husna bookmarks) screen
   ///
   /// In en, this message translates to:
@@ -6373,6 +6379,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Listen to Quran while you work, commute, or rest — even with your screen off.'**
   String get premiumBackgroundPlaybackDescription;
+
+  /// Section header in Settings for the Premium membership status and restore purchases
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get premiumMembership;
+
+  /// Shown in Settings when the user has an active Premium subscription
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Member'**
+  String get premiumStatusActive;
+
+  /// Shown in Settings when the user does not have Premium
+  ///
+  /// In en, this message translates to:
+  /// **'Free Plan'**
+  String get premiumStatusFree;
+
+  /// Button/row label to restore previously purchased Premium subscriptions (required by Apple)
+  ///
+  /// In en, this message translates to:
+  /// **'Restore Purchases'**
+  String get premiumRestorePurchases;
+
+  /// Confirmation shown after successfully restoring a previous Premium purchase
+  ///
+  /// In en, this message translates to:
+  /// **'Your purchases have been restored.'**
+  String get premiumRestoreSuccess;
+
+  /// Shown after Restore Purchases completes with nothing to restore
+  ///
+  /// In en, this message translates to:
+  /// **'No previous purchases were found.'**
+  String get premiumRestoreNone;
+
+  /// Shown when the Restore Purchases flow fails
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t restore purchases. Please try again.'**
+  String get premiumRestoreError;
+
+  /// Shown when an in-app purchase fails or returns an error
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase failed. Please try again.'**
+  String get premiumPurchaseError;
+
+  /// Label for the monthly Premium subscription plan button on the upgrade dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get premiumMonthlyPlan;
+
+  /// Label for the annual Premium subscription plan button on the upgrade dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Annual'**
+  String get premiumAnnualPlan;
+
+  /// Badge shown on the annual Premium plan to highlight it as the better deal
+  ///
+  /// In en, this message translates to:
+  /// **'Best Value'**
+  String get premiumBestValue;
+
+  /// Shown on the premium upgrade dialog when store product prices can't be loaded
+  ///
+  /// In en, this message translates to:
+  /// **'Pricing unavailable. Check your connection and try again.'**
+  String get premiumProductsUnavailable;
 
   /// Small note shown above the tafsir list when falling back to the English tafsir because the user's language has no tafsir source
   ///

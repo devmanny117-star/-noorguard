@@ -3632,6 +3632,10 @@
   "@savedVerses": {
     "description": "Title of the Saved Verses (Quran bookmarks) screen"
   },
+  "savedButtonLabel": "Сохранённые",
+  "@savedButtonLabel": {
+    "description": "Short label on the Quran screen header button that opens Saved Verses"
+  },
   "savedNames": "Сохранённые имена",
   "@savedNames": {
     "description": "Title of the Saved Names (Asma ul Husna bookmarks) screen"
@@ -4119,5 +4123,17 @@
   "premiumAdhanRecitersDescription": "Просыпайтесь под призыв к молитве от любимого муэдзина.",
   "premiumBackgroundPlaybackName": "Воспроизведение в фоновом режиме",
   "premiumBackgroundPlaybackDescription": "Слушайте Коран во время работы, поездок или отдыха — даже при выключенном экране.",
+  "premiumMembership": "Премиум",
+  "premiumStatusActive": "Премиум-подписчик",
+  "premiumStatusFree": "Бесплатный план",
+  "premiumRestorePurchases": "Восстановить покупки",
+  "premiumRestoreSuccess": "Ваши покупки восстановлены.",
+  "premiumRestoreNone": "Предыдущие покупки не найдены.",
+  "premiumRestoreError": "Не удалось восстановить покупки. Попробуйте снова.",
+  "premiumPurchaseError": "Не удалось совершить покупку. Попробуйте снова.",
+  "premiumMonthlyPlan": "Ежемесячно",
+  "premiumAnnualPlan": "Ежегодно",
+  "premiumBestValue": "Выгоднее",
+  "premiumProductsUnavailable": "Цены недоступны. Проверьте подключение и попробуйте снова.",
   "tafsirFallbackNote": "Тафсир пока недоступен на вашем языке."
 }

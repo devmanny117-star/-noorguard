@@ -55,21 +55,21 @@
 		118C968AFB24819DC712645D /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		2EF5D69340C9646AE7812245 /* adhan_pakistani.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_pakistani.caf; sourceTree = "<group>"; };
+		2EF5D69340C9646AE7812245 /* adhan_pakistani.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_pakistani.caf; sourceTree = "<group>"; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
-		42FD8B475E905B9314E5B550 /* adhan_alafasy.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_alafasy.caf; sourceTree = "<group>"; };
+		42FD8B475E905B9314E5B550 /* adhan_alafasy.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_alafasy.caf; sourceTree = "<group>"; };
 		579AAAB33414B9F0B2A5CD3B /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5DFD166F4A954278C39D79DF /* adhan_madinah.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_madinah.caf; sourceTree = "<group>"; };
-		716F05DADB240E7546B90FCD /* adhan_turkish.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_turkish.caf; sourceTree = "<group>"; };
+		5DFD166F4A954278C39D79DF /* adhan_madinah.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_madinah.caf; sourceTree = "<group>"; };
+		716F05DADB240E7546B90FCD /* adhan_turkish.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_turkish.caf; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E0A7A72DC9AD7400C4905E /* FlutterGeneratedPluginSwiftPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FlutterGeneratedPluginSwiftPackage; path = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage; sourceTree = "<group>"; };
-		794E6269A49AE809E4D60FF3 /* adhan_alaqsa.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_alaqsa.caf; sourceTree = "<group>"; };
+		794E6269A49AE809E4D60FF3 /* adhan_alaqsa.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_alaqsa.caf; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		8BE6875BE16E68A09DD27763 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
-		960C2F11B7FC4111786C8C21 /* adhan_makkah.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_makkah.caf; sourceTree = "<group>"; };
+		960C2F11B7FC4111786C8C21 /* adhan_makkah.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_makkah.caf; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,13 +77,13 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B90DB59140B228B5B2322398 /* adhan_egyptian.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_egyptian.caf; sourceTree = "<group>"; };
+		B90DB59140B228B5B2322398 /* adhan_egyptian.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_egyptian.caf; sourceTree = "<group>"; };
 		B9206EE00B277C474DBBEE6C /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		C27AD72679F2CFE23DF68BF2 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		C6B75ACD3DEBD6693DE2DAFA /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78AEB19B518EC1370AA99E0 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D24EE75D114F2DCF85741A8A /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
-		E0201356AC406A89411704F2 /* adhan_indonesian.caf */ = {isa = PBXFileReference; includeInIndex = 1; path = adhan_indonesian.caf; sourceTree = "<group>"; };
+		E0201356AC406A89411704F2 /* adhan_indonesian.caf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = adhan_indonesian.caf; sourceTree = "<group>"; };
 		FA5A1ABC52D833374DB6CA61 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,7 +200,6 @@
 				2EF5D69340C9646AE7812245 /* adhan_pakistani.caf */,
 				E0201356AC406A89411704F2 /* adhan_indonesian.caf */,
 			);
-			name = Sounds;
 			path = Sounds;
 			sourceTree = "<group>";
 		};

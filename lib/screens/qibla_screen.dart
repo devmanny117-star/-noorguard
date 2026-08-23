@@ -1499,8 +1499,9 @@ class _LocationSelectorSheetState extends State<_LocationSelectorSheet> {
       final response = await http.get(uri, headers: {
         'User-Agent': 'NoorGuard/1.0 (prayer times app)',
       }).timeout(const Duration(seconds: 6));
-      if (response.statusCode != 200)
+      if (response.statusCode != 200) {
         throw Exception('HTTP ${response.statusCode}');
+      }
 
       final results = (jsonDecode(response.body) as List<dynamic>)
           .cast<Map<String, dynamic>>();

@@ -88,6 +88,8 @@ class WidgetDataService {
       HomeWidget.saveWidgetData('daily_verse_arabic', verse.forLocale('ar')),
       HomeWidget.saveWidgetData('daily_verse_text', verse.forLocale(locale)),
       HomeWidget.saveWidgetData('daily_verse_ref', verse.reference),
+      HomeWidget.saveWidgetData('daily_verse_surah', verse.surah),
+      HomeWidget.saveWidgetData('daily_verse_ayah', verse.ayah),
       HomeWidget.saveWidgetData('locale_code', locale),
       HomeWidget.saveWidgetData('is_rtl', isRtl),
       HomeWidget.saveWidgetData('label_next_prayer', l10n.nextPrayer),

@@ -5,7 +5,17 @@ class WidgetDailyVerse {
   final Map<String, String> text;
   final String reference;
 
-  const WidgetDailyVerse({required this.text, required this.reference});
+  /// Surah/ayah numbers matching [reference], so a tap on this verse in the
+  /// home-screen widget can deep-link straight to it in the Quran reader.
+  final int surah;
+  final int ayah;
+
+  const WidgetDailyVerse({
+    required this.text,
+    required this.reference,
+    required this.surah,
+    required this.ayah,
+  });
 
   String forLocale(String localeCode) => text[localeCode] ?? text['en']!;
 }
@@ -13,6 +23,8 @@ class WidgetDailyVerse {
 final List<WidgetDailyVerse> widgetDailyVerses = [
   const WidgetDailyVerse(
     reference: "Al-'Ankabut 29:45",
+    surah: 29,
+    ayah: 45,
     text: {
       'en': 'Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater.',
       'ar': 'إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ وَلَذِكْرُ اللَّهِ أَكْبَرُ',
@@ -34,6 +46,8 @@ final List<WidgetDailyVerse> widgetDailyVerses = [
   ),
   const WidgetDailyVerse(
     reference: 'At-Talaq 65:3',
+    surah: 65,
+    ayah: 3,
     text: {
       'en': 'And whoever relies upon Allah — then He is sufficient for him.',
       'ar': 'وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ',
@@ -55,6 +69,8 @@ final List<WidgetDailyVerse> widgetDailyVerses = [
   ),
   const WidgetDailyVerse(
     reference: "Ar-Ra'd 13:28",
+    surah: 13,
+    ayah: 28,
     text: {
       'en': 'Verily, in the remembrance of Allah do hearts find rest.',
       'ar': 'أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ',

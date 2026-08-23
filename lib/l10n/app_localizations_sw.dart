@@ -2946,6 +2946,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get savedVerses => 'Aya Zilizohifadhiwa';
 
   @override
+  String get savedButtonLabel => 'Zilizohifadhiwa';
+
+  @override
   String get savedNames => 'Majina Yaliyohifadhiwa';
 
   @override
@@ -3466,6 +3469,45 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'Sikiliza Qur\'an ukiwa kazini, safarini, au ukipumzika — hata skrini ikiwa imezimwa.';
+
+  @override
+  String get premiumMembership => 'Premium';
+
+  @override
+  String get premiumStatusActive => 'Mwanachama wa Premium';
+
+  @override
+  String get premiumStatusFree => 'Mpango wa Bure';
+
+  @override
+  String get premiumRestorePurchases => 'Rejesha Manunuzi';
+
+  @override
+  String get premiumRestoreSuccess => 'Manunuzi yako yamerejeshwa.';
+
+  @override
+  String get premiumRestoreNone => 'Hakuna manunuzi ya awali yaliyopatikana.';
+
+  @override
+  String get premiumRestoreError =>
+      'Imeshindikana kurejesha manunuzi. Tafadhali jaribu tena.';
+
+  @override
+  String get premiumPurchaseError =>
+      'Ununuzi umeshindikana. Tafadhali jaribu tena.';
+
+  @override
+  String get premiumMonthlyPlan => 'Kila Mwezi';
+
+  @override
+  String get premiumAnnualPlan => 'Kila Mwaka';
+
+  @override
+  String get premiumBestValue => 'Thamani Bora';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'Bei hazipatikani. Angalia muunganisho wako na ujaribu tena.';
 
   @override
   String get tafsirFallbackNote => 'Tafsiri bado haipatikani kwa lugha yako.';

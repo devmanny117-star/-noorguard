@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io' show Platform;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show debugPrint, kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 import '../data/share_data.dart';
 import '../l10n/app_localizations.dart';
@@ -32,16 +34,55 @@ class LiveNotificationService {
   /// showing fresh daily content even if the app isn't opened for a week.
   static const _daysOfContent = 7;
 
+  /// iOS-only: one [FlutterLocalNotificationsPlugin] instance for scheduling
+  /// the Fajr content notifications below. Talks to the same native
+  /// platform channel `NotificationService`'s instance already initialized
+  /// at app startup (main.dart calls `NotificationService().init()` before
+  /// any prayer schedule/push happens), so this doesn't need its own
+  /// `initialize()` call — same pattern flutter_local_notifications apps
+  /// commonly use for a secondary call site.
+  static final FlutterLocalNotificationsPlugin _plugin =
+      FlutterLocalNotificationsPlugin();
+
+  /// Notification ids for the [_daysOfContent] pre-scheduled iOS Fajr
+  /// content notifications (500–506) — clear of every id range
+  /// `NotificationService` uses (0–4, 50–79, 100–134, 999), so cancelling or
+  /// rescheduling one system never touches the other.
+  static const _iosFajrNotifIdBase = 500;
+
   /// Writes today's payload. [prayers] are `{'name': String, 'time': DateTime}`
   /// entries — the same shape the home screen already builds for scheduling.
+  ///
+  /// Android gets the SharedPreferences payload the foreground service reads
+  /// (see class doc). iOS has no equivalent always-running native service,
+  /// so it instead gets [_daysOfContent] pre-scheduled local notifications
+  /// timed to Fajr, one per day, each showing that day's rotating content —
+  /// see [_scheduleIosFajrNotifications].
   static Future<void> push({
     required BuildContext context,
     required List<Map<String, dynamic>> prayers,
   }) async {
-    if (kIsWeb || !Platform.isAndroid) return;
+    if (kIsWeb) return;
+    if (!Platform.isAndroid && !Platform.isIOS) return;
     final l10n = AppLocalizations.of(context);
     if (l10n == null || prayers.isEmpty) return;
     final locale = Localizations.localeOf(context).languageCode;
+
+    final today = DateTime.now();
+    final days = <Map<String, String>>[];
+    for (int i = 0; i < _daysOfContent; i++) {
+      final date = DateTime(today.year, today.month, today.day + i);
+      days.add(await _contentForDate(date, l10n, locale));
+    }
+
+    if (Platform.isIOS) {
+      await _scheduleIosFajrNotifications(
+        prayers: prayers,
+        today: today,
+        days: days,
+      );
+      return;
+    }
 
     final prayersJson = prayers.map((entry) {
       final time = entry['time'] as DateTime;
@@ -61,13 +102,6 @@ class LiveNotificationService {
     );
     final fajrTime = (fajr['time'] as DateTime).add(const Duration(days: 1));
 
-    final today = DateTime.now();
-    final days = <Map<String, String>>[];
-    for (int i = 0; i < _daysOfContent; i++) {
-      final date = DateTime(today.year, today.month, today.day + i);
-      days.add(await _contentForDate(date, l10n, locale));
-    }
-
     final payload = <String, dynamic>{
       'prayers': prayersJson,
       'tomorrowFajrDisplayName': _localizedPrayerName(l10n, 'Fajr'),
@@ -82,6 +116,86 @@ class LiveNotificationService {
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(payloadPrefsKey, jsonEncode(payload));
+  }
+
+  /// Pre-schedules [_daysOfContent] one-shot local notifications timed to
+  /// Fajr — today plus the next `_daysOfContent - 1` days — each showing
+  /// that day's rotating content from [days] (built by the same
+  /// [_contentForDate] cycle Android's payload uses, so both platforms show
+  /// identical content on any given date). Title is the content type header
+  /// (e.g. "NAME OF ALLAH", already uppercase in every locale's ARB); body is
+  /// the Arabic text followed by the transliteration/meaning line
+  /// [_contentForDate] already assembled per type.
+  ///
+  /// Each day's Fajr time is approximated as today's Fajr clock time carried
+  /// onto that future date (same drift caveat as the Android tomorrow-Fajr
+  /// countdown above — corrected next time the app opens and re-pushes).
+  ///
+  /// Always cancels its own id range first, so every call (cold start, a
+  /// fresh prayer-time fetch, a language change) atomically replaces the
+  /// previous window instead of piling notifications on top of it.
+  static Future<void> _scheduleIosFajrNotifications({
+    required List<Map<String, dynamic>> prayers,
+    required DateTime today,
+    required List<Map<String, String>> days,
+  }) async {
+    for (int i = 0; i < _daysOfContent; i++) {
+      await _plugin.cancel(id: _iosFajrNotifIdBase + i);
+    }
+
+    final fajr = prayers.firstWhere(
+      (p) => (p['name'] as String) == 'Fajr',
+      orElse: () => prayers.first,
+    );
+    final fajrTime = fajr['time'] as DateTime;
+    final now = DateTime.now();
+
+    for (int i = 0; i < days.length; i++) {
+      final date = DateTime(today.year, today.month, today.day + i);
+      final scheduledAt = DateTime(
+        date.year,
+        date.month,
+        date.day,
+        fajrTime.hour,
+        fajrTime.minute,
+      );
+      if (scheduledAt.isBefore(now)) continue;
+
+      final day = days[i];
+      final arabic = day['arabic'] ?? '';
+      final meaning = day['body'] ?? '';
+      final body = meaning.isEmpty ? arabic : '$arabic\n$meaning';
+      // Same `<type>:<data>` contract NotificationNavService routes for the
+      // Android live notification's extras — tapping this notification then
+      // deep-links to the exact ayah/dua/glossary term/name/hadith it showed,
+      // instead of just opening the app at the home screen.
+      final navType = day['navType'] ?? '';
+      final navData = day['navData'] ?? '';
+      final payload = navType.isEmpty ? null : '$navType:$navData';
+
+      try {
+        await _plugin.zonedSchedule(
+          id: _iosFajrNotifIdBase + i,
+          title: day['header'] ?? '',
+          body: body,
+          scheduledDate: tz.TZDateTime.from(scheduledAt, tz.local),
+          payload: payload,
+          notificationDetails: const NotificationDetails(
+            iOS: DarwinNotificationDetails(
+              presentAlert: true,
+              presentBadge: true,
+              presentSound: true,
+              presentBanner: true,
+              presentList: true,
+            ),
+          ),
+          androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        );
+      } catch (e) {
+        debugPrint(
+            'LiveNotificationService: failed to schedule iOS Fajr content day $i: $e');
+      }
+    }
   }
 
   /// One day's rotating content block, cycling ayah → dua → glossary word →

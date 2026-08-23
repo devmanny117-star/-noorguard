@@ -27,6 +27,13 @@ class PrayerState extends ChangeNotifier {
   /// widgets without every caller having to thread the list through itself.
   List<Prayer>? lastKnownPrayers;
 
+  /// Location fields accompanying [lastKnownPrayers], cached for the same
+  /// reason — lets a language change re-push a fresh, correctly localized
+  /// widget snapshot without waiting on a new location fetch.
+  String? lastKnownLocationLabel;
+  double? lastKnownLat;
+  double? lastKnownLng;
+
   int streakCount = 0;
   bool beginnerMode = false;
 

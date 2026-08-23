@@ -2833,6 +2833,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get savedVerses => '保存した節';
 
   @override
+  String get savedButtonLabel => '保存済み';
+
+  @override
   String get savedNames => '保存した御名';
 
   @override
@@ -3325,6 +3328,42 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       '仕事中、移動中、休憩中でも — 画面をオフにしたままクルアーンを聴けます。';
+
+  @override
+  String get premiumMembership => 'プレミアム';
+
+  @override
+  String get premiumStatusActive => 'プレミアム会員';
+
+  @override
+  String get premiumStatusFree => '無料プラン';
+
+  @override
+  String get premiumRestorePurchases => '購入を復元';
+
+  @override
+  String get premiumRestoreSuccess => '購入が復元されました。';
+
+  @override
+  String get premiumRestoreNone => '以前の購入は見つかりませんでした。';
+
+  @override
+  String get premiumRestoreError => '購入を復元できませんでした。もう一度お試しください。';
+
+  @override
+  String get premiumPurchaseError => '購入に失敗しました。もう一度お試しください。';
+
+  @override
+  String get premiumMonthlyPlan => '月額';
+
+  @override
+  String get premiumAnnualPlan => '年額';
+
+  @override
+  String get premiumBestValue => 'お得';
+
+  @override
+  String get premiumProductsUnavailable => '価格を取得できません。接続を確認して再試行してください。';
 
   @override
   String get tafsirFallbackNote => 'タフスィールはまだあなたの言語では利用できません。';

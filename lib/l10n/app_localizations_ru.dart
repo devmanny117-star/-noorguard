@@ -2957,6 +2957,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get savedVerses => 'Сохранённые аяты';
 
   @override
+  String get savedButtonLabel => 'Сохранённые';
+
+  @override
   String get savedNames => 'Сохранённые имена';
 
   @override
@@ -3483,6 +3486,45 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get premiumBackgroundPlaybackDescription =>
       'Слушайте Коран во время работы, поездок или отдыха — даже при выключенном экране.';
+
+  @override
+  String get premiumMembership => 'Премиум';
+
+  @override
+  String get premiumStatusActive => 'Премиум-подписчик';
+
+  @override
+  String get premiumStatusFree => 'Бесплатный план';
+
+  @override
+  String get premiumRestorePurchases => 'Восстановить покупки';
+
+  @override
+  String get premiumRestoreSuccess => 'Ваши покупки восстановлены.';
+
+  @override
+  String get premiumRestoreNone => 'Предыдущие покупки не найдены.';
+
+  @override
+  String get premiumRestoreError =>
+      'Не удалось восстановить покупки. Попробуйте снова.';
+
+  @override
+  String get premiumPurchaseError =>
+      'Не удалось совершить покупку. Попробуйте снова.';
+
+  @override
+  String get premiumMonthlyPlan => 'Ежемесячно';
+
+  @override
+  String get premiumAnnualPlan => 'Ежегодно';
+
+  @override
+  String get premiumBestValue => 'Выгоднее';
+
+  @override
+  String get premiumProductsUnavailable =>
+      'Цены недоступны. Проверьте подключение и попробуйте снова.';
 
   @override
   String get tafsirFallbackNote => 'Тафсир пока недоступен на вашем языке.';

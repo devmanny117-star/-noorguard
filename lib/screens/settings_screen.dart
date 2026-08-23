@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
@@ -11,7 +12,10 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../locale_controller.dart';
 import '../models/adhan_model.dart';
+import '../services/prayer_scheduler.dart';
 import '../services/prayer_state.dart';
+import '../services/premium_service.dart';
+import '../services/widget_data_service.dart';
 import '../theme/app_theme.dart';
 import '../theme/theme_controller.dart';
 import '../widgets/premium_upgrade_dialog.dart';
@@ -44,6 +48,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   // App Blocking — real state from the shared service, not a local flag
   bool _appBlockingEnabled = false;
+
+  // Premium — Restore Purchases row (required by Apple)
+  bool _restoring = false;
 
   // Appearance
   String _language = 'English';
@@ -199,6 +206,55 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (mounted) setState(() => _language = _localeNameMap[code] ?? 'English');
   }
 
+  /// Re-pushes the home-screen widget snapshot and the Live notification's
+  /// content using the cached prayer times/location, so both switch to the
+  /// newly selected language right away instead of only on the next prayer
+  /// times fetch. No-op before the home screen has resolved a location once
+  /// (nothing cached yet to re-push).
+  void _refreshWidgetsForNewLocale() {
+    final prayers = PrayerState().lastKnownPrayers;
+    if (prayers == null) return;
+    WidgetDataService.pushPrayerTimesSnapshot(
+      context: context,
+      prayers: prayers,
+      locationLabel: PrayerState().lastKnownLocationLabel ?? '',
+      lat: PrayerState().lastKnownLat,
+      lng: PrayerState().lastKnownLng,
+    );
+    PrayerScheduler.scheduleFromPrayers(context, prayers);
+  }
+
+  /// Restore Purchases — required by Apple so a user who already bought
+  /// Premium (a previous install, or another device on the same Apple ID)
+  /// can unlock it again without paying twice. PremiumService.restore()
+  /// only returns once it has already broadcast the outcome (a genuine
+  /// restore flips `is_premium` via the same purchase-stream listener a
+  /// fresh purchase uses), so listening for the duration of that call is
+  /// enough to know which message to show.
+  Future<void> _restorePurchases() async {
+    if (_restoring) return;
+    setState(() => _restoring = true);
+    PremiumPurchaseEvent? outcome;
+    final sub = PremiumService.instance.events.listen((e) => outcome = e);
+    await PremiumService.instance.restore();
+    await sub.cancel();
+    if (!mounted) return;
+    setState(() => _restoring = false);
+    final l10n = AppLocalizations.of(context)!;
+    final message = switch (outcome) {
+      PremiumPurchaseEvent.purchased => l10n.premiumRestoreSuccess,
+      PremiumPurchaseEvent.error => l10n.premiumRestoreError,
+      _ => l10n.premiumRestoreNone,
+    };
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message, style: GoogleFonts.lato(color: Colors.white)),
+      backgroundColor: const Color(0xFF2C2C2A),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.all(16),
+    ));
+  }
+
   Future<void> _showPicker({
     required String title,
     required List<String> options,
@@ -327,6 +383,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 colors: cardColors,
                 onTap: _editDisplayName,
               ),
+              const SettingsDivider(colors: cardColors),
+              SettingsActionRow(
+                label: l10n.premiumRestorePurchases,
+                value: _restoring ? '…' : null,
+                icon: Icons.restore_rounded,
+                colors: cardColors,
+                onTap: _restoring ? () {} : _restorePurchases,
+              ),
             ],
           ),
         ),
@@ -427,6 +491,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     await prefs.setString('app_locale', code);
                     if (mounted) {
                       localeScope.onLocaleChange(Locale(code));
+                      // Re-push the home-screen widget snapshot and the Live
+                      // notification's content so they show the new language
+                      // immediately, instead of waiting for the next prayer-time
+                      // fetch. Deferred a frame so `context` already resolves to
+                      // the new locale (MaterialApp's rebuild from the
+                      // onLocaleChange above hasn't landed yet on this line).
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        if (mounted) _refreshWidgetsForNewLocale();
+                      });
                     }
                   },
                 ),
