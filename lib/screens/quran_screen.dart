@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../data/surah_translations.dart';
 import '../models/surah_model.dart';
+import '../services/quran_player_controller.dart';
 import '../services/quran_service.dart';
 import '../services/quran_full_index.dart';
 import '../utils/islamic_synonyms.dart';
+import '../widgets/banner_ad_widget.dart';
+import '../widgets/quran_mini_player.dart';
 import 'surah_screen.dart';
 import 'saved_verses_screen.dart';
 import '../l10n/app_localizations.dart';
@@ -24,6 +27,12 @@ class _QuranScreenState extends State<QuranScreen> {
   String _query = '';
   String _currentLocale = 'en';
   List<QuranSearchResult> _searchResults = [];
+
+  // True once BannerAdWidget has actually loaded an ad — used to reserve
+  // extra bottom padding for the lists so the fixed ad banner (shown above
+  // the mini player) never covers the last tile. Never reverts to false:
+  // BannerAdWidget itself never un-shows an ad once loaded.
+  bool _adVisible = false;
 
   static const _navy = Color(0xFF0D1B2A);
   static const _gold = Color(0xFFD4AF37);
@@ -141,52 +150,119 @@ class _QuranScreenState extends State<QuranScreen> {
 
     return Scaffold(
       backgroundColor: _navy,
-      body: SafeArea(
-        child: Column(
-          children: [
-            _Header(),
-            _SearchBar(controller: _searchController),
-            // Subtle banner while the full index is being built.
-            if (searching && !indexReady) const _IndexingBanner(),
-            Expanded(
-              child: _loading
-                  ? const Center(
-                      child: CircularProgressIndicator(color: _gold),
-                    )
-                  : _failed && !searching
-                      ? _FailedState(onRetry: _load)
-                      : searching
-                          ? _searchResults.isEmpty
-                              ? _NoResultsState(query: _query)
-                              : ListView.builder(
-                                  physics: const BouncingScrollPhysics(),
-                                  padding:
-                                      const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                                  itemCount: _searchResults.length,
-                                  itemBuilder: (context, i) => _AyahTile(
-                                    result: _searchResults[i],
-                                    onTap: () => _openSurah(
-                                      _searchResults[i].surahNumber,
-                                      initialVerse:
-                                          _searchResults[i].ayahNumber,
-                                    ),
-                                  ),
-                                )
-                          : _surahs.isEmpty
+      body: ListenableBuilder(
+        listenable: QuranPlayerController.instance,
+        builder: (context, _) {
+          final miniPlayerVisible =
+              QuranPlayerController.instance.hasActiveSession;
+          // Extra bottom clearance so the fixed ad banner / mini player
+          // cluster (see the Positioned stack below) never covers the last
+          // tile: QuranMiniPlayer's own 64px when a session is active, a
+          // ~58px ad once one has actually loaded, plus the 8px gap between
+          // them that only exists when both are showing at once.
+          final bottomListPadding = 24.0 +
+              (miniPlayerVisible ? QuranMiniPlayer.height : 0) +
+              (_adVisible ? 58.0 : 0) +
+              (_adVisible && miniPlayerVisible ? 8.0 : 0);
+          final listPadding =
+              EdgeInsets.fromLTRB(16, 4, 16, bottomListPadding);
+
+          return Stack(
+            children: [
+              SafeArea(
+                child: Column(
+                  children: [
+                    _Header(),
+                    _SearchBar(controller: _searchController),
+                    // Subtle banner while the full index is being built.
+                    if (searching && !indexReady) const _IndexingBanner(),
+                    Expanded(
+                      child: _loading
+                          ? const Center(
+                              child:
+                                  CircularProgressIndicator(color: _gold),
+                            )
+                          : _failed && !searching
                               ? _FailedState(onRetry: _load)
-                              : ListView.builder(
-                                  physics: const BouncingScrollPhysics(),
-                                  padding:
-                                      const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                                  itemCount: _surahs.length,
-                                  itemBuilder: (context, i) => _SurahTile(
-                                    surah: _surahs[i],
-                                    onTap: () => _openSurah(_surahs[i].number),
-                                  ),
-                                ),
-            ),
-          ],
-        ),
+                              : searching
+                                  ? _searchResults.isEmpty
+                                      ? _NoResultsState(query: _query)
+                                      : ListView.builder(
+                                          physics:
+                                              const BouncingScrollPhysics(),
+                                          padding: listPadding,
+                                          itemCount: _searchResults.length,
+                                          itemBuilder: (context, i) =>
+                                              _AyahTile(
+                                            result: _searchResults[i],
+                                            onTap: () => _openSurah(
+                                              _searchResults[i].surahNumber,
+                                              initialVerse: _searchResults[i]
+                                                  .ayahNumber,
+                                            ),
+                                          ),
+                                        )
+                                  : _surahs.isEmpty
+                                      ? _FailedState(onRetry: _load)
+                                      : ListView.builder(
+                                          physics:
+                                              const BouncingScrollPhysics(),
+                                          padding: listPadding,
+                                          itemCount: _surahs.length,
+                                          itemBuilder: (context, i) =>
+                                              _SurahTile(
+                                            surah: _surahs[i],
+                                            onTap: () =>
+                                                _openSurah(_surahs[i].number),
+                                          ),
+                                        ),
+                    ),
+                  ],
+                ),
+              ),
+              // Fixed cluster pinned above the floating bottom nav pill.
+              // HomeScreen's Scaffold uses extendBody: true, which makes
+              // Flutter itself rewrite MediaQuery.padding.bottom for
+              // everything inside body to max(rawDeviceInset,
+              // bottomNavigationBarHeight) — see _BodyBuilder in the
+              // framework's scaffold.dart — specifically so a SafeArea (or,
+              // here, this Positioned) can clear the nav bar with no
+              // hardcoded height. MediaQuery.of(context).padding.bottom is
+              // therefore ALREADY the full ~126px nav-bar clearance (92px
+              // pill+gap plus the device's own inset) — adding another 92 on
+              // top of it (as this used to) double-counts the nav bar and
+              // pushes everything 92px too high, which is exactly the gap
+              // that was reported. The mini player sits flush against the
+              // nav bar with no gap when no ad is showing; the 8px gap
+              // above it only exists once onVisibilityChanged reports an ad
+              // is actually rendering, so it never leaves dead space behind
+              // for a free user whose ad hasn't loaded (or hasn't cleared
+              // the install-date delay) yet.
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: MediaQuery.of(context).padding.bottom,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    BannerAdWidget(
+                      onVisibilityChanged: (visible) {
+                        if (mounted) setState(() => _adVisible = visible);
+                      },
+                    ),
+                    // Only separate the two when there's actually a mini
+                    // player below to separate from — otherwise this would
+                    // just reproduce the same dead-space bug against the
+                    // nav bar for an ad shown with no session active.
+                    if (_adVisible && miniPlayerVisible)
+                      const SizedBox(height: 8),
+                    const QuranMiniPlayer(),
+                  ],
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

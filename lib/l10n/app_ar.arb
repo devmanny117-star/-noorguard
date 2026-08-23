@@ -55,6 +55,7 @@
   "noSurahsFound": "لم يتم العثور على سور",
   "tryAgain": "حاول مرة أخرى",
   "ayahs": "{count} آيات",
+  "quranMiniPlayerAyah": "آية {number}",
   "searchDuas": "ابحث عن أدعية…",
   "supplications": "{count} أدعية",
   "profile": "الملف الشخصي",

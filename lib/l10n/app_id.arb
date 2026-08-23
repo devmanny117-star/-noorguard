@@ -55,6 +55,7 @@
   "noSurahsFound": "Surah tidak ditemukan",
   "tryAgain": "Coba Lagi",
   "ayahs": "{count} ayat",
+  "quranMiniPlayerAyah": "Ayat {number}",
   "searchDuas": "Cari doa…",
   "supplications": "{count} doa",
   "profile": "Profil",

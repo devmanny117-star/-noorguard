@@ -55,6 +55,7 @@
   "noSurahsFound": "No se encontraron suras",
   "tryAgain": "Intentar de nuevo",
   "ayahs": "{count} aleyas",
+  "quranMiniPlayerAyah": "Aleya {number}",
   "searchDuas": "Buscar duas…",
   "supplications": "{count} súplicas",
   "profile": "Perfil",

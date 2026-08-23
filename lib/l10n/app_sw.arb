@@ -55,6 +55,7 @@
   "noSurahsFound": "Hakuna sura zilizopatikana",
   "tryAgain": "Jaribu Tena",
   "ayahs": "aya {count}",
+  "quranMiniPlayerAyah": "Aya {number}",
   "searchDuas": "Tafuta dua…",
   "supplications": "dua {count}",
   "profile": "Wasifu",

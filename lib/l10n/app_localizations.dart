@@ -458,6 +458,12 @@ abstract class AppLocalizations {
   /// **'{count} ayahs'**
   String ayahs(int count);
 
+  /// Verse number label on the Quran mini player (e.g. 'Ayah 5')
+  ///
+  /// In en, this message translates to:
+  /// **'Ayah {number}'**
+  String quranMiniPlayerAyah(int number);
+
   /// Hint text for the Duas search field
   ///
   /// In en, this message translates to:

@@ -26,6 +26,7 @@ import 'services/notification_nav_service.dart';
 import 'services/notification_service.dart';
 import 'services/prayer_state.dart';
 import 'services/premium_service.dart';
+import 'services/quran_player_controller.dart';
 import 'services/adhan_foreground_controller.dart';
 import 'services/adhan_playback_service.dart';
 import 'services/community_stories_service.dart';
@@ -96,6 +97,10 @@ Future<void> main() async {
     // the foreground test/prayer playback is instant instead of streaming
     // the full track over the network on first use.
     AdhanPlaybackService().preloadSelected();
+    // Fire-and-forget: brings back the last-played surah/ayah/reciter (if
+    // any) so the Quran tab's mini player can show it — paused — as soon
+    // as it's loaded, without blocking app startup on it.
+    QuranPlayerController.instance.restoreLastPlayed();
   }
   runApp(
     ChangeNotifierProvider(

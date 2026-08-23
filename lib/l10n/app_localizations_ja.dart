@@ -195,6 +195,11 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
+  String quranMiniPlayerAyah(int number) {
+    return '第$number節';
+  }
+
+  @override
   String get searchDuas => 'ドゥアーを検索…';
 
   @override

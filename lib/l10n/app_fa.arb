@@ -98,6 +98,7 @@
   "noSurahsFound": "سوره‌ای یافت نشد",
   "tryAgain": "تلاش مجدد",
   "ayahs": "{count} آیه",
+  "quranMiniPlayerAyah": "آیه {number}",
   "@ayahs": {
     "placeholders": {
       "count": {

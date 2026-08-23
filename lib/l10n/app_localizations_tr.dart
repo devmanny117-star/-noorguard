@@ -204,6 +204,11 @@ class AppLocalizationsTr extends AppLocalizations {
   }
 
   @override
+  String quranMiniPlayerAyah(int number) {
+    return '$number. Ayet';
+  }
+
+  @override
   String get searchDuas => 'Dua ara…';
 
   @override

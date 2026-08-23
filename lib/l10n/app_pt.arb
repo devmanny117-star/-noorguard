@@ -55,6 +55,7 @@
   "noSurahsFound": "Nenhuma sura encontrada",
   "tryAgain": "Tentar Novamente",
   "ayahs": "{count} versículos",
+  "quranMiniPlayerAyah": "Versículo {number}",
   "searchDuas": "Buscar duas…",
   "supplications": "{count} súplicas",
   "profile": "Perfil",

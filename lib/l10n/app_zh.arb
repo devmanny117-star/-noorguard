@@ -55,6 +55,7 @@
   "noSurahsFound": "未找到相关章节",
   "tryAgain": "重试",
   "ayahs": "{count} 节经文",
+  "quranMiniPlayerAyah": "第{number}节",
   "searchDuas": "搜索祈祷文…",
   "supplications": "{count} 段祈祷文",
   "profile": "个人资料",

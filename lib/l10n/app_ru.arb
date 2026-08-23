@@ -247,6 +247,7 @@
     "description": "Button label to retry loading data after a failure"
   },
   "ayahs": "Аятов: {count}",
+  "quranMiniPlayerAyah": "Аят {number}",
   "@ayahs": {
     "description": "Number of verses in a surah",
     "placeholders": {

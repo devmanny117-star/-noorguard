@@ -12,7 +12,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// purchase/entitlement system exists yet, so this is a placeholder — flip
 /// it manually for testing until one is built.
 class BannerAdWidget extends StatefulWidget {
-  const BannerAdWidget({super.key});
+  /// Fires once, the moment an ad actually loads and starts rendering (never
+  /// with `false` — this widget never un-shows an ad once loaded). Lets a
+  /// parent that reserves fixed layout space for this widget (e.g. a
+  /// scroll view's bottom padding) react to whether an ad will actually
+  /// occupy that space, instead of assuming premium-status alone decides it
+  /// (the ad-delay window and network load can both still resolve to "no
+  /// ad" for a free user).
+  final ValueChanged<bool>? onVisibilityChanged;
+
+  const BannerAdWidget({super.key, this.onVisibilityChanged});
 
   @override
   State<BannerAdWidget> createState() => _BannerAdWidgetState();
@@ -73,6 +82,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
             _bannerAd = ad as BannerAd;
             _shouldShow = true;
           });
+          widget.onVisibilityChanged?.call(true);
         },
         onAdFailedToLoad: (ad, error) => ad.dispose(),
       ),

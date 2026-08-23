@@ -23,6 +23,15 @@ class Surah {
         numberOfAyahs: json['numberOfAyahs'] as int,
         revelationType: json['revelationType'] as String,
       );
+
+  Map<String, dynamic> toJson() => {
+        'number': number,
+        'name': name,
+        'englishName': englishName,
+        'englishNameTranslation': englishNameTranslation,
+        'numberOfAyahs': numberOfAyahs,
+        'revelationType': revelationType,
+      };
 }
 
 class Verse {

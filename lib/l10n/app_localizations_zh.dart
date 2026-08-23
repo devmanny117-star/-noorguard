@@ -194,6 +194,11 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String quranMiniPlayerAyah(int number) {
+    return '第$number节';
+  }
+
+  @override
   String get searchDuas => '搜索祈祷文…';
 
   @override

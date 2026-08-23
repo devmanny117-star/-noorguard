@@ -55,6 +55,7 @@
   "noSurahsFound": "Sure bulunamadı",
   "tryAgain": "Tekrar Dene",
   "ayahs": "{count} ayet",
+  "quranMiniPlayerAyah": "{number}. Ayet",
   "searchDuas": "Dua ara…",
   "supplications": "{count} dua",
   "profile": "Profil",

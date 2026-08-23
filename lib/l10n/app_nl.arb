@@ -55,6 +55,7 @@
   "noSurahsFound": "Geen soera's gevonden",
   "tryAgain": "Opnieuw proberen",
   "ayahs": "{count} ayat",
+  "quranMiniPlayerAyah": "Ayah {number}",
   "searchDuas": "Smeekbeden zoeken…",
   "supplications": "{count} smeekbeden",
   "profile": "Profiel",

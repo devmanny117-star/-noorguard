@@ -255,6 +255,15 @@
       }
     }
   },
+  "quranMiniPlayerAyah": "Ayah {number}",
+  "@quranMiniPlayerAyah": {
+    "description": "Verse number label on the Quran mini player (e.g. 'Ayah 5')",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
   "searchDuas": "Search duas…",
   "@searchDuas": {
     "description": "Hint text for the Duas search field"

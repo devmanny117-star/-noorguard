@@ -7,13 +7,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/surah_translations.dart';
 import '../l10n/app_localizations.dart';
 import '../models/reciter_model.dart';
 import '../models/surah_model.dart';
 import '../services/app_blocking_service.dart';
+import '../services/quran_player_controller.dart';
 import '../services/quran_service.dart';
 import '../services/share_helper.dart';
 import '../services/bookmark_service.dart';
@@ -41,30 +41,6 @@ const double _maxTextScale = 4.0;
 const _navy = Color(0xFF0D1B2A);
 const _gold = Color(0xFFD4AF37);
 const _cardColor = Color(0xFF152030);
-
-// Cached across the whole app session so the mosque image used as lock
-// screen / notification artwork is only copied out of the asset bundle once.
-Uri? _quranArtworkUri;
-
-/// MediaItem.artUri needs a real file:// (or http(s):///content://) URI —
-/// Flutter asset paths aren't directly usable — so this copies the bundled
-/// mosque hero image to a real file on first use and reuses it after that.
-Future<Uri> _getQuranArtworkUri() async {
-  final cached = _quranArtworkUri;
-  if (cached != null) return cached;
-  final dir = await getApplicationDocumentsDirectory();
-  final file = File('${dir.path}/quran_audio_artwork.jpg');
-  if (!await file.exists()) {
-    final data = await rootBundle.load('assets/images/mosques/mosque_1.jpg');
-    await file.writeAsBytes(
-      data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
-      flush: true,
-    );
-  }
-  final uri = Uri.file(file.path);
-  _quranArtworkUri = uri;
-  return uri;
-}
 
 class SurahScreen extends StatefulWidget {
   final Surah surah;
@@ -148,6 +124,9 @@ class _SurahScreenState extends State<SurahScreen>
     // prevents a 4th ayah from getting an audible head start, since
     // just_audio may have already gapless-transitioned into it by now.
     await _fadeOutAudio();
+    // This was a forced reading gate, not a listening session — don't leave
+    // a stray mini player behind once the user is sent back to their app.
+    QuranPlayerController.instance.clear();
 
     // 2. Gold celebration overlay (see _ChallengeCompleteOverlay) — let it
     // breathe for a beat before moving on.
@@ -183,7 +162,10 @@ class _SurahScreenState extends State<SurahScreen>
 
   Reciter _selectedReciter = reciters.first;
   List<String> _favoriteReciterIds = [];
-  final AudioPlayer _audioPlayer = AudioPlayer();
+  // Shared app-wide player (see QuranPlayerController) — NOT owned by this
+  // screen, so playback survives navigating away (powers the Quran tab's
+  // mini player). dispose() below deliberately does not stop/dispose it.
+  AudioPlayer get _audioPlayer => QuranPlayerController.instance.player;
   List<AudioSource>? _playlist;
   Uri? _artworkUri;
   int? _playingVerseNumber;
@@ -274,12 +256,20 @@ class _SurahScreenState extends State<SurahScreen>
     // Keeps _playingVerseNumber (and the highlighted verse / player bar) in
     // sync with whichever item the playlist is currently on, whether that
     // came from a tap, the prev/next buttons, or the lock screen controls.
+    // Also the single place that syncs QuranPlayerController — every way a
+    // new verse can start playing already funnels through this stream.
     _currentIndexSub = _audioPlayer.currentIndexStream.listen((index) {
       if (!mounted || index == null) return;
       if (index < 0 || index >= _verses.length) return;
       final verseNumber = _verses[index].number;
       setState(() => _playingVerseNumber = verseNumber);
       _scrollToVerse(verseNumber);
+      QuranPlayerController.instance.setNowPlaying(
+        surah: widget.surah,
+        reciter: _selectedReciter,
+        verseNumber: verseNumber,
+        playlistVerseNumbers: _verses.map((v) => v.number).toList(),
+      );
     });
     // The playlist auto-advances to the next verse by default; when
     // continuous play is off, immediately pause so playback stops after the
@@ -473,9 +463,11 @@ class _SurahScreenState extends State<SurahScreen>
     _playerStateSub?.cancel();
     _currentIndexSub?.cancel();
     _discontinuitySub?.cancel();
-    // dispose() stops playback internally first, which also tears down the
-    // lock screen / notification media session for this player.
-    _audioPlayer.dispose();
+    // Deliberately NOT stopping/disposing _audioPlayer here — it's the
+    // shared QuranPlayerController.instance.player, not owned by this
+    // screen. Leaving it alone on navigation-away is what lets playback
+    // (and the Quran tab's mini player) survive after the reader closes;
+    // only cancelling this screen's own subscriptions above.
     _sleepCountdownTimer?.cancel();
     _scrollController.dispose();
     _highlightController.dispose();
@@ -510,12 +502,13 @@ class _SurahScreenState extends State<SurahScreen>
     // just_audio_background's native media session/notification alive with
     // a resumable play button, which is exactly the lock-screen loophole
     // this gate exists to close. stop() deactivates the platform player,
-    // which tears the media session down entirely (see dispose(), which
-    // relies on the same behavior) — so a free user has no lock-screen
-    // control left to tap. The Dart-side player isn't disposed, so
-    // foreground playback (a verse tap, or the in-app player bar) still
-    // works normally afterwards, same as after the existing "close player"
-    // (X) button.
+    // which tears the media session down entirely — so a free user has no
+    // lock-screen control left to tap. The Dart-side player isn't disposed
+    // and QuranPlayerController's session isn't cleared, so foreground
+    // playback (a verse tap, the in-app player bar, or the Quran tab's mini
+    // player) still works normally afterwards, same as after the existing
+    // "close player" (X) button — this gate gets in the way of the lock
+    // screen only, never in-app use.
     //
     // On Android this alone is enough: audio_service's AudioService
     // force-cancels the notification the instant playback state goes idle
@@ -568,12 +561,27 @@ class _SurahScreenState extends State<SurahScreen>
   Future<void> _load(String locale) async {
     final verses = await fetchVerses(widget.surah.number, locale: locale);
     if (!kIsWeb) {
-      _artworkUri = await _getQuranArtworkUri();
+      _artworkUri = await QuranPlayerController.instance.getArtworkUri();
     }
     if (!mounted) return;
+    // If this surah's audio is already playing via the shared
+    // QuranPlayerController (e.g. this screen was (re)opened by tapping the
+    // Quran tab's mini player), adopt that session's state.
+    // currentIndexStream's replay-on-subscribe in initState() fired before
+    // _verses was populated, so its `index >= _verses.length` guard silently
+    // dropped that event — this is the fallback that actually syncs it.
+    final controller = QuranPlayerController.instance;
+    final alreadyPlayingThisSurah =
+        controller.surah?.number == widget.surah.number;
     setState(() {
       _verses = verses;
       _loading = false;
+      if (alreadyPlayingThisSurah) {
+        _selectedReciter = controller.reciter ?? _selectedReciter;
+        _playlist = _buildPlaylist();
+        _playingVerseNumber = controller.verseNumber;
+        _isPlaying = _audioPlayer.playing;
+      }
     });
     // Scroll to the requested verse if the screen was opened from a search
     // result, saved verse, or notification deep link.
@@ -714,6 +722,7 @@ class _SurahScreenState extends State<SurahScreen>
   /// highlighted verse — triggered by the player bar's close (X) button.
   Future<void> _closePlayer() async {
     await _audioPlayer.stop();
+    QuranPlayerController.instance.clear();
     if (!mounted) return;
     setState(() {
       _playingVerseNumber = null;

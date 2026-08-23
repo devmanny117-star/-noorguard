@@ -55,6 +55,7 @@
   "noSurahsFound": "کوئی سورت نہیں ملی",
   "tryAgain": "دوبارہ کوشش کریں",
   "ayahs": "{count} آیات",
+  "quranMiniPlayerAyah": "آیت {number}",
   "searchDuas": "دعائیں تلاش کریں…",
   "supplications": "{count} دعائیں",
   "profile": "پروفائل",

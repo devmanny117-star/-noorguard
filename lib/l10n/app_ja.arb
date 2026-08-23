@@ -55,6 +55,7 @@
   "noSurahsFound": "スーラが見つかりません",
   "tryAgain": "再試行",
   "ayahs": "{count}節",
+  "quranMiniPlayerAyah": "第{number}節",
   "searchDuas": "ドゥアーを検索…",
   "supplications": "{count}件のドゥアー",
   "profile": "プロフィール",

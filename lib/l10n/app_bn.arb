@@ -55,6 +55,7 @@
   "noSurahsFound": "কোনো সূরা পাওয়া যায়নি",
   "tryAgain": "আবার চেষ্টা করুন",
   "ayahs": "{count} আয়াত",
+  "quranMiniPlayerAyah": "আয়াত {number}",
   "searchDuas": "দোয়া খুঁজুন…",
   "supplications": "{count}টি দোয়া",
   "profile": "প্রোফাইল",
