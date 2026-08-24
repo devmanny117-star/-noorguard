@@ -20,7 +20,7 @@ class InterstitialAdService {
 
   static String get _adUnitId => Platform.isIOS
       ? 'ca-app-pub-1882227858220460/7137362753' // Noor Guard interstitial (iOS)
-      : 'ca-app-pub-3940256099942544/1033173712'; // Google test interstitial (Android)
+      : 'ca-app-pub-1882227858220460/2674815081'; // Noor Guard interstitial (Android)
 
   // In-memory only — resets on app restart, which is the point: each
   // trigger point gets one shot per session, not once ever.

@@ -34,11 +34,10 @@
         android:label="@string/app_name"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <!-- AdMob App ID. This is the TEST App ID from Google's docs — swap
-             for the real one from the AdMob console before store release. -->
+        <!-- AdMob App ID (production — Noor Guard). -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-1882227858220460~1497344642"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
