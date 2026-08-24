@@ -366,6 +366,14 @@ class AppLocalizationsRu extends AppLocalizations {
       'Проверьте подключение к интернету и повторите попытку';
 
   @override
+  String get surahOfflineMessage =>
+      'Нет подключения к интернету. Нажмите, чтобы повторить попытку.';
+
+  @override
+  String get surahAudioOfflineMessage =>
+      'Для аудио требуется подключение к интернету.';
+
+  @override
   String get alQuran => 'Аль-Коран';
 
   @override
@@ -3136,6 +3144,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'Что-то пошло не так. Попробуйте ещё раз.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Для реакций требуется подключение к интернету';
 
   @override
   String get storiesFillRequired =>

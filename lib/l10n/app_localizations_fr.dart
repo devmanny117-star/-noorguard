@@ -364,6 +364,14 @@ class AppLocalizationsFr extends AppLocalizations {
       'Veuillez vérifier votre connexion internet et réessayer';
 
   @override
+  String get surahOfflineMessage =>
+      'Pas de connexion internet. Appuyez pour réessayer.';
+
+  @override
+  String get surahAudioOfflineMessage =>
+      'L\'audio nécessite une connexion internet.';
+
+  @override
   String get alQuran => 'Al-Coran';
 
   @override
@@ -3150,6 +3158,10 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get storiesSubmitError =>
       'Une erreur s\'est produite. Veuillez réessayer.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Les réactions nécessitent une connexion internet';
 
   @override
   String get storiesFillRequired =>

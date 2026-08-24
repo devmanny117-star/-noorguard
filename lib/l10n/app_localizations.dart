@@ -752,6 +752,18 @@ abstract class AppLocalizations {
   /// **'Please check your internet connection and try again'**
   String get connectionError;
 
+  /// Shown in place of the verse list when a surah fails to load offline; the whole area is tappable to retry
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Tap to retry.'**
+  String get surahOfflineMessage;
+
+  /// Snackbar shown when tapping play on a verse fails because there's no internet connection
+  ///
+  /// In en, this message translates to:
+  /// **'Audio requires an internet connection.'**
+  String get surahAudioOfflineMessage;
+
   /// Title shown on the Quran screen header
   ///
   /// In en, this message translates to:
@@ -5749,6 +5761,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Something went wrong. Please try again.'**
   String get storiesSubmitError;
+
+  /// Snackbar shown when tapping a story's heart/dua reaction fails because there's no internet connection
+  ///
+  /// In en, this message translates to:
+  /// **'Reactions require an internet connection'**
+  String get communityReactionOfflineMessage;
 
   /// Validation when story/country missing
   ///

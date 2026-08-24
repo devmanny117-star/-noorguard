@@ -448,6 +448,8 @@
     "description": "Error heading shown when the Quran surah list fails to load"
   },
   "connectionError": "Проверьте подключение к интернету и повторите попытку",
+  "surahOfflineMessage": "Нет подключения к интернету. Нажмите, чтобы повторить попытку.",
+  "surahAudioOfflineMessage": "Для аудио требуется подключение к интернету.",
   "@connectionError": {
     "description": "Error subtitle shown when the Quran surah list fails to load"
   },
@@ -3845,6 +3847,7 @@
     "description": "Confirmation after story submission"
   },
   "storiesSubmitError": "Что-то пошло не так. Попробуйте ещё раз.",
+  "communityReactionOfflineMessage": "Для реакций требуется подключение к интернету",
   "@storiesSubmitError": {
     "description": "Generic submission error"
   },

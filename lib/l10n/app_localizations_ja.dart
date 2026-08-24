@@ -353,6 +353,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get connectionError => 'インターネット接続を確認してから、もう一度お試しください';
 
   @override
+  String get surahOfflineMessage => 'インターネット接続がありません。タップして再試行してください。';
+
+  @override
+  String get surahAudioOfflineMessage => '音声にはインターネット接続が必要です。';
+
+  @override
   String get alQuran => 'クルアーン';
 
   @override
@@ -2997,6 +3003,9 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'エラーが発生しました。もう一度お試しください。';
+
+  @override
+  String get communityReactionOfflineMessage => 'リアクションにはインターネット接続が必要です';
 
   @override
   String get storiesFillRequired => 'ストーリーと国を入力してください。';

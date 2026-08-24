@@ -1131,6 +1131,34 @@ class _AuthorAvatar extends StatelessWidget {
 // REACTIONS ROW
 // ─────────────────────────────────────────────────────────────────────────────
 
+/// Wraps CommunityStoriesService.toggleReaction with error feedback.
+/// Unlike posting/commenting (which Firestore queues locally and syncs once
+/// back online), a reaction runs as a transaction and fails outright with no
+/// network — without this, tapping a heart/dua button offline did nothing
+/// visible at all.
+Future<void> _toggleReactionWithFeedback(
+  BuildContext context,
+  CommunityStoriesService service,
+  String storyId,
+  String kind,
+) async {
+  try {
+    await service.toggleReaction(storyId, kind);
+  } catch (_) {
+    if (!context.mounted) return;
+    final l10n = AppLocalizations.of(context)!;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(l10n.communityReactionOfflineMessage),
+      backgroundColor: _kCard,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: _kGold.withValues(alpha: 0.5)),
+      ),
+    ));
+  }
+}
+
 class _ReactionsRow extends StatelessWidget {
   final CommunityStory story;
   final CommunityStoriesService service;
@@ -1156,14 +1184,16 @@ class _ReactionsRow extends StatelessWidget {
               emoji: '🤲',
               count: story.duaCount,
               active: mine.dua,
-              onTap: () => service.toggleReaction(story.id, 'dua'),
+              onTap: () => _toggleReactionWithFeedback(
+                  context, service, story.id, 'dua'),
             ),
             const SizedBox(width: 8),
             _ReactionChip(
               emoji: '❤️',
               count: story.heartCount,
               active: mine.heart,
-              onTap: () => service.toggleReaction(story.id, 'heart'),
+              onTap: () => _toggleReactionWithFeedback(
+                  context, service, story.id, 'heart'),
             ),
             const SizedBox(width: 8),
             _ReactionChip(
@@ -3559,16 +3589,17 @@ class _CommunityStoryDetailScreenState
                                 emoji: '🤲',
                                 count: story.duaCount,
                                 active: mine.dua,
-                                onTap: () => widget.service
-                                    .toggleReaction(story.id, 'dua'),
+                                onTap: () => _toggleReactionWithFeedback(
+                                    context, widget.service, story.id, 'dua'),
                               ),
                               const SizedBox(width: 10),
                               _ReactionChip(
                                 emoji: '❤️',
                                 count: story.heartCount,
                                 active: mine.heart,
-                                onTap: () => widget.service
-                                    .toggleReaction(story.id, 'heart'),
+                                onTap: () => _toggleReactionWithFeedback(
+                                    context, widget.service, story.id,
+                                    'heart'),
                               ),
                             ],
                           );

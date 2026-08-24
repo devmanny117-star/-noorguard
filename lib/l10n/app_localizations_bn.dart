@@ -364,6 +364,13 @@ class AppLocalizationsBn extends AppLocalizations {
       'অনুগ্রহ করে আপনার ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন';
 
   @override
+  String get surahOfflineMessage =>
+      'ইন্টারনেট সংযোগ নেই। আবার চেষ্টা করতে ট্যাপ করুন।';
+
+  @override
+  String get surahAudioOfflineMessage => 'অডিওর জন্য ইন্টারনেট সংযোগ প্রয়োজন।';
+
+  @override
   String get alQuran => 'আল-কুরআন';
 
   @override
@@ -3122,6 +3129,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'কিছু ভুল হয়েছে। আবার চেষ্টা করুন।';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'প্রতিক্রিয়ার জন্য ইন্টারনেট সংযোগ প্রয়োজন';
 
   @override
   String get storiesFillRequired => 'অনুগ্রহ করে আপনার গল্প ও দেশ যোগ করুন।';

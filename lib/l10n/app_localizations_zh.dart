@@ -352,6 +352,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get connectionError => '请检查你的网络连接后重试';
 
   @override
+  String get surahOfflineMessage => '无网络连接。点击重试。';
+
+  @override
+  String get surahAudioOfflineMessage => '音频需要网络连接。';
+
+  @override
   String get alQuran => '古兰经';
 
   @override
@@ -2966,6 +2972,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get storiesSubmitError => '出错了，请重试。';
+
+  @override
+  String get communityReactionOfflineMessage => '互动需要网络连接';
 
   @override
   String get storiesFillRequired => '请填写你的故事和国家。';

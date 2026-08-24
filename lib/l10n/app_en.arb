@@ -471,6 +471,14 @@
   "@connectionError": {
     "description": "Error subtitle shown when the Quran surah list fails to load"
   },
+  "surahOfflineMessage": "No internet connection. Tap to retry.",
+  "@surahOfflineMessage": {
+    "description": "Shown in place of the verse list when a surah fails to load offline; the whole area is tappable to retry"
+  },
+  "surahAudioOfflineMessage": "Audio requires an internet connection.",
+  "@surahAudioOfflineMessage": {
+    "description": "Snackbar shown when tapping play on a verse fails because there's no internet connection"
+  },
   "alQuran": "Al-Quran",
   "@alQuran": {
     "description": "Title shown on the Quran screen header"
@@ -3870,6 +3878,10 @@
   "storiesSubmitError": "Something went wrong. Please try again.",
   "@storiesSubmitError": {
     "description": "Generic submission error"
+  },
+  "communityReactionOfflineMessage": "Reactions require an internet connection",
+  "@communityReactionOfflineMessage": {
+    "description": "Snackbar shown when tapping a story's heart/dua reaction fails because there's no internet connection"
   },
   "storiesFillRequired": "Please add your story and country.",
   "@storiesFillRequired": {

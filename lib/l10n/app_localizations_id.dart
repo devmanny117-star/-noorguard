@@ -363,6 +363,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get connectionError => 'Periksa koneksi internet Anda dan coba lagi';
 
   @override
+  String get surahOfflineMessage =>
+      'Tidak ada koneksi internet. Ketuk untuk mencoba lagi.';
+
+  @override
+  String get surahAudioOfflineMessage => 'Audio memerlukan koneksi internet.';
+
+  @override
   String get alQuran => 'Al-Qur\'an';
 
   @override
@@ -3132,6 +3139,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'Terjadi kesalahan. Silakan coba lagi.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Reaksi memerlukan koneksi internet';
 
   @override
   String get storiesFillRequired => 'Harap isi kisah dan negaramu.';

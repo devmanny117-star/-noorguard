@@ -363,6 +363,13 @@ class AppLocalizationsUr extends AppLocalizations {
       'براہ کرم اپنا انٹرنیٹ کنکشن چیک کریں اور دوبارہ کوشش کریں';
 
   @override
+  String get surahOfflineMessage =>
+      'انٹرنیٹ کنکشن نہیں ہے۔ دوبارہ کوشش کرنے کے لیے ٹیپ کریں۔';
+
+  @override
+  String get surahAudioOfflineMessage => 'آڈیو کے لیے انٹرنیٹ کنکشن درکار ہے۔';
+
+  @override
   String get alQuran => 'القرآن الکریم';
 
   @override
@@ -3103,6 +3110,10 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'ری ایکشنز کے لیے انٹرنیٹ کنکشن درکار ہے';
 
   @override
   String get storiesFillRequired => 'براہ کرم اپنی کہانی اور ملک شامل کریں۔';

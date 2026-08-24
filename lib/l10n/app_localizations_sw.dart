@@ -363,6 +363,14 @@ class AppLocalizationsSw extends AppLocalizations {
       'Tafadhali angalia muunganisho wako wa intaneti kisha ujaribu tena';
 
   @override
+  String get surahOfflineMessage =>
+      'Hakuna muunganisho wa intaneti. Gusa ili ujaribu tena.';
+
+  @override
+  String get surahAudioOfflineMessage =>
+      'Sauti inahitaji muunganisho wa intaneti.';
+
+  @override
   String get alQuran => 'Al-Qur\'ani';
 
   @override
@@ -3123,6 +3131,10 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'Hitilafu imetokea. Tafadhali jaribu tena.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Miitikio inahitaji muunganisho wa intaneti';
 
   @override
   String get storiesFillRequired => 'Tafadhali ongeza hadithi yako na nchi.';

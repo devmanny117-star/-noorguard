@@ -364,6 +364,14 @@ class AppLocalizationsDe extends AppLocalizations {
       'Bitte überprüfe deine Internetverbindung und versuche es erneut';
 
   @override
+  String get surahOfflineMessage =>
+      'Keine Internetverbindung. Zum erneuten Versuch tippen.';
+
+  @override
+  String get surahAudioOfflineMessage =>
+      'Für Audio ist eine Internetverbindung erforderlich.';
+
+  @override
   String get alQuran => 'Al-Quran';
 
   @override
@@ -3134,6 +3142,10 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get storiesSubmitError =>
       'Etwas ist schiefgelaufen. Bitte versuche es erneut.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Für Reaktionen ist eine Internetverbindung erforderlich';
 
   @override
   String get storiesFillRequired =>

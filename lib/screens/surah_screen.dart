@@ -595,29 +595,49 @@ class _SurahScreenState extends State<SurahScreen>
   }
 
   Future<void> _playVerseAudio(int verseNumber) async {
-    if (_playingVerseNumber == verseNumber) {
-      if (_isPlaying) {
-        await _audioPlayer.pause();
-      } else {
-        await _audioPlayer.play();
+    try {
+      if (_playingVerseNumber == verseNumber) {
+        if (_isPlaying) {
+          await _audioPlayer.pause();
+        } else {
+          await _audioPlayer.play();
+        }
+        return;
       }
-      return;
+      final index = _verses.indexWhere((v) => v.number == verseNumber);
+      if (index == -1) return;
+      if (_playlist == null) {
+        _playlist = _buildPlaylist();
+        await _audioPlayer.setAudioSources(_playlist!,
+            initialIndex: index, preload: false);
+      } else {
+        await _audioPlayer.seek(Duration.zero, index: index);
+      }
+      // Set directly rather than relying solely on currentIndexStream: after
+      // the close button resets the index-tracking state, re-tapping the
+      // same verse seeks to an index that hasn't changed, so the stream
+      // wouldn't fire again.
+      if (mounted) setState(() => _playingVerseNumber = verseNumber);
+      await _audioPlayer.play();
+    } catch (_) {
+      // Almost always no network — the verse audio streams from
+      // EveryAyah.com, nothing is bundled offline. Without this, the tapped
+      // verse was already optimistically marked "now playing" above with no
+      // sound ever starting and no feedback at all.
+      if (!mounted) return;
+      setState(() {
+        if (_playingVerseNumber == verseNumber) _playingVerseNumber = null;
+      });
+      final l10n = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(l10n.surahAudioOfflineMessage,
+            style: GoogleFonts.lato(color: Colors.white)),
+        backgroundColor: const Color(0xFF2C2C2A),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(16),
+      ));
     }
-    final index = _verses.indexWhere((v) => v.number == verseNumber);
-    if (index == -1) return;
-    if (_playlist == null) {
-      _playlist = _buildPlaylist();
-      await _audioPlayer.setAudioSources(_playlist!,
-          initialIndex: index, preload: false);
-    } else {
-      await _audioPlayer.seek(Duration.zero, index: index);
-    }
-    // Set directly rather than relying solely on currentIndexStream: after
-    // the close button resets the index-tracking state, re-tapping the same
-    // verse seeks to an index that hasn't changed, so the stream wouldn't
-    // fire again.
-    if (mounted) setState(() => _playingVerseNumber = verseNumber);
-    await _audioPlayer.play();
   }
 
   Future<void> _playAdjacent(int delta) async {
@@ -918,7 +938,9 @@ class _SurahScreenState extends State<SurahScreen>
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator(color: _gold))
-          : AnimatedOpacity(
+          : _verses.isEmpty
+              ? _OfflineRetryState(onRetry: () => _load(langCode))
+              : AnimatedOpacity(
               opacity: _dismissing ? 0.0 : 1.0,
               duration: const Duration(milliseconds: 400),
               curve: Curves.easeOut,
@@ -1110,6 +1132,62 @@ class _SurahScreenState extends State<SurahScreen>
                 ],
               ),
             ),
+    );
+  }
+}
+
+// ── Offline empty state ────────────────────────────────────────────────────
+
+/// Shown instead of a blank verse list when fetchVerses() came back empty —
+/// almost always a network failure (it swallows exceptions and returns []).
+/// The whole area is tappable to retry.
+class _OfflineRetryState extends StatelessWidget {
+  final VoidCallback onRetry;
+  const _OfflineRetryState({required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return GestureDetector(
+      onTap: onRetry,
+      behavior: HitTestBehavior.opaque,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 72,
+                height: 72,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: _gold.withValues(alpha: 0.08),
+                  border: Border.all(
+                    color: _gold.withValues(alpha: 0.3),
+                    width: 1.5,
+                  ),
+                ),
+                child: const Icon(
+                  Icons.wifi_off_rounded,
+                  color: _gold,
+                  size: 32,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                l10n.surahOfflineMessage,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  color: Colors.white.withValues(alpha: 0.85),
+                  height: 1.4,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

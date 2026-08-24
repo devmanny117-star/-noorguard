@@ -363,6 +363,14 @@ class AppLocalizationsTr extends AppLocalizations {
       'Lütfen internet bağlantınızı kontrol edip tekrar deneyin';
 
   @override
+  String get surahOfflineMessage =>
+      'İnternet bağlantısı yok. Tekrar denemek için dokunun.';
+
+  @override
+  String get surahAudioOfflineMessage =>
+      'Ses için internet bağlantısı gerekir.';
+
+  @override
   String get alQuran => 'Kur\'an-ı Kerim';
 
   @override
@@ -3112,6 +3120,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'Bir şeyler ters gitti. Lütfen tekrar dene.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Tepkiler için internet bağlantısı gerekir';
 
   @override
   String get storiesFillRequired => 'Lütfen hikayeni ve ülkeni ekle.';

@@ -363,6 +363,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Please check your internet connection and try again';
 
   @override
+  String get surahOfflineMessage => 'No internet connection. Tap to retry.';
+
+  @override
+  String get surahAudioOfflineMessage =>
+      'Audio requires an internet connection.';
+
+  @override
   String get alQuran => 'Al-Quran';
 
   @override
@@ -3108,6 +3115,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'Something went wrong. Please try again.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Reactions require an internet connection';
 
   @override
   String get storiesFillRequired => 'Please add your story and country.';

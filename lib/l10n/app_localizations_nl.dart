@@ -363,6 +363,14 @@ class AppLocalizationsNl extends AppLocalizations {
       'Controleer je internetverbinding en probeer het opnieuw';
 
   @override
+  String get surahOfflineMessage =>
+      'Geen internetverbinding. Tik om het opnieuw te proberen.';
+
+  @override
+  String get surahAudioOfflineMessage =>
+      'Voor audio is een internetverbinding vereist.';
+
+  @override
   String get alQuran => 'Al-Koran';
 
   @override
@@ -3130,6 +3138,10 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'Er ging iets mis. Probeer het opnieuw.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'Voor reacties is een internetverbinding vereist';
 
   @override
   String get storiesFillRequired => 'Voeg je verhaal en land toe.';

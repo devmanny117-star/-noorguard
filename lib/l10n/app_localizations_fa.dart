@@ -367,6 +367,13 @@ class AppLocalizationsFa extends AppLocalizations {
       'لطفاً اتصال اینترنت خود را بررسی کرده و دوباره تلاش کنید';
 
   @override
+  String get surahOfflineMessage =>
+      'اتصال اینترنت وجود ندارد. برای تلاش دوباره ضربه بزنید.';
+
+  @override
+  String get surahAudioOfflineMessage => 'صدا نیاز به اتصال اینترنت دارد.';
+
+  @override
   String get alQuran => 'القرآن';
 
   @override
@@ -3108,6 +3115,10 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get storiesSubmitError => 'مشکلی پیش آمد. دوباره تلاش کنید.';
+
+  @override
+  String get communityReactionOfflineMessage =>
+      'واکنش‌ها نیاز به اتصال اینترنت دارند';
 
   @override
   String get storiesFillRequired => 'لطفاً داستان و کشور خود را وارد کنید.';
